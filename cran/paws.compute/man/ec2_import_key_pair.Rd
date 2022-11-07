@@ -2,11 +2,15 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_import_key_pair}
 \alias{ec2_import_key_pair}
-\title{Imports the public key from an RSA key pair that you created with a
-third-party tool}
+\title{Imports the public key from an RSA or ED25519 key pair that you created
+with a third-party tool}
 \usage{
-ec2_import_key_pair(DryRun, KeyName, PublicKeyMaterial,
-  TagSpecifications)
+ec2_import_key_pair(
+  DryRun = NULL,
+  KeyName,
+  PublicKeyMaterial,
+  TagSpecifications = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -21,49 +25,9 @@ command line tools, base64 encoding is performed for you.}
 
 \item{TagSpecifications}{The tags to apply to the imported key pair.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KeyFingerprint = "string",
-  KeyName = "string",
-  KeyPairId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Imports the public key from an RSA key pair that you created with a
-third-party tool. Compare this with
-\code{\link[=ec2_create_key_pair]{create_key_pair}}, in which AWS creates the key
-pair and gives the keys to you (AWS keeps a copy of the public key).
-With ImportKeyPair, you create the key pair and give AWS just the public
-key. The private key is never transferred between you and AWS.
+Imports the public key from an RSA or ED25519 key pair that you created with a third-party tool. Compare this with \code{\link[=ec2_create_key_pair]{create_key_pair}}, in which Amazon Web Services creates the key pair and gives the keys to you (Amazon Web Services keeps a copy of the public key). With ImportKeyPair, you create the key pair and give Amazon Web Services just the public key. The private key is never transferred between you and Amazon Web Services.
 
-For more information about key pairs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/import_key_pair.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$import_key_pair(
-  DryRun = TRUE|FALSE,
-  KeyName = "string",
-  PublicKeyMaterial = raw,
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

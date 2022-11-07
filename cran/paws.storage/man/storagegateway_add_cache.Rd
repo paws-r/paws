@@ -14,43 +14,9 @@ working storage. Each string has a minimum length of 1 and maximum
 length of 300. You can get the disk IDs from the
 \code{\link[=storagegateway_list_local_disks]{list_local_disks}} API.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Configures one or more gateway local disks as cache for a gateway. This
-operation is only supported in the cached volume, tape, and file gateway
-type (see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html}{How AWS Storage Gateway works (architecture)}.
+Configures one or more gateway local disks as cache for a gateway. This operation is only supported in the cached volume, tape, and file gateway type (see \href{https://docs.aws.amazon.com/storagegateway/index.html}{How Storage Gateway works (architecture)}.
 
-In the request, you specify the gateway Amazon Resource Name (ARN) to
-which you want to add cache, and one or more disk IDs that you want to
-configure as cache.
-}
-\section{Request syntax}{
-\preformatted{svc$add_cache(
-  GatewayARN = "string",
-  DiskIds = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows a request that activates a gateway-stored
-# volume.
-svc$add_cache(
-  DiskIds = list(
-    "pci-0000:03:00.0-scsi-0:0:0:0",
-    "pci-0000:03:00.0-scsi-0:0:1:0"
-  ),
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/add_cache.html} for full documentation.
 }
 \keyword{internal}

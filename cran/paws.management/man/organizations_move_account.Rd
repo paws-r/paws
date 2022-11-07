@@ -5,8 +5,7 @@
 \title{Moves an account from its current source parent root or organizational
 unit (OU) to the specified destination parent root or OU}
 \usage{
-organizations_move_account(AccountId, SourceParentId,
-  DestinationParentId)
+organizations_move_account(AccountId, SourceParentId, DestinationParentId)
 }
 \arguments{
 \item{AccountId}{[required] The unique identifier (ID) of the account that you want to move.
@@ -42,35 +41,9 @@ root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Moves an account from its current source parent root or organizational
-unit (OU) to the specified destination parent root or OU.
+Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU.
 
-This operation can be called only from the organization's management
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$move_account(
-  AccountId = "string",
-  SourceParentId = "string",
-  DestinationParentId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to move a member account from the root
-# to an OU:/n/n
-svc$move_account(
-  AccountId = "333333333333",
-  DestinationParentId = "ou-examplerootid111-exampleouid111",
-  SourceParentId = "r-examplerootid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/move_account.html} for full documentation.
 }
 \keyword{internal}

@@ -15,34 +15,9 @@ Specify only the tag key to remove (not the value). To overwrite the
 value for an existing tag, use
 \code{\link[=cloudhsm_add_tags_to_resource]{add_tags_to_resource}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "string"
-)
-}
-}
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more
-information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
-and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
-\strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
-
-Removes one or more tags from the specified AWS CloudHSM resource.
-
-To remove a tag, specify only the tag key to remove (not the value). To
-overwrite the value for an existing tag, use
-\code{\link[=cloudhsm_add_tags_to_resource]{add_tags_to_resource}}.
+See \url{https://paws-r.github.io/docs/cloudhsm/remove_tags_from_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
-  ResourceArn = "string",
-  TagKeyList = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

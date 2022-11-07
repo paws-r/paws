@@ -11,17 +11,9 @@ rds_delete_option_group(OptionGroupName)
 
 You can't delete default option groups.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an existing option group.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_option_group(
-  OptionGroupName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/delete_option_group.html} for full documentation.
+}
 \keyword{internal}

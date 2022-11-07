@@ -4,9 +4,17 @@
 \alias{sagemaker_list_device_fleets}
 \title{Returns a list of devices in the fleet}
 \usage{
-sagemaker_list_device_fleets(NextToken, MaxResults, CreationTimeAfter,
-  CreationTimeBefore, LastModifiedTimeAfter, LastModifiedTimeBefore,
-  NameContains, SortBy, SortOrder)
+sagemaker_list_device_fleets(
+  NextToken = NULL,
+  MaxResults = NULL,
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  NameContains = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{NextToken}{The response from the last list when returning a list large enough to
@@ -29,48 +37,9 @@ time.}
 
 \item{SortOrder}{What direction to sort in.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeviceFleetSummaries = list(
-    list(
-      DeviceFleetArn = "string",
-      DeviceFleetName = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of devices in the fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$list_device_fleets(
-  NextToken = "string",
-  MaxResults = 123,
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  NameContains = "string",
-  SortBy = "NAME"|"CREATION_TIME"|"LAST_MODIFIED_TIME",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_device_fleets.html} for full documentation.
+}
 \keyword{internal}

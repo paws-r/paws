@@ -2,10 +2,10 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_ops_item_events}
 \alias{ssm_list_ops_item_events}
-\title{Returns a list of all OpsItem events in the current AWS account and
-Region}
+\title{Returns a list of all OpsItem events in the current Amazon Web Services
+Region and Amazon Web Services account}
 \usage{
-ssm_list_ops_item_events(Filters, MaxResults, NextToken)
+ssm_list_ops_item_events(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{One or more OpsItem filters. Use a filter to return a more specific list
@@ -18,47 +18,9 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Summaries = list(
-    list(
-      OpsItemId = "string",
-      EventId = "string",
-      Source = "string",
-      DetailType = "string",
-      Detail = "string",
-      CreatedBy = list(
-        Arn = "string"
-      ),
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of all OpsItem events in the current AWS account and
-Region. You can limit the results to events associated with specific
-OpsItems by specifying a filter.
-}
-\section{Request syntax}{
-\preformatted{svc$list_ops_item_events(
-  Filters = list(
-    list(
-      Key = "OpsItemId",
-      Values = list(
-        "string"
-      ),
-      Operator = "Equal"
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of all OpsItem events in the current Amazon Web Services Region and Amazon Web Services account. You can limit the results to events associated with specific OpsItems by specifying a filter.
 
+See \url{https://paws-r.github.io/docs/ssm/list_ops_item_events.html} for full documentation.
+}
 \keyword{internal}

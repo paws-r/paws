@@ -5,8 +5,13 @@
 \title{Create a listener to process inbound connections from clients to an
 accelerator}
 \usage{
-globalaccelerator_create_listener(AcceleratorArn, PortRanges, Protocol,
-  ClientAffinity, IdempotencyToken)
+globalaccelerator_create_listener(
+  AcceleratorArn,
+  PortRanges,
+  Protocol,
+  ClientAffinity = NULL,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of your accelerator.}
@@ -21,15 +26,14 @@ endpoint, if you have stateful applications, regardless of the port and
 protocol of the client request. Client affinity gives you control over
 whether to always route each client to the same specific endpoint.
 
-AWS Global Accelerator uses a consistent-flow hashing algorithm to
-choose the optimal endpoint for a connection. If client affinity is
-\code{NONE}, Global Accelerator uses the "five-tuple" (5-tuple)
-properties—source IP address, source port, destination IP address,
-destination port, and protocol—to select the hash value, and then
-chooses the best endpoint. However, with this setting, if someone uses
-different ports to connect to Global Accelerator, their connections
-might not be always routed to the same endpoint because the hash value
-changes.
+Global Accelerator uses a consistent-flow hashing algorithm to choose
+the optimal endpoint for a connection. If client affinity is \code{NONE},
+Global Accelerator uses the "five-tuple" (5-tuple) properties—source IP
+address, source port, destination IP address, destination port, and
+protocol—to select the hash value, and then chooses the best endpoint.
+However, with this setting, if someone uses different ports to connect
+to Global Accelerator, their connections might not be always routed to
+the same endpoint because the hash value changes.
 
 If you want a given client to always be routed to the same endpoint, set
 client affinity to \code{SOURCE_IP} instead. When you use the \code{SOURCE_IP}
@@ -42,41 +46,9 @@ The default value is \code{NONE}.}
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency—that is, the uniqueness—of the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Listener = list(
-    ListenerArn = "string",
-    PortRanges = list(
-      list(
-        FromPort = 123,
-        ToPort = 123
-      )
-    ),
-    Protocol = "TCP"|"UDP",
-    ClientAffinity = "NONE"|"SOURCE_IP"
-  )
-)
-}
-}
 \description{
-Create a listener to process inbound connections from clients to an
-accelerator. Connections arrive to assigned static IP addresses on a
-port, port range, or list of port ranges that you specify.
-}
-\section{Request syntax}{
-\preformatted{svc$create_listener(
-  AcceleratorArn = "string",
-  PortRanges = list(
-    list(
-      FromPort = 123,
-      ToPort = 123
-    )
-  ),
-  Protocol = "TCP"|"UDP",
-  ClientAffinity = "NONE"|"SOURCE_IP",
-  IdempotencyToken = "string"
-)
-}
-}
+Create a listener to process inbound connections from clients to an accelerator. Connections arrive to assigned static IP addresses on a port, port range, or list of port ranges that you specify.
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/create_listener.html} for full documentation.
+}
 \keyword{internal}

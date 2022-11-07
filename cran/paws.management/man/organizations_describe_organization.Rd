@@ -7,43 +7,9 @@ belongs to}
 \usage{
 organizations_describe_organization()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Organization = list(
-    Id = "string",
-    Arn = "string",
-    FeatureSet = "ALL"|"CONSOLIDATED_BILLING",
-    MasterAccountArn = "string",
-    MasterAccountId = "string",
-    MasterAccountEmail = "string",
-    AvailablePolicyTypes = list(
-      list(
-        Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
-        Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves information about the organization that the user's account
-belongs to.
+Retrieves information about the organization that the user's account belongs to.
 
-This operation can be called from any account in the organization.
-
-Even if a policy type is shown as available in the organization, you can
-disable it separately at the root level with
-\code{\link[=organizations_disable_policy_type]{disable_policy_type}}. Use
-\code{\link[=organizations_list_roots]{list_roots}} to see the status of policy
-types for a specified root.
-}
-\examples{
-\dontrun{
-# The following example shows how to request information about the current
-# user's organization:/n/n
-svc$describe_organization()
-}
-
+See \url{https://paws-r.github.io/docs/organizations/describe_organization.html} for full documentation.
 }
 \keyword{internal}

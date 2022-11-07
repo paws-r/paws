@@ -2,54 +2,40 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_patch_baselines}
 \alias{ssm_describe_patch_baselines}
-\title{Lists the patch baselines in your AWS account}
+\title{Lists the patch baselines in your Amazon Web Services account}
 \usage{
-ssm_describe_patch_baselines(Filters, MaxResults, NextToken)
+ssm_describe_patch_baselines(
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{Filters}{Each element in the array is a structure containing:
+\item{Filters}{Each element in the array is a structure containing a key-value pair.
 
-Key: (string, "NAME_PREFIX" or "OWNER")
+Supported keys for
+\code{\link[=ssm_describe_patch_baselines]{describe_patch_baselines}} include the
+following:
+\itemize{
+\item \strong{\code{NAME_PREFIX}}
 
-Value: (array of strings, exactly 1 entry, between 1 and 255 characters)}
+Sample values: \verb{AWS-} | \verb{My-}
+\item \strong{\code{OWNER}}
+
+Sample values: \code{AWS} | \code{Self}
+\item \strong{\code{OPERATING_SYSTEM}}
+
+Sample values: \code{AMAZON_LINUX} | \code{SUSE} | \code{WINDOWS}
+}}
 
 \item{MaxResults}{The maximum number of patch baselines to return (per page).}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BaselineIdentities = list(
-    list(
-      BaselineId = "string",
-      BaselineName = "string",
-      OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-      BaselineDescription = "string",
-      DefaultBaseline = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the patch baselines in your AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_patch_baselines(
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists the patch baselines in your Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_patch_baselines.html} for full documentation.
+}
 \keyword{internal}

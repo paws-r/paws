@@ -2,10 +2,16 @@
 % Please edit documentation in R/dlm_operations.R
 \name{dlm_create_lifecycle_policy}
 \alias{dlm_create_lifecycle_policy}
-\title{Creates a policy to manage the lifecycle of the specified AWS resources}
+\title{Creates a policy to manage the lifecycle of the specified Amazon Web
+Services resources}
 \usage{
-dlm_create_lifecycle_policy(ExecutionRoleArn, Description, State,
-  PolicyDetails, Tags)
+dlm_create_lifecycle_policy(
+  ExecutionRoleArn,
+  Description,
+  State,
+  PolicyDetails,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role used to run the
@@ -20,130 +26,9 @@ _-]+$ are supported.}
 
 \item{Tags}{The tags to apply to the lifecycle policy during creation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyId = "string"
-)
-}
-}
 \description{
-Creates a policy to manage the lifecycle of the specified AWS resources.
-You can create up to 100 lifecycle policies.
-}
-\section{Request syntax}{
-\preformatted{svc$create_lifecycle_policy(
-  ExecutionRoleArn = "string",
-  Description = "string",
-  State = "ENABLED"|"DISABLED",
-  PolicyDetails = list(
-    PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY",
-    ResourceTypes = list(
-      "VOLUME"|"INSTANCE"
-    ),
-    TargetTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    Schedules = list(
-      list(
-        Name = "string",
-        CopyTags = TRUE|FALSE,
-        TagsToAdd = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        ),
-        VariableTags = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        ),
-        CreateRule = list(
-          Interval = 123,
-          IntervalUnit = "HOURS",
-          Times = list(
-            "string"
-          ),
-          CronExpression = "string"
-        ),
-        RetainRule = list(
-          Count = 123,
-          Interval = 123,
-          IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-        ),
-        FastRestoreRule = list(
-          Count = 123,
-          Interval = 123,
-          IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
-          AvailabilityZones = list(
-            "string"
-          )
-        ),
-        CrossRegionCopyRules = list(
-          list(
-            TargetRegion = "string",
-            Encrypted = TRUE|FALSE,
-            CmkArn = "string",
-            CopyTags = TRUE|FALSE,
-            RetainRule = list(
-              Interval = 123,
-              IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-            )
-          )
-        ),
-        ShareRules = list(
-          list(
-            TargetAccounts = list(
-              "string"
-            ),
-            UnshareInterval = 123,
-            UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-          )
-        )
-      )
-    ),
-    Parameters = list(
-      ExcludeBootVolume = TRUE|FALSE,
-      NoReboot = TRUE|FALSE
-    ),
-    EventSource = list(
-      Type = "MANAGED_CWE",
-      Parameters = list(
-        EventType = "shareSnapshot",
-        SnapshotOwner = list(
-          "string"
-        ),
-        DescriptionRegex = "string"
-      )
-    ),
-    Actions = list(
-      list(
-        Name = "string",
-        CrossRegionCopy = list(
-          list(
-            Target = "string",
-            EncryptionConfiguration = list(
-              Encrypted = TRUE|FALSE,
-              CmkArn = "string"
-            ),
-            RetainRule = list(
-              Interval = 123,
-              IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-            )
-          )
-        )
-      )
-    )
-  ),
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+Creates a policy to manage the lifecycle of the specified Amazon Web Services resources. You can create up to 100 lifecycle policies.
 
+See \url{https://paws-r.github.io/docs/dlm/create_lifecycle_policy.html} for full documentation.
+}
 \keyword{internal}

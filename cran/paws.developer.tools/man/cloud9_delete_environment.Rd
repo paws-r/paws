@@ -2,34 +2,16 @@
 % Please edit documentation in R/cloud9_operations.R
 \name{cloud9_delete_environment}
 \alias{cloud9_delete_environment}
-\title{Deletes an AWS Cloud9 development environment}
+\title{Deletes an Cloud9 development environment}
 \usage{
 cloud9_delete_environment(environmentId)
 }
 \arguments{
 \item{environmentId}{[required] The ID of the environment to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an AWS Cloud9 development environment. If an Amazon EC2 instance
-is connected to the environment, also terminates the instance.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_environment(
-  environmentId = "string"
-)
-}
-}
+Deletes an Cloud9 development environment. If an Amazon EC2 instance is connected to the environment, also terminates the instance.
 
-\examples{
-\dontrun{
-# 
-svc$delete_environment(
-  environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)
-}
-
+See \url{https://paws-r.github.io/docs/cloud9/delete_environment.html} for full documentation.
 }
 \keyword{internal}

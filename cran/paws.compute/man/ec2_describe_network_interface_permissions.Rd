@@ -5,7 +5,11 @@
 \title{Describes the permissions for your network interfaces}
 \usage{
 ec2_describe_network_interface_permissions(
-  NetworkInterfacePermissionIds, Filters, NextToken, MaxResults)
+  NetworkInterfacePermissionIds = NULL,
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{NetworkInterfacePermissionIds}{One or more network interface permission IDs.}
@@ -16,8 +20,9 @@ ec2_describe_network_interface_permissions(
 ID of the permission.
 \item \code{network-interface-permission.network-interface-id} - The ID of the
 network interface.
-\item \code{network-interface-permission.aws-account-id} - The AWS account ID.
-\item \code{network-interface-permission.aws-service} - The AWS service.
+\item \code{network-interface-permission.aws-account-id} - The Amazon Web
+Services account ID.
+\item \code{network-interface-permission.aws-service} - The Amazon Web Service.
 \item \code{network-interface-permission.permission} - The type of permission
 (\code{INSTANCE-ATTACH} | \code{EIP-ASSOCIATE}).
 }}
@@ -29,45 +34,9 @@ the remaining results, make another call with the returned \code{NextToken}
 value. If this parameter is not specified, up to 50 results are returned
 by default.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NetworkInterfacePermissions = list(
-    list(
-      NetworkInterfacePermissionId = "string",
-      NetworkInterfaceId = "string",
-      AwsAccountId = "string",
-      AwsService = "string",
-      Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
-      PermissionState = list(
-        State = "pending"|"granted"|"revoking"|"revoked",
-        StatusMessage = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the permissions for your network interfaces.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_network_interface_permissions(
-  NetworkInterfacePermissionIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_network_interface_permissions.html} for full documentation.
+}
 \keyword{internal}

@@ -4,16 +4,28 @@
 \alias{sagemaker_create_pipeline}
 \title{Creates a pipeline using a JSON pipeline definition}
 \usage{
-sagemaker_create_pipeline(PipelineName, PipelineDisplayName,
-  PipelineDefinition, PipelineDescription, ClientRequestToken, RoleArn,
-  Tags)
+sagemaker_create_pipeline(
+  PipelineName,
+  PipelineDisplayName = NULL,
+  PipelineDefinition = NULL,
+  PipelineDefinitionS3Location = NULL,
+  PipelineDescription = NULL,
+  ClientRequestToken,
+  RoleArn,
+  Tags = NULL,
+  ParallelismConfiguration = NULL
+)
 }
 \arguments{
 \item{PipelineName}{[required] The name of the pipeline.}
 
 \item{PipelineDisplayName}{The display name of the pipeline.}
 
-\item{PipelineDefinition}{[required] The JSON pipeline definition of the pipeline.}
+\item{PipelineDefinition}{The JSON pipeline definition of the pipeline.}
+
+\item{PipelineDefinitionS3Location}{The location of the pipeline definition stored in Amazon S3. If
+specified, SageMaker will retrieve the pipeline definition from this
+location.}
 
 \item{PipelineDescription}{A description of the pipeline.}
 
@@ -25,32 +37,13 @@ than one time.}
 access and create resources.}
 
 \item{Tags}{A list of tags to apply to the created pipeline.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineArn = "string"
-)
-}
+
+\item{ParallelismConfiguration}{This is the configuration that controls the parallelism of the pipeline.
+If specified, it applies to all runs of this pipeline by default.}
 }
 \description{
 Creates a pipeline using a JSON pipeline definition.
-}
-\section{Request syntax}{
-\preformatted{svc$create_pipeline(
-  PipelineName = "string",
-  PipelineDisplayName = "string",
-  PipelineDefinition = "string",
-  PipelineDescription = "string",
-  ClientRequestToken = "string",
-  RoleArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_pipeline.html} for full documentation.
+}
 \keyword{internal}

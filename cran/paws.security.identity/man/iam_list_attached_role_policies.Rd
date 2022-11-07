@@ -4,7 +4,12 @@
 \alias{iam_list_attached_role_policies}
 \title{Lists all managed policies that are attached to the specified IAM role}
 \usage{
-iam_list_attached_role_policies(RoleName, PathPrefix, Marker, MaxItems)
+iam_list_attached_role_policies(
+  RoleName,
+  PathPrefix = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{RoleName}{[required] The name (friendly name, not ARN) of the role to list attached policies
@@ -39,42 +44,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AttachedPolicies = list(
-    list(
-      PolicyName = "string",
-      PolicyArn = "string"
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
 Lists all managed policies that are attached to the specified IAM role.
 
-An IAM role can also have inline policies embedded with it. To list the
-inline policies for a role, use the
-\code{\link[=iam_list_role_policies]{list_role_policies}} API. For information
-about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters. You can use the \code{PathPrefix} parameter to limit the list of
-policies to only those matching the specified path prefix. If there are
-no policies attached to the specified role (or none that match the
-specified path prefix), the operation returns an empty list.
+See \url{https://paws-r.github.io/docs/iam/list_attached_role_policies.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_attached_role_policies(
-  RoleName = "string",
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

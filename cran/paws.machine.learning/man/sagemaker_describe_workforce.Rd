@@ -13,54 +13,9 @@ sagemaker_describe_workforce(WorkforceName)
 \code{WorkforceName} is automatically set to \code{default} when a workforce is
 created and cannot be modified.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Workforce = list(
-    WorkforceName = "string",
-    WorkforceArn = "string",
-    LastUpdatedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    SourceIpConfig = list(
-      Cidrs = list(
-        "string"
-      )
-    ),
-    SubDomain = "string",
-    CognitoConfig = list(
-      UserPool = "string",
-      ClientId = "string"
-    ),
-    OidcConfig = list(
-      ClientId = "string",
-      Issuer = "string",
-      AuthorizationEndpoint = "string",
-      TokenEndpoint = "string",
-      UserInfoEndpoint = "string",
-      LogoutEndpoint = "string",
-      JwksUri = "string"
-    ),
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Lists private workforce information, including workforce name, Amazon
-Resource Name (ARN), and, if applicable, allowed IP address ranges
-(\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs}).
-Allowable IP address ranges are the IP addresses that workers can use to
-access tasks.
+Lists private workforce information, including workforce name, Amazon Resource Name (ARN), and, if applicable, allowed IP address ranges (\href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{CIDRs}). Allowable IP address ranges are the IP addresses that workers can use to access tasks.
 
-This operation applies only to private workforces.
+See \url{https://paws-r.github.io/docs/sagemaker/describe_workforce.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_workforce(
-  WorkforceName = "string"
-)
-}
-}
-
 \keyword{internal}

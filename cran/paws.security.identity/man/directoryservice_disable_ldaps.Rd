@@ -12,18 +12,9 @@ directoryservice_disable_ldaps(DirectoryId, Type)
 \item{Type}{[required] The type of LDAP security to enable. Currently only the value \code{Client}
 is supported.}
 }
-\value{
-An empty list.
-}
 \description{
 Deactivates LDAP secure calls for the specified directory.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_ldaps(
-  DirectoryId = "string",
-  Type = "Client"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/disable_ldaps.html} for full documentation.
+}
 \keyword{internal}

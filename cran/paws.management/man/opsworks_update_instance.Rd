@@ -4,9 +4,20 @@
 \alias{opsworks_update_instance}
 \title{Updates a specified instance}
 \usage{
-opsworks_update_instance(InstanceId, LayerIds, InstanceType,
-  AutoScalingType, Hostname, Os, AmiId, SshKeyName, Architecture,
-  InstallUpdatesOnBoot, EbsOptimized, AgentVersion)
+opsworks_update_instance(
+  InstanceId,
+  LayerIds = NULL,
+  InstanceType = NULL,
+  AutoScalingType = NULL,
+  Hostname = NULL,
+  Os = NULL,
+  AmiId = NULL,
+  SshKeyName = NULL,
+  Architecture = NULL,
+  InstallUpdatesOnBoot = NULL,
+  EbsOptimized = NULL,
+  AgentVersion = NULL
+)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
@@ -99,35 +110,9 @@ console. For a list of available agent version numbers, call
 
 AgentVersion cannot be set to Chef 12.2.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a specified instance.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/update_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_instance(
-  InstanceId = "string",
-  LayerIds = list(
-    "string"
-  ),
-  InstanceType = "string",
-  AutoScalingType = "load"|"timer",
-  Hostname = "string",
-  Os = "string",
-  AmiId = "string",
-  SshKeyName = "string",
-  Architecture = "x86_64"|"i386",
-  InstallUpdatesOnBoot = TRUE|FALSE,
-  EbsOptimized = TRUE|FALSE,
-  AgentVersion = "string"
-)
-}
-}
-
 \keyword{internal}

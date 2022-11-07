@@ -4,8 +4,16 @@
 \alias{ec2_export_image}
 \title{Exports an Amazon Machine Image (AMI) to a VM file}
 \usage{
-ec2_export_image(ClientToken, Description, DiskImageFormat, DryRun,
-  ImageId, S3ExportLocation, RoleName, TagSpecifications)
+ec2_export_image(
+  ClientToken = NULL,
+  Description = NULL,
+  DiskImageFormat,
+  DryRun = NULL,
+  ImageId,
+  S3ExportLocation,
+  RoleName = NULL,
+  TagSpecifications = NULL
+)
 }
 \arguments{
 \item{ClientToken}{Token to enable idempotency for export image requests.}
@@ -22,69 +30,18 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ImageId}{[required] The ID of the image.}
 
-\item{S3ExportLocation}{[required] Information about the destination Amazon S3 bucket. The bucket must
-exist and grant WRITE and READ_ACP permissions to the AWS account
-vm-import-export@amazon.com.}
+\item{S3ExportLocation}{[required] The Amazon S3 bucket for the destination image. The destination bucket
+must exist.}
 
 \item{RoleName}{The name of the role that grants VM Import/Export permission to export
 images to your Amazon S3 bucket. If this parameter is not specified, the
 default role is named 'vmimport'.}
 
-\item{TagSpecifications}{The tags to apply to the image being exported.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Description = "string",
-  DiskImageFormat = "VMDK"|"RAW"|"VHD",
-  ExportImageTaskId = "string",
-  ImageId = "string",
-  RoleName = "string",
-  Progress = "string",
-  S3ExportLocation = list(
-    S3Bucket = "string",
-    S3Prefix = "string"
-  ),
-  Status = "string",
-  StatusMessage = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
+\item{TagSpecifications}{The tags to apply to the export image task during creation.}
 }
 \description{
-Exports an Amazon Machine Image (AMI) to a VM file. For more
-information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html}{Exporting a VM Directory from an Amazon Machine Image (AMI)}
-in the \emph{VM Import/Export User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$export_image(
-  ClientToken = "string",
-  Description = "string",
-  DiskImageFormat = "VMDK"|"RAW"|"VHD",
-  DryRun = TRUE|FALSE,
-  ImageId = "string",
-  S3ExportLocation = list(
-    S3Bucket = "string",
-    S3Prefix = "string"
-  ),
-  RoleName = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
+Exports an Amazon Machine Image (AMI) to a VM file. For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html}{Exporting a VM directly from an Amazon Machine Image (AMI)} in the \emph{VM Import/Export User Guide}.
 
+See \url{https://paws-r.github.io/docs/ec2/export_image.html} for full documentation.
+}
 \keyword{internal}

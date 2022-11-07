@@ -10,28 +10,9 @@ cognitoidentityprovider_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the user pool that the tags are
 assigned to.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Lists the tags that are assigned to an Amazon Cognito user pool.
 
-A tag is a label that you can apply to user pools to categorize and
-manage them in different ways, such as by purpose, owner, environment,
-or other criteria.
-
-You can use this action up to 10 times per second, per account.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_tags_for_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,21 +4,59 @@
 \alias{rds_create_db_instance}
 \title{Creates a new DB instance}
 \usage{
-rds_create_db_instance(DBName, DBInstanceIdentifier, AllocatedStorage,
-  DBInstanceClass, Engine, MasterUsername, MasterUserPassword,
-  DBSecurityGroups, VpcSecurityGroupIds, AvailabilityZone,
-  DBSubnetGroupName, PreferredMaintenanceWindow, DBParameterGroupName,
-  BackupRetentionPeriod, PreferredBackupWindow, Port, MultiAZ,
-  EngineVersion, AutoMinorVersionUpgrade, LicenseModel, Iops,
-  OptionGroupName, CharacterSetName, NcharCharacterSetName,
-  PubliclyAccessible, Tags, DBClusterIdentifier, StorageType,
-  TdeCredentialArn, TdeCredentialPassword, StorageEncrypted, KmsKeyId,
-  Domain, CopyTagsToSnapshot, MonitoringInterval, MonitoringRoleArn,
-  DomainIAMRoleName, PromotionTier, Timezone,
-  EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-  PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
-  EnableCloudwatchLogsExports, ProcessorFeatures, DeletionProtection,
-  MaxAllocatedStorage, EnableCustomerOwnedIp)
+rds_create_db_instance(
+  DBName = NULL,
+  DBInstanceIdentifier,
+  AllocatedStorage = NULL,
+  DBInstanceClass,
+  Engine,
+  MasterUsername = NULL,
+  MasterUserPassword = NULL,
+  DBSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL,
+  AvailabilityZone = NULL,
+  DBSubnetGroupName = NULL,
+  PreferredMaintenanceWindow = NULL,
+  DBParameterGroupName = NULL,
+  BackupRetentionPeriod = NULL,
+  PreferredBackupWindow = NULL,
+  Port = NULL,
+  MultiAZ = NULL,
+  EngineVersion = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  LicenseModel = NULL,
+  Iops = NULL,
+  OptionGroupName = NULL,
+  CharacterSetName = NULL,
+  NcharCharacterSetName = NULL,
+  PubliclyAccessible = NULL,
+  Tags = NULL,
+  DBClusterIdentifier = NULL,
+  StorageType = NULL,
+  TdeCredentialArn = NULL,
+  TdeCredentialPassword = NULL,
+  StorageEncrypted = NULL,
+  KmsKeyId = NULL,
+  Domain = NULL,
+  CopyTagsToSnapshot = NULL,
+  MonitoringInterval = NULL,
+  MonitoringRoleArn = NULL,
+  DomainIAMRoleName = NULL,
+  PromotionTier = NULL,
+  Timezone = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnablePerformanceInsights = NULL,
+  PerformanceInsightsKMSKeyId = NULL,
+  PerformanceInsightsRetentionPeriod = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  ProcessorFeatures = NULL,
+  DeletionProtection = NULL,
+  MaxAllocatedStorage = NULL,
+  EnableCustomerOwnedIp = NULL,
+  CustomIamInstanceProfile = NULL,
+  BackupTarget = NULL,
+  NetworkType = NULL
+)
 }
 \arguments{
 \item{DBName}{The meaning of this parameter differs according to the database engine
@@ -55,8 +93,8 @@ underscores, or digits (0-9).
 \strong{PostgreSQL}
 
 The name of the database to create when the DB instance is created. If
-this parameter isn't specified, no database is created in the DB
-instance.
+this parameter isn't specified, a database named \code{postgres} is created
+in the DB instance.
 
 Constraints:
 \itemize{
@@ -79,20 +117,54 @@ Constraints:
 \item Can't be longer than 8 characters
 }
 
+\strong{Amazon RDS Custom for Oracle}
+
+The Oracle System ID (SID) of the created RDS Custom DB instance. If you
+don't specify a value, the default value is \code{ORCL}.
+
+Default: \code{ORCL}
+
+Constraints:
+\itemize{
+\item It must contain 1 to 8 alphanumeric characters.
+\item It must contain a letter.
+\item It can't be a word reserved by the database engine.
+}
+
+\strong{Amazon RDS Custom for SQL Server}
+
+Not applicable. Must be null.
+
 \strong{SQL Server}
 
 Not applicable. Must be null.
 
-\strong{Amazon Aurora}
+\strong{Amazon Aurora MySQL}
 
-The name of the database to create when the primary instance of the DB
-cluster is created. If this parameter isn't specified, no database is
-created in the DB instance.
+The name of the database to create when the primary DB instance of the
+Aurora MySQL DB cluster is created. If this parameter isn't specified
+for an Aurora MySQL DB cluster, no database is created in the DB
+cluster.
 
 Constraints:
 \itemize{
-\item Must contain 1 to 64 letters or numbers.
-\item Can't be a word reserved by the specified database engine
+\item It must contain 1 to 64 alphanumeric characters.
+\item It can't be a word reserved by the database engine.
+}
+
+\strong{Amazon Aurora PostgreSQL}
+
+The name of the database to create when the primary DB instance of the
+Aurora PostgreSQL DB cluster is created. If this parameter isn't
+specified for an Aurora PostgreSQL DB cluster, a database named
+\code{postgres} is created in the DB cluster.
+
+Constraints:
+\itemize{
+\item It must contain 1 to 63 alphanumeric characters.
+\item It must begin with a letter or an underscore. Subsequent characters
+can be letters, underscores, or digits (0 to 9).
+\item It can't be a word reserved by the database engine.
 }}
 
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase
@@ -107,7 +179,8 @@ Constraints:
 
 Example: \code{mydbinstance}}
 
-\item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate for the DB instance.
+\item{AllocatedStorage}{The amount of storage in gibibytes (GiB) to allocate for the DB
+instance.
 
 Type: Integer
 
@@ -117,15 +190,27 @@ Not applicable. Aurora cluster volumes automatically grow as the amount
 of data in your database increases, though you are only charged for the
 space that you use in an Aurora cluster volume.
 
+\strong{Amazon RDS Custom}
+
+Constraints to the amount of storage for each storage type are the
+following:
+\itemize{
+\item General Purpose (SSD) storage (gp2): Must be an integer from 40 to
+65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL
+Server.
+\item Provisioned IOPS storage (io1): Must be an integer from 40 to 65536
+for RDS Custom for Oracle, 16384 for RDS Custom for SQL Server.
+}
+
 \strong{MySQL}
 
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100
-to 65536.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+65536.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
@@ -134,10 +219,10 @@ to 65536.
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100
-to 65536.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+65536.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
@@ -146,10 +231,10 @@ to 65536.
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100
-to 65536.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+65536.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
@@ -158,10 +243,10 @@ to 65536.
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20
-to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100
-to 65536.
+\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+65536.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+65536.
 \item Magnetic storage (standard): Must be an integer from 10 to 3072.
 }
 
@@ -172,45 +257,52 @@ following:
 \itemize{
 \item General Purpose (SSD) storage (gp2):
 \itemize{
-\item Enterprise and Standard editions: Must be an integer from 200
-to 16384.
+\item Enterprise and Standard editions: Must be an integer from 20 to
+16384.
 \item Web and Express editions: Must be an integer from 20 to 16384.
 }
 \item Provisioned IOPS storage (io1):
 \itemize{
-\item Enterprise and Standard editions: Must be an integer from 200
-to 16384.
+\item Enterprise and Standard editions: Must be an integer from 100 to
+16384.
 \item Web and Express editions: Must be an integer from 100 to 16384.
 }
 \item Magnetic storage (standard):
 \itemize{
-\item Enterprise and Standard editions: Must be an integer from 200
-to 1024.
+\item Enterprise and Standard editions: Must be an integer from 20 to
+1024.
 \item Web and Express editions: Must be an integer from 20 to 1024.
 }
 }}
 
-\item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example,
-\code{db.m4.large}. Not all DB instance classes are available in all AWS
-Regions, or for all database engines. For the full list of DB instance
-classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
-in the \emph{Amazon RDS User Guide.}}
+\item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example
+db.m5.large. Not all DB instance classes are available in all Amazon Web
+Services Regions, or for all database engines. For the full list of DB
+instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB instance classes}
+in the \emph{Amazon RDS User Guide} or \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.DBInstanceClass.html}{Aurora DB instance classes}
+in the \emph{Amazon Aurora User Guide}.}
 
 \item{Engine}{[required] The name of the database engine to be used for this instance.
 
-Not every database engine is available for every AWS Region.
+Not every database engine is available for every Amazon Web Services
+Region.
 
 Valid Values:
 \itemize{
 \item \code{aurora} (for MySQL 5.6-compatible Aurora)
-\item \code{aurora-mysql} (for MySQL 5.7-compatible Aurora)
+\item \code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
+Aurora)
 \item \code{aurora-postgresql}
+\item \verb{custom-oracle-ee (for RDS Custom for Oracle instances)}
+\item \verb{custom-sqlserver-ee (for RDS Custom for SQL Server instances)}
+\item \verb{custom-sqlserver-se (for RDS Custom for SQL Server instances)}
+\item \verb{custom-sqlserver-web (for RDS Custom for SQL Server instances)}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}
+\item \code{oracle-ee-cdb}
 \item \code{oracle-se2}
-\item \code{oracle-se1}
-\item \code{oracle-se}
+\item \code{oracle-se2-cdb}
 \item \code{postgres}
 \item \code{sqlserver-ee}
 \item \code{sqlserver-se}
@@ -225,51 +317,12 @@ Valid Values:
 Not applicable. The name for the master user is managed by the DB
 cluster.
 
-\strong{MariaDB}
+\strong{Amazon RDS}
 
 Constraints:
 \itemize{
-\item Required for MariaDB.
-\item Must be 1 to 16 letters or numbers.
-\item Can't be a reserved word for the chosen database engine.
-}
-
-\strong{Microsoft SQL Server}
-
-Constraints:
-\itemize{
-\item Required for SQL Server.
-\item Must be 1 to 128 letters or numbers.
-\item The first character must be a letter.
-\item Can't be a reserved word for the chosen database engine.
-}
-
-\strong{MySQL}
-
-Constraints:
-\itemize{
-\item Required for MySQL.
-\item Must be 1 to 16 letters or numbers.
-\item First character must be a letter.
-\item Can't be a reserved word for the chosen database engine.
-}
-
-\strong{Oracle}
-
-Constraints:
-\itemize{
-\item Required for Oracle.
-\item Must be 1 to 30 letters or numbers.
-\item First character must be a letter.
-\item Can't be a reserved word for the chosen database engine.
-}
-
-\strong{PostgreSQL}
-
-Constraints:
-\itemize{
-\item Required for PostgreSQL.
-\item Must be 1 to 63 letters or numbers.
+\item Required.
+\item Must be 1 to 16 letters, numbers, or underscores.
 \item First character must be a letter.
 \item Can't be a reserved word for the chosen database engine.
 }}
@@ -304,7 +357,9 @@ Constraints: Must contain from 8 to 128 characters.}
 
 \item{DBSecurityGroups}{A list of DB security groups to associate with this DB instance.
 
-Default: The default DB security group for the database engine.}
+This setting applies to the legacy EC2-Classic platform, which is no
+longer used to create new DB instances. Use the \code{VpcSecurityGroupIds}
+setting instead.}
 
 \item{VpcSecurityGroupIds}{A list of Amazon EC2 VPC security groups to associate with this DB
 instance.
@@ -318,26 +373,31 @@ Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
 \item{AvailabilityZone}{The Availability Zone (AZ) where the database will be created. For
-information on AWS Regions and Availability Zones, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}.
+information on Amazon Web Services Regions and Availability Zones, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}.
 
-Default: A random, system-chosen Availability Zone in the endpoint's AWS
-Region.
+\strong{Amazon Aurora}
+
+Each Aurora DB cluster hosts copies of its storage in three separate
+Availability Zones. Specify one of these Availability Zones. Aurora
+automatically chooses an appropriate Availability Zone if you don't
+specify one.
+
+Default: A random, system-chosen Availability Zone in the endpoint's
+Amazon Web Services Region.
 
 Example: \verb{us-east-1d}
 
 Constraint: The \code{AvailabilityZone} parameter can't be specified if the
 DB instance is a Multi-AZ deployment. The specified Availability Zone
-must be in the same AWS Region as the current endpoint.
-
-If you're creating a DB instance in an RDS on VMware environment,
-specify the identifier of the custom Availability Zone to create the DB
-instance in.
-
-For more information about RDS on VMware, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html}{RDS on VMware User Guide.}}
+must be in the same Amazon Web Services Region as the current endpoint.}
 
 \item{DBSubnetGroupName}{A DB subnet group to associate with this DB instance.
 
-If there is no DB subnet group, then it is a non-VPC DB instance.}
+Constraints: Must match the name of an existing DBSubnetGroup. Must not
+be default.
+
+Example: \code{mydbsubnetgroup}}
 
 \item{PreferredMaintenanceWindow}{The time range each week during which system maintenance can occur, in
 Universal Coordinated Time (UTC). For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance}{Amazon RDS Maintenance Window}.
@@ -345,8 +405,8 @@ Universal Coordinated Time (UTC). For more information, see \href{https://docs.a
 Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week.
+block of time for each Amazon Web Services Region, occurring on a random
+day of the week.
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
@@ -355,6 +415,8 @@ Constraints: Minimum 30-minute window.}
 \item{DBParameterGroupName}{The name of the DB parameter group to associate with this DB instance.
 If you do not specify a value, then the default DB parameter group for
 the specified DB engine and version is used.
+
+This setting doesn't apply to RDS Custom.
 
 Constraints:
 \itemize{
@@ -378,22 +440,20 @@ Constraints:
 \itemize{
 \item Must be a value from 0 to 35
 \item Can't be set to 0 if the DB instance is a source to read replicas
+\item Can't be set to 0 for an RDS Custom for Oracle DB instance
 }}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
 automated backups are enabled, using the \code{BackupRetentionPeriod}
-parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
+parameter. The default is a 30-minute window selected at random from an
+8-hour block of time for each Amazon Web Services Region. For more
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{Backup window}
 in the \emph{Amazon RDS User Guide}.
 
 \strong{Amazon Aurora}
 
 Not applicable. The daily time range for creating automated backups is
 managed by the DB cluster.
-
-The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow}{Adjusting the Preferred DB Instance Maintenance Window}
-in the \emph{Amazon RDS User Guide}.
 
 Constraints:
 \itemize{
@@ -452,92 +512,138 @@ Type: Integer}
 
 \item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
 You can't set the \code{AvailabilityZone} parameter if the DB instance is a
-Multi-AZ deployment.}
+Multi-AZ deployment.
+
+This setting doesn't apply to RDS Custom.
+
+\strong{Amazon Aurora}
+
+Not applicable. DB instance Availability Zones (AZs) are managed by the
+DB cluster.}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
 For a list of valid engine versions, use the
-\code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}} action.
+\code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}
+operation.
 
 The following are the database engines and links to information about
 the major and minor versions that are available with Amazon RDS. Not
-every database engine is available for every AWS Region.
+every database engine is available for every Amazon Web Services Region.
 
 \strong{Amazon Aurora}
 
 Not applicable. The version number of the database engine to be used by
 the DB instance is managed by the DB cluster.
 
+\strong{Amazon RDS Custom for Oracle}
+
+A custom engine version (CEV) that you have previously created. This
+setting is required for RDS Custom for Oracle. The CEV name has the
+following format: \verb{19.customized_string }. An example identifier is
+\verb{19.my_cev1}. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-creating.html#custom-creating.create}{Creating an RDS Custom for Oracle DB instance}
+in the \emph{Amazon RDS User Guide}.
+
+\strong{Amazon RDS Custom for SQL Server}
+
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-reqs-limits-MS.html}{RDS Custom for SQL Server general requirements}
+in the \emph{Amazon RDS User Guide}.
+
 \strong{MariaDB}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt}{MariaDB on Amazon RDS Versions}
-in the \emph{Amazon RDS User Guide.}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt}{MariaDB on Amazon RDS Versions}
+in the \emph{Amazon RDS User Guide}.
 
 \strong{Microsoft SQL Server}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport}{Microsoft SQL Server Versions on Amazon RDS}
-in the \emph{Amazon RDS User Guide.}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport}{Microsoft SQL Server Versions on Amazon RDS}
+in the \emph{Amazon RDS User Guide}.
 
 \strong{MySQL}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{MySQL on Amazon RDS Versions}
-in the \emph{Amazon RDS User Guide.}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{MySQL on Amazon RDS Versions}
+in the \emph{Amazon RDS User Guide}.
 
 \strong{Oracle}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html}{Oracle Database Engine Release Notes}
-in the \emph{Amazon RDS User Guide.}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/OracleReleaseNotes/Welcome.html}{Oracle Database Engine Release Notes}
+in the \emph{Amazon RDS User Guide}.
 
 \strong{PostgreSQL}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions}{Supported PostgreSQL Database Versions}
-in the \emph{Amazon RDS User Guide.}}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts}{Amazon RDS for PostgreSQL versions and extensions}
+in the \emph{Amazon RDS User Guide}.}
 
 \item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
 automatically to the DB instance during the maintenance window. By
-default, minor engine upgrades are applied automatically.}
+default, minor engine upgrades are applied automatically.
+
+If you create an RDS Custom DB instance, you must set
+\code{AutoMinorVersionUpgrade} to \code{false}.}
 
 \item{LicenseModel}{License model information for this DB instance.
 
 Valid values: \code{license-included} | \code{bring-your-own-license} |
-\code{general-public-license}}
+\code{general-public-license}
+
+This setting doesn't apply to RDS Custom.
+
+\strong{Amazon Aurora}
+
+Not applicable.}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance. For information about valid
-Iops values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
+\code{Iops} values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage to improve performance}
 in the \emph{Amazon RDS User Guide}.
 
 Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances,
 must be a multiple between .5 and 50 of the storage amount for the DB
 instance. For SQL Server DB instances, must be a multiple between 1 and
-50 of the storage amount for the DB instance.}
+50 of the storage amount for the DB instance.
 
-\item{OptionGroupName}{Indicates that the DB instance should be associated with the specified
-option group.
+\strong{Amazon Aurora}
+
+Not applicable. Storage is managed by the DB cluster.}
+
+\item{OptionGroupName}{A value that indicates that the DB instance should be associated with
+the specified option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group. Also, that option group
-can't be removed from a DB instance once it is associated with a DB
-instance}
+can't be removed from a DB instance after it is associated with a DB
+instance.
 
-\item{CharacterSetName}{For supported engines, indicates that the DB instance should be
-associated with the specified CharacterSet.
+This setting doesn't apply to RDS Custom.
+
+\strong{Amazon Aurora}
+
+Not applicable.}
+
+\item{CharacterSetName}{For supported engines, this value indicates that the DB instance should
+be associated with the specified \code{CharacterSet}.
+
+This setting doesn't apply to RDS Custom. However, if you need to change
+the character set, you can change it on the database itself.
 
 \strong{Amazon Aurora}
 
 Not applicable. The character set is managed by the DB cluster. For more
 information, see \code{\link[=rds_create_db_cluster]{create_db_cluster}}.}
 
-\item{NcharCharacterSetName}{The name of the NCHAR character set for the Oracle DB instance.}
+\item{NcharCharacterSetName}{The name of the NCHAR character set for the Oracle DB instance.
+
+This parameter doesn't apply to RDS Custom.}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 
-When the DB instance is publicly accessible, its DNS endpoint resolves
-to the private IP address from within the DB instance's VPC, and to the
-public IP address from outside of the DB instance's VPC. Access to the
-DB instance is ultimately controlled by the security group it uses, and
-that public access is not permitted if the security group assigned to
-the DB instance doesn't permit it.
+When the DB instance is publicly accessible, its Domain Name System
+(DNS) endpoint resolves to the private IP address from within the DB
+instance's virtual private cloud (VPC). It resolves to the public IP
+address from outside of the DB instance's VPC. Access to the DB instance
+is ultimately controlled by the security group it uses. That public
+access is not permitted if the security group assigned to the DB
+instance doesn't permit it.
 
 When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
@@ -548,24 +654,26 @@ Default: The default behavior varies depending on whether
 If \code{DBSubnetGroupName} isn't specified, and \code{PubliclyAccessible} isn't
 specified, the following applies:
 \itemize{
-\item If the default VPC in the target region doesn’t have an Internet
+\item If the default VPC in the target Region doesn’t have an internet
 gateway attached to it, the DB instance is private.
-\item If the default VPC in the target region has an Internet gateway
+\item If the default VPC in the target Region has an internet gateway
 attached to it, the DB instance is public.
 }
 
 If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn't
 specified, the following applies:
 \itemize{
-\item If the subnets are part of a VPC that doesn’t have an Internet
+\item If the subnets are part of a VPC that doesn’t have an internet
 gateway attached to it, the DB instance is private.
-\item If the subnets are part of a VPC that has an Internet gateway
+\item If the subnets are part of a VPC that has an internet gateway
 attached to it, the DB instance is public.
 }}
 
 \item{Tags}{Tags to assign to the DB instance.}
 
-\item{DBClusterIdentifier}{The identifier of the DB cluster that the instance will belong to.}
+\item{DBClusterIdentifier}{The identifier of the DB cluster that the instance will belong to.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
@@ -574,44 +682,75 @@ Valid values: \code{standard | gp2 | io1}
 If you specify \code{io1}, you must also include a value for the \code{Iops}
 parameter.
 
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
+Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}
+
+\strong{Amazon Aurora}
+
+Not applicable. Storage is managed by the DB cluster.}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
-encryption.}
+encryption.
+
+This setting doesn't apply to RDS Custom.
+
+\strong{Amazon Aurora}
+
+Not applicable.}
 
 \item{TdeCredentialPassword}{The password for the given ARN from the key store in order to access the
-device.}
+device.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{StorageEncrypted}{A value that indicates whether the DB instance is encrypted. By default,
 it isn't encrypted.
+
+For RDS Custom instances, either set this parameter to \code{true} or leave
+it unset. If you set this parameter to \code{false}, RDS reports an error.
 
 \strong{Amazon Aurora}
 
 Not applicable. The encryption for DB instances is managed by the DB
 cluster.}
 
-\item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB instance.
+\item{KmsKeyId}{The Amazon Web Services KMS key identifier for an encrypted DB instance.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK). To use a CMK in a
-different AWS account, specify the key ARN or alias ARN.
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
 
 \strong{Amazon Aurora}
 
-Not applicable. The AWS KMS key identifier is managed by the DB cluster.
-For more information, see \code{\link[=rds_create_db_cluster]{create_db_cluster}}.
+Not applicable. The Amazon Web Services KMS key identifier is managed by
+the DB cluster. For more information, see
+\code{\link[=rds_create_db_cluster]{create_db_cluster}}.
 
 If \code{StorageEncrypted} is enabled, and you do not specify a value for the
-\code{KmsKeyId} parameter, then Amazon RDS uses your default CMK. There is a
-default CMK for your AWS account. Your AWS account has a different
-default CMK for each AWS Region.}
+\code{KmsKeyId} parameter, then Amazon RDS uses your default KMS key. There
+is a default KMS key for your Amazon Web Services account. Your Amazon
+Web Services account has a different default KMS key for each Amazon Web
+Services Region.
+
+\strong{Amazon RDS Custom}
+
+A KMS key is required for RDS Custom instances. For most RDS engines, if
+you leave this parameter empty while enabling \code{StorageEncrypted}, the
+engine uses the default KMS key. However, RDS Custom doesn't use the
+default key when this parameter is empty. You must explicitly specify a
+key.}
 
 \item{Domain}{The Active Directory directory ID to create the DB instance in.
 Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
 instances can be created in an Active Directory Domain.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
-in the \emph{Amazon RDS User Guide}.}
+in the \emph{Amazon RDS User Guide}.
+
+This setting doesn't apply to RDS Custom.
+
+\strong{Amazon Aurora}
+
+Not applicable. The domain is managed by the DB cluster.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy tags from the DB instance to
 snapshots of the DB instance. By default, tags are not copied.
@@ -623,30 +762,42 @@ Setting this value for an Aurora DB instance has no effect on the DB
 cluster setting.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
-metrics are collected for the DB instance. To disable collecting
+metrics are collected for the DB instance. To disable collection of
 Enhanced Monitoring metrics, specify 0. The default is 0.
 
-If \code{MonitoringRoleArn} is specified, then you must also set
+If \code{MonitoringRoleArn} is specified, then you must set
 \code{MonitoringInterval} to a value other than 0.
+
+This setting doesn't apply to RDS Custom.
 
 Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}}
 
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 \code{arn:aws:iam:123456789012:role/emaccess}. For information on creating a
-monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling}{Setting Up and Enabling Enhanced Monitoring}
+monitoring role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling}{Setting Up and Enabling Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide}.
 
 If \code{MonitoringInterval} is set to a value other than 0, then you must
-supply a \code{MonitoringRoleArn} value.}
+supply a \code{MonitoringRoleArn} value.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
-Directory Service.}
+Directory Service.
+
+This setting doesn't apply to RDS Custom.
+
+\strong{Amazon Aurora}
+
+Not applicable. The domain is managed by the DB cluster.}
 
 \item{PromotionTier}{A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance}{Fault Tolerance for an Aurora DB Cluster}
 in the \emph{Amazon Aurora User Guide}.
+
+This setting doesn't apply to RDS Custom.
 
 Default: 1
 
@@ -655,43 +806,72 @@ Valid Values: 0 - 15}
 \item{Timezone}{The time zone of the DB instance. The time zone parameter is currently
 supported only by \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone}{Microsoft SQL Server}.}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
-
-This setting doesn't apply to Amazon Aurora. Mapping AWS IAM accounts to
-database accounts is managed by the DB cluster.
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
-in the \emph{Amazon RDS User Guide.}}
+in the \emph{Amazon RDS User Guide}.
+
+This setting doesn't apply to RDS Custom.
+
+\strong{Amazon Aurora}
+
+Not applicable. Mapping Amazon Web Services IAM accounts to database
+accounts is managed by the DB cluster.}
 
 \item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the DB
-instance.
+instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
+in the \emph{Amazon RDS User Guide}.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
-in the \emph{Amazon Relational Database Service User Guide}.}
+This setting doesn't apply to RDS Custom.}
 
-\item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
+\item{PerformanceInsightsKMSKeyId}{The Amazon Web Services KMS key identifier for encryption of Performance
+Insights data.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK).
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key.
 
 If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
-Amazon RDS uses your default CMK. There is a default CMK for your AWS
-account. Your AWS account has a different default CMK for each AWS
-Region.}
+Amazon RDS uses your default KMS key. There is a default KMS key for
+your Amazon Web Services account. Your Amazon Web Services account has a
+different default KMS key for each Amazon Web Services Region.
 
-\item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid
-values are 7 or 731 (2 years).}
+This setting doesn't apply to RDS Custom.}
+
+\item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data. The default is 7
+days. The following values are valid:
+\itemize{
+\item 7
+\item \emph{month} * 31, where \emph{month} is a number of months from 1-23
+\item 731
+}
+
+For example, the following values are valid:
+\itemize{
+\item 93 (3 months * 31)
+\item 341 (11 months * 31)
+\item 589 (19 months * 31)
+\item 731
+}
+
+If you specify a retention period such as 94, which isn't a valid value,
+RDS issues an error.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
-CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
-in the \emph{Amazon Relational Database Service User Guide}.
+CloudWatch Logs. The values in the list depend on the DB engine. For
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+in the \emph{Amazon RDS User Guide}.
 
 \strong{Amazon Aurora}
 
 Not applicable. CloudWatch Logs exports are managed by the DB cluster.
+
+\strong{RDS Custom}
+
+Not applicable.
 
 \strong{MariaDB}
 
@@ -707,18 +887,25 @@ Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowqu
 
 \strong{Oracle}
 
-Possible values are \code{alert}, \code{audit}, \code{listener}, and \code{trace}.
+Possible values are \code{alert}, \code{audit}, \code{listener}, \code{trace}, and
+\code{oemagent}.
 
 \strong{PostgreSQL}
 
 Possible values are \code{postgresql} and \code{upgrade}.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
-instance class of the DB instance.}
+instance class of the DB instance.
+
+This setting doesn't apply to RDS Custom.
+
+\strong{Amazon Aurora}
+
+Not applicable.}
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
 enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection is disabled. For more
+enabled. By default, deletion protection isn't enabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.
 
 \strong{Amazon Aurora}
@@ -729,8 +916,18 @@ cluster. For more information, see
 cluster can be deleted even when deletion protection is enabled for the
 DB cluster.}
 
-\item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
-of the DB instance.}
+\item{MaxAllocatedStorage}{The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
+scale the storage of the DB instance.
+
+For more information about this setting, including limitations that
+apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
+in the \emph{Amazon RDS User Guide}.
+
+This setting doesn't apply to RDS Custom.
+
+\strong{Amazon Aurora}
+
+Not applicable. Storage is managed by the DB cluster.}
 
 \item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
 (CoIP) for an RDS on Outposts DB instance.
@@ -740,272 +937,54 @@ Outpost subnets through your on-premises network. For some use cases, a
 CoIP can provide lower latency for connections to the DB instance from
 outside of its virtual private cloud (VPC) on your local network.
 
-For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on AWS Outposts}
+For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
-in the \emph{AWS Outposts User Guide}.}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
+in the \emph{Amazon Web Services Outposts User Guide}.}
+
+\item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
+of an RDS Custom DB instance. The instance profile must meet the
+following requirements:
+\itemize{
+\item The profile must exist in your account.
+\item The profile must have an IAM role that Amazon EC2 has permissions to
+assume.
+\item The instance profile name and the associated IAM role name must
+start with the prefix \code{AWSRDSCustom}.
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstance = list(
-    DBInstanceIdentifier = "string",
-    DBInstanceClass = "string",
-    Engine = "string",
-    DBInstanceStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    AllocatedStorage = 123,
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredBackupWindow = "string",
-    BackupRetentionPeriod = 123,
-    DBSecurityGroups = list(
-      list(
-        DBSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    DBParameterGroups = list(
-      list(
-        DBParameterGroupName = "string",
-        ParameterApplyStatus = "string"
-      )
-    ),
-    AvailabilityZone = "string",
-    DBSubnetGroup = list(
-      DBSubnetGroupName = "string",
-      DBSubnetGroupDescription = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string"
-          ),
-          SubnetOutpost = list(
-            Arn = "string"
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      DBSubnetGroupArn = "string"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      DBInstanceClass = "string",
-      AllocatedStorage = 123,
-      MasterUserPassword = "string",
-      Port = 123,
-      BackupRetentionPeriod = 123,
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      LicenseModel = "string",
-      Iops = 123,
-      DBInstanceIdentifier = "string",
-      StorageType = "string",
-      CACertificateIdentifier = "string",
-      DBSubnetGroupName = "string",
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      ),
-      ProcessorFeatures = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-    ),
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MultiAZ = TRUE|FALSE,
-    EngineVersion = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    ReadReplicaSourceDBInstanceIdentifier = "string",
-    ReadReplicaDBInstanceIdentifiers = list(
-      "string"
-    ),
-    ReadReplicaDBClusterIdentifiers = list(
-      "string"
-    ),
-    ReplicaMode = "open-read-only"|"mounted",
-    LicenseModel = "string",
-    Iops = 123,
-    OptionGroupMemberships = list(
-      list(
-        OptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    CharacterSetName = "string",
-    NcharCharacterSetName = "string",
-    SecondaryAvailabilityZone = "string",
-    PubliclyAccessible = TRUE|FALSE,
-    StatusInfos = list(
-      list(
-        StatusType = "string",
-        Normal = TRUE|FALSE,
-        Status = "string",
-        Message = "string"
-      )
-    ),
-    StorageType = "string",
-    TdeCredentialArn = "string",
-    DbInstancePort = 123,
-    DBClusterIdentifier = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbiResourceId = "string",
-    CACertificateIdentifier = "string",
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    CopyTagsToSnapshot = TRUE|FALSE,
-    MonitoringInterval = 123,
-    EnhancedMonitoringResourceArn = "string",
-    MonitoringRoleArn = "string",
-    PromotionTier = 123,
-    DBInstanceArn = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    PerformanceInsightsEnabled = TRUE|FALSE,
-    PerformanceInsightsKMSKeyId = "string",
-    PerformanceInsightsRetentionPeriod = 123,
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    ProcessorFeatures = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    DeletionProtection = TRUE|FALSE,
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        FeatureName = "string",
-        Status = "string"
-      )
-    ),
-    ListenerEndpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    MaxAllocatedStorage = 123,
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    DBInstanceAutomatedBackupsReplications = list(
-      list(
-        DBInstanceAutomatedBackupsArn = "string"
-      )
-    ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
-  )
-)
+
+For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
+in the \emph{Amazon RDS User Guide}.
+
+This setting is required for RDS Custom.}
+
+\item{BackupTarget}{Specifies where automated backups and manual snapshots are stored.
+
+Possible values are \code{outposts} (Amazon Web Services Outposts) and
+\code{region} (Amazon Web Services Region). The default is \code{region}.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
+in the \emph{Amazon RDS User Guide}.}
+
+\item{NetworkType}{The network type of the DB instance.
+
+Valid values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
 }
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB instance. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon RDS User Guide.}}
 }
 \description{
 Creates a new DB instance.
-}
-\section{Request syntax}{
-\preformatted{svc$create_db_instance(
-  DBName = "string",
-  DBInstanceIdentifier = "string",
-  AllocatedStorage = 123,
-  DBInstanceClass = "string",
-  Engine = "string",
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  DBSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  AvailabilityZone = "string",
-  DBSubnetGroupName = "string",
-  PreferredMaintenanceWindow = "string",
-  DBParameterGroupName = "string",
-  BackupRetentionPeriod = 123,
-  PreferredBackupWindow = "string",
-  Port = 123,
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  CharacterSetName = "string",
-  NcharCharacterSetName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  DBClusterIdentifier = "string",
-  StorageType = "string",
-  TdeCredentialArn = "string",
-  TdeCredentialPassword = "string",
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  Domain = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  MonitoringRoleArn = "string",
-  DomainIAMRoleName = "string",
-  PromotionTier = 123,
-  Timezone = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  PerformanceInsightsRetentionPeriod = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  DeletionProtection = TRUE|FALSE,
-  MaxAllocatedStorage = 123,
-  EnableCustomerOwnedIp = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/create_db_instance.html} for full documentation.
+}
 \keyword{internal}

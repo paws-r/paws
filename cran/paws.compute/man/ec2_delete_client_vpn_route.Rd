@@ -4,8 +4,12 @@
 \alias{ec2_delete_client_vpn_route}
 \title{Deletes a route from a Client VPN endpoint}
 \usage{
-ec2_delete_client_vpn_route(ClientVpnEndpointId, TargetVpcSubnetId,
-  DestinationCidrBlock, DryRun)
+ec2_delete_client_vpn_route(
+  ClientVpnEndpointId,
+  TargetVpcSubnetId = NULL,
+  DestinationCidrBlock,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint from which the route is to be deleted.}
@@ -19,30 +23,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = list(
-    Code = "creating"|"active"|"failed"|"deleting",
-    Message = "string"
-  )
-)
-}
-}
 \description{
-Deletes a route from a Client VPN endpoint. You can only delete routes
-that you manually added using the \strong{CreateClientVpnRoute} action. You
-cannot delete routes that were automatically added when associating a
-subnet. To remove routes that have been automatically added,
-disassociate the target subnet from the Client VPN endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_client_vpn_route(
-  ClientVpnEndpointId = "string",
-  TargetVpcSubnetId = "string",
-  DestinationCidrBlock = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes a route from a Client VPN endpoint. You can only delete routes that you manually added using the \strong{CreateClientVpnRoute} action. You cannot delete routes that were automatically added when associating a subnet. To remove routes that have been automatically added, disassociate the target subnet from the Client VPN endpoint.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_client_vpn_route.html} for full documentation.
+}
 \keyword{internal}

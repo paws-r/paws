@@ -3,46 +3,27 @@
 \name{fms_list_member_accounts}
 \alias{fms_list_member_accounts}
 \title{Returns a MemberAccounts object that lists the member accounts in the
-administrator's AWS organization}
+administrator's Amazon Web Services organization}
 \usage{
-fms_list_member_accounts(NextToken, MaxResults)
+fms_list_member_accounts(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{If you specify a value for \code{MaxResults} and you have more account IDs
-than the number that you specify for \code{MaxResults}, AWS Firewall Manager
+than the number that you specify for \code{MaxResults}, Firewall Manager
 returns a \code{NextToken} value in the response that allows you to list
 another group of IDs. For the second and subsequent
 \code{ListMemberAccountsRequest} requests, specify the value of \code{NextToken}
 from the previous response to get information about another batch of
 member account IDs.}
 
-\item{MaxResults}{Specifies the number of member account IDs that you want AWS Firewall
+\item{MaxResults}{Specifies the number of member account IDs that you want Firewall
 Manager to return for this request. If you have more IDs than the number
 that you specify for \code{MaxResults}, the response includes a \code{NextToken}
 value that you can use to get another batch of member account IDs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MemberAccounts = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a \code{MemberAccounts} object that lists the member accounts in the
-administrator's AWS organization.
+Returns a \code{MemberAccounts} object that lists the member accounts in the administrator's Amazon Web Services organization.
 
-The \code{\link[=fms_list_member_accounts]{list_member_accounts}} must be submitted
-by the account that is set as the AWS Firewall Manager administrator.
+See \url{https://paws-r.github.io/docs/fms/list_member_accounts.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_member_accounts(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

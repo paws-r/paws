@@ -4,10 +4,11 @@
 \alias{quicksight_delete_theme}
 \title{Deletes a theme}
 \usage{
-quicksight_delete_theme(AwsAccountId, ThemeId, VersionNumber)
+quicksight_delete_theme(AwsAccountId, ThemeId, VersionNumber = NULL)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme that you're deleting.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the theme that
+you're deleting.}
 
 \item{ThemeId}{[required] An ID for the theme that you want to delete.}
 
@@ -17,25 +18,9 @@ quicksight_delete_theme(AwsAccountId, ThemeId, VersionNumber)
 to \code{\link[=quicksight_delete_theme]{delete_theme}} to delete all versions of
 the theme.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  RequestId = "string",
-  Status = 123,
-  ThemeId = "string"
-)
-}
-}
 \description{
 Deletes a theme.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_theme(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  VersionNumber = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_theme.html} for full documentation.
+}
 \keyword{internal}

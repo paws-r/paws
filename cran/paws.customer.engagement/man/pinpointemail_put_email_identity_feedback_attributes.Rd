@@ -4,8 +4,10 @@
 \alias{pinpointemail_put_email_identity_feedback_attributes}
 \title{Used to enable or disable feedback forwarding for an identity}
 \usage{
-pinpointemail_put_email_identity_feedback_attributes(EmailIdentity,
-  EmailForwardingEnabled)
+pinpointemail_put_email_identity_feedback_attributes(
+  EmailIdentity,
+  EmailForwardingEnabled = NULL
+)
 }
 \arguments{
 \item{EmailIdentity}{[required] The email identity that you want to configure bounce and complaint
@@ -26,32 +28,9 @@ receiving bounce or complaint notifications, Amazon Pinpoint sends an
 email notification when these events occur (even if this setting is
 disabled).}
 }
-\value{
-An empty list.
-}
 \description{
-Used to enable or disable feedback forwarding for an identity. This
-setting determines what happens when an identity is used to send an
-email that results in a bounce or complaint event.
+Used to enable or disable feedback forwarding for an identity. This setting determines what happens when an identity is used to send an email that results in a bounce or complaint event.
 
-When you enable feedback forwarding, Amazon Pinpoint sends you email
-notifications when bounce or complaint events occur. Amazon Pinpoint
-sends this notification to the address that you specified in the
-Return-Path header of the original email.
-
-When you disable feedback forwarding, Amazon Pinpoint sends
-notifications through other mechanisms, such as by notifying an Amazon
-SNS topic. You're required to have a method of tracking bounces and
-complaints. If you haven't set up another mechanism for receiving bounce
-or complaint notifications, Amazon Pinpoint sends an email notification
-when these events occur (even if this setting is disabled).
+See \url{https://paws-r.github.io/docs/pinpointemail/put_email_identity_feedback_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_email_identity_feedback_attributes(
-  EmailIdentity = "string",
-  EmailForwardingEnabled = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

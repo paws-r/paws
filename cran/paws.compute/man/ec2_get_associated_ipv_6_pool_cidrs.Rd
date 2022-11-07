@@ -5,8 +5,12 @@
 \title{Gets information about the IPv6 CIDR block associations for a specified
 IPv6 address pool}
 \usage{
-ec2_get_associated_ipv_6_pool_cidrs(PoolId, NextToken, MaxResults,
-  DryRun)
+ec2_get_associated_ipv_6_pool_cidrs(
+  PoolId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{PoolId}{[required] The ID of the IPv6 address pool.}
@@ -22,30 +26,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Ipv6CidrAssociations = list(
-    list(
-      Ipv6Cidr = "string",
-      AssociatedResource = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets information about the IPv6 CIDR block associations for a specified
-IPv6 address pool.
-}
-\section{Request syntax}{
-\preformatted{svc$get_associated_ipv_6_pool_cidrs(
-  PoolId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  DryRun = TRUE|FALSE
-)
-}
-}
+Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool.
 
+See \url{https://paws-r.github.io/docs/ec2/get_associated_ipv_6_pool_cidrs.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,11 @@
 \alias{personalize_list_solutions}
 \title{Returns a list of solutions that use the given dataset group}
 \usage{
-personalize_list_solutions(datasetGroupArn, nextToken, maxResults)
+personalize_list_solutions(
+  datasetGroupArn = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{datasetGroupArn}{The Amazon Resource Name (ARN) of the dataset group.}
@@ -15,39 +19,9 @@ of solutions (if they exist).}
 
 \item{maxResults}{The maximum number of solutions to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  solutions = list(
-    list(
-      name = "string",
-      solutionArn = "string",
-      status = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of solutions that use the given dataset group. When a
-dataset group is not specified, all the solutions associated with the
-account are listed. The response provides the properties for each
-solution, including the Amazon Resource Name (ARN). For more information
-on solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_solutions(
-  datasetGroupArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns a list of solutions that use the given dataset group. When a dataset group is not specified, all the solutions associated with the account are listed. The response provides the properties for each solution, including the Amazon Resource Name (ARN). For more information on solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
 
+See \url{https://paws-r.github.io/docs/personalize/list_solutions.html} for full documentation.
+}
 \keyword{internal}

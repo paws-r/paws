@@ -4,10 +4,22 @@
 \alias{dax_create_cluster}
 \title{Creates a DAX cluster}
 \usage{
-dax_create_cluster(ClusterName, NodeType, Description,
-  ReplicationFactor, AvailabilityZones, SubnetGroupName, SecurityGroupIds,
-  PreferredMaintenanceWindow, NotificationTopicArn, IamRoleArn,
-  ParameterGroupName, Tags, SSESpecification)
+dax_create_cluster(
+  ClusterName,
+  NodeType,
+  Description = NULL,
+  ReplicationFactor,
+  AvailabilityZones = NULL,
+  SubnetGroupName = NULL,
+  SecurityGroupIds = NULL,
+  PreferredMaintenanceWindow = NULL,
+  NotificationTopicArn = NULL,
+  IamRoleArn,
+  ParameterGroupName = NULL,
+  Tags = NULL,
+  SSESpecification = NULL,
+  ClusterEndpointEncryptionType = NULL
+)
 }
 \arguments{
 \item{ClusterName}{[required] The cluster identifier. This parameter is stored as a lowercase string.
@@ -85,98 +97,17 @@ access DynamoDB on your behalf.}
 
 \item{SSESpecification}{Represents the settings used to enable server-side encryption on the
 cluster.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Cluster = list(
-    ClusterName = "string",
-    Description = "string",
-    ClusterArn = "string",
-    TotalNodes = 123,
-    ActiveNodes = 123,
-    NodeType = "string",
-    Status = "string",
-    ClusterDiscoveryEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    NodeIdsToRemove = list(
-      "string"
-    ),
-    Nodes = list(
-      list(
-        NodeId = "string",
-        Endpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        NodeCreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        AvailabilityZone = "string",
-        NodeStatus = "string",
-        ParameterGroupStatus = "string"
-      )
-    ),
-    PreferredMaintenanceWindow = "string",
-    NotificationConfiguration = list(
-      TopicArn = "string",
-      TopicStatus = "string"
-    ),
-    SubnetGroup = "string",
-    SecurityGroups = list(
-      list(
-        SecurityGroupIdentifier = "string",
-        Status = "string"
-      )
-    ),
-    IamRoleArn = "string",
-    ParameterGroup = list(
-      ParameterGroupName = "string",
-      ParameterApplyStatus = "string",
-      NodeIdsToReboot = list(
-        "string"
-      )
-    ),
-    SSEDescription = list(
-      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-    )
-  )
-)
-}
+
+\item{ClusterEndpointEncryptionType}{The type of encryption the cluster's endpoint should support. Values
+are:
+\itemize{
+\item \code{NONE} for no encryption
+\item \code{TLS} for Transport Layer Security
+}}
 }
 \description{
-Creates a DAX cluster. All nodes in the cluster run the same DAX caching
-software.
-}
-\section{Request syntax}{
-\preformatted{svc$create_cluster(
-  ClusterName = "string",
-  NodeType = "string",
-  Description = "string",
-  ReplicationFactor = 123,
-  AvailabilityZones = list(
-    "string"
-  ),
-  SubnetGroupName = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  PreferredMaintenanceWindow = "string",
-  NotificationTopicArn = "string",
-  IamRoleArn = "string",
-  ParameterGroupName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  SSESpecification = list(
-    Enabled = TRUE|FALSE
-  )
-)
-}
-}
+Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.
 
+See \url{https://paws-r.github.io/docs/dax/create_cluster.html} for full documentation.
+}
 \keyword{internal}

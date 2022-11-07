@@ -4,8 +4,12 @@
 \alias{lexmodelbuildingservice_start_import}
 \title{Starts a job to import a resource to Amazon Lex}
 \usage{
-lexmodelbuildingservice_start_import(payload, resourceType,
-  mergeStrategy, tags)
+lexmodelbuildingservice_start_import(
+  payload,
+  resourceType,
+  mergeStrategy,
+  tags = NULL
+)
 }
 \arguments{
 \item{payload}{[required] A zip archive in binary format. The archive should contain one file, a
@@ -37,41 +41,9 @@ existing resource is overwritten with the data from the import file.
 \item{tags}{A list of tags to add to the imported bot. You can only add tags when
 you import a bot, you can't add tags to an intent or slot type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-  mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
-  importId = "string",
-  importStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Starts a job to import a resource to Amazon Lex.
-}
-\section{Request syntax}{
-\preformatted{svc$start_import(
-  payload = raw,
-  resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-  mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/start_import.html} for full documentation.
+}
 \keyword{internal}

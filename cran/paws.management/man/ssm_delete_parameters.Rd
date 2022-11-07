@@ -7,29 +7,12 @@
 ssm_delete_parameters(Names)
 }
 \arguments{
-\item{Names}{[required] The names of the parameters to delete.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DeletedParameters = list(
-    "string"
-  ),
-  InvalidParameters = list(
-    "string"
-  )
-)
-}
+\item{Names}{[required] The names of the parameters to delete. After deleting a parameter, wait
+for at least 30 seconds to create a parameter with the same name.}
 }
 \description{
-Delete a list of parameters.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_parameters(
-  Names = list(
-    "string"
-  )
-)
-}
-}
+Delete a list of parameters. After deleting a parameter, wait for at least 30 seconds to create a parameter with the same name.
 
+See \url{https://paws-r.github.io/docs/ssm/delete_parameters.html} for full documentation.
+}
 \keyword{internal}

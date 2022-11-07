@@ -4,8 +4,13 @@
 \alias{ec2_describe_transit_gateways}
 \title{Describes one or more transit gateways}
 \usage{
-ec2_describe_transit_gateways(TransitGatewayIds, Filters, MaxResults,
-  NextToken, DryRun)
+ec2_describe_transit_gateways(
+  TransitGatewayIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayIds}{The IDs of the transit gateways.}
@@ -31,8 +36,8 @@ propagation route table (\code{enable} | \code{disable}).
 (\code{enable} | \code{disable}).
 \item \code{options.vpn-ecmp-support} - Indicates whether Equal Cost Multipath
 Protocol support is enabled (\code{enable} | \code{disable}).
-\item \code{owner-id} - The ID of the AWS account that owns the transit
-gateway.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+transit gateway.
 \item \code{state} - The state of the transit gateway (\code{available} | \code{deleted}
 | \code{deleting} | \code{modifying} | \code{pending}).
 \item \code{transit-gateway-id} - The ID of the transit gateway.
@@ -49,66 +54,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGateways = list(
-    list(
-      TransitGatewayId = "string",
-      TransitGatewayArn = "string",
-      State = "pending"|"available"|"modifying"|"deleting"|"deleted",
-      OwnerId = "string",
-      Description = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Options = list(
-        AmazonSideAsn = 123,
-        TransitGatewayCidrBlocks = list(
-          "string"
-        ),
-        AutoAcceptSharedAttachments = "enable"|"disable",
-        DefaultRouteTableAssociation = "enable"|"disable",
-        AssociationDefaultRouteTableId = "string",
-        DefaultRouteTablePropagation = "enable"|"disable",
-        PropagationDefaultRouteTableId = "string",
-        VpnEcmpSupport = "enable"|"disable",
-        DnsSupport = "enable"|"disable",
-        MulticastSupport = "enable"|"disable"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more transit gateways. By default, all transit gateways
-are described. Alternatively, you can filter the results.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_transit_gateways(
-  TransitGatewayIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes one or more transit gateways. By default, all transit gateways are described. Alternatively, you can filter the results.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateways.html} for full documentation.
+}
 \keyword{internal}

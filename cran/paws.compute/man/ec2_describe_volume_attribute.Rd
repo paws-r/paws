@@ -4,7 +4,7 @@
 \alias{ec2_describe_volume_attribute}
 \title{Describes the specified attribute of the specified volume}
 \usage{
-ec2_describe_volume_attribute(Attribute, VolumeId, DryRun)
+ec2_describe_volume_attribute(Attribute, VolumeId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The attribute of the volume. This parameter is required.}
@@ -16,46 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoEnableIO = list(
-    Value = TRUE|FALSE
-  ),
-  ProductCodes = list(
-    list(
-      ProductCodeId = "string",
-      ProductCodeType = "devpay"|"marketplace"
-    )
-  ),
-  VolumeId = "string"
-)
-}
-}
 \description{
-Describes the specified attribute of the specified volume. You can
-specify only one attribute at a time.
+Describes the specified attribute of the specified volume. You can specify only one attribute at a time.
 
-For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html}{Amazon EBS volumes}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_volume_attribute(
-  Attribute = "autoEnableIO"|"productCodes",
-  VolumeId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the `autoEnableIo` attribute of the volume with
-# the ID `vol-049df61146c4d7901`.
-svc$describe_volume_attribute(
-  Attribute = "autoEnableIO",
-  VolumeId = "vol-049df61146c4d7901"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_volume_attribute.html} for full documentation.
 }
 \keyword{internal}

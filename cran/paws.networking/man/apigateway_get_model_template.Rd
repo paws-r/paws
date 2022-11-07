@@ -8,26 +8,13 @@ payload into the structure of a model}
 apigateway_get_model_template(restApiId, modelName)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{modelName}{[required] [Required] The name of the model for which to generate a template.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  value = "string"
-)
-}
+\item{modelName}{[required] The name of the model for which to generate a template.}
 }
 \description{
-Generates a sample mapping template that can be used to transform a
-payload into the structure of a model.
-}
-\section{Request syntax}{
-\preformatted{svc$get_model_template(
-  restApiId = "string",
-  modelName = "string"
-)
-}
-}
+Generates a sample mapping template that can be used to transform a payload into the structure of a model.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_model_template.html} for full documentation.
+}
 \keyword{internal}

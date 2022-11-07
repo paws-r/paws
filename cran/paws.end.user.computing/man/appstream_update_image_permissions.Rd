@@ -4,8 +4,7 @@
 \alias{appstream_update_image_permissions}
 \title{Adds or updates permissions for the specified private image}
 \usage{
-appstream_update_image_permissions(Name, SharedAccountId,
-  ImagePermissions)
+appstream_update_image_permissions(Name, SharedAccountId, ImagePermissions)
 }
 \arguments{
 \item{Name}{[required] The name of the private image.}
@@ -15,22 +14,9 @@ update image permissions.}
 
 \item{ImagePermissions}{[required] The permissions for the image.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds or updates permissions for the specified private image.
-}
-\section{Request syntax}{
-\preformatted{svc$update_image_permissions(
-  Name = "string",
-  SharedAccountId = "string",
-  ImagePermissions = list(
-    allowFleet = TRUE|FALSE,
-    allowImageBuilder = TRUE|FALSE
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appstream/update_image_permissions.html} for full documentation.
+}
 \keyword{internal}

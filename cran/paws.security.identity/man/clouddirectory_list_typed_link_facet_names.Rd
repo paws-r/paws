@@ -5,8 +5,11 @@
 \title{Returns a paginated list of TypedLink facet names for a particular
 schema}
 \usage{
-clouddirectory_list_typed_link_facet_names(SchemaArn, NextToken,
-  MaxResults)
+clouddirectory_list_typed_link_facet_names(
+  SchemaArn,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For
@@ -16,26 +19,9 @@ more information, see arns.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FacetNames = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a paginated list of \code{TypedLink} facet names for a particular
-schema. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_typed_link_facet_names(
-  SchemaArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns a paginated list of \code{TypedLink} facet names for a particular schema. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_typed_link_facet_names.html} for full documentation.
+}
 \keyword{internal}

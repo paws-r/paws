@@ -4,13 +4,18 @@
 \alias{ecr_describe_image_scan_findings}
 \title{Returns the scan findings for the specified image}
 \usage{
-ecr_describe_image_scan_findings(registryId, repositoryName, imageId,
-  nextToken, maxResults)
+ecr_describe_image_scan_findings(
+  registryId = NULL,
+  repositoryName,
+  imageId,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository in which to describe the image scan findings for. If you do
-not specify a registry, the default registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository in which to describe the image scan findings
+for. If you do not specify a registry, the default registry is assumed.}
 
 \item{repositoryName}{[required] The repository for the image for which to describe the scan findings.}
 
@@ -36,62 +41,9 @@ and 1000. If this parameter is not used, then
 \code{\link[=ecr_describe_image_scan_findings]{describe_image_scan_findings}}
 returns up to 100 results and a \code{nextToken} value, if applicable.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  repositoryName = "string",
-  imageId = list(
-    imageDigest = "string",
-    imageTag = "string"
-  ),
-  imageScanStatus = list(
-    status = "IN_PROGRESS"|"COMPLETE"|"FAILED",
-    description = "string"
-  ),
-  imageScanFindings = list(
-    imageScanCompletedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    vulnerabilitySourceUpdatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    findings = list(
-      list(
-        name = "string",
-        description = "string",
-        uri = "string",
-        severity = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"|"UNDEFINED",
-        attributes = list(
-          list(
-            key = "string",
-            value = "string"
-          )
-        )
-      )
-    ),
-    findingSeverityCounts = list(
-      123
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns the scan findings for the specified image.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_image_scan_findings(
-  registryId = "string",
-  repositoryName = "string",
-  imageId = list(
-    imageDigest = "string",
-    imageTag = "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ecr/describe_image_scan_findings.html} for full documentation.
+}
 \keyword{internal}

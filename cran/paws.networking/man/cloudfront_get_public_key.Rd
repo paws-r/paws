@@ -9,32 +9,9 @@ cloudfront_get_public_key(Id)
 \arguments{
 \item{Id}{[required] The identifier of the public key you are getting.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PublicKey = list(
-    Id = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PublicKeyConfig = list(
-      CallerReference = "string",
-      Name = "string",
-      EncodedKey = "string",
-      Comment = "string"
-    )
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Gets a public key.
-}
-\section{Request syntax}{
-\preformatted{svc$get_public_key(
-  Id = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/get_public_key.html} for full documentation.
+}
 \keyword{internal}

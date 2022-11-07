@@ -2,54 +2,26 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_devices}
 \alias{cognitoidentityprovider_list_devices}
-\title{Lists the devices}
+\title{Lists the sign-in devices that Amazon Cognito has registered to the
+current user}
 \usage{
-cognitoidentityprovider_list_devices(AccessToken, Limit,
-  PaginationToken)
+cognitoidentityprovider_list_devices(
+  AccessToken,
+  Limit = NULL,
+  PaginationToken = NULL
+)
 }
 \arguments{
-\item{AccessToken}{[required] The access tokens for the request to list devices.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose list
+of devices you want to view.}
 
 \item{Limit}{The limit of the device request.}
 
 \item{PaginationToken}{The pagination token for the list request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Devices = list(
-    list(
-      DeviceKey = "string",
-      DeviceAttributes = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      DeviceCreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeviceLastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeviceLastAuthenticatedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  PaginationToken = "string"
-)
-}
-}
 \description{
-Lists the devices.
-}
-\section{Request syntax}{
-\preformatted{svc$list_devices(
-  AccessToken = "string",
-  Limit = 123,
-  PaginationToken = "string"
-)
-}
-}
+Lists the sign-in devices that Amazon Cognito has registered to the current user.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_devices.html} for full documentation.
+}
 \keyword{internal}

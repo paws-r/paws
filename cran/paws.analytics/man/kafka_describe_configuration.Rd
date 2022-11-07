@@ -10,36 +10,9 @@ kafka_describe_configuration(Arn)
 \item{Arn}{[required] The Amazon Resource Name (ARN) that uniquely identifies an MSK
 configuration and all of its revisions.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Description = "string",
-  KafkaVersions = list(
-    "string"
-  ),
-  LatestRevision = list(
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Description = "string",
-    Revision = 123
-  ),
-  Name = "string",
-  State = "ACTIVE"|"DELETING"|"DELETE_FAILED"
-)
-}
-}
 \description{
 Returns a description of this MSK configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_configuration(
-  Arn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/describe_configuration.html} for full documentation.
+}
 \keyword{internal}

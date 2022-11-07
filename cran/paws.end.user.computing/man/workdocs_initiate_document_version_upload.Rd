@@ -4,9 +4,16 @@
 \alias{workdocs_initiate_document_version_upload}
 \title{Creates a new document object and version object}
 \usage{
-workdocs_initiate_document_version_upload(AuthenticationToken, Id, Name,
-  ContentCreatedTimestamp, ContentModifiedTimestamp, ContentType,
-  DocumentSizeInBytes, ParentFolderId)
+workdocs_initiate_document_version_upload(
+  AuthenticationToken = NULL,
+  Id = NULL,
+  Name = NULL,
+  ContentCreatedTimestamp = NULL,
+  ContentModifiedTimestamp = NULL,
+  ContentType = NULL,
+  DocumentSizeInBytes = NULL,
+  ParentFolderId
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -26,87 +33,9 @@ administrator credentials to access the API.}
 
 \item{ParentFolderId}{[required] The ID of the parent folder.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Metadata = list(
-    Id = "string",
-    CreatorId = "string",
-    ParentFolderId = "string",
-    CreatedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ModifiedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    LatestVersionMetadata = list(
-      Id = "string",
-      Name = "string",
-      ContentType = "string",
-      Size = 123,
-      Signature = "string",
-      Status = "INITIALIZED"|"ACTIVE",
-      CreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModifiedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ContentCreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ContentModifiedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatorId = "string",
-      Thumbnail = list(
-        "string"
-      ),
-      Source = list(
-        "string"
-      )
-    ),
-    ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-    Labels = list(
-      "string"
-    )
-  ),
-  UploadMetadata = list(
-    UploadUrl = "string",
-    SignedHeaders = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Creates a new document object and version object.
 
-The client specifies the parent folder ID and name of the document to
-upload. The ID is optionally specified when creating a new version of an
-existing document. This is the first step to upload a document. Next,
-upload the document to the URL returned from the call, and then call
-\code{\link[=workdocs_update_document_version]{update_document_version}}.
-
-To cancel the document upload, call
-\code{\link[=workdocs_abort_document_version_upload]{abort_document_version_upload}}.
+See \url{https://paws-r.github.io/docs/workdocs/initiate_document_version_upload.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$initiate_document_version_upload(
-  AuthenticationToken = "string",
-  Id = "string",
-  Name = "string",
-  ContentCreatedTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  ContentModifiedTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  ContentType = "string",
-  DocumentSizeInBytes = 123,
-  ParentFolderId = "string"
-)
-}
-}
-
 \keyword{internal}

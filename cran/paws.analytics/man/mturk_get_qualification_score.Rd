@@ -12,42 +12,9 @@ mturk_get_qualification_score(QualificationTypeId, WorkerId)
 
 \item{WorkerId}{[required] The ID of the Worker whose Qualification is being updated.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Qualification = list(
-    QualificationTypeId = "string",
-    WorkerId = "string",
-    GrantTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    IntegerValue = 123,
-    LocaleValue = list(
-      Country = "string",
-      Subdivision = "string"
-    ),
-    Status = "Granted"|"Revoked"
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_get_qualification_score]{get_qualification_score}} operation
-returns the value of a Worker's Qualification for a given Qualification
-type.
+The \code{\link[=mturk_get_qualification_score]{get_qualification_score}} operation returns the value of a Worker's Qualification for a given Qualification type.
 
-To get a Worker's Qualification, you must know the Worker's ID. The
-Worker's ID is included in the assignment data returned by the
-\code{\link[=mturk_list_assignments_for_hit]{list_assignments_for_hit}} operation.
-
-Only the owner of a Qualification type can query the value of a Worker's
-Qualification of that type.
+See \url{https://paws-r.github.io/docs/mturk/get_qualification_score.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_qualification_score(
-  QualificationTypeId = "string",
-  WorkerId = "string"
-)
-}
-}
-
 \keyword{internal}

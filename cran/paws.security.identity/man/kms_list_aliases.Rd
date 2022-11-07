@@ -2,19 +2,20 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_list_aliases}
 \alias{kms_list_aliases}
-\title{Gets a list of aliases in the caller's AWS account and region}
+\title{Gets a list of aliases in the caller's Amazon Web Services account and
+region}
 \usage{
-kms_list_aliases(KeyId, Limit, Marker)
+kms_list_aliases(KeyId = NULL, Limit = NULL, Marker = NULL)
 }
 \arguments{
-\item{KeyId}{Lists only aliases that are associated with the specified CMK. Enter a
-CMK in your AWS account.
+\item{KeyId}{Lists only aliases that are associated with the specified KMS key. Enter
+a KMS key in your Amazon Web Services account.
 
 This parameter is optional. If you omit it,
 \code{\link[=kms_list_aliases]{list_aliases}} returns all aliases in the account
 and Region.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
@@ -23,12 +24,12 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
-When this value is present, AWS KMS does not return more than the
-specified number of items, but it might return fewer.
+When this value is present, KMS does not return more than the specified
+number of items, but it might return fewer.
 
 This value is optional. If you include a value, it must be between 1 and
 100, inclusive. If you do not include a value, it defaults to 50.}
@@ -37,76 +38,9 @@ This value is optional. If you include a value, it must be between 1 and
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Aliases = list(
-    list(
-      AliasName = "string",
-      AliasArn = "string",
-      TargetKeyId = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextMarker = "string",
-  Truncated = TRUE|FALSE
-)
-}
-}
 \description{
-Gets a list of aliases in the caller's AWS account and region. For more
-information about aliases, see \code{\link[=kms_create_alias]{create_alias}}.
+Gets a list of aliases in the caller's Amazon Web Services account and region. For more information about aliases, see \code{\link[=kms_create_alias]{create_alias}}.
 
-By default, the \code{\link[=kms_list_aliases]{list_aliases}} operation returns all
-aliases in the account and region. To get only the aliases associated
-with a particular customer master key (CMK), use the \code{KeyId} parameter.
-
-The \code{\link[=kms_list_aliases]{list_aliases}} response can include aliases that
-you created and associated with your customer managed CMKs, and aliases
-that AWS created and associated with AWS managed CMKs in your account.
-You can recognize AWS aliases because their names have the format
-\verb{aws/<service-name>}, such as \code{aws/dynamodb}.
-
-The response might also include aliases that have no \code{TargetKeyId}
-field. These are predefined aliases that AWS has created but has not yet
-associated with a CMK. Aliases that AWS creates in your account,
-including predefined aliases, do not count against your \href{https://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit}{AWS KMS aliases quota}.
-
-\strong{Cross-account use}: No. \code{\link[=kms_list_aliases]{list_aliases}} does not
-return aliases in other AWS accounts.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListAliases}
-(IAM policy)
-
-For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-access}{Controlling access to aliases}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_create_alias]{create_alias}}
-\item \code{\link[=kms_delete_alias]{delete_alias}}
-\item \code{\link[=kms_update_alias]{update_alias}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_aliases(
-  KeyId = "string",
-  Limit = 123,
-  Marker = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists aliases.
-svc$list_aliases()
-}
-
+See \url{https://paws-r.github.io/docs/kms/list_aliases.html} for full documentation.
 }
 \keyword{internal}

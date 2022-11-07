@@ -5,8 +5,12 @@
 \title{Unsubscribes from receiving notifications when a dataset is modified by
 another device}
 \usage{
-cognitosync_unsubscribe_from_dataset(IdentityPoolId, IdentityId,
-  DatasetName, DeviceId)
+cognitosync_unsubscribe_from_dataset(
+  IdentityPoolId,
+  IdentityId,
+  DatasetName,
+  DeviceId
+)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example,
@@ -19,24 +23,9 @@ Cognito. The ID of the pool to which this identity belongs.}
 
 \item{DeviceId}{[required] The unique ID generated for this device by Cognito.}
 }
-\value{
-An empty list.
-}
 \description{
-Unsubscribes from receiving notifications when a dataset is modified by
-another device.
+Unsubscribes from receiving notifications when a dataset is modified by another device.
 
-This API can only be called with temporary credentials provided by
-Cognito Identity. You cannot call this API with developer credentials.
+See \url{https://paws-r.github.io/docs/cognitosync/unsubscribe_from_dataset.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$unsubscribe_from_dataset(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DatasetName = "string",
-  DeviceId = "string"
-)
-}
-}
-
 \keyword{internal}

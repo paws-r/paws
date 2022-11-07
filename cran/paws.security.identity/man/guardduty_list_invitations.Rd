@@ -3,9 +3,9 @@
 \name{guardduty_list_invitations}
 \alias{guardduty_list_invitations}
 \title{Lists all GuardDuty membership invitations that were sent to the current
-AWS account}
+Amazon Web Services account}
 \usage{
-guardduty_list_invitations(MaxResults, NextToken)
+guardduty_list_invitations(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{You can use this parameter to indicate the maximum number of items that
@@ -17,30 +17,9 @@ this parameter to null on your first call to the list action. For
 subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Invitations = list(
-    list(
-      AccountId = "string",
-      InvitationId = "string",
-      RelationshipStatus = "string",
-      InvitedAt = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all GuardDuty membership invitations that were sent to the current
-AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_invitations(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/guardduty/list_invitations.html} for full documentation.
+}
 \keyword{internal}

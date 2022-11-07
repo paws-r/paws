@@ -4,8 +4,11 @@
 \alias{s3_list_bucket_metrics_configurations}
 \title{Lists the metrics configurations for the bucket}
 \usage{
-s3_list_bucket_metrics_configurations(Bucket, ContinuationToken,
-  ExpectedBucketOwner)
+s3_list_bucket_metrics_configurations(
+  Bucket,
+  ContinuationToken = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the metrics configurations to
@@ -16,78 +19,13 @@ has been truncated. Use the NextContinuationToken from a previously
 truncated list response to continue the listing. The continuation token
 is an opaque value that Amazon S3 understands.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IsTruncated = TRUE|FALSE,
-  ContinuationToken = "string",
-  NextContinuationToken = "string",
-  MetricsConfigurationList = list(
-    list(
-      Id = "string",
-      Filter = list(
-        Prefix = "string",
-        Tag = list(
-          Key = "string",
-          Value = "string"
-        ),
-        And = list(
-          Prefix = "string",
-          Tags = list(
-            list(
-              Key = "string",
-              Value = "string"
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Lists the metrics configurations for the bucket. The metrics
-configurations are only for the request metrics of the bucket and do not
-provide information on daily storage metrics. You can have up to 1,000
-configurations per bucket.
+Lists the metrics configurations for the bucket. The metrics configurations are only for the request metrics of the bucket and do not provide information on daily storage metrics. You can have up to 1,000 configurations per bucket.
 
-This operation supports list pagination and does not return more than
-100 configurations at a time. Always check the \code{IsTruncated} element in
-the response. If there are no more configurations to list, \code{IsTruncated}
-is set to false. If there are more configurations to list, \code{IsTruncated}
-is set to true, and there is a value in \code{NextContinuationToken}. You use
-the \code{NextContinuationToken} value to continue the pagination of the list
-by passing the value in \code{continuation-token} in the request to \code{GET} the
-next page.
-
-To use this operation, you must have permissions to perform the
-\code{s3:GetMetricsConfiguration} action. The bucket owner has this
-permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
-
-For more information about metrics configurations and CloudWatch request
-metrics, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}.
-
-The following operations are related to
-\code{\link[=s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations}}:
-\itemize{
-\item \code{\link[=s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration}}
-\item \code{\link[=s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration}}
-\item \code{\link[=s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration}}
+See \url{https://paws-r.github.io/docs/s3/list_bucket_metrics_configurations.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$list_bucket_metrics_configurations(
-  Bucket = "string",
-  ContinuationToken = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

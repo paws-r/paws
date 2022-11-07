@@ -6,8 +6,11 @@
 destination branch for that pull request at the specified commit using
 the fast-forward merge strategy}
 \usage{
-codecommit_merge_pull_request_by_fast_forward(pullRequestId,
-  repositoryName, sourceCommitId)
+codecommit_merge_pull_request_by_fast_forward(
+  pullRequestId,
+  repositoryName,
+  sourceCommitId = NULL
+)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
@@ -20,74 +23,9 @@ source branch. Pass this value if you want an exception thrown if the
 current commit ID of the tip of the source branch does not match this
 commit ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pullRequest = list(
-    pullRequestId = "string",
-    title = "string",
-    description = "string",
-    lastActivityDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    pullRequestStatus = "OPEN"|"CLOSED",
-    authorArn = "string",
-    pullRequestTargets = list(
-      list(
-        repositoryName = "string",
-        sourceReference = "string",
-        destinationReference = "string",
-        destinationCommit = "string",
-        sourceCommit = "string",
-        mergeBase = "string",
-        mergeMetadata = list(
-          isMerged = TRUE|FALSE,
-          mergedBy = "string",
-          mergeCommitId = "string",
-          mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-        )
-      )
-    ),
-    clientRequestToken = "string",
-    revisionId = "string",
-    approvalRules = list(
-      list(
-        approvalRuleId = "string",
-        approvalRuleName = "string",
-        approvalRuleContent = "string",
-        ruleContentSha256 = "string",
-        lastModifiedDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        creationDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        lastModifiedUser = "string",
-        originApprovalRuleTemplate = list(
-          approvalRuleTemplateId = "string",
-          approvalRuleTemplateName = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Attempts to merge the source commit of a pull request into the specified
-destination branch for that pull request at the specified commit using
-the fast-forward merge strategy. If the merge is successful, it closes
-the pull request.
-}
-\section{Request syntax}{
-\preformatted{svc$merge_pull_request_by_fast_forward(
-  pullRequestId = "string",
-  repositoryName = "string",
-  sourceCommitId = "string"
-)
-}
-}
+Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge strategy. If the merge is successful, it closes the pull request.
 
+See \url{https://paws-r.github.io/docs/codecommit/merge_pull_request_by_fast_forward.html} for full documentation.
+}
 \keyword{internal}

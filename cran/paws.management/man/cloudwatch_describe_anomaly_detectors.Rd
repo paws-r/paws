@@ -4,8 +4,14 @@
 \alias{cloudwatch_describe_anomaly_detectors}
 \title{Lists the anomaly detection models that you have created in your account}
 \usage{
-cloudwatch_describe_anomaly_detectors(NextToken, MaxResults, Namespace,
-  MetricName, Dimensions)
+cloudwatch_describe_anomaly_detectors(
+  NextToken = NULL,
+  MaxResults = NULL,
+  Namespace = NULL,
+  MetricName = NULL,
+  Dimensions = NULL,
+  AnomalyDetectorTypes = NULL
+)
 }
 \arguments{
 \item{NextToken}{Use the token returned by the previous operation to request the next
@@ -29,60 +35,13 @@ models, they're all returned.}
 associated with the specified metric dimensions. If there are multiple
 metrics that have these dimensions and have anomaly detection models
 associated, they're all returned.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AnomalyDetectors = list(
-    list(
-      Namespace = "string",
-      MetricName = "string",
-      Dimensions = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      Stat = "string",
-      Configuration = list(
-        ExcludedTimeRanges = list(
-          list(
-            StartTime = as.POSIXct(
-              "2015-01-01"
-            ),
-            EndTime = as.POSIXct(
-              "2015-01-01"
-            )
-          )
-        ),
-        MetricTimezone = "string"
-      ),
-      StateValue = "PENDING_TRAINING"|"TRAINED_INSUFFICIENT_DATA"|"TRAINED"
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{AnomalyDetectorTypes}{The anomaly detector types to request when using
+\code{DescribeAnomalyDetectorsInput}. If empty, defaults to \code{SINGLE_METRIC}.}
 }
 \description{
-Lists the anomaly detection models that you have created in your
-account. You can list all models in your account or filter the results
-to only the models that are related to a certain namespace, metric name,
-or metric dimension.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_anomaly_detectors(
-  NextToken = "string",
-  MaxResults = 123,
-  Namespace = "string",
-  MetricName = "string",
-  Dimensions = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Lists the anomaly detection models that you have created in your account. For single metric anomaly detectors, you can list all of the models in your account or filter the results to only the models that are related to a certain namespace, metric name, or metric dimension. For metric math anomaly detectors, you can list them by adding \code{METRIC_MATH} to the \code{AnomalyDetectorTypes} array. This will return all metric math anomaly detectors in your account.
 
+See \url{https://paws-r.github.io/docs/cloudwatch/describe_anomaly_detectors.html} for full documentation.
+}
 \keyword{internal}

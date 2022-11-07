@@ -2,10 +2,15 @@
 % Please edit documentation in R/personalize_operations.R
 \name{personalize_create_campaign}
 \alias{personalize_create_campaign}
-\title{Creates a campaign by deploying a solution version}
+\title{Creates a campaign that deploys a solution version}
 \usage{
-personalize_create_campaign(name, solutionVersionArn, minProvisionedTPS,
-  campaignConfig)
+personalize_create_campaign(
+  name,
+  solutionVersionArn,
+  minProvisionedTPS = NULL,
+  campaignConfig = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] A name for the new campaign. The campaign name must be unique within
@@ -13,75 +18,16 @@ your account.}
 
 \item{solutionVersionArn}{[required] The Amazon Resource Name (ARN) of the solution version to deploy.}
 
-\item{minProvisionedTPS}{[required] Specifies the requested minimum provisioned transactions
+\item{minProvisionedTPS}{Specifies the requested minimum provisioned transactions
 (recommendations) per second that Amazon Personalize will support.}
 
 \item{campaignConfig}{The configuration details of a campaign.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  campaignArn = "string"
-)
-}
+
+\item{tags}{A list of tags to apply to the campaign.}
 }
 \description{
-Creates a campaign by deploying a solution version. When a client calls
-the
-\href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html}{GetRecommendations}
-and
-\href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetPersonalizedRanking.html}{GetPersonalizedRanking}
-APIs, a campaign is specified in the request.
+Creates a campaign that deploys a solution version. When a client calls the \href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html}{GetRecommendations} and \href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetPersonalizedRanking.html}{GetPersonalizedRanking} APIs, a campaign is specified in the request.
 
-\strong{Minimum Provisioned TPS and Auto-Scaling}
-
-A transaction is a single \code{GetRecommendations} or
-\code{GetPersonalizedRanking} call. Transactions per second (TPS) is the
-throughput and unit of billing for Amazon Personalize. The minimum
-provisioned TPS (\code{minProvisionedTPS}) specifies the baseline throughput
-provisioned by Amazon Personalize, and thus, the minimum billing charge.
-If your TPS increases beyond \code{minProvisionedTPS}, Amazon Personalize
-auto-scales the provisioned capacity up and down, but never below
-\code{minProvisionedTPS}, to maintain a 70\% utilization. There's a short time
-delay while the capacity is increased that might cause loss of
-transactions. It's recommended to start with a low \code{minProvisionedTPS},
-track your usage using Amazon CloudWatch metrics, and then increase the
-\code{minProvisionedTPS} as necessary.
-
-\strong{Status}
-
-A campaign can be in one of the following states:
-\itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
-\item DELETE PENDING > DELETE IN_PROGRESS
+See \url{https://paws-r.github.io/docs/personalize/create_campaign.html} for full documentation.
 }
-
-To get the campaign status, call
-\code{\link[=personalize_describe_campaign]{describe_campaign}}.
-
-Wait until the \code{status} of the campaign is \code{ACTIVE} before asking the
-campaign for recommendations.
-
-\strong{Related APIs}
-\itemize{
-\item \code{\link[=personalize_list_campaigns]{list_campaigns}}
-\item \code{\link[=personalize_describe_campaign]{describe_campaign}}
-\item \code{\link[=personalize_update_campaign]{update_campaign}}
-\item \code{\link[=personalize_delete_campaign]{delete_campaign}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_campaign(
-  name = "string",
-  solutionVersionArn = "string",
-  minProvisionedTPS = 123,
-  campaignConfig = list(
-    itemExplorationConfig = list(
-      "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

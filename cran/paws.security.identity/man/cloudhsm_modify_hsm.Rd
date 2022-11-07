@@ -4,8 +4,14 @@
 \alias{cloudhsm_modify_hsm}
 \title{This is documentation for AWS CloudHSM Classic}
 \usage{
-cloudhsm_modify_hsm(HsmArn, SubnetId, EniIp, IamRoleArn, ExternalId,
-  SyslogIp)
+cloudhsm_modify_hsm(
+  HsmArn,
+  SubnetId = NULL,
+  EniIp = NULL,
+  IamRoleArn = NULL,
+  ExternalId = NULL,
+  SyslogIp = NULL
+)
 }
 \arguments{
 \item{HsmArn}{[required] The ARN of the HSM to modify.}
@@ -27,38 +33,9 @@ the new subnet.}
 \item{SyslogIp}{The new IP address for the syslog monitoring server. The AWS CloudHSM
 service only supports one syslog monitoring server.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HsmArn = "string"
-)
-}
-}
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more
-information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
-and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
-\strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
-
-Modifies an HSM.
-
-This operation can result in the HSM being offline for up to 15 minutes
-while the AWS CloudHSM service is reconfigured. If you are modifying a
-production HSM, you should ensure that your AWS CloudHSM service is
-configured for high availability, and consider executing this operation
-during a maintenance window.
+See \url{https://paws-r.github.io/docs/cloudhsm/modify_hsm.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_hsm(
-  HsmArn = "string",
-  SubnetId = "string",
-  EniIp = "string",
-  IamRoleArn = "string",
-  ExternalId = "string",
-  SyslogIp = "string"
-)
-}
-}
-
 \keyword{internal}

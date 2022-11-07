@@ -11,20 +11,9 @@ connect_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The tag keys.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the specified tags from the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/untag_resource.html} for full documentation.
+}
 \keyword{internal}

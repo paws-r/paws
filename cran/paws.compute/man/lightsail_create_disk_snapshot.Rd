@@ -4,8 +4,12 @@
 \alias{lightsail_create_disk_snapshot}
 \title{Creates a snapshot of a block storage disk}
 \usage{
-lightsail_create_disk_snapshot(diskName, diskSnapshotName, instanceName,
-  tags)
+lightsail_create_disk_snapshot(
+  diskName = NULL,
+  diskSnapshotName,
+  instanceName = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{diskName}{The unique name of the source disk (e.g., \code{Disk-Virginia-1}).
@@ -30,76 +34,9 @@ exclusive.}
 Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  operations = list(
-    list(
-      id = "string",
-      resourceName = "string",
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      isTerminal = TRUE|FALSE,
-      operationDetails = "string",
-      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-      status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-      statusChangedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      errorCode = "string",
-      errorDetails = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a snapshot of a block storage disk. You can use snapshots for
-backups, to make copies of disks, and to save data before shutting down
-a Lightsail instance.
+Creates a snapshot of a block storage disk. You can use snapshots for backups, to make copies of disks, and to save data before shutting down a Lightsail instance.
 
-You can take a snapshot of an attached disk that is in use; however,
-snapshots only capture data that has been written to your disk at the
-time the snapshot command is issued. This may exclude any data that has
-been cached by any applications or the operating system. If you can
-pause any file systems on the disk long enough to take a snapshot, your
-snapshot should be complete. Nevertheless, if you cannot pause all file
-writes to the disk, you should unmount the disk from within the
-Lightsail instance, issue the create disk snapshot command, and then
-remount the disk to ensure a consistent and complete snapshot. You may
-remount and use your disk while the snapshot status is pending.
-
-You can also use this operation to create a snapshot of an instance's
-system volume. You might want to do this, for example, to recover data
-from the system volume of a botched instance or to create a backup of
-the system volume like you would for a block storage disk. To create a
-snapshot of a system volume, just define the \verb{instance name} parameter
-when issuing the snapshot command, and a snapshot of the defined
-instance's system volume will be created. After the snapshot is
-available, you can create a block storage disk from the snapshot and
-attach it to a running instance to access the data on the disk.
-
-The \verb{create disk snapshot} operation supports tag-based access control
-via request tags. For more information, see the Lightsail Dev Guide.
+See \url{https://paws-r.github.io/docs/lightsail/create_disk_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_disk_snapshot(
-  diskName = "string",
-  diskSnapshotName = "string",
-  instanceName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{machinelearning_create_evaluation}
 \title{Creates a new Evaluation of an MLModel}
 \usage{
-machinelearning_create_evaluation(EvaluationId, EvaluationName,
-  MLModelId, EvaluationDataSourceId)
+machinelearning_create_evaluation(
+  EvaluationId,
+  EvaluationName = NULL,
+  MLModelId,
+  EvaluationDataSourceId
+)
 }
 \arguments{
 \item{EvaluationId}{[required] A user-supplied ID that uniquely identifies the \code{Evaluation}.}
@@ -20,42 +24,9 @@ The schema used in creating the \code{MLModel} must match the schema of the
 \item{EvaluationDataSourceId}{[required] The ID of the \code{DataSource} for the evaluation. The schema of the
 \code{DataSource} must match the schema used to create the \code{MLModel}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EvaluationId = "string"
-)
-}
-}
 \description{
-Creates a new \code{Evaluation} of an \code{MLModel}. An \code{MLModel} is evaluated on
-a set of observations associated to a \code{DataSource}. Like a \code{DataSource}
-for an \code{MLModel}, the \code{DataSource} for an \code{Evaluation} contains values
-for the \verb{Target Variable}. The \code{Evaluation} compares the predicted
-result for each observation to the actual outcome and provides a summary
-so that you know how effective the \code{MLModel} functions on the test data.
-Evaluation generates a relevant performance metric, such as BinaryAUC,
-RegressionRMSE or MulticlassAvgFScore based on the corresponding
-\code{MLModelType}: \code{BINARY}, \code{REGRESSION} or \code{MULTICLASS}.
+Creates a new \code{Evaluation} of an \code{MLModel}. An \code{MLModel} is evaluated on a set of observations associated to a \code{DataSource}. Like a \code{DataSource} for an \code{MLModel}, the \code{DataSource} for an \code{Evaluation} contains values for the \verb{Target Variable}. The \code{Evaluation} compares the predicted result for each observation to the actual outcome and provides a summary so that you know how effective the \code{MLModel} functions on the test data. Evaluation generates a relevant performance metric, such as BinaryAUC, RegressionRMSE or MulticlassAvgFScore based on the corresponding \code{MLModelType}: \code{BINARY}, \code{REGRESSION} or \code{MULTICLASS}.
 
-\code{\link[=machinelearning_create_evaluation]{create_evaluation}} is an
-asynchronous operation. In response to
-\code{\link[=machinelearning_create_evaluation]{create_evaluation}}, Amazon Machine
-Learning (Amazon ML) immediately returns and sets the evaluation status
-to \code{PENDING}. After the \code{Evaluation} is created and ready for use,
-Amazon ML sets the status to \code{COMPLETED}.
-
-You can use the \code{\link[=machinelearning_get_evaluation]{get_evaluation}}
-operation to check progress of the evaluation during the creation
-operation.
+See \url{https://paws-r.github.io/docs/machinelearning/create_evaluation.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_evaluation(
-  EvaluationId = "string",
-  EvaluationName = "string",
-  MLModelId = "string",
-  EvaluationDataSourceId = "string"
-)
-}
-}
-
 \keyword{internal}

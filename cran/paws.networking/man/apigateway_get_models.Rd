@@ -4,41 +4,19 @@
 \alias{apigateway_get_models}
 \title{Describes existing Models defined for a RestApi resource}
 \usage{
-apigateway_get_models(restApiId, position, limit)
+apigateway_get_models(restApiId, position = NULL, limit = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
 \item{position}{The current pagination position in the paged result set.}
 
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      id = "string",
-      name = "string",
-      description = "string",
-      schema = "string",
-      contentType = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes existing Models defined for a RestApi resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_models(
-  restApiId = "string",
-  position = "string",
-  limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_models.html} for full documentation.
+}
 \keyword{internal}

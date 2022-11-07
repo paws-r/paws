@@ -4,8 +4,11 @@
 \alias{elasticbeanstalk_delete_application_version}
 \title{Deletes the specified version from the specified application}
 \usage{
-elasticbeanstalk_delete_application_version(ApplicationName,
-  VersionLabel, DeleteSourceBundle)
+elasticbeanstalk_delete_application_version(
+  ApplicationName,
+  VersionLabel,
+  DeleteSourceBundle = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to which the version belongs.}
@@ -16,34 +19,9 @@ elasticbeanstalk_delete_application_version(ApplicationName,
 Otherwise, the application version is deleted only from Elastic
 Beanstalk and the source bundle remains in Amazon S3.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified version from the specified application.
 
-You cannot delete an application version that is associated with a
-running environment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application_version(
-  ApplicationName = "string",
-  VersionLabel = "string",
-  DeleteSourceBundle = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation deletes an application version named
-# 22a0-stage-150819_182129 for an application named my-app:
-svc$delete_application_version(
-  ApplicationName = "my-app",
-  DeleteSourceBundle = TRUE,
-  VersionLabel = "22a0-stage-150819_182129"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/delete_application_version.html} for full documentation.
 }
 \keyword{internal}

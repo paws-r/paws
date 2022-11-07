@@ -4,44 +4,16 @@
 \alias{apigatewayv2_update_vpc_link}
 \title{Updates a VPC link}
 \usage{
-apigatewayv2_update_vpc_link(Name, VpcLinkId)
+apigatewayv2_update_vpc_link(Name = NULL, VpcLinkId)
 }
 \arguments{
 \item{Name}{The name of the VPC link.}
 
 \item{VpcLinkId}{[required] The ID of the VPC link.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  Name = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    "string"
-  ),
-  VpcLinkId = "string",
-  VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
-  VpcLinkStatusMessage = "string",
-  VpcLinkVersion = "V2"
-)
-}
-}
 \description{
 Updates a VPC link.
-}
-\section{Request syntax}{
-\preformatted{svc$update_vpc_link(
-  Name = "string",
-  VpcLinkId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_vpc_link.html} for full documentation.
+}
 \keyword{internal}

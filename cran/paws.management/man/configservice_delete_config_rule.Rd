@@ -2,33 +2,16 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_delete_config_rule}
 \alias{configservice_delete_config_rule}
-\title{Deletes the specified AWS Config rule and all of its evaluation results}
+\title{Deletes the specified Config rule and all of its evaluation results}
 \usage{
 configservice_delete_config_rule(ConfigRuleName)
 }
 \arguments{
-\item{ConfigRuleName}{[required] The name of the AWS Config rule that you want to delete.}
-}
-\value{
-An empty list.
+\item{ConfigRuleName}{[required] The name of the Config rule that you want to delete.}
 }
 \description{
-Deletes the specified AWS Config rule and all of its evaluation results.
+Deletes the specified Config rule and all of its evaluation results.
 
-AWS Config sets the state of a rule to \code{DELETING} until the deletion is
-complete. You cannot update a rule while it is in this state. If you
-make a \code{\link[=configservice_put_config_rule]{put_config_rule}} or
-\code{\link[=configservice_delete_config_rule]{delete_config_rule}} request for the
-rule, you will receive a \code{ResourceInUseException}.
-
-You can check the state of a rule by using the
-\code{\link[=configservice_describe_config_rules]{describe_config_rules}} request.
+See \url{https://paws-r.github.io/docs/configservice/delete_config_rule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_config_rule(
-  ConfigRuleName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -9,69 +9,9 @@ directconnect_delete_lag(lagId)
 \arguments{
 \item{lagId}{[required] The ID of the LAG.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  connectionsBandwidth = "string",
-  numberOfConnections = 123,
-  lagId = "string",
-  ownerAccount = "string",
-  lagName = "string",
-  lagState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
-  location = "string",
-  region = "string",
-  minimumLinks = 123,
-  awsDevice = "string",
-  awsDeviceV2 = "string",
-  connections = list(
-    list(
-      ownerAccount = "string",
-      connectionId = "string",
-      connectionName = "string",
-      connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-      region = "string",
-      location = "string",
-      bandwidth = "string",
-      vlan = 123,
-      partnerName = "string",
-      loaIssueTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lagId = "string",
-      awsDevice = "string",
-      jumboFrameCapable = TRUE|FALSE,
-      awsDeviceV2 = "string",
-      hasLogicalRedundancy = "unknown"|"yes"|"no",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      providerName = "string"
-    )
-  ),
-  allowsHostedConnections = TRUE|FALSE,
-  jumboFrameCapable = TRUE|FALSE,
-  hasLogicalRedundancy = "unknown"|"yes"|"no",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
-}
 \description{
-Deletes the specified link aggregation group (LAG). You cannot delete a
-LAG if it has active virtual interfaces or hosted connections.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_lag(
-  lagId = "string"
-)
-}
-}
+Deletes the specified link aggregation group (LAG). You cannot delete a LAG if it has active virtual interfaces or hosted connections.
 
+See \url{https://paws-r.github.io/docs/directconnect/delete_lag.html} for full documentation.
+}
 \keyword{internal}

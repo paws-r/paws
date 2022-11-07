@@ -4,36 +4,16 @@
 \alias{xray_get_group}
 \title{Retrieves group resource details}
 \usage{
-xray_get_group(GroupName, GroupARN)
+xray_get_group(GroupName = NULL, GroupARN = NULL)
 }
 \arguments{
 \item{GroupName}{The case-sensitive name of the group.}
 
 \item{GroupARN}{The ARN of the group that was generated on creation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    GroupName = "string",
-    GroupARN = "string",
-    FilterExpression = "string",
-    InsightsConfiguration = list(
-      InsightsEnabled = TRUE|FALSE,
-      NotificationsEnabled = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
 Retrieves group resource details.
-}
-\section{Request syntax}{
-\preformatted{svc$get_group(
-  GroupName = "string",
-  GroupARN = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/get_group.html} for full documentation.
+}
 \keyword{internal}

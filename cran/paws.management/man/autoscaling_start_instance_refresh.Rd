@@ -2,12 +2,14 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_start_instance_refresh}
 \alias{autoscaling_start_instance_refresh}
-\title{Starts a new instance refresh operation, which triggers a rolling
-replacement of all previously launched instances in the Auto Scaling
-group with a new group of instances}
+\title{Starts a new instance refresh operation}
 \usage{
-autoscaling_start_instance_refresh(AutoScalingGroupName, Strategy,
-  Preferences)
+autoscaling_start_instance_refresh(
+  AutoScalingGroupName,
+  Strategy = NULL,
+  DesiredConfiguration = NULL,
+  Preferences = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -15,70 +17,33 @@ autoscaling_start_instance_refresh(AutoScalingGroupName, Strategy,
 \item{Strategy}{The strategy to use for the instance refresh. The only valid value is
 \code{Rolling}.
 
-A rolling update is an update that is applied to all instances in an
-Auto Scaling group until all instances have been updated. A rolling
+A rolling update helps you update your instances gradually. A rolling
 update can fail due to failed health checks or if instances are on
 standby or are protected from scale in. If the rolling update process
-fails, any instances that were already replaced are not rolled back to
-their previous configuration.}
+fails, any instances that are replaced are not rolled back to their
+previous configuration.}
 
-\item{Preferences}{Set of preferences associated with the instance refresh request.
+\item{DesiredConfiguration}{The desired configuration. For example, the desired configuration can
+specify a new launch template or a new version of the current launch
+template.
 
-If not provided, the default values are used. For
-\code{MinHealthyPercentage}, the default value is \code{90}. For \code{InstanceWarmup},
-the default is to use the value specified for the health check grace
-period for the Auto Scaling group.
+Once the instance refresh succeeds, Amazon EC2 Auto Scaling updates the
+settings of the Auto Scaling group to reflect the new desired
+configuration.
 
-For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RefreshPreferences.html}{RefreshPreferences}
-in the \emph{Amazon EC2 Auto Scaling API Reference}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceRefreshId = "string"
-)
-}
+When you specify a new launch template or a new version of the current
+launch template for your desired configuration, consider enabling the
+\code{SkipMatching} property in preferences. If it's enabled, Amazon EC2 Auto
+Scaling skips replacing instances that already use the specified launch
+template and version. This can help you reduce the number of
+replacements that are required to apply updates.}
+
+\item{Preferences}{Set of preferences associated with the instance refresh request. If not
+provided, the default values are used.}
 }
 \description{
-Starts a new instance refresh operation, which triggers a rolling
-replacement of all previously launched instances in the Auto Scaling
-group with a new group of instances.
+Starts a new instance refresh operation. An instance refresh performs a rolling replacement of all or some instances in an Auto Scaling group. Each instance is terminated first and then replaced, which temporarily reduces the capacity available within your Auto Scaling group.
 
-If successful, this call creates a new instance refresh request with a
-unique ID that you can use to track its progress. To query its status,
-call the
-\code{\link[=autoscaling_describe_instance_refreshes]{describe_instance_refreshes}}
-API. To describe the instance refreshes that have already run, call the
-\code{\link[=autoscaling_describe_instance_refreshes]{describe_instance_refreshes}}
-API. To cancel an instance refresh operation in progress, use the
-\code{\link[=autoscaling_cancel_instance_refresh]{cancel_instance_refresh}} API.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
-}
-\section{Request syntax}{
-\preformatted{svc$start_instance_refresh(
-  AutoScalingGroupName = "string",
-  Strategy = "Rolling",
-  Preferences = list(
-    MinHealthyPercentage = 123,
-    InstanceWarmup = 123
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example starts an instance refresh for the specified Auto Scaling
-# group.
-svc$start_instance_refresh(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  Preferences = list(
-    InstanceWarmup = 400L,
-    MinHealthyPercentage = 50L
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/start_instance_refresh.html} for full documentation.
 }
 \keyword{internal}

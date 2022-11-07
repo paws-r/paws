@@ -6,8 +6,11 @@
 Analytics application}
 \usage{
 kinesisanalyticsv2_add_application_input_processing_configuration(
-  ApplicationName, CurrentApplicationVersionId, InputId,
-  InputProcessingConfiguration)
+  ApplicationName,
+  CurrentApplicationVersionId,
+  InputId,
+  InputProcessingConfiguration
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to which you want to add the input
@@ -28,38 +31,9 @@ operation.}
 
 \item{InputProcessingConfiguration}{[required] The InputProcessingConfiguration to add to the application.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationARN = "string",
-  ApplicationVersionId = 123,
-  InputId = "string",
-  InputProcessingConfigurationDescription = list(
-    InputLambdaProcessorDescription = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    )
-  )
-)
-}
-}
 \description{
-Adds an InputProcessingConfiguration to a SQL-based Kinesis Data
-Analytics application. An input processor pre-processes records on the
-input stream before the application's SQL code executes. Currently, the
-only input processor available is \href{https://docs.aws.amazon.com/lambda/}{AWS Lambda}.
-}
-\section{Request syntax}{
-\preformatted{svc$add_application_input_processing_configuration(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  InputId = "string",
-  InputProcessingConfiguration = list(
-    InputLambdaProcessor = list(
-      ResourceARN = "string"
-    )
-  )
-)
-}
-}
+Adds an InputProcessingConfiguration to a SQL-based Kinesis Data Analytics application. An input processor pre-processes records on the input stream before the application's SQL code executes. Currently, the only input processor available is \href{https://docs.aws.amazon.com/lambda/}{Amazon Lambda}.
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_input_processing_configuration.html} for full documentation.
+}
 \keyword{internal}

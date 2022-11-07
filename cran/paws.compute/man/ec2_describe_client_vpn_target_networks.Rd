@@ -5,8 +5,14 @@
 \title{Describes the target networks associated with the specified Client VPN
 endpoint}
 \usage{
-ec2_describe_client_vpn_target_networks(ClientVpnEndpointId,
-  AssociationIds, MaxResults, NextToken, Filters, DryRun)
+ec2_describe_client_vpn_target_networks(
+  ClientVpnEndpointId,
+  AssociationIds = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -32,50 +38,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientVpnTargetNetworks = list(
-    list(
-      AssociationId = "string",
-      VpcId = "string",
-      TargetNetworkId = "string",
-      ClientVpnEndpointId = "string",
-      Status = list(
-        Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
-        Message = "string"
-      ),
-      SecurityGroups = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the target networks associated with the specified Client VPN
-endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_client_vpn_target_networks(
-  ClientVpnEndpointId = "string",
-  AssociationIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes the target networks associated with the specified Client VPN endpoint.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_client_vpn_target_networks.html} for full documentation.
+}
 \keyword{internal}

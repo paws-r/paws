@@ -9,39 +9,9 @@ workspaces_rebuild_workspaces(RebuildWorkspaceRequests)
 \arguments{
 \item{RebuildWorkspaceRequests}{[required] The WorkSpace to rebuild. You can specify a single WorkSpace.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedRequests = list(
-    list(
-      WorkspaceId = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Rebuilds the specified WorkSpace.
 
-You cannot rebuild a WorkSpace unless its state is \code{AVAILABLE}, \code{ERROR},
-\code{UNHEALTHY}, \code{STOPPED}, or \code{REBOOTING}.
-
-Rebuilding a WorkSpace is a potentially destructive action that can
-result in the loss of data. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/rebuild-workspace.html}{Rebuild a WorkSpace}.
-
-This operation is asynchronous and returns before the WorkSpaces have
-been completely rebuilt.
+See \url{https://paws-r.github.io/docs/workspaces/rebuild_workspaces.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$rebuild_workspaces(
-  RebuildWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{docdb_delete_db_cluster}
 \title{Deletes a previously provisioned cluster}
 \usage{
-docdb_delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot,
-  FinalDBSnapshotIdentifier)
+docdb_delete_db_cluster(
+  DBClusterIdentifier,
+  SkipFinalSnapshot = NULL,
+  FinalDBSnapshotIdentifier = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The cluster identifier for the cluster to be deleted. This parameter
@@ -39,81 +42,9 @@ Constraints:
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string"
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Deletes a previously provisioned cluster. When you delete a cluster, all
-automated backups for that cluster are deleted and can't be recovered.
-Manual DB cluster snapshots of the specified cluster are not deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_db_cluster(
-  DBClusterIdentifier = "string",
-  SkipFinalSnapshot = TRUE|FALSE,
-  FinalDBSnapshotIdentifier = "string"
-)
-}
-}
+Deletes a previously provisioned cluster. When you delete a cluster, all automated backups for that cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified cluster are not deleted.
 
+See \url{https://paws-r.github.io/docs/docdb/delete_db_cluster.html} for full documentation.
+}
 \keyword{internal}

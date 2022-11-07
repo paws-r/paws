@@ -4,7 +4,12 @@
 \alias{personalize_list_recipes}
 \title{Returns a list of available recipes}
 \usage{
-personalize_list_recipes(recipeProvider, nextToken, maxResults)
+personalize_list_recipes(
+  recipeProvider = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  domain = NULL
+)
 }
 \arguments{
 \item{recipeProvider}{The default is \code{SERVICE}.}
@@ -14,38 +19,14 @@ personalize_list_recipes(recipeProvider, nextToken, maxResults)
 recipes (if they exist).}
 
 \item{maxResults}{The maximum number of recipes to return.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  recipes = list(
-    list(
-      name = "string",
-      recipeArn = "string",
-      status = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
+
+\item{domain}{Filters returned recipes by domain for a Domain dataset group. Only
+recipes (Domain dataset group use cases) for this domain are included in
+the response. If you don't specify a domain, all recipes are returned.}
 }
 \description{
-Returns a list of available recipes. The response provides the
-properties for each recipe, including the recipe's Amazon Resource Name
-(ARN).
-}
-\section{Request syntax}{
-\preformatted{svc$list_recipes(
-  recipeProvider = "SERVICE",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns a list of available recipes. The response provides the properties for each recipe, including the recipe's Amazon Resource Name (ARN).
 
+See \url{https://paws-r.github.io/docs/personalize/list_recipes.html} for full documentation.
+}
 \keyword{internal}

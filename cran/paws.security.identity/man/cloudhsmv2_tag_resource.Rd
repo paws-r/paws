@@ -14,24 +14,9 @@ find the cluster ID, use
 
 \item{TagList}{[required] A list of one or more tags.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or overwrites one or more tags for the specified AWS CloudHSM
-cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceId = "string",
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds or overwrites one or more tags for the specified AWS CloudHSM cluster.
 
+See \url{https://paws-r.github.io/docs/cloudhsmv2/tag_resource.html} for full documentation.
+}
 \keyword{internal}

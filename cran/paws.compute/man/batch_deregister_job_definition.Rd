@@ -2,7 +2,7 @@
 % Please edit documentation in R/batch_operations.R
 \name{batch_deregister_job_definition}
 \alias{batch_deregister_job_definition}
-\title{Deregisters an AWS Batch job definition}
+\title{Deregisters an Batch job definition}
 \usage{
 batch_deregister_job_definition(jobDefinition)
 }
@@ -10,27 +10,9 @@ batch_deregister_job_definition(jobDefinition)
 \item{jobDefinition}{[required] The name and revision (\code{name:revision}) or full Amazon Resource Name
 (ARN) of the job definition to deregister.}
 }
-\value{
-An empty list.
-}
 \description{
-Deregisters an AWS Batch job definition. Job definitions are permanently
-deleted after 180 days.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_job_definition(
-  jobDefinition = "string"
-)
-}
-}
+Deregisters an Batch job definition. Job definitions are permanently deleted after 180 days.
 
-\examples{
-\dontrun{
-# This example deregisters a job definition called sleep10.
-svc$deregister_job_definition(
-  jobDefinition = "sleep10"
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/deregister_job_definition.html} for full documentation.
 }
 \keyword{internal}

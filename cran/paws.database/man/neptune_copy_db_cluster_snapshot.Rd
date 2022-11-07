@@ -4,15 +4,18 @@
 \alias{neptune_copy_db_cluster_snapshot}
 \title{Copies a snapshot of a DB cluster}
 \usage{
-neptune_copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
-  TargetDBClusterSnapshotIdentifier, KmsKeyId, PreSignedUrl, CopyTags,
-  Tags)
+neptune_copy_db_cluster_snapshot(
+  SourceDBClusterSnapshotIdentifier,
+  TargetDBClusterSnapshotIdentifier,
+  KmsKeyId = NULL,
+  PreSignedUrl = NULL,
+  CopyTags = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{SourceDBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot to copy. This parameter is not
 case-sensitive.
-
-You can't copy from one AWS Region to another.
 
 Constraints:
 \itemize{
@@ -34,22 +37,22 @@ Constraints:
 
 Example: \code{my-cluster-snapshot2}}
 
-\item{KmsKeyId}{The AWS AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key
-ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
-alias for the KMS encryption key.
+\item{KmsKeyId}{The Amazon Amazon KMS key ID for an encrypted DB cluster snapshot. The
+KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the
+KMS key alias for the KMS encryption key.
 
-If you copy an encrypted DB cluster snapshot from your AWS account, you
-can specify a value for \code{KmsKeyId} to encrypt the copy with a new KMS
-encryption key. If you don't specify a value for \code{KmsKeyId}, then the
-copy of the DB cluster snapshot is encrypted with the same KMS key as
-the source DB cluster snapshot.
+If you copy an encrypted DB cluster snapshot from your Amazon account,
+you can specify a value for \code{KmsKeyId} to encrypt the copy with a new
+KMS encryption key. If you don't specify a value for \code{KmsKeyId}, then
+the copy of the DB cluster snapshot is encrypted with the same KMS key
+as the source DB cluster snapshot.
 
 If you copy an encrypted DB cluster snapshot that is shared from another
-AWS account, then you must specify a value for \code{KmsKeyId}.
+Amazon account, then you must specify a value for \code{KmsKeyId}.
 
-KMS encryption keys are specific to the AWS Region that they are created
-in, and you can't use encryption keys from one AWS Region in another AWS
-Region.
+KMS encryption keys are specific to the Amazon Region that they are
+created in, and you can't use encryption keys from one Amazon Region in
+another Amazon Region.
 
 You cannot encrypt an unencrypted DB cluster snapshot when you copy it.
 If you try to copy an unencrypted DB cluster snapshot and specify a
@@ -62,61 +65,9 @@ DB cluster snapshot, and otherwise false. The default is false.}
 
 \item{Tags}{The tags to assign to the new DB cluster snapshot copy.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterSnapshot = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    DBClusterSnapshotIdentifier = "string",
-    DBClusterIdentifier = "string",
-    SnapshotCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Engine = "string",
-    AllocatedStorage = 123,
-    Status = "string",
-    Port = 123,
-    VpcId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    EngineVersion = "string",
-    LicenseModel = "string",
-    SnapshotType = "string",
-    PercentProgress = 123,
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DBClusterSnapshotArn = "string",
-    SourceDBClusterSnapshotArn = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-  )
-)
-}
-}
 \description{
 Copies a snapshot of a DB cluster.
 
-To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
-\code{SourceDBClusterSnapshotIdentifier} must be the Amazon Resource Name
-(ARN) of the shared DB cluster snapshot.
+See \url{https://paws-r.github.io/docs/neptune/copy_db_cluster_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$copy_db_cluster_snapshot(
-  SourceDBClusterSnapshotIdentifier = "string",
-  TargetDBClusterSnapshotIdentifier = "string",
-  KmsKeyId = "string",
-  PreSignedUrl = "string",
-  CopyTags = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -3,12 +3,18 @@
 \name{s3control_list_jobs}
 \alias{s3control_list_jobs}
 \title{Lists current S3 Batch Operations jobs and jobs that have ended within
-the last 30 days for the AWS account making the request}
+the last 30 days for the Amazon Web Services account making the request}
 \usage{
-s3control_list_jobs(AccountId, JobStatuses, NextToken, MaxResults)
+s3control_list_jobs(
+  AccountId,
+  JobStatuses = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{AccountId}{[required]}
+\item{AccountId}{[required] The Amazon Web Services account ID associated with the S3 Batch
+Operations job.}
 
 \item{JobStatuses}{The \verb{List Jobs} request returns jobs that match the statuses listed in
 this element.}
@@ -22,56 +28,9 @@ that Amazon S3 returned in the \code{NextToken} element of the
 response will include a pagination token in the \code{NextToken} field to
 enable you to retrieve the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Jobs = list(
-    list(
-      JobId = "string",
-      Description = "string",
-      Operation = "LambdaInvoke"|"S3PutObjectCopy"|"S3PutObjectAcl"|"S3PutObjectTagging"|"S3InitiateRestoreObject"|"S3PutObjectLegalHold"|"S3PutObjectRetention",
-      Priority = 123,
-      Status = "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TerminationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ProgressSummary = list(
-        TotalNumberOfTasks = 123,
-        NumberOfTasksSucceeded = 123,
-        NumberOfTasksFailed = 123
-      )
-    )
-  )
-)
-}
-}
 \description{
-Lists current S3 Batch Operations jobs and jobs that have ended within
-the last 30 days for the AWS account making the request. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{S3 Batch Operations} in
-the \emph{Amazon Simple Storage Service Developer Guide}.
+Lists current S3 Batch Operations jobs and jobs that have ended within the last 30 days for the Amazon Web Services account making the request. For more information, see S3 Batch Operations in the \emph{Amazon S3 User Guide}.
 
-Related actions include:
-\itemize{
-\item \code{\link[=s3control_create_job]{create_job}}
-\item \code{\link[=s3control_describe_job]{describe_job}}
-\item \code{\link[=s3control_update_job_priority]{update_job_priority}}
-\item \code{\link[=s3control_update_job_status]{update_job_status}}
+See \url{https://paws-r.github.io/docs/s3control/list_jobs.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$list_jobs(
-  AccountId = "string",
-  JobStatuses = list(
-    "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

@@ -9,47 +9,9 @@ storagegateway_describe_upload_buffer(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  DiskIds = list(
-    "string"
-  ),
-  UploadBufferUsedInBytes = 123,
-  UploadBufferAllocatedInBytes = 123
-)
-}
-}
 \description{
-Returns information about the upload buffer of a gateway. This operation
-is supported for the stored volume, cached volume, and tape gateway
-types.
+Returns information about the upload buffer of a gateway. This operation is supported for the stored volume, cached volume, and tape gateway types.
 
-The response includes disk IDs that are configured as upload buffer
-space, and it includes the amount of upload buffer space allocated and
-used.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_upload_buffer(
-  GatewayARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Returns information about the upload buffer of a gateway including disk
-# IDs and the amount of upload buffer space allocated/used.
-svc$describe_upload_buffer(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-
-# Returns information about the upload buffer of a gateway including disk
-# IDs and the amount of upload buffer space allocated and used.
-svc$describe_upload_buffer(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/describe_upload_buffer.html} for full documentation.
 }
 \keyword{internal}

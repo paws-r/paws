@@ -4,8 +4,13 @@
 \alias{backup_start_restore_job}
 \title{Recovers the saved resource identified by an Amazon Resource Name (ARN)}
 \usage{
-backup_start_restore_job(RecoveryPointArn, Metadata, IamRoleArn,
-  IdempotencyToken, ResourceType)
+backup_start_restore_job(
+  RecoveryPointArn,
+  Metadata,
+  IamRoleArn = NULL,
+  IdempotencyToken = NULL,
+  ResourceType = NULL
+)
 }
 \arguments{
 \item{RecoveryPointArn}{[required] An ARN that uniquely identifies a recovery point; for example,
@@ -26,64 +31,56 @@ You need to specify specific metadata to restore an Amazon Elastic File
 System (Amazon EFS) instance:
 \itemize{
 \item \code{file-system-id}: The ID of the Amazon EFS file system that is
-backed up by AWS Backup. Returned in
+backed up by Backup. Returned in
 \code{\link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata}}.
 \item \code{Encrypted}: A Boolean value that, if true, specifies that the file
 system is encrypted. If \code{KmsKeyId} is specified, \code{Encrypted} must be
 set to \code{true}.
-\item \code{KmsKeyId}: Specifies the AWS KMS key that is used to encrypt the
-restored file system. You can specify a key from another AWS account
-provided that key it is properly shared with your account via AWS
-KMS.
+\item \code{KmsKeyId}: Specifies the Amazon Web Services KMS key that is used
+to encrypt the restored file system. You can specify a key from
+another Amazon Web Services account provided that key it is properly
+shared with your account via Amazon Web Services KMS.
 \item \code{PerformanceMode}: Specifies the throughput mode of the file system.
 \item \code{CreationToken}: A user-supplied value that ensures the uniqueness
 (idempotency) of the request.
 \item \code{newFileSystem}: A Boolean value that, if true, specifies that the
 recovery point is restored to a new Amazon EFS file system.
-\item \code{ItemsToRestore }: A serialized list of up to five strings where
-each string is a file path. Use \code{ItemsToRestore} to restore specific
-files or directories rather than the entire file system. This
-parameter is optional.
+\item \code{ItemsToRestore}: An array of one to five strings where each string
+is a file path. Use \code{ItemsToRestore} to restore specific files or
+directories rather than the entire file system. This parameter is
+optional. For example, \verb{"itemsToRestore":"[\\"/my.test\\"]"}.
 }}
 
-\item{IamRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that AWS Backup uses to
+\item{IamRoleArn}{The Amazon Resource Name (ARN) of the IAM role that Backup uses to
 create the target recovery point; for example,
 \verb{arn:aws:iam::123456789012:role/S3Access}.}
 
-\item{IdempotencyToken}{A customer chosen string that can be used to distinguish between calls
-to \code{\link[=backup_start_restore_job]{start_restore_job}}.}
+\item{IdempotencyToken}{A customer-chosen string that you can use to distinguish between
+otherwise identical calls to
+\code{\link[=backup_start_restore_job]{start_restore_job}}. Retrying a successful
+request with the same idempotency token results in a success message
+with no action taken.}
 
 \item{ResourceType}{Starts a job to restore a recovery point for one of the following
 resources:
 \itemize{
+\item \code{Aurora} for Amazon Aurora
+\item \code{DocumentDB} for Amazon DocumentDB (with MongoDB compatibility)
 \item \code{DynamoDB} for Amazon DynamoDB
 \item \code{EBS} for Amazon Elastic Block Store
 \item \code{EC2} for Amazon Elastic Compute Cloud
 \item \code{EFS} for Amazon Elastic File System
+\item \code{FSx} for Amazon FSx
+\item \code{Neptune} for Amazon Neptune
 \item \code{RDS} for Amazon Relational Database Service
-\item \verb{Storage Gateway} for AWS Storage Gateway
+\item \verb{Storage Gateway} for Storage Gateway
+\item \code{S3} for Amazon S3
+\item \code{VirtualMachine} for virtual machines
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  RestoreJobId = "string"
-)
-}
 }
 \description{
 Recovers the saved resource identified by an Amazon Resource Name (ARN).
-}
-\section{Request syntax}{
-\preformatted{svc$start_restore_job(
-  RecoveryPointArn = "string",
-  Metadata = list(
-    "string"
-  ),
-  IamRoleArn = "string",
-  IdempotencyToken = "string",
-  ResourceType = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/start_restore_job.html} for full documentation.
+}
 \keyword{internal}

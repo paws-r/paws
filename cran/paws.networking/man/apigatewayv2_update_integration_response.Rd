@@ -4,16 +4,23 @@
 \alias{apigatewayv2_update_integration_response}
 \title{Updates an IntegrationResponses}
 \usage{
-apigatewayv2_update_integration_response(ApiId, ContentHandlingStrategy,
-  IntegrationId, IntegrationResponseId, IntegrationResponseKey,
-  ResponseParameters, ResponseTemplates, TemplateSelectionExpression)
+apigatewayv2_update_integration_response(
+  ApiId,
+  ContentHandlingStrategy = NULL,
+  IntegrationId,
+  IntegrationResponseId,
+  IntegrationResponseKey = NULL,
+  ResponseParameters = NULL,
+  ResponseTemplates = NULL,
+  TemplateSelectionExpression = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 
 \item{ContentHandlingStrategy}{Supported only for WebSocket APIs. Specifies how to handle response
-payload content type conversions. Supported values are
-CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
+payload content type conversions. Supported values are CONVERT_TO_BINARY
+and CONVERT_TO_TEXT, with the following behaviors:
 
 CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 string to the corresponding binary blob.
@@ -51,40 +58,9 @@ template as the value.}
 \item{TemplateSelectionExpression}{The template selection expression for the integration response.
 Supported only for WebSocket APIs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  IntegrationResponseId = "string",
-  IntegrationResponseKey = "string",
-  ResponseParameters = list(
-    "string"
-  ),
-  ResponseTemplates = list(
-    "string"
-  ),
-  TemplateSelectionExpression = "string"
-)
-}
-}
 \description{
 Updates an IntegrationResponses.
-}
-\section{Request syntax}{
-\preformatted{svc$update_integration_response(
-  ApiId = "string",
-  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  IntegrationId = "string",
-  IntegrationResponseId = "string",
-  IntegrationResponseKey = "string",
-  ResponseParameters = list(
-    "string"
-  ),
-  ResponseTemplates = list(
-    "string"
-  ),
-  TemplateSelectionExpression = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_integration_response.html} for full documentation.
+}
 \keyword{internal}

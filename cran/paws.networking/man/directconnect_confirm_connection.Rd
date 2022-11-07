@@ -10,25 +10,9 @@ directconnect_confirm_connection(connectionId)
 \arguments{
 \item{connectionId}{[required] The ID of the hosted connection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
-)
-}
-}
 \description{
-Confirms the creation of the specified hosted connection on an
-interconnect.
+Confirms the creation of the specified hosted connection on an interconnect.
 
-Upon creation, the hosted connection is initially in the \code{Ordering}
-state, and remains in this state until the owner confirms creation of
-the hosted connection.
+See \url{https://paws-r.github.io/docs/directconnect/confirm_connection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$confirm_connection(
-  connectionId = "string"
-)
-}
-}
-
 \keyword{internal}

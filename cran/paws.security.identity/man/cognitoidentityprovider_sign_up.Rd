@@ -5,9 +5,17 @@
 \title{Registers the user in the specified user pool and creates a user name,
 password, and user attributes}
 \usage{
-cognitoidentityprovider_sign_up(ClientId, SecretHash, Username,
-  Password, UserAttributes, ValidationData, AnalyticsMetadata,
-  UserContextData, ClientMetadata)
+cognitoidentityprovider_sign_up(
+  ClientId,
+  SecretHash = NULL,
+  Username,
+  Password,
+  UserAttributes = NULL,
+  ValidationData = NULL,
+  AnalyticsMetadata = NULL,
+  UserContextData = NULL,
+  ClientMetadata = NULL
+)
 }
 \arguments{
 \item{ClientId}{[required] The ID of the client associated with the user pool.}
@@ -16,9 +24,9 @@ cognitoidentityprovider_sign_up(ClientId, SecretHash, Username,
 secret key of a user pool client and username plus the client ID in the
 message.}
 
-\item{Username}{[required] The user name of the user you wish to register.}
+\item{Username}{[required] The user name of the user you want to register.}
 
-\item{Password}{[required] The password of the user you wish to register.}
+\item{Password}{[required] The password of the user you want to register.}
 
 \item{UserAttributes}{An array of name-value pairs representing user attributes.
 
@@ -27,88 +35,46 @@ attribute name.}
 
 \item{ValidationData}{The validation data in the request to register a user.}
 
-\item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{\link[=cognitoidentityprovider_sign_up]{sign_up}} calls.}
+\item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata that contributes to your metrics
+for \code{\link[=cognitoidentityprovider_sign_up]{sign_up}} calls.}
 
-\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
-location used for evaluating the risk of an unexpected event by Amazon
-Cognito advanced security.}
+\item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
+IP address, or location. Amazon Cognito advanced security evaluates the
+risk of an authentication event based on the context that your app
+generates and passes to Amazon Cognito when it makes API requests.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
 
-You create custom workflows by assigning AWS Lambda functions to user
-pool triggers. When you use the SignUp API action, Amazon Cognito
-invokes any functions that are assigned to the following triggers: \emph{pre
-sign-up}, \emph{custom message}, and \emph{post confirmation}. When Amazon Cognito
-invokes any of these functions, it passes a JSON payload, which the
-function receives as input. This payload contains a \code{clientMetadata}
-attribute, which provides the data that you assigned to the
-ClientMetadata parameter in your SignUp request. In your function code
-in AWS Lambda, you can process the \code{clientMetadata} value to enhance
-your workflow for your specific needs.
+You create custom workflows by assigning Lambda functions to user pool
+triggers. When you use the SignUp API action, Amazon Cognito invokes any
+functions that are assigned to the following triggers: \emph{pre sign-up},
+\emph{custom message}, and \emph{post confirmation}. When Amazon Cognito invokes
+any of these functions, it passes a JSON payload, which the function
+receives as input. This payload contains a \code{clientMetadata} attribute,
+which provides the data that you assigned to the ClientMetadata
+parameter in your SignUp request. In your function code in Lambda, you
+can process the \code{clientMetadata} value to enhance your workflow for your
+specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-Take the following limitations into consideration when you use the
-ClientMetadata parameter:
+When you use the ClientMetadata parameter, remember that Amazon Cognito
+won't do the following:
 \itemize{
-\item Amazon Cognito does not store the ClientMetadata value. This data is
-available only to AWS Lambda triggers that are assigned to a user
-pool to support custom workflows. If your user pool configuration
-does not include triggers, the ClientMetadata parameter serves no
-purpose.
-\item Amazon Cognito does not validate the ClientMetadata value.
-\item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don't use it to provide sensitive information.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
+\item Validate the ClientMetadata value.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserConfirmed = TRUE|FALSE,
-  CodeDeliveryDetails = list(
-    Destination = "string",
-    DeliveryMedium = "SMS"|"EMAIL",
-    AttributeName = "string"
-  ),
-  UserSub = "string"
-)
-}
-}
 \description{
-Registers the user in the specified user pool and creates a user name,
-password, and user attributes.
-}
-\section{Request syntax}{
-\preformatted{svc$sign_up(
-  ClientId = "string",
-  SecretHash = "string",
-  Username = "string",
-  Password = "string",
-  UserAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ValidationData = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  ),
-  UserContextData = list(
-    EncodedData = "string"
-  ),
-  ClientMetadata = list(
-    "string"
-  )
-)
-}
-}
+Registers the user in the specified user pool and creates a user name, password, and user attributes.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/sign_up.html} for full documentation.
+}
 \keyword{internal}

@@ -2,41 +2,25 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_update_ops_metadata}
 \alias{ssm_update_ops_metadata}
-\title{Systems Manager calls this API action when you edit OpsMetadata in
-Application Manager}
+\title{Amazon Web Services Systems Manager calls this API operation when you
+edit OpsMetadata in Application Manager}
 \usage{
-ssm_update_ops_metadata(OpsMetadataArn, MetadataToUpdate, KeysToDelete)
+ssm_update_ops_metadata(
+  OpsMetadataArn,
+  MetadataToUpdate = NULL,
+  KeysToDelete = NULL
+)
 }
 \arguments{
-\item{OpsMetadataArn}{[required] The Amazon Resoure Name (ARN) of the OpsMetadata Object to update.}
+\item{OpsMetadataArn}{[required] The Amazon Resource Name (ARN) of the OpsMetadata Object to update.}
 
 \item{MetadataToUpdate}{Metadata to add to an OpsMetadata object.}
 
 \item{KeysToDelete}{The metadata keys to delete from the OpsMetadata object.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OpsMetadataArn = "string"
-)
-}
-}
 \description{
-Systems Manager calls this API action when you edit OpsMetadata in
-Application Manager.
-}
-\section{Request syntax}{
-\preformatted{svc$update_ops_metadata(
-  OpsMetadataArn = "string",
-  MetadataToUpdate = list(
-    list(
-      Value = "string"
-    )
-  ),
-  KeysToDelete = list(
-    "string"
-  )
-)
-}
-}
+Amazon Web Services Systems Manager calls this API operation when you edit OpsMetadata in Application Manager.
 
+See \url{https://paws-r.github.io/docs/ssm/update_ops_metadata.html} for full documentation.
+}
 \keyword{internal}

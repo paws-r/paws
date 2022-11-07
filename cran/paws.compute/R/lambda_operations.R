@@ -3,24 +3,13 @@
 #' @include lambda_service.R
 NULL
 
-#' Adds permissions to the resource-based policy of a version of an AWS
-#' Lambda layer
+#' Adds permissions to the resource-based policy of a version of an Lambda
+#' layer
 #'
 #' @description
-#' Adds permissions to the resource-based policy of a version of an [AWS
-#' Lambda
-#' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
-#' Use this action to grant layer usage permission to other accounts. You
-#' can grant permission to a single account, all AWS accounts, or all
-#' accounts in an organization.
-#' 
-#' To revoke permission, call
-#' [`remove_layer_version_permission`][lambda_remove_layer_version_permission]
-#' with the statement ID that you specified when you added it.
+#' Adds permissions to the resource-based policy of a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all accounts in an organization, or all Amazon Web Services accounts.
 #'
-#' @usage
-#' lambda_add_layer_version_permission(LayerName, VersionNumber,
-#'   StatementId, Action, Principal, OrganizationId, RevisionId)
+#' See [https://paws-r.github.io/docs/lambda/add_layer_version_permission.html](https://paws-r.github.io/docs/lambda/add_layer_version_permission.html) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
@@ -28,47 +17,16 @@ NULL
 #' layer version.
 #' @param Action &#91;required&#93; The API action that grants access to the layer. For example,
 #' `lambda:GetLayerVersion`.
-#' @param Principal &#91;required&#93; An account ID, or `*` to grant permission to all AWS accounts.
+#' @param Principal &#91;required&#93; An account ID, or `*` to grant layer usage permission to all accounts in
+#' an organization, or all Amazon Web Services accounts (if
+#' `organizationId` is not specified). For the last case, make sure that
+#' you really do want all Amazon Web Services accounts to have usage
+#' permission to this layer.
 #' @param OrganizationId With the principal set to `*`, grant permission to all accounts in the
 #' specified organization.
 #' @param RevisionId Only update the policy if the revision ID matches the ID specified. Use
 #' this option to avoid modifying a policy that has changed since you last
 #' read it.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Statement = "string",
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_layer_version_permission(
-#'   LayerName = "string",
-#'   VersionNumber = 123,
-#'   StatementId = "string",
-#'   Action = "string",
-#'   Principal = "string",
-#'   OrganizationId = "string",
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example grants permission for the account 223456789012 to
-#' # use version 1 of a layer named my-layer.
-#' svc$add_layer_version_permission(
-#'   Action = "lambda:GetLayerVersion",
-#'   LayerName = "my-layer",
-#'   Principal = "223456789012",
-#'   StatementId = "xaccount",
-#'   VersionNumber = 1L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -90,32 +48,13 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 }
 .lambda$operations$add_layer_version_permission <- lambda_add_layer_version_permission
 
-#' Grants an AWS service or another account permission to use a function
+#' Grants an Amazon Web Services service, account, or organization
+#' permission to use a function
 #'
 #' @description
-#' Grants an AWS service or another account permission to use a function.
-#' You can apply the policy at the function level, or specify a qualifier
-#' to restrict access to a single version or alias. If you use a qualifier,
-#' the invoker must use the full Amazon Resource Name (ARN) of that version
-#' or alias to invoke the function.
-#' 
-#' To grant permission to another account, specify the account ID as the
-#' `Principal`. For AWS services, the principal is a domain-style
-#' identifier defined by the service, like `s3.amazonaws.com` or
-#' `sns.amazonaws.com`. For AWS services, you can also specify the ARN of
-#' the associated resource as the `SourceArn`. If you grant permission to a
-#' service principal without specifying the source, other accounts could
-#' potentially configure resources in their account to invoke your Lambda
-#' function.
-#' 
-#' This action adds a statement to a resource-based permissions policy for
-#' the function. For more information about function policies, see [Lambda
-#' Function
-#' Policies](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html).
+#' Grants an Amazon Web Services service, account, or organization permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
 #'
-#' @usage
-#' lambda_add_permission(FunctionName, StatementId, Action, Principal,
-#'   SourceArn, SourceAccount, EventSourceToken, Qualifier, RevisionId)
+#' See [https://paws-r.github.io/docs/lambda/add_permission.html](https://paws-r.github.io/docs/lambda/add_permission.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -136,11 +75,15 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' the same policy.
 #' @param Action &#91;required&#93; The action that the principal can use on the function. For example,
 #' `lambda:InvokeFunction` or `lambda:GetFunction`.
-#' @param Principal &#91;required&#93; The AWS service or account that invokes the function. If you specify a
-#' service, use `SourceArn` or `SourceAccount` to limit who can invoke the
-#' function through that service.
-#' @param SourceArn For AWS services, the ARN of the AWS resource that invokes the function.
-#' For example, an Amazon S3 bucket or Amazon SNS topic.
+#' @param Principal &#91;required&#93; The Amazon Web Services service or account that invokes the function. If
+#' you specify a service, use `SourceArn` or `SourceAccount` to limit who
+#' can invoke the function through that service.
+#' @param SourceArn For Amazon Web Services services, the ARN of the Amazon Web Services
+#' resource that invokes the function. For example, an Amazon S3 bucket or
+#' Amazon SNS topic.
+#' 
+#' Note that Lambda configures the comparison using the `StringLike`
+#' operator.
 #' @param SourceAccount For Amazon S3, the ID of the account that owns the resource. Use this
 #' together with `SourceArn` to ensure that the resource is owned by the
 #' specified account. It is possible for an Amazon S3 bucket to be deleted
@@ -152,65 +95,27 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @param RevisionId Only update the policy if the revision ID matches the ID that's
 #' specified. Use this option to avoid modifying a policy that has changed
 #' since you last read it.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Statement = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_permission(
-#'   FunctionName = "string",
-#'   StatementId = "string",
-#'   Action = "string",
-#'   Principal = "string",
-#'   SourceArn = "string",
-#'   SourceAccount = "string",
-#'   EventSourceToken = "string",
-#'   Qualifier = "string",
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example adds permission for Amazon S3 to invoke a Lambda
-#' # function named my-function for notifications from a bucket named
-#' # my-bucket-1xpuxmplzrlbh in account 123456789012.
-#' svc$add_permission(
-#'   Action = "lambda:InvokeFunction",
-#'   FunctionName = "my-function",
-#'   Principal = "s3.amazonaws.com",
-#'   SourceAccount = "123456789012",
-#'   SourceArn = "arn:aws:s3:::my-bucket-1xpuxmplzrlbh/*",
-#'   StatementId = "s3"
-#' )
-#' 
-#' # The following example adds permission for account 223456789012 invoke a
-#' # Lambda function named my-function.
-#' svc$add_permission(
-#'   Action = "lambda:InvokeFunction",
-#'   FunctionName = "my-function",
-#'   Principal = "223456789012",
-#'   StatementId = "xaccount"
-#' )
-#' }
+#' @param PrincipalOrgID The identifier for your organization in Organizations. Use this to grant
+#' permissions to all the Amazon Web Services accounts under this
+#' organization.
+#' @param FunctionUrlAuthType The type of authentication that your function URL uses. Set to `AWS_IAM`
+#' if you want to restrict access to authenticated `IAM` users only. Set to
+#' `NONE` if you want to bypass IAM authentication to create a public
+#' endpoint. For more information, see [Security and auth model for Lambda
+#' function
+#' URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_add_permission
-lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, SourceArn = NULL, SourceAccount = NULL, EventSourceToken = NULL, Qualifier = NULL, RevisionId = NULL) {
+lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, SourceArn = NULL, SourceAccount = NULL, EventSourceToken = NULL, Qualifier = NULL, RevisionId = NULL, PrincipalOrgID = NULL, FunctionUrlAuthType = NULL) {
   op <- new_operation(
     name = "AddPermission",
     http_method = "POST",
     http_path = "/2015-03-31/functions/{FunctionName}/policy",
     paginator = list()
   )
-  input <- .lambda$add_permission_input(FunctionName = FunctionName, StatementId = StatementId, Action = Action, Principal = Principal, SourceArn = SourceArn, SourceAccount = SourceAccount, EventSourceToken = EventSourceToken, Qualifier = Qualifier, RevisionId = RevisionId)
+  input <- .lambda$add_permission_input(FunctionName = FunctionName, StatementId = StatementId, Action = Action, Principal = Principal, SourceArn = SourceArn, SourceAccount = SourceAccount, EventSourceToken = EventSourceToken, Qualifier = Qualifier, RevisionId = RevisionId, PrincipalOrgID = PrincipalOrgID, FunctionUrlAuthType = FunctionUrlAuthType)
   output <- .lambda$add_permission_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -223,18 +128,9 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 #' Creates an alias for a Lambda function version
 #'
 #' @description
-#' Creates an
-#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html)
-#' for a Lambda function version. Use aliases to provide clients with a
-#' function identifier that you can update to invoke a different version.
-#' 
-#' You can also map an alias to split invocation requests between two
-#' versions. Use the `RoutingConfig` parameter to specify a second version
-#' and the percentage of invocation requests that it receives.
+#' Creates an [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html) for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
 #'
-#' @usage
-#' lambda_create_alias(FunctionName, Name, FunctionVersion, Description,
-#'   RoutingConfig)
+#' See [https://paws-r.github.io/docs/lambda/create_alias.html](https://paws-r.github.io/docs/lambda/create_alias.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -255,50 +151,6 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 #' @param RoutingConfig The [routing
 #' configuration](https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing)
 #' of the alias.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AliasArn = "string",
-#'   Name = "string",
-#'   FunctionVersion = "string",
-#'   Description = "string",
-#'   RoutingConfig = list(
-#'     AdditionalVersionWeights = list(
-#'       123.0
-#'     )
-#'   ),
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_alias(
-#'   FunctionName = "string",
-#'   Name = "string",
-#'   FunctionVersion = "string",
-#'   Description = "string",
-#'   RoutingConfig = list(
-#'     AdditionalVersionWeights = list(
-#'       123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates an alias named LIVE that points to version
-#' # 1 of the my-function Lambda function.
-#' svc$create_alias(
-#'   Description = "alias for live version of function",
-#'   FunctionName = "my-function",
-#'   FunctionVersion = "1",
-#'   Name = "LIVE"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -323,55 +175,14 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' Creates a code signing configuration
 #'
 #' @description
-#' Creates a code signing configuration. A [code signing
-#' configuration](https://docs.aws.amazon.com/lambda/latest/dg/) defines a
-#' list of allowed signing profiles and defines the code-signing validation
-#' policy (action to be taken if deployment validation checks fail).
+#' Creates a code signing configuration. A [code signing configuration](https://docs.aws.amazon.com/lambda/latest/dg/) defines a list of allowed signing profiles and defines the code-signing validation policy (action to be taken if deployment validation checks fail).
 #'
-#' @usage
-#' lambda_create_code_signing_config(Description, AllowedPublishers,
-#'   CodeSigningPolicies)
+#' See [https://paws-r.github.io/docs/lambda/create_code_signing_config.html](https://paws-r.github.io/docs/lambda/create_code_signing_config.html) for full documentation.
 #'
 #' @param Description Descriptive name for this code signing configuration.
 #' @param AllowedPublishers &#91;required&#93; Signing profiles for this code signing configuration.
 #' @param CodeSigningPolicies The code signing policies define the actions to take if the validation
 #' checks fail.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CodeSigningConfig = list(
-#'     CodeSigningConfigId = "string",
-#'     CodeSigningConfigArn = "string",
-#'     Description = "string",
-#'     AllowedPublishers = list(
-#'       SigningProfileVersionArns = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CodeSigningPolicies = list(
-#'       UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-#'     ),
-#'     LastModified = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_code_signing_config(
-#'   Description = "string",
-#'   AllowedPublishers = list(
-#'     SigningProfileVersionArns = list(
-#'       "string"
-#'     )
-#'   ),
-#'   CodeSigningPolicies = list(
-#'     UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -393,60 +204,12 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 }
 .lambda$operations$create_code_signing_config <- lambda_create_code_signing_config
 
-#' Creates a mapping between an event source and an AWS Lambda function
+#' Creates a mapping between an event source and an Lambda function
 #'
 #' @description
-#' Creates a mapping between an event source and an AWS Lambda function.
-#' Lambda reads items from the event source and triggers the function.
-#' 
-#' For details about each event source type, see the following topics.
-#' 
-#' -   [Using AWS Lambda with Amazon
-#'     DynamoDB](https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
-#' 
-#' -   [Using AWS Lambda with Amazon
-#'     Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html)
-#' 
-#' -   [Using AWS Lambda with Amazon
-#'     SQS](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
-#' 
-#' -   [Using AWS Lambda with Amazon
-#'     MQ](https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html)
-#' 
-#' -   [Using AWS Lambda with Amazon
-#'     MSK](https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html)
-#' 
-#' -   [Using AWS Lambda with Self-Managed Apache
-#'     Kafka](https://docs.aws.amazon.com/lambda/latest/dg/with-kafka.html)
-#' 
-#' The following error handling options are only available for stream
-#' sources (DynamoDB and Kinesis):
-#' 
-#' -   `BisectBatchOnFunctionError` - If the function returns an error,
-#'     split the batch in two and retry.
-#' 
-#' -   `DestinationConfig` - Send discarded records to an Amazon SQS queue
-#'     or Amazon SNS topic.
-#' 
-#' -   `MaximumRecordAgeInSeconds` - Discard records older than the
-#'     specified age. The default value is infinite (-1). When set to
-#'     infinite (-1), failed records are retried until the record expires
-#' 
-#' -   `MaximumRetryAttempts` - Discard records after the specified number
-#'     of retries. The default value is infinite (-1). When set to infinite
-#'     (-1), failed records are retried until the record expires.
-#' 
-#' -   `ParallelizationFactor` - Process multiple batches from each shard
-#'     concurrently.
+#' Creates a mapping between an event source and an Lambda function. Lambda reads items from the event source and triggers the function.
 #'
-#' @usage
-#' lambda_create_event_source_mapping(EventSourceArn, FunctionName,
-#'   Enabled, BatchSize, MaximumBatchingWindowInSeconds,
-#'   ParallelizationFactor, StartingPosition, StartingPositionTimestamp,
-#'   DestinationConfig, MaximumRecordAgeInSeconds,
-#'   BisectBatchOnFunctionError, MaximumRetryAttempts,
-#'   TumblingWindowInSeconds, Topics, Queues, SourceAccessConfigurations,
-#'   SelfManagedEventSource, FunctionResponseTypes)
+#' See [https://paws-r.github.io/docs/lambda/create_event_source_mapping.html](https://paws-r.github.io/docs/lambda/create_event_source_mapping.html) for full documentation.
 #'
 #' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
 #' 
@@ -475,13 +238,18 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it's limited to 64 characters in length.
-#' @param Enabled If true, the event source mapping is active. Set to false to pause
+#' @param Enabled When true, the event source mapping is active. When false, Lambda pauses
 #' polling and invocation.
-#' @param BatchSize The maximum number of items to retrieve in a single batch.
+#' 
+#' Default: True
+#' @param BatchSize The maximum number of records in each batch that Lambda pulls from your
+#' stream or queue and sends to your function. Lambda passes all of the
+#' records in the batch to the function in a single call, up to the payload
+#' limit for synchronous invocation (6 MB).
 #' 
 #' -   **Amazon Kinesis** - Default 100. Max 10,000.
 #' 
-#' -   **Amazon DynamoDB Streams** - Default 100. Max 1,000.
+#' -   **Amazon DynamoDB Streams** - Default 100. Max 10,000.
 #' 
 #' -   **Amazon Simple Queue Service** - Default 10. For standard queues
 #'     the max is 10,000. For FIFO queues the max is 10.
@@ -490,162 +258,57 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'     10,000.
 #' 
 #' -   **Self-Managed Apache Kafka** - Default 100. Max 10,000.
-#' @param MaximumBatchingWindowInSeconds (Streams and SQS standard queues) The maximum amount of time to gather
-#' records before invoking the function, in seconds.
-#' @param ParallelizationFactor (Streams) The number of batches to process from each shard concurrently.
+#' 
+#' -   **Amazon MQ (ActiveMQ and RabbitMQ)** - Default 100. Max 10,000.
+#' @param FilterCriteria (Streams and Amazon SQS) An object that defines the filter criteria that
+#' determine whether Lambda should process an event. For more information,
+#' see [Lambda event
+#' filtering](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html).
+#' @param MaximumBatchingWindowInSeconds (Streams and Amazon SQS standard queues) The maximum amount of time, in
+#' seconds, that Lambda spends gathering records before invoking the
+#' function.
+#' 
+#' Default: 0
+#' 
+#' Related setting: When you set `BatchSize` to a value greater than 10,
+#' you must set `MaximumBatchingWindowInSeconds` to at least 1.
+#' @param ParallelizationFactor (Streams only) The number of batches to process from each shard
+#' concurrently.
 #' @param StartingPosition The position in a stream from which to start reading. Required for
 #' Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources.
 #' `AT_TIMESTAMP` is only supported for Amazon Kinesis streams.
 #' @param StartingPositionTimestamp With `StartingPosition` set to `AT_TIMESTAMP`, the time from which to
 #' start reading.
-#' @param DestinationConfig (Streams) An Amazon SQS queue or Amazon SNS topic destination for
+#' @param DestinationConfig (Streams only) An Amazon SQS queue or Amazon SNS topic destination for
 #' discarded records.
-#' @param MaximumRecordAgeInSeconds (Streams) Discard records older than the specified age. The default
+#' @param MaximumRecordAgeInSeconds (Streams only) Discard records older than the specified age. The default
 #' value is infinite (-1).
-#' @param BisectBatchOnFunctionError (Streams) If the function returns an error, split the batch in two and
-#' retry.
-#' @param MaximumRetryAttempts (Streams) Discard records after the specified number of retries. The
-#' default value is infinite (-1). When set to infinite (-1), failed
+#' @param BisectBatchOnFunctionError (Streams only) If the function returns an error, split the batch in two
+#' and retry.
+#' @param MaximumRetryAttempts (Streams only) Discard records after the specified number of retries.
+#' The default value is infinite (-1). When set to infinite (-1), failed
 #' records will be retried until the record expires.
-#' @param TumblingWindowInSeconds (Streams) The duration of a processing window in seconds. The range is
-#' between 1 second up to 15 minutes.
+#' @param TumblingWindowInSeconds (Streams only) The duration in seconds of a processing window. The range
+#' is between 1 second up to 900 seconds.
 #' @param Topics The name of the Kafka topic.
 #' @param Queues (MQ) The name of the Amazon MQ broker destination queue to consume.
-#' @param SourceAccessConfigurations An array of the authentication protocol, or the VPC components to secure
-#' your event source.
+#' @param SourceAccessConfigurations An array of authentication protocols or VPC components required to
+#' secure your event source.
 #' @param SelfManagedEventSource The Self-Managed Apache Kafka cluster to send records.
-#' @param FunctionResponseTypes (Streams) A list of current response type enums applied to the event
-#' source mapping.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UUID = "string",
-#'   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-#'   StartingPositionTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   BatchSize = 123,
-#'   MaximumBatchingWindowInSeconds = 123,
-#'   ParallelizationFactor = 123,
-#'   EventSourceArn = "string",
-#'   FunctionArn = "string",
-#'   LastModified = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastProcessingResult = "string",
-#'   State = "string",
-#'   StateTransitionReason = "string",
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   ),
-#'   Topics = list(
-#'     "string"
-#'   ),
-#'   Queues = list(
-#'     "string"
-#'   ),
-#'   SourceAccessConfigurations = list(
-#'     list(
-#'       Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-#'       URI = "string"
-#'     )
-#'   ),
-#'   SelfManagedEventSource = list(
-#'     Endpoints = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaximumRecordAgeInSeconds = 123,
-#'   BisectBatchOnFunctionError = TRUE|FALSE,
-#'   MaximumRetryAttempts = 123,
-#'   TumblingWindowInSeconds = 123,
-#'   FunctionResponseTypes = list(
-#'     "ReportBatchItemFailures"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_event_source_mapping(
-#'   EventSourceArn = "string",
-#'   FunctionName = "string",
-#'   Enabled = TRUE|FALSE,
-#'   BatchSize = 123,
-#'   MaximumBatchingWindowInSeconds = 123,
-#'   ParallelizationFactor = 123,
-#'   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-#'   StartingPositionTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   ),
-#'   MaximumRecordAgeInSeconds = 123,
-#'   BisectBatchOnFunctionError = TRUE|FALSE,
-#'   MaximumRetryAttempts = 123,
-#'   TumblingWindowInSeconds = 123,
-#'   Topics = list(
-#'     "string"
-#'   ),
-#'   Queues = list(
-#'     "string"
-#'   ),
-#'   SourceAccessConfigurations = list(
-#'     list(
-#'       Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-#'       URI = "string"
-#'     )
-#'   ),
-#'   SelfManagedEventSource = list(
-#'     Endpoints = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   FunctionResponseTypes = list(
-#'     "ReportBatchItemFailures"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a mapping between an SQS queue and the
-#' # my-function Lambda function.
-#' svc$create_event_source_mapping(
-#'   BatchSize = 5L,
-#'   EventSourceArn = "arn:aws:sqs:us-west-2:123456789012:my-queue",
-#'   FunctionName = "my-function"
-#' )
-#' }
+#' @param FunctionResponseTypes (Streams and Amazon SQS) A list of current response type enums applied
+#' to the event source mapping.
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_create_event_source_mapping
-lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL) {
+lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
     http_path = "/2015-03-31/event-source-mappings/",
     paginator = list()
   )
-  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes)
+  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -658,68 +321,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' Creates a Lambda function
 #'
 #' @description
-#' Creates a Lambda function. To create a function, you need a [deployment
-#' package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html)
-#' and an [execution
-#' role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role).
-#' The deployment package is a .zip file archive or container image that
-#' contains your function code. The execution role grants the function
-#' permission to use AWS services, such as Amazon CloudWatch Logs for log
-#' streaming and AWS X-Ray for request tracing.
-#' 
-#' When you create a function, Lambda provisions an instance of the
-#' function and its supporting resources. If your function connects to a
-#' VPC, this process can take a minute or so. During this time, you can't
-#' invoke or modify the function. The `State`, `StateReason`, and
-#' `StateReasonCode` fields in the response from
-#' [`get_function_configuration`][lambda_get_function_configuration]
-#' indicate when the function is ready to invoke. For more information, see
-#' [Function
-#' States](https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html).
-#' 
-#' A function has an unpublished version, and can have published versions
-#' and aliases. The unpublished version changes when you update your
-#' function's code and configuration. A published version is a snapshot of
-#' your function code and configuration that can't be changed. An alias is
-#' a named resource that maps to a version, and can be changed to map to a
-#' different version. Use the `Publish` parameter to create version `1` of
-#' your function from its initial configuration.
-#' 
-#' The other parameters let you configure version-specific and
-#' function-level settings. You can modify version-specific settings later
-#' with
-#' [`update_function_configuration`][lambda_update_function_configuration].
-#' Function-level settings apply to both the unpublished and published
-#' versions of the function, and include tags
-#' ([`tag_resource`][lambda_tag_resource]) and per-function concurrency
-#' limits ([`put_function_concurrency`][lambda_put_function_concurrency]).
-#' 
-#' You can use code signing if your deployment package is a .zip file
-#' archive. To enable code signing for this function, specify the ARN of a
-#' code-signing configuration. When a user attempts to deploy a code
-#' package with [`update_function_code`][lambda_update_function_code],
-#' Lambda checks that the code package has a valid signature from a trusted
-#' publisher. The code-signing configuration includes set set of signing
-#' profiles, which define the trusted publishers for this function.
-#' 
-#' If another account or an AWS service invokes your function, use
-#' [`add_permission`][lambda_add_permission] to grant permission by
-#' creating a resource-based IAM policy. You can grant permissions at the
-#' function level, on a version, or on an alias.
-#' 
-#' To invoke your function directly, use [`invoke`][lambda_invoke]. To
-#' invoke your function in response to events in other AWS services, create
-#' an event source mapping
-#' ([`create_event_source_mapping`][lambda_create_event_source_mapping]),
-#' or configure a function trigger in the other service. For more
-#' information, see [Invoking
-#' Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html).
+#' Creates a Lambda function. To create a function, you need a [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) and an [execution role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role). The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
 #'
-#' @usage
-#' lambda_create_function(FunctionName, Runtime, Role, Handler, Code,
-#'   Description, Timeout, MemorySize, Publish, VpcConfig, PackageType,
-#'   DeadLetterConfig, Environment, KMSKeyArn, TracingConfig, Tags, Layers,
-#'   FileSystemConfigs, ImageConfig, CodeSigningConfigArn)
+#' See [https://paws-r.github.io/docs/lambda/create_function.html](https://paws-r.github.io/docs/lambda/create_function.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -736,25 +340,31 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' the function name, it is limited to 64 characters in length.
 #' @param Runtime The identifier of the function's
 #' [runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+#' Runtime is required if the deployment package is a .zip file archive.
 #' @param Role &#91;required&#93; The Amazon Resource Name (ARN) of the function's execution role.
 #' @param Handler The name of the method within your code that Lambda calls to execute
-#' your function. The format includes the file name. It can also include
+#' your function. Handler is required if the deployment package is a .zip
+#' file archive. The format includes the file name. It can also include
 #' namespaces and other qualifiers, depending on the runtime. For more
 #' information, see [Programming
 #' Model](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-features.html).
 #' @param Code &#91;required&#93; The code for the function.
 #' @param Description A description of the function.
-#' @param Timeout The amount of time that Lambda allows a function to run before stopping
-#' it. The default is 3 seconds. The maximum allowed value is 900 seconds.
-#' @param MemorySize The amount of memory available to the function at runtime. Increasing
-#' the function's memory also increases its CPU allocation. The default
-#' value is 128 MB. The value can be any multiple of 1 MB.
+#' @param Timeout The amount of time (in seconds) that Lambda allows a function to run
+#' before stopping it. The default is 3 seconds. The maximum allowed value
+#' is 900 seconds. For additional information, see [Lambda execution
+#' environment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html).
+#' @param MemorySize The amount of [memory available to the
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html)
+#' at runtime. Increasing the function memory also increases its CPU
+#' allocation. The default value is 128 MB. The value can be any multiple
+#' of 1 MB.
 #' @param Publish Set to true to publish the first version of the function during
 #' creation.
-#' @param VpcConfig For network connectivity to AWS resources in a VPC, specify a list of
-#' security groups and subnets in the VPC. When you connect a function to a
-#' VPC, it can only access resources and the internet through that VPC. For
-#' more information, see [VPC
+#' @param VpcConfig For network connectivity to Amazon Web Services resources in a VPC,
+#' specify a list of security groups and subnets in the VPC. When you
+#' connect a function to a VPC, it can only access resources and the
+#' internet through that VPC. For more information, see [VPC
 #' Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 #' @param PackageType The type of deployment package. Set to `Image` for container image and
 #' set `Zip` for ZIP archive.
@@ -764,11 +374,12 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' Queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
 #' @param Environment Environment variables that are accessible from function code during
 #' execution.
-#' @param KMSKeyArn The ARN of the AWS Key Management Service (AWS KMS) key that's used to
-#' encrypt your function's environment variables. If it's not provided, AWS
-#' Lambda uses a default service key.
+#' @param KMSKeyArn The ARN of the Amazon Web Services Key Management Service (KMS) key
+#' that's used to encrypt your function's environment variables. If it's
+#' not provided, Lambda uses a default service key.
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
-#' with AWS X-Ray.
+#' with
+#' [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
 #' @param Tags A list of
 #' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
 #' to apply to the function.
@@ -777,204 +388,30 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
-#' @param ImageConfig Configuration values that override the container image Dockerfile.
+#' @param ImageConfig Container image [configuration
+#' values](https://docs.aws.amazon.com/lambda/latest/dg/#configuration-images-settings)
+#' that override the values in the container image Dockerfile.
 #' @param CodeSigningConfigArn To enable code signing for this function, specify the ARN of a
 #' code-signing configuration. A code-signing configuration includes a set
 #' of signing profiles, which define the trusted publishers for this
 #' function.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FunctionName = "string",
-#'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'   Role = "string",
-#'   Handler = "string",
-#'   CodeSize = 123,
-#'   Description = "string",
-#'   Timeout = 123,
-#'   MemorySize = 123,
-#'   LastModified = "string",
-#'   CodeSha256 = "string",
-#'   Version = "string",
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     VpcId = "string"
-#'   ),
-#'   DeadLetterConfig = list(
-#'     TargetArn = "string"
-#'   ),
-#'   Environment = list(
-#'     Variables = list(
-#'       "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   KMSKeyArn = "string",
-#'   TracingConfig = list(
-#'     Mode = "Active"|"PassThrough"
-#'   ),
-#'   MasterArn = "string",
-#'   RevisionId = "string",
-#'   Layers = list(
-#'     list(
-#'       Arn = "string",
-#'       CodeSize = 123,
-#'       SigningProfileVersionArn = "string",
-#'       SigningJobArn = "string"
-#'     )
-#'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
-#'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-#'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   FileSystemConfigs = list(
-#'     list(
-#'       Arn = "string",
-#'       LocalMountPath = "string"
-#'     )
-#'   ),
-#'   PackageType = "Zip"|"Image",
-#'   ImageConfigResponse = list(
-#'     ImageConfig = list(
-#'       EntryPoint = list(
-#'         "string"
-#'       ),
-#'       Command = list(
-#'         "string"
-#'       ),
-#'       WorkingDirectory = "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_function(
-#'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'   Role = "string",
-#'   Handler = "string",
-#'   Code = list(
-#'     ZipFile = raw,
-#'     S3Bucket = "string",
-#'     S3Key = "string",
-#'     S3ObjectVersion = "string",
-#'     ImageUri = "string"
-#'   ),
-#'   Description = "string",
-#'   Timeout = 123,
-#'   MemorySize = 123,
-#'   Publish = TRUE|FALSE,
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   PackageType = "Zip"|"Image",
-#'   DeadLetterConfig = list(
-#'     TargetArn = "string"
-#'   ),
-#'   Environment = list(
-#'     Variables = list(
-#'       "string"
-#'     )
-#'   ),
-#'   KMSKeyArn = "string",
-#'   TracingConfig = list(
-#'     Mode = "Active"|"PassThrough"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Layers = list(
-#'     "string"
-#'   ),
-#'   FileSystemConfigs = list(
-#'     list(
-#'       Arn = "string",
-#'       LocalMountPath = "string"
-#'     )
-#'   ),
-#'   ImageConfig = list(
-#'     EntryPoint = list(
-#'       "string"
-#'     ),
-#'     Command = list(
-#'       "string"
-#'     ),
-#'     WorkingDirectory = "string"
-#'   ),
-#'   CodeSigningConfigArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a function with a deployment package in
-#' # Amazon S3 and enables X-Ray tracing and environment variable encryption.
-#' svc$create_function(
-#'   Code = list(
-#'     S3Bucket = "my-bucket-1xpuxmplzrlbh",
-#'     S3Key = "function.zip"
-#'   ),
-#'   Description = "Process image objects from Amazon S3.",
-#'   Environment = list(
-#'     Variables = list(
-#'       BUCKET = "my-bucket-1xpuxmplzrlbh",
-#'       PREFIX = "inbound"
-#'     )
-#'   ),
-#'   FunctionName = "my-function",
-#'   Handler = "index.handler",
-#'   KMSKeyArn = "arn:aws:kms:us-west-2:123456789012:key/b0844d6c-xmpl-4463-97a4-d49f50839966",
-#'   MemorySize = 256L,
-#'   Publish = TRUE,
-#'   Role = "arn:aws:iam::123456789012:role/lambda-role",
-#'   Runtime = "nodejs12.x",
-#'   Tags = list(
-#'     DEPARTMENT = "Assets"
-#'   ),
-#'   Timeout = 15L,
-#'   TracingConfig = list(
-#'     Mode = "Active"
-#'   )
-#' )
-#' }
+#' @param Architectures The instruction set architecture that the function supports. Enter a
+#' string array with one of the valid values (arm64 or x86_64). The default
+#' value is `x86_64`.
+#' @param EphemeralStorage The size of the function’s /tmp directory in MB. The default value is
+#' 512, but can be any whole number between 512 and 10240 MB.
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_create_function
-lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler = NULL, Code, Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL, VpcConfig = NULL, PackageType = NULL, DeadLetterConfig = NULL, Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, CodeSigningConfigArn = NULL) {
+lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler = NULL, Code, Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL, VpcConfig = NULL, PackageType = NULL, DeadLetterConfig = NULL, Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, CodeSigningConfigArn = NULL, Architectures = NULL, EphemeralStorage = NULL) {
   op <- new_operation(
     name = "CreateFunction",
     http_method = "POST",
     http_path = "/2015-03-31/functions",
     paginator = list()
   )
-  input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, VpcConfig = VpcConfig, PackageType = PackageType, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, CodeSigningConfigArn = CodeSigningConfigArn)
+  input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, VpcConfig = VpcConfig, PackageType = PackageType, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, CodeSigningConfigArn = CodeSigningConfigArn, Architectures = Architectures, EphemeralStorage = EphemeralStorage)
   output <- .lambda$create_function_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -984,14 +421,64 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 }
 .lambda$operations$create_function <- lambda_create_function
 
+#' Creates a Lambda function URL with the specified configuration
+#' parameters
+#'
+#' @description
+#' Creates a Lambda function URL with the specified configuration parameters. A function URL is a dedicated HTTP(S) endpoint that you can use to invoke your function.
+#'
+#' See [https://paws-r.github.io/docs/lambda/create_function_url_config.html](https://paws-r.github.io/docs/lambda/create_function_url_config.html) for full documentation.
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Qualifier The alias name.
+#' @param AuthType &#91;required&#93; The type of authentication that your function URL uses. Set to `AWS_IAM`
+#' if you want to restrict access to authenticated `IAM` users only. Set to
+#' `NONE` if you want to bypass IAM authentication to create a public
+#' endpoint. For more information, see [Security and auth model for Lambda
+#' function
+#' URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
+#' @param Cors The [cross-origin resource sharing
+#' (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) settings
+#' for your function URL.
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_create_function_url_config
+lambda_create_function_url_config <- function(FunctionName, Qualifier = NULL, AuthType, Cors = NULL) {
+  op <- new_operation(
+    name = "CreateFunctionUrlConfig",
+    http_method = "POST",
+    http_path = "/2021-10-31/functions/{FunctionName}/url",
+    paginator = list()
+  )
+  input <- .lambda$create_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier, AuthType = AuthType, Cors = Cors)
+  output <- .lambda$create_function_url_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$create_function_url_config <- lambda_create_function_url_config
+
 #' Deletes a Lambda function alias
 #'
 #' @description
-#' Deletes a Lambda function
-#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
+#' Deletes a Lambda function [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
 #'
-#' @usage
-#' lambda_delete_alias(FunctionName, Name)
+#' See [https://paws-r.github.io/docs/lambda/delete_alias.html](https://paws-r.github.io/docs/lambda/delete_alias.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1007,27 +494,6 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
 #' @param Name &#91;required&#93; The name of the alias.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_alias(
-#'   FunctionName = "string",
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an alias named BLUE from a function named
-#' # my-function
-#' svc$delete_alias(
-#'   FunctionName = "my-function",
-#'   Name = "BLUE"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1052,23 +518,11 @@ lambda_delete_alias <- function(FunctionName, Name) {
 #' Deletes the code signing configuration
 #'
 #' @description
-#' Deletes the code signing configuration. You can delete the code signing
-#' configuration only if no function is using it.
+#' Deletes the code signing configuration. You can delete the code signing configuration only if no function is using it.
 #'
-#' @usage
-#' lambda_delete_code_signing_config(CodeSigningConfigArn)
+#' See [https://paws-r.github.io/docs/lambda/delete_code_signing_config.html](https://paws-r.github.io/docs/lambda/delete_code_signing_config.html) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_code_signing_config(
-#'   CodeSigningConfigArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1093,91 +547,11 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #' Deletes an event source mapping
 #'
 #' @description
-#' Deletes an [event source
-#' mapping](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
-#' You can get the identifier of a mapping from the output of
-#' [`list_event_source_mappings`][lambda_list_event_source_mappings].
-#' 
-#' When you delete an event source mapping, it enters a `Deleting` state
-#' and might not be completely deleted for several seconds.
+#' Deletes an [event source mapping](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html). You can get the identifier of a mapping from the output of [`list_event_source_mappings`][lambda_list_event_source_mappings].
 #'
-#' @usage
-#' lambda_delete_event_source_mapping(UUID)
+#' See [https://paws-r.github.io/docs/lambda/delete_event_source_mapping.html](https://paws-r.github.io/docs/lambda/delete_event_source_mapping.html) for full documentation.
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UUID = "string",
-#'   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-#'   StartingPositionTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   BatchSize = 123,
-#'   MaximumBatchingWindowInSeconds = 123,
-#'   ParallelizationFactor = 123,
-#'   EventSourceArn = "string",
-#'   FunctionArn = "string",
-#'   LastModified = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastProcessingResult = "string",
-#'   State = "string",
-#'   StateTransitionReason = "string",
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   ),
-#'   Topics = list(
-#'     "string"
-#'   ),
-#'   Queues = list(
-#'     "string"
-#'   ),
-#'   SourceAccessConfigurations = list(
-#'     list(
-#'       Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-#'       URI = "string"
-#'     )
-#'   ),
-#'   SelfManagedEventSource = list(
-#'     Endpoints = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaximumRecordAgeInSeconds = 123,
-#'   BisectBatchOnFunctionError = TRUE|FALSE,
-#'   MaximumRetryAttempts = 123,
-#'   TumblingWindowInSeconds = 123,
-#'   FunctionResponseTypes = list(
-#'     "ReportBatchItemFailures"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_event_source_mapping(
-#'   UUID = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an event source mapping. To get a
-#' # mapping's UUID, use ListEventSourceMappings.
-#' svc$delete_event_source_mapping(
-#'   UUID = "14e0db71-xmpl-4eb5-b481-8945cf9d10c2"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1202,17 +576,9 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' Deletes a Lambda function
 #'
 #' @description
-#' Deletes a Lambda function. To delete a specific function version, use
-#' the `Qualifier` parameter. Otherwise, all versions and aliases are
-#' deleted.
-#' 
-#' To delete Lambda event source mappings that invoke a function, use
-#' [`delete_event_source_mapping`][lambda_delete_event_source_mapping]. For
-#' AWS services and resources that invoke your function directly, delete
-#' the trigger in the service where you originally configured it.
+#' Deletes a Lambda function. To delete a specific function version, use the `Qualifier` parameter. Otherwise, all versions and aliases are deleted.
 #'
-#' @usage
-#' lambda_delete_function(FunctionName, Qualifier)
+#' See [https://paws-r.github.io/docs/lambda/delete_function.html](https://paws-r.github.io/docs/lambda/delete_function.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function or version.
 #' 
@@ -1231,27 +597,6 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' function name, it is limited to 64 characters in length.
 #' @param Qualifier Specify a version to delete. You can't delete a version that's
 #' referenced by an alias.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_function(
-#'   FunctionName = "string",
-#'   Qualifier = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes version 1 of a Lambda function named
-#' # my-function.
-#' svc$delete_function(
-#'   FunctionName = "my-function",
-#'   Qualifier = "1"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1278,8 +623,7 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
 #' @description
 #' Removes the code signing configuration from the function.
 #'
-#' @usage
-#' lambda_delete_function_code_signing_config(FunctionName)
+#' See [https://paws-r.github.io/docs/lambda/delete_function_code_signing_config.html](https://paws-r.github.io/docs/lambda/delete_function_code_signing_config.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1294,16 +638,6 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_function_code_signing_config(
-#'   FunctionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1330,8 +664,7 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
 #' @description
 #' Removes a concurrent execution limit from a function.
 #'
-#' @usage
-#' lambda_delete_function_concurrency(FunctionName)
+#' See [https://paws-r.github.io/docs/lambda/delete_function_concurrency.html](https://paws-r.github.io/docs/lambda/delete_function_concurrency.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1346,25 +679,6 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_function_concurrency(
-#'   FunctionName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes the reserved concurrent execution limit
-#' # from a function named my-function.
-#' svc$delete_function_concurrency(
-#'   FunctionName = "my-function"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1390,14 +704,9 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #' version, or alias
 #'
 #' @description
-#' Deletes the configuration for asynchronous invocation for a function,
-#' version, or alias.
-#' 
-#' To configure options for asynchronous invocation, use
-#' [`put_function_event_invoke_config`][lambda_put_function_event_invoke_config].
+#' Deletes the configuration for asynchronous invocation for a function, version, or alias.
 #'
-#' @usage
-#' lambda_delete_function_event_invoke_config(FunctionName, Qualifier)
+#' See [https://paws-r.github.io/docs/lambda/delete_function_event_invoke_config.html](https://paws-r.github.io/docs/lambda/delete_function_event_invoke_config.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -1415,27 +724,6 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #' length constraint applies only to the full ARN. If you specify only the
 #' function name, it is limited to 64 characters in length.
 #' @param Qualifier A version number or alias name.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_function_event_invoke_config(
-#'   FunctionName = "string",
-#'   Qualifier = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes the asynchronous invocation configuration
-#' # for the GREEN alias of a function named my-function.
-#' svc$delete_function_event_invoke_config(
-#'   FunctionName = "my-function",
-#'   Qualifier = "GREEN"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1457,40 +745,57 @@ lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier =
 }
 .lambda$operations$delete_function_event_invoke_config <- lambda_delete_function_event_invoke_config
 
-#' Deletes a version of an AWS Lambda layer
+#' Deletes a Lambda function URL
 #'
 #' @description
-#' Deletes a version of an [AWS Lambda
-#' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
-#' Deleted versions can no longer be viewed or added to functions. To avoid
-#' breaking functions, a copy of the version remains in Lambda until no
-#' functions refer to it.
+#' Deletes a Lambda function URL. When you delete a function URL, you can't recover it. Creating a new function URL results in a different URL address.
 #'
-#' @usage
-#' lambda_delete_layer_version(LayerName, VersionNumber)
+#' See [https://paws-r.github.io/docs/lambda/delete_function_url_config.html](https://paws-r.github.io/docs/lambda/delete_function_url_config.html) for full documentation.
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Qualifier The alias name.
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_delete_function_url_config
+lambda_delete_function_url_config <- function(FunctionName, Qualifier = NULL) {
+  op <- new_operation(
+    name = "DeleteFunctionUrlConfig",
+    http_method = "DELETE",
+    http_path = "/2021-10-31/functions/{FunctionName}/url",
+    paginator = list()
+  )
+  input <- .lambda$delete_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
+  output <- .lambda$delete_function_url_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$delete_function_url_config <- lambda_delete_function_url_config
+
+#' Deletes a version of an Lambda layer
+#'
+#' @description
+#' Deletes a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions refer to it.
+#'
+#' See [https://paws-r.github.io/docs/lambda/delete_layer_version.html](https://paws-r.github.io/docs/lambda/delete_layer_version.html) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_layer_version(
-#'   LayerName = "string",
-#'   VersionNumber = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes version 2 of a layer named my-layer.
-#' svc$delete_layer_version(
-#'   LayerName = "my-layer",
-#'   VersionNumber = 2L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1517,8 +822,7 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
 #' @description
 #' Deletes the provisioned concurrency configuration for a function.
 #'
-#' @usage
-#' lambda_delete_provisioned_concurrency_config(FunctionName, Qualifier)
+#' See [https://paws-r.github.io/docs/lambda/delete_provisioned_concurrency_config.html](https://paws-r.github.io/docs/lambda/delete_provisioned_concurrency_config.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1534,27 +838,6 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
 #' @param Qualifier &#91;required&#93; The version number or alias name.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_provisioned_concurrency_config(
-#'   FunctionName = "string",
-#'   Qualifier = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes the provisioned concurrency configuration
-#' # for the GREEN alias of a function named my-function.
-#' svc$delete_provisioned_concurrency_config(
-#'   FunctionName = "my-function",
-#'   Qualifier = "GREEN"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1576,45 +859,13 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 }
 .lambda$operations$delete_provisioned_concurrency_config <- lambda_delete_provisioned_concurrency_config
 
-#' Retrieves details about your account's limits and usage in an AWS Region
+#' Retrieves details about your account's limits and usage in an Amazon Web
+#' Services Region
 #'
 #' @description
-#' Retrieves details about your account's
-#' [limits](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)
-#' and usage in an AWS Region.
+#' Retrieves details about your account's [limits](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html) and usage in an Amazon Web Services Region.
 #'
-#' @usage
-#' lambda_get_account_settings()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountLimit = list(
-#'     TotalCodeSize = 123,
-#'     CodeSizeUnzipped = 123,
-#'     CodeSizeZipped = 123,
-#'     ConcurrentExecutions = 123,
-#'     UnreservedConcurrentExecutions = 123
-#'   ),
-#'   AccountUsage = list(
-#'     TotalCodeSize = 123,
-#'     FunctionCount = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_account_settings()
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation takes no parameters and returns details about storage and
-#' # concurrency quotas in the current Region.
-#' svc$get_account_settings()
-#' }
+#' See [https://paws-r.github.io/docs/lambda/get_account_settings.html](https://paws-r.github.io/docs/lambda/get_account_settings.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1639,11 +890,9 @@ lambda_get_account_settings <- function() {
 #' Returns details about a Lambda function alias
 #'
 #' @description
-#' Returns details about a Lambda function
-#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
+#' Returns details about a Lambda function [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
 #'
-#' @usage
-#' lambda_get_alias(FunctionName, Name)
+#' See [https://paws-r.github.io/docs/lambda/get_alias.html](https://paws-r.github.io/docs/lambda/get_alias.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1659,41 +908,6 @@ lambda_get_account_settings <- function() {
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
 #' @param Name &#91;required&#93; The name of the alias.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AliasArn = "string",
-#'   Name = "string",
-#'   FunctionVersion = "string",
-#'   Description = "string",
-#'   RoutingConfig = list(
-#'     AdditionalVersionWeights = list(
-#'       123.0
-#'     )
-#'   ),
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_alias(
-#'   FunctionName = "string",
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns details about an alias named BLUE for a
-#' # function named my-function
-#' svc$get_alias(
-#'   FunctionName = "my-function",
-#'   Name = "BLUE"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1720,38 +934,9 @@ lambda_get_alias <- function(FunctionName, Name) {
 #' @description
 #' Returns information about the specified code signing configuration.
 #'
-#' @usage
-#' lambda_get_code_signing_config(CodeSigningConfigArn)
+#' See [https://paws-r.github.io/docs/lambda/get_code_signing_config.html](https://paws-r.github.io/docs/lambda/get_code_signing_config.html) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CodeSigningConfig = list(
-#'     CodeSigningConfigId = "string",
-#'     CodeSigningConfigArn = "string",
-#'     Description = "string",
-#'     AllowedPublishers = list(
-#'       SigningProfileVersionArns = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CodeSigningPolicies = list(
-#'       UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-#'     ),
-#'     LastModified = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_code_signing_config(
-#'   CodeSigningConfigArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1776,87 +961,11 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #' Returns details about an event source mapping
 #'
 #' @description
-#' Returns details about an event source mapping. You can get the
-#' identifier of a mapping from the output of
-#' [`list_event_source_mappings`][lambda_list_event_source_mappings].
+#' Returns details about an event source mapping. You can get the identifier of a mapping from the output of [`list_event_source_mappings`][lambda_list_event_source_mappings].
 #'
-#' @usage
-#' lambda_get_event_source_mapping(UUID)
+#' See [https://paws-r.github.io/docs/lambda/get_event_source_mapping.html](https://paws-r.github.io/docs/lambda/get_event_source_mapping.html) for full documentation.
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UUID = "string",
-#'   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-#'   StartingPositionTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   BatchSize = 123,
-#'   MaximumBatchingWindowInSeconds = 123,
-#'   ParallelizationFactor = 123,
-#'   EventSourceArn = "string",
-#'   FunctionArn = "string",
-#'   LastModified = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastProcessingResult = "string",
-#'   State = "string",
-#'   StateTransitionReason = "string",
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   ),
-#'   Topics = list(
-#'     "string"
-#'   ),
-#'   Queues = list(
-#'     "string"
-#'   ),
-#'   SourceAccessConfigurations = list(
-#'     list(
-#'       Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-#'       URI = "string"
-#'     )
-#'   ),
-#'   SelfManagedEventSource = list(
-#'     Endpoints = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaximumRecordAgeInSeconds = 123,
-#'   BisectBatchOnFunctionError = TRUE|FALSE,
-#'   MaximumRetryAttempts = 123,
-#'   TumblingWindowInSeconds = 123,
-#'   FunctionResponseTypes = list(
-#'     "ReportBatchItemFailures"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_event_source_mapping(
-#'   UUID = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns details about an event source mapping. To
-#' # get a mapping's UUID, use ListEventSourceMappings.
-#' svc$get_event_source_mapping(
-#'   UUID = "14e0db71-xmpl-4eb5-b481-8945cf9d10c2"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1882,13 +991,9 @@ lambda_get_event_source_mapping <- function(UUID) {
 #' to download the deployment package that's valid for 10 minutes
 #'
 #' @description
-#' Returns information about the function or function version, with a link
-#' to download the deployment package that's valid for 10 minutes. If you
-#' specify a function version, only details that are specific to that
-#' version are returned.
+#' Returns information about the function or function version, with a link to download the deployment package that's valid for 10 minutes. If you specify a function version, only details that are specific to that version are returned.
 #'
-#' @usage
-#' lambda_get_function(FunctionName, Qualifier)
+#' See [https://paws-r.github.io/docs/lambda/get_function.html](https://paws-r.github.io/docs/lambda/get_function.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -1907,122 +1012,6 @@ lambda_get_event_source_mapping <- function(UUID) {
 #' function name, it is limited to 64 characters in length.
 #' @param Qualifier Specify a version or alias to get details about a published version of
 #' the function.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Configuration = list(
-#'     FunctionName = "string",
-#'     FunctionArn = "string",
-#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'     Role = "string",
-#'     Handler = "string",
-#'     CodeSize = 123,
-#'     Description = "string",
-#'     Timeout = 123,
-#'     MemorySize = 123,
-#'     LastModified = "string",
-#'     CodeSha256 = "string",
-#'     Version = "string",
-#'     VpcConfig = list(
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       VpcId = "string"
-#'     ),
-#'     DeadLetterConfig = list(
-#'       TargetArn = "string"
-#'     ),
-#'     Environment = list(
-#'       Variables = list(
-#'         "string"
-#'       ),
-#'       Error = list(
-#'         ErrorCode = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     KMSKeyArn = "string",
-#'     TracingConfig = list(
-#'       Mode = "Active"|"PassThrough"
-#'     ),
-#'     MasterArn = "string",
-#'     RevisionId = "string",
-#'     Layers = list(
-#'       list(
-#'         Arn = "string",
-#'         CodeSize = 123,
-#'         SigningProfileVersionArn = "string",
-#'         SigningJobArn = "string"
-#'       )
-#'     ),
-#'     State = "Pending"|"Active"|"Inactive"|"Failed",
-#'     StateReason = "string",
-#'     StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'     LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-#'     LastUpdateStatusReason = "string",
-#'     LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'     FileSystemConfigs = list(
-#'       list(
-#'         Arn = "string",
-#'         LocalMountPath = "string"
-#'       )
-#'     ),
-#'     PackageType = "Zip"|"Image",
-#'     ImageConfigResponse = list(
-#'       ImageConfig = list(
-#'         EntryPoint = list(
-#'           "string"
-#'         ),
-#'         Command = list(
-#'           "string"
-#'         ),
-#'         WorkingDirectory = "string"
-#'       ),
-#'       Error = list(
-#'         ErrorCode = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     SigningProfileVersionArn = "string",
-#'     SigningJobArn = "string"
-#'   ),
-#'   Code = list(
-#'     RepositoryType = "string",
-#'     Location = "string",
-#'     ImageUri = "string",
-#'     ResolvedImageUri = "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Concurrency = list(
-#'     ReservedConcurrentExecutions = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_function(
-#'   FunctionName = "string",
-#'   Qualifier = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns code and configuration details for version
-#' # 1 of a function named my-function.
-#' svc$get_function(
-#'   FunctionName = "my-function",
-#'   Qualifier = "1"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2049,8 +1038,7 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 #' @description
 #' Returns the code signing configuration for the specified function.
 #'
-#' @usage
-#' lambda_get_function_code_signing_config(FunctionName)
+#' See [https://paws-r.github.io/docs/lambda/get_function_code_signing_config.html](https://paws-r.github.io/docs/lambda/get_function_code_signing_config.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2065,22 +1053,6 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CodeSigningConfigArn = "string",
-#'   FunctionName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_function_code_signing_config(
-#'   FunctionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2106,12 +1078,9 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
 #' function
 #'
 #' @description
-#' Returns details about the reserved concurrency configuration for a
-#' function. To set a concurrency limit for a function, use
-#' [`put_function_concurrency`][lambda_put_function_concurrency].
+#' Returns details about the reserved concurrency configuration for a function. To set a concurrency limit for a function, use [`put_function_concurrency`][lambda_put_function_concurrency].
 #'
-#' @usage
-#' lambda_get_function_concurrency(FunctionName)
+#' See [https://paws-r.github.io/docs/lambda/get_function_concurrency.html](https://paws-r.github.io/docs/lambda/get_function_concurrency.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2126,30 +1095,6 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReservedConcurrentExecutions = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_function_concurrency(
-#'   FunctionName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the reserved concurrency setting for a
-#' # function named my-function.
-#' svc$get_function_concurrency(
-#'   FunctionName = "my-function"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2174,16 +1119,9 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' Returns the version-specific settings of a Lambda function or version
 #'
 #' @description
-#' Returns the version-specific settings of a Lambda function or version.
-#' The output includes only options that can vary between versions of a
-#' function. To modify these settings, use
-#' [`update_function_configuration`][lambda_update_function_configuration].
-#' 
-#' To get all of a function's details, including function-level settings,
-#' use [`get_function`][lambda_get_function].
+#' Returns the version-specific settings of a Lambda function or version. The output includes only options that can vary between versions of a function. To modify these settings, use [`update_function_configuration`][lambda_update_function_configuration].
 #'
-#' @usage
-#' lambda_get_function_configuration(FunctionName, Qualifier)
+#' See [https://paws-r.github.io/docs/lambda/get_function_configuration.html](https://paws-r.github.io/docs/lambda/get_function_configuration.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -2202,108 +1140,6 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' function name, it is limited to 64 characters in length.
 #' @param Qualifier Specify a version or alias to get details about a published version of
 #' the function.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FunctionName = "string",
-#'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'   Role = "string",
-#'   Handler = "string",
-#'   CodeSize = 123,
-#'   Description = "string",
-#'   Timeout = 123,
-#'   MemorySize = 123,
-#'   LastModified = "string",
-#'   CodeSha256 = "string",
-#'   Version = "string",
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     VpcId = "string"
-#'   ),
-#'   DeadLetterConfig = list(
-#'     TargetArn = "string"
-#'   ),
-#'   Environment = list(
-#'     Variables = list(
-#'       "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   KMSKeyArn = "string",
-#'   TracingConfig = list(
-#'     Mode = "Active"|"PassThrough"
-#'   ),
-#'   MasterArn = "string",
-#'   RevisionId = "string",
-#'   Layers = list(
-#'     list(
-#'       Arn = "string",
-#'       CodeSize = 123,
-#'       SigningProfileVersionArn = "string",
-#'       SigningJobArn = "string"
-#'     )
-#'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
-#'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-#'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   FileSystemConfigs = list(
-#'     list(
-#'       Arn = "string",
-#'       LocalMountPath = "string"
-#'     )
-#'   ),
-#'   PackageType = "Zip"|"Image",
-#'   ImageConfigResponse = list(
-#'     ImageConfig = list(
-#'       EntryPoint = list(
-#'         "string"
-#'       ),
-#'       Command = list(
-#'         "string"
-#'       ),
-#'       WorkingDirectory = "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_function_configuration(
-#'   FunctionName = "string",
-#'   Qualifier = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns and configuration details for version 1 of
-#' # a function named my-function.
-#' svc$get_function_configuration(
-#'   FunctionName = "my-function",
-#'   Qualifier = "1"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2329,14 +1165,9 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #' version, or alias
 #'
 #' @description
-#' Retrieves the configuration for asynchronous invocation for a function,
-#' version, or alias.
-#' 
-#' To configure options for asynchronous invocation, use
-#' [`put_function_event_invoke_config`][lambda_put_function_event_invoke_config].
+#' Retrieves the configuration for asynchronous invocation for a function, version, or alias.
 #'
-#' @usage
-#' lambda_get_function_event_invoke_config(FunctionName, Qualifier)
+#' See [https://paws-r.github.io/docs/lambda/get_function_event_invoke_config.html](https://paws-r.github.io/docs/lambda/get_function_event_invoke_config.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -2354,45 +1185,6 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #' length constraint applies only to the full ARN. If you specify only the
 #' function name, it is limited to 64 characters in length.
 #' @param Qualifier A version number or alias name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LastModified = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   FunctionArn = "string",
-#'   MaximumRetryAttempts = 123,
-#'   MaximumEventAgeInSeconds = 123,
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_function_event_invoke_config(
-#'   FunctionName = "string",
-#'   Qualifier = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the asynchronous invocation configuration
-#' # for the BLUE alias of a function named my-function.
-#' svc$get_function_event_invoke_config(
-#'   FunctionName = "my-function",
-#'   Qualifier = "BLUE"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2414,60 +1206,58 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 }
 .lambda$operations$get_function_event_invoke_config <- lambda_get_function_event_invoke_config
 
-#' Returns information about a version of an AWS Lambda layer, with a link
-#' to download the layer archive that's valid for 10 minutes
+#' Returns details about a Lambda function URL
 #'
 #' @description
-#' Returns information about a version of an [AWS Lambda
-#' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
-#' with a link to download the layer archive that's valid for 10 minutes.
+#' Returns details about a Lambda function URL.
 #'
-#' @usage
-#' lambda_get_layer_version(LayerName, VersionNumber)
+#' See [https://paws-r.github.io/docs/lambda/get_function_url_config.html](https://paws-r.github.io/docs/lambda/get_function_url_config.html) for full documentation.
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Qualifier The alias name.
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_function_url_config
+lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
+  op <- new_operation(
+    name = "GetFunctionUrlConfig",
+    http_method = "GET",
+    http_path = "/2021-10-31/functions/{FunctionName}/url",
+    paginator = list()
+  )
+  input <- .lambda$get_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
+  output <- .lambda$get_function_url_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_function_url_config <- lambda_get_function_url_config
+
+#' Returns information about a version of an Lambda layer, with a link to
+#' download the layer archive that's valid for 10 minutes
+#'
+#' @description
+#' Returns information about a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html), with a link to download the layer archive that's valid for 10 minutes.
+#'
+#' See [https://paws-r.github.io/docs/lambda/get_layer_version.html](https://paws-r.github.io/docs/lambda/get_layer_version.html) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Content = list(
-#'     Location = "string",
-#'     CodeSha256 = "string",
-#'     CodeSize = 123,
-#'     SigningProfileVersionArn = "string",
-#'     SigningJobArn = "string"
-#'   ),
-#'   LayerArn = "string",
-#'   LayerVersionArn = "string",
-#'   Description = "string",
-#'   CreatedDate = "string",
-#'   Version = 123,
-#'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
-#'   ),
-#'   LicenseInfo = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_layer_version(
-#'   LayerName = "string",
-#'   VersionNumber = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns information for version 1 of a layer named
-#' # my-layer.
-#' svc$get_layer_version(
-#'   LayerName = "my-layer",
-#'   VersionNumber = 1L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2489,57 +1279,15 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 }
 .lambda$operations$get_layer_version <- lambda_get_layer_version
 
-#' Returns information about a version of an AWS Lambda layer, with a link
-#' to download the layer archive that's valid for 10 minutes
+#' Returns information about a version of an Lambda layer, with a link to
+#' download the layer archive that's valid for 10 minutes
 #'
 #' @description
-#' Returns information about a version of an [AWS Lambda
-#' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
-#' with a link to download the layer archive that's valid for 10 minutes.
+#' Returns information about a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html), with a link to download the layer archive that's valid for 10 minutes.
 #'
-#' @usage
-#' lambda_get_layer_version_by_arn(Arn)
+#' See [https://paws-r.github.io/docs/lambda/get_layer_version_by_arn.html](https://paws-r.github.io/docs/lambda/get_layer_version_by_arn.html) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the layer version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Content = list(
-#'     Location = "string",
-#'     CodeSha256 = "string",
-#'     CodeSize = 123,
-#'     SigningProfileVersionArn = "string",
-#'     SigningJobArn = "string"
-#'   ),
-#'   LayerArn = "string",
-#'   LayerVersionArn = "string",
-#'   Description = "string",
-#'   CreatedDate = "string",
-#'   Version = 123,
-#'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
-#'   ),
-#'   LicenseInfo = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_layer_version_by_arn(
-#'   Arn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns information about the layer version with
-#' # the specified Amazon Resource Name (ARN).
-#' svc$get_layer_version_by_arn(
-#'   Arn = "arn:aws:lambda:ca-central-1:123456789012:layer:blank-python-lib:3"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2561,36 +1309,15 @@ lambda_get_layer_version_by_arn <- function(Arn) {
 }
 .lambda$operations$get_layer_version_by_arn <- lambda_get_layer_version_by_arn
 
-#' Returns the permission policy for a version of an AWS Lambda layer
+#' Returns the permission policy for a version of an Lambda layer
 #'
 #' @description
-#' Returns the permission policy for a version of an [AWS Lambda
-#' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
-#' For more information, see
-#' [`add_layer_version_permission`][lambda_add_layer_version_permission].
+#' Returns the permission policy for a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). For more information, see [`add_layer_version_permission`][lambda_add_layer_version_permission].
 #'
-#' @usage
-#' lambda_get_layer_version_policy(LayerName, VersionNumber)
+#' See [https://paws-r.github.io/docs/lambda/get_layer_version_policy.html](https://paws-r.github.io/docs/lambda/get_layer_version_policy.html) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Policy = "string",
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_layer_version_policy(
-#'   LayerName = "string",
-#'   VersionNumber = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2615,12 +1342,9 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #' Returns the resource-based IAM policy for a function, version, or alias
 #'
 #' @description
-#' Returns the [resource-based IAM
-#' policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html)
-#' for a function, version, or alias.
+#' Returns the [resource-based IAM policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) for a function, version, or alias.
 #'
-#' @usage
-#' lambda_get_policy(FunctionName, Qualifier)
+#' See [https://paws-r.github.io/docs/lambda/get_policy.html](https://paws-r.github.io/docs/lambda/get_policy.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -2638,33 +1362,6 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #' length constraint applies only to the full ARN. If you specify only the
 #' function name, it is limited to 64 characters in length.
 #' @param Qualifier Specify a version or alias to get the policy for that resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Policy = "string",
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_policy(
-#'   FunctionName = "string",
-#'   Qualifier = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the resource-based policy for version 1 of
-#' # a Lambda function named my-function.
-#' svc$get_policy(
-#'   FunctionName = "my-function",
-#'   Qualifier = "1"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2690,11 +1387,9 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #' alias or version
 #'
 #' @description
-#' Retrieves the provisioned concurrency configuration for a function's
-#' alias or version.
+#' Retrieves the provisioned concurrency configuration for a function's alias or version.
 #'
-#' @usage
-#' lambda_get_provisioned_concurrency_config(FunctionName, Qualifier)
+#' See [https://paws-r.github.io/docs/lambda/get_provisioned_concurrency_config.html](https://paws-r.github.io/docs/lambda/get_provisioned_concurrency_config.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2710,44 +1405,6 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
 #' @param Qualifier &#91;required&#93; The version number or alias name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestedProvisionedConcurrentExecutions = 123,
-#'   AvailableProvisionedConcurrentExecutions = 123,
-#'   AllocatedProvisionedConcurrentExecutions = 123,
-#'   Status = "IN_PROGRESS"|"READY"|"FAILED",
-#'   StatusReason = "string",
-#'   LastModified = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_provisioned_concurrency_config(
-#'   FunctionName = "string",
-#'   Qualifier = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example displays details for the provisioned concurrency
-#' # configuration for the BLUE alias of the specified function.
-#' svc$get_provisioned_concurrency_config(
-#'   FunctionName = "my-function",
-#'   Qualifier = "BLUE"
-#' )
-#' 
-#' # The following example returns details for the provisioned concurrency
-#' # configuration for the BLUE alias of the specified function.
-#' svc$get_provisioned_concurrency_config(
-#'   FunctionName = "my-function",
-#'   Qualifier = "BLUE"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2772,57 +1429,9 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' Invokes a Lambda function
 #'
 #' @description
-#' Invokes a Lambda function. You can invoke a function synchronously (and
-#' wait for the response), or asynchronously. To invoke a function
-#' asynchronously, set `InvocationType` to `Event`.
-#' 
-#' For [synchronous
-#' invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html),
-#' details about the function response, including errors, are included in
-#' the response body and headers. For either invocation type, you can find
-#' more information in the [execution
-#' log](https://docs.aws.amazon.com/lambda/latest/dg/lambda-monitoring.html)
-#' and
-#' [trace](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
-#' 
-#' When an error occurs, your function may be invoked multiple times. Retry
-#' behavior varies by error type, client, event source, and invocation
-#' type. For example, if you invoke a function asynchronously and it
-#' returns an error, Lambda executes the function up to two more times. For
-#' more information, see [Retry
-#' Behavior](https://docs.aws.amazon.com/lambda/latest/dg/invocation-retries.html).
-#' 
-#' For [asynchronous
-#' invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html),
-#' Lambda adds events to a queue before sending them to your function. If
-#' your function does not have enough capacity to keep up with the queue,
-#' events may be lost. Occasionally, your function may receive the same
-#' event multiple times, even if no error occurs. To retain events that
-#' were not processed, configure your function with a [dead-letter
-#' queue](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
-#' 
-#' The status code in the API response doesn't reflect function errors.
-#' Error codes are reserved for errors that prevent your function from
-#' executing, such as permissions errors, [limit
-#' errors](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html),
-#' or issues with your function's code and configuration. For example,
-#' Lambda returns `TooManyRequestsException` if executing the function
-#' would cause you to exceed a concurrency limit at either the account
-#' level (`ConcurrentInvocationLimitExceeded`) or function level
-#' (`ReservedFunctionConcurrentInvocationLimitExceeded`).
-#' 
-#' For functions with a long timeout, your client might be disconnected
-#' during synchronous invocation while it waits for a response. Configure
-#' your HTTP client, SDK, firewall, proxy, or operating system to allow for
-#' long connections with timeout or keep-alive settings.
-#' 
-#' This operation requires permission for the
-#' [lambda:InvokeFunction](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awslambda.html)
-#' action.
+#' Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. To invoke a function asynchronously, set `InvocationType` to `Event`.
 #'
-#' @usage
-#' lambda_invoke(FunctionName, InvocationType, LogType, ClientContext,
-#'   Payload, Qualifier)
+#' See [https://paws-r.github.io/docs/lambda/invoke.html](https://paws-r.github.io/docs/lambda/invoke.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -2852,56 +1461,17 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' 
 #' -   `DryRun` - Validate parameter values and verify that the user or
 #'     role has permission to invoke the function.
-#' @param LogType Set to `Tail` to include the execution log in the response.
+#' @param LogType Set to `Tail` to include the execution log in the response. Applies to
+#' synchronously invoked functions only.
 #' @param ClientContext Up to 3583 bytes of base64-encoded data about the invoking client to
 #' pass to the function in the context object.
 #' @param Payload The JSON that you want to provide to your Lambda function as input.
+#' 
+#' You can enter the JSON directly. For example,
+#' `--payload '{ "key": "value" }'`. You can also specify a file path. For
+#' example, `--payload file://payload.json`.
 #' @param Qualifier Specify a version or alias to invoke a published version of the
 #' function.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StatusCode = 123,
-#'   FunctionError = "string",
-#'   LogResult = "string",
-#'   Payload = raw,
-#'   ExecutedVersion = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$invoke(
-#'   FunctionName = "string",
-#'   InvocationType = "Event"|"RequestResponse"|"DryRun",
-#'   LogType = "None"|"Tail",
-#'   ClientContext = "string",
-#'   Payload = raw,
-#'   Qualifier = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example invokes version 1 of a function named my-function
-#' # with an empty event payload.
-#' svc$invoke(
-#'   FunctionName = "my-function",
-#'   Payload = "{}",
-#'   Qualifier = "1"
-#' )
-#' 
-#' # The following example invokes version 1 of a function named my-function
-#' # asynchronously.
-#' svc$invoke(
-#'   FunctionName = "my-function",
-#'   InvocationType = "Event",
-#'   Payload = "{}",
-#'   Qualifier = "1"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2927,11 +1497,8 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #'
 #' @description
 #' For asynchronous function invocation, use [`invoke`][lambda_invoke].
-#' 
-#' Invokes a function asynchronously.
 #'
-#' @usage
-#' lambda_invoke_async(FunctionName, InvokeArgs)
+#' See [https://paws-r.github.io/docs/lambda/invoke_async.html](https://paws-r.github.io/docs/lambda/invoke_async.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2947,31 +1514,6 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
 #' @param InvokeArgs &#91;required&#93; The JSON that you want to provide to your Lambda function as input.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$invoke_async(
-#'   FunctionName = "string",
-#'   InvokeArgs = raw
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example invokes a Lambda function asynchronously
-#' svc$invoke_async(
-#'   FunctionName = "my-function",
-#'   InvokeArgs = "{}"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2996,12 +1538,9 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' Returns a list of aliases for a Lambda function
 #'
 #' @description
-#' Returns a list of
-#' [aliases](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html)
-#' for a Lambda function.
+#' Returns a list of [aliases](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html) for a Lambda function.
 #'
-#' @usage
-#' lambda_list_aliases(FunctionName, FunctionVersion, Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_aliases.html](https://paws-r.github.io/docs/lambda/list_aliases.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -3021,47 +1560,6 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems Limit the number of aliases returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   Aliases = list(
-#'     list(
-#'       AliasArn = "string",
-#'       Name = "string",
-#'       FunctionVersion = "string",
-#'       Description = "string",
-#'       RoutingConfig = list(
-#'         AdditionalVersionWeights = list(
-#'           123.0
-#'         )
-#'       ),
-#'       RevisionId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_aliases(
-#'   FunctionName = "string",
-#'   FunctionVersion = "string",
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of aliases for a function named
-#' # my-function.
-#' svc$list_aliases(
-#'   FunctionName = "my-function"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3086,49 +1584,13 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 #' Returns a list of code signing configurations
 #'
 #' @description
-#' Returns a list of [code signing
-#' configurations](https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html).
-#' A request returns up to 10,000 configurations per call. You can use the
-#' `MaxItems` parameter to return fewer configurations per call.
+#' Returns a list of [code signing configurations](https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html). A request returns up to 10,000 configurations per call. You can use the `MaxItems` parameter to return fewer configurations per call.
 #'
-#' @usage
-#' lambda_list_code_signing_configs(Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_code_signing_configs.html](https://paws-r.github.io/docs/lambda/list_code_signing_configs.html) for full documentation.
 #'
 #' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems Maximum number of items to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   CodeSigningConfigs = list(
-#'     list(
-#'       CodeSigningConfigId = "string",
-#'       CodeSigningConfigArn = "string",
-#'       Description = "string",
-#'       AllowedPublishers = list(
-#'         SigningProfileVersionArns = list(
-#'           "string"
-#'         )
-#'       ),
-#'       CodeSigningPolicies = list(
-#'         UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-#'       ),
-#'       LastModified = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_code_signing_configs(
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3153,12 +1615,9 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' Lists event source mappings
 #'
 #' @description
-#' Lists event source mappings. Specify an `EventSourceArn` to only show
-#' event source mappings for a single event source.
+#' Lists event source mappings. Specify an `EventSourceArn` to only show event source mappings for a single event source.
 #'
-#' @usage
-#' lambda_list_event_source_mappings(EventSourceArn, FunctionName, Marker,
-#'   MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_event_source_mappings.html](https://paws-r.github.io/docs/lambda/list_event_source_mappings.html) for full documentation.
 #'
 #' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
 #' 
@@ -3188,88 +1647,9 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it's limited to 64 characters in length.
 #' @param Marker A pagination token returned by a previous call.
-#' @param MaxItems The maximum number of event source mappings to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   EventSourceMappings = list(
-#'     list(
-#'       UUID = "string",
-#'       StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-#'       StartingPositionTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       BatchSize = 123,
-#'       MaximumBatchingWindowInSeconds = 123,
-#'       ParallelizationFactor = 123,
-#'       EventSourceArn = "string",
-#'       FunctionArn = "string",
-#'       LastModified = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastProcessingResult = "string",
-#'       State = "string",
-#'       StateTransitionReason = "string",
-#'       DestinationConfig = list(
-#'         OnSuccess = list(
-#'           Destination = "string"
-#'         ),
-#'         OnFailure = list(
-#'           Destination = "string"
-#'         )
-#'       ),
-#'       Topics = list(
-#'         "string"
-#'       ),
-#'       Queues = list(
-#'         "string"
-#'       ),
-#'       SourceAccessConfigurations = list(
-#'         list(
-#'           Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-#'           URI = "string"
-#'         )
-#'       ),
-#'       SelfManagedEventSource = list(
-#'         Endpoints = list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       MaximumRecordAgeInSeconds = 123,
-#'       BisectBatchOnFunctionError = TRUE|FALSE,
-#'       MaximumRetryAttempts = 123,
-#'       TumblingWindowInSeconds = 123,
-#'       FunctionResponseTypes = list(
-#'         "ReportBatchItemFailures"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_event_source_mappings(
-#'   EventSourceArn = "string",
-#'   FunctionName = "string",
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of the event source mappings for a
-#' # function named my-function.
-#' svc$list_event_source_mappings(
-#'   FunctionName = "my-function"
-#' )
-#' }
+#' @param MaxItems The maximum number of event source mappings to return. Note that
+#' ListEventSourceMappings returns a maximum of 100 items in each response,
+#' even if you set the number higher.
 #'
 #' @keywords internal
 #'
@@ -3295,15 +1675,9 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #' function
 #'
 #' @description
-#' Retrieves a list of configurations for asynchronous invocation for a
-#' function.
-#' 
-#' To configure options for asynchronous invocation, use
-#' [`put_function_event_invoke_config`][lambda_put_function_event_invoke_config].
+#' Retrieves a list of configurations for asynchronous invocation for a function.
 #'
-#' @usage
-#' lambda_list_function_event_invoke_configs(FunctionName, Marker,
-#'   MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_function_event_invoke_configs.html](https://paws-r.github.io/docs/lambda/list_function_event_invoke_configs.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -3321,50 +1695,6 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems The maximum number of configurations to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FunctionEventInvokeConfigs = list(
-#'     list(
-#'       LastModified = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       FunctionArn = "string",
-#'       MaximumRetryAttempts = 123,
-#'       MaximumEventAgeInSeconds = 123,
-#'       DestinationConfig = list(
-#'         OnSuccess = list(
-#'           Destination = "string"
-#'         ),
-#'         OnFailure = list(
-#'           Destination = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_function_event_invoke_configs(
-#'   FunctionName = "string",
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of asynchronous invocation
-#' # configurations for a function named my-function.
-#' svc$list_function_event_invoke_configs(
-#'   FunctionName = "my-function"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3386,134 +1716,73 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 }
 .lambda$operations$list_function_event_invoke_configs <- lambda_list_function_event_invoke_configs
 
+#' Returns a list of Lambda function URLs for the specified function
+#'
+#' @description
+#' Returns a list of Lambda function URLs for the specified function.
+#'
+#' See [https://paws-r.github.io/docs/lambda/list_function_url_configs.html](https://paws-r.github.io/docs/lambda/list_function_url_configs.html) for full documentation.
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Marker Specify the pagination token that's returned by a previous request to
+#' retrieve the next page of results.
+#' @param MaxItems The maximum number of function URLs to return in the response. Note that
+#' [`list_function_url_configs`][lambda_list_function_url_configs] returns
+#' a maximum of 50 items in each response, even if you set the number
+#' higher.
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_list_function_url_configs
+lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListFunctionUrlConfigs",
+    http_method = "GET",
+    http_path = "/2021-10-31/functions/{FunctionName}/urls",
+    paginator = list()
+  )
+  input <- .lambda$list_function_url_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
+  output <- .lambda$list_function_url_configs_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$list_function_url_configs <- lambda_list_function_url_configs
+
 #' Returns a list of Lambda functions, with the version-specific
 #' configuration of each
 #'
 #' @description
-#' Returns a list of Lambda functions, with the version-specific
-#' configuration of each. Lambda returns up to 50 functions per call.
-#' 
-#' Set `FunctionVersion` to `ALL` to include all published versions of each
-#' function in addition to the unpublished version. To get more information
-#' about a function or version, use [`get_function`][lambda_get_function].
+#' Returns a list of Lambda functions, with the version-specific configuration of each. Lambda returns up to 50 functions per call.
 #'
-#' @usage
-#' lambda_list_functions(MasterRegion, FunctionVersion, Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_functions.html](https://paws-r.github.io/docs/lambda/list_functions.html) for full documentation.
 #'
-#' @param MasterRegion For Lambda@@Edge functions, the AWS Region of the master function. For
-#' example, `us-east-1` filters the list of functions to only include
-#' Lambda@@Edge functions replicated from a master function in US East (N.
-#' Virginia). If specified, you must set `FunctionVersion` to `ALL`.
+#' @param MasterRegion For Lambda@@Edge functions, the Amazon Web Services Region of the master
+#' function. For example, `us-east-1` filters the list of functions to only
+#' include Lambda@@Edge functions replicated from a master function in US
+#' East (N. Virginia). If specified, you must set `FunctionVersion` to
+#' `ALL`.
 #' @param FunctionVersion Set to `ALL` to include entries for all published versions of each
 #' function.
 #' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
-#' @param MaxItems The maximum number of functions to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   Functions = list(
-#'     list(
-#'       FunctionName = "string",
-#'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'       Role = "string",
-#'       Handler = "string",
-#'       CodeSize = 123,
-#'       Description = "string",
-#'       Timeout = 123,
-#'       MemorySize = 123,
-#'       LastModified = "string",
-#'       CodeSha256 = "string",
-#'       Version = "string",
-#'       VpcConfig = list(
-#'         SubnetIds = list(
-#'           "string"
-#'         ),
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         VpcId = "string"
-#'       ),
-#'       DeadLetterConfig = list(
-#'         TargetArn = "string"
-#'       ),
-#'       Environment = list(
-#'         Variables = list(
-#'           "string"
-#'         ),
-#'         Error = list(
-#'           ErrorCode = "string",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       KMSKeyArn = "string",
-#'       TracingConfig = list(
-#'         Mode = "Active"|"PassThrough"
-#'       ),
-#'       MasterArn = "string",
-#'       RevisionId = "string",
-#'       Layers = list(
-#'         list(
-#'           Arn = "string",
-#'           CodeSize = 123,
-#'           SigningProfileVersionArn = "string",
-#'           SigningJobArn = "string"
-#'         )
-#'       ),
-#'       State = "Pending"|"Active"|"Inactive"|"Failed",
-#'       StateReason = "string",
-#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'       LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-#'       LastUpdateStatusReason = "string",
-#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'       FileSystemConfigs = list(
-#'         list(
-#'           Arn = "string",
-#'           LocalMountPath = "string"
-#'         )
-#'       ),
-#'       PackageType = "Zip"|"Image",
-#'       ImageConfigResponse = list(
-#'         ImageConfig = list(
-#'           EntryPoint = list(
-#'             "string"
-#'           ),
-#'           Command = list(
-#'             "string"
-#'           ),
-#'           WorkingDirectory = "string"
-#'         ),
-#'         Error = list(
-#'           ErrorCode = "string",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       SigningProfileVersionArn = "string",
-#'       SigningJobArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_functions(
-#'   MasterRegion = "string",
-#'   FunctionVersion = "ALL",
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation returns a list of Lambda functions.
-#' svc$list_functions()
-#' }
+#' @param MaxItems The maximum number of functions to return in the response. Note that
+#' [`list_functions`][lambda_list_functions] returns a maximum of 50 items
+#' in each response, even if you set the number higher.
 #'
 #' @keywords internal
 #'
@@ -3538,38 +1807,14 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 #' List the functions that use the specified code signing configuration
 #'
 #' @description
-#' List the functions that use the specified code signing configuration.
-#' You can use this method prior to deleting a code signing configuration,
-#' to verify that no functions are using it.
+#' List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.
 #'
-#' @usage
-#' lambda_list_functions_by_code_signing_config(CodeSigningConfigArn,
-#'   Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_functions_by_code_signing_config.html](https://paws-r.github.io/docs/lambda/list_functions_by_code_signing_config.html) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
 #' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems Maximum number of items to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   FunctionArns = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_functions_by_code_signing_config(
-#'   CodeSigningConfigArn = "string",
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3591,75 +1836,31 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 }
 .lambda$operations$list_functions_by_code_signing_config <- lambda_list_functions_by_code_signing_config
 
-#' Lists the versions of an AWS Lambda layer
+#' Lists the versions of an Lambda layer
 #'
 #' @description
-#' Lists the versions of an [AWS Lambda
-#' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
-#' Versions that have been deleted aren't listed. Specify a [runtime
-#' identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)
-#' to list only versions that indicate that they're compatible with that
-#' runtime.
+#' Lists the versions of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). Versions that have been deleted aren't listed. Specify a [runtime identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to list only versions that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layer versions that are compatible with that architecture.
 #'
-#' @usage
-#' lambda_list_layer_versions(CompatibleRuntime, LayerName, Marker,
-#'   MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_layer_versions.html](https://paws-r.github.io/docs/lambda/list_layer_versions.html) for full documentation.
 #'
 #' @param CompatibleRuntime A runtime identifier. For example, `go1.x`.
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param Marker A pagination token returned by a previous call.
 #' @param MaxItems The maximum number of versions to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   LayerVersions = list(
-#'     list(
-#'       LayerVersionArn = "string",
-#'       Version = 123,
-#'       Description = "string",
-#'       CreatedDate = "string",
-#'       CompatibleRuntimes = list(
-#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
-#'       ),
-#'       LicenseInfo = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'   LayerName = "string",
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example displays information about the versions for the
-#' # layer named blank-java-lib
-#' svc$list_layer_versions(
-#'   LayerName = "blank-java-lib"
-#' )
-#' }
+#' @param CompatibleArchitecture The compatible [instruction set
+#' architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_list_layer_versions
-lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Marker = NULL, MaxItems = NULL) {
+lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Marker = NULL, MaxItems = NULL, CompatibleArchitecture = NULL) {
   op <- new_operation(
     name = "ListLayerVersions",
     http_method = "GET",
     http_path = "/2018-10-31/layers/{LayerName}/versions",
     paginator = list()
   )
-  input <- .lambda$list_layer_versions_input(CompatibleRuntime = CompatibleRuntime, LayerName = LayerName, Marker = Marker, MaxItems = MaxItems)
+  input <- .lambda$list_layer_versions_input(CompatibleRuntime = CompatibleRuntime, LayerName = LayerName, Marker = Marker, MaxItems = MaxItems, CompatibleArchitecture = CompatibleArchitecture)
   output <- .lambda$list_layer_versions_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -3669,78 +1870,31 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 }
 .lambda$operations$list_layer_versions <- lambda_list_layer_versions
 
-#' Lists AWS Lambda layers and shows information about the latest version
-#' of each
+#' Lists Lambda layers and shows information about the latest version of
+#' each
 #'
 #' @description
-#' Lists [AWS Lambda
-#' layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
-#' and shows information about the latest version of each. Specify a
-#' [runtime
-#' identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)
-#' to list only layers that indicate that they're compatible with that
-#' runtime.
+#' Lists [Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/invocation-layers.html) and shows information about the latest version of each. Specify a [runtime identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that [instruction set architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #'
-#' @usage
-#' lambda_list_layers(CompatibleRuntime, Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_layers.html](https://paws-r.github.io/docs/lambda/list_layers.html) for full documentation.
 #'
 #' @param CompatibleRuntime A runtime identifier. For example, `go1.x`.
 #' @param Marker A pagination token returned by a previous call.
 #' @param MaxItems The maximum number of layers to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   Layers = list(
-#'     list(
-#'       LayerName = "string",
-#'       LayerArn = "string",
-#'       LatestMatchingVersion = list(
-#'         LayerVersionArn = "string",
-#'         Version = 123,
-#'         Description = "string",
-#'         CreatedDate = "string",
-#'         CompatibleRuntimes = list(
-#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
-#'         ),
-#'         LicenseInfo = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns information about layers that are
-#' # compatible with the Python 3.7 runtime.
-#' svc$list_layers(
-#'   CompatibleRuntime = "python3.7"
-#' )
-#' }
+#' @param CompatibleArchitecture The compatible [instruction set
+#' architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_list_layers
-lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems = NULL) {
+lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems = NULL, CompatibleArchitecture = NULL) {
   op <- new_operation(
     name = "ListLayers",
     http_method = "GET",
     http_path = "/2018-10-31/layers",
     paginator = list()
   )
-  input <- .lambda$list_layers_input(CompatibleRuntime = CompatibleRuntime, Marker = Marker, MaxItems = MaxItems)
+  input <- .lambda$list_layers_input(CompatibleRuntime = CompatibleRuntime, Marker = Marker, MaxItems = MaxItems, CompatibleArchitecture = CompatibleArchitecture)
   output <- .lambda$list_layers_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -3754,12 +1908,9 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #' function
 #'
 #' @description
-#' Retrieves a list of provisioned concurrency configurations for a
-#' function.
+#' Retrieves a list of provisioned concurrency configurations for a function.
 #'
-#' @usage
-#' lambda_list_provisioned_concurrency_configs(FunctionName, Marker,
-#'   MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_provisioned_concurrency_configs.html](https://paws-r.github.io/docs/lambda/list_provisioned_concurrency_configs.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -3777,43 +1928,6 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems Specify a number to limit the number of configurations returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisionedConcurrencyConfigs = list(
-#'     list(
-#'       FunctionArn = "string",
-#'       RequestedProvisionedConcurrentExecutions = 123,
-#'       AvailableProvisionedConcurrentExecutions = 123,
-#'       AllocatedProvisionedConcurrentExecutions = 123,
-#'       Status = "IN_PROGRESS"|"READY"|"FAILED",
-#'       StatusReason = "string",
-#'       LastModified = "string"
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_provisioned_concurrency_configs(
-#'   FunctionName = "string",
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of provisioned concurrency
-#' # configurations for a function named my-function.
-#' svc$list_provisioned_concurrency_configs(
-#'   FunctionName = "my-function"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3838,40 +1952,12 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 #' Returns a function's tags
 #'
 #' @description
-#' Returns a function's
-#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html).
-#' You can also view tags with [`get_function`][lambda_get_function].
+#' Returns a function's [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html). You can also view tags with [`get_function`][lambda_get_function].
 #'
-#' @usage
-#' lambda_list_tags(Resource)
+#' See [https://paws-r.github.io/docs/lambda/list_tags.html](https://paws-r.github.io/docs/lambda/list_tags.html) for full documentation.
 #'
-#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags(
-#'   Resource = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example displays the tags attached to the my-function
-#' # Lambda function.
-#' svc$list_tags(
-#'   Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function"
-#' )
-#' }
+#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN). Note: Lambda does not support
+#' adding tags to aliases or versions.
 #'
 #' @keywords internal
 #'
@@ -3897,13 +1983,9 @@ lambda_list_tags <- function(Resource) {
 #' each
 #'
 #' @description
-#' Returns a list of
-#' [versions](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html),
-#' with the version-specific configuration of each. Lambda returns up to 50
-#' versions per call.
+#' Returns a list of [versions](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html), with the version-specific configuration of each. Lambda returns up to 50 versions per call.
 #'
-#' @usage
-#' lambda_list_versions_by_function(FunctionName, Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/lambda/list_versions_by_function.html](https://paws-r.github.io/docs/lambda/list_versions_by_function.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -3920,114 +2002,10 @@ lambda_list_tags <- function(Resource) {
 #' the function name, it is limited to 64 characters in length.
 #' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
-#' @param MaxItems The maximum number of versions to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   Versions = list(
-#'     list(
-#'       FunctionName = "string",
-#'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'       Role = "string",
-#'       Handler = "string",
-#'       CodeSize = 123,
-#'       Description = "string",
-#'       Timeout = 123,
-#'       MemorySize = 123,
-#'       LastModified = "string",
-#'       CodeSha256 = "string",
-#'       Version = "string",
-#'       VpcConfig = list(
-#'         SubnetIds = list(
-#'           "string"
-#'         ),
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         VpcId = "string"
-#'       ),
-#'       DeadLetterConfig = list(
-#'         TargetArn = "string"
-#'       ),
-#'       Environment = list(
-#'         Variables = list(
-#'           "string"
-#'         ),
-#'         Error = list(
-#'           ErrorCode = "string",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       KMSKeyArn = "string",
-#'       TracingConfig = list(
-#'         Mode = "Active"|"PassThrough"
-#'       ),
-#'       MasterArn = "string",
-#'       RevisionId = "string",
-#'       Layers = list(
-#'         list(
-#'           Arn = "string",
-#'           CodeSize = 123,
-#'           SigningProfileVersionArn = "string",
-#'           SigningJobArn = "string"
-#'         )
-#'       ),
-#'       State = "Pending"|"Active"|"Inactive"|"Failed",
-#'       StateReason = "string",
-#'       StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'       LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-#'       LastUpdateStatusReason = "string",
-#'       LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'       FileSystemConfigs = list(
-#'         list(
-#'           Arn = "string",
-#'           LocalMountPath = "string"
-#'         )
-#'       ),
-#'       PackageType = "Zip"|"Image",
-#'       ImageConfigResponse = list(
-#'         ImageConfig = list(
-#'           EntryPoint = list(
-#'             "string"
-#'           ),
-#'           Command = list(
-#'             "string"
-#'           ),
-#'           WorkingDirectory = "string"
-#'         ),
-#'         Error = list(
-#'           ErrorCode = "string",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       SigningProfileVersionArn = "string",
-#'       SigningJobArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_versions_by_function(
-#'   FunctionName = "string",
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of versions of a function named
-#' # my-function
-#' svc$list_versions_by_function(
-#'   FunctionName = "my-function"
-#' )
-#' }
+#' @param MaxItems The maximum number of versions to return. Note that
+#' [`list_versions_by_function`][lambda_list_versions_by_function] returns
+#' a maximum of 50 items in each response, even if you set the number
+#' higher.
 #'
 #' @keywords internal
 #'
@@ -4049,22 +2027,12 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 }
 .lambda$operations$list_versions_by_function <- lambda_list_versions_by_function
 
-#' Creates an AWS Lambda layer from a ZIP archive
+#' Creates an Lambda layer from a ZIP archive
 #'
 #' @description
-#' Creates an [AWS Lambda
-#' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
-#' from a ZIP archive. Each time you call
-#' [`publish_layer_version`][lambda_publish_layer_version] with the same
-#' layer name, a new version is created.
-#' 
-#' Add layers to your function with
-#' [`create_function`][lambda_create_function] or
-#' [`update_function_configuration`][lambda_update_function_configuration].
+#' Creates an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) from a ZIP archive. Each time you call [`publish_layer_version`][lambda_publish_layer_version] with the same layer name, a new version is created.
 #'
-#' @usage
-#' lambda_publish_layer_version(LayerName, Description, Content,
-#'   CompatibleRuntimes, LicenseInfo)
+#' See [https://paws-r.github.io/docs/lambda/publish_layer_version.html](https://paws-r.github.io/docs/lambda/publish_layer_version.html) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param Description The description of the version.
@@ -4082,79 +2050,20 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     `https://opensource.org/licenses/MIT`.
 #' 
 #' -   The full text of the license.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Content = list(
-#'     Location = "string",
-#'     CodeSha256 = "string",
-#'     CodeSize = 123,
-#'     SigningProfileVersionArn = "string",
-#'     SigningJobArn = "string"
-#'   ),
-#'   LayerArn = "string",
-#'   LayerVersionArn = "string",
-#'   Description = "string",
-#'   CreatedDate = "string",
-#'   Version = 123,
-#'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
-#'   ),
-#'   LicenseInfo = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$publish_layer_version(
-#'   LayerName = "string",
-#'   Description = "string",
-#'   Content = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string",
-#'     S3ObjectVersion = "string",
-#'     ZipFile = raw
-#'   ),
-#'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
-#'   ),
-#'   LicenseInfo = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a new Python library layer version. The
-#' # command retrieves the layer content a file named layer.zip in the
-#' # specified S3 bucket.
-#' svc$publish_layer_version(
-#'   CompatibleRuntimes = list(
-#'     "python3.6",
-#'     "python3.7"
-#'   ),
-#'   Content = list(
-#'     S3Bucket = "lambda-layers-us-west-2-123456789012",
-#'     S3Key = "layer.zip"
-#'   ),
-#'   Description = "My Python layer",
-#'   LayerName = "my-layer",
-#'   LicenseInfo = "MIT"
-#' )
-#' }
+#' @param CompatibleArchitectures A list of compatible [instruction set
+#' architectures](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_publish_layer_version
-lambda_publish_layer_version <- function(LayerName, Description = NULL, Content, CompatibleRuntimes = NULL, LicenseInfo = NULL) {
+lambda_publish_layer_version <- function(LayerName, Description = NULL, Content, CompatibleRuntimes = NULL, LicenseInfo = NULL, CompatibleArchitectures = NULL) {
   op <- new_operation(
     name = "PublishLayerVersion",
     http_method = "POST",
     http_path = "/2018-10-31/layers/{LayerName}/versions",
     paginator = list()
   )
-  input <- .lambda$publish_layer_version_input(LayerName = LayerName, Description = Description, Content = Content, CompatibleRuntimes = CompatibleRuntimes, LicenseInfo = LicenseInfo)
+  input <- .lambda$publish_layer_version_input(LayerName = LayerName, Description = Description, Content = Content, CompatibleRuntimes = CompatibleRuntimes, LicenseInfo = LicenseInfo, CompatibleArchitectures = CompatibleArchitectures)
   output <- .lambda$publish_layer_version_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -4167,24 +2076,9 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' Creates a version from the current code and configuration of a function
 #'
 #' @description
-#' Creates a
-#' [version](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html)
-#' from the current code and configuration of a function. Use versions to
-#' create a snapshot of your function code and configuration that doesn't
-#' change.
-#' 
-#' AWS Lambda doesn't publish a version if the function's configuration and
-#' code haven't changed since the last version. Use
-#' [`update_function_code`][lambda_update_function_code] or
-#' [`update_function_configuration`][lambda_update_function_configuration]
-#' to update the function before publishing a version.
-#' 
-#' Clients can invoke versions directly or with an alias. To create an
-#' alias, use [`create_alias`][lambda_create_alias].
+#' Creates a [version](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html) from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
 #'
-#' @usage
-#' lambda_publish_version(FunctionName, CodeSha256, Description,
-#'   RevisionId)
+#' See [https://paws-r.github.io/docs/lambda/publish_version.html](https://paws-r.github.io/docs/lambda/publish_version.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -4210,110 +2104,6 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' specified. Use this option to avoid publishing a version if the function
 #' configuration has changed since you last updated it.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FunctionName = "string",
-#'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'   Role = "string",
-#'   Handler = "string",
-#'   CodeSize = 123,
-#'   Description = "string",
-#'   Timeout = 123,
-#'   MemorySize = 123,
-#'   LastModified = "string",
-#'   CodeSha256 = "string",
-#'   Version = "string",
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     VpcId = "string"
-#'   ),
-#'   DeadLetterConfig = list(
-#'     TargetArn = "string"
-#'   ),
-#'   Environment = list(
-#'     Variables = list(
-#'       "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   KMSKeyArn = "string",
-#'   TracingConfig = list(
-#'     Mode = "Active"|"PassThrough"
-#'   ),
-#'   MasterArn = "string",
-#'   RevisionId = "string",
-#'   Layers = list(
-#'     list(
-#'       Arn = "string",
-#'       CodeSize = 123,
-#'       SigningProfileVersionArn = "string",
-#'       SigningJobArn = "string"
-#'     )
-#'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
-#'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-#'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   FileSystemConfigs = list(
-#'     list(
-#'       Arn = "string",
-#'       LocalMountPath = "string"
-#'     )
-#'   ),
-#'   PackageType = "Zip"|"Image",
-#'   ImageConfigResponse = list(
-#'     ImageConfig = list(
-#'       EntryPoint = list(
-#'         "string"
-#'       ),
-#'       Command = list(
-#'         "string"
-#'       ),
-#'       WorkingDirectory = "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$publish_version(
-#'   FunctionName = "string",
-#'   CodeSha256 = "string",
-#'   Description = "string",
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation publishes a version of a Lambda function
-#' svc$publish_version(
-#'   CodeSha256 = "",
-#'   Description = "",
-#'   FunctionName = "myFunction"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname lambda_publish_version
@@ -4337,13 +2127,9 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #' Update the code signing configuration for the function
 #'
 #' @description
-#' Update the code signing configuration for the function. Changes to the
-#' code signing configuration take effect the next time a user tries to
-#' deploy a code package to the function.
+#' Update the code signing configuration for the function. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
 #'
-#' @usage
-#' lambda_put_function_code_signing_config(CodeSigningConfigArn,
-#'   FunctionName)
+#' See [https://paws-r.github.io/docs/lambda/put_function_code_signing_config.html](https://paws-r.github.io/docs/lambda/put_function_code_signing_config.html) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
@@ -4359,23 +2145,6 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CodeSigningConfigArn = "string",
-#'   FunctionName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_function_code_signing_config(
-#'   CodeSigningConfigArn = "string",
-#'   FunctionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4401,26 +2170,9 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #' reserves capacity for that concurrency level
 #'
 #' @description
-#' Sets the maximum number of simultaneous executions for a function, and
-#' reserves capacity for that concurrency level.
-#' 
-#' Concurrency settings apply to the function as a whole, including all
-#' published versions and the unpublished version. Reserving concurrency
-#' both ensures that your function has capacity to process the specified
-#' number of events simultaneously, and prevents it from scaling beyond
-#' that level. Use [`get_function`][lambda_get_function] to see the current
-#' setting for a function.
-#' 
-#' Use [`get_account_settings`][lambda_get_account_settings] to see your
-#' Regional concurrency limit. You can reserve concurrency for as many
-#' functions as you like, as long as you leave at least 100 simultaneous
-#' executions unreserved for functions that aren't configured with a
-#' per-function limit. For more information, see [Managing
-#' Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html).
+#' Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.
 #'
-#' @usage
-#' lambda_put_function_concurrency(FunctionName,
-#'   ReservedConcurrentExecutions)
+#' See [https://paws-r.github.io/docs/lambda/put_function_concurrency.html](https://paws-r.github.io/docs/lambda/put_function_concurrency.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -4436,32 +2188,6 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
 #' @param ReservedConcurrentExecutions &#91;required&#93; The number of simultaneous executions to reserve for the function.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReservedConcurrentExecutions = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_function_concurrency(
-#'   FunctionName = "string",
-#'   ReservedConcurrentExecutions = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example configures 100 reserved concurrent executions for
-#' # the my-function function.
-#' svc$put_function_concurrency(
-#'   FunctionName = "my-function",
-#'   ReservedConcurrentExecutions = 100L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4487,32 +2213,9 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' or alias
 #'
 #' @description
-#' Configures options for [asynchronous
-#' invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html)
-#' on a function, version, or alias. If a configuration already exists for
-#' a function, version, or alias, this operation overwrites it. If you
-#' exclude any settings, they are removed. To set one option without
-#' affecting existing settings for other options, use
-#' [`update_function_event_invoke_config`][lambda_update_function_event_invoke_config].
-#' 
-#' By default, Lambda retries an asynchronous invocation twice if the
-#' function returns an error. It retains events in a queue for up to six
-#' hours. When an event fails all processing attempts or stays in the
-#' asynchronous invocation queue for too long, Lambda discards it. To
-#' retain discarded events, configure a dead-letter queue with
-#' [`update_function_configuration`][lambda_update_function_configuration].
-#' 
-#' To send an invocation record to a queue, topic, function, or event bus,
-#' specify a
-#' [destination](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations).
-#' You can configure separate destinations for successful invocations
-#' (on-success) and events that fail all processing attempts (on-failure).
-#' You can configure destinations in addition to or instead of a
-#' dead-letter queue.
+#' Configures options for [asynchronous invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html) on a function, version, or alias. If a configuration already exists for a function, version, or alias, this operation overwrites it. If you exclude any settings, they are removed. To set one option without affecting existing settings for other options, use [`update_function_event_invoke_config`][lambda_update_function_event_invoke_config].
 #'
-#' @usage
-#' lambda_put_function_event_invoke_config(FunctionName, Qualifier,
-#'   MaximumRetryAttempts, MaximumEventAgeInSeconds, DestinationConfig)
+#' See [https://paws-r.github.io/docs/lambda/put_function_event_invoke_config.html](https://paws-r.github.io/docs/lambda/put_function_event_invoke_config.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -4545,56 +2248,6 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' -   **Topic** - The ARN of an SNS topic.
 #' 
 #' -   **Event Bus** - The ARN of an Amazon EventBridge event bus.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LastModified = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   FunctionArn = "string",
-#'   MaximumRetryAttempts = 123,
-#'   MaximumEventAgeInSeconds = 123,
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_function_event_invoke_config(
-#'   FunctionName = "string",
-#'   Qualifier = "string",
-#'   MaximumRetryAttempts = 123,
-#'   MaximumEventAgeInSeconds = 123,
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example sets a maximum event age of one hour and disables
-#' # retries for the specified function.
-#' svc$put_function_event_invoke_config(
-#'   FunctionName = "my-function",
-#'   MaximumEventAgeInSeconds = 3600L,
-#'   MaximumRetryAttempts = 0L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4620,12 +2273,9 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' version
 #'
 #' @description
-#' Adds a provisioned concurrency configuration to a function's alias or
-#' version.
+#' Adds a provisioned concurrency configuration to a function's alias or version.
 #'
-#' @usage
-#' lambda_put_provisioned_concurrency_config(FunctionName, Qualifier,
-#'   ProvisionedConcurrentExecutions)
+#' See [https://paws-r.github.io/docs/lambda/put_provisioned_concurrency_config.html](https://paws-r.github.io/docs/lambda/put_provisioned_concurrency_config.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -4643,39 +2293,6 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' @param Qualifier &#91;required&#93; The version number or alias name.
 #' @param ProvisionedConcurrentExecutions &#91;required&#93; The amount of provisioned concurrency to allocate for the version or
 #' alias.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestedProvisionedConcurrentExecutions = 123,
-#'   AvailableProvisionedConcurrentExecutions = 123,
-#'   AllocatedProvisionedConcurrentExecutions = 123,
-#'   Status = "IN_PROGRESS"|"READY"|"FAILED",
-#'   StatusReason = "string",
-#'   LastModified = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_provisioned_concurrency_config(
-#'   FunctionName = "string",
-#'   Qualifier = "string",
-#'   ProvisionedConcurrentExecutions = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example allocates 100 provisioned concurrency for the BLUE
-#' # alias of the specified function.
-#' svc$put_provisioned_concurrency_config(
-#'   FunctionName = "my-function",
-#'   ProvisionedConcurrentExecutions = 100L,
-#'   Qualifier = "BLUE"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4697,19 +2314,13 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
 }
 .lambda$operations$put_provisioned_concurrency_config <- lambda_put_provisioned_concurrency_config
 
-#' Removes a statement from the permissions policy for a version of an AWS
+#' Removes a statement from the permissions policy for a version of an
 #' Lambda layer
 #'
 #' @description
-#' Removes a statement from the permissions policy for a version of an [AWS
-#' Lambda
-#' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
-#' For more information, see
-#' [`add_layer_version_permission`][lambda_add_layer_version_permission].
+#' Removes a statement from the permissions policy for a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). For more information, see [`add_layer_version_permission`][lambda_add_layer_version_permission].
 #'
-#' @usage
-#' lambda_remove_layer_version_permission(LayerName, VersionNumber,
-#'   StatementId, RevisionId)
+#' See [https://paws-r.github.io/docs/lambda/remove_layer_version_permission.html](https://paws-r.github.io/docs/lambda/remove_layer_version_permission.html) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
@@ -4717,30 +2328,6 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
 #' @param RevisionId Only update the policy if the revision ID matches the ID specified. Use
 #' this option to avoid modifying a policy that has changed since you last
 #' read it.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_layer_version_permission(
-#'   LayerName = "string",
-#'   VersionNumber = 123,
-#'   StatementId = "string",
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes permission for an account to configure a
-#' # layer version.
-#' svc$remove_layer_version_permission(
-#'   LayerName = "my-layer",
-#'   StatementId = "xaccount",
-#'   VersionNumber = 1L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4762,16 +2349,13 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 }
 .lambda$operations$remove_layer_version_permission <- lambda_remove_layer_version_permission
 
-#' Revokes function-use permission from an AWS service or another account
+#' Revokes function-use permission from an Amazon Web Services service or
+#' another account
 #'
 #' @description
-#' Revokes function-use permission from an AWS service or another account.
-#' You can get the ID of the statement from the output of
-#' [`get_policy`][lambda_get_policy].
+#' Revokes function-use permission from an Amazon Web Services service or another account. You can get the ID of the statement from the output of [`get_policy`][lambda_get_policy].
 #'
-#' @usage
-#' lambda_remove_permission(FunctionName, StatementId, Qualifier,
-#'   RevisionId)
+#' See [https://paws-r.github.io/docs/lambda/remove_permission.html](https://paws-r.github.io/docs/lambda/remove_permission.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -4794,30 +2378,6 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #' @param RevisionId Only update the policy if the revision ID matches the ID that's
 #' specified. Use this option to avoid modifying a policy that has changed
 #' since you last read it.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_permission(
-#'   FunctionName = "string",
-#'   StatementId = "string",
-#'   Qualifier = "string",
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example removes a permissions statement named xaccount
-#' # from the PROD alias of a function named my-function.
-#' svc$remove_permission(
-#'   FunctionName = "my-function",
-#'   Qualifier = "PROD",
-#'   StatementId = "xaccount"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4842,40 +2402,12 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 #' Adds tags to a function
 #'
 #' @description
-#' Adds
-#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
-#' to a function.
+#' Adds [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html) to a function.
 #'
-#' @usage
-#' lambda_tag_resource(Resource, Tags)
+#' See [https://paws-r.github.io/docs/lambda/tag_resource.html](https://paws-r.github.io/docs/lambda/tag_resource.html) for full documentation.
 #'
 #' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
 #' @param Tags &#91;required&#93; A list of tags to apply to the function.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   Resource = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example adds a tag with the key name DEPARTMENT and a
-#' # value of 'Department A' to the specified Lambda function.
-#' svc$tag_resource(
-#'   Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function",
-#'   Tags = list(
-#'     DEPARTMENT = "Department A"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4900,40 +2432,12 @@ lambda_tag_resource <- function(Resource, Tags) {
 #' Removes tags from a function
 #'
 #' @description
-#' Removes
-#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
-#' from a function.
+#' Removes [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html) from a function.
 #'
-#' @usage
-#' lambda_untag_resource(Resource, TagKeys)
+#' See [https://paws-r.github.io/docs/lambda/untag_resource.html](https://paws-r.github.io/docs/lambda/untag_resource.html) for full documentation.
 #'
 #' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; A list of tag keys to remove from the function.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   Resource = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example removes the tag with the key name DEPARTMENT tag
-#' # from the my-function Lambda function.
-#' svc$untag_resource(
-#'   Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function",
-#'   TagKeys = list(
-#'     "DEPARTMENT"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4958,12 +2462,9 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #' Updates the configuration of a Lambda function alias
 #'
 #' @description
-#' Updates the configuration of a Lambda function
-#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
+#' Updates the configuration of a Lambda function [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
 #'
-#' @usage
-#' lambda_update_alias(FunctionName, Name, FunctionVersion, Description,
-#'   RoutingConfig, RevisionId)
+#' See [https://paws-r.github.io/docs/lambda/update_alias.html](https://paws-r.github.io/docs/lambda/update_alias.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -4988,55 +2489,6 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #' specified. Use this option to avoid modifying an alias that has changed
 #' since you last read it.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AliasArn = "string",
-#'   Name = "string",
-#'   FunctionVersion = "string",
-#'   Description = "string",
-#'   RoutingConfig = list(
-#'     AdditionalVersionWeights = list(
-#'       123.0
-#'     )
-#'   ),
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_alias(
-#'   FunctionName = "string",
-#'   Name = "string",
-#'   FunctionVersion = "string",
-#'   Description = "string",
-#'   RoutingConfig = list(
-#'     AdditionalVersionWeights = list(
-#'       123.0
-#'     )
-#'   ),
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example updates the alias named BLUE to send 30% of
-#' # traffic to version 2 and 70% to version 1.
-#' svc$update_alias(
-#'   FunctionName = "my-function",
-#'   FunctionVersion = "2",
-#'   Name = "BLUE",
-#'   RoutingConfig = list(
-#'     AdditionalVersionWeights = list(
-#'       `1` = 0.7
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname lambda_update_alias
@@ -5060,55 +2512,14 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' Update the code signing configuration
 #'
 #' @description
-#' Update the code signing configuration. Changes to the code signing
-#' configuration take effect the next time a user tries to deploy a code
-#' package to the function.
+#' Update the code signing configuration. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
 #'
-#' @usage
-#' lambda_update_code_signing_config(CodeSigningConfigArn, Description,
-#'   AllowedPublishers, CodeSigningPolicies)
+#' See [https://paws-r.github.io/docs/lambda/update_code_signing_config.html](https://paws-r.github.io/docs/lambda/update_code_signing_config.html) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
 #' @param Description Descriptive name for this code signing configuration.
 #' @param AllowedPublishers Signing profiles for this code signing configuration.
 #' @param CodeSigningPolicies The code signing policy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CodeSigningConfig = list(
-#'     CodeSigningConfigId = "string",
-#'     CodeSigningConfigArn = "string",
-#'     Description = "string",
-#'     AllowedPublishers = list(
-#'       SigningProfileVersionArns = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CodeSigningPolicies = list(
-#'       UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-#'     ),
-#'     LastModified = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_code_signing_config(
-#'   CodeSigningConfigArn = "string",
-#'   Description = "string",
-#'   AllowedPublishers = list(
-#'     SigningProfileVersionArns = list(
-#'       "string"
-#'     )
-#'   ),
-#'   CodeSigningPolicies = list(
-#'     UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5133,36 +2544,9 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' Updates an event source mapping
 #'
 #' @description
-#' Updates an event source mapping. You can change the function that AWS
-#' Lambda invokes, or pause invocation and resume later from the same
-#' location.
-#' 
-#' The following error handling options are only available for stream
-#' sources (DynamoDB and Kinesis):
-#' 
-#' -   `BisectBatchOnFunctionError` - If the function returns an error,
-#'     split the batch in two and retry.
-#' 
-#' -   `DestinationConfig` - Send discarded records to an Amazon SQS queue
-#'     or Amazon SNS topic.
-#' 
-#' -   `MaximumRecordAgeInSeconds` - Discard records older than the
-#'     specified age. The default value is infinite (-1). When set to
-#'     infinite (-1), failed records are retried until the record expires
-#' 
-#' -   `MaximumRetryAttempts` - Discard records after the specified number
-#'     of retries. The default value is infinite (-1). When set to infinite
-#'     (-1), failed records are retried until the record expires.
-#' 
-#' -   `ParallelizationFactor` - Process multiple batches from each shard
-#'     concurrently.
+#' Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.
 #'
-#' @usage
-#' lambda_update_event_source_mapping(UUID, FunctionName, Enabled,
-#'   BatchSize, MaximumBatchingWindowInSeconds, DestinationConfig,
-#'   MaximumRecordAgeInSeconds, BisectBatchOnFunctionError,
-#'   MaximumRetryAttempts, ParallelizationFactor, SourceAccessConfigurations,
-#'   TumblingWindowInSeconds, FunctionResponseTypes)
+#' See [https://paws-r.github.io/docs/lambda/update_event_source_mapping.html](https://paws-r.github.io/docs/lambda/update_event_source_mapping.html) for full documentation.
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
 #' @param FunctionName The name of the Lambda function.
@@ -5181,13 +2565,18 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it's limited to 64 characters in length.
-#' @param Enabled If true, the event source mapping is active. Set to false to pause
+#' @param Enabled When true, the event source mapping is active. When false, Lambda pauses
 #' polling and invocation.
-#' @param BatchSize The maximum number of items to retrieve in a single batch.
+#' 
+#' Default: True
+#' @param BatchSize The maximum number of records in each batch that Lambda pulls from your
+#' stream or queue and sends to your function. Lambda passes all of the
+#' records in the batch to the function in a single call, up to the payload
+#' limit for synchronous invocation (6 MB).
 #' 
 #' -   **Amazon Kinesis** - Default 100. Max 10,000.
 #' 
-#' -   **Amazon DynamoDB Streams** - Default 100. Max 1,000.
+#' -   **Amazon DynamoDB Streams** - Default 100. Max 10,000.
 #' 
 #' -   **Amazon Simple Queue Service** - Default 10. For standard queues
 #'     the max is 10,000. For FIFO queues the max is 10.
@@ -5196,137 +2585,49 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'     10,000.
 #' 
 #' -   **Self-Managed Apache Kafka** - Default 100. Max 10,000.
-#' @param MaximumBatchingWindowInSeconds (Streams and SQS standard queues) The maximum amount of time to gather
-#' records before invoking the function, in seconds.
-#' @param DestinationConfig (Streams) An Amazon SQS queue or Amazon SNS topic destination for
+#' 
+#' -   **Amazon MQ (ActiveMQ and RabbitMQ)** - Default 100. Max 10,000.
+#' @param FilterCriteria (Streams and Amazon SQS) An object that defines the filter criteria that
+#' determine whether Lambda should process an event. For more information,
+#' see [Lambda event
+#' filtering](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html).
+#' @param MaximumBatchingWindowInSeconds (Streams and Amazon SQS standard queues) The maximum amount of time, in
+#' seconds, that Lambda spends gathering records before invoking the
+#' function.
+#' 
+#' Default: 0
+#' 
+#' Related setting: When you set `BatchSize` to a value greater than 10,
+#' you must set `MaximumBatchingWindowInSeconds` to at least 1.
+#' @param DestinationConfig (Streams only) An Amazon SQS queue or Amazon SNS topic destination for
 #' discarded records.
-#' @param MaximumRecordAgeInSeconds (Streams) Discard records older than the specified age. The default
+#' @param MaximumRecordAgeInSeconds (Streams only) Discard records older than the specified age. The default
 #' value is infinite (-1).
-#' @param BisectBatchOnFunctionError (Streams) If the function returns an error, split the batch in two and
-#' retry.
-#' @param MaximumRetryAttempts (Streams) Discard records after the specified number of retries. The
-#' default value is infinite (-1). When set to infinite (-1), failed
+#' @param BisectBatchOnFunctionError (Streams only) If the function returns an error, split the batch in two
+#' and retry.
+#' @param MaximumRetryAttempts (Streams only) Discard records after the specified number of retries.
+#' The default value is infinite (-1). When set to infinite (-1), failed
 #' records will be retried until the record expires.
-#' @param ParallelizationFactor (Streams) The number of batches to process from each shard concurrently.
-#' @param SourceAccessConfigurations An array of the authentication protocol, or the VPC components to secure
-#' your event source.
-#' @param TumblingWindowInSeconds (Streams) The duration of a processing window in seconds. The range is
-#' between 1 second up to 15 minutes.
-#' @param FunctionResponseTypes (Streams) A list of current response type enums applied to the event
-#' source mapping.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UUID = "string",
-#'   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-#'   StartingPositionTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   BatchSize = 123,
-#'   MaximumBatchingWindowInSeconds = 123,
-#'   ParallelizationFactor = 123,
-#'   EventSourceArn = "string",
-#'   FunctionArn = "string",
-#'   LastModified = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastProcessingResult = "string",
-#'   State = "string",
-#'   StateTransitionReason = "string",
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   ),
-#'   Topics = list(
-#'     "string"
-#'   ),
-#'   Queues = list(
-#'     "string"
-#'   ),
-#'   SourceAccessConfigurations = list(
-#'     list(
-#'       Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-#'       URI = "string"
-#'     )
-#'   ),
-#'   SelfManagedEventSource = list(
-#'     Endpoints = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaximumRecordAgeInSeconds = 123,
-#'   BisectBatchOnFunctionError = TRUE|FALSE,
-#'   MaximumRetryAttempts = 123,
-#'   TumblingWindowInSeconds = 123,
-#'   FunctionResponseTypes = list(
-#'     "ReportBatchItemFailures"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_event_source_mapping(
-#'   UUID = "string",
-#'   FunctionName = "string",
-#'   Enabled = TRUE|FALSE,
-#'   BatchSize = 123,
-#'   MaximumBatchingWindowInSeconds = 123,
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   ),
-#'   MaximumRecordAgeInSeconds = 123,
-#'   BisectBatchOnFunctionError = TRUE|FALSE,
-#'   MaximumRetryAttempts = 123,
-#'   ParallelizationFactor = 123,
-#'   SourceAccessConfigurations = list(
-#'     list(
-#'       Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-#'       URI = "string"
-#'     )
-#'   ),
-#'   TumblingWindowInSeconds = 123,
-#'   FunctionResponseTypes = list(
-#'     "ReportBatchItemFailures"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation updates a Lambda function event source mapping
-#' svc$update_event_source_mapping(
-#'   BatchSize = 123L,
-#'   Enabled = TRUE,
-#'   FunctionName = "myFunction",
-#'   UUID = "1234xCy789012"
-#' )
-#' }
+#' @param ParallelizationFactor (Streams only) The number of batches to process from each shard
+#' concurrently.
+#' @param SourceAccessConfigurations An array of authentication protocols or VPC components required to
+#' secure your event source.
+#' @param TumblingWindowInSeconds (Streams only) The duration in seconds of a processing window. The range
+#' is between 1 second up to 900 seconds.
+#' @param FunctionResponseTypes (Streams and Amazon SQS) A list of current response type enums applied
+#' to the event source mapping.
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
     http_path = "/2015-03-31/event-source-mappings/{UUID}",
     paginator = list()
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -5339,21 +2640,9 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' Updates a Lambda function's code
 #'
 #' @description
-#' Updates a Lambda function's code. If code signing is enabled for the
-#' function, the code package must be signed by a trusted publisher. For
-#' more information, see [Configuring code
-#' signing](https://docs.aws.amazon.com/lambda/latest/dg/).
-#' 
-#' The function's code is locked when you publish a version. You can't
-#' modify the code of a published version, only the unpublished version.
-#' 
-#' For a function defined as a container image, Lambda resolves the image
-#' tag to an image digest. In Amazon ECR, if you update the image tag to a
-#' new image, Lambda does not automatically update the function.
+#' Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see [Configuring code signing](https://docs.aws.amazon.com/lambda/latest/dg/).
 #'
-#' @usage
-#' lambda_update_function_code(FunctionName, ZipFile, S3Bucket, S3Key,
-#'   S3ObjectVersion, ImageUri, Publish, DryRun, RevisionId)
+#' See [https://paws-r.github.io/docs/lambda/update_function_code.html](https://paws-r.github.io/docs/lambda/update_function_code.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -5368,14 +2657,20 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#' @param ZipFile The base64-encoded contents of the deployment package. AWS SDK and AWS
-#' CLI clients handle the encoding for you.
-#' @param S3Bucket An Amazon S3 bucket in the same AWS Region as your function. The bucket
-#' can be in a different AWS account.
-#' @param S3Key The Amazon S3 key of the deployment package.
+#' @param ZipFile The base64-encoded contents of the deployment package. Amazon Web
+#' Services SDK and Amazon Web Services CLI clients handle the encoding for
+#' you. Use only with a function defined with a .zip file archive
+#' deployment package.
+#' @param S3Bucket An Amazon S3 bucket in the same Amazon Web Services Region as your
+#' function. The bucket can be in a different Amazon Web Services account.
+#' Use only with a function defined with a .zip file archive deployment
+#' package.
+#' @param S3Key The Amazon S3 key of the deployment package. Use only with a function
+#' defined with a .zip file archive deployment package.
 #' @param S3ObjectVersion For versioned objects, the version of the deployment package object to
 #' use.
-#' @param ImageUri URI of a container image in the Amazon ECR registry.
+#' @param ImageUri URI of a container image in the Amazon ECR registry. Do not use for a
+#' function defined with a .zip file archive.
 #' @param Publish Set to true to publish a new version of the function after updating the
 #' code. This has the same effect as calling
 #' [`publish_version`][lambda_publish_version] separately.
@@ -5384,129 +2679,21 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @param RevisionId Only update the function if the revision ID matches the ID that's
 #' specified. Use this option to avoid modifying a function that has
 #' changed since you last read it.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FunctionName = "string",
-#'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'   Role = "string",
-#'   Handler = "string",
-#'   CodeSize = 123,
-#'   Description = "string",
-#'   Timeout = 123,
-#'   MemorySize = 123,
-#'   LastModified = "string",
-#'   CodeSha256 = "string",
-#'   Version = "string",
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     VpcId = "string"
-#'   ),
-#'   DeadLetterConfig = list(
-#'     TargetArn = "string"
-#'   ),
-#'   Environment = list(
-#'     Variables = list(
-#'       "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   KMSKeyArn = "string",
-#'   TracingConfig = list(
-#'     Mode = "Active"|"PassThrough"
-#'   ),
-#'   MasterArn = "string",
-#'   RevisionId = "string",
-#'   Layers = list(
-#'     list(
-#'       Arn = "string",
-#'       CodeSize = 123,
-#'       SigningProfileVersionArn = "string",
-#'       SigningJobArn = "string"
-#'     )
-#'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
-#'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-#'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   FileSystemConfigs = list(
-#'     list(
-#'       Arn = "string",
-#'       LocalMountPath = "string"
-#'     )
-#'   ),
-#'   PackageType = "Zip"|"Image",
-#'   ImageConfigResponse = list(
-#'     ImageConfig = list(
-#'       EntryPoint = list(
-#'         "string"
-#'       ),
-#'       Command = list(
-#'         "string"
-#'       ),
-#'       WorkingDirectory = "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_function_code(
-#'   FunctionName = "string",
-#'   ZipFile = raw,
-#'   S3Bucket = "string",
-#'   S3Key = "string",
-#'   S3ObjectVersion = "string",
-#'   ImageUri = "string",
-#'   Publish = TRUE|FALSE,
-#'   DryRun = TRUE|FALSE,
-#'   RevisionId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example replaces the code of the unpublished ($LATEST)
-#' # version of a function named my-function with the contents of the
-#' # specified zip file in Amazon S3.
-#' svc$update_function_code(
-#'   FunctionName = "my-function",
-#'   S3Bucket = "my-bucket-1xpuxmplzrlbh",
-#'   S3Key = "function.zip"
-#' )
-#' }
+#' @param Architectures The instruction set architecture that the function supports. Enter a
+#' string array with one of the valid values (arm64 or x86_64). The default
+#' value is `x86_64`.
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_code
-lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL) {
+lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL, Architectures = NULL) {
   op <- new_operation(
     name = "UpdateFunctionCode",
     http_method = "PUT",
     http_path = "/2015-03-31/functions/{FunctionName}/code",
     paginator = list()
   )
-  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId)
+  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId, Architectures = Architectures)
   output <- .lambda$update_function_code_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -5520,32 +2707,8 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'
 #' @description
 #' Modify the version-specific settings of a Lambda function.
-#' 
-#' When you update a function, Lambda provisions an instance of the
-#' function and its supporting resources. If your function connects to a
-#' VPC, this process can take a minute. During this time, you can't modify
-#' the function, but you can still invoke it. The `LastUpdateStatus`,
-#' `LastUpdateStatusReason`, and `LastUpdateStatusReasonCode` fields in the
-#' response from
-#' [`get_function_configuration`][lambda_get_function_configuration]
-#' indicate when the update is complete and the function is processing
-#' events with the new configuration. For more information, see [Function
-#' States](https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html).
-#' 
-#' These settings can vary between versions of a function and are locked
-#' when you publish a version. You can't modify the configuration of a
-#' published version, only the unpublished version.
-#' 
-#' To configure function concurrency, use
-#' [`put_function_concurrency`][lambda_put_function_concurrency]. To grant
-#' invoke permissions to an account or AWS service, use
-#' [`add_permission`][lambda_add_permission].
 #'
-#' @usage
-#' lambda_update_function_configuration(FunctionName, Role, Handler,
-#'   Description, Timeout, MemorySize, VpcConfig, Environment, Runtime,
-#'   DeadLetterConfig, KMSKeyArn, TracingConfig, RevisionId, Layers,
-#'   FileSystemConfigs, ImageConfig)
+#' See [https://paws-r.github.io/docs/lambda/update_function_configuration.html](https://paws-r.github.io/docs/lambda/update_function_configuration.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -5562,34 +2725,41 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' the function name, it is limited to 64 characters in length.
 #' @param Role The Amazon Resource Name (ARN) of the function's execution role.
 #' @param Handler The name of the method within your code that Lambda calls to execute
-#' your function. The format includes the file name. It can also include
+#' your function. Handler is required if the deployment package is a .zip
+#' file archive. The format includes the file name. It can also include
 #' namespaces and other qualifiers, depending on the runtime. For more
 #' information, see [Programming
 #' Model](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-features.html).
 #' @param Description A description of the function.
-#' @param Timeout The amount of time that Lambda allows a function to run before stopping
-#' it. The default is 3 seconds. The maximum allowed value is 900 seconds.
-#' @param MemorySize The amount of memory available to the function at runtime. Increasing
-#' the function's memory also increases its CPU allocation. The default
-#' value is 128 MB. The value can be any multiple of 1 MB.
-#' @param VpcConfig For network connectivity to AWS resources in a VPC, specify a list of
-#' security groups and subnets in the VPC. When you connect a function to a
-#' VPC, it can only access resources and the internet through that VPC. For
-#' more information, see [VPC
+#' @param Timeout The amount of time (in seconds) that Lambda allows a function to run
+#' before stopping it. The default is 3 seconds. The maximum allowed value
+#' is 900 seconds. For additional information, see [Lambda execution
+#' environment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html).
+#' @param MemorySize The amount of [memory available to the
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html)
+#' at runtime. Increasing the function memory also increases its CPU
+#' allocation. The default value is 128 MB. The value can be any multiple
+#' of 1 MB.
+#' @param VpcConfig For network connectivity to Amazon Web Services resources in a VPC,
+#' specify a list of security groups and subnets in the VPC. When you
+#' connect a function to a VPC, it can only access resources and the
+#' internet through that VPC. For more information, see [VPC
 #' Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 #' @param Environment Environment variables that are accessible from function code during
 #' execution.
 #' @param Runtime The identifier of the function's
 #' [runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+#' Runtime is required if the deployment package is a .zip file archive.
 #' @param DeadLetterConfig A dead letter queue configuration that specifies the queue or topic
 #' where Lambda sends asynchronous events when they fail processing. For
 #' more information, see [Dead Letter
 #' Queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
-#' @param KMSKeyArn The ARN of the AWS Key Management Service (AWS KMS) key that's used to
-#' encrypt your function's environment variables. If it's not provided, AWS
-#' Lambda uses a default service key.
+#' @param KMSKeyArn The ARN of the Amazon Web Services Key Management Service (KMS) key
+#' that's used to encrypt your function's environment variables. If it's
+#' not provided, Lambda uses a default service key.
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
-#' with AWS X-Ray.
+#' with
+#' [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
 #' @param RevisionId Only update the function if the revision ID matches the ID that's
 #' specified. Use this option to avoid modifying a function that has
 #' changed since you last read it.
@@ -5598,165 +2768,23 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
-#' @param ImageConfig Configuration values that override the container image Dockerfile.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FunctionName = "string",
-#'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'   Role = "string",
-#'   Handler = "string",
-#'   CodeSize = 123,
-#'   Description = "string",
-#'   Timeout = 123,
-#'   MemorySize = 123,
-#'   LastModified = "string",
-#'   CodeSha256 = "string",
-#'   Version = "string",
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     VpcId = "string"
-#'   ),
-#'   DeadLetterConfig = list(
-#'     TargetArn = "string"
-#'   ),
-#'   Environment = list(
-#'     Variables = list(
-#'       "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   KMSKeyArn = "string",
-#'   TracingConfig = list(
-#'     Mode = "Active"|"PassThrough"
-#'   ),
-#'   MasterArn = "string",
-#'   RevisionId = "string",
-#'   Layers = list(
-#'     list(
-#'       Arn = "string",
-#'       CodeSize = 123,
-#'       SigningProfileVersionArn = "string",
-#'       SigningJobArn = "string"
-#'     )
-#'   ),
-#'   State = "Pending"|"Active"|"Inactive"|"Failed",
-#'   StateReason = "string",
-#'   StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-#'   LastUpdateStatusReason = "string",
-#'   LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-#'   FileSystemConfigs = list(
-#'     list(
-#'       Arn = "string",
-#'       LocalMountPath = "string"
-#'     )
-#'   ),
-#'   PackageType = "Zip"|"Image",
-#'   ImageConfigResponse = list(
-#'     ImageConfig = list(
-#'       EntryPoint = list(
-#'         "string"
-#'       ),
-#'       Command = list(
-#'         "string"
-#'       ),
-#'       WorkingDirectory = "string"
-#'     ),
-#'     Error = list(
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   SigningProfileVersionArn = "string",
-#'   SigningJobArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_function_configuration(
-#'   FunctionName = "string",
-#'   Role = "string",
-#'   Handler = "string",
-#'   Description = "string",
-#'   Timeout = 123,
-#'   MemorySize = 123,
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Environment = list(
-#'     Variables = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-#'   DeadLetterConfig = list(
-#'     TargetArn = "string"
-#'   ),
-#'   KMSKeyArn = "string",
-#'   TracingConfig = list(
-#'     Mode = "Active"|"PassThrough"
-#'   ),
-#'   RevisionId = "string",
-#'   Layers = list(
-#'     "string"
-#'   ),
-#'   FileSystemConfigs = list(
-#'     list(
-#'       Arn = "string",
-#'       LocalMountPath = "string"
-#'     )
-#'   ),
-#'   ImageConfig = list(
-#'     EntryPoint = list(
-#'       "string"
-#'     ),
-#'     Command = list(
-#'       "string"
-#'     ),
-#'     WorkingDirectory = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example modifies the memory size to be 256 MB for the
-#' # unpublished ($LATEST) version of a function named my-function.
-#' svc$update_function_configuration(
-#'   FunctionName = "my-function",
-#'   MemorySize = 256L
-#' )
-#' }
+#' @param ImageConfig [Container image configuration
+#' values](https://docs.aws.amazon.com/lambda/latest/dg/) that override the
+#' values in the container image Docker file.
+#' @param EphemeralStorage The size of the function’s /tmp directory in MB. The default value is
+#' 512, but can be any whole number between 512 and 10240 MB.
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_configuration
-lambda_update_function_configuration <- function(FunctionName, Role = NULL, Handler = NULL, Description = NULL, Timeout = NULL, MemorySize = NULL, VpcConfig = NULL, Environment = NULL, Runtime = NULL, DeadLetterConfig = NULL, KMSKeyArn = NULL, TracingConfig = NULL, RevisionId = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL) {
+lambda_update_function_configuration <- function(FunctionName, Role = NULL, Handler = NULL, Description = NULL, Timeout = NULL, MemorySize = NULL, VpcConfig = NULL, Environment = NULL, Runtime = NULL, DeadLetterConfig = NULL, KMSKeyArn = NULL, TracingConfig = NULL, RevisionId = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, EphemeralStorage = NULL) {
   op <- new_operation(
     name = "UpdateFunctionConfiguration",
     http_method = "PUT",
     http_path = "/2015-03-31/functions/{FunctionName}/configuration",
     paginator = list()
   )
-  input <- .lambda$update_function_configuration_input(FunctionName = FunctionName, Role = Role, Handler = Handler, Description = Description, Timeout = Timeout, MemorySize = MemorySize, VpcConfig = VpcConfig, Environment = Environment, Runtime = Runtime, DeadLetterConfig = DeadLetterConfig, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, RevisionId = RevisionId, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig)
+  input <- .lambda$update_function_configuration_input(FunctionName = FunctionName, Role = Role, Handler = Handler, Description = Description, Timeout = Timeout, MemorySize = MemorySize, VpcConfig = VpcConfig, Environment = Environment, Runtime = Runtime, DeadLetterConfig = DeadLetterConfig, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, RevisionId = RevisionId, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, EphemeralStorage = EphemeralStorage)
   output <- .lambda$update_function_configuration_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -5770,15 +2798,9 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #' version, or alias
 #'
 #' @description
-#' Updates the configuration for asynchronous invocation for a function,
-#' version, or alias.
-#' 
-#' To configure options for asynchronous invocation, use
-#' [`put_function_event_invoke_config`][lambda_put_function_event_invoke_config].
+#' Updates the configuration for asynchronous invocation for a function, version, or alias.
 #'
-#' @usage
-#' lambda_update_function_event_invoke_config(FunctionName, Qualifier,
-#'   MaximumRetryAttempts, MaximumEventAgeInSeconds, DestinationConfig)
+#' See [https://paws-r.github.io/docs/lambda/update_function_event_invoke_config.html](https://paws-r.github.io/docs/lambda/update_function_event_invoke_config.html) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -5812,59 +2834,6 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #' 
 #' -   **Event Bus** - The ARN of an Amazon EventBridge event bus.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LastModified = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   FunctionArn = "string",
-#'   MaximumRetryAttempts = 123,
-#'   MaximumEventAgeInSeconds = 123,
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_function_event_invoke_config(
-#'   FunctionName = "string",
-#'   Qualifier = "string",
-#'   MaximumRetryAttempts = 123,
-#'   MaximumEventAgeInSeconds = 123,
-#'   DestinationConfig = list(
-#'     OnSuccess = list(
-#'       Destination = "string"
-#'     ),
-#'     OnFailure = list(
-#'       Destination = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example adds an on-failure destination to the existing
-#' # asynchronous invocation configuration for a function named my-function.
-#' svc$update_function_event_invoke_config(
-#'   DestinationConfig = list(
-#'     OnFailure = list(
-#'       Destination = "arn:aws:sqs:us-east-2:123456789012:destination"
-#'     )
-#'   ),
-#'   FunctionName = "my-function"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_event_invoke_config
@@ -5884,3 +2853,54 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
   return(response)
 }
 .lambda$operations$update_function_event_invoke_config <- lambda_update_function_event_invoke_config
+
+#' Updates the configuration for a Lambda function URL
+#'
+#' @description
+#' Updates the configuration for a Lambda function URL.
+#'
+#' See [https://paws-r.github.io/docs/lambda/update_function_url_config.html](https://paws-r.github.io/docs/lambda/update_function_url_config.html) for full documentation.
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `my-function`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:my-function`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:my-function`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#' @param Qualifier The alias name.
+#' @param AuthType The type of authentication that your function URL uses. Set to `AWS_IAM`
+#' if you want to restrict access to authenticated `IAM` users only. Set to
+#' `NONE` if you want to bypass IAM authentication to create a public
+#' endpoint. For more information, see [Security and auth model for Lambda
+#' function
+#' URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
+#' @param Cors The [cross-origin resource sharing
+#' (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) settings
+#' for your function URL.
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_update_function_url_config
+lambda_update_function_url_config <- function(FunctionName, Qualifier = NULL, AuthType = NULL, Cors = NULL) {
+  op <- new_operation(
+    name = "UpdateFunctionUrlConfig",
+    http_method = "PUT",
+    http_path = "/2021-10-31/functions/{FunctionName}/url",
+    paginator = list()
+  )
+  input <- .lambda$update_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier, AuthType = AuthType, Cors = Cors)
+  output <- .lambda$update_function_url_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$update_function_url_config <- lambda_update_function_url_config

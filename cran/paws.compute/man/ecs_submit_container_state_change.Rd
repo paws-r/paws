@@ -5,8 +5,16 @@
 \title{This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent}
 \usage{
-ecs_submit_container_state_change(cluster, task, containerName,
-  runtimeId, status, exitCode, reason, networkBindings)
+ecs_submit_container_state_change(
+  cluster = NULL,
+  task = NULL,
+  containerName = NULL,
+  runtimeId = NULL,
+  status = NULL,
+  exitCode = NULL,
+  reason = NULL,
+  networkBindings = NULL
+)
 }
 \arguments{
 \item{cluster}{The short name or full ARN of the cluster that hosts the container.}
@@ -20,43 +28,15 @@ the container.}
 
 \item{status}{The status of the state change request.}
 
-\item{exitCode}{The exit code returned for the state change request.}
+\item{exitCode}{The exit code that's returned for the state change request.}
 
 \item{reason}{The reason for the state change request.}
 
 \item{networkBindings}{The network bindings of the container.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  acknowledgment = "string"
-)
-}
-}
 \description{
-This action is only used by the Amazon ECS agent, and it is not intended
-for use outside of the agent.
+This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-Sent to acknowledge that a container changed states.
+See \url{https://paws-r.github.io/docs/ecs/submit_container_state_change.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$submit_container_state_change(
-  cluster = "string",
-  task = "string",
-  containerName = "string",
-  runtimeId = "string",
-  status = "string",
-  exitCode = 123,
-  reason = "string",
-  networkBindings = list(
-    list(
-      bindIP = "string",
-      containerPort = 123,
-      hostPort = 123,
-      protocol = "tcp"|"udp"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

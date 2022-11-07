@@ -4,8 +4,13 @@
 \alias{codepipeline_put_approval_result}
 \title{Provides the response to a manual approval request to AWS CodePipeline}
 \usage{
-codepipeline_put_approval_result(pipelineName, stageName, actionName,
-  result, token)
+codepipeline_put_approval_result(
+  pipelineName,
+  stageName,
+  actionName,
+  result,
+  token
+)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline that contains the action.}
@@ -22,30 +27,9 @@ The token for each open approval request can be obtained using the
 used to validate that the approval request corresponding to this token
 is still valid.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvedAt = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Provides the response to a manual approval request to AWS CodePipeline.
-Valid responses include Approved and Rejected.
-}
-\section{Request syntax}{
-\preformatted{svc$put_approval_result(
-  pipelineName = "string",
-  stageName = "string",
-  actionName = "string",
-  result = list(
-    summary = "string",
-    status = "Approved"|"Rejected"
-  ),
-  token = "string"
-)
-}
-}
+Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.
 
+See \url{https://paws-r.github.io/docs/codepipeline/put_approval_result.html} for full documentation.
+}
 \keyword{internal}

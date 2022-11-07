@@ -4,8 +4,11 @@
 \alias{redshift_batch_modify_cluster_snapshots}
 \title{Modifies the settings for a set of cluster snapshots}
 \usage{
-redshift_batch_modify_cluster_snapshots(SnapshotIdentifierList,
-  ManualSnapshotRetentionPeriod, Force)
+redshift_batch_modify_cluster_snapshots(
+  SnapshotIdentifierList,
+  ManualSnapshotRetentionPeriod = NULL,
+  Force = NULL
+)
 }
 \arguments{
 \item{SnapshotIdentifierList}{[required] A list of snapshot identifiers you want to modify.}
@@ -23,34 +26,9 @@ delete the snapshots, use the force option.}
 \item{Force}{A boolean value indicating whether to override an exception if the
 retention period has passed.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Resources = list(
-    "string"
-  ),
-  Errors = list(
-    list(
-      SnapshotIdentifier = "string",
-      SnapshotClusterIdentifier = "string",
-      FailureCode = "string",
-      FailureReason = "string"
-    )
-  )
-)
-}
-}
 \description{
 Modifies the settings for a set of cluster snapshots.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_modify_cluster_snapshots(
-  SnapshotIdentifierList = list(
-    "string"
-  ),
-  ManualSnapshotRetentionPeriod = 123,
-  Force = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/batch_modify_cluster_snapshots.html} for full documentation.
+}
 \keyword{internal}

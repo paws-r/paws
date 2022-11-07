@@ -4,8 +4,10 @@
 \alias{lightsail_get_regions}
 \title{Returns a list of all valid regions for Amazon Lightsail}
 \usage{
-lightsail_get_regions(includeAvailabilityZones,
-  includeRelationalDatabaseAvailabilityZones)
+lightsail_get_regions(
+  includeAvailabilityZones = NULL,
+  includeRelationalDatabaseAvailabilityZones = NULL
+)
 }
 \arguments{
 \item{includeAvailabilityZones}{A Boolean value indicating whether to also include Availability Zones in
@@ -16,42 +18,9 @@ letter: e.g., \verb{us-east-2a}.}
 for databases in your get regions request. Availability Zones are
 indicated with a letter (e.g., \verb{us-east-2a}).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  regions = list(
-    list(
-      continentCode = "string",
-      description = "string",
-      displayName = "string",
-      name = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2",
-      availabilityZones = list(
-        list(
-          zoneName = "string",
-          state = "string"
-        )
-      ),
-      relationalDatabaseAvailabilityZones = list(
-        list(
-          zoneName = "string",
-          state = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of all valid regions for Amazon Lightsail. Use the
-\verb{include availability zones} parameter to also return the Availability
-Zones in a region.
-}
-\section{Request syntax}{
-\preformatted{svc$get_regions(
-  includeAvailabilityZones = TRUE|FALSE,
-  includeRelationalDatabaseAvailabilityZones = TRUE|FALSE
-)
-}
-}
+Returns a list of all valid regions for Amazon Lightsail. Use the \verb{include availability zones} parameter to also return the Availability Zones in a region.
 
+See \url{https://paws-r.github.io/docs/lightsail/get_regions.html} for full documentation.
+}
 \keyword{internal}

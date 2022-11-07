@@ -2,11 +2,15 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_association_execution_targets}
 \alias{ssm_describe_association_execution_targets}
-\title{Use this API action to view information about a specific execution of a
-specific association}
+\title{Views information about a specific execution of a specific association}
 \usage{
-ssm_describe_association_execution_targets(AssociationId, ExecutionId,
-  Filters, MaxResults, NextToken)
+ssm_describe_association_execution_targets(
+  AssociationId,
+  ExecutionId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID that includes the execution for which you want to
@@ -30,48 +34,9 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociationExecutionTargets = list(
-    list(
-      AssociationId = "string",
-      AssociationVersion = "string",
-      ExecutionId = "string",
-      ResourceId = "string",
-      ResourceType = "string",
-      Status = "string",
-      DetailedStatus = "string",
-      LastExecutionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      OutputSource = list(
-        OutputSourceId = "string",
-        OutputSourceType = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Use this API action to view information about a specific execution of a
-specific association.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_association_execution_targets(
-  AssociationId = "string",
-  ExecutionId = "string",
-  Filters = list(
-    list(
-      Key = "Status"|"ResourceId"|"ResourceType",
-      Value = "string"
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Views information about a specific execution of a specific association.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_association_execution_targets.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{ec2_delete_customer_gateway}
 \title{Deletes the specified customer gateway}
 \usage{
-ec2_delete_customer_gateway(CustomerGatewayId, DryRun)
+ec2_delete_customer_gateway(CustomerGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{CustomerGatewayId}{[required] The ID of the customer gateway.}
@@ -14,28 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified customer gateway. You must delete the VPN
-connection before you can delete the customer gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_customer_gateway(
-  CustomerGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes the specified customer gateway. You must delete the VPN connection before you can delete the customer gateway.
 
-\examples{
-\dontrun{
-# This example deletes the specified customer gateway.
-svc$delete_customer_gateway(
-  CustomerGatewayId = "cgw-0e11f167"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_customer_gateway.html} for full documentation.
 }
 \keyword{internal}

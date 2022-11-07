@@ -2,38 +2,18 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_get_documentation_part}
 \alias{apigateway_get_documentation_part}
-\title{Get documentation part}
+\title{Gets a documentation part}
 \usage{
 apigateway_get_documentation_part(restApiId, documentationPartId)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{documentationPartId}{[required] [Required] The string identifier of the associated RestApi.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  location = list(
-    type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-    path = "string",
-    method = "string",
-    statusCode = "string",
-    name = "string"
-  ),
-  properties = "string"
-)
-}
+\item{documentationPartId}{[required] The string identifier of the associated RestApi.}
 }
 \description{
-Get documentation part
-}
-\section{Request syntax}{
-\preformatted{svc$get_documentation_part(
-  restApiId = "string",
-  documentationPartId = "string"
-)
-}
-}
+Gets a documentation part.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_documentation_part.html} for full documentation.
+}
 \keyword{internal}

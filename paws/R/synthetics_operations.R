@@ -3,6 +3,54 @@
 #' @include synthetics_service.R
 NULL
 
+#' Associates a canary with a group
+#'
+#' @description
+#' Associates a canary with a group. Using groups can help you with
+#' managing and automating your canaries, and you can also view aggregated
+#' run results and statistics for all canaries in a group.
+#' 
+#' You must run this operation in the Region where the canary exists.
+#'
+#' @usage
+#' synthetics_associate_resource(GroupIdentifier, ResourceArn)
+#'
+#' @param GroupIdentifier &#91;required&#93; Specifies the group. You can specify the group name, the ARN, or the
+#' group ID as the `GroupIdentifier`.
+#' @param ResourceArn &#91;required&#93; The ARN of the canary that you want to associate with the specified
+#' group.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_resource(
+#'   GroupIdentifier = "string",
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname synthetics_associate_resource
+synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
+  op <- new_operation(
+    name = "AssociateResource",
+    http_method = "PATCH",
+    http_path = "/group/{groupIdentifier}/associate",
+    paginator = list()
+  )
+  input <- .synthetics$associate_resource_input(GroupIdentifier = GroupIdentifier, ResourceArn = ResourceArn)
+  output <- .synthetics$associate_resource_output()
+  config <- get_config()
+  svc <- .synthetics$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.synthetics$operations$associate_resource <- synthetics_associate_resource
+
 #' Creates a canary
 #'
 #' @description
@@ -18,7 +66,7 @@ NULL
 #' 
 #' To create canaries, you must have the `CloudWatchSyntheticsFullAccess`
 #' policy. If you are creating a new IAM role for the canary, you also need
-#' the the `iam:CreateRole`, `iam:CreatePolicy` and `iam:AttachRolePolicy`
+#' the `iam:CreateRole`, `iam:CreatePolicy` and `iam:AttachRolePolicy`
 #' permissions. For more information, see [Necessary Roles and
 #' Permissions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Roles.html).
 #' 
@@ -31,7 +79,8 @@ NULL
 #' @usage
 #' synthetics_create_canary(Name, Code, ArtifactS3Location,
 #'   ExecutionRoleArn, Schedule, RunConfig, SuccessRetentionPeriodInDays,
-#'   FailureRetentionPeriodInDays, RuntimeVersion, VpcConfig, Tags)
+#'   FailureRetentionPeriodInDays, RuntimeVersion, VpcConfig, Tags,
+#'   ArtifactConfig)
 #'
 #' @param Name &#91;required&#93; The name for this canary. Be sure to give it a descriptive name that
 #' distinguishes it from other canaries in your account.
@@ -46,7 +95,7 @@ NULL
 #' bucket name, key, and version are also included.
 #' @param ArtifactS3Location &#91;required&#93; The location in Amazon S3 where Synthetics stores artifacts from the
 #' test runs of this canary. Artifacts include the log file, screenshots,
-#' and HAR files.
+#' and HAR files. The name of the S3 bucket can't include a period (.).
 #' @param ExecutionRoleArn &#91;required&#93; The ARN of the IAM role to be used to run the canary. This role must
 #' already exist, and must include `lambda.amazonaws.com` as a principal in
 #' the trust policy. The role must also have the following permissions:
@@ -67,7 +116,10 @@ NULL
 #' @param Schedule &#91;required&#93; A structure that contains information about how often the canary is to
 #' run and when these test runs are to stop.
 #' @param RunConfig A structure that contains the configuration for individual canary runs,
-#' such as timeout value.
+#' such as timeout value and environment variables.
+#' 
+#' The environment variables keys and values are not encrypted. Do not
+#' store sensitive information in this field.
 #' @param SuccessRetentionPeriodInDays The number of days to retain data about successful runs of this canary.
 #' If you omit this field, the default of 31 days is used. The valid range
 #' is 1 to 455 days.
@@ -88,6 +140,9 @@ NULL
 #' Tags can help you organize and categorize your resources. You can also
 #' use them to scope user permissions, by granting a user permission to
 #' access or change only the resources that have certain tag values.
+#' @param ArtifactConfig A structure that contains the configuration for canary artifacts,
+#' including the encryption-at-rest settings for artifacts that the canary
+#' uploads to Amazon S3.
 #'
 #' @return
 #' A list with the following syntax:
@@ -115,7 +170,7 @@ NULL
 #'     Status = list(
 #'       State = "CREATING"|"READY"|"STARTING"|"RUNNING"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR"|"DELETING",
 #'       StateReason = "string",
-#'       StateReasonCode = "INVALID_PERMISSIONS"
+#'       StateReasonCode = "INVALID_PERMISSIONS"|"CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_PENDING"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"SYNC_DELETE_IN_PROGRESS"
 #'     ),
 #'     Timeline = list(
 #'       Created = as.POSIXct(
@@ -143,8 +198,25 @@ NULL
 #'         "string"
 #'       )
 #'     ),
+#'     VisualReference = list(
+#'       BaseScreenshots = list(
+#'         list(
+#'           ScreenshotName = "string",
+#'           IgnoreCoordinates = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       BaseCanaryRunId = "string"
+#'     ),
 #'     Tags = list(
 #'       "string"
+#'     ),
+#'     ArtifactConfig = list(
+#'       S3Encryption = list(
+#'         EncryptionMode = "SSE_S3"|"SSE_KMS",
+#'         KmsKeyArn = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -188,6 +260,12 @@ NULL
 #'   ),
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   ArtifactConfig = list(
+#'     S3Encryption = list(
+#'       EncryptionMode = "SSE_S3"|"SSE_KMS",
+#'       KmsKeyArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -195,14 +273,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname synthetics_create_canary
-synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRoleArn, Schedule, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, RuntimeVersion, VpcConfig = NULL, Tags = NULL) {
+synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRoleArn, Schedule, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, RuntimeVersion, VpcConfig = NULL, Tags = NULL, ArtifactConfig = NULL) {
   op <- new_operation(
     name = "CreateCanary",
     http_method = "POST",
     http_path = "/canary",
     paginator = list()
   )
-  input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, Tags = Tags)
+  input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, Tags = Tags, ArtifactConfig = ArtifactConfig)
   output <- .synthetics$create_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config)
@@ -212,17 +290,107 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
 }
 .synthetics$operations$create_canary <- synthetics_create_canary
 
+#' Creates a group which you can use to associate canaries with each other,
+#' including cross-Region canaries
+#'
+#' @description
+#' Creates a group which you can use to associate canaries with each other,
+#' including cross-Region canaries. Using groups can help you with managing
+#' and automating your canaries, and you can also view aggregated run
+#' results and statistics for all canaries in a group.
+#' 
+#' Groups are global resources. When you create a group, it is replicated
+#' across Amazon Web Services Regions, and you can view it and add canaries
+#' to it from any Region. Although the group ARN format reflects the Region
+#' name where it was created, a group is not constrained to any Region.
+#' This means that you can put canaries from multiple Regions into the same
+#' group, and then use that group to view and manage all of those canaries
+#' in a single view.
+#' 
+#' Groups are supported in all Regions except the Regions that are disabled
+#' by default. For more information about these Regions, see [Enabling a
+#' Region](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable).
+#' 
+#' Each group can contain as many as 10 canaries. You can have as many as
+#' 20 groups in your account. Any single canary can be a member of up to 10
+#' groups.
+#'
+#' @usage
+#' synthetics_create_group(Name, Tags)
+#'
+#' @param Name &#91;required&#93; The name for the group. It can include any Unicode characters.
+#' 
+#' The names for all groups in your account, across all Regions, must be
+#' unique.
+#' @param Tags A list of key-value pairs to associate with the group. You can associate
+#' as many as 50 tags with a group.
+#' 
+#' Tags can help you organize and categorize your resources. You can also
+#' use them to scope user permissions, by granting a user permission to
+#' access or change only the resources that have certain tag values.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_group(
+#'   Name = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname synthetics_create_group
+synthetics_create_group <- function(Name, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateGroup",
+    http_method = "POST",
+    http_path = "/group",
+    paginator = list()
+  )
+  input <- .synthetics$create_group_input(Name = Name, Tags = Tags)
+  output <- .synthetics$create_group_output()
+  config <- get_config()
+  svc <- .synthetics$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.synthetics$operations$create_group <- synthetics_create_group
+
 #' Permanently deletes the specified canary
 #'
 #' @description
 #' Permanently deletes the specified canary.
 #' 
-#' When you delete a canary, resources used and created by the canary are
-#' not automatically deleted. After you delete a canary that you do not
-#' intend to use again, you should also delete the following:
+#' If you specify `DeleteLambda` to `true`, CloudWatch Synthetics also
+#' deletes the Lambda functions and layers that are used by the canary.
 #' 
-#' -   The Lambda functions and layers used by this canary. These have the
-#'     prefix `cwsyn-MyCanaryName `.
+#' Other resources used and created by the canary are not automatically
+#' deleted. After you delete a canary that you do not intend to use again,
+#' you should also delete the following:
 #' 
 #' -   The CloudWatch alarms created for this canary. These alarms have a
 #'     name of `Synthetics-SharpDrop-Alarm-MyCanaryName `.
@@ -243,10 +411,14 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
 #' that you can delete these resources after you delete the canary.
 #'
 #' @usage
-#' synthetics_delete_canary(Name)
+#' synthetics_delete_canary(Name, DeleteLambda)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to delete. To find the names of
 #' your canaries, use [`describe_canaries`][synthetics_describe_canaries].
+#' @param DeleteLambda Specifies whether to also delete the Lambda functions and layers used by
+#' this canary. The default is false.
+#' 
+#' Type: Boolean
 #'
 #' @return
 #' An empty list.
@@ -254,21 +426,22 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
 #' @section Request syntax:
 #' ```
 #' svc$delete_canary(
-#'   Name = "string"
+#'   Name = "string",
+#'   DeleteLambda = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_delete_canary
-synthetics_delete_canary <- function(Name) {
+synthetics_delete_canary <- function(Name, DeleteLambda = NULL) {
   op <- new_operation(
     name = "DeleteCanary",
     http_method = "DELETE",
     http_path = "/canary/{name}",
     paginator = list()
   )
-  input <- .synthetics$delete_canary_input(Name = Name)
+  input <- .synthetics$delete_canary_input(Name = Name, DeleteLambda = DeleteLambda)
   output <- .synthetics$delete_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config)
@@ -278,6 +451,53 @@ synthetics_delete_canary <- function(Name) {
 }
 .synthetics$operations$delete_canary <- synthetics_delete_canary
 
+#' Deletes a group
+#'
+#' @description
+#' Deletes a group. The group doesn't need to be empty to be deleted. If
+#' there are canaries in the group, they are not deleted when you delete
+#' the group.
+#' 
+#' Groups are a global resource that appear in all Regions, but the request
+#' to delete a group must be made from its home Region. You can find the
+#' home Region of a group within its ARN.
+#'
+#' @usage
+#' synthetics_delete_group(GroupIdentifier)
+#'
+#' @param GroupIdentifier &#91;required&#93; Specifies which group to delete. You can specify the group name, the
+#' ARN, or the group ID as the `GroupIdentifier`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_group(
+#'   GroupIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname synthetics_delete_group
+synthetics_delete_group <- function(GroupIdentifier) {
+  op <- new_operation(
+    name = "DeleteGroup",
+    http_method = "DELETE",
+    http_path = "/group/{groupIdentifier}",
+    paginator = list()
+  )
+  input <- .synthetics$delete_group_input(GroupIdentifier = GroupIdentifier)
+  output <- .synthetics$delete_group_output()
+  config <- get_config()
+  svc <- .synthetics$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.synthetics$operations$delete_group <- synthetics_delete_group
+
 #' This operation returns a list of the canaries in your account, along
 #' with full details about each canary
 #'
@@ -285,14 +505,20 @@ synthetics_delete_canary <- function(Name) {
 #' This operation returns a list of the canaries in your account, along
 #' with full details about each canary.
 #' 
-#' This operation does not have resource-level authorization, so if a user
-#' is able to use [`describe_canaries`][synthetics_describe_canaries], the
-#' user can see all of the canaries in the account. A deny policy can only
-#' be used to restrict access to all canaries. It cannot be used on
-#' specific resources.
+#' This operation supports resource-level authorization using an IAM policy
+#' and the `Names` parameter. If you specify the `Names` parameter, the
+#' operation is successful only if you have authorization to view all the
+#' canaries that you specify in your request. If you do not have permission
+#' to view any of the canaries, the request fails with a 403 response.
+#' 
+#' You are required to use the `Names` parameter if you are logged on to a
+#' user or role that has an IAM policy that restricts which canaries that
+#' you are allowed to view. For more information, see [Limiting a user to
+#' viewing specific
+#' canaries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html).
 #'
 #' @usage
-#' synthetics_describe_canaries(NextToken, MaxResults)
+#' synthetics_describe_canaries(NextToken, MaxResults, Names)
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
 #' this token in a subsequent operation to retrieve the next set of
@@ -300,6 +526,19 @@ synthetics_delete_canary <- function(Name) {
 #' @param MaxResults Specify this parameter to limit how many canaries are returned each time
 #' you use the [`describe_canaries`][synthetics_describe_canaries]
 #' operation. If you omit this parameter, the default of 100 is used.
+#' @param Names Use this parameter to return only canaries that match the names that you
+#' specify here. You can specify as many as five canary names.
+#' 
+#' If you specify this parameter, the operation is successful only if you
+#' have authorization to view all the canaries that you specify in your
+#' request. If you do not have permission to view any of the canaries, the
+#' request fails with a 403 response.
+#' 
+#' You are required to use this parameter if you are logged on to a user or
+#' role that has an IAM policy that restricts which canaries that you are
+#' allowed to view. For more information, see [Limiting a user to viewing
+#' specific
+#' canaries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -328,7 +567,7 @@ synthetics_delete_canary <- function(Name) {
 #'       Status = list(
 #'         State = "CREATING"|"READY"|"STARTING"|"RUNNING"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR"|"DELETING",
 #'         StateReason = "string",
-#'         StateReasonCode = "INVALID_PERMISSIONS"
+#'         StateReasonCode = "INVALID_PERMISSIONS"|"CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_PENDING"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"SYNC_DELETE_IN_PROGRESS"
 #'       ),
 #'       Timeline = list(
 #'         Created = as.POSIXct(
@@ -356,8 +595,25 @@ synthetics_delete_canary <- function(Name) {
 #'           "string"
 #'         )
 #'       ),
+#'       VisualReference = list(
+#'         BaseScreenshots = list(
+#'           list(
+#'             ScreenshotName = "string",
+#'             IgnoreCoordinates = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         BaseCanaryRunId = "string"
+#'       ),
 #'       Tags = list(
 #'         "string"
+#'       ),
+#'       ArtifactConfig = list(
+#'         S3Encryption = list(
+#'           EncryptionMode = "SSE_S3"|"SSE_KMS",
+#'           KmsKeyArn = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -369,21 +625,24 @@ synthetics_delete_canary <- function(Name) {
 #' ```
 #' svc$describe_canaries(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   Names = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_describe_canaries
-synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL) {
+synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Names = NULL) {
   op <- new_operation(
     name = "DescribeCanaries",
     http_method = "POST",
     http_path = "/canaries",
     paginator = list()
   )
-  input <- .synthetics$describe_canaries_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .synthetics$describe_canaries_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
   output <- .synthetics$describe_canaries_output()
   config <- get_config()
   svc <- .synthetics$service(config)
@@ -399,17 +658,42 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Use this operation to see information from the most recent run of each
 #' canary that you have created.
+#' 
+#' This operation supports resource-level authorization using an IAM policy
+#' and the `Names` parameter. If you specify the `Names` parameter, the
+#' operation is successful only if you have authorization to view all the
+#' canaries that you specify in your request. If you do not have permission
+#' to view any of the canaries, the request fails with a 403 response.
+#' 
+#' You are required to use the `Names` parameter if you are logged on to a
+#' user or role that has an IAM policy that restricts which canaries that
+#' you are allowed to view. For more information, see [Limiting a user to
+#' viewing specific
+#' canaries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html).
 #'
 #' @usage
-#' synthetics_describe_canaries_last_run(NextToken, MaxResults)
+#' synthetics_describe_canaries_last_run(NextToken, MaxResults, Names)
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
 #' this token in a subsequent
-#' [`describe_canaries`][synthetics_describe_canaries] operation to
-#' retrieve the next set of results.
+#' [`describe_canaries_last_run`][synthetics_describe_canaries_last_run]
+#' operation to retrieve the next set of results.
 #' @param MaxResults Specify this parameter to limit how many runs are returned each time you
 #' use the `DescribeLastRun` operation. If you omit this parameter, the
 #' default of 100 is used.
+#' @param Names Use this parameter to return only canaries that match the names that you
+#' specify here. You can specify as many as five canary names.
+#' 
+#' If you specify this parameter, the operation is successful only if you
+#' have authorization to view all the canaries that you specify in your
+#' request. If you do not have permission to view any of the canaries, the
+#' request fails with a 403 response.
+#' 
+#' You are required to use the `Names` parameter if you are logged on to a
+#' user or role that has an IAM policy that restricts which canaries that
+#' you are allowed to view. For more information, see [Limiting a user to
+#' viewing specific
+#' canaries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -446,21 +730,24 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL) {
 #' ```
 #' svc$describe_canaries_last_run(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   Names = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_describe_canaries_last_run
-synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults = NULL) {
+synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults = NULL, Names = NULL) {
   op <- new_operation(
     name = "DescribeCanariesLastRun",
     http_method = "POST",
     http_path = "/canaries/last-run",
     paginator = list()
   )
-  input <- .synthetics$describe_canaries_last_run_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .synthetics$describe_canaries_last_run_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
   output <- .synthetics$describe_canaries_last_run_output()
   config <- get_config()
   svc <- .synthetics$service(config)
@@ -537,6 +824,50 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
 }
 .synthetics$operations$describe_runtime_versions <- synthetics_describe_runtime_versions
 
+#' Removes a canary from a group
+#'
+#' @description
+#' Removes a canary from a group. You must run this operation in the Region
+#' where the canary exists.
+#'
+#' @usage
+#' synthetics_disassociate_resource(GroupIdentifier, ResourceArn)
+#'
+#' @param GroupIdentifier &#91;required&#93; Specifies the group. You can specify the group name, the ARN, or the
+#' group ID as the `GroupIdentifier`.
+#' @param ResourceArn &#91;required&#93; The ARN of the canary that you want to remove from the specified group.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_resource(
+#'   GroupIdentifier = "string",
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname synthetics_disassociate_resource
+synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
+  op <- new_operation(
+    name = "DisassociateResource",
+    http_method = "PATCH",
+    http_path = "/group/{groupIdentifier}/disassociate",
+    paginator = list()
+  )
+  input <- .synthetics$disassociate_resource_input(GroupIdentifier = GroupIdentifier, ResourceArn = ResourceArn)
+  output <- .synthetics$disassociate_resource_output()
+  config <- get_config()
+  svc <- .synthetics$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.synthetics$operations$disassociate_resource <- synthetics_disassociate_resource
+
 #' Retrieves complete information about one canary
 #'
 #' @description
@@ -575,7 +906,7 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
 #'     Status = list(
 #'       State = "CREATING"|"READY"|"STARTING"|"RUNNING"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR"|"DELETING",
 #'       StateReason = "string",
-#'       StateReasonCode = "INVALID_PERMISSIONS"
+#'       StateReasonCode = "INVALID_PERMISSIONS"|"CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_PENDING"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"SYNC_DELETE_IN_PROGRESS"
 #'     ),
 #'     Timeline = list(
 #'       Created = as.POSIXct(
@@ -603,8 +934,25 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
 #'         "string"
 #'       )
 #'     ),
+#'     VisualReference = list(
+#'       BaseScreenshots = list(
+#'         list(
+#'           ScreenshotName = "string",
+#'           IgnoreCoordinates = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       BaseCanaryRunId = "string"
+#'     ),
 #'     Tags = list(
 #'       "string"
+#'     ),
+#'     ArtifactConfig = list(
+#'       S3Encryption = list(
+#'         EncryptionMode = "SSE_S3"|"SSE_KMS",
+#'         KmsKeyArn = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -711,18 +1059,264 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
 }
 .synthetics$operations$get_canary_runs <- synthetics_get_canary_runs
 
-#' Displays the tags associated with a canary
+#' Returns information about one group
 #'
 #' @description
-#' Displays the tags associated with a canary.
+#' Returns information about one group. Groups are a global resource, so
+#' you can use this operation from any Region.
+#'
+#' @usage
+#' synthetics_get_group(GroupIdentifier)
+#'
+#' @param GroupIdentifier &#91;required&#93; Specifies the group to return information for. You can specify the group
+#' name, the ARN, or the group ID as the `GroupIdentifier`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_group(
+#'   GroupIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname synthetics_get_group
+synthetics_get_group <- function(GroupIdentifier) {
+  op <- new_operation(
+    name = "GetGroup",
+    http_method = "GET",
+    http_path = "/group/{groupIdentifier}",
+    paginator = list()
+  )
+  input <- .synthetics$get_group_input(GroupIdentifier = GroupIdentifier)
+  output <- .synthetics$get_group_output()
+  config <- get_config()
+  svc <- .synthetics$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.synthetics$operations$get_group <- synthetics_get_group
+
+#' Returns a list of the groups that the specified canary is associated
+#' with
+#'
+#' @description
+#' Returns a list of the groups that the specified canary is associated
+#' with. The canary that you specify must be in the current Region.
+#'
+#' @usage
+#' synthetics_list_associated_groups(NextToken, MaxResults, ResourceArn)
+#'
+#' @param NextToken A token that indicates that there is more data available. You can use
+#' this token in a subsequent operation to retrieve the next set of
+#' results.
+#' @param MaxResults Specify this parameter to limit how many groups are returned each time
+#' you use the
+#' [`list_associated_groups`][synthetics_list_associated_groups] operation.
+#' If you omit this parameter, the default of 20 is used.
+#' @param ResourceArn &#91;required&#93; The ARN of the canary that you want to view groups for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Arn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_associated_groups(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname synthetics_list_associated_groups
+synthetics_list_associated_groups <- function(NextToken = NULL, MaxResults = NULL, ResourceArn) {
+  op <- new_operation(
+    name = "ListAssociatedGroups",
+    http_method = "POST",
+    http_path = "/resource/{resourceArn}/groups",
+    paginator = list()
+  )
+  input <- .synthetics$list_associated_groups_input(NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
+  output <- .synthetics$list_associated_groups_output()
+  config <- get_config()
+  svc <- .synthetics$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.synthetics$operations$list_associated_groups <- synthetics_list_associated_groups
+
+#' This operation returns a list of the ARNs of the canaries that are
+#' associated with the specified group
+#'
+#' @description
+#' This operation returns a list of the ARNs of the canaries that are
+#' associated with the specified group.
+#'
+#' @usage
+#' synthetics_list_group_resources(NextToken, MaxResults, GroupIdentifier)
+#'
+#' @param NextToken A token that indicates that there is more data available. You can use
+#' this token in a subsequent operation to retrieve the next set of
+#' results.
+#' @param MaxResults Specify this parameter to limit how many canary ARNs are returned each
+#' time you use the
+#' [`list_group_resources`][synthetics_list_group_resources] operation. If
+#' you omit this parameter, the default of 20 is used.
+#' @param GroupIdentifier &#91;required&#93; Specifies the group to return information for. You can specify the group
+#' name, the ARN, or the group ID as the `GroupIdentifier`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Resources = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_group_resources(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   GroupIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname synthetics_list_group_resources
+synthetics_list_group_resources <- function(NextToken = NULL, MaxResults = NULL, GroupIdentifier) {
+  op <- new_operation(
+    name = "ListGroupResources",
+    http_method = "POST",
+    http_path = "/group/{groupIdentifier}/resources",
+    paginator = list()
+  )
+  input <- .synthetics$list_group_resources_input(NextToken = NextToken, MaxResults = MaxResults, GroupIdentifier = GroupIdentifier)
+  output <- .synthetics$list_group_resources_output()
+  config <- get_config()
+  svc <- .synthetics$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.synthetics$operations$list_group_resources <- synthetics_list_group_resources
+
+#' Returns a list of all groups in the account, displaying their names,
+#' unique IDs, and ARNs
+#'
+#' @description
+#' Returns a list of all groups in the account, displaying their names,
+#' unique IDs, and ARNs. The groups from all Regions are returned.
+#'
+#' @usage
+#' synthetics_list_groups(NextToken, MaxResults)
+#'
+#' @param NextToken A token that indicates that there is more data available. You can use
+#' this token in a subsequent operation to retrieve the next set of
+#' results.
+#' @param MaxResults Specify this parameter to limit how many groups are returned each time
+#' you use the [`list_groups`][synthetics_list_groups] operation. If you
+#' omit this parameter, the default of 20 is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Arn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_groups(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname synthetics_list_groups
+synthetics_list_groups <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListGroups",
+    http_method = "POST",
+    http_path = "/groups",
+    paginator = list()
+  )
+  input <- .synthetics$list_groups_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .synthetics$list_groups_output()
+  config <- get_config()
+  svc <- .synthetics$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.synthetics$operations$list_groups <- synthetics_list_groups
+
+#' Displays the tags associated with a canary or group
+#'
+#' @description
+#' Displays the tags associated with a canary or group.
 #'
 #' @usage
 #' synthetics_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN of the canary that you want to view tags for.
+#' @param ResourceArn &#91;required&#93; The ARN of the canary or group that you want to view tags for.
 #' 
 #' The ARN format of a canary is
 #' `arn:aws:synthetics:Region:account-id:canary:canary-name `.
+#' 
+#' The ARN format of a group is
+#' `arn:aws:synthetics:Region:account-id:group:group-name `
 #'
 #' @return
 #' A list with the following syntax:
@@ -809,10 +1403,9 @@ synthetics_start_canary <- function(Name) {
 #'
 #' @description
 #' Stops the canary to prevent all future runs. If the canary is currently
-#' running, Synthetics stops waiting for the current run of the specified
-#' canary to complete. The run that is in progress completes on its own,
-#' publishes metrics, and uploads artifacts, but it is not recorded in
-#' Synthetics as a completed run.
+#' running,the run that is in progress completes on its own, publishes
+#' metrics, and uploads artifacts, but it is not recorded in Synthetics as
+#' a completed run.
 #' 
 #' You can use [`start_canary`][synthetics_start_canary] to start it
 #' running again with the canary’s current schedule at any point in the
@@ -822,7 +1415,8 @@ synthetics_start_canary <- function(Name) {
 #' synthetics_stop_canary(Name)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to stop. To find the names of your
-#' canaries, use [`describe_canaries`][synthetics_describe_canaries].
+#' canaries, use
+#' [ListCanaries](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html).
 #'
 #' @return
 #' An empty list.
@@ -854,35 +1448,40 @@ synthetics_stop_canary <- function(Name) {
 }
 .synthetics$operations$stop_canary <- synthetics_stop_canary
 
-#' Assigns one or more tags (key-value pairs) to the specified canary
+#' Assigns one or more tags (key-value pairs) to the specified canary or
+#' group
 #'
 #' @description
-#' Assigns one or more tags (key-value pairs) to the specified canary.
+#' Assigns one or more tags (key-value pairs) to the specified canary or
+#' group.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
 #' use them to scope user permissions, by granting a user permission to
 #' access or change only resources with certain tag values.
 #' 
-#' Tags don't have any semantic meaning to AWS and are interpreted strictly
-#' as strings of characters.
+#' Tags don't have any semantic meaning to Amazon Web Services and are
+#' interpreted strictly as strings of characters.
 #' 
 #' You can use the [`tag_resource`][synthetics_tag_resource] action with a
-#' canary that already has tags. If you specify a new tag key for the
-#' alarm, this tag is appended to the list of tags associated with the
-#' alarm. If you specify a tag key that is already associated with the
-#' alarm, the new tag value that you specify replaces the previous value
+#' resource that already has tags. If you specify a new tag key for the
+#' resource, this tag is appended to the list of tags associated with the
+#' resource. If you specify a tag key that is already associated with the
+#' resource, the new tag value that you specify replaces the previous value
 #' for that tag.
 #' 
-#' You can associate as many as 50 tags with a canary.
+#' You can associate as many as 50 tags with a canary or group.
 #'
 #' @usage
 #' synthetics_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN of the canary that you're adding tags to.
+#' @param ResourceArn &#91;required&#93; The ARN of the canary or group that you're adding tags to.
 #' 
 #' The ARN format of a canary is
 #' `arn:aws:synthetics:Region:account-id:canary:canary-name `.
-#' @param Tags &#91;required&#93; The list of key-value pairs to associate with the canary.
+#' 
+#' The ARN format of a group is
+#' `arn:aws:synthetics:Region:account-id:group:group-name `
+#' @param Tags &#91;required&#93; The list of key-value pairs to associate with the resource.
 #'
 #' @return
 #' An empty list.
@@ -917,18 +1516,21 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
 }
 .synthetics$operations$tag_resource <- synthetics_tag_resource
 
-#' Removes one or more tags from the specified canary
+#' Removes one or more tags from the specified resource
 #'
 #' @description
-#' Removes one or more tags from the specified canary.
+#' Removes one or more tags from the specified resource.
 #'
 #' @usage
 #' synthetics_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN of the canary that you're removing tags from.
+#' @param ResourceArn &#91;required&#93; The ARN of the canary or group that you're removing tags from.
 #' 
 #' The ARN format of a canary is
 #' `arn:aws:synthetics:Region:account-id:canary:canary-name `.
+#' 
+#' The ARN format of a group is
+#' `arn:aws:synthetics:Region:account-id:group:group-name `
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
 #'
 #' @return
@@ -964,12 +1566,10 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .synthetics$operations$untag_resource <- synthetics_untag_resource
 
-#' Use this operation to change the settings of a canary that has already
-#' been created
+#' Updates the configuration of a canary that has already been created
 #'
 #' @description
-#' Use this operation to change the settings of a canary that has already
-#' been created.
+#' Updates the configuration of a canary that has already been created.
 #' 
 #' You can't use this operation to update the tags of an existing canary.
 #' To change the tags of an existing canary, use
@@ -978,7 +1578,8 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @usage
 #' synthetics_update_canary(Name, Code, ExecutionRoleArn, RuntimeVersion,
 #'   Schedule, RunConfig, SuccessRetentionPeriodInDays,
-#'   FailureRetentionPeriodInDays, VpcConfig)
+#'   FailureRetentionPeriodInDays, VpcConfig, VisualReference,
+#'   ArtifactS3Location, ArtifactConfig)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to update. To find the names of
 #' your canaries, use [`describe_canaries`][synthetics_describe_canaries].
@@ -1012,12 +1613,32 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' run, and when these runs are to stop.
 #' @param RunConfig A structure that contains the timeout value that is used for each
 #' individual run of the canary.
+#' 
+#' The environment variables keys and values are not encrypted. Do not
+#' store sensitive information in this field.
 #' @param SuccessRetentionPeriodInDays The number of days to retain data about successful runs of this canary.
 #' @param FailureRetentionPeriodInDays The number of days to retain data about failed runs of this canary.
 #' @param VpcConfig If this canary is to test an endpoint in a VPC, this structure contains
 #' information about the subnet and security groups of the VPC endpoint.
 #' For more information, see [Running a Canary in a
 #' VPC](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_VPC.html).
+#' @param VisualReference Defines the screenshots to use as the baseline for comparisons during
+#' visual monitoring comparisons during future runs of this canary. If you
+#' omit this parameter, no changes are made to any baseline screenshots
+#' that the canary might be using already.
+#' 
+#' Visual monitoring is supported only on canaries running the
+#' **syn-puppeteer-node-3.2** runtime or later. For more information, see
+#' [Visual
+#' monitoring](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)
+#' and [Visual monitoring
+#' blueprint](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)
+#' @param ArtifactS3Location The location in Amazon S3 where Synthetics stores artifacts from the
+#' test runs of this canary. Artifacts include the log file, screenshots,
+#' and HAR files. The name of the S3 bucket can't include a period (.).
+#' @param ArtifactConfig A structure that contains the configuration for canary artifacts,
+#' including the encryption-at-rest settings for artifacts that the canary
+#' uploads to Amazon S3.
 #'
 #' @return
 #' An empty list.
@@ -1056,6 +1677,24 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #'     SecurityGroupIds = list(
 #'       "string"
 #'     )
+#'   ),
+#'   VisualReference = list(
+#'     BaseScreenshots = list(
+#'       list(
+#'         ScreenshotName = "string",
+#'         IgnoreCoordinates = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     BaseCanaryRunId = "string"
+#'   ),
+#'   ArtifactS3Location = "string",
+#'   ArtifactConfig = list(
+#'     S3Encryption = list(
+#'       EncryptionMode = "SSE_S3"|"SSE_KMS",
+#'       KmsKeyArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1063,14 +1702,14 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname synthetics_update_canary
-synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL) {
+synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL) {
   op <- new_operation(
     name = "UpdateCanary",
     http_method = "PATCH",
     http_path = "/canary/{name}",
     paginator = list()
   )
-  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig)
+  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig)
   output <- .synthetics$update_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config)

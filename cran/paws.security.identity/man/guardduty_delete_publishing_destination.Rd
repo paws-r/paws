@@ -12,18 +12,9 @@ to delete.}
 
 \item{DestinationId}{[required] The ID of the publishing destination to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the publishing definition with the specified \code{destinationId}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_publishing_destination(
-  DetectorId = "string",
-  DestinationId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/delete_publishing_destination.html} for full documentation.
+}
 \keyword{internal}

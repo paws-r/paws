@@ -5,9 +5,12 @@
 \title{Updates the Challenge-Handshake Authentication Protocol (CHAP)
 credentials for a specified iSCSI target}
 \usage{
-storagegateway_update_chap_credentials(TargetARN,
-  SecretToAuthenticateInitiator, InitiatorName,
-  SecretToAuthenticateTarget)
+storagegateway_update_chap_credentials(
+  TargetARN,
+  SecretToAuthenticateInitiator,
+  InitiatorName,
+  SecretToAuthenticateTarget = NULL
+)
 }
 \arguments{
 \item{TargetARN}{[required] The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
@@ -28,43 +31,9 @@ Byte constraints: Minimum bytes of 12. Maximum bytes of 16.
 
 The secret key must be between 12 and 16 bytes when encoded in UTF-8.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TargetARN = "string",
-  InitiatorName = "string"
-)
-}
-}
 \description{
-Updates the Challenge-Handshake Authentication Protocol (CHAP)
-credentials for a specified iSCSI target. By default, a gateway does not
-have CHAP enabled; however, for added security, you might use it. This
-operation is supported in the volume and tape gateway types.
+Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target. By default, a gateway does not have CHAP enabled; however, for added security, you might use it. This operation is supported in the volume and tape gateway types.
 
-When you update CHAP credentials, all existing connections on the target
-are closed and initiators must reconnect with the new credentials.
-}
-\section{Request syntax}{
-\preformatted{svc$update_chap_credentials(
-  TargetARN = "string",
-  SecretToAuthenticateInitiator = "string",
-  InitiatorName = "string",
-  SecretToAuthenticateTarget = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Updates the Challenge-Handshake Authentication Protocol (CHAP)
-# credentials for a specified iSCSI target.
-svc$update_chap_credentials(
-  InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
-  SecretToAuthenticateInitiator = "111111111111",
-  SecretToAuthenticateTarget = "222222222222",
-  TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/update_chap_credentials.html} for full documentation.
 }
 \keyword{internal}

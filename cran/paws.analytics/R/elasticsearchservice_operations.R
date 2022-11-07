@@ -7,45 +7,11 @@ NULL
 #' search connection request
 #'
 #' @description
-#' Allows the destination domain owner to accept an inbound cross-cluster
-#' search connection request.
+#' Allows the destination domain owner to accept an inbound cross-cluster search connection request.
 #'
-#' @usage
-#' elasticsearchservice_accept_inbound_cross_cluster_search_connection(
-#'   CrossClusterSearchConnectionId)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/accept_inbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/accept_inbound_cross_cluster_search_connection.html) for full documentation.
 #'
 #' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the inbound connection that you want to accept.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CrossClusterSearchConnection = list(
-#'     SourceDomainInfo = list(
-#'       OwnerId = "string",
-#'       DomainName = "string",
-#'       Region = "string"
-#'     ),
-#'     DestinationDomainInfo = list(
-#'       OwnerId = "string",
-#'       DomainName = "string",
-#'       Region = "string"
-#'     ),
-#'     CrossClusterSearchConnectionId = "string",
-#'     ConnectionStatus = list(
-#'       StatusCode = "PENDING_ACCEPTANCE"|"APPROVED"|"REJECTING"|"REJECTED"|"DELETING"|"DELETED",
-#'       Message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$accept_inbound_cross_cluster_search_connection(
-#'   CrossClusterSearchConnectionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -70,32 +36,12 @@ elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(
 #' Attaches tags to an existing Elasticsearch domain
 #'
 #' @description
-#' Attaches tags to an existing Elasticsearch domain. Tags are a set of
-#' case-sensitive key value pairs. An Elasticsearch domain may have up to
-#' 10 tags. See [Tagging Amazon Elasticsearch Service Domains for more
-#' information.](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-managedomains-awsresorcetagging)
+#' Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#es-managedomains-awsresorcetagging" target="_blank">Tagging Amazon Elasticsearch Service Domains for more information.</a>
 #'
-#' @usage
-#' elasticsearchservice_add_tags(ARN, TagList)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/add_tags.html](https://paws-r.github.io/docs/elasticsearchservice/add_tags.html) for full documentation.
 #'
 #' @param ARN &#91;required&#93; Specify the `ARN` for which you want to add the tags.
 #' @param TagList &#91;required&#93; List of `Tag` that need to be added for the Elasticsearch domain.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_tags(
-#'   ARN = "string",
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -122,44 +68,12 @@ elasticsearchservice_add_tags <- function(ARN, TagList) {
 #' @description
 #' Associates a package with an Amazon ES domain.
 #'
-#' @usage
-#' elasticsearchservice_associate_package(PackageID, DomainName)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/associate_package.html](https://paws-r.github.io/docs/elasticsearchservice/associate_package.html) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package that you want to associate with a domain. Use
 #' [`describe_packages`][elasticsearchservice_describe_packages] to find
 #' this value.
 #' @param DomainName &#91;required&#93; Name of the domain that you want to associate the package with.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainPackageDetails = list(
-#'     PackageID = "string",
-#'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
-#'     LastUpdated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DomainName = "string",
-#'     DomainPackageStatus = "ASSOCIATING"|"ASSOCIATION_FAILED"|"ACTIVE"|"DISSOCIATING"|"DISSOCIATION_FAILED",
-#'     PackageVersion = "string",
-#'     ReferencePath = "string",
-#'     ErrorDetails = list(
-#'       ErrorType = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_package(
-#'   PackageID = "string",
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -184,42 +98,12 @@ elasticsearchservice_associate_package <- function(PackageID, DomainName) {
 #' Cancels a scheduled service software update for an Amazon ES domain
 #'
 #' @description
-#' Cancels a scheduled service software update for an Amazon ES domain. You
-#' can only perform this operation before the `AutomatedUpdateDate` and
-#' when the `UpdateStatus` is in the `PENDING_UPDATE` state.
+#' Cancels a scheduled service software update for an Amazon ES domain. You can only perform this operation before the `AutomatedUpdateDate` and when the `UpdateStatus` is in the `PENDING_UPDATE` state.
 #'
-#' @usage
-#' elasticsearchservice_cancel_elasticsearch_service_software_update(
-#'   DomainName)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/cancel_elasticsearch_service_software_update.html](https://paws-r.github.io/docs/elasticsearchservice/cancel_elasticsearch_service_software_update.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to stop the latest service software
 #' update on.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceSoftwareOptions = list(
-#'     CurrentVersion = "string",
-#'     NewVersion = "string",
-#'     UpdateAvailable = TRUE|FALSE,
-#'     Cancellable = TRUE|FALSE,
-#'     UpdateStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE",
-#'     Description = "string",
-#'     AutomatedUpdateDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     OptionalDeployment = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_elasticsearch_service_software_update(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -244,26 +128,19 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' Creates a new Elasticsearch domain
 #'
 #' @description
-#' Creates a new Elasticsearch domain. For more information, see [Creating
-#' Elasticsearch
-#' Domains](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
-#' in the *Amazon Elasticsearch Service Developer Guide*.
+#' Creates a new Elasticsearch domain. For more information, see <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the *Amazon Elasticsearch Service Developer Guide*.
 #'
-#' @usage
-#' elasticsearchservice_create_elasticsearch_domain(DomainName,
-#'   ElasticsearchVersion, ElasticsearchClusterConfig, EBSOptions,
-#'   AccessPolicies, SnapshotOptions, VPCOptions, CognitoOptions,
-#'   EncryptionAtRestOptions, NodeToNodeEncryptionOptions, AdvancedOptions,
-#'   LogPublishingOptions, DomainEndpointOptions, AdvancedSecurityOptions)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/create_elasticsearch_domain.html](https://paws-r.github.io/docs/elasticsearchservice/create_elasticsearch_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are creating. Domain names
 #' are unique across the domains owned by an account within an AWS region.
 #' Domain names must start with a lowercase letter and can contain the
 #' following characters: a-z (lowercase), 0-9, and - (hyphen).
 #' @param ElasticsearchVersion String of format X.Y to specify version for the Elasticsearch domain eg.
-#' "1.5" or "2.3". For more information, see [Creating Elasticsearch
-#' Domains](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
-#' in the *Amazon Elasticsearch Service Developer Guide*.
+#' "1.5" or "2.3". For more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains"
+#' target="_blank">Creating Elasticsearch Domains</a> in the *Amazon
+#' Elasticsearch Service Developer Guide*.
 #' @param ElasticsearchClusterConfig Configuration options for an Elasticsearch domain. Specifies the
 #' instance type and number of instances in the domain cluster.
 #' @param EBSOptions Options to enable, disable and specify the type and size of EBS storage
@@ -272,239 +149,40 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @param SnapshotOptions Option to set time, in UTC format, of the daily automated snapshot.
 #' Default value is 0 hours.
 #' @param VPCOptions Options to specify the subnets and security groups for VPC endpoint. For
-#' more information, see [Creating a
-#' VPC](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc)
-#' in *VPC Endpoints for Amazon Elasticsearch Service Domains*
+#' more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-creating-vpc"
+#' target="_blank">Creating a VPC</a> in *VPC Endpoints for Amazon
+#' Elasticsearch Service Domains*
 #' @param CognitoOptions Options to specify the Cognito user and identity pools for Kibana
-#' authentication. For more information, see [Amazon Cognito Authentication
-#' for
-#' Kibana](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
+#' authentication. For more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
+#' target="_blank">Amazon Cognito Authentication for Kibana</a>.
 #' @param EncryptionAtRestOptions Specifies the Encryption At Rest Options.
 #' @param NodeToNodeEncryptionOptions Specifies the NodeToNodeEncryptionOptions.
 #' @param AdvancedOptions Option to allow references to indices in an HTTP request body. Must be
 #' `false` when configuring access to individual sub-resources. By default,
-#' the value is `true`. See [Configuration Advanced
-#' Options](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
-#' for more information.
+#' the value is `true`. See <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options"
+#' target="_blank">Configuration Advanced Options</a> for more information.
 #' @param LogPublishingOptions Map of `LogType` and `LogPublishingOption`, each containing options to
 #' publish a given type of Elasticsearch log.
 #' @param DomainEndpointOptions Options to specify configuration that will be applied to the domain
 #' endpoint.
 #' @param AdvancedSecurityOptions Specifies advanced security options.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainStatus = list(
-#'     DomainId = "string",
-#'     DomainName = "string",
-#'     ARN = "string",
-#'     Created = TRUE|FALSE,
-#'     Deleted = TRUE|FALSE,
-#'     Endpoint = "string",
-#'     Endpoints = list(
-#'       "string"
-#'     ),
-#'     Processing = TRUE|FALSE,
-#'     UpgradeProcessing = TRUE|FALSE,
-#'     ElasticsearchVersion = "string",
-#'     ElasticsearchClusterConfig = list(
-#'       InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'       InstanceCount = 123,
-#'       DedicatedMasterEnabled = TRUE|FALSE,
-#'       ZoneAwarenessEnabled = TRUE|FALSE,
-#'       ZoneAwarenessConfig = list(
-#'         AvailabilityZoneCount = 123
-#'       ),
-#'       DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'       DedicatedMasterCount = 123,
-#'       WarmEnabled = TRUE|FALSE,
-#'       WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'       WarmCount = 123
-#'     ),
-#'     EBSOptions = list(
-#'       EBSEnabled = TRUE|FALSE,
-#'       VolumeType = "standard"|"gp2"|"io1",
-#'       VolumeSize = 123,
-#'       Iops = 123
-#'     ),
-#'     AccessPolicies = "string",
-#'     SnapshotOptions = list(
-#'       AutomatedSnapshotStartHour = 123
-#'     ),
-#'     VPCOptions = list(
-#'       VPCId = "string",
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CognitoOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       UserPoolId = "string",
-#'       IdentityPoolId = "string",
-#'       RoleArn = "string"
-#'     ),
-#'     EncryptionAtRestOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       KmsKeyId = "string"
-#'     ),
-#'     NodeToNodeEncryptionOptions = list(
-#'       Enabled = TRUE|FALSE
-#'     ),
-#'     AdvancedOptions = list(
-#'       "string"
-#'     ),
-#'     LogPublishingOptions = list(
-#'       list(
-#'         CloudWatchLogsLogGroupArn = "string",
-#'         Enabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     ServiceSoftwareOptions = list(
-#'       CurrentVersion = "string",
-#'       NewVersion = "string",
-#'       UpdateAvailable = TRUE|FALSE,
-#'       Cancellable = TRUE|FALSE,
-#'       UpdateStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE",
-#'       Description = "string",
-#'       AutomatedUpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OptionalDeployment = TRUE|FALSE
-#'     ),
-#'     DomainEndpointOptions = list(
-#'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-#'       CustomEndpointEnabled = TRUE|FALSE,
-#'       CustomEndpoint = "string",
-#'       CustomEndpointCertificateArn = "string"
-#'     ),
-#'     AdvancedSecurityOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       InternalUserDatabaseEnabled = TRUE|FALSE,
-#'       SAMLOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         Idp = list(
-#'           MetadataContent = "string",
-#'           EntityId = "string"
-#'         ),
-#'         SubjectKey = "string",
-#'         RolesKey = "string",
-#'         SessionTimeoutMinutes = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_elasticsearch_domain(
-#'   DomainName = "string",
-#'   ElasticsearchVersion = "string",
-#'   ElasticsearchClusterConfig = list(
-#'     InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'     InstanceCount = 123,
-#'     DedicatedMasterEnabled = TRUE|FALSE,
-#'     ZoneAwarenessEnabled = TRUE|FALSE,
-#'     ZoneAwarenessConfig = list(
-#'       AvailabilityZoneCount = 123
-#'     ),
-#'     DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'     DedicatedMasterCount = 123,
-#'     WarmEnabled = TRUE|FALSE,
-#'     WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'     WarmCount = 123
-#'   ),
-#'   EBSOptions = list(
-#'     EBSEnabled = TRUE|FALSE,
-#'     VolumeType = "standard"|"gp2"|"io1",
-#'     VolumeSize = 123,
-#'     Iops = 123
-#'   ),
-#'   AccessPolicies = "string",
-#'   SnapshotOptions = list(
-#'     AutomatedSnapshotStartHour = 123
-#'   ),
-#'   VPCOptions = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   CognitoOptions = list(
-#'     Enabled = TRUE|FALSE,
-#'     UserPoolId = "string",
-#'     IdentityPoolId = "string",
-#'     RoleArn = "string"
-#'   ),
-#'   EncryptionAtRestOptions = list(
-#'     Enabled = TRUE|FALSE,
-#'     KmsKeyId = "string"
-#'   ),
-#'   NodeToNodeEncryptionOptions = list(
-#'     Enabled = TRUE|FALSE
-#'   ),
-#'   AdvancedOptions = list(
-#'     "string"
-#'   ),
-#'   LogPublishingOptions = list(
-#'     list(
-#'       CloudWatchLogsLogGroupArn = "string",
-#'       Enabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   DomainEndpointOptions = list(
-#'     EnforceHTTPS = TRUE|FALSE,
-#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-#'     CustomEndpointEnabled = TRUE|FALSE,
-#'     CustomEndpoint = "string",
-#'     CustomEndpointCertificateArn = "string"
-#'   ),
-#'   AdvancedSecurityOptions = list(
-#'     Enabled = TRUE|FALSE,
-#'     InternalUserDatabaseEnabled = TRUE|FALSE,
-#'     MasterUserOptions = list(
-#'       MasterUserARN = "string",
-#'       MasterUserName = "string",
-#'       MasterUserPassword = "string"
-#'     ),
-#'     SAMLOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       Idp = list(
-#'         MetadataContent = "string",
-#'         EntityId = "string"
-#'       ),
-#'       MasterUserName = "string",
-#'       MasterBackendRole = "string",
-#'       SubjectKey = "string",
-#'       RolesKey = "string",
-#'       SessionTimeoutMinutes = 123
-#'     )
-#'   )
-#' )
-#' ```
+#' @param AutoTuneOptions Specifies Auto-Tune options.
+#' @param TagList A list of `Tag` added during domain creation.
 #'
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_create_elasticsearch_domain
-elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL) {
+elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, TagList = NULL) {
   op <- new_operation(
     name = "CreateElasticsearchDomain",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain",
     paginator = list()
   )
-  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions)
+  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, TagList = TagList)
   output <- .elasticsearchservice$create_elasticsearch_domain_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config)
@@ -518,58 +196,15 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
 #' destination domain
 #'
 #' @description
-#' Creates a new cross-cluster search connection from a source domain to a
-#' destination domain.
+#' Creates a new cross-cluster search connection from a source domain to a destination domain.
 #'
-#' @usage
-#' elasticsearchservice_create_outbound_cross_cluster_search_connection(
-#'   SourceDomainInfo, DestinationDomainInfo, ConnectionAlias)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/create_outbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/create_outbound_cross_cluster_search_connection.html) for full documentation.
 #'
 #' @param SourceDomainInfo &#91;required&#93; Specifies the `DomainInformation` for the source Elasticsearch domain.
 #' @param DestinationDomainInfo &#91;required&#93; Specifies the `DomainInformation` for the destination Elasticsearch
 #' domain.
 #' @param ConnectionAlias &#91;required&#93; Specifies the connection alias that will be used by the customer for
 #' this connection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SourceDomainInfo = list(
-#'     OwnerId = "string",
-#'     DomainName = "string",
-#'     Region = "string"
-#'   ),
-#'   DestinationDomainInfo = list(
-#'     OwnerId = "string",
-#'     DomainName = "string",
-#'     Region = "string"
-#'   ),
-#'   ConnectionAlias = "string",
-#'   ConnectionStatus = list(
-#'     StatusCode = "PENDING_ACCEPTANCE"|"VALIDATING"|"VALIDATION_FAILED"|"PROVISIONING"|"ACTIVE"|"REJECTED"|"DELETING"|"DELETED",
-#'     Message = "string"
-#'   ),
-#'   CrossClusterSearchConnectionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_outbound_cross_cluster_search_connection(
-#'   SourceDomainInfo = list(
-#'     OwnerId = "string",
-#'     DomainName = "string",
-#'     Region = "string"
-#'   ),
-#'   DestinationDomainInfo = list(
-#'     OwnerId = "string",
-#'     DomainName = "string",
-#'     Region = "string"
-#'   ),
-#'   ConnectionAlias = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -596,52 +231,12 @@ elasticsearchservice_create_outbound_cross_cluster_search_connection <- function
 #' @description
 #' Create a package for use with Amazon ES domains.
 #'
-#' @usage
-#' elasticsearchservice_create_package(PackageName, PackageType,
-#'   PackageDescription, PackageSource)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/create_package.html](https://paws-r.github.io/docs/elasticsearchservice/create_package.html) for full documentation.
 #'
 #' @param PackageName &#91;required&#93; Unique identifier for the package.
 #' @param PackageType &#91;required&#93; Type of package. Currently supports only TXT-DICTIONARY.
 #' @param PackageDescription Description of the package.
 #' @param PackageSource &#91;required&#93; The customer S3 location `PackageSource` for importing the package.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PackageDetails = list(
-#'     PackageID = "string",
-#'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
-#'     PackageDescription = "string",
-#'     PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AvailablePackageVersion = "string",
-#'     ErrorDetails = list(
-#'       ErrorType = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_package(
-#'   PackageName = "string",
-#'   PackageType = "TXT-DICTIONARY",
-#'   PackageDescription = "string",
-#'   PackageSource = list(
-#'     S3BucketName = "string",
-#'     S3Key = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -667,133 +262,12 @@ elasticsearchservice_create_package <- function(PackageName, PackageType, Packag
 #' data
 #'
 #' @description
-#' Permanently deletes the specified Elasticsearch domain and all of its
-#' data. Once a domain is deleted, it cannot be recovered.
+#' Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.
 #'
-#' @usage
-#' elasticsearchservice_delete_elasticsearch_domain(DomainName)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_elasticsearch_domain.html](https://paws-r.github.io/docs/elasticsearchservice/delete_elasticsearch_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you want to permanently
 #' delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainStatus = list(
-#'     DomainId = "string",
-#'     DomainName = "string",
-#'     ARN = "string",
-#'     Created = TRUE|FALSE,
-#'     Deleted = TRUE|FALSE,
-#'     Endpoint = "string",
-#'     Endpoints = list(
-#'       "string"
-#'     ),
-#'     Processing = TRUE|FALSE,
-#'     UpgradeProcessing = TRUE|FALSE,
-#'     ElasticsearchVersion = "string",
-#'     ElasticsearchClusterConfig = list(
-#'       InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'       InstanceCount = 123,
-#'       DedicatedMasterEnabled = TRUE|FALSE,
-#'       ZoneAwarenessEnabled = TRUE|FALSE,
-#'       ZoneAwarenessConfig = list(
-#'         AvailabilityZoneCount = 123
-#'       ),
-#'       DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'       DedicatedMasterCount = 123,
-#'       WarmEnabled = TRUE|FALSE,
-#'       WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'       WarmCount = 123
-#'     ),
-#'     EBSOptions = list(
-#'       EBSEnabled = TRUE|FALSE,
-#'       VolumeType = "standard"|"gp2"|"io1",
-#'       VolumeSize = 123,
-#'       Iops = 123
-#'     ),
-#'     AccessPolicies = "string",
-#'     SnapshotOptions = list(
-#'       AutomatedSnapshotStartHour = 123
-#'     ),
-#'     VPCOptions = list(
-#'       VPCId = "string",
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CognitoOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       UserPoolId = "string",
-#'       IdentityPoolId = "string",
-#'       RoleArn = "string"
-#'     ),
-#'     EncryptionAtRestOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       KmsKeyId = "string"
-#'     ),
-#'     NodeToNodeEncryptionOptions = list(
-#'       Enabled = TRUE|FALSE
-#'     ),
-#'     AdvancedOptions = list(
-#'       "string"
-#'     ),
-#'     LogPublishingOptions = list(
-#'       list(
-#'         CloudWatchLogsLogGroupArn = "string",
-#'         Enabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     ServiceSoftwareOptions = list(
-#'       CurrentVersion = "string",
-#'       NewVersion = "string",
-#'       UpdateAvailable = TRUE|FALSE,
-#'       Cancellable = TRUE|FALSE,
-#'       UpdateStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE",
-#'       Description = "string",
-#'       AutomatedUpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OptionalDeployment = TRUE|FALSE
-#'     ),
-#'     DomainEndpointOptions = list(
-#'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-#'       CustomEndpointEnabled = TRUE|FALSE,
-#'       CustomEndpoint = "string",
-#'       CustomEndpointCertificateArn = "string"
-#'     ),
-#'     AdvancedSecurityOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       InternalUserDatabaseEnabled = TRUE|FALSE,
-#'       SAMLOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         Idp = list(
-#'           MetadataContent = "string",
-#'           EntityId = "string"
-#'         ),
-#'         SubjectKey = "string",
-#'         RolesKey = "string",
-#'         SessionTimeoutMinutes = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_elasticsearch_domain(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -819,20 +293,9 @@ elasticsearchservice_delete_elasticsearch_domain <- function(DomainName) {
 #' manage and maintain VPC domains
 #'
 #' @description
-#' Deletes the service-linked role that Elasticsearch Service uses to
-#' manage and maintain VPC domains. Role deletion will fail if any existing
-#' VPC domains use the role. You must delete any such Elasticsearch domains
-#' before deleting the role. See [Deleting Elasticsearch Service
-#' Role](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-enabling-slr)
-#' in *VPC Endpoints for Amazon Elasticsearch Service Domains*.
+#' Deletes the service-linked role that Elasticsearch Service uses to manage and maintain VPC domains. Role deletion will fail if any existing VPC domains use the role. You must delete any such Elasticsearch domains before deleting the role. See <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-enabling-slr" target="_blank">Deleting Elasticsearch Service Role</a> in *VPC Endpoints for Amazon Elasticsearch Service Domains*.
 #'
-#' @usage
-#' elasticsearchservice_delete_elasticsearch_service_role()
-#'
-
-#'
-#' @return
-#' An empty list.
+#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_elasticsearch_service_role.html](https://paws-r.github.io/docs/elasticsearchservice/delete_elasticsearch_service_role.html) for full documentation.
 #'
 
 #'
@@ -860,45 +323,11 @@ elasticsearchservice_delete_elasticsearch_service_role <- function() {
 #' cross-cluster search connection
 #'
 #' @description
-#' Allows the destination domain owner to delete an existing inbound
-#' cross-cluster search connection.
+#' Allows the destination domain owner to delete an existing inbound cross-cluster search connection.
 #'
-#' @usage
-#' elasticsearchservice_delete_inbound_cross_cluster_search_connection(
-#'   CrossClusterSearchConnectionId)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_inbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/delete_inbound_cross_cluster_search_connection.html) for full documentation.
 #'
 #' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the inbound connection that you want to permanently delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CrossClusterSearchConnection = list(
-#'     SourceDomainInfo = list(
-#'       OwnerId = "string",
-#'       DomainName = "string",
-#'       Region = "string"
-#'     ),
-#'     DestinationDomainInfo = list(
-#'       OwnerId = "string",
-#'       DomainName = "string",
-#'       Region = "string"
-#'     ),
-#'     CrossClusterSearchConnectionId = "string",
-#'     ConnectionStatus = list(
-#'       StatusCode = "PENDING_ACCEPTANCE"|"APPROVED"|"REJECTING"|"REJECTED"|"DELETING"|"DELETED",
-#'       Message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_inbound_cross_cluster_search_connection(
-#'   CrossClusterSearchConnectionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -924,46 +353,11 @@ elasticsearchservice_delete_inbound_cross_cluster_search_connection <- function(
 #' cross-cluster search connection
 #'
 #' @description
-#' Allows the source domain owner to delete an existing outbound
-#' cross-cluster search connection.
+#' Allows the source domain owner to delete an existing outbound cross-cluster search connection.
 #'
-#' @usage
-#' elasticsearchservice_delete_outbound_cross_cluster_search_connection(
-#'   CrossClusterSearchConnectionId)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_outbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/delete_outbound_cross_cluster_search_connection.html) for full documentation.
 #'
 #' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the outbound connection that you want to permanently delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CrossClusterSearchConnection = list(
-#'     SourceDomainInfo = list(
-#'       OwnerId = "string",
-#'       DomainName = "string",
-#'       Region = "string"
-#'     ),
-#'     DestinationDomainInfo = list(
-#'       OwnerId = "string",
-#'       DomainName = "string",
-#'       Region = "string"
-#'     ),
-#'     CrossClusterSearchConnectionId = "string",
-#'     ConnectionAlias = "string",
-#'     ConnectionStatus = list(
-#'       StatusCode = "PENDING_ACCEPTANCE"|"VALIDATING"|"VALIDATION_FAILED"|"PROVISIONING"|"ACTIVE"|"REJECTED"|"DELETING"|"DELETED",
-#'       Message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_outbound_cross_cluster_search_connection(
-#'   CrossClusterSearchConnectionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -990,44 +384,11 @@ elasticsearchservice_delete_outbound_cross_cluster_search_connection <- function
 #' @description
 #' Delete the package.
 #'
-#' @usage
-#' elasticsearchservice_delete_package(PackageID)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_package.html](https://paws-r.github.io/docs/elasticsearchservice/delete_package.html) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package that you want to delete. Use
 #' [`describe_packages`][elasticsearchservice_describe_packages] to find
 #' this value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PackageDetails = list(
-#'     PackageID = "string",
-#'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
-#'     PackageDescription = "string",
-#'     PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AvailablePackageVersion = "string",
-#'     ErrorDetails = list(
-#'       ErrorType = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_package(
-#'   PackageID = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1049,138 +410,84 @@ elasticsearchservice_delete_package <- function(PackageID) {
 }
 .elasticsearchservice$operations$delete_package <- elasticsearchservice_delete_package
 
+#' Provides scheduled Auto-Tune action details for the Elasticsearch
+#' domain, such as Auto-Tune action type, description, severity, and
+#' scheduled date
+#'
+#' @description
+#' Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_domain_auto_tunes.html](https://paws-r.github.io/docs/elasticsearchservice/describe_domain_auto_tunes.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; Specifies the domain name for which you want Auto-Tune action details.
+#' @param MaxResults Set this value to limit the number of results returned. If not
+#' specified, defaults to 100.
+#' @param NextToken NextToken is sent in case the earlier API call results contain the
+#' NextToken. It is used for pagination.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_describe_domain_auto_tunes
+elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeDomainAutoTunes",
+    http_method = "GET",
+    http_path = "/2015-01-01/es/domain/{DomainName}/autoTunes",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .elasticsearchservice$describe_domain_auto_tunes_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$describe_domain_auto_tunes <- elasticsearchservice_describe_domain_auto_tunes
+
+#' Returns information about the current blue/green deployment happening on
+#' a domain, including a change ID, status, and progress stages
+#'
+#' @description
+#' Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_domain_change_progress.html](https://paws-r.github.io/docs/elasticsearchservice/describe_domain_change_progress.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The domain you want to get the progress information about.
+#' @param ChangeId The specific change ID for which you want to get progress information.
+#' This is an optional parameter. If omitted, the service returns
+#' information about the most recent configuration change.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_describe_domain_change_progress
+elasticsearchservice_describe_domain_change_progress <- function(DomainName, ChangeId = NULL) {
+  op <- new_operation(
+    name = "DescribeDomainChangeProgress",
+    http_method = "GET",
+    http_path = "/2015-01-01/es/domain/{DomainName}/progress",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$describe_domain_change_progress_input(DomainName = DomainName, ChangeId = ChangeId)
+  output <- .elasticsearchservice$describe_domain_change_progress_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$describe_domain_change_progress <- elasticsearchservice_describe_domain_change_progress
+
 #' Returns domain configuration information about the specified
 #' Elasticsearch domain, including the domain ID, domain endpoint, and
 #' domain ARN
 #'
 #' @description
-#' Returns domain configuration information about the specified
-#' Elasticsearch domain, including the domain ID, domain endpoint, and
-#' domain ARN.
+#' Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.
 #'
-#' @usage
-#' elasticsearchservice_describe_elasticsearch_domain(DomainName)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domain.html](https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain for which you want information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainStatus = list(
-#'     DomainId = "string",
-#'     DomainName = "string",
-#'     ARN = "string",
-#'     Created = TRUE|FALSE,
-#'     Deleted = TRUE|FALSE,
-#'     Endpoint = "string",
-#'     Endpoints = list(
-#'       "string"
-#'     ),
-#'     Processing = TRUE|FALSE,
-#'     UpgradeProcessing = TRUE|FALSE,
-#'     ElasticsearchVersion = "string",
-#'     ElasticsearchClusterConfig = list(
-#'       InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'       InstanceCount = 123,
-#'       DedicatedMasterEnabled = TRUE|FALSE,
-#'       ZoneAwarenessEnabled = TRUE|FALSE,
-#'       ZoneAwarenessConfig = list(
-#'         AvailabilityZoneCount = 123
-#'       ),
-#'       DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'       DedicatedMasterCount = 123,
-#'       WarmEnabled = TRUE|FALSE,
-#'       WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'       WarmCount = 123
-#'     ),
-#'     EBSOptions = list(
-#'       EBSEnabled = TRUE|FALSE,
-#'       VolumeType = "standard"|"gp2"|"io1",
-#'       VolumeSize = 123,
-#'       Iops = 123
-#'     ),
-#'     AccessPolicies = "string",
-#'     SnapshotOptions = list(
-#'       AutomatedSnapshotStartHour = 123
-#'     ),
-#'     VPCOptions = list(
-#'       VPCId = "string",
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CognitoOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       UserPoolId = "string",
-#'       IdentityPoolId = "string",
-#'       RoleArn = "string"
-#'     ),
-#'     EncryptionAtRestOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       KmsKeyId = "string"
-#'     ),
-#'     NodeToNodeEncryptionOptions = list(
-#'       Enabled = TRUE|FALSE
-#'     ),
-#'     AdvancedOptions = list(
-#'       "string"
-#'     ),
-#'     LogPublishingOptions = list(
-#'       list(
-#'         CloudWatchLogsLogGroupArn = "string",
-#'         Enabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     ServiceSoftwareOptions = list(
-#'       CurrentVersion = "string",
-#'       NewVersion = "string",
-#'       UpdateAvailable = TRUE|FALSE,
-#'       Cancellable = TRUE|FALSE,
-#'       UpdateStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE",
-#'       Description = "string",
-#'       AutomatedUpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OptionalDeployment = TRUE|FALSE
-#'     ),
-#'     DomainEndpointOptions = list(
-#'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-#'       CustomEndpointEnabled = TRUE|FALSE,
-#'       CustomEndpoint = "string",
-#'       CustomEndpointCertificateArn = "string"
-#'     ),
-#'     AdvancedSecurityOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       InternalUserDatabaseEnabled = TRUE|FALSE,
-#'       SAMLOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         Idp = list(
-#'           MetadataContent = "string",
-#'           EntityId = "string"
-#'         ),
-#'         SubjectKey = "string",
-#'         RolesKey = "string",
-#'         SessionTimeoutMinutes = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_elasticsearch_domain(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1207,279 +514,11 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #' and update date for cluster options
 #'
 #' @description
-#' Provides cluster configuration information about the specified
-#' Elasticsearch domain, such as the state, creation date, update version,
-#' and update date for cluster options.
+#' Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options.
 #'
-#' @usage
-#' elasticsearchservice_describe_elasticsearch_domain_config(DomainName)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domain_config.html](https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domain_config.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The Elasticsearch domain that you want to get information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainConfig = list(
-#'     ElasticsearchVersion = list(
-#'       Options = "string",
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     ElasticsearchClusterConfig = list(
-#'       Options = list(
-#'         InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'         InstanceCount = 123,
-#'         DedicatedMasterEnabled = TRUE|FALSE,
-#'         ZoneAwarenessEnabled = TRUE|FALSE,
-#'         ZoneAwarenessConfig = list(
-#'           AvailabilityZoneCount = 123
-#'         ),
-#'         DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'         DedicatedMasterCount = 123,
-#'         WarmEnabled = TRUE|FALSE,
-#'         WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'         WarmCount = 123
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     EBSOptions = list(
-#'       Options = list(
-#'         EBSEnabled = TRUE|FALSE,
-#'         VolumeType = "standard"|"gp2"|"io1",
-#'         VolumeSize = 123,
-#'         Iops = 123
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     AccessPolicies = list(
-#'       Options = "string",
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     SnapshotOptions = list(
-#'       Options = list(
-#'         AutomatedSnapshotStartHour = 123
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     VPCOptions = list(
-#'       Options = list(
-#'         VPCId = "string",
-#'         SubnetIds = list(
-#'           "string"
-#'         ),
-#'         AvailabilityZones = list(
-#'           "string"
-#'         ),
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     CognitoOptions = list(
-#'       Options = list(
-#'         Enabled = TRUE|FALSE,
-#'         UserPoolId = "string",
-#'         IdentityPoolId = "string",
-#'         RoleArn = "string"
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     EncryptionAtRestOptions = list(
-#'       Options = list(
-#'         Enabled = TRUE|FALSE,
-#'         KmsKeyId = "string"
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     NodeToNodeEncryptionOptions = list(
-#'       Options = list(
-#'         Enabled = TRUE|FALSE
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     AdvancedOptions = list(
-#'       Options = list(
-#'         "string"
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     LogPublishingOptions = list(
-#'       Options = list(
-#'         list(
-#'           CloudWatchLogsLogGroupArn = "string",
-#'           Enabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     DomainEndpointOptions = list(
-#'       Options = list(
-#'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-#'         CustomEndpointEnabled = TRUE|FALSE,
-#'         CustomEndpoint = "string",
-#'         CustomEndpointCertificateArn = "string"
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     AdvancedSecurityOptions = list(
-#'       Options = list(
-#'         Enabled = TRUE|FALSE,
-#'         InternalUserDatabaseEnabled = TRUE|FALSE,
-#'         SAMLOptions = list(
-#'           Enabled = TRUE|FALSE,
-#'           Idp = list(
-#'             MetadataContent = "string",
-#'             EntityId = "string"
-#'           ),
-#'           SubjectKey = "string",
-#'           RolesKey = "string",
-#'           SessionTimeoutMinutes = 123
-#'         )
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_elasticsearch_domain_config(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1506,137 +545,11 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #' domain ARN
 #'
 #' @description
-#' Returns domain configuration information about the specified
-#' Elasticsearch domains, including the domain ID, domain endpoint, and
-#' domain ARN.
+#' Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
 #'
-#' @usage
-#' elasticsearchservice_describe_elasticsearch_domains(DomainNames)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domains.html](https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domains.html) for full documentation.
 #'
 #' @param DomainNames &#91;required&#93; The Elasticsearch domains for which you want information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainStatusList = list(
-#'     list(
-#'       DomainId = "string",
-#'       DomainName = "string",
-#'       ARN = "string",
-#'       Created = TRUE|FALSE,
-#'       Deleted = TRUE|FALSE,
-#'       Endpoint = "string",
-#'       Endpoints = list(
-#'         "string"
-#'       ),
-#'       Processing = TRUE|FALSE,
-#'       UpgradeProcessing = TRUE|FALSE,
-#'       ElasticsearchVersion = "string",
-#'       ElasticsearchClusterConfig = list(
-#'         InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'         InstanceCount = 123,
-#'         DedicatedMasterEnabled = TRUE|FALSE,
-#'         ZoneAwarenessEnabled = TRUE|FALSE,
-#'         ZoneAwarenessConfig = list(
-#'           AvailabilityZoneCount = 123
-#'         ),
-#'         DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'         DedicatedMasterCount = 123,
-#'         WarmEnabled = TRUE|FALSE,
-#'         WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'         WarmCount = 123
-#'       ),
-#'       EBSOptions = list(
-#'         EBSEnabled = TRUE|FALSE,
-#'         VolumeType = "standard"|"gp2"|"io1",
-#'         VolumeSize = 123,
-#'         Iops = 123
-#'       ),
-#'       AccessPolicies = "string",
-#'       SnapshotOptions = list(
-#'         AutomatedSnapshotStartHour = 123
-#'       ),
-#'       VPCOptions = list(
-#'         VPCId = "string",
-#'         SubnetIds = list(
-#'           "string"
-#'         ),
-#'         AvailabilityZones = list(
-#'           "string"
-#'         ),
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       CognitoOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         UserPoolId = "string",
-#'         IdentityPoolId = "string",
-#'         RoleArn = "string"
-#'       ),
-#'       EncryptionAtRestOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         KmsKeyId = "string"
-#'       ),
-#'       NodeToNodeEncryptionOptions = list(
-#'         Enabled = TRUE|FALSE
-#'       ),
-#'       AdvancedOptions = list(
-#'         "string"
-#'       ),
-#'       LogPublishingOptions = list(
-#'         list(
-#'           CloudWatchLogsLogGroupArn = "string",
-#'           Enabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       ServiceSoftwareOptions = list(
-#'         CurrentVersion = "string",
-#'         NewVersion = "string",
-#'         UpdateAvailable = TRUE|FALSE,
-#'         Cancellable = TRUE|FALSE,
-#'         UpdateStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE",
-#'         Description = "string",
-#'         AutomatedUpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         OptionalDeployment = TRUE|FALSE
-#'       ),
-#'       DomainEndpointOptions = list(
-#'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-#'         CustomEndpointEnabled = TRUE|FALSE,
-#'         CustomEndpoint = "string",
-#'         CustomEndpointCertificateArn = "string"
-#'       ),
-#'       AdvancedSecurityOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         InternalUserDatabaseEnabled = TRUE|FALSE,
-#'         SAMLOptions = list(
-#'           Enabled = TRUE|FALSE,
-#'           Idp = list(
-#'             MetadataContent = "string",
-#'             EntityId = "string"
-#'           ),
-#'           SubjectKey = "string",
-#'           RolesKey = "string",
-#'           SessionTimeoutMinutes = 123
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_elasticsearch_domains(
-#'   DomainNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1662,13 +575,9 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
 #' ElasticsearchVersion
 #'
 #' @description
-#' Describe Elasticsearch Limits for a given InstanceType and
-#' ElasticsearchVersion. When modifying existing Domain, specify the
-#' ` DomainName ` to know what Limits are supported for modifying.
+#' Describe Elasticsearch Limits for a given InstanceType and ElasticsearchVersion. When modifying existing Domain, specify the ` DomainName ` to know what Limits are supported for modifying.
 #'
-#' @usage
-#' elasticsearchservice_describe_elasticsearch_instance_type_limits(
-#'   DomainName, InstanceType, ElasticsearchVersion)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_instance_type_limits.html](https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_instance_type_limits.html) for full documentation.
 #'
 #' @param DomainName DomainName represents the name of the Domain that we are trying to
 #' modify. This should be present only if we are querying for Elasticsearch
@@ -1676,54 +585,6 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
 #' @param InstanceType &#91;required&#93; The instance type for an Elasticsearch cluster for which Elasticsearch
 #' ` Limits ` are needed.
 #' @param ElasticsearchVersion &#91;required&#93; Version of Elasticsearch for which ` Limits ` are needed.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LimitsByRole = list(
-#'     list(
-#'       StorageTypes = list(
-#'         list(
-#'           StorageTypeName = "string",
-#'           StorageSubTypeName = "string",
-#'           StorageTypeLimits = list(
-#'             list(
-#'               LimitName = "string",
-#'               LimitValues = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       InstanceLimits = list(
-#'         InstanceCountLimits = list(
-#'           MinimumInstanceCount = 123,
-#'           MaximumInstanceCount = 123
-#'         )
-#'       ),
-#'       AdditionalLimits = list(
-#'         list(
-#'           LimitName = "string",
-#'           LimitValues = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_elasticsearch_instance_type_limits(
-#'   DomainName = "string",
-#'   InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'   ElasticsearchVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1749,12 +610,9 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
 #' domain
 #'
 #' @description
-#' Lists all the inbound cross-cluster search connections for a destination
-#' domain.
+#' Lists all the inbound cross-cluster search connections for a destination domain.
 #'
-#' @usage
-#' elasticsearchservice_describe_inbound_cross_cluster_search_connections(
-#'   Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_inbound_cross_cluster_search_connections.html](https://paws-r.github.io/docs/elasticsearchservice/describe_inbound_cross_cluster_search_connections.html) for full documentation.
 #'
 #' @param Filters A list of filters used to match properties for inbound cross-cluster
 #' search connection. Available `Filter` names for this operation are:
@@ -1768,49 +626,6 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
 #' specified, defaults to 100.
 #' @param NextToken NextToken is sent in case the earlier API call results contain the
 #' NextToken. It is used for pagination.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CrossClusterSearchConnections = list(
-#'     list(
-#'       SourceDomainInfo = list(
-#'         OwnerId = "string",
-#'         DomainName = "string",
-#'         Region = "string"
-#'       ),
-#'       DestinationDomainInfo = list(
-#'         OwnerId = "string",
-#'         DomainName = "string",
-#'         Region = "string"
-#'       ),
-#'       CrossClusterSearchConnectionId = "string",
-#'       ConnectionStatus = list(
-#'         StatusCode = "PENDING_ACCEPTANCE"|"APPROVED"|"REJECTING"|"REJECTED"|"DELETING"|"DELETED",
-#'         Message = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_inbound_cross_cluster_search_connections(
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1836,12 +651,9 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
 #' domain
 #'
 #' @description
-#' Lists all the outbound cross-cluster search connections for a source
-#' domain.
+#' Lists all the outbound cross-cluster search connections for a source domain.
 #'
-#' @usage
-#' elasticsearchservice_describe_outbound_cross_cluster_search_connections(
-#'   Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_outbound_cross_cluster_search_connections.html](https://paws-r.github.io/docs/elasticsearchservice/describe_outbound_cross_cluster_search_connections.html) for full documentation.
 #'
 #' @param Filters A list of filters used to match properties for outbound cross-cluster
 #' search connection. Available `Filter` names for this operation are:
@@ -1855,50 +667,6 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
 #' specified, defaults to 100.
 #' @param NextToken NextToken is sent in case the earlier API call results contain the
 #' NextToken. It is used for pagination.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CrossClusterSearchConnections = list(
-#'     list(
-#'       SourceDomainInfo = list(
-#'         OwnerId = "string",
-#'         DomainName = "string",
-#'         Region = "string"
-#'       ),
-#'       DestinationDomainInfo = list(
-#'         OwnerId = "string",
-#'         DomainName = "string",
-#'         Region = "string"
-#'       ),
-#'       CrossClusterSearchConnectionId = "string",
-#'       ConnectionAlias = "string",
-#'       ConnectionStatus = list(
-#'         StatusCode = "PENDING_ACCEPTANCE"|"VALIDATING"|"VALIDATION_FAILED"|"PROVISIONING"|"ACTIVE"|"REJECTED"|"DELETING"|"DELETED",
-#'         Message = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_outbound_cross_cluster_search_connections(
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1923,11 +691,9 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections <- funct
 #' Describes all packages available to Amazon ES
 #'
 #' @description
-#' Describes all packages available to Amazon ES. Includes options for
-#' filtering, limiting the number of results, and pagination.
+#' Describes all packages available to Amazon ES. Includes options for filtering, limiting the number of results, and pagination.
 #'
-#' @usage
-#' elasticsearchservice_describe_packages(Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_packages.html](https://paws-r.github.io/docs/elasticsearchservice/describe_packages.html) for full documentation.
 #'
 #' @param Filters Only returns packages that match the `DescribePackagesFilterList`
 #' values.
@@ -1935,50 +701,6 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections <- funct
 #' @param NextToken Used for pagination. Only necessary if a previous API call includes a
 #' non-null NextToken value. If provided, returns results for the next
 #' page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PackageDetailsList = list(
-#'     list(
-#'       PackageID = "string",
-#'       PackageName = "string",
-#'       PackageType = "TXT-DICTIONARY",
-#'       PackageDescription = "string",
-#'       PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       AvailablePackageVersion = "string",
-#'       ErrorDetails = list(
-#'         ErrorType = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_packages(
-#'   Filters = list(
-#'     list(
-#'       Name = "PackageID"|"PackageName"|"PackageStatus",
-#'       Value = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2005,9 +727,7 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
 #' @description
 #' Lists available reserved Elasticsearch instance offerings.
 #'
-#' @usage
-#' elasticsearchservice_describe_reserved_elasticsearch_instance_offerings(
-#'   ReservedElasticsearchInstanceOfferingId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_reserved_elasticsearch_instance_offerings.html](https://paws-r.github.io/docs/elasticsearchservice/describe_reserved_elasticsearch_instance_offerings.html) for full documentation.
 #'
 #' @param ReservedElasticsearchInstanceOfferingId The offering identifier filter value. Use this parameter to show only
 #' the available offering that matches the specified reservation
@@ -2016,40 +736,6 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
 #' specified, defaults to 100.
 #' @param NextToken NextToken should be sent in case if earlier API call produced result
 #' containing NextToken. It is used for pagination.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   ReservedElasticsearchInstanceOfferings = list(
-#'     list(
-#'       ReservedElasticsearchInstanceOfferingId = "string",
-#'       ElasticsearchInstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'       Duration = 123,
-#'       FixedPrice = 123.0,
-#'       UsagePrice = 123.0,
-#'       CurrencyCode = "string",
-#'       PaymentOption = "ALL_UPFRONT"|"PARTIAL_UPFRONT"|"NO_UPFRONT",
-#'       RecurringCharges = list(
-#'         list(
-#'           RecurringChargeAmount = 123.0,
-#'           RecurringChargeFrequency = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_reserved_elasticsearch_instance_offerings(
-#'   ReservedElasticsearchInstanceOfferingId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2075,12 +761,9 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
 #' account
 #'
 #' @description
-#' Returns information about reserved Elasticsearch instances for this
-#' account.
+#' Returns information about reserved Elasticsearch instances for this account.
 #'
-#' @usage
-#' elasticsearchservice_describe_reserved_elasticsearch_instances(
-#'   ReservedElasticsearchInstanceId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_reserved_elasticsearch_instances.html](https://paws-r.github.io/docs/elasticsearchservice/describe_reserved_elasticsearch_instances.html) for full documentation.
 #'
 #' @param ReservedElasticsearchInstanceId The reserved instance identifier filter value. Use this parameter to
 #' show only the reservation that matches the specified reserved
@@ -2089,47 +772,6 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
 #' specified, defaults to 100.
 #' @param NextToken NextToken should be sent in case if earlier API call produced result
 #' containing NextToken. It is used for pagination.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   ReservedElasticsearchInstances = list(
-#'     list(
-#'       ReservationName = "string",
-#'       ReservedElasticsearchInstanceId = "string",
-#'       ReservedElasticsearchInstanceOfferingId = "string",
-#'       ElasticsearchInstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Duration = 123,
-#'       FixedPrice = 123.0,
-#'       UsagePrice = 123.0,
-#'       CurrencyCode = "string",
-#'       ElasticsearchInstanceCount = 123,
-#'       State = "string",
-#'       PaymentOption = "ALL_UPFRONT"|"PARTIAL_UPFRONT"|"NO_UPFRONT",
-#'       RecurringCharges = list(
-#'         list(
-#'           RecurringChargeAmount = 123.0,
-#'           RecurringChargeFrequency = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_reserved_elasticsearch_instances(
-#'   ReservedElasticsearchInstanceId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2156,44 +798,12 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
 #' @description
 #' Dissociates a package from the Amazon ES domain.
 #'
-#' @usage
-#' elasticsearchservice_dissociate_package(PackageID, DomainName)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/dissociate_package.html](https://paws-r.github.io/docs/elasticsearchservice/dissociate_package.html) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package that you want to associate with a domain. Use
 #' [`describe_packages`][elasticsearchservice_describe_packages] to find
 #' this value.
 #' @param DomainName &#91;required&#93; Name of the domain that you want to associate the package with.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainPackageDetails = list(
-#'     PackageID = "string",
-#'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
-#'     LastUpdated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DomainName = "string",
-#'     DomainPackageStatus = "ASSOCIATING"|"ASSOCIATION_FAILED"|"ACTIVE"|"DISSOCIATING"|"DISSOCIATION_FAILED",
-#'     PackageVersion = "string",
-#'     ReferencePath = "string",
-#'     ErrorDetails = list(
-#'       ErrorType = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$dissociate_package(
-#'   PackageID = "string",
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2218,36 +828,11 @@ elasticsearchservice_dissociate_package <- function(PackageID, DomainName) {
 #' Returns a list of upgrade compatible Elastisearch versions
 #'
 #' @description
-#' Returns a list of upgrade compatible Elastisearch versions. You can
-#' optionally pass a ` DomainName ` to get all upgrade compatible
-#' Elasticsearch versions for that specific domain.
+#' Returns a list of upgrade compatible Elastisearch versions. You can optionally pass a ` DomainName ` to get all upgrade compatible Elasticsearch versions for that specific domain.
 #'
-#' @usage
-#' elasticsearchservice_get_compatible_elasticsearch_versions(DomainName)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/get_compatible_elasticsearch_versions.html](https://paws-r.github.io/docs/elasticsearchservice/get_compatible_elasticsearch_versions.html) for full documentation.
 #'
 #' @param DomainName 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CompatibleElasticsearchVersions = list(
-#'     list(
-#'       SourceVersion = "string",
-#'       TargetVersions = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_compatible_elasticsearch_versions(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2273,45 +858,15 @@ elasticsearchservice_get_compatible_elasticsearch_versions <- function(DomainNam
 #' time and commit message
 #'
 #' @description
-#' Returns a list of versions of the package, along with their creation
-#' time and commit message.
+#' Returns a list of versions of the package, along with their creation time and commit message.
 #'
-#' @usage
-#' elasticsearchservice_get_package_version_history(PackageID, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/get_package_version_history.html](https://paws-r.github.io/docs/elasticsearchservice/get_package_version_history.html) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Returns an audit history of versions of the package.
 #' @param MaxResults Limits results to a maximum number of versions.
 #' @param NextToken Used for pagination. Only necessary if a previous API call includes a
 #' non-null NextToken value. If provided, returns results for the next
 #' page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PackageID = "string",
-#'   PackageVersionHistoryList = list(
-#'     list(
-#'       PackageVersion = "string",
-#'       CommitMessage = "string",
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_package_version_history(
-#'   PackageID = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2337,52 +892,13 @@ elasticsearchservice_get_package_version_history <- function(PackageID, MaxResul
 #' performed on the domain
 #'
 #' @description
-#' Retrieves the complete history of the last 10 upgrades that were
-#' performed on the domain.
+#' Retrieves the complete history of the last 10 upgrades that were performed on the domain.
 #'
-#' @usage
-#' elasticsearchservice_get_upgrade_history(DomainName, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_history.html](https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_history.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param MaxResults 
 #' @param NextToken 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UpgradeHistories = list(
-#'     list(
-#'       UpgradeName = "string",
-#'       StartTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpgradeStatus = "IN_PROGRESS"|"SUCCEEDED"|"SUCCEEDED_WITH_ISSUES"|"FAILED",
-#'       StepsList = list(
-#'         list(
-#'           UpgradeStep = "PRE_UPGRADE_CHECK"|"SNAPSHOT"|"UPGRADE",
-#'           UpgradeStepStatus = "IN_PROGRESS"|"SUCCEEDED"|"SUCCEEDED_WITH_ISSUES"|"FAILED",
-#'           Issues = list(
-#'             "string"
-#'           ),
-#'           ProgressPercent = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_upgrade_history(
-#'   DomainName = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2408,30 +924,11 @@ elasticsearchservice_get_upgrade_history <- function(DomainName, MaxResults = NU
 #' check that was performed on the domain
 #'
 #' @description
-#' Retrieves the latest status of the last upgrade or upgrade eligibility
-#' check that was performed on the domain.
+#' Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on the domain.
 #'
-#' @usage
-#' elasticsearchservice_get_upgrade_status(DomainName)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_status.html](https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_status.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UpgradeStep = "PRE_UPGRADE_CHECK"|"SNAPSHOT"|"UPGRADE",
-#'   StepStatus = "IN_PROGRESS"|"SUCCEEDED"|"SUCCEEDED_WITH_ISSUES"|"FAILED",
-#'   UpgradeName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_upgrade_status(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2457,39 +954,24 @@ elasticsearchservice_get_upgrade_status <- function(DomainName) {
 #' user's account
 #'
 #' @description
-#' Returns the name of all Elasticsearch domains owned by the current
-#' user's account.
+#' Returns the name of all Elasticsearch domains owned by the current user's account.
 #'
-#' @usage
-#' elasticsearchservice_list_domain_names()
+#' See [https://paws-r.github.io/docs/elasticsearchservice/list_domain_names.html](https://paws-r.github.io/docs/elasticsearchservice/list_domain_names.html) for full documentation.
 #'
-
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainNames = list(
-#'     list(
-#'       DomainName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-
+#' @param EngineType Optional parameter to filter the output by domain engine type.
+#' Acceptable values are 'Elasticsearch' and 'OpenSearch'.
 #'
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_list_domain_names
-elasticsearchservice_list_domain_names <- function() {
+elasticsearchservice_list_domain_names <- function(EngineType = NULL) {
   op <- new_operation(
     name = "ListDomainNames",
     http_method = "GET",
     http_path = "/2015-01-01/domain",
     paginator = list()
   )
-  input <- .elasticsearchservice$list_domain_names_input()
+  input <- .elasticsearchservice$list_domain_names_input(EngineType = EngineType)
   output <- .elasticsearchservice$list_domain_names_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config)
@@ -2504,50 +986,13 @@ elasticsearchservice_list_domain_names <- function() {
 #' @description
 #' Lists all Amazon ES domains associated with the package.
 #'
-#' @usage
-#' elasticsearchservice_list_domains_for_package(PackageID, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/list_domains_for_package.html](https://paws-r.github.io/docs/elasticsearchservice/list_domains_for_package.html) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; The package for which to list domains.
 #' @param MaxResults Limits results to a maximum number of domains.
 #' @param NextToken Used for pagination. Only necessary if a previous API call includes a
 #' non-null NextToken value. If provided, returns results for the next
 #' page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainPackageDetailsList = list(
-#'     list(
-#'       PackageID = "string",
-#'       PackageName = "string",
-#'       PackageType = "TXT-DICTIONARY",
-#'       LastUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DomainName = "string",
-#'       DomainPackageStatus = "ASSOCIATING"|"ASSOCIATION_FAILED"|"ACTIVE"|"DISSOCIATING"|"DISSOCIATION_FAILED",
-#'       PackageVersion = "string",
-#'       ReferencePath = "string",
-#'       ErrorDetails = list(
-#'         ErrorType = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_domains_for_package(
-#'   PackageID = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2573,12 +1018,9 @@ elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults 
 #' ElasticsearchVersion
 #'
 #' @description
-#' List all Elasticsearch instance types that are supported for given
-#' ElasticsearchVersion
+#' List all Elasticsearch instance types that are supported for given ElasticsearchVersion
 #'
-#' @usage
-#' elasticsearchservice_list_elasticsearch_instance_types(
-#'   ElasticsearchVersion, DomainName, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_instance_types.html](https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_instance_types.html) for full documentation.
 #'
 #' @param ElasticsearchVersion &#91;required&#93; Version of Elasticsearch for which list of supported elasticsearch
 #' instance types are needed.
@@ -2589,27 +1031,6 @@ elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults 
 #' must be greater than 30 else it wont be honored.
 #' @param NextToken NextToken should be sent in case if earlier API call produced result
 #' containing NextToken. It is used for pagination.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ElasticsearchInstanceTypes = list(
-#'     "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_elasticsearch_instance_types(
-#'   ElasticsearchVersion = "string",
-#'   DomainName = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2636,31 +1057,11 @@ elasticsearchservice_list_elasticsearch_instance_types <- function(Elasticsearch
 #' @description
 #' List all supported Elasticsearch versions
 #'
-#' @usage
-#' elasticsearchservice_list_elasticsearch_versions(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_versions.html](https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_versions.html) for full documentation.
 #'
 #' @param MaxResults Set this value to limit the number of results returned. Value provided
 #' must be greater than 10 else it wont be honored.
 #' @param NextToken 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ElasticsearchVersions = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_elasticsearch_versions(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2687,50 +1088,13 @@ elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, 
 #' @description
 #' Lists all packages associated with the Amazon ES domain.
 #'
-#' @usage
-#' elasticsearchservice_list_packages_for_domain(DomainName, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/list_packages_for_domain.html](https://paws-r.github.io/docs/elasticsearchservice/list_packages_for_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which you want to list associated packages.
 #' @param MaxResults Limits results to a maximum number of packages.
 #' @param NextToken Used for pagination. Only necessary if a previous API call includes a
 #' non-null NextToken value. If provided, returns results for the next
 #' page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainPackageDetailsList = list(
-#'     list(
-#'       PackageID = "string",
-#'       PackageName = "string",
-#'       PackageType = "TXT-DICTIONARY",
-#'       LastUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DomainName = "string",
-#'       DomainPackageStatus = "ASSOCIATING"|"ASSOCIATION_FAILED"|"ACTIVE"|"DISSOCIATING"|"DISSOCIATION_FAILED",
-#'       PackageVersion = "string",
-#'       ReferencePath = "string",
-#'       ErrorDetails = list(
-#'         ErrorType = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_packages_for_domain(
-#'   DomainName = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2757,31 +1121,10 @@ elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults
 #' @description
 #' Returns all tags for the given Elasticsearch domain.
 #'
-#' @usage
-#' elasticsearchservice_list_tags(ARN)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/list_tags.html](https://paws-r.github.io/docs/elasticsearchservice/list_tags.html) for full documentation.
 #'
 #' @param ARN &#91;required&#93; Specify the `ARN` for the Elasticsearch domain to which the tags are
 #' attached that you want to view.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags(
-#'   ARN = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2808,31 +1151,11 @@ elasticsearchservice_list_tags <- function(ARN) {
 #' @description
 #' Allows you to purchase reserved Elasticsearch instances.
 #'
-#' @usage
-#' elasticsearchservice_purchase_reserved_elasticsearch_instance_offering(
-#'   ReservedElasticsearchInstanceOfferingId, ReservationName, InstanceCount)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/purchase_reserved_elasticsearch_instance_offering.html](https://paws-r.github.io/docs/elasticsearchservice/purchase_reserved_elasticsearch_instance_offering.html) for full documentation.
 #'
 #' @param ReservedElasticsearchInstanceOfferingId &#91;required&#93; The ID of the reserved Elasticsearch instance offering to purchase.
 #' @param ReservationName &#91;required&#93; A customer-specified identifier to track this reservation.
 #' @param InstanceCount The number of Elasticsearch instances to reserve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReservedElasticsearchInstanceId = "string",
-#'   ReservationName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$purchase_reserved_elasticsearch_instance_offering(
-#'   ReservedElasticsearchInstanceOfferingId = "string",
-#'   ReservationName = "string",
-#'   InstanceCount = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2858,45 +1181,11 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- functi
 #' search connection request
 #'
 #' @description
-#' Allows the destination domain owner to reject an inbound cross-cluster
-#' search connection request.
+#' Allows the destination domain owner to reject an inbound cross-cluster search connection request.
 #'
-#' @usage
-#' elasticsearchservice_reject_inbound_cross_cluster_search_connection(
-#'   CrossClusterSearchConnectionId)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/reject_inbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/reject_inbound_cross_cluster_search_connection.html) for full documentation.
 #'
 #' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the inbound connection that you want to reject.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CrossClusterSearchConnection = list(
-#'     SourceDomainInfo = list(
-#'       OwnerId = "string",
-#'       DomainName = "string",
-#'       Region = "string"
-#'     ),
-#'     DestinationDomainInfo = list(
-#'       OwnerId = "string",
-#'       DomainName = "string",
-#'       Region = "string"
-#'     ),
-#'     CrossClusterSearchConnectionId = "string",
-#'     ConnectionStatus = list(
-#'       StatusCode = "PENDING_ACCEPTANCE"|"APPROVED"|"REJECTING"|"REJECTED"|"DELETING"|"DELETED",
-#'       Message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reject_inbound_cross_cluster_search_connection(
-#'   CrossClusterSearchConnectionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2922,29 +1211,14 @@ elasticsearchservice_reject_inbound_cross_cluster_search_connection <- function(
 #' domain
 #'
 #' @description
-#' Removes the specified set of tags from the specified Elasticsearch
-#' domain.
+#' Removes the specified set of tags from the specified Elasticsearch domain.
 #'
-#' @usage
-#' elasticsearchservice_remove_tags(ARN, TagKeys)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/remove_tags.html](https://paws-r.github.io/docs/elasticsearchservice/remove_tags.html) for full documentation.
 #'
 #' @param ARN &#91;required&#93; Specifies the `ARN` for the Elasticsearch domain from which you want to
 #' delete the specified tags.
 #' @param TagKeys &#91;required&#93; Specifies the `TagKey` list which you want to remove from the
 #' Elasticsearch domain.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_tags(
-#'   ARN = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2971,38 +1245,10 @@ elasticsearchservice_remove_tags <- function(ARN, TagKeys) {
 #' @description
 #' Schedules a service software update for an Amazon ES domain.
 #'
-#' @usage
-#' elasticsearchservice_start_elasticsearch_service_software_update(
-#'   DomainName)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/start_elasticsearch_service_software_update.html](https://paws-r.github.io/docs/elasticsearchservice/start_elasticsearch_service_software_update.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update to the latest service
 #' software.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceSoftwareOptions = list(
-#'     CurrentVersion = "string",
-#'     NewVersion = "string",
-#'     UpdateAvailable = TRUE|FALSE,
-#'     Cancellable = TRUE|FALSE,
-#'     UpdateStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE",
-#'     Description = "string",
-#'     AutomatedUpdateDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     OptionalDeployment = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_elasticsearch_service_software_update(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3028,15 +1274,9 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' domain, setting as setting the instance type and the number of instances
 #'
 #' @description
-#' Modifies the cluster configuration of the specified Elasticsearch
-#' domain, setting as setting the instance type and the number of
-#' instances.
+#' Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances.
 #'
-#' @usage
-#' elasticsearchservice_update_elasticsearch_domain_config(DomainName,
-#'   ElasticsearchClusterConfig, EBSOptions, SnapshotOptions, VPCOptions,
-#'   CognitoOptions, AdvancedOptions, AccessPolicies, LogPublishingOptions,
-#'   DomainEndpointOptions, AdvancedSecurityOptions)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/update_elasticsearch_domain_config.html](https://paws-r.github.io/docs/elasticsearchservice/update_elasticsearch_domain_config.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are updating.
 #' @param ElasticsearchClusterConfig The type and number of instances to instantiate for the domain cluster.
@@ -3044,377 +1284,46 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' @param SnapshotOptions Option to set the time, in UTC format, for the daily automated snapshot.
 #' Default value is `0` hours.
 #' @param VPCOptions Options to specify the subnets and security groups for VPC endpoint. For
-#' more information, see [Creating a
-#' VPC](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc)
-#' in *VPC Endpoints for Amazon Elasticsearch Service Domains*
+#' more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-creating-vpc"
+#' target="_blank">Creating a VPC</a> in *VPC Endpoints for Amazon
+#' Elasticsearch Service Domains*
 #' @param CognitoOptions Options to specify the Cognito user and identity pools for Kibana
-#' authentication. For more information, see [Amazon Cognito Authentication
-#' for
-#' Kibana](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
+#' authentication. For more information, see <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
+#' target="_blank">Amazon Cognito Authentication for Kibana</a>.
 #' @param AdvancedOptions Modifies the advanced option to allow references to indices in an HTTP
 #' request body. Must be `false` when configuring access to individual
-#' sub-resources. By default, the value is `true`. See [Configuration
-#' Advanced
-#' Options](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
-#' for more information.
+#' sub-resources. By default, the value is `true`. See <a
+#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options"
+#' target="_blank">Configuration Advanced Options</a> for more information.
 #' @param AccessPolicies IAM access policy as a JSON-formatted string.
 #' @param LogPublishingOptions Map of `LogType` and `LogPublishingOption`, each containing options to
 #' publish a given type of Elasticsearch log.
 #' @param DomainEndpointOptions Options to specify configuration that will be applied to the domain
 #' endpoint.
 #' @param AdvancedSecurityOptions Specifies advanced security options.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainConfig = list(
-#'     ElasticsearchVersion = list(
-#'       Options = "string",
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     ElasticsearchClusterConfig = list(
-#'       Options = list(
-#'         InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'         InstanceCount = 123,
-#'         DedicatedMasterEnabled = TRUE|FALSE,
-#'         ZoneAwarenessEnabled = TRUE|FALSE,
-#'         ZoneAwarenessConfig = list(
-#'           AvailabilityZoneCount = 123
-#'         ),
-#'         DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'         DedicatedMasterCount = 123,
-#'         WarmEnabled = TRUE|FALSE,
-#'         WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'         WarmCount = 123
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     EBSOptions = list(
-#'       Options = list(
-#'         EBSEnabled = TRUE|FALSE,
-#'         VolumeType = "standard"|"gp2"|"io1",
-#'         VolumeSize = 123,
-#'         Iops = 123
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     AccessPolicies = list(
-#'       Options = "string",
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     SnapshotOptions = list(
-#'       Options = list(
-#'         AutomatedSnapshotStartHour = 123
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     VPCOptions = list(
-#'       Options = list(
-#'         VPCId = "string",
-#'         SubnetIds = list(
-#'           "string"
-#'         ),
-#'         AvailabilityZones = list(
-#'           "string"
-#'         ),
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     CognitoOptions = list(
-#'       Options = list(
-#'         Enabled = TRUE|FALSE,
-#'         UserPoolId = "string",
-#'         IdentityPoolId = "string",
-#'         RoleArn = "string"
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     EncryptionAtRestOptions = list(
-#'       Options = list(
-#'         Enabled = TRUE|FALSE,
-#'         KmsKeyId = "string"
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     NodeToNodeEncryptionOptions = list(
-#'       Options = list(
-#'         Enabled = TRUE|FALSE
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     AdvancedOptions = list(
-#'       Options = list(
-#'         "string"
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     LogPublishingOptions = list(
-#'       Options = list(
-#'         list(
-#'           CloudWatchLogsLogGroupArn = "string",
-#'           Enabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     DomainEndpointOptions = list(
-#'       Options = list(
-#'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-#'         CustomEndpointEnabled = TRUE|FALSE,
-#'         CustomEndpoint = "string",
-#'         CustomEndpointCertificateArn = "string"
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     ),
-#'     AdvancedSecurityOptions = list(
-#'       Options = list(
-#'         Enabled = TRUE|FALSE,
-#'         InternalUserDatabaseEnabled = TRUE|FALSE,
-#'         SAMLOptions = list(
-#'           Enabled = TRUE|FALSE,
-#'           Idp = list(
-#'             MetadataContent = "string",
-#'             EntityId = "string"
-#'           ),
-#'           SubjectKey = "string",
-#'           RolesKey = "string",
-#'           SessionTimeoutMinutes = 123
-#'         )
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_elasticsearch_domain_config(
-#'   DomainName = "string",
-#'   ElasticsearchClusterConfig = list(
-#'     InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'     InstanceCount = 123,
-#'     DedicatedMasterEnabled = TRUE|FALSE,
-#'     ZoneAwarenessEnabled = TRUE|FALSE,
-#'     ZoneAwarenessConfig = list(
-#'       AvailabilityZoneCount = 123
-#'     ),
-#'     DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-#'     DedicatedMasterCount = 123,
-#'     WarmEnabled = TRUE|FALSE,
-#'     WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-#'     WarmCount = 123
-#'   ),
-#'   EBSOptions = list(
-#'     EBSEnabled = TRUE|FALSE,
-#'     VolumeType = "standard"|"gp2"|"io1",
-#'     VolumeSize = 123,
-#'     Iops = 123
-#'   ),
-#'   SnapshotOptions = list(
-#'     AutomatedSnapshotStartHour = 123
-#'   ),
-#'   VPCOptions = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   CognitoOptions = list(
-#'     Enabled = TRUE|FALSE,
-#'     UserPoolId = "string",
-#'     IdentityPoolId = "string",
-#'     RoleArn = "string"
-#'   ),
-#'   AdvancedOptions = list(
-#'     "string"
-#'   ),
-#'   AccessPolicies = "string",
-#'   LogPublishingOptions = list(
-#'     list(
-#'       CloudWatchLogsLogGroupArn = "string",
-#'       Enabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   DomainEndpointOptions = list(
-#'     EnforceHTTPS = TRUE|FALSE,
-#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-#'     CustomEndpointEnabled = TRUE|FALSE,
-#'     CustomEndpoint = "string",
-#'     CustomEndpointCertificateArn = "string"
-#'   ),
-#'   AdvancedSecurityOptions = list(
-#'     Enabled = TRUE|FALSE,
-#'     InternalUserDatabaseEnabled = TRUE|FALSE,
-#'     MasterUserOptions = list(
-#'       MasterUserARN = "string",
-#'       MasterUserName = "string",
-#'       MasterUserPassword = "string"
-#'     ),
-#'     SAMLOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       Idp = list(
-#'         MetadataContent = "string",
-#'         EntityId = "string"
-#'       ),
-#'       MasterUserName = "string",
-#'       MasterBackendRole = "string",
-#'       SubjectKey = "string",
-#'       RolesKey = "string",
-#'       SessionTimeoutMinutes = 123
-#'     )
-#'   )
-#' )
-#' ```
+#' @param NodeToNodeEncryptionOptions Specifies the NodeToNodeEncryptionOptions.
+#' @param EncryptionAtRestOptions Specifies the Encryption At Rest Options.
+#' @param AutoTuneOptions Specifies Auto-Tune options.
+#' @param DryRun This flag, when set to True, specifies whether the
+#' `UpdateElasticsearchDomain` request should return the results of
+#' validation checks without actually applying the change. This flag, when
+#' set to True, specifies the deployment mechanism through which the update
+#' shall be applied on the domain. This will not actually perform the
+#' Update.
 #'
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_update_elasticsearch_domain_config
-elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL) {
+elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, NodeToNodeEncryptionOptions = NULL, EncryptionAtRestOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "UpdateElasticsearchDomainConfig",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain/{DomainName}/config",
     paginator = list()
   )
-  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions)
+  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun)
   output <- .elasticsearchservice$update_elasticsearch_domain_config_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config)
@@ -3429,53 +1338,13 @@ elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, 
 #' @description
 #' Updates a package for use with Amazon ES domains.
 #'
-#' @usage
-#' elasticsearchservice_update_package(PackageID, PackageSource,
-#'   PackageDescription, CommitMessage)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/update_package.html](https://paws-r.github.io/docs/elasticsearchservice/update_package.html) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Unique identifier for the package.
 #' @param PackageSource &#91;required&#93; 
 #' @param PackageDescription New description of the package.
 #' @param CommitMessage An info message for the new version which will be shown as part of
 #' `GetPackageVersionHistoryResponse`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PackageDetails = list(
-#'     PackageID = "string",
-#'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
-#'     PackageDescription = "string",
-#'     PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AvailablePackageVersion = "string",
-#'     ErrorDetails = list(
-#'       ErrorType = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_package(
-#'   PackageID = "string",
-#'   PackageSource = list(
-#'     S3BucketName = "string",
-#'     S3Key = "string"
-#'   ),
-#'   PackageDescription = "string",
-#'   CommitMessage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3501,36 +1370,14 @@ elasticsearchservice_update_package <- function(PackageID, PackageSource, Packag
 #' eligibility check to a compatible Elasticsearch version
 #'
 #' @description
-#' Allows you to either upgrade your domain or perform an Upgrade
-#' eligibility check to a compatible Elasticsearch version.
+#' Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version.
 #'
-#' @usage
-#' elasticsearchservice_upgrade_elasticsearch_domain(DomainName,
-#'   TargetVersion, PerformCheckOnly)
+#' See [https://paws-r.github.io/docs/elasticsearchservice/upgrade_elasticsearch_domain.html](https://paws-r.github.io/docs/elasticsearchservice/upgrade_elasticsearch_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param TargetVersion &#91;required&#93; The version of Elasticsearch that you intend to upgrade the domain to.
 #' @param PerformCheckOnly This flag, when set to True, indicates that an Upgrade Eligibility Check
 #' needs to be performed. This will not actually perform the Upgrade.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainName = "string",
-#'   TargetVersion = "string",
-#'   PerformCheckOnly = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$upgrade_elasticsearch_domain(
-#'   DomainName = "string",
-#'   TargetVersion = "string",
-#'   PerformCheckOnly = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

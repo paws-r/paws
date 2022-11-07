@@ -4,9 +4,19 @@
 \alias{servicecatalog_update_product}
 \title{Updates the specified product}
 \usage{
-servicecatalog_update_product(AcceptLanguage, Id, Name, Owner,
-  Description, Distributor, SupportDescription, SupportEmail, SupportUrl,
-  AddTags, RemoveTags)
+servicecatalog_update_product(
+  AcceptLanguage = NULL,
+  Id,
+  Name = NULL,
+  Owner = NULL,
+  Description = NULL,
+  Distributor = NULL,
+  SupportDescription = NULL,
+  SupportEmail = NULL,
+  SupportUrl = NULL,
+  AddTags = NULL,
+  RemoveTags = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -36,62 +46,9 @@ servicecatalog_update_product(AcceptLanguage, Id, Name, Owner,
 
 \item{RemoveTags}{The tags to remove from the product.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProductViewDetail = list(
-    ProductViewSummary = list(
-      Id = "string",
-      ProductId = "string",
-      Name = "string",
-      Owner = "string",
-      ShortDescription = "string",
-      Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-      Distributor = "string",
-      HasDefaultPath = TRUE|FALSE,
-      SupportEmail = "string",
-      SupportDescription = "string",
-      SupportUrl = "string"
-    ),
-    Status = "AVAILABLE"|"CREATING"|"FAILED",
-    ProductARN = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Updates the specified product.
-}
-\section{Request syntax}{
-\preformatted{svc$update_product(
-  AcceptLanguage = "string",
-  Id = "string",
-  Name = "string",
-  Owner = "string",
-  Description = "string",
-  Distributor = "string",
-  SupportDescription = "string",
-  SupportEmail = "string",
-  SupportUrl = "string",
-  AddTags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  RemoveTags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/update_product.html} for full documentation.
+}
 \keyword{internal}

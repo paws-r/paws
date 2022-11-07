@@ -10,58 +10,9 @@ athena_get_query_execution(QueryExecutionId)
 \arguments{
 \item{QueryExecutionId}{[required] The unique ID of the query execution.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  QueryExecution = list(
-    QueryExecutionId = "string",
-    Query = "string",
-    StatementType = "DDL"|"DML"|"UTILITY",
-    ResultConfiguration = list(
-      OutputLocation = "string",
-      EncryptionConfiguration = list(
-        EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-        KmsKey = "string"
-      )
-    ),
-    QueryExecutionContext = list(
-      Database = "string",
-      Catalog = "string"
-    ),
-    Status = list(
-      State = "QUEUED"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED",
-      StateChangeReason = "string",
-      SubmissionDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompletionDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    Statistics = list(
-      EngineExecutionTimeInMillis = 123,
-      DataScannedInBytes = 123,
-      DataManifestLocation = "string",
-      TotalExecutionTimeInMillis = 123,
-      QueryQueueTimeInMillis = 123,
-      QueryPlanningTimeInMillis = 123,
-      ServiceProcessingTimeInMillis = 123
-    ),
-    WorkGroup = "string"
-  )
-)
-}
-}
 \description{
-Returns information about a single execution of a query if you have
-access to the workgroup in which the query ran. Each time a query
-executes, information about the query execution is saved with a unique
-ID.
-}
-\section{Request syntax}{
-\preformatted{svc$get_query_execution(
-  QueryExecutionId = "string"
-)
-}
-}
+Returns information about a single execution of a query if you have access to the workgroup in which the query ran. Each time a query executes, information about the query execution is saved with a unique ID.
 
+See \url{https://paws-r.github.io/docs/athena/get_query_execution.html} for full documentation.
+}
 \keyword{internal}

@@ -2,11 +2,16 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_compliance_items}
 \alias{ssm_list_compliance_items}
-\title{For a specified resource ID, this API action returns a list of
+\title{For a specified resource ID, this API operation returns a list of
 compliance statuses for different resource types}
 \usage{
-ssm_list_compliance_items(Filters, ResourceIds, ResourceTypes,
-  NextToken, MaxResults)
+ssm_list_compliance_items(
+  Filters = NULL,
+  ResourceIds = NULL,
+  ResourceTypes = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more compliance filters. Use a filter to return a more specific
@@ -25,60 +30,9 @@ results.}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ComplianceItems = list(
-    list(
-      ComplianceType = "string",
-      ResourceType = "string",
-      ResourceId = "string",
-      Id = "string",
-      Title = "string",
-      Status = "COMPLIANT"|"NON_COMPLIANT",
-      Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-      ExecutionSummary = list(
-        ExecutionTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        ExecutionId = "string",
-        ExecutionType = "string"
-      ),
-      Details = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-For a specified resource ID, this API action returns a list of
-compliance statuses for different resource types. Currently, you can
-only specify one resource ID per call. List results depend on the
-criteria specified in the filter.
-}
-\section{Request syntax}{
-\preformatted{svc$list_compliance_items(
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      Type = "EQUAL"|"NOT_EQUAL"|"BEGIN_WITH"|"LESS_THAN"|"GREATER_THAN"
-    )
-  ),
-  ResourceIds = list(
-    "string"
-  ),
-  ResourceTypes = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+For a specified resource ID, this API operation returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
 
+See \url{https://paws-r.github.io/docs/ssm/list_compliance_items.html} for full documentation.
+}
 \keyword{internal}

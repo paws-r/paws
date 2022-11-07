@@ -4,35 +4,25 @@
 \alias{apigateway_delete_integration_response}
 \title{Represents a delete integration response}
 \usage{
-apigateway_delete_integration_response(restApiId, resourceId,
-  httpMethod, statusCode)
+apigateway_delete_integration_response(
+  restApiId,
+  resourceId,
+  httpMethod,
+  statusCode
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies a delete integration response request's resource
-identifier.}
+\item{resourceId}{[required] Specifies a delete integration response request's resource identifier.}
 
-\item{httpMethod}{[required] [Required] Specifies a delete integration response request's HTTP
-method.}
+\item{httpMethod}{[required] Specifies a delete integration response request's HTTP method.}
 
-\item{statusCode}{[required] [Required] Specifies a delete integration response request's status
-code.}
-}
-\value{
-An empty list.
+\item{statusCode}{[required] Specifies a delete integration response request's status code.}
 }
 \description{
 Represents a delete integration response.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_integration_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_integration_response.html} for full documentation.
+}
 \keyword{internal}

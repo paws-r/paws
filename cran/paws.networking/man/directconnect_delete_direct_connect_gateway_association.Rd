@@ -5,8 +5,11 @@
 \title{Deletes the association between the specified Direct Connect gateway and
 virtual private gateway}
 \usage{
-directconnect_delete_direct_connect_gateway_association(associationId,
-  directConnectGatewayId, virtualGatewayId)
+directconnect_delete_direct_connect_gateway_association(
+  associationId = NULL,
+  directConnectGatewayId = NULL,
+  virtualGatewayId = NULL
+)
 }
 \arguments{
 \item{associationId}{The ID of the Direct Connect gateway association.}
@@ -15,48 +18,9 @@ directconnect_delete_direct_connect_gateway_association(associationId,
 
 \item{virtualGatewayId}{The ID of the virtual private gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  directConnectGatewayAssociation = list(
-    directConnectGatewayId = "string",
-    directConnectGatewayOwnerAccount = "string",
-    associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
-    stateChangeError = "string",
-    associatedGateway = list(
-      id = "string",
-      type = "virtualPrivateGateway"|"transitGateway",
-      ownerAccount = "string",
-      region = "string"
-    ),
-    associationId = "string",
-    allowedPrefixesToDirectConnectGateway = list(
-      list(
-        cidr = "string"
-      )
-    ),
-    virtualGatewayId = "string",
-    virtualGatewayRegion = "string",
-    virtualGatewayOwnerAccount = "string"
-  )
-)
-}
-}
 \description{
-Deletes the association between the specified Direct Connect gateway and
-virtual private gateway.
+Deletes the association between the specified Direct Connect gateway and virtual private gateway.
 
-We recommend that you specify the \code{associationID} to delete the
-association. Alternatively, if you own virtual gateway and a Direct
-Connect gateway association, you can specify the \code{virtualGatewayId} and
-\code{directConnectGatewayId} to delete an association.
+See \url{https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway_association.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_direct_connect_gateway_association(
-  associationId = "string",
-  directConnectGatewayId = "string",
-  virtualGatewayId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{applicationinsights_describe_log_pattern}
 \title{Describe a specific log pattern from a LogPatternSet}
 \usage{
-applicationinsights_describe_log_pattern(ResourceGroupName,
-  PatternSetName, PatternName)
+applicationinsights_describe_log_pattern(
+  ResourceGroupName,
+  PatternSetName,
+  PatternName
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
@@ -14,28 +17,9 @@ applicationinsights_describe_log_pattern(ResourceGroupName,
 
 \item{PatternName}{[required] The name of the log pattern.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceGroupName = "string",
-  LogPattern = list(
-    PatternSetName = "string",
-    PatternName = "string",
-    Pattern = "string",
-    Rank = 123
-  )
-)
-}
-}
 \description{
 Describe a specific log pattern from a \code{LogPatternSet}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_log_pattern(
-  ResourceGroupName = "string",
-  PatternSetName = "string",
-  PatternName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/describe_log_pattern.html} for full documentation.
+}
 \keyword{internal}

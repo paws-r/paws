@@ -4,17 +4,22 @@
 \alias{globalaccelerator_update_accelerator}
 \title{Update an accelerator}
 \usage{
-globalaccelerator_update_accelerator(AcceleratorArn, Name,
-  IpAddressType, Enabled)
+globalaccelerator_update_accelerator(
+  AcceleratorArn,
+  Name = NULL,
+  IpAddressType = NULL,
+  Enabled = NULL
+)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator to update.}
 
-\item{Name}{The name of the accelerator. The name can have a maximum of 32
-characters, must contain only alphanumeric characters or hyphens (-),
-and must not begin or end with a hyphen.}
+\item{Name}{The name of the accelerator. The name can have a maximum of 64
+characters, must contain only alphanumeric characters, periods (.), or
+hyphens (-), and must not begin or end with a hyphen or period.}
 
-\item{IpAddressType}{The IP address type, which must be IPv4.}
+\item{IpAddressType}{The IP address type that an accelerator supports. For a standard
+accelerator, the value can be IPV4 or DUAL_STACK.}
 
 \item{Enabled}{Indicates whether an accelerator is enabled. The value is true or false.
 The default value is true.
@@ -22,48 +27,9 @@ The default value is true.
 If the value is set to true, the accelerator cannot be deleted. If set
 to false, the accelerator can be deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Accelerator = list(
-    AcceleratorArn = "string",
-    Name = "string",
-    IpAddressType = "IPV4",
-    Enabled = TRUE|FALSE,
-    IpSets = list(
-      list(
-        IpFamily = "string",
-        IpAddresses = list(
-          "string"
-        )
-      )
-    ),
-    DnsName = "string",
-    Status = "DEPLOYED"|"IN_PROGRESS",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Update an accelerator.
 
-Global Accelerator is a global service that supports endpoints in
-multiple AWS Regions but you must specify the US West (Oregon) Region to
-create or update accelerators.
+See \url{https://paws-r.github.io/docs/globalaccelerator/update_accelerator.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_accelerator(
-  AcceleratorArn = "string",
-  Name = "string",
-  IpAddressType = "IPV4",
-  Enabled = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

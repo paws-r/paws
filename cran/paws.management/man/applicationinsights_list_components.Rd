@@ -5,8 +5,11 @@
 \title{Lists the auto-grouped, standalone, and custom components of the
 application}
 \usage{
-applicationinsights_list_components(ResourceGroupName, MaxResults,
-  NextToken)
+applicationinsights_list_components(
+  ResourceGroupName,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
@@ -17,38 +20,9 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationComponentList = list(
-    list(
-      ComponentName = "string",
-      ComponentRemarks = "string",
-      ResourceType = "string",
-      OsType = "WINDOWS"|"LINUX",
-      Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
-      Monitor = TRUE|FALSE,
-      DetectedWorkload = list(
-        list(
-          "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the auto-grouped, standalone, and custom components of the
-application.
-}
-\section{Request syntax}{
-\preformatted{svc$list_components(
-  ResourceGroupName = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists the auto-grouped, standalone, and custom components of the application.
 
+See \url{https://paws-r.github.io/docs/applicationinsights/list_components.html} for full documentation.
+}
 \keyword{internal}

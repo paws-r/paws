@@ -4,56 +4,18 @@
 \alias{s3_delete_bucket_lifecycle}
 \title{Deletes the lifecycle configuration from the specified bucket}
 \usage{
-s3_delete_bucket_lifecycle(Bucket, ExpectedBucketOwner)
+s3_delete_bucket_lifecycle(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name of the lifecycle to delete.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Deletes the lifecycle configuration from the specified bucket. Amazon S3
-removes all the lifecycle configuration rules in the lifecycle
-subresource associated with the bucket. Your objects never expire, and
-Amazon S3 no longer automatically deletes any objects on the basis of
-rules contained in the deleted lifecycle configuration.
+Deletes the lifecycle configuration from the specified bucket. Amazon S3 removes all the lifecycle configuration rules in the lifecycle subresource associated with the bucket. Your objects never expire, and Amazon S3 no longer automatically deletes any objects on the basis of rules contained in the deleted lifecycle configuration.
 
-To use this operation, you must have permission to perform the
-\code{s3:PutLifecycleConfiguration} action. By default, the bucket owner has
-this permission and the bucket owner can grant this permission to
-others.
-
-There is usually some time lag before lifecycle configuration deletion
-is fully propagated to all the Amazon S3 systems.
-
-For more information about the object expiration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html#intro-lifecycle-rules-actions}{Elements to Describe Lifecycle Actions}.
-
-Related actions include:
-\itemize{
-\item \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
-\item \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_bucket_lifecycle(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes lifecycle configuration on a bucket.
-svc$delete_bucket_lifecycle(
-  Bucket = "examplebucket"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/delete_bucket_lifecycle.html} for full documentation.
 }
 \keyword{internal}

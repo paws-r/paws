@@ -2,36 +2,27 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_deployable_patch_snapshot_for_instance}
 \alias{ssm_get_deployable_patch_snapshot_for_instance}
-\title{Retrieves the current snapshot for the patch baseline the instance uses}
+\title{Retrieves the current snapshot for the patch baseline the managed node
+uses}
 \usage{
-ssm_get_deployable_patch_snapshot_for_instance(InstanceId, SnapshotId)
+ssm_get_deployable_patch_snapshot_for_instance(
+  InstanceId,
+  SnapshotId,
+  BaselineOverride = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The ID of the instance for which the appropriate patch snapshot should
-be retrieved.}
+\item{InstanceId}{[required] The ID of the managed node for which the appropriate patch snapshot
+should be retrieved.}
 
-\item{SnapshotId}{[required] The user-defined snapshot ID.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceId = "string",
-  SnapshotId = "string",
-  SnapshotDownloadUrl = "string",
-  Product = "string"
-)
-}
+\item{SnapshotId}{[required] The snapshot ID provided by the user when running
+\code{AWS-RunPatchBaseline}.}
+
+\item{BaselineOverride}{Defines the basic information about a patch baseline override.}
 }
 \description{
-Retrieves the current snapshot for the patch baseline the instance uses.
-This API is primarily used by the AWS-RunPatchBaseline Systems Manager
-document.
-}
-\section{Request syntax}{
-\preformatted{svc$get_deployable_patch_snapshot_for_instance(
-  InstanceId = "string",
-  SnapshotId = "string"
-)
-}
-}
+Retrieves the current snapshot for the patch baseline the managed node uses. This API is primarily used by the \code{AWS-RunPatchBaseline} Systems Manager document (SSM document).
 
+See \url{https://paws-r.github.io/docs/ssm/get_deployable_patch_snapshot_for_instance.html} for full documentation.
+}
 \keyword{internal}

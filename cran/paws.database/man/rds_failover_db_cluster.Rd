@@ -4,7 +4,7 @@
 \alias{rds_failover_db_cluster}
 \title{Forces a failover for a DB cluster}
 \usage{
-rds_failover_db_cluster(DBClusterIdentifier, TargetDBInstanceIdentifier)
+rds_failover_db_cluster(DBClusterIdentifier, TargetDBInstanceIdentifier = NULL)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] A DB cluster identifier to force a failover for. This parameter isn't
@@ -15,169 +15,16 @@ Constraints:
 \item Must match the identifier of an existing DBCluster.
 }}
 
-\item{TargetDBInstanceIdentifier}{The name of the instance to promote to the primary instance.
+\item{TargetDBInstanceIdentifier}{The name of the DB instance to promote to the primary DB instance.
 
-You must specify the instance identifier for an Aurora Replica in the DB
-cluster. For example, \code{mydbcluster-replica1}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AllocatedStorage = 123,
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    CharacterSetName = "string",
-    DatabaseName = "string",
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    CustomEndpoints = list(
-      "string"
-    ),
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    DBClusterOptionGroupMemberships = list(
-      list(
-        DBClusterOptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    ReplicationSourceIdentifier = "string",
-    ReadReplicaIdentifiers = list(
-      "string"
-    ),
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string",
-        FeatureName = "string"
-      )
-    ),
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    CloneGroupId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EarliestBacktrackTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    BacktrackWindow = 123,
-    BacktrackConsumedChangeRecords = 123,
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    Capacity = 123,
-    EngineMode = "string",
-    ScalingConfigurationInfo = list(
-      MinCapacity = 123,
-      MaxCapacity = 123,
-      AutoPause = TRUE|FALSE,
-      SecondsUntilAutoPause = 123,
-      TimeoutAction = "string"
-    ),
-    DeletionProtection = TRUE|FALSE,
-    HttpEndpointEnabled = TRUE|FALSE,
-    ActivityStreamMode = "sync"|"async",
-    ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-    ActivityStreamKmsKeyId = "string",
-    ActivityStreamKinesisStreamName = "string",
-    CopyTagsToSnapshot = TRUE|FALSE,
-    CrossAccountClone = TRUE|FALSE,
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-    GlobalWriteForwardingRequested = TRUE|FALSE,
-    PendingModifiedValues = list(
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      ),
-      DBClusterIdentifier = "string",
-      MasterUserPassword = "string",
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      EngineVersion = "string"
-    )
-  )
-)
-}
+Specify the DB instance identifier for an Aurora Replica or a Multi-AZ
+readable standby in the DB cluster, for example \code{mydbcluster-replica1}.
+
+This setting isn't supported for RDS for MySQL Multi-AZ DB clusters.}
 }
 \description{
 Forces a failover for a DB cluster.
 
-A failover for a DB cluster promotes one of the Aurora Replicas
-(read-only instances) in the DB cluster to be the primary instance (the
-cluster writer).
-
-Amazon Aurora will automatically fail over to an Aurora Replica, if one
-exists, when the primary instance fails. You can force a failover when
-you want to simulate a failure of a primary instance for testing.
-Because each instance in a DB cluster has its own endpoint address, you
-will need to clean up and re-establish any existing connections that use
-those endpoint addresses when the failover is complete.
-
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/failover_db_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$failover_db_cluster(
-  DBClusterIdentifier = "string",
-  TargetDBInstanceIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

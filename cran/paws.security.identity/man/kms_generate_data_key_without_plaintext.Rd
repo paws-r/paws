@@ -2,19 +2,26 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_generate_data_key_without_plaintext}
 \alias{kms_generate_data_key_without_plaintext}
-\title{Generates a unique symmetric data key}
+\title{Returns a unique symmetric data key for use outside of KMS}
 \usage{
-kms_generate_data_key_without_plaintext(KeyId, EncryptionContext,
-  KeySpec, NumberOfBytes, GrantTokens)
+kms_generate_data_key_without_plaintext(
+  KeyId,
+  EncryptionContext = NULL,
+  KeySpec = NULL,
+  NumberOfBytes = NULL,
+  GrantTokens = NULL
+)
 }
 \arguments{
-\item{KeyId}{[required] The identifier of the symmetric customer master key (CMK) that encrypts
-the data key.
+\item{KeyId}{[required] Specifies the symmetric encryption KMS key that encrypts the data key.
+You cannot specify an asymmetric KMS key or a KMS key in a custom key
+store. To get the type and origin of your KMS key, use the
+\code{\link[=kms_describe_key]{describe_key}} operation.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
-To specify a CMK in a different AWS account, you must use the key ARN or
-alias ARN.
+To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
+When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
+key in a different Amazon Web Services account, you must use the key ARN
+or alias ARN.
 
 For example:
 \itemize{
@@ -25,7 +32,7 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
 get the alias name and alias ARN, use
 \code{\link[=kms_list_aliases]{list_aliases}}.}
@@ -34,14 +41,15 @@ get the alias name and alias ARN, use
 data key.
 
 An \emph{encryption context} is a collection of non-secret key-value pairs
-that represents additional authenticated data. When you use an
-encryption context to encrypt data, you must specify the same (an exact
+that represent additional authenticated data. When you use an encryption
+context to encrypt data, you must specify the same (an exact
 case-sensitive match) encryption context to decrypt the data. An
-encryption context is optional when encrypting with a symmetric CMK, but
-it is highly recommended.
+encryption context is supported only on operations with symmetric
+encryption KMS keys. On operations with symmetric encryption KMS keys,
+an encryption context is optional, but it is strongly recommended.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
-in the \emph{AWS Key Management Service Developer Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
+in the \emph{Key Management Service Developer Guide}.}
 
 \item{KeySpec}{The length of the data key. Use \code{AES_128} to generate a 128-bit
 symmetric key, or \code{AES_256} to generate a 256-bit symmetric key.}
@@ -53,107 +61,15 @@ the \code{KeySpec} field instead of this one.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
-in the \emph{AWS Key Management Service Developer Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CiphertextBlob = raw,
-  KeyId = "string"
-)
-}
+Use a grant token when your permission to call this operation comes from
+a new grant that has not yet achieved \emph{eventual consistency}. For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
-Generates a unique symmetric data key. This operation returns a data key
-that is encrypted under a customer master key (CMK) that you specify. To
-request an asymmetric data key pair, use the
-\code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}} or
-\code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
-operations.
+Returns a unique symmetric data key for use outside of KMS. This operation returns a data key that is encrypted under a symmetric encryption KMS key that you specify. The bytes in the key are random; they are not related to the caller or to the KMS key.
 
-\code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
-is identical to the \code{\link[=kms_generate_data_key]{generate_data_key}}
-operation except that returns only the encrypted copy of the data key.
-This operation is useful for systems that need to encrypt data at some
-point, but not immediately. When you need to encrypt the data, you call
-the \code{\link[=kms_decrypt]{decrypt}} operation on the encrypted copy of the key.
-
-It's also useful in distributed systems with different levels of trust.
-For example, you might store encrypted data in containers. One component
-of your system creates new containers and stores an encrypted data key
-with each container. Then, a different component puts the data into the
-containers. That component first decrypts the data key, uses the
-plaintext data key to encrypt data, puts the encrypted data into the
-container, and then destroys the plaintext data key. In this system, the
-component that creates the containers never sees the plaintext data key.
-
-\code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
-returns a unique data key for each request. The bytes in the keys are
-not related to the caller or CMK that is used to encrypt the private
-key.
-
-To generate a data key, you must specify the symmetric customer master
-key (CMK) that is used to encrypt the data key. You cannot use an
-asymmetric CMK to generate a data key. To get the type of your CMK, use
-the \code{\link[=kms_describe_key]{describe_key}} operation.
-
-If the operation succeeds, you will find the encrypted copy of the data
-key in the \code{CiphertextBlob} field.
-
-You can use the optional encryption context to add additional security
-to the encryption operation. If you specify an \code{EncryptionContext}, you
-must specify the same encryption context (a case-sensitive exact match)
-when decrypting the encrypted data key. Otherwise, the request to
-decrypt fails with an \code{InvalidCiphertextException}. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-The CMK that you use for this operation must be in a compatible key
-state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
-different AWS account, specify the key ARN or alias ARN in the value of
-the \code{KeyId} parameter.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GenerateDataKeyWithoutPlaintext}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_decrypt]{decrypt}}
-\item \code{\link[=kms_encrypt]{encrypt}}
-\item \code{\link[=kms_generate_data_key]{generate_data_key}}
-\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
-\item \code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$generate_data_key_without_plaintext(
-  KeyId = "string",
-  EncryptionContext = list(
-    "string"
-  ),
-  KeySpec = "AES_256"|"AES_128",
-  NumberOfBytes = 123,
-  GrantTokens = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example generates an encrypted copy of a 256-bit symmetric
-# data encryption key (data key). The data key is encrypted with the
-# specified customer master key (CMK).
-svc$generate_data_key_without_plaintext(
-  KeyId = "alias/ExampleAlias",
-  KeySpec = "AES_256"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/generate_data_key_without_plaintext.html} for full documentation.
 }
 \keyword{internal}

@@ -5,7 +5,11 @@
 \title{Retrieves the list of applications nested in the containing application}
 \usage{
 serverlessapplicationrepository_list_application_dependencies(
-  ApplicationId, MaxItems, NextToken, SemanticVersion)
+  ApplicationId,
+  MaxItems = NULL,
+  NextToken = NULL,
+  SemanticVersion = NULL
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -16,29 +20,9 @@ serverlessapplicationrepository_list_application_dependencies(
 
 \item{SemanticVersion}{The semantic version of the application to get.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Dependencies = list(
-    list(
-      ApplicationId = "string",
-      SemanticVersion = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves the list of applications nested in the containing application.
-}
-\section{Request syntax}{
-\preformatted{svc$list_application_dependencies(
-  ApplicationId = "string",
-  MaxItems = 123,
-  NextToken = "string",
-  SemanticVersion = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_dependencies.html} for full documentation.
+}
 \keyword{internal}

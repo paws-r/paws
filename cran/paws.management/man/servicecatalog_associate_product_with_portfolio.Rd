@@ -4,8 +4,12 @@
 \alias{servicecatalog_associate_product_with_portfolio}
 \title{Associates the specified product with the specified portfolio}
 \usage{
-servicecatalog_associate_product_with_portfolio(AcceptLanguage,
-  ProductId, PortfolioId, SourcePortfolioId)
+servicecatalog_associate_product_with_portfolio(
+  AcceptLanguage = NULL,
+  ProductId,
+  PortfolioId,
+  SourcePortfolioId = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -21,22 +25,9 @@ servicecatalog_associate_product_with_portfolio(AcceptLanguage,
 
 \item{SourcePortfolioId}{The identifier of the source portfolio.}
 }
-\value{
-An empty list.
-}
 \description{
 Associates the specified product with the specified portfolio.
 
-A delegated admin is authorized to invoke this command.
+See \url{https://paws-r.github.io/docs/servicecatalog/associate_product_with_portfolio.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_product_with_portfolio(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  PortfolioId = "string",
-  SourcePortfolioId = "string"
-)
-}
-}
-
 \keyword{internal}

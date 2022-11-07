@@ -5,7 +5,10 @@
 \title{Causes the environment to restart the application container server
 running on each Amazon EC2 instance}
 \usage{
-elasticbeanstalk_restart_app_server(EnvironmentId, EnvironmentName)
+elasticbeanstalk_restart_app_server(
+  EnvironmentId = NULL,
+  EnvironmentName = NULL
+)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment to restart the server for.
@@ -20,29 +23,9 @@ Condition: You must specify either this or an EnvironmentId, or both. If
 you do not specify either, AWS Elastic Beanstalk returns
 \code{MissingRequiredParameter} error.}
 }
-\value{
-An empty list.
-}
 \description{
-Causes the environment to restart the application container server
-running on each Amazon EC2 instance.
-}
-\section{Request syntax}{
-\preformatted{svc$restart_app_server(
-  EnvironmentId = "string",
-  EnvironmentName = "string"
-)
-}
-}
+Causes the environment to restart the application container server running on each Amazon EC2 instance.
 
-\examples{
-\dontrun{
-# The following operation restarts application servers on all instances in
-# an environment named my-env:
-svc$restart_app_server(
-  EnvironmentName = "my-env"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/restart_app_server.html} for full documentation.
 }
 \keyword{internal}

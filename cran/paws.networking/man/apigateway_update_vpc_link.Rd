@@ -4,47 +4,17 @@
 \alias{apigateway_update_vpc_link}
 \title{Updates an existing VpcLink of a specified identifier}
 \usage{
-apigateway_update_vpc_link(vpcLinkId, patchOperations)
+apigateway_update_vpc_link(vpcLinkId, patchOperations = NULL)
 }
 \arguments{
-\item{vpcLinkId}{[required] [Required] The identifier of the VpcLink. It is used in an Integration
-to reference this VpcLink.}
+\item{vpcLinkId}{[required] The identifier of the VpcLink. It is used in an Integration to reference
+this VpcLink.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  targetArns = list(
-    "string"
-  ),
-  status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
-  statusMessage = "string",
-  tags = list(
-    "string"
-  )
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Updates an existing VpcLink of a specified identifier.
-}
-\section{Request syntax}{
-\preformatted{svc$update_vpc_link(
-  vpcLinkId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_vpc_link.html} for full documentation.
+}
 \keyword{internal}

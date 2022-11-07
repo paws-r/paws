@@ -4,8 +4,11 @@
 \alias{acmpca_revoke_certificate}
 \title{Revokes a certificate that was issued inside ACM Private CA}
 \usage{
-acmpca_revoke_certificate(CertificateAuthorityArn, CertificateSerial,
-  RevocationReason)
+acmpca_revoke_certificate(
+  CertificateAuthorityArn,
+  CertificateSerial,
+  RevocationReason
+)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] Amazon Resource Name (ARN) of the private CA that issued the certificate
@@ -25,42 +28,13 @@ certificate in text format and copy the hexadecimal serial number.
 
 You can also copy the serial number from the console or use the
 \href{https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html}{DescribeCertificate}
-action in the \emph{AWS Certificate Manager API Reference}.}
+action in the \emph{Certificate Manager API Reference}.}
 
 \item{RevocationReason}{[required] Specifies why you revoked the certificate.}
 }
-\value{
-An empty list.
-}
 \description{
-Revokes a certificate that was issued inside ACM Private CA. If you
-enable a certificate revocation list (CRL) when you create or update
-your private CA, information about the revoked certificates will be
-included in the CRL. ACM Private CA writes the CRL to an S3 bucket that
-you specify. A CRL is typically updated approximately 30 minutes after a
-certificate is revoked. If for any reason the CRL update fails, ACM
-Private CA attempts makes further attempts every 15 minutes. With Amazon
-CloudWatch, you can create alarms for the metrics \code{CRLGenerated} and
-\code{MisconfiguredCRLBucket}. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCloudWatch.html}{Supported CloudWatch Metrics}.
+Revokes a certificate that was issued inside ACM Private CA. If you enable a certificate revocation list (CRL) when you create or update your private CA, information about the revoked certificates will be included in the CRL. ACM Private CA writes the CRL to an S3 bucket that you specify. A CRL is typically updated approximately 30 minutes after a certificate is revoked. If for any reason the CRL update fails, ACM Private CA attempts makes further attempts every 15 minutes. With Amazon CloudWatch, you can create alarms for the metrics \code{CRLGenerated} and \code{MisconfiguredCRLBucket}. For more information, see \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaCloudWatch.html}{Supported CloudWatch Metrics}.
 
-Both PCA and the IAM principal must have permission to write to the S3
-bucket that you specify. If the IAM principal making the call does not
-have permission to write to the bucket, then an exception is thrown. For
-more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
-
-ACM Private CA also writes revocation information to the audit report.
-For more information, see
-\code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}}.
-
-You cannot revoke a root CA self-signed certificate.
+See \url{https://paws-r.github.io/docs/acmpca/revoke_certificate.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$revoke_certificate(
-  CertificateAuthorityArn = "string",
-  CertificateSerial = "string",
-  RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CERTIFICATE_AUTHORITY_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERSEDED"|"CESSATION_OF_OPERATION"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE"
-)
-}
-}
-
 \keyword{internal}

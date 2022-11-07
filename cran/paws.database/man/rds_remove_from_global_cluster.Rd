@@ -5,8 +5,10 @@
 \title{Detaches an Aurora secondary cluster from an Aurora global database
 cluster}
 \usage{
-rds_remove_from_global_cluster(GlobalClusterIdentifier,
-  DbClusterIdentifier)
+rds_remove_from_global_cluster(
+  GlobalClusterIdentifier = NULL,
+  DbClusterIdentifier = NULL
+)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{The cluster identifier to detach from the Aurora global database
@@ -15,46 +17,9 @@ cluster.}
 \item{DbClusterIdentifier}{The Amazon Resource Name (ARN) identifying the cluster that was detached
 from the Aurora global database cluster.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalCluster = list(
-    GlobalClusterIdentifier = "string",
-    GlobalClusterResourceId = "string",
-    GlobalClusterArn = "string",
-    Status = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    DatabaseName = "string",
-    StorageEncrypted = TRUE|FALSE,
-    DeletionProtection = TRUE|FALSE,
-    GlobalClusterMembers = list(
-      list(
-        DBClusterArn = "string",
-        Readers = list(
-          "string"
-        ),
-        IsWriter = TRUE|FALSE,
-        GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Detaches an Aurora secondary cluster from an Aurora global database
-cluster. The cluster becomes a standalone cluster with read-write
-capability instead of being read-only and receiving data from a primary
-cluster in a different region.
+Detaches an Aurora secondary cluster from an Aurora global database cluster. The cluster becomes a standalone cluster with read-write capability instead of being read-only and receiving data from a primary cluster in a different Region.
 
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/remove_from_global_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$remove_from_global_cluster(
-  GlobalClusterIdentifier = "string",
-  DbClusterIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

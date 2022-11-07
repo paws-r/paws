@@ -14,66 +14,9 @@ or \code{\link[=cloudfront_get_distribution]{get_distribution}}. If the cache
 policy is not attached to a cache behavior, you can get the identifier
 using \code{\link[=cloudfront_list_cache_policies]{list_cache_policies}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CachePolicyConfig = list(
-    Comment = "string",
-    Name = "string",
-    DefaultTTL = 123,
-    MaxTTL = 123,
-    MinTTL = 123,
-    ParametersInCacheKeyAndForwardedToOrigin = list(
-      EnableAcceptEncodingGzip = TRUE|FALSE,
-      EnableAcceptEncodingBrotli = TRUE|FALSE,
-      HeadersConfig = list(
-        HeaderBehavior = "none"|"whitelist",
-        Headers = list(
-          Quantity = 123,
-          Items = list(
-            "string"
-          )
-        )
-      ),
-      CookiesConfig = list(
-        CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
-        Cookies = list(
-          Quantity = 123,
-          Items = list(
-            "string"
-          )
-        )
-      ),
-      QueryStringsConfig = list(
-        QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
-        QueryStrings = list(
-          Quantity = 123,
-          Items = list(
-            "string"
-          )
-        )
-      )
-    )
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Gets a cache policy configuration.
 
-To get a cache policy configuration, you must provide the policy’s
-identifier. If the cache policy is attached to a distribution’s cache
-behavior, you can get the policy’s identifier using
-\code{\link[=cloudfront_list_distributions]{list_distributions}} or
-\code{\link[=cloudfront_get_distribution]{get_distribution}}. If the cache policy
-is not attached to a cache behavior, you can get the identifier using
-\code{\link[=cloudfront_list_cache_policies]{list_cache_policies}}.
+See \url{https://paws-r.github.io/docs/cloudfront/get_cache_policy_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_cache_policy_config(
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

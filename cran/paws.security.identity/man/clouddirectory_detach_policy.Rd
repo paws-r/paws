@@ -4,8 +4,7 @@
 \alias{clouddirectory_detach_policy}
 \title{Detaches a policy from an object}
 \usage{
-clouddirectory_detach_policy(DirectoryArn, PolicyReference,
-  ObjectReference)
+clouddirectory_detach_policy(DirectoryArn, PolicyReference, ObjectReference)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -16,23 +15,9 @@ where both objects reside. For more information, see arns.}
 \item{ObjectReference}{[required] Reference that identifies the object whose policy object will be
 detached.}
 }
-\value{
-An empty list.
-}
 \description{
 Detaches a policy from an object.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_policy(
-  DirectoryArn = "string",
-  PolicyReference = list(
-    Selector = "string"
-  ),
-  ObjectReference = list(
-    Selector = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/detach_policy.html} for full documentation.
+}
 \keyword{internal}

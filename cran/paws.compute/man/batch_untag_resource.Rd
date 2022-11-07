@@ -2,44 +2,21 @@
 % Please edit documentation in R/batch_operations.R
 \name{batch_untag_resource}
 \alias{batch_untag_resource}
-\title{Deletes specified tags from an AWS Batch resource}
+\title{Deletes specified tags from an Batch resource}
 \usage{
 batch_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource from which to delete
-tags. AWS Batch resources that support tags are compute environments,
-jobs, job definitions, and job queues. ARNs for child jobs of array and
-multi-node parallel (MNP) jobs are not supported.}
+tags. Batch resources that support tags are compute environments, jobs,
+job definitions, job queues, and scheduling policies. ARNs for child
+jobs of array and multi-node parallel (MNP) jobs are not supported.}
 
 \item{tagKeys}{[required] The keys of the tags to be removed.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes specified tags from an AWS Batch resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
+Deletes specified tags from an Batch resource.
 
-\examples{
-\dontrun{
-# This demonstrates calling the UntagResource action.
-svc$untag_resource(
-  resourceArn = "arn:aws:batch:us-east-1:123456789012:job-definition/sleep30:1",
-  tagKeys = list(
-    "Stage"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/untag_resource.html} for full documentation.
 }
 \keyword{internal}

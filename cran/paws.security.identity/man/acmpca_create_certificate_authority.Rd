@@ -4,154 +4,61 @@
 \alias{acmpca_create_certificate_authority}
 \title{Creates a root or subordinate private certificate authority (CA)}
 \usage{
-acmpca_create_certificate_authority(CertificateAuthorityConfiguration,
-  RevocationConfiguration, CertificateAuthorityType, IdempotencyToken,
-  Tags)
+acmpca_create_certificate_authority(
+  CertificateAuthorityConfiguration,
+  RevocationConfiguration = NULL,
+  CertificateAuthorityType,
+  IdempotencyToken = NULL,
+  KeyStorageSecurityStandard = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{CertificateAuthorityConfiguration}{[required] Name and bit size of the private key algorithm, the name of the signing
 algorithm, and X.500 certificate subject information.}
 
-\item{RevocationConfiguration}{Contains a Boolean value that you can use to enable a certification
-revocation list (CRL) for the CA, the name of the S3 bucket to which ACM
-Private CA will write the CRL, and an optional CNAME alias that you can
-use to hide the name of your bucket in the \strong{CRL Distribution Points}
-extension of your CA certificate. For more information, see the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CrlConfiguration.html}{CrlConfiguration}
-structure.}
+\item{RevocationConfiguration}{Contains information to enable Online Certificate Status Protocol (OCSP)
+support, to enable a certificate revocation list (CRL), to enable both,
+or to enable neither. The default is for both certificate validation
+mechanisms to be disabled. For more information, see the
+OcspConfiguration and CrlConfiguration types.}
 
 \item{CertificateAuthorityType}{[required] The type of the certificate authority.}
 
-\item{IdempotencyToken}{Alphanumeric string that can be used to distinguish between calls to
-\strong{CreateCertificateAuthority}. For a given token, ACM Private CA
-creates exactly one CA. If you issue a subsequent call using the same
-token, ACM Private CA returns the ARN of the existing CA and takes no
-further action. If you change the idempotency token across multiple
-calls, ACM Private CA creates a unique CA for each unique token.}
+\item{IdempotencyToken}{Custom string that can be used to distinguish between calls to the
+\strong{CreateCertificateAuthority} action. Idempotency tokens for
+\strong{CreateCertificateAuthority} time out after five minutes. Therefore,
+if you call \strong{CreateCertificateAuthority} multiple times with the same
+idempotency token within five minutes, ACM Private CA recognizes that
+you are requesting only certificate authority and will issue only one.
+If you change the idempotency token for each call, PCA recognizes that
+you are requesting multiple certificate authorities.}
+
+\item{KeyStorageSecurityStandard}{Specifies a cryptographic key management compliance standard used for
+handling CA keys.
+
+Default: FIPS_140_2_LEVEL_3_OR_HIGHER
+
+\emph{Note:} \code{FIPS_140_2_LEVEL_3_OR_HIGHER} is not supported in the following
+Regions:
+\itemize{
+\item ap-northeast-3
+\item ap-southeast-3
+}
+
+When creating a CA in these Regions, you must provide
+\code{FIPS_140_2_LEVEL_2_OR_HIGHER} as the argument for
+\code{KeyStorageSecurityStandard}. Failure to do this results in an
+\code{InvalidArgsException} with the message, "A certificate authority cannot
+be created in this region with the specified security standard."}
 
 \item{Tags}{Key-value pairs that will be attached to the new private CA. You can
 associate up to 50 tags with a private CA. For information using tags
 with IAM to manage permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CertificateAuthorityArn = "string"
-)
-}
-}
 \description{
-Creates a root or subordinate private certificate authority (CA). You
-must specify the CA configuration, the certificate revocation list (CRL)
-configuration, the CA type, and an optional idempotency token to avoid
-accidental creation of multiple CAs. The CA configuration specifies the
-name of the algorithm and key size to be used to create the CA private
-key, the type of signing algorithm that the CA uses, and X.500 subject
-information. The CRL configuration specifies the CRL expiration period
-in days (the validity period of the CRL), the Amazon S3 bucket that will
-contain the CRL, and a CNAME alias for the S3 bucket that is included in
-certificates issued by the CA. If successful, this action returns the
-Amazon Resource Name (ARN) of the CA.
+Creates a root or subordinate private certificate authority (CA). You must specify the CA configuration, an optional configuration for Online Certificate Status Protocol (OCSP) and/or a certificate revocation list (CRL), the CA type, and an optional idempotency token to avoid accidental creation of multiple CAs. The CA configuration specifies the name of the algorithm and key size to be used to create the CA private key, the type of signing algorithm that the CA uses, and X.500 subject information. The OCSP configuration can optionally specify a custom URL for the OCSP responder. The CRL configuration specifies the CRL expiration period in days (the validity period of the CRL), the Amazon S3 bucket that will contain the CRL, and a CNAME alias for the S3 bucket that is included in certificates issued by the CA. If successful, this action returns the Amazon Resource Name (ARN) of the CA.
 
-ACM Private CAA assets that are stored in Amazon S3 can be protected
-with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption}{Encrypting Your CRLs}.
-
-Both PCA and the IAM principal must have permission to write to the S3
-bucket that you specify. If the IAM principal making the call does not
-have permission to write to the bucket, then an exception is thrown. For
-more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
+See \url{https://paws-r.github.io/docs/acmpca/create_certificate_authority.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_certificate_authority(
-  CertificateAuthorityConfiguration = list(
-    KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
-    SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
-    Subject = list(
-      Country = "string",
-      Organization = "string",
-      OrganizationalUnit = "string",
-      DistinguishedNameQualifier = "string",
-      State = "string",
-      CommonName = "string",
-      SerialNumber = "string",
-      Locality = "string",
-      Title = "string",
-      Surname = "string",
-      GivenName = "string",
-      Initials = "string",
-      Pseudonym = "string",
-      GenerationQualifier = "string"
-    ),
-    CsrExtensions = list(
-      KeyUsage = list(
-        DigitalSignature = TRUE|FALSE,
-        NonRepudiation = TRUE|FALSE,
-        KeyEncipherment = TRUE|FALSE,
-        DataEncipherment = TRUE|FALSE,
-        KeyAgreement = TRUE|FALSE,
-        KeyCertSign = TRUE|FALSE,
-        CRLSign = TRUE|FALSE,
-        EncipherOnly = TRUE|FALSE,
-        DecipherOnly = TRUE|FALSE
-      ),
-      SubjectInformationAccess = list(
-        list(
-          AccessMethod = list(
-            CustomObjectIdentifier = "string",
-            AccessMethodType = "CA_REPOSITORY"|"RESOURCE_PKI_MANIFEST"|"RESOURCE_PKI_NOTIFY"
-          ),
-          AccessLocation = list(
-            OtherName = list(
-              TypeId = "string",
-              Value = "string"
-            ),
-            Rfc822Name = "string",
-            DnsName = "string",
-            DirectoryName = list(
-              Country = "string",
-              Organization = "string",
-              OrganizationalUnit = "string",
-              DistinguishedNameQualifier = "string",
-              State = "string",
-              CommonName = "string",
-              SerialNumber = "string",
-              Locality = "string",
-              Title = "string",
-              Surname = "string",
-              GivenName = "string",
-              Initials = "string",
-              Pseudonym = "string",
-              GenerationQualifier = "string"
-            ),
-            EdiPartyName = list(
-              PartyName = "string",
-              NameAssigner = "string"
-            ),
-            UniformResourceIdentifier = "string",
-            IpAddress = "string",
-            RegisteredId = "string"
-          )
-        )
-      )
-    )
-  ),
-  RevocationConfiguration = list(
-    CrlConfiguration = list(
-      Enabled = TRUE|FALSE,
-      ExpirationInDays = 123,
-      CustomCname = "string",
-      S3BucketName = "string"
-    )
-  ),
-  CertificateAuthorityType = "ROOT"|"SUBORDINATE",
-  IdempotencyToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

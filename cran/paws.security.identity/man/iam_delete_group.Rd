@@ -13,18 +13,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified IAM group. The group must not contain any users or
-have any attached policies.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_group(
-  GroupName = "string"
-)
-}
-}
+Deletes the specified IAM group. The group must not contain any users or have any attached policies.
 
+See \url{https://paws-r.github.io/docs/iam/delete_group.html} for full documentation.
+}
 \keyword{internal}

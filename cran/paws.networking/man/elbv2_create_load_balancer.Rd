@@ -5,9 +5,17 @@
 \title{Creates an Application Load Balancer, Network Load Balancer, or Gateway
 Load Balancer}
 \usage{
-elbv2_create_load_balancer(Name, Subnets, SubnetMappings,
-  SecurityGroups, Scheme, Tags, Type, IpAddressType,
-  CustomerOwnedIpv4Pool)
+elbv2_create_load_balancer(
+  Name,
+  Subnets = NULL,
+  SubnetMappings = NULL,
+  SecurityGroups = NULL,
+  Scheme = NULL,
+  Tags = NULL,
+  Type = NULL,
+  IpAddressType = NULL,
+  CustomerOwnedIpv4Pool = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the load balancer.
@@ -18,7 +26,9 @@ must not begin or end with a hyphen, and must not begin with
 "internal-".}
 
 \item{Subnets}{The IDs of the public subnets. You can specify only one subnet per
-Availability Zone. You must specify either subnets or subnet mappings.
+Availability Zone. You must specify either subnets or subnet mappings,
+but not both. To specify an Elastic IP address, specify subnet mappings
+instead of subnets.
 
 [Application Load Balancers] You must specify subnets from at least
 two Availability Zones.
@@ -36,7 +46,8 @@ Availability Zones.
 Availability Zones.}
 
 \item{SubnetMappings}{The IDs of the public subnets. You can specify only one subnet per
-Availability Zone. You must specify either subnets or subnet mappings.
+Availability Zone. You must specify either subnets or subnet mappings,
+but not both.
 
 [Application Load Balancers] You must specify subnets from at least
 two Availability Zones. You cannot specify Elastic IP addresses for your
@@ -83,124 +94,14 @@ You cannot specify a scheme for a Gateway Load Balancer.}
 
 \item{IpAddressType}{The type of IP addresses used by the subnets for your load balancer. The
 possible values are \code{ipv4} (for IPv4 addresses) and \code{dualstack} (for
-IPv4 and IPv6 addresses). Internal load balancers must use \code{ipv4}.}
+IPv4 and IPv6 addresses).}
 
 \item{CustomerOwnedIpv4Pool}{[Application Load Balancers on Outposts] The ID of the customer-owned
 address pool (CoIP pool).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LoadBalancers = list(
-    list(
-      LoadBalancerArn = "string",
-      DNSName = "string",
-      CanonicalHostedZoneId = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LoadBalancerName = "string",
-      Scheme = "internet-facing"|"internal",
-      VpcId = "string",
-      State = list(
-        Code = "active"|"provisioning"|"active_impaired"|"failed",
-        Reason = "string"
-      ),
-      Type = "application"|"network"|"gateway",
-      AvailabilityZones = list(
-        list(
-          ZoneName = "string",
-          SubnetId = "string",
-          OutpostId = "string",
-          LoadBalancerAddresses = list(
-            list(
-              IpAddress = "string",
-              AllocationId = "string",
-              PrivateIPv4Address = "string",
-              IPv6Address = "string"
-            )
-          )
-        )
-      ),
-      SecurityGroups = list(
-        "string"
-      ),
-      IpAddressType = "ipv4"|"dualstack",
-      CustomerOwnedIpv4Pool = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates an Application Load Balancer, Network Load Balancer, or Gateway
-Load Balancer.
+Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 
-For more information, see the following:
-\itemize{
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html}{Application Load Balancers}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html}{Network Load Balancers}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html}{Gateway Load Balancers}
-}
-
-This operation is idempotent, which means that it completes at most one
-time. If you attempt to create multiple load balancers with the same
-settings, each call succeeds.
-}
-\section{Request syntax}{
-\preformatted{svc$create_load_balancer(
-  Name = "string",
-  Subnets = list(
-    "string"
-  ),
-  SubnetMappings = list(
-    list(
-      SubnetId = "string",
-      AllocationId = "string",
-      PrivateIPv4Address = "string",
-      IPv6Address = "string"
-    )
-  ),
-  SecurityGroups = list(
-    "string"
-  ),
-  Scheme = "internet-facing"|"internal",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  Type = "application"|"network"|"gateway",
-  IpAddressType = "ipv4"|"dualstack",
-  CustomerOwnedIpv4Pool = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates an Internet-facing load balancer and enables the
-# Availability Zones for the specified subnets.
-svc$create_load_balancer(
-  Name = "my-load-balancer",
-  Subnets = list(
-    "subnet-b7d581c0",
-    "subnet-8360a9e7"
-  )
-)
-
-# This example creates an internal load balancer and enables the
-# Availability Zones for the specified subnets.
-svc$create_load_balancer(
-  Name = "my-internal-load-balancer",
-  Scheme = "internal",
-  SecurityGroups = list(),
-  Subnets = list(
-    "subnet-b7d581c0",
-    "subnet-8360a9e7"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/create_load_balancer.html} for full documentation.
 }
 \keyword{internal}

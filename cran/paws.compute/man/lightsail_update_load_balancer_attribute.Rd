@@ -4,60 +4,50 @@
 \alias{lightsail_update_load_balancer_attribute}
 \title{Updates the specified attribute for a load balancer}
 \usage{
-lightsail_update_load_balancer_attribute(loadBalancerName,
-  attributeName, attributeValue)
+lightsail_update_load_balancer_attribute(
+  loadBalancerName,
+  attributeName,
+  attributeValue
+)
 }
 \arguments{
 \item{loadBalancerName}{[required] The name of the load balancer that you want to modify (e.g.,
 \code{my-load-balancer}.}
 
-\item{attributeName}{[required] The name of the attribute you want to update. Valid values are below.}
+\item{attributeName}{[required] The name of the attribute you want to update.}
 
-\item{attributeValue}{[required] The value that you want to specify for the attribute name.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  operations = list(
-    list(
-      id = "string",
-      resourceName = "string",
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      isTerminal = TRUE|FALSE,
-      operationDetails = "string",
-      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-      status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-      statusChangedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      errorCode = "string",
-      errorDetails = "string"
-    )
-  )
-)
-}
+\item{attributeValue}{[required] The value that you want to specify for the attribute name.
+
+The following values are supported depending on what you specify for the
+\code{attributeName} request parameter:
+\itemize{
+\item If you specify \code{HealthCheckPath} for the \code{attributeName} request
+parameter, then the \code{attributeValue} request parameter must be the
+path to ping on the target (for example, \verb{/weather/us/wa/seattle}).
+\item If you specify \code{SessionStickinessEnabled} for the \code{attributeName}
+request parameter, then the \code{attributeValue} request parameter must
+be \code{true} to activate session stickiness or \code{false} to deactivate
+session stickiness.
+\item If you specify \code{SessionStickiness_LB_CookieDurationSeconds} for the
+\code{attributeName} request parameter, then the \code{attributeValue} request
+parameter must be an interger that represents the cookie duration in
+seconds.
+\item If you specify \code{HttpsRedirectionEnabled} for the \code{attributeName}
+request parameter, then the \code{attributeValue} request parameter must
+be \code{true} to activate HTTP to HTTPS redirection or \code{false} to
+deactivate HTTP to HTTPS redirection.
+\item If you specify \code{TlsPolicyName} for the \code{attributeName} request
+parameter, then the \code{attributeValue} request parameter must be the
+name of the TLS policy.
+
+Use the
+\code{\link[=lightsail_get_load_balancer_tls_policies]{get_load_balancer_tls_policies}}
+action to get a list of TLS policy names that you can specify.
+}}
 }
 \description{
-Updates the specified attribute for a load balancer. You can only update
-one attribute at a time.
+Updates the specified attribute for a load balancer. You can only update one attribute at a time.
 
-The \verb{update load balancer attribute} operation supports tag-based access
-control via resource tags applied to the resource identified by
-\verb{load balancer name}. For more information, see the Lightsail Dev Guide.
+See \url{https://paws-r.github.io/docs/lightsail/update_load_balancer_attribute.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_load_balancer_attribute(
-  loadBalancerName = "string",
-  attributeName = "HealthCheckPath"|"SessionStickinessEnabled"|"SessionStickiness_LB_CookieDurationSeconds",
-  attributeValue = "string"
-)
-}
-}
-
 \keyword{internal}

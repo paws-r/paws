@@ -14,25 +14,9 @@ datapipeline_evaluate_expression(pipelineId, objectId, expression)
 
 \item{expression}{[required] The expression to evaluate.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  evaluatedExpression = "string"
-)
-}
-}
 \description{
-Task runners call
-\code{\link[=datapipeline_evaluate_expression]{evaluate_expression}} to evaluate a
-string in the context of the specified object. For example, a task
-runner can evaluate SQL queries stored in Amazon S3.
-}
-\section{Request syntax}{
-\preformatted{svc$evaluate_expression(
-  pipelineId = "string",
-  objectId = "string",
-  expression = "string"
-)
-}
-}
+Task runners call \code{\link[=datapipeline_evaluate_expression]{evaluate_expression}} to evaluate a string in the context of the specified object. For example, a task runner can evaluate SQL queries stored in Amazon S3.
 
+See \url{https://paws-r.github.io/docs/datapipeline/evaluate_expression.html} for full documentation.
+}
 \keyword{internal}

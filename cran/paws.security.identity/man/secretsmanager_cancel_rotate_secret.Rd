@@ -2,106 +2,20 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_cancel_rotate_secret}
 \alias{secretsmanager_cancel_rotate_secret}
-\title{Disables automatic scheduled rotation and cancels the rotation of a
-secret if currently in progress}
+\title{Turns off automatic rotation, and if a rotation is currently in
+progress, cancels the rotation}
 \usage{
 secretsmanager_cancel_rotate_secret(SecretId)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret to cancel a rotation request. You can specify
-either the Amazon Resource Name (ARN) or the friendly name of the
-secret.
+\item{SecretId}{[required] The ARN or name of the secret.
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too—for example, if you
-don’t include the final hyphen and six random characters that Secrets
-Manager adds at the end of the ARN when you created the secret. A
-partial ARN match can work as long as it uniquely matches only one
-secret. However, if your secret has a name that ends in a hyphen
-followed by six characters (before Secrets Manager adds the hyphen and
-six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you’re
-specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don’t create secret names
-ending with a hyphen followed by six characters.
-
-If you specify an incomplete ARN without the random suffix, and instead
-provide the 'friendly name', you \emph{must} not include the random suffix.
-If you do include the random suffix added by Secrets Manager, you
-receive either a \emph{ResourceNotFoundException} or an
-\emph{AccessDeniedException} error, depending on your permissions.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ARN = "string",
-  Name = "string",
-  VersionId = "string"
-)
-}
+For an ARN, we recommend that you specify a complete ARN rather than a
+partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 }
 \description{
-Disables automatic scheduled rotation and cancels the rotation of a
-secret if currently in progress.
+Turns off automatic rotation, and if a rotation is currently in progress, cancels the rotation.
 
-To re-enable scheduled rotation, call
-\code{\link[=secretsmanager_rotate_secret]{rotate_secret}} with
-\code{AutomaticallyRotateAfterDays} set to a value greater than 0. This
-immediately rotates your secret and then enables the automatic schedule.
-
-If you cancel a rotation while in progress, it can leave the
-\code{VersionStage} labels in an unexpected state. Depending on the step of
-the rotation in progress, you might need to remove the staging label
-\code{AWSPENDING} from the partially created version, specified by the
-\code{VersionId} response value. You should also evaluate the partially
-rotated new version to see if it should be deleted, which you can do by
-removing all staging labels from the new version \code{VersionStage} field.
-
-To successfully start a rotation, the staging label \code{AWSPENDING} must be
-in one of the following states:
-\itemize{
-\item Not attached to any version at all
-\item Attached to the same version as the staging label \code{AWSCURRENT}
-}
-
-If the staging label \code{AWSPENDING} attached to a different version than
-the version with \code{AWSCURRENT} then the attempt to rotate fails.
-
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:CancelRotateSecret
-}
-
-\strong{Related operations}
-\itemize{
-\item To configure rotation for a secret or to manually trigger a
-rotation, use \code{\link[=secretsmanager_rotate_secret]{rotate_secret}}.
-\item To get the rotation configuration details for a secret, use
-\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
-\item To list all of the currently available secrets, use
-\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
-\item To list all of the versions currently associated with a secret, use
-\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_rotate_secret(
-  SecretId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to cancel rotation for a secret. The
-# operation sets the RotationEnabled field to false and cancels all
-# scheduled rotations. To resume scheduled rotations, you must re-enable
-# rotation by calling the rotate-secret operation.
-svc$cancel_rotate_secret(
-  SecretId = "MyTestDatabaseSecret"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/cancel_rotate_secret.html} for full documentation.
 }
 \keyword{internal}

@@ -4,7 +4,11 @@
 \alias{personalize_list_campaigns}
 \title{Returns a list of campaigns that use the given solution}
 \usage{
-personalize_list_campaigns(solutionArn, nextToken, maxResults)
+personalize_list_campaigns(
+  solutionArn = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{solutionArn}{The Amazon Resource Name (ARN) of the solution to list the campaigns
@@ -17,40 +21,9 @@ of campaigns (if they exist).}
 
 \item{maxResults}{The maximum number of campaigns to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  campaigns = list(
-    list(
-      name = "string",
-      campaignArn = "string",
-      status = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      failureReason = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of campaigns that use the given solution. When a solution
-is not specified, all the campaigns associated with the account are
-listed. The response provides the properties for each campaign,
-including the Amazon Resource Name (ARN). For more information on
-campaigns, see \code{\link[=personalize_create_campaign]{create_campaign}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_campaigns(
-  solutionArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns a list of campaigns that use the given solution. When a solution is not specified, all the campaigns associated with the account are listed. The response provides the properties for each campaign, including the Amazon Resource Name (ARN). For more information on campaigns, see \code{\link[=personalize_create_campaign]{create_campaign}}.
 
+See \url{https://paws-r.github.io/docs/personalize/list_campaigns.html} for full documentation.
+}
 \keyword{internal}

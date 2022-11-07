@@ -22,38 +22,9 @@ that can consist of any upper or lowercased letter or digit.}
 retrieve the public key in ssh-rsa format, use \code{SSH}. To retrieve the
 public key in PEM format, use \code{PEM}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SSHPublicKey = list(
-    UserName = "string",
-    SSHPublicKeyId = "string",
-    Fingerprint = "string",
-    SSHPublicKeyBody = "string",
-    Status = "Active"|"Inactive",
-    UploadDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves the specified SSH public key, including metadata about the
-key.
+Retrieves the specified SSH public key, including metadata about the key.
 
-The SSH public key retrieved by this operation is used only for
-authenticating the associated IAM user to an AWS CodeCommit repository.
-For more information about using SSH keys to authenticate to an AWS
-CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html}{Set up AWS CodeCommit for SSH Connections}
-in the \emph{AWS CodeCommit User Guide}.
+See \url{https://paws-r.github.io/docs/iam/get_ssh_public_key.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_ssh_public_key(
-  UserName = "string",
-  SSHPublicKeyId = "string",
-  Encoding = "SSH"|"PEM"
-)
-}
-}
-
 \keyword{internal}

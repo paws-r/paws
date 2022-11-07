@@ -4,7 +4,7 @@
 \alias{cloudwatch_describe_insight_rules}
 \title{Returns a list of all the Contributor Insights rules in your account}
 \usage{
-cloudwatch_describe_insight_rules(NextToken, MaxResults)
+cloudwatch_describe_insight_rules(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Include this value, if it was returned by the previous operation, to get
@@ -13,31 +13,9 @@ the next set of rules.}
 \item{MaxResults}{The maximum number of results to return in one operation. If you omit
 this parameter, the default of 500 is used.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  InsightRules = list(
-    list(
-      Name = "string",
-      State = "string",
-      Schema = "string",
-      Definition = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of all the Contributor Insights rules in your account.
 
-For more information about Contributor Insights, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html}{Using Contributor Insights to Analyze High-Cardinality Data}.
+See \url{https://paws-r.github.io/docs/cloudwatch/describe_insight_rules.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_insight_rules(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

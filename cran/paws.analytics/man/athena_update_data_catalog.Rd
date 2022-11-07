@@ -4,16 +4,17 @@
 \alias{athena_update_data_catalog}
 \title{Updates the data catalog that has the specified name}
 \usage{
-athena_update_data_catalog(Name, Type, Description, Parameters)
+athena_update_data_catalog(Name, Type, Description = NULL, Parameters = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the data catalog to update. The catalog name must be unique
-for the AWS account and can use a maximum of 128 alphanumeric,
-underscore, at sign, or hyphen characters.}
+for the Amazon Web Services account and can use a maximum of 127
+alphanumeric, underscore, at sign, or hyphen characters. The remainder
+of the length constraint of 256 is reserved for use by Athena.}
 
 \item{Type}{[required] Specifies the type of data catalog to update. Specify \code{LAMBDA} for a
-federated catalog, \code{GLUE} for AWS Glue Catalog, or \code{HIVE} for an
-external hive metastore.}
+federated catalog, \code{HIVE} for an external hive metastore, or \code{GLUE} for
+an Glue Data Catalog.}
 
 \item{Description}{New or modified text that describes the data catalog.}
 
@@ -40,25 +41,11 @@ Lambda function.
 
 \verb{function=lambda_arn }
 }
-\item The \code{GLUE} type has no parameters.
 }}
-}
-\value{
-An empty list.
 }
 \description{
 Updates the data catalog that has the specified name.
-}
-\section{Request syntax}{
-\preformatted{svc$update_data_catalog(
-  Name = "string",
-  Type = "LAMBDA"|"GLUE"|"HIVE",
-  Description = "string",
-  Parameters = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/athena/update_data_catalog.html} for full documentation.
+}
 \keyword{internal}

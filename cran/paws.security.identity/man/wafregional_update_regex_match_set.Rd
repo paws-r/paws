@@ -4,8 +4,7 @@
 \alias{wafregional_update_regex_match_set}
 \title{This is AWS WAF Classic documentation}
 \usage{
-wafregional_update_regex_match_set(RegexMatchSetId, Updates,
-  ChangeToken)
+wafregional_update_regex_match_set(RegexMatchSetId, Updates, ChangeToken)
 }
 \arguments{
 \item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to update.
@@ -20,79 +19,9 @@ RegexMatchTuple.}
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Inserts or deletes RegexMatchTuple objects (filters) in a RegexMatchSet.
-For each \code{RegexMatchSetUpdate} object, you specify the following values:
-\itemize{
-\item Whether to insert or delete the object from the array. If you want
-to change a \code{RegexMatchSetUpdate} object, you delete the existing
-object and add a new one.
-\item The part of a web request that you want AWS WAF to inspectupdate,
-such as a query string or the value of the \code{User-Agent} header.
-\item The identifier of the pattern (a regular expression) that you want
-AWS WAF to look for. For more information, see RegexPatternSet.
-\item Whether to perform any conversions on the request, such as
-converting it to lowercase, before inspecting it for the specified
-string.
+See \url{https://paws-r.github.io/docs/wafregional/update_regex_match_set.html} for full documentation.
 }
-
-For example, you can create a \code{RegexPatternSet} that matches any
-requests with \code{User-Agent} headers that contain the string
-\verb{B[a@]dB[o0]t}. You can then configure AWS WAF to reject those requests.
-
-To create and configure a \code{RegexMatchSet}, perform the following steps:
-\enumerate{
-\item Create a \code{RegexMatchSet.} For more information, see
-\code{\link[=wafregional_create_regex_match_set]{create_regex_match_set}}.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=wafregional_update_regex_match_set]{update_regex_match_set}}
-request.
-\item Submit an
-\code{\link[=wafregional_update_regex_match_set]{update_regex_match_set}}
-request to specify the part of the request that you want AWS WAF to
-inspect (for example, the header or the URI) and the identifier of
-the \code{RegexPatternSet} that contain the regular expression patters
-you want AWS WAF to watch for.
-}
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_regex_match_set(
-  RegexMatchSetId = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      RegexMatchTuple = list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-        RegexPatternSetId = "string"
-      )
-    )
-  ),
-  ChangeToken = "string"
-)
-}
-}
-
 \keyword{internal}

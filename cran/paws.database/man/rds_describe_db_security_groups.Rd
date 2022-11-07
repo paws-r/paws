@@ -4,8 +4,12 @@
 \alias{rds_describe_db_security_groups}
 \title{Returns a list of DBSecurityGroup descriptions}
 \usage{
-rds_describe_db_security_groups(DBSecurityGroupName, Filters,
-  MaxRecords, Marker)
+rds_describe_db_security_groups(
+  DBSecurityGroupName = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBSecurityGroupName}{The name of the DB security group to return details for.}
@@ -26,55 +30,9 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBSecurityGroups = list(
-    list(
-      OwnerId = "string",
-      DBSecurityGroupName = "string",
-      DBSecurityGroupDescription = "string",
-      VpcId = "string",
-      EC2SecurityGroups = list(
-        list(
-          Status = "string",
-          EC2SecurityGroupName = "string",
-          EC2SecurityGroupId = "string",
-          EC2SecurityGroupOwnerId = "string"
-        )
-      ),
-      IPRanges = list(
-        list(
-          Status = "string",
-          CIDRIP = "string"
-        )
-      ),
-      DBSecurityGroupArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of \code{DBSecurityGroup} descriptions. If a
-\code{DBSecurityGroupName} is specified, the list will contain only the
-descriptions of the specified DB security group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_security_groups(
-  DBSecurityGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns a list of \code{DBSecurityGroup} descriptions. If a \code{DBSecurityGroupName} is specified, the list will contain only the descriptions of the specified DB security group.
 
+See \url{https://paws-r.github.io/docs/rds/describe_db_security_groups.html} for full documentation.
+}
 \keyword{internal}

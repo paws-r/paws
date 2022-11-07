@@ -9,21 +9,9 @@ opsworks_delete_user_profile(IamUserArn)
 \arguments{
 \item{IamUserArn}{[required] The user's IAM ARN. This can also be a federated user's ARN.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a user profile.
 
-\strong{Required Permissions}: To use this action, an IAM user must have an
-attached policy that explicitly grants permissions. For more information
-about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/delete_user_profile.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_user_profile(
-  IamUserArn = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,16 @@
 \alias{sagemaker_list_artifacts}
 \title{Lists the artifacts in your account and their properties}
 \usage{
-sagemaker_list_artifacts(SourceUri, ArtifactType, CreatedAfter,
-  CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+sagemaker_list_artifacts(
+  SourceUri = NULL,
+  ArtifactType = NULL,
+  CreatedAfter = NULL,
+  CreatedBefore = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SourceUri}{A filter that returns only artifacts with the specified source URI.}
@@ -29,53 +37,9 @@ getting the next set of artifacts.}
 \item{MaxResults}{The maximum number of artifacts to return in the response. The default
 value is 10.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ArtifactSummaries = list(
-    list(
-      ArtifactArn = "string",
-      ArtifactName = "string",
-      Source = list(
-        SourceUri = "string",
-        SourceTypes = list(
-          list(
-            SourceIdType = "MD5Hash"|"S3ETag"|"S3Version"|"Custom",
-            Value = "string"
-          )
-        )
-      ),
-      ArtifactType = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the artifacts in your account and their properties.
-}
-\section{Request syntax}{
-\preformatted{svc$list_artifacts(
-  SourceUri = "string",
-  ArtifactType = "string",
-  CreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_artifacts.html} for full documentation.
+}
 \keyword{internal}

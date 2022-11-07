@@ -9,21 +9,9 @@ codepipeline_delete_webhook(name)
 \arguments{
 \item{name}{[required] The name of the webhook you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a previously created webhook by name. Deleting the webhook stops
-AWS CodePipeline from starting a pipeline every time an external event
-occurs. The API returns successfully when trying to delete a webhook
-that is already deleted. If a deleted webhook is re-created by calling
-PutWebhook with the same name, it will have a different URL.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_webhook(
-  name = "string"
-)
-}
-}
+Deletes a previously created webhook by name. Deleting the webhook stops AWS CodePipeline from starting a pipeline every time an external event occurs. The API returns successfully when trying to delete a webhook that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will have a different URL.
 
+See \url{https://paws-r.github.io/docs/codepipeline/delete_webhook.html} for full documentation.
+}
 \keyword{internal}

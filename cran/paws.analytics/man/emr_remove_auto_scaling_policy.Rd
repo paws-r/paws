@@ -14,19 +14,9 @@ scaling policy is applied is within this cluster.}
 \item{InstanceGroupId}{[required] Specifies the ID of the instance group to which the scaling policy is
 applied.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes an automatic scaling policy from a specified instance group
-within an EMR cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_auto_scaling_policy(
-  ClusterId = "string",
-  InstanceGroupId = "string"
-)
-}
-}
+Removes an automatic scaling policy from a specified instance group within an EMR cluster.
 
+See \url{https://paws-r.github.io/docs/emr/remove_auto_scaling_policy.html} for full documentation.
+}
 \keyword{internal}

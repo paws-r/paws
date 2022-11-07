@@ -5,20 +5,35 @@
 \title{For a specific time period, retrieve the top N dimension keys for a
 metric}
 \usage{
-pi_describe_dimension_keys(ServiceType, Identifier, StartTime, EndTime,
-  Metric, PeriodInSeconds, GroupBy, PartitionBy, Filter, MaxResults,
-  NextToken)
+pi_describe_dimension_keys(
+  ServiceType,
+  Identifier,
+  StartTime,
+  EndTime,
+  Metric,
+  PeriodInSeconds = NULL,
+  GroupBy,
+  AdditionalMetrics = NULL,
+  PartitionBy = NULL,
+  Filter = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{ServiceType}{[required] The AWS service for which Performance Insights will return metrics. The
-only valid value for \emph{ServiceType} is \code{RDS}.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights will
+return metrics. Valid values are as follows:
+\itemize{
+\item \code{RDS}
+\item \code{DOCDB}
+}}
 
-\item{Identifier}{[required] An immutable, AWS Region-unique identifier for a data source.
-Performance Insights gathers metrics from this data source.
+\item{Identifier}{[required] An immutable, Amazon Web Services Region-unique identifier for a data
+source. Performance Insights gathers metrics from this data source.
 
 To use an Amazon RDS instance as a data source, you specify its
 \code{DbiResourceId} value. For example, specify
-\code{db-FAIHNTYBKTGAUSUZQYPDS2GW4A}}
+\code{db-FAIHNTYBKTGAUSUZQYPDS2GW4A}.}
 
 \item{StartTime}{[required] The date and time specifying the beginning of the requested time series
 data. You must specify a \code{StartTime} within the past 7 days. The value
@@ -37,9 +52,9 @@ The value for \code{EndTime} must be later than the value for \code{StartTime}.}
 
 Valid values for \code{Metric} are:
 \itemize{
-\item \code{db.load.avg} - a scaled representation of the number of active
+\item \code{db.load.avg} - A scaled representation of the number of active
 sessions for the database engine.
-\item \code{db.sampledload.avg} - the raw number of active sessions for the
+\item \code{db.sampledload.avg} - The raw number of active sessions for the
 database engine.
 }
 
@@ -72,6 +87,12 @@ returns all dimensions within this group, unless you provide the names
 of specific dimensions within this group. You can also request that
 Performance Insights return a limited number of values for a dimension.}
 
+\item{AdditionalMetrics}{Additional metrics for the top \code{N} dimension keys. If the specified
+dimension group in the \code{GroupBy} parameter is \code{db.sql_tokenized}, you
+can specify per-SQL metrics to get the values for the top \code{N} SQL
+digests. The response syntax is as follows:
+\code{"AdditionalMetrics" : { "string" : "string" }}.}
+
 \item{PartitionBy}{For each dimension specified in \code{GroupBy}, specify a secondary dimension
 to further subdivide the partition keys in the response.}
 
@@ -90,76 +111,9 @@ included in the response so that the remaining results can be retrieved.}
 parameter is specified, the response includes only records beyond the
 token, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AlignedStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  AlignedEndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  PartitionKeys = list(
-    list(
-      Dimensions = list(
-        "string"
-      )
-    )
-  ),
-  Keys = list(
-    list(
-      Dimensions = list(
-        "string"
-      ),
-      Total = 123.0,
-      Partitions = list(
-        123.0
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-For a specific time period, retrieve the top \code{N} dimension keys for a
-metric.
+For a specific time period, retrieve the top \code{N} dimension keys for a metric.
 
-Each response element returns a maximum of 500 bytes. For larger
-elements, such as SQL statements, only the first 500 bytes are returned.
+See \url{https://paws-r.github.io/docs/pi/describe_dimension_keys.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_dimension_keys(
-  ServiceType = "RDS",
-  Identifier = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Metric = "string",
-  PeriodInSeconds = 123,
-  GroupBy = list(
-    Group = "string",
-    Dimensions = list(
-      "string"
-    ),
-    Limit = 123
-  ),
-  PartitionBy = list(
-    Group = "string",
-    Dimensions = list(
-      "string"
-    ),
-    Limit = 123
-  ),
-  Filter = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,13 +4,18 @@
 \alias{sns_subscribe}
 \title{Subscribes an endpoint to an Amazon SNS topic}
 \usage{
-sns_subscribe(TopicArn, Protocol, Endpoint, Attributes,
-  ReturnSubscriptionArn)
+sns_subscribe(
+  TopicArn,
+  Protocol,
+  Endpoint = NULL,
+  Attributes = NULL,
+  ReturnSubscriptionArn = NULL
+)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic you want to subscribe to.}
 
-\item{Protocol}{[required] The protocol you want to use. Supported protocols include:
+\item{Protocol}{[required] The protocol that you want to use. Supported protocols include:
 \itemize{
 \item \code{http} – delivery of JSON-encoded message via HTTP POST
 \item \code{https} – delivery of JSON-encoded message via HTTPS POST
@@ -19,35 +24,37 @@ sns_subscribe(TopicArn, Protocol, Endpoint, Attributes,
 \item \code{sms} – delivery of message via SMS
 \item \code{sqs} – delivery of JSON-encoded message to an Amazon SQS queue
 \item \code{application} – delivery of JSON-encoded message to an EndpointArn
-for a mobile app and device.
-\item \code{lambda} – delivery of JSON-encoded message to an Amazon Lambda
-function.
+for a mobile app and device
+\item \code{lambda} – delivery of JSON-encoded message to an Lambda function
+\item \code{firehose} – delivery of JSON-encoded message to an Amazon Kinesis
+Data Firehose delivery stream.
 }}
 
 \item{Endpoint}{The endpoint that you want to receive notifications. Endpoints vary by
 protocol:
 \itemize{
 \item For the \code{http} protocol, the (public) endpoint is a URL beginning
-with \verb{http://}
+with \verb{http://}.
 \item For the \code{https} protocol, the (public) endpoint is a URL beginning
-with \verb{https://}
-\item For the \code{email} protocol, the endpoint is an email address
-\item For the \code{email-json} protocol, the endpoint is an email address
+with \verb{https://}.
+\item For the \code{email} protocol, the endpoint is an email address.
+\item For the \code{email-json} protocol, the endpoint is an email address.
 \item For the \code{sms} protocol, the endpoint is a phone number of an
-SMS-enabled device
+SMS-enabled device.
 \item For the \code{sqs} protocol, the endpoint is the ARN of an Amazon SQS
-queue
+queue.
 \item For the \code{application} protocol, the endpoint is the EndpointArn of a
 mobile app and device.
-\item For the \code{lambda} protocol, the endpoint is the ARN of an Amazon
-Lambda function.
+\item For the \code{lambda} protocol, the endpoint is the ARN of an Lambda
+function.
+\item For the \code{firehose} protocol, the endpoint is the ARN of an Amazon
+Kinesis Data Firehose delivery stream.
 }}
 
 \item{Attributes}{A map of attributes with their corresponding values.
 
 The following lists the names, descriptions, and values of the special
-request parameters that the
-\code{\link[=sns_set_topic_attributes]{set_topic_attributes}} action uses:
+request parameters that the \code{\link[=sns_subscribe]{subscribe}} action uses:
 \itemize{
 \item \code{DeliveryPolicy} – The policy that defines how Amazon SNS retries
 failed deliveries to HTTP/S endpoints.
@@ -64,6 +71,22 @@ delivered due to client errors (for example, when the subscribed
 endpoint is unreachable) or server errors (for example, when the
 service that powers the subscribed endpoint becomes unavailable) are
 held in the dead-letter queue for further analysis or reprocessing.
+}
+
+The following attribute applies only to Amazon Kinesis Data Firehose
+delivery stream subscriptions:
+\itemize{
+\item \code{SubscriptionRoleArn} – The ARN of the IAM role that has the
+following:
+\itemize{
+\item Permission to write to the Kinesis Data Firehose delivery stream
+\item Amazon SNS listed as a trusted entity
+}
+
+Specifying a valid ARN for this attribute is required for Kinesis
+Data Firehose delivery stream subscriptions. For more information,
+see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html}{Fanout to Kinesis Data Firehose delivery streams}
+in the \emph{Amazon SNS Developer Guide}.
 }}
 
 \item{ReturnSubscriptionArn}{Sets whether the response from the \code{\link[=sns_subscribe]{subscribe}} request
@@ -80,36 +103,9 @@ confirmation token.
 
 The default value is \code{false}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SubscriptionArn = "string"
-)
-}
-}
 \description{
-Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
-HTTP/S or email, or if the endpoint and the topic are not in the same
-AWS account, the endpoint owner must run the
-\code{\link[=sns_confirm_subscription]{confirm_subscription}} action to confirm the
-subscription.
+Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is HTTP/S or email, or if the endpoint and the topic are not in the same Amazon Web Services account, the endpoint owner must run the \code{\link[=sns_confirm_subscription]{confirm_subscription}} action to confirm the subscription.
 
-You call the \code{\link[=sns_confirm_subscription]{confirm_subscription}} action
-with the token from the subscription response. Confirmation tokens are
-valid for three days.
-
-This action is throttled at 100 transactions per second (TPS).
+See \url{https://paws-r.github.io/docs/sns/subscribe.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$subscribe(
-  TopicArn = "string",
-  Protocol = "string",
-  Endpoint = "string",
-  Attributes = list(
-    "string"
-  ),
-  ReturnSubscriptionArn = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

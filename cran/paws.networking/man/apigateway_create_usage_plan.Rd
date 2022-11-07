@@ -5,11 +5,17 @@
 \title{Creates a usage plan with the throttle and quota limits, as well as the
 associated API stages, specified in the payload}
 \usage{
-apigateway_create_usage_plan(name, description, apiStages, throttle,
-  quota, tags)
+apigateway_create_usage_plan(
+  name,
+  description = NULL,
+  apiStages = NULL,
+  throttle = NULL,
+  quota = NULL,
+  tags = NULL
+)
 }
 \arguments{
-\item{name}{[required] [Required] The name of the usage plan.}
+\item{name}{[required] The name of the usage plan.}
 
 \item{description}{The description of the usage plan.}
 
@@ -23,73 +29,9 @@ apigateway_create_usage_plan(name, description, apiStages, throttle,
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  apiStages = list(
-    list(
-      apiId = "string",
-      stage = "string",
-      throttle = list(
-        list(
-          burstLimit = 123,
-          rateLimit = 123.0
-        )
-      )
-    )
-  ),
-  throttle = list(
-    burstLimit = 123,
-    rateLimit = 123.0
-  ),
-  quota = list(
-    limit = 123,
-    offset = 123,
-    period = "DAY"|"WEEK"|"MONTH"
-  ),
-  productCode = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Creates a usage plan with the throttle and quota limits, as well as the
-associated API stages, specified in the payload.
-}
-\section{Request syntax}{
-\preformatted{svc$create_usage_plan(
-  name = "string",
-  description = "string",
-  apiStages = list(
-    list(
-      apiId = "string",
-      stage = "string",
-      throttle = list(
-        list(
-          burstLimit = 123,
-          rateLimit = 123.0
-        )
-      )
-    )
-  ),
-  throttle = list(
-    burstLimit = 123,
-    rateLimit = 123.0
-  ),
-  quota = list(
-    limit = 123,
-    offset = 123,
-    period = "DAY"|"WEEK"|"MONTH"
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
-}
+Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload.
 
+See \url{https://paws-r.github.io/docs/apigateway/create_usage_plan.html} for full documentation.
+}
 \keyword{internal}

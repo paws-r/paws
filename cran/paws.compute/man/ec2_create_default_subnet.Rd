@@ -5,7 +5,7 @@
 \title{Creates a default subnet with a size /20 IPv4 CIDR block in the
 specified Availability Zone in your default VPC}
 \usage{
-ec2_create_default_subnet(AvailabilityZone, DryRun)
+ec2_create_default_subnet(AvailabilityZone, DryRun = NULL, Ipv6Native = NULL)
 }
 \arguments{
 \item{AvailabilityZone}{[required] The Availability Zone in which to create the default subnet.}
@@ -14,58 +14,14 @@ ec2_create_default_subnet(AvailabilityZone, DryRun)
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Subnet = list(
-    AvailabilityZone = "string",
-    AvailabilityZoneId = "string",
-    AvailableIpAddressCount = 123,
-    CidrBlock = "string",
-    DefaultForAz = TRUE|FALSE,
-    MapPublicIpOnLaunch = TRUE|FALSE,
-    MapCustomerOwnedIpOnLaunch = TRUE|FALSE,
-    CustomerOwnedIpv4Pool = "string",
-    State = "pending"|"available",
-    SubnetId = "string",
-    VpcId = "string",
-    OwnerId = "string",
-    AssignIpv6AddressOnCreation = TRUE|FALSE,
-    Ipv6CidrBlockAssociationSet = list(
-      list(
-        AssociationId = "string",
-        Ipv6CidrBlock = "string",
-        Ipv6CidrBlockState = list(
-          State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-          StatusMessage = "string"
-        )
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    SubnetArn = "string",
-    OutpostArn = "string"
-  )
-)
-}
+
+\item{Ipv6Native}{Indicates whether to create an IPv6 only subnet. If you already have a
+default subnet for this Availability Zone, you must delete it before you
+can create an IPv6 only subnet.}
 }
 \description{
-Creates a default subnet with a size \verb{/20} IPv4 CIDR block in the
-specified Availability Zone in your default VPC. You can have only one
-default subnet per Availability Zone. For more information, see
-\href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet}{Creating a Default Subnet}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_default_subnet(
-  AvailabilityZone = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Creates a default subnet with a size \verb{/20} IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet}{Creating a default subnet} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
+See \url{https://paws-r.github.io/docs/ec2/create_default_subnet.html} for full documentation.
+}
 \keyword{internal}

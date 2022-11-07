@@ -15,21 +15,9 @@ To find the cluster ID, use
 \item{TagKeyList}{[required] A list of one or more tag keys for the tags that you are removing.
 Specify only the tag keys, not the tag values.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the specified tag or tags from the specified AWS CloudHSM
-cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceId = "string",
-  TagKeyList = list(
-    "string"
-  )
-)
-}
-}
+Removes the specified tag or tags from the specified AWS CloudHSM cluster.
 
+See \url{https://paws-r.github.io/docs/cloudhsmv2/untag_resource.html} for full documentation.
+}
 \keyword{internal}

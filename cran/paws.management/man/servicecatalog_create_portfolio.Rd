@@ -4,8 +4,14 @@
 \alias{servicecatalog_create_portfolio}
 \title{Creates a portfolio}
 \usage{
-servicecatalog_create_portfolio(AcceptLanguage, DisplayName,
-  Description, ProviderName, Tags, IdempotencyToken)
+servicecatalog_create_portfolio(
+  AcceptLanguage = NULL,
+  DisplayName,
+  Description = NULL,
+  ProviderName,
+  Tags = NULL,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -27,47 +33,9 @@ servicecatalog_create_portfolio(AcceptLanguage, DisplayName,
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PortfolioDetail = list(
-    Id = "string",
-    ARN = "string",
-    DisplayName = "string",
-    Description = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProviderName = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Creates a portfolio.
 
-A delegated admin is authorized to invoke this command.
+See \url{https://paws-r.github.io/docs/servicecatalog/create_portfolio.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_portfolio(
-  AcceptLanguage = "string",
-  DisplayName = "string",
-  Description = "string",
-  ProviderName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  IdempotencyToken = "string"
-)
-}
-}
-
 \keyword{internal}

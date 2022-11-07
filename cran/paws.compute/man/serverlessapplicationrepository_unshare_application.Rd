@@ -4,29 +4,19 @@
 \alias{serverlessapplicationrepository_unshare_application}
 \title{Unshares an application from an AWS Organization}
 \usage{
-serverlessapplicationrepository_unshare_application(ApplicationId,
-  OrganizationId)
+serverlessapplicationrepository_unshare_application(
+  ApplicationId,
+  OrganizationId
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 
 \item{OrganizationId}{[required] The AWS Organization ID to unshare the application from.}
 }
-\value{
-An empty list.
-}
 \description{
 Unshares an application from an AWS Organization.
 
-This operation can be called only from the organization's master
-account.
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/unshare_application.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$unshare_application(
-  ApplicationId = "string",
-  OrganizationId = "string"
-)
-}
-}
-
 \keyword{internal}

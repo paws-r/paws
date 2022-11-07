@@ -5,11 +5,16 @@
 \title{A feature of the API Gateway control service for updating an existing
 API with an input of external API definitions}
 \usage{
-apigateway_put_rest_api(restApiId, mode, failOnWarnings, parameters,
-  body)
+apigateway_put_rest_api(
+  restApiId,
+  mode = NULL,
+  failOnWarnings = NULL,
+  parameters = NULL,
+  body
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
 \item{mode}{The \code{mode} query parameter to specify the update mode. Valid values are
 "merge" and "overwrite". By default, the update mode is "merge".}
@@ -23,60 +28,13 @@ DocumentationParts from an imported API, set \code{ignore=documentation} as a
 \code{parameters} value, as in the AWS CLI command of
 \verb{aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'}.}
 
-\item{body}{[required] [Required] The PUT request body containing external API definitions.
-Currently, only OpenAPI definition JSON/YAML files are supported. The
-maximum size of the API definition file is 6MB.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  version = "string",
-  warnings = list(
-    "string"
-  ),
-  binaryMediaTypes = list(
-    "string"
-  ),
-  minimumCompressionSize = 123,
-  apiKeySource = "HEADER"|"AUTHORIZER",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  policy = "string",
-  tags = list(
-    "string"
-  ),
-  disableExecuteApiEndpoint = TRUE|FALSE
-)
-}
+\item{body}{[required] The PUT request body containing external API definitions. Currently,
+only OpenAPI definition JSON/YAML files are supported. The maximum size
+of the API definition file is 6MB.}
 }
 \description{
-A feature of the API Gateway control service for updating an existing
-API with an input of external API definitions. The update can take the
-form of merging the supplied definition into the existing API or
-overwriting the existing API.
-}
-\section{Request syntax}{
-\preformatted{svc$put_rest_api(
-  restApiId = "string",
-  mode = "merge"|"overwrite",
-  failOnWarnings = TRUE|FALSE,
-  parameters = list(
-    "string"
-  ),
-  body = raw
-)
-}
-}
+A feature of the API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.
 
+See \url{https://paws-r.github.io/docs/apigateway/put_rest_api.html} for full documentation.
+}
 \keyword{internal}

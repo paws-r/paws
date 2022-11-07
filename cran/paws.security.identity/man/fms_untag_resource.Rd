@@ -2,31 +2,20 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_untag_resource}
 \alias{fms_untag_resource}
-\title{Removes one or more tags from an AWS resource}
+\title{Removes one or more tags from an Amazon Web Services resource}
 \usage{
 fms_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to return tags for. The
-AWS Firewall Manager resources that support tagging are policies,
+Firewall Manager resources that support tagging are policies,
 applications lists, and protocols lists.}
 
 \item{TagKeys}{[required] The keys of the tags to remove from the resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes one or more tags from an AWS resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes one or more tags from an Amazon Web Services resource.
 
+See \url{https://paws-r.github.io/docs/fms/untag_resource.html} for full documentation.
+}
 \keyword{internal}

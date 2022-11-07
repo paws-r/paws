@@ -5,8 +5,11 @@
 \title{Updates the specified application version to have the specified
 properties}
 \usage{
-elasticbeanstalk_update_application_version(ApplicationName,
-  VersionLabel, Description)
+elasticbeanstalk_update_application_version(
+  ApplicationName,
+  VersionLabel,
+  Description = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application associated with this version.
@@ -23,60 +26,9 @@ If no application version is found with this label,
 
 \item{Description}{A new description for this version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationVersion = list(
-    ApplicationVersionArn = "string",
-    ApplicationName = "string",
-    Description = "string",
-    VersionLabel = "string",
-    SourceBuildInformation = list(
-      SourceType = "Git"|"Zip",
-      SourceRepository = "CodeCommit"|"S3",
-      SourceLocation = "string"
-    ),
-    BuildArn = "string",
-    SourceBundle = list(
-      S3Bucket = "string",
-      S3Key = "string"
-    ),
-    DateCreated = as.POSIXct(
-      "2015-01-01"
-    ),
-    DateUpdated = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
-  )
-)
-}
-}
 \description{
-Updates the specified application version to have the specified
-properties.
+Updates the specified application version to have the specified properties.
 
-If a property (for example, \code{description}) is not provided, the value
-remains unchanged. To clear properties, specify an empty string.
-}
-\section{Request syntax}{
-\preformatted{svc$update_application_version(
-  ApplicationName = "string",
-  VersionLabel = "string",
-  Description = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation updates the description of an application
-# version named 22a0-stage-150819_185942:
-svc$update_application_version(
-  ApplicationName = "my-app",
-  Description = "new description",
-  VersionLabel = "22a0-stage-150819_185942"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_application_version.html} for full documentation.
 }
 \keyword{internal}

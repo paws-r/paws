@@ -10,18 +10,9 @@ guardduty_delete_detector(DetectorId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an Amazon GuardDuty detector that is specified by the detector
-ID.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_detector(
-  DetectorId = "string"
-)
-}
-}
+Deletes an Amazon GuardDuty detector that is specified by the detector ID.
 
+See \url{https://paws-r.github.io/docs/guardduty/delete_detector.html} for full documentation.
+}
 \keyword{internal}

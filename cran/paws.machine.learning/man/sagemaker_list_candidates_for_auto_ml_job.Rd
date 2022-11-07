@@ -2,85 +2,37 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_list_candidates_for_auto_ml_job}
 \alias{sagemaker_list_candidates_for_auto_ml_job}
-\title{List the Candidates created for the job}
+\title{List the candidates created for the job}
 \usage{
-sagemaker_list_candidates_for_auto_ml_job(AutoMLJobName, StatusEquals,
-  CandidateNameEquals, SortOrder, SortBy, MaxResults, NextToken)
+sagemaker_list_candidates_for_auto_ml_job(
+  AutoMLJobName,
+  StatusEquals = NULL,
+  CandidateNameEquals = NULL,
+  SortOrder = NULL,
+  SortBy = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{AutoMLJobName}{[required] List the Candidates created for the job by providing the job's name.}
+\item{AutoMLJobName}{[required] List the candidates created for the job by providing the job's name.}
 
-\item{StatusEquals}{List the Candidates for the job and filter by status.}
+\item{StatusEquals}{List the candidates for the job and filter by status.}
 
-\item{CandidateNameEquals}{List the Candidates for the job and filter by candidate name.}
+\item{CandidateNameEquals}{List the candidates for the job and filter by candidate name.}
 
-\item{SortOrder}{The sort order for the results. The default is Ascending.}
+\item{SortOrder}{The sort order for the results. The default is \code{Ascending}.}
 
-\item{SortBy}{The parameter by which to sort the results. The default is Descending.}
+\item{SortBy}{The parameter by which to sort the results. The default is \code{Descending}.}
 
-\item{MaxResults}{List the job's Candidates up to a specified limit.}
+\item{MaxResults}{List the job's candidates up to a specified limit.}
 
 \item{NextToken}{If the previous response was truncated, you receive this token. Use it
 in your next request to receive the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Candidates = list(
-    list(
-      CandidateName = "string",
-      FinalAutoMLJobObjectiveMetric = list(
-        Type = "Maximize"|"Minimize",
-        MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC",
-        Value = 123.0
-      ),
-      ObjectiveStatus = "Succeeded"|"Pending"|"Failed",
-      CandidateSteps = list(
-        list(
-          CandidateStepType = "AWS::SageMaker::TrainingJob"|"AWS::SageMaker::TransformJob"|"AWS::SageMaker::ProcessingJob",
-          CandidateStepArn = "string",
-          CandidateStepName = "string"
-        )
-      ),
-      CandidateStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-      InferenceContainers = list(
-        list(
-          Image = "string",
-          ModelDataUrl = "string",
-          Environment = list(
-            "string"
-          )
-        )
-      ),
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FailureReason = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List the Candidates created for the job.
-}
-\section{Request syntax}{
-\preformatted{svc$list_candidates_for_auto_ml_job(
-  AutoMLJobName = "string",
-  StatusEquals = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-  CandidateNameEquals = "string",
-  SortOrder = "Ascending"|"Descending",
-  SortBy = "CreationTime"|"Status"|"FinalObjectiveMetricValue",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+List the candidates created for the job.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_candidates_for_auto_ml_job.html} for full documentation.
+}
 \keyword{internal}

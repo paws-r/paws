@@ -4,8 +4,7 @@
 \alias{cognitoidentityprovider_add_custom_attributes}
 \title{Adds additional user attributes to the user pool schema}
 \usage{
-cognitoidentityprovider_add_custom_attributes(UserPoolId,
-  CustomAttributes)
+cognitoidentityprovider_add_custom_attributes(UserPoolId, CustomAttributes)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to add custom
@@ -13,34 +12,9 @@ attributes.}
 
 \item{CustomAttributes}{[required] An array of custom attributes, such as Mutable and Name.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds additional user attributes to the user pool schema.
-}
-\section{Request syntax}{
-\preformatted{svc$add_custom_attributes(
-  UserPoolId = "string",
-  CustomAttributes = list(
-    list(
-      Name = "string",
-      AttributeDataType = "String"|"Number"|"DateTime"|"Boolean",
-      DeveloperOnlyAttribute = TRUE|FALSE,
-      Mutable = TRUE|FALSE,
-      Required = TRUE|FALSE,
-      NumberAttributeConstraints = list(
-        MinValue = "string",
-        MaxValue = "string"
-      ),
-      StringAttributeConstraints = list(
-        MinLength = "string",
-        MaxLength = "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/add_custom_attributes.html} for full documentation.
+}
 \keyword{internal}

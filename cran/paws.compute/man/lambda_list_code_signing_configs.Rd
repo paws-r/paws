@@ -4,7 +4,7 @@
 \alias{lambda_list_code_signing_configs}
 \title{Returns a list of code signing configurations}
 \usage{
-lambda_list_code_signing_configs(Marker, MaxItems)
+lambda_list_code_signing_configs(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{Specify the pagination token that's returned by a previous request to
@@ -12,39 +12,9 @@ retrieve the next page of results.}
 
 \item{MaxItems}{Maximum number of items to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  CodeSigningConfigs = list(
-    list(
-      CodeSigningConfigId = "string",
-      CodeSigningConfigArn = "string",
-      Description = "string",
-      AllowedPublishers = list(
-        SigningProfileVersionArns = list(
-          "string"
-        )
-      ),
-      CodeSigningPolicies = list(
-        UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-      ),
-      LastModified = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{code signing configurations}.
-A request returns up to 10,000 configurations per call. You can use the
-\code{MaxItems} parameter to return fewer configurations per call.
-}
-\section{Request syntax}{
-\preformatted{svc$list_code_signing_configs(
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{code signing configurations}. A request returns up to 10,000 configurations per call. You can use the \code{MaxItems} parameter to return fewer configurations per call.
 
+See \url{https://paws-r.github.io/docs/lambda/list_code_signing_configs.html} for full documentation.
+}
 \keyword{internal}

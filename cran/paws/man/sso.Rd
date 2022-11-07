@@ -7,7 +7,19 @@
 sso(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,26 +28,32 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Single Sign-On Portal is a web service that makes it easy for you to
-assign user access to AWS SSO resources such as the user portal. Users
-can get AWS account applications and roles assigned to them and get
-federated into the application.
+Amazon Web Services Single Sign On Portal is a web service that makes it
+easy for you to assign user access to Amazon Web Services SSO resources
+such as the AWS access portal. Users can get Amazon Web Services account
+applications and roles assigned to them and get federated into the
+application.
 
-For general information about AWS SSO, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{What is AWS Single Sign-On?}
-in the \emph{AWS SSO User Guide}.
+Although Amazon Web Services Single Sign-On was renamed, the \code{sso} and
+\code{identitystore} API namespaces will continue to retain their original
+name for backward compatibility purposes. For more information, see
+\href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed}{Amazon Web Services SSO rename}.
 
-This API reference guide describes the AWS SSO Portal operations that
-you can call programatically and includes detailed information on data
-types and errors.
+This API reference guide describes the Amazon Web Services SSO Portal
+operations that you can call programatically and includes detailed
+information on data types and errors.
 
-AWS provides SDKs that consist of libraries and sample code for various
-programming languages and platforms, such as Java, Ruby, .Net, iOS, or
-Android. The SDKs provide a convenient way to create programmatic access
-to AWS SSO and other AWS services. For more information about the AWS
-SDKs, including how to download and install them, see \href{https://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
+Amazon Web Services provides SDKs that consist of libraries and sample
+code for various programming languages and platforms, such as Java,
+Ruby, .Net, iOS, or Android. The SDKs provide a convenient way to create
+programmatic access to Amazon Web Services SSO and other Amazon Web
+Services services. For more information about the Amazon Web Services
+SDKs, including how to download and install them, see \href{https://aws.amazon.com/developer/tools/}{Tools for Amazon Web Services}.
 }
 \section{Service syntax}{
-\preformatted{svc <- sso(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sso(
   config = list(
     credentials = list(
       creds = list(
@@ -43,22 +61,26 @@ SDKs, including how to download and install them, see \href{https://aws.amazon.c
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
 \link[=sso_get_role_credentials]{get_role_credentials} \tab Returns the STS short-term credentials for a given role name that is assigned to the user\cr
-\link[=sso_list_account_roles]{list_account_roles} \tab Lists all roles that are assigned to the user for a given AWS account\cr
-\link[=sso_list_accounts]{list_accounts} \tab Lists all AWS accounts assigned to the user\cr
-\link[=sso_logout]{logout} \tab Removes the client- and server-side session that is associated with the user
+\link[=sso_list_account_roles]{list_account_roles} \tab Lists all roles that are assigned to the user for a given Amazon Web Services account\cr
+\link[=sso_list_accounts]{list_accounts} \tab Lists all Amazon Web Services accounts assigned to the user\cr
+\link[=sso_logout]{logout} \tab Removes the locally stored SSO tokens from the client-side cache and sends an API call to the Amazon Web Services SSO service to invalidate the corresponding server-side Amazon Web Services SSO sign in session
 }
 }
 

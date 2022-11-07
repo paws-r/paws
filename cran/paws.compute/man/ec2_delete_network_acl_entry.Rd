@@ -5,7 +5,7 @@
 \title{Deletes the specified ingress or egress entry (rule) from the specified
 network ACL}
 \usage{
-ec2_delete_network_acl_entry(DryRun, Egress, NetworkAclId, RuleNumber)
+ec2_delete_network_acl_entry(DryRun = NULL, Egress, NetworkAclId, RuleNumber)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -19,33 +19,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RuleNumber}{[required] The rule number of the entry to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified ingress or egress entry (rule) from the specified
-network ACL.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_network_acl_entry(
-  DryRun = TRUE|FALSE,
-  Egress = TRUE|FALSE,
-  NetworkAclId = "string",
-  RuleNumber = 123
-)
-}
-}
+Deletes the specified ingress or egress entry (rule) from the specified network ACL.
 
-\examples{
-\dontrun{
-# This example deletes ingress rule number 100 from the specified network
-# ACL.
-svc$delete_network_acl_entry(
-  Egress = TRUE,
-  NetworkAclId = "acl-5fb85d36",
-  RuleNumber = 100L
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_network_acl_entry.html} for full documentation.
 }
 \keyword{internal}

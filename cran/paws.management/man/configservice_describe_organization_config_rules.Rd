@@ -2,85 +2,29 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_describe_organization_config_rules}
 \alias{configservice_describe_organization_config_rules}
-\title{Returns a list of organization config rules}
+\title{Returns a list of organization Config rules}
 \usage{
 configservice_describe_organization_config_rules(
-  OrganizationConfigRuleNames, Limit, NextToken)
+  OrganizationConfigRuleNames = NULL,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{OrganizationConfigRuleNames}{The names of organization config rules for which you want details. If
-you do not specify any names, AWS Config returns details for all your
-organization config rules.}
+\item{OrganizationConfigRuleNames}{The names of organization Config rules for which you want details. If
+you do not specify any names, Config returns details for all your
+organization Config rules.}
 
-\item{Limit}{The maximum number of organization config rules returned on each page.
-If you do no specify a number, AWS Config uses the default. The default
-is 100.}
+\item{Limit}{The maximum number of organization Config rules returned on each page.
+If you do no specify a number, Config uses the default. The default is
+100.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OrganizationConfigRules = list(
-    list(
-      OrganizationConfigRuleName = "string",
-      OrganizationConfigRuleArn = "string",
-      OrganizationManagedRuleMetadata = list(
-        Description = "string",
-        RuleIdentifier = "string",
-        InputParameters = "string",
-        MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-        ResourceTypesScope = list(
-          "string"
-        ),
-        ResourceIdScope = "string",
-        TagKeyScope = "string",
-        TagValueScope = "string"
-      ),
-      OrganizationCustomRuleMetadata = list(
-        Description = "string",
-        LambdaFunctionArn = "string",
-        OrganizationConfigRuleTriggerTypes = list(
-          "ConfigurationItemChangeNotification"|"OversizedConfigurationItemChangeNotification"|"ScheduledNotification"
-        ),
-        InputParameters = "string",
-        MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-        ResourceTypesScope = list(
-          "string"
-        ),
-        ResourceIdScope = "string",
-        TagKeyScope = "string",
-        TagValueScope = "string"
-      ),
-      ExcludedAccounts = list(
-        "string"
-      ),
-      LastUpdateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of organization config rules.
+Returns a list of organization Config rules.
 
-When you specify the limit and the next token, you receive a paginated
-response. Limit and next token are not applicable if you specify
-organization config rule names. It is only applicable, when you request
-all the organization config rules.
+See \url{https://paws-r.github.io/docs/configservice/describe_organization_config_rules.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_organization_config_rules(
-  OrganizationConfigRuleNames = list(
-    "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

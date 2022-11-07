@@ -4,8 +4,7 @@
 \alias{clouddirectory_attach_to_index}
 \title{Attaches the specified object to the specified index}
 \usage{
-clouddirectory_attach_to_index(DirectoryArn, IndexReference,
-  TargetReference)
+clouddirectory_attach_to_index(DirectoryArn, IndexReference, TargetReference)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where the object and
@@ -15,26 +14,9 @@ index exist.}
 
 \item{TargetReference}{[required] A reference to the object that you are attaching to the index.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AttachedObjectIdentifier = "string"
-)
-}
-}
 \description{
 Attaches the specified object to the specified index.
-}
-\section{Request syntax}{
-\preformatted{svc$attach_to_index(
-  DirectoryArn = "string",
-  IndexReference = list(
-    Selector = "string"
-  ),
-  TargetReference = list(
-    Selector = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/attach_to_index.html} for full documentation.
+}
 \keyword{internal}

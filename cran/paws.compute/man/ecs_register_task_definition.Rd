@@ -5,16 +5,31 @@
 \title{Registers a new task definition from the supplied family and
 containerDefinitions}
 \usage{
-ecs_register_task_definition(family, taskRoleArn, executionRoleArn,
-  networkMode, containerDefinitions, volumes, placementConstraints,
-  requiresCompatibilities, cpu, memory, tags, pidMode, ipcMode,
-  proxyConfiguration, inferenceAccelerators)
+ecs_register_task_definition(
+  family,
+  taskRoleArn = NULL,
+  executionRoleArn = NULL,
+  networkMode = NULL,
+  containerDefinitions,
+  volumes = NULL,
+  placementConstraints = NULL,
+  requiresCompatibilities = NULL,
+  cpu = NULL,
+  memory = NULL,
+  tags = NULL,
+  pidMode = NULL,
+  ipcMode = NULL,
+  proxyConfiguration = NULL,
+  inferenceAccelerators = NULL,
+  ephemeralStorage = NULL,
+  runtimePlatform = NULL
+)
 }
 \arguments{
-\item{family}{[required] You must specify a \code{family} for a task definition, which allows you to
-track multiple versions of the same task definition. The \code{family} is
-used as a name for your task definition. Up to 255 letters (uppercase
-and lowercase), numbers, and hyphens are allowed.}
+\item{family}{[required] You must specify a \code{family} for a task definition. You can use it track
+multiple versions of the same task definition. The \code{family} is used as a
+name for your task definition. Up to 255 letters (uppercase and
+lowercase), numbers, underscores, and hyphens are allowed.}
 
 \item{taskRoleArn}{The short name or full Amazon Resource Name (ARN) of the IAM role that
 containers in this task can assume. All containers in this task are
@@ -23,9 +38,10 @@ information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developergui
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{executionRoleArn}{The Amazon Resource Name (ARN) of the task execution role that grants
-the Amazon ECS container agent permission to make AWS API calls on your
-behalf. The task execution IAM role is required depending on the
-requirements of your task. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html}{Amazon ECS task execution IAM role}
+the Amazon ECS container agent permission to make Amazon Web Services
+API calls on your behalf. The task execution IAM role is required
+depending on the requirements of your task. For more information, see
+\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html}{Amazon ECS task execution IAM role}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{networkMode}{The Docker networking mode to use for the containers in the task. The
@@ -33,13 +49,14 @@ valid values are \code{none}, \code{bridge}, \code{awsvpc}, and \code{host}. If 
 mode is specified, the default is \code{bridge}.
 
 For Amazon ECS tasks on Fargate, the \code{awsvpc} network mode is required.
-For Amazon ECS tasks on Amazon EC2 instances, any network mode can be
-used. If the network mode is set to \code{none}, you cannot specify port
-mappings in your container definitions, and the tasks containers do not
-have external connectivity. The \code{host} and \code{awsvpc} network modes offer
-the highest networking performance for containers because they use the
-EC2 network stack instead of the virtualized network stack provided by
-the \code{bridge} mode.
+For Amazon ECS tasks on Amazon EC2 Linux instances, any network mode can
+be used. For Amazon ECS tasks on Amazon EC2 Windows instances,
+\verb{<default>} or \code{awsvpc} can be used. If the network mode is set to
+\code{none}, you cannot specify port mappings in your container definitions,
+and the tasks containers do not have external connectivity. The \code{host}
+and \code{awsvpc} network modes offer the highest networking performance for
+containers because they use the EC2 network stack instead of the
+virtualized network stack provided by the \code{bridge} mode.
 
 With the \code{host} and \code{awsvpc} network modes, exposed container ports are
 mapped directly to the corresponding host port (for the \code{host} network
@@ -57,19 +74,9 @@ when you create a service or run a task with the task definition. For
 more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants
-with the \code{ecs-init} package, or AWS Fargate infrastructure support the
-\code{awsvpc} network mode.
-
 If the network mode is \code{host}, you cannot run multiple instantiations of
 the same task on a single container instance when port mappings are
 used.
-
-Docker for Windows uses different network modes than Docker for Linux.
-When you register a task definition with Windows containers, you must
-not specify a network mode. If you use the console to register a task
-definition with Windows containers, you must choose the \verb{<default>}
-network mode object.
 
 For more information, see \href{https://docs.docker.com/engine/reference/run/#network-settings}{Network settings}
 in the \emph{Docker run reference}.}
@@ -78,20 +85,20 @@ in the \emph{Docker run reference}.}
 different containers that make up your task.}
 
 \item{volumes}{A list of volume definitions in JSON format that containers in your task
-may use.}
+might use.}
 
 \item{placementConstraints}{An array of placement constraint objects to use for the task. You can
-specify a maximum of 10 constraints per task (this limit includes
-constraints in the task definition and those specified at runtime).}
+specify a maximum of 10 constraints for each task. This limit includes
+constraints in the task definition and those specified at runtime.}
 
-\item{requiresCompatibilities}{The task launch type that Amazon ECS should validate the task definition
-against. This ensures that the task definition parameters are compatible
-with the specified launch type. If no value is specified, it defaults to
-\code{EC2}.}
+\item{requiresCompatibilities}{The task launch type that Amazon ECS validates the task definition
+against. A client exception is returned if the task definition doesn't
+validate against the compatibilities specified. If no value is
+specified, the parameter is omitted from the response.}
 
 \item{cpu}{The number of CPU units used by the task. It can be expressed as an
-integer using CPU units, for example \code{1024}, or as a string using vCPUs,
-for example \verb{1 vCPU} or \verb{1 vcpu}, in a task definition. String values
+integer using CPU units (for example, \code{1024}) or as a string using vCPUs
+(for example, \verb{1 vCPU} or \verb{1 vcpu}) in a task definition. String values
 are converted to an integer indicating the CPU units when the task
 definition is registered.
 
@@ -99,13 +106,16 @@ Task-level CPU and memory parameters are ignored for Windows containers.
 We recommend specifying container-level resources for Windows
 containers.
 
-If you are using the EC2 launch type, this field is optional. Supported
+If you're using the EC2 launch type, this field is optional. Supported
 values are between \code{128} CPU units (\code{0.125} vCPUs) and \code{10240} CPU units
 (\code{10} vCPUs).
 
-If you are using the Fargate launch type, this field is required and you
+If you're using the Fargate launch type, this field is required and you
 must use one of the following values, which determines your range of
 supported values for the \code{memory} parameter:
+
+The CPU units cannot be less than 1 vCPU when you use Windows containers
+on Fargate.
 \itemize{
 \item 256 (.25 vCPU) - Available \code{memory} values: 512 (0.5 GB), 1024 (1
 GB), 2048 (2 GB)
@@ -120,8 +130,8 @@ GB), 2048 (2 GB)
 }}
 
 \item{memory}{The amount of memory (in MiB) used by the task. It can be expressed as
-an integer using MiB, for example \code{1024}, or as a string using GB, for
-example \verb{1GB} or \verb{1 GB}, in a task definition. String values are
+an integer using MiB (for example ,\code{1024}) or as a string using GB (for
+example, \verb{1GB} or \verb{1 GB}) in a task definition. String values are
 converted to an integer indicating the MiB when the task definition is
 registered.
 
@@ -132,8 +142,11 @@ containers.
 If using the EC2 launch type, this field is optional.
 
 If using the Fargate launch type, this field is required and you must
-use one of the following values, which determines your range of
-supported values for the \code{cpu} parameter:
+use one of the following values. This determines your range of supported
+values for the \code{cpu} parameter.
+
+The CPU units cannot be less than 1 vCPU when you use Windows containers
+on Fargate.
 \itemize{
 \item 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available \code{cpu} values: 256
 (.25 vCPU)
@@ -149,7 +162,7 @@ Available \code{cpu} values: 4096 (4 vCPU)
 
 \item{tags}{The metadata that you apply to the task definition to help you
 categorize and organize them. Each tag consists of a key and an optional
-value, both of which you define.
+value. You define both of them.
 
 The following basic restrictions apply to tags:
 \itemize{
@@ -165,10 +178,10 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for either keys or values as it is reserved for AWS
-use. You cannot edit or delete tag keys or values with this prefix.
-Tags with this prefix do not count against your tags per resource
-limit.
+such as a prefix for either keys or values as it is reserved for
+Amazon Web Services use. You cannot edit or delete tag keys or
+values with this prefix. Tags with this prefix do not count against
+your tags per resource limit.
 }}
 
 \item{pidMode}{The process namespace to use for the containers in the task. The valid
@@ -182,10 +195,10 @@ specified, the default is a private namespace. For more information, see
 in the \emph{Docker run reference}.
 
 If the \code{host} PID mode is used, be aware that there is a heightened risk
-of undesired process namespace expose. For more information, see \href{https://docs.docker.com/engine/security/security/}{Docker security}.
+of undesired process namespace expose. For more information, see \href{https://docs.docker.com/engine/security/}{Docker security}.
 
-This parameter is not supported for Windows containers or tasks using
-the Fargate launch type.}
+This parameter is not supported for Windows containers or tasks run on
+Fargate.}
 
 \item{ipcMode}{The IPC resource namespace to use for the containers in the task. The
 valid values are \code{host}, \code{task}, or \code{none}. If \code{host} is specified, then
@@ -201,7 +214,7 @@ information, see \href{https://docs.docker.com/engine/reference/run/#ipc-setting
 in the \emph{Docker run reference}.
 
 If the \code{host} IPC mode is used, be aware that there is a heightened risk
-of undesired IPC namespace expose. For more information, see \href{https://docs.docker.com/engine/security/security/}{Docker security}.
+of undesired IPC namespace expose. For more information, see \href{https://docs.docker.com/engine/security/}{Docker security}.
 
 If you are setting namespaced kernel parameters using \code{systemControls}
 for the containers in the task, the following will apply to your IPC
@@ -214,582 +227,45 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 \code{systemControls} will apply to all containers within a task.
 }
 
-This parameter is not supported for Windows containers or tasks using
-the Fargate launch type.}
+This parameter is not supported for Windows containers or tasks run on
+Fargate.}
 
-\item{proxyConfiguration}{}
+\item{proxyConfiguration}{The configuration details for the App Mesh proxy.
+
+For tasks hosted on Amazon EC2 instances, the container instances
+require at least version \verb{1.26.0} of the container agent and at least
+version \verb{1.26.0-1} of the \code{ecs-init} package to use a proxy
+configuration. If your container instances are launched from the Amazon
+ECS-optimized AMI version \code{20190301} or later, then they contain the
+required versions of the container agent and \code{ecs-init}. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ami-versions.html}{Amazon ECS-optimized AMI versions}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{inferenceAccelerators}{The Elastic Inference accelerators to use for the containers in the
 task.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  taskDefinition = list(
-    taskDefinitionArn = "string",
-    containerDefinitions = list(
-      list(
-        name = "string",
-        image = "string",
-        repositoryCredentials = list(
-          credentialsParameter = "string"
-        ),
-        cpu = 123,
-        memory = 123,
-        memoryReservation = 123,
-        links = list(
-          "string"
-        ),
-        portMappings = list(
-          list(
-            containerPort = 123,
-            hostPort = 123,
-            protocol = "tcp"|"udp"
-          )
-        ),
-        essential = TRUE|FALSE,
-        entryPoint = list(
-          "string"
-        ),
-        command = list(
-          "string"
-        ),
-        environment = list(
-          list(
-            name = "string",
-            value = "string"
-          )
-        ),
-        environmentFiles = list(
-          list(
-            value = "string",
-            type = "s3"
-          )
-        ),
-        mountPoints = list(
-          list(
-            sourceVolume = "string",
-            containerPath = "string",
-            readOnly = TRUE|FALSE
-          )
-        ),
-        volumesFrom = list(
-          list(
-            sourceContainer = "string",
-            readOnly = TRUE|FALSE
-          )
-        ),
-        linuxParameters = list(
-          capabilities = list(
-            add = list(
-              "string"
-            ),
-            drop = list(
-              "string"
-            )
-          ),
-          devices = list(
-            list(
-              hostPath = "string",
-              containerPath = "string",
-              permissions = list(
-                "read"|"write"|"mknod"
-              )
-            )
-          ),
-          initProcessEnabled = TRUE|FALSE,
-          sharedMemorySize = 123,
-          tmpfs = list(
-            list(
-              containerPath = "string",
-              size = 123,
-              mountOptions = list(
-                "string"
-              )
-            )
-          ),
-          maxSwap = 123,
-          swappiness = 123
-        ),
-        secrets = list(
-          list(
-            name = "string",
-            valueFrom = "string"
-          )
-        ),
-        dependsOn = list(
-          list(
-            containerName = "string",
-            condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
-          )
-        ),
-        startTimeout = 123,
-        stopTimeout = 123,
-        hostname = "string",
-        user = "string",
-        workingDirectory = "string",
-        disableNetworking = TRUE|FALSE,
-        privileged = TRUE|FALSE,
-        readonlyRootFilesystem = TRUE|FALSE,
-        dnsServers = list(
-          "string"
-        ),
-        dnsSearchDomains = list(
-          "string"
-        ),
-        extraHosts = list(
-          list(
-            hostname = "string",
-            ipAddress = "string"
-          )
-        ),
-        dockerSecurityOptions = list(
-          "string"
-        ),
-        interactive = TRUE|FALSE,
-        pseudoTerminal = TRUE|FALSE,
-        dockerLabels = list(
-          "string"
-        ),
-        ulimits = list(
-          list(
-            name = "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",
-            softLimit = 123,
-            hardLimit = 123
-          )
-        ),
-        logConfiguration = list(
-          logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
-          options = list(
-            "string"
-          ),
-          secretOptions = list(
-            list(
-              name = "string",
-              valueFrom = "string"
-            )
-          )
-        ),
-        healthCheck = list(
-          command = list(
-            "string"
-          ),
-          interval = 123,
-          timeout = 123,
-          retries = 123,
-          startPeriod = 123
-        ),
-        systemControls = list(
-          list(
-            namespace = "string",
-            value = "string"
-          )
-        ),
-        resourceRequirements = list(
-          list(
-            value = "string",
-            type = "GPU"|"InferenceAccelerator"
-          )
-        ),
-        firelensConfiguration = list(
-          type = "fluentd"|"fluentbit",
-          options = list(
-            "string"
-          )
-        )
-      )
-    ),
-    family = "string",
-    taskRoleArn = "string",
-    executionRoleArn = "string",
-    networkMode = "bridge"|"host"|"awsvpc"|"none",
-    revision = 123,
-    volumes = list(
-      list(
-        name = "string",
-        host = list(
-          sourcePath = "string"
-        ),
-        dockerVolumeConfiguration = list(
-          scope = "task"|"shared",
-          autoprovision = TRUE|FALSE,
-          driver = "string",
-          driverOpts = list(
-            "string"
-          ),
-          labels = list(
-            "string"
-          )
-        ),
-        efsVolumeConfiguration = list(
-          fileSystemId = "string",
-          rootDirectory = "string",
-          transitEncryption = "ENABLED"|"DISABLED",
-          transitEncryptionPort = 123,
-          authorizationConfig = list(
-            accessPointId = "string",
-            iam = "ENABLED"|"DISABLED"
-          )
-        ),
-        fsxWindowsFileServerVolumeConfiguration = list(
-          fileSystemId = "string",
-          rootDirectory = "string",
-          authorizationConfig = list(
-            credentialsParameter = "string",
-            domain = "string"
-          )
-        )
-      )
-    ),
-    status = "ACTIVE"|"INACTIVE",
-    requiresAttributes = list(
-      list(
-        name = "string",
-        value = "string",
-        targetType = "container-instance",
-        targetId = "string"
-      )
-    ),
-    placementConstraints = list(
-      list(
-        type = "memberOf",
-        expression = "string"
-      )
-    ),
-    compatibilities = list(
-      "EC2"|"FARGATE"
-    ),
-    requiresCompatibilities = list(
-      "EC2"|"FARGATE"
-    ),
-    cpu = "string",
-    memory = "string",
-    inferenceAccelerators = list(
-      list(
-        deviceName = "string",
-        deviceType = "string"
-      )
-    ),
-    pidMode = "host"|"task",
-    ipcMode = "host"|"task"|"none",
-    proxyConfiguration = list(
-      type = "APPMESH",
-      containerName = "string",
-      properties = list(
-        list(
-          name = "string",
-          value = "string"
-        )
-      )
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
+
+\item{ephemeralStorage}{The amount of ephemeral storage to allocate for the task. This parameter
+is used to expand the total amount of ephemeral storage available,
+beyond the default amount, for tasks hosted on Fargate. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_data_volumes.html}{Fargate task storage}
+in the \emph{Amazon ECS User Guide for Fargate}.
+
+This parameter is only supported for tasks hosted on Fargate using the
+following platform versions:
+\itemize{
+\item Linux platform version \verb{1.4.0} or later.
+\item Windows platform version \verb{1.0.0} or later.
+}}
+
+\item{runtimePlatform}{The operating system that your tasks definitions run on. A platform
+family is specified only for tasks using the Fargate launch type.
+
+When you specify a task definition in a service, this value must match
+the \code{runtimePlatform} value of the service.}
 }
 \description{
-Registers a new task definition from the supplied \code{family} and
-\code{containerDefinitions}. Optionally, you can add data volumes to your
-containers with the \code{volumes} parameter. For more information about task
-definition parameters and defaults, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html}{Amazon ECS Task Definitions}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
+Registers a new task definition from the supplied \code{family} and \code{containerDefinitions}. Optionally, you can add data volumes to your containers with the \code{volumes} parameter. For more information about task definition parameters and defaults, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html}{Amazon ECS Task Definitions} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-You can specify an IAM role for your task with the \code{taskRoleArn}
-parameter. When you specify an IAM role for a task, its containers can
-then use the latest versions of the AWS CLI or SDKs to make API requests
-to the AWS services that are specified in the IAM policy associated with
-the role. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html}{IAM Roles for Tasks}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
-
-You can specify a Docker networking mode for the containers in your task
-definition with the \code{networkMode} parameter. The available network modes
-correspond to those described in \href{https://docs.docker.com/engine/reference/run/#/network-settings}{Network settings}
-in the Docker run reference. If you specify the \code{awsvpc} network mode,
-the task is allocated an elastic network interface, and you must specify
-a NetworkConfiguration when you create a service or run a task with the
-task definition. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$register_task_definition(
-  family = "string",
-  taskRoleArn = "string",
-  executionRoleArn = "string",
-  networkMode = "bridge"|"host"|"awsvpc"|"none",
-  containerDefinitions = list(
-    list(
-      name = "string",
-      image = "string",
-      repositoryCredentials = list(
-        credentialsParameter = "string"
-      ),
-      cpu = 123,
-      memory = 123,
-      memoryReservation = 123,
-      links = list(
-        "string"
-      ),
-      portMappings = list(
-        list(
-          containerPort = 123,
-          hostPort = 123,
-          protocol = "tcp"|"udp"
-        )
-      ),
-      essential = TRUE|FALSE,
-      entryPoint = list(
-        "string"
-      ),
-      command = list(
-        "string"
-      ),
-      environment = list(
-        list(
-          name = "string",
-          value = "string"
-        )
-      ),
-      environmentFiles = list(
-        list(
-          value = "string",
-          type = "s3"
-        )
-      ),
-      mountPoints = list(
-        list(
-          sourceVolume = "string",
-          containerPath = "string",
-          readOnly = TRUE|FALSE
-        )
-      ),
-      volumesFrom = list(
-        list(
-          sourceContainer = "string",
-          readOnly = TRUE|FALSE
-        )
-      ),
-      linuxParameters = list(
-        capabilities = list(
-          add = list(
-            "string"
-          ),
-          drop = list(
-            "string"
-          )
-        ),
-        devices = list(
-          list(
-            hostPath = "string",
-            containerPath = "string",
-            permissions = list(
-              "read"|"write"|"mknod"
-            )
-          )
-        ),
-        initProcessEnabled = TRUE|FALSE,
-        sharedMemorySize = 123,
-        tmpfs = list(
-          list(
-            containerPath = "string",
-            size = 123,
-            mountOptions = list(
-              "string"
-            )
-          )
-        ),
-        maxSwap = 123,
-        swappiness = 123
-      ),
-      secrets = list(
-        list(
-          name = "string",
-          valueFrom = "string"
-        )
-      ),
-      dependsOn = list(
-        list(
-          containerName = "string",
-          condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
-        )
-      ),
-      startTimeout = 123,
-      stopTimeout = 123,
-      hostname = "string",
-      user = "string",
-      workingDirectory = "string",
-      disableNetworking = TRUE|FALSE,
-      privileged = TRUE|FALSE,
-      readonlyRootFilesystem = TRUE|FALSE,
-      dnsServers = list(
-        "string"
-      ),
-      dnsSearchDomains = list(
-        "string"
-      ),
-      extraHosts = list(
-        list(
-          hostname = "string",
-          ipAddress = "string"
-        )
-      ),
-      dockerSecurityOptions = list(
-        "string"
-      ),
-      interactive = TRUE|FALSE,
-      pseudoTerminal = TRUE|FALSE,
-      dockerLabels = list(
-        "string"
-      ),
-      ulimits = list(
-        list(
-          name = "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",
-          softLimit = 123,
-          hardLimit = 123
-        )
-      ),
-      logConfiguration = list(
-        logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
-        options = list(
-          "string"
-        ),
-        secretOptions = list(
-          list(
-            name = "string",
-            valueFrom = "string"
-          )
-        )
-      ),
-      healthCheck = list(
-        command = list(
-          "string"
-        ),
-        interval = 123,
-        timeout = 123,
-        retries = 123,
-        startPeriod = 123
-      ),
-      systemControls = list(
-        list(
-          namespace = "string",
-          value = "string"
-        )
-      ),
-      resourceRequirements = list(
-        list(
-          value = "string",
-          type = "GPU"|"InferenceAccelerator"
-        )
-      ),
-      firelensConfiguration = list(
-        type = "fluentd"|"fluentbit",
-        options = list(
-          "string"
-        )
-      )
-    )
-  ),
-  volumes = list(
-    list(
-      name = "string",
-      host = list(
-        sourcePath = "string"
-      ),
-      dockerVolumeConfiguration = list(
-        scope = "task"|"shared",
-        autoprovision = TRUE|FALSE,
-        driver = "string",
-        driverOpts = list(
-          "string"
-        ),
-        labels = list(
-          "string"
-        )
-      ),
-      efsVolumeConfiguration = list(
-        fileSystemId = "string",
-        rootDirectory = "string",
-        transitEncryption = "ENABLED"|"DISABLED",
-        transitEncryptionPort = 123,
-        authorizationConfig = list(
-          accessPointId = "string",
-          iam = "ENABLED"|"DISABLED"
-        )
-      ),
-      fsxWindowsFileServerVolumeConfiguration = list(
-        fileSystemId = "string",
-        rootDirectory = "string",
-        authorizationConfig = list(
-          credentialsParameter = "string",
-          domain = "string"
-        )
-      )
-    )
-  ),
-  placementConstraints = list(
-    list(
-      type = "memberOf",
-      expression = "string"
-    )
-  ),
-  requiresCompatibilities = list(
-    "EC2"|"FARGATE"
-  ),
-  cpu = "string",
-  memory = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  pidMode = "host"|"task",
-  ipcMode = "host"|"task"|"none",
-  proxyConfiguration = list(
-    type = "APPMESH",
-    containerName = "string",
-    properties = list(
-      list(
-        name = "string",
-        value = "string"
-      )
-    )
-  ),
-  inferenceAccelerators = list(
-    list(
-      deviceName = "string",
-      deviceType = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example registers a task definition to the specified family.
-svc$register_task_definition(
-  containerDefinitions = list(
-    list(
-      name = "sleep",
-      command = list(
-        "sleep",
-        "360"
-      ),
-      cpu = 10L,
-      essential = TRUE,
-      image = "busybox",
-      memory = 10L
-    )
-  ),
-  family = "sleep360",
-  taskRoleArn = "",
-  volumes = list()
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/register_task_definition.html} for full documentation.
 }
 \keyword{internal}

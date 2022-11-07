@@ -4,8 +4,12 @@
 \alias{autoscalingplans_update_scaling_plan}
 \title{Updates the specified scaling plan}
 \usage{
-autoscalingplans_update_scaling_plan(ScalingPlanName,
-  ScalingPlanVersion, ApplicationSource, ScalingInstructions)
+autoscalingplans_update_scaling_plan(
+  ScalingPlanName,
+  ScalingPlanVersion,
+  ApplicationSource = NULL,
+  ScalingInstructions = NULL
+)
 }
 \arguments{
 \item{ScalingPlanName}{[required] The name of the scaling plan.}
@@ -25,88 +29,9 @@ For more information, see
 \href{https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html}{ScalingInstruction}
 in the \emph{AWS Auto Scaling API Reference}.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the specified scaling plan.
 
-You cannot update a scaling plan if it is in the process of being
-created, updated, or deleted.
+See \url{https://paws-r.github.io/docs/autoscalingplans/update_scaling_plan.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_scaling_plan(
-  ScalingPlanName = "string",
-  ScalingPlanVersion = 123,
-  ApplicationSource = list(
-    CloudFormationStackARN = "string",
-    TagFilters = list(
-      list(
-        Key = "string",
-        Values = list(
-          "string"
-        )
-      )
-    )
-  ),
-  ScalingInstructions = list(
-    list(
-      ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
-      ResourceId = "string",
-      ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
-      MinCapacity = 123,
-      MaxCapacity = 123,
-      TargetTrackingConfigurations = list(
-        list(
-          PredefinedScalingMetricSpecification = list(
-            PredefinedScalingMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut",
-            ResourceLabel = "string"
-          ),
-          CustomizedScalingMetricSpecification = list(
-            MetricName = "string",
-            Namespace = "string",
-            Dimensions = list(
-              list(
-                Name = "string",
-                Value = "string"
-              )
-            ),
-            Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-            Unit = "string"
-          ),
-          TargetValue = 123.0,
-          DisableScaleIn = TRUE|FALSE,
-          ScaleOutCooldown = 123,
-          ScaleInCooldown = 123,
-          EstimatedInstanceWarmup = 123
-        )
-      ),
-      PredefinedLoadMetricSpecification = list(
-        PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
-        ResourceLabel = "string"
-      ),
-      CustomizedLoadMetricSpecification = list(
-        MetricName = "string",
-        Namespace = "string",
-        Dimensions = list(
-          list(
-            Name = "string",
-            Value = "string"
-          )
-        ),
-        Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-        Unit = "string"
-      ),
-      ScheduledActionBufferTime = 123,
-      PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
-      PredictiveScalingMaxCapacityBuffer = 123,
-      PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
-      ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
-      DisableDynamicScaling = TRUE|FALSE
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

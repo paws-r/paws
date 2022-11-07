@@ -4,8 +4,12 @@
 \alias{kafka_create_configuration}
 \title{Creates a new MSK configuration}
 \usage{
-kafka_create_configuration(Description, KafkaVersions, Name,
-  ServerProperties)
+kafka_create_configuration(
+  Description = NULL,
+  KafkaVersions = NULL,
+  Name,
+  ServerProperties
+)
 }
 \arguments{
 \item{Description}{The description of the configuration.}
@@ -20,37 +24,9 @@ ensure that the contents of the file are base64 encoded. When using the
 AWS Management Console, the SDK, or the AWS CLI, the contents of
 server.properties can be in plaintext.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LatestRevision = list(
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Description = "string",
-    Revision = 123
-  ),
-  Name = "string",
-  State = "ACTIVE"|"DELETING"|"DELETE_FAILED"
-)
-}
-}
 \description{
 Creates a new MSK configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$create_configuration(
-  Description = "string",
-  KafkaVersions = list(
-    "string"
-  ),
-  Name = "string",
-  ServerProperties = raw
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/create_configuration.html} for full documentation.
+}
 \keyword{internal}

@@ -9,24 +9,9 @@ ses_create_configuration_set(ConfigurationSet)
 \arguments{
 \item{ConfigurationSet}{[required] A data structure that contains the name of the configuration set.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates a configuration set.
 
-Configuration sets enable you to publish email sending events. For
-information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/create_configuration_set.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_configuration_set(
-  ConfigurationSet = list(
-    Name = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -5,41 +5,18 @@
 \title{Updates the description for a specified approval rule template}
 \usage{
 codecommit_update_approval_rule_template_description(
-  approvalRuleTemplateName, approvalRuleTemplateDescription)
+  approvalRuleTemplateName,
+  approvalRuleTemplateDescription
+)
 }
 \arguments{
 \item{approvalRuleTemplateName}{[required] The name of the template for which you want to update the description.}
 
 \item{approvalRuleTemplateDescription}{[required] The updated description of the approval rule template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvalRuleTemplate = list(
-    approvalRuleTemplateId = "string",
-    approvalRuleTemplateName = "string",
-    approvalRuleTemplateDescription = "string",
-    approvalRuleTemplateContent = "string",
-    ruleContentSha256 = "string",
-    lastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastModifiedUser = "string"
-  )
-)
-}
-}
 \description{
 Updates the description for a specified approval rule template.
-}
-\section{Request syntax}{
-\preformatted{svc$update_approval_rule_template_description(
-  approvalRuleTemplateName = "string",
-  approvalRuleTemplateDescription = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/update_approval_rule_template_description.html} for full documentation.
+}
 \keyword{internal}

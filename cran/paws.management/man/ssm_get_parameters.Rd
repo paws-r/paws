@@ -2,52 +2,24 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_parameters}
 \alias{ssm_get_parameters}
-\title{Get details of a parameter}
+\title{Get information about one or more parameters by specifying multiple
+parameter names}
 \usage{
-ssm_get_parameters(Names, WithDecryption)
+ssm_get_parameters(Names, WithDecryption = NULL)
 }
 \arguments{
-\item{Names}{[required] Names of the parameters for which you want to query information.}
+\item{Names}{[required] Names of the parameters for which you want to query information.
+
+To query by parameter label, use \code{"Name": "name:label"}. To query by
+parameter version, use \code{"Name": "name:version"}.}
 
 \item{WithDecryption}{Return decrypted secure string value. Return decrypted values for secure
-string parameters. This flag is ignored for String and StringList
+string parameters. This flag is ignored for \code{String} and \code{StringList}
 parameter types.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Parameters = list(
-    list(
-      Name = "string",
-      Type = "String"|"StringList"|"SecureString",
-      Value = "string",
-      Version = 123,
-      Selector = "string",
-      SourceResult = "string",
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ARN = "string",
-      DataType = "string"
-    )
-  ),
-  InvalidParameters = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Get details of a parameter. Don't confuse this API action with the
-\code{\link[=ssm_get_parameter]{get_parameter}} API action.
-}
-\section{Request syntax}{
-\preformatted{svc$get_parameters(
-  Names = list(
-    "string"
-  ),
-  WithDecryption = TRUE|FALSE
-)
-}
-}
+Get information about one or more parameters by specifying multiple parameter names.
 
+See \url{https://paws-r.github.io/docs/ssm/get_parameters.html} for full documentation.
+}
 \keyword{internal}

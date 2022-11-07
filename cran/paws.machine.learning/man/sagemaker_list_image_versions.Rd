@@ -4,9 +4,17 @@
 \alias{sagemaker_list_image_versions}
 \title{Lists the versions of a specified image and their properties}
 \usage{
-sagemaker_list_image_versions(CreationTimeAfter, CreationTimeBefore,
-  ImageName, LastModifiedTimeAfter, LastModifiedTimeBefore, MaxResults,
-  NextToken, SortBy, SortOrder)
+sagemaker_list_image_versions(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  ImageName,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only versions created on or after the specified
@@ -35,52 +43,9 @@ of versions.}
 
 \item{SortOrder}{The sort order. The default value is \code{DESCENDING}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageVersions = list(
-    list(
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FailureReason = "string",
-      ImageArn = "string",
-      ImageVersionArn = "string",
-      ImageVersionStatus = "CREATING"|"CREATED"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED",
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Version = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the versions of a specified image and their properties. The list
-can be filtered by creation time or modified time.
-}
-\section{Request syntax}{
-\preformatted{svc$list_image_versions(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  ImageName = "string",
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "CREATION_TIME"|"LAST_MODIFIED_TIME"|"VERSION",
-  SortOrder = "ASCENDING"|"DESCENDING"
-)
-}
-}
+Lists the versions of a specified image and their properties. The list can be filtered by creation time or modified time.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_image_versions.html} for full documentation.
+}
 \keyword{internal}

@@ -16,20 +16,9 @@ you're accepting.}
 \item{InvitationId}{[required] The value that is used to validate the administrator account to the
 member account.}
 }
-\value{
-An empty list.
-}
 \description{
-Accepts the invitation to be monitored by a GuardDuty administrator
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$accept_invitation(
-  DetectorId = "string",
-  MasterId = "string",
-  InvitationId = "string"
-)
-}
-}
+Accepts the invitation to be monitored by a GuardDuty administrator account.
 
+See \url{https://paws-r.github.io/docs/guardduty/accept_invitation.html} for full documentation.
+}
 \keyword{internal}

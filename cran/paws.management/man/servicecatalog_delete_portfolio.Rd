@@ -4,7 +4,7 @@
 \alias{servicecatalog_delete_portfolio}
 \title{Deletes the specified portfolio}
 \usage{
-servicecatalog_delete_portfolio(AcceptLanguage, Id)
+servicecatalog_delete_portfolio(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -16,23 +16,9 @@ servicecatalog_delete_portfolio(AcceptLanguage, Id)
 
 \item{Id}{[required] The portfolio identifier.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified portfolio.
 
-You cannot delete a portfolio if it was shared with you or if it has
-associated products, users, constraints, or shared accounts.
-
-A delegated admin is authorized to invoke this command.
+See \url{https://paws-r.github.io/docs/servicecatalog/delete_portfolio.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_portfolio(
-  AcceptLanguage = "string",
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

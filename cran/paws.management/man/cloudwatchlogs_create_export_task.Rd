@@ -5,8 +5,15 @@
 \title{Creates an export task, which allows you to efficiently export data from
 a log group to an Amazon S3 bucket}
 \usage{
-cloudwatchlogs_create_export_task(taskName, logGroupName,
-  logStreamNamePrefix, from, to, destination, destinationPrefix)
+cloudwatchlogs_create_export_task(
+  taskName = NULL,
+  logGroupName,
+  logStreamNamePrefix = NULL,
+  from,
+  to,
+  destination,
+  destinationPrefix = NULL
+)
 }
 \arguments{
 \item{taskName}{The name of the export task.}
@@ -25,51 +32,14 @@ milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp
 later than this time are not exported.}
 
 \item{destination}{[required] The name of S3 bucket for the exported log data. The bucket must be in
-the same AWS region.}
+the same Amazon Web Services region.}
 
 \item{destinationPrefix}{The prefix used as the start of the key for every object exported. If
 you don't specify a value, the default is \code{exportedlogs}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  taskId = "string"
-)
-}
-}
 \description{
-Creates an export task, which allows you to efficiently export data from
-a log group to an Amazon S3 bucket. When you perform a
-\code{\link[=cloudwatchlogs_create_export_task]{create_export_task}} operation, you
-must use credentials that have permission to write to the S3 bucket that
-you specify as the destination.
+Creates an export task, which allows you to efficiently export data from a log group to an Amazon S3 bucket. When you perform a \code{\link[=cloudwatchlogs_create_export_task]{create_export_task}} operation, you must use credentials that have permission to write to the S3 bucket that you specify as the destination.
 
-This is an asynchronous call. If all the required information is
-provided, this operation initiates an export task and responds with the
-ID of the task. After the task has started, you can use
-\code{\link[=cloudwatchlogs_describe_export_tasks]{describe_export_tasks}} to get
-the status of the export task. Each account can only have one active
-(\code{RUNNING} or \code{PENDING}) export task at a time. To cancel an export
-task, use \code{\link[=cloudwatchlogs_cancel_export_task]{cancel_export_task}}.
-
-You can export logs from multiple log groups or multiple time ranges to
-the same S3 bucket. To separate out log data for each export task, you
-can specify a prefix to be used as the Amazon S3 key prefix for all
-exported objects.
-
-Exporting to S3 buckets that are encrypted with AES-256 is supported.
-Exporting to S3 buckets encrypted with SSE-KMS is not supported.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/create_export_task.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_export_task(
-  taskName = "string",
-  logGroupName = "string",
-  logStreamNamePrefix = "string",
-  from = 123,
-  to = 123,
-  destination = "string",
-  destinationPrefix = "string"
-)
-}
-}
-
 \keyword{internal}

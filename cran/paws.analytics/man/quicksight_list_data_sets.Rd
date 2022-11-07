@@ -2,61 +2,22 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_data_sets}
 \alias{quicksight_list_data_sets}
-\title{Lists all of the datasets belonging to the current AWS account in an AWS
-Region}
+\title{Lists all of the datasets belonging to the current Amazon Web Services
+account in an Amazon Web Services Region}
 \usage{
-quicksight_list_data_sets(AwsAccountId, NextToken, MaxResults)
+quicksight_list_data_sets(AwsAccountId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DataSetSummaries = list(
-    list(
-      Arn = "string",
-      DataSetId = "string",
-      Name = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ImportMode = "SPICE"|"DIRECT_QUERY",
-      RowLevelPermissionDataSet = list(
-        Namespace = "string",
-        Arn = "string",
-        PermissionPolicy = "GRANT_ACCESS"|"DENY_ACCESS"
-      ),
-      ColumnLevelPermissionRulesApplied = TRUE|FALSE
-    )
-  ),
-  NextToken = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Lists all of the datasets belonging to the current AWS account in an AWS
-Region.
+Lists all of the datasets belonging to the current Amazon Web Services account in an Amazon Web Services Region.
 
-The permissions resource is
-\verb{arn:aws:quicksight:region:aws-account-id:dataset/*}.
+See \url{https://paws-r.github.io/docs/quicksight/list_data_sets.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_data_sets(
-  AwsAccountId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

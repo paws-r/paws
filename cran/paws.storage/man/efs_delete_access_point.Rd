@@ -9,23 +9,9 @@ efs_delete_access_point(AccessPointId)
 \arguments{
 \item{AccessPointId}{[required] The ID of the access point that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified access point. After deletion is complete, new
-clients can no longer connect to the access points. Clients connected to
-the access point at the time of deletion will continue to function until
-they terminate their connection.
+Deletes the specified access point. After deletion is complete, new clients can no longer connect to the access points. Clients connected to the access point at the time of deletion will continue to function until they terminate their connection.
 
-This operation requires permissions for the
-\code{elasticfilesystem:DeleteAccessPoint} action.
+See \url{https://paws-r.github.io/docs/efs/delete_access_point.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_access_point(
-  AccessPointId = "string"
-)
-}
-}
-
 \keyword{internal}

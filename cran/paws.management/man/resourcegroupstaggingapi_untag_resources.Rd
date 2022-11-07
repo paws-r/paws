@@ -7,48 +7,19 @@
 resourcegroupstaggingapi_untag_resources(ResourceARNList, TagKeys)
 }
 \arguments{
-\item{ResourceARNList}{[required] A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
-resource. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
+\item{ResourceARNList}{[required] Specifies a list of ARNs of the resources that you want to remove tags
+from.
 
-\item{TagKeys}{[required] A list of the tag keys that you want to remove from the specified
+An ARN (Amazon Resource Name) uniquely identifies a resource. For more
+information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
+in the \emph{Amazon Web Services General Reference}.}
+
+\item{TagKeys}{[required] Specifies a list of tag keys that you want to remove from the specified
 resources.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedResourcesMap = list(
-    list(
-      StatusCode = 123,
-      ErrorCode = "InternalServiceException"|"InvalidParameterException",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Removes the specified tags from the specified resources. When you
-specify a tag key, the action removes both that key and its associated
-value. The operation succeeds even if you attempt to remove tags from a
-resource that were already removed. Note the following:
-\itemize{
-\item To remove tags from a resource, you need the necessary permissions
-for the service that the resource belongs to as well as permissions
-for removing tags. For more information, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/}{this list}.
-\item You can only tag resources that are located in the specified Region
-for the AWS account.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resources(
-  ResourceARNList = list(
-    "string"
-  ),
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes the specified tags from the specified resources. When you specify a tag key, the action removes both that key and its associated value. The operation succeeds even if you attempt to remove tags from a resource that were already removed. Note the following:
 
+See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/untag_resources.html} for full documentation.
+}
 \keyword{internal}

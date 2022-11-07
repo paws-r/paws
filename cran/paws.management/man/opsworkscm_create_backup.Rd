@@ -4,7 +4,7 @@
 \alias{opsworkscm_create_backup}
 \title{Creates an application-level backup of a server}
 \usage{
-opsworkscm_create_backup(ServerName, Description, Tags)
+opsworkscm_create_backup(ServerName, Description = NULL, Tags = NULL)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server that you want to back up.}
@@ -27,73 +27,9 @@ value.
 OpsWorks-CM resources.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Backup = list(
-    BackupArn = "string",
-    BackupId = "string",
-    BackupType = "AUTOMATED"|"MANUAL",
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    Description = "string",
-    Engine = "string",
-    EngineModel = "string",
-    EngineVersion = "string",
-    InstanceProfileArn = "string",
-    InstanceType = "string",
-    KeyPair = "string",
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    S3DataSize = 123,
-    S3DataUrl = "string",
-    S3LogUrl = "string",
-    SecurityGroupIds = list(
-      "string"
-    ),
-    ServerName = "string",
-    ServiceRoleArn = "string",
-    Status = "IN_PROGRESS"|"OK"|"FAILED"|"DELETING",
-    StatusDescription = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    ToolsVersion = "string",
-    UserArn = "string"
-  )
-)
-}
-}
 \description{
-Creates an application-level backup of a server. While the server is in
-the \code{BACKING_UP} state, the server cannot be changed, and no additional
-backup can be created.
+Creates an application-level backup of a server. While the server is in the \code{BACKING_UP} state, the server cannot be changed, and no additional backup can be created.
 
-Backups can be created for servers in \code{RUNNING}, \code{HEALTHY}, and
-\code{UNHEALTHY} states. By default, you can create a maximum of 50 manual
-backups.
-
-This operation is asynchronous.
-
-A \code{LimitExceededException} is thrown when the maximum number of manual
-backups is reached. An \code{InvalidStateException} is thrown when the server
-is not in any of the following states: RUNNING, HEALTHY, or UNHEALTHY. A
-\code{ResourceNotFoundException} is thrown when the server is not found. A
-\code{ValidationException} is thrown when parameters of the request are not
-valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/create_backup.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_backup(
-  ServerName = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

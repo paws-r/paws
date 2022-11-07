@@ -11,30 +11,9 @@ ses_delete_identity(Identity)
 \item{Identity}{[required] The identity to be removed from the list of identities for the AWS
 Account.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified identity (an email address or a domain) from the
-list of verified identities.
+Deletes the specified identity (an email address or a domain) from the list of verified identities.
 
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_identity(
-  Identity = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes an identity from the list of identities
-# that have been submitted for verification with Amazon SES:
-svc$delete_identity(
-  Identity = "user@example.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/delete_identity.html} for full documentation.
 }
 \keyword{internal}

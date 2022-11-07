@@ -4,8 +4,12 @@
 \alias{neptune_describe_event_subscriptions}
 \title{Lists all the subscription descriptions for a customer account}
 \usage{
-neptune_describe_event_subscriptions(SubscriptionName, Filters,
-  MaxRecords, Marker)
+neptune_describe_event_subscriptions(
+  SubscriptionName = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{SubscriptionName}{The name of the event notification subscription you want to describe.}
@@ -26,53 +30,9 @@ DescribeOrderableDBInstanceOptions request. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords} .}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  EventSubscriptionsList = list(
-    list(
-      CustomerAwsId = "string",
-      CustSubscriptionId = "string",
-      SnsTopicArn = "string",
-      Status = "string",
-      SubscriptionCreationTime = "string",
-      SourceType = "string",
-      SourceIdsList = list(
-        "string"
-      ),
-      EventCategoriesList = list(
-        "string"
-      ),
-      Enabled = TRUE|FALSE,
-      EventSubscriptionArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists all the subscription descriptions for a customer account. The
-description for a subscription includes SubscriptionName, SNSTopicARN,
-CustomerID, SourceType, SourceID, CreationTime, and Status.
+Lists all the subscription descriptions for a customer account. The description for a subscription includes SubscriptionName, SNSTopicARN, CustomerID, SourceType, SourceID, CreationTime, and Status.
 
-If you specify a SubscriptionName, lists the description for that
-subscription.
+See \url{https://paws-r.github.io/docs/neptune/describe_event_subscriptions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_event_subscriptions(
-  SubscriptionName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -8,11 +8,7 @@ NULL
 #' @description
 #' Creates an Api resource.
 #'
-#' @usage
-#' apigatewayv2_create_api(ApiKeySelectionExpression, CorsConfiguration,
-#'   CredentialsArn, Description, DisableSchemaValidation,
-#'   DisableExecuteApiEndpoint, Name, ProtocolType, RouteKey,
-#'   RouteSelectionExpression, Tags, Target, Version)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_api.html](https://paws-r.github.io/docs/apigatewayv2/create_api.html) for full documentation.
 #'
 #' @param ApiKeySelectionExpression An API key selection expression. Supported only for WebSocket APIs. See
 #' [API Key Selection
@@ -58,88 +54,6 @@ NULL
 #' AWS_PROXY, respectively. Supported only for HTTP APIs.
 #' @param Version A version identifier for the API.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiEndpoint = "string",
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ApiId = "string",
-#'   ApiKeySelectionExpression = "string",
-#'   CorsConfiguration = list(
-#'     AllowCredentials = TRUE|FALSE,
-#'     AllowHeaders = list(
-#'       "string"
-#'     ),
-#'     AllowMethods = list(
-#'       "string"
-#'     ),
-#'     AllowOrigins = list(
-#'       "string"
-#'     ),
-#'     ExposeHeaders = list(
-#'       "string"
-#'     ),
-#'     MaxAge = 123
-#'   ),
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Description = "string",
-#'   DisableSchemaValidation = TRUE|FALSE,
-#'   DisableExecuteApiEndpoint = TRUE|FALSE,
-#'   ImportInfo = list(
-#'     "string"
-#'   ),
-#'   Name = "string",
-#'   ProtocolType = "WEBSOCKET"|"HTTP",
-#'   RouteSelectionExpression = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Version = "string",
-#'   Warnings = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_api(
-#'   ApiKeySelectionExpression = "string",
-#'   CorsConfiguration = list(
-#'     AllowCredentials = TRUE|FALSE,
-#'     AllowHeaders = list(
-#'       "string"
-#'     ),
-#'     AllowMethods = list(
-#'       "string"
-#'     ),
-#'     AllowOrigins = list(
-#'       "string"
-#'     ),
-#'     ExposeHeaders = list(
-#'       "string"
-#'     ),
-#'     MaxAge = 123
-#'   ),
-#'   CredentialsArn = "string",
-#'   Description = "string",
-#'   DisableSchemaValidation = TRUE|FALSE,
-#'   DisableExecuteApiEndpoint = TRUE|FALSE,
-#'   Name = "string",
-#'   ProtocolType = "WEBSOCKET"|"HTTP",
-#'   RouteKey = "string",
-#'   RouteSelectionExpression = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Target = "string",
-#'   Version = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_api
@@ -165,34 +79,12 @@ apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfig
 #' @description
 #' Creates an API mapping.
 #'
-#' @usage
-#' apigatewayv2_create_api_mapping(ApiId, ApiMappingKey, DomainName, Stage)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_api_mapping.html](https://paws-r.github.io/docs/apigatewayv2/create_api_mapping.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiMappingKey The API mapping key.
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param Stage &#91;required&#93; The API stage.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiId = "string",
-#'   ApiMappingId = "string",
-#'   ApiMappingKey = "string",
-#'   Stage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_api_mapping(
-#'   ApiId = "string",
-#'   ApiMappingKey = "string",
-#'   DomainName = "string",
-#'   Stage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -219,11 +111,7 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' @description
 #' Creates an Authorizer for an API.
 #'
-#' @usage
-#' apigatewayv2_create_authorizer(ApiId, AuthorizerCredentialsArn,
-#'   AuthorizerPayloadFormatVersion, AuthorizerResultTtlInSeconds,
-#'   AuthorizerType, AuthorizerUri, EnableSimpleResponses, IdentitySource,
-#'   IdentityValidationExpression, JwtConfiguration, Name)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_authorizer.html](https://paws-r.github.io/docs/apigatewayv2/create_authorizer.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerCredentialsArn Specifies the required credentials as an IAM role for API Gateway to
@@ -290,55 +178,6 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' authorizer type. Supported only for HTTP APIs.
 #' @param Name &#91;required&#93; The name of the authorizer.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AuthorizerCredentialsArn = "string",
-#'   AuthorizerId = "string",
-#'   AuthorizerPayloadFormatVersion = "string",
-#'   AuthorizerResultTtlInSeconds = 123,
-#'   AuthorizerType = "REQUEST"|"JWT",
-#'   AuthorizerUri = "string",
-#'   EnableSimpleResponses = TRUE|FALSE,
-#'   IdentitySource = list(
-#'     "string"
-#'   ),
-#'   IdentityValidationExpression = "string",
-#'   JwtConfiguration = list(
-#'     Audience = list(
-#'       "string"
-#'     ),
-#'     Issuer = "string"
-#'   ),
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_authorizer(
-#'   ApiId = "string",
-#'   AuthorizerCredentialsArn = "string",
-#'   AuthorizerPayloadFormatVersion = "string",
-#'   AuthorizerResultTtlInSeconds = 123,
-#'   AuthorizerType = "REQUEST"|"JWT",
-#'   AuthorizerUri = "string",
-#'   EnableSimpleResponses = TRUE|FALSE,
-#'   IdentitySource = list(
-#'     "string"
-#'   ),
-#'   IdentityValidationExpression = "string",
-#'   JwtConfiguration = list(
-#'     Audience = list(
-#'       "string"
-#'     ),
-#'     Issuer = "string"
-#'   ),
-#'   Name = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_authorizer
@@ -364,36 +203,11 @@ apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #' @description
 #' Creates a Deployment for an API.
 #'
-#' @usage
-#' apigatewayv2_create_deployment(ApiId, Description, StageName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_deployment.html](https://paws-r.github.io/docs/apigatewayv2/create_deployment.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param Description The description for the deployment resource.
 #' @param StageName The name of the Stage resource for the Deployment resource to create.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AutoDeployed = TRUE|FALSE,
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DeploymentId = "string",
-#'   DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
-#'   DeploymentStatusMessage = "string",
-#'   Description = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_deployment(
-#'   ApiId = "string",
-#'   Description = "string",
-#'   StageName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -420,77 +234,12 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #' @description
 #' Creates a domain name.
 #'
-#' @usage
-#' apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations,
-#'   MutualTlsAuthentication, Tags)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_domain_name.html](https://paws-r.github.io/docs/apigatewayv2/create_domain_name.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
 #' @param MutualTlsAuthentication The mutual TLS authentication configuration for a custom domain name.
 #' @param Tags The collection of tags associated with a domain name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiMappingSelectionExpression = "string",
-#'   DomainName = "string",
-#'   DomainNameConfigurations = list(
-#'     list(
-#'       ApiGatewayDomainName = "string",
-#'       CertificateArn = "string",
-#'       CertificateName = "string",
-#'       CertificateUploadDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
-#'       DomainNameStatusMessage = "string",
-#'       EndpointType = "REGIONAL"|"EDGE",
-#'       HostedZoneId = "string",
-#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
-#'     )
-#'   ),
-#'   MutualTlsAuthentication = list(
-#'     TruststoreUri = "string",
-#'     TruststoreVersion = "string",
-#'     TruststoreWarnings = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_domain_name(
-#'   DomainName = "string",
-#'   DomainNameConfigurations = list(
-#'     list(
-#'       ApiGatewayDomainName = "string",
-#'       CertificateArn = "string",
-#'       CertificateName = "string",
-#'       CertificateUploadDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
-#'       DomainNameStatusMessage = "string",
-#'       EndpointType = "REGIONAL"|"EDGE",
-#'       HostedZoneId = "string",
-#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
-#'     )
-#'   ),
-#'   MutualTlsAuthentication = list(
-#'     TruststoreUri = "string",
-#'     TruststoreVersion = "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -517,13 +266,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' @description
 #' Creates an Integration.
 #'
-#' @usage
-#' apigatewayv2_create_integration(ApiId, ConnectionId, ConnectionType,
-#'   ContentHandlingStrategy, CredentialsArn, Description, IntegrationMethod,
-#'   IntegrationSubtype, IntegrationType, IntegrationUri,
-#'   PassthroughBehavior, PayloadFormatVersion, RequestParameters,
-#'   RequestTemplates, ResponseParameters, TemplateSelectionExpression,
-#'   TimeoutInMillis, TlsConfig)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_integration.html](https://paws-r.github.io/docs/apigatewayv2/create_integration.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ConnectionId The ID of the VPC link for a private integration. Supported only for
@@ -533,8 +276,8 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' VPC_LINK for private connections between API Gateway and resources in a
 #' VPC. The default value is INTERNET.
 #' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
-#' payload content type conversions. Supported values are
-#' CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
+#' payload content type conversions. Supported values are CONVERT_TO_BINARY
+#' and CONVERT_TO_TEXT, with the following behaviors:
 #' 
 #' CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
@@ -598,8 +341,8 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and
 #' NEVER. Supported only for WebSocket APIs.
 #' 
-#' WHEN_NO_MATCH passes the request body for unmapped content types
-#' through to the integration backend without transformation.
+#' WHEN_NO_MATCH passes the request body for unmapped content types through
+#' to the integration backend without transformation.
 #' 
 #' NEVER rejects unmapped content types with an HTTP 415 Unsupported Media
 #' Type response.
@@ -631,11 +374,10 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' For HTTP API integrations without a specified integrationSubtype request
 #' parameters are a key-value map specifying how to transform HTTP requests
 #' before sending them to the backend. The key should follow the pattern
-#' &lt;action&gt;:&lt;header|querystring|path&gt;.&lt;location&gt; where
-#' action can be append, overwrite or remove. For values, you can provide
-#' static values, or map request data, stage variables, or context
-#' variables that are evaluated at runtime. To learn more, see
-#' [Transforming API requests and
+#' \<action\>:\<header|querystring|path\>.\<location\> where action can be
+#' append, overwrite or remove. For values, you can provide static values,
+#' or map request data, stage variables, or context variables that are
+#' evaluated at runtime. To learn more, see [Transforming API requests and
 #' responses](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html).
 #' @param RequestTemplates Represents a map of Velocity templates that are applied on the request
 #' payload based on the value of the Content-Type header sent by the
@@ -646,12 +388,11 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' response to clients. Specify a key-value map from a selection key to
 #' response parameters. The selection key must be a valid HTTP status code
 #' within the range of 200-599. Response parameters are a key-value map.
-#' The key must match pattern
-#' &lt;action&gt;:&lt;header&gt;.&lt;location&gt; or overwrite.statuscode.
-#' The action can be append, overwrite or remove. The value can be a static
-#' value, or map to response data, stage variables, or context variables
-#' that are evaluated at runtime. To learn more, see [Transforming API
-#' requests and
+#' The key must match pattern \<action\>:\<header\>.\<location\> or
+#' overwrite.statuscode. The action can be append, overwrite or remove. The
+#' value can be a static value, or map to response data, stage variables,
+#' or context variables that are evaluated at runtime. To learn more, see
+#' [Transforming API requests and
 #' responses](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html).
 #' @param TemplateSelectionExpression The template selection expression for the integration.
 #' @param TimeoutInMillis Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and
@@ -660,77 +401,6 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' @param TlsConfig The TLS configuration for a private integration. If you specify a TLS
 #' configuration, private integration traffic uses the HTTPS protocol.
 #' Supported only for HTTP APIs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ConnectionId = "string",
-#'   ConnectionType = "INTERNET"|"VPC_LINK",
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   CredentialsArn = "string",
-#'   Description = "string",
-#'   IntegrationId = "string",
-#'   IntegrationMethod = "string",
-#'   IntegrationResponseSelectionExpression = "string",
-#'   IntegrationSubtype = "string",
-#'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'   IntegrationUri = "string",
-#'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
-#'   PayloadFormatVersion = "string",
-#'   RequestParameters = list(
-#'     "string"
-#'   ),
-#'   RequestTemplates = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   TemplateSelectionExpression = "string",
-#'   TimeoutInMillis = 123,
-#'   TlsConfig = list(
-#'     ServerNameToVerify = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_integration(
-#'   ApiId = "string",
-#'   ConnectionId = "string",
-#'   ConnectionType = "INTERNET"|"VPC_LINK",
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   CredentialsArn = "string",
-#'   Description = "string",
-#'   IntegrationMethod = "string",
-#'   IntegrationSubtype = "string",
-#'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'   IntegrationUri = "string",
-#'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
-#'   PayloadFormatVersion = "string",
-#'   RequestParameters = list(
-#'     "string"
-#'   ),
-#'   RequestTemplates = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   TemplateSelectionExpression = "string",
-#'   TimeoutInMillis = 123,
-#'   TlsConfig = list(
-#'     ServerNameToVerify = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -757,10 +427,7 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' @description
 #' Creates an IntegrationResponses.
 #'
-#' @usage
-#' apigatewayv2_create_integration_response(ApiId, ContentHandlingStrategy,
-#'   IntegrationId, IntegrationResponseKey, ResponseParameters,
-#'   ResponseTemplates, TemplateSelectionExpression)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_integration_response.html](https://paws-r.github.io/docs/apigatewayv2/create_integration_response.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentHandlingStrategy Specifies how to handle response payload content type conversions.
@@ -796,40 +463,6 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' @param TemplateSelectionExpression The template selection expression for the integration response.
 #' Supported only for WebSocket APIs.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   IntegrationResponseId = "string",
-#'   IntegrationResponseKey = "string",
-#'   ResponseParameters = list(
-#'     "string"
-#'   ),
-#'   ResponseTemplates = list(
-#'     "string"
-#'   ),
-#'   TemplateSelectionExpression = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_integration_response(
-#'   ApiId = "string",
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   IntegrationId = "string",
-#'   IntegrationResponseKey = "string",
-#'   ResponseParameters = list(
-#'     "string"
-#'   ),
-#'   ResponseTemplates = list(
-#'     "string"
-#'   ),
-#'   TemplateSelectionExpression = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_integration_response
@@ -855,8 +488,7 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 #' @description
 #' Creates a Model for an API.
 #'
-#' @usage
-#' apigatewayv2_create_model(ApiId, ContentType, Description, Name, Schema)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_model.html](https://paws-r.github.io/docs/apigatewayv2/create_model.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentType The content-type for the model, for example, "application/json".
@@ -864,29 +496,6 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 #' @param Name &#91;required&#93; The name of the model. Must be alphanumeric.
 #' @param Schema &#91;required&#93; The schema for the model. For application/json models, this should be
 #' JSON schema draft 4 model.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ContentType = "string",
-#'   Description = "string",
-#'   ModelId = "string",
-#'   Name = "string",
-#'   Schema = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_model(
-#'   ApiId = "string",
-#'   ContentType = "string",
-#'   Description = "string",
-#'   Name = "string",
-#'   Schema = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -913,11 +522,7 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #' @description
 #' Creates a Route for an API.
 #'
-#' @usage
-#' apigatewayv2_create_route(ApiId, ApiKeyRequired, AuthorizationScopes,
-#'   AuthorizationType, AuthorizerId, ModelSelectionExpression,
-#'   OperationName, RequestModels, RequestParameters, RouteKey,
-#'   RouteResponseSelectionExpression, Target)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_route.html](https://paws-r.github.io/docs/apigatewayv2/create_route.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiKeyRequired Specifies whether an API key is required for the route. Supported only
@@ -940,60 +545,6 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #' @param RouteResponseSelectionExpression The route response selection expression for the route. Supported only
 #' for WebSocket APIs.
 #' @param Target The target for the route.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ApiKeyRequired = TRUE|FALSE,
-#'   AuthorizationScopes = list(
-#'     "string"
-#'   ),
-#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-#'   AuthorizerId = "string",
-#'   ModelSelectionExpression = "string",
-#'   OperationName = "string",
-#'   RequestModels = list(
-#'     "string"
-#'   ),
-#'   RequestParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteId = "string",
-#'   RouteKey = "string",
-#'   RouteResponseSelectionExpression = "string",
-#'   Target = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_route(
-#'   ApiId = "string",
-#'   ApiKeyRequired = TRUE|FALSE,
-#'   AuthorizationScopes = list(
-#'     "string"
-#'   ),
-#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-#'   AuthorizerId = "string",
-#'   ModelSelectionExpression = "string",
-#'   OperationName = "string",
-#'   RequestModels = list(
-#'     "string"
-#'   ),
-#'   RequestParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteKey = "string",
-#'   RouteResponseSelectionExpression = "string",
-#'   Target = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1020,9 +571,7 @@ apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @description
 #' Creates a RouteResponse for a Route.
 #'
-#' @usage
-#' apigatewayv2_create_route_response(ApiId, ModelSelectionExpression,
-#'   ResponseModels, ResponseParameters, RouteId, RouteResponseKey)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_route_response.html](https://paws-r.github.io/docs/apigatewayv2/create_route_response.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelSelectionExpression The model selection expression for the route response. Supported only
@@ -1031,42 +580,6 @@ apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @param ResponseParameters The route response parameters.
 #' @param RouteId &#91;required&#93; The route ID.
 #' @param RouteResponseKey &#91;required&#93; The route response key.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ModelSelectionExpression = "string",
-#'   ResponseModels = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteResponseId = "string",
-#'   RouteResponseKey = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_route_response(
-#'   ApiId = "string",
-#'   ModelSelectionExpression = "string",
-#'   ResponseModels = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteId = "string",
-#'   RouteResponseKey = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1093,10 +606,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @description
 #' Creates a Stage for an API.
 #'
-#' @usage
-#' apigatewayv2_create_stage(AccessLogSettings, ApiId, AutoDeploy,
-#'   ClientCertificateId, DefaultRouteSettings, DeploymentId, Description,
-#'   RouteSettings, StageName, StageVariables, Tags)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_stage.html](https://paws-r.github.io/docs/apigatewayv2/create_stage.html) for full documentation.
 #'
 #' @param AccessLogSettings Settings for logging access in this stage.
 #' @param ApiId &#91;required&#93; The API identifier.
@@ -1114,90 +624,6 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' \[A-Za-z0-9-._~:/?#&=,\]+.
 #' @param Tags The collection of tags. Each tag element is associated with a given
 #' resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccessLogSettings = list(
-#'     DestinationArn = "string",
-#'     Format = "string"
-#'   ),
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   AutoDeploy = TRUE|FALSE,
-#'   ClientCertificateId = "string",
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DefaultRouteSettings = list(
-#'     DataTraceEnabled = TRUE|FALSE,
-#'     DetailedMetricsEnabled = TRUE|FALSE,
-#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'     ThrottlingBurstLimit = 123,
-#'     ThrottlingRateLimit = 123.0
-#'   ),
-#'   DeploymentId = "string",
-#'   Description = "string",
-#'   LastDeploymentStatusMessage = "string",
-#'   LastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   RouteSettings = list(
-#'     list(
-#'       DataTraceEnabled = TRUE|FALSE,
-#'       DetailedMetricsEnabled = TRUE|FALSE,
-#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'       ThrottlingBurstLimit = 123,
-#'       ThrottlingRateLimit = 123.0
-#'     )
-#'   ),
-#'   StageName = "string",
-#'   StageVariables = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_stage(
-#'   AccessLogSettings = list(
-#'     DestinationArn = "string",
-#'     Format = "string"
-#'   ),
-#'   ApiId = "string",
-#'   AutoDeploy = TRUE|FALSE,
-#'   ClientCertificateId = "string",
-#'   DefaultRouteSettings = list(
-#'     DataTraceEnabled = TRUE|FALSE,
-#'     DetailedMetricsEnabled = TRUE|FALSE,
-#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'     ThrottlingBurstLimit = 123,
-#'     ThrottlingRateLimit = 123.0
-#'   ),
-#'   DeploymentId = "string",
-#'   Description = "string",
-#'   RouteSettings = list(
-#'     list(
-#'       DataTraceEnabled = TRUE|FALSE,
-#'       DetailedMetricsEnabled = TRUE|FALSE,
-#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'       ThrottlingBurstLimit = 123,
-#'       ThrottlingRateLimit = 123.0
-#'     )
-#'   ),
-#'   StageName = "string",
-#'   StageVariables = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1224,53 +650,12 @@ apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 #' @description
 #' Creates a VPC link.
 #'
-#' @usage
-#' apigatewayv2_create_vpc_link(Name, SecurityGroupIds, SubnetIds, Tags)
+#' See [https://paws-r.github.io/docs/apigatewayv2/create_vpc_link.html](https://paws-r.github.io/docs/apigatewayv2/create_vpc_link.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the VPC link.
 #' @param SecurityGroupIds A list of security group IDs for the VPC link.
 #' @param SubnetIds &#91;required&#93; A list of subnet IDs to include in the VPC link.
 #' @param Tags A list of tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Name = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   VpcLinkId = "string",
-#'   VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
-#'   VpcLinkStatusMessage = "string",
-#'   VpcLinkVersion = "V2"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_vpc_link(
-#'   Name = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1295,26 +680,13 @@ apigatewayv2_create_vpc_link <- function(Name, SecurityGroupIds = NULL, SubnetId
 #' Deletes the AccessLogSettings for a Stage
 #'
 #' @description
-#' Deletes the AccessLogSettings for a Stage. To disable access logging for
-#' a Stage, delete its AccessLogSettings.
+#' Deletes the AccessLogSettings for a Stage. To disable access logging for a Stage, delete its AccessLogSettings.
 #'
-#' @usage
-#' apigatewayv2_delete_access_log_settings(ApiId, StageName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_access_log_settings.html](https://paws-r.github.io/docs/apigatewayv2/delete_access_log_settings.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
 #' hyphens, and underscores. Maximum length is 128 characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_access_log_settings(
-#'   ApiId = "string",
-#'   StageName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1341,20 +713,9 @@ apigatewayv2_delete_access_log_settings <- function(ApiId, StageName) {
 #' @description
 #' Deletes an Api resource.
 #'
-#' @usage
-#' apigatewayv2_delete_api(ApiId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_api.html](https://paws-r.github.io/docs/apigatewayv2/delete_api.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_api(
-#'   ApiId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1381,22 +742,10 @@ apigatewayv2_delete_api <- function(ApiId) {
 #' @description
 #' Deletes an API mapping.
 #'
-#' @usage
-#' apigatewayv2_delete_api_mapping(ApiMappingId, DomainName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_api_mapping.html](https://paws-r.github.io/docs/apigatewayv2/delete_api_mapping.html) for full documentation.
 #'
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
 #' @param DomainName &#91;required&#93; The domain name.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_api_mapping(
-#'   ApiMappingId = "string",
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1423,22 +772,10 @@ apigatewayv2_delete_api_mapping <- function(ApiMappingId, DomainName) {
 #' @description
 #' Deletes an Authorizer.
 #'
-#' @usage
-#' apigatewayv2_delete_authorizer(ApiId, AuthorizerId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_authorizer.html](https://paws-r.github.io/docs/apigatewayv2/delete_authorizer.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerId &#91;required&#93; The authorizer identifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_authorizer(
-#'   ApiId = "string",
-#'   AuthorizerId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1465,20 +802,9 @@ apigatewayv2_delete_authorizer <- function(ApiId, AuthorizerId) {
 #' @description
 #' Deletes a CORS configuration.
 #'
-#' @usage
-#' apigatewayv2_delete_cors_configuration(ApiId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_cors_configuration.html](https://paws-r.github.io/docs/apigatewayv2/delete_cors_configuration.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_cors_configuration(
-#'   ApiId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1505,22 +831,10 @@ apigatewayv2_delete_cors_configuration <- function(ApiId) {
 #' @description
 #' Deletes a Deployment.
 #'
-#' @usage
-#' apigatewayv2_delete_deployment(ApiId, DeploymentId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_deployment.html](https://paws-r.github.io/docs/apigatewayv2/delete_deployment.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param DeploymentId &#91;required&#93; The deployment ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_deployment(
-#'   ApiId = "string",
-#'   DeploymentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1547,20 +861,9 @@ apigatewayv2_delete_deployment <- function(ApiId, DeploymentId) {
 #' @description
 #' Deletes a domain name.
 #'
-#' @usage
-#' apigatewayv2_delete_domain_name(DomainName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_domain_name.html](https://paws-r.github.io/docs/apigatewayv2/delete_domain_name.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_domain_name(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1587,22 +890,10 @@ apigatewayv2_delete_domain_name <- function(DomainName) {
 #' @description
 #' Deletes an Integration.
 #'
-#' @usage
-#' apigatewayv2_delete_integration(ApiId, IntegrationId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_integration.html](https://paws-r.github.io/docs/apigatewayv2/delete_integration.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_integration(
-#'   ApiId = "string",
-#'   IntegrationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1629,25 +920,11 @@ apigatewayv2_delete_integration <- function(ApiId, IntegrationId) {
 #' @description
 #' Deletes an IntegrationResponses.
 #'
-#' @usage
-#' apigatewayv2_delete_integration_response(ApiId, IntegrationId,
-#'   IntegrationResponseId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_integration_response.html](https://paws-r.github.io/docs/apigatewayv2/delete_integration_response.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
 #' @param IntegrationResponseId &#91;required&#93; The integration response ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_integration_response(
-#'   ApiId = "string",
-#'   IntegrationId = "string",
-#'   IntegrationResponseId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1674,22 +951,10 @@ apigatewayv2_delete_integration_response <- function(ApiId, IntegrationId, Integ
 #' @description
 #' Deletes a Model.
 #'
-#' @usage
-#' apigatewayv2_delete_model(ApiId, ModelId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_model.html](https://paws-r.github.io/docs/apigatewayv2/delete_model.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelId &#91;required&#93; The model ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_model(
-#'   ApiId = "string",
-#'   ModelId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1716,22 +981,10 @@ apigatewayv2_delete_model <- function(ApiId, ModelId) {
 #' @description
 #' Deletes a Route.
 #'
-#' @usage
-#' apigatewayv2_delete_route(ApiId, RouteId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_route.html](https://paws-r.github.io/docs/apigatewayv2/delete_route.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_route(
-#'   ApiId = "string",
-#'   RouteId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1758,25 +1011,11 @@ apigatewayv2_delete_route <- function(ApiId, RouteId) {
 #' @description
 #' Deletes a route request parameter.
 #'
-#' @usage
-#' apigatewayv2_delete_route_request_parameter(ApiId, RequestParameterKey,
-#'   RouteId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_route_request_parameter.html](https://paws-r.github.io/docs/apigatewayv2/delete_route_request_parameter.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RequestParameterKey &#91;required&#93; The route request parameter key.
 #' @param RouteId &#91;required&#93; The route ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_route_request_parameter(
-#'   ApiId = "string",
-#'   RequestParameterKey = "string",
-#'   RouteId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1803,24 +1042,11 @@ apigatewayv2_delete_route_request_parameter <- function(ApiId, RequestParameterK
 #' @description
 #' Deletes a RouteResponse.
 #'
-#' @usage
-#' apigatewayv2_delete_route_response(ApiId, RouteId, RouteResponseId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_route_response.html](https://paws-r.github.io/docs/apigatewayv2/delete_route_response.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
 #' @param RouteResponseId &#91;required&#93; The route response ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_route_response(
-#'   ApiId = "string",
-#'   RouteId = "string",
-#'   RouteResponseId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1847,25 +1073,12 @@ apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) 
 #' @description
 #' Deletes the RouteSettings for a stage.
 #'
-#' @usage
-#' apigatewayv2_delete_route_settings(ApiId, RouteKey, StageName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_route_settings.html](https://paws-r.github.io/docs/apigatewayv2/delete_route_settings.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteKey &#91;required&#93; The route key.
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
 #' hyphens, and underscores. Maximum length is 128 characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_route_settings(
-#'   ApiId = "string",
-#'   RouteKey = "string",
-#'   StageName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1892,23 +1105,11 @@ apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
 #' @description
 #' Deletes a Stage.
 #'
-#' @usage
-#' apigatewayv2_delete_stage(ApiId, StageName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_stage.html](https://paws-r.github.io/docs/apigatewayv2/delete_stage.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
 #' hyphens, and underscores. Maximum length is 128 characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_stage(
-#'   ApiId = "string",
-#'   StageName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1935,20 +1136,9 @@ apigatewayv2_delete_stage <- function(ApiId, StageName) {
 #' @description
 #' Deletes a VPC link.
 #'
-#' @usage
-#' apigatewayv2_delete_vpc_link(VpcLinkId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/delete_vpc_link.html](https://paws-r.github.io/docs/apigatewayv2/delete_vpc_link.html) for full documentation.
 #'
 #' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_vpc_link(
-#'   VpcLinkId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1975,9 +1165,7 @@ apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
 #' @description
 #' Export api
 #'
-#' @usage
-#' apigatewayv2_export_api(ApiId, ExportVersion, IncludeExtensions,
-#'   OutputType, Specification, StageName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/export_api.html](https://paws-r.github.io/docs/apigatewayv2/export_api.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ExportVersion The version of the API Gateway export algorithm. API Gateway uses the
@@ -1992,26 +1180,6 @@ apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
 #' the only supported value.
 #' @param StageName The name of the API stage to export. If you don't specify this property,
 #' a representation of the latest API configuration is exported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   body = raw
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$export_api(
-#'   ApiId = "string",
-#'   ExportVersion = "string",
-#'   IncludeExtensions = TRUE|FALSE,
-#'   OutputType = "YAML"|"JSON",
-#'   Specification = "OAS30",
-#'   StageName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2036,27 +1204,14 @@ apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensio
 #' Resets all authorizer cache entries on a stage
 #'
 #' @description
-#' Resets all authorizer cache entries on a stage. Supported only for HTTP
-#' APIs.
+#' Resets all authorizer cache entries on a stage. Supported only for HTTP APIs.
 #'
-#' @usage
-#' apigatewayv2_reset_authorizers_cache(ApiId, StageName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/reset_authorizers_cache.html](https://paws-r.github.io/docs/apigatewayv2/reset_authorizers_cache.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param StageName &#91;required&#93; The stage name. Stage names can contain only alphanumeric characters,
 #' hyphens, and underscores, or be $default. Maximum length is 128
 #' characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reset_authorizers_cache(
-#'   ApiId = "string",
-#'   StageName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2083,63 +1238,9 @@ apigatewayv2_reset_authorizers_cache <- function(ApiId, StageName) {
 #' @description
 #' Gets an Api resource.
 #'
-#' @usage
-#' apigatewayv2_get_api(ApiId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_api.html](https://paws-r.github.io/docs/apigatewayv2/get_api.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiEndpoint = "string",
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ApiId = "string",
-#'   ApiKeySelectionExpression = "string",
-#'   CorsConfiguration = list(
-#'     AllowCredentials = TRUE|FALSE,
-#'     AllowHeaders = list(
-#'       "string"
-#'     ),
-#'     AllowMethods = list(
-#'       "string"
-#'     ),
-#'     AllowOrigins = list(
-#'       "string"
-#'     ),
-#'     ExposeHeaders = list(
-#'       "string"
-#'     ),
-#'     MaxAge = 123
-#'   ),
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Description = "string",
-#'   DisableSchemaValidation = TRUE|FALSE,
-#'   DisableExecuteApiEndpoint = TRUE|FALSE,
-#'   ImportInfo = list(
-#'     "string"
-#'   ),
-#'   Name = "string",
-#'   ProtocolType = "WEBSOCKET"|"HTTP",
-#'   RouteSelectionExpression = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Version = "string",
-#'   Warnings = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_api(
-#'   ApiId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2166,30 +1267,10 @@ apigatewayv2_get_api <- function(ApiId) {
 #' @description
 #' Gets an API mapping.
 #'
-#' @usage
-#' apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_api_mapping.html](https://paws-r.github.io/docs/apigatewayv2/get_api_mapping.html) for full documentation.
 #'
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
 #' @param DomainName &#91;required&#93; The domain name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiId = "string",
-#'   ApiMappingId = "string",
-#'   ApiMappingKey = "string",
-#'   Stage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_api_mapping(
-#'   ApiMappingId = "string",
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2216,38 +1297,12 @@ apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
 #' @description
 #' Gets API mappings.
 #'
-#' @usage
-#' apigatewayv2_get_api_mappings(DomainName, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_api_mappings.html](https://paws-r.github.io/docs/apigatewayv2/get_api_mappings.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       ApiId = "string",
-#'       ApiMappingId = "string",
-#'       ApiMappingKey = "string",
-#'       Stage = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_api_mappings(
-#'   DomainName = "string",
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2274,71 +1329,11 @@ apigatewayv2_get_api_mappings <- function(DomainName, MaxResults = NULL, NextTok
 #' @description
 #' Gets a collection of Api resources.
 #'
-#' @usage
-#' apigatewayv2_get_apis(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_apis.html](https://paws-r.github.io/docs/apigatewayv2/get_apis.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       ApiEndpoint = "string",
-#'       ApiGatewayManaged = TRUE|FALSE,
-#'       ApiId = "string",
-#'       ApiKeySelectionExpression = "string",
-#'       CorsConfiguration = list(
-#'         AllowCredentials = TRUE|FALSE,
-#'         AllowHeaders = list(
-#'           "string"
-#'         ),
-#'         AllowMethods = list(
-#'           "string"
-#'         ),
-#'         AllowOrigins = list(
-#'           "string"
-#'         ),
-#'         ExposeHeaders = list(
-#'           "string"
-#'         ),
-#'         MaxAge = 123
-#'       ),
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Description = "string",
-#'       DisableSchemaValidation = TRUE|FALSE,
-#'       DisableExecuteApiEndpoint = TRUE|FALSE,
-#'       ImportInfo = list(
-#'         "string"
-#'       ),
-#'       Name = "string",
-#'       ProtocolType = "WEBSOCKET"|"HTTP",
-#'       RouteSelectionExpression = "string",
-#'       Tags = list(
-#'         "string"
-#'       ),
-#'       Version = "string",
-#'       Warnings = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_apis(
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2365,44 +1360,10 @@ apigatewayv2_get_apis <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Gets an Authorizer.
 #'
-#' @usage
-#' apigatewayv2_get_authorizer(ApiId, AuthorizerId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_authorizer.html](https://paws-r.github.io/docs/apigatewayv2/get_authorizer.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerId &#91;required&#93; The authorizer identifier.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AuthorizerCredentialsArn = "string",
-#'   AuthorizerId = "string",
-#'   AuthorizerPayloadFormatVersion = "string",
-#'   AuthorizerResultTtlInSeconds = 123,
-#'   AuthorizerType = "REQUEST"|"JWT",
-#'   AuthorizerUri = "string",
-#'   EnableSimpleResponses = TRUE|FALSE,
-#'   IdentitySource = list(
-#'     "string"
-#'   ),
-#'   IdentityValidationExpression = "string",
-#'   JwtConfiguration = list(
-#'     Audience = list(
-#'       "string"
-#'     ),
-#'     Issuer = "string"
-#'   ),
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_authorizer(
-#'   ApiId = "string",
-#'   AuthorizerId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2429,52 +1390,12 @@ apigatewayv2_get_authorizer <- function(ApiId, AuthorizerId) {
 #' @description
 #' Gets the Authorizers for an API.
 #'
-#' @usage
-#' apigatewayv2_get_authorizers(ApiId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_authorizers.html](https://paws-r.github.io/docs/apigatewayv2/get_authorizers.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       AuthorizerCredentialsArn = "string",
-#'       AuthorizerId = "string",
-#'       AuthorizerPayloadFormatVersion = "string",
-#'       AuthorizerResultTtlInSeconds = 123,
-#'       AuthorizerType = "REQUEST"|"JWT",
-#'       AuthorizerUri = "string",
-#'       EnableSimpleResponses = TRUE|FALSE,
-#'       IdentitySource = list(
-#'         "string"
-#'       ),
-#'       IdentityValidationExpression = "string",
-#'       JwtConfiguration = list(
-#'         Audience = list(
-#'           "string"
-#'         ),
-#'         Issuer = "string"
-#'       ),
-#'       Name = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_authorizers(
-#'   ApiId = "string",
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2501,34 +1422,10 @@ apigatewayv2_get_authorizers <- function(ApiId, MaxResults = NULL, NextToken = N
 #' @description
 #' Gets a Deployment.
 #'
-#' @usage
-#' apigatewayv2_get_deployment(ApiId, DeploymentId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_deployment.html](https://paws-r.github.io/docs/apigatewayv2/get_deployment.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param DeploymentId &#91;required&#93; The deployment ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AutoDeployed = TRUE|FALSE,
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DeploymentId = "string",
-#'   DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
-#'   DeploymentStatusMessage = "string",
-#'   Description = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployment(
-#'   ApiId = "string",
-#'   DeploymentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2555,42 +1452,12 @@ apigatewayv2_get_deployment <- function(ApiId, DeploymentId) {
 #' @description
 #' Gets the Deployments for an API.
 #'
-#' @usage
-#' apigatewayv2_get_deployments(ApiId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_deployments.html](https://paws-r.github.io/docs/apigatewayv2/get_deployments.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       AutoDeployed = TRUE|FALSE,
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DeploymentId = "string",
-#'       DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
-#'       DeploymentStatusMessage = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployments(
-#'   ApiId = "string",
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2617,51 +1484,9 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
 #' @description
 #' Gets a domain name.
 #'
-#' @usage
-#' apigatewayv2_get_domain_name(DomainName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_domain_name.html](https://paws-r.github.io/docs/apigatewayv2/get_domain_name.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiMappingSelectionExpression = "string",
-#'   DomainName = "string",
-#'   DomainNameConfigurations = list(
-#'     list(
-#'       ApiGatewayDomainName = "string",
-#'       CertificateArn = "string",
-#'       CertificateName = "string",
-#'       CertificateUploadDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
-#'       DomainNameStatusMessage = "string",
-#'       EndpointType = "REGIONAL"|"EDGE",
-#'       HostedZoneId = "string",
-#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
-#'     )
-#'   ),
-#'   MutualTlsAuthentication = list(
-#'     TruststoreUri = "string",
-#'     TruststoreVersion = "string",
-#'     TruststoreWarnings = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domain_name(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2688,59 +1513,11 @@ apigatewayv2_get_domain_name <- function(DomainName) {
 #' @description
 #' Gets the domain names for an AWS account.
 #'
-#' @usage
-#' apigatewayv2_get_domain_names(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_domain_names.html](https://paws-r.github.io/docs/apigatewayv2/get_domain_names.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       ApiMappingSelectionExpression = "string",
-#'       DomainName = "string",
-#'       DomainNameConfigurations = list(
-#'         list(
-#'           ApiGatewayDomainName = "string",
-#'           CertificateArn = "string",
-#'           CertificateName = "string",
-#'           CertificateUploadDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           DomainNameStatus = "AVAILABLE"|"UPDATING",
-#'           DomainNameStatusMessage = "string",
-#'           EndpointType = "REGIONAL"|"EDGE",
-#'           HostedZoneId = "string",
-#'           SecurityPolicy = "TLS_1_0"|"TLS_1_2"
-#'         )
-#'       ),
-#'       MutualTlsAuthentication = list(
-#'         TruststoreUri = "string",
-#'         TruststoreVersion = "string",
-#'         TruststoreWarnings = list(
-#'           "string"
-#'         )
-#'       ),
-#'       Tags = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domain_names(
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2767,56 +1544,10 @@ apigatewayv2_get_domain_names <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Gets an Integration.
 #'
-#' @usage
-#' apigatewayv2_get_integration(ApiId, IntegrationId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_integration.html](https://paws-r.github.io/docs/apigatewayv2/get_integration.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ConnectionId = "string",
-#'   ConnectionType = "INTERNET"|"VPC_LINK",
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   CredentialsArn = "string",
-#'   Description = "string",
-#'   IntegrationId = "string",
-#'   IntegrationMethod = "string",
-#'   IntegrationResponseSelectionExpression = "string",
-#'   IntegrationSubtype = "string",
-#'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'   IntegrationUri = "string",
-#'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
-#'   PayloadFormatVersion = "string",
-#'   RequestParameters = list(
-#'     "string"
-#'   ),
-#'   RequestTemplates = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   TemplateSelectionExpression = "string",
-#'   TimeoutInMillis = 123,
-#'   TlsConfig = list(
-#'     ServerNameToVerify = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_integration(
-#'   ApiId = "string",
-#'   IntegrationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2843,39 +1574,11 @@ apigatewayv2_get_integration <- function(ApiId, IntegrationId) {
 #' @description
 #' Gets an IntegrationResponses.
 #'
-#' @usage
-#' apigatewayv2_get_integration_response(ApiId, IntegrationId,
-#'   IntegrationResponseId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_integration_response.html](https://paws-r.github.io/docs/apigatewayv2/get_integration_response.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
 #' @param IntegrationResponseId &#91;required&#93; The integration response ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   IntegrationResponseId = "string",
-#'   IntegrationResponseKey = "string",
-#'   ResponseParameters = list(
-#'     "string"
-#'   ),
-#'   ResponseTemplates = list(
-#'     "string"
-#'   ),
-#'   TemplateSelectionExpression = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_integration_response(
-#'   ApiId = "string",
-#'   IntegrationId = "string",
-#'   IntegrationResponseId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2902,47 +1605,13 @@ apigatewayv2_get_integration_response <- function(ApiId, IntegrationId, Integrat
 #' @description
 #' Gets the IntegrationResponses for an Integration.
 #'
-#' @usage
-#' apigatewayv2_get_integration_responses(ApiId, IntegrationId, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_integration_responses.html](https://paws-r.github.io/docs/apigatewayv2/get_integration_responses.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'       IntegrationResponseId = "string",
-#'       IntegrationResponseKey = "string",
-#'       ResponseParameters = list(
-#'         "string"
-#'       ),
-#'       ResponseTemplates = list(
-#'         "string"
-#'       ),
-#'       TemplateSelectionExpression = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_integration_responses(
-#'   ApiId = "string",
-#'   IntegrationId = "string",
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2969,64 +1638,12 @@ apigatewayv2_get_integration_responses <- function(ApiId, IntegrationId, MaxResu
 #' @description
 #' Gets the Integrations for an API.
 #'
-#' @usage
-#' apigatewayv2_get_integrations(ApiId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_integrations.html](https://paws-r.github.io/docs/apigatewayv2/get_integrations.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       ApiGatewayManaged = TRUE|FALSE,
-#'       ConnectionId = "string",
-#'       ConnectionType = "INTERNET"|"VPC_LINK",
-#'       ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'       CredentialsArn = "string",
-#'       Description = "string",
-#'       IntegrationId = "string",
-#'       IntegrationMethod = "string",
-#'       IntegrationResponseSelectionExpression = "string",
-#'       IntegrationSubtype = "string",
-#'       IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'       IntegrationUri = "string",
-#'       PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
-#'       PayloadFormatVersion = "string",
-#'       RequestParameters = list(
-#'         "string"
-#'       ),
-#'       RequestTemplates = list(
-#'         "string"
-#'       ),
-#'       ResponseParameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       TemplateSelectionExpression = "string",
-#'       TimeoutInMillis = 123,
-#'       TlsConfig = list(
-#'         ServerNameToVerify = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_integrations(
-#'   ApiId = "string",
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3053,31 +1670,10 @@ apigatewayv2_get_integrations <- function(ApiId, MaxResults = NULL, NextToken = 
 #' @description
 #' Gets a Model.
 #'
-#' @usage
-#' apigatewayv2_get_model(ApiId, ModelId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_model.html](https://paws-r.github.io/docs/apigatewayv2/get_model.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelId &#91;required&#93; The model ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ContentType = "string",
-#'   Description = "string",
-#'   ModelId = "string",
-#'   Name = "string",
-#'   Schema = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_model(
-#'   ApiId = "string",
-#'   ModelId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3104,27 +1700,10 @@ apigatewayv2_get_model <- function(ApiId, ModelId) {
 #' @description
 #' Gets a model template.
 #'
-#' @usage
-#' apigatewayv2_get_model_template(ApiId, ModelId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_model_template.html](https://paws-r.github.io/docs/apigatewayv2/get_model_template.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelId &#91;required&#93; The model ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Value = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_model_template(
-#'   ApiId = "string",
-#'   ModelId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3151,39 +1730,12 @@ apigatewayv2_get_model_template <- function(ApiId, ModelId) {
 #' @description
 #' Gets the Models for an API.
 #'
-#' @usage
-#' apigatewayv2_get_models(ApiId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_models.html](https://paws-r.github.io/docs/apigatewayv2/get_models.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       ContentType = "string",
-#'       Description = "string",
-#'       ModelId = "string",
-#'       Name = "string",
-#'       Schema = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_models(
-#'   ApiId = "string",
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3210,47 +1762,10 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @description
 #' Gets a Route.
 #'
-#' @usage
-#' apigatewayv2_get_route(ApiId, RouteId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_route.html](https://paws-r.github.io/docs/apigatewayv2/get_route.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ApiKeyRequired = TRUE|FALSE,
-#'   AuthorizationScopes = list(
-#'     "string"
-#'   ),
-#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-#'   AuthorizerId = "string",
-#'   ModelSelectionExpression = "string",
-#'   OperationName = "string",
-#'   RequestModels = list(
-#'     "string"
-#'   ),
-#'   RequestParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteId = "string",
-#'   RouteKey = "string",
-#'   RouteResponseSelectionExpression = "string",
-#'   Target = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_route(
-#'   ApiId = "string",
-#'   RouteId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3277,39 +1792,11 @@ apigatewayv2_get_route <- function(ApiId, RouteId) {
 #' @description
 #' Gets a RouteResponse.
 #'
-#' @usage
-#' apigatewayv2_get_route_response(ApiId, RouteId, RouteResponseId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_route_response.html](https://paws-r.github.io/docs/apigatewayv2/get_route_response.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
 #' @param RouteResponseId &#91;required&#93; The route response ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ModelSelectionExpression = "string",
-#'   ResponseModels = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteResponseId = "string",
-#'   RouteResponseKey = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_route_response(
-#'   ApiId = "string",
-#'   RouteId = "string",
-#'   RouteResponseId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3336,47 +1823,13 @@ apigatewayv2_get_route_response <- function(ApiId, RouteId, RouteResponseId) {
 #' @description
 #' Gets the RouteResponses for a Route.
 #'
-#' @usage
-#' apigatewayv2_get_route_responses(ApiId, MaxResults, NextToken, RouteId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_route_responses.html](https://paws-r.github.io/docs/apigatewayv2/get_route_responses.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #' @param RouteId &#91;required&#93; The route ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       ModelSelectionExpression = "string",
-#'       ResponseModels = list(
-#'         "string"
-#'       ),
-#'       ResponseParameters = list(
-#'         list(
-#'           Required = TRUE|FALSE
-#'         )
-#'       ),
-#'       RouteResponseId = "string",
-#'       RouteResponseKey = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_route_responses(
-#'   ApiId = "string",
-#'   MaxResults = "string",
-#'   NextToken = "string",
-#'   RouteId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3403,55 +1856,12 @@ apigatewayv2_get_route_responses <- function(ApiId, MaxResults = NULL, NextToken
 #' @description
 #' Gets the Routes for an API.
 #'
-#' @usage
-#' apigatewayv2_get_routes(ApiId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_routes.html](https://paws-r.github.io/docs/apigatewayv2/get_routes.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       ApiGatewayManaged = TRUE|FALSE,
-#'       ApiKeyRequired = TRUE|FALSE,
-#'       AuthorizationScopes = list(
-#'         "string"
-#'       ),
-#'       AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-#'       AuthorizerId = "string",
-#'       ModelSelectionExpression = "string",
-#'       OperationName = "string",
-#'       RequestModels = list(
-#'         "string"
-#'       ),
-#'       RequestParameters = list(
-#'         list(
-#'           Required = TRUE|FALSE
-#'         )
-#'       ),
-#'       RouteId = "string",
-#'       RouteKey = "string",
-#'       RouteResponseSelectionExpression = "string",
-#'       Target = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_routes(
-#'   ApiId = "string",
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3478,66 +1888,11 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @description
 #' Gets a Stage.
 #'
-#' @usage
-#' apigatewayv2_get_stage(ApiId, StageName)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_stage.html](https://paws-r.github.io/docs/apigatewayv2/get_stage.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
 #' hyphens, and underscores. Maximum length is 128 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccessLogSettings = list(
-#'     DestinationArn = "string",
-#'     Format = "string"
-#'   ),
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   AutoDeploy = TRUE|FALSE,
-#'   ClientCertificateId = "string",
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DefaultRouteSettings = list(
-#'     DataTraceEnabled = TRUE|FALSE,
-#'     DetailedMetricsEnabled = TRUE|FALSE,
-#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'     ThrottlingBurstLimit = 123,
-#'     ThrottlingRateLimit = 123.0
-#'   ),
-#'   DeploymentId = "string",
-#'   Description = "string",
-#'   LastDeploymentStatusMessage = "string",
-#'   LastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   RouteSettings = list(
-#'     list(
-#'       DataTraceEnabled = TRUE|FALSE,
-#'       DetailedMetricsEnabled = TRUE|FALSE,
-#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'       ThrottlingBurstLimit = 123,
-#'       ThrottlingRateLimit = 123.0
-#'     )
-#'   ),
-#'   StageName = "string",
-#'   StageVariables = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_stage(
-#'   ApiId = "string",
-#'   StageName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3564,73 +1919,12 @@ apigatewayv2_get_stage <- function(ApiId, StageName) {
 #' @description
 #' Gets the Stages for an API.
 #'
-#' @usage
-#' apigatewayv2_get_stages(ApiId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_stages.html](https://paws-r.github.io/docs/apigatewayv2/get_stages.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       AccessLogSettings = list(
-#'         DestinationArn = "string",
-#'         Format = "string"
-#'       ),
-#'       ApiGatewayManaged = TRUE|FALSE,
-#'       AutoDeploy = TRUE|FALSE,
-#'       ClientCertificateId = "string",
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DefaultRouteSettings = list(
-#'         DataTraceEnabled = TRUE|FALSE,
-#'         DetailedMetricsEnabled = TRUE|FALSE,
-#'         LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'         ThrottlingBurstLimit = 123,
-#'         ThrottlingRateLimit = 123.0
-#'       ),
-#'       DeploymentId = "string",
-#'       Description = "string",
-#'       LastDeploymentStatusMessage = "string",
-#'       LastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RouteSettings = list(
-#'         list(
-#'           DataTraceEnabled = TRUE|FALSE,
-#'           DetailedMetricsEnabled = TRUE|FALSE,
-#'           LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'           ThrottlingBurstLimit = 123,
-#'           ThrottlingRateLimit = 123.0
-#'         )
-#'       ),
-#'       StageName = "string",
-#'       StageVariables = list(
-#'         "string"
-#'       ),
-#'       Tags = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_stages(
-#'   ApiId = "string",
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3657,27 +1951,9 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @description
 #' Gets a collection of Tag resources.
 #'
-#' @usage
-#' apigatewayv2_get_tags(ResourceArn)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_tags.html](https://paws-r.github.io/docs/apigatewayv2/get_tags.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_tags(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3704,41 +1980,9 @@ apigatewayv2_get_tags <- function(ResourceArn) {
 #' @description
 #' Gets a VPC link.
 #'
-#' @usage
-#' apigatewayv2_get_vpc_link(VpcLinkId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_vpc_link.html](https://paws-r.github.io/docs/apigatewayv2/get_vpc_link.html) for full documentation.
 #'
 #' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Name = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   VpcLinkId = "string",
-#'   VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
-#'   VpcLinkStatusMessage = "string",
-#'   VpcLinkVersion = "V2"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_vpc_link(
-#'   VpcLinkId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3765,49 +2009,11 @@ apigatewayv2_get_vpc_link <- function(VpcLinkId) {
 #' @description
 #' Gets a collection of VPC links.
 #'
-#' @usage
-#' apigatewayv2_get_vpc_links(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/apigatewayv2/get_vpc_links.html](https://paws-r.github.io/docs/apigatewayv2/get_vpc_links.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "string",
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       Tags = list(
-#'         "string"
-#'       ),
-#'       VpcLinkId = "string",
-#'       VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
-#'       VpcLinkStatusMessage = "string",
-#'       VpcLinkVersion = "V2"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_vpc_links(
-#'   MaxResults = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3834,8 +2040,7 @@ apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Imports an API.
 #'
-#' @usage
-#' apigatewayv2_import_api(Basepath, Body, FailOnWarnings)
+#' See [https://paws-r.github.io/docs/apigatewayv2/import_api.html](https://paws-r.github.io/docs/apigatewayv2/import_api.html) for full documentation.
 #'
 #' @param Basepath Specifies how to interpret the base path of the API during import. Valid
 #' values are ignore, prepend, and split. The default value is ignore. To
@@ -3846,61 +2051,6 @@ apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param FailOnWarnings Specifies whether to rollback the API creation when a warning is
 #' encountered. By default, API creation continues if a warning is
 #' encountered.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiEndpoint = "string",
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ApiId = "string",
-#'   ApiKeySelectionExpression = "string",
-#'   CorsConfiguration = list(
-#'     AllowCredentials = TRUE|FALSE,
-#'     AllowHeaders = list(
-#'       "string"
-#'     ),
-#'     AllowMethods = list(
-#'       "string"
-#'     ),
-#'     AllowOrigins = list(
-#'       "string"
-#'     ),
-#'     ExposeHeaders = list(
-#'       "string"
-#'     ),
-#'     MaxAge = 123
-#'   ),
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Description = "string",
-#'   DisableSchemaValidation = TRUE|FALSE,
-#'   DisableExecuteApiEndpoint = TRUE|FALSE,
-#'   ImportInfo = list(
-#'     "string"
-#'   ),
-#'   Name = "string",
-#'   ProtocolType = "WEBSOCKET"|"HTTP",
-#'   RouteSelectionExpression = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Version = "string",
-#'   Warnings = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_api(
-#'   Basepath = "string",
-#'   Body = "string",
-#'   FailOnWarnings = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3927,8 +2077,7 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
 #' @description
 #' Puts an Api resource.
 #'
-#' @usage
-#' apigatewayv2_reimport_api(ApiId, Basepath, Body, FailOnWarnings)
+#' See [https://paws-r.github.io/docs/apigatewayv2/reimport_api.html](https://paws-r.github.io/docs/apigatewayv2/reimport_api.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param Basepath Specifies how to interpret the base path of the API during import. Valid
@@ -3940,62 +2089,6 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
 #' @param FailOnWarnings Specifies whether to rollback the API creation when a warning is
 #' encountered. By default, API creation continues if a warning is
 #' encountered.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiEndpoint = "string",
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ApiId = "string",
-#'   ApiKeySelectionExpression = "string",
-#'   CorsConfiguration = list(
-#'     AllowCredentials = TRUE|FALSE,
-#'     AllowHeaders = list(
-#'       "string"
-#'     ),
-#'     AllowMethods = list(
-#'       "string"
-#'     ),
-#'     AllowOrigins = list(
-#'       "string"
-#'     ),
-#'     ExposeHeaders = list(
-#'       "string"
-#'     ),
-#'     MaxAge = 123
-#'   ),
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Description = "string",
-#'   DisableSchemaValidation = TRUE|FALSE,
-#'   DisableExecuteApiEndpoint = TRUE|FALSE,
-#'   ImportInfo = list(
-#'     "string"
-#'   ),
-#'   Name = "string",
-#'   ProtocolType = "WEBSOCKET"|"HTTP",
-#'   RouteSelectionExpression = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Version = "string",
-#'   Warnings = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reimport_api(
-#'   ApiId = "string",
-#'   Basepath = "string",
-#'   Body = "string",
-#'   FailOnWarnings = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4022,25 +2115,11 @@ apigatewayv2_reimport_api <- function(ApiId, Basepath = NULL, Body, FailOnWarnin
 #' @description
 #' Creates a new Tag resource to represent a tag.
 #'
-#' @usage
-#' apigatewayv2_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/apigatewayv2/tag_resource.html](https://paws-r.github.io/docs/apigatewayv2/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
 #' @param Tags The collection of tags. Each tag element is associated with a given
 #' resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4067,24 +2146,10 @@ apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
 #' @description
 #' Deletes a Tag.
 #'
-#' @usage
-#' apigatewayv2_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/apigatewayv2/untag_resource.html](https://paws-r.github.io/docs/apigatewayv2/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
 #' @param TagKeys &#91;required&#93; The Tag keys to delete
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4111,11 +2176,7 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates an Api resource.
 #'
-#' @usage
-#' apigatewayv2_update_api(ApiId, ApiKeySelectionExpression,
-#'   CorsConfiguration, CredentialsArn, Description, DisableSchemaValidation,
-#'   DisableExecuteApiEndpoint, Name, RouteKey, RouteSelectionExpression,
-#'   Target, Version)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_api.html](https://paws-r.github.io/docs/apigatewayv2/update_api.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiKeySelectionExpression An API key selection expression. Supported only for WebSocket APIs. See
@@ -4157,85 +2218,6 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' remove it from an API. Supported only for HTTP APIs.
 #' @param Version A version identifier for the API.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiEndpoint = "string",
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ApiId = "string",
-#'   ApiKeySelectionExpression = "string",
-#'   CorsConfiguration = list(
-#'     AllowCredentials = TRUE|FALSE,
-#'     AllowHeaders = list(
-#'       "string"
-#'     ),
-#'     AllowMethods = list(
-#'       "string"
-#'     ),
-#'     AllowOrigins = list(
-#'       "string"
-#'     ),
-#'     ExposeHeaders = list(
-#'       "string"
-#'     ),
-#'     MaxAge = 123
-#'   ),
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Description = "string",
-#'   DisableSchemaValidation = TRUE|FALSE,
-#'   DisableExecuteApiEndpoint = TRUE|FALSE,
-#'   ImportInfo = list(
-#'     "string"
-#'   ),
-#'   Name = "string",
-#'   ProtocolType = "WEBSOCKET"|"HTTP",
-#'   RouteSelectionExpression = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Version = "string",
-#'   Warnings = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_api(
-#'   ApiId = "string",
-#'   ApiKeySelectionExpression = "string",
-#'   CorsConfiguration = list(
-#'     AllowCredentials = TRUE|FALSE,
-#'     AllowHeaders = list(
-#'       "string"
-#'     ),
-#'     AllowMethods = list(
-#'       "string"
-#'     ),
-#'     AllowOrigins = list(
-#'       "string"
-#'     ),
-#'     ExposeHeaders = list(
-#'       "string"
-#'     ),
-#'     MaxAge = 123
-#'   ),
-#'   CredentialsArn = "string",
-#'   Description = "string",
-#'   DisableSchemaValidation = TRUE|FALSE,
-#'   DisableExecuteApiEndpoint = TRUE|FALSE,
-#'   Name = "string",
-#'   RouteKey = "string",
-#'   RouteSelectionExpression = "string",
-#'   Target = "string",
-#'   Version = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_api
@@ -4261,37 +2243,13 @@ apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, Cor
 #' @description
 #' The API mapping.
 #'
-#' @usage
-#' apigatewayv2_update_api_mapping(ApiId, ApiMappingId, ApiMappingKey,
-#'   DomainName, Stage)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_api_mapping.html](https://paws-r.github.io/docs/apigatewayv2/update_api_mapping.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
 #' @param ApiMappingKey The API mapping key.
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param Stage The API stage.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiId = "string",
-#'   ApiMappingId = "string",
-#'   ApiMappingKey = "string",
-#'   Stage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_api_mapping(
-#'   ApiId = "string",
-#'   ApiMappingId = "string",
-#'   ApiMappingKey = "string",
-#'   DomainName = "string",
-#'   Stage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4318,12 +2276,7 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' @description
 #' Updates an Authorizer.
 #'
-#' @usage
-#' apigatewayv2_update_authorizer(ApiId, AuthorizerCredentialsArn,
-#'   AuthorizerId, AuthorizerPayloadFormatVersion,
-#'   AuthorizerResultTtlInSeconds, AuthorizerType, AuthorizerUri,
-#'   EnableSimpleResponses, IdentitySource, IdentityValidationExpression,
-#'   JwtConfiguration, Name)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_authorizer.html](https://paws-r.github.io/docs/apigatewayv2/update_authorizer.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerCredentialsArn Specifies the required credentials as an IAM role for API Gateway to
@@ -4390,56 +2343,6 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' authorizer type. Supported only for HTTP APIs.
 #' @param Name The name of the authorizer.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AuthorizerCredentialsArn = "string",
-#'   AuthorizerId = "string",
-#'   AuthorizerPayloadFormatVersion = "string",
-#'   AuthorizerResultTtlInSeconds = 123,
-#'   AuthorizerType = "REQUEST"|"JWT",
-#'   AuthorizerUri = "string",
-#'   EnableSimpleResponses = TRUE|FALSE,
-#'   IdentitySource = list(
-#'     "string"
-#'   ),
-#'   IdentityValidationExpression = "string",
-#'   JwtConfiguration = list(
-#'     Audience = list(
-#'       "string"
-#'     ),
-#'     Issuer = "string"
-#'   ),
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_authorizer(
-#'   ApiId = "string",
-#'   AuthorizerCredentialsArn = "string",
-#'   AuthorizerId = "string",
-#'   AuthorizerPayloadFormatVersion = "string",
-#'   AuthorizerResultTtlInSeconds = 123,
-#'   AuthorizerType = "REQUEST"|"JWT",
-#'   AuthorizerUri = "string",
-#'   EnableSimpleResponses = TRUE|FALSE,
-#'   IdentitySource = list(
-#'     "string"
-#'   ),
-#'   IdentityValidationExpression = "string",
-#'   JwtConfiguration = list(
-#'     Audience = list(
-#'       "string"
-#'     ),
-#'     Issuer = "string"
-#'   ),
-#'   Name = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_authorizer
@@ -4465,36 +2368,11 @@ apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #' @description
 #' Updates a Deployment.
 #'
-#' @usage
-#' apigatewayv2_update_deployment(ApiId, DeploymentId, Description)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_deployment.html](https://paws-r.github.io/docs/apigatewayv2/update_deployment.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param DeploymentId &#91;required&#93; The deployment ID.
 #' @param Description The description for the deployment resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AutoDeployed = TRUE|FALSE,
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DeploymentId = "string",
-#'   DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
-#'   DeploymentStatusMessage = "string",
-#'   Description = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_deployment(
-#'   ApiId = "string",
-#'   DeploymentId = "string",
-#'   Description = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4521,73 +2399,11 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #' @description
 #' Updates a domain name.
 #'
-#' @usage
-#' apigatewayv2_update_domain_name(DomainName, DomainNameConfigurations,
-#'   MutualTlsAuthentication)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_domain_name.html](https://paws-r.github.io/docs/apigatewayv2/update_domain_name.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
 #' @param MutualTlsAuthentication The mutual TLS authentication configuration for a custom domain name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiMappingSelectionExpression = "string",
-#'   DomainName = "string",
-#'   DomainNameConfigurations = list(
-#'     list(
-#'       ApiGatewayDomainName = "string",
-#'       CertificateArn = "string",
-#'       CertificateName = "string",
-#'       CertificateUploadDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
-#'       DomainNameStatusMessage = "string",
-#'       EndpointType = "REGIONAL"|"EDGE",
-#'       HostedZoneId = "string",
-#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
-#'     )
-#'   ),
-#'   MutualTlsAuthentication = list(
-#'     TruststoreUri = "string",
-#'     TruststoreVersion = "string",
-#'     TruststoreWarnings = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_domain_name(
-#'   DomainName = "string",
-#'   DomainNameConfigurations = list(
-#'     list(
-#'       ApiGatewayDomainName = "string",
-#'       CertificateArn = "string",
-#'       CertificateName = "string",
-#'       CertificateUploadDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
-#'       DomainNameStatusMessage = "string",
-#'       EndpointType = "REGIONAL"|"EDGE",
-#'       HostedZoneId = "string",
-#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
-#'     )
-#'   ),
-#'   MutualTlsAuthentication = list(
-#'     TruststoreUri = "string",
-#'     TruststoreVersion = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4614,13 +2430,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' @description
 #' Updates an Integration.
 #'
-#' @usage
-#' apigatewayv2_update_integration(ApiId, ConnectionId, ConnectionType,
-#'   ContentHandlingStrategy, CredentialsArn, Description, IntegrationId,
-#'   IntegrationMethod, IntegrationSubtype, IntegrationType, IntegrationUri,
-#'   PassthroughBehavior, PayloadFormatVersion, RequestParameters,
-#'   RequestTemplates, ResponseParameters, TemplateSelectionExpression,
-#'   TimeoutInMillis, TlsConfig)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_integration.html](https://paws-r.github.io/docs/apigatewayv2/update_integration.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ConnectionId The ID of the VPC link for a private integration. Supported only for
@@ -4630,8 +2440,8 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' VPC_LINK for private connections between API Gateway and resources in a
 #' VPC. The default value is INTERNET.
 #' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
-#' payload content type conversions. Supported values are
-#' CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
+#' payload content type conversions. Supported values are CONVERT_TO_BINARY
+#' and CONVERT_TO_TEXT, with the following behaviors:
 #' 
 #' CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
@@ -4696,8 +2506,8 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and
 #' NEVER. Supported only for WebSocket APIs.
 #' 
-#' WHEN_NO_MATCH passes the request body for unmapped content types
-#' through to the integration backend without transformation.
+#' WHEN_NO_MATCH passes the request body for unmapped content types through
+#' to the integration backend without transformation.
 #' 
 #' NEVER rejects unmapped content types with an HTTP 415 Unsupported Media
 #' Type response.
@@ -4729,11 +2539,11 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' For HTTP API integrations, without a specified integrationSubtype
 #' request parameters are a key-value map specifying how to transform HTTP
 #' requests before sending them to the backend. The key should follow the
-#' pattern &lt;action&gt;:&lt;header|querystring|path&gt;.&lt;location&gt;
-#' where action can be append, overwrite or remove. For values, you can
-#' provide static values, or map request data, stage variables, or context
-#' variables that are evaluated at runtime. To learn more, see Transforming
-#' API requests and responses.
+#' pattern \<action\>:\<header|querystring|path\>.\<location\> where action
+#' can be append, overwrite or remove. For values, you can provide static
+#' values, or map request data, stage variables, or context variables that
+#' are evaluated at runtime. To learn more, see Transforming API requests
+#' and responses.
 #' @param RequestTemplates Represents a map of Velocity templates that are applied on the request
 #' payload based on the value of the Content-Type header sent by the
 #' client. The content type value is the key in this map, and the template
@@ -4743,12 +2553,11 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' response to clients. Specify a key-value map from a selection key to
 #' response parameters. The selection key must be a valid HTTP status code
 #' within the range of 200-599. Response parameters are a key-value map.
-#' The key must match pattern
-#' &lt;action&gt;:&lt;header&gt;.&lt;location&gt; or overwrite.statuscode.
-#' The action can be append, overwrite or remove. The value can be a static
-#' value, or map to response data, stage variables, or context variables
-#' that are evaluated at runtime. To learn more, see [Transforming API
-#' requests and
+#' The key must match pattern \<action\>:\<header\>.\<location\> or
+#' overwrite.statuscode. The action can be append, overwrite or remove. The
+#' value can be a static value, or map to response data, stage variables,
+#' or context variables that are evaluated at runtime. To learn more, see
+#' [Transforming API requests and
 #' responses](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html).
 #' @param TemplateSelectionExpression The template selection expression for the integration.
 #' @param TimeoutInMillis Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and
@@ -4757,78 +2566,6 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' @param TlsConfig The TLS configuration for a private integration. If you specify a TLS
 #' configuration, private integration traffic uses the HTTPS protocol.
 #' Supported only for HTTP APIs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ConnectionId = "string",
-#'   ConnectionType = "INTERNET"|"VPC_LINK",
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   CredentialsArn = "string",
-#'   Description = "string",
-#'   IntegrationId = "string",
-#'   IntegrationMethod = "string",
-#'   IntegrationResponseSelectionExpression = "string",
-#'   IntegrationSubtype = "string",
-#'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'   IntegrationUri = "string",
-#'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
-#'   PayloadFormatVersion = "string",
-#'   RequestParameters = list(
-#'     "string"
-#'   ),
-#'   RequestTemplates = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   TemplateSelectionExpression = "string",
-#'   TimeoutInMillis = 123,
-#'   TlsConfig = list(
-#'     ServerNameToVerify = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_integration(
-#'   ApiId = "string",
-#'   ConnectionId = "string",
-#'   ConnectionType = "INTERNET"|"VPC_LINK",
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   CredentialsArn = "string",
-#'   Description = "string",
-#'   IntegrationId = "string",
-#'   IntegrationMethod = "string",
-#'   IntegrationSubtype = "string",
-#'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'   IntegrationUri = "string",
-#'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
-#'   PayloadFormatVersion = "string",
-#'   RequestParameters = list(
-#'     "string"
-#'   ),
-#'   RequestTemplates = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   TemplateSelectionExpression = "string",
-#'   TimeoutInMillis = 123,
-#'   TlsConfig = list(
-#'     ServerNameToVerify = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4855,15 +2592,12 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' @description
 #' Updates an IntegrationResponses.
 #'
-#' @usage
-#' apigatewayv2_update_integration_response(ApiId, ContentHandlingStrategy,
-#'   IntegrationId, IntegrationResponseId, IntegrationResponseKey,
-#'   ResponseParameters, ResponseTemplates, TemplateSelectionExpression)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_integration_response.html](https://paws-r.github.io/docs/apigatewayv2/update_integration_response.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
-#' payload content type conversions. Supported values are
-#' CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
+#' payload content type conversions. Supported values are CONVERT_TO_BINARY
+#' and CONVERT_TO_TEXT, with the following behaviors:
 #' 
 #' CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
@@ -4895,41 +2629,6 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' @param TemplateSelectionExpression The template selection expression for the integration response.
 #' Supported only for WebSocket APIs.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   IntegrationResponseId = "string",
-#'   IntegrationResponseKey = "string",
-#'   ResponseParameters = list(
-#'     "string"
-#'   ),
-#'   ResponseTemplates = list(
-#'     "string"
-#'   ),
-#'   TemplateSelectionExpression = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_integration_response(
-#'   ApiId = "string",
-#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   IntegrationId = "string",
-#'   IntegrationResponseId = "string",
-#'   IntegrationResponseKey = "string",
-#'   ResponseParameters = list(
-#'     "string"
-#'   ),
-#'   ResponseTemplates = list(
-#'     "string"
-#'   ),
-#'   TemplateSelectionExpression = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_integration_response
@@ -4955,9 +2654,7 @@ apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrat
 #' @description
 #' Updates a Model.
 #'
-#' @usage
-#' apigatewayv2_update_model(ApiId, ContentType, Description, ModelId,
-#'   Name, Schema)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_model.html](https://paws-r.github.io/docs/apigatewayv2/update_model.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentType The content-type for the model, for example, "application/json".
@@ -4966,30 +2663,6 @@ apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrat
 #' @param Name The name of the model.
 #' @param Schema The schema for the model. For application/json models, this should be
 #' JSON schema draft 4 model.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ContentType = "string",
-#'   Description = "string",
-#'   ModelId = "string",
-#'   Name = "string",
-#'   Schema = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_model(
-#'   ApiId = "string",
-#'   ContentType = "string",
-#'   Description = "string",
-#'   ModelId = "string",
-#'   Name = "string",
-#'   Schema = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5016,11 +2689,7 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #' @description
 #' Updates a Route.
 #'
-#' @usage
-#' apigatewayv2_update_route(ApiId, ApiKeyRequired, AuthorizationScopes,
-#'   AuthorizationType, AuthorizerId, ModelSelectionExpression,
-#'   OperationName, RequestModels, RequestParameters, RouteId, RouteKey,
-#'   RouteResponseSelectionExpression, Target)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_route.html](https://paws-r.github.io/docs/apigatewayv2/update_route.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiKeyRequired Specifies whether an API key is required for the route. Supported only
@@ -5044,61 +2713,6 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #' @param RouteResponseSelectionExpression The route response selection expression for the route. Supported only
 #' for WebSocket APIs.
 #' @param Target The target for the route.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   ApiKeyRequired = TRUE|FALSE,
-#'   AuthorizationScopes = list(
-#'     "string"
-#'   ),
-#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-#'   AuthorizerId = "string",
-#'   ModelSelectionExpression = "string",
-#'   OperationName = "string",
-#'   RequestModels = list(
-#'     "string"
-#'   ),
-#'   RequestParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteId = "string",
-#'   RouteKey = "string",
-#'   RouteResponseSelectionExpression = "string",
-#'   Target = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_route(
-#'   ApiId = "string",
-#'   ApiKeyRequired = TRUE|FALSE,
-#'   AuthorizationScopes = list(
-#'     "string"
-#'   ),
-#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-#'   AuthorizerId = "string",
-#'   ModelSelectionExpression = "string",
-#'   OperationName = "string",
-#'   RequestModels = list(
-#'     "string"
-#'   ),
-#'   RequestParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteId = "string",
-#'   RouteKey = "string",
-#'   RouteResponseSelectionExpression = "string",
-#'   Target = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5125,10 +2739,7 @@ apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @description
 #' Updates a RouteResponse.
 #'
-#' @usage
-#' apigatewayv2_update_route_response(ApiId, ModelSelectionExpression,
-#'   ResponseModels, ResponseParameters, RouteId, RouteResponseId,
-#'   RouteResponseKey)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_route_response.html](https://paws-r.github.io/docs/apigatewayv2/update_route_response.html) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelSelectionExpression The model selection expression for the route response. Supported only
@@ -5138,43 +2749,6 @@ apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @param RouteId &#91;required&#93; The route ID.
 #' @param RouteResponseId &#91;required&#93; The route response ID.
 #' @param RouteResponseKey The route response key.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ModelSelectionExpression = "string",
-#'   ResponseModels = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteResponseId = "string",
-#'   RouteResponseKey = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_route_response(
-#'   ApiId = "string",
-#'   ModelSelectionExpression = "string",
-#'   ResponseModels = list(
-#'     "string"
-#'   ),
-#'   ResponseParameters = list(
-#'     list(
-#'       Required = TRUE|FALSE
-#'     )
-#'   ),
-#'   RouteId = "string",
-#'   RouteResponseId = "string",
-#'   RouteResponseKey = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5201,10 +2775,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' @description
 #' Updates a Stage.
 #'
-#' @usage
-#' apigatewayv2_update_stage(AccessLogSettings, ApiId, AutoDeploy,
-#'   ClientCertificateId, DefaultRouteSettings, DeploymentId, Description,
-#'   RouteSettings, StageName, StageVariables)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_stage.html](https://paws-r.github.io/docs/apigatewayv2/update_stage.html) for full documentation.
 #'
 #' @param AccessLogSettings Settings for logging access in this stage.
 #' @param ApiId &#91;required&#93; The API identifier.
@@ -5222,87 +2793,6 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
 #' \[A-Za-z0-9-._~:/?#&=,\]+.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccessLogSettings = list(
-#'     DestinationArn = "string",
-#'     Format = "string"
-#'   ),
-#'   ApiGatewayManaged = TRUE|FALSE,
-#'   AutoDeploy = TRUE|FALSE,
-#'   ClientCertificateId = "string",
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DefaultRouteSettings = list(
-#'     DataTraceEnabled = TRUE|FALSE,
-#'     DetailedMetricsEnabled = TRUE|FALSE,
-#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'     ThrottlingBurstLimit = 123,
-#'     ThrottlingRateLimit = 123.0
-#'   ),
-#'   DeploymentId = "string",
-#'   Description = "string",
-#'   LastDeploymentStatusMessage = "string",
-#'   LastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   RouteSettings = list(
-#'     list(
-#'       DataTraceEnabled = TRUE|FALSE,
-#'       DetailedMetricsEnabled = TRUE|FALSE,
-#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'       ThrottlingBurstLimit = 123,
-#'       ThrottlingRateLimit = 123.0
-#'     )
-#'   ),
-#'   StageName = "string",
-#'   StageVariables = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_stage(
-#'   AccessLogSettings = list(
-#'     DestinationArn = "string",
-#'     Format = "string"
-#'   ),
-#'   ApiId = "string",
-#'   AutoDeploy = TRUE|FALSE,
-#'   ClientCertificateId = "string",
-#'   DefaultRouteSettings = list(
-#'     DataTraceEnabled = TRUE|FALSE,
-#'     DetailedMetricsEnabled = TRUE|FALSE,
-#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'     ThrottlingBurstLimit = 123,
-#'     ThrottlingRateLimit = 123.0
-#'   ),
-#'   DeploymentId = "string",
-#'   Description = "string",
-#'   RouteSettings = list(
-#'     list(
-#'       DataTraceEnabled = TRUE|FALSE,
-#'       DetailedMetricsEnabled = TRUE|FALSE,
-#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
-#'       ThrottlingBurstLimit = 123,
-#'       ThrottlingRateLimit = 123.0
-#'     )
-#'   ),
-#'   StageName = "string",
-#'   StageVariables = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5329,43 +2819,10 @@ apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 #' @description
 #' Updates a VPC link.
 #'
-#' @usage
-#' apigatewayv2_update_vpc_link(Name, VpcLinkId)
+#' See [https://paws-r.github.io/docs/apigatewayv2/update_vpc_link.html](https://paws-r.github.io/docs/apigatewayv2/update_vpc_link.html) for full documentation.
 #'
 #' @param Name The name of the VPC link.
 #' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Name = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   VpcLinkId = "string",
-#'   VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
-#'   VpcLinkStatusMessage = "string",
-#'   VpcLinkVersion = "V2"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_vpc_link(
-#'   Name = "string",
-#'   VpcLinkId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

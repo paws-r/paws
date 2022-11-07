@@ -5,7 +5,11 @@
 \title{Deletes a specified instance, which terminates the associated Amazon EC2
 instance}
 \usage{
-opsworks_delete_instance(InstanceId, DeleteElasticIp, DeleteVolumes)
+opsworks_delete_instance(
+  InstanceId,
+  DeleteElasticIp = NULL,
+  DeleteVolumes = NULL
+)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
@@ -14,27 +18,9 @@ opsworks_delete_instance(InstanceId, DeleteElasticIp, DeleteVolumes)
 
 \item{DeleteVolumes}{Whether to delete the instance's Amazon EBS volumes.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a specified instance, which terminates the associated Amazon EC2
-instance. You must stop an instance before you can delete it.
+Deletes a specified instance, which terminates the associated Amazon EC2 instance. You must stop an instance before you can delete it.
 
-For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html}{Deleting Instances}.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/delete_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_instance(
-  InstanceId = "string",
-  DeleteElasticIp = TRUE|FALSE,
-  DeleteVolumes = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

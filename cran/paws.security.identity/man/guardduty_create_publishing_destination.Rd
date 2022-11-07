@@ -4,8 +4,12 @@
 \alias{guardduty_create_publishing_destination}
 \title{Creates a publishing destination to export findings to}
 \usage{
-guardduty_create_publishing_destination(DetectorId, DestinationType,
-  DestinationProperties, ClientToken)
+guardduty_create_publishing_destination(
+  DetectorId,
+  DestinationType,
+  DestinationProperties,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the GuardDuty detector associated with the publishing
@@ -19,27 +23,9 @@ destination and the KMS key used for encryption.}
 
 \item{ClientToken}{The idempotency token for the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DestinationId = "string"
-)
-}
-}
 \description{
-Creates a publishing destination to export findings to. The resource to
-export findings to must exist before you use this operation.
-}
-\section{Request syntax}{
-\preformatted{svc$create_publishing_destination(
-  DetectorId = "string",
-  DestinationType = "S3",
-  DestinationProperties = list(
-    DestinationArn = "string",
-    KmsKeyArn = "string"
-  ),
-  ClientToken = "string"
-)
-}
-}
+Creates a publishing destination to export findings to. The resource to export findings to must exist before you use this operation.
 
+See \url{https://paws-r.github.io/docs/guardduty/create_publishing_destination.html} for full documentation.
+}
 \keyword{internal}

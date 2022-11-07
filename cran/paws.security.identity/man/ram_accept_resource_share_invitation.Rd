@@ -2,60 +2,31 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_accept_resource_share_invitation}
 \alias{ram_accept_resource_share_invitation}
-\title{Accepts an invitation to a resource share from another AWS account}
+\title{Accepts an invitation to a resource share from another Amazon Web
+Services account}
 \usage{
-ram_accept_resource_share_invitation(resourceShareInvitationArn,
-  clientToken)
+ram_accept_resource_share_invitation(
+  resourceShareInvitationArn,
+  clientToken = NULL
+)
 }
 \arguments{
-\item{resourceShareInvitationArn}{[required] The Amazon Resource Name (ARN) of the invitation.}
+\item{resourceShareInvitationArn}{[required] The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the invitation that you want to accept.}
 
-\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceShareInvitation = list(
-    resourceShareInvitationArn = "string",
-    resourceShareName = "string",
-    resourceShareArn = "string",
-    senderAccountId = "string",
-    receiverAccountId = "string",
-    invitationTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    status = "PENDING"|"ACCEPTED"|"REJECTED"|"EXPIRED",
-    resourceShareAssociations = list(
-      list(
-        resourceShareArn = "string",
-        resourceShareName = "string",
-        associatedEntity = "string",
-        associationType = "PRINCIPAL"|"RESOURCE",
-        status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
-        statusMessage = "string",
-        creationTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        lastUpdatedTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        external = TRUE|FALSE
-      )
-    )
-  ),
-  clientToken = "string"
-)
-}
+\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
+the idempotency of the request. This lets you safely retry the request
+without accidentally performing the same operation a second time.
+Passing the same value to a later call to an operation requires that you
+also pass the same value for all other parameters. We recommend that you
+use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
+
+If you don't provide this value, then Amazon Web Services generates a
+random one for you.}
 }
 \description{
-Accepts an invitation to a resource share from another AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$accept_resource_share_invitation(
-  resourceShareInvitationArn = "string",
-  clientToken = "string"
-)
-}
-}
+Accepts an invitation to a resource share from another Amazon Web Services account. After you accept the invitation, the resources included in the resource share are available to interact with in the relevant Amazon Web Services Management Consoles and tools.
 
+See \url{https://paws-r.github.io/docs/ram/accept_resource_share_invitation.html} for full documentation.
+}
 \keyword{internal}

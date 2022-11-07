@@ -4,42 +4,18 @@
 \alias{ecr_get_repository_policy}
 \title{Retrieves the repository policy for the specified repository}
 \usage{
-ecr_get_repository_policy(registryId, repositoryName)
+ecr_get_repository_policy(registryId = NULL, repositoryName)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository. If you do not specify a registry, the default registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository. If you do not specify a registry, the default
+registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository with the policy to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  repositoryName = "string",
-  policyText = "string"
-)
-}
-}
 \description{
 Retrieves the repository policy for the specified repository.
-}
-\section{Request syntax}{
-\preformatted{svc$get_repository_policy(
-  registryId = "string",
-  repositoryName = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example obtains the repository policy for the repository named
-# ubuntu.
-svc$get_repository_policy(
-  repositoryName = "ubuntu"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecr/get_repository_policy.html} for full documentation.
 }
 \keyword{internal}

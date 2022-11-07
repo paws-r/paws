@@ -6,42 +6,15 @@
 cross-cluster search connection}
 \usage{
 elasticsearchservice_delete_inbound_cross_cluster_search_connection(
-  CrossClusterSearchConnectionId)
+  CrossClusterSearchConnectionId
+)
 }
 \arguments{
 \item{CrossClusterSearchConnectionId}{[required] The id of the inbound connection that you want to permanently delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CrossClusterSearchConnection = list(
-    SourceDomainInfo = list(
-      OwnerId = "string",
-      DomainName = "string",
-      Region = "string"
-    ),
-    DestinationDomainInfo = list(
-      OwnerId = "string",
-      DomainName = "string",
-      Region = "string"
-    ),
-    CrossClusterSearchConnectionId = "string",
-    ConnectionStatus = list(
-      StatusCode = "PENDING_ACCEPTANCE"|"APPROVED"|"REJECTING"|"REJECTED"|"DELETING"|"DELETED",
-      Message = "string"
-    )
-  )
-)
-}
-}
 \description{
-Allows the destination domain owner to delete an existing inbound
-cross-cluster search connection.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_inbound_cross_cluster_search_connection(
-  CrossClusterSearchConnectionId = "string"
-)
-}
-}
+Allows the destination domain owner to delete an existing inbound cross-cluster search connection.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/delete_inbound_cross_cluster_search_connection.html} for full documentation.
+}
 \keyword{internal}

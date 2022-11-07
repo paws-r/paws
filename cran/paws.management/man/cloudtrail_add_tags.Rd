@@ -2,41 +2,22 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_add_tags}
 \alias{cloudtrail_add_tags}
-\title{Adds one or more tags to a trail, up to a limit of 50}
+\title{Adds one or more tags to a trail or event data store, up to a limit of
+50}
 \usage{
 cloudtrail_add_tags(ResourceId, TagsList)
 }
 \arguments{
-\item{ResourceId}{[required] Specifies the ARN of the trail to which one or more tags will be added.
-The format of a trail ARN is:
+\item{ResourceId}{[required] Specifies the ARN of the trail or event data store to which one or more
+tags will be added. The format of a trail ARN is:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 
-\item{TagsList}{Contains a list of CloudTrail tags, up to a limit of 50}
-}
-\value{
-An empty list.
+\item{TagsList}{[required] Contains a list of tags, up to a limit of 50}
 }
 \description{
-Adds one or more tags to a trail, up to a limit of 50. Overwrites an
-existing tag's value when a new value is specified for an existing tag
-key. Tag key names must be unique for a trail; you cannot have two keys
-with the same name but different values. If you specify a key without a
-value, the tag will be created with the specified key and a value of
-null. You can tag a trail that applies to all AWS Regions only from the
-Region in which the trail was created (also known as its home region).
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags(
-  ResourceId = "string",
-  TagsList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds one or more tags to a trail or event data store, up to a limit of 50. Overwrites an existing tag's value when a new value is specified for an existing tag key. Tag key names must be unique for a trail; you cannot have two keys with the same name but different values. If you specify a key without a value, the tag will be created with the specified key and a value of null. You can tag a trail or event data store that applies to all Amazon Web Services Regions only from the Region in which the trail or event data store was created (also known as its home region).
 
+See \url{https://paws-r.github.io/docs/cloudtrail/add_tags.html} for full documentation.
+}
 \keyword{internal}

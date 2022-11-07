@@ -3,24 +3,13 @@
 \name{fms_get_notification_channel}
 \alias{fms_get_notification_channel}
 \title{Information about the Amazon Simple Notification Service (SNS) topic
-that is used to record AWS Firewall Manager SNS logs}
+that is used to record Firewall Manager SNS logs}
 \usage{
 fms_get_notification_channel()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SnsTopicArn = "string",
-  SnsRoleName = "string"
-)
-}
-}
 \description{
-Information about the Amazon Simple Notification Service (SNS) topic
-that is used to record AWS Firewall Manager SNS logs.
-}
-\section{Request syntax}{
-\preformatted{svc$get_notification_channel()
-}
-}
+Information about the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs.
 
+See \url{https://paws-r.github.io/docs/fms/get_notification_channel.html} for full documentation.
+}
 \keyword{internal}

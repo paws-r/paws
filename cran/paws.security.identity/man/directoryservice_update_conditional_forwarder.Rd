@@ -2,15 +2,18 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_update_conditional_forwarder}
 \alias{directoryservice_update_conditional_forwarder}
-\title{Updates a conditional forwarder that has been set up for your AWS
-directory}
+\title{Updates a conditional forwarder that has been set up for your Amazon Web
+Services directory}
 \usage{
-directoryservice_update_conditional_forwarder(DirectoryId,
-  RemoteDomainName, DnsIpAddrs)
+directoryservice_update_conditional_forwarder(
+  DirectoryId,
+  RemoteDomainName,
+  DnsIpAddrs
+)
 }
 \arguments{
-\item{DirectoryId}{[required] The directory ID of the AWS directory for which to update the
-conditional forwarder.}
+\item{DirectoryId}{[required] The directory ID of the Amazon Web Services directory for which to
+update the conditional forwarder.}
 
 \item{RemoteDomainName}{[required] The fully qualified domain name (FQDN) of the remote domain with which
 you will set up a trust relationship.}
@@ -18,22 +21,9 @@ you will set up a trust relationship.}
 \item{DnsIpAddrs}{[required] The updated IP addresses of the remote DNS server associated with the
 conditional forwarder.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates a conditional forwarder that has been set up for your AWS
-directory.
-}
-\section{Request syntax}{
-\preformatted{svc$update_conditional_forwarder(
-  DirectoryId = "string",
-  RemoteDomainName = "string",
-  DnsIpAddrs = list(
-    "string"
-  )
-)
-}
-}
+Updates a conditional forwarder that has been set up for your Amazon Web Services directory.
 
+See \url{https://paws-r.github.io/docs/directoryservice/update_conditional_forwarder.html} for full documentation.
+}
 \keyword{internal}

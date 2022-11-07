@@ -6,9 +6,15 @@
 an Amazon Redshift cluster to store and use database encryption keys in
 a Hardware Security Module (HSM)}
 \usage{
-redshift_create_hsm_configuration(HsmConfigurationIdentifier,
-  Description, HsmIpAddress, HsmPartitionName, HsmPartitionPassword,
-  HsmServerPublicCertificate, Tags)
+redshift_create_hsm_configuration(
+  HsmConfigurationIdentifier,
+  Description,
+  HsmIpAddress,
+  HsmPartitionName,
+  HsmPartitionPassword,
+  HsmServerPublicCertificate,
+  Tags = NULL
+)
 }
 \arguments{
 \item{HsmConfigurationIdentifier}{[required] The identifier to be assigned to the new Amazon Redshift HSM
@@ -29,50 +35,9 @@ server.pem.}
 
 \item{Tags}{A list of tag instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HsmConfiguration = list(
-    HsmConfigurationIdentifier = "string",
-    Description = "string",
-    HsmIpAddress = "string",
-    HsmPartitionName = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates an HSM configuration that contains the information required by
-an Amazon Redshift cluster to store and use database encryption keys in
-a Hardware Security Module (HSM). After creating the HSM configuration,
-you can specify it as a parameter when creating a cluster. The cluster
-will then store its encryption keys in the HSM.
+Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM). After creating the HSM configuration, you can specify it as a parameter when creating a cluster. The cluster will then store its encryption keys in the HSM.
 
-In addition to creating an HSM configuration, you must also create an
-HSM client certificate. For more information, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Hardware Security Modules} in the
-Amazon Redshift Cluster Management Guide.
+See \url{https://paws-r.github.io/docs/redshift/create_hsm_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_hsm_configuration(
-  HsmConfigurationIdentifier = "string",
-  Description = "string",
-  HsmIpAddress = "string",
-  HsmPartitionName = "string",
-  HsmPartitionPassword = "string",
-  HsmServerPublicCertificate = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

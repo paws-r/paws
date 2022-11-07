@@ -5,8 +5,7 @@
 \title{Updates the domain's endpoint options, specifically whether all requests
 to the domain must arrive over HTTPS}
 \usage{
-cloudsearch_update_domain_endpoint_options(DomainName,
-  DomainEndpointOptions)
+cloudsearch_update_domain_endpoint_options(DomainName, DomainEndpointOptions)
 }
 \arguments{
 \item{DomainName}{[required] A string that represents the name of a domain.}
@@ -16,43 +15,9 @@ recommend Policy-Min-TLS-1-2-2019-07 for TLSSecurityPolicy. For
 compatibility with older clients, the default is
 Policy-Min-TLS-1-0-2019-07.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainEndpointOptions = list(
-    Options = list(
-      EnforceHTTPS = TRUE|FALSE,
-      TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
-    ),
-    Status = list(
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateVersion = 123,
-      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-      PendingDeletion = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Updates the domain's endpoint options, specifically whether all requests
-to the domain must arrive over HTTPS. For more information, see
-\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html}{Configuring Domain Endpoint Options}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_domain_endpoint_options(
-  DomainName = "string",
-  DomainEndpointOptions = list(
-    EnforceHTTPS = TRUE|FALSE,
-    TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
-  )
-)
-}
-}
+Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html" target="_blank">Configuring Domain Endpoint Options</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/update_domain_endpoint_options.html} for full documentation.
+}
 \keyword{internal}

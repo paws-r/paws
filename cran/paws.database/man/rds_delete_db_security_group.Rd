@@ -19,20 +19,9 @@ Constraints:
 \item Must not be "Default"
 }}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a DB security group.
 
-The specified DB security group must not be associated with any DB
-instances.
+See \url{https://paws-r.github.io/docs/rds/delete_db_security_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_db_security_group(
-  DBSecurityGroupName = "string"
-)
-}
-}
-
 \keyword{internal}

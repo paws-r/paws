@@ -4,8 +4,12 @@
 \alias{cloudwatchlogs_describe_export_tasks}
 \title{Lists the specified export tasks}
 \usage{
-cloudwatchlogs_describe_export_tasks(taskId, statusCode, nextToken,
-  limit)
+cloudwatchlogs_describe_export_tasks(
+  taskId = NULL,
+  statusCode = NULL,
+  nextToken = NULL,
+  limit = NULL
+)
 }
 \arguments{
 \item{taskId}{The ID of the export task. Specifying a task ID filters the results to
@@ -20,43 +24,9 @@ from a previous call.)}
 \item{limit}{The maximum number of items returned. If you don't specify a value, the
 default is up to 50 items.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  exportTasks = list(
-    list(
-      taskId = "string",
-      taskName = "string",
-      logGroupName = "string",
-      from = 123,
-      to = 123,
-      destination = "string",
-      destinationPrefix = "string",
-      status = list(
-        code = "CANCELLED"|"COMPLETED"|"FAILED"|"PENDING"|"PENDING_CANCEL"|"RUNNING",
-        message = "string"
-      ),
-      executionInfo = list(
-        creationTime = 123,
-        completionTime = 123
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the specified export tasks. You can list all your export tasks or
-filter the results based on task ID or task status.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_export_tasks(
-  taskId = "string",
-  statusCode = "CANCELLED"|"COMPLETED"|"FAILED"|"PENDING"|"PENDING_CANCEL"|"RUNNING",
-  nextToken = "string",
-  limit = 123
-)
-}
-}
+Lists the specified export tasks. You can list all your export tasks or filter the results based on task ID or task status.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_export_tasks.html} for full documentation.
+}
 \keyword{internal}

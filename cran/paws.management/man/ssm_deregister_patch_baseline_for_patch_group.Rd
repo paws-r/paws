@@ -12,22 +12,9 @@ ssm_deregister_patch_baseline_for_patch_group(BaselineId, PatchGroup)
 \item{PatchGroup}{[required] The name of the patch group that should be deregistered from the patch
 baseline.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BaselineId = "string",
-  PatchGroup = "string"
-)
-}
-}
 \description{
 Removes a patch group from a patch baseline.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_patch_baseline_for_patch_group(
-  BaselineId = "string",
-  PatchGroup = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/deregister_patch_baseline_for_patch_group.html} for full documentation.
+}
 \keyword{internal}

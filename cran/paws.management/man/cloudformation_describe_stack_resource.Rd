@@ -7,8 +7,8 @@
 cloudformation_describe_stack_resource(StackName, LogicalResourceId)
 }
 \arguments{
-\item{StackName}{[required] The name or the unique stack ID that is associated with the stack, which
-are not always interchangeable:
+\item{StackName}{[required] The name or the unique stack ID that's associated with the stack, which
+aren't always interchangeable:
 \itemize{
 \item Running stacks: You can specify either the stack's name or its
 unique stack ID.
@@ -21,47 +21,9 @@ Default: There is no default value.}
 
 Default: There is no default value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackResourceDetail = list(
-    StackName = "string",
-    StackId = "string",
-    LogicalResourceId = "string",
-    PhysicalResourceId = "string",
-    ResourceType = "string",
-    LastUpdatedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
-    ResourceStatusReason = "string",
-    Description = "string",
-    Metadata = "string",
-    DriftInformation = list(
-      StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
-      LastCheckTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    ModuleInfo = list(
-      TypeHierarchy = "string",
-      LogicalIdHierarchy = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns a description of the specified resource in the specified stack.
 
-For deleted stacks, DescribeStackResource returns resource information
-for up to 90 days after the stack has been deleted.
+See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_stack_resource(
-  StackName = "string",
-  LogicalResourceId = "string"
-)
-}
-}
-
 \keyword{internal}

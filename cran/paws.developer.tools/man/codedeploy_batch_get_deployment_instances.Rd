@@ -12,61 +12,9 @@ codedeploy_batch_get_deployment_instances(deploymentId, instanceIds)
 \item{instanceIds}{[required] The unique IDs of instances used in the deployment. The maximum number
 of instance IDs you can specify is 25.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  instancesSummary = list(
-    list(
-      deploymentId = "string",
-      instanceId = "string",
-      status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lifecycleEvents = list(
-        list(
-          lifecycleEventName = "string",
-          diagnostics = list(
-            errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-            scriptName = "string",
-            message = "string",
-            logTail = "string"
-          ),
-          startTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          endTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-        )
-      ),
-      instanceType = "Blue"|"Green"
-    )
-  ),
-  errorMessage = "string"
-)
-}
-}
 \description{
-This method works, but is deprecated. Use
-\code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}}
-instead.
+This method works, but is deprecated. Use \code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}} instead.
 
-Returns an array of one or more instances associated with a deployment.
-This method works with EC2/On-premises and AWS Lambda compute platforms.
-The newer
-\code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}}
-works with all compute platforms. The maximum number of instances that
-can be returned is 25.
+See \url{https://paws-r.github.io/docs/codedeploy/batch_get_deployment_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$batch_get_deployment_instances(
-  deploymentId = "string",
-  instanceIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -11,69 +11,9 @@ elb_register_instances_with_load_balancer(LoadBalancerName, Instances)
 
 \item{Instances}{[required] The IDs of the instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Instances = list(
-    list(
-      InstanceId = "string"
-    )
-  )
-)
-}
-}
 \description{
 Adds the specified instances to the specified load balancer.
 
-The instance must be a running instance in the same network as the load
-balancer (EC2-Classic or the same VPC). If you have EC2-Classic
-instances and a load balancer in a VPC with ClassicLink enabled, you can
-link the EC2-Classic instances to that VPC and then register the linked
-EC2-Classic instances with the load balancer in the VPC.
-
-Note that \code{RegisterInstanceWithLoadBalancer} completes when the request
-has been registered. Instance registration takes a little time to
-complete. To check the state of the registered instances, use
-\code{\link[=elb_describe_load_balancers]{describe_load_balancers}} or
-\code{\link[=elb_describe_instance_health]{describe_instance_health}}.
-
-After the instance is registered, it starts receiving traffic and
-requests from the load balancer. Any instance that is not in one of the
-Availability Zones registered for the load balancer is moved to the
-\code{OutOfService} state. If an Availability Zone is added to the load
-balancer later, any instances registered with the load balancer move to
-the \code{InService} state.
-
-To deregister instances from a load balancer, use
-\code{\link[=elb_deregister_instances_from_load_balancer]{deregister_instances_from_load_balancer}}.
-
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html}{Register or De-Register EC2 Instances}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$register_instances_with_load_balancer(
-  LoadBalancerName = "string",
-  Instances = list(
-    list(
-      InstanceId = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example registers the specified instance with the specified load
-# balancer.
-svc$register_instances_with_load_balancer(
-  Instances = list(
-    list(
-      InstanceId = "i-d6f6fae3"
-    )
-  ),
-  LoadBalancerName = "my-load-balancer"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/register_instances_with_load_balancer.html} for full documentation.
 }
 \keyword{internal}

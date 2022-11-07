@@ -9,20 +9,9 @@ codebuild_get_resource_policy(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The ARN of the resource that is associated with the resource policy.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  policy = "string"
-)
-}
-}
 \description{
 Gets a resource policy that is identified by its resource ARN.
-}
-\section{Request syntax}{
-\preformatted{svc$get_resource_policy(
-  resourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/get_resource_policy.html} for full documentation.
+}
 \keyword{internal}

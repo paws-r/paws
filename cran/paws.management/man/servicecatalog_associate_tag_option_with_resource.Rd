@@ -5,27 +5,16 @@
 \title{Associate the specified TagOption with the specified portfolio or
 product}
 \usage{
-servicecatalog_associate_tag_option_with_resource(ResourceId,
-  TagOptionId)
+servicecatalog_associate_tag_option_with_resource(ResourceId, TagOptionId)
 }
 \arguments{
 \item{ResourceId}{[required] The resource identifier.}
 
 \item{TagOptionId}{[required] The TagOption identifier.}
 }
-\value{
-An empty list.
-}
 \description{
-Associate the specified TagOption with the specified portfolio or
-product.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_tag_option_with_resource(
-  ResourceId = "string",
-  TagOptionId = "string"
-)
-}
-}
+Associate the specified TagOption with the specified portfolio or product.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/associate_tag_option_with_resource.html} for full documentation.
+}
 \keyword{internal}

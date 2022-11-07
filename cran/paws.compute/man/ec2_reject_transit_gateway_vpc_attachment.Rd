@@ -4,8 +4,10 @@
 \alias{ec2_reject_transit_gateway_vpc_attachment}
 \title{Rejects a request to attach a VPC to a transit gateway}
 \usage{
-ec2_reject_transit_gateway_vpc_attachment(TransitGatewayAttachmentId,
-  DryRun)
+ec2_reject_transit_gateway_vpc_attachment(
+  TransitGatewayAttachmentId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the attachment.}
@@ -15,50 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayVpcAttachment = list(
-    TransitGatewayAttachmentId = "string",
-    TransitGatewayId = "string",
-    VpcId = "string",
-    VpcOwnerId = "string",
-    State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-    SubnetIds = list(
-      "string"
-    ),
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Options = list(
-      DnsSupport = "enable"|"disable",
-      Ipv6Support = "enable"|"disable",
-      ApplianceModeSupport = "enable"|"disable"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Rejects a request to attach a VPC to a transit gateway.
 
-The VPC attachment must be in the \code{pendingAcceptance} state. Use
-\code{\link[=ec2_describe_transit_gateway_vpc_attachments]{describe_transit_gateway_vpc_attachments}}
-to view your pending VPC attachment requests. Use
-\code{\link[=ec2_accept_transit_gateway_vpc_attachment]{accept_transit_gateway_vpc_attachment}}
-to accept a VPC attachment request.
+See \url{https://paws-r.github.io/docs/ec2/reject_transit_gateway_vpc_attachment.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$reject_transit_gateway_vpc_attachment(
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

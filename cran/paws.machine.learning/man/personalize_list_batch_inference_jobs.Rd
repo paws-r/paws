@@ -5,8 +5,11 @@
 \title{Gets a list of the batch inference jobs that have been performed off of
 a solution version}
 \usage{
-personalize_list_batch_inference_jobs(solutionVersionArn, nextToken,
-  maxResults)
+personalize_list_batch_inference_jobs(
+  solutionVersionArn = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{solutionVersionArn}{The Amazon Resource Name (ARN) of the solution version from which the
@@ -17,38 +20,9 @@ batch inference jobs were created.}
 \item{maxResults}{The maximum number of batch inference job results to return in each
 page. The default value is 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  batchInferenceJobs = list(
-    list(
-      batchInferenceJobArn = "string",
-      jobName = "string",
-      status = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      failureReason = "string",
-      solutionVersionArn = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Gets a list of the batch inference jobs that have been performed off of
-a solution version.
-}
-\section{Request syntax}{
-\preformatted{svc$list_batch_inference_jobs(
-  solutionVersionArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Gets a list of the batch inference jobs that have been performed off of a solution version.
 
+See \url{https://paws-r.github.io/docs/personalize/list_batch_inference_jobs.html} for full documentation.
+}
 \keyword{internal}

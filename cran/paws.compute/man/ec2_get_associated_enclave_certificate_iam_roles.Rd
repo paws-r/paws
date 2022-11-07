@@ -2,10 +2,13 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_get_associated_enclave_certificate_iam_roles}
 \alias{ec2_get_associated_enclave_certificate_iam_roles}
-\title{Returns the IAM roles that are associated with the specified AWS
-Certificate Manager (ACM) certificate}
+\title{Returns the IAM roles that are associated with the specified ACM (ACM)
+certificate}
 \usage{
-ec2_get_associated_enclave_certificate_iam_roles(CertificateArn, DryRun)
+ec2_get_associated_enclave_certificate_iam_roles(
+  CertificateArn = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{CertificateArn}{The ARN of the ACM certificate for which to view the associated IAM
@@ -16,33 +19,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociatedRoles = list(
-    list(
-      AssociatedRoleArn = "string",
-      CertificateS3BucketName = "string",
-      CertificateS3ObjectKey = "string",
-      EncryptionKmsKeyId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns the IAM roles that are associated with the specified AWS
-Certificate Manager (ACM) certificate. It also returns the name of the
-Amazon S3 bucket and the Amazon S3 object key where the certificate,
-certificate chain, and encrypted private key bundle are stored, and the
-ARN of the AWS Key Management Service (KMS) customer master key (CMK)
-that's used to encrypt the private key.
-}
-\section{Request syntax}{
-\preformatted{svc$get_associated_enclave_certificate_iam_roles(
-  CertificateArn = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Returns the IAM roles that are associated with the specified ACM (ACM) certificate. It also returns the name of the Amazon S3 bucket and the Amazon S3 object key where the certificate, certificate chain, and encrypted private key bundle are stored, and the ARN of the KMS key that's used to encrypt the private key.
 
+See \url{https://paws-r.github.io/docs/ec2/get_associated_enclave_certificate_iam_roles.html} for full documentation.
+}
 \keyword{internal}

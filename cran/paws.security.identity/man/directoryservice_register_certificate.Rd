@@ -5,8 +5,12 @@
 \title{Registers a certificate for a secure LDAP or client certificate
 authentication}
 \usage{
-directoryservice_register_certificate(DirectoryId, CertificateData,
-  Type, ClientCertAuthSettings)
+directoryservice_register_certificate(
+  DirectoryId,
+  CertificateData,
+  Type = NULL,
+  ClientCertAuthSettings = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory.}
@@ -20,26 +24,9 @@ include \code{ClientLDAPS} or \code{ClientCertAuth}. The default value is
 \item{ClientCertAuthSettings}{A \code{ClientCertAuthSettings} object that contains client certificate
 authentication settings.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CertificateId = "string"
-)
-}
-}
 \description{
-Registers a certificate for a secure LDAP or client certificate
-authentication.
-}
-\section{Request syntax}{
-\preformatted{svc$register_certificate(
-  DirectoryId = "string",
-  CertificateData = "string",
-  Type = "ClientCertAuth"|"ClientLDAPS",
-  ClientCertAuthSettings = list(
-    OCSPUrl = "string"
-  )
-)
-}
-}
+Registers a certificate for a secure LDAP or client certificate authentication.
 
+See \url{https://paws-r.github.io/docs/directoryservice/register_certificate.html} for full documentation.
+}
 \keyword{internal}

@@ -22,10 +22,10 @@ spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyDocument}{[required] The policy document.
 
-You must provide policies in JSON format in IAM. However, for AWS
+You must provide policies in JSON format in IAM. However, for
 CloudFormation templates formatted in YAML, you can provide the policy
-in JSON or YAML format. AWS CloudFormation always converts a YAML policy
-to JSON format before submitting it to IAM.
+in JSON or YAML format. CloudFormation always converts a YAML policy to
+JSON format before submitting it to IAM.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
 validate this parameter is a string of characters consisting of the
@@ -39,47 +39,9 @@ character set (through \verb{\\u00FF})
 carriage return (\verb{\\u000D})
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or updates an inline policy document that is embedded in the
-specified IAM user.
+Adds or updates an inline policy document that is embedded in the specified IAM user.
 
-An IAM user can also have a managed policy attached to it. To attach a
-managed policy to a user, use
-\code{\link[=iam_attach_user_policy]{attach_user_policy}}. To create a new managed
-policy, use \code{\link[=iam_create_policy]{create_policy}}. For information about
-policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-
-For information about limits on the number of inline policies that you
-can embed in a user, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{Limitations on IAM Entities}
-in the \emph{IAM User Guide}.
-
-Because policy documents can be large, you should use POST rather than
-GET when calling \code{\link[=iam_put_user_policy]{put_user_policy}}. For general
-information about using the Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Making Query Requests}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_user_policy(
-  UserName = "string",
-  PolicyName = "string",
-  PolicyDocument = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command attaches a policy to the IAM user named Bob.
-svc$put_user_policy(
-  PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"...",
-  PolicyName = "AllAccessPolicy",
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/put_user_policy.html} for full documentation.
 }
 \keyword{internal}

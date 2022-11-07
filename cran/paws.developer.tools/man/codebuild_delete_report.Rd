@@ -9,17 +9,9 @@ codebuild_delete_report(arn)
 \arguments{
 \item{arn}{[required] The ARN of the report to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a report.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_report(
-  arn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/delete_report.html} for full documentation.
+}
 \keyword{internal}

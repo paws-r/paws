@@ -4,31 +4,40 @@
 \alias{secretsmanager_create_secret}
 \title{Creates a new secret}
 \usage{
-secretsmanager_create_secret(Name, ClientRequestToken, Description,
-  KmsKeyId, SecretBinary, SecretString, Tags)
+secretsmanager_create_secret(
+  Name,
+  ClientRequestToken = NULL,
+  Description = NULL,
+  KmsKeyId = NULL,
+  SecretBinary = NULL,
+  SecretString = NULL,
+  Tags = NULL,
+  AddReplicaRegions = NULL,
+  ForceOverwriteReplicaSecret = NULL
+)
 }
 \arguments{
-\item{Name}{[required] Specifies the friendly name of the new secret.
+\item{Name}{[required] The name of the new secret.
 
-The secret name must be ASCII letters, digits, or the following
-characters : /_+=.@-
+The secret name can contain ASCII letters, numbers, and the following
+characters: /_+=.@-
 
 Do not end your secret name with a hyphen followed by six characters. If
 you do so, you risk confusion and unexpected results when searching for
 a secret by partial ARN. Secrets Manager automatically adds a hyphen and
-six random characters at the end of the ARN.}
+six random characters after the secret name at the end of the ARN.}
 
-\item{ClientRequestToken}{(Optional) If you include \code{SecretString} or \code{SecretBinary}, then an
-initial version is created as part of the secret, and this parameter
-specifies a unique identifier for the new version.
+\item{ClientRequestToken}{If you include \code{SecretString} or \code{SecretBinary}, then Secrets Manager
+creates an initial version for the secret, and this parameter specifies
+the unique identifier for the new version.
 
-If you use the AWS CLI or one of the AWS SDK to call this operation,
-then you can leave this parameter empty. The CLI or SDK generates a
-random UUID for you and includes it as the value for this parameter in
-the request. If you don't use the SDK and instead generate a raw HTTP
-request to the Secrets Manager service endpoint, then you must generate
-a \code{ClientRequestToken} yourself for the new version and include the
-value in the request.
+If you use the Amazon Web Services CLI or one of the Amazon Web Services
+SDKs to call this operation, then you can leave this parameter empty.
+The CLI or SDK generates a random UUID for you and includes it as the
+value for this parameter in the request. If you don't use the SDK and
+instead generate a raw HTTP request to the Secrets Manager service
+endpoint, then you must generate a \code{ClientRequestToken} yourself for the
+new version and include the value in the request.
 
 This value helps ensure idempotency. Secrets Manager uses this value to
 prevent the accidental creation of duplicate versions if there are
@@ -43,7 +52,7 @@ version of the secret then a new version of the secret is created.
 the request, then the request is ignored.
 \item If a version with this value already exists and that version's
 \code{SecretString} and \code{SecretBinary} values are different from those in
-the request then the request fails because you cannot modify an
+the request, then the request fails because you cannot modify an
 existing version. Instead, use
 \code{\link[=secretsmanager_put_secret_value]{put_secret_value}} to create a
 new version.
@@ -51,221 +60,89 @@ new version.
 
 This value becomes the \code{VersionId} of the new version.}
 
-\item{Description}{(Optional) Specifies a user-provided description of the secret.}
+\item{Description}{The description of the secret.}
 
-\item{KmsKeyId}{(Optional) Specifies the ARN, Key ID, or alias of the AWS KMS customer
-master key (CMK) to be used to encrypt the \code{SecretString} or
-\code{SecretBinary} values in the versions stored in this secret.
+\item{KmsKeyId}{The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
+encrypt the secret value in the secret.
 
-You can specify any of the supported ways to identify a AWS KMS key ID.
-If you need to reference a CMK in a different account, you can use only
-the key ARN or the alias ARN.
+To use a KMS key in a different account, use the key ARN or the alias
+ARN.
 
-If you don't specify this value, then Secrets Manager defaults to using
-the AWS account's default CMK (the one named \code{aws/secretsmanager}). If a
-AWS KMS CMK with that name doesn't yet exist, then Secrets Manager
-creates it for you automatically the first time it needs to encrypt a
-version's \code{SecretString} or \code{SecretBinary} fields.
+If you don't specify this value, then Secrets Manager uses the key
+\code{aws/secretsmanager}. If that key doesn't yet exist, then Secrets
+Manager creates it for you automatically the first time it encrypts the
+secret value.
 
-You can use the account default CMK to encrypt and decrypt only if you
-call this operation using credentials from the same account that owns
-the secret. If the secret resides in a different account, then you must
-create a custom CMK and specify the ARN in this field.}
+If the secret is in a different Amazon Web Services account from the
+credentials calling the API, then you can't use \code{aws/secretsmanager} to
+encrypt the secret, and you must create and use a customer managed KMS
+key.}
 
-\item{SecretBinary}{(Optional) Specifies binary data that you want to encrypt and store in
-the new version of the secret. To use this parameter in the command-line
-tools, we recommend that you store your binary data in a file and then
-use the appropriate technique for your tool to pass the contents of the
-file as a parameter.
+\item{SecretBinary}{The binary data to encrypt and store in the new version of the secret.
+We recommend that you store your binary data in a file and then pass the
+contents of the file as a parameter.
 
 Either \code{SecretString} or \code{SecretBinary} must have a value, but not both.
-They cannot both be empty.
 
-This parameter is not available using the Secrets Manager console. It
-can be accessed only by using the AWS CLI or one of the AWS SDKs.}
+This parameter is not available in the Secrets Manager console.}
 
-\item{SecretString}{(Optional) Specifies text data that you want to encrypt and store in
-this new version of the secret.
+\item{SecretString}{The text data to encrypt and store in this new version of the secret. We
+recommend you use a JSON structure of key/value pairs for your secret
+value.
 
 Either \code{SecretString} or \code{SecretBinary} must have a value, but not both.
-They cannot both be empty.
 
 If you create a secret by using the Secrets Manager console then Secrets
 Manager puts the protected secret text in only the \code{SecretString}
 parameter. The Secrets Manager console stores the information as a JSON
-structure of key/value pairs that the Lambda rotation function knows how
-to parse.
+structure of key/value pairs that a Lambda rotation function can parse.}
 
-For storing multiple values, we recommend that you use a JSON text
-string argument and specify key/value pairs. For information on how to
-format a JSON parameter for the various command line tool environments,
-see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
-in the \emph{AWS CLI User Guide}. For example:
-
-\verb{\{"username":"bob","password":"abc123xyz456"\}}
-
-If your command-line tool or SDK requires quotation marks around the
-parameter, you should use single quotes to avoid confusion with the
-double quotes required in the JSON text.}
-
-\item{Tags}{(Optional) Specifies a list of user-defined tags that are attached to
-the secret. Each tag is a "Key" and "Value" pair of strings. This
-operation only appends tags to the existing list of tags. To remove
-tags, you must use \code{\link[=secretsmanager_untag_resource]{untag_resource}}.
-\itemize{
-\item Secrets Manager tag key names are case sensitive. A tag with the key
-"ABC" is a different tag from one with key "abc".
-\item If you check tags in IAM policy \code{Condition} elements as part of your
-security strategy, then adding or removing a tag can change
-permissions. If the successful completion of this operation would
-result in you losing your permissions for this secret, then this
-operation is blocked and returns an \verb{Access Denied} error.
-}
-
-This parameter requires a JSON text string argument. For information on
-how to format a JSON parameter for the various command line tool
-environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
-in the \emph{AWS CLI User Guide}. For example:
+\item{Tags}{A list of tags to attach to the secret. Each tag is a key and value pair
+of strings in a JSON text string, for example:
 
 \verb{[\{"Key":"CostCenter","Value":"12345"\},\{"Key":"environment","Value":"production"\}]}
 
+Secrets Manager tag key names are case sensitive. A tag with the key
+"ABC" is a different tag from one with key "abc".
+
+If you check tags in permissions policies as part of your security
+strategy, then adding or removing a tag can change permissions. If the
+completion of this operation would result in you losing your permissions
+for this secret, then Secrets Manager blocks the operation and returns
+an \verb{Access Denied} error. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#tag-secrets-abac}{Control access to secrets using tags}
+and \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#auth-and-access_tags2}{Limit access to identities with tags that match secrets' tags}.
+
+For information about how to format a JSON parameter for the various
+command line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}.
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
 double quotes required in the JSON text.
 
-The following basic restrictions apply to tags:
+The following restrictions apply to tags:
 \itemize{
-\item Maximum number of tags per secret—50
-\item Maximum key length—127 Unicode characters in UTF-8
-\item Maximum value length—255 Unicode characters in UTF-8
+\item Maximum number of tags per secret: 50
+\item Maximum key length: 127 Unicode characters in UTF-8
+\item Maximum value length: 255 Unicode characters in UTF-8
 \item Tag keys and values are case sensitive.
-\item Do not use the \verb{aws:} prefix in your tag names or values because AWS
-reserves it for AWS use. You can't edit or delete tag names or
-values with this prefix. Tags with this prefix do not count against
-your tags per secret limit.
+\item Do not use the \verb{aws:} prefix in your tag names or values because
+Amazon Web Services reserves it for Amazon Web Services use. You
+can't edit or delete tag names or values with this prefix. Tags with
+this prefix do not count against your tags per secret limit.
 \item If you use your tagging schema across multiple services and
-resources, remember other services might have restrictions on
-allowed characters. Generally allowed characters: letters, spaces,
-and numbers representable in UTF-8, plus the following special
+resources, other services might have restrictions on allowed
+characters. Generally allowed characters: letters, spaces, and
+numbers representable in UTF-8, plus the following special
 characters: + - = . _ : / @.
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ARN = "string",
-  Name = "string",
-  VersionId = "string"
-)
-}
+
+\item{AddReplicaRegions}{A list of Regions and KMS keys to replicate secrets.}
+
+\item{ForceOverwriteReplicaSecret}{Specifies whether to overwrite a secret with the same name in the
+destination Region.}
 }
 \description{
-Creates a new secret. A secret in Secrets Manager consists of both the
-protected secret data and the important information needed to manage the
-secret.
+Creates a new secret. A \emph{secret} can be a password, a set of credentials such as a user name and password, an OAuth token, or other secret information that you store in an encrypted form in Secrets Manager. The secret also includes the connection information to access a database or other service, which Secrets Manager doesn't encrypt. A secret in Secrets Manager consists of both the protected secret data and the important information needed to manage the secret.
 
-Secrets Manager stores the encrypted secret data in one of a collection
-of "versions" associated with the secret. Each version contains a copy
-of the encrypted secret data. Each version is associated with one or
-more "staging labels" that identify where the version is in the rotation
-cycle. The \code{SecretVersionsToStages} field of the secret contains the
-mapping of staging labels to the active versions of the secret. Versions
-without a staging label are considered deprecated and not included in
-the list.
-
-You provide the secret data to be encrypted by putting text in either
-the \code{SecretString} parameter or binary data in the \code{SecretBinary}
-parameter, but not both. If you include \code{SecretString} or \code{SecretBinary}
-then Secrets Manager also creates an initial secret version and
-automatically attaches the staging label \code{AWSCURRENT} to the new
-version.
-\itemize{
-\item If you call an operation to encrypt or decrypt the \code{SecretString} or
-\code{SecretBinary} for a secret in the same account as the calling user
-and that secret doesn't specify a AWS KMS encryption key, Secrets
-Manager uses the account's default AWS managed customer master key
-(CMK) with the alias \code{aws/secretsmanager}. If this key doesn't
-already exist in your account then Secrets Manager creates it for
-you automatically. All users and roles in the same AWS account
-automatically have access to use the default CMK. Note that if an
-Secrets Manager API call results in AWS creating the account's
-AWS-managed CMK, it can result in a one-time significant delay in
-returning the result.
-\item If the secret resides in a different AWS account from the
-credentials calling an API that requires encryption or decryption of
-the secret value then you must create and use a custom AWS KMS CMK
-because you can't access the default CMK for the account using
-credentials from a different AWS account. Store the ARN of the CMK
-in the secret when you create the secret or when you update it by
-including it in the \code{KMSKeyId}. If you call an API that must encrypt
-or decrypt \code{SecretString} or \code{SecretBinary} using credentials from a
-different account then the AWS KMS key policy must grant
-cross-account access to that other account's user or role for both
-the kms:GenerateDataKey and kms:Decrypt operations.
-}
-
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:CreateSecret
-\item kms:GenerateDataKey - needed only if you use a customer-managed AWS
-KMS key to encrypt the secret. You do not need this permission to
-use the account default AWS managed CMK for Secrets Manager.
-\item kms:Decrypt - needed only if you use a customer-managed AWS KMS key
-to encrypt the secret. You do not need this permission to use the
-account default AWS managed CMK for Secrets Manager.
-\item secretsmanager:TagResource - needed only if you include the \code{Tags}
-parameter.
-}
-
-\strong{Related operations}
-\itemize{
-\item To delete a secret, use
-\code{\link[=secretsmanager_delete_secret]{delete_secret}}.
-\item To modify an existing secret, use
-\code{\link[=secretsmanager_update_secret]{update_secret}}.
-\item To create a new version of a secret, use
-\code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.
-\item To retrieve the encrypted secure string and secure binary values,
-use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
-\item To retrieve all other details for a secret, use
-\code{\link[=secretsmanager_describe_secret]{describe_secret}}. This does not
-include the encrypted secure string and secure binary values.
-\item To retrieve the list of secret versions associated with the current
-secret, use \code{\link[=secretsmanager_describe_secret]{describe_secret}} and
-examine the \code{SecretVersionsToStages} response value.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_secret(
-  Name = "string",
-  ClientRequestToken = "string",
-  Description = "string",
-  KmsKeyId = "string",
-  SecretBinary = raw,
-  SecretString = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to create a secret. The credentials
-# stored in the encrypted secret value are retrieved from a file on disk
-# named mycreds.json.
-svc$create_secret(
-  ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
-  Description = "My test database secret created with the CLI",
-  Name = "MyTestDatabaseSecret",
-  SecretString = "{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/create_secret.html} for full documentation.
 }
 \keyword{internal}

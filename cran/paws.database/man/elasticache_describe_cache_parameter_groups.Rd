@@ -4,8 +4,11 @@
 \alias{elasticache_describe_cache_parameter_groups}
 \title{Returns a list of cache parameter group descriptions}
 \usage{
-elasticache_describe_cache_parameter_groups(CacheParameterGroupName,
-  MaxRecords, Marker)
+elasticache_describe_cache_parameter_groups(
+  CacheParameterGroupName = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{CacheParameterGroupName}{The name of a specific cache parameter group to return details for.}
@@ -23,33 +26,9 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  CacheParameterGroups = list(
-    list(
-      CacheParameterGroupName = "string",
-      CacheParameterGroupFamily = "string",
-      Description = "string",
-      IsGlobal = TRUE|FALSE,
-      ARN = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of cache parameter group descriptions. If a cache
-parameter group name is specified, the list contains only the
-descriptions for that group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_cache_parameter_groups(
-  CacheParameterGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns a list of cache parameter group descriptions. If a cache parameter group name is specified, the list contains only the descriptions for that group.
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_cache_parameter_groups.html} for full documentation.
+}
 \keyword{internal}

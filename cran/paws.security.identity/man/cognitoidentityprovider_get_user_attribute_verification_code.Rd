@@ -2,15 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_user_attribute_verification_code}
 \alias{cognitoidentityprovider_get_user_attribute_verification_code}
-\title{Gets the user attribute verification code for the specified attribute
+\title{Generates a user attribute verification code for the specified attribute
 name}
 \usage{
 cognitoidentityprovider_get_user_attribute_verification_code(
-  AccessToken, AttributeName, ClientMetadata)
+  AccessToken,
+  AttributeName,
+  ClientMetadata = NULL
+)
 }
 \arguments{
-\item{AccessToken}{[required] The access token returned by the server response to get the user
-attribute verification code.}
+\item{AccessToken}{[required] A non-expired access token for the user whose attribute verification
+code you want to generate.}
 
 \item{AttributeName}{[required] The attribute name returned by the server response to get the user
 attribute verification code.}
@@ -18,56 +21,35 @@ attribute verification code.}
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
 
-You create custom workflows by assigning AWS Lambda functions to user
-pool triggers. When you use the GetUserAttributeVerificationCode API
-action, Amazon Cognito invokes the function that is assigned to the
-\emph{custom message} trigger. When Amazon Cognito invokes this function, it
-passes a JSON payload, which the function receives as input. This
-payload contains a \code{clientMetadata} attribute, which provides the data
-that you assigned to the ClientMetadata parameter in your
-GetUserAttributeVerificationCode request. In your function code in AWS
+You create custom workflows by assigning Lambda functions to user pool
+triggers. When you use the GetUserAttributeVerificationCode API action,
+Amazon Cognito invokes the function that is assigned to the \emph{custom
+message} trigger. When Amazon Cognito invokes this function, it passes a
+JSON payload, which the function receives as input. This payload
+contains a \code{clientMetadata} attribute, which provides the data that you
+assigned to the ClientMetadata parameter in your
+GetUserAttributeVerificationCode request. In your function code in
 Lambda, you can process the \code{clientMetadata} value to enhance your
 workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-Take the following limitations into consideration when you use the
-ClientMetadata parameter:
+When you use the ClientMetadata parameter, remember that Amazon Cognito
+won't do the following:
 \itemize{
-\item Amazon Cognito does not store the ClientMetadata value. This data is
-available only to AWS Lambda triggers that are assigned to a user
-pool to support custom workflows. If your user pool configuration
-does not include triggers, the ClientMetadata parameter serves no
-purpose.
-\item Amazon Cognito does not validate the ClientMetadata value.
-\item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don't use it to provide sensitive information.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
+\item Validate the ClientMetadata value.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CodeDeliveryDetails = list(
-    Destination = "string",
-    DeliveryMedium = "SMS"|"EMAIL",
-    AttributeName = "string"
-  )
-)
-}
-}
 \description{
-Gets the user attribute verification code for the specified attribute
-name.
-}
-\section{Request syntax}{
-\preformatted{svc$get_user_attribute_verification_code(
-  AccessToken = "string",
-  AttributeName = "string",
-  ClientMetadata = list(
-    "string"
-  )
-)
-}
-}
+Generates a user attribute verification code for the specified attribute name. Sends a message to a user with a code that they must return in a VerifyUserAttribute request.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_user_attribute_verification_code.html} for full documentation.
+}
 \keyword{internal}

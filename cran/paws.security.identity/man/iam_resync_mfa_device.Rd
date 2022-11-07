@@ -3,10 +3,14 @@
 \name{iam_resync_mfa_device}
 \alias{iam_resync_mfa_device}
 \title{Synchronizes the specified MFA device with its IAM resource object on
-the AWS servers}
+the Amazon Web Services servers}
 \usage{
-iam_resync_mfa_device(UserName, SerialNumber, AuthenticationCode1,
-  AuthenticationCode2)
+iam_resync_mfa_device(
+  UserName,
+  SerialNumber,
+  AuthenticationCode1,
+  AuthenticationCode2
+)
 }
 \arguments{
 \item{UserName}{[required] The name of the user whose MFA device you want to resynchronize.
@@ -29,25 +33,9 @@ The format for this parameter is a sequence of six digits.}
 
 The format for this parameter is a sequence of six digits.}
 }
-\value{
-An empty list.
-}
 \description{
-Synchronizes the specified MFA device with its IAM resource object on
-the AWS servers.
+Synchronizes the specified MFA device with its IAM resource object on the Amazon Web Services servers.
 
-For more information about creating and working with virtual MFA
-devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Using a Virtual MFA Device}
-in the \emph{IAM User Guide}.
+See \url{https://paws-r.github.io/docs/iam/resync_mfa_device.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$resync_mfa_device(
-  UserName = "string",
-  SerialNumber = "string",
-  AuthenticationCode1 = "string",
-  AuthenticationCode2 = "string"
-)
-}
-}
-
 \keyword{internal}

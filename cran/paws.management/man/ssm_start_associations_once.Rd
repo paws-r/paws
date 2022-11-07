@@ -2,27 +2,16 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_start_associations_once}
 \alias{ssm_start_associations_once}
-\title{Use this API action to run an association immediately and only one time}
+\title{Runs an association immediately and only one time}
 \usage{
 ssm_start_associations_once(AssociationIds)
 }
 \arguments{
 \item{AssociationIds}{[required] The association IDs that you want to run immediately and only one time.}
 }
-\value{
-An empty list.
-}
 \description{
-Use this API action to run an association immediately and only one time.
-This action can be helpful when troubleshooting associations.
-}
-\section{Request syntax}{
-\preformatted{svc$start_associations_once(
-  AssociationIds = list(
-    "string"
-  )
-)
-}
-}
+Runs an association immediately and only one time. This operation can be helpful when troubleshooting associations.
 
+See \url{https://paws-r.github.io/docs/ssm/start_associations_once.html} for full documentation.
+}
 \keyword{internal}

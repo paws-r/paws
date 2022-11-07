@@ -4,8 +4,12 @@
 \alias{servicecatalog_update_provisioned_product_properties}
 \title{Requests updates to the properties of the specified provisioned product}
 \usage{
-servicecatalog_update_provisioned_product_properties(AcceptLanguage,
-  ProvisionedProductId, ProvisionedProductProperties, IdempotencyToken)
+servicecatalog_update_provisioned_product_properties(
+  AcceptLanguage = NULL,
+  ProvisionedProductId,
+  ProvisionedProductProperties,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -56,30 +60,9 @@ Service Catalog console on that provisioned product.}
 \item{IdempotencyToken}{[required] The idempotency token that uniquely identifies the provisioning product
 update request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisionedProductId = "string",
-  ProvisionedProductProperties = list(
-    "string"
-  ),
-  RecordId = "string",
-  Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED"
-)
-}
-}
 \description{
 Requests updates to the properties of the specified provisioned product.
-}
-\section{Request syntax}{
-\preformatted{svc$update_provisioned_product_properties(
-  AcceptLanguage = "string",
-  ProvisionedProductId = "string",
-  ProvisionedProductProperties = list(
-    "string"
-  ),
-  IdempotencyToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/update_provisioned_product_properties.html} for full documentation.
+}
 \keyword{internal}

@@ -7,22 +7,13 @@
 apigateway_delete_model(restApiId, modelName)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{modelName}{[required] [Required] The name of the model to delete.}
-}
-\value{
-An empty list.
+\item{modelName}{[required] The name of the model to delete.}
 }
 \description{
 Deletes a model.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_model(
-  restApiId = "string",
-  modelName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_model.html} for full documentation.
+}
 \keyword{internal}

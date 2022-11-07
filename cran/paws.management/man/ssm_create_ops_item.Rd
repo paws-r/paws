@@ -4,10 +4,23 @@
 \alias{ssm_create_ops_item}
 \title{Creates a new OpsItem}
 \usage{
-ssm_create_ops_item(Description, OpsItemType, OperationalData,
-  Notifications, Priority, RelatedOpsItems, Source, Title, Tags, Category,
-  Severity, ActualStartTime, ActualEndTime, PlannedStartTime,
-  PlannedEndTime)
+ssm_create_ops_item(
+  Description,
+  OpsItemType = NULL,
+  OperationalData = NULL,
+  Notifications = NULL,
+  Priority = NULL,
+  RelatedOpsItems = NULL,
+  Source,
+  Title,
+  Tags = NULL,
+  Category = NULL,
+  Severity = NULL,
+  ActualStartTime = NULL,
+  ActualEndTime = NULL,
+  PlannedStartTime = NULL,
+  PlannedEndTime = NULL
+)
 }
 \arguments{
 \item{Description}{[required] Information about the OpsItem.}
@@ -21,22 +34,23 @@ strings, license keys, troubleshooting tips, or other relevant data. You
 enter operational data as key-value pairs. The key has a maximum length
 of 128 characters. The value has a maximum size of 20 KB.
 
-Operational data keys \emph{can't} begin with the following: amazon, aws,
-amzn, ssm, /amazon, /aws, /amzn, /ssm.
+Operational data keys \emph{can't} begin with the following: \code{amazon}, \code{aws},
+\code{amzn}, \code{ssm}, \verb{/amazon}, \verb{/aws}, \verb{/amzn}, \verb{/ssm}.
 
 You can choose to make the data searchable by other users in the account
 or you can restrict search access. Searchable data means that all users
 with access to the OpsItem Overview page (as provided by the
-\code{\link[=ssm_describe_ops_items]{describe_ops_items}} API action) can view and
-search on the specified data. Operational data that is not searchable is
-only viewable by users who have access to the OpsItem (as provided by
-the \code{\link[=ssm_get_ops_item]{get_ops_item}} API action).
+\code{\link[=ssm_describe_ops_items]{describe_ops_items}} API operation) can view
+and search on the specified data. Operational data that isn't searchable
+is only viewable by users who have access to the OpsItem (as provided by
+the \code{\link[=ssm_get_ops_item]{get_ops_item}} API operation).
 
 Use the \verb{/aws/resources} key in OperationalData to specify a related
 resource in the request. Use the \verb{/aws/automations} key in
 OperationalData to associate an Automation runbook with the OpsItem. To
-view AWS CLI example commands that use these keys, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
-in the \emph{AWS Systems Manager User Guide}.}
+view Amazon Web Services CLI example commands that use these keys, see
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{Notifications}{The Amazon Resource Name (ARN) of an SNS topic where notifications are
 sent when this OpsItem is edited or changed.}
@@ -51,8 +65,8 @@ resource.}
 
 \item{Source}{[required] The origin of the OpsItem, such as Amazon EC2 or Systems Manager.
 
-The source name can't contain the following strings: aws, amazon, and
-amzn.}
+The source name can't contain the following strings: \code{aws}, \code{amazon},
+and \code{amzn}.}
 
 \item{Title}{[required] A short heading that describes the nature of the OpsItem and the
 impacted resource.}
@@ -60,14 +74,16 @@ impacted resource.}
 \item{Tags}{Optional metadata that you assign to a resource. You can restrict access
 to OpsItems by using an inline IAM policy that specifies tags. For more
 information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions}{Getting started with OpsCenter}
-in the \emph{AWS Systems Manager User Guide}.
+in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 Tags use a key-value pair. For example:
 
 \verb{Key=Department,Value=Finance}
 
-To add tags to an existing OpsItem, use the
-\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
+To add tags to a new OpsItem, a user must have IAM permissions for both
+the \code{ssm:CreateOpsItems} operation and the \code{ssm:AddTagsToResource}
+operation. To add tags to an existing OpsItem, use the
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} operation.}
 
 \item{Category}{Specify a category to assign to an OpsItem.}
 
@@ -85,68 +101,9 @@ Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 \item{PlannedEndTime}{The time specified in a change request for a runbook workflow to end.
 Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OpsItemId = "string"
-)
-}
-}
 \description{
-Creates a new OpsItem. You must have permission in AWS Identity and
-Access Management (IAM) to create a new OpsItem. For more information,
-see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
-in the \emph{AWS Systems Manager User Guide}.
+Creates a new OpsItem. You must have permission in Identity and Access Management (IAM) to create a new OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-Operations engineers and IT professionals use OpsCenter to view,
-investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
-in the \emph{AWS Systems Manager User Guide}.
+See \url{https://paws-r.github.io/docs/ssm/create_ops_item.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_ops_item(
-  Description = "string",
-  OpsItemType = "string",
-  OperationalData = list(
-    list(
-      Value = "string",
-      Type = "SearchableString"|"String"
-    )
-  ),
-  Notifications = list(
-    list(
-      Arn = "string"
-    )
-  ),
-  Priority = 123,
-  RelatedOpsItems = list(
-    list(
-      OpsItemId = "string"
-    )
-  ),
-  Source = "string",
-  Title = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  Category = "string",
-  Severity = "string",
-  ActualStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  ActualEndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  PlannedStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  PlannedEndTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

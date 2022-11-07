@@ -7,20 +7,9 @@ License (BYOL) for the specified account}
 \usage{
 workspaces_describe_account()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DedicatedTenancySupport = "ENABLED"|"DISABLED",
-  DedicatedTenancyManagementCidrRange = "string"
-)
-}
-}
 \description{
-Retrieves a list that describes the configuration of Bring Your Own
-License (BYOL) for the specified account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_account()
-}
-}
+Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account.
 
+See \url{https://paws-r.github.io/docs/workspaces/describe_account.html} for full documentation.
+}
 \keyword{internal}

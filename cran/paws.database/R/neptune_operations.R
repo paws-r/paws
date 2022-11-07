@@ -3,16 +3,13 @@
 #' @include neptune_service.R
 NULL
 
-#' Associates an Identity and Access Management (IAM) role from an Neptune
+#' Associates an Identity and Access Management (IAM) role with an Neptune
 #' DB cluster
 #'
 #' @description
-#' Associates an Identity and Access Management (IAM) role from an Neptune
-#' DB cluster.
+#' Associates an Identity and Access Management (IAM) role with an Neptune DB cluster.
 #'
-#' @usage
-#' neptune_add_role_to_db_cluster(DBClusterIdentifier, RoleArn,
-#'   FeatureName)
+#' See [https://paws-r.github.io/docs/neptune/add_role_to_db_cluster.html](https://paws-r.github.io/docs/neptune/add_role_to_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to associate the IAM role with.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with the
@@ -20,19 +17,7 @@ NULL
 #' `arn:aws:iam::123456789012:role/NeptuneAccessRole`.
 #' @param FeatureName The name of the feature for the Neptune DB cluster that the IAM role is
 #' to be associated with. For the list of supported feature names, see
-#' DBEngineVersion.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_role_to_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   RoleArn = "string",
-#'   FeatureName = "string"
-#' )
-#' ```
+#' [DBEngineVersion](https://docs.aws.amazon.com/neptune/latest/userguide/api-other-apis.html#DBEngineVersion).
 #'
 #' @keywords internal
 #'
@@ -59,9 +44,7 @@ neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, Feature
 #' @description
 #' Adds a source identifier to an existing event notification subscription.
 #'
-#' @usage
-#' neptune_add_source_identifier_to_subscription(SubscriptionName,
-#'   SourceIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/add_source_identifier_to_subscription.html](https://paws-r.github.io/docs/neptune/add_source_identifier_to_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the event notification subscription you want to add a source
 #' identifier to.
@@ -80,37 +63,6 @@ neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, Feature
 #' 
 #' -   If the source type is a DB snapshot, a `DBSnapshotIdentifier` must
 #'     be supplied.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_source_identifier_to_subscription(
-#'   SubscriptionName = "string",
-#'   SourceIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -135,35 +87,15 @@ neptune_add_source_identifier_to_subscription <- function(SubscriptionName, Sour
 #' Adds metadata tags to an Amazon Neptune resource
 #'
 #' @description
-#' Adds metadata tags to an Amazon Neptune resource. These tags can also be
-#' used with cost allocation reporting to track cost associated with Amazon
-#' Neptune resources, or used in a Condition statement in an IAM policy for
-#' Amazon Neptune.
+#' Adds metadata tags to an Amazon Neptune resource. These tags can also be used with cost allocation reporting to track cost associated with Amazon Neptune resources, or used in a Condition statement in an IAM policy for Amazon Neptune.
 #'
-#' @usage
-#' neptune_add_tags_to_resource(ResourceName, Tags)
+#' See [https://paws-r.github.io/docs/neptune/add_tags_to_resource.html](https://paws-r.github.io/docs/neptune/add_tags_to_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Neptune resource that the tags are added to. This value is an
 #' Amazon Resource Name (ARN). For information about creating an ARN, see
 #' [Constructing an Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/neptune/latest/userguide/#tagging.ARN.Constructing).
 #' @param Tags &#91;required&#93; The tags to be assigned to the Amazon Neptune resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_tags_to_resource(
-#'   ResourceName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -189,12 +121,9 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
 #' instance)
 #'
 #' @description
-#' Applies a pending maintenance action to a resource (for example, to a DB
-#' instance).
+#' Applies a pending maintenance action to a resource (for example, to a DB instance).
 #'
-#' @usage
-#' neptune_apply_pending_maintenance_action(ResourceIdentifier,
-#'   ApplyAction, OptInType)
+#' See [https://paws-r.github.io/docs/neptune/apply_pending_maintenance_action.html](https://paws-r.github.io/docs/neptune/apply_pending_maintenance_action.html) for full documentation.
 #'
 #' @param ResourceIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the resource that the pending
 #' maintenance action applies to. For information about creating an ARN,
@@ -215,41 +144,6 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
 #' 
 #' -   `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
 #'     requests.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourcePendingMaintenanceActions = list(
-#'     ResourceIdentifier = "string",
-#'     PendingMaintenanceActionDetails = list(
-#'       list(
-#'         Action = "string",
-#'         AutoAppliedAfterDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ForcedApplyDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         OptInStatus = "string",
-#'         CurrentApplyDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Description = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$apply_pending_maintenance_action(
-#'   ResourceIdentifier = "string",
-#'   ApplyAction = "string",
-#'   OptInType = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -276,11 +170,7 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 #' @description
 #' Copies the specified DB cluster parameter group.
 #'
-#' @usage
-#' neptune_copy_db_cluster_parameter_group(
-#'   SourceDBClusterParameterGroupIdentifier,
-#'   TargetDBClusterParameterGroupIdentifier,
-#'   TargetDBClusterParameterGroupDescription, Tags)
+#' See [https://paws-r.github.io/docs/neptune/copy_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/copy_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param SourceDBClusterParameterGroupIdentifier &#91;required&#93; The identifier or Amazon Resource Name (ARN) for the source DB cluster
 #' parameter group. For information about creating an ARN, see
@@ -291,12 +181,12 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 #' 
 #' -   Must specify a valid DB cluster parameter group.
 #' 
-#' -   If the source DB cluster parameter group is in the same AWS Region
-#'     as the copy, specify a valid DB parameter group identifier, for
-#'     example `my-db-cluster-param-group`, or a valid ARN.
+#' -   If the source DB cluster parameter group is in the same Amazon
+#'     Region as the copy, specify a valid DB parameter group identifier,
+#'     for example `my-db-cluster-param-group`, or a valid ARN.
 #' 
-#' -   If the source DB parameter group is in a different AWS Region than
-#'     the copy, specify a valid DB cluster parameter group ARN, for
+#' -   If the source DB parameter group is in a different Amazon Region
+#'     than the copy, specify a valid DB cluster parameter group ARN, for
 #'     example
 #'     `arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1`.
 #' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied DB cluster parameter group.
@@ -314,34 +204,6 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 #' Example: `my-cluster-param-group1`
 #' @param TargetDBClusterParameterGroupDescription &#91;required&#93; A description for the copied DB cluster parameter group.
 #' @param Tags The tags to be assigned to the copied DB cluster parameter group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroup = list(
-#'     DBClusterParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBClusterParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_db_cluster_parameter_group(
-#'   SourceDBClusterParameterGroupIdentifier = "string",
-#'   TargetDBClusterParameterGroupIdentifier = "string",
-#'   TargetDBClusterParameterGroupDescription = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -367,20 +229,11 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #'
 #' @description
 #' Copies a snapshot of a DB cluster.
-#' 
-#' To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
-#' `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name
-#' (ARN) of the shared DB cluster snapshot.
 #'
-#' @usage
-#' neptune_copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
-#'   TargetDBClusterSnapshotIdentifier, KmsKeyId, PreSignedUrl, CopyTags,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/neptune/copy_db_cluster_snapshot.html](https://paws-r.github.io/docs/neptune/copy_db_cluster_snapshot.html) for full documentation.
 #'
 #' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to copy. This parameter is not
 #' case-sensitive.
-#' 
-#' You can't copy from one AWS Region to another.
 #' 
 #' Constraints:
 #' 
@@ -401,22 +254,22 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot2`
-#' @param KmsKeyId The AWS AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key
-#' ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
-#' alias for the KMS encryption key.
+#' @param KmsKeyId The Amazon Amazon KMS key ID for an encrypted DB cluster snapshot. The
+#' KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the
+#' KMS key alias for the KMS encryption key.
 #' 
-#' If you copy an encrypted DB cluster snapshot from your AWS account, you
-#' can specify a value for `KmsKeyId` to encrypt the copy with a new KMS
-#' encryption key. If you don't specify a value for `KmsKeyId`, then the
-#' copy of the DB cluster snapshot is encrypted with the same KMS key as
-#' the source DB cluster snapshot.
+#' If you copy an encrypted DB cluster snapshot from your Amazon account,
+#' you can specify a value for `KmsKeyId` to encrypt the copy with a new
+#' KMS encryption key. If you don't specify a value for `KmsKeyId`, then
+#' the copy of the DB cluster snapshot is encrypted with the same KMS key
+#' as the source DB cluster snapshot.
 #' 
 #' If you copy an encrypted DB cluster snapshot that is shared from another
-#' AWS account, then you must specify a value for `KmsKeyId`.
+#' Amazon account, then you must specify a value for `KmsKeyId`.
 #' 
-#' KMS encryption keys are specific to the AWS Region that they are created
-#' in, and you can't use encryption keys from one AWS Region in another AWS
-#' Region.
+#' KMS encryption keys are specific to the Amazon Region that they are
+#' created in, and you can't use encryption keys from one Amazon Region in
+#' another Amazon Region.
 #' 
 #' You cannot encrypt an unencrypted DB cluster snapshot when you copy it.
 #' If you try to copy an unencrypted DB cluster snapshot and specify a
@@ -425,58 +278,6 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' @param CopyTags True to copy all tags from the source DB cluster snapshot to the target
 #' DB cluster snapshot, and otherwise false. The default is false.
 #' @param Tags The tags to assign to the new DB cluster snapshot copy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshot = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     VpcId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     PercentProgress = 123,
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_db_cluster_snapshot(
-#'   SourceDBClusterSnapshotIdentifier = "string",
-#'   TargetDBClusterSnapshotIdentifier = "string",
-#'   KmsKeyId = "string",
-#'   PreSignedUrl = "string",
-#'   CopyTags = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -503,10 +304,7 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
 #' @description
 #' Copies the specified DB parameter group.
 #'
-#' @usage
-#' neptune_copy_db_parameter_group(SourceDBParameterGroupIdentifier,
-#'   TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/neptune/copy_db_parameter_group.html](https://paws-r.github.io/docs/neptune/copy_db_parameter_group.html) for full documentation.
 #'
 #' @param SourceDBParameterGroupIdentifier &#91;required&#93; The identifier or ARN for the source DB parameter group. For information
 #' about creating an ARN, see [Constructing an Amazon Resource Name
@@ -534,34 +332,6 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
 #' @param TargetDBParameterGroupDescription &#91;required&#93; A description for the copied DB parameter group.
 #' @param Tags The tags to be assigned to the copied DB parameter group.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBParameterGroup = list(
-#'     DBParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_db_parameter_group(
-#'   SourceDBParameterGroupIdentifier = "string",
-#'   TargetDBParameterGroupIdentifier = "string",
-#'   TargetDBParameterGroupDescription = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname neptune_copy_db_parameter_group
@@ -586,27 +356,8 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #'
 #' @description
 #' Creates a new Amazon Neptune DB cluster.
-#' 
-#' You can use the `ReplicationSourceIdentifier` parameter to create the DB
-#' cluster as a Read Replica of another DB cluster or Amazon Neptune DB
-#' instance.
-#' 
-#' Note that when you create a new cluster using
-#' [`create_db_cluster`][neptune_create_db_cluster] directly, deletion
-#' protection is disabled by default (when you create a new production
-#' cluster in the console, deletion protection is enabled by default). You
-#' can only delete a DB cluster if its `DeletionProtection` field is set to
-#' `false`.
 #'
-#' @usage
-#' neptune_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
-#'   CharacterSetName, DatabaseName, DBClusterIdentifier,
-#'   DBClusterParameterGroupName, VpcSecurityGroupIds, DBSubnetGroupName,
-#'   Engine, EngineVersion, Port, MasterUsername, MasterUserPassword,
-#'   OptionGroupName, PreferredBackupWindow, PreferredMaintenanceWindow,
-#'   ReplicationSourceIdentifier, Tags, StorageEncrypted, KmsKeyId,
-#'   PreSignedUrl, EnableIAMDatabaseAuthentication,
-#'   EnableCloudwatchLogsExports, DeletionProtection)
+#' See [https://paws-r.github.io/docs/neptune/create_db_cluster.html](https://paws-r.github.io/docs/neptune/create_db_cluster.html) for full documentation.
 #'
 #' @param AvailabilityZones A list of EC2 Availability Zones that instances in the DB cluster can be
 #' created in.
@@ -619,6 +370,8 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' -   Must be a value from 1 to 35
 #' @param CharacterSetName *(Not supported by Neptune)*
+#' @param CopyTagsToSnapshot *If set to true, tags are copied to any snapshot of the DB cluster that
+#' is created.*
 #' @param DatabaseName The name for your database of up to 64 alpha-numeric characters. If you
 #' do not provide a name, Amazon Neptune will not create a database in the
 #' DB cluster you are creating.
@@ -658,27 +411,16 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' connections.
 #' 
 #' Default: `8182`
-#' @param MasterUsername The name of the master user for the DB cluster.
-#' 
-#' Constraints:
-#' 
-#' -   Must be 1 to 16 letters or numbers.
-#' 
-#' -   First character must be a letter.
-#' 
-#' -   Cannot be a reserved word for the chosen database engine.
-#' @param MasterUserPassword The password for the master database user. This password can contain any
-#' printable ASCII character except "/", """, or "@@".
-#' 
-#' Constraints: Must contain from 8 to 41 characters.
+#' @param MasterUsername Not supported by Neptune.
+#' @param MasterUserPassword Not supported by Neptune.
 #' @param OptionGroupName *(Not supported by Neptune)*
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
 #' automated backups are enabled using the `BackupRetentionPeriod`
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred Maintenance
+#' block of time for each Amazon Region. To see the time blocks available,
+#' see [Adjusting the Preferred Maintenance
 #' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) in the
 #' *Amazon Neptune User Guide.*
 #' 
@@ -697,7 +439,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
+#' block of time for each Amazon Region, occurring on a random day of the
 #' week. To see the time blocks available, see [Adjusting the Preferred
 #' Maintenance
 #' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) in the
@@ -710,10 +452,10 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' if this DB cluster is created as a Read Replica.
 #' @param Tags The tags to assign to the new DB cluster.
 #' @param StorageEncrypted Specifies whether the DB cluster is encrypted.
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted DB cluster.
+#' @param KmsKeyId The Amazon KMS key identifier for an encrypted DB cluster.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-#' encryption key. If you are creating a DB cluster with the same AWS
+#' encryption key. If you are creating a DB cluster with the same Amazon
 #' account that owns the KMS encryption key used to encrypt the new DB
 #' cluster, then you can use the KMS key alias instead of the ARN for the
 #' KMS encryption key.
@@ -729,154 +471,39 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #'     `ReplicationSourceIdentifier` is not specified, then Amazon Neptune
 #'     will use your default encryption key.
 #' 
-#' AWS KMS creates the default encryption key for your AWS account. Your
-#' AWS account has a different default encryption key for each AWS Region.
+#' Amazon KMS creates the default encryption key for your Amazon account.
+#' Your Amazon account has a different default encryption key for each
+#' Amazon Region.
 #' 
-#' If you create a Read Replica of an encrypted DB cluster in another AWS
-#' Region, you must set `KmsKeyId` to a KMS key ID that is valid in the
-#' destination AWS Region. This key is used to encrypt the Read Replica in
-#' that AWS Region.
+#' If you create a Read Replica of an encrypted DB cluster in another
+#' Amazon Region, you must set `KmsKeyId` to a KMS key ID that is valid in
+#' the destination Amazon Region. This key is used to encrypt the Read
+#' Replica in that Amazon Region.
 #' @param PreSignedUrl This parameter is not currently supported.
-#' @param EnableIAMDatabaseAuthentication Not supported by Neptune.
+#' @param EnableIAMDatabaseAuthentication If set to `true`, enables Amazon Identity and Access Management (IAM)
+#' authentication for the entire DB cluster (this cannot be set at an
+#' instance level).
+#' 
+#' Default: `false`.
 #' @param EnableCloudwatchLogsExports The list of log types that need to be enabled for exporting to
 #' CloudWatch Logs.
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is enabled.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster(
-#'   AvailabilityZones = list(
-#'     "string"
-#'   ),
-#'   BackupRetentionPeriod = 123,
-#'   CharacterSetName = "string",
-#'   DatabaseName = "string",
-#'   DBClusterIdentifier = "string",
-#'   DBClusterParameterGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   DBSubnetGroupName = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   Port = 123,
-#'   MasterUsername = "string",
-#'   MasterUserPassword = "string",
-#'   OptionGroupName = "string",
-#'   PreferredBackupWindow = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   ReplicationSourceIdentifier = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   StorageEncrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   PreSignedUrl = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
+#' @param GlobalClusterIdentifier The ID of the Neptune global database to which this new DB cluster
+#' should be added.
 #'
 #' @keywords internal
 #'
 #' @rdname neptune_create_db_cluster
-neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
+neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, CopyTagsToSnapshot = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .neptune$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
+  input <- .neptune$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, CopyTagsToSnapshot = CopyTagsToSnapshot, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier)
   output <- .neptune$create_db_cluster_output()
   config <- get_config()
   svc <- .neptune$service(config)
@@ -890,13 +517,9 @@ neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionP
 #' DB cluster
 #'
 #' @description
-#' Creates a new custom endpoint and associates it with an Amazon Neptune
-#' DB cluster.
+#' Creates a new custom endpoint and associates it with an Amazon Neptune DB cluster.
 #'
-#' @usage
-#' neptune_create_db_cluster_endpoint(DBClusterIdentifier,
-#'   DBClusterEndpointIdentifier, EndpointType, StaticMembers,
-#'   ExcludedMembers, Tags)
+#' See [https://paws-r.github.io/docs/neptune/create_db_cluster_endpoint.html](https://paws-r.github.io/docs/neptune/create_db_cluster_endpoint.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the DB cluster associated with the
 #' endpoint. This parameter is stored as a lowercase string.
@@ -909,48 +532,6 @@ neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionP
 #' group. All other eligible instances are reachable through the custom
 #' endpoint. Only relevant if the list of static members is empty.
 #' @param Tags The tags to be assigned to the Amazon Neptune resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterEndpointIdentifier = "string",
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointResourceIdentifier = "string",
-#'   Endpoint = "string",
-#'   Status = "string",
-#'   EndpointType = "string",
-#'   CustomEndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   ),
-#'   DBClusterEndpointArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster_endpoint(
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointIdentifier = "string",
-#'   EndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -976,39 +557,8 @@ neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEnd
 #'
 #' @description
 #' Creates a new DB cluster parameter group.
-#' 
-#' Parameters in a DB cluster parameter group apply to all of the instances
-#' in a DB cluster.
-#' 
-#' A DB cluster parameter group is initially created with the default
-#' parameters for the database engine used by instances in the DB cluster.
-#' To provide custom values for any of the parameters, you must modify the
-#' group after creating it using
-#' [`modify_db_cluster_parameter_group`][neptune_modify_db_cluster_parameter_group].
-#' Once you've created a DB cluster parameter group, you need to associate
-#' it with your DB cluster using
-#' [`modify_db_cluster`][neptune_modify_db_cluster]. When you associate a
-#' new DB cluster parameter group with a running DB cluster, you need to
-#' reboot the DB instances in the DB cluster without failover for the new
-#' DB cluster parameter group and associated settings to take effect.
-#' 
-#' After you create a DB cluster parameter group, you should wait at least
-#' 5 minutes before creating your first DB cluster that uses that DB
-#' cluster parameter group as the default parameter group. This allows
-#' Amazon Neptune to fully complete the create action before the DB cluster
-#' parameter group is used as the default for a new DB cluster. This is
-#' especially important for parameters that are critical when creating the
-#' default database for a DB cluster, such as the character set for the
-#' default database defined by the `character_set_database` parameter. You
-#' can use the *Parameter Groups* option of the Amazon Neptune console or
-#' the
-#' [`describe_db_cluster_parameters`][neptune_describe_db_cluster_parameters]
-#' command to verify that your DB cluster parameter group has been created
-#' or modified.
 #'
-#' @usage
-#' neptune_create_db_cluster_parameter_group(DBClusterParameterGroupName,
-#'   DBParameterGroupFamily, Description, Tags)
+#' See [https://paws-r.github.io/docs/neptune/create_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/create_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group.
 #' 
@@ -1024,34 +574,6 @@ neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEnd
 #' group family.
 #' @param Description &#91;required&#93; The description for the DB cluster parameter group.
 #' @param Tags The tags to be assigned to the new DB cluster parameter group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroup = list(
-#'     DBClusterParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBClusterParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string",
-#'   DBParameterGroupFamily = "string",
-#'   Description = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1078,9 +600,7 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' @description
 #' Creates a snapshot of a DB cluster.
 #'
-#' @usage
-#' neptune_create_db_cluster_snapshot(DBClusterSnapshotIdentifier,
-#'   DBClusterIdentifier, Tags)
+#' See [https://paws-r.github.io/docs/neptune/create_db_cluster_snapshot.html](https://paws-r.github.io/docs/neptune/create_db_cluster_snapshot.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot. This parameter is stored as a
 #' lowercase string.
@@ -1103,55 +623,6 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' 
 #' Example: `my-cluster1`
 #' @param Tags The tags to be assigned to the DB cluster snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshot = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     VpcId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     PercentProgress = 123,
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster_snapshot(
-#'   DBClusterSnapshotIdentifier = "string",
-#'   DBClusterIdentifier = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1178,21 +649,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' @description
 #' Creates a new DB instance.
 #'
-#' @usage
-#' neptune_create_db_instance(DBName, DBInstanceIdentifier,
-#'   AllocatedStorage, DBInstanceClass, Engine, MasterUsername,
-#'   MasterUserPassword, DBSecurityGroups, VpcSecurityGroupIds,
-#'   AvailabilityZone, DBSubnetGroupName, PreferredMaintenanceWindow,
-#'   DBParameterGroupName, BackupRetentionPeriod, PreferredBackupWindow,
-#'   Port, MultiAZ, EngineVersion, AutoMinorVersionUpgrade, LicenseModel,
-#'   Iops, OptionGroupName, CharacterSetName, PubliclyAccessible, Tags,
-#'   DBClusterIdentifier, StorageType, TdeCredentialArn,
-#'   TdeCredentialPassword, StorageEncrypted, KmsKeyId, Domain,
-#'   CopyTagsToSnapshot, MonitoringInterval, MonitoringRoleArn,
-#'   DomainIAMRoleName, PromotionTier, Timezone,
-#'   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-#'   PerformanceInsightsKMSKeyId, EnableCloudwatchLogsExports,
-#'   DeletionProtection)
+#' See [https://paws-r.github.io/docs/neptune/create_db_instance.html](https://paws-r.github.io/docs/neptune/create_db_instance.html) for full documentation.
 #'
 #' @param DBName Not supported.
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
@@ -1207,24 +664,15 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
-#' @param AllocatedStorage The amount of storage (in gibibytes) to allocate for the DB instance.
-#' 
-#' Type: Integer
-#' 
-#' Not applicable. Neptune cluster volumes automatically grow as the amount
-#' of data in your database increases, though you are only charged for the
-#' space that you use in a Neptune cluster volume.
+#' @param AllocatedStorage Not supported by Neptune.
 #' @param DBInstanceClass &#91;required&#93; The compute and memory capacity of the DB instance, for example,
-#' `db.m4.large`. Not all DB instance classes are available in all AWS
+#' `db.m4.large`. Not all DB instance classes are available in all Amazon
 #' Regions.
 #' @param Engine &#91;required&#93; The name of the database engine to be used for this instance.
 #' 
 #' Valid Values: `neptune`
-#' @param MasterUsername The name for the master user. Not used.
-#' @param MasterUserPassword The password for the master user. The password can include any printable
-#' ASCII character except "/", """, or "@@".
-#' 
-#' Not used.
+#' @param MasterUsername Not supported by Neptune.
+#' @param MasterUserPassword Not supported by Neptune.
 #' @param DBSecurityGroups A list of DB security groups to associate with this DB instance.
 #' 
 #' Default: The default DB security group for the database engine.
@@ -1238,14 +686,14 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' VPC.
 #' @param AvailabilityZone The EC2 Availability Zone that the DB instance is created in
 #' 
-#' Default: A random, system-chosen Availability Zone in the endpoint's AWS
-#' Region.
+#' Default: A random, system-chosen Availability Zone in the endpoint's
+#' Amazon Region.
 #' 
 #' Example: `us-east-1d`
 #' 
 #' Constraint: The AvailabilityZone parameter can't be specified if the
 #' MultiAZ parameter is set to `true`. The specified Availability Zone must
-#' be in the same AWS Region as the current endpoint.
+#' be in the same Amazon Region as the current endpoint.
 #' @param DBSubnetGroupName A DB subnet group to associate with this DB instance.
 #' 
 #' If there is no DB subnet group, then it is a non-VPC DB instance.
@@ -1255,7 +703,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
+#' block of time for each Amazon Region, occurring on a random day of the
 #' week.
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -1336,10 +784,10 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' [`create_db_cluster`][neptune_create_db_cluster].
 #' 
 #' Default: false
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted DB instance.
+#' @param KmsKeyId The Amazon KMS key identifier for an encrypted DB instance.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-#' encryption key. If you are creating a DB instance with the same AWS
+#' encryption key. If you are creating a DB instance with the same Amazon
 #' account that owns the KMS encryption key used to encrypt the new DB
 #' instance, then you can use the KMS key alias instead of the ARN for the
 #' KM encryption key.
@@ -1349,9 +797,9 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' 
 #' If the `StorageEncrypted` parameter is true, and you do not specify a
 #' value for the `KmsKeyId` parameter, then Amazon Neptune will use your
-#' default encryption key. AWS KMS creates the default encryption key for
-#' your AWS account. Your AWS account has a different default encryption
-#' key for each AWS Region.
+#' default encryption key. Amazon KMS creates the default encryption key
+#' for your Amazon account. Your Amazon account has a different default
+#' encryption key for each Amazon Region.
 #' @param Domain Specify the Active Directory Domain to create the instance in.
 #' @param CopyTagsToSnapshot True to copy all tags from the DB instance to snapshots of the DB
 #' instance, and otherwise false. The default is false.
@@ -1378,10 +826,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' 
 #' Valid Values: 0 - 15
 #' @param Timezone The time zone of the DB instance.
-#' @param EnableIAMDatabaseAuthentication True to enable AWS Identity and Access Management (IAM) authentication
-#' for Neptune.
-#' 
-#' Default: `false`
+#' @param EnableIAMDatabaseAuthentication Not supported by Neptune (ignored).
 #' @param EnablePerformanceInsights *(Not supported by Neptune)*
 #' @param PerformanceInsightsKMSKeyId *(Not supported by Neptune)*
 #' @param EnableCloudwatchLogsExports The list of log types that need to be enabled for exporting to
@@ -1393,213 +838,6 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' 
 #' DB instances in a DB cluster can be deleted even when deletion
 #' protection is enabled in their parent DB cluster.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_instance(
-#'   DBName = "string",
-#'   DBInstanceIdentifier = "string",
-#'   AllocatedStorage = 123,
-#'   DBInstanceClass = "string",
-#'   Engine = "string",
-#'   MasterUsername = "string",
-#'   MasterUserPassword = "string",
-#'   DBSecurityGroups = list(
-#'     "string"
-#'   ),
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   AvailabilityZone = "string",
-#'   DBSubnetGroupName = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   DBParameterGroupName = "string",
-#'   BackupRetentionPeriod = 123,
-#'   PreferredBackupWindow = "string",
-#'   Port = 123,
-#'   MultiAZ = TRUE|FALSE,
-#'   EngineVersion = "string",
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   LicenseModel = "string",
-#'   Iops = 123,
-#'   OptionGroupName = "string",
-#'   CharacterSetName = "string",
-#'   PubliclyAccessible = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   DBClusterIdentifier = "string",
-#'   StorageType = "string",
-#'   TdeCredentialArn = "string",
-#'   TdeCredentialPassword = "string",
-#'   StorageEncrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   Domain = "string",
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   MonitoringInterval = 123,
-#'   MonitoringRoleArn = "string",
-#'   DomainIAMRoleName = "string",
-#'   PromotionTier = 123,
-#'   Timezone = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnablePerformanceInsights = TRUE|FALSE,
-#'   PerformanceInsightsKMSKeyId = "string",
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1625,31 +863,8 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
 #'
 #' @description
 #' Creates a new DB parameter group.
-#' 
-#' A DB parameter group is initially created with the default parameters
-#' for the database engine used by the DB instance. To provide custom
-#' values for any of the parameters, you must modify the group after
-#' creating it using *ModifyDBParameterGroup*. Once you've created a DB
-#' parameter group, you need to associate it with your DB instance using
-#' *ModifyDBInstance*. When you associate a new DB parameter group with a
-#' running DB instance, you need to reboot the DB instance without failover
-#' for the new DB parameter group and associated settings to take effect.
-#' 
-#' After you create a DB parameter group, you should wait at least 5
-#' minutes before creating your first DB instance that uses that DB
-#' parameter group as the default parameter group. This allows Amazon
-#' Neptune to fully complete the create action before the parameter group
-#' is used as the default for a new DB instance. This is especially
-#' important for parameters that are critical when creating the default
-#' database for a DB instance, such as the character set for the default
-#' database defined by the `character_set_database` parameter. You can use
-#' the *Parameter Groups* option of the Amazon Neptune console or the
-#' *DescribeDBParameters* command to verify that your DB parameter group
-#' has been created or modified.
 #'
-#' @usage
-#' neptune_create_db_parameter_group(DBParameterGroupName,
-#'   DBParameterGroupFamily, Description, Tags)
+#' See [https://paws-r.github.io/docs/neptune/create_db_parameter_group.html](https://paws-r.github.io/docs/neptune/create_db_parameter_group.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -1668,34 +883,6 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
 #' version compatible with that DB parameter group family.
 #' @param Description &#91;required&#93; The description for the DB parameter group.
 #' @param Tags The tags to be assigned to the new DB parameter group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBParameterGroup = list(
-#'     DBParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_parameter_group(
-#'   DBParameterGroupName = "string",
-#'   DBParameterGroupFamily = "string",
-#'   Description = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1720,12 +907,9 @@ neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterG
 #' Creates a new DB subnet group
 #'
 #' @description
-#' Creates a new DB subnet group. DB subnet groups must contain at least
-#' one subnet in at least two AZs in the AWS Region.
+#' Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Region.
 #'
-#' @usage
-#' neptune_create_db_subnet_group(DBSubnetGroupName,
-#'   DBSubnetGroupDescription, SubnetIds, Tags)
+#' See [https://paws-r.github.io/docs/neptune/create_db_subnet_group.html](https://paws-r.github.io/docs/neptune/create_db_subnet_group.html) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the DB subnet group. This value is stored as a lowercase
 #' string.
@@ -1737,46 +921,6 @@ neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterG
 #' @param DBSubnetGroupDescription &#91;required&#93; The description for the DB subnet group.
 #' @param SubnetIds &#91;required&#93; The EC2 Subnet IDs for the DB subnet group.
 #' @param Tags The tags to be assigned to the new DB subnet group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSubnetGroup = list(
-#'     DBSubnetGroupName = "string",
-#'     DBSubnetGroupDescription = "string",
-#'     VpcId = "string",
-#'     SubnetGroupStatus = "string",
-#'     Subnets = list(
-#'       list(
-#'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = list(
-#'           Name = "string"
-#'         ),
-#'         SubnetStatus = "string"
-#'       )
-#'     ),
-#'     DBSubnetGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_subnet_group(
-#'   DBSubnetGroupName = "string",
-#'   DBSubnetGroupDescription = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1801,31 +945,9 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' Creates an event notification subscription
 #'
 #' @description
-#' Creates an event notification subscription. This action requires a topic
-#' ARN (Amazon Resource Name) created by either the Neptune console, the
-#' SNS console, or the SNS API. To obtain an ARN with SNS, you must create
-#' a topic in Amazon SNS and subscribe to the topic. The ARN is displayed
-#' in the SNS console.
-#' 
-#' You can specify the type of source (SourceType) you want to be notified
-#' of, provide a list of Neptune sources (SourceIds) that triggers the
-#' events, and provide a list of event categories (EventCategories) for
-#' events you want to be notified of. For example, you can specify
-#' SourceType = db-instance, SourceIds = mydbinstance1, mydbinstance2 and
-#' EventCategories = Availability, Backup.
-#' 
-#' If you specify both the SourceType and SourceIds, such as SourceType =
-#' db-instance and SourceIdentifier = myDBInstance1, you are notified of
-#' all the db-instance events for the specified source. If you specify a
-#' SourceType but do not specify a SourceIdentifier, you receive notice of
-#' the events for that source type for all your Neptune sources. If you do
-#' not specify either the SourceType nor the SourceIdentifier, you are
-#' notified of events generated from all Neptune sources belonging to your
-#' customer account.
+#' Creates an event notification subscription. This action requires a topic ARN (Amazon Resource Name) created by either the Neptune console, the SNS console, or the SNS API. To obtain an ARN with SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.
 #'
-#' @usage
-#' neptune_create_event_subscription(SubscriptionName, SnsTopicArn,
-#'   SourceType, EventCategories, SourceIds, Enabled, Tags)
+#' See [https://paws-r.github.io/docs/neptune/create_event_subscription.html](https://paws-r.github.io/docs/neptune/create_event_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the subscription.
 #' 
@@ -1868,51 +990,6 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' **false** to create the subscription but not active it.
 #' @param Tags The tags to be applied to the new event subscription.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_event_subscription(
-#'   SubscriptionName = "string",
-#'   SnsTopicArn = "string",
-#'   SourceType = "string",
-#'   EventCategories = list(
-#'     "string"
-#'   ),
-#'   SourceIds = list(
-#'     "string"
-#'   ),
-#'   Enabled = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname neptune_create_event_subscription
@@ -1933,21 +1010,52 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
 }
 .neptune$operations$create_event_subscription <- neptune_create_event_subscription
 
+#' Creates a Neptune global database spread across multiple Amazon Regions
+#'
+#' @description
+#' Creates a Neptune global database spread across multiple Amazon Regions. The global database contains a single primary cluster with read-write capability, and read-only secondary clusters that receive data from the primary cluster through high-speed replication performed by the Neptune storage subsystem.
+#'
+#' See [https://paws-r.github.io/docs/neptune/create_global_cluster.html](https://paws-r.github.io/docs/neptune/create_global_cluster.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the new global database cluster.
+#' @param SourceDBClusterIdentifier (*Optional*) The Amazon Resource Name (ARN) of an existing Neptune DB
+#' cluster to use as the primary cluster of the new global database.
+#' @param Engine The name of the database engine to be used in the global database.
+#' 
+#' Valid values: `neptune`
+#' @param EngineVersion The Neptune engine version to be used by the global database.
+#' 
+#' Valid values: `1.2.0.0` or above.
+#' @param DeletionProtection The deletion protection setting for the new global database. The global
+#' database can't be deleted when deletion protection is enabled.
+#' @param StorageEncrypted The storage encryption setting for the new global database cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname neptune_create_global_cluster
+neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClusterIdentifier = NULL, Engine = NULL, EngineVersion = NULL, DeletionProtection = NULL, StorageEncrypted = NULL) {
+  op <- new_operation(
+    name = "CreateGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .neptune$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, StorageEncrypted = StorageEncrypted)
+  output <- .neptune$create_global_cluster_output()
+  config <- get_config()
+  svc <- .neptune$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.neptune$operations$create_global_cluster <- neptune_create_global_cluster
+
 #' The DeleteDBCluster action deletes a previously provisioned DB cluster
 #'
 #' @description
-#' The DeleteDBCluster action deletes a previously provisioned DB cluster.
-#' When you delete a DB cluster, all automated backups for that DB cluster
-#' are deleted and can't be recovered. Manual DB cluster snapshots of the
-#' specified DB cluster are not deleted.
-#' 
-#' Note that the DB Cluster cannot be deleted if deletion protection is
-#' enabled. To delete it, you must first set its `DeletionProtection` field
-#' to `False`.
+#' The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.
 #'
-#' @usage
-#' neptune_delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot,
-#'   FinalDBSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/delete_db_cluster.html](https://paws-r.github.io/docs/neptune/delete_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the DB cluster to be deleted. This
 #' parameter isn't case-sensitive.
@@ -1978,96 +1086,6 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   SkipFinalSnapshot = TRUE|FALSE,
-#'   FinalDBSnapshotIdentifier = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname neptune_delete_db_cluster
@@ -2092,42 +1110,12 @@ neptune_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = N
 #' cluster
 #'
 #' @description
-#' Deletes a custom endpoint and removes it from an Amazon Neptune DB
-#' cluster.
+#' Deletes a custom endpoint and removes it from an Amazon Neptune DB cluster.
 #'
-#' @usage
-#' neptune_delete_db_cluster_endpoint(DBClusterEndpointIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/delete_db_cluster_endpoint.html](https://paws-r.github.io/docs/neptune/delete_db_cluster_endpoint.html) for full documentation.
 #'
 #' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier associated with the custom endpoint. This parameter is
 #' stored as a lowercase string.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterEndpointIdentifier = "string",
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointResourceIdentifier = "string",
-#'   Endpoint = "string",
-#'   Status = "string",
-#'   EndpointType = "string",
-#'   CustomEndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   ),
-#'   DBClusterEndpointArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster_endpoint(
-#'   DBClusterEndpointIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2152,11 +1140,9 @@ neptune_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #' Deletes a specified DB cluster parameter group
 #'
 #' @description
-#' Deletes a specified DB cluster parameter group. The DB cluster parameter
-#' group to be deleted can't be associated with any DB clusters.
+#' Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted can't be associated with any DB clusters.
 #'
-#' @usage
-#' neptune_delete_db_cluster_parameter_group(DBClusterParameterGroupName)
+#' See [https://paws-r.github.io/docs/neptune/delete_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/delete_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group.
 #' 
@@ -2167,16 +1153,6 @@ neptune_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #' -   You can't delete a default DB cluster parameter group.
 #' 
 #' -   Cannot be associated with any DB clusters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2201,60 +1177,14 @@ neptune_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' Deletes a DB cluster snapshot
 #'
 #' @description
-#' Deletes a DB cluster snapshot. If the snapshot is being copied, the copy
-#' operation is terminated.
-#' 
-#' The DB cluster snapshot must be in the `available` state to be deleted.
+#' Deletes a DB cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
 #'
-#' @usage
-#' neptune_delete_db_cluster_snapshot(DBClusterSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/delete_db_cluster_snapshot.html](https://paws-r.github.io/docs/neptune/delete_db_cluster_snapshot.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to delete.
 #' 
 #' Constraints: Must be the name of an existing DB cluster snapshot in the
 #' `available` state.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshot = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     VpcId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     PercentProgress = 123,
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster_snapshot(
-#'   DBClusterSnapshotIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2279,27 +1209,9 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' The DeleteDBInstance action deletes a previously provisioned DB instance
 #'
 #' @description
-#' The DeleteDBInstance action deletes a previously provisioned DB
-#' instance. When you delete a DB instance, all automated backups for that
-#' instance are deleted and can't be recovered. Manual DB snapshots of the
-#' DB instance to be deleted by
-#' [`delete_db_instance`][neptune_delete_db_instance] are not deleted.
-#' 
-#' If you request a final DB snapshot the status of the Amazon Neptune DB
-#' instance is `deleting` until the DB snapshot is created. The API action
-#' `DescribeDBInstance` is used to monitor the status of this operation.
-#' The action can't be canceled or reverted once submitted.
-#' 
-#' Note that when a DB instance is in a failure state and has a status of
-#' `failed`, `incompatible-restore`, or `incompatible-network`, you can
-#' only delete it when the `SkipFinalSnapshot` parameter is set to `true`.
-#' 
-#' You can't delete a DB instance if it is the only instance in the DB
-#' cluster, or if it has deletion protection enabled.
+#' The DeleteDBInstance action deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and can't be recovered. Manual DB snapshots of the DB instance to be deleted by [`delete_db_instance`][neptune_delete_db_instance] are not deleted.
 #'
-#' @usage
-#' neptune_delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot,
-#'   FinalDBSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/delete_db_instance.html](https://paws-r.github.io/docs/neptune/delete_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier for the DB instance to be deleted. This
 #' parameter isn't case-sensitive.
@@ -2338,162 +1250,6 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' 
 #' -   Cannot be specified when deleting a Read Replica.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   SkipFinalSnapshot = TRUE|FALSE,
-#'   FinalDBSnapshotIdentifier = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname neptune_delete_db_instance
@@ -2517,11 +1273,9 @@ neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot =
 #' Deletes a specified DBParameterGroup
 #'
 #' @description
-#' Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted
-#' can't be associated with any DB instances.
+#' Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted can't be associated with any DB instances.
 #'
-#' @usage
-#' neptune_delete_db_parameter_group(DBParameterGroupName)
+#' See [https://paws-r.github.io/docs/neptune/delete_db_parameter_group.html](https://paws-r.github.io/docs/neptune/delete_db_parameter_group.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -2532,16 +1286,6 @@ neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot =
 #' -   You can't delete a default DB parameter group
 #' 
 #' -   Cannot be associated with any DB instances
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_parameter_group(
-#'   DBParameterGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2567,12 +1311,8 @@ neptune_delete_db_parameter_group <- function(DBParameterGroupName) {
 #'
 #' @description
 #' Deletes a DB subnet group.
-#' 
-#' The specified database subnet group must not be associated with any DB
-#' instances.
 #'
-#' @usage
-#' neptune_delete_db_subnet_group(DBSubnetGroupName)
+#' See [https://paws-r.github.io/docs/neptune/delete_db_subnet_group.html](https://paws-r.github.io/docs/neptune/delete_db_subnet_group.html) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name of the database subnet group to delete.
 #' 
@@ -2584,16 +1324,6 @@ neptune_delete_db_parameter_group <- function(DBParameterGroupName) {
 #' be default.
 #' 
 #' Example: `mySubnetgroup`
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_subnet_group(
-#'   DBSubnetGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2620,40 +1350,9 @@ neptune_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' @description
 #' Deletes an event notification subscription.
 #'
-#' @usage
-#' neptune_delete_event_subscription(SubscriptionName)
+#' See [https://paws-r.github.io/docs/neptune/delete_event_subscription.html](https://paws-r.github.io/docs/neptune/delete_event_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the event notification subscription you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_event_subscription(
-#'   SubscriptionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2675,17 +1374,41 @@ neptune_delete_event_subscription <- function(SubscriptionName) {
 }
 .neptune$operations$delete_event_subscription <- neptune_delete_event_subscription
 
+#' Deletes a global database
+#'
+#' @description
+#' Deletes a global database. The primary and all secondary clusters must already be detached or deleted first.
+#'
+#' See [https://paws-r.github.io/docs/neptune/delete_global_cluster.html](https://paws-r.github.io/docs/neptune/delete_global_cluster.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the global database cluster being deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname neptune_delete_global_cluster
+neptune_delete_global_cluster <- function(GlobalClusterIdentifier) {
+  op <- new_operation(
+    name = "DeleteGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .neptune$delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
+  output <- .neptune$delete_global_cluster_output()
+  config <- get_config()
+  svc <- .neptune$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.neptune$operations$delete_global_cluster <- neptune_delete_global_cluster
+
 #' Returns information about endpoints for an Amazon Neptune DB cluster
 #'
 #' @description
 #' Returns information about endpoints for an Amazon Neptune DB cluster.
-#' 
-#' This operation can also return information for Amazon RDS clusters and
-#' Amazon DocDB clusters.
 #'
-#' @usage
-#' neptune_describe_db_cluster_endpoints(DBClusterIdentifier,
-#'   DBClusterEndpointIdentifier, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_endpoints.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_endpoints.html) for full documentation.
 #'
 #' @param DBClusterIdentifier The DB cluster identifier of the DB cluster associated with the
 #' endpoint. This parameter is stored as a lowercase string.
@@ -2715,50 +1438,6 @@ neptune_delete_event_subscription <- function(SubscriptionName) {
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusterEndpoints = list(
-#'     list(
-#'       DBClusterEndpointIdentifier = "string",
-#'       DBClusterIdentifier = "string",
-#'       DBClusterEndpointResourceIdentifier = "string",
-#'       Endpoint = "string",
-#'       Status = "string",
-#'       EndpointType = "string",
-#'       CustomEndpointType = "string",
-#'       StaticMembers = list(
-#'         "string"
-#'       ),
-#'       ExcludedMembers = list(
-#'         "string"
-#'       ),
-#'       DBClusterEndpointArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_endpoints(
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_cluster_endpoints
@@ -2782,14 +1461,9 @@ neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DB
 #' Returns a list of DBClusterParameterGroup descriptions
 #'
 #' @description
-#' Returns a list of `DBClusterParameterGroup` descriptions. If a
-#' `DBClusterParameterGroupName` parameter is specified, the list will
-#' contain only the description of the specified DB cluster parameter
-#' group.
+#' Returns a list of `DBClusterParameterGroup` descriptions. If a `DBClusterParameterGroupName` parameter is specified, the list will contain only the description of the specified DB cluster parameter group.
 #'
-#' @usage
-#' neptune_describe_db_cluster_parameter_groups(
-#'   DBClusterParameterGroupName, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_parameter_groups.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_parameter_groups.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName The name of a specific DB cluster parameter group to return details for.
 #' 
@@ -2810,39 +1484,6 @@ neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DB
 #' [`describe_db_cluster_parameter_groups`][neptune_describe_db_cluster_parameter_groups]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusterParameterGroups = list(
-#'     list(
-#'       DBClusterParameterGroupName = "string",
-#'       DBParameterGroupFamily = "string",
-#'       Description = "string",
-#'       DBClusterParameterGroupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_parameter_groups(
-#'   DBClusterParameterGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2868,12 +1509,9 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
 #' parameter group
 #'
 #' @description
-#' Returns the detailed parameter list for a particular DB cluster
-#' parameter group.
+#' Returns the detailed parameter list for a particular DB cluster parameter group.
 #'
-#' @usage
-#' neptune_describe_db_cluster_parameters(DBClusterParameterGroupName,
-#'   Source, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_parameters.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_parameters.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of a specific DB cluster parameter group to return parameter
 #' details for.
@@ -2897,46 +1535,6 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
 #' [`describe_db_cluster_parameters`][neptune_describe_db_cluster_parameters]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot"
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_parameters(
-#'   DBClusterParameterGroupName = "string",
-#'   Source = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2962,54 +1560,12 @@ neptune_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, 
 #' manual DB cluster snapshot
 #'
 #' @description
-#' Returns a list of DB cluster snapshot attribute names and values for a
-#' manual DB cluster snapshot.
-#' 
-#' When sharing snapshots with other AWS accounts,
-#' [`describe_db_cluster_snapshot_attributes`][neptune_describe_db_cluster_snapshot_attributes]
-#' returns the `restore` attribute and a list of IDs for the AWS accounts
-#' that are authorized to copy or restore the manual DB cluster snapshot.
-#' If `all` is included in the list of values for the `restore` attribute,
-#' then the manual DB cluster snapshot is public and can be copied or
-#' restored by all AWS accounts.
-#' 
-#' To add or remove access for an AWS account to copy or restore a manual
-#' DB cluster snapshot, or to make the manual DB cluster snapshot public or
-#' private, use the
-#' [`modify_db_cluster_snapshot_attribute`][neptune_modify_db_cluster_snapshot_attribute]
-#' API action.
+#' Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot.
 #'
-#' @usage
-#' neptune_describe_db_cluster_snapshot_attributes(
-#'   DBClusterSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_snapshot_attributes.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_snapshot_attributes.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the DB cluster snapshot to describe the attributes
 #' for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshotAttributesResult = list(
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterSnapshotAttributes = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeValues = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_snapshot_attributes(
-#'   DBClusterSnapshotIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3034,13 +1590,9 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
 #' Returns information about DB cluster snapshots
 #'
 #' @description
-#' Returns information about DB cluster snapshots. This API action supports
-#' pagination.
+#' Returns information about DB cluster snapshots. This API action supports pagination.
 #'
-#' @usage
-#' neptune_describe_db_cluster_snapshots(DBClusterIdentifier,
-#'   DBClusterSnapshotIdentifier, SnapshotType, Filters, MaxRecords, Marker,
-#'   IncludeShared, IncludePublic)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_snapshots.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_snapshots.html) for full documentation.
 #'
 #' @param DBClusterIdentifier The ID of the DB cluster to retrieve the list of DB cluster snapshots
 #' for. This parameter can't be used in conjunction with the
@@ -3065,13 +1617,13 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
 #' the following values:
 #' 
 #' -   `automated` - Return all DB cluster snapshots that have been
-#'     automatically taken by Amazon Neptune for my AWS account.
+#'     automatically taken by Amazon Neptune for my Amazon account.
 #' 
 #' -   `manual` - Return all DB cluster snapshots that have been taken by
-#'     my AWS account.
+#'     my Amazon account.
 #' 
 #' -   `shared` - Return all manual DB cluster snapshots that have been
-#'     shared to my AWS account.
+#'     shared to my Amazon account.
 #' 
 #' -   `public` - Return all DB cluster snapshots that have been marked as
 #'     public.
@@ -3100,80 +1652,21 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
 #' [`describe_db_cluster_snapshots`][neptune_describe_db_cluster_snapshots]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#' @param IncludeShared True to include shared manual DB cluster snapshots from other AWS
-#' accounts that this AWS account has been given permission to copy or
+#' @param IncludeShared True to include shared manual DB cluster snapshots from other Amazon
+#' accounts that this Amazon account has been given permission to copy or
 #' restore, and otherwise false. The default is `false`.
 #' 
-#' You can give an AWS account permission to restore a manual DB cluster
-#' snapshot from another AWS account by the
+#' You can give an Amazon account permission to restore a manual DB cluster
+#' snapshot from another Amazon account by the
 #' [`modify_db_cluster_snapshot_attribute`][neptune_modify_db_cluster_snapshot_attribute]
 #' API action.
 #' @param IncludePublic True to include manual DB cluster snapshots that are public and can be
-#' copied or restored by any AWS account, and otherwise false. The default
-#' is `false`. The default is false.
+#' copied or restored by any Amazon account, and otherwise false. The
+#' default is `false`. The default is false.
 #' 
 #' You can share a manual DB cluster snapshot as public by using the
 #' [`modify_db_cluster_snapshot_attribute`][neptune_modify_db_cluster_snapshot_attribute]
 #' API action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusterSnapshots = list(
-#'     list(
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       DBClusterSnapshotIdentifier = "string",
-#'       DBClusterIdentifier = "string",
-#'       SnapshotCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Engine = "string",
-#'       AllocatedStorage = 123,
-#'       Status = "string",
-#'       Port = 123,
-#'       VpcId = "string",
-#'       ClusterCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       MasterUsername = "string",
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       SnapshotType = "string",
-#'       PercentProgress = 123,
-#'       StorageEncrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DBClusterSnapshotArn = "string",
-#'       SourceDBClusterSnapshotArn = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_snapshots(
-#'   DBClusterIdentifier = "string",
-#'   DBClusterSnapshotIdentifier = "string",
-#'   SnapshotType = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   IncludeShared = TRUE|FALSE,
-#'   IncludePublic = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3199,15 +1692,9 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
 #' pagination
 #'
 #' @description
-#' Returns information about provisioned DB clusters, and supports
-#' pagination.
-#' 
-#' This operation can also return information for Amazon RDS clusters and
-#' Amazon DocDB clusters.
+#' Returns information about provisioned DB clusters, and supports pagination.
 #'
-#' @usage
-#' neptune_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_clusters.html](https://paws-r.github.io/docs/neptune/describe_db_clusters.html) for full documentation.
 #'
 #' @param DBClusterIdentifier The user-supplied DB cluster identifier. If this parameter is specified,
 #' information from only the specific DB cluster is returned. This
@@ -3227,8 +1714,9 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
 #' -   `engine` - Accepts an engine name (such as `neptune`), and restricts
 #'     the results list to DB clusters created by that engine.
 #' 
-#' For example, to invoke this API from the AWS CLI and filter so that only
-#' Neptune DB clusters are returned, you could use the following command:
+#' For example, to invoke this API from the Amazon CLI and filter so that
+#' only Neptune DB clusters are returned, you could use the following
+#' command:
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so that the remaining
@@ -3241,107 +1729,6 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
 #' [`describe_db_clusters`][neptune_describe_db_clusters] request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusters = list(
-#'     list(
-#'       AllocatedStorage = 123,
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       BackupRetentionPeriod = 123,
-#'       CharacterSetName = "string",
-#'       DatabaseName = "string",
-#'       DBClusterIdentifier = "string",
-#'       DBClusterParameterGroup = "string",
-#'       DBSubnetGroup = "string",
-#'       Status = "string",
-#'       PercentProgress = "string",
-#'       EarliestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Endpoint = "string",
-#'       ReaderEndpoint = "string",
-#'       MultiAZ = TRUE|FALSE,
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       LatestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Port = 123,
-#'       MasterUsername = "string",
-#'       DBClusterOptionGroupMemberships = list(
-#'         list(
-#'           DBClusterOptionGroupName = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       PreferredBackupWindow = "string",
-#'       PreferredMaintenanceWindow = "string",
-#'       ReplicationSourceIdentifier = "string",
-#'       ReadReplicaIdentifiers = list(
-#'         "string"
-#'       ),
-#'       DBClusterMembers = list(
-#'         list(
-#'           DBInstanceIdentifier = "string",
-#'           IsClusterWriter = TRUE|FALSE,
-#'           DBClusterParameterGroupStatus = "string",
-#'           PromotionTier = 123
-#'         )
-#'       ),
-#'       VpcSecurityGroups = list(
-#'         list(
-#'           VpcSecurityGroupId = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       HostedZoneId = "string",
-#'       StorageEncrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DbClusterResourceId = "string",
-#'       DBClusterArn = "string",
-#'       AssociatedRoles = list(
-#'         list(
-#'           RoleArn = "string",
-#'           Status = "string",
-#'           FeatureName = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       CloneGroupId = "string",
-#'       ClusterCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EnabledCloudwatchLogsExports = list(
-#'         "string"
-#'       ),
-#'       DeletionProtection = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_clusters(
-#'   DBClusterIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3368,10 +1755,7 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
 #' @description
 #' Returns a list of the available DB engines.
 #'
-#' @usage
-#' neptune_describe_db_engine_versions(Engine, EngineVersion,
-#'   DBParameterGroupFamily, Filters, MaxRecords, Marker, DefaultOnly,
-#'   ListSupportedCharacterSets, ListSupportedTimezones)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_engine_versions.html](https://paws-r.github.io/docs/neptune/describe_db_engine_versions.html) for full documentation.
 #'
 #' @param Engine The database engine to return.
 #' @param EngineVersion The database engine version to return.
@@ -3405,74 +1789,6 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
 #' [`create_db_instance`][neptune_create_db_instance], the response
 #' includes a list of supported time zones for each engine version.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBEngineVersions = list(
-#'     list(
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       DBParameterGroupFamily = "string",
-#'       DBEngineDescription = "string",
-#'       DBEngineVersionDescription = "string",
-#'       DefaultCharacterSet = list(
-#'         CharacterSetName = "string",
-#'         CharacterSetDescription = "string"
-#'       ),
-#'       SupportedCharacterSets = list(
-#'         list(
-#'           CharacterSetName = "string",
-#'           CharacterSetDescription = "string"
-#'         )
-#'       ),
-#'       ValidUpgradeTarget = list(
-#'         list(
-#'           Engine = "string",
-#'           EngineVersion = "string",
-#'           Description = "string",
-#'           AutoUpgrade = TRUE|FALSE,
-#'           IsMajorVersionUpgrade = TRUE|FALSE
-#'         )
-#'       ),
-#'       SupportedTimezones = list(
-#'         list(
-#'           TimezoneName = "string"
-#'         )
-#'       ),
-#'       ExportableLogTypes = list(
-#'         "string"
-#'       ),
-#'       SupportsLogExportsToCloudwatchLogs = TRUE|FALSE,
-#'       SupportsReadReplica = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_engine_versions(
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   DBParameterGroupFamily = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   DefaultOnly = TRUE|FALSE,
-#'   ListSupportedCharacterSets = TRUE|FALSE,
-#'   ListSupportedTimezones = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_engine_versions
@@ -3496,15 +1812,9 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
 #' Returns information about provisioned instances, and supports pagination
 #'
 #' @description
-#' Returns information about provisioned instances, and supports
-#' pagination.
-#' 
-#' This operation can also return information for Amazon RDS instances and
-#' Amazon DocDB instances.
+#' Returns information about provisioned instances, and supports pagination.
 #'
-#' @usage
-#' neptune_describe_db_instances(DBInstanceIdentifier, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_instances.html](https://paws-r.github.io/docs/neptune/describe_db_instances.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier The user-supplied instance identifier. If this parameter is specified,
 #' information from only the specific DB instance is returned. This
@@ -3525,8 +1835,9 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
 #' -   `engine` - Accepts an engine name (such as `neptune`), and restricts
 #'     the results list to DB instances created by that engine.
 #' 
-#' For example, to invoke this API from the AWS CLI and filter so that only
-#' Neptune DB instances are returned, you could use the following command:
+#' For example, to invoke this API from the Amazon CLI and filter so that
+#' only Neptune DB instances are returned, you could use the following
+#' command:
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so that the remaining
@@ -3539,173 +1850,6 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
 #' [`describe_db_instances`][neptune_describe_db_instances] request. If
 #' this parameter is specified, the response includes only records beyond
 #' the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBInstances = list(
-#'     list(
-#'       DBInstanceIdentifier = "string",
-#'       DBInstanceClass = "string",
-#'       Engine = "string",
-#'       DBInstanceStatus = "string",
-#'       MasterUsername = "string",
-#'       DBName = "string",
-#'       Endpoint = list(
-#'         Address = "string",
-#'         Port = 123,
-#'         HostedZoneId = "string"
-#'       ),
-#'       AllocatedStorage = 123,
-#'       InstanceCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PreferredBackupWindow = "string",
-#'       BackupRetentionPeriod = 123,
-#'       DBSecurityGroups = list(
-#'         list(
-#'           DBSecurityGroupName = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       VpcSecurityGroups = list(
-#'         list(
-#'           VpcSecurityGroupId = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       DBParameterGroups = list(
-#'         list(
-#'           DBParameterGroupName = "string",
-#'           ParameterApplyStatus = "string"
-#'         )
-#'       ),
-#'       AvailabilityZone = "string",
-#'       DBSubnetGroup = list(
-#'         DBSubnetGroupName = "string",
-#'         DBSubnetGroupDescription = "string",
-#'         VpcId = "string",
-#'         SubnetGroupStatus = "string",
-#'         Subnets = list(
-#'           list(
-#'             SubnetIdentifier = "string",
-#'             SubnetAvailabilityZone = list(
-#'               Name = "string"
-#'             ),
-#'             SubnetStatus = "string"
-#'           )
-#'         ),
-#'         DBSubnetGroupArn = "string"
-#'       ),
-#'       PreferredMaintenanceWindow = "string",
-#'       PendingModifiedValues = list(
-#'         DBInstanceClass = "string",
-#'         AllocatedStorage = 123,
-#'         MasterUserPassword = "string",
-#'         Port = 123,
-#'         BackupRetentionPeriod = 123,
-#'         MultiAZ = TRUE|FALSE,
-#'         EngineVersion = "string",
-#'         LicenseModel = "string",
-#'         Iops = 123,
-#'         DBInstanceIdentifier = "string",
-#'         StorageType = "string",
-#'         CACertificateIdentifier = "string",
-#'         DBSubnetGroupName = "string",
-#'         PendingCloudwatchLogsExports = list(
-#'           LogTypesToEnable = list(
-#'             "string"
-#'           ),
-#'           LogTypesToDisable = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       LatestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       AutoMinorVersionUpgrade = TRUE|FALSE,
-#'       ReadReplicaSourceDBInstanceIdentifier = "string",
-#'       ReadReplicaDBInstanceIdentifiers = list(
-#'         "string"
-#'       ),
-#'       ReadReplicaDBClusterIdentifiers = list(
-#'         "string"
-#'       ),
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       OptionGroupMemberships = list(
-#'         list(
-#'           OptionGroupName = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       CharacterSetName = "string",
-#'       SecondaryAvailabilityZone = "string",
-#'       PubliclyAccessible = TRUE|FALSE,
-#'       StatusInfos = list(
-#'         list(
-#'           StatusType = "string",
-#'           Normal = TRUE|FALSE,
-#'           Status = "string",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       StorageType = "string",
-#'       TdeCredentialArn = "string",
-#'       DbInstancePort = 123,
-#'       DBClusterIdentifier = "string",
-#'       StorageEncrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DbiResourceId = "string",
-#'       CACertificateIdentifier = "string",
-#'       DomainMemberships = list(
-#'         list(
-#'           Domain = "string",
-#'           Status = "string",
-#'           FQDN = "string",
-#'           IAMRoleName = "string"
-#'         )
-#'       ),
-#'       CopyTagsToSnapshot = TRUE|FALSE,
-#'       MonitoringInterval = 123,
-#'       EnhancedMonitoringResourceArn = "string",
-#'       MonitoringRoleArn = "string",
-#'       PromotionTier = 123,
-#'       DBInstanceArn = "string",
-#'       Timezone = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       PerformanceInsightsEnabled = TRUE|FALSE,
-#'       PerformanceInsightsKMSKeyId = "string",
-#'       EnabledCloudwatchLogsExports = list(
-#'         "string"
-#'       ),
-#'       DeletionProtection = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_instances(
-#'   DBInstanceIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3730,13 +1874,9 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
 #' Returns a list of DBParameterGroup descriptions
 #'
 #' @description
-#' Returns a list of `DBParameterGroup` descriptions. If a
-#' `DBParameterGroupName` is specified, the list will contain only the
-#' description of the specified DB parameter group.
+#' Returns a list of `DBParameterGroup` descriptions. If a `DBParameterGroupName` is specified, the list will contain only the description of the specified DB parameter group.
 #'
-#' @usage
-#' neptune_describe_db_parameter_groups(DBParameterGroupName, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_parameter_groups.html](https://paws-r.github.io/docs/neptune/describe_db_parameter_groups.html) for full documentation.
 #'
 #' @param DBParameterGroupName The name of a specific DB parameter group to return details for.
 #' 
@@ -3757,39 +1897,6 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
 #' [`describe_db_parameter_groups`][neptune_describe_db_parameter_groups]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBParameterGroups = list(
-#'     list(
-#'       DBParameterGroupName = "string",
-#'       DBParameterGroupFamily = "string",
-#'       Description = "string",
-#'       DBParameterGroupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_parameter_groups(
-#'   DBParameterGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3816,9 +1923,7 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
 #' @description
 #' Returns the detailed parameter list for a particular DB parameter group.
 #'
-#' @usage
-#' neptune_describe_db_parameters(DBParameterGroupName, Source, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_parameters.html](https://paws-r.github.io/docs/neptune/describe_db_parameters.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of a specific DB parameter group to return details for.
 #' 
@@ -3844,46 +1949,6 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
 #' this parameter is specified, the response includes only records beyond
 #' the marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot"
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_parameters(
-#'   DBParameterGroupName = "string",
-#'   Source = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_parameters
@@ -3907,16 +1972,9 @@ neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, 
 #' Returns a list of DBSubnetGroup descriptions
 #'
 #' @description
-#' Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is
-#' specified, the list will contain only the descriptions of the specified
-#' DBSubnetGroup.
-#' 
-#' For an overview of CIDR ranges, go to the [Wikipedia
-#' Tutorial](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+#' Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specified, the list will contain only the descriptions of the specified DBSubnetGroup.
 #'
-#' @usage
-#' neptune_describe_db_subnet_groups(DBSubnetGroupName, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_db_subnet_groups.html](https://paws-r.github.io/docs/neptune/describe_db_subnet_groups.html) for full documentation.
 #'
 #' @param DBSubnetGroupName The name of the DB subnet group to return details for.
 #' @param Filters This parameter is not currently supported.
@@ -3932,49 +1990,6 @@ neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, 
 #' DescribeDBSubnetGroups request. If this parameter is specified, the
 #' response includes only records beyond the marker, up to the value
 #' specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBSubnetGroups = list(
-#'     list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_subnet_groups(
-#'   DBSubnetGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4000,12 +2015,9 @@ neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters 
 #' cluster database engine
 #'
 #' @description
-#' Returns the default engine and system parameter information for the
-#' cluster database engine.
+#' Returns the default engine and system parameter information for the cluster database engine.
 #'
-#' @usage
-#' neptune_describe_engine_default_cluster_parameters(
-#'   DBParameterGroupFamily, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_engine_default_cluster_parameters.html](https://paws-r.github.io/docs/neptune/describe_engine_default_cluster_parameters.html) for full documentation.
 #'
 #' @param DBParameterGroupFamily &#91;required&#93; The name of the DB cluster parameter group family to return engine
 #' parameter information for.
@@ -4022,48 +2034,6 @@ neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters 
 #' [`describe_engine_default_cluster_parameters`][neptune_describe_engine_default_cluster_parameters]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EngineDefaults = list(
-#'     DBParameterGroupFamily = "string",
-#'     Marker = "string",
-#'     Parameters = list(
-#'       list(
-#'         ParameterName = "string",
-#'         ParameterValue = "string",
-#'         Description = "string",
-#'         Source = "string",
-#'         ApplyType = "string",
-#'         DataType = "string",
-#'         AllowedValues = "string",
-#'         IsModifiable = TRUE|FALSE,
-#'         MinimumEngineVersion = "string",
-#'         ApplyMethod = "immediate"|"pending-reboot"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_engine_default_cluster_parameters(
-#'   DBParameterGroupFamily = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4089,12 +2059,9 @@ neptune_describe_engine_default_cluster_parameters <- function(DBParameterGroupF
 #' specified database engine
 #'
 #' @description
-#' Returns the default engine and system parameter information for the
-#' specified database engine.
+#' Returns the default engine and system parameter information for the specified database engine.
 #'
-#' @usage
-#' neptune_describe_engine_default_parameters(DBParameterGroupFamily,
-#'   Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_engine_default_parameters.html](https://paws-r.github.io/docs/neptune/describe_engine_default_parameters.html) for full documentation.
 #'
 #' @param DBParameterGroupFamily &#91;required&#93; The name of the DB parameter group family.
 #' @param Filters Not currently supported.
@@ -4110,48 +2077,6 @@ neptune_describe_engine_default_cluster_parameters <- function(DBParameterGroupF
 #' [`describe_engine_default_parameters`][neptune_describe_engine_default_parameters]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EngineDefaults = list(
-#'     DBParameterGroupFamily = "string",
-#'     Marker = "string",
-#'     Parameters = list(
-#'       list(
-#'         ParameterName = "string",
-#'         ParameterValue = "string",
-#'         Description = "string",
-#'         Source = "string",
-#'         ApplyType = "string",
-#'         DataType = "string",
-#'         AllowedValues = "string",
-#'         IsModifiable = TRUE|FALSE,
-#'         MinimumEngineVersion = "string",
-#'         ApplyMethod = "immediate"|"pending-reboot"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_engine_default_parameters(
-#'   DBParameterGroupFamily = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4177,47 +2102,15 @@ neptune_describe_engine_default_parameters <- function(DBParameterGroupFamily, F
 #' specified, for a specified source type
 #'
 #' @description
-#' Displays a list of categories for all event source types, or, if
-#' specified, for a specified source type.
+#' Displays a list of categories for all event source types, or, if specified, for a specified source type.
 #'
-#' @usage
-#' neptune_describe_event_categories(SourceType, Filters)
+#' See [https://paws-r.github.io/docs/neptune/describe_event_categories.html](https://paws-r.github.io/docs/neptune/describe_event_categories.html) for full documentation.
 #'
 #' @param SourceType The type of source that is generating the events.
 #' 
 #' Valid values: db-instance | db-parameter-group | db-security-group |
 #' db-snapshot
 #' @param Filters This parameter is not currently supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventCategoriesMapList = list(
-#'     list(
-#'       SourceType = "string",
-#'       EventCategories = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_event_categories(
-#'   SourceType = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4242,16 +2135,9 @@ neptune_describe_event_categories <- function(SourceType = NULL, Filters = NULL)
 #' Lists all the subscription descriptions for a customer account
 #'
 #' @description
-#' Lists all the subscription descriptions for a customer account. The
-#' description for a subscription includes SubscriptionName, SNSTopicARN,
-#' CustomerID, SourceType, SourceID, CreationTime, and Status.
-#' 
-#' If you specify a SubscriptionName, lists the description for that
-#' subscription.
+#' Lists all the subscription descriptions for a customer account. The description for a subscription includes SubscriptionName, SNSTopicARN, CustomerID, SourceType, SourceID, CreationTime, and Status.
 #'
-#' @usage
-#' neptune_describe_event_subscriptions(SubscriptionName, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_event_subscriptions.html](https://paws-r.github.io/docs/neptune/describe_event_subscriptions.html) for full documentation.
 #'
 #' @param SubscriptionName The name of the event notification subscription you want to describe.
 #' @param Filters This parameter is not currently supported.
@@ -4267,49 +2153,6 @@ neptune_describe_event_categories <- function(SourceType = NULL, Filters = NULL)
 #' DescribeOrderableDBInstanceOptions request. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
 #' the value specified by `MaxRecords` .
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   EventSubscriptionsList = list(
-#'     list(
-#'       CustomerAwsId = "string",
-#'       CustSubscriptionId = "string",
-#'       SnsTopicArn = "string",
-#'       Status = "string",
-#'       SubscriptionCreationTime = "string",
-#'       SourceType = "string",
-#'       SourceIdsList = list(
-#'         "string"
-#'       ),
-#'       EventCategoriesList = list(
-#'         "string"
-#'       ),
-#'       Enabled = TRUE|FALSE,
-#'       EventSubscriptionArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_event_subscriptions(
-#'   SubscriptionName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4335,15 +2178,9 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
 #' snapshots, and DB parameter groups for the past 14 days
 #'
 #' @description
-#' Returns events related to DB instances, DB security groups, DB
-#' snapshots, and DB parameter groups for the past 14 days. Events specific
-#' to a particular DB instance, DB security group, database snapshot, or DB
-#' parameter group can be obtained by providing the name as a parameter. By
-#' default, the past hour of events are returned.
+#' Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days. Events specific to a particular DB instance, DB security group, database snapshot, or DB parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
 #'
-#' @usage
-#' neptune_describe_events(SourceIdentifier, SourceType, StartTime,
-#'   EndTime, Duration, EventCategories, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_events.html](https://paws-r.github.io/docs/neptune/describe_events.html) for full documentation.
 #'
 #' @param SourceIdentifier The identifier of the event source for which events are returned. If not
 #' specified, then all sources are included in the response.
@@ -4395,56 +2232,6 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   Events = list(
-#'     list(
-#'       SourceIdentifier = "string",
-#'       SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-#'       Message = "string",
-#'       EventCategories = list(
-#'         "string"
-#'       ),
-#'       Date = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       SourceArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_events(
-#'   SourceIdentifier = "string",
-#'   SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Duration = 123,
-#'   EventCategories = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname neptune_describe_events
@@ -4465,15 +2252,57 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
 }
 .neptune$operations$describe_events <- neptune_describe_events
 
+#' Returns information about Neptune global database clusters
+#'
+#' @description
+#' Returns information about Neptune global database clusters. This API supports pagination.
+#'
+#' See [https://paws-r.github.io/docs/neptune/describe_global_clusters.html](https://paws-r.github.io/docs/neptune/describe_global_clusters.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier The user-supplied DB cluster identifier. If this parameter is specified,
+#' only information about the specified DB cluster is returned. This
+#' parameter is not case-sensitive.
+#' 
+#' Constraints: If supplied, must match an existing DB cluster identifier.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination marker
+#' token is included in the response that you can use to retrieve the
+#' remaining results.
+#' 
+#' Default: `100`
+#' 
+#' Constraints: Minimum 20, maximum 100.
+#' @param Marker (*Optional*) A pagination token returned by a previous call to
+#' [`describe_global_clusters`][neptune_describe_global_clusters]. If this
+#' parameter is specified, the response will only include records beyond
+#' the marker, up to the number specified by `MaxRecords`.
+#'
+#' @keywords internal
+#'
+#' @rdname neptune_describe_global_clusters
+neptune_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeGlobalClusters",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .neptune$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .neptune$describe_global_clusters_output()
+  config <- get_config()
+  svc <- .neptune$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.neptune$operations$describe_global_clusters <- neptune_describe_global_clusters
+
 #' Returns a list of orderable DB instance options for the specified engine
 #'
 #' @description
-#' Returns a list of orderable DB instance options for the specified
-#' engine.
+#' Returns a list of orderable DB instance options for the specified engine.
 #'
-#' @usage
-#' neptune_describe_orderable_db_instance_options(Engine, EngineVersion,
-#'   DBInstanceClass, LicenseModel, Vpc, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/neptune/describe_orderable_db_instance_options.html](https://paws-r.github.io/docs/neptune/describe_orderable_db_instance_options.html) for full documentation.
 #'
 #' @param Engine &#91;required&#93; The name of the engine to retrieve DB instance options for.
 #' @param EngineVersion The engine version filter value. Specify this parameter to show only the
@@ -4497,63 +2326,6 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
 #' DescribeOrderableDBInstanceOptions request. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
 #' the value specified by `MaxRecords` .
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrderableDBInstanceOptions = list(
-#'     list(
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       DBInstanceClass = "string",
-#'       LicenseModel = "string",
-#'       AvailabilityZones = list(
-#'         list(
-#'           Name = "string"
-#'         )
-#'       ),
-#'       MultiAZCapable = TRUE|FALSE,
-#'       ReadReplicaCapable = TRUE|FALSE,
-#'       Vpc = TRUE|FALSE,
-#'       SupportsStorageEncryption = TRUE|FALSE,
-#'       StorageType = "string",
-#'       SupportsIops = TRUE|FALSE,
-#'       SupportsEnhancedMonitoring = TRUE|FALSE,
-#'       SupportsIAMDatabaseAuthentication = TRUE|FALSE,
-#'       SupportsPerformanceInsights = TRUE|FALSE,
-#'       MinStorageSize = 123,
-#'       MaxStorageSize = 123,
-#'       MinIopsPerDbInstance = 123,
-#'       MaxIopsPerDbInstance = 123,
-#'       MinIopsPerGib = 123.0,
-#'       MaxIopsPerGib = 123.0
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_orderable_db_instance_options(
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   DBInstanceClass = "string",
-#'   LicenseModel = "string",
-#'   Vpc = TRUE|FALSE,
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4579,12 +2351,9 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
 #' least one pending maintenance action
 #'
 #' @description
-#' Returns a list of resources (for example, DB instances) that have at
-#' least one pending maintenance action.
+#' Returns a list of resources (for example, DB instances) that have at least one pending maintenance action.
 #'
-#' @usage
-#' neptune_describe_pending_maintenance_actions(ResourceIdentifier,
-#'   Filters, Marker, MaxRecords)
+#' See [https://paws-r.github.io/docs/neptune/describe_pending_maintenance_actions.html](https://paws-r.github.io/docs/neptune/describe_pending_maintenance_actions.html) for full documentation.
 #'
 #' @param ResourceIdentifier The ARN of a resource to return pending maintenance actions for.
 #' @param Filters A filter that specifies one or more resources to return pending
@@ -4614,52 +2383,6 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PendingMaintenanceActions = list(
-#'     list(
-#'       ResourceIdentifier = "string",
-#'       PendingMaintenanceActionDetails = list(
-#'         list(
-#'           Action = "string",
-#'           AutoAppliedAfterDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           ForcedApplyDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           OptInStatus = "string",
-#'           CurrentApplyDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           Description = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_pending_maintenance_actions(
-#'   ResourceIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   MaxRecords = 123
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname neptune_describe_pending_maintenance_actions
@@ -4684,57 +2407,11 @@ neptune_describe_pending_maintenance_actions <- function(ResourceIdentifier = NU
 #' modifications you can make to your DB instance
 #'
 #' @description
-#' You can call
-#' [`describe_valid_db_instance_modifications`][neptune_describe_valid_db_instance_modifications]
-#' to learn what modifications you can make to your DB instance. You can
-#' use this information when you call
-#' [`modify_db_instance`][neptune_modify_db_instance].
+#' You can call [`describe_valid_db_instance_modifications`][neptune_describe_valid_db_instance_modifications] to learn what modifications you can make to your DB instance. You can use this information when you call [`modify_db_instance`][neptune_modify_db_instance].
 #'
-#' @usage
-#' neptune_describe_valid_db_instance_modifications(DBInstanceIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/describe_valid_db_instance_modifications.html](https://paws-r.github.io/docs/neptune/describe_valid_db_instance_modifications.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The customer identifier or the ARN of your DB instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ValidDBInstanceModificationsMessage = list(
-#'     Storage = list(
-#'       list(
-#'         StorageType = "string",
-#'         StorageSize = list(
-#'           list(
-#'             From = 123,
-#'             To = 123,
-#'             Step = 123
-#'           )
-#'         ),
-#'         ProvisionedIops = list(
-#'           list(
-#'             From = 123,
-#'             To = 123,
-#'             Step = 123
-#'           )
-#'         ),
-#'         IopsToStorageRatio = list(
-#'           list(
-#'             From = 123.0,
-#'             To = 123.0
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_valid_db_instance_modifications(
-#'   DBInstanceIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4760,21 +2437,8 @@ neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifie
 #'
 #' @description
 #' Forces a failover for a DB cluster.
-#' 
-#' A failover for a DB cluster promotes one of the Read Replicas (read-only
-#' instances) in the DB cluster to be the primary instance (the cluster
-#' writer).
-#' 
-#' Amazon Neptune will automatically fail over to a Read Replica, if one
-#' exists, when the primary instance fails. You can force a failover when
-#' you want to simulate a failure of a primary instance for testing.
-#' Because each instance in a DB cluster has its own endpoint address, you
-#' will need to clean up and re-establish any existing connections that use
-#' those endpoint addresses when the failover is complete.
 #'
-#' @usage
-#' neptune_failover_db_cluster(DBClusterIdentifier,
-#'   TargetDBInstanceIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/failover_db_cluster.html](https://paws-r.github.io/docs/neptune/failover_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier A DB cluster identifier to force a failover for. This parameter is not
 #' case-sensitive.
@@ -4786,95 +2450,6 @@ neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifie
 #' 
 #' You must specify the instance identifier for an Read Replica in the DB
 #' cluster. For example, `mydbcluster-replica1`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$failover_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   TargetDBInstanceIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4896,47 +2471,55 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 }
 .neptune$operations$failover_db_cluster <- neptune_failover_db_cluster
 
+#' Initiates the failover process for a Neptune global database
+#'
+#' @description
+#' Initiates the failover process for a Neptune global database.
+#'
+#' See [https://paws-r.github.io/docs/neptune/failover_global_cluster.html](https://paws-r.github.io/docs/neptune/failover_global_cluster.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; Identifier of the Neptune global database that should be failed over.
+#' The identifier is the unique key assigned by the user when the Neptune
+#' global database was created. In other words, it's the name of the global
+#' database that you want to fail over.
+#' 
+#' Constraints: Must match the identifier of an existing Neptune global
+#' database.
+#' @param TargetDbClusterIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the secondary Neptune DB cluster that
+#' you want to promote to primary for the global database.
+#'
+#' @keywords internal
+#'
+#' @rdname neptune_failover_global_cluster
+neptune_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
+  op <- new_operation(
+    name = "FailoverGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .neptune$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
+  output <- .neptune$failover_global_cluster_output()
+  config <- get_config()
+  svc <- .neptune$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.neptune$operations$failover_global_cluster <- neptune_failover_global_cluster
+
 #' Lists all tags on an Amazon Neptune resource
 #'
 #' @description
 #' Lists all tags on an Amazon Neptune resource.
 #'
-#' @usage
-#' neptune_list_tags_for_resource(ResourceName, Filters)
+#' See [https://paws-r.github.io/docs/neptune/list_tags_for_resource.html](https://paws-r.github.io/docs/neptune/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Neptune resource with tags to be listed. This value is an
 #' Amazon Resource Name (ARN). For information about creating an ARN, see
 #' [Constructing an Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/neptune/latest/userguide/#tagging.ARN.Constructing).
 #' @param Filters This parameter is not currently supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4961,17 +2544,9 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Modify a setting for a DB cluster
 #'
 #' @description
-#' Modify a setting for a DB cluster. You can change one or more database
-#' configuration parameters by specifying these parameters and the new
-#' values in the request.
+#' Modify a setting for a DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 #'
-#' @usage
-#' neptune_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
-#'   ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
-#'   VpcSecurityGroupIds, Port, MasterUserPassword, OptionGroupName,
-#'   PreferredBackupWindow, PreferredMaintenanceWindow,
-#'   EnableIAMDatabaseAuthentication, CloudwatchLogsExportConfiguration,
-#'   EngineVersion, DeletionProtection)
+#' See [https://paws-r.github.io/docs/neptune/modify_db_cluster.html](https://paws-r.github.io/docs/neptune/modify_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the cluster being modified. This parameter
 #' is not case-sensitive.
@@ -4997,13 +2572,11 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' cluster. If this parameter is set to `false`, changes to the DB cluster
 #' are applied during the next maintenance window.
 #' 
-#' The `ApplyImmediately` parameter only affects the
-#' `NewDBClusterIdentifier` and `MasterUserPassword` values. If you set the
-#' `ApplyImmediately` parameter value to false, then changes to the
-#' `NewDBClusterIdentifier` and `MasterUserPassword` values are applied
-#' during the next maintenance window. All other changes are applied
-#' immediately, regardless of the value of the `ApplyImmediately`
-#' parameter.
+#' The `ApplyImmediately` parameter only affects `NewDBClusterIdentifier`
+#' values. If you set the `ApplyImmediately` parameter value to false, then
+#' changes to `NewDBClusterIdentifier` values are applied during the next
+#' maintenance window. All other changes are applied immediately,
+#' regardless of the value of the `ApplyImmediately` parameter.
 #' 
 #' Default: `false`
 #' @param BackupRetentionPeriod The number of days for which automated backups are retained. You must
@@ -5021,17 +2594,14 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Constraints: Value must be `1150-65535`
 #' 
 #' Default: The same port as the original DB cluster.
-#' @param MasterUserPassword The new password for the master database user. This password can contain
-#' any printable ASCII character except "/", """, or "@@".
-#' 
-#' Constraints: Must contain from 8 to 41 characters.
-#' @param OptionGroupName *(Not supported by Neptune)*
+#' @param MasterUserPassword Not supported by Neptune.
+#' @param OptionGroupName *Not supported by Neptune.*
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
 #' automated backups are enabled, using the `BackupRetentionPeriod`
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region.
+#' block of time for each Amazon Region.
 #' 
 #' Constraints:
 #' 
@@ -5048,13 +2618,13 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
+#' block of time for each Amazon Region, occurring on a random day of the
 #' week.
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 #' 
 #' Constraints: Minimum 30-minute window.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
+#' @param EnableIAMDatabaseAuthentication True to enable mapping of Amazon Identity and Access Management (IAM)
 #' accounts to database accounts, and otherwise false.
 #' 
 #' Default: `false`
@@ -5069,132 +2639,45 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Neptune](https://docs.aws.amazon.com/neptune/latest/userguide/engine-releases.html),
 #' or call
 #' [`describe_db_engine_versions`][neptune_describe_db_engine_versions].
+#' @param AllowMajorVersionUpgrade A value that indicates whether upgrades between different major versions
+#' are allowed.
+#' 
+#' Constraints: You must set the allow-major-version-upgrade flag when
+#' providing an `EngineVersion` parameter that uses a different major
+#' version than the DB cluster's current version.
+#' @param DBInstanceParameterGroupName The name of the DB parameter group to apply to all instances of the DB
+#' cluster.
+#' 
+#' When you apply a parameter group using `DBInstanceParameterGroupName`,
+#' parameter changes aren't applied during the next maintenance window but
+#' instead are applied immediately.
+#' 
+#' Default: The existing name setting
+#' 
+#' Constraints:
+#' 
+#' -   The DB parameter group must be in the same DB parameter group family
+#'     as the target DB cluster version.
+#' 
+#' -   The `DBInstanceParameterGroupName` parameter is only valid in
+#'     combination with the `AllowMajorVersionUpgrade` parameter.
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is disabled.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   NewDBClusterIdentifier = "string",
-#'   ApplyImmediately = TRUE|FALSE,
-#'   BackupRetentionPeriod = 123,
-#'   DBClusterParameterGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Port = 123,
-#'   MasterUserPassword = "string",
-#'   OptionGroupName = "string",
-#'   PreferredBackupWindow = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   CloudwatchLogsExportConfiguration = list(
-#'     EnableLogTypes = list(
-#'       "string"
-#'     ),
-#'     DisableLogTypes = list(
-#'       "string"
-#'     )
-#'   ),
-#'   EngineVersion = "string",
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
+#' @param CopyTagsToSnapshot *If set to true, tags are copied to any snapshot of the DB cluster that
+#' is created.*
 #'
 #' @keywords internal
 #'
 #' @rdname neptune_modify_db_cluster
-neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, DeletionProtection = NULL) {
+neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DBInstanceParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .neptune$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection)
+  input <- .neptune$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DBInstanceParameterGroupName = DBInstanceParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot)
   output <- .neptune$modify_db_cluster_output()
   config <- get_config()
   svc <- .neptune$service(config)
@@ -5209,9 +2692,7 @@ neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifie
 #' @description
 #' Modifies the properties of an endpoint in an Amazon Neptune DB cluster.
 #'
-#' @usage
-#' neptune_modify_db_cluster_endpoint(DBClusterEndpointIdentifier,
-#'   EndpointType, StaticMembers, ExcludedMembers)
+#' See [https://paws-r.github.io/docs/neptune/modify_db_cluster_endpoint.html](https://paws-r.github.io/docs/neptune/modify_db_cluster_endpoint.html) for full documentation.
 #'
 #' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier of the endpoint to modify. This parameter is stored as a
 #' lowercase string.
@@ -5221,41 +2702,6 @@ neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifie
 #' @param ExcludedMembers List of DB instance identifiers that aren't part of the custom endpoint
 #' group. All other eligible instances are reachable through the custom
 #' endpoint. Only relevant if the list of static members is empty.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterEndpointIdentifier = "string",
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointResourceIdentifier = "string",
-#'   Endpoint = "string",
-#'   Status = "string",
-#'   EndpointType = "string",
-#'   CustomEndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   ),
-#'   DBClusterEndpointArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster_endpoint(
-#'   DBClusterEndpointIdentifier = "string",
-#'   EndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5280,63 +2726,12 @@ neptune_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endp
 #' Modifies the parameters of a DB cluster parameter group
 #'
 #' @description
-#' Modifies the parameters of a DB cluster parameter group. To modify more
-#' than one parameter, submit a list of the following: `ParameterName`,
-#' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
-#' modified in a single request.
-#' 
-#' Changes to dynamic parameters are applied immediately. Changes to static
-#' parameters require a reboot without failover to the DB cluster
-#' associated with the parameter group before the change can take effect.
-#' 
-#' After you create a DB cluster parameter group, you should wait at least
-#' 5 minutes before creating your first DB cluster that uses that DB
-#' cluster parameter group as the default parameter group. This allows
-#' Amazon Neptune to fully complete the create action before the parameter
-#' group is used as the default for a new DB cluster. This is especially
-#' important for parameters that are critical when creating the default
-#' database for a DB cluster, such as the character set for the default
-#' database defined by the `character_set_database` parameter. You can use
-#' the *Parameter Groups* option of the Amazon Neptune console or the
-#' [`describe_db_cluster_parameters`][neptune_describe_db_cluster_parameters]
-#' command to verify that your DB cluster parameter group has been created
-#' or modified.
+#' Modifies the parameters of a DB cluster parameter group. To modify more than one parameter, submit a list of the following: `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be modified in a single request.
 #'
-#' @usage
-#' neptune_modify_db_cluster_parameter_group(DBClusterParameterGroupName,
-#'   Parameters)
+#' See [https://paws-r.github.io/docs/neptune/modify_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/modify_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to modify.
 #' @param Parameters &#91;required&#93; A list of parameters in the DB cluster parameter group to modify.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string",
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5362,86 +2757,34 @@ neptune_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' from, a manual DB cluster snapshot
 #'
 #' @description
-#' Adds an attribute and values to, or removes an attribute and values
-#' from, a manual DB cluster snapshot.
-#' 
-#' To share a manual DB cluster snapshot with other AWS accounts, specify
-#' `restore` as the `AttributeName` and use the `ValuesToAdd` parameter to
-#' add a list of IDs of the AWS accounts that are authorized to restore the
-#' manual DB cluster snapshot. Use the value `all` to make the manual DB
-#' cluster snapshot public, which means that it can be copied or restored
-#' by all AWS accounts. Do not add the `all` value for any manual DB
-#' cluster snapshots that contain private information that you don't want
-#' available to all AWS accounts. If a manual DB cluster snapshot is
-#' encrypted, it can be shared, but only by specifying a list of authorized
-#' AWS account IDs for the `ValuesToAdd` parameter. You can't use `all` as
-#' a value for that parameter in this case.
-#' 
-#' To view which AWS accounts have access to copy or restore a manual DB
-#' cluster snapshot, or whether a manual DB cluster snapshot public or
-#' private, use the
-#' [`describe_db_cluster_snapshot_attributes`][neptune_describe_db_cluster_snapshot_attributes]
-#' API action.
+#' Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot.
 #'
-#' @usage
-#' neptune_modify_db_cluster_snapshot_attribute(
-#'   DBClusterSnapshotIdentifier, AttributeName, ValuesToAdd, ValuesToRemove)
+#' See [https://paws-r.github.io/docs/neptune/modify_db_cluster_snapshot_attribute.html](https://paws-r.github.io/docs/neptune/modify_db_cluster_snapshot_attribute.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the DB cluster snapshot to modify the attributes for.
 #' @param AttributeName &#91;required&#93; The name of the DB cluster snapshot attribute to modify.
 #' 
-#' To manage authorization for other AWS accounts to copy or restore a
+#' To manage authorization for other Amazon accounts to copy or restore a
 #' manual DB cluster snapshot, set this value to `restore`.
 #' @param ValuesToAdd A list of DB cluster snapshot attributes to add to the attribute
 #' specified by `AttributeName`.
 #' 
-#' To authorize other AWS accounts to copy or restore a manual DB cluster
-#' snapshot, set this list to include one or more AWS account IDs, or `all`
-#' to make the manual DB cluster snapshot restorable by any AWS account. Do
-#' not add the `all` value for any manual DB cluster snapshots that contain
-#' private information that you don't want available to all AWS accounts.
+#' To authorize other Amazon accounts to copy or restore a manual DB
+#' cluster snapshot, set this list to include one or more Amazon account
+#' IDs, or `all` to make the manual DB cluster snapshot restorable by any
+#' Amazon account. Do not add the `all` value for any manual DB cluster
+#' snapshots that contain private information that you don't want available
+#' to all Amazon accounts.
 #' @param ValuesToRemove A list of DB cluster snapshot attributes to remove from the attribute
 #' specified by `AttributeName`.
 #' 
-#' To remove authorization for other AWS accounts to copy or restore a
-#' manual DB cluster snapshot, set this list to include one or more AWS
-#' account identifiers, or `all` to remove authorization for any AWS
+#' To remove authorization for other Amazon accounts to copy or restore a
+#' manual DB cluster snapshot, set this list to include one or more Amazon
+#' account identifiers, or `all` to remove authorization for any Amazon
 #' account to copy or restore the DB cluster snapshot. If you specify
-#' `all`, an AWS account whose account ID is explicitly added to the
+#' `all`, an Amazon account whose account ID is explicitly added to the
 #' `restore` attribute can still copy or restore a manual DB cluster
 #' snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshotAttributesResult = list(
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterSnapshotAttributes = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeValues = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster_snapshot_attribute(
-#'   DBClusterSnapshotIdentifier = "string",
-#'   AttributeName = "string",
-#'   ValuesToAdd = list(
-#'     "string"
-#'   ),
-#'   ValuesToRemove = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5466,39 +2809,18 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' Modifies settings for a DB instance
 #'
 #' @description
-#' Modifies settings for a DB instance. You can change one or more database
-#' configuration parameters by specifying these parameters and the new
-#' values in the request. To learn what modifications you can make to your
-#' DB instance, call
-#' [`describe_valid_db_instance_modifications`][neptune_describe_valid_db_instance_modifications]
-#' before you call [`modify_db_instance`][neptune_modify_db_instance].
+#' Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call [`describe_valid_db_instance_modifications`][neptune_describe_valid_db_instance_modifications] before you call [`modify_db_instance`][neptune_modify_db_instance].
 #'
-#' @usage
-#' neptune_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
-#'   DBInstanceClass, DBSubnetGroupName, DBSecurityGroups,
-#'   VpcSecurityGroupIds, ApplyImmediately, MasterUserPassword,
-#'   DBParameterGroupName, BackupRetentionPeriod, PreferredBackupWindow,
-#'   PreferredMaintenanceWindow, MultiAZ, EngineVersion,
-#'   AllowMajorVersionUpgrade, AutoMinorVersionUpgrade, LicenseModel, Iops,
-#'   OptionGroupName, NewDBInstanceIdentifier, StorageType, TdeCredentialArn,
-#'   TdeCredentialPassword, CACertificateIdentifier, Domain,
-#'   CopyTagsToSnapshot, MonitoringInterval, DBPortNumber,
-#'   PubliclyAccessible, MonitoringRoleArn, DomainIAMRoleName, PromotionTier,
-#'   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-#'   PerformanceInsightsKMSKeyId, CloudwatchLogsExportConfiguration,
-#'   DeletionProtection)
+#' See [https://paws-r.github.io/docs/neptune/modify_db_instance.html](https://paws-r.github.io/docs/neptune/modify_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This value is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing DBInstance.
-#' @param AllocatedStorage The new amount of storage (in gibibytes) to allocate for the DB
-#' instance.
-#' 
-#' Not applicable. Storage is managed by the DB Cluster.
+#' @param AllocatedStorage Not supported by Neptune.
 #' @param DBInstanceClass The new compute and memory capacity of the DB instance, for example,
-#' `db.m4.large`. Not all DB instance classes are available in all AWS
+#' `db.m4.large`. Not all DB instance classes are available in all Amazon
 #' Regions.
 #' 
 #' If you modify the DB instance class, an outage occurs during the change.
@@ -5545,7 +2867,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' reboot.
 #' 
 #' Default: `false`
-#' @param MasterUserPassword Not applicable.
+#' @param MasterUserPassword Not supported by Neptune.
 #' @param DBParameterGroupName The name of the DB parameter group to apply to the DB instance. Changing
 #' this setting doesn't result in an outage. The parameter group name
 #' itself is changed immediately, but the actual parameter changes are not
@@ -5614,7 +2936,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' this parameter is set to `true` during the maintenance window, and a
 #' newer minor version is available, and Neptune has enabled auto patching
 #' for that engine version.
-#' @param LicenseModel Not supported.
+#' @param LicenseModel Not supported by Neptune.
 #' @param Iops The new Provisioned IOPS (I/O operations per second) value for the
 #' instance.
 #' 
@@ -5679,14 +3001,14 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' Default: 1
 #' 
 #' Valid Values: 0 - 15
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
+#' @param EnableIAMDatabaseAuthentication True to enable mapping of Amazon Identity and Access Management (IAM)
 #' accounts to database accounts, and otherwise false.
 #' 
 #' You can enable IAM database authentication for the following database
 #' engines
 #' 
-#' Not applicable. Mapping AWS IAM accounts to database accounts is managed
-#' by the DB cluster. For more information, see
+#' Not applicable. Mapping Amazon IAM accounts to database accounts is
+#' managed by the DB cluster. For more information, see
 #' [`modify_db_cluster`][neptune_modify_db_cluster].
 #' 
 #' Default: `false`
@@ -5698,207 +3020,6 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is disabled. See [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-instances-delete.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   AllocatedStorage = 123,
-#'   DBInstanceClass = "string",
-#'   DBSubnetGroupName = "string",
-#'   DBSecurityGroups = list(
-#'     "string"
-#'   ),
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   ApplyImmediately = TRUE|FALSE,
-#'   MasterUserPassword = "string",
-#'   DBParameterGroupName = "string",
-#'   BackupRetentionPeriod = 123,
-#'   PreferredBackupWindow = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   MultiAZ = TRUE|FALSE,
-#'   EngineVersion = "string",
-#'   AllowMajorVersionUpgrade = TRUE|FALSE,
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   LicenseModel = "string",
-#'   Iops = 123,
-#'   OptionGroupName = "string",
-#'   NewDBInstanceIdentifier = "string",
-#'   StorageType = "string",
-#'   TdeCredentialArn = "string",
-#'   TdeCredentialPassword = "string",
-#'   CACertificateIdentifier = "string",
-#'   Domain = "string",
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   MonitoringInterval = 123,
-#'   DBPortNumber = 123,
-#'   PubliclyAccessible = TRUE|FALSE,
-#'   MonitoringRoleArn = "string",
-#'   DomainIAMRoleName = "string",
-#'   PromotionTier = 123,
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnablePerformanceInsights = TRUE|FALSE,
-#'   PerformanceInsightsKMSKeyId = "string",
-#'   CloudwatchLogsExportConfiguration = list(
-#'     EnableLogTypes = list(
-#'       "string"
-#'     ),
-#'     DisableLogTypes = list(
-#'       "string"
-#'     )
-#'   ),
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5923,29 +3044,9 @@ neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = 
 #' Modifies the parameters of a DB parameter group
 #'
 #' @description
-#' Modifies the parameters of a DB parameter group. To modify more than one
-#' parameter, submit a list of the following: `ParameterName`,
-#' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
-#' modified in a single request.
-#' 
-#' Changes to dynamic parameters are applied immediately. Changes to static
-#' parameters require a reboot without failover to the DB instance
-#' associated with the parameter group before the change can take effect.
-#' 
-#' After you modify a DB parameter group, you should wait at least 5
-#' minutes before creating your first DB instance that uses that DB
-#' parameter group as the default parameter group. This allows Amazon
-#' Neptune to fully complete the modify action before the parameter group
-#' is used as the default for a new DB instance. This is especially
-#' important for parameters that are critical when creating the default
-#' database for a DB instance, such as the character set for the default
-#' database defined by the `character_set_database` parameter. You can use
-#' the *Parameter Groups* option of the Amazon Neptune console or the
-#' *DescribeDBParameters* command to verify that your DB parameter group
-#' has been created or modified.
+#' Modifies the parameters of a DB parameter group. To modify more than one parameter, submit a list of the following: `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be modified in a single request.
 #'
-#' @usage
-#' neptune_modify_db_parameter_group(DBParameterGroupName, Parameters)
+#' See [https://paws-r.github.io/docs/neptune/modify_db_parameter_group.html](https://paws-r.github.io/docs/neptune/modify_db_parameter_group.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -5962,35 +3063,6 @@ neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = 
 #' You can use the immediate value with dynamic parameters only. You can
 #' use the pending-reboot value for both dynamic and static parameters, and
 #' changes are applied when you reboot the DB instance without failover.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_parameter_group(
-#'   DBParameterGroupName = "string",
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6015,12 +3087,9 @@ neptune_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) 
 #' Modifies an existing DB subnet group
 #'
 #' @description
-#' Modifies an existing DB subnet group. DB subnet groups must contain at
-#' least one subnet in at least two AZs in the AWS Region.
+#' Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Region.
 #'
-#' @usage
-#' neptune_modify_db_subnet_group(DBSubnetGroupName,
-#'   DBSubnetGroupDescription, SubnetIds)
+#' See [https://paws-r.github.io/docs/neptune/modify_db_subnet_group.html](https://paws-r.github.io/docs/neptune/modify_db_subnet_group.html) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the DB subnet group. This value is stored as a lowercase
 #' string. You can't modify the default subnet group.
@@ -6031,40 +3100,6 @@ neptune_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) 
 #' Example: `mySubnetgroup`
 #' @param DBSubnetGroupDescription The description for the DB subnet group.
 #' @param SubnetIds &#91;required&#93; The EC2 subnet IDs for the DB subnet group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSubnetGroup = list(
-#'     DBSubnetGroupName = "string",
-#'     DBSubnetGroupDescription = "string",
-#'     VpcId = "string",
-#'     SubnetGroupStatus = "string",
-#'     Subnets = list(
-#'       list(
-#'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = list(
-#'           Name = "string"
-#'         ),
-#'         SubnetStatus = "string"
-#'       )
-#'     ),
-#'     DBSubnetGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_subnet_group(
-#'   DBSubnetGroupName = "string",
-#'   DBSubnetGroupDescription = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6089,20 +3124,9 @@ neptune_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' Modifies an existing event notification subscription
 #'
 #' @description
-#' Modifies an existing event notification subscription. Note that you
-#' can't modify the source identifiers using this call; to change source
-#' identifiers for a subscription, use the
-#' [`add_source_identifier_to_subscription`][neptune_add_source_identifier_to_subscription]
-#' and
-#' [`remove_source_identifier_from_subscription`][neptune_remove_source_identifier_from_subscription]
-#' calls.
-#' 
-#' You can see a list of the event categories for a given SourceType by
-#' using the **DescribeEventCategories** action.
+#' Modifies an existing event notification subscription. Note that you can't modify the source identifiers using this call; to change source identifiers for a subscription, use the [`add_source_identifier_to_subscription`][neptune_add_source_identifier_to_subscription] and [`remove_source_identifier_from_subscription`][neptune_remove_source_identifier_from_subscription] calls.
 #'
-#' @usage
-#' neptune_modify_event_subscription(SubscriptionName, SnsTopicArn,
-#'   SourceType, EventCategories, Enabled)
+#' See [https://paws-r.github.io/docs/neptune/modify_event_subscription.html](https://paws-r.github.io/docs/neptune/modify_event_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the event notification subscription.
 #' @param SnsTopicArn The Amazon Resource Name (ARN) of the SNS topic created for event
@@ -6119,42 +3143,6 @@ neptune_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' to. You can see a list of the categories for a given SourceType by using
 #' the **DescribeEventCategories** action.
 #' @param Enabled A Boolean value; set to **true** to activate the subscription.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_event_subscription(
-#'   SubscriptionName = "string",
-#'   SnsTopicArn = "string",
-#'   SourceType = "string",
-#'   EventCategories = list(
-#'     "string"
-#'   ),
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6176,103 +3164,78 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
 }
 .neptune$operations$modify_event_subscription <- neptune_modify_event_subscription
 
+#' Modify a setting for an Amazon Neptune global cluster
+#'
+#' @description
+#' Modify a setting for an Amazon Neptune global cluster. You can change one or more database configuration parameters by specifying these parameters and their new values in the request.
+#'
+#' See [https://paws-r.github.io/docs/neptune/modify_global_cluster.html](https://paws-r.github.io/docs/neptune/modify_global_cluster.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The DB cluster identifier for the global cluster being modified. This
+#' parameter is not case-sensitive.
+#' 
+#' Constraints: Must match the identifier of an existing global database
+#' cluster.
+#' @param NewGlobalClusterIdentifier A new cluster identifier to assign to the global database. This value is
+#' stored as a lowercase string.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
+#' 
+#' -   The first character must be a letter.
+#' 
+#' -   Can't end with a hyphen or contain two consecutive hyphens
+#' 
+#' Example: `my-cluster2`
+#' @param DeletionProtection Indicates whether the global database has deletion protection enabled.
+#' The global database cannot be deleted when deletion protection is
+#' enabled.
+#' @param EngineVersion The version number of the database engine to which you want to upgrade.
+#' Changing this parameter will result in an outage. The change is applied
+#' during the next maintenance window unless `ApplyImmediately` is enabled.
+#' 
+#' To list all of the available Neptune engine versions, use the following
+#' command:
+#' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
+#' 
+#' Constraints: You must allow major version upgrades if you specify a
+#' value for the `EngineVersion` parameter that is a different major
+#' version than the DB cluster's current version.
+#' 
+#' If you upgrade the major version of a global database, the cluster and
+#' DB instance parameter groups are set to the default parameter groups for
+#' the new version, so you will need to apply any custom parameter groups
+#' after completing the upgrade.
+#'
+#' @keywords internal
+#'
+#' @rdname neptune_modify_global_cluster
+neptune_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL) {
+  op <- new_operation(
+    name = "ModifyGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .neptune$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade)
+  output <- .neptune$modify_global_cluster_output()
+  config <- get_config()
+  svc <- .neptune$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.neptune$operations$modify_global_cluster <- neptune_modify_global_cluster
+
 #' Not supported
 #'
 #' @description
 #' Not supported.
 #'
-#' @usage
-#' neptune_promote_read_replica_db_cluster(DBClusterIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/promote_read_replica_db_cluster.html](https://paws-r.github.io/docs/neptune/promote_read_replica_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; Not supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$promote_read_replica_db_cluster(
-#'   DBClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6298,17 +3261,9 @@ neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' reasons
 #'
 #' @description
-#' You might need to reboot your DB instance, usually for maintenance
-#' reasons. For example, if you make certain modifications, or if you
-#' change the DB parameter group associated with the DB instance, you must
-#' reboot the instance for the changes to take effect.
-#' 
-#' Rebooting a DB instance restarts the database engine service. Rebooting
-#' a DB instance results in a momentary outage, during which the DB
-#' instance status is set to rebooting.
+#' You might need to reboot your DB instance, usually for maintenance reasons. For example, if you make certain modifications, or if you change the DB parameter group associated with the DB instance, you must reboot the instance for the changes to take effect.
 #'
-#' @usage
-#' neptune_reboot_db_instance(DBInstanceIdentifier, ForceFailover)
+#' See [https://paws-r.github.io/docs/neptune/reboot_db_instance.html](https://paws-r.github.io/docs/neptune/reboot_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
 #' string.
@@ -6320,161 +3275,6 @@ neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' 
 #' Constraint: You can't specify `true` if the instance is not configured
 #' for MultiAZ.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reboot_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   ForceFailover = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6496,16 +3296,45 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
 }
 .neptune$operations$reboot_db_instance <- neptune_reboot_db_instance
 
+#' Detaches a Neptune DB cluster from a Neptune global database
+#'
+#' @description
+#' Detaches a Neptune DB cluster from a Neptune global database. A secondary cluster becomes a normal standalone cluster with read-write capability instead of being read-only, and no longer receives data from a the primary cluster.
+#'
+#' See [https://paws-r.github.io/docs/neptune/remove_from_global_cluster.html](https://paws-r.github.io/docs/neptune/remove_from_global_cluster.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The identifier of the Neptune global database from which to detach the
+#' specified Neptune DB cluster.
+#' @param DbClusterIdentifier &#91;required&#93; The Amazon Resource Name (ARN) identifying the cluster to be detached
+#' from the Neptune global database cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname neptune_remove_from_global_cluster
+neptune_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterIdentifier) {
+  op <- new_operation(
+    name = "RemoveFromGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .neptune$remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, DbClusterIdentifier = DbClusterIdentifier)
+  output <- .neptune$remove_from_global_cluster_output()
+  config <- get_config()
+  svc <- .neptune$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.neptune$operations$remove_from_global_cluster <- neptune_remove_from_global_cluster
+
 #' Disassociates an Identity and Access Management (IAM) role from a DB
 #' cluster
 #'
 #' @description
-#' Disassociates an Identity and Access Management (IAM) role from a DB
-#' cluster.
+#' Disassociates an Identity and Access Management (IAM) role from a DB cluster.
 #'
-#' @usage
-#' neptune_remove_role_from_db_cluster(DBClusterIdentifier, RoleArn,
-#'   FeatureName)
+#' See [https://paws-r.github.io/docs/neptune/remove_role_from_db_cluster.html](https://paws-r.github.io/docs/neptune/remove_role_from_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to disassociate the IAM role from.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to disassociate from the
@@ -6513,19 +3342,7 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
 #' `arn:aws:iam::123456789012:role/NeptuneAccessRole`.
 #' @param FeatureName The name of the feature for the DB cluster that the IAM role is to be
 #' disassociated from. For the list of supported feature names, see
-#' DBEngineVersion.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_role_from_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   RoleArn = "string",
-#'   FeatureName = "string"
-#' )
-#' ```
+#' [`describe_db_engine_versions`][neptune_describe_db_engine_versions].
 #'
 #' @keywords internal
 #'
@@ -6551,49 +3368,15 @@ neptune_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Fe
 #' subscription
 #'
 #' @description
-#' Removes a source identifier from an existing event notification
-#' subscription.
+#' Removes a source identifier from an existing event notification subscription.
 #'
-#' @usage
-#' neptune_remove_source_identifier_from_subscription(SubscriptionName,
-#'   SourceIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/remove_source_identifier_from_subscription.html](https://paws-r.github.io/docs/neptune/remove_source_identifier_from_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the event notification subscription you want to remove a
 #' source identifier from.
 #' @param SourceIdentifier &#91;required&#93; The source identifier to be removed from the subscription, such as the
 #' **DB instance identifier** for a DB instance or the name of a security
 #' group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_source_identifier_from_subscription(
-#'   SubscriptionName = "string",
-#'   SourceIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6620,27 +3403,13 @@ neptune_remove_source_identifier_from_subscription <- function(SubscriptionName,
 #' @description
 #' Removes metadata tags from an Amazon Neptune resource.
 #'
-#' @usage
-#' neptune_remove_tags_from_resource(ResourceName, TagKeys)
+#' See [https://paws-r.github.io/docs/neptune/remove_tags_from_resource.html](https://paws-r.github.io/docs/neptune/remove_tags_from_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Neptune resource that the tags are removed from. This value
 #' is an Amazon Resource Name (ARN). For information about creating an ARN,
 #' see [Constructing an Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/neptune/latest/userguide/#tagging.ARN.Constructing).
 #' @param TagKeys &#91;required&#93; The tag key (name) of the tag to be removed.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_tags_from_resource(
-#'   ResourceName = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6666,23 +3435,9 @@ neptune_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' value
 #'
 #' @description
-#' Modifies the parameters of a DB cluster parameter group to the default
-#' value. To reset specific parameters submit a list of the following:
-#' `ParameterName` and `ApplyMethod`. To reset the entire DB cluster
-#' parameter group, specify the `DBClusterParameterGroupName` and
-#' `ResetAllParameters` parameters.
-#' 
-#' When resetting the entire group, dynamic parameters are updated
-#' immediately and static parameters are set to `pending-reboot` to take
-#' effect on the next DB instance restart or
-#' [`reboot_db_instance`][neptune_reboot_db_instance] request. You must
-#' call [`reboot_db_instance`][neptune_reboot_db_instance] for every DB
-#' instance in your DB cluster that you want the updated static parameter
-#' to apply to.
+#' Modifies the parameters of a DB cluster parameter group to the default value. To reset specific parameters submit a list of the following: `ParameterName` and `ApplyMethod`. To reset the entire DB cluster parameter group, specify the `DBClusterParameterGroupName` and `ResetAllParameters` parameters.
 #'
-#' @usage
-#' neptune_reset_db_cluster_parameter_group(DBClusterParameterGroupName,
-#'   ResetAllParameters, Parameters)
+#' See [https://paws-r.github.io/docs/neptune/reset_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/reset_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to reset.
 #' @param ResetAllParameters A value that is set to `true` to reset all parameters in the DB cluster
@@ -6692,36 +3447,6 @@ neptune_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @param Parameters A list of parameter names in the DB cluster parameter group to reset to
 #' the default values. You can't use this parameter if the
 #' `ResetAllParameters` parameter is set to `true`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reset_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string",
-#'   ResetAllParameters = TRUE|FALSE,
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6747,18 +3472,9 @@ neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName
 #' default value
 #'
 #' @description
-#' Modifies the parameters of a DB parameter group to the engine/system
-#' default value. To reset specific parameters, provide a list of the
-#' following: `ParameterName` and `ApplyMethod`. To reset the entire DB
-#' parameter group, specify the `DBParameterGroup` name and
-#' `ResetAllParameters` parameters. When resetting the entire group,
-#' dynamic parameters are updated immediately and static parameters are set
-#' to `pending-reboot` to take effect on the next DB instance restart or
-#' [`reboot_db_instance`][neptune_reboot_db_instance] request.
+#' Modifies the parameters of a DB parameter group to the engine/system default value. To reset specific parameters, provide a list of the following: `ParameterName` and `ApplyMethod`. To reset the entire DB parameter group, specify the `DBParameterGroup` name and `ResetAllParameters` parameters. When resetting the entire group, dynamic parameters are updated immediately and static parameters are set to `pending-reboot` to take effect on the next DB instance restart or [`reboot_db_instance`][neptune_reboot_db_instance] request.
 #'
-#' @usage
-#' neptune_reset_db_parameter_group(DBParameterGroupName,
-#'   ResetAllParameters, Parameters)
+#' See [https://paws-r.github.io/docs/neptune/reset_db_parameter_group.html](https://paws-r.github.io/docs/neptune/reset_db_parameter_group.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -6775,36 +3491,6 @@ neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName
 #' maximum of 20 parameters can be modified in a single request.
 #' 
 #' Valid Values (for Apply method): `pending-reboot`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reset_db_parameter_group(
-#'   DBParameterGroupName = "string",
-#'   ResetAllParameters = TRUE|FALSE,
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6830,23 +3516,8 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #'
 #' @description
 #' Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
-#' 
-#' If a DB snapshot is specified, the target DB cluster is created from the
-#' source DB snapshot with a default configuration and default security
-#' group.
-#' 
-#' If a DB cluster snapshot is specified, the target DB cluster is created
-#' from the source DB cluster restore point with the same configuration as
-#' the original source DB cluster, except that the new DB cluster is
-#' created with the default security group.
 #'
-#' @usage
-#' neptune_restore_db_cluster_from_snapshot(AvailabilityZones,
-#'   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
-#'   DBSubnetGroupName, DatabaseName, OptionGroupName, VpcSecurityGroupIds,
-#'   Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-#'   EnableCloudwatchLogsExports, DBClusterParameterGroupName,
-#'   DeletionProtection)
+#' See [https://paws-r.github.io/docs/neptune/restore_db_cluster_from_snapshot.html](https://paws-r.github.io/docs/neptune/restore_db_cluster_from_snapshot.html) for full documentation.
 #'
 #' @param AvailabilityZones Provides the list of EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
@@ -6893,11 +3564,11 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' @param OptionGroupName *(Not supported by Neptune)*
 #' @param VpcSecurityGroupIds A list of VPC security groups that the new DB cluster will belong to.
 #' @param Tags The tags to be assigned to the restored DB cluster.
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted DB cluster
-#' from a DB snapshot or DB cluster snapshot.
+#' @param KmsKeyId The Amazon KMS key identifier to use when restoring an encrypted DB
+#' cluster from a DB snapshot or DB cluster snapshot.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-#' encryption key. If you are restoring a DB cluster with the same AWS
+#' encryption key. If you are restoring a DB cluster with the same Amazon
 #' account that owns the KMS encryption key used to encrypt the new DB
 #' cluster, then you can use the KMS key alias instead of the ARN for the
 #' KMS encryption key.
@@ -6911,7 +3582,7 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' 
 #' -   If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is
 #'     not encrypted, then the restored DB cluster is not encrypted.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
+#' @param EnableIAMDatabaseAuthentication True to enable mapping of Amazon Identity and Access Management (IAM)
 #' accounts to database accounts, and otherwise false.
 #' 
 #' Default: `false`
@@ -6927,132 +3598,20 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is disabled.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_cluster_from_snapshot(
-#'   AvailabilityZones = list(
-#'     "string"
-#'   ),
-#'   DBClusterIdentifier = "string",
-#'   SnapshotIdentifier = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   Port = 123,
-#'   DBSubnetGroupName = "string",
-#'   DatabaseName = "string",
-#'   OptionGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   KmsKeyId = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   DBClusterParameterGroupName = "string",
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
+#' @param CopyTagsToSnapshot *If set to true, tags are copied to any snapshot of the restored DB
+#' cluster that is created.*
 #'
 #' @keywords internal
 #'
 #' @rdname neptune_restore_db_cluster_from_snapshot
-neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL) {
+neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .neptune$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection)
+  input <- .neptune$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot)
   output <- .neptune$restore_db_cluster_from_snapshot_output()
   config <- get_config()
   svc <- .neptune$service(config)
@@ -7065,29 +3624,9 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' Restores a DB cluster to an arbitrary point in time
 #'
 #' @description
-#' Restores a DB cluster to an arbitrary point in time. Users can restore
-#' to any point in time before `LatestRestorableTime` for up to
-#' `BackupRetentionPeriod` days. The target DB cluster is created from the
-#' source DB cluster with the same configuration as the original DB
-#' cluster, except that the new DB cluster is created with the default DB
-#' security group.
-#' 
-#' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the
-#' [`create_db_instance`][neptune_create_db_instance] action to create DB
-#' instances for the restored DB cluster, specifying the identifier of the
-#' restored DB cluster in `DBClusterIdentifier`. You can create DB
-#' instances only after the
-#' [`restore_db_cluster_to_point_in_time`][neptune_restore_db_cluster_to_point_in_time]
-#' action has completed and the DB cluster is available.
+#' Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before `LatestRestorableTime` for up to `BackupRetentionPeriod` days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.
 #'
-#' @usage
-#' neptune_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
-#'   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
-#'   UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
-#'   VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-#'   EnableCloudwatchLogsExports, DBClusterParameterGroupName,
-#'   DeletionProtection)
+#' See [https://paws-r.github.io/docs/neptune/restore_db_cluster_to_point_in_time.html](https://paws-r.github.io/docs/neptune/restore_db_cluster_to_point_in_time.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new DB cluster to be created.
 #' 
@@ -7152,11 +3691,11 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' @param OptionGroupName *(Not supported by Neptune)*
 #' @param VpcSecurityGroupIds A list of VPC security groups that the new DB cluster belongs to.
 #' @param Tags The tags to be applied to the restored DB cluster.
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted DB cluster
-#' from an encrypted DB cluster.
+#' @param KmsKeyId The Amazon KMS key identifier to use when restoring an encrypted DB
+#' cluster from an encrypted DB cluster.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-#' encryption key. If you are restoring a DB cluster with the same AWS
+#' encryption key. If you are restoring a DB cluster with the same Amazon
 #' account that owns the KMS encryption key used to encrypt the new DB
 #' cluster, then you can use the KMS key alias instead of the ARN for the
 #' KMS encryption key.
@@ -7178,7 +3717,7 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' 
 #' If `DBClusterIdentifier` refers to a DB cluster that is not encrypted,
 #' then the restore request is rejected.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
+#' @param EnableIAMDatabaseAuthentication True to enable mapping of Amazon Identity and Access Management (IAM)
 #' accounts to database accounts, and otherwise false.
 #' 
 #' Default: `false`
@@ -7194,119 +3733,6 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is disabled.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_cluster_to_point_in_time(
-#'   DBClusterIdentifier = "string",
-#'   RestoreType = "string",
-#'   SourceDBClusterIdentifier = "string",
-#'   RestoreToTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   UseLatestRestorableTime = TRUE|FALSE,
-#'   Port = 123,
-#'   DBSubnetGroupName = "string",
-#'   OptionGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   KmsKeyId = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   DBClusterParameterGroupName = "string",
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7328,106 +3754,17 @@ neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Res
 }
 .neptune$operations$restore_db_cluster_to_point_in_time <- neptune_restore_db_cluster_to_point_in_time
 
-#' Starts an Amazon Neptune DB cluster that was stopped using the AWS
-#' console, the AWS CLI stop-db-cluster command, or the StopDBCluster API
+#' Starts an Amazon Neptune DB cluster that was stopped using the Amazon
+#' console, the Amazon CLI stop-db-cluster command, or the StopDBCluster
+#' API
 #'
 #' @description
-#' Starts an Amazon Neptune DB cluster that was stopped using the AWS
-#' console, the AWS CLI stop-db-cluster command, or the StopDBCluster API.
+#' Starts an Amazon Neptune DB cluster that was stopped using the Amazon console, the Amazon CLI stop-db-cluster command, or the StopDBCluster API.
 #'
-#' @usage
-#' neptune_start_db_cluster(DBClusterIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/start_db_cluster.html](https://paws-r.github.io/docs/neptune/start_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the Neptune DB cluster to be started. This
 #' parameter is stored as a lowercase string.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_db_cluster(
-#'   DBClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7452,106 +3789,12 @@ neptune_start_db_cluster <- function(DBClusterIdentifier) {
 #' Stops an Amazon Neptune DB cluster
 #'
 #' @description
-#' Stops an Amazon Neptune DB cluster. When you stop a DB cluster, Neptune
-#' retains the DB cluster's metadata, including its endpoints and DB
-#' parameter groups.
-#' 
-#' Neptune also retains the transaction logs so you can do a point-in-time
-#' restore if necessary.
+#' Stops an Amazon Neptune DB cluster. When you stop a DB cluster, Neptune retains the DB cluster's metadata, including its endpoints and DB parameter groups.
 #'
-#' @usage
-#' neptune_stop_db_cluster(DBClusterIdentifier)
+#' See [https://paws-r.github.io/docs/neptune/stop_db_cluster.html](https://paws-r.github.io/docs/neptune/stop_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the Neptune DB cluster to be stopped. This
 #' parameter is stored as a lowercase string.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_db_cluster(
-#'   DBClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

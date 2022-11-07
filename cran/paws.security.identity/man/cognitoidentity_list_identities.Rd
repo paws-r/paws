@@ -4,8 +4,12 @@
 \alias{cognitoidentity_list_identities}
 \title{Lists the identities in an identity pool}
 \usage{
-cognitoidentity_list_identities(IdentityPoolId, MaxResults, NextToken,
-  HideDisabled)
+cognitoidentity_list_identities(
+  IdentityPoolId,
+  MaxResults,
+  NextToken = NULL,
+  HideDisabled = NULL
+)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -18,40 +22,9 @@ cognitoidentity_list_identities(IdentityPoolId, MaxResults, NextToken,
 identities. If omitted, the ListIdentities API will include disabled
 identities in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityPoolId = "string",
-  Identities = list(
-    list(
-      IdentityId = "string",
-      Logins = list(
-        "string"
-      ),
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the identities in an identity pool.
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/list_identities.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_identities(
-  IdentityPoolId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  HideDisabled = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

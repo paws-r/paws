@@ -5,7 +5,7 @@
 \title{Describes the ID format settings for resources for the specified IAM
 user, IAM role, or root user}
 \usage{
-ec2_describe_identity_id_format(PrincipalArn, Resource)
+ec2_describe_identity_id_format(PrincipalArn, Resource = NULL)
 }
 \arguments{
 \item{PrincipalArn}{[required] The ARN of the principal, which can be an IAM role, IAM user, or the
@@ -22,49 +22,9 @@ root user.}
 \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection}
 | \code{vpn-connection} | \code{vpn-gateway}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Statuses = list(
-    list(
-      Deadline = as.POSIXct(
-        "2015-01-01"
-      ),
-      Resource = "string",
-      UseLongIds = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Describes the ID format settings for resources for the specified IAM
-user, IAM role, or root user. For example, you can view the resource
-types that are enabled for longer IDs. This request only returns
-information about resource types whose ID formats can be modified; it
-does not return information about other resource types. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html}{Resource IDs}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html}{Resource IDs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-The following resource types support longer IDs: \code{bundle} |
-\code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} |
-\code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} |
-\code{flow-log} | \code{image} | \code{import-task} | \code{instance} | \code{internet-gateway} |
-\code{network-acl} | \code{network-acl-association} | \code{network-interface} |
-\code{network-interface-attachment} | \code{prefix-list} | \code{reservation} |
-\code{route-table} | \code{route-table-association} | \code{security-group} |
-\code{snapshot} | \code{subnet} | \code{subnet-cidr-block-association} | \code{volume} |
-\code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} |
-\code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
-
-These settings apply to the principal specified in the request. They do
-not apply to the principal that makes the request.
+See \url{https://paws-r.github.io/docs/ec2/describe_identity_id_format.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_identity_id_format(
-  PrincipalArn = "string",
-  Resource = "string"
-)
-}
-}
-
 \keyword{internal}

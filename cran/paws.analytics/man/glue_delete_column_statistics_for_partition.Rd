@@ -4,12 +4,17 @@
 \alias{glue_delete_column_statistics_for_partition}
 \title{Delete the partition column statistics of a column}
 \usage{
-glue_delete_column_statistics_for_partition(CatalogId, DatabaseName,
-  TableName, PartitionValues, ColumnName)
+glue_delete_column_statistics_for_partition(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  PartitionValues,
+  ColumnName
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partitions in question reside. If
-none is supplied, the AWS account ID is used by default.}
+none is supplied, the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the partitions reside.}
 
@@ -19,26 +24,9 @@ none is supplied, the AWS account ID is used by default.}
 
 \item{ColumnName}{[required] Name of the column.}
 }
-\value{
-An empty list.
-}
 \description{
 Delete the partition column statistics of a column.
 
-The Identity and Access Management (IAM) permission required for this
-operation is \code{\link[=glue_delete_partition]{delete_partition}}.
+See \url{https://paws-r.github.io/docs/glue/delete_column_statistics_for_partition.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_column_statistics_for_partition(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionValues = list(
-    "string"
-  ),
-  ColumnName = "string"
-)
-}
-}
-
 \keyword{internal}

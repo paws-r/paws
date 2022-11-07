@@ -6,8 +6,11 @@
 multicast group}
 \usage{
 ec2_register_transit_gateway_multicast_group_members(
-  TransitGatewayMulticastDomainId, GroupIpAddress, NetworkInterfaceIds,
-  DryRun)
+  TransitGatewayMulticastDomainId = NULL,
+  GroupIpAddress = NULL,
+  NetworkInterfaceIds = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayMulticastDomainId}{The ID of the transit gateway multicast domain.}
@@ -22,40 +25,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegisteredMulticastGroupMembers = list(
-    TransitGatewayMulticastDomainId = "string",
-    RegisteredNetworkInterfaceIds = list(
-      "string"
-    ),
-    GroupIpAddress = "string"
-  )
-)
-}
-}
 \description{
-Registers members (network interfaces) with the transit gateway
-multicast group. A member is a network interface associated with a
-supported EC2 instance that receives multicast traffic. For information
-about supported instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-quotas.html#multicast-limits}{Multicast Consideration}
-in \emph{Amazon VPC Transit Gateways}.
+Registers members (network interfaces) with the transit gateway multicast group. A member is a network interface associated with a supported EC2 instance that receives multicast traffic. For information about supported instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-quotas.html#multicast-limits}{Multicast Consideration} in \emph{Amazon VPC Transit Gateways}.
 
-After you add the members, use
-\code{\link[=ec2_search_transit_gateway_multicast_groups]{search_transit_gateway_multicast_groups}}
-to verify that the members were added to the transit gateway multicast
-group.
+See \url{https://paws-r.github.io/docs/ec2/register_transit_gateway_multicast_group_members.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_transit_gateway_multicast_group_members(
-  TransitGatewayMulticastDomainId = "string",
-  GroupIpAddress = "string",
-  NetworkInterfaceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

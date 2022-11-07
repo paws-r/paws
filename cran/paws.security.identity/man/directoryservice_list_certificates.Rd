@@ -5,7 +5,7 @@
 \title{For the specified directory, lists all the certificates registered for a
 secure LDAP or client certificate authentication}
 \usage{
-directoryservice_list_certificates(DirectoryId, NextToken, Limit)
+directoryservice_list_certificates(DirectoryId, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory.}
@@ -17,34 +17,9 @@ token comes back as \code{null}. Pass \code{null} if this is the first call.}
 
 \item{Limit}{The number of items that should show up on one page}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  CertificatesInfo = list(
-    list(
-      CertificateId = "string",
-      CommonName = "string",
-      State = "Registering"|"Registered"|"RegisterFailed"|"Deregistering"|"Deregistered"|"DeregisterFailed",
-      ExpiryDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Type = "ClientCertAuth"|"ClientLDAPS"
-    )
-  )
-)
-}
-}
 \description{
-For the specified directory, lists all the certificates registered for a
-secure LDAP or client certificate authentication.
-}
-\section{Request syntax}{
-\preformatted{svc$list_certificates(
-  DirectoryId = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+For the specified directory, lists all the certificates registered for a secure LDAP or client certificate authentication.
 
+See \url{https://paws-r.github.io/docs/directoryservice/list_certificates.html} for full documentation.
+}
 \keyword{internal}

@@ -9,46 +9,9 @@ storagegateway_list_volume_recovery_points(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  VolumeRecoveryPointInfos = list(
-    list(
-      VolumeARN = "string",
-      VolumeSizeInBytes = 123,
-      VolumeUsageInBytes = 123,
-      VolumeRecoveryPointTime = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the recovery points for a specified gateway. This operation is
-only supported in the cached volume gateway type.
+Lists the recovery points for a specified gateway. This operation is only supported in the cached volume gateway type.
 
-Each cache volume has one recovery point. A volume recovery point is a
-point in time at which all data of the volume is consistent and from
-which you can create a snapshot or clone a new cached volume from a
-source volume. To create a snapshot from a volume recovery point use the
-\code{\link[=storagegateway_create_snapshot_from_volume_recovery_point]{create_snapshot_from_volume_recovery_point}}
-operation.
-}
-\section{Request syntax}{
-\preformatted{svc$list_volume_recovery_points(
-  GatewayARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Lists the recovery points for a specified gateway in which all data of
-# the volume is consistent and can be used to create a snapshot.
-svc$list_volume_recovery_points(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/list_volume_recovery_points.html} for full documentation.
 }
 \keyword{internal}

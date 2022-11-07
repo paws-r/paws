@@ -4,8 +4,10 @@
 \alias{workdocs_remove_all_resource_permissions}
 \title{Removes all the permissions from the specified resource}
 \usage{
-workdocs_remove_all_resource_permissions(AuthenticationToken,
-  ResourceId)
+workdocs_remove_all_resource_permissions(
+  AuthenticationToken = NULL,
+  ResourceId
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -13,18 +15,9 @@ administrator credentials to access the API.}
 
 \item{ResourceId}{[required] The ID of the resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes all the permissions from the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_all_resource_permissions(
-  AuthenticationToken = "string",
-  ResourceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/remove_all_resource_permissions.html} for full documentation.
+}
 \keyword{internal}

@@ -2,10 +2,15 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_remove_permission}
 \alias{lambda_remove_permission}
-\title{Revokes function-use permission from an AWS service or another account}
+\title{Revokes function-use permission from an Amazon Web Services service or
+another account}
 \usage{
-lambda_remove_permission(FunctionName, StatementId, Qualifier,
-  RevisionId)
+lambda_remove_permission(
+  FunctionName,
+  StatementId,
+  Qualifier = NULL,
+  RevisionId = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function, version, or alias.
@@ -32,34 +37,9 @@ version of the function.}
 specified. Use this option to avoid modifying a policy that has changed
 since you last read it.}
 }
-\value{
-An empty list.
-}
 \description{
-Revokes function-use permission from an AWS service or another account.
-You can get the ID of the statement from the output of
-\code{\link[=lambda_get_policy]{get_policy}}.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_permission(
-  FunctionName = "string",
-  StatementId = "string",
-  Qualifier = "string",
-  RevisionId = "string"
-)
-}
-}
+Revokes function-use permission from an Amazon Web Services service or another account. You can get the ID of the statement from the output of \code{\link[=lambda_get_policy]{get_policy}}.
 
-\examples{
-\dontrun{
-# The following example removes a permissions statement named xaccount
-# from the PROD alias of a function named my-function.
-svc$remove_permission(
-  FunctionName = "my-function",
-  Qualifier = "PROD",
-  StatementId = "xaccount"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/remove_permission.html} for full documentation.
 }
 \keyword{internal}

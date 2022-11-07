@@ -5,10 +5,21 @@
 \title{Creates one or more flow logs to capture information about IP traffic
 for a specific network interface, subnet, or VPC}
 \usage{
-ec2_create_flow_logs(DryRun, ClientToken, DeliverLogsPermissionArn,
-  LogGroupName, ResourceIds, ResourceType, TrafficType,
-  LogDestinationType, LogDestination, LogFormat, TagSpecifications,
-  MaxAggregationInterval)
+ec2_create_flow_logs(
+  DryRun = NULL,
+  ClientToken = NULL,
+  DeliverLogsPermissionArn = NULL,
+  LogGroupName = NULL,
+  ResourceIds,
+  ResourceType,
+  TrafficType = NULL,
+  LogDestinationType = NULL,
+  LogDestination = NULL,
+  LogFormat = NULL,
+  TagSpecifications = NULL,
+  MaxAggregationInterval = NULL,
+  DestinationOptions = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,7 +28,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 
 \item{DeliverLogsPermissionArn}{The ARN for the IAM role that permits Amazon EC2 to publish flow logs to
 a CloudWatch Logs log group in your account.
@@ -40,23 +51,23 @@ Constraints: Maximum of 1000 resources}
 you specified a VPC ID for the \code{ResourceId} property, specify \code{VPC} for
 this property.}
 
-\item{TrafficType}{[required] The type of traffic to log. You can log traffic that the resource
+\item{TrafficType}{The type of traffic to log. You can log traffic that the resource
 accepts or rejects, or all traffic.}
 
-\item{LogDestinationType}{Specifies the type of destination to which the flow log data is to be
-published. Flow log data can be published to CloudWatch Logs or Amazon
-S3. To publish flow log data to CloudWatch Logs, specify
-\code{cloud-watch-logs}. To publish flow log data to Amazon S3, specify \code{s3}.
+\item{LogDestinationType}{The type of destination to which the flow log data is to be published.
+Flow log data can be published to CloudWatch Logs or Amazon S3. To
+publish flow log data to CloudWatch Logs, specify \code{cloud-watch-logs}. To
+publish flow log data to Amazon S3, specify \code{s3}.
 
 If you specify \code{LogDestinationType} as \code{s3}, do not specify
 \code{DeliverLogsPermissionArn} or \code{LogGroupName}.
 
 Default: \code{cloud-watch-logs}}
 
-\item{LogDestination}{Specifies the destination to which the flow log data is to be published.
-Flow log data can be published to a CloudWatch Logs log group or an
-Amazon S3 bucket. The value specified for this parameter depends on the
-value specified for \code{LogDestinationType}.
+\item{LogDestination}{The destination to which the flow log data is to be published. Flow log
+data can be published to a CloudWatch Logs log group or an Amazon S3
+bucket. The value specified for this parameter depends on the value
+specified for \code{LogDestinationType}.
 
 If \code{LogDestinationType} is not specified or \code{cloud-watch-logs}, specify
 the Amazon Resource Name (ARN) of the CloudWatch Logs log group. For
@@ -73,14 +84,14 @@ in the bucket, use the following ARN format:
 subfolder name. This is a reserved term.}
 
 \item{LogFormat}{The fields to include in the flow log record, in the order in which they
-should appear. For a list of available fields, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records}{Flow Log Records}.
+should appear. For a list of available fields, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records}{Flow log records}.
 If you omit this parameter, the flow log is created using the default
 format. If you specify this parameter, you must specify at least one
 field.
 
 Specify the fields using the \verb{$\{field-id\}} format, separated by spaces.
-For the AWS CLI, use single quotation marks (' ') to surround the
-parameter value.}
+For the CLI, surround this parameter value with single quotes on Linux
+or double quotes on Windows.}
 
 \item{TagSpecifications}{The tags to apply to the flow logs.}
 
@@ -93,71 +104,12 @@ the aggregation interval is always 60 seconds or less, regardless of the
 value that you specify.
 
 Default: 600}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientToken = "string",
-  FlowLogIds = list(
-    "string"
-  ),
-  Unsuccessful = list(
-    list(
-      Error = list(
-        Code = "string",
-        Message = "string"
-      ),
-      ResourceId = "string"
-    )
-  )
-)
-}
+
+\item{DestinationOptions}{The destination options.}
 }
 \description{
-Creates one or more flow logs to capture information about IP traffic
-for a specific network interface, subnet, or VPC.
+Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC.
 
-Flow log data for a monitored network interface is recorded as flow log
-records, which are log events consisting of fields that describe the
-traffic flow. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records}{Flow Log Records}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-
-When publishing to CloudWatch Logs, flow log records are published to a
-log group, and each network interface has a unique log stream in the log
-group. When publishing to Amazon S3, flow log records for all of the
-monitored network interfaces are published to a single log file object
-that is stored in the specified bucket.
-
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html}{VPC Flow Logs}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/create_flow_logs.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_flow_logs(
-  DryRun = TRUE|FALSE,
-  ClientToken = "string",
-  DeliverLogsPermissionArn = "string",
-  LogGroupName = "string",
-  ResourceIds = list(
-    "string"
-  ),
-  ResourceType = "VPC"|"Subnet"|"NetworkInterface",
-  TrafficType = "ACCEPT"|"REJECT"|"ALL",
-  LogDestinationType = "cloud-watch-logs"|"s3",
-  LogDestination = "string",
-  LogFormat = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  MaxAggregationInterval = 123
-)
-}
-}
-
 \keyword{internal}

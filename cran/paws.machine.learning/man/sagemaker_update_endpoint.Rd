@@ -7,9 +7,14 @@ using newly created endpoint, and then deletes resources provisioned for
 the endpoint using the previous EndpointConfig (there is no availability
 loss)}
 \usage{
-sagemaker_update_endpoint(EndpointName, EndpointConfigName,
-  RetainAllVariantProperties, ExcludeRetainedVariantProperties,
-  DeploymentConfig)
+sagemaker_update_endpoint(
+  EndpointName,
+  EndpointConfigName,
+  RetainAllVariantProperties = NULL,
+  ExcludeRetainedVariantProperties = NULL,
+  DeploymentConfig = NULL,
+  RetainDeploymentConfig = NULL
+)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint whose configuration you want to update.}
@@ -17,9 +22,8 @@ sagemaker_update_endpoint(EndpointName, EndpointConfigName,
 \item{EndpointConfigName}{[required] The name of the new endpoint configuration.}
 
 \item{RetainAllVariantProperties}{When updating endpoint resources, enables or disables the retention of
-\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VariantProperty.html}{variant properties},
-such as the instance count or the variant weight. To retain the variant
-properties of an endpoint when updating it, set
+variant properties, such as the instance count or the variant weight. To
+retain the variant properties of an endpoint when updating it, set
 \code{RetainAllVariantProperties} to \code{true}. To use the variant properties
 specified in a new \code{EndpointConfig} call when updating an endpoint, set
 \code{RetainAllVariantProperties} to \code{false}. The default is \code{false}.}
@@ -31,69 +35,15 @@ VariantProperty to override with the values provided by
 \code{EndpointConfig}. If you don't specify a value for
 \code{ExcludeAllVariantProperties}, no variant properties are overridden.}
 
-\item{DeploymentConfig}{The deployment configuration for the endpoint to be updated.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointArn = "string"
-)
-}
+\item{DeploymentConfig}{The deployment configuration for an endpoint, which contains the desired
+deployment strategy and rollback configurations.}
+
+\item{RetainDeploymentConfig}{Specifies whether to reuse the last deployment configuration. The
+default value is false (the configuration is not reused).}
 }
 \description{
-Deploys the new \code{EndpointConfig} specified in the request, switches to
-using newly created endpoint, and then deletes resources provisioned for
-the endpoint using the previous \code{EndpointConfig} (there is no
-availability loss).
+Deploys the new \code{EndpointConfig} specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous \code{EndpointConfig} (there is no availability loss).
 
-When Amazon SageMaker receives the request, it sets the endpoint status
-to \code{Updating}. After updating the endpoint, it sets the status to
-\code{InService}. To check the status of an endpoint, use the
-\code{\link[=sagemaker_describe_endpoint]{describe_endpoint}} API.
-
-You must not delete an \code{EndpointConfig} in use by an endpoint that is
-live or while the \code{\link[=sagemaker_update_endpoint]{update_endpoint}} or
-\code{\link[=sagemaker_create_endpoint]{create_endpoint}} operations are being
-performed on the endpoint. To update an endpoint, you must create a new
-\code{EndpointConfig}.
-
-If you delete the \code{EndpointConfig} of an endpoint that is active or
-being created or updated you may lose visibility into the instance type
-the endpoint is using. The endpoint must be deleted in order to stop
-incurring charges.
+See \url{https://paws-r.github.io/docs/sagemaker/update_endpoint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_endpoint(
-  EndpointName = "string",
-  EndpointConfigName = "string",
-  RetainAllVariantProperties = TRUE|FALSE,
-  ExcludeRetainedVariantProperties = list(
-    list(
-      VariantPropertyType = "DesiredInstanceCount"|"DesiredWeight"|"DataCaptureConfig"
-    )
-  ),
-  DeploymentConfig = list(
-    BlueGreenUpdatePolicy = list(
-      TrafficRoutingConfiguration = list(
-        Type = "ALL_AT_ONCE"|"CANARY",
-        WaitIntervalInSeconds = 123,
-        CanarySize = list(
-          Type = "INSTANCE_COUNT"|"CAPACITY_PERCENT",
-          Value = 123
-        )
-      ),
-      TerminationWaitInSeconds = 123,
-      MaximumExecutionTimeoutInSeconds = 123
-    ),
-    AutoRollbackConfiguration = list(
-      Alarms = list(
-        list(
-          AlarmName = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

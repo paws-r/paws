@@ -5,37 +5,14 @@
 \title{Lists all the security configurations visible to this account, providing
 their creation dates and times, and their names}
 \usage{
-emr_list_security_configurations(Marker)
+emr_list_security_configurations(Marker = NULL)
 }
 \arguments{
 \item{Marker}{The pagination token that indicates the set of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SecurityConfigurations = list(
-    list(
-      Name = "string",
-      CreationDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Lists all the security configurations visible to this account, providing
-their creation dates and times, and their names. This call returns a
-maximum of 50 clusters per call, but returns a marker to track the
-paging of the cluster list across multiple ListSecurityConfigurations
-calls.
-}
-\section{Request syntax}{
-\preformatted{svc$list_security_configurations(
-  Marker = "string"
-)
-}
-}
+Lists all the security configurations visible to this account, providing their creation dates and times, and their names. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListSecurityConfigurations calls.
 
+See \url{https://paws-r.github.io/docs/emr/list_security_configurations.html} for full documentation.
+}
 \keyword{internal}

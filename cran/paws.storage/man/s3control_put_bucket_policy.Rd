@@ -4,19 +4,24 @@
 \alias{s3control_put_bucket_policy}
 \title{This action puts a bucket policy to an Amazon S3 on Outposts bucket}
 \usage{
-s3control_put_bucket_policy(AccountId, Bucket,
-  ConfirmRemoveSelfBucketAccess, Policy)
+s3control_put_bucket_policy(
+  AccountId,
+  Bucket,
+  ConfirmRemoveSelfBucketAccess = NULL,
+  Policy
+)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID of the Outposts bucket.}
+\item{AccountId}{[required] The Amazon Web Services account ID of the Outposts bucket.}
 
 \item{Bucket}{[required] Specifies the bucket.
 
 For using this parameter with Amazon S3 on Outposts with the REST API,
 you must specify the name and the x-amz-outpost-id as well.
 
-For using this parameter with S3 on Outposts with the AWS SDK and CLI,
-you must specify the ARN of the bucket accessed in the format
+For using this parameter with S3 on Outposts with the Amazon Web
+Services SDK and CLI, you must specify the ARN of the bucket accessed in
+the format
 \verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
@@ -31,61 +36,9 @@ This is not supported by Amazon S3 on Outposts buckets.}
 
 \item{Policy}{[required] The bucket policy as a JSON document.}
 }
-\value{
-An empty list.
-}
 \description{
-This action puts a bucket policy to an Amazon S3 on Outposts bucket. To
-put a policy on an S3 bucket, see
-\code{\link[=s3control_put_bucket_policy]{put_bucket_policy}} in the \emph{Amazon Simple
-Storage Service API}.
+This action puts a bucket policy to an Amazon S3 on Outposts bucket. To put a policy on an S3 bucket, see \code{\link[=s3control_put_bucket_policy]{put_bucket_policy}} in the \emph{Amazon S3 API Reference}.
 
-Applies an Amazon S3 bucket policy to an Outposts bucket. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-If you are using an identity other than the root user of the AWS account
-that owns the Outposts bucket, the calling identity must have the
-\code{\link[=s3control_put_bucket_policy]{put_bucket_policy}} permissions on the
-specified Outposts bucket and belong to the bucket owner's account in
-order to use this operation.
-
-If you don't have \code{\link[=s3control_put_bucket_policy]{put_bucket_policy}}
-permissions, Amazon S3 returns a \verb{403 Access Denied} error. If you have
-the correct permissions, but you're not using an identity that belongs
-to the bucket owner's account, Amazon S3 returns a
-\verb{405 Method Not Allowed} error.
-
-As a security precaution, the root user of the AWS account that owns a
-bucket can always use this operation, even if the policy explicitly
-denies the root user the ability to perform this action.
-
-For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
-
-All Amazon S3 on Outposts REST API requests for this action require an
-additional parameter of \code{x-amz-outpost-id} to be passed with the request
-and an S3 on Outposts endpoint hostname prefix instead of \code{s3-control}.
-For an example of the request syntax for Amazon S3 on Outposts that uses
-the S3 on Outposts endpoint hostname prefix and the \code{x-amz-outpost-id}
-derived using the access point ARN, see the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketPolicy.html#API_control_PutBucketPolicy_Examples}{Examples}
-section.
-
-The following actions are related to
-\code{\link[=s3control_put_bucket_policy]{put_bucket_policy}}:
-\itemize{
-\item \code{\link[=s3control_get_bucket_policy]{get_bucket_policy}}
-\item \code{\link[=s3control_delete_bucket_policy]{delete_bucket_policy}}
+See \url{https://paws-r.github.io/docs/s3control/put_bucket_policy.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$put_bucket_policy(
-  AccountId = "string",
-  Bucket = "string",
-  ConfirmRemoveSelfBucketAccess = TRUE|FALSE,
-  Policy = "string"
-)
-}
-}
-
 \keyword{internal}

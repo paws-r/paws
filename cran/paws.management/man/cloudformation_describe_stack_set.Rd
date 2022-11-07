@@ -4,71 +4,31 @@
 \alias{cloudformation_describe_stack_set}
 \title{Returns the description of the specified stack set}
 \usage{
-cloudformation_describe_stack_set(StackSetName)
+cloudformation_describe_stack_set(StackSetName, CallAs = NULL)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set whose description you want.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StackSet = list(
-    StackSetName = "string",
-    StackSetId = "string",
-    Description = "string",
-    Status = "ACTIVE"|"DELETED",
-    TemplateBody = "string",
-    Parameters = list(
-      list(
-        ParameterKey = "string",
-        ParameterValue = "string",
-        UsePreviousValue = TRUE|FALSE,
-        ResolvedValue = "string"
-      )
-    ),
-    Capabilities = list(
-      "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    StackSetARN = "string",
-    AdministrationRoleARN = "string",
-    ExecutionRoleName = "string",
-    StackSetDriftDetectionDetails = list(
-      DriftStatus = "DRIFTED"|"IN_SYNC"|"NOT_CHECKED",
-      DriftDetectionStatus = "COMPLETED"|"FAILED"|"PARTIAL_SUCCESS"|"IN_PROGRESS"|"STOPPED",
-      LastDriftCheckTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      TotalStackInstancesCount = 123,
-      DriftedStackInstancesCount = 123,
-      InSyncStackInstancesCount = 123,
-      InProgressStackInstancesCount = 123,
-      FailedStackInstancesCount = 123
-    ),
-    AutoDeployment = list(
-      Enabled = TRUE|FALSE,
-      RetainStacksOnAccountRemoval = TRUE|FALSE
-    ),
-    PermissionModel = "SERVICE_MANAGED"|"SELF_MANAGED",
-    OrganizationalUnitIds = list(
-      "string"
-    )
-  )
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
 Returns the description of the specified stack set.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_stack_set(
-  StackSetName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_set.html} for full documentation.
+}
 \keyword{internal}

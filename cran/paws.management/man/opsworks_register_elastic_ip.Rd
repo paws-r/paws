@@ -11,30 +11,9 @@ opsworks_register_elastic_ip(ElasticIp, StackId)
 
 \item{StackId}{[required] The stack ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ElasticIp = "string"
-)
-}
-}
 \description{
-Registers an Elastic IP address with a specified stack. An address can
-be registered with only one stack at a time. If the address is already
-registered, you must first deregister it by calling
-\code{\link[=opsworks_deregister_elastic_ip]{deregister_elastic_ip}}. For more
-information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
+Registers an Elastic IP address with a specified stack. An address can be registered with only one stack at a time. If the address is already registered, you must first deregister it by calling \code{\link[=opsworks_deregister_elastic_ip]{deregister_elastic_ip}}. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/register_elastic_ip.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_elastic_ip(
-  ElasticIp = "string",
-  StackId = "string"
-)
-}
-}
-
 \keyword{internal}

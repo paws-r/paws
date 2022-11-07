@@ -4,90 +4,14 @@
 \alias{cloudfront_create_field_level_encryption_config}
 \title{Create a new field-level encryption configuration}
 \usage{
-cloudfront_create_field_level_encryption_config(
-  FieldLevelEncryptionConfig)
+cloudfront_create_field_level_encryption_config(FieldLevelEncryptionConfig)
 }
 \arguments{
 \item{FieldLevelEncryptionConfig}{[required] The request to create a new field-level encryption configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FieldLevelEncryption = list(
-    Id = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FieldLevelEncryptionConfig = list(
-      CallerReference = "string",
-      Comment = "string",
-      QueryArgProfileConfig = list(
-        ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
-        QueryArgProfiles = list(
-          Quantity = 123,
-          Items = list(
-            list(
-              QueryArg = "string",
-              ProfileId = "string"
-            )
-          )
-        )
-      ),
-      ContentTypeProfileConfig = list(
-        ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
-        ContentTypeProfiles = list(
-          Quantity = 123,
-          Items = list(
-            list(
-              Format = "URLEncoded",
-              ProfileId = "string",
-              ContentType = "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  Location = "string",
-  ETag = "string"
-)
-}
-}
 \description{
 Create a new field-level encryption configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$create_field_level_encryption_config(
-  FieldLevelEncryptionConfig = list(
-    CallerReference = "string",
-    Comment = "string",
-    QueryArgProfileConfig = list(
-      ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
-      QueryArgProfiles = list(
-        Quantity = 123,
-        Items = list(
-          list(
-            QueryArg = "string",
-            ProfileId = "string"
-          )
-        )
-      )
-    ),
-    ContentTypeProfileConfig = list(
-      ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
-      ContentTypeProfiles = list(
-        Quantity = 123,
-        Items = list(
-          list(
-            Format = "URLEncoded",
-            ProfileId = "string",
-            ContentType = "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/create_field_level_encryption_config.html} for full documentation.
+}
 \keyword{internal}

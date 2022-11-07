@@ -2,13 +2,13 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_create_virtual_mfa_device}
 \alias{iam_create_virtual_mfa_device}
-\title{Creates a new virtual MFA device for the AWS account}
+\title{Creates a new virtual MFA device for the Amazon Web Services account}
 \usage{
-iam_create_virtual_mfa_device(Path, VirtualMFADeviceName)
+iam_create_virtual_mfa_device(Path = NULL, VirtualMFADeviceName, Tags = NULL)
 }
 \arguments{
 \item{Path}{The path for the virtual MFA device. For more information about paths,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -27,65 +27,19 @@ virtual MFA device.
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VirtualMFADevice = list(
-    SerialNumber = "string",
-    Base32StringSeed = raw,
-    QRCodePNG = raw,
-    User = list(
-      Path = "string",
-      UserName = "string",
-      UserId = "string",
-      Arn = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      PasswordLastUsed = as.POSIXct(
-        "2015-01-01"
-      ),
-      PermissionsBoundary = list(
-        PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-        PermissionsBoundaryArn = "string"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    ),
-    EnableDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+
+\item{Tags}{A list of tags that you want to attach to the new IAM virtual MFA
+device. Each tag consists of a key name and an associated value. For
+more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
+in the \emph{IAM User Guide}.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.}
 }
 \description{
-Creates a new virtual MFA device for the AWS account. After creating the
-virtual MFA, use \code{\link[=iam_enable_mfa_device]{enable_mfa_device}} to attach
-the MFA device to an IAM user. For more information about creating and
-working with virtual MFA devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Using a Virtual MFA Device}
-in the \emph{IAM User Guide}.
+Creates a new virtual MFA device for the Amazon Web Services account. After creating the virtual MFA, use \code{\link[=iam_enable_mfa_device]{enable_mfa_device}} to attach the MFA device to an IAM user. For more information about creating and working with virtual MFA devices, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Using a virtual MFA device} in the \emph{IAM User Guide}.
 
-The number and size of IAM resources in an AWS account are limited. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
-in the \emph{IAM User Guide}.
-
-The seed information contained in the QR code and the Base32 string
-should be treated like any other secret access information. In other
-words, protect the seed information as you would your AWS access keys or
-your passwords. After you provision your virtual device, you should
-ensure that the information is destroyed following secure procedures.
+See \url{https://paws-r.github.io/docs/iam/create_virtual_mfa_device.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_virtual_mfa_device(
-  Path = "string",
-  VirtualMFADeviceName = "string"
-)
-}
-}
-
 \keyword{internal}

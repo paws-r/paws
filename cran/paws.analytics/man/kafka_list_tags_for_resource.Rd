@@ -10,22 +10,9 @@ kafka_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the resource
 that's associated with the tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Returns a list of the tags associated with the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

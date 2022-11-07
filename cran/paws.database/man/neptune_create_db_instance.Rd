@@ -4,20 +4,51 @@
 \alias{neptune_create_db_instance}
 \title{Creates a new DB instance}
 \usage{
-neptune_create_db_instance(DBName, DBInstanceIdentifier,
-  AllocatedStorage, DBInstanceClass, Engine, MasterUsername,
-  MasterUserPassword, DBSecurityGroups, VpcSecurityGroupIds,
-  AvailabilityZone, DBSubnetGroupName, PreferredMaintenanceWindow,
-  DBParameterGroupName, BackupRetentionPeriod, PreferredBackupWindow,
-  Port, MultiAZ, EngineVersion, AutoMinorVersionUpgrade, LicenseModel,
-  Iops, OptionGroupName, CharacterSetName, PubliclyAccessible, Tags,
-  DBClusterIdentifier, StorageType, TdeCredentialArn,
-  TdeCredentialPassword, StorageEncrypted, KmsKeyId, Domain,
-  CopyTagsToSnapshot, MonitoringInterval, MonitoringRoleArn,
-  DomainIAMRoleName, PromotionTier, Timezone,
-  EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-  PerformanceInsightsKMSKeyId, EnableCloudwatchLogsExports,
-  DeletionProtection)
+neptune_create_db_instance(
+  DBName = NULL,
+  DBInstanceIdentifier,
+  AllocatedStorage = NULL,
+  DBInstanceClass,
+  Engine,
+  MasterUsername = NULL,
+  MasterUserPassword = NULL,
+  DBSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL,
+  AvailabilityZone = NULL,
+  DBSubnetGroupName = NULL,
+  PreferredMaintenanceWindow = NULL,
+  DBParameterGroupName = NULL,
+  BackupRetentionPeriod = NULL,
+  PreferredBackupWindow = NULL,
+  Port = NULL,
+  MultiAZ = NULL,
+  EngineVersion = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  LicenseModel = NULL,
+  Iops = NULL,
+  OptionGroupName = NULL,
+  CharacterSetName = NULL,
+  PubliclyAccessible = NULL,
+  Tags = NULL,
+  DBClusterIdentifier = NULL,
+  StorageType = NULL,
+  TdeCredentialArn = NULL,
+  TdeCredentialPassword = NULL,
+  StorageEncrypted = NULL,
+  KmsKeyId = NULL,
+  Domain = NULL,
+  CopyTagsToSnapshot = NULL,
+  MonitoringInterval = NULL,
+  MonitoringRoleArn = NULL,
+  DomainIAMRoleName = NULL,
+  PromotionTier = NULL,
+  Timezone = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnablePerformanceInsights = NULL,
+  PerformanceInsightsKMSKeyId = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  DeletionProtection = NULL
+)
 }
 \arguments{
 \item{DBName}{Not supported.}
@@ -34,28 +65,19 @@ Constraints:
 
 Example: \code{mydbinstance}}
 
-\item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate for the DB instance.
-
-Type: Integer
-
-Not applicable. Neptune cluster volumes automatically grow as the amount
-of data in your database increases, though you are only charged for the
-space that you use in a Neptune cluster volume.}
+\item{AllocatedStorage}{Not supported by Neptune.}
 
 \item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example,
-\code{db.m4.large}. Not all DB instance classes are available in all AWS
+\code{db.m4.large}. Not all DB instance classes are available in all Amazon
 Regions.}
 
 \item{Engine}{[required] The name of the database engine to be used for this instance.
 
 Valid Values: \code{neptune}}
 
-\item{MasterUsername}{The name for the master user. Not used.}
+\item{MasterUsername}{Not supported by Neptune.}
 
-\item{MasterUserPassword}{The password for the master user. The password can include any printable
-ASCII character except "/", """, or "@".
-
-Not used.}
+\item{MasterUserPassword}{Not supported by Neptune.}
 
 \item{DBSecurityGroups}{A list of DB security groups to associate with this DB instance.
 
@@ -72,14 +94,14 @@ VPC.}
 
 \item{AvailabilityZone}{The EC2 Availability Zone that the DB instance is created in
 
-Default: A random, system-chosen Availability Zone in the endpoint's AWS
-Region.
+Default: A random, system-chosen Availability Zone in the endpoint's
+Amazon Region.
 
 Example: \verb{us-east-1d}
 
 Constraint: The AvailabilityZone parameter can't be specified if the
 MultiAZ parameter is set to \code{true}. The specified Availability Zone must
-be in the same AWS Region as the current endpoint.}
+be in the same Amazon Region as the current endpoint.}
 
 \item{DBSubnetGroupName}{A DB subnet group to associate with this DB instance.
 
@@ -91,7 +113,7 @@ Universal Coordinated Time (UTC).
 Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
+block of time for each Amazon Region, occurring on a random day of the
 week.
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -190,10 +212,10 @@ cluster. For more information, see
 
 Default: false}
 
-\item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB instance.
+\item{KmsKeyId}{The Amazon KMS key identifier for an encrypted DB instance.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB instance with the same AWS
+encryption key. If you are creating a DB instance with the same Amazon
 account that owns the KMS encryption key used to encrypt the new DB
 instance, then you can use the KMS key alias instead of the ARN for the
 KM encryption key.
@@ -203,9 +225,9 @@ more information, see \code{\link[=neptune_create_db_cluster]{create_db_cluster}
 
 If the \code{StorageEncrypted} parameter is true, and you do not specify a
 value for the \code{KmsKeyId} parameter, then Amazon Neptune will use your
-default encryption key. AWS KMS creates the default encryption key for
-your AWS account. Your AWS account has a different default encryption
-key for each AWS Region.}
+default encryption key. Amazon KMS creates the default encryption key
+for your Amazon account. Your Amazon account has a different default
+encryption key for each Amazon Region.}
 
 \item{Domain}{Specify the Active Directory Domain to create the instance in.}
 
@@ -240,10 +262,7 @@ Valid Values: 0 - 15}
 
 \item{Timezone}{The time zone of the DB instance.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable AWS Identity and Access Management (IAM) authentication
-for Neptune.
-
-Default: \code{false}}
+\item{EnableIAMDatabaseAuthentication}{Not supported by Neptune (ignored).}
 
 \item{EnablePerformanceInsights}{\emph{(Not supported by Neptune)}}
 
@@ -259,212 +278,9 @@ enabled. By default, deletion protection is disabled. See \href{https://docs.aws
 DB instances in a DB cluster can be deleted even when deletion
 protection is enabled in their parent DB cluster.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstance = list(
-    DBInstanceIdentifier = "string",
-    DBInstanceClass = "string",
-    Engine = "string",
-    DBInstanceStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    AllocatedStorage = 123,
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredBackupWindow = "string",
-    BackupRetentionPeriod = 123,
-    DBSecurityGroups = list(
-      list(
-        DBSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    DBParameterGroups = list(
-      list(
-        DBParameterGroupName = "string",
-        ParameterApplyStatus = "string"
-      )
-    ),
-    AvailabilityZone = "string",
-    DBSubnetGroup = list(
-      DBSubnetGroupName = "string",
-      DBSubnetGroupDescription = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string"
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      DBSubnetGroupArn = "string"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      DBInstanceClass = "string",
-      AllocatedStorage = 123,
-      MasterUserPassword = "string",
-      Port = 123,
-      BackupRetentionPeriod = 123,
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      LicenseModel = "string",
-      Iops = 123,
-      DBInstanceIdentifier = "string",
-      StorageType = "string",
-      CACertificateIdentifier = "string",
-      DBSubnetGroupName = "string",
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      )
-    ),
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MultiAZ = TRUE|FALSE,
-    EngineVersion = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    ReadReplicaSourceDBInstanceIdentifier = "string",
-    ReadReplicaDBInstanceIdentifiers = list(
-      "string"
-    ),
-    ReadReplicaDBClusterIdentifiers = list(
-      "string"
-    ),
-    LicenseModel = "string",
-    Iops = 123,
-    OptionGroupMemberships = list(
-      list(
-        OptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    CharacterSetName = "string",
-    SecondaryAvailabilityZone = "string",
-    PubliclyAccessible = TRUE|FALSE,
-    StatusInfos = list(
-      list(
-        StatusType = "string",
-        Normal = TRUE|FALSE,
-        Status = "string",
-        Message = "string"
-      )
-    ),
-    StorageType = "string",
-    TdeCredentialArn = "string",
-    DbInstancePort = 123,
-    DBClusterIdentifier = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbiResourceId = "string",
-    CACertificateIdentifier = "string",
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    CopyTagsToSnapshot = TRUE|FALSE,
-    MonitoringInterval = 123,
-    EnhancedMonitoringResourceArn = "string",
-    MonitoringRoleArn = "string",
-    PromotionTier = 123,
-    DBInstanceArn = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    PerformanceInsightsEnabled = TRUE|FALSE,
-    PerformanceInsightsKMSKeyId = "string",
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
 Creates a new DB instance.
-}
-\section{Request syntax}{
-\preformatted{svc$create_db_instance(
-  DBName = "string",
-  DBInstanceIdentifier = "string",
-  AllocatedStorage = 123,
-  DBInstanceClass = "string",
-  Engine = "string",
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  DBSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  AvailabilityZone = "string",
-  DBSubnetGroupName = "string",
-  PreferredMaintenanceWindow = "string",
-  DBParameterGroupName = "string",
-  BackupRetentionPeriod = 123,
-  PreferredBackupWindow = "string",
-  Port = 123,
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  CharacterSetName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  DBClusterIdentifier = "string",
-  StorageType = "string",
-  TdeCredentialArn = "string",
-  TdeCredentialPassword = "string",
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  Domain = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  MonitoringRoleArn = "string",
-  DomainIAMRoleName = "string",
-  PromotionTier = 123,
-  Timezone = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/neptune/create_db_instance.html} for full documentation.
+}
 \keyword{internal}

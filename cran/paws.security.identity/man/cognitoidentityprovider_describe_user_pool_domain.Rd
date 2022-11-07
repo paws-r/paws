@@ -7,33 +7,13 @@
 cognitoidentityprovider_describe_user_pool_domain(Domain)
 }
 \arguments{
-\item{Domain}{[required] The domain string.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainDescription = list(
-    UserPoolId = "string",
-    AWSAccountId = "string",
-    Domain = "string",
-    S3Bucket = "string",
-    CloudFrontDistribution = "string",
-    Version = "string",
-    Status = "CREATING"|"DELETING"|"UPDATING"|"ACTIVE"|"FAILED",
-    CustomDomainConfig = list(
-      CertificateArn = "string"
-    )
-  )
-)
-}
+\item{Domain}{[required] The domain string. For custom domains, this is the fully-qualified
+domain name, such as \code{auth.example.com}. For Amazon Cognito prefix
+domains, this is the prefix alone, such as \code{auth}.}
 }
 \description{
 Gets information about a domain.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_user_pool_domain(
-  Domain = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_pool_domain.html} for full documentation.
+}
 \keyword{internal}

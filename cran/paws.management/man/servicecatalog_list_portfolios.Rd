@@ -4,7 +4,11 @@
 \alias{servicecatalog_list_portfolios}
 \title{Lists all portfolios in the catalog}
 \usage{
-servicecatalog_list_portfolios(AcceptLanguage, PageToken, PageSize)
+servicecatalog_list_portfolios(
+  AcceptLanguage = NULL,
+  PageToken = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -19,34 +23,9 @@ results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PortfolioDetails = list(
-    list(
-      Id = "string",
-      ARN = "string",
-      DisplayName = "string",
-      Description = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ProviderName = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
 Lists all portfolios in the catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$list_portfolios(
-  AcceptLanguage = "string",
-  PageToken = "string",
-  PageSize = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_portfolios.html} for full documentation.
+}
 \keyword{internal}

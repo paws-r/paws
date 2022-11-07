@@ -11,41 +11,9 @@ apigatewayv2_get_route(ApiId, RouteId)
 
 \item{RouteId}{[required] The route ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApiGatewayManaged = TRUE|FALSE,
-  ApiKeyRequired = TRUE|FALSE,
-  AuthorizationScopes = list(
-    "string"
-  ),
-  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-  AuthorizerId = "string",
-  ModelSelectionExpression = "string",
-  OperationName = "string",
-  RequestModels = list(
-    "string"
-  ),
-  RequestParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteId = "string",
-  RouteKey = "string",
-  RouteResponseSelectionExpression = "string",
-  Target = "string"
-)
-}
-}
 \description{
 Gets a Route.
-}
-\section{Request syntax}{
-\preformatted{svc$get_route(
-  ApiId = "string",
-  RouteId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_route.html} for full documentation.
+}
 \keyword{internal}

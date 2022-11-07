@@ -11,23 +11,9 @@ datapipeline_add_tags(pipelineId, tags)
 
 \item{tags}{[required] The tags to add, as key/value pairs.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds or modifies tags for the specified pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags(
-  pipelineId = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/datapipeline/add_tags.html} for full documentation.
+}
 \keyword{internal}

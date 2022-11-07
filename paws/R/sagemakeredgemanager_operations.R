@@ -3,6 +3,71 @@
 #' @include sagemakeredgemanager_service.R
 NULL
 
+#' Use to get the active deployments from a device
+#'
+#' @description
+#' Use to get the active deployments from a device.
+#'
+#' @usage
+#' sagemakeredgemanager_get_deployments(DeviceName, DeviceFleetName)
+#'
+#' @param DeviceName &#91;required&#93; The unique name of the device you want to get the configuration of
+#' active deployments from.
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet that the device belongs to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Deployments = list(
+#'     list(
+#'       DeploymentName = "string",
+#'       Type = "Model",
+#'       FailureHandlingPolicy = "ROLLBACK_ON_FAILURE"|"DO_NOTHING",
+#'       Definitions = list(
+#'         list(
+#'           ModelHandle = "string",
+#'           S3Url = "string",
+#'           Checksum = list(
+#'             Type = "SHA1",
+#'             Sum = "string"
+#'           ),
+#'           State = "DEPLOY"|"UNDEPLOY"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_deployments(
+#'   DeviceName = "string",
+#'   DeviceFleetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemakeredgemanager_get_deployments
+sagemakeredgemanager_get_deployments <- function(DeviceName, DeviceFleetName) {
+  op <- new_operation(
+    name = "GetDeployments",
+    http_method = "POST",
+    http_path = "/GetDeployments",
+    paginator = list()
+  )
+  input <- .sagemakeredgemanager$get_deployments_input(DeviceName = DeviceName, DeviceFleetName = DeviceFleetName)
+  output <- .sagemakeredgemanager$get_deployments_output()
+  config <- get_config()
+  svc <- .sagemakeredgemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemakeredgemanager$operations$get_deployments <- sagemakeredgemanager_get_deployments
+
 #' Use to check if a device is registered with SageMaker Edge Manager
 #'
 #' @description
@@ -62,7 +127,7 @@ sagemakeredgemanager_get_device_registration <- function(DeviceName, DeviceFleet
 #'
 #' @usage
 #' sagemakeredgemanager_send_heartbeat(AgentMetrics, Models, AgentVersion,
-#'   DeviceName, DeviceFleetName)
+#'   DeviceName, DeviceFleetName, DeploymentResult)
 #'
 #' @param AgentMetrics For internal use. Returns a list of SageMaker Edge Manager agent
 #' operating metrics.
@@ -70,6 +135,7 @@ sagemakeredgemanager_get_device_registration <- function(DeviceName, DeviceFleet
 #' @param AgentVersion &#91;required&#93; Returns the version of the agent.
 #' @param DeviceName &#91;required&#93; The unique name of the device.
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet that the device belongs to.
+#' @param DeploymentResult Returns the result of a deployment on the device.
 #'
 #' @return
 #' An empty list.
@@ -111,21 +177,44 @@ sagemakeredgemanager_get_device_registration <- function(DeviceName, DeviceFleet
 #'   ),
 #'   AgentVersion = "string",
 #'   DeviceName = "string",
-#'   DeviceFleetName = "string"
+#'   DeviceFleetName = "string",
+#'   DeploymentResult = list(
+#'     DeploymentName = "string",
+#'     DeploymentStatus = "string",
+#'     DeploymentStatusMessage = "string",
+#'     DeploymentStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeploymentEndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeploymentModels = list(
+#'       list(
+#'         ModelHandle = "string",
+#'         ModelName = "string",
+#'         ModelVersion = "string",
+#'         DesiredState = "DEPLOY"|"UNDEPLOY",
+#'         State = "DEPLOY"|"UNDEPLOY",
+#'         Status = "SUCCESS"|"FAIL",
+#'         StatusReason = "string",
+#'         RollbackFailureReason = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakeredgemanager_send_heartbeat
-sagemakeredgemanager_send_heartbeat <- function(AgentMetrics = NULL, Models = NULL, AgentVersion, DeviceName, DeviceFleetName) {
+sagemakeredgemanager_send_heartbeat <- function(AgentMetrics = NULL, Models = NULL, AgentVersion, DeviceName, DeviceFleetName, DeploymentResult = NULL) {
   op <- new_operation(
     name = "SendHeartbeat",
     http_method = "POST",
     http_path = "/SendHeartbeat",
     paginator = list()
   )
-  input <- .sagemakeredgemanager$send_heartbeat_input(AgentMetrics = AgentMetrics, Models = Models, AgentVersion = AgentVersion, DeviceName = DeviceName, DeviceFleetName = DeviceFleetName)
+  input <- .sagemakeredgemanager$send_heartbeat_input(AgentMetrics = AgentMetrics, Models = Models, AgentVersion = AgentVersion, DeviceName = DeviceName, DeviceFleetName = DeviceFleetName, DeploymentResult = DeploymentResult)
   output <- .sagemakeredgemanager$send_heartbeat_output()
   config <- get_config()
   svc <- .sagemakeredgemanager$service(config)

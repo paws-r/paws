@@ -2,65 +2,20 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_describe_config_rules}
 \alias{configservice_describe_config_rules}
-\title{Returns details about your AWS Config rules}
+\title{Returns details about your Config rules}
 \usage{
-configservice_describe_config_rules(ConfigRuleNames, NextToken)
+configservice_describe_config_rules(ConfigRuleNames = NULL, NextToken = NULL)
 }
 \arguments{
-\item{ConfigRuleNames}{The names of the AWS Config rules for which you want details. If you do
-not specify any names, AWS Config returns details for all your rules.}
+\item{ConfigRuleNames}{The names of the Config rules for which you want details. If you do not
+specify any names, Config returns details for all your rules.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConfigRules = list(
-    list(
-      ConfigRuleName = "string",
-      ConfigRuleArn = "string",
-      ConfigRuleId = "string",
-      Description = "string",
-      Scope = list(
-        ComplianceResourceTypes = list(
-          "string"
-        ),
-        TagKey = "string",
-        TagValue = "string",
-        ComplianceResourceId = "string"
-      ),
-      Source = list(
-        Owner = "CUSTOM_LAMBDA"|"AWS",
-        SourceIdentifier = "string",
-        SourceDetails = list(
-          list(
-            EventSource = "aws.config",
-            MessageType = "ConfigurationItemChangeNotification"|"ConfigurationSnapshotDeliveryCompleted"|"ScheduledNotification"|"OversizedConfigurationItemChangeNotification",
-            MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
-          )
-        )
-      ),
-      InputParameters = "string",
-      MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-      ConfigRuleState = "ACTIVE"|"DELETING"|"DELETING_RESULTS"|"EVALUATING",
-      CreatedBy = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns details about your AWS Config rules.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_config_rules(
-  ConfigRuleNames = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
+Returns details about your Config rules.
 
+See \url{https://paws-r.github.io/docs/configservice/describe_config_rules.html} for full documentation.
+}
 \keyword{internal}

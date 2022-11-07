@@ -4,63 +4,20 @@
 \alias{ecr_delete_repository}
 \title{Deletes a repository}
 \usage{
-ecr_delete_repository(registryId, repositoryName, force)
+ecr_delete_repository(registryId = NULL, repositoryName, force = NULL)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository to delete. If you do not specify a registry, the default
-registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository to delete. If you do not specify a registry, the
+default registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository to delete.}
 
 \item{force}{If a repository contains images, forces the deletion.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  repository = list(
-    repositoryArn = "string",
-    registryId = "string",
-    repositoryName = "string",
-    repositoryUri = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    imageTagMutability = "MUTABLE"|"IMMUTABLE",
-    imageScanningConfiguration = list(
-      scanOnPush = TRUE|FALSE
-    ),
-    encryptionConfiguration = list(
-      encryptionType = "AES256"|"KMS",
-      kmsKey = "string"
-    )
-  )
-)
-}
-}
 \description{
-Deletes a repository. If the repository contains images, you must either
-delete all images in the repository or use the \code{force} option to delete
-the repository.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_repository(
-  registryId = "string",
-  repositoryName = "string",
-  force = TRUE|FALSE
-)
-}
-}
+Deletes a repository. If the repository contains images, you must either delete all images in the repository or use the \code{force} option to delete the repository.
 
-\examples{
-\dontrun{
-# This example force deletes a repository named ubuntu in the default
-# registry for an account. The force parameter is required if the
-# repository contains images.
-svc$delete_repository(
-  force = TRUE,
-  repositoryName = "ubuntu"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecr/delete_repository.html} for full documentation.
 }
 \keyword{internal}

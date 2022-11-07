@@ -2,38 +2,18 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_promote_resource_share_created_from_policy}
 \alias{ram_promote_resource_share_created_from_policy}
-\title{Resource shares that were created by attaching a policy to a resource
-are visible only to the resource share owner, and the resource share
-cannot be modified in AWS RAM}
+\title{When you attach a resource-based permission policy to a resource, it
+automatically creates a resource share}
 \usage{
 ram_promote_resource_share_created_from_policy(resourceShareArn)
 }
 \arguments{
-\item{resourceShareArn}{[required] The ARN of the resource share to promote.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  returnValue = TRUE|FALSE
-)
-}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the resource share to promote.}
 }
 \description{
-Resource shares that were created by attaching a policy to a resource
-are visible only to the resource share owner, and the resource share
-cannot be modified in AWS RAM.
+When you attach a resource-based permission policy to a resource, it automatically creates a resource share. However, resource shares created this way are visible only to the resource share owner, and the resource share can't be modified in RAM.
 
-Use this API action to promote the resource share. When you promote the
-resource share, it becomes:
-\itemize{
-\item Visible to all principals that it is shared with.
-\item Modifiable in AWS RAM.
+See \url{https://paws-r.github.io/docs/ram/promote_resource_share_created_from_policy.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$promote_resource_share_created_from_policy(
-  resourceShareArn = "string"
-)
-}
-}
-
 \keyword{internal}

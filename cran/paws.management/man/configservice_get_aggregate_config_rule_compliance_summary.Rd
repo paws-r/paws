@@ -6,7 +6,12 @@
 accounts and regions in an aggregator}
 \usage{
 configservice_get_aggregate_config_rule_compliance_summary(
-  ConfigurationAggregatorName, Filters, GroupByKey, Limit, NextToken)
+  ConfigurationAggregatorName,
+  Filters = NULL,
+  GroupByKey = NULL,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
@@ -18,55 +23,14 @@ object.}
 
 \item{Limit}{The maximum number of evaluation results returned on each page. The
 default is 1000. You cannot specify a number greater than 1000. If you
-specify 0, AWS Config uses the default.}
+specify 0, Config uses the default.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GroupByKey = "string",
-  AggregateComplianceCounts = list(
-    list(
-      GroupName = "string",
-      ComplianceSummary = list(
-        CompliantResourceCount = list(
-          CappedCount = 123,
-          CapExceeded = TRUE|FALSE
-        ),
-        NonCompliantResourceCount = list(
-          CappedCount = 123,
-          CapExceeded = TRUE|FALSE
-        ),
-        ComplianceSummaryTimestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the number of compliant and noncompliant rules for one or more
-accounts and regions in an aggregator.
+Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator.
 
-The results can return an empty result page, but if you have a
-nextToken, the results are displayed on the next page.
+See \url{https://paws-r.github.io/docs/configservice/get_aggregate_config_rule_compliance_summary.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_aggregate_config_rule_compliance_summary(
-  ConfigurationAggregatorName = "string",
-  Filters = list(
-    AccountId = "string",
-    AwsRegion = "string"
-  ),
-  GroupByKey = "ACCOUNT_ID"|"AWS_REGION",
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

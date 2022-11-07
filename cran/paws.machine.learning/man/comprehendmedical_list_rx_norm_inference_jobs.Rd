@@ -4,8 +4,11 @@
 \alias{comprehendmedical_list_rx_norm_inference_jobs}
 \title{Gets a list of InferRxNorm jobs that you have submitted}
 \usage{
-comprehendmedical_list_rx_norm_inference_jobs(Filter, NextToken,
-  MaxResults)
+comprehendmedical_list_rx_norm_inference_jobs(
+  Filter = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filter}{Filters the jobs that are returned. You can filter jobs based on their
@@ -16,61 +19,9 @@ only set one filter at a time.}
 
 \item{MaxResults}{Identifies the next page of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ComprehendMedicalAsyncJobPropertiesList = list(
-    list(
-      JobId = "string",
-      JobName = "string",
-      JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-      Message = "string",
-      SubmitTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExpirationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      InputDataConfig = list(
-        S3Bucket = "string",
-        S3Key = "string"
-      ),
-      OutputDataConfig = list(
-        S3Bucket = "string",
-        S3Key = "string"
-      ),
-      LanguageCode = "en",
-      DataAccessRoleArn = "string",
-      ManifestFilePath = "string",
-      KMSKey = "string",
-      ModelVersion = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of InferRxNorm jobs that you have submitted.
-}
-\section{Request syntax}{
-\preformatted{svc$list_rx_norm_inference_jobs(
-  Filter = list(
-    JobName = "string",
-    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-    SubmitTimeBefore = as.POSIXct(
-      "2015-01-01"
-    ),
-    SubmitTimeAfter = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/comprehendmedical/list_rx_norm_inference_jobs.html} for full documentation.
+}
 \keyword{internal}

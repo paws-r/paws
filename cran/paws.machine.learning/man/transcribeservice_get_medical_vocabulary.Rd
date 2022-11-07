@@ -2,35 +2,17 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_get_medical_vocabulary}
 \alias{transcribeservice_get_medical_vocabulary}
-\title{Retrieves information about a medical vocabulary}
+\title{Provides information about the specified custom medical vocabulary}
 \usage{
 transcribeservice_get_medical_vocabulary(VocabularyName)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the vocabulary that you want information about. The value is
-case sensitive.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VocabularyName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  VocabularyState = "PENDING"|"READY"|"FAILED",
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  FailureReason = "string",
-  DownloadUri = "string"
-)
-}
+\item{VocabularyName}{[required] The name of the custom medical vocabulary you want information about.
+Vocabulary names are case sensitive.}
 }
 \description{
-Retrieves information about a medical vocabulary.
-}
-\section{Request syntax}{
-\preformatted{svc$get_medical_vocabulary(
-  VocabularyName = "string"
-)
-}
-}
+Provides information about the specified custom medical vocabulary.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/get_medical_vocabulary.html} for full documentation.
+}
 \keyword{internal}

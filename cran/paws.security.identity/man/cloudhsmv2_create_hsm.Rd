@@ -5,7 +5,7 @@
 \title{Creates a new hardware security module (HSM) in the specified AWS
 CloudHSM cluster}
 \usage{
-cloudhsmv2_create_hsm(ClusterId, AvailabilityZone, IpAddress)
+cloudhsmv2_create_hsm(ClusterId, AvailabilityZone, IpAddress = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier (ID) of the HSM's cluster. To find the cluster ID, use
@@ -20,32 +20,9 @@ address from the subnet that maps to the Availability Zone where you are
 creating the HSM. If you don't specify an IP address, one is chosen for
 you from that subnet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Hsm = list(
-    AvailabilityZone = "string",
-    ClusterId = "string",
-    SubnetId = "string",
-    EniId = "string",
-    EniIp = "string",
-    HsmId = "string",
-    State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
-    StateMessage = "string"
-  )
-)
-}
-}
 \description{
-Creates a new hardware security module (HSM) in the specified AWS
-CloudHSM cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$create_hsm(
-  ClusterId = "string",
-  AvailabilityZone = "string",
-  IpAddress = "string"
-)
-}
-}
+Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster.
 
+See \url{https://paws-r.github.io/docs/cloudhsmv2/create_hsm.html} for full documentation.
+}
 \keyword{internal}

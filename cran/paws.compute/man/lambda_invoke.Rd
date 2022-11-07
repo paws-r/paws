@@ -4,8 +4,14 @@
 \alias{lambda_invoke}
 \title{Invokes a Lambda function}
 \usage{
-lambda_invoke(FunctionName, InvocationType, LogType, ClientContext,
-  Payload, Qualifier)
+lambda_invoke(
+  FunctionName,
+  InvocationType = NULL,
+  LogType = NULL,
+  ClientContext = NULL,
+  Payload = NULL,
+  Qualifier = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function, version, or alias.
@@ -36,100 +42,24 @@ configured). The API response only includes a status code.
 role has permission to invoke the function.
 }}
 
-\item{LogType}{Set to \code{Tail} to include the execution log in the response.}
+\item{LogType}{Set to \code{Tail} to include the execution log in the response. Applies to
+synchronously invoked functions only.}
 
 \item{ClientContext}{Up to 3583 bytes of base64-encoded data about the invoking client to
 pass to the function in the context object.}
 
-\item{Payload}{The JSON that you want to provide to your Lambda function as input.}
+\item{Payload}{The JSON that you want to provide to your Lambda function as input.
+
+You can enter the JSON directly. For example,
+\verb{--payload '\{ "key": "value" \}'}. You can also specify a file path. For
+example, \verb{--payload file://payload.json}.}
 
 \item{Qualifier}{Specify a version or alias to invoke a published version of the
 function.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StatusCode = 123,
-  FunctionError = "string",
-  LogResult = "string",
-  Payload = raw,
-  ExecutedVersion = "string"
-)
-}
-}
 \description{
-Invokes a Lambda function. You can invoke a function synchronously (and
-wait for the response), or asynchronously. To invoke a function
-asynchronously, set \code{InvocationType} to \code{Event}.
+Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. To invoke a function asynchronously, set \code{InvocationType} to \code{Event}.
 
-For \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html}{synchronous invocation},
-details about the function response, including errors, are included in
-the response body and headers. For either invocation type, you can find
-more information in the \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-monitoring.html}{execution log}
-and
-\href{https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html}{trace}.
-
-When an error occurs, your function may be invoked multiple times. Retry
-behavior varies by error type, client, event source, and invocation
-type. For example, if you invoke a function asynchronously and it
-returns an error, Lambda executes the function up to two more times. For
-more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-retries.html}{Retry Behavior}.
-
-For \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html}{asynchronous invocation},
-Lambda adds events to a queue before sending them to your function. If
-your function does not have enough capacity to keep up with the queue,
-events may be lost. Occasionally, your function may receive the same
-event multiple times, even if no error occurs. To retain events that
-were not processed, configure your function with a \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq}{dead-letter queue}.
-
-The status code in the API response doesn't reflect function errors.
-Error codes are reserved for errors that prevent your function from
-executing, such as permissions errors, \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html}{limit errors},
-or issues with your function's code and configuration. For example,
-Lambda returns \code{TooManyRequestsException} if executing the function
-would cause you to exceed a concurrency limit at either the account
-level (\code{ConcurrentInvocationLimitExceeded}) or function level
-(\code{ReservedFunctionConcurrentInvocationLimitExceeded}).
-
-For functions with a long timeout, your client might be disconnected
-during synchronous invocation while it waits for a response. Configure
-your HTTP client, SDK, firewall, proxy, or operating system to allow for
-long connections with timeout or keep-alive settings.
-
-This operation requires permission for the
-\href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_awslambda.html}{lambda:InvokeFunction}
-action.
-}
-\section{Request syntax}{
-\preformatted{svc$invoke(
-  FunctionName = "string",
-  InvocationType = "Event"|"RequestResponse"|"DryRun",
-  LogType = "None"|"Tail",
-  ClientContext = "string",
-  Payload = raw,
-  Qualifier = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example invokes version 1 of a function named my-function
-# with an empty event payload.
-svc$invoke(
-  FunctionName = "my-function",
-  Payload = "{}",
-  Qualifier = "1"
-)
-
-# The following example invokes version 1 of a function named my-function
-# asynchronously.
-svc$invoke(
-  FunctionName = "my-function",
-  InvocationType = "Event",
-  Payload = "{}",
-  Qualifier = "1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/invoke.html} for full documentation.
 }
 \keyword{internal}

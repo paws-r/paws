@@ -6,8 +6,13 @@
 properties, cluster database properties, maintenance and backup
 properties, and security and access properties}
 \usage{
-redshift_describe_clusters(ClusterIdentifier, MaxRecords, Marker,
-  TagKeys, TagValues)
+redshift_describe_clusters(
+  ClusterIdentifier = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  TagKeys = NULL,
+  TagValues = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{The unique identifier of a cluster whose properties you are requesting.
@@ -28,10 +33,10 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_clusters]{describe_clusters}} request exceed the
-value specified in \code{MaxRecords}, AWS returns a value in the \code{Marker}
-field of the response. You can retrieve the next set of response records
-by providing the returned marker value in the \code{Marker} parameter and
-retrying the request.
+value specified in \code{MaxRecords}, Amazon Web Services returns a value in
+the \code{Marker} field of the response. You can retrieve the next set of
+response records by providing the returned marker value in the \code{Marker}
+parameter and retrying the request.
 
 Constraints: You can specify either the \strong{ClusterIdentifier} parameter
 or the \strong{Marker} parameter, but not both.}
@@ -50,199 +55,9 @@ suppose that you have clusters that are tagged with values called
 request, Amazon Redshift returns a response with the clusters that have
 either or both of these tag values associated with them.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  Clusters = list(
-    list(
-      ClusterIdentifier = "string",
-      NodeType = "string",
-      ClusterStatus = "string",
-      ClusterAvailabilityStatus = "string",
-      ModifyStatus = "string",
-      MasterUsername = "string",
-      DBName = "string",
-      Endpoint = list(
-        Address = "string",
-        Port = 123,
-        VpcEndpoints = list(
-          list(
-            VpcEndpointId = "string"
-          )
-        )
-      ),
-      ClusterCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      AutomatedSnapshotRetentionPeriod = 123,
-      ManualSnapshotRetentionPeriod = 123,
-      ClusterSecurityGroups = list(
-        list(
-          ClusterSecurityGroupName = "string",
-          Status = "string"
-        )
-      ),
-      VpcSecurityGroups = list(
-        list(
-          VpcSecurityGroupId = "string",
-          Status = "string"
-        )
-      ),
-      ClusterParameterGroups = list(
-        list(
-          ParameterGroupName = "string",
-          ParameterApplyStatus = "string",
-          ClusterParameterStatusList = list(
-            list(
-              ParameterName = "string",
-              ParameterApplyStatus = "string",
-              ParameterApplyErrorDescription = "string"
-            )
-          )
-        )
-      ),
-      ClusterSubnetGroupName = "string",
-      VpcId = "string",
-      AvailabilityZone = "string",
-      PreferredMaintenanceWindow = "string",
-      PendingModifiedValues = list(
-        MasterUserPassword = "string",
-        NodeType = "string",
-        NumberOfNodes = 123,
-        ClusterType = "string",
-        ClusterVersion = "string",
-        AutomatedSnapshotRetentionPeriod = 123,
-        ClusterIdentifier = "string",
-        PubliclyAccessible = TRUE|FALSE,
-        EnhancedVpcRouting = TRUE|FALSE,
-        MaintenanceTrackName = "string",
-        EncryptionType = "string"
-      ),
-      ClusterVersion = "string",
-      AllowVersionUpgrade = TRUE|FALSE,
-      NumberOfNodes = 123,
-      PubliclyAccessible = TRUE|FALSE,
-      Encrypted = TRUE|FALSE,
-      RestoreStatus = list(
-        Status = "string",
-        CurrentRestoreRateInMegaBytesPerSecond = 123.0,
-        SnapshotSizeInMegaBytes = 123,
-        ProgressInMegaBytes = 123,
-        ElapsedTimeInSeconds = 123,
-        EstimatedTimeToCompletionInSeconds = 123
-      ),
-      DataTransferProgress = list(
-        Status = "string",
-        CurrentRateInMegaBytesPerSecond = 123.0,
-        TotalDataInMegaBytes = 123,
-        DataTransferredInMegaBytes = 123,
-        EstimatedTimeToCompletionInSeconds = 123,
-        ElapsedTimeInSeconds = 123
-      ),
-      HsmStatus = list(
-        HsmClientCertificateIdentifier = "string",
-        HsmConfigurationIdentifier = "string",
-        Status = "string"
-      ),
-      ClusterSnapshotCopyStatus = list(
-        DestinationRegion = "string",
-        RetentionPeriod = 123,
-        ManualSnapshotRetentionPeriod = 123,
-        SnapshotCopyGrantName = "string"
-      ),
-      ClusterPublicKey = "string",
-      ClusterNodes = list(
-        list(
-          NodeRole = "string",
-          PrivateIPAddress = "string",
-          PublicIPAddress = "string"
-        )
-      ),
-      ElasticIpStatus = list(
-        ElasticIp = "string",
-        Status = "string"
-      ),
-      ClusterRevisionNumber = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      KmsKeyId = "string",
-      EnhancedVpcRouting = TRUE|FALSE,
-      IamRoles = list(
-        list(
-          IamRoleArn = "string",
-          ApplyStatus = "string"
-        )
-      ),
-      PendingActions = list(
-        "string"
-      ),
-      MaintenanceTrackName = "string",
-      ElasticResizeNumberOfNodeOptions = "string",
-      DeferredMaintenanceWindows = list(
-        list(
-          DeferMaintenanceIdentifier = "string",
-          DeferMaintenanceStartTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          DeferMaintenanceEndTime = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      ),
-      SnapshotScheduleIdentifier = "string",
-      SnapshotScheduleState = "MODIFYING"|"ACTIVE"|"FAILED",
-      ExpectedNextSnapshotScheduleTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExpectedNextSnapshotScheduleTimeStatus = "string",
-      NextMaintenanceWindowStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResizeInfo = list(
-        ResizeType = "string",
-        AllowCancelResize = TRUE|FALSE
-      ),
-      AvailabilityZoneRelocationStatus = "string",
-      ClusterNamespaceArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns properties of provisioned clusters including general cluster
-properties, cluster database properties, maintenance and backup
-properties, and security and access properties. This operation supports
-pagination. For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+Returns properties of provisioned clusters including general cluster properties, cluster database properties, maintenance and backup properties, and security and access properties. This operation supports pagination. For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
 
-If you specify both tag keys and tag values in the same request, Amazon
-Redshift returns all clusters that match any combination of the
-specified keys and values. For example, if you have \code{owner} and
-\code{environment} for tag keys, and \code{admin} and \code{test} for tag values, all
-clusters that have any combination of those values are returned.
-
-If both tag keys and values are omitted from the request, clusters are
-returned regardless of whether they have tag keys or values associated
-with them.
+See \url{https://paws-r.github.io/docs/redshift/describe_clusters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_clusters(
-  ClusterIdentifier = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

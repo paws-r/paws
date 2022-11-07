@@ -11,18 +11,9 @@ cognitoidentityprovider_delete_resource_server(UserPoolId, Identifier)
 
 \item{Identifier}{[required] The identifier for the resource server.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a resource server.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_resource_server(
-  UserPoolId = "string",
-  Identifier = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_resource_server.html} for full documentation.
+}
 \keyword{internal}

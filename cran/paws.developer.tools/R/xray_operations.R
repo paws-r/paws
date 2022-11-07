@@ -6,50 +6,12 @@ NULL
 #' Retrieves a list of traces specified by ID
 #'
 #' @description
-#' Retrieves a list of traces specified by ID. Each trace is a collection
-#' of segment documents that originates from a single request. Use
-#' [`get_trace_summaries`][xray_get_trace_summaries] to get a list of trace
-#' IDs.
+#' Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request. Use [`get_trace_summaries`][xray_get_trace_summaries] to get a list of trace IDs.
 #'
-#' @usage
-#' xray_batch_get_traces(TraceIds, NextToken)
+#' See [https://paws-r.github.io/docs/xray/batch_get_traces.html](https://paws-r.github.io/docs/xray/batch_get_traces.html) for full documentation.
 #'
 #' @param TraceIds &#91;required&#93; Specify the trace IDs of requests for which to retrieve segments.
 #' @param NextToken Pagination token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Traces = list(
-#'     list(
-#'       Id = "string",
-#'       Duration = 123.0,
-#'       LimitExceeded = TRUE|FALSE,
-#'       Segments = list(
-#'         list(
-#'           Id = "string",
-#'           Document = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   UnprocessedTraceIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_traces(
-#'   TraceIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -76,9 +38,7 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' @description
 #' Creates a group resource with a name and a filter expression.
 #'
-#' @usage
-#' xray_create_group(GroupName, FilterExpression, InsightsConfiguration,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/xray/create_group.html](https://paws-r.github.io/docs/xray/create_group.html) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The case-sensitive name of the new group. Default is a reserved name and
 #' names must be unique.
@@ -93,9 +53,9 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #'     enabled on a group with InsightsEnabled set to true.
 #' @param Tags A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray group. For more information about ways to use tags, see [Tagging
-#' AWS
+#' Amazon Web Services
 #' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in the *AWS General Reference*.
+#' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
 #' 
@@ -110,41 +70,8 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
-#' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     GroupName = "string",
-#'     GroupARN = "string",
-#'     FilterExpression = "string",
-#'     InsightsConfiguration = list(
-#'       InsightsEnabled = TRUE|FALSE,
-#'       NotificationsEnabled = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_group(
-#'   GroupName = "string",
-#'   FilterExpression = "string",
-#'   InsightsConfiguration = list(
-#'     InsightsEnabled = TRUE|FALSE,
-#'     NotificationsEnabled = TRUE|FALSE
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' -   Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
+#'     Services use.
 #'
 #' @keywords internal
 #'
@@ -170,25 +97,16 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' applications
 #'
 #' @description
-#' Creates a rule to control sampling behavior for instrumented
-#' applications. Services retrieve rules with
-#' [`get_sampling_rules`][xray_get_sampling_rules], and evaluate each rule
-#' in ascending order of *priority* for each request. If a rule matches,
-#' the service records a trace, borrowing it from the reservoir size. After
-#' 10 seconds, the service reports back to X-Ray with
-#' [`get_sampling_targets`][xray_get_sampling_targets] to get updated
-#' versions of each in-use rule. The updated rule contains a trace quota
-#' that the service can use instead of borrowing from the reservoir.
+#' Creates a rule to control sampling behavior for instrumented applications. Services retrieve rules with [`get_sampling_rules`][xray_get_sampling_rules], and evaluate each rule in ascending order of *priority* for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service reports back to X-Ray with [`get_sampling_targets`][xray_get_sampling_targets] to get updated versions of each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
 #'
-#' @usage
-#' xray_create_sampling_rule(SamplingRule, Tags)
+#' See [https://paws-r.github.io/docs/xray/create_sampling_rule.html](https://paws-r.github.io/docs/xray/create_sampling_rule.html) for full documentation.
 #'
 #' @param SamplingRule &#91;required&#93; The rule definition.
 #' @param Tags A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray sampling rule. For more information about ways to use tags, see
-#' [Tagging AWS
+#' [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in the *AWS General Reference*.
+#' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
 #' 
@@ -203,68 +121,8 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
-#' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SamplingRuleRecord = list(
-#'     SamplingRule = list(
-#'       RuleName = "string",
-#'       RuleARN = "string",
-#'       ResourceARN = "string",
-#'       Priority = 123,
-#'       FixedRate = 123.0,
-#'       ReservoirSize = 123,
-#'       ServiceName = "string",
-#'       ServiceType = "string",
-#'       Host = "string",
-#'       HTTPMethod = "string",
-#'       URLPath = "string",
-#'       Version = 123,
-#'       Attributes = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_sampling_rule(
-#'   SamplingRule = list(
-#'     RuleName = "string",
-#'     RuleARN = "string",
-#'     ResourceARN = "string",
-#'     Priority = 123,
-#'     FixedRate = 123.0,
-#'     ReservoirSize = 123,
-#'     ServiceName = "string",
-#'     ServiceType = "string",
-#'     Host = "string",
-#'     HTTPMethod = "string",
-#'     URLPath = "string",
-#'     Version = 123,
-#'     Attributes = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' -   Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
+#'     Services use.
 #'
 #' @keywords internal
 #'
@@ -291,22 +149,10 @@ xray_create_sampling_rule <- function(SamplingRule, Tags = NULL) {
 #' @description
 #' Deletes a group resource.
 #'
-#' @usage
-#' xray_delete_group(GroupName, GroupARN)
+#' See [https://paws-r.github.io/docs/xray/delete_group.html](https://paws-r.github.io/docs/xray/delete_group.html) for full documentation.
 #'
 #' @param GroupName The case-sensitive name of the group.
 #' @param GroupARN The ARN of the group that was generated on creation.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_group(
-#'   GroupName = "string",
-#'   GroupARN = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -333,53 +179,12 @@ xray_delete_group <- function(GroupName = NULL, GroupARN = NULL) {
 #' @description
 #' Deletes a sampling rule.
 #'
-#' @usage
-#' xray_delete_sampling_rule(RuleName, RuleARN)
+#' See [https://paws-r.github.io/docs/xray/delete_sampling_rule.html](https://paws-r.github.io/docs/xray/delete_sampling_rule.html) for full documentation.
 #'
 #' @param RuleName The name of the sampling rule. Specify a rule by either name or ARN, but
 #' not both.
 #' @param RuleARN The ARN of the sampling rule. Specify a rule by either name or ARN, but
 #' not both.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SamplingRuleRecord = list(
-#'     SamplingRule = list(
-#'       RuleName = "string",
-#'       RuleARN = "string",
-#'       ResourceARN = "string",
-#'       Priority = 123,
-#'       FixedRate = 123.0,
-#'       ReservoirSize = 123,
-#'       ServiceName = "string",
-#'       ServiceType = "string",
-#'       Host = "string",
-#'       HTTPMethod = "string",
-#'       URLPath = "string",
-#'       Version = 123,
-#'       Attributes = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_sampling_rule(
-#'   RuleName = "string",
-#'   RuleARN = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -406,25 +211,7 @@ xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
 #' @description
 #' Retrieves the current encryption configuration for X-Ray data.
 #'
-#' @usage
-#' xray_get_encryption_config()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EncryptionConfig = list(
-#'     KeyId = "string",
-#'     Status = "UPDATING"|"ACTIVE",
-#'     Type = "NONE"|"KMS"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_encryption_config()
-#' ```
+#' See [https://paws-r.github.io/docs/xray/get_encryption_config.html](https://paws-r.github.io/docs/xray/get_encryption_config.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -451,35 +238,10 @@ xray_get_encryption_config <- function() {
 #' @description
 #' Retrieves group resource details.
 #'
-#' @usage
-#' xray_get_group(GroupName, GroupARN)
+#' See [https://paws-r.github.io/docs/xray/get_group.html](https://paws-r.github.io/docs/xray/get_group.html) for full documentation.
 #'
 #' @param GroupName The case-sensitive name of the group.
 #' @param GroupARN The ARN of the group that was generated on creation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     GroupName = "string",
-#'     GroupARN = "string",
-#'     FilterExpression = "string",
-#'     InsightsConfiguration = list(
-#'       InsightsEnabled = TRUE|FALSE,
-#'       NotificationsEnabled = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_group(
-#'   GroupName = "string",
-#'   GroupARN = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -506,36 +268,9 @@ xray_get_group <- function(GroupName = NULL, GroupARN = NULL) {
 #' @description
 #' Retrieves all active group details.
 #'
-#' @usage
-#' xray_get_groups(NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_groups.html](https://paws-r.github.io/docs/xray/get_groups.html) for full documentation.
 #'
 #' @param NextToken Pagination token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Groups = list(
-#'     list(
-#'       GroupName = "string",
-#'       GroupARN = "string",
-#'       FilterExpression = "string",
-#'       InsightsConfiguration = list(
-#'         InsightsEnabled = TRUE|FALSE,
-#'         NotificationsEnabled = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_groups(
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -560,76 +295,12 @@ xray_get_groups <- function(NextToken = NULL) {
 #' Retrieves the summary information of an insight
 #'
 #' @description
-#' Retrieves the summary information of an insight. This includes impact to
-#' clients and root cause services, the top anomalous services, the
-#' category, the state of the insight, and the start and end time of the
-#' insight.
+#' Retrieves the summary information of an insight. This includes impact to clients and root cause services, the top anomalous services, the category, the state of the insight, and the start and end time of the insight.
 #'
-#' @usage
-#' xray_get_insight(InsightId)
+#' See [https://paws-r.github.io/docs/xray/get_insight.html](https://paws-r.github.io/docs/xray/get_insight.html) for full documentation.
 #'
 #' @param InsightId &#91;required&#93; The insight's unique identifier. Use the GetInsightSummaries action to
 #' retrieve an InsightId.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Insight = list(
-#'     InsightId = "string",
-#'     GroupARN = "string",
-#'     GroupName = "string",
-#'     RootCauseServiceId = list(
-#'       Name = "string",
-#'       Names = list(
-#'         "string"
-#'       ),
-#'       AccountId = "string",
-#'       Type = "string"
-#'     ),
-#'     Categories = list(
-#'       "FAULT"
-#'     ),
-#'     State = "ACTIVE"|"CLOSED",
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Summary = "string",
-#'     ClientRequestImpactStatistics = list(
-#'       FaultCount = 123,
-#'       OkCount = 123,
-#'       TotalCount = 123
-#'     ),
-#'     RootCauseServiceRequestImpactStatistics = list(
-#'       FaultCount = 123,
-#'       OkCount = 123,
-#'       TotalCount = 123
-#'     ),
-#'     TopAnomalousServices = list(
-#'       list(
-#'         ServiceId = list(
-#'           Name = "string",
-#'           Names = list(
-#'             "string"
-#'           ),
-#'           AccountId = "string",
-#'           Type = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_insight(
-#'   InsightId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -655,65 +326,15 @@ xray_get_insight <- function(InsightId) {
 #' records each intermediate state as an event
 #'
 #' @description
-#' X-Ray reevaluates insights periodically until they're resolved, and
-#' records each intermediate state as an event. You can review an insight's
-#' events in the Impact Timeline on the Inspect page in the X-Ray console.
+#' X-Ray reevaluates insights periodically until they're resolved, and records each intermediate state as an event. You can review an insight's events in the Impact Timeline on the Inspect page in the X-Ray console.
 #'
-#' @usage
-#' xray_get_insight_events(InsightId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_insight_events.html](https://paws-r.github.io/docs/xray/get_insight_events.html) for full documentation.
 #'
 #' @param InsightId &#91;required&#93; The insight's unique identifier. Use the GetInsightSummaries action to
 #' retrieve an InsightId.
 #' @param MaxResults Used to retrieve at most the specified value of events.
 #' @param NextToken Specify the pagination token returned by a previous request to retrieve
 #' the next page of events.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InsightEvents = list(
-#'     list(
-#'       Summary = "string",
-#'       EventTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ClientRequestImpactStatistics = list(
-#'         FaultCount = 123,
-#'         OkCount = 123,
-#'         TotalCount = 123
-#'       ),
-#'       RootCauseServiceRequestImpactStatistics = list(
-#'         FaultCount = 123,
-#'         OkCount = 123,
-#'         TotalCount = 123
-#'       ),
-#'       TopAnomalousServices = list(
-#'         list(
-#'           ServiceId = list(
-#'             Name = "string",
-#'             Names = list(
-#'               "string"
-#'             ),
-#'             AccountId = "string",
-#'             Type = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_insight_events(
-#'   InsightId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -738,12 +359,9 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
 #' Retrieves a service graph structure filtered by the specified insight
 #'
 #' @description
-#' Retrieves a service graph structure filtered by the specified insight.
-#' The service graph is limited to only structural information. For a
-#' complete service graph, use this API with the GetServiceGraph API.
+#' Retrieves a service graph structure filtered by the specified insight. The service graph is limited to only structural information. For a complete service graph, use this API with the GetServiceGraph API.
 #'
-#' @usage
-#' xray_get_insight_impact_graph(InsightId, StartTime, EndTime, NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_insight_impact_graph.html](https://paws-r.github.io/docs/xray/get_insight_impact_graph.html) for full documentation.
 #'
 #' @param InsightId &#91;required&#93; The insight's unique identifier. Use the GetInsightSummaries action to
 #' retrieve an InsightId.
@@ -755,57 +373,6 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
 #' time and end time can't be more than six hours.
 #' @param NextToken Specify the pagination token returned by a previous request to retrieve
 #' the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InsightId = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ServiceGraphStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ServiceGraphEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Services = list(
-#'     list(
-#'       ReferenceId = 123,
-#'       Type = "string",
-#'       Name = "string",
-#'       Names = list(
-#'         "string"
-#'       ),
-#'       AccountId = "string",
-#'       Edges = list(
-#'         list(
-#'           ReferenceId = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_insight_impact_graph(
-#'   InsightId = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -831,12 +398,9 @@ xray_get_insight_impact_graph <- function(InsightId, StartTime, EndTime, NextTok
 #' the provided filter values
 #'
 #' @description
-#' Retrieves the summaries of all insights in the specified group matching
-#' the provided filter values.
+#' Retrieves the summaries of all insights in the specified group matching the provided filter values.
 #'
-#' @usage
-#' xray_get_insight_summaries(States, GroupARN, GroupName, StartTime,
-#'   EndTime, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_insight_summaries.html](https://paws-r.github.io/docs/xray/get_insight_summaries.html) for full documentation.
 #'
 #' @param States The list of insight states.
 #' @param GroupARN The Amazon Resource Name (ARN) of the group. Required if the GroupName
@@ -848,84 +412,6 @@ xray_get_insight_impact_graph <- function(InsightId, StartTime, EndTime, NextTok
 #' can't be more than 30 days old.
 #' @param MaxResults The maximum number of results to display.
 #' @param NextToken Pagination token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InsightSummaries = list(
-#'     list(
-#'       InsightId = "string",
-#'       GroupARN = "string",
-#'       GroupName = "string",
-#'       RootCauseServiceId = list(
-#'         Name = "string",
-#'         Names = list(
-#'           "string"
-#'         ),
-#'         AccountId = "string",
-#'         Type = "string"
-#'       ),
-#'       Categories = list(
-#'         "FAULT"
-#'       ),
-#'       State = "ACTIVE"|"CLOSED",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Summary = "string",
-#'       ClientRequestImpactStatistics = list(
-#'         FaultCount = 123,
-#'         OkCount = 123,
-#'         TotalCount = 123
-#'       ),
-#'       RootCauseServiceRequestImpactStatistics = list(
-#'         FaultCount = 123,
-#'         OkCount = 123,
-#'         TotalCount = 123
-#'       ),
-#'       TopAnomalousServices = list(
-#'         list(
-#'           ServiceId = list(
-#'             Name = "string",
-#'             Names = list(
-#'               "string"
-#'             ),
-#'             AccountId = "string",
-#'             Type = "string"
-#'           )
-#'         )
-#'       ),
-#'       LastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_insight_summaries(
-#'   States = list(
-#'     "ACTIVE"|"CLOSED"
-#'   ),
-#'   GroupARN = "string",
-#'   GroupName = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -952,52 +438,9 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
 #' @description
 #' Retrieves all sampling rules.
 #'
-#' @usage
-#' xray_get_sampling_rules(NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_sampling_rules.html](https://paws-r.github.io/docs/xray/get_sampling_rules.html) for full documentation.
 #'
 #' @param NextToken Pagination token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SamplingRuleRecords = list(
-#'     list(
-#'       SamplingRule = list(
-#'         RuleName = "string",
-#'         RuleARN = "string",
-#'         ResourceARN = "string",
-#'         Priority = 123,
-#'         FixedRate = 123.0,
-#'         ReservoirSize = 123,
-#'         ServiceName = "string",
-#'         ServiceType = "string",
-#'         Host = "string",
-#'         HTTPMethod = "string",
-#'         URLPath = "string",
-#'         Version = 123,
-#'         Attributes = list(
-#'           "string"
-#'         )
-#'       ),
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sampling_rules(
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1023,39 +466,11 @@ xray_get_sampling_rules <- function(NextToken = NULL) {
 #' rules
 #'
 #' @description
-#' Retrieves information about recent sampling results for all sampling
-#' rules.
+#' Retrieves information about recent sampling results for all sampling rules.
 #'
-#' @usage
-#' xray_get_sampling_statistic_summaries(NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_sampling_statistic_summaries.html](https://paws-r.github.io/docs/xray/get_sampling_statistic_summaries.html) for full documentation.
 #'
 #' @param NextToken Pagination token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SamplingStatisticSummaries = list(
-#'     list(
-#'       RuleName = "string",
-#'       Timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RequestCount = 123,
-#'       BorrowCount = 123,
-#'       SampledCount = 123
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sampling_statistic_summaries(
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1081,59 +496,11 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
 #' requests
 #'
 #' @description
-#' Requests a sampling quota for rules that the service is using to sample
-#' requests.
+#' Requests a sampling quota for rules that the service is using to sample requests.
 #'
-#' @usage
-#' xray_get_sampling_targets(SamplingStatisticsDocuments)
+#' See [https://paws-r.github.io/docs/xray/get_sampling_targets.html](https://paws-r.github.io/docs/xray/get_sampling_targets.html) for full documentation.
 #'
 #' @param SamplingStatisticsDocuments &#91;required&#93; Information about rules that the service is using to sample requests.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SamplingTargetDocuments = list(
-#'     list(
-#'       RuleName = "string",
-#'       FixedRate = 123.0,
-#'       ReservoirQuota = 123,
-#'       ReservoirQuotaTTL = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Interval = 123
-#'     )
-#'   ),
-#'   LastRuleModification = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   UnprocessedStatistics = list(
-#'     list(
-#'       RuleName = "string",
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sampling_targets(
-#'   SamplingStatisticsDocuments = list(
-#'     list(
-#'       RuleName = "string",
-#'       ClientID = "string",
-#'       Timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RequestCount = 123,
-#'       SampledCount = 123,
-#'       BorrowCount = 123
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1159,17 +526,9 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' requests, and downstream services that they call as a result
 #'
 #' @description
-#' Retrieves a document that describes services that process incoming
-#' requests, and downstream services that they call as a result. Root
-#' services process incoming requests and make calls to downstream
-#' services. Root services are applications that use the [AWS X-Ray
-#' SDK](https://docs.aws.amazon.com/xray/index.html). Downstream services
-#' can be other applications, AWS resources, HTTP web APIs, or SQL
-#' databases.
+#' Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result. Root services process incoming requests and make calls to downstream services. Root services are applications that use the [Amazon Web Services X-Ray SDK](https://docs.aws.amazon.com/xray/index.html). Downstream services can be other applications, Amazon Web Services resources, HTTP web APIs, or SQL databases.
 #'
-#' @usage
-#' xray_get_service_graph(StartTime, EndTime, GroupName, GroupARN,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_service_graph.html](https://paws-r.github.io/docs/xray/get_service_graph.html) for full documentation.
 #'
 #' @param StartTime &#91;required&#93; The start of the time frame for which to generate a graph.
 #' @param EndTime &#91;required&#93; The end of the timeframe for which to generate a graph.
@@ -1177,121 +536,6 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' @param GroupARN The Amazon Resource Name (ARN) of a group based on which you want to
 #' generate a graph.
 #' @param NextToken Pagination token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Services = list(
-#'     list(
-#'       ReferenceId = 123,
-#'       Name = "string",
-#'       Names = list(
-#'         "string"
-#'       ),
-#'       Root = TRUE|FALSE,
-#'       AccountId = "string",
-#'       Type = "string",
-#'       State = "string",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Edges = list(
-#'         list(
-#'           ReferenceId = 123,
-#'           StartTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           EndTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           SummaryStatistics = list(
-#'             OkCount = 123,
-#'             ErrorStatistics = list(
-#'               ThrottleCount = 123,
-#'               OtherCount = 123,
-#'               TotalCount = 123
-#'             ),
-#'             FaultStatistics = list(
-#'               OtherCount = 123,
-#'               TotalCount = 123
-#'             ),
-#'             TotalCount = 123,
-#'             TotalResponseTime = 123.0
-#'           ),
-#'           ResponseTimeHistogram = list(
-#'             list(
-#'               Value = 123.0,
-#'               Count = 123
-#'             )
-#'           ),
-#'           Aliases = list(
-#'             list(
-#'               Name = "string",
-#'               Names = list(
-#'                 "string"
-#'               ),
-#'               Type = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       SummaryStatistics = list(
-#'         OkCount = 123,
-#'         ErrorStatistics = list(
-#'           ThrottleCount = 123,
-#'           OtherCount = 123,
-#'           TotalCount = 123
-#'         ),
-#'         FaultStatistics = list(
-#'           OtherCount = 123,
-#'           TotalCount = 123
-#'         ),
-#'         TotalCount = 123,
-#'         TotalResponseTime = 123.0
-#'       ),
-#'       DurationHistogram = list(
-#'         list(
-#'           Value = 123.0,
-#'           Count = 123
-#'         )
-#'       ),
-#'       ResponseTimeHistogram = list(
-#'         list(
-#'           Value = 123.0,
-#'           Count = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ContainsOldGroupVersions = TRUE|FALSE,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_service_graph(
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   GroupName = "string",
-#'   GroupARN = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1317,13 +561,9 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #' range
 #'
 #' @description
-#' Get an aggregation of service statistics defined by a specific time
-#' range.
+#' Get an aggregation of service statistics defined by a specific time range.
 #'
-#' @usage
-#' xray_get_time_series_service_statistics(StartTime, EndTime, GroupName,
-#'   GroupARN, EntitySelectorExpression, Period, ForecastStatistics,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_time_series_service_statistics.html](https://paws-r.github.io/docs/xray/get_time_series_service_statistics.html) for full documentation.
 #'
 #' @param StartTime &#91;required&#93; The start of the time frame for which to aggregate statistics.
 #' @param EndTime &#91;required&#93; The end of the time frame for which to aggregate statistics.
@@ -1337,78 +577,6 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #' @param ForecastStatistics The forecasted high and low fault count values. Forecast enabled
 #' requests require the EntitySelectorExpression ID be provided.
 #' @param NextToken Pagination token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TimeSeriesServiceStatistics = list(
-#'     list(
-#'       Timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EdgeSummaryStatistics = list(
-#'         OkCount = 123,
-#'         ErrorStatistics = list(
-#'           ThrottleCount = 123,
-#'           OtherCount = 123,
-#'           TotalCount = 123
-#'         ),
-#'         FaultStatistics = list(
-#'           OtherCount = 123,
-#'           TotalCount = 123
-#'         ),
-#'         TotalCount = 123,
-#'         TotalResponseTime = 123.0
-#'       ),
-#'       ServiceSummaryStatistics = list(
-#'         OkCount = 123,
-#'         ErrorStatistics = list(
-#'           ThrottleCount = 123,
-#'           OtherCount = 123,
-#'           TotalCount = 123
-#'         ),
-#'         FaultStatistics = list(
-#'           OtherCount = 123,
-#'           TotalCount = 123
-#'         ),
-#'         TotalCount = 123,
-#'         TotalResponseTime = 123.0
-#'       ),
-#'       ServiceForecastStatistics = list(
-#'         FaultCountHigh = 123,
-#'         FaultCountLow = 123
-#'       ),
-#'       ResponseTimeHistogram = list(
-#'         list(
-#'           Value = 123.0,
-#'           Count = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ContainsOldGroupVersions = TRUE|FALSE,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_time_series_service_statistics(
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   GroupName = "string",
-#'   GroupARN = "string",
-#'   EntitySelectorExpression = "string",
-#'   Period = 123,
-#'   ForecastStatistics = TRUE|FALSE,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1435,114 +603,10 @@ xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupNam
 #' @description
 #' Retrieves a service graph for one or more specific trace IDs.
 #'
-#' @usage
-#' xray_get_trace_graph(TraceIds, NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_trace_graph.html](https://paws-r.github.io/docs/xray/get_trace_graph.html) for full documentation.
 #'
 #' @param TraceIds &#91;required&#93; Trace IDs of requests for which to generate a service graph.
 #' @param NextToken Pagination token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Services = list(
-#'     list(
-#'       ReferenceId = 123,
-#'       Name = "string",
-#'       Names = list(
-#'         "string"
-#'       ),
-#'       Root = TRUE|FALSE,
-#'       AccountId = "string",
-#'       Type = "string",
-#'       State = "string",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Edges = list(
-#'         list(
-#'           ReferenceId = 123,
-#'           StartTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           EndTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           SummaryStatistics = list(
-#'             OkCount = 123,
-#'             ErrorStatistics = list(
-#'               ThrottleCount = 123,
-#'               OtherCount = 123,
-#'               TotalCount = 123
-#'             ),
-#'             FaultStatistics = list(
-#'               OtherCount = 123,
-#'               TotalCount = 123
-#'             ),
-#'             TotalCount = 123,
-#'             TotalResponseTime = 123.0
-#'           ),
-#'           ResponseTimeHistogram = list(
-#'             list(
-#'               Value = 123.0,
-#'               Count = 123
-#'             )
-#'           ),
-#'           Aliases = list(
-#'             list(
-#'               Name = "string",
-#'               Names = list(
-#'                 "string"
-#'               ),
-#'               Type = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       SummaryStatistics = list(
-#'         OkCount = 123,
-#'         ErrorStatistics = list(
-#'           ThrottleCount = 123,
-#'           OtherCount = 123,
-#'           TotalCount = 123
-#'         ),
-#'         FaultStatistics = list(
-#'           OtherCount = 123,
-#'           TotalCount = 123
-#'         ),
-#'         TotalCount = 123,
-#'         TotalResponseTime = 123.0
-#'       ),
-#'       DurationHistogram = list(
-#'         list(
-#'           Value = 123.0,
-#'           Count = 123
-#'         )
-#'       ),
-#'       ResponseTimeHistogram = list(
-#'         list(
-#'           Value = 123.0,
-#'           Count = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_trace_graph(
-#'   TraceIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1568,30 +632,9 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' frame using an optional filter
 #'
 #' @description
-#' Retrieves IDs and annotations for traces available for a specified time
-#' frame using an optional filter. To get the full traces, pass the trace
-#' IDs to [`batch_get_traces`][xray_batch_get_traces].
-#' 
-#' A filter expression can target traced requests that hit specific service
-#' nodes or edges, have errors, or come from a known user. For example, the
-#' following filter expression targets traces that pass through
-#' `api.example.com`:
-#' 
-#' `service("api.example.com")`
-#' 
-#' This filter expression finds traces that have an annotation named
-#' `account` with the value `12345`:
-#' 
-#' `annotation.account = "12345"`
-#' 
-#' For a full list of indexed fields and keywords that you can use in
-#' filter expressions, see [Using Filter
-#' Expressions](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html)
-#' in the *AWS X-Ray Developer Guide*.
+#' Retrieves IDs and annotations for traces available for a specified time frame using an optional filter. To get the full traces, pass the trace IDs to [`batch_get_traces`][xray_batch_get_traces].
 #'
-#' @usage
-#' xray_get_trace_summaries(StartTime, EndTime, TimeRangeType, Sampling,
-#'   SamplingStrategy, FilterExpression, NextToken)
+#' See [https://paws-r.github.io/docs/xray/get_trace_summaries.html](https://paws-r.github.io/docs/xray/get_trace_summaries.html) for full documentation.
 #'
 #' @param StartTime &#91;required&#93; The start of the time frame for which to retrieve traces.
 #' @param EndTime &#91;required&#93; The end of the time frame for which to retrieve traces.
@@ -1604,208 +647,6 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' requests that meet certain requirements.
 #' @param NextToken Specify the pagination token returned by a previous request to retrieve
 #' the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TraceSummaries = list(
-#'     list(
-#'       Id = "string",
-#'       Duration = 123.0,
-#'       ResponseTime = 123.0,
-#'       HasFault = TRUE|FALSE,
-#'       HasError = TRUE|FALSE,
-#'       HasThrottle = TRUE|FALSE,
-#'       IsPartial = TRUE|FALSE,
-#'       Http = list(
-#'         HttpURL = "string",
-#'         HttpStatus = 123,
-#'         HttpMethod = "string",
-#'         UserAgent = "string",
-#'         ClientIp = "string"
-#'       ),
-#'       Annotations = list(
-#'         list(
-#'           list(
-#'             AnnotationValue = list(
-#'               NumberValue = 123.0,
-#'               BooleanValue = TRUE|FALSE,
-#'               StringValue = "string"
-#'             ),
-#'             ServiceIds = list(
-#'               list(
-#'                 Name = "string",
-#'                 Names = list(
-#'                   "string"
-#'                 ),
-#'                 AccountId = "string",
-#'                 Type = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Users = list(
-#'         list(
-#'           UserName = "string",
-#'           ServiceIds = list(
-#'             list(
-#'               Name = "string",
-#'               Names = list(
-#'                 "string"
-#'               ),
-#'               AccountId = "string",
-#'               Type = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       ServiceIds = list(
-#'         list(
-#'           Name = "string",
-#'           Names = list(
-#'             "string"
-#'           ),
-#'           AccountId = "string",
-#'           Type = "string"
-#'         )
-#'       ),
-#'       ResourceARNs = list(
-#'         list(
-#'           ARN = "string"
-#'         )
-#'       ),
-#'       InstanceIds = list(
-#'         list(
-#'           Id = "string"
-#'         )
-#'       ),
-#'       AvailabilityZones = list(
-#'         list(
-#'           Name = "string"
-#'         )
-#'       ),
-#'       EntryPoint = list(
-#'         Name = "string",
-#'         Names = list(
-#'           "string"
-#'         ),
-#'         AccountId = "string",
-#'         Type = "string"
-#'       ),
-#'       FaultRootCauses = list(
-#'         list(
-#'           Services = list(
-#'             list(
-#'               Name = "string",
-#'               Names = list(
-#'                 "string"
-#'               ),
-#'               Type = "string",
-#'               AccountId = "string",
-#'               EntityPath = list(
-#'                 list(
-#'                   Name = "string",
-#'                   Exceptions = list(
-#'                     list(
-#'                       Name = "string",
-#'                       Message = "string"
-#'                     )
-#'                   ),
-#'                   Remote = TRUE|FALSE
-#'                 )
-#'               ),
-#'               Inferred = TRUE|FALSE
-#'             )
-#'           ),
-#'           ClientImpacting = TRUE|FALSE
-#'         )
-#'       ),
-#'       ErrorRootCauses = list(
-#'         list(
-#'           Services = list(
-#'             list(
-#'               Name = "string",
-#'               Names = list(
-#'                 "string"
-#'               ),
-#'               Type = "string",
-#'               AccountId = "string",
-#'               EntityPath = list(
-#'                 list(
-#'                   Name = "string",
-#'                   Exceptions = list(
-#'                     list(
-#'                       Name = "string",
-#'                       Message = "string"
-#'                     )
-#'                   ),
-#'                   Remote = TRUE|FALSE
-#'                 )
-#'               ),
-#'               Inferred = TRUE|FALSE
-#'             )
-#'           ),
-#'           ClientImpacting = TRUE|FALSE
-#'         )
-#'       ),
-#'       ResponseTimeRootCauses = list(
-#'         list(
-#'           Services = list(
-#'             list(
-#'               Name = "string",
-#'               Names = list(
-#'                 "string"
-#'               ),
-#'               Type = "string",
-#'               AccountId = "string",
-#'               EntityPath = list(
-#'                 list(
-#'                   Name = "string",
-#'                   Coverage = 123.0,
-#'                   Remote = TRUE|FALSE
-#'                 )
-#'               ),
-#'               Inferred = TRUE|FALSE
-#'             )
-#'           ),
-#'           ClientImpacting = TRUE|FALSE
-#'         )
-#'       ),
-#'       Revision = 123,
-#'       MatchedEventTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   ApproximateTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   TracesProcessedCount = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_trace_summaries(
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   TimeRangeType = "TraceId"|"Event",
-#'   Sampling = TRUE|FALSE,
-#'   SamplingStrategy = list(
-#'     Name = "PartialScan"|"FixedRate",
-#'     Value = 123.0
-#'   ),
-#'   FilterExpression = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1827,42 +668,18 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
 }
 .xray$operations$get_trace_summaries <- xray_get_trace_summaries
 
-#' Returns a list of tags that are applied to the specified AWS X-Ray group
-#' or sampling rule
+#' Returns a list of tags that are applied to the specified Amazon Web
+#' Services X-Ray group or sampling rule
 #'
 #' @description
-#' Returns a list of tags that are applied to the specified AWS X-Ray group
-#' or sampling rule.
+#' Returns a list of tags that are applied to the specified Amazon Web Services X-Ray group or sampling rule.
 #'
-#' @usage
-#' xray_list_tags_for_resource(ResourceARN, NextToken)
+#' See [https://paws-r.github.io/docs/xray/list_tags_for_resource.html](https://paws-r.github.io/docs/xray/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.
 #' @param NextToken A pagination token. If multiple pages of results are returned, use the
 #' `NextToken` value returned with the current page of results as the value
 #' of this parameter to get the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceARN = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1889,16 +706,15 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
 #' @description
 #' Updates the encryption configuration for X-Ray data.
 #'
-#' @usage
-#' xray_put_encryption_config(KeyId, Type)
+#' See [https://paws-r.github.io/docs/xray/put_encryption_config.html](https://paws-r.github.io/docs/xray/put_encryption_config.html) for full documentation.
 #'
-#' @param KeyId An AWS KMS customer master key (CMK) in one of the following formats:
+#' @param KeyId An Amazon Web Services KMS key in one of the following formats:
 #' 
 #' -   **Alias** - The name of the key. For example, `alias/MyKey`.
 #' 
 #' -   **Key ID** - The KMS key ID of the key. For example,
-#'     `ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`. AWS X-Ray does not support
-#'     asymmetric CMKs.
+#'     `ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`. Amazon Web Services X-Ray
+#'     does not support asymmetric KMS keys.
 #' 
 #' -   **ARN** - The full Amazon Resource Name of the key ID or alias. For
 #'     example,
@@ -1908,26 +724,6 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
 #' Omit this key if you set `Type` to `NONE`.
 #' @param Type &#91;required&#93; The type of encryption. Set to `KMS` to use your own key for encryption.
 #' Set to `NONE` for default encryption.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EncryptionConfig = list(
-#'     KeyId = "string",
-#'     Status = "UPDATING"|"ACTIVE",
-#'     Type = "NONE"|"KMS"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_encryption_config(
-#'   KeyId = "string",
-#'   Type = "NONE"|"KMS"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1949,50 +745,17 @@ xray_put_encryption_config <- function(KeyId = NULL, Type) {
 }
 .xray$operations$put_encryption_config <- xray_put_encryption_config
 
-#' Used by the AWS X-Ray daemon to upload telemetry
+#' Used by the Amazon Web Services X-Ray daemon to upload telemetry
 #'
 #' @description
-#' Used by the AWS X-Ray daemon to upload telemetry.
+#' Used by the Amazon Web Services X-Ray daemon to upload telemetry.
 #'
-#' @usage
-#' xray_put_telemetry_records(TelemetryRecords, EC2InstanceId, Hostname,
-#'   ResourceARN)
+#' See [https://paws-r.github.io/docs/xray/put_telemetry_records.html](https://paws-r.github.io/docs/xray/put_telemetry_records.html) for full documentation.
 #'
 #' @param TelemetryRecords &#91;required&#93; 
 #' @param EC2InstanceId 
 #' @param Hostname 
 #' @param ResourceARN 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_telemetry_records(
-#'   TelemetryRecords = list(
-#'     list(
-#'       Timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       SegmentsReceivedCount = 123,
-#'       SegmentsSentCount = 123,
-#'       SegmentsSpilloverCount = 123,
-#'       SegmentsRejectedCount = 123,
-#'       BackendConnectionErrors = list(
-#'         TimeoutCount = 123,
-#'         ConnectionRefusedCount = 123,
-#'         HTTPCode4XXCount = 123,
-#'         HTTPCode5XXCount = 123,
-#'         UnknownHostCount = 123,
-#'         OtherCount = 123
-#'       )
-#'     )
-#'   ),
-#'   EC2InstanceId = "string",
-#'   Hostname = "string",
-#'   ResourceARN = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2014,87 +777,15 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 }
 .xray$operations$put_telemetry_records <- xray_put_telemetry_records
 
-#' Uploads segment documents to AWS X-Ray
+#' Uploads segment documents to Amazon Web Services X-Ray
 #'
 #' @description
-#' Uploads segment documents to AWS X-Ray. The [X-Ray
-#' SDK](https://docs.aws.amazon.com/xray/index.html) generates segment
-#' documents and sends them to the X-Ray daemon, which uploads them in
-#' batches. A segment document can be a completed segment, an in-progress
-#' segment, or an array of subsegments.
-#' 
-#' Segments must include the following fields. For the full segment
-#' document schema, see [AWS X-Ray Segment
-#' Documents](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html)
-#' in the *AWS X-Ray Developer Guide*.
-#' 
-#' **Required segment document fields**
-#' 
-#' -   `name` - The name of the service that handled the request.
-#' 
-#' -   `id` - A 64-bit identifier for the segment, unique among segments in
-#'     the same trace, in 16 hexadecimal digits.
-#' 
-#' -   `trace_id` - A unique identifier that connects all segments and
-#'     subsegments originating from a single client request.
-#' 
-#' -   `start_time` - Time the segment or subsegment was created, in
-#'     floating point seconds in epoch time, accurate to milliseconds. For
-#'     example, `1480615200.010` or `1.480615200010E9`.
-#' 
-#' -   `end_time` - Time the segment or subsegment was closed. For example,
-#'     `1480615200.090` or `1.480615200090E9`. Specify either an `end_time`
-#'     or `in_progress`.
-#' 
-#' -   `in_progress` - Set to `true` instead of specifying an `end_time` to
-#'     record that a segment has been started, but is not complete. Send an
-#'     in-progress segment when your application receives a request that
-#'     will take a long time to serve, to trace that the request was
-#'     received. When the response is sent, send the complete segment to
-#'     overwrite the in-progress segment.
-#' 
-#' A `trace_id` consists of three numbers separated by hyphens. For
-#' example, 1-58406520-a006649127e371903a2de979. This includes:
-#' 
-#' **Trace ID Format**
-#' 
-#' -   The version number, for instance, `1`.
-#' 
-#' -   The time of the original request, in Unix epoch time, in 8
-#'     hexadecimal digits. For example, 10:00AM December 2nd, 2016 PST in
-#'     epoch time is `1480615200` seconds, or `58406520` in hexadecimal.
-#' 
-#' -   A 96-bit identifier for the trace, globally unique, in 24
-#'     hexadecimal digits.
+#' Uploads segment documents to Amazon Web Services X-Ray. The [X-Ray SDK](https://docs.aws.amazon.com/xray/index.html) generates segment documents and sends them to the X-Ray daemon, which uploads them in batches. A segment document can be a completed segment, an in-progress segment, or an array of subsegments.
 #'
-#' @usage
-#' xray_put_trace_segments(TraceSegmentDocuments)
+#' See [https://paws-r.github.io/docs/xray/put_trace_segments.html](https://paws-r.github.io/docs/xray/put_trace_segments.html) for full documentation.
 #'
 #' @param TraceSegmentDocuments &#91;required&#93; A string containing a JSON document defining one or more segments or
 #' subsegments.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedTraceSegments = list(
-#'     list(
-#'       Id = "string",
-#'       ErrorCode = "string",
-#'       Message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_trace_segments(
-#'   TraceSegmentDocuments = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2116,20 +807,20 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 }
 .xray$operations$put_trace_segments <- xray_put_trace_segments
 
-#' Applies tags to an existing AWS X-Ray group or sampling rule
+#' Applies tags to an existing Amazon Web Services X-Ray group or sampling
+#' rule
 #'
 #' @description
-#' Applies tags to an existing AWS X-Ray group or sampling rule.
+#' Applies tags to an existing Amazon Web Services X-Ray group or sampling rule.
 #'
-#' @usage
-#' xray_tag_resource(ResourceARN, Tags)
+#' See [https://paws-r.github.io/docs/xray/tag_resource.html](https://paws-r.github.io/docs/xray/tag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.
 #' @param Tags &#91;required&#93; A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray group or sampling rule. For more information about ways to use
-#' tags, see [Tagging AWS
+#' tags, see [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in the *AWS General Reference*.
+#' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
 #' 
@@ -2144,24 +835,8 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
-#' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
-#'     You cannot edit or delete system tags.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceARN = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' -   Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
+#'     Services use. You cannot edit or delete system tags.
 #'
 #' @keywords internal
 #'
@@ -2183,31 +858,16 @@ xray_tag_resource <- function(ResourceARN, Tags) {
 }
 .xray$operations$tag_resource <- xray_tag_resource
 
-#' Removes tags from an AWS X-Ray group or sampling rule
+#' Removes tags from an Amazon Web Services X-Ray group or sampling rule
 #'
 #' @description
-#' Removes tags from an AWS X-Ray group or sampling rule. You cannot edit
-#' or delete system tags (those with an `aws:` prefix).
+#' Removes tags from an Amazon Web Services X-Ray group or sampling rule. You cannot edit or delete system tags (those with an `aws:` prefix).
 #'
-#' @usage
-#' xray_untag_resource(ResourceARN, TagKeys)
+#' See [https://paws-r.github.io/docs/xray/untag_resource.html](https://paws-r.github.io/docs/xray/untag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.
 #' @param TagKeys &#91;required&#93; Keys for one or more tags that you want to remove from an X-Ray group or
 #' sampling rule.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceARN = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2234,9 +894,7 @@ xray_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates a group resource.
 #'
-#' @usage
-#' xray_update_group(GroupName, GroupARN, FilterExpression,
-#'   InsightsConfiguration)
+#' See [https://paws-r.github.io/docs/xray/update_group.html](https://paws-r.github.io/docs/xray/update_group.html) for full documentation.
 #'
 #' @param GroupName The case-sensitive name of the group.
 #' @param GroupARN The ARN that was generated upon creation.
@@ -2250,35 +908,6 @@ xray_untag_resource <- function(ResourceARN, TagKeys) {
 #' -   The NotifcationsEnabled boolean can be set to true to enable
 #'     insights notifications for the group. Notifications can only be
 #'     enabled on a group with InsightsEnabled set to true.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     GroupName = "string",
-#'     GroupARN = "string",
-#'     FilterExpression = "string",
-#'     InsightsConfiguration = list(
-#'       InsightsEnabled = TRUE|FALSE,
-#'       NotificationsEnabled = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_group(
-#'   GroupName = "string",
-#'   GroupARN = "string",
-#'   FilterExpression = "string",
-#'   InsightsConfiguration = list(
-#'     InsightsEnabled = TRUE|FALSE,
-#'     NotificationsEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2305,64 +934,9 @@ xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpressio
 #' @description
 #' Modifies a sampling rule's configuration.
 #'
-#' @usage
-#' xray_update_sampling_rule(SamplingRuleUpdate)
+#' See [https://paws-r.github.io/docs/xray/update_sampling_rule.html](https://paws-r.github.io/docs/xray/update_sampling_rule.html) for full documentation.
 #'
 #' @param SamplingRuleUpdate &#91;required&#93; The rule and fields to change.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SamplingRuleRecord = list(
-#'     SamplingRule = list(
-#'       RuleName = "string",
-#'       RuleARN = "string",
-#'       ResourceARN = "string",
-#'       Priority = 123,
-#'       FixedRate = 123.0,
-#'       ReservoirSize = 123,
-#'       ServiceName = "string",
-#'       ServiceType = "string",
-#'       Host = "string",
-#'       HTTPMethod = "string",
-#'       URLPath = "string",
-#'       Version = 123,
-#'       Attributes = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_sampling_rule(
-#'   SamplingRuleUpdate = list(
-#'     RuleName = "string",
-#'     RuleARN = "string",
-#'     ResourceARN = "string",
-#'     Priority = 123,
-#'     FixedRate = 123.0,
-#'     ReservoirSize = 123,
-#'     Host = "string",
-#'     ServiceName = "string",
-#'     ServiceType = "string",
-#'     HTTPMethod = "string",
-#'     URLPath = "string",
-#'     Attributes = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

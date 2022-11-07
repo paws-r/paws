@@ -2,201 +2,31 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_modify_cluster_iam_roles}
 \alias{redshift_modify_cluster_iam_roles}
-\title{Modifies the list of AWS Identity and Access Management (IAM) roles that
-can be used by the cluster to access other AWS services}
+\title{Modifies the list of Identity and Access Management (IAM) roles that can
+be used by the cluster to access other Amazon Web Services services}
 \usage{
-redshift_modify_cluster_iam_roles(ClusterIdentifier, AddIamRoles,
-  RemoveIamRoles)
+redshift_modify_cluster_iam_roles(
+  ClusterIdentifier,
+  AddIamRoles = NULL,
+  RemoveIamRoles = NULL,
+  DefaultIamRoleArn = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the cluster for which you want to associate or
 disassociate IAM roles.}
 
 \item{AddIamRoles}{Zero or more IAM roles to associate with the cluster. The roles must be
-in their Amazon Resource Name (ARN) format. You can associate up to 10
-IAM roles with a single cluster in a single request.}
+in their Amazon Resource Name (ARN) format.}
 
-\item{RemoveIamRoles}{Zero or more IAM roles in ARN format to disassociate from the cluster.
-You can disassociate up to 10 IAM roles from a single cluster in a
-single request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Cluster = list(
-    ClusterIdentifier = "string",
-    NodeType = "string",
-    ClusterStatus = "string",
-    ClusterAvailabilityStatus = "string",
-    ModifyStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      VpcEndpoints = list(
-        list(
-          VpcEndpointId = "string"
-        )
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    AutomatedSnapshotRetentionPeriod = 123,
-    ManualSnapshotRetentionPeriod = 123,
-    ClusterSecurityGroups = list(
-      list(
-        ClusterSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    ClusterParameterGroups = list(
-      list(
-        ParameterGroupName = "string",
-        ParameterApplyStatus = "string",
-        ClusterParameterStatusList = list(
-          list(
-            ParameterName = "string",
-            ParameterApplyStatus = "string",
-            ParameterApplyErrorDescription = "string"
-          )
-        )
-      )
-    ),
-    ClusterSubnetGroupName = "string",
-    VpcId = "string",
-    AvailabilityZone = "string",
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      MasterUserPassword = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      ClusterType = "string",
-      ClusterVersion = "string",
-      AutomatedSnapshotRetentionPeriod = 123,
-      ClusterIdentifier = "string",
-      PubliclyAccessible = TRUE|FALSE,
-      EnhancedVpcRouting = TRUE|FALSE,
-      MaintenanceTrackName = "string",
-      EncryptionType = "string"
-    ),
-    ClusterVersion = "string",
-    AllowVersionUpgrade = TRUE|FALSE,
-    NumberOfNodes = 123,
-    PubliclyAccessible = TRUE|FALSE,
-    Encrypted = TRUE|FALSE,
-    RestoreStatus = list(
-      Status = "string",
-      CurrentRestoreRateInMegaBytesPerSecond = 123.0,
-      SnapshotSizeInMegaBytes = 123,
-      ProgressInMegaBytes = 123,
-      ElapsedTimeInSeconds = 123,
-      EstimatedTimeToCompletionInSeconds = 123
-    ),
-    DataTransferProgress = list(
-      Status = "string",
-      CurrentRateInMegaBytesPerSecond = 123.0,
-      TotalDataInMegaBytes = 123,
-      DataTransferredInMegaBytes = 123,
-      EstimatedTimeToCompletionInSeconds = 123,
-      ElapsedTimeInSeconds = 123
-    ),
-    HsmStatus = list(
-      HsmClientCertificateIdentifier = "string",
-      HsmConfigurationIdentifier = "string",
-      Status = "string"
-    ),
-    ClusterSnapshotCopyStatus = list(
-      DestinationRegion = "string",
-      RetentionPeriod = 123,
-      ManualSnapshotRetentionPeriod = 123,
-      SnapshotCopyGrantName = "string"
-    ),
-    ClusterPublicKey = "string",
-    ClusterNodes = list(
-      list(
-        NodeRole = "string",
-        PrivateIPAddress = "string",
-        PublicIPAddress = "string"
-      )
-    ),
-    ElasticIpStatus = list(
-      ElasticIp = "string",
-      Status = "string"
-    ),
-    ClusterRevisionNumber = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    KmsKeyId = "string",
-    EnhancedVpcRouting = TRUE|FALSE,
-    IamRoles = list(
-      list(
-        IamRoleArn = "string",
-        ApplyStatus = "string"
-      )
-    ),
-    PendingActions = list(
-      "string"
-    ),
-    MaintenanceTrackName = "string",
-    ElasticResizeNumberOfNodeOptions = "string",
-    DeferredMaintenanceWindows = list(
-      list(
-        DeferMaintenanceIdentifier = "string",
-        DeferMaintenanceStartTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        DeferMaintenanceEndTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    SnapshotScheduleIdentifier = "string",
-    SnapshotScheduleState = "MODIFYING"|"ACTIVE"|"FAILED",
-    ExpectedNextSnapshotScheduleTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExpectedNextSnapshotScheduleTimeStatus = "string",
-    NextMaintenanceWindowStartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ResizeInfo = list(
-      ResizeType = "string",
-      AllowCancelResize = TRUE|FALSE
-    ),
-    AvailabilityZoneRelocationStatus = "string",
-    ClusterNamespaceArn = "string"
-  )
-)
-}
+\item{RemoveIamRoles}{Zero or more IAM roles in ARN format to disassociate from the cluster.}
+
+\item{DefaultIamRoleArn}{The Amazon Resource Name (ARN) for the IAM role that was set as default
+for the cluster when the cluster was last modified.}
 }
 \description{
-Modifies the list of AWS Identity and Access Management (IAM) roles that
-can be used by the cluster to access other AWS services.
+Modifies the list of Identity and Access Management (IAM) roles that can be used by the cluster to access other Amazon Web Services services.
 
-A cluster can have up to 10 IAM roles associated at any time.
+See \url{https://paws-r.github.io/docs/redshift/modify_cluster_iam_roles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_cluster_iam_roles(
-  ClusterIdentifier = "string",
-  AddIamRoles = list(
-    "string"
-  ),
-  RemoveIamRoles = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

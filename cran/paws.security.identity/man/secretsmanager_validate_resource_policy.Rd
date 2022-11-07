@@ -2,73 +2,22 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_validate_resource_policy}
 \alias{secretsmanager_validate_resource_policy}
-\title{Validates the JSON text of the resource-based policy document attached
-to the specified secret}
+\title{Validates that a resource policy does not grant a wide range of
+principals access to your secret}
 \usage{
-secretsmanager_validate_resource_policy(SecretId, ResourcePolicy)
+secretsmanager_validate_resource_policy(SecretId = NULL, ResourcePolicy)
 }
 \arguments{
-\item{SecretId}{The identifier for the secret that you want to validate a resource
-policy. You can specify either the Amazon Resource Name (ARN) or the
-friendly name of the secret.
+\item{SecretId}{This field is reserved for internal use.}
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too—for example, if you
-don’t include the final hyphen and six random characters that Secrets
-Manager adds at the end of the ARN when you created the secret. A
-partial ARN match can work as long as it uniquely matches only one
-secret. However, if your secret has a name that ends in a hyphen
-followed by six characters (before Secrets Manager adds the hyphen and
-six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you’re
-specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don’t create secret names
-ending with a hyphen followed by six characters.
-
-If you specify an incomplete ARN without the random suffix, and instead
-provide the 'friendly name', you \emph{must} not include the random suffix.
-If you do include the random suffix added by Secrets Manager, you
-receive either a \emph{ResourceNotFoundException} or an
-\emph{AccessDeniedException} error, depending on your permissions.}
-
-\item{ResourcePolicy}{[required] Identifies the Resource Policy attached to the secret.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyValidationPassed = TRUE|FALSE,
-  ValidationErrors = list(
-    list(
-      CheckName = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
+\item{ResourcePolicy}{[required] A JSON-formatted string that contains an Amazon Web Services
+resource-based policy. The policy in the string identifies who can
+access or manage this secret and its versions. For example policies, see
+\href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html}{Permissions policy examples}.}
 }
 \description{
-Validates the JSON text of the resource-based policy document attached
-to the specified secret. The JSON request string input and response
-output displays formatted code with white space and line breaks for
-better readability. Submit your input as a single line JSON string. A
-resource-based policy is optional.
-}
-\section{Request syntax}{
-\preformatted{svc$validate_resource_policy(
-  SecretId = "string",
-  ResourcePolicy = "string"
-)
-}
-}
+Validates that a resource policy does not grant a wide range of principals access to your secret. A resource-based policy is optional for secrets.
 
-\examples{
-\dontrun{
-# The following example shows how to validate a resource-based policy to a
-# secret.
-svc$validate_resource_policy(
-  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"A...",
-  SecretId = "MyTestDatabaseSecret"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/validate_resource_policy.html} for full documentation.
 }
 \keyword{internal}

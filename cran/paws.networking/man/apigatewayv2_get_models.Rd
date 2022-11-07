@@ -4,7 +4,7 @@
 \alias{apigatewayv2_get_models}
 \title{Gets the Models for an API}
 \usage{
-apigatewayv2_get_models(ApiId, MaxResults, NextToken)
+apigatewayv2_get_models(ApiId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -14,31 +14,9 @@ apigatewayv2_get_models(ApiId, MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      ContentType = "string",
-      Description = "string",
-      ModelId = "string",
-      Name = "string",
-      Schema = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets the Models for an API.
-}
-\section{Request syntax}{
-\preformatted{svc$get_models(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_models.html} for full documentation.
+}
 \keyword{internal}

@@ -11,37 +11,9 @@ inspector_get_telemetry_metadata(assessmentRunArn)
 \item{assessmentRunArn}{[required] The ARN that specifies the assessment run that has the telemetry data
 that you want to obtain.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  telemetryMetadata = list(
-    list(
-      messageType = "string",
-      count = 123,
-      dataSize = 123
-    )
-  )
-)
-}
-}
 \description{
-Information about the data that is collected for the specified
-assessment run.
-}
-\section{Request syntax}{
-\preformatted{svc$get_telemetry_metadata(
-  assessmentRunArn = "string"
-)
-}
-}
+Information about the data that is collected for the specified assessment run.
 
-\examples{
-\dontrun{
-# Information about the data that is collected for the specified
-# assessment run.
-svc$get_telemetry_metadata(
-  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kF..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/get_telemetry_metadata.html} for full documentation.
 }
 \keyword{internal}

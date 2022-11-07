@@ -5,9 +5,17 @@
 \title{Creates a block storage disk from a manual or automatic snapshot of a
 disk}
 \usage{
-lightsail_create_disk_from_snapshot(diskName, diskSnapshotName,
-  availabilityZone, sizeInGb, tags, addOns, sourceDiskName, restoreDate,
-  useLatestRestorableAutoSnapshot)
+lightsail_create_disk_from_snapshot(
+  diskName,
+  diskSnapshotName = NULL,
+  availabilityZone,
+  sizeInGb,
+  tags = NULL,
+  addOns = NULL,
+  sourceDiskName = NULL,
+  restoreDate = NULL,
+  useLatestRestorableAutoSnapshot = NULL
+)
 }
 \arguments{
 \item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
@@ -48,8 +56,8 @@ Constraints:
 \verb{disk snapshot name} parameter. The \verb{source disk name} and
 \verb{disk snapshot name} parameters are mutually exclusive.
 \item Define this parameter only when creating a new disk from an
-automatic snapshot. For more information, see the Lightsail Dev
-Guide.
+automatic snapshot. For more information, see the Amazon Lightsail
+Developer Guide.
 }}
 
 \item{restoreDate}{The date of the automatic snapshot to use for the new disk. Use the
@@ -64,8 +72,8 @@ Constraints:
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
 \item Define this parameter only when creating a new disk from an
-automatic snapshot. For more information, see the Lightsail Dev
-Guide.
+automatic snapshot. For more information, see the Amazon Lightsail
+Developer Guide.
 }}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
@@ -77,73 +85,13 @@ Constraints:
 parameter. The \verb{use latest restorable auto snapshot} and
 \verb{restore date} parameters are mutually exclusive.
 \item Define this parameter only when creating a new disk from an
-automatic snapshot. For more information, see the Lightsail Dev
-Guide.
+automatic snapshot. For more information, see the Amazon Lightsail
+Developer Guide.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  operations = list(
-    list(
-      id = "string",
-      resourceName = "string",
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      isTerminal = TRUE|FALSE,
-      operationDetails = "string",
-      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-      status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-      statusChangedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      errorCode = "string",
-      errorDetails = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a block storage disk from a manual or automatic snapshot of a
-disk. The resulting disk can be attached to an Amazon Lightsail instance
-in the same Availability Zone (e.g., \verb{us-east-2a}).
+Creates a block storage disk from a manual or automatic snapshot of a disk. The resulting disk can be attached to an Amazon Lightsail instance in the same Availability Zone (e.g., \verb{us-east-2a}).
 
-The \verb{create disk from snapshot} operation supports tag-based access
-control via request tags and resource tags applied to the resource
-identified by \verb{disk snapshot name}. For more information, see the
-Lightsail Dev Guide.
+See \url{https://paws-r.github.io/docs/lightsail/create_disk_from_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_disk_from_snapshot(
-  diskName = "string",
-  diskSnapshotName = "string",
-  availabilityZone = "string",
-  sizeInGb = 123,
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  addOns = list(
-    list(
-      addOnType = "AutoSnapshot",
-      autoSnapshotAddOnRequest = list(
-        snapshotTimeOfDay = "string"
-      )
-    )
-  ),
-  sourceDiskName = "string",
-  restoreDate = "string",
-  useLatestRestorableAutoSnapshot = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

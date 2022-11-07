@@ -5,9 +5,16 @@
 \title{Returns properties of possible node configurations such as node type,
 number of nodes, and disk usage for the specified action type}
 \usage{
-redshift_describe_node_configuration_options(ActionType,
-  ClusterIdentifier, SnapshotIdentifier, OwnerAccount, Filters, Marker,
-  MaxRecords)
+redshift_describe_node_configuration_options(
+  ActionType,
+  ClusterIdentifier = NULL,
+  SnapshotIdentifier = NULL,
+  SnapshotArn = NULL,
+  OwnerAccount = NULL,
+  Filters = NULL,
+  Marker = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{ActionType}{[required] The action type to evaluate for possible node configurations. Specify
@@ -23,19 +30,22 @@ configurations.}
 \item{SnapshotIdentifier}{The identifier of the snapshot to evaluate for possible node
 configurations.}
 
-\item{OwnerAccount}{The AWS customer account used to create or copy the snapshot. Required
-if you are restoring a snapshot you do not own, optional if you own the
-snapshot.}
+\item{SnapshotArn}{The Amazon Resource Name (ARN) of the snapshot associated with the
+message to describe node configuration.}
+
+\item{OwnerAccount}{The Amazon Web Services account used to create or copy the snapshot.
+Required if you are restoring a snapshot you do not own, optional if you
+own the snapshot.}
 
 \item{Filters}{A set of name, operator, and value items to filter the results.}
 
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_node_configuration_options]{describe_node_configuration_options}}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 
 \item{MaxRecords}{The maximum number of response records to return in each call. If the
 number of remaining response records exceeds the specified \code{MaxRecords}
@@ -47,43 +57,9 @@ Default: \code{500}
 
 Constraints: minimum 100, maximum 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NodeConfigurationOptionList = list(
-    list(
-      NodeType = "string",
-      NumberOfNodes = 123,
-      EstimatedDiskUtilizationPercent = 123.0,
-      Mode = "standard"|"high-performance"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns properties of possible node configurations such as node type,
-number of nodes, and disk usage for the specified action type.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_node_configuration_options(
-  ActionType = "restore-cluster"|"recommend-node-config"|"resize-cluster",
-  ClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  OwnerAccount = "string",
-  Filters = list(
-    list(
-      Name = "NodeType"|"NumberOfNodes"|"EstimatedDiskUtilizationPercent"|"Mode",
-      Operator = "eq"|"lt"|"gt"|"le"|"ge"|"in"|"between",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  MaxRecords = 123
-)
-}
-}
+Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type.
 
+See \url{https://paws-r.github.io/docs/redshift/describe_node_configuration_options.html} for full documentation.
+}
 \keyword{internal}

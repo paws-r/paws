@@ -9,28 +9,9 @@ cloudhsm_delete_hsm(HsmArn)
 \arguments{
 \item{HsmArn}{[required] The ARN of the HSM to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "string"
-)
-}
-}
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more
-information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
-and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
-\strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
-
-Deletes an HSM. After completion, this operation cannot be undone and
-your key material cannot be recovered.
+See \url{https://paws-r.github.io/docs/cloudhsm/delete_hsm.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_hsm(
-  HsmArn = "string"
-)
-}
-}
-
 \keyword{internal}

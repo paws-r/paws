@@ -4,8 +4,11 @@
 \alias{firehose_list_delivery_streams}
 \title{Lists your delivery streams in alphabetical order of their names}
 \usage{
-firehose_list_delivery_streams(Limit, DeliveryStreamType,
-  ExclusiveStartDeliveryStreamName)
+firehose_list_delivery_streams(
+  Limit = NULL,
+  DeliveryStreamType = NULL,
+  ExclusiveStartDeliveryStreamName = NULL
+)
 }
 \arguments{
 \item{Limit}{The maximum number of delivery streams to list. The default value is 10.}
@@ -26,35 +29,9 @@ streams of all types are returned.}
 with the delivery stream whose name comes alphabetically immediately
 after the name you specify in \code{ExclusiveStartDeliveryStreamName}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeliveryStreamNames = list(
-    "string"
-  ),
-  HasMoreDeliveryStreams = TRUE|FALSE
-)
-}
-}
 \description{
 Lists your delivery streams in alphabetical order of their names.
 
-The number of delivery streams might be too large to return using a
-single call to
-\code{\link[=firehose_list_delivery_streams]{list_delivery_streams}}. You can limit
-the number of delivery streams returned, using the \code{Limit} parameter. To
-determine whether there are more delivery streams to list, check the
-value of \code{HasMoreDeliveryStreams} in the output. If there are more
-delivery streams to list, you can request them by calling this operation
-again and setting the \code{ExclusiveStartDeliveryStreamName} parameter to
-the name of the last delivery stream returned in the last call.
+See \url{https://paws-r.github.io/docs/firehose/list_delivery_streams.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_delivery_streams(
-  Limit = 123,
-  DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
-  ExclusiveStartDeliveryStreamName = "string"
-)
-}
-}
-
 \keyword{internal}

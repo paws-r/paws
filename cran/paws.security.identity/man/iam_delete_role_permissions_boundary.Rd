@@ -10,21 +10,9 @@ iam_delete_role_permissions_boundary(RoleName)
 \item{RoleName}{[required] The name (friendly name, not ARN) of the IAM role from which you want to
 remove the permissions boundary.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the permissions boundary for the specified IAM role.
 
-Deleting the permissions boundary for a role might increase its
-permissions. For example, it might allow anyone who assumes the role to
-perform all the actions granted in its permissions policies.
+See \url{https://paws-r.github.io/docs/iam/delete_role_permissions_boundary.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_role_permissions_boundary(
-  RoleName = "string"
-)
-}
-}
-
 \keyword{internal}

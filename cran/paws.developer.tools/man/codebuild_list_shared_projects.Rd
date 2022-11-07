@@ -2,13 +2,19 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_list_shared_projects}
 \alias{codebuild_list_shared_projects}
-\title{Gets a list of projects that are shared with other AWS accounts or users}
+\title{Gets a list of projects that are shared with other Amazon Web Services
+accounts or users}
 \usage{
-codebuild_list_shared_projects(sortBy, sortOrder, maxResults, nextToken)
+codebuild_list_shared_projects(
+  sortBy = NULL,
+  sortOrder = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{sortBy}{The criterion to be used to list build projects shared with the current
-AWS account or user. Valid values include:
+Amazon Web Services account or user. Valid values include:
 \itemize{
 \item \code{ARN}: List based on the ARN.
 \item \code{MODIFIED_TIME}: List based on when information about the shared
@@ -33,27 +39,9 @@ token to the call. To get all of the items in the list, keep calling
 this operation with each subsequent next token that is returned, until
 no more next tokens are returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  projects = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Gets a list of projects that are shared with other AWS accounts or
-users.
-}
-\section{Request syntax}{
-\preformatted{svc$list_shared_projects(
-  sortBy = "ARN"|"MODIFIED_TIME",
-  sortOrder = "ASCENDING"|"DESCENDING",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
+Gets a list of projects that are shared with other Amazon Web Services accounts or users.
 
+See \url{https://paws-r.github.io/docs/codebuild/list_shared_projects.html} for full documentation.
+}
 \keyword{internal}

@@ -5,13 +5,16 @@
 \title{Deregisters an Application Auto Scaling scalable target when you have
 finished using it}
 \usage{
-applicationautoscaling_deregister_scalable_target(ServiceNamespace,
-  ResourceId, ScalableDimension)
+applicationautoscaling_deregister_scalable_target(
+  ServiceNamespace,
+  ResourceId,
+  ScalableDimension
+)
 }
 \arguments{
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
-resource provided by your own application or service, use
-\code{custom-resource} instead.}
+\item{ServiceNamespace}{[required] The namespace of the Amazon Web Services service that provides the
+resource. For a resource provided by your own application or service,
+use \code{custom-resource} instead.}
 
 \item{ResourceId}{[required] The identifier of the resource associated with the scalable target. This
 string consists of the resource type and unique identifier.
@@ -19,8 +22,8 @@ string consists of the resource type and unique identifier.
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:
 \code{service/default/sample-webapp}.
-\item Spot Fleet request - The resource type is \code{spot-fleet-request} and
-the unique identifier is the Spot Fleet request ID. Example:
+\item Spot Fleet - The resource type is \code{spot-fleet-request} and the
+unique identifier is the Spot Fleet request ID. Example:
 \verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
 \item EMR cluster - The resource type is \code{instancegroup} and the unique
 identifier is the cluster ID and instance group ID. Example:
@@ -34,8 +37,8 @@ the unique identifier is the index name. Example:
 \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
-\item Amazon SageMaker endpoint variant - The resource type is \code{variant}
-and the unique identifier is the resource ID. Example:
+\item SageMaker endpoint variant - The resource type is \code{variant} and the
+unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
 \item Custom resources are not supported with a resource type. This
 parameter must specify the \code{OutputValue} from the CloudFormation
@@ -59,6 +62,11 @@ identifier is the table name. Example:
 \item Amazon MSK cluster - The resource type and unique identifier are
 specified using the cluster ARN. Example:
 \verb{arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5}.
+\item Amazon ElastiCache replication group - The resource type is
+\code{replication-group} and the unique identifier is the replication
+group name. Example: \code{replication-group/mycluster}.
+\item Neptune cluster - The resource type is \code{cluster} and the unique
+identifier is the cluster name. Example: \code{cluster:mycluster}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string
@@ -66,10 +74,10 @@ consists of the service namespace, resource type, and scaling property.
 \itemize{
 \item \code{ecs:service:DesiredCount} - The desired task count of an ECS
 service.
-\item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
-Spot Fleet request.
 \item \code{elasticmapreduce:instancegroup:InstanceCount} - The instance count
 of an EMR Instance Group.
+\item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
+Spot Fleet.
 \item \code{appstream:fleet:DesiredCapacity} - The desired capacity of an
 AppStream 2.0 fleet.
 \item \code{dynamodb:table:ReadCapacityUnits} - The provisioned read capacity
@@ -84,7 +92,7 @@ for a DynamoDB global secondary index.
 Aurora DB cluster. Available for Aurora MySQL-compatible edition and
 Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2
-instances for an Amazon SageMaker model endpoint variant.
+instances for an SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for
 a custom resource provided by your own application or service.
 \item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
@@ -101,38 +109,17 @@ for an Amazon Keyspaces table.
 capacity for an Amazon Keyspaces table.
 \item \code{kafka:broker-storage:VolumeSize} - The provisioned volume size (in
 GiB) for brokers in an Amazon MSK cluster.
+\item \code{elasticache:replication-group:NodeGroups} - The number of node
+groups for an Amazon ElastiCache replication group.
+\item \code{elasticache:replication-group:Replicas} - The number of replicas
+per node group for an Amazon ElastiCache replication group.
+\item \code{neptune:cluster:ReadReplicaCount} - The count of read replicas in
+an Amazon Neptune DB cluster.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Deregisters an Application Auto Scaling scalable target when you have
-finished using it. To see which resources have been registered, use
-\code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.
+Deregisters an Application Auto Scaling scalable target when you have finished using it. To see which resources have been registered, use \code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.
 
-Deregistering a scalable target deletes the scaling policies and the
-scheduled actions that are associated with it.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_scalable_target(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deregisters a scalable target for an Amazon ECS service
-# called web-app that is running in the default cluster.
-svc$deregister_scalable_target(
-  ResourceId = "service/default/web-app",
-  ScalableDimension = "ecs:service:DesiredCount",
-  ServiceNamespace = "ecs"
-)
-}
-
+See \url{https://paws-r.github.io/docs/applicationautoscaling/deregister_scalable_target.html} for full documentation.
 }
 \keyword{internal}

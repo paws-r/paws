@@ -4,21 +4,31 @@
 \alias{ec2_create_traffic_mirror_filter_rule}
 \title{Creates a Traffic Mirror filter rule}
 \usage{
-ec2_create_traffic_mirror_filter_rule(TrafficMirrorFilterId,
-  TrafficDirection, RuleNumber, RuleAction, DestinationPortRange,
-  SourcePortRange, Protocol, DestinationCidrBlock, SourceCidrBlock,
-  Description, DryRun, ClientToken)
+ec2_create_traffic_mirror_filter_rule(
+  TrafficMirrorFilterId,
+  TrafficDirection,
+  RuleNumber,
+  RuleAction,
+  DestinationPortRange = NULL,
+  SourcePortRange = NULL,
+  Protocol = NULL,
+  DestinationCidrBlock,
+  SourceCidrBlock,
+  Description = NULL,
+  DryRun = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{TrafficMirrorFilterId}{[required] The ID of the filter that this rule is associated with.}
 
-\item{TrafficDirection}{[required] The type of traffic (\code{ingress} | \code{egress}).}
+\item{TrafficDirection}{[required] The type of traffic.}
 
 \item{RuleNumber}{[required] The number of the Traffic Mirror rule. This number must be unique for
 each Traffic Mirror rule in a given direction. The rules are processed
 in ascending order by rule number.}
 
-\item{RuleAction}{[required] The action to take (\code{accept} | \code{reject}) on the filtered traffic.}
+\item{RuleAction}{[required] The action to take on the filtered traffic.}
 
 \item{DestinationPortRange}{The destination port range.}
 
@@ -41,63 +51,11 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorFilterRule = list(
-    TrafficMirrorFilterRuleId = "string",
-    TrafficMirrorFilterId = "string",
-    TrafficDirection = "ingress"|"egress",
-    RuleNumber = 123,
-    RuleAction = "accept"|"reject",
-    Protocol = 123,
-    DestinationPortRange = list(
-      FromPort = 123,
-      ToPort = 123
-    ),
-    SourcePortRange = list(
-      FromPort = 123,
-      ToPort = 123
-    ),
-    DestinationCidrBlock = "string",
-    SourceCidrBlock = "string",
-    Description = "string"
-  ),
-  ClientToken = "string"
-)
-}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 }
 \description{
 Creates a Traffic Mirror filter rule.
 
-A Traffic Mirror rule defines the Traffic Mirror source traffic to
-mirror.
-
-You need the Traffic Mirror filter ID when you create the rule.
+See \url{https://paws-r.github.io/docs/ec2/create_traffic_mirror_filter_rule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_traffic_mirror_filter_rule(
-  TrafficMirrorFilterId = "string",
-  TrafficDirection = "ingress"|"egress",
-  RuleNumber = 123,
-  RuleAction = "accept"|"reject",
-  DestinationPortRange = list(
-    FromPort = 123,
-    ToPort = 123
-  ),
-  SourcePortRange = list(
-    FromPort = 123,
-    ToPort = 123
-  ),
-  Protocol = 123,
-  DestinationCidrBlock = "string",
-  SourceCidrBlock = "string",
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  ClientToken = "string"
-)
-}
-}
-
 \keyword{internal}

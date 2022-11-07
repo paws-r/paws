@@ -4,8 +4,11 @@
 \alias{securityhub_describe_standards_controls}
 \title{Returns a list of security standards controls}
 \usage{
-securityhub_describe_standards_controls(StandardsSubscriptionArn,
-  NextToken, MaxResults)
+securityhub_describe_standards_controls(
+  StandardsSubscriptionArn,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{StandardsSubscriptionArn}{[required] The ARN of a resource that represents your subscription to a supported
@@ -23,43 +26,9 @@ response.}
 
 \item{MaxResults}{The maximum number of security standard controls to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Controls = list(
-    list(
-      StandardsControlArn = "string",
-      ControlStatus = "ENABLED"|"DISABLED",
-      DisabledReason = "string",
-      ControlStatusUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      ControlId = "string",
-      Title = "string",
-      Description = "string",
-      RemediationUrl = "string",
-      SeverityRating = "LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
-      RelatedRequirements = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of security standards controls.
 
-For each control, the results include information about whether it is
-currently enabled, the severity, and a link to remediation information.
+See \url{https://paws-r.github.io/docs/securityhub/describe_standards_controls.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_standards_controls(
-  StandardsSubscriptionArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

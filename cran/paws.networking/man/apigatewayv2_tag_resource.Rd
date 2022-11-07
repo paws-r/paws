@@ -4,7 +4,7 @@
 \alias{apigatewayv2_tag_resource}
 \title{Creates a new Tag resource to represent a tag}
 \usage{
-apigatewayv2_tag_resource(ResourceArn, Tags)
+apigatewayv2_tag_resource(ResourceArn, Tags = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The resource ARN for the tag.}
@@ -12,20 +12,9 @@ apigatewayv2_tag_resource(ResourceArn, Tags)
 \item{Tags}{The collection of tags. Each tag element is associated with a given
 resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates a new Tag resource to represent a tag.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/tag_resource.html} for full documentation.
+}
 \keyword{internal}

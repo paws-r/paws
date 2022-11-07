@@ -2,53 +2,38 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_list_permissions}
 \alias{ram_list_permissions}
-\title{Lists the AWS RAM permissions}
+\title{Retrieves a list of available RAM permissions that you can use for the
+supported resource types}
 \usage{
-ram_list_permissions(resourceType, nextToken, maxResults)
+ram_list_permissions(resourceType = NULL, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{resourceType}{Specifies the resource type for which to list permissions. For example,
-to list only permissions that apply to EC2 subnets, specify
-\code{ec2:Subnet}.}
+\item{resourceType}{Specifies that you want to list permissions for only the specified
+resource type. For example, to list only permissions that apply to EC2
+subnets, specify \code{ec2:Subnet}. You can use the
+\code{\link[=ram_list_resource_types]{list_resource_types}} operation to get the
+specific string required.}
 
-\item{nextToken}{The token for the next page of results.}
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
+if you received a \code{NextToken} response in the previous request. If you
+did, it indicates that more output is available. Set this parameter to
+the value provided by the previous call's \code{NextToken} response to
+request the next page of results.}
 
-\item{maxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  permissions = list(
-    list(
-      arn = "string",
-      version = "string",
-      defaultVersion = TRUE|FALSE,
-      name = "string",
-      resourceType = "string",
-      status = "string",
-      creationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
+\item{maxResults}{Specifies the total number of results that you want included on each
+page of the response. If you do not include this parameter, it defaults
+to a value that is specific to the operation. If additional items exist
+beyond the number you specify, the \code{NextToken} response element is
+returned with a value (not null). Include the specified value as the
+\code{NextToken} request parameter in the next call to the operation to get
+the next part of the results. Note that the service might return fewer
+results than the maximum even when there are more results available. You
+should check \code{NextToken} after every operation to ensure that you
+receive all of the results.}
 }
 \description{
-Lists the AWS RAM permissions.
-}
-\section{Request syntax}{
-\preformatted{svc$list_permissions(
-  resourceType = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Retrieves a list of available RAM permissions that you can use for the supported resource types.
 
+See \url{https://paws-r.github.io/docs/ram/list_permissions.html} for full documentation.
+}
 \keyword{internal}

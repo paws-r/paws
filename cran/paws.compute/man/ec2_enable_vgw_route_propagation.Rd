@@ -5,7 +5,7 @@
 \title{Enables a virtual private gateway (VGW) to propagate routes to the
 specified route table of a VPC}
 \usage{
-ec2_enable_vgw_route_propagation(GatewayId, RouteTableId, DryRun)
+ec2_enable_vgw_route_propagation(GatewayId, RouteTableId, DryRun = NULL)
 }
 \arguments{
 \item{GatewayId}{[required] The ID of the virtual private gateway that is attached to a VPC. The
@@ -20,31 +20,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables a virtual private gateway (VGW) to propagate routes to the
-specified route table of a VPC.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_vgw_route_propagation(
-  GatewayId = "string",
-  RouteTableId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
 
-\examples{
-\dontrun{
-# This example enables the specified virtual private gateway to propagate
-# static routes to the specified route table.
-svc$enable_vgw_route_propagation(
-  GatewayId = "vgw-9a4cacf3",
-  RouteTableId = "rtb-22574640"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/enable_vgw_route_propagation.html} for full documentation.
 }
 \keyword{internal}

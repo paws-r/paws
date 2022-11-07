@@ -2,9 +2,13 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_describe_container_instances}
 \alias{ecs_describe_container_instances}
-\title{Describes Amazon Elastic Container Service container instances}
+\title{Describes one or more container instances}
 \usage{
-ecs_describe_container_instances(cluster, containerInstances, include)
+ecs_describe_container_instances(
+  cluster = NULL,
+  containerInstances,
+  include = NULL
+)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -18,123 +22,13 @@ launched in any cluster other than the default cluster.}
 
 \item{include}{Specifies whether you want to see the resource tags for the container
 instance. If \code{TAGS} is specified, the tags are included in the response.
-If this field is omitted, tags are not included in the response.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  containerInstances = list(
-    list(
-      containerInstanceArn = "string",
-      ec2InstanceId = "string",
-      capacityProviderName = "string",
-      version = 123,
-      versionInfo = list(
-        agentVersion = "string",
-        agentHash = "string",
-        dockerVersion = "string"
-      ),
-      remainingResources = list(
-        list(
-          name = "string",
-          type = "string",
-          doubleValue = 123.0,
-          longValue = 123,
-          integerValue = 123,
-          stringSetValue = list(
-            "string"
-          )
-        )
-      ),
-      registeredResources = list(
-        list(
-          name = "string",
-          type = "string",
-          doubleValue = 123.0,
-          longValue = 123,
-          integerValue = 123,
-          stringSetValue = list(
-            "string"
-          )
-        )
-      ),
-      status = "string",
-      statusReason = "string",
-      agentConnected = TRUE|FALSE,
-      runningTasksCount = 123,
-      pendingTasksCount = 123,
-      agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
-      attributes = list(
-        list(
-          name = "string",
-          value = "string",
-          targetType = "container-instance",
-          targetId = "string"
-        )
-      ),
-      registeredAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      attachments = list(
-        list(
-          id = "string",
-          type = "string",
-          status = "string",
-          details = list(
-            list(
-              name = "string",
-              value = "string"
-            )
-          )
-        )
-      ),
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      )
-    )
-  ),
-  failures = list(
-    list(
-      arn = "string",
-      reason = "string",
-      detail = "string"
-    )
-  )
-)
-}
+If \code{CONTAINER_INSTANCE_HEALTH} is specified, the container instance
+health is included in the response. If this field is omitted, tags and
+container instance health status aren't included in the response.}
 }
 \description{
-Describes Amazon Elastic Container Service container instances. Returns
-metadata about registered and remaining resources on each container
-instance requested.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_container_instances(
-  cluster = "string",
-  containerInstances = list(
-    "string"
-  ),
-  include = list(
-    "TAGS"
-  )
-)
-}
-}
+Describes one or more container instances. Returns metadata about each container instance requested.
 
-\examples{
-\dontrun{
-# This example provides a description of the specified container instance
-# in your default region, using the container instance UUID as an
-# identifier.
-svc$describe_container_instances(
-  cluster = "default",
-  containerInstances = list(
-    "f2756532-8f13-4d53-87c9-aed50dc94cd7"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/describe_container_instances.html} for full documentation.
 }
 \keyword{internal}

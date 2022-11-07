@@ -4,28 +4,32 @@
 \alias{rekognition_start_stream_processor}
 \title{Starts processing a stream processor}
 \usage{
-rekognition_start_stream_processor(Name)
+rekognition_start_stream_processor(
+  Name,
+  StartSelector = NULL,
+  StopSelector = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the stream processor to start processing.}
-}
-\value{
-An empty list.
+
+\item{StartSelector}{Specifies the starting point in the Kinesis stream to start processing.
+You can use the producer timestamp or the fragment number. For more
+information, see
+\href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_reader_Fragment.html}{Fragment}.
+
+This is a required parameter for label detection stream processors and
+should not be used to start a face search stream processor.}
+
+\item{StopSelector}{Specifies when to stop processing the stream. You can specify a maximum
+amount of time to process the video.
+
+This is a required parameter for label detection stream processors and
+should not be used to start a face search stream processor.}
 }
 \description{
-Starts processing a stream processor. You create a stream processor by
-calling
-\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. To
-tell \code{\link[=rekognition_start_stream_processor]{start_stream_processor}}
-which stream processor to start, use the value of the \code{Name} field
-specified in the call to
-\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
-}
-\section{Request syntax}{
-\preformatted{svc$start_stream_processor(
-  Name = "string"
-)
-}
-}
+Starts processing a stream processor. You create a stream processor by calling \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. To tell \code{\link[=rekognition_start_stream_processor]{start_stream_processor}} which stream processor to start, use the value of the \code{Name} field specified in the call to \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 
+See \url{https://paws-r.github.io/docs/rekognition/start_stream_processor.html} for full documentation.
+}
 \keyword{internal}

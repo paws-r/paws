@@ -1,5 +1,13 @@
 svc <- paws::translate()
 
+test_that("list_languages", {
+  expect_error(svc$list_languages(), NA)
+})
+
+test_that("list_languages", {
+  expect_error(svc$list_languages(MaxResults = 20), NA)
+})
+
 test_that("list_parallel_data", {
   expect_error(svc$list_parallel_data(), NA)
 })

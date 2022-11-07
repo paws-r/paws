@@ -13,26 +13,9 @@ tags to. An ARN uniquely identifies a resource.}
 \item{Tags}{[required] The tags to add to a resource. A tag consists of a key and a value that
 you define.}
 }
-\value{
-An empty list.
-}
 \description{
 Add tags to an accelerator resource.
 
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}
-in the \emph{AWS Global Accelerator Developer Guide}.
+See \url{https://paws-r.github.io/docs/globalaccelerator/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,15 +4,20 @@
 \alias{cloudfront_list_origin_request_policies}
 \title{Gets a list of origin request policies}
 \usage{
-cloudfront_list_origin_request_policies(Type, Marker, MaxItems)
+cloudfront_list_origin_request_policies(
+  Type = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{Type}{A filter to return only the specified kinds of origin request policies.
 Valid values are:
 \itemize{
-\item \code{managed} – Returns only the managed policies created by AWS.
-\item \code{custom} – Returns only the custom policies created in your AWS
-account.
+\item \code{managed} – Returns only the managed policies created by Amazon Web
+Services.
+\item \code{custom} – Returns only the custom policies created in your Amazon
+Web Services account.
 }}
 
 \item{Marker}{Use this field when paginating results to indicate where to begin in
@@ -24,78 +29,9 @@ next page of the list, set this field’s value to the value of
 \item{MaxItems}{The maximum number of origin request policies that you want in the
 response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OriginRequestPolicyList = list(
-    NextMarker = "string",
-    MaxItems = 123,
-    Quantity = 123,
-    Items = list(
-      list(
-        Type = "managed"|"custom",
-        OriginRequestPolicy = list(
-          Id = "string",
-          LastModifiedTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          OriginRequestPolicyConfig = list(
-            Comment = "string",
-            Name = "string",
-            HeadersConfig = list(
-              HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
-              Headers = list(
-                Quantity = 123,
-                Items = list(
-                  "string"
-                )
-              )
-            ),
-            CookiesConfig = list(
-              CookieBehavior = "none"|"whitelist"|"all",
-              Cookies = list(
-                Quantity = 123,
-                Items = list(
-                  "string"
-                )
-              )
-            ),
-            QueryStringsConfig = list(
-              QueryStringBehavior = "none"|"whitelist"|"all",
-              QueryStrings = list(
-                Quantity = 123,
-                Items = list(
-                  "string"
-                )
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets a list of origin request policies.
 
-You can optionally apply a filter to return only the managed policies
-created by AWS, or only the custom policies created in your AWS account.
-
-You can optionally specify the maximum number of items to receive in the
-response. If the total number of items in the list exceeds the maximum
-that you specify, or the default maximum, the response is paginated. To
-get the next page of items, send a subsequent request that specifies the
-\code{NextMarker} value from the current response as the \code{Marker} value in
-the subsequent request.
+See \url{https://paws-r.github.io/docs/cloudfront/list_origin_request_policies.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_origin_request_policies(
-  Type = "managed"|"custom",
-  Marker = "string",
-  MaxItems = "string"
-)
-}
-}
-
 \keyword{internal}

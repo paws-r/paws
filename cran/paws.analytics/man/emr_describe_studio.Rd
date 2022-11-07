@@ -2,57 +2,17 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_describe_studio}
 \alias{emr_describe_studio}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Returns details for the specified Amazon EMR Studio including ID, Name,
+VPC, Studio access URL, and so on}
 \usage{
 emr_describe_studio(StudioId)
 }
 \arguments{
 \item{StudioId}{[required] The Amazon EMR Studio ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Studio = list(
-    StudioId = "string",
-    StudioArn = "string",
-    Name = "string",
-    Description = "string",
-    AuthMode = "SSO"|"IAM",
-    VpcId = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    ServiceRole = "string",
-    UserRole = "string",
-    WorkspaceSecurityGroupId = "string",
-    EngineSecurityGroupId = "string",
-    Url = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    DefaultS3Location = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
+Returns details for the specified Amazon EMR Studio including ID, Name, VPC, Studio access URL, and so on.
 
-Returns details for the specified Amazon EMR Studio including ID, Name,
-VPC, Studio access URL, and so on.
+See \url{https://paws-r.github.io/docs/emr/describe_studio.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_studio(
-  StudioId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -6,7 +6,11 @@
 corresponding search, and returns resource configurations matching the
 properties}
 \usage{
-configservice_select_resource_config(Expression, Limit, NextToken)
+configservice_select_resource_config(
+  Expression,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Expression}{[required] The SQL query \code{SELECT} command.}
@@ -16,37 +20,9 @@ configservice_select_resource_config(Expression, Limit, NextToken)
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Results = list(
-    "string"
-  ),
-  QueryInfo = list(
-    SelectFields = list(
-      list(
-        Name = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Accepts a structured query language (SQL) \code{SELECT} command, performs the
-corresponding search, and returns resource configurations matching the
-properties.
+Accepts a structured query language (SQL) \code{SELECT} command, performs the corresponding search, and returns resource configurations matching the properties.
 
-For more information about query components, see the \href{https://docs.aws.amazon.com/config/latest/developerguide/query-components.html}{\strong{Query Components}}
-section in the AWS Config Developer Guide.
+See \url{https://paws-r.github.io/docs/configservice/select_resource_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$select_resource_config(
-  Expression = "string",
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Changes the route table associated with a given subnet, internet
 gateway, or virtual private gateway in a VPC}
 \usage{
-ec2_replace_route_table_association(AssociationId, DryRun, RouteTableId)
+ec2_replace_route_table_association(AssociationId, DryRun = NULL, RouteTableId)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID.}
@@ -17,45 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RouteTableId}{[required] The ID of the new route table to associate with the subnet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NewAssociationId = "string",
-  AssociationState = list(
-    State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
-    StatusMessage = "string"
-  )
-)
-}
-}
 \description{
-Changes the route table associated with a given subnet, internet
-gateway, or virtual private gateway in a VPC. After the operation
-completes, the subnet or gateway uses the routes in the new route table.
-For more information about route tables, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+Changes the route table associated with a given subnet, internet gateway, or virtual private gateway in a VPC. After the operation completes, the subnet or gateway uses the routes in the new route table. For more information about route tables, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-You can also use this operation to change which table is the main route
-table in the VPC. Specify the main route table's association ID and the
-route table ID of the new main route table.
-}
-\section{Request syntax}{
-\preformatted{svc$replace_route_table_association(
-  AssociationId = "string",
-  DryRun = TRUE|FALSE,
-  RouteTableId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example associates the specified route table with the subnet for
-# the specified route table association.
-svc$replace_route_table_association(
-  AssociationId = "rtbassoc-781d0d1a",
-  RouteTableId = "rtb-22574640"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/replace_route_table_association.html} for full documentation.
 }
 \keyword{internal}

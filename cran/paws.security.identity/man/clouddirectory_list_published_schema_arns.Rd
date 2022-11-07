@@ -4,8 +4,11 @@
 \alias{clouddirectory_list_published_schema_arns}
 \title{Lists the major version families of each published schema}
 \usage{
-clouddirectory_list_published_schema_arns(SchemaArn, NextToken,
-  MaxResults)
+clouddirectory_list_published_schema_arns(
+  SchemaArn = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SchemaArn}{The response for
@@ -17,27 +20,9 @@ version.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaArns = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the major version families of each published schema. If a major
-version ARN is provided as \code{SchemaArn}, the minor version revisions in
-that family are listed instead.
-}
-\section{Request syntax}{
-\preformatted{svc$list_published_schema_arns(
-  SchemaArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists the major version families of each published schema. If a major version ARN is provided as \code{SchemaArn}, the minor version revisions in that family are listed instead.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_published_schema_arns.html} for full documentation.
+}
 \keyword{internal}

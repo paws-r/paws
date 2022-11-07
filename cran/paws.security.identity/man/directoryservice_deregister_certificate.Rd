@@ -12,19 +12,9 @@ directoryservice_deregister_certificate(DirectoryId, CertificateId)
 
 \item{CertificateId}{[required] The identifier of the certificate.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes from the system the certificate that was registered for secure
-LDAP or client certificate authentication.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_certificate(
-  DirectoryId = "string",
-  CertificateId = "string"
-)
-}
-}
+Deletes from the system the certificate that was registered for secure LDAP or client certificate authentication.
 
+See \url{https://paws-r.github.io/docs/directoryservice/deregister_certificate.html} for full documentation.
+}
 \keyword{internal}

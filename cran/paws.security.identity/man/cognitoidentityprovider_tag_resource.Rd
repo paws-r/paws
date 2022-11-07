@@ -11,38 +11,9 @@ cognitoidentityprovider_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] The tags to assign to the user pool.}
 }
-\value{
-An empty list.
-}
 \description{
-Assigns a set of tags to an Amazon Cognito user pool. A tag is a label
-that you can use to categorize and manage user pools in different ways,
-such as by purpose, owner, environment, or other criteria.
+Assigns a set of tags to an Amazon Cognito user pool. A tag is a label that you can use to categorize and manage user pools in different ways, such as by purpose, owner, environment, or other criteria.
 
-Each tag consists of a key and value, both of which you define. A key is
-a general category for more specific values. For example, if you have
-two versions of a user pool, one for testing and another for production,
-you might assign an \code{Environment} tag key to both user pools. The value
-of this key might be \code{Test} for one user pool and \code{Production} for the
-other.
-
-Tags are useful for cost tracking and access control. You can activate
-your tags so that they appear on the Billing and Cost Management
-console, where you can track the costs associated with your user pools.
-In an IAM policy, you can constrain permissions for user pools based on
-specific tags or tag values.
-
-You can use this action up to 5 times per second, per account. A user
-pool can have as many as 50 tags.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

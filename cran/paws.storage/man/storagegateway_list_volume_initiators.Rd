@@ -11,25 +11,9 @@ storagegateway_list_volume_initiators(VolumeARN)
 \code{\link[=storagegateway_list_volumes]{list_volumes}} operation to return a list
 of gateway volumes for the gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Initiators = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Lists iSCSI initiators that are connected to a volume. You can use this
-operation to determine whether a volume is being used or not. This
-operation is only supported in the cached volume and stored volume
-gateway types.
-}
-\section{Request syntax}{
-\preformatted{svc$list_volume_initiators(
-  VolumeARN = "string"
-)
-}
-}
+Lists iSCSI initiators that are connected to a volume. You can use this operation to determine whether a volume is being used or not. This operation is only supported in the cached volume and stored volume gateway types.
 
+See \url{https://paws-r.github.io/docs/storagegateway/list_volume_initiators.html} for full documentation.
+}
 \keyword{internal}

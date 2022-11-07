@@ -4,8 +4,12 @@
 \alias{ssm_describe_parameters}
 \title{Get information about a parameter}
 \usage{
-ssm_describe_parameters(Filters, ParameterFilters, MaxResults,
-  NextToken)
+ssm_describe_parameters(
+  Filters = NULL,
+  ParameterFilters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filters}{This data type is deprecated. Instead, use \code{ParameterFilters}.}
@@ -19,69 +23,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Parameters = list(
-    list(
-      Name = "string",
-      Type = "String"|"StringList"|"SecureString",
-      KeyId = "string",
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedUser = "string",
-      Description = "string",
-      AllowedPattern = "string",
-      Version = 123,
-      Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
-      Policies = list(
-        list(
-          PolicyText = "string",
-          PolicyType = "string",
-          PolicyStatus = "string"
-        )
-      ),
-      DataType = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Get information about a parameter.
 
-Request results are returned on a best-effort basis. If you specify
-\code{MaxResults} in the request, the response includes information up to the
-limit specified. The number of items returned, however, can be between
-zero and the value of \code{MaxResults}. If the service reaches an internal
-limit while processing the results, it stops the operation and returns
-the matching values up to that point and a \code{NextToken}. You can specify
-the \code{NextToken} in a subsequent call to get the next set of results.
+See \url{https://paws-r.github.io/docs/ssm/describe_parameters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_parameters(
-  Filters = list(
-    list(
-      Key = "Name"|"Type"|"KeyId",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ParameterFilters = list(
-    list(
-      Key = "string",
-      Option = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

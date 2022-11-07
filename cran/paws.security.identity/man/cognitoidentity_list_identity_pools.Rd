@@ -4,36 +4,16 @@
 \alias{cognitoidentity_list_identity_pools}
 \title{Lists all of the Cognito identity pools registered for your account}
 \usage{
-cognitoidentity_list_identity_pools(MaxResults, NextToken)
+cognitoidentity_list_identity_pools(MaxResults, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{[required] The maximum number of identities to return.}
 
 \item{NextToken}{A pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityPools = list(
-    list(
-      IdentityPoolId = "string",
-      IdentityPoolName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists all of the Cognito identity pools registered for your account.
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/list_identity_pools.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_identity_pools(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -2,66 +2,30 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_identity_provider}
 \alias{cognitoidentityprovider_update_identity_provider}
-\title{Updates identity provider information for a user pool}
+\title{Updates IdP information for a user pool}
 \usage{
-cognitoidentityprovider_update_identity_provider(UserPoolId,
-  ProviderName, ProviderDetails, AttributeMapping, IdpIdentifiers)
+cognitoidentityprovider_update_identity_provider(
+  UserPoolId,
+  ProviderName,
+  ProviderDetails = NULL,
+  AttributeMapping = NULL,
+  IdpIdentifiers = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 
-\item{ProviderName}{[required] The identity provider name.}
+\item{ProviderName}{[required] The IdP name.}
 
-\item{ProviderDetails}{The identity provider details to be updated, such as \code{MetadataURL} and
-\code{MetadataFile}.}
+\item{ProviderDetails}{The IdP details to be updated, such as \code{MetadataURL} and \code{MetadataFile}.}
 
-\item{AttributeMapping}{The identity provider attribute mapping to be changed.}
+\item{AttributeMapping}{The IdP attribute mapping to be changed.}
 
-\item{IdpIdentifiers}{A list of identity provider identifiers.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityProvider = list(
-    UserPoolId = "string",
-    ProviderName = "string",
-    ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
-    ProviderDetails = list(
-      "string"
-    ),
-    AttributeMapping = list(
-      "string"
-    ),
-    IdpIdentifiers = list(
-      "string"
-    ),
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+\item{IdpIdentifiers}{A list of IdP identifiers.}
 }
 \description{
-Updates identity provider information for a user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$update_identity_provider(
-  UserPoolId = "string",
-  ProviderName = "string",
-  ProviderDetails = list(
-    "string"
-  ),
-  AttributeMapping = list(
-    "string"
-  ),
-  IdpIdentifiers = list(
-    "string"
-  )
-)
-}
-}
+Updates IdP information for a user pool.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_identity_provider.html} for full documentation.
+}
 \keyword{internal}

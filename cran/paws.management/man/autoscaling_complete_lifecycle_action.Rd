@@ -5,9 +5,13 @@
 \title{Completes the lifecycle action for the specified token or instance with
 the specified result}
 \usage{
-autoscaling_complete_lifecycle_action(LifecycleHookName,
-  AutoScalingGroupName, LifecycleActionToken, LifecycleActionResult,
-  InstanceId)
+autoscaling_complete_lifecycle_action(
+  LifecycleHookName,
+  AutoScalingGroupName,
+  LifecycleActionToken = NULL,
+  LifecycleActionResult,
+  InstanceId = NULL
+)
 }
 \arguments{
 \item{LifecycleHookName}{[required] The name of the lifecycle hook.}
@@ -19,61 +23,14 @@ lifecycle action associated with an instance. Amazon EC2 Auto Scaling
 sends this token to the notification target you specified when you
 created the lifecycle hook.}
 
-\item{LifecycleActionResult}{[required] The action for the group to take. This parameter can be either
-\code{CONTINUE} or \code{ABANDON}.}
+\item{LifecycleActionResult}{[required] The action for the group to take. You can specify either \code{CONTINUE} or
+\code{ABANDON}.}
 
 \item{InstanceId}{The ID of the instance.}
 }
-\value{
-An empty list.
-}
 \description{
-Completes the lifecycle action for the specified token or instance with
-the specified result.
+Completes the lifecycle action for the specified token or instance with the specified result.
 
-This step is a part of the procedure for adding a lifecycle hook to an
-Auto Scaling group:
-\enumerate{
-\item (Optional) Create a Lambda function and a rule that allows
-CloudWatch Events to invoke your Lambda function when Amazon EC2
-Auto Scaling launches or terminates instances.
-\item (Optional) Create a notification target and an IAM role. The target
-can be either an Amazon SQS queue or an Amazon SNS topic. The role
-allows Amazon EC2 Auto Scaling to publish lifecycle notifications to
-the target.
-\item Create the lifecycle hook. Specify whether the hook is used when the
-instances launch or terminate.
-\item If you need more time, record the lifecycle action heartbeat to keep
-the instance in a pending state.
-\item \strong{If you finish before the timeout period ends, complete the
-lifecycle action.}
-}
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html}{Amazon EC2 Auto Scaling lifecycle hooks}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$complete_lifecycle_action(
-  LifecycleHookName = "string",
-  AutoScalingGroupName = "string",
-  LifecycleActionToken = "string",
-  LifecycleActionResult = "string",
-  InstanceId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example notifies Auto Scaling that the specified lifecycle action
-# is complete so that it can finish launching or terminating the instance.
-svc$complete_lifecycle_action(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  LifecycleActionResult = "CONTINUE",
-  LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
-  LifecycleHookName = "my-lifecycle-hook"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/complete_lifecycle_action.html} for full documentation.
 }
 \keyword{internal}

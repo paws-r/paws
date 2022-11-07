@@ -5,99 +5,67 @@
 \title{Returns a table that shows counts of resources that are noncompliant
 with their tag policies}
 \usage{
-resourcegroupstaggingapi_get_compliance_summary(TargetIdFilters,
-  RegionFilters, ResourceTypeFilters, TagKeyFilters, GroupBy, MaxResults,
-  PaginationToken)
+resourcegroupstaggingapi_get_compliance_summary(
+  TargetIdFilters = NULL,
+  RegionFilters = NULL,
+  ResourceTypeFilters = NULL,
+  TagKeyFilters = NULL,
+  GroupBy = NULL,
+  MaxResults = NULL,
+  PaginationToken = NULL
+)
 }
 \arguments{
-\item{TargetIdFilters}{The target identifiers (usually, specific account IDs) to limit the
-output by. If you use this parameter, the count of returned noncompliant
-resources includes only resources with the specified target IDs.}
+\item{TargetIdFilters}{Specifies target identifiers (usually, specific account IDs) to limit
+the output by. If you use this parameter, the count of returned
+noncompliant resources includes only resources with the specified target
+IDs.}
 
-\item{RegionFilters}{A list of Regions to limit the output by. If you use this parameter, the
-count of returned noncompliant resources includes only resources in the
-specified Regions.}
+\item{RegionFilters}{Specifies a list of Amazon Web Services Regions to limit the output to.
+If you use this parameter, the count of returned noncompliant resources
+includes only resources in the specified Regions.}
 
-\item{ResourceTypeFilters}{The constraints on the resources that you want returned. The format of
-each resource type is \verb{service[:resourceType]}. For example, specifying
-a resource type of \code{ec2} returns all Amazon EC2 resources (which
-includes EC2 instances). Specifying a resource type of \code{ec2:instance}
-returns only EC2 instances.
+\item{ResourceTypeFilters}{Specifies that you want the response to include information for only
+resources of the specified types. The format of each resource type is
+\verb{service[:resourceType]}. For example, specifying a resource type of
+\code{ec2} returns all Amazon EC2 resources (which includes EC2 instances).
+Specifying a resource type of \code{ec2:instance} returns only EC2 instances.
 
 The string for each service name and resource type is the same as that
-embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{AWS
-General Reference} for the following:
+embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{<span
+href="https://docs.aws.amazon.com/general/latest/gr/">Amazon Web
+Services General Reference</span>} for the following:
 \itemize{
-\item For a list of service name strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}.
+\item For a list of service name strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{Amazon Web Services Service Namespaces}.
 \item For resource type strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax}{Example ARNs}.
-\item For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.
+\item For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.
 }
 
-You can specify multiple resource types by using an array. The array can
-include up to 100 items. Note that the length constraint requirement
-applies to each resource type filter.}
+You can specify multiple resource types by using a comma separated
+array. The array can include up to 100 items. Note that the length
+constraint requirement applies to each resource type filter.}
 
-\item{TagKeyFilters}{A list of tag keys to limit the output by. If you use this parameter,
-the count of returned noncompliant resources includes only resources
-that have the specified tag keys.}
+\item{TagKeyFilters}{Specifies that you want the response to include information for only
+resources that have tags with the specified tag keys. If you use this
+parameter, the count of returned noncompliant resources includes only
+resources that have the specified tag keys.}
 
-\item{GroupBy}{A list of attributes to group the counts of noncompliant resources by.
-If supplied, the counts are sorted by those attributes.}
+\item{GroupBy}{Specifies a list of attributes to group the counts of noncompliant
+resources by. If supplied, the counts are sorted by those attributes.}
 
-\item{MaxResults}{A limit that restricts the number of results that are returned per page.}
+\item{MaxResults}{Specifies the maximum number of results to be returned in each page. A
+query can return fewer than this maximum, even if there are more results
+still to return. You should always check the \code{PaginationToken} response
+value to see if there are more results. You can specify a minimum of 1
+and a maximum value of 100.}
 
-\item{PaginationToken}{A string that indicates that additional data is available. Leave this
-value empty for your initial request. If the response includes a
-\code{PaginationToken}, use that string for this value to request an
-additional page of data.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SummaryList = list(
-    list(
-      LastUpdated = "string",
-      TargetId = "string",
-      TargetIdType = "ACCOUNT"|"OU"|"ROOT",
-      Region = "string",
-      ResourceType = "string",
-      NonCompliantResources = 123
-    )
-  ),
-  PaginationToken = "string"
-)
-}
+\item{PaginationToken}{Specifies a \code{PaginationToken} response value from a previous request to
+indicate that you want the next page of results. Leave this parameter
+empty in your initial request.}
 }
 \description{
-Returns a table that shows counts of resources that are noncompliant
-with their tag policies.
+Returns a table that shows counts of resources that are noncompliant with their tag policies.
 
-For more information on tag policies, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{Tag Policies}
-in the \emph{AWS Organizations User Guide.}
-
-You can call this operation only from the organization's master account
-and from the us-east-1 Region.
+See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/get_compliance_summary.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_compliance_summary(
-  TargetIdFilters = list(
-    "string"
-  ),
-  RegionFilters = list(
-    "string"
-  ),
-  ResourceTypeFilters = list(
-    "string"
-  ),
-  TagKeyFilters = list(
-    "string"
-  ),
-  GroupBy = list(
-    "TARGET_ID"|"REGION"|"RESOURCE_TYPE"
-  ),
-  MaxResults = 123,
-  PaginationToken = "string"
-)
-}
-}
-
 \keyword{internal}

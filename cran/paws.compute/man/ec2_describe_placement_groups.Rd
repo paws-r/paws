@@ -4,21 +4,29 @@
 \alias{ec2_describe_placement_groups}
 \title{Describes the specified placement groups or all of your placement groups}
 \usage{
-ec2_describe_placement_groups(Filters, DryRun, GroupNames, GroupIds)
+ec2_describe_placement_groups(
+  Filters = NULL,
+  DryRun = NULL,
+  GroupNames = NULL,
+  GroupIds = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters.
 \itemize{
 \item \code{group-name} - The name of the placement group.
+\item \code{group-arn} - The Amazon Resource Name (ARN) of the placement group.
+\item \code{spread-level} - The spread level for the placement group (\code{host} |
+\code{rack}).
 \item \code{state} - The state of the placement group (\code{pending} | \code{available}
 | \code{deleting} | \code{deleted}).
 \item \code{strategy} - The strategy of the placement group (\code{cluster} |
 \code{spread} | \code{partition}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \verb{tag:<key>} - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources that have a tag with a specific key,
 regardless of the tag value.
@@ -36,50 +44,9 @@ specified.}
 
 \item{GroupIds}{The IDs of the placement groups.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PlacementGroups = list(
-    list(
-      GroupName = "string",
-      State = "pending"|"available"|"deleting"|"deleted",
-      Strategy = "cluster"|"spread"|"partition",
-      PartitionCount = 123,
-      GroupId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the specified placement groups or all of your placement
-groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_placement_groups(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  GroupNames = list(
-    "string"
-  ),
-  GroupIds = list(
-    "string"
-  )
-)
-}
-}
+Describes the specified placement groups or all of your placement groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups} in the \emph{Amazon EC2 User Guide}.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_placement_groups.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,11 @@
 \alias{servicecatalog_list_tag_options}
 \title{Lists the specified TagOptions or all TagOptions}
 \usage{
-servicecatalog_list_tag_options(Filters, PageSize, PageToken)
+servicecatalog_list_tag_options(
+  Filters = NULL,
+  PageSize = NULL,
+  PageToken = NULL
+)
 }
 \arguments{
 \item{Filters}{The search filters. If no search filters are specified, the output
@@ -15,35 +19,9 @@ includes all TagOptions.}
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagOptionDetails = list(
-    list(
-      Key = "string",
-      Value = "string",
-      Active = TRUE|FALSE,
-      Id = "string",
-      Owner = "string"
-    )
-  ),
-  PageToken = "string"
-)
-}
-}
 \description{
 Lists the specified TagOptions or all TagOptions.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tag_options(
-  Filters = list(
-    Key = "string",
-    Value = "string",
-    Active = TRUE|FALSE
-  ),
-  PageSize = 123,
-  PageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_tag_options.html} for full documentation.
+}
 \keyword{internal}

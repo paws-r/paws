@@ -4,7 +4,7 @@
 \alias{firehose_delete_delivery_stream}
 \title{Deletes a delivery stream and its data}
 \usage{
-firehose_delete_delivery_stream(DeliveryStreamName, AllowForceDelete)
+firehose_delete_delivery_stream(DeliveryStreamName, AllowForceDelete = NULL)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
@@ -21,32 +21,9 @@ Data Firehose keeps retrying the delete operation.
 
 The default value is false.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a delivery stream and its data.
 
-To check the state of a delivery stream, use
-\code{\link[=firehose_describe_delivery_stream]{describe_delivery_stream}}. You can
-delete a delivery stream only if it is in one of the following states:
-\code{ACTIVE}, \code{DELETING}, \code{CREATING_FAILED}, or \code{DELETING_FAILED}. You can't
-delete a delivery stream that is in the \code{CREATING} state. While the
-deletion request is in process, the delivery stream is in the \code{DELETING}
-state.
-
-While the delivery stream is in the \code{DELETING} state, the service might
-continue to accept records, but it doesn't make any guarantees with
-respect to delivering the data. Therefore, as a best practice, first
-stop any applications that are sending records before you delete a
-delivery stream.
+See \url{https://paws-r.github.io/docs/firehose/delete_delivery_stream.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_delivery_stream(
-  DeliveryStreamName = "string",
-  AllowForceDelete = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

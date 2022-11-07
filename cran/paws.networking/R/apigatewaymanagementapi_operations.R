@@ -8,20 +8,9 @@ NULL
 #' @description
 #' Delete the connection with the provided id.
 #'
-#' @usage
-#' apigatewaymanagementapi_delete_connection(ConnectionId)
+#' See [https://paws-r.github.io/docs/apigatewaymanagementapi/delete_connection.html](https://paws-r.github.io/docs/apigatewaymanagementapi/delete_connection.html) for full documentation.
 #'
 #' @param ConnectionId &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_connection(
-#'   ConnectionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -48,34 +37,9 @@ apigatewaymanagementapi_delete_connection <- function(ConnectionId) {
 #' @description
 #' Get information about the connection with the provided id.
 #'
-#' @usage
-#' apigatewaymanagementapi_get_connection(ConnectionId)
+#' See [https://paws-r.github.io/docs/apigatewaymanagementapi/get_connection.html](https://paws-r.github.io/docs/apigatewaymanagementapi/get_connection.html) for full documentation.
 #'
 #' @param ConnectionId &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConnectedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Identity = list(
-#'     SourceIp = "string",
-#'     UserAgent = "string"
-#'   ),
-#'   LastActiveAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_connection(
-#'   ConnectionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -102,22 +66,10 @@ apigatewaymanagementapi_get_connection <- function(ConnectionId) {
 #' @description
 #' Sends the provided data to the specified connection.
 #'
-#' @usage
-#' apigatewaymanagementapi_post_to_connection(Data, ConnectionId)
+#' See [https://paws-r.github.io/docs/apigatewaymanagementapi/post_to_connection.html](https://paws-r.github.io/docs/apigatewaymanagementapi/post_to_connection.html) for full documentation.
 #'
 #' @param Data &#91;required&#93; The data to be sent to the client specified by its connection id.
 #' @param ConnectionId &#91;required&#93; The identifier of the connection that a specific client is using.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$post_to_connection(
-#'   Data = raw,
-#'   ConnectionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

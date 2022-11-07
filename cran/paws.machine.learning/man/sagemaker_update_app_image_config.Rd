@@ -4,41 +4,19 @@
 \alias{sagemaker_update_app_image_config}
 \title{Updates the properties of an AppImageConfig}
 \usage{
-sagemaker_update_app_image_config(AppImageConfigName,
-  KernelGatewayImageConfig)
+sagemaker_update_app_image_config(
+  AppImageConfigName,
+  KernelGatewayImageConfig = NULL
+)
 }
 \arguments{
 \item{AppImageConfigName}{[required] The name of the AppImageConfig to update.}
 
 \item{KernelGatewayImageConfig}{The new KernelGateway app to run on the image.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AppImageConfigArn = "string"
-)
-}
-}
 \description{
 Updates the properties of an AppImageConfig.
-}
-\section{Request syntax}{
-\preformatted{svc$update_app_image_config(
-  AppImageConfigName = "string",
-  KernelGatewayImageConfig = list(
-    KernelSpecs = list(
-      list(
-        Name = "string",
-        DisplayName = "string"
-      )
-    ),
-    FileSystemConfig = list(
-      MountPath = "string",
-      DefaultUid = 123,
-      DefaultGid = 123
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_app_image_config.html} for full documentation.
+}
 \keyword{internal}

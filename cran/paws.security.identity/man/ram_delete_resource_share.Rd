@@ -4,30 +4,25 @@
 \alias{ram_delete_resource_share}
 \title{Deletes the specified resource share}
 \usage{
-ram_delete_resource_share(resourceShareArn, clientToken)
+ram_delete_resource_share(resourceShareArn, clientToken = NULL)
 }
 \arguments{
-\item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the resource share to delete.}
 
-\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  returnValue = TRUE|FALSE,
-  clientToken = "string"
-)
-}
+\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
+the idempotency of the request. This lets you safely retry the request
+without accidentally performing the same operation a second time.
+Passing the same value to a later call to an operation requires that you
+also pass the same value for all other parameters. We recommend that you
+use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
+
+If you don't provide this value, then Amazon Web Services generates a
+random one for you.}
 }
 \description{
-Deletes the specified resource share.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_resource_share(
-  resourceShareArn = "string",
-  clientToken = "string"
-)
-}
-}
+Deletes the specified resource share. This doesn't delete any of the resources that were associated with the resource share; it only stops the sharing of those resources outside of the Amazon Web Services account that created them.
 
+See \url{https://paws-r.github.io/docs/ram/delete_resource_share.html} for full documentation.
+}
 \keyword{internal}

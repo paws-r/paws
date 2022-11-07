@@ -69,7 +69,8 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
 #' @param type &#91;required&#93; The type of the managed endpoint.
 #' @param releaseLabel &#91;required&#93; The Amazon EMR release version.
 #' @param executionRoleArn &#91;required&#93; The ARN of the execution role.
-#' @param certificateArn &#91;required&#93; The certificate ARN of the managed endpoint.
+#' @param certificateArn The certificate ARN provided by users for the managed endpoint. This
+#' fiedd is under deprecation and will be removed in future releases.
 #' @param configurationOverrides The configuration settings that will be used to override existing
 #' configurations.
 #' @param clientToken &#91;required&#93; The client idempotency token for this create call.
@@ -126,7 +127,7 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
 #' @keywords internal
 #'
 #' @rdname emrcontainers_create_managed_endpoint
-emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, releaseLabel, executionRoleArn, certificateArn, configurationOverrides = NULL, clientToken, tags = NULL) {
+emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, releaseLabel, executionRoleArn, certificateArn = NULL, configurationOverrides = NULL, clientToken, tags = NULL) {
   op <- new_operation(
     name = "CreateManagedEndpoint",
     http_method = "POST",
@@ -439,6 +440,10 @@ emrcontainers_describe_job_run <- function(id, virtualClusterId) {
 #'     releaseLabel = "string",
 #'     executionRoleArn = "string",
 #'     certificateArn = "string",
+#'     certificateAuthority = list(
+#'       certificateArn = "string",
+#'       certificateData = "string"
+#'     ),
 #'     configurationOverrides = list(
 #'       applicationConfiguration = list(
 #'         list(
@@ -468,6 +473,8 @@ emrcontainers_describe_job_run <- function(id, virtualClusterId) {
 #'     subnetIds = list(
 #'       "string"
 #'     ),
+#'     stateDetails = "string",
+#'     failureReason = "INTERNAL_ERROR"|"USER_ERROR"|"VALIDATION_ERROR"|"CLUSTER_UNAVAILABLE",
 #'     tags = list(
 #'       "string"
 #'     )
@@ -728,6 +735,10 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
 #'       releaseLabel = "string",
 #'       executionRoleArn = "string",
 #'       certificateArn = "string",
+#'       certificateAuthority = list(
+#'         certificateArn = "string",
+#'         certificateData = "string"
+#'       ),
 #'       configurationOverrides = list(
 #'         applicationConfiguration = list(
 #'           list(
@@ -757,6 +768,8 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
 #'       subnetIds = list(
 #'         "string"
 #'       ),
+#'       stateDetails = "string",
+#'       failureReason = "INTERNAL_ERROR"|"USER_ERROR"|"VALIDATION_ERROR"|"CLUSTER_UNAVAILABLE",
 #'       tags = list(
 #'         "string"
 #'       )

@@ -2,10 +2,14 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_list_studio_session_mappings}
 \alias{emr_list_studio_session_mappings}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Returns a list of all user or group session mappings for the Amazon EMR
+Studio specified by StudioId}
 \usage{
-emr_list_studio_session_mappings(StudioId, IdentityType, Marker)
+emr_list_studio_session_mappings(
+  StudioId = NULL,
+  IdentityType = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{StudioId}{The ID of the Amazon EMR Studio.}
@@ -16,38 +20,9 @@ and groups.}
 
 \item{Marker}{The pagination token that indicates the set of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SessionMappings = list(
-    list(
-      StudioId = "string",
-      IdentityId = "string",
-      IdentityName = "string",
-      IdentityType = "USER"|"GROUP",
-      SessionPolicyArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
+Returns a list of all user or group session mappings for the Amazon EMR Studio specified by \code{StudioId}.
 
-Returns a list of all user or group session mappings for the EMR Studio
-specified by \code{StudioId}.
+See \url{https://paws-r.github.io/docs/emr/list_studio_session_mappings.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_studio_session_mappings(
-  StudioId = "string",
-  IdentityType = "USER"|"GROUP",
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

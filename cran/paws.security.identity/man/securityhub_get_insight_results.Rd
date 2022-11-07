@@ -10,30 +10,9 @@ securityhub_get_insight_results(InsightArn)
 \arguments{
 \item{InsightArn}{[required] The ARN of the insight for which to return results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InsightResults = list(
-    InsightArn = "string",
-    GroupByAttribute = "string",
-    ResultValues = list(
-      list(
-        GroupByAttributeValue = "string",
-        Count = 123
-      )
-    )
-  )
-)
-}
-}
 \description{
-Lists the results of the Security Hub insight specified by the insight
-ARN.
-}
-\section{Request syntax}{
-\preformatted{svc$get_insight_results(
-  InsightArn = "string"
-)
-}
-}
+Lists the results of the Security Hub insight specified by the insight ARN.
 
+See \url{https://paws-r.github.io/docs/securityhub/get_insight_results.html} for full documentation.
+}
 \keyword{internal}

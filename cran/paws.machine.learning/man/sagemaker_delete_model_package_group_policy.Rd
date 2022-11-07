@@ -9,17 +9,9 @@ sagemaker_delete_model_package_group_policy(ModelPackageGroupName)
 \arguments{
 \item{ModelPackageGroupName}{[required] The name of the model group for which to delete the policy.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a model group resource policy.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_model_package_group_policy(
-  ModelPackageGroupName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_model_package_group_policy.html} for full documentation.
+}
 \keyword{internal}

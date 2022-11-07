@@ -15,50 +15,9 @@ returned by
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Permanently deletes a RateBasedRule. You can't delete a rule if it's
-still used in any \code{WebACL} objects or if it still includes any
-predicates, such as \code{ByteMatchSet} objects.
-
-If you just want to remove a rule from a \code{WebACL}, use
-\code{\link[=wafregional_update_web_acl]{update_web_acl}}.
-
-To permanently delete a \code{RateBasedRule} from AWS WAF, perform the
-following steps:
-\enumerate{
-\item Update the \code{RateBasedRule} to remove predicates, if any. For more
-information, see
-\code{\link[=wafregional_update_rate_based_rule]{update_rate_based_rule}}.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of a
-\code{\link[=wafregional_delete_rate_based_rule]{delete_rate_based_rule}}
-request.
-\item Submit a
-\code{\link[=wafregional_delete_rate_based_rule]{delete_rate_based_rule}}
-request.
+See \url{https://paws-r.github.io/docs/wafregional/delete_rate_based_rule.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$delete_rate_based_rule(
-  RuleId = "string",
-  ChangeToken = "string"
-)
-}
-}
-
 \keyword{internal}

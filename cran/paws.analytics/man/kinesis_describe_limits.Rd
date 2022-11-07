@@ -6,24 +6,9 @@
 \usage{
 kinesis_describe_limits()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ShardLimit = 123,
-  OpenShardCount = 123
-)
-}
-}
 \description{
 Describes the shard limits and usage for the account.
 
-If you update your account limits, the old limits might be returned for
-a few minutes.
-
-This operation has a limit of one transaction per second per account.
+See \url{https://paws-r.github.io/docs/kinesis/describe_limits.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_limits()
-}
-}
-
 \keyword{internal}

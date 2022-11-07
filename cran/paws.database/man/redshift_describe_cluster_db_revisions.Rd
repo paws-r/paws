@@ -4,8 +4,11 @@
 \alias{redshift_describe_cluster_db_revisions}
 \title{Returns an array of ClusterDbRevision objects}
 \usage{
-redshift_describe_cluster_db_revisions(ClusterIdentifier, MaxRecords,
-  Marker)
+redshift_describe_cluster_db_revisions(
+  ClusterIdentifier = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{A unique identifier for a cluster whose \code{ClusterDbRevisions} you are
@@ -33,40 +36,9 @@ value in the \code{marker} parameter and retrying the request.
 Constraints: You can specify either the \code{ClusterIdentifier} parameter,
 or the \code{marker} parameter, but not both.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ClusterDbRevisions = list(
-    list(
-      ClusterIdentifier = "string",
-      CurrentDatabaseRevision = "string",
-      DatabaseRevisionReleaseDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      RevisionTargets = list(
-        list(
-          DatabaseRevision = "string",
-          Description = "string",
-          DatabaseRevisionReleaseDate = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Returns an array of \code{ClusterDbRevision} objects.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_cluster_db_revisions(
-  ClusterIdentifier = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/describe_cluster_db_revisions.html} for full documentation.
+}
 \keyword{internal}

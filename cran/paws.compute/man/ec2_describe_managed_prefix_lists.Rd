@@ -2,10 +2,16 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_managed_prefix_lists}
 \alias{ec2_describe_managed_prefix_lists}
-\title{Describes your managed prefix lists and any AWS-managed prefix lists}
+\title{Describes your managed prefix lists and any Amazon Web Services-managed
+prefix lists}
 \usage{
-ec2_describe_managed_prefix_lists(DryRun, Filters, MaxResults,
-  NextToken, PrefixListIds)
+ec2_describe_managed_prefix_lists(
+  DryRun = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  PrefixListIds = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -28,55 +34,9 @@ value.}
 
 \item{PrefixListIds}{One or more prefix list IDs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  PrefixLists = list(
-    list(
-      PrefixListId = "string",
-      AddressFamily = "string",
-      State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
-      StateMessage = "string",
-      PrefixListArn = "string",
-      PrefixListName = "string",
-      MaxEntries = 123,
-      Version = 123,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      OwnerId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Describes your managed prefix lists and any AWS-managed prefix lists.
+Describes your managed prefix lists and any Amazon Web Services-managed prefix lists.
 
-To view the entries for your prefix list, use
-\code{\link[=ec2_get_managed_prefix_list_entries]{get_managed_prefix_list_entries}}.
+See \url{https://paws-r.github.io/docs/ec2/describe_managed_prefix_lists.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_managed_prefix_lists(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  PrefixListIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

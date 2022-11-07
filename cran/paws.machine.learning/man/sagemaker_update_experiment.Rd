@@ -4,7 +4,11 @@
 \alias{sagemaker_update_experiment}
 \title{Adds, updates, or removes the description of an experiment}
 \usage{
-sagemaker_update_experiment(ExperimentName, DisplayName, Description)
+sagemaker_update_experiment(
+  ExperimentName,
+  DisplayName = NULL,
+  Description = NULL
+)
 }
 \arguments{
 \item{ExperimentName}{[required] The name of the experiment to update.}
@@ -14,23 +18,9 @@ unique. If \code{DisplayName} isn't specified, \code{ExperimentName} is displaye
 
 \item{Description}{The description of the experiment.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExperimentArn = "string"
-)
-}
-}
 \description{
-Adds, updates, or removes the description of an experiment. Updates the
-display name of an experiment.
-}
-\section{Request syntax}{
-\preformatted{svc$update_experiment(
-  ExperimentName = "string",
-  DisplayName = "string",
-  Description = "string"
-)
-}
-}
+Adds, updates, or removes the description of an experiment. Updates the display name of an experiment.
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_experiment.html} for full documentation.
+}
 \keyword{internal}

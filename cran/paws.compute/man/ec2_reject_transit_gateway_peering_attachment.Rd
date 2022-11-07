@@ -5,7 +5,9 @@
 \title{Rejects a transit gateway peering attachment request}
 \usage{
 ec2_reject_transit_gateway_peering_attachment(
-  TransitGatewayAttachmentId, DryRun)
+  TransitGatewayAttachmentId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the transit gateway peering attachment.}
@@ -15,47 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayPeeringAttachment = list(
-    TransitGatewayAttachmentId = "string",
-    RequesterTgwInfo = list(
-      TransitGatewayId = "string",
-      OwnerId = "string",
-      Region = "string"
-    ),
-    AccepterTgwInfo = list(
-      TransitGatewayId = "string",
-      OwnerId = "string",
-      Region = "string"
-    ),
-    Status = list(
-      Code = "string",
-      Message = "string"
-    ),
-    State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Rejects a transit gateway peering attachment request.
-}
-\section{Request syntax}{
-\preformatted{svc$reject_transit_gateway_peering_attachment(
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/reject_transit_gateway_peering_attachment.html} for full documentation.
+}
 \keyword{internal}

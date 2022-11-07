@@ -2,116 +2,21 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_update_association_status}
 \alias{ssm_update_association_status}
-\title{Updates the status of the Systems Manager document associated with the
-specified instance}
+\title{Updates the status of the Amazon Web Services Systems Manager document
+(SSM document) associated with the specified managed node}
 \usage{
 ssm_update_association_status(Name, InstanceId, AssociationStatus)
 }
 \arguments{
-\item{Name}{[required] The name of the Systems Manager document.}
+\item{Name}{[required] The name of the SSM document.}
 
-\item{InstanceId}{[required] The ID of the instance.}
+\item{InstanceId}{[required] The managed node ID.}
 
 \item{AssociationStatus}{[required] The association status.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociationDescription = list(
-    Name = "string",
-    InstanceId = "string",
-    AssociationVersion = "string",
-    Date = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdateAssociationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = list(
-      Date = as.POSIXct(
-        "2015-01-01"
-      ),
-      Name = "Pending"|"Success"|"Failed",
-      Message = "string",
-      AdditionalInfo = "string"
-    ),
-    Overview = list(
-      Status = "string",
-      DetailedStatus = "string",
-      AssociationStatusAggregatedCount = list(
-        123
-      )
-    ),
-    DocumentVersion = "string",
-    AutomationTargetParameterName = "string",
-    Parameters = list(
-      list(
-        "string"
-      )
-    ),
-    AssociationId = "string",
-    Targets = list(
-      list(
-        Key = "string",
-        Values = list(
-          "string"
-        )
-      )
-    ),
-    ScheduleExpression = "string",
-    OutputLocation = list(
-      S3Location = list(
-        OutputS3Region = "string",
-        OutputS3BucketName = "string",
-        OutputS3KeyPrefix = "string"
-      )
-    ),
-    LastExecutionDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastSuccessfulExecutionDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    AssociationName = "string",
-    MaxErrors = "string",
-    MaxConcurrency = "string",
-    ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-    SyncCompliance = "AUTO"|"MANUAL",
-    ApplyOnlyAtCronInterval = TRUE|FALSE,
-    TargetLocations = list(
-      list(
-        Accounts = list(
-          "string"
-        ),
-        Regions = list(
-          "string"
-        ),
-        TargetLocationMaxConcurrency = "string",
-        TargetLocationMaxErrors = "string",
-        ExecutionRoleName = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Updates the status of the Systems Manager document associated with the
-specified instance.
-}
-\section{Request syntax}{
-\preformatted{svc$update_association_status(
-  Name = "string",
-  InstanceId = "string",
-  AssociationStatus = list(
-    Date = as.POSIXct(
-      "2015-01-01"
-    ),
-    Name = "Pending"|"Success"|"Failed",
-    Message = "string",
-    AdditionalInfo = "string"
-  )
-)
-}
-}
+Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node.
 
+See \url{https://paws-r.github.io/docs/ssm/update_association_status.html} for full documentation.
+}
 \keyword{internal}

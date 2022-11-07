@@ -4,8 +4,15 @@
 \alias{ec2_create_managed_prefix_list}
 \title{Creates a managed prefix list}
 \usage{
-ec2_create_managed_prefix_list(DryRun, PrefixListName, Entries,
-  MaxEntries, TagSpecifications, AddressFamily, ClientToken)
+ec2_create_managed_prefix_list(
+  DryRun = NULL,
+  PrefixListName,
+  Entries = NULL,
+  MaxEntries,
+  TagSpecifications = NULL,
+  AddressFamily,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -33,62 +40,9 @@ of the request. For more information, see \href{https://docs.aws.amazon.com/AWSE
 
 Constraints: Up to 255 UTF-8 characters in length.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PrefixList = list(
-    PrefixListId = "string",
-    AddressFamily = "string",
-    State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
-    StateMessage = "string",
-    PrefixListArn = "string",
-    PrefixListName = "string",
-    MaxEntries = 123,
-    Version = 123,
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    OwnerId = "string"
-  )
-)
-}
-}
 \description{
-Creates a managed prefix list. You can specify one or more entries for
-the prefix list. Each entry consists of a CIDR block and an optional
-description.
+Creates a managed prefix list. You can specify one or more entries for the prefix list. Each entry consists of a CIDR block and an optional description.
 
-You must specify the maximum number of entries for the prefix list. The
-maximum number of entries cannot be changed later.
+See \url{https://paws-r.github.io/docs/ec2/create_managed_prefix_list.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_managed_prefix_list(
-  DryRun = TRUE|FALSE,
-  PrefixListName = "string",
-  Entries = list(
-    list(
-      Cidr = "string",
-      Description = "string"
-    )
-  ),
-  MaxEntries = 123,
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  AddressFamily = "string",
-  ClientToken = "string"
-)
-}
-}
-
 \keyword{internal}

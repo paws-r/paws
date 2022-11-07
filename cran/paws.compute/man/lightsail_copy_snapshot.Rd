@@ -6,9 +6,14 @@
 snapshot, or copies an automatic snapshot of an instance or disk as a
 manual snapshot}
 \usage{
-lightsail_copy_snapshot(sourceSnapshotName, sourceResourceName,
-  restoreDate, useLatestRestorableAutoSnapshot, targetSnapshotName,
-  sourceRegion)
+lightsail_copy_snapshot(
+  sourceSnapshotName = NULL,
+  sourceResourceName = NULL,
+  restoreDate = NULL,
+  useLatestRestorableAutoSnapshot = NULL,
+  targetSnapshotName,
+  sourceRegion
+)
 }
 \arguments{
 \item{sourceSnapshotName}{The name of the source manual snapshot to copy.
@@ -25,7 +30,8 @@ snapshot was created.
 Constraint:
 \itemize{
 \item Define this parameter only when copying an automatic snapshot as a
-manual snapshot. For more information, see the Lightsail Dev Guide.
+manual snapshot. For more information, see the Amazon Lightsail
+Developer Guide.
 }}
 
 \item{restoreDate}{The date of the source automatic snapshot to copy. Use the
@@ -40,7 +46,8 @@ Constraints:
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
 \item Define this parameter only when copying an automatic snapshot as a
-manual snapshot. For more information, see the Lightsail Dev Guide.
+manual snapshot. For more information, see the Amazon Lightsail
+Developer Guide.
 }}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
@@ -52,66 +59,18 @@ Constraints:
 parameter. The \verb{use latest restorable auto snapshot} and
 \verb{restore date} parameters are mutually exclusive.
 \item Define this parameter only when copying an automatic snapshot as a
-manual snapshot. For more information, see the Lightsail Dev Guide.
+manual snapshot. For more information, see the Amazon Lightsail
+Developer Guide.
 }}
 
 \item{targetSnapshotName}{[required] The name of the new manual snapshot to be created as a copy.}
 
-\item{sourceRegion}{[required] The AWS Region where the source manual or automatic snapshot is located.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  operations = list(
-    list(
-      id = "string",
-      resourceName = "string",
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      isTerminal = TRUE|FALSE,
-      operationDetails = "string",
-      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-      status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-      statusChangedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      errorCode = "string",
-      errorDetails = "string"
-    )
-  )
-)
-}
+\item{sourceRegion}{[required] The Amazon Web Services Region where the source manual or automatic
+snapshot is located.}
 }
 \description{
-Copies a manual snapshot of an instance or disk as another manual
-snapshot, or copies an automatic snapshot of an instance or disk as a
-manual snapshot. This operation can also be used to copy a manual or
-automatic snapshot of an instance or a disk from one AWS Region to
-another in Amazon Lightsail.
+Copies a manual snapshot of an instance or disk as another manual snapshot, or copies an automatic snapshot of an instance or disk as a manual snapshot. This operation can also be used to copy a manual or automatic snapshot of an instance or a disk from one Amazon Web Services Region to another in Amazon Lightsail.
 
-When copying a \emph{manual snapshot}, be sure to define the \verb{source region},
-\verb{source snapshot name}, and \verb{target snapshot name} parameters.
-
-When copying an \emph{automatic snapshot}, be sure to define the
-\verb{source region}, \verb{source resource name}, \verb{target snapshot name}, and
-either the \verb{restore date} or the \verb{use latest restorable auto snapshot}
-parameters.
+See \url{https://paws-r.github.io/docs/lightsail/copy_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$copy_snapshot(
-  sourceSnapshotName = "string",
-  sourceResourceName = "string",
-  restoreDate = "string",
-  useLatestRestorableAutoSnapshot = TRUE|FALSE,
-  targetSnapshotName = "string",
-  sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-)
-}
-}
-
 \keyword{internal}

@@ -5,8 +5,14 @@
 \title{Retrieves a list that describes the streaming sessions for a specified
 stack and fleet}
 \usage{
-appstream_describe_sessions(StackName, FleetName, UserId, NextToken,
-  Limit, AuthenticationType)
+appstream_describe_sessions(
+  StackName,
+  FleetName,
+  UserId = NULL,
+  NextToken = NULL,
+  Limit = NULL,
+  AuthenticationType = NULL
+)
 }
 \arguments{
 \item{StackName}{[required] The name of the stack. This value is case-sensitive.}
@@ -26,50 +32,9 @@ maximum value is 50.}
 a streaming URL or \code{SAML} for a SAML federated user. The default is to
 authenticate users using a streaming URL.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Sessions = list(
-    list(
-      Id = "string",
-      UserId = "string",
-      StackName = "string",
-      FleetName = "string",
-      State = "ACTIVE"|"PENDING"|"EXPIRED",
-      ConnectionState = "CONNECTED"|"NOT_CONNECTED",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MaxExpirationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      AuthenticationType = "API"|"SAML"|"USERPOOL",
-      NetworkAccessConfiguration = list(
-        EniPrivateIpAddress = "string",
-        EniId = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list that describes the streaming sessions for a specified
-stack and fleet. If a UserId is provided for the stack and fleet, only
-streaming sessions for that user are described. If an authentication
-type is not provided, the default is to authenticate users using a
-streaming URL.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_sessions(
-  StackName = "string",
-  FleetName = "string",
-  UserId = "string",
-  NextToken = "string",
-  Limit = 123,
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
-}
-}
+Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
 
+See \url{https://paws-r.github.io/docs/appstream/describe_sessions.html} for full documentation.
+}
 \keyword{internal}

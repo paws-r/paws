@@ -23,45 +23,9 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{[required] The version number or alias name.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestedProvisionedConcurrentExecutions = 123,
-  AvailableProvisionedConcurrentExecutions = 123,
-  AllocatedProvisionedConcurrentExecutions = 123,
-  Status = "IN_PROGRESS"|"READY"|"FAILED",
-  StatusReason = "string",
-  LastModified = "string"
-)
-}
-}
 \description{
-Retrieves the provisioned concurrency configuration for a function's
-alias or version.
-}
-\section{Request syntax}{
-\preformatted{svc$get_provisioned_concurrency_config(
-  FunctionName = "string",
-  Qualifier = "string"
-)
-}
-}
+Retrieves the provisioned concurrency configuration for a function's alias or version.
 
-\examples{
-\dontrun{
-# The following example displays details for the provisioned concurrency
-# configuration for the BLUE alias of the specified function.
-svc$get_provisioned_concurrency_config(
-  FunctionName = "my-function",
-  Qualifier = "BLUE"
-)
-
-# The following example returns details for the provisioned concurrency
-# configuration for the BLUE alias of the specified function.
-svc$get_provisioned_concurrency_config(
-  FunctionName = "my-function",
-  Qualifier = "BLUE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/get_provisioned_concurrency_config.html} for full documentation.
 }
 \keyword{internal}

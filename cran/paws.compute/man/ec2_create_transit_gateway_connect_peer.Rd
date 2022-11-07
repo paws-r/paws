@@ -5,9 +5,15 @@
 \title{Creates a Connect peer for a specified transit gateway Connect
 attachment between a transit gateway and an appliance}
 \usage{
-ec2_create_transit_gateway_connect_peer(TransitGatewayAttachmentId,
-  TransitGatewayAddress, PeerAddress, BgpOptions, InsideCidrBlocks,
-  TagSpecifications, DryRun)
+ec2_create_transit_gateway_connect_peer(
+  TransitGatewayAttachmentId,
+  TransitGatewayAddress = NULL,
+  PeerAddress,
+  BgpOptions = NULL,
+  InsideCidrBlocks,
+  TagSpecifications = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the Connect attachment.}
@@ -35,77 +41,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayConnectPeer = list(
-    TransitGatewayAttachmentId = "string",
-    TransitGatewayConnectPeerId = "string",
-    State = "pending"|"available"|"deleting"|"deleted",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ConnectPeerConfiguration = list(
-      TransitGatewayAddress = "string",
-      PeerAddress = "string",
-      InsideCidrBlocks = list(
-        "string"
-      ),
-      Protocol = "gre",
-      BgpConfigurations = list(
-        list(
-          TransitGatewayAsn = 123,
-          PeerAsn = 123,
-          TransitGatewayAddress = "string",
-          PeerAddress = "string",
-          BgpStatus = "up"|"down"
-        )
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a Connect peer for a specified transit gateway Connect
-attachment between a transit gateway and an appliance.
+Creates a Connect peer for a specified transit gateway Connect attachment between a transit gateway and an appliance.
 
-The peer address and transit gateway address must be the same IP address
-family (IPv4 or IPv6).
-
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html#tgw-connect-peer}{Connect peers}
-in the \emph{Transit Gateways Guide}.
+See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway_connect_peer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_transit_gateway_connect_peer(
-  TransitGatewayAttachmentId = "string",
-  TransitGatewayAddress = "string",
-  PeerAddress = "string",
-  BgpOptions = list(
-    PeerAsn = 123
-  ),
-  InsideCidrBlocks = list(
-    "string"
-  ),
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

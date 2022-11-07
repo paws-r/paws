@@ -4,9 +4,22 @@
 \alias{glue_update_crawler}
 \title{Updates a crawler}
 \usage{
-glue_update_crawler(Name, Role, DatabaseName, Description, Targets,
-  Schedule, Classifiers, TablePrefix, SchemaChangePolicy, RecrawlPolicy,
-  LineageConfiguration, Configuration, CrawlerSecurityConfiguration)
+glue_update_crawler(
+  Name,
+  Role = NULL,
+  DatabaseName = NULL,
+  Description = NULL,
+  Targets = NULL,
+  Schedule = NULL,
+  Classifiers = NULL,
+  TablePrefix = NULL,
+  SchemaChangePolicy = NULL,
+  RecrawlPolicy = NULL,
+  LineageConfiguration = NULL,
+  LakeFormationConfiguration = NULL,
+  Configuration = NULL,
+  CrawlerSecurityConfiguration = NULL
+)
 }
 \arguments{
 \item{Name}{[required] Name of the new crawler.}
@@ -14,7 +27,7 @@ glue_update_crawler(Name, Role, DatabaseName, Description, Targets,
 \item{Role}{The IAM role or Amazon Resource Name (ARN) of an IAM role that is used
 by the new crawler to access customer resources.}
 
-\item{DatabaseName}{The AWS Glue database where results are stored, such as:
+\item{DatabaseName}{The Glue database where results are stored, such as:
 \verb{arn:aws:daylight:us-east-1::database/sometable/*}.}
 
 \item{Description}{A description of the new crawler.}
@@ -39,6 +52,8 @@ crawl only folders that were added since the last crawler run.}
 
 \item{LineageConfiguration}{Specifies data lineage configuration settings for the crawler.}
 
+\item{LakeFormationConfiguration}{Specifies Lake Formation configuration settings for the crawler.}
+
 \item{Configuration}{Crawler configuration information. This versioned JSON string allows
 users to specify aspects of a crawler's behavior. For more information,
 see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
@@ -46,80 +61,9 @@ see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}
 \item{CrawlerSecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used by this
 crawler.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates a crawler. If a crawler is running, you must stop it using
-\code{\link[=glue_stop_crawler]{stop_crawler}} before updating it.
-}
-\section{Request syntax}{
-\preformatted{svc$update_crawler(
-  Name = "string",
-  Role = "string",
-  DatabaseName = "string",
-  Description = "string",
-  Targets = list(
-    S3Targets = list(
-      list(
-        Path = "string",
-        Exclusions = list(
-          "string"
-        ),
-        ConnectionName = "string"
-      )
-    ),
-    JdbcTargets = list(
-      list(
-        ConnectionName = "string",
-        Path = "string",
-        Exclusions = list(
-          "string"
-        )
-      )
-    ),
-    MongoDBTargets = list(
-      list(
-        ConnectionName = "string",
-        Path = "string",
-        ScanAll = TRUE|FALSE
-      )
-    ),
-    DynamoDBTargets = list(
-      list(
-        Path = "string",
-        scanAll = TRUE|FALSE,
-        scanRate = 123.0
-      )
-    ),
-    CatalogTargets = list(
-      list(
-        DatabaseName = "string",
-        Tables = list(
-          "string"
-        )
-      )
-    )
-  ),
-  Schedule = "string",
-  Classifiers = list(
-    "string"
-  ),
-  TablePrefix = "string",
-  SchemaChangePolicy = list(
-    UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
-    DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
-  ),
-  RecrawlPolicy = list(
-    RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
-  ),
-  LineageConfiguration = list(
-    CrawlerLineageSettings = "ENABLE"|"DISABLE"
-  ),
-  Configuration = "string",
-  CrawlerSecurityConfiguration = "string"
-)
-}
-}
+Updates a crawler. If a crawler is running, you must stop it using \code{\link[=glue_stop_crawler]{stop_crawler}} before updating it.
 
+See \url{https://paws-r.github.io/docs/glue/update_crawler.html} for full documentation.
+}
 \keyword{internal}

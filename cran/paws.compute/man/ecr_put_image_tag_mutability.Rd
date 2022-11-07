@@ -4,13 +4,17 @@
 \alias{ecr_put_image_tag_mutability}
 \title{Updates the image tag mutability settings for the specified repository}
 \usage{
-ecr_put_image_tag_mutability(registryId, repositoryName,
-  imageTagMutability)
+ecr_put_image_tag_mutability(
+  registryId = NULL,
+  repositoryName,
+  imageTagMutability
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository in which to update the image tag mutability settings. If you
-do not specify a registry, the default registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository in which to update the image tag mutability
+settings. If you do not specify a registry, the default registry is
+assumed.}
 
 \item{repositoryName}{[required] The name of the repository in which to update the image tag mutability
 settings.}
@@ -20,26 +24,9 @@ specified, image tags can be overwritten. If \code{IMMUTABLE} is specified,
 all image tags within the repository will be immutable which will
 prevent them from being overwritten.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  repositoryName = "string",
-  imageTagMutability = "MUTABLE"|"IMMUTABLE"
-)
-}
-}
 \description{
-Updates the image tag mutability settings for the specified repository.
-For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html}{Image Tag Mutability}
-in the \emph{Amazon Elastic Container Registry User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_image_tag_mutability(
-  registryId = "string",
-  repositoryName = "string",
-  imageTagMutability = "MUTABLE"|"IMMUTABLE"
-)
-}
-}
+Updates the image tag mutability settings for the specified repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html}{Image tag mutability} in the \emph{Amazon Elastic Container Registry User Guide}.
 
+See \url{https://paws-r.github.io/docs/ecr/put_image_tag_mutability.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{applicationinsights_update_component_configuration}
 \title{Updates the monitoring configurations for the component}
 \usage{
-applicationinsights_update_component_configuration(ResourceGroupName,
-  ComponentName, Monitor, Tier, ComponentConfiguration)
+applicationinsights_update_component_configuration(
+  ResourceGroupName,
+  ComponentName,
+  Monitor = NULL,
+  Tier = NULL,
+  ComponentConfiguration = NULL,
+  AutoConfigEnabled = NULL
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
@@ -14,9 +20,7 @@ applicationinsights_update_component_configuration(ResourceGroupName,
 
 \item{Monitor}{Indicates whether the application component is monitored.}
 
-\item{Tier}{The tier of the application component. Supported tiers include
-\code{DOT_NET_WORKER}, \code{DOT_NET_WEB}, \code{DOT_NET_CORE}, \code{SQL_SERVER}, and
-\code{DEFAULT}.}
+\item{Tier}{The tier of the application component.}
 
 \item{ComponentConfiguration}{The configuration settings of the component. The value is the escaped
 JSON of the configuration. For more information about the JSON format,
@@ -25,25 +29,13 @@ You can send a request to
 \code{\link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation}}
 to see the recommended configuration for a component. For the complete
 format of the component configuration file, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html}{Component Configuration}.}
-}
-\value{
-An empty list.
+
+\item{AutoConfigEnabled}{Automatically configures the component by applying the recommended
+configurations.}
 }
 \description{
-Updates the monitoring configurations for the component. The
-configuration input parameter is an escaped JSON of the configuration
-and should match the schema of what is returned by
-\code{\link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation}}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_component_configuration(
-  ResourceGroupName = "string",
-  ComponentName = "string",
-  Monitor = TRUE|FALSE,
-  Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
-  ComponentConfiguration = "string"
-)
-}
-}
+Updates the monitoring configurations for the component. The configuration input parameter is an escaped JSON of the configuration and should match the schema of what is returned by \code{\link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation}}.
 
+See \url{https://paws-r.github.io/docs/applicationinsights/update_component_configuration.html} for full documentation.
+}
 \keyword{internal}

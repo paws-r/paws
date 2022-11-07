@@ -4,53 +4,28 @@
 \alias{cognitoidentityprovider_create_resource_server}
 \title{Creates a new OAuth2}
 \usage{
-cognitoidentityprovider_create_resource_server(UserPoolId, Identifier,
-  Name, Scopes)
+cognitoidentityprovider_create_resource_server(
+  UserPoolId,
+  Identifier,
+  Name,
+  Scopes = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{Identifier}{[required] A unique resource server identifier for the resource server. This could
-be an HTTPS endpoint where the resource server is located. For example,
+be an HTTPS endpoint where the resource server is located, such as
 \verb{https://my-weather-api.example.com}.}
 
 \item{Name}{[required] A friendly name for the resource server.}
 
-\item{Scopes}{A list of scopes. Each scope is map, where the keys are \code{name} and
+\item{Scopes}{A list of scopes. Each scope is a key-value map with the keys \code{name} and
 \code{description}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceServer = list(
-    UserPoolId = "string",
-    Identifier = "string",
-    Name = "string",
-    Scopes = list(
-      list(
-        ScopeName = "string",
-        ScopeDescription = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a new OAuth2.0 resource server and defines custom scopes in it.
-}
-\section{Request syntax}{
-\preformatted{svc$create_resource_server(
-  UserPoolId = "string",
-  Identifier = "string",
-  Name = "string",
-  Scopes = list(
-    list(
-      ScopeName = "string",
-      ScopeDescription = "string"
-    )
-  )
-)
-}
-}
+Creates a new OAuth2.0 resource server and defines custom scopes within it.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_resource_server.html} for full documentation.
+}
 \keyword{internal}

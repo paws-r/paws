@@ -4,39 +4,19 @@
 \alias{apigateway_get_base_path_mappings}
 \title{Represents a collection of BasePathMapping resources}
 \usage{
-apigateway_get_base_path_mappings(domainName, position, limit)
+apigateway_get_base_path_mappings(domainName, position = NULL, limit = NULL)
 }
 \arguments{
-\item{domainName}{[required] [Required] The domain name of a BasePathMapping resource.}
+\item{domainName}{[required] The domain name of a BasePathMapping resource.}
 
 \item{position}{The current pagination position in the paged result set.}
 
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      basePath = "string",
-      restApiId = "string",
-      stage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Represents a collection of BasePathMapping resources.
-}
-\section{Request syntax}{
-\preformatted{svc$get_base_path_mappings(
-  domainName = "string",
-  position = "string",
-  limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_base_path_mappings.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{glue_delete_partition_index}
 \title{Deletes a specified partition index from an existing table}
 \usage{
-glue_delete_partition_index(CatalogId, DatabaseName, TableName,
-  IndexName)
+glue_delete_partition_index(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  IndexName
+)
 }
 \arguments{
 \item{CatalogId}{The catalog ID where the table resides.}
@@ -18,20 +22,9 @@ index.}
 
 \item{IndexName}{[required] The name of the partition index to be deleted.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a specified partition index from an existing table.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_partition_index(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  IndexName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/delete_partition_index.html} for full documentation.
+}
 \keyword{internal}

@@ -4,18 +4,32 @@
 \alias{ec2_create_capacity_reservation}
 \title{Creates a new Capacity Reservation with the specified attributes}
 \usage{
-ec2_create_capacity_reservation(ClientToken, InstanceType,
-  InstancePlatform, AvailabilityZone, AvailabilityZoneId, Tenancy,
-  InstanceCount, EbsOptimized, EphemeralStorage, EndDate, EndDateType,
-  InstanceMatchCriteria, TagSpecifications, DryRun)
+ec2_create_capacity_reservation(
+  ClientToken = NULL,
+  InstanceType,
+  InstancePlatform,
+  AvailabilityZone = NULL,
+  AvailabilityZoneId = NULL,
+  Tenancy = NULL,
+  InstanceCount,
+  EbsOptimized = NULL,
+  EphemeralStorage = NULL,
+  EndDate = NULL,
+  EndDateType = NULL,
+  InstanceMatchCriteria = NULL,
+  TagSpecifications = NULL,
+  DryRun = NULL,
+  OutpostArn = NULL,
+  PlacementGroupArn = NULL
+)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensure Idempotency}.}
 
 \item{InstanceType}{[required] The instance type for which to reserve capacity. For more information,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{InstancePlatform}{[required] The type of operating system for which to reserve capacity.}
 
@@ -28,12 +42,14 @@ Reservation.}
 Reservation can have one of the following tenancy settings:
 \itemize{
 \item \code{default} - The Capacity Reservation is created on hardware that is
-shared with other AWS accounts.
+shared with other Amazon Web Services accounts.
 \item \code{dedicated} - The Capacity Reservation is created on single-tenant
-hardware that is dedicated to a single AWS account.
+hardware that is dedicated to a single Amazon Web Services account.
 }}
 
-\item{InstanceCount}{[required] The number of instances for which to reserve capacity.}
+\item{InstanceCount}{[required] The number of instances for which to reserve capacity.
+
+Valid range: 1 - 1000}
 
 \item{EbsOptimized}{Indicates whether the Capacity Reservation supports EBS-optimized
 instances. This optimization provides dedicated throughput to Amazon EBS
@@ -41,8 +57,7 @@ and an optimized configuration stack to provide optimal I/O performance.
 This optimization isn't available with all instance types. Additional
 usage charges apply when using an EBS- optimized instance.}
 
-\item{EphemeralStorage}{Indicates whether the Capacity Reservation supports instances with
-temporary, block-level storage.}
+\item{EphemeralStorage}{\emph{Deprecated.}}
 
 \item{EndDate}{The date and time at which the Capacity Reservation expires. When a
 Capacity Reservation expires, the reserved capacity is released and you
@@ -90,98 +105,17 @@ Default: \code{open}}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CapacityReservation = list(
-    CapacityReservationId = "string",
-    OwnerId = "string",
-    CapacityReservationArn = "string",
-    AvailabilityZoneId = "string",
-    InstanceType = "string",
-    InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",
-    AvailabilityZone = "string",
-    Tenancy = "default"|"dedicated",
-    TotalInstanceCount = 123,
-    AvailableInstanceCount = 123,
-    EbsOptimized = TRUE|FALSE,
-    EphemeralStorage = TRUE|FALSE,
-    State = "active"|"expired"|"cancelled"|"pending"|"failed",
-    EndDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndDateType = "unlimited"|"limited",
-    InstanceMatchCriteria = "open"|"targeted",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
+
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost on which to create the
+Capacity Reservation.}
+
+\item{PlacementGroupArn}{The Amazon Resource Name (ARN) of the cluster placement group in which
+to create the Capacity Reservation. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html}{Capacity Reservations for cluster placement groups}
+in the \emph{Amazon EC2 User Guide}.}
 }
 \description{
 Creates a new Capacity Reservation with the specified attributes.
 
-Capacity Reservations enable you to reserve capacity for your Amazon EC2
-instances in a specific Availability Zone for any duration. This gives
-you the flexibility to selectively add capacity reservations and still
-get the Regional RI discounts for that usage. By creating Capacity
-Reservations, you ensure that you always have access to Amazon EC2
-capacity when you need it, for as long as you need it. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html}{Capacity Reservations}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-Your request to create a Capacity Reservation could fail if Amazon EC2
-does not have sufficient capacity to fulfill the request. If your
-request fails due to Amazon EC2 capacity constraints, either try again
-at a later time, try in a different Availability Zone, or request a
-smaller capacity reservation. If your application is flexible across
-instance types and sizes, try to create a Capacity Reservation with
-different instance attributes.
-
-Your request could also fail if the requested quantity exceeds your
-On-Demand Instance limit for the selected instance type. If your request
-fails due to limit constraints, increase your On-Demand Instance limit
-for the required instance type and try again. For more information about
-increasing your instance limits, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html}{Amazon EC2 Service Limits}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/create_capacity_reservation.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_capacity_reservation(
-  ClientToken = "string",
-  InstanceType = "string",
-  InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",
-  AvailabilityZone = "string",
-  AvailabilityZoneId = "string",
-  Tenancy = "default"|"dedicated",
-  InstanceCount = 123,
-  EbsOptimized = TRUE|FALSE,
-  EphemeralStorage = TRUE|FALSE,
-  EndDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndDateType = "unlimited"|"limited",
-  InstanceMatchCriteria = "open"|"targeted",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

@@ -3,9 +3,15 @@
 \name{eks_list_updates}
 \alias{eks_list_updates}
 \title{Lists the updates associated with an Amazon EKS cluster or managed node
-group in your AWS account, in the specified Region}
+group in your Amazon Web Services account, in the specified Region}
 \usage{
-eks_list_updates(name, nodegroupName, addonName, nextToken, maxResults)
+eks_list_updates(
+  name,
+  nodegroupName = NULL,
+  addonName = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster to list updates for.}
@@ -30,28 +36,9 @@ returned \code{nextToken} value. This value can be between 1 and 100. If you
 don't use this parameter, \code{\link[=eks_list_updates]{list_updates}} returns up
 to 100 results and a \code{nextToken} value if applicable.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  updateIds = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the updates associated with an Amazon EKS cluster or managed node
-group in your AWS account, in the specified Region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_updates(
-  name = "string",
-  nodegroupName = "string",
-  addonName = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists the updates associated with an Amazon EKS cluster or managed node group in your Amazon Web Services account, in the specified Region.
 
+See \url{https://paws-r.github.io/docs/eks/list_updates.html} for full documentation.
+}
 \keyword{internal}

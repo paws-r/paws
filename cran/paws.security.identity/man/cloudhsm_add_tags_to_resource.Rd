@@ -11,37 +11,9 @@ cloudhsm_add_tags_to_resource(ResourceArn, TagList)
 
 \item{TagList}{[required] One or more tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "string"
-)
-}
-}
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more
-information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
-and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
-\strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
-
-Adds or overwrites one or more tags for the specified AWS CloudHSM
-resource.
-
-Each tag consists of a key and a value. Tag keys must be unique to each
-resource.
+See \url{https://paws-r.github.io/docs/cloudhsm/add_tags_to_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
-  ResourceArn = "string",
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

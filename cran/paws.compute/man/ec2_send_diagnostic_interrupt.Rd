@@ -6,7 +6,7 @@
 trigger a kernel panic (on Linux instances), or a blue screen/stop error
 (on Windows instances)}
 \usage{
-ec2_send_diagnostic_interrupt(InstanceId, DryRun)
+ec2_send_diagnostic_interrupt(InstanceId, DryRun = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
@@ -16,35 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Sends a diagnostic interrupt to the specified Amazon EC2 instance to
-trigger a \emph{kernel panic} (on Linux instances), or a \emph{blue screen}/\emph{stop
-error} (on Windows instances). For instances based on Intel and AMD
-processors, the interrupt is received as a \emph{non-maskable interrupt}
-(NMI).
+Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a \emph{kernel panic} (on Linux instances), or a \emph{blue screen}/\emph{stop error} (on Windows instances). For instances based on Intel and AMD processors, the interrupt is received as a \emph{non-maskable interrupt} (NMI).
 
-In general, the operating system crashes and reboots when a kernel panic
-or stop error is triggered. The operating system can also be configured
-to perform diagnostic tasks, such as generating a memory dump file,
-loading a secondary kernel, or obtaining a call trace.
-
-Before sending a diagnostic interrupt to your instance, ensure that its
-operating system is configured to perform the required diagnostic tasks.
-
-For more information about configuring your operating system to generate
-a crash dump when a kernel panic or stop error occurs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/diagnostic-interrupt.html}{Send a diagnostic interrupt}
-(Linux instances) or \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/diagnostic-interrupt.html}{Send a Diagnostic Interrupt}
-(Windows instances).
+See \url{https://paws-r.github.io/docs/ec2/send_diagnostic_interrupt.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$send_diagnostic_interrupt(
-  InstanceId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

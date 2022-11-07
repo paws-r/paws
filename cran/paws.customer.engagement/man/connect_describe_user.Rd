@@ -9,50 +9,12 @@ connect_describe_user(UserId, InstanceId)
 \arguments{
 \item{UserId}{[required] The identifier of the user account.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  User = list(
-    Id = "string",
-    Arn = "string",
-    Username = "string",
-    IdentityInfo = list(
-      FirstName = "string",
-      LastName = "string",
-      Email = "string"
-    ),
-    PhoneConfig = list(
-      PhoneType = "SOFT_PHONE"|"DESK_PHONE",
-      AutoAccept = TRUE|FALSE,
-      AfterContactWorkTimeLimit = 123,
-      DeskPhoneNumber = "string"
-    ),
-    DirectoryUserId = "string",
-    SecurityProfileIds = list(
-      "string"
-    ),
-    RoutingProfileId = "string",
-    HierarchyGroupId = "string",
-    Tags = list(
-      "string"
-    )
-  )
-)
-}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
-Describes the specified user account. You can find the instance ID in
-the console (it’s the final part of the ARN). The console does not
-display the user IDs. Instead, list the users and note the IDs provided
-in the output.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_user(
-  UserId = "string",
-  InstanceId = "string"
-)
-}
-}
+Describes the specified user account. You can find the instance ID in the console (it’s the final part of the ARN). The console does not display the user IDs. Instead, list the users and note the IDs provided in the output.
 
+See \url{https://paws-r.github.io/docs/connect/describe_user.html} for full documentation.
+}
 \keyword{internal}

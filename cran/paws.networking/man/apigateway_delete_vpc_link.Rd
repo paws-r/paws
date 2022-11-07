@@ -7,20 +7,12 @@
 apigateway_delete_vpc_link(vpcLinkId)
 }
 \arguments{
-\item{vpcLinkId}{[required] [Required] The identifier of the VpcLink. It is used in an Integration
-to reference this VpcLink.}
-}
-\value{
-An empty list.
+\item{vpcLinkId}{[required] The identifier of the VpcLink. It is used in an Integration to reference
+this VpcLink.}
 }
 \description{
 Deletes an existing VpcLink of a specified identifier.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vpc_link(
-  vpcLinkId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_vpc_link.html} for full documentation.
+}
 \keyword{internal}

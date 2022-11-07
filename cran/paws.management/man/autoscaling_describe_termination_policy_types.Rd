@@ -6,25 +6,9 @@
 \usage{
 autoscaling_describe_termination_policy_types()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TerminationPolicyTypes = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Describes the termination policies supported by Amazon EC2 Auto Scaling.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html}{Controlling which Auto Scaling instances terminate during scale in}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\examples{
-\dontrun{
-# This example describes the available termination policy types.
-svc$describe_termination_policy_types()
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_termination_policy_types.html} for full documentation.
 }
 \keyword{internal}

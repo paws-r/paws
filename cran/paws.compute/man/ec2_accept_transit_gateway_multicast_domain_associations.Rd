@@ -6,8 +6,11 @@
 domain}
 \usage{
 ec2_accept_transit_gateway_multicast_domain_associations(
-  TransitGatewayMulticastDomainId, TransitGatewayAttachmentId, SubnetIds,
-  DryRun)
+  TransitGatewayMulticastDomainId = NULL,
+  TransitGatewayAttachmentId = NULL,
+  SubnetIds = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayMulticastDomainId}{The ID of the transit gateway multicast domain.}
@@ -22,38 +25,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Associations = list(
-    TransitGatewayMulticastDomainId = "string",
-    TransitGatewayAttachmentId = "string",
-    ResourceId = "string",
-    ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
-    ResourceOwnerId = "string",
-    Subnets = list(
-      list(
-        SubnetId = "string",
-        State = "pendingAcceptance"|"associating"|"associated"|"disassociating"|"disassociated"|"rejected"|"failed"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Accepts a request to associate subnets with a transit gateway multicast
-domain.
-}
-\section{Request syntax}{
-\preformatted{svc$accept_transit_gateway_multicast_domain_associations(
-  TransitGatewayMulticastDomainId = "string",
-  TransitGatewayAttachmentId = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Accepts a request to associate subnets with a transit gateway multicast domain.
 
+See \url{https://paws-r.github.io/docs/ec2/accept_transit_gateway_multicast_domain_associations.html} for full documentation.
+}
 \keyword{internal}

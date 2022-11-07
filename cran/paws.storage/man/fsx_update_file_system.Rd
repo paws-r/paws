@@ -5,214 +5,73 @@
 \title{Use this operation to update the configuration of an existing Amazon FSx
 file system}
 \usage{
-fsx_update_file_system(FileSystemId, ClientRequestToken,
-  StorageCapacity, WindowsConfiguration, LustreConfiguration)
+fsx_update_file_system(
+  FileSystemId,
+  ClientRequestToken = NULL,
+  StorageCapacity = NULL,
+  WindowsConfiguration = NULL,
+  LustreConfiguration = NULL,
+  OntapConfiguration = NULL,
+  OpenZFSConfiguration = NULL
+)
 }
 \arguments{
-\item{FileSystemId}{[required] Identifies the file system that you are updating.}
+\item{FileSystemId}{[required] The ID of the file system that you are updating.}
 
 \item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
 idempotent updates. This string is automatically filled on your behalf
-when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
+when you use the Command Line Interface (CLI) or an Amazon Web Services
+SDK.}
 
-\item{StorageCapacity}{Use this parameter to increase the storage capacity of an Amazon FSx
-file system. Specifies the storage capacity target value, GiB, to
-increase the storage capacity for the file system that you're updating.
-You cannot make a storage capacity increase request if there is an
+\item{StorageCapacity}{Use this parameter to increase the storage capacity of an Amazon FSx for
+Windows File Server, Amazon FSx for Lustre, or Amazon FSx for NetApp
+ONTAP file system. Specifies the storage capacity target value, in GiB,
+to increase the storage capacity for the file system that you're
+updating.
+
+You can't make a storage capacity increase request if there is an
 existing storage capacity increase request in progress.
 
 For Windows file systems, the storage capacity target value must be at
-least 10 percent (\%) greater than the current storage capacity value. In
-order to increase storage capacity, the file system must have at least
-16 MB/s of throughput capacity.
+least 10 percent greater than the current storage capacity value. To
+increase storage capacity, the file system must have at least 16 MBps of
+throughput capacity. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html}{Managing storage capacity}
+in the \emph{Amazon FSx for Windows File Server User Guide}.
 
 For Lustre file systems, the storage capacity target value can be the
 following:
 \itemize{
-\item For \code{SCRATCH_2} and \verb{PERSISTENT_1 SSD} deployment types, valid
-values are in multiples of 2400 GiB. The value must be greater than
-the current storage capacity.
+\item For \code{SCRATCH_2}, \code{PERSISTENT_1}, and \verb{PERSISTENT_2 SSD} deployment
+types, valid values are in multiples of 2400 GiB. The value must be
+greater than the current storage capacity.
 \item For \verb{PERSISTENT HDD} file systems, valid values are multiples of
-6000 GiB for 12 MB/s/TiB file systems and multiples of 1800 GiB for
-40 MB/s/TiB file systems. The values must be greater than the
-current storage capacity.
-\item For \code{SCRATCH_1} file systems, you cannot increase the storage
+6000 GiB for 12-MBps throughput per TiB file systems and multiples
+of 1800 GiB for 40-MBps throughput per TiB file systems. The values
+must be greater than the current storage capacity.
+\item For \code{SCRATCH_1} file systems, you can't increase the storage
 capacity.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html}{Managing storage capacity}
-in the \emph{Amazon FSx for Windows File Server User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/managing-storage-capacity.html}{Managing storage and throughput capacity}
-in the \emph{Amazon FSx for Lustre User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/managing-storage-capacity.html}{Managing storage and throughput capacity}
+in the \emph{Amazon FSx for Lustre User Guide}.
+
+For ONTAP file systems, the storage capacity target value must be at
+least 10 percent greater than the current storage capacity value. For
+more information, see \href{https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-storage-capacity.html}{Managing storage capacity and provisioned IOPS}
+in the \emph{Amazon FSx for NetApp ONTAP User Guide}.}
 
 \item{WindowsConfiguration}{The configuration updates for an Amazon FSx for Windows File Server file
 system.}
 
 \item{LustreConfiguration}{}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  FileSystem = list(
-    OwnerId = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FileSystemId = "string",
-    FileSystemType = "WINDOWS"|"LUSTRE",
-    Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-    FailureDetails = list(
-      Message = "string"
-    ),
-    StorageCapacity = 123,
-    StorageType = "SSD"|"HDD",
-    VpcId = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    NetworkInterfaceIds = list(
-      "string"
-    ),
-    DNSName = "string",
-    KmsKeyId = "string",
-    ResourceARN = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    WindowsConfiguration = list(
-      ActiveDirectoryId = "string",
-      SelfManagedActiveDirectoryConfiguration = list(
-        DomainName = "string",
-        OrganizationalUnitDistinguishedName = "string",
-        FileSystemAdministratorsGroup = "string",
-        UserName = "string",
-        DnsIps = list(
-          "string"
-        )
-      ),
-      DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-      RemoteAdministrationEndpoint = "string",
-      PreferredSubnetId = "string",
-      PreferredFileServerIp = "string",
-      ThroughputCapacity = 123,
-      MaintenanceOperationsInProgress = list(
-        "PATCHING"|"BACKING_UP"
-      ),
-      WeeklyMaintenanceStartTime = "string",
-      DailyAutomaticBackupStartTime = "string",
-      AutomaticBackupRetentionDays = 123,
-      CopyTagsToBackups = TRUE|FALSE,
-      Aliases = list(
-        list(
-          Name = "string",
-          Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-        )
-      )
-    ),
-    LustreConfiguration = list(
-      WeeklyMaintenanceStartTime = "string",
-      DataRepositoryConfiguration = list(
-        Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-        ImportPath = "string",
-        ExportPath = "string",
-        ImportedFileChunkSize = 123,
-        AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-        FailureDetails = list(
-          Message = "string"
-        )
-      ),
-      DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-      PerUnitStorageThroughput = 123,
-      MountName = "string",
-      DailyAutomaticBackupStartTime = "string",
-      AutomaticBackupRetentionDays = 123,
-      CopyTagsToBackups = TRUE|FALSE,
-      DriveCacheType = "NONE"|"READ"
-    ),
-    AdministrativeActions = list(
-      list(
-        AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-        ProgressPercent = 123,
-        RequestTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-        TargetFileSystemValues = list(),
-        FailureDetails = list(
-          Message = "string"
-        )
-      )
-    )
-  )
-)
-}
+
+\item{OntapConfiguration}{}
+
+\item{OpenZFSConfiguration}{The configuration updates for an Amazon FSx for OpenZFS file system.}
 }
 \description{
-Use this operation to update the configuration of an existing Amazon FSx
-file system. You can update multiple properties in a single request.
+Use this operation to update the configuration of an existing Amazon FSx file system. You can update multiple properties in a single request.
 
-For Amazon FSx for Windows File Server file systems, you can update the
-following properties:
-\itemize{
-\item AutomaticBackupRetentionDays
-\item DailyAutomaticBackupStartTime
-\item SelfManagedActiveDirectoryConfiguration
-\item StorageCapacity
-\item ThroughputCapacity
-\item WeeklyMaintenanceStartTime
-}
-
-For Amazon FSx for Lustre file systems, you can update the following
-properties:
-\itemize{
-\item AutoImportPolicy
-\item AutomaticBackupRetentionDays
-\item DailyAutomaticBackupStartTime
-\item StorageCapacity
-\item WeeklyMaintenanceStartTime
-}
-}
-\section{Request syntax}{
-\preformatted{svc$update_file_system(
-  FileSystemId = "string",
-  ClientRequestToken = "string",
-  StorageCapacity = 123,
-  WindowsConfiguration = list(
-    WeeklyMaintenanceStartTime = "string",
-    DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123,
-    ThroughputCapacity = 123,
-    SelfManagedActiveDirectoryConfiguration = list(
-      UserName = "string",
-      Password = "string",
-      DnsIps = list(
-        "string"
-      )
-    )
-  ),
-  LustreConfiguration = list(
-    WeeklyMaintenanceStartTime = "string",
-    DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123,
-    AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation updates an existing file system.
-svc$update_file_system(
-  FileSystemId = "fs-0498eed5fe91001ec",
-  WindowsConfiguration = list(
-    AutomaticBackupRetentionDays = 10L,
-    DailyAutomaticBackupStartTime = "06:00",
-    WeeklyMaintenanceStartTime = "3:06:00"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/fsx/update_file_system.html} for full documentation.
 }
 \keyword{internal}

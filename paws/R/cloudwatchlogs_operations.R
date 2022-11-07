@@ -3,19 +3,19 @@
 #' @include cloudwatchlogs_service.R
 NULL
 
-#' Associates the specified AWS Key Management Service (AWS KMS) customer
-#' master key (CMK) with the specified log group
+#' Associates the specified Key Management Service customer master key
+#' (CMK) with the specified log group
 #'
 #' @description
-#' Associates the specified AWS Key Management Service (AWS KMS) customer
-#' master key (CMK) with the specified log group.
+#' Associates the specified Key Management Service customer master key
+#' (CMK) with the specified log group.
 #' 
-#' Associating an AWS KMS CMK with a log group overrides any existing
+#' Associating an KMS CMK with a log group overrides any existing
 #' associations between the log group and a CMK. After a CMK is associated
 #' with a log group, all newly ingested data for the log group is encrypted
 #' using the CMK. This association is stored as long as the data encrypted
-#' with the CMK is still within Amazon CloudWatch Logs. This enables Amazon
-#' CloudWatch Logs to decrypt this data whenever it is requested.
+#' with the CMK is still within CloudWatch Logs. This enables CloudWatch
+#' Logs to decrypt this data whenever it is requested.
 #' 
 #' CloudWatch Logs supports only symmetric CMKs. Do not use an associate an
 #' asymmetric CMK with your log group. For more information, see [Using
@@ -34,8 +34,8 @@ NULL
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param kmsKeyId &#91;required&#93; The Amazon Resource Name (ARN) of the CMK to use when encrypting log
 #' data. This must be a symmetric CMK. For more information, see [Amazon
-#' Resource Names - AWS Key Management Service (AWS
-#' KMS)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms)
+#' Resource Names - Key Management
+#' Service](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms)
 #' and [Using Symmetric and Asymmetric
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
 #'
@@ -122,6 +122,12 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' must use credentials that have permission to write to the S3 bucket that
 #' you specify as the destination.
 #' 
+#' Exporting log data to Amazon S3 buckets that are encrypted by KMS is not
+#' supported. Exporting log data to Amazon S3 buckets that have S3 Object
+#' Lock enabled with a retention period is not supported.
+#' 
+#' Exporting to S3 buckets that are encrypted with AES-256 is supported.
+#' 
 #' This is an asynchronous call. If all the required information is
 #' provided, this operation initiates an export task and responds with the
 #' ID of the task. After the task has started, you can use
@@ -135,8 +141,9 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' can specify a prefix to be used as the Amazon S3 key prefix for all
 #' exported objects.
 #' 
-#' Exporting to S3 buckets that are encrypted with AES-256 is supported.
-#' Exporting to S3 buckets encrypted with SSE-KMS is not supported.
+#' Time-based sorting on chunks of log data inside an exported file is not
+#' guaranteed. You can sort the exported log fild data by using Linux
+#' utilities.
 #'
 #' @usage
 #' cloudwatchlogs_create_export_task(taskName, logGroupName,
@@ -153,7 +160,7 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp
 #' later than this time are not exported.
 #' @param destination &#91;required&#93; The name of S3 bucket for the exported log data. The bucket must be in
-#' the same AWS region.
+#' the same Amazon Web Services region.
 #' @param destinationPrefix The prefix used as the start of the key for every object exported. If
 #' you don't specify a value, the default is `exportedlogs`.
 #'
@@ -206,24 +213,25 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' 
 #' You must use the following guidelines when naming a log group:
 #' 
-#' -   Log group names must be unique within a region for an AWS account.
+#' -   Log group names must be unique within a region for an Amazon Web
+#'     Services account.
 #' 
 #' -   Log group names can be between 1 and 512 characters long.
 #' 
 #' -   Log group names consist of the following characters: a-z, A-Z, 0-9,
 #'     '_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
-#'     and '\#' (number sign)
+#'     and '#' (number sign)
 #' 
 #' When you create a log group, by default the log events in the log group
 #' never expire. To set a retention policy so that events expire and are
 #' deleted after a specified time, use
 #' [`put_retention_policy`][cloudwatchlogs_put_retention_policy].
 #' 
-#' If you associate a AWS Key Management Service (AWS KMS) customer master
-#' key (CMK) with the log group, ingested data is encrypted using the CMK.
-#' This association is stored as long as the data encrypted with the CMK is
-#' still within Amazon CloudWatch Logs. This enables Amazon CloudWatch Logs
-#' to decrypt this data whenever it is requested.
+#' If you associate a Key Management Service customer master key (CMK) with
+#' the log group, ingested data is encrypted using the CMK. This
+#' association is stored as long as the data encrypted with the CMK is
+#' still within CloudWatch Logs. This enables CloudWatch Logs to decrypt
+#' this data whenever it is requested.
 #' 
 #' If you attempt to associate a CMK with the log group but the CMK does
 #' not exist or the CMK is disabled, you receive an
@@ -239,10 +247,16 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param kmsKeyId The Amazon Resource Name (ARN) of the CMK to use when encrypting log
-#' data. For more information, see [Amazon Resource Names - AWS Key
-#' Management Service (AWS
-#' KMS)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
+#' data. For more information, see [Amazon Resource Names - Key Management
+#' Service](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
 #' @param tags The key-value pairs to use for the tags.
+#' 
+#' CloudWatch Logs doesn’t support IAM policies that prevent users from
+#' assigning specified tags to log groups using the
+#' `aws:Resource/key-name ` or `aws:TagKeys` condition keys. For more
+#' information about using tags to control access, see [Controlling access
+#' to Amazon Web Services resources using
+#' tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 #'
 #' @return
 #' An empty list.
@@ -833,6 +847,15 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' Lists the specified log groups. You can list all your log groups or
 #' filter the results by prefix. The results are ASCII-sorted by log group
 #' name.
+#' 
+#' CloudWatch Logs doesn’t support IAM policies that control access to the
+#' [`describe_log_groups`][cloudwatchlogs_describe_log_groups] action by
+#' using the `aws:ResourceTag/key-name ` condition key. Other CloudWatch
+#' Logs actions do support the use of the `aws:ResourceTag/key-name `
+#' condition key to control access. For more information about using tags
+#' to control access, see [Controlling access to Amazon Web Services
+#' resources using
+#' tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 #'
 #' @usage
 #' cloudwatchlogs_describe_log_groups(logGroupNamePrefix, nextToken, limit)
@@ -916,10 +939,10 @@ cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextTo
 #' If you order the results by event time, you cannot specify the
 #' `logStreamNamePrefix` parameter.
 #' 
-#' `lastEventTimeStamp` represents the time of the most recent log event in
+#' `lastEventTimestamp` represents the time of the most recent log event in
 #' the log stream in CloudWatch Logs. This number is expressed as the
 #' number of milliseconds after Jan 1, 1970 00:00:00 UTC.
-#' `lastEventTimeStamp` updates on an eventual consistency basis. It
+#' `lastEventTimestamp` updates on an eventual consistency basis. It
 #' typically updates in less than an hour from ingestion, but in rare
 #' situations might take longer.
 #' @param descending If the value is true, results are returned in descending order. If the
@@ -1020,7 +1043,11 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName, logStreamNamePrefi
 #'           metricName = "string",
 #'           metricNamespace = "string",
 #'           metricValue = "string",
-#'           defaultValue = 123.0
+#'           defaultValue = 123.0,
+#'           dimensions = list(
+#'             "string"
+#'           ),
+#'           unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
 #'         )
 #'       ),
 #'       creationTime = 123,
@@ -1091,7 +1118,7 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #'     list(
 #'       queryId = "string",
 #'       queryString = "string",
-#'       status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
+#'       status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"|"Timeout"|"Unknown",
 #'       createTime = 123,
 #'       logGroupName = "string"
 #'     )
@@ -1104,7 +1131,7 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #' ```
 #' svc$describe_queries(
 #'   logGroupName = "string",
-#'   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
+#'   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"|"Timeout"|"Unknown",
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -1321,18 +1348,17 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
 }
 .cloudwatchlogs$operations$describe_subscription_filters <- cloudwatchlogs_describe_subscription_filters
 
-#' Disassociates the associated AWS Key Management Service (AWS KMS)
-#' customer master key (CMK) from the specified log group
+#' Disassociates the associated Key Management Service customer master key
+#' (CMK) from the specified log group
 #'
 #' @description
-#' Disassociates the associated AWS Key Management Service (AWS KMS)
-#' customer master key (CMK) from the specified log group.
+#' Disassociates the associated Key Management Service customer master key
+#' (CMK) from the specified log group.
 #' 
-#' After the AWS KMS CMK is disassociated from the log group, AWS
-#' CloudWatch Logs stops encrypting newly ingested data for the log group.
-#' All previously ingested data remains encrypted, and AWS CloudWatch Logs
-#' requires permissions for the CMK whenever the encrypted data is
-#' requested.
+#' After the KMS CMK is disassociated from the log group, CloudWatch Logs
+#' stops encrypting newly ingested data for the log group. All previously
+#' ingested data remains encrypted, and CloudWatch Logs requires
+#' permissions for the CMK whenever the encrypted data is requested.
 #' 
 #' Note that it can take up to 5 minutes for this operation to take effect.
 #'
@@ -1410,9 +1436,6 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #' @param startTime The start of the time range, expressed as the number of milliseconds
 #' after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time
 #' are not returned.
-#' 
-#' If you omit `startTime` and `endTime` the most recent log events are
-#' retrieved, to up 1 MB or 10,000 log events.
 #' @param endTime The end of the time range, expressed as the number of milliseconds after
 #' Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time
 #' are not returned.
@@ -1520,8 +1543,6 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 #' this time are not included.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#' 
-#' Using this token works only when you specify `true` for `startFromHead`.
 #' @param limit The maximum number of log events returned. If you don't specify a value,
 #' the maximum is as many log events as can fit in a response size of 1 MB,
 #' up to 10,000 log events.
@@ -1529,8 +1550,8 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 #' value is false, the latest log events are returned first. The default
 #' value is false.
 #' 
-#' If you are using `nextToken` in this operation, you must specify `true`
-#' for `startFromHead`.
+#' If you are using a previous `nextForwardToken` value as the `nextToken`
+#' in this operation, you must specify `true` for `startFromHead`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1604,9 +1625,9 @@ cloudwatchlogs_get_log_events <- function(logGroupName, logStreamName, startTime
 #' cloudwatchlogs_get_log_group_fields(logGroupName, time)
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group to search.
-#' @param time The time to set as the center of the query. If you specify `time`, the 8
-#' minutes before and 8 minutes after this time are searched. If you omit
-#' `time`, the past 15 minutes are queried.
+#' @param time The time to set as the center of the query. If you specify `time`, the
+#' 15 minutes before this time are queries. If you omit `time` the 8
+#' minutes before and 8 minutes after this time are searched.
 #' 
 #' The `time` value is specified as epoch time, the number of seconds since
 #' January 1, 1970, 00:00:00 UTC.
@@ -1750,7 +1771,7 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer) {
 #'     recordsScanned = 123.0,
 #'     bytesScanned = 123.0
 #'   ),
-#'   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"
+#'   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"|"Timeout"|"Unknown"
 #' )
 #' ```
 #'
@@ -1913,14 +1934,31 @@ cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn) 
 #' document](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
 #' that is used to authorize claims to register a subscription filter
 #' against a given destination.
+#' 
+#' If multiple Amazon Web Services accounts are sending logs to this
+#' destination, each sender account must be listed separately in the
+#' policy. The policy does not support specifying `*` as the Principal or
+#' the use of the `aws:PrincipalOrgId` global key.
 #'
 #' @usage
-#' cloudwatchlogs_put_destination_policy(destinationName, accessPolicy)
+#' cloudwatchlogs_put_destination_policy(destinationName, accessPolicy,
+#'   forceUpdate)
 #'
 #' @param destinationName &#91;required&#93; A name for an existing destination.
 #' @param accessPolicy &#91;required&#93; An IAM policy document that authorizes cross-account users to deliver
 #' their log events to the associated destination. This can be up to 5120
 #' bytes.
+#' @param forceUpdate Specify true if you are updating an existing destination policy to grant
+#' permission to an organization ID instead of granting permission to
+#' individual AWS accounts. Before you update a destination policy this
+#' way, you must first update the subscription filters in the accounts that
+#' send logs to this destination. If you do not, the subscription filters
+#' might stop working. By specifying `true` for `forceUpdate`, you are
+#' affirming that you have already updated the subscription filters. For
+#' more information, see [Updating an existing cross-account
+#' subscription](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Cross-Account-Log_Subscription-Update.html)
+#' 
+#' If you omit this parameter, the default of `false` is used.
 #'
 #' @return
 #' An empty list.
@@ -1929,21 +1967,22 @@ cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn) 
 #' ```
 #' svc$put_destination_policy(
 #'   destinationName = "string",
-#'   accessPolicy = "string"
+#'   accessPolicy = "string",
+#'   forceUpdate = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_destination_policy
-cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy) {
+cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy, forceUpdate = NULL) {
   op <- new_operation(
     name = "PutDestinationPolicy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$put_destination_policy_input(destinationName = destinationName, accessPolicy = accessPolicy)
+  input <- .cloudwatchlogs$put_destination_policy_input(destinationName = destinationName, accessPolicy = accessPolicy, forceUpdate = forceUpdate)
   output <- .cloudwatchlogs$put_destination_policy_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -1981,9 +2020,9 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy)
 #' -   The log events in the batch must be in chronological order by their
 #'     timestamp. The timestamp is the time the event occurred, expressed
 #'     as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. (In
-#'     AWS Tools for PowerShell and the AWS SDK for .NET, the timestamp is
-#'     specified in .NET format: yyyy-mm-ddThh:mm:ss. For example,
-#'     2017-09-15T13:45:30.)
+#'     Amazon Web Services Tools for PowerShell and the Amazon Web Services
+#'     SDK for .NET, the timestamp is specified in .NET format:
+#'     yyyy-mm-ddThh:mm:ss. For example, 2017-09-15T13:45:30.)
 #' 
 #' -   A batch of log events in a single request cannot span more than 24
 #'     hours. Otherwise, the operation fails.
@@ -1994,8 +2033,8 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy)
 #'     requests are throttled. This quota can't be changed.
 #' 
 #' If a call to [`put_log_events`][cloudwatchlogs_put_log_events] returns
-#' "UnrecognizedClientException" the most likely cause is an invalid AWS
-#' access key ID or secret key.
+#' "UnrecognizedClientException" the most likely cause is an invalid Amazon
+#' Web Services access key ID or secret key.
 #'
 #' @usage
 #' cloudwatchlogs_put_log_events(logGroupName, logStreamName, logEvents,
@@ -2072,6 +2111,24 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' 
 #' The maximum number of metric filters that can be associated with a log
 #' group is 100.
+#' 
+#' When you create a metric filter, you can also optionally assign a unit
+#' and dimensions to the metric that is created.
+#' 
+#' Metrics extracted from log events are charged as custom metrics. To
+#' prevent unexpected high charges, do not specify high-cardinality fields
+#' such as `IPAddress` or `requestID` as dimensions. Each different value
+#' found for a dimension is treated as a separate metric and accrues
+#' charges as a separate custom metric.
+#' 
+#' To help prevent accidental high charges, Amazon disables a metric filter
+#' if it generates 1000 different name/value pairs for the dimensions that
+#' you have specified within a certain amount of time.
+#' 
+#' You can also set up a billing alarm to alert you if your charges are
+#' higher than expected. For more information, see [Creating a Billing
+#' Alarm to Monitor Your Estimated Amazon Web Services
+#' Charges](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html).
 #'
 #' @usage
 #' cloudwatchlogs_put_metric_filter(logGroupName, filterName,
@@ -2096,7 +2153,11 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #'       metricName = "string",
 #'       metricNamespace = "string",
 #'       metricValue = "string",
-#'       defaultValue = 123.0
+#'       defaultValue = 123.0,
+#'       dimensions = list(
+#'         "string"
+#'       ),
+#'       unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
 #'     )
 #'   )
 #' )
@@ -2206,13 +2267,14 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
 }
 .cloudwatchlogs$operations$put_query_definition <- cloudwatchlogs_put_query_definition
 
-#' Creates or updates a resource policy allowing other AWS services to put
-#' log events to this account, such as Amazon Route 53
+#' Creates or updates a resource policy allowing other Amazon Web Services
+#' services to put log events to this account, such as Amazon Route 53
 #'
 #' @description
-#' Creates or updates a resource policy allowing other AWS services to put
-#' log events to this account, such as Amazon Route 53. An account can have
-#' up to 10 resource policies per AWS Region.
+#' Creates or updates a resource policy allowing other Amazon Web Services
+#' services to put log events to this account, such as Amazon Route 53. An
+#' account can have up to 10 resource policies per Amazon Web Services
+#' Region.
 #'
 #' @usage
 #' cloudwatchlogs_put_resource_policy(policyName, policyDocument)
@@ -2227,7 +2289,18 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
 #' `"logArn"` with the ARN of your CloudWatch Logs resource, such as a log
 #' group or log stream.
 #' 
-#' `{ "Version": "2012-10-17", "Statement": [ { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [ "route53.amazonaws.com" ] }, "Action":"logs:PutLogEvents", "Resource": "logArn" } ] } `
+#' CloudWatch Logs also supports
+#' [aws:SourceArn](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn)
+#' and
+#' [aws:SourceAccount](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceaccount)
+#' condition context keys.
+#' 
+#' In the example resource policy, you would replace the value of
+#' `SourceArn` with the resource making the call from Route 53 to
+#' CloudWatch Logs and replace the value of `SourceAccount` with the Amazon
+#' Web Services account ID making that call.
+#' 
+#' `{ "Version": "2012-10-17", "Statement": [ { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [ "route53.amazonaws.com" ] }, "Action": "logs:PutLogEvents", "Resource": "logArn", "Condition": { "ArnLike": { "aws:SourceArn": "myRoute53ResourceArn" }, "StringEquals": { "aws:SourceAccount": "myAwsAccountId" } } } ] }`
 #'
 #' @return
 #' A list with the following syntax:
@@ -2336,13 +2409,12 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' -   An Amazon Kinesis Firehose delivery stream that belongs to the same
 #'     account as the subscription filter, for same-account delivery.
 #' 
-#' -   An AWS Lambda function that belongs to the same account as the
+#' -   An Lambda function that belongs to the same account as the
 #'     subscription filter, for same-account delivery.
 #' 
-#' There can only be one subscription filter associated with a log group.
-#' If you are updating an existing filter, you must specify the correct
-#' name in `filterName`. Otherwise, the call fails because you cannot
-#' associate a second filter with a log group.
+#' Each log group can have up to two subscription filters associated with
+#' it. If you are updating an existing filter, you must specify the correct
+#' name in `filterName`.
 #' 
 #' To perform a
 #' [`put_subscription_filter`][cloudwatchlogs_put_subscription_filter]
@@ -2354,10 +2426,8 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param filterName &#91;required&#93; A name for the subscription filter. If you are updating an existing
-#' filter, you must specify the correct name in `filterName`. Otherwise,
-#' the call fails because you cannot associate a second filter with a log
-#' group. To find the name of the filter currently associated with a log
-#' group, use
+#' filter, you must specify the correct name in `filterName`. To find the
+#' name of the filter currently associated with a log group, use
 #' [`describe_subscription_filters`][cloudwatchlogs_describe_subscription_filters].
 #' @param filterPattern &#91;required&#93; A filter pattern for subscribing to a filtered stream of log events.
 #' @param destinationArn &#91;required&#93; The ARN of the destination to deliver matching log events to. Currently,
@@ -2369,11 +2439,16 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' -   A logical destination (specified using an ARN) belonging to a
 #'     different account, for cross-account delivery.
 #' 
+#'     If you are setting up a cross-account subscription, the destination
+#'     must have an IAM policy associated with it that allows the sender to
+#'     send logs to the destination. For more information, see
+#'     [`put_destination_policy`][cloudwatchlogs_put_destination_policy].
+#' 
 #' -   An Amazon Kinesis Firehose delivery stream belonging to the same
 #'     account as the subscription filter, for same-account delivery.
 #' 
-#' -   An AWS Lambda function belonging to the same account as the
-#'     subscription filter, for same-account delivery.
+#' -   A Lambda function belonging to the same account as the subscription
+#'     filter, for same-account delivery.
 #' @param roleArn The ARN of an IAM role that grants CloudWatch Logs permissions to
 #' deliver ingested log events to the destination stream. You don't need to
 #' provide the ARN when you are working with a logical destination for
@@ -2561,6 +2636,13 @@ cloudwatchlogs_stop_query <- function(queryId) {
 #' CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#log-group-tagging)
 #' in the *Amazon CloudWatch Logs User Guide*.
+#' 
+#' CloudWatch Logs doesn’t support IAM policies that prevent users from
+#' assigning specified tags to log groups using the
+#' `aws:Resource/key-name ` or `aws:TagKeys` condition keys. For more
+#' information about using tags to control access, see [Controlling access
+#' to Amazon Web Services resources using
+#' tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 #'
 #' @usage
 #' cloudwatchlogs_tag_log_group(logGroupName, tags)
@@ -2669,6 +2751,10 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
 #' To list the tags for a log group, use
 #' [`list_tags_log_group`][cloudwatchlogs_list_tags_log_group]. To add
 #' tags, use [`tag_log_group`][cloudwatchlogs_tag_log_group].
+#' 
+#' CloudWatch Logs doesn’t support IAM policies that prevent users from
+#' assigning specified tags to log groups using the
+#' `aws:Resource/key-name ` or `aws:TagKeys` condition keys.
 #'
 #' @usage
 #' cloudwatchlogs_untag_log_group(logGroupName, tags)

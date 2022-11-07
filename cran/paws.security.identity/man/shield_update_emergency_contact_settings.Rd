@@ -3,40 +3,24 @@
 \name{shield_update_emergency_contact_settings}
 \alias{shield_update_emergency_contact_settings}
 \title{Updates the details of the list of email addresses and phone numbers
-that the DDoS Response Team (DRT) can use to contact you if you have
-proactive engagement enabled, for escalations to the DRT and to initiate
+that the Shield Response Team (SRT) can use to contact you if you have
+proactive engagement enabled, for escalations to the SRT and to initiate
 proactive customer support}
 \usage{
-shield_update_emergency_contact_settings(EmergencyContactList)
+shield_update_emergency_contact_settings(EmergencyContactList = NULL)
 }
 \arguments{
-\item{EmergencyContactList}{A list of email addresses and phone numbers that the DDoS Response Team
-(DRT) can use to contact you if you have proactive engagement enabled,
-for escalations to the DRT and to initiate proactive customer support.
+\item{EmergencyContactList}{A list of email addresses and phone numbers that the Shield Response
+Team (SRT) can use to contact you if you have proactive engagement
+enabled, for escalations to the SRT and to initiate proactive customer
+support.
 
 If you have proactive engagement enabled, the contact list must include
 at least one phone number.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the details of the list of email addresses and phone numbers
-that the DDoS Response Team (DRT) can use to contact you if you have
-proactive engagement enabled, for escalations to the DRT and to initiate
-proactive customer support.
-}
-\section{Request syntax}{
-\preformatted{svc$update_emergency_contact_settings(
-  EmergencyContactList = list(
-    list(
-      EmailAddress = "string",
-      PhoneNumber = "string",
-      ContactNotes = "string"
-    )
-  )
-)
-}
-}
+Updates the details of the list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive customer support.
 
+See \url{https://paws-r.github.io/docs/shield/update_emergency_contact_settings.html} for full documentation.
+}
 \keyword{internal}

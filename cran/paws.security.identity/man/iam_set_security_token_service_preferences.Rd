@@ -3,63 +3,24 @@
 \name{iam_set_security_token_service_preferences}
 \alias{iam_set_security_token_service_preferences}
 \title{Sets the specified version of the global endpoint token as the token
-version used for the AWS account}
+version used for the Amazon Web Services account}
 \usage{
 iam_set_security_token_service_preferences(GlobalEndpointTokenVersion)
 }
 \arguments{
 \item{GlobalEndpointTokenVersion}{[required] The version of the global endpoint token. Version 1 tokens are valid
-only in AWS Regions that are available by default. These tokens do not
-work in manually enabled Regions, such as Asia Pacific (Hong Kong).
-Version 2 tokens are valid in all Regions. However, version 2 tokens are
-longer and might affect systems where you temporarily store tokens.
+only in Amazon Web Services Regions that are available by default. These
+tokens do not work in manually enabled Regions, such as Asia Pacific
+(Hong Kong). Version 2 tokens are valid in all Regions. However, version
+2 tokens are longer and might affect systems where you temporarily store
+tokens.
 
-For information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating STS in an AWS Region}
+For information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and deactivating STS in an Amazon Web Services Region}
 in the \emph{IAM User Guide}.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets the specified version of the global endpoint token as the token
-version used for the AWS account.
+Sets the specified version of the global endpoint token as the token version used for the Amazon Web Services account.
 
-By default, AWS Security Token Service (STS) is available as a global
-service, and all STS requests go to a single endpoint at
-\verb{https://sts.amazonaws.com}. AWS recommends using Regional STS endpoints
-to reduce latency, build in redundancy, and increase session token
-availability. For information about Regional endpoints for STS, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region}{AWS Regions and Endpoints}
-in the \emph{AWS General Reference}.
-
-If you make an STS call to the global endpoint, the resulting session
-tokens might be valid in some Regions but not others. It depends on the
-version that is set in this operation. Version 1 tokens are valid only
-in AWS Regions that are available by default. These tokens do not work
-in manually enabled Regions, such as Asia Pacific (Hong Kong). Version 2
-tokens are valid in all Regions. However, version 2 tokens are longer
-and might affect systems where you temporarily store tokens. For
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating STS in an AWS Region}
-in the \emph{IAM User Guide}.
-
-To view the current session token version, see the
-\code{GlobalEndpointTokenVersion} entry in the response of the
-\code{\link[=iam_get_account_summary]{get_account_summary}} operation.
-}
-\section{Request syntax}{
-\preformatted{svc$set_security_token_service_preferences(
-  GlobalEndpointTokenVersion = "v1Token"|"v2Token"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command sets the STS global endpoint token to version 2.
-# Version 2 tokens are valid in all Regions.
-svc$set_security_token_service_preferences(
-  GlobalEndpointTokenVersion = "v2Token"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/set_security_token_service_preferences.html} for full documentation.
 }
 \keyword{internal}

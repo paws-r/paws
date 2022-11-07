@@ -4,8 +4,15 @@
 \alias{lexruntimeservice_post_text}
 \title{Sends user input to Amazon Lex}
 \usage{
-lexruntimeservice_post_text(botName, botAlias, userId,
-  sessionAttributes, requestAttributes, inputText, activeContexts)
+lexruntimeservice_post_text(
+  botName,
+  botAlias,
+  userId,
+  sessionAttributes = NULL,
+  requestAttributes = NULL,
+  inputText,
+  activeContexts = NULL
+)
 }
 \arguments{
 \item{botName}{[required] The name of the Amazon Lex bot.}
@@ -38,7 +45,7 @@ alias in the user ID to separate the two conversations.
 \item{sessionAttributes}{Application-specific information passed between Amazon Lex and a client
 application.
 
-For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs}{Setting Session Attributes}.}
+For more information, see Setting Session Attributes.}
 
 \item{requestAttributes}{Request-specific information passed between Amazon Lex and a client
 application.
@@ -46,7 +53,7 @@ application.
 The namespace \verb{x-amz-lex:} is reserved for special attributes. Don't
 create any request attributes with the prefix \verb{x-amz-lex:}.
 
-For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
+For more information, see Setting Request Attributes.}
 
 \item{inputText}{[required] The text that the user entered (Amazon Lex interprets this text).}
 
@@ -58,147 +65,9 @@ If you don't specify a list of contexts, Amazon Lex will use the current
 list of contexts for the session. If you specify an empty list, all
 contexts for the session are cleared.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  intentName = "string",
-  nluIntentConfidence = list(
-    score = 123.0
-  ),
-  alternativeIntents = list(
-    list(
-      intentName = "string",
-      nluIntentConfidence = list(
-        score = 123.0
-      ),
-      slots = list(
-        "string"
-      )
-    )
-  ),
-  slots = list(
-    "string"
-  ),
-  sessionAttributes = list(
-    "string"
-  ),
-  message = "string",
-  sentimentResponse = list(
-    sentimentLabel = "string",
-    sentimentScore = "string"
-  ),
-  messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
-  dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
-  slotToElicit = "string",
-  responseCard = list(
-    version = "string",
-    contentType = "application/vnd.amazonaws.card.generic",
-    genericAttachments = list(
-      list(
-        title = "string",
-        subTitle = "string",
-        attachmentLinkUrl = "string",
-        imageUrl = "string",
-        buttons = list(
-          list(
-            text = "string",
-            value = "string"
-          )
-        )
-      )
-    )
-  ),
-  sessionId = "string",
-  botVersion = "string",
-  activeContexts = list(
-    list(
-      name = "string",
-      timeToLive = list(
-        timeToLiveInSeconds = 123,
-        turnsToLive = 123
-      ),
-      parameters = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Sends user input to Amazon Lex. Client applications can use this API to
-send requests to Amazon Lex at runtime. Amazon Lex then interprets the
-user input using the machine learning model it built for the bot.
+Sends user input to Amazon Lex. Client applications can use this API to send requests to Amazon Lex at runtime. Amazon Lex then interprets the user input using the machine learning model it built for the bot.
 
-In response, Amazon Lex returns the next \code{message} to convey to the user
-an optional \code{responseCard} to display. Consider the following example
-messages:
-\itemize{
-\item For a user input "I would like a pizza", Amazon Lex might return a
-response with a message eliciting slot data (for example,
-PizzaSize): "What size pizza would you like?"
-\item After the user provides all of the pizza order information, Amazon
-Lex might return a response with a message to obtain user
-confirmation "Proceed with the pizza order?".
-\item After the user replies to a confirmation prompt with a "yes", Amazon
-Lex might return a conclusion statement: "Thank you, your cheese
-pizza has been ordered.".
+See \url{https://paws-r.github.io/docs/lexruntimeservice/post_text.html} for full documentation.
 }
-
-Not all Amazon Lex messages require a user response. For example, a
-conclusion statement does not require a response. Some messages require
-only a "yes" or "no" user response. In addition to the \code{message}, Amazon
-Lex provides additional context about the message in the response that
-you might use to enhance client behavior, for example, to display the
-appropriate client user interface. These are the \code{slotToElicit},
-\code{dialogState}, \code{intentName}, and \code{slots} fields in the response.
-Consider the following examples:
-\itemize{
-\item If the message is to elicit slot data, Amazon Lex returns the
-following context information:
-\itemize{
-\item \code{dialogState} set to ElicitSlot
-\item \code{intentName} set to the intent name in the current context
-\item \code{slotToElicit} set to the slot name for which the \code{message} is
-eliciting information
-\item \code{slots} set to a map of slots, configured for the intent, with
-currently known values
-}
-\item If the message is a confirmation prompt, the \code{dialogState} is set to
-ConfirmIntent and \code{SlotToElicit} is set to null.
-\item If the message is a clarification prompt (configured for the intent)
-that indicates that user intent is not understood, the \code{dialogState}
-is set to ElicitIntent and \code{slotToElicit} is set to null.
-}
-
-In addition, Amazon Lex also returns your application-specific
-\code{sessionAttributes}. For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html}{Managing Conversation Context}.
-}
-\section{Request syntax}{
-\preformatted{svc$post_text(
-  botName = "string",
-  botAlias = "string",
-  userId = "string",
-  sessionAttributes = list(
-    "string"
-  ),
-  requestAttributes = list(
-    "string"
-  ),
-  inputText = "string",
-  activeContexts = list(
-    list(
-      name = "string",
-      timeToLive = list(
-        timeToLiveInSeconds = 123,
-        turnsToLive = 123
-      ),
-      parameters = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

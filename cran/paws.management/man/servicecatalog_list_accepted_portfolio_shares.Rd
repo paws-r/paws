@@ -2,10 +2,15 @@
 % Please edit documentation in R/servicecatalog_operations.R
 \name{servicecatalog_list_accepted_portfolio_shares}
 \alias{servicecatalog_list_accepted_portfolio_shares}
-\title{Lists all portfolios for which sharing was accepted by this account}
+\title{Lists all imported portfolios for which account-to-account shares were
+accepted by this account}
 \usage{
-servicecatalog_list_accepted_portfolio_shares(AcceptLanguage, PageToken,
-  PageSize, PortfolioShareType)
+servicecatalog_list_accepted_portfolio_shares(
+  AcceptLanguage = NULL,
+  PageToken = NULL,
+  PageSize = NULL,
+  PortfolioShareType = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -23,41 +28,17 @@ results, use null.}
 \item{PortfolioShareType}{The type of shared portfolios to list. The default is to list imported
 portfolios.
 \itemize{
-\item \code{AWS_ORGANIZATIONS} - List portfolios shared by the management
-account of your organization
-\item \code{AWS_SERVICECATALOG} - List default portfolios
-\item \code{IMPORTED} - List imported portfolios
+\item \code{AWS_ORGANIZATIONS} - List portfolios accepted and shared via
+organizational sharing by the management account or delegated
+administrator of your organization.
+\item \code{AWS_SERVICECATALOG} - Deprecated type.
+\item \code{IMPORTED} - List imported portfolios that have been accepted and
+shared through account-to-account sharing.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PortfolioDetails = list(
-    list(
-      Id = "string",
-      ARN = "string",
-      DisplayName = "string",
-      Description = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ProviderName = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Lists all portfolios for which sharing was accepted by this account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_accepted_portfolio_shares(
-  AcceptLanguage = "string",
-  PageToken = "string",
-  PageSize = 123,
-  PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
-)
-}
-}
+Lists all imported portfolios for which account-to-account shares were accepted by this account. By specifying the \code{PortfolioShareType}, you can list portfolios for which organizational shares were accepted by this account.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_accepted_portfolio_shares.html} for full documentation.
+}
 \keyword{internal}

@@ -4,12 +4,22 @@
 \alias{glue_get_partitions}
 \title{Retrieves information about the partitions in a table}
 \usage{
-glue_get_partitions(CatalogId, DatabaseName, TableName, Expression,
-  NextToken, Segment, MaxResults)
+glue_get_partitions(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  Expression = NULL,
+  NextToken = NULL,
+  Segment = NULL,
+  MaxResults = NULL,
+  ExcludeColumnSchema = NULL,
+  TransactionId = NULL,
+  QueryAsOfTime = NULL
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partitions in question reside. If
-none is provided, the AWS account ID is used by default.}
+none is provided, the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the partitions reside.}
 
@@ -19,7 +29,7 @@ none is provided, the AWS account ID is used by default.}
 
 The expression uses SQL syntax similar to the SQL \code{WHERE} filter clause.
 The SQL statement parser
-\href{http://jsqlparser.sourceforge.net/home.php}{JSQLParser} parses the
+\href{https://jsqlparser.sourceforge.net/home.php}{JSQLParser} parses the
 expression.
 
 \emph{Operators}: The following are the operators that you can use in the
@@ -34,44 +44,44 @@ Example: Assume 'variable a' holds 10 and 'variable b' holds 20.
 (a = b) is not true.
 }
 
-\subsection{< >}{
+\subsection{\< \>}{
 
 Checks whether the values of two operands are equal; if the values are
 not equal, then the condition becomes true.
 
-Example: (a < > b) is true.
+Example: (a \< \> b) is true.
 }
 
-\subsection{>}{
+\subsection{\>}{
 
 Checks whether the value of the left operand is greater than the value
 of the right operand; if yes, then the condition becomes true.
 
-Example: (a > b) is not true.
+Example: (a \> b) is not true.
 }
 
-\subsection{<}{
+\subsection{\<}{
 
 Checks whether the value of the left operand is less than the value of
 the right operand; if yes, then the condition becomes true.
 
-Example: (a < b) is true.
+Example: (a \< b) is true.
 }
 
-\subsection{>=}{
+\subsection{\>=}{
 
 Checks whether the value of the left operand is greater than or equal to
 the value of the right operand; if yes, then the condition becomes true.
 
-Example: (a >= b) is not true.
+Example: (a \>= b) is not true.
 }
 
-\subsection{<=}{
+\subsection{\<=}{
 
 Checks whether the value of the left operand is less than or equal to
 the value of the right operand; if yes, then the condition becomes true.
 
-Example: (a <= b) is true.
+Example: (a \<= b) is true.
 }
 
 \subsection{AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL}{
@@ -92,7 +102,7 @@ partition keys.
 \item \code{decimal}
 }
 
-If an invalid type is encountered, an exception is thrown.
+If an type is encountered that is not valid, an exception is thrown.
 
 The following list shows the valid operators on each type. When you
 define a crawler, the \code{partitionKey} type is created as a \code{STRING}, to
@@ -107,109 +117,21 @@ partitions.}
 \item{Segment}{The segment of the table's partitions to scan in this request.}
 
 \item{MaxResults}{The maximum number of partitions to return in a single response.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Partitions = list(
-    list(
-      Values = list(
-        "string"
-      ),
-      DatabaseName = "string",
-      TableName = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastAccessTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StorageDescriptor = list(
-        Columns = list(
-          list(
-            Name = "string",
-            Type = "string",
-            Comment = "string",
-            Parameters = list(
-              "string"
-            )
-          )
-        ),
-        Location = "string",
-        InputFormat = "string",
-        OutputFormat = "string",
-        Compressed = TRUE|FALSE,
-        NumberOfBuckets = 123,
-        SerdeInfo = list(
-          Name = "string",
-          SerializationLibrary = "string",
-          Parameters = list(
-            "string"
-          )
-        ),
-        BucketColumns = list(
-          "string"
-        ),
-        SortColumns = list(
-          list(
-            Column = "string",
-            SortOrder = 123
-          )
-        ),
-        Parameters = list(
-          "string"
-        ),
-        SkewedInfo = list(
-          SkewedColumnNames = list(
-            "string"
-          ),
-          SkewedColumnValues = list(
-            "string"
-          ),
-          SkewedColumnValueLocationMaps = list(
-            "string"
-          )
-        ),
-        StoredAsSubDirectories = TRUE|FALSE,
-        SchemaReference = list(
-          SchemaId = list(
-            SchemaArn = "string",
-            SchemaName = "string",
-            RegistryName = "string"
-          ),
-          SchemaVersionId = "string",
-          SchemaVersionNumber = 123
-        )
-      ),
-      Parameters = list(
-        "string"
-      ),
-      LastAnalyzedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CatalogId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{ExcludeColumnSchema}{When true, specifies not returning the partition column schema. Useful
+when you are interested only in other partition attributes such as
+partition values or location. This approach avoids the problem of a
+large response by not returning duplicate data.}
+
+\item{TransactionId}{The transaction ID at which to read the partition contents.}
+
+\item{QueryAsOfTime}{The time as of when to read the partition contents. If not set, the most
+recent transaction commit time will be used. Cannot be specified along
+with \code{TransactionId}.}
 }
 \description{
 Retrieves information about the partitions in a table.
-}
-\section{Request syntax}{
-\preformatted{svc$get_partitions(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  Expression = "string",
-  NextToken = "string",
-  Segment = list(
-    SegmentNumber = 123,
-    TotalSegments = 123
-  ),
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_partitions.html} for full documentation.
+}
 \keyword{internal}

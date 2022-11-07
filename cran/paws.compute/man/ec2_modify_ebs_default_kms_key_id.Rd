@@ -2,18 +2,18 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_ebs_default_kms_key_id}
 \alias{ec2_modify_ebs_default_kms_key_id}
-\title{Changes the default customer master key (CMK) for EBS encryption by
-default for your account in this Region}
+\title{Changes the default KMS key for EBS encryption by default for your
+account in this Region}
 \usage{
-ec2_modify_ebs_default_kms_key_id(KmsKeyId, DryRun)
+ec2_modify_ebs_default_kms_key_id(KmsKeyId, DryRun = NULL)
 }
 \arguments{
-\item{KmsKeyId}{[required] The identifier of the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use for Amazon EBS encryption. If this parameter is
-not specified, your AWS managed CMK for EBS is used. If \code{KmsKeyId} is
-specified, the encrypted state must be \code{true}.
+\item{KmsKeyId}{[required] The identifier of the Key Management Service (KMS) KMS key to use for
+Amazon EBS encryption. If this parameter is not specified, your KMS key
+for Amazon EBS is used. If \code{KmsKeyId} is specified, the encrypted state
+must be \code{true}.
 
-You can specify the CMK using any of the following:
+You can specify the KMS key using any of the following:
 \itemize{
 \item Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 \item Key alias. For example, alias/ExampleAlias.
@@ -23,46 +23,20 @@ arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 }
 
-AWS authenticates the CMK asynchronously. Therefore, if you specify an
-ID, alias, or ARN that is not valid, the action can appear to complete,
-but eventually fails.
+Amazon Web Services authenticates the KMS key asynchronously. Therefore,
+if you specify an ID, alias, or ARN that is not valid, the action can
+appear to complete, but eventually fails.
 
-Amazon EBS does not support asymmetric CMKs.}
+Amazon EBS does not support asymmetric KMS keys.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KmsKeyId = "string"
-)
-}
-}
 \description{
-Changes the default customer master key (CMK) for EBS encryption by
-default for your account in this Region.
+Changes the default KMS key for EBS encryption by default for your account in this Region.
 
-AWS creates a unique AWS managed CMK in each Region for use with
-encryption by default. If you change the default CMK to a symmetric
-customer managed CMK, it is used instead of the AWS managed CMK. To
-reset the default CMK to the AWS managed CMK for EBS, use
-\code{\link[=ec2_reset_ebs_default_kms_key_id]{reset_ebs_default_kms_key_id}}.
-Amazon EBS does not support asymmetric CMKs.
-
-If you delete or disable the customer managed CMK that you specified for
-use with encryption by default, your instances will fail to launch.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/modify_ebs_default_kms_key_id.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_ebs_default_kms_key_id(
-  KmsKeyId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

@@ -6,7 +6,9 @@
 Client VPN endpoint}
 \usage{
 ec2_export_client_vpn_client_certificate_revocation_list(
-  ClientVpnEndpointId, DryRun)
+  ClientVpnEndpointId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -16,26 +18,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CertificateRevocationList = "string",
-  Status = list(
-    Code = "pending"|"active",
-    Message = "string"
-  )
-)
-}
-}
 \description{
-Downloads the client certificate revocation list for the specified
-Client VPN endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$export_client_vpn_client_certificate_revocation_list(
-  ClientVpnEndpointId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Downloads the client certificate revocation list for the specified Client VPN endpoint.
 
+See \url{https://paws-r.github.io/docs/ec2/export_client_vpn_client_certificate_revocation_list.html} for full documentation.
+}
 \keyword{internal}

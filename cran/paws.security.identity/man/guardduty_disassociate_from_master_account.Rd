@@ -10,18 +10,9 @@ guardduty_disassociate_from_master_account(DetectorId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates the current GuardDuty member account from its
-administrator account.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_from_master_account(
-  DetectorId = "string"
-)
-}
-}
+Disassociates the current GuardDuty member account from its administrator account.
 
+See \url{https://paws-r.github.io/docs/guardduty/disassociate_from_master_account.html} for full documentation.
+}
 \keyword{internal}

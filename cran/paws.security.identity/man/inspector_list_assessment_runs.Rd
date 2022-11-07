@@ -5,8 +5,12 @@
 \title{Lists the assessment runs that correspond to the assessment templates
 that are specified by the ARNs of the assessment templates}
 \usage{
-inspector_list_assessment_runs(assessmentTemplateArns, filter,
-  nextToken, maxResults)
+inspector_list_assessment_runs(
+  assessmentTemplateArns = NULL,
+  filter = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{assessmentTemplateArns}{The ARNs that specify the assessment templates whose assessment runs you
@@ -29,78 +33,9 @@ listing data.}
 you want in the response. The default value is 10. The maximum value is
 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  assessmentRunArns = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the assessment runs that correspond to the assessment templates
-that are specified by the ARNs of the assessment templates.
-}
-\section{Request syntax}{
-\preformatted{svc$list_assessment_runs(
-  assessmentTemplateArns = list(
-    "string"
-  ),
-  filter = list(
-    namePattern = "string",
-    states = list(
-      "CREATED"|"START_DATA_COLLECTION_PENDING"|"START_DATA_COLLECTION_IN_PROGRESS"|"COLLECTING_DATA"|"STOP_DATA_COLLECTION_PENDING"|"DATA_COLLECTED"|"START_EVALUATING_RULES_PENDING"|"EVALUATING_RULES"|"FAILED"|"ERROR"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"CANCELED"
-    ),
-    durationRange = list(
-      minSeconds = 123,
-      maxSeconds = 123
-    ),
-    rulesPackageArns = list(
-      "string"
-    ),
-    startTimeRange = list(
-      beginDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      endDate = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    completionTimeRange = list(
-      beginDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      endDate = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    stateChangeTimeRange = list(
-      beginDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      endDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists the assessment runs that correspond to the assessment templates that are specified by the ARNs of the assessment templates.
 
-\examples{
-\dontrun{
-# Lists the assessment runs that correspond to the assessment templates
-# that are specified by the ARNs of the assessment templates.
-svc$list_assessment_runs(
-  assessmentTemplateArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw"
-  ),
-  maxResults = 123L
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/list_assessment_runs.html} for full documentation.
 }
 \keyword{internal}

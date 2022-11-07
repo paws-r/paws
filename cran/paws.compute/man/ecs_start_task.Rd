@@ -5,22 +5,37 @@
 \title{Starts a new task from the specified task definition on the specified
 container instance or instances}
 \usage{
-ecs_start_task(cluster, containerInstances, enableECSManagedTags, group,
-  networkConfiguration, overrides, propagateTags, referenceId, startedBy,
-  tags, taskDefinition)
+ecs_start_task(
+  cluster = NULL,
+  containerInstances,
+  enableECSManagedTags = NULL,
+  enableExecuteCommand = NULL,
+  group = NULL,
+  networkConfiguration = NULL,
+  overrides = NULL,
+  propagateTags = NULL,
+  referenceId = NULL,
+  startedBy = NULL,
+  tags = NULL,
+  taskDefinition
+)
 }
 \arguments{
-\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster on
-which to start your task. If you do not specify a cluster, the default
-cluster is assumed.}
+\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster where
+to start your task. If you do not specify a cluster, the default cluster
+is assumed.}
 
 \item{containerInstances}{[required] The container instance IDs or full ARN entries for the container
-instances on which you would like to place your task. You can specify up
-to 10 container instances.}
+instances where you would like to place your task. You can specify up to
+10 container instances.}
 
-\item{enableECSManagedTags}{Specifies whether to enable Amazon ECS managed tags for the task. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
+\item{enableECSManagedTags}{Specifies whether to use Amazon ECS managed tags for the task. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{enableExecuteCommand}{Whether or not the execute command functionality is enabled for the
+task. If \code{true}, this enables execute command functionality on all
+containers in the task.}
 
 \item{group}{The name of the task group to associate with the task. The default value
 is the family name of the task definition (for example,
@@ -31,8 +46,8 @@ their own elastic network interface by using the \code{awsvpc} networking
 mode.}
 
 \item{overrides}{A list of container overrides in JSON format that specify the name of a
-container in the specified task definition and the overrides it should
-receive. You can override the default command for a container (that is
+container in the specified task definition and the overrides it
+receives. You can override the default command for a container (that's
 specified in the task definition or Docker image) with a \code{command}
 override. You can also override existing environment variables (that are
 specified in the task definition or Docker image) on a container or add
@@ -42,7 +57,7 @@ A total of 8192 characters are allowed for overrides. This limit
 includes the JSON formatting characters of the override structure.}
 
 \item{propagateTags}{Specifies whether to propagate the tags from the task definition or the
-service to the task. If no value is specified, the tags are not
+service to the task. If no value is specified, the tags aren't
 propagated.}
 
 \item{referenceId}{The reference ID to use for the task.}
@@ -53,10 +68,10 @@ a unique identifier for that job to your task with the \code{startedBy}
 parameter. You can then identify which tasks belong to that job by
 filtering the results of a \code{\link[=ecs_list_tasks]{list_tasks}} call with the
 \code{startedBy} value. Up to 36 letters (uppercase and lowercase), numbers,
-hyphens, and underscores are allowed.
+hyphens (-), and underscores (_) are allowed.
 
-If a task is started by an Amazon ECS service, then the \code{startedBy}
-parameter contains the deployment ID of the service that starts it.}
+If a task is started by an Amazon ECS service, the \code{startedBy} parameter
+contains the deployment ID of the service that starts it.}
 
 \item{tags}{The metadata that you apply to the task to help you categorize and
 organize them. Each tag consists of a key and an optional value, both of
@@ -76,264 +91,19 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for either keys or values as it is reserved for AWS
-use. You cannot edit or delete tag keys or values with this prefix.
-Tags with this prefix do not count against your tags per resource
-limit.
+such as a prefix for either keys or values as it is reserved for
+Amazon Web Services use. You cannot edit or delete tag keys or
+values with this prefix. Tags with this prefix do not count against
+your tags per resource limit.
 }}
 
 \item{taskDefinition}{[required] The \code{family} and \code{revision} (\code{family:revision}) or full ARN of the task
-definition to start. If a \code{revision} is not specified, the latest
+definition to start. If a \code{revision} isn't specified, the latest
 \code{ACTIVE} revision is used.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tasks = list(
-    list(
-      attachments = list(
-        list(
-          id = "string",
-          type = "string",
-          status = "string",
-          details = list(
-            list(
-              name = "string",
-              value = "string"
-            )
-          )
-        )
-      ),
-      attributes = list(
-        list(
-          name = "string",
-          value = "string",
-          targetType = "container-instance",
-          targetId = "string"
-        )
-      ),
-      availabilityZone = "string",
-      capacityProviderName = "string",
-      clusterArn = "string",
-      connectivity = "CONNECTED"|"DISCONNECTED",
-      connectivityAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      containerInstanceArn = "string",
-      containers = list(
-        list(
-          containerArn = "string",
-          taskArn = "string",
-          name = "string",
-          image = "string",
-          imageDigest = "string",
-          runtimeId = "string",
-          lastStatus = "string",
-          exitCode = 123,
-          reason = "string",
-          networkBindings = list(
-            list(
-              bindIP = "string",
-              containerPort = 123,
-              hostPort = 123,
-              protocol = "tcp"|"udp"
-            )
-          ),
-          networkInterfaces = list(
-            list(
-              attachmentId = "string",
-              privateIpv4Address = "string",
-              ipv6Address = "string"
-            )
-          ),
-          healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-          cpu = "string",
-          memory = "string",
-          memoryReservation = "string",
-          gpuIds = list(
-            "string"
-          )
-        )
-      ),
-      cpu = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      desiredStatus = "string",
-      executionStoppedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      group = "string",
-      healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-      inferenceAccelerators = list(
-        list(
-          deviceName = "string",
-          deviceType = "string"
-        )
-      ),
-      lastStatus = "string",
-      launchType = "EC2"|"FARGATE",
-      memory = "string",
-      overrides = list(
-        containerOverrides = list(
-          list(
-            name = "string",
-            command = list(
-              "string"
-            ),
-            environment = list(
-              list(
-                name = "string",
-                value = "string"
-              )
-            ),
-            environmentFiles = list(
-              list(
-                value = "string",
-                type = "s3"
-              )
-            ),
-            cpu = 123,
-            memory = 123,
-            memoryReservation = 123,
-            resourceRequirements = list(
-              list(
-                value = "string",
-                type = "GPU"|"InferenceAccelerator"
-              )
-            )
-          )
-        ),
-        cpu = "string",
-        inferenceAcceleratorOverrides = list(
-          list(
-            deviceName = "string",
-            deviceType = "string"
-          )
-        ),
-        executionRoleArn = "string",
-        memory = "string",
-        taskRoleArn = "string"
-      ),
-      platformVersion = "string",
-      pullStartedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      pullStoppedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      startedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      startedBy = "string",
-      stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
-      stoppedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      stoppedReason = "string",
-      stoppingAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      taskArn = "string",
-      taskDefinitionArn = "string",
-      version = 123
-    )
-  ),
-  failures = list(
-    list(
-      arn = "string",
-      reason = "string",
-      detail = "string"
-    )
-  )
-)
-}
-}
 \description{
-Starts a new task from the specified task definition on the specified
-container instance or instances.
+Starts a new task from the specified task definition on the specified container instance or instances.
 
-Alternatively, you can use \code{\link[=ecs_run_task]{run_task}} to place tasks for
-you. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html}{Scheduling Tasks}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
+See \url{https://paws-r.github.io/docs/ecs/start_task.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_task(
-  cluster = "string",
-  containerInstances = list(
-    "string"
-  ),
-  enableECSManagedTags = TRUE|FALSE,
-  group = "string",
-  networkConfiguration = list(
-    awsvpcConfiguration = list(
-      subnets = list(
-        "string"
-      ),
-      securityGroups = list(
-        "string"
-      ),
-      assignPublicIp = "ENABLED"|"DISABLED"
-    )
-  ),
-  overrides = list(
-    containerOverrides = list(
-      list(
-        name = "string",
-        command = list(
-          "string"
-        ),
-        environment = list(
-          list(
-            name = "string",
-            value = "string"
-          )
-        ),
-        environmentFiles = list(
-          list(
-            value = "string",
-            type = "s3"
-          )
-        ),
-        cpu = 123,
-        memory = 123,
-        memoryReservation = 123,
-        resourceRequirements = list(
-          list(
-            value = "string",
-            type = "GPU"|"InferenceAccelerator"
-          )
-        )
-      )
-    ),
-    cpu = "string",
-    inferenceAcceleratorOverrides = list(
-      list(
-        deviceName = "string",
-        deviceType = "string"
-      )
-    ),
-    executionRoleArn = "string",
-    memory = "string",
-    taskRoleArn = "string"
-  ),
-  propagateTags = "TASK_DEFINITION"|"SERVICE",
-  referenceId = "string",
-  startedBy = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  taskDefinition = "string"
-)
-}
-}
-
 \keyword{internal}

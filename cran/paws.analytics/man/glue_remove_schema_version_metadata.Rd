@@ -5,8 +5,12 @@
 \title{Removes a key value pair from the schema version metadata for the
 specified schema version ID}
 \usage{
-glue_remove_schema_version_metadata(SchemaId, SchemaVersionNumber,
-  SchemaVersionId, MetadataKeyValue)
+glue_remove_schema_version_metadata(
+  SchemaId = NULL,
+  SchemaVersionNumber = NULL,
+  SchemaVersionId = NULL,
+  MetadataKeyValue
+)
 }
 \arguments{
 \item{SchemaId}{A wrapper structure that may contain the schema name and Amazon Resource
@@ -18,41 +22,9 @@ Name (ARN).}
 
 \item{MetadataKeyValue}{[required] The value of the metadata key.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaArn = "string",
-  SchemaName = "string",
-  RegistryName = "string",
-  LatestVersion = TRUE|FALSE,
-  VersionNumber = 123,
-  SchemaVersionId = "string",
-  MetadataKey = "string",
-  MetadataValue = "string"
-)
-}
-}
 \description{
-Removes a key value pair from the schema version metadata for the
-specified schema version ID.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_schema_version_metadata(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  ),
-  SchemaVersionNumber = list(
-    LatestVersion = TRUE|FALSE,
-    VersionNumber = 123
-  ),
-  SchemaVersionId = "string",
-  MetadataKeyValue = list(
-    MetadataKey = "string",
-    MetadataValue = "string"
-  )
-)
-}
-}
+Removes a key value pair from the schema version metadata for the specified schema version ID.
 
+See \url{https://paws-r.github.io/docs/glue/remove_schema_version_metadata.html} for full documentation.
+}
 \keyword{internal}

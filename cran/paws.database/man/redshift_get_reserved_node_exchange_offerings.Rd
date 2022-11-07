@@ -5,8 +5,11 @@
 \title{Returns an array of DC2 ReservedNodeOfferings that matches the payment
 type, term, and usage price of the given DC1 reserved node}
 \usage{
-redshift_get_reserved_node_exchange_offerings(ReservedNodeId,
-  MaxRecords, Marker)
+redshift_get_reserved_node_exchange_offerings(
+  ReservedNodeId,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ReservedNodeId}{[required] A string representing the node identifier for the DC1 Reserved Node to
@@ -18,41 +21,9 @@ retrieve.}
 \item{Marker}{A value that indicates the starting point for the next set of
 ReservedNodeOfferings.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ReservedNodeOfferings = list(
-    list(
-      ReservedNodeOfferingId = "string",
-      NodeType = "string",
-      Duration = 123,
-      FixedPrice = 123.0,
-      UsagePrice = 123.0,
-      CurrencyCode = "string",
-      OfferingType = "string",
-      RecurringCharges = list(
-        list(
-          RecurringChargeAmount = 123.0,
-          RecurringChargeFrequency = "string"
-        )
-      ),
-      ReservedNodeOfferingType = "Regular"|"Upgradable"
-    )
-  )
-)
-}
-}
 \description{
-Returns an array of DC2 ReservedNodeOfferings that matches the payment
-type, term, and usage price of the given DC1 reserved node.
-}
-\section{Request syntax}{
-\preformatted{svc$get_reserved_node_exchange_offerings(
-  ReservedNodeId = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node.
 
+See \url{https://paws-r.github.io/docs/redshift/get_reserved_node_exchange_offerings.html} for full documentation.
+}
 \keyword{internal}

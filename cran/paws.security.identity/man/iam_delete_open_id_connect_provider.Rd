@@ -13,25 +13,9 @@ resource ARNs by using the
 \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
 operation.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an OpenID Connect identity provider (IdP) resource object in
-IAM.
+Deletes an OpenID Connect identity provider (IdP) resource object in IAM.
 
-Deleting an IAM OIDC provider resource does not update any roles that
-reference the provider as a principal in their trust policies. Any
-attempt to assume a role that references a deleted provider fails.
-
-This operation is idempotent; it does not fail or return an error if you
-call the operation for a provider that does not exist.
+See \url{https://paws-r.github.io/docs/iam/delete_open_id_connect_provider.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_open_id_connect_provider(
-  OpenIDConnectProviderArn = "string"
-)
-}
-}
-
 \keyword{internal}

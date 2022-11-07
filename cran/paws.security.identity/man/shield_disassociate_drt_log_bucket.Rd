@@ -2,36 +2,17 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_disassociate_drt_log_bucket}
 \alias{shield_disassociate_drt_log_bucket}
-\title{Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
-bucket containing your AWS WAF logs}
+\title{Removes the Shield Response Team's (SRT) access to the specified Amazon
+S3 bucket containing the logs that you shared previously}
 \usage{
 shield_disassociate_drt_log_bucket(LogBucket)
 }
 \arguments{
-\item{LogBucket}{[required] The Amazon S3 bucket that contains your AWS WAF logs.}
-}
-\value{
-An empty list.
+\item{LogBucket}{[required] The Amazon S3 bucket that contains the logs that you want to share.}
 }
 \description{
-Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
-bucket containing your AWS WAF logs.
+Removes the Shield Response Team's (SRT) access to the specified Amazon S3 bucket containing the logs that you shared previously.
 
-To make a
-\code{\link[=shield_disassociate_drt_log_bucket]{disassociate_drt_log_bucket}}
-request, you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
-\href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}. However,
-if you are not subscribed to one of these support plans, but had been
-previously and had granted the DRT access to your account, you can
-submit a
-\code{\link[=shield_disassociate_drt_log_bucket]{disassociate_drt_log_bucket}}
-request to remove this access.
+See \url{https://paws-r.github.io/docs/shield/disassociate_drt_log_bucket.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_drt_log_bucket(
-  LogBucket = "string"
-)
-}
-}
-
 \keyword{internal}

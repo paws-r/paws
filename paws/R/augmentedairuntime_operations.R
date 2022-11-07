@@ -7,6 +7,9 @@ NULL
 #'
 #' @description
 #' Deletes the specified human loop for a flow definition.
+#' 
+#' If the human loop was deleted, this operation will return a
+#' `ResourceNotFoundException`.
 #'
 #' @usage
 #' augmentedairuntime_delete_human_loop(HumanLoopName)
@@ -46,7 +49,9 @@ augmentedairuntime_delete_human_loop <- function(HumanLoopName) {
 #' Returns information about the specified human loop
 #'
 #' @description
-#' Returns information about the specified human loop.
+#' Returns information about the specified human loop. If the human loop
+#' was deleted, this operation will return a `ResourceNotFoundException`
+#' error.
 #'
 #' @usage
 #' augmentedairuntime_describe_human_loop(HumanLoopName)

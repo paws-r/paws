@@ -5,7 +5,10 @@
 \title{Lists the license configuration operations that failed}
 \usage{
 licensemanager_list_failures_for_license_configuration_operations(
-  LicenseConfigurationArn, MaxResults, NextToken)
+  LicenseConfigurationArn,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] Amazon Resource Name of the license configuration.}
@@ -14,41 +17,9 @@ licensemanager_list_failures_for_license_configuration_operations(
 
 \item{NextToken}{Token for the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseOperationFailureList = list(
-    list(
-      ResourceArn = "string",
-      ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-      ErrorMessage = "string",
-      FailureTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      OperationName = "string",
-      ResourceOwnerId = "string",
-      OperationRequestedBy = "string",
-      MetadataList = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the license configuration operations that failed.
-}
-\section{Request syntax}{
-\preformatted{svc$list_failures_for_license_configuration_operations(
-  LicenseConfigurationArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/list_failures_for_license_configuration_operations.html} for full documentation.
+}
 \keyword{internal}

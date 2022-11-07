@@ -4,50 +4,18 @@
 \alias{mq_update_configuration}
 \title{Updates the specified configuration}
 \usage{
-mq_update_configuration(ConfigurationId, Data, Description)
+mq_update_configuration(ConfigurationId, Data, Description = NULL)
 }
 \arguments{
 \item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 
-\item{Data}{Required. The base64-encoded XML configuration.}
+\item{Data}{[required] Required. The base64-encoded XML configuration.}
 
 \item{Description}{The description of the configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  Created = as.POSIXct(
-    "2015-01-01"
-  ),
-  Id = "string",
-  LatestRevision = list(
-    Created = as.POSIXct(
-      "2015-01-01"
-    ),
-    Description = "string",
-    Revision = 123
-  ),
-  Name = "string",
-  Warnings = list(
-    list(
-      AttributeName = "string",
-      ElementName = "string",
-      Reason = "DISALLOWED_ELEMENT_REMOVED"|"DISALLOWED_ATTRIBUTE_REMOVED"|"INVALID_ATTRIBUTE_VALUE_REMOVED"
-    )
-  )
-)
-}
-}
 \description{
 Updates the specified configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$update_configuration(
-  ConfigurationId = "string",
-  Data = "string",
-  Description = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/update_configuration.html} for full documentation.
+}
 \keyword{internal}

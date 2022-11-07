@@ -5,8 +5,12 @@
 \title{Upgrades a published schema under a new minor version revision using the
 current contents of DevelopmentSchemaArn}
 \usage{
-clouddirectory_upgrade_published_schema(DevelopmentSchemaArn,
-  PublishedSchemaArn, MinorVersion, DryRun)
+clouddirectory_upgrade_published_schema(
+  DevelopmentSchemaArn,
+  PublishedSchemaArn,
+  MinorVersion,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{DevelopmentSchemaArn}{[required] The ARN of the development schema with the changes used for the upgrade.}
@@ -22,24 +26,9 @@ upgraded. If schema compatibility fails, an exception would be thrown
 else the call would succeed. This parameter is optional and defaults to
 false.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UpgradedSchemaArn = "string"
-)
-}
-}
 \description{
-Upgrades a published schema under a new minor version revision using the
-current contents of \code{DevelopmentSchemaArn}.
-}
-\section{Request syntax}{
-\preformatted{svc$upgrade_published_schema(
-  DevelopmentSchemaArn = "string",
-  PublishedSchemaArn = "string",
-  MinorVersion = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Upgrades a published schema under a new minor version revision using the current contents of \code{DevelopmentSchemaArn}.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/upgrade_published_schema.html} for full documentation.
+}
 \keyword{internal}

@@ -6,28 +6,9 @@
 \usage{
 directoryservice_get_directory_limits()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DirectoryLimits = list(
-    CloudOnlyDirectoriesLimit = 123,
-    CloudOnlyDirectoriesCurrentCount = 123,
-    CloudOnlyDirectoriesLimitReached = TRUE|FALSE,
-    CloudOnlyMicrosoftADLimit = 123,
-    CloudOnlyMicrosoftADCurrentCount = 123,
-    CloudOnlyMicrosoftADLimitReached = TRUE|FALSE,
-    ConnectedDirectoriesLimit = 123,
-    ConnectedDirectoriesCurrentCount = 123,
-    ConnectedDirectoriesLimitReached = TRUE|FALSE
-  )
-)
-}
-}
 \description{
 Obtains directory limit information for the current Region.
-}
-\section{Request syntax}{
-\preformatted{svc$get_directory_limits()
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/get_directory_limits.html} for full documentation.
+}
 \keyword{internal}

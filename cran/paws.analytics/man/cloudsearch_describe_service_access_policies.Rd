@@ -5,7 +5,7 @@
 \title{Gets information about the access policies that control access to the
 domain's document and search endpoints}
 \usage{
-cloudsearch_describe_service_access_policies(DomainName, Deployed)
+cloudsearch_describe_service_access_policies(DomainName, Deployed = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -13,39 +13,9 @@ cloudsearch_describe_service_access_policies(DomainName, Deployed)
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any
 pending changes (\code{false}). Defaults to \code{false}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccessPolicies = list(
-    Options = "string",
-    Status = list(
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateVersion = 123,
-      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-      PendingDeletion = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Gets information about the access policies that control access to the
-domain's document and search endpoints. By default, shows the
-configuration with any pending changes. Set the \code{Deployed} option to
-\code{true} to show the active configuration and exclude pending changes. For
-more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html}{Configuring Access for a Search Domain}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_service_access_policies(
-  DomainName = "string",
-  Deployed = TRUE|FALSE
-)
-}
-}
+Gets information about the access policies that control access to the domain's document and search endpoints. By default, shows the configuration with any pending changes. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for a Search Domain</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/describe_service_access_policies.html} for full documentation.
+}
 \keyword{internal}

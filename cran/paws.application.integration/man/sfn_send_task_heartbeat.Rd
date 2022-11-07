@@ -14,35 +14,9 @@ Functions when tasks are assigned to a worker, or in the \href{https://docs.aws.
 when a workflow enters a task state. See
 GetActivityTaskOutput$taskToken.}
 }
-\value{
-An empty list.
-}
 \description{
-Used by activity workers and task states using the
-\href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback}
-pattern to report to Step Functions that the task represented by the
-specified \code{taskToken} is still making progress. This action resets the
-\code{Heartbeat} clock. The \code{Heartbeat} threshold is specified in the state
-machine's Amazon States Language definition (\code{HeartbeatSeconds}). This
-action does not in itself create an event in the execution history.
-However, if the task times out, the execution history contains an
-\code{ActivityTimedOut} entry for activities, or a \code{TaskTimedOut} entry for
-for tasks using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync}{job run}
-or
-\href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback}
-pattern.
+Used by activity workers and task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern to report to Step Functions that the task represented by the specified \code{taskToken} is still making progress. This action resets the \code{Heartbeat} clock. The \code{Heartbeat} threshold is specified in the state machine's Amazon States Language definition (\code{HeartbeatSeconds}). This action does not in itself create an event in the execution history. However, if the task times out, the execution history contains an \code{ActivityTimedOut} entry for activities, or a \code{TaskTimedOut} entry for for tasks using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync}{job run} or \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern.
 
-The \code{Timeout} of a task, defined in the state machine's Amazon States
-Language definition, is its maximum allowed duration, regardless of the
-number of \code{\link[=sfn_send_task_heartbeat]{send_task_heartbeat}} requests
-received. Use \code{HeartbeatSeconds} to configure the timeout interval for
-heartbeats.
+See \url{https://paws-r.github.io/docs/sfn/send_task_heartbeat.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$send_task_heartbeat(
-  taskToken = "string"
-)
-}
-}
-
 \keyword{internal}

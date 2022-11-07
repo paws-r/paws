@@ -2,9 +2,9 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_create_vpc_association_authorization}
 \alias{route53_create_vpc_association_authorization}
-\title{Authorizes the AWS account that created a specified VPC to submit an
-AssociateVPCWithHostedZone request to associate the VPC with a specified
-hosted zone that was created by a different account}
+\title{Authorizes the Amazon Web Services account that created a specified VPC
+to submit an AssociateVPCWithHostedZone request to associate the VPC
+with a specified hosted zone that was created by a different account}
 \usage{
 route53_create_vpc_association_authorization(HostedZoneId, VPC)
 }
@@ -15,41 +15,9 @@ a VPC with.}
 \item{VPC}{[required] A complex type that contains the VPC ID and region for the VPC that you
 want to authorize associating with your hosted zone.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HostedZoneId = "string",
-  VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-    VPCId = "string"
-  )
-)
-}
-}
 \description{
-Authorizes the AWS account that created a specified VPC to submit an
-\code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}}
-request to associate the VPC with a specified hosted zone that was
-created by a different account. To submit a
-\code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}}
-request, you must use the account that created the hosted zone. After
-you authorize the association, use the account that created the VPC to
-submit an
-\code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}}
-request.
+Authorizes the Amazon Web Services account that created a specified VPC to submit an \code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}} request to associate the VPC with a specified hosted zone that was created by a different account. To submit a \code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}} request, you must use the account that created the hosted zone. After you authorize the association, use the account that created the VPC to submit an \code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}} request.
 
-If you want to associate multiple VPCs that you created by using one
-account with a hosted zone that you created by using a different
-account, you must submit one authorization request for each VPC.
+See \url{https://paws-r.github.io/docs/route53/create_vpc_association_authorization.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_vpc_association_authorization(
-  HostedZoneId = "string",
-  VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-    VPCId = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

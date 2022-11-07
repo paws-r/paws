@@ -4,31 +4,16 @@
 \alias{codecommit_list_branches}
 \title{Gets information about one or more branches in a repository}
 \usage{
-codecommit_list_branches(repositoryName, nextToken)
+codecommit_list_branches(repositoryName, nextToken = NULL)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the branches.}
 
 \item{nextToken}{An enumeration token that allows the operation to batch the results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  branches = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Gets information about one or more branches in a repository.
-}
-\section{Request syntax}{
-\preformatted{svc$list_branches(
-  repositoryName = "string",
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/list_branches.html} for full documentation.
+}
 \keyword{internal}

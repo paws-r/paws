@@ -7,58 +7,13 @@
 apigateway_get_gateway_response(restApiId, responseType)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{responseType}{[required] [Required]
-
-The response type of the associated GatewayResponse. Valid values are
-\itemize{
-\item ACCESS_DENIED
-\item API_CONFIGURATION_ERROR
-\item AUTHORIZER_FAILURE
-\item AUTHORIZER_CONFIGURATION_ERROR
-\item BAD_REQUEST_PARAMETERS
-\item BAD_REQUEST_BODY
-\item DEFAULT_4XX
-\item DEFAULT_5XX
-\item EXPIRED_TOKEN
-\item INVALID_SIGNATURE
-\item INTEGRATION_FAILURE
-\item INTEGRATION_TIMEOUT
-\item INVALID_API_KEY
-\item MISSING_AUTHENTICATION_TOKEN
-\item QUOTA_EXCEEDED
-\item REQUEST_TOO_LARGE
-\item RESOURCE_NOT_FOUND
-\item THROTTLED
-\item UNAUTHORIZED
-\item UNSUPPORTED_MEDIA_TYPE
-}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
-  statusCode = "string",
-  responseParameters = list(
-    "string"
-  ),
-  responseTemplates = list(
-    "string"
-  ),
-  defaultResponse = TRUE|FALSE
-)
-}
+\item{responseType}{[required] The response type of the associated GatewayResponse.}
 }
 \description{
-Gets a GatewayResponse of a specified response type on the given
-RestApi.
-}
-\section{Request syntax}{
-\preformatted{svc$get_gateway_response(
-  restApiId = "string",
-  responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED"
-)
-}
-}
+Gets a GatewayResponse of a specified response type on the given RestApi.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_gateway_response.html} for full documentation.
+}
 \keyword{internal}

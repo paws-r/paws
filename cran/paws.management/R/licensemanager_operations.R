@@ -8,27 +8,9 @@ NULL
 #' @description
 #' Accepts the specified grant.
 #'
-#' @usage
-#' licensemanager_accept_grant(GrantArn)
+#' See [https://paws-r.github.io/docs/licensemanager/accept_grant.html](https://paws-r.github.io/docs/licensemanager/accept_grant.html) for full documentation.
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-#'   Version = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$accept_grant(
-#'   GrantArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -53,25 +35,12 @@ licensemanager_accept_grant <- function(GrantArn) {
 #' Checks in the specified license
 #'
 #' @description
-#' Checks in the specified license. Check in a license when it is no longer
-#' in use.
+#' Checks in the specified license. Check in a license when it is no longer in use.
 #'
-#' @usage
-#' licensemanager_check_in_license(LicenseConsumptionToken, Beneficiary)
+#' See [https://paws-r.github.io/docs/licensemanager/check_in_license.html](https://paws-r.github.io/docs/licensemanager/check_in_license.html) for full documentation.
 #'
 #' @param LicenseConsumptionToken &#91;required&#93; License consumption token.
 #' @param Beneficiary License beneficiary.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$check_in_license(
-#'   LicenseConsumptionToken = "string",
-#'   Beneficiary = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -98,70 +67,18 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
 #' @description
 #' Checks out the specified license for offline use.
 #'
-#' @usage
-#' licensemanager_checkout_borrow_license(LicenseArn, Entitlements,
-#'   DigitalSignatureMethod, NodeId, CheckoutMetadata, ClientToken)
+#' See [https://paws-r.github.io/docs/licensemanager/checkout_borrow_license.html](https://paws-r.github.io/docs/licensemanager/checkout_borrow_license.html) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license. The license must use the
 #' borrow consumption configuration.
 #' @param Entitlements &#91;required&#93; License entitlements. Partial checkouts are not supported.
 #' @param DigitalSignatureMethod &#91;required&#93; Digital signature method. The possible value is JSON Web Signature (JWS)
 #' algorithm PS384. For more information, see [RFC 7518 Digital Signature
-#' with
-#' RSASSA-PSS](https://datatracker.ietf.org/doc/html/rfc7518#section-3.5).
+#' with RSASSA-PSS](https://www.rfc-editor.org/rfc/rfc7518#section-3.5).
 #' @param NodeId Node ID.
 #' @param CheckoutMetadata Information about constraints.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseArn = "string",
-#'   LicenseConsumptionToken = "string",
-#'   EntitlementsAllowed = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string",
-#'       Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-#'     )
-#'   ),
-#'   NodeId = "string",
-#'   SignedToken = "string",
-#'   IssuedAt = "string",
-#'   Expiration = "string",
-#'   CheckoutMetadata = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$checkout_borrow_license(
-#'   LicenseArn = "string",
-#'   Entitlements = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string",
-#'       Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-#'     )
-#'   ),
-#'   DigitalSignatureMethod = "JWT_PS384",
-#'   NodeId = "string",
-#'   CheckoutMetadata = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ClientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -188,9 +105,7 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 #' @description
 #' Checks out the specified license.
 #'
-#' @usage
-#' licensemanager_checkout_license(ProductSKU, CheckoutType,
-#'   KeyFingerprint, Entitlements, ClientToken, Beneficiary, NodeId)
+#' See [https://paws-r.github.io/docs/licensemanager/checkout_license.html](https://paws-r.github.io/docs/licensemanager/checkout_license.html) for full documentation.
 #'
 #' @param ProductSKU &#91;required&#93; Product SKU.
 #' @param CheckoutType &#91;required&#93; Checkout type.
@@ -200,45 +115,6 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 #' idempotency of the request.
 #' @param Beneficiary License beneficiary.
 #' @param NodeId Node ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CheckoutType = "PROVISIONAL",
-#'   LicenseConsumptionToken = "string",
-#'   EntitlementsAllowed = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string",
-#'       Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-#'     )
-#'   ),
-#'   SignedToken = "string",
-#'   NodeId = "string",
-#'   IssuedAt = "string",
-#'   Expiration = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$checkout_license(
-#'   ProductSKU = "string",
-#'   CheckoutType = "PROVISIONAL",
-#'   KeyFingerprint = "string",
-#'   Entitlements = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string",
-#'       Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-#'     )
-#'   ),
-#'   ClientToken = "string",
-#'   Beneficiary = "string",
-#'   NodeId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -263,12 +139,9 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #' Creates a grant for the specified license
 #'
 #' @description
-#' Creates a grant for the specified license. A grant shares the use of
-#' license entitlements with specific AWS accounts.
+#' Creates a grant for the specified license. A grant shares the use of license entitlements with specific Amazon Web Services accounts.
 #'
-#' @usage
-#' licensemanager_create_grant(ClientToken, GrantName, LicenseArn,
-#'   Principals, HomeRegion, AllowedOperations)
+#' See [https://paws-r.github.io/docs/licensemanager/create_grant.html](https://paws-r.github.io/docs/licensemanager/create_grant.html) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -277,32 +150,6 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #' @param Principals &#91;required&#93; The grant principals.
 #' @param HomeRegion &#91;required&#93; Home Region of the grant.
 #' @param AllowedOperations &#91;required&#93; Allowed operations for the grant.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-#'   Version = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_grant(
-#'   ClientToken = "string",
-#'   GrantName = "string",
-#'   LicenseArn = "string",
-#'   Principals = list(
-#'     "string"
-#'   ),
-#'   HomeRegion = "string",
-#'   AllowedOperations = list(
-#'     "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -329,9 +176,7 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' @description
 #' Creates a new version of the specified grant.
 #'
-#' @usage
-#' licensemanager_create_grant_version(ClientToken, GrantArn, GrantName,
-#'   AllowedOperations, Status, SourceVersion)
+#' See [https://paws-r.github.io/docs/licensemanager/create_grant_version.html](https://paws-r.github.io/docs/licensemanager/create_grant_version.html) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -339,43 +184,20 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' @param GrantName Grant name.
 #' @param AllowedOperations Allowed operations for the grant.
 #' @param Status Grant status.
+#' @param StatusReason Grant status reason.
 #' @param SourceVersion Current version of the grant.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-#'   Version = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_grant_version(
-#'   ClientToken = "string",
-#'   GrantArn = "string",
-#'   GrantName = "string",
-#'   AllowedOperations = list(
-#'     "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
-#'   ),
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-#'   SourceVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_grant_version
-licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName = NULL, AllowedOperations = NULL, Status = NULL, SourceVersion = NULL) {
+licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName = NULL, AllowedOperations = NULL, Status = NULL, StatusReason = NULL, SourceVersion = NULL) {
   op <- new_operation(
     name = "CreateGrantVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .licensemanager$create_grant_version_input(ClientToken = ClientToken, GrantArn = GrantArn, GrantName = GrantName, AllowedOperations = AllowedOperations, Status = Status, SourceVersion = SourceVersion)
+  input <- .licensemanager$create_grant_version_input(ClientToken = ClientToken, GrantArn = GrantArn, GrantName = GrantName, AllowedOperations = AllowedOperations, Status = Status, StatusReason = StatusReason, SourceVersion = SourceVersion)
   output <- .licensemanager$create_grant_version_output()
   config <- get_config()
   svc <- .licensemanager$service(config)
@@ -390,10 +212,7 @@ licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName
 #' @description
 #' Creates a license.
 #'
-#' @usage
-#' licensemanager_create_license(LicenseName, ProductName, ProductSKU,
-#'   Issuer, HomeRegion, Validity, Entitlements, Beneficiary,
-#'   ConsumptionConfiguration, LicenseMetadata, ClientToken)
+#' See [https://paws-r.github.io/docs/licensemanager/create_license.html](https://paws-r.github.io/docs/licensemanager/create_license.html) for full documentation.
 #'
 #' @param LicenseName &#91;required&#93; License name.
 #' @param ProductName &#91;required&#93; Product name.
@@ -410,62 +229,6 @@ licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName
 #' @param LicenseMetadata Information about the license.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseArn = "string",
-#'   Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-#'   Version = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_license(
-#'   LicenseName = "string",
-#'   ProductName = "string",
-#'   ProductSKU = "string",
-#'   Issuer = list(
-#'     Name = "string",
-#'     SignKey = "string"
-#'   ),
-#'   HomeRegion = "string",
-#'   Validity = list(
-#'     Begin = "string",
-#'     End = "string"
-#'   ),
-#'   Entitlements = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string",
-#'       MaxCount = 123,
-#'       Overage = TRUE|FALSE,
-#'       Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-#'       AllowCheckIn = TRUE|FALSE
-#'     )
-#'   ),
-#'   Beneficiary = "string",
-#'   ConsumptionConfiguration = list(
-#'     RenewType = "None"|"Weekly"|"Monthly",
-#'     ProvisionalConfiguration = list(
-#'       MaxTimeToLiveInMinutes = 123
-#'     ),
-#'     BorrowConfiguration = list(
-#'       AllowEarlyCheckIn = TRUE|FALSE,
-#'       MaxTimeToLiveInMinutes = 123
-#'     )
-#'   ),
-#'   LicenseMetadata = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ClientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -491,19 +254,8 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #'
 #' @description
 #' Creates a license configuration.
-#' 
-#' A license configuration is an abstraction of a customer license
-#' agreement that can be consumed and enforced by License Manager.
-#' Components include specifications for the license type (licensing by
-#' instance, socket, CPU, or vCPU), allowed tenancy (shared tenancy,
-#' Dedicated Instance, Dedicated Host, or all of these), license affinity
-#' to host (how long a license must be associated with a host), and the
-#' number of licenses purchased and used.
 #'
-#' @usage
-#' licensemanager_create_license_configuration(Name, Description,
-#'   LicenseCountingType, LicenseCount, LicenseCountHardLimit, LicenseRules,
-#'   Tags, DisassociateWhenNotFound, ProductInformationList)
+#' See [https://paws-r.github.io/docs/licensemanager/create_license_configuration.html](https://paws-r.github.io/docs/licensemanager/create_license_configuration.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the license configuration.
 #' @param Description Description of the license configuration.
@@ -511,8 +263,8 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @param LicenseCount Number of licenses managed by the license configuration.
 #' @param LicenseCountHardLimit Indicates whether hard or soft license enforcement is used. Exceeding a
 #' hard limit blocks the launch of new instances.
-#' @param LicenseRules License rules. The syntax is #name=value (for example,
-#' #allowedTenancy=EC2-DedicatedHost). The available rules vary by
+#' @param LicenseRules License rules. The syntax is \#name=value (for example,
+#' \#allowedTenancy=EC2-DedicatedHost). The available rules vary by
 #' dimension, as follows.
 #' 
 #' -   `Cores` dimension: `allowedTenancy` | `licenseAffinityToHost` |
@@ -536,49 +288,6 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @param DisassociateWhenNotFound When true, disassociates a resource when software is uninstalled.
 #' @param ProductInformationList Product information.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseConfigurationArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_license_configuration(
-#'   Name = "string",
-#'   Description = "string",
-#'   LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
-#'   LicenseCount = 123,
-#'   LicenseCountHardLimit = TRUE|FALSE,
-#'   LicenseRules = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   DisassociateWhenNotFound = TRUE|FALSE,
-#'   ProductInformationList = list(
-#'     list(
-#'       ResourceType = "string",
-#'       ProductInformationFilterList = list(
-#'         list(
-#'           ProductInformationFilterName = "string",
-#'           ProductInformationFilterValue = list(
-#'             "string"
-#'           ),
-#'           ProductInformationFilterComparator = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_license_configuration
@@ -599,16 +308,95 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 }
 .licensemanager$operations$create_license_configuration <- licensemanager_create_license_configuration
 
+#' Creates a new license conversion task
+#'
+#' @description
+#' Creates a new license conversion task.
+#'
+#' See [https://paws-r.github.io/docs/licensemanager/create_license_conversion_task_for_resource.html](https://paws-r.github.io/docs/licensemanager/create_license_conversion_task_for_resource.html) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource you are converting the
+#' license type for.
+#' @param SourceLicenseContext &#91;required&#93; Information that identifies the license type you are converting from.
+#' For the structure of the source license, see [Convert a license type
+#' using the AWS
+#' CLI](https://docs.aws.amazon.com/license-manager/latest/userguide/conversion-procedures.html#conversion-cli)
+#' in the *License Manager User Guide*.
+#' @param DestinationLicenseContext &#91;required&#93; Information that identifies the license type you are converting to. For
+#' the structure of the destination license, see [Convert a license type
+#' using the AWS
+#' CLI](https://docs.aws.amazon.com/license-manager/latest/userguide/conversion-procedures.html#conversion-cli)
+#' in the *License Manager User Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_create_license_conversion_task_for_resource
+licensemanager_create_license_conversion_task_for_resource <- function(ResourceArn, SourceLicenseContext, DestinationLicenseContext) {
+  op <- new_operation(
+    name = "CreateLicenseConversionTaskForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$create_license_conversion_task_for_resource_input(ResourceArn = ResourceArn, SourceLicenseContext = SourceLicenseContext, DestinationLicenseContext = DestinationLicenseContext)
+  output <- .licensemanager$create_license_conversion_task_for_resource_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$create_license_conversion_task_for_resource <- licensemanager_create_license_conversion_task_for_resource
+
+#' Creates a report generator
+#'
+#' @description
+#' Creates a report generator.
+#'
+#' See [https://paws-r.github.io/docs/licensemanager/create_license_manager_report_generator.html](https://paws-r.github.io/docs/licensemanager/create_license_manager_report_generator.html) for full documentation.
+#'
+#' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
+#' @param Type &#91;required&#93; Type of reports to generate. The following report types an be generated:
+#' 
+#' -   License configuration report - Reports the number and details of
+#'     consumed licenses for a license configuration.
+#' 
+#' -   Resource report - Reports the tracked licenses and resource
+#'     consumption for a license configuration.
+#' @param ReportContext &#91;required&#93; Defines the type of license configuration the report generator tracks.
+#' @param ReportFrequency &#91;required&#93; Frequency by which reports are generated. Reports can be generated
+#' daily, monthly, or weekly.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param Description Description of the report generator.
+#' @param Tags Tags to add to the report generator.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_create_license_manager_report_generator
+licensemanager_create_license_manager_report_generator <- function(ReportGeneratorName, Type, ReportContext, ReportFrequency, ClientToken, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateLicenseManagerReportGenerator",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$create_license_manager_report_generator_input(ReportGeneratorName = ReportGeneratorName, Type = Type, ReportContext = ReportContext, ReportFrequency = ReportFrequency, ClientToken = ClientToken, Description = Description, Tags = Tags)
+  output <- .licensemanager$create_license_manager_report_generator_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$create_license_manager_report_generator <- licensemanager_create_license_manager_report_generator
+
 #' Creates a new version of the specified license
 #'
 #' @description
 #' Creates a new version of the specified license.
 #'
-#' @usage
-#' licensemanager_create_license_version(LicenseArn, LicenseName,
-#'   ProductName, Issuer, HomeRegion, Validity, LicenseMetadata,
-#'   Entitlements, ConsumptionConfiguration, Status, ClientToken,
-#'   SourceVersion)
+#' See [https://paws-r.github.io/docs/licensemanager/create_license_version.html](https://paws-r.github.io/docs/licensemanager/create_license_version.html) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param LicenseName &#91;required&#93; License name.
@@ -626,63 +414,6 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param SourceVersion Current version of the license.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseArn = "string",
-#'   Version = "string",
-#'   Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_license_version(
-#'   LicenseArn = "string",
-#'   LicenseName = "string",
-#'   ProductName = "string",
-#'   Issuer = list(
-#'     Name = "string",
-#'     SignKey = "string"
-#'   ),
-#'   HomeRegion = "string",
-#'   Validity = list(
-#'     Begin = "string",
-#'     End = "string"
-#'   ),
-#'   LicenseMetadata = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   Entitlements = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string",
-#'       MaxCount = 123,
-#'       Overage = TRUE|FALSE,
-#'       Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-#'       AllowCheckIn = TRUE|FALSE
-#'     )
-#'   ),
-#'   ConsumptionConfiguration = list(
-#'     RenewType = "None"|"Weekly"|"Monthly",
-#'     ProvisionalConfiguration = list(
-#'       MaxTimeToLiveInMinutes = 123
-#'     ),
-#'     BorrowConfiguration = list(
-#'       AllowEarlyCheckIn = TRUE|FALSE,
-#'       MaxTimeToLiveInMinutes = 123
-#'     )
-#'   ),
-#'   Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-#'   ClientToken = "string",
-#'   SourceVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -708,15 +439,8 @@ licensemanager_create_license_version <- function(LicenseArn, LicenseName, Produ
 #'
 #' @description
 #' Creates a long-lived token.
-#' 
-#' A refresh token is a JWT token used to get an access token. With an
-#' access token, you can call AssumeRoleWithWebIdentity to get role
-#' credentials that you can use to call License Manager to manage the
-#' specified license.
 #'
-#' @usage
-#' licensemanager_create_token(LicenseArn, RoleArns, ExpirationInDays,
-#'   TokenProperties, ClientToken)
+#' See [https://paws-r.github.io/docs/licensemanager/create_token.html](https://paws-r.github.io/docs/licensemanager/create_token.html) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license. The ARN is mapped to the aud
 #' claim of the JWT token.
@@ -727,31 +451,6 @@ licensemanager_create_license_version <- function(LicenseArn, LicenseName, Produ
 #' @param TokenProperties Data specified by the caller to be included in the JWT token. The data
 #' is mapped to the amr claim of the JWT token.
 #' @param ClientToken &#91;required&#93; Idempotency token, valid for 10 minutes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TokenId = "string",
-#'   TokenType = "REFRESH_TOKEN",
-#'   Token = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_token(
-#'   LicenseArn = "string",
-#'   RoleArns = list(
-#'     "string"
-#'   ),
-#'   ExpirationInDays = 123,
-#'   TokenProperties = list(
-#'     "string"
-#'   ),
-#'   ClientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -778,41 +477,23 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
 #' @description
 #' Deletes the specified grant.
 #'
-#' @usage
-#' licensemanager_delete_grant(GrantArn, Version)
+#' See [https://paws-r.github.io/docs/licensemanager/delete_grant.html](https://paws-r.github.io/docs/licensemanager/delete_grant.html) for full documentation.
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
+#' @param StatusReason The Status reason for the delete request.
 #' @param Version &#91;required&#93; Current version of the grant.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-#'   Version = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_grant(
-#'   GrantArn = "string",
-#'   Version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanager_delete_grant
-licensemanager_delete_grant <- function(GrantArn, Version) {
+licensemanager_delete_grant <- function(GrantArn, StatusReason = NULL, Version) {
   op <- new_operation(
     name = "DeleteGrant",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .licensemanager$delete_grant_input(GrantArn = GrantArn, Version = Version)
+  input <- .licensemanager$delete_grant_input(GrantArn = GrantArn, StatusReason = StatusReason, Version = Version)
   output <- .licensemanager$delete_grant_output()
   config <- get_config()
   svc <- .licensemanager$service(config)
@@ -827,28 +508,10 @@ licensemanager_delete_grant <- function(GrantArn, Version) {
 #' @description
 #' Deletes the specified license.
 #'
-#' @usage
-#' licensemanager_delete_license(LicenseArn, SourceVersion)
+#' See [https://paws-r.github.io/docs/licensemanager/delete_license.html](https://paws-r.github.io/docs/licensemanager/delete_license.html) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param SourceVersion &#91;required&#93; Current version of the license.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "PENDING_DELETE"|"DELETED",
-#'   DeletionDate = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_license(
-#'   LicenseArn = "string",
-#'   SourceVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -874,23 +537,10 @@ licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
 #'
 #' @description
 #' Deletes the specified license configuration.
-#' 
-#' You cannot delete a license configuration that is in use.
 #'
-#' @usage
-#' licensemanager_delete_license_configuration(LicenseConfigurationArn)
+#' See [https://paws-r.github.io/docs/licensemanager/delete_license_configuration.html](https://paws-r.github.io/docs/licensemanager/delete_license_configuration.html) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; ID of the license configuration.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_license_configuration(
-#'   LicenseConfigurationArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -912,25 +562,43 @@ licensemanager_delete_license_configuration <- function(LicenseConfigurationArn)
 }
 .licensemanager$operations$delete_license_configuration <- licensemanager_delete_license_configuration
 
+#' Deletes the specified report generator
+#'
+#' @description
+#' Deletes the specified report generator.
+#'
+#' See [https://paws-r.github.io/docs/licensemanager/delete_license_manager_report_generator.html](https://paws-r.github.io/docs/licensemanager/delete_license_manager_report_generator.html) for full documentation.
+#'
+#' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_delete_license_manager_report_generator
+licensemanager_delete_license_manager_report_generator <- function(LicenseManagerReportGeneratorArn) {
+  op <- new_operation(
+    name = "DeleteLicenseManagerReportGenerator",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$delete_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn)
+  output <- .licensemanager$delete_license_manager_report_generator_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$delete_license_manager_report_generator <- licensemanager_delete_license_manager_report_generator
+
 #' Deletes the specified token
 #'
 #' @description
 #' Deletes the specified token. Must be called in the license home Region.
 #'
-#' @usage
-#' licensemanager_delete_token(TokenId)
+#' See [https://paws-r.github.io/docs/licensemanager/delete_token.html](https://paws-r.github.io/docs/licensemanager/delete_token.html) for full documentation.
 #'
 #' @param TokenId &#91;required&#93; Token ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_token(
-#'   TokenId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -957,31 +625,12 @@ licensemanager_delete_token <- function(TokenId) {
 #' @description
 #' Extends the expiration date for license consumption.
 #'
-#' @usage
-#' licensemanager_extend_license_consumption(LicenseConsumptionToken,
-#'   DryRun)
+#' See [https://paws-r.github.io/docs/licensemanager/extend_license_consumption.html](https://paws-r.github.io/docs/licensemanager/extend_license_consumption.html) for full documentation.
 #'
 #' @param LicenseConsumptionToken &#91;required&#93; License consumption token.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request. Provides an error response if you do not
 #' have the required permissions.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseConsumptionToken = "string",
-#'   Expiration = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$extend_license_consumption(
-#'   LicenseConsumptionToken = "string",
-#'   DryRun = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1006,32 +655,12 @@ licensemanager_extend_license_consumption <- function(LicenseConsumptionToken, D
 #' Gets a temporary access token to use with AssumeRoleWithWebIdentity
 #'
 #' @description
-#' Gets a temporary access token to use with AssumeRoleWithWebIdentity.
-#' Access tokens are valid for one hour.
+#' Gets a temporary access token to use with AssumeRoleWithWebIdentity. Access tokens are valid for one hour.
 #'
-#' @usage
-#' licensemanager_get_access_token(Token, TokenProperties)
+#' See [https://paws-r.github.io/docs/licensemanager/get_access_token.html](https://paws-r.github.io/docs/licensemanager/get_access_token.html) for full documentation.
 #'
 #' @param Token &#91;required&#93; Refresh token, encoded as a JWT token.
 #' @param TokenProperties Token properties to validate against those present in the JWT token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccessToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_access_token(
-#'   Token = "string",
-#'   TokenProperties = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1058,40 +687,10 @@ licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
 #' @description
 #' Gets detailed information about the specified grant.
 #'
-#' @usage
-#' licensemanager_get_grant(GrantArn, Version)
+#' See [https://paws-r.github.io/docs/licensemanager/get_grant.html](https://paws-r.github.io/docs/licensemanager/get_grant.html) for full documentation.
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
 #' @param Version Grant version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Grant = list(
-#'     GrantArn = "string",
-#'     GrantName = "string",
-#'     ParentArn = "string",
-#'     LicenseArn = "string",
-#'     GranteePrincipalArn = "string",
-#'     HomeRegion = "string",
-#'     GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-#'     StatusReason = "string",
-#'     Version = "string",
-#'     GrantedOperations = list(
-#'       "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_grant(
-#'   GrantArn = "string",
-#'   Version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1118,72 +717,10 @@ licensemanager_get_grant <- function(GrantArn, Version = NULL) {
 #' @description
 #' Gets detailed information about the specified license.
 #'
-#' @usage
-#' licensemanager_get_license(LicenseArn, Version)
+#' See [https://paws-r.github.io/docs/licensemanager/get_license.html](https://paws-r.github.io/docs/licensemanager/get_license.html) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param Version License version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   License = list(
-#'     LicenseArn = "string",
-#'     LicenseName = "string",
-#'     ProductName = "string",
-#'     ProductSKU = "string",
-#'     Issuer = list(
-#'       Name = "string",
-#'       SignKey = "string",
-#'       KeyFingerprint = "string"
-#'     ),
-#'     HomeRegion = "string",
-#'     Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-#'     Validity = list(
-#'       Begin = "string",
-#'       End = "string"
-#'     ),
-#'     Beneficiary = "string",
-#'     Entitlements = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string",
-#'         MaxCount = 123,
-#'         Overage = TRUE|FALSE,
-#'         Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-#'         AllowCheckIn = TRUE|FALSE
-#'       )
-#'     ),
-#'     ConsumptionConfiguration = list(
-#'       RenewType = "None"|"Weekly"|"Monthly",
-#'       ProvisionalConfiguration = list(
-#'         MaxTimeToLiveInMinutes = 123
-#'       ),
-#'       BorrowConfiguration = list(
-#'         AllowEarlyCheckIn = TRUE|FALSE,
-#'         MaxTimeToLiveInMinutes = 123
-#'       )
-#'     ),
-#'     LicenseMetadata = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     CreateTime = "string",
-#'     Version = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_license(
-#'   LicenseArn = "string",
-#'   Version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1210,75 +747,9 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
 #' @description
 #' Gets detailed information about the specified license configuration.
 #'
-#' @usage
-#' licensemanager_get_license_configuration(LicenseConfigurationArn)
+#' See [https://paws-r.github.io/docs/licensemanager/get_license_configuration.html](https://paws-r.github.io/docs/licensemanager/get_license_configuration.html) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseConfigurationId = "string",
-#'   LicenseConfigurationArn = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
-#'   LicenseRules = list(
-#'     "string"
-#'   ),
-#'   LicenseCount = 123,
-#'   LicenseCountHardLimit = TRUE|FALSE,
-#'   ConsumedLicenses = 123,
-#'   Status = "string",
-#'   OwnerAccountId = "string",
-#'   ConsumedLicenseSummaryList = list(
-#'     list(
-#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-#'       ConsumedLicenses = 123
-#'     )
-#'   ),
-#'   ManagedResourceSummaryList = list(
-#'     list(
-#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-#'       AssociationCount = 123
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ProductInformationList = list(
-#'     list(
-#'       ResourceType = "string",
-#'       ProductInformationFilterList = list(
-#'         list(
-#'           ProductInformationFilterName = "string",
-#'           ProductInformationFilterValue = list(
-#'             "string"
-#'           ),
-#'           ProductInformationFilterComparator = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   AutomatedDiscoveryInformation = list(
-#'     LastRunTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   DisassociateWhenNotFound = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_license_configuration(
-#'   LicenseConfigurationArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1300,39 +771,72 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
 }
 .licensemanager$operations$get_license_configuration <- licensemanager_get_license_configuration
 
+#' Gets information about the specified license type conversion task
+#'
+#' @description
+#' Gets information about the specified license type conversion task.
+#'
+#' See [https://paws-r.github.io/docs/licensemanager/get_license_conversion_task.html](https://paws-r.github.io/docs/licensemanager/get_license_conversion_task.html) for full documentation.
+#'
+#' @param LicenseConversionTaskId &#91;required&#93; ID of the license type conversion task to retrieve information on.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_get_license_conversion_task
+licensemanager_get_license_conversion_task <- function(LicenseConversionTaskId) {
+  op <- new_operation(
+    name = "GetLicenseConversionTask",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$get_license_conversion_task_input(LicenseConversionTaskId = LicenseConversionTaskId)
+  output <- .licensemanager$get_license_conversion_task_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$get_license_conversion_task <- licensemanager_get_license_conversion_task
+
+#' Gets information about the specified report generator
+#'
+#' @description
+#' Gets information about the specified report generator.
+#'
+#' See [https://paws-r.github.io/docs/licensemanager/get_license_manager_report_generator.html](https://paws-r.github.io/docs/licensemanager/get_license_manager_report_generator.html) for full documentation.
+#'
+#' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_get_license_manager_report_generator
+licensemanager_get_license_manager_report_generator <- function(LicenseManagerReportGeneratorArn) {
+  op <- new_operation(
+    name = "GetLicenseManagerReportGenerator",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$get_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn)
+  output <- .licensemanager$get_license_manager_report_generator_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$get_license_manager_report_generator <- licensemanager_get_license_manager_report_generator
+
 #' Gets detailed information about the usage of the specified license
 #'
 #' @description
 #' Gets detailed information about the usage of the specified license.
 #'
-#' @usage
-#' licensemanager_get_license_usage(LicenseArn)
+#' See [https://paws-r.github.io/docs/licensemanager/get_license_usage.html](https://paws-r.github.io/docs/licensemanager/get_license_usage.html) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseUsage = list(
-#'     EntitlementUsages = list(
-#'       list(
-#'         Name = "string",
-#'         ConsumedValue = "string",
-#'         MaxCount = "string",
-#'         Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_license_usage(
-#'   LicenseArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1359,27 +863,7 @@ licensemanager_get_license_usage <- function(LicenseArn) {
 #' @description
 #' Gets the License Manager settings for the current Region.
 #'
-#' @usage
-#' licensemanager_get_service_settings()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   S3BucketArn = "string",
-#'   SnsTopicArn = "string",
-#'   OrganizationConfiguration = list(
-#'     EnableIntegration = TRUE|FALSE
-#'   ),
-#'   EnableCrossAccountsDiscovery = TRUE|FALSE,
-#'   LicenseManagerResourceShareArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_service_settings()
-#' ```
+#' See [https://paws-r.github.io/docs/licensemanager/get_service_settings.html](https://paws-r.github.io/docs/licensemanager/get_service_settings.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1405,46 +889,12 @@ licensemanager_get_service_settings <- function() {
 #'
 #' @description
 #' Lists the resource associations for the specified license configuration.
-#' 
-#' Resource associations need not consume licenses from a license
-#' configuration. For example, an AMI or a stopped instance might not
-#' consume a license (depending on the license rules).
 #'
-#' @usage
-#' licensemanager_list_associations_for_license_configuration(
-#'   LicenseConfigurationArn, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/licensemanager/list_associations_for_license_configuration.html](https://paws-r.github.io/docs/licensemanager/list_associations_for_license_configuration.html) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of a license configuration.
 #' @param MaxResults Maximum number of results to return in a single call.
 #' @param NextToken Token for the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseConfigurationAssociations = list(
-#'     list(
-#'       ResourceArn = "string",
-#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-#'       ResourceOwnerId = "string",
-#'       AssociationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       AmiAssociationScope = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_associations_for_license_configuration(
-#'   LicenseConfigurationArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1471,65 +921,22 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #' @description
 #' Lists the grants distributed for the specified license.
 #'
-#' @usage
-#' licensemanager_list_distributed_grants(GrantArns, Filters, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/licensemanager/list_distributed_grants.html](https://paws-r.github.io/docs/licensemanager/list_distributed_grants.html) for full documentation.
 #'
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `LicenseARN`
+#' -   `LicenseArn`
 #' 
-#' -   `Status`
+#' -   `GrantStatus`
 #' 
-#' -   `PrincipalARN`
+#' -   `GranteePrincipalARN`
 #' 
-#' -   `ParentARN`
+#' -   `ProductSKU`
+#' 
+#' -   `LicenseIssuerName`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Grants = list(
-#'     list(
-#'       GrantArn = "string",
-#'       GrantName = "string",
-#'       ParentArn = "string",
-#'       LicenseArn = "string",
-#'       GranteePrincipalArn = "string",
-#'       HomeRegion = "string",
-#'       GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-#'       StatusReason = "string",
-#'       Version = "string",
-#'       GrantedOperations = list(
-#'         "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_distributed_grants(
-#'   GrantArns = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1556,49 +963,11 @@ licensemanager_list_distributed_grants <- function(GrantArns = NULL, Filters = N
 #' @description
 #' Lists the license configuration operations that failed.
 #'
-#' @usage
-#' licensemanager_list_failures_for_license_configuration_operations(
-#'   LicenseConfigurationArn, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/licensemanager/list_failures_for_license_configuration_operations.html](https://paws-r.github.io/docs/licensemanager/list_failures_for_license_configuration_operations.html) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name of the license configuration.
 #' @param MaxResults Maximum number of results to return in a single call.
 #' @param NextToken Token for the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseOperationFailureList = list(
-#'     list(
-#'       ResourceArn = "string",
-#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-#'       ErrorMessage = "string",
-#'       FailureTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OperationName = "string",
-#'       ResourceOwnerId = "string",
-#'       OperationRequestedBy = "string",
-#'       MetadataList = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_failures_for_license_configuration_operations(
-#'   LicenseConfigurationArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1625,9 +994,7 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' @description
 #' Lists the license configurations for your account.
 #'
-#' @usage
-#' licensemanager_list_license_configurations(LicenseConfigurationArns,
-#'   MaxResults, NextToken, Filters)
+#' See [https://paws-r.github.io/docs/licensemanager/list_license_configurations.html](https://paws-r.github.io/docs/licensemanager/list_license_configurations.html) for full documentation.
 #'
 #' @param LicenseConfigurationArns Amazon Resource Names (ARN) of the license configurations.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1635,9 +1002,9 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
 #' 
-#' -   `licenseCountingType` - The dimension on which licenses are counted.
-#'     Possible values are `vCPU` | `Instance` | `Core` | `Socket`. Logical
-#'     operators are `EQUALS` | `NOT_EQUALS`.
+#' -   `licenseCountingType` - The dimension for which licenses are
+#'     counted. Possible values are `vCPU` | `Instance` | `Core` |
+#'     `Socket`. Logical operators are `EQUALS` | `NOT_EQUALS`.
 #' 
 #' -   `enforceLicenseCount` - A Boolean value that indicates whether hard
 #'     license enforcement is used. Logical operators are `EQUALS` |
@@ -1646,82 +1013,6 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' -   `usagelimitExceeded` - A Boolean value that indicates whether the
 #'     available licenses have been exceeded. Logical operators are
 #'     `EQUALS` | `NOT_EQUALS`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseConfigurations = list(
-#'     list(
-#'       LicenseConfigurationId = "string",
-#'       LicenseConfigurationArn = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
-#'       LicenseRules = list(
-#'         "string"
-#'       ),
-#'       LicenseCount = 123,
-#'       LicenseCountHardLimit = TRUE|FALSE,
-#'       DisassociateWhenNotFound = TRUE|FALSE,
-#'       ConsumedLicenses = 123,
-#'       Status = "string",
-#'       OwnerAccountId = "string",
-#'       ConsumedLicenseSummaryList = list(
-#'         list(
-#'           ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-#'           ConsumedLicenses = 123
-#'         )
-#'       ),
-#'       ManagedResourceSummaryList = list(
-#'         list(
-#'           ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-#'           AssociationCount = 123
-#'         )
-#'       ),
-#'       ProductInformationList = list(
-#'         list(
-#'           ResourceType = "string",
-#'           ProductInformationFilterList = list(
-#'             list(
-#'               ProductInformationFilterName = "string",
-#'               ProductInformationFilterValue = list(
-#'                 "string"
-#'               ),
-#'               ProductInformationFilterComparator = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       AutomatedDiscoveryInformation = list(
-#'         LastRunTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_license_configurations(
-#'   LicenseConfigurationArns = list(
-#'     "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1743,42 +1034,82 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
 }
 .licensemanager$operations$list_license_configurations <- licensemanager_list_license_configurations
 
+#' Lists the license type conversion tasks for your account
+#'
+#' @description
+#' Lists the license type conversion tasks for your account.
+#'
+#' See [https://paws-r.github.io/docs/licensemanager/list_license_conversion_tasks.html](https://paws-r.github.io/docs/licensemanager/list_license_conversion_tasks.html) for full documentation.
+#'
+#' @param NextToken Token for the next set of results.
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param Filters Filters to scope the results. Valid filters are `ResourceArns` and
+#' `Status`.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_conversion_tasks
+licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListLicenseConversionTasks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$list_license_conversion_tasks_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .licensemanager$list_license_conversion_tasks_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_conversion_tasks <- licensemanager_list_license_conversion_tasks
+
+#' Lists the report generators for your account
+#'
+#' @description
+#' Lists the report generators for your account.
+#'
+#' See [https://paws-r.github.io/docs/licensemanager/list_license_manager_report_generators.html](https://paws-r.github.io/docs/licensemanager/list_license_manager_report_generators.html) for full documentation.
+#'
+#' @param Filters Filters to scope the results. The following filters are supported:
+#' 
+#' -   `LicenseConfigurationArn`
+#' @param NextToken Token for the next set of results.
+#' @param MaxResults Maximum number of results to return in a single call.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_manager_report_generators
+licensemanager_list_license_manager_report_generators <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListLicenseManagerReportGenerators",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$list_license_manager_report_generators_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .licensemanager$list_license_manager_report_generators_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_manager_report_generators <- licensemanager_list_license_manager_report_generators
+
 #' Describes the license configurations for the specified resource
 #'
 #' @description
 #' Describes the license configurations for the specified resource.
 #'
-#' @usage
-#' licensemanager_list_license_specifications_for_resource(ResourceArn,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/licensemanager/list_license_specifications_for_resource.html](https://paws-r.github.io/docs/licensemanager/list_license_specifications_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of a resource that has an associated license
 #' configuration.
 #' @param MaxResults Maximum number of results to return in a single call.
 #' @param NextToken Token for the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseSpecifications = list(
-#'     list(
-#'       LicenseConfigurationArn = "string",
-#'       AmiAssociationScope = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_license_specifications_for_resource(
-#'   ResourceArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1805,77 +1136,11 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
 #' @description
 #' Lists all versions of the specified license.
 #'
-#' @usage
-#' licensemanager_list_license_versions(LicenseArn, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/licensemanager/list_license_versions.html](https://paws-r.github.io/docs/licensemanager/list_license_versions.html) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Licenses = list(
-#'     list(
-#'       LicenseArn = "string",
-#'       LicenseName = "string",
-#'       ProductName = "string",
-#'       ProductSKU = "string",
-#'       Issuer = list(
-#'         Name = "string",
-#'         SignKey = "string",
-#'         KeyFingerprint = "string"
-#'       ),
-#'       HomeRegion = "string",
-#'       Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-#'       Validity = list(
-#'         Begin = "string",
-#'         End = "string"
-#'       ),
-#'       Beneficiary = "string",
-#'       Entitlements = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string",
-#'           MaxCount = 123,
-#'           Overage = TRUE|FALSE,
-#'           Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-#'           AllowCheckIn = TRUE|FALSE
-#'         )
-#'       ),
-#'       ConsumptionConfiguration = list(
-#'         RenewType = "None"|"Weekly"|"Monthly",
-#'         ProvisionalConfiguration = list(
-#'           MaxTimeToLiveInMinutes = 123
-#'         ),
-#'         BorrowConfiguration = list(
-#'           AllowEarlyCheckIn = TRUE|FALSE,
-#'           MaxTimeToLiveInMinutes = 123
-#'         )
-#'       ),
-#'       LicenseMetadata = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       CreateTime = "string",
-#'       Version = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_license_versions(
-#'   LicenseArn = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1902,9 +1167,7 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
 #' @description
 #' Lists the licenses for your account.
 #'
-#' @usage
-#' licensemanager_list_licenses(LicenseArns, Filters, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/licensemanager/list_licenses.html](https://paws-r.github.io/docs/licensemanager/list_licenses.html) for full documentation.
 #'
 #' @param LicenseArns Amazon Resource Names (ARNs) of the licenses.
 #' @param Filters Filters to scope the results. The following filters are supported:
@@ -1913,86 +1176,11 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
 #' 
 #' -   `ProductSKU`
 #' 
-#' -   `KeyFingerprint`
+#' -   `Fingerprint`
 #' 
 #' -   `Status`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Licenses = list(
-#'     list(
-#'       LicenseArn = "string",
-#'       LicenseName = "string",
-#'       ProductName = "string",
-#'       ProductSKU = "string",
-#'       Issuer = list(
-#'         Name = "string",
-#'         SignKey = "string",
-#'         KeyFingerprint = "string"
-#'       ),
-#'       HomeRegion = "string",
-#'       Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-#'       Validity = list(
-#'         Begin = "string",
-#'         End = "string"
-#'       ),
-#'       Beneficiary = "string",
-#'       Entitlements = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string",
-#'           MaxCount = 123,
-#'           Overage = TRUE|FALSE,
-#'           Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-#'           AllowCheckIn = TRUE|FALSE
-#'         )
-#'       ),
-#'       ConsumptionConfiguration = list(
-#'         RenewType = "None"|"Weekly"|"Monthly",
-#'         ProvisionalConfiguration = list(
-#'           MaxTimeToLiveInMinutes = 123
-#'         ),
-#'         BorrowConfiguration = list(
-#'           AllowEarlyCheckIn = TRUE|FALSE,
-#'           MaxTimeToLiveInMinutes = 123
-#'         )
-#'       ),
-#'       LicenseMetadata = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       CreateTime = "string",
-#'       Version = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_licenses(
-#'   LicenseArns = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2019,61 +1207,22 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 #' @description
 #' Lists grants that are received but not accepted.
 #'
-#' @usage
-#' licensemanager_list_received_grants(GrantArns, Filters, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/licensemanager/list_received_grants.html](https://paws-r.github.io/docs/licensemanager/list_received_grants.html) for full documentation.
 #'
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `LicenseARN`
+#' -   `ProductSKU`
 #' 
-#' -   `Status`
+#' -   `LicenseIssuerName`
+#' 
+#' -   `LicenseArn`
+#' 
+#' -   `GrantStatus`
+#' 
+#' -   `GranterAccountId`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Grants = list(
-#'     list(
-#'       GrantArn = "string",
-#'       GrantName = "string",
-#'       ParentArn = "string",
-#'       LicenseArn = "string",
-#'       GranteePrincipalArn = "string",
-#'       HomeRegion = "string",
-#'       GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-#'       StatusReason = "string",
-#'       Version = "string",
-#'       GrantedOperations = list(
-#'         "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_received_grants(
-#'   GrantArns = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2100,9 +1249,7 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 #' @description
 #' Lists received licenses.
 #'
-#' @usage
-#' licensemanager_list_received_licenses(LicenseArns, Filters, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/licensemanager/list_received_licenses.html](https://paws-r.github.io/docs/licensemanager/list_received_licenses.html) for full documentation.
 #'
 #' @param LicenseArns Amazon Resource Names (ARNs) of the licenses.
 #' @param Filters Filters to scope the results. The following filters are supported:
@@ -2111,92 +1258,13 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 #' 
 #' -   `Status`
 #' 
-#' -   `KeyFingerprint`
+#' -   `Fingerprint`
 #' 
-#' -   `Issuer`
+#' -   `IssuerName`
+#' 
+#' -   `Beneficiary`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Licenses = list(
-#'     list(
-#'       LicenseArn = "string",
-#'       LicenseName = "string",
-#'       ProductName = "string",
-#'       ProductSKU = "string",
-#'       Issuer = list(
-#'         Name = "string",
-#'         SignKey = "string",
-#'         KeyFingerprint = "string"
-#'       ),
-#'       HomeRegion = "string",
-#'       Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-#'       Validity = list(
-#'         Begin = "string",
-#'         End = "string"
-#'       ),
-#'       Beneficiary = "string",
-#'       Entitlements = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string",
-#'           MaxCount = 123,
-#'           Overage = TRUE|FALSE,
-#'           Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-#'           AllowCheckIn = TRUE|FALSE
-#'         )
-#'       ),
-#'       ConsumptionConfiguration = list(
-#'         RenewType = "None"|"Weekly"|"Monthly",
-#'         ProvisionalConfiguration = list(
-#'           MaxTimeToLiveInMinutes = 123
-#'         ),
-#'         BorrowConfiguration = list(
-#'           AllowEarlyCheckIn = TRUE|FALSE,
-#'           MaxTimeToLiveInMinutes = 123
-#'         )
-#'       ),
-#'       LicenseMetadata = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       CreateTime = "string",
-#'       Version = "string",
-#'       ReceivedMetadata = list(
-#'         ReceivedStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"DISABLED",
-#'         AllowedOperations = list(
-#'           "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_received_licenses(
-#'   LicenseArns = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2223,16 +1291,15 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 #' @description
 #' Lists resources managed using Systems Manager inventory.
 #'
-#' @usage
-#' licensemanager_list_resource_inventory(MaxResults, NextToken, Filters)
+#' See [https://paws-r.github.io/docs/licensemanager/list_resource_inventory.html](https://paws-r.github.io/docs/licensemanager/list_resource_inventory.html) for full documentation.
 #'
 #' @param MaxResults Maximum number of results to return in a single call.
 #' @param NextToken Token for the next set of results.
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
 #' 
-#' -   `account_id` - The ID of the AWS account that owns the resource.
-#'     Logical operators are `EQUALS` | `NOT_EQUALS`.
+#' -   `account_id` - The ID of the Amazon Web Services account that owns
+#'     the resource. Logical operators are `EQUALS` | `NOT_EQUALS`.
 #' 
 #' -   `application_name` - The name of the application. Logical operators
 #'     are `EQUALS` | `BEGINS_WITH`.
@@ -2251,39 +1318,6 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 #' -   `tag:<key>` - The key/value combination of a tag assigned to the
 #'     resource. Logical operators are `EQUALS` (single account) or
 #'     `EQUALS` | `NOT_EQUALS` (cross account).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceInventoryList = list(
-#'     list(
-#'       ResourceId = "string",
-#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-#'       ResourceArn = "string",
-#'       Platform = "string",
-#'       PlatformVersion = "string",
-#'       ResourceOwningAccountId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resource_inventory(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Condition = "EQUALS"|"NOT_EQUALS"|"BEGINS_WITH"|"CONTAINS",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2310,30 +1344,9 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
 #' @description
 #' Lists the tags for the specified license configuration.
 #'
-#' @usage
-#' licensemanager_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/licensemanager/list_tags_for_resource.html](https://paws-r.github.io/docs/licensemanager/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2360,57 +1373,14 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Lists your tokens.
 #'
-#' @usage
-#' licensemanager_list_tokens(TokenIds, Filters, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/licensemanager/list_tokens.html](https://paws-r.github.io/docs/licensemanager/list_tokens.html) for full documentation.
 #'
 #' @param TokenIds Token IDs.
 #' @param Filters Filters to scope the results. The following filter is supported:
 #' 
-#' -   `licenseArns`
+#' -   `LicenseArns`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tokens = list(
-#'     list(
-#'       TokenId = "string",
-#'       TokenType = "string",
-#'       LicenseArn = "string",
-#'       ExpirationTime = "string",
-#'       TokenProperties = list(
-#'         "string"
-#'       ),
-#'       RoleArns = list(
-#'         "string"
-#'       ),
-#'       Status = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tokens(
-#'   TokenIds = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2436,14 +1406,9 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
 #' license consumption details by resource at a selected point in time
 #'
 #' @description
-#' Lists all license usage records for a license configuration, displaying
-#' license consumption details by resource at a selected point in time. Use
-#' this action to audit the current license consumption for any license
-#' inventory and configuration.
+#' Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time. Use this action to audit the current license consumption for any license inventory and configuration.
 #'
-#' @usage
-#' licensemanager_list_usage_for_license_configuration(
-#'   LicenseConfigurationArn, MaxResults, NextToken, Filters)
+#' See [https://paws-r.github.io/docs/licensemanager/list_usage_for_license_configuration.html](https://paws-r.github.io/docs/licensemanager/list_usage_for_license_configuration.html) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -2460,43 +1425,6 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
 #' 
 #' -   `resourceAccount` - The ID of the account that owns the resource.
 #'     Logical operators are `EQUALS` | `NOT_EQUALS`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LicenseConfigurationUsageList = list(
-#'     list(
-#'       ResourceArn = "string",
-#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-#'       ResourceStatus = "string",
-#'       ResourceOwnerId = "string",
-#'       AssociationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ConsumedLicenses = 123
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_usage_for_license_configuration(
-#'   LicenseConfigurationArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2523,27 +1451,9 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
 #' @description
 #' Rejects the specified grant.
 #'
-#' @usage
-#' licensemanager_reject_grant(GrantArn)
+#' See [https://paws-r.github.io/docs/licensemanager/reject_grant.html](https://paws-r.github.io/docs/licensemanager/reject_grant.html) for full documentation.
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-#'   Version = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reject_grant(
-#'   GrantArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2570,27 +1480,10 @@ licensemanager_reject_grant <- function(GrantArn) {
 #' @description
 #' Adds the specified tags to the specified license configuration.
 #'
-#' @usage
-#' licensemanager_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/licensemanager/tag_resource.html](https://paws-r.github.io/docs/licensemanager/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param Tags &#91;required&#93; One or more tags.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2617,24 +1510,10 @@ licensemanager_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes the specified tags from the specified license configuration.
 #'
-#' @usage
-#' licensemanager_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/licensemanager/untag_resource.html](https://paws-r.github.io/docs/licensemanager/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param TagKeys &#91;required&#93; Keys identifying the tags to remove.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2661,11 +1540,7 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Modifies the attributes of an existing license configuration.
 #'
-#' @usage
-#' licensemanager_update_license_configuration(LicenseConfigurationArn,
-#'   LicenseConfigurationStatus, LicenseRules, LicenseCount,
-#'   LicenseCountHardLimit, Name, Description, ProductInformationList,
-#'   DisassociateWhenNotFound)
+#' See [https://paws-r.github.io/docs/licensemanager/update_license_configuration.html](https://paws-r.github.io/docs/licensemanager/update_license_configuration.html) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param LicenseConfigurationStatus New status of the license configuration.
@@ -2677,39 +1552,6 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description New description of the license configuration.
 #' @param ProductInformationList New product information.
 #' @param DisassociateWhenNotFound When true, disassociates a resource when software is uninstalled.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_license_configuration(
-#'   LicenseConfigurationArn = "string",
-#'   LicenseConfigurationStatus = "AVAILABLE"|"DISABLED",
-#'   LicenseRules = list(
-#'     "string"
-#'   ),
-#'   LicenseCount = 123,
-#'   LicenseCountHardLimit = TRUE|FALSE,
-#'   Name = "string",
-#'   Description = "string",
-#'   ProductInformationList = list(
-#'     list(
-#'       ResourceType = "string",
-#'       ProductInformationFilterList = list(
-#'         list(
-#'           ProductInformationFilterName = "string",
-#'           ProductInformationFilterValue = list(
-#'             "string"
-#'           ),
-#'           ProductInformationFilterComparator = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   DisassociateWhenNotFound = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2731,47 +1573,59 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 }
 .licensemanager$operations$update_license_configuration <- licensemanager_update_license_configuration
 
-#' Adds or removes the specified license configurations for the specified
-#' AWS resource
+#' Updates a report generator
 #'
 #' @description
-#' Adds or removes the specified license configurations for the specified
-#' AWS resource.
+#' Updates a report generator.
+#'
+#' See [https://paws-r.github.io/docs/licensemanager/update_license_manager_report_generator.html](https://paws-r.github.io/docs/licensemanager/update_license_manager_report_generator.html) for full documentation.
+#'
+#' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator to update.
+#' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
+#' @param Type &#91;required&#93; Type of reports to generate. The following report types are supported:
 #' 
-#' You can update the license specifications of AMIs, instances, and hosts.
-#' You cannot update the license specifications for launch templates and
-#' AWS CloudFormation templates, as they send license configurations to the
-#' operation that creates the resource.
+#' -   License configuration report - Reports the number and details of
+#'     consumed licenses for a license configuration.
+#' 
+#' -   Resource report - Reports the tracked licenses and resource
+#'     consumption for a license configuration.
+#' @param ReportContext &#91;required&#93; The report context.
+#' @param ReportFrequency &#91;required&#93; Frequency by which reports are generated.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param Description Description of the report generator.
 #'
-#' @usage
-#' licensemanager_update_license_specifications_for_resource(ResourceArn,
-#'   AddLicenseSpecifications, RemoveLicenseSpecifications)
+#' @keywords internal
 #'
-#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the AWS resource.
+#' @rdname licensemanager_update_license_manager_report_generator
+licensemanager_update_license_manager_report_generator <- function(LicenseManagerReportGeneratorArn, ReportGeneratorName, Type, ReportContext, ReportFrequency, ClientToken, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateLicenseManagerReportGenerator",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$update_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn, ReportGeneratorName = ReportGeneratorName, Type = Type, ReportContext = ReportContext, ReportFrequency = ReportFrequency, ClientToken = ClientToken, Description = Description)
+  output <- .licensemanager$update_license_manager_report_generator_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$update_license_manager_report_generator <- licensemanager_update_license_manager_report_generator
+
+#' Adds or removes the specified license configurations for the specified
+#' Amazon Web Services resource
+#'
+#' @description
+#' Adds or removes the specified license configurations for the specified Amazon Web Services resource.
+#'
+#' See [https://paws-r.github.io/docs/licensemanager/update_license_specifications_for_resource.html](https://paws-r.github.io/docs/licensemanager/update_license_specifications_for_resource.html) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the Amazon Web Services resource.
 #' @param AddLicenseSpecifications ARNs of the license configurations to add.
 #' @param RemoveLicenseSpecifications ARNs of the license configurations to remove.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_license_specifications_for_resource(
-#'   ResourceArn = "string",
-#'   AddLicenseSpecifications = list(
-#'     list(
-#'       LicenseConfigurationArn = "string",
-#'       AmiAssociationScope = "string"
-#'     )
-#'   ),
-#'   RemoveLicenseSpecifications = list(
-#'     list(
-#'       LicenseConfigurationArn = "string",
-#'       AmiAssociationScope = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2798,31 +1652,14 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #' @description
 #' Updates License Manager settings for the current Region.
 #'
-#' @usage
-#' licensemanager_update_service_settings(S3BucketArn, SnsTopicArn,
-#'   OrganizationConfiguration, EnableCrossAccountsDiscovery)
+#' See [https://paws-r.github.io/docs/licensemanager/update_service_settings.html](https://paws-r.github.io/docs/licensemanager/update_service_settings.html) for full documentation.
 #'
 #' @param S3BucketArn Amazon Resource Name (ARN) of the Amazon S3 bucket where the License
 #' Manager information is stored.
 #' @param SnsTopicArn Amazon Resource Name (ARN) of the Amazon SNS topic used for License
 #' Manager alerts.
-#' @param OrganizationConfiguration Enables integration with AWS Organizations for cross-account discovery.
+#' @param OrganizationConfiguration Enables integration with Organizations for cross-account discovery.
 #' @param EnableCrossAccountsDiscovery Activates cross-account discovery.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_service_settings(
-#'   S3BucketArn = "string",
-#'   SnsTopicArn = "string",
-#'   OrganizationConfiguration = list(
-#'     EnableIntegration = TRUE|FALSE
-#'   ),
-#'   EnableCrossAccountsDiscovery = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

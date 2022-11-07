@@ -5,40 +5,21 @@
 \title{This API is in preview release for Amazon Connect and is subject to
 change}
 \usage{
-connect_list_lambda_functions(InstanceId, NextToken, MaxResults)
+connect_list_lambda_functions(InstanceId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  LambdaFunctions = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Returns a paginated list of all the Lambda functions that show up in the
-drop-down options in the relevant contact flow blocks.
+See \url{https://paws-r.github.io/docs/connect/list_lambda_functions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_lambda_functions(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

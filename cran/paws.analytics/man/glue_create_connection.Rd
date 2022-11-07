@@ -4,43 +4,19 @@
 \alias{glue_create_connection}
 \title{Creates a connection definition in the Data Catalog}
 \usage{
-glue_create_connection(CatalogId, ConnectionInput)
+glue_create_connection(CatalogId = NULL, ConnectionInput, Tags = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which to create the connection. If none is
-provided, the AWS account ID is used by default.}
+provided, the Amazon Web Services account ID is used by default.}
 
 \item{ConnectionInput}{[required] A \code{ConnectionInput} object defining the connection to create.}
-}
-\value{
-An empty list.
+
+\item{Tags}{The tags you assign to the connection.}
 }
 \description{
 Creates a connection definition in the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$create_connection(
-  CatalogId = "string",
-  ConnectionInput = list(
-    Name = "string",
-    Description = "string",
-    ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
-    MatchCriteria = list(
-      "string"
-    ),
-    ConnectionProperties = list(
-      "string"
-    ),
-    PhysicalConnectionRequirements = list(
-      SubnetId = "string",
-      SecurityGroupIdList = list(
-        "string"
-      ),
-      AvailabilityZone = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/create_connection.html} for full documentation.
+}
 \keyword{internal}

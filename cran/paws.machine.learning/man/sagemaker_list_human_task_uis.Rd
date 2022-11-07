@@ -4,8 +4,13 @@
 \alias{sagemaker_list_human_task_uis}
 \title{Returns information about the human task user interfaces in your account}
 \usage{
-sagemaker_list_human_task_uis(CreationTimeAfter, CreationTimeBefore,
-  SortOrder, NextToken, MaxResults)
+sagemaker_list_human_task_uis(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only human task user interfaces with a creation
@@ -24,38 +29,9 @@ items is more than the value specified in \code{MaxResults}, then a
 \code{NextToken} will be provided in the output that you can use to resume
 pagination.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HumanTaskUiSummaries = list(
-    list(
-      HumanTaskUiName = "string",
-      HumanTaskUiArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns information about the human task user interfaces in your
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_human_task_uis(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns information about the human task user interfaces in your account.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_human_task_uis.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{lambda_publish_version}
 \title{Creates a version from the current code and configuration of a function}
 \usage{
-lambda_publish_version(FunctionName, CodeSha256, Description,
-  RevisionId)
+lambda_publish_version(
+  FunctionName,
+  CodeSha256 = NULL,
+  Description = NULL,
+  RevisionId = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -34,123 +38,9 @@ function configuration.}
 specified. Use this option to avoid publishing a version if the function
 configuration has changed since you last updated it.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FunctionName = "string",
-  FunctionArn = "string",
-  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-  Role = "string",
-  Handler = "string",
-  CodeSize = 123,
-  Description = "string",
-  Timeout = 123,
-  MemorySize = 123,
-  LastModified = "string",
-  CodeSha256 = "string",
-  Version = "string",
-  VpcConfig = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    ),
-    VpcId = "string"
-  ),
-  DeadLetterConfig = list(
-    TargetArn = "string"
-  ),
-  Environment = list(
-    Variables = list(
-      "string"
-    ),
-    Error = list(
-      ErrorCode = "string",
-      Message = "string"
-    )
-  ),
-  KMSKeyArn = "string",
-  TracingConfig = list(
-    Mode = "Active"|"PassThrough"
-  ),
-  MasterArn = "string",
-  RevisionId = "string",
-  Layers = list(
-    list(
-      Arn = "string",
-      CodeSize = 123,
-      SigningProfileVersionArn = "string",
-      SigningJobArn = "string"
-    )
-  ),
-  State = "Pending"|"Active"|"Inactive"|"Failed",
-  StateReason = "string",
-  StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-  LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-  LastUpdateStatusReason = "string",
-  LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-  FileSystemConfigs = list(
-    list(
-      Arn = "string",
-      LocalMountPath = "string"
-    )
-  ),
-  PackageType = "Zip"|"Image",
-  ImageConfigResponse = list(
-    ImageConfig = list(
-      EntryPoint = list(
-        "string"
-      ),
-      Command = list(
-        "string"
-      ),
-      WorkingDirectory = "string"
-    ),
-    Error = list(
-      ErrorCode = "string",
-      Message = "string"
-    )
-  ),
-  SigningProfileVersionArn = "string",
-  SigningJobArn = "string"
-)
-}
-}
 \description{
-Creates a
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{version}
-from the current code and configuration of a function. Use versions to
-create a snapshot of your function code and configuration that doesn't
-change.
+Creates a \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{version} from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
 
-AWS Lambda doesn't publish a version if the function's configuration and
-code haven't changed since the last version. Use
-\code{\link[=lambda_update_function_code]{update_function_code}} or
-\code{\link[=lambda_update_function_configuration]{update_function_configuration}}
-to update the function before publishing a version.
-
-Clients can invoke versions directly or with an alias. To create an
-alias, use \code{\link[=lambda_create_alias]{create_alias}}.
-}
-\section{Request syntax}{
-\preformatted{svc$publish_version(
-  FunctionName = "string",
-  CodeSha256 = "string",
-  Description = "string",
-  RevisionId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation publishes a version of a Lambda function
-svc$publish_version(
-  CodeSha256 = "",
-  Description = "",
-  FunctionName = "myFunction"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/publish_version.html} for full documentation.
 }
 \keyword{internal}

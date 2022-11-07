@@ -5,8 +5,14 @@
 \title{Lists parent objects that are associated with a given object in
 pagination fashion}
 \usage{
-clouddirectory_list_object_parents(DirectoryArn, ObjectReference,
-  NextToken, MaxResults, ConsistencyLevel, IncludeAllLinksToEachParent)
+clouddirectory_list_object_parents(
+  DirectoryArn,
+  ObjectReference,
+  NextToken = NULL,
+  MaxResults = NULL,
+  ConsistencyLevel = NULL,
+  IncludeAllLinksToEachParent = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -27,37 +33,9 @@ object.}
 \item{IncludeAllLinksToEachParent}{When set to True, returns all ListObjectParentsResponse$ParentLinks.
 There could be multiple links between a parent-child pair.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Parents = list(
-    "string"
-  ),
-  NextToken = "string",
-  ParentLinks = list(
-    list(
-      ObjectIdentifier = "string",
-      LinkName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists parent objects that are associated with a given object in
-pagination fashion.
-}
-\section{Request syntax}{
-\preformatted{svc$list_object_parents(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
-  IncludeAllLinksToEachParent = TRUE|FALSE
-)
-}
-}
+Lists parent objects that are associated with a given object in pagination fashion.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_object_parents.html} for full documentation.
+}
 \keyword{internal}

@@ -6,76 +6,37 @@ NULL
 #' Creates a batch inference job
 #'
 #' @description
-#' Creates a batch inference job. The operation can handle up to 50 million
-#' records and the input file must be in JSON format. For more information,
-#' see recommendations-batch.
+#' Creates a batch inference job. The operation can handle up to 50 million records and the input file must be in JSON format. For more information, see [Creating a batch inference job](https://docs.aws.amazon.com/personalize/latest/dg/creating-batch-inference-job.html).
 #'
-#' @usage
-#' personalize_create_batch_inference_job(jobName, solutionVersionArn,
-#'   filterArn, numResults, jobInput, jobOutput, roleArn,
-#'   batchInferenceJobConfig)
+#' See [https://paws-r.github.io/docs/personalize/create_batch_inference_job.html](https://paws-r.github.io/docs/personalize/create_batch_inference_job.html) for full documentation.
 #'
 #' @param jobName &#91;required&#93; The name of the batch inference job to create.
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version that will be used
 #' to generate the batch inference recommendations.
 #' @param filterArn The ARN of the filter to apply to the batch inference job. For more
-#' information on using filters, see Using Filters with Amazon Personalize.
-#' @param numResults The number of recommendations to retreive.
+#' information on using filters, see [Filtering batch
+#' recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html).
+#' @param numResults The number of recommendations to retrieve.
 #' @param jobInput &#91;required&#93; The Amazon S3 path that leads to the input file to base your
 #' recommendations on. The input material must be in JSON format.
 #' @param jobOutput &#91;required&#93; The path to the Amazon S3 bucket where the job's output will be stored.
 #' @param roleArn &#91;required&#93; The ARN of the Amazon Identity and Access Management role that has
-#' permissions to read and write to your input and out Amazon S3 buckets
+#' permissions to read and write to your input and output Amazon S3 buckets
 #' respectively.
 #' @param batchInferenceJobConfig The configuration details of a batch inference job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   batchInferenceJobArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_batch_inference_job(
-#'   jobName = "string",
-#'   solutionVersionArn = "string",
-#'   filterArn = "string",
-#'   numResults = 123,
-#'   jobInput = list(
-#'     s3DataSource = list(
-#'       path = "string",
-#'       kmsKeyArn = "string"
-#'     )
-#'   ),
-#'   jobOutput = list(
-#'     s3DataDestination = list(
-#'       path = "string",
-#'       kmsKeyArn = "string"
-#'     )
-#'   ),
-#'   roleArn = "string",
-#'   batchInferenceJobConfig = list(
-#'     itemExplorationConfig = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param tags A list of tags to apply to the batch inference job.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_batch_inference_job
-personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn, batchInferenceJobConfig = NULL) {
+personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn, batchInferenceJobConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateBatchInferenceJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, batchInferenceJobConfig = batchInferenceJobConfig)
+  input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, batchInferenceJobConfig = batchInferenceJobConfig, tags = tags)
   output <- .personalize$create_batch_inference_job_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -85,100 +46,75 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 }
 .personalize$operations$create_batch_inference_job <- personalize_create_batch_inference_job
 
-#' Creates a campaign by deploying a solution version
+#' Creates a batch segment job
 #'
 #' @description
-#' Creates a campaign by deploying a solution version. When a client calls
-#' the
-#' [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html)
-#' and
-#' [GetPersonalizedRanking](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetPersonalizedRanking.html)
-#' APIs, a campaign is specified in the request.
-#' 
-#' **Minimum Provisioned TPS and Auto-Scaling**
-#' 
-#' A transaction is a single `GetRecommendations` or
-#' `GetPersonalizedRanking` call. Transactions per second (TPS) is the
-#' throughput and unit of billing for Amazon Personalize. The minimum
-#' provisioned TPS (`minProvisionedTPS`) specifies the baseline throughput
-#' provisioned by Amazon Personalize, and thus, the minimum billing charge.
-#' If your TPS increases beyond `minProvisionedTPS`, Amazon Personalize
-#' auto-scales the provisioned capacity up and down, but never below
-#' `minProvisionedTPS`, to maintain a 70% utilization. There's a short time
-#' delay while the capacity is increased that might cause loss of
-#' transactions. It's recommended to start with a low `minProvisionedTPS`,
-#' track your usage using Amazon CloudWatch metrics, and then increase the
-#' `minProvisionedTPS` as necessary.
-#' 
-#' **Status**
-#' 
-#' A campaign can be in one of the following states:
-#' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
-#' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
-#' 
-#' To get the campaign status, call
-#' [`describe_campaign`][personalize_describe_campaign].
-#' 
-#' Wait until the `status` of the campaign is `ACTIVE` before asking the
-#' campaign for recommendations.
-#' 
-#' **Related APIs**
-#' 
-#' -   [`list_campaigns`][personalize_list_campaigns]
-#' 
-#' -   [`describe_campaign`][personalize_describe_campaign]
-#' 
-#' -   [`update_campaign`][personalize_update_campaign]
-#' 
-#' -   [`delete_campaign`][personalize_delete_campaign]
+#' Creates a batch segment job. The operation can handle up to 50 million records and the input file must be in JSON format. For more information, see [Getting batch recommendations and user segments](https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html).
 #'
-#' @usage
-#' personalize_create_campaign(name, solutionVersionArn, minProvisionedTPS,
-#'   campaignConfig)
+#' See [https://paws-r.github.io/docs/personalize/create_batch_segment_job.html](https://paws-r.github.io/docs/personalize/create_batch_segment_job.html) for full documentation.
+#'
+#' @param jobName &#91;required&#93; The name of the batch segment job to create.
+#' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version you want the
+#' batch segment job to use to generate batch segments.
+#' @param filterArn The ARN of the filter to apply to the batch segment job. For more
+#' information on using filters, see [Filtering batch
+#' recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html).
+#' @param numResults The number of predicted users generated by the batch segment job for
+#' each line of input data.
+#' @param jobInput &#91;required&#93; The Amazon S3 path for the input data used to generate the batch segment
+#' job.
+#' @param jobOutput &#91;required&#93; The Amazon S3 path for the bucket where the job's output will be stored.
+#' @param roleArn &#91;required&#93; The ARN of the Amazon Identity and Access Management role that has
+#' permissions to read and write to your input and output Amazon S3 buckets
+#' respectively.
+#' @param tags A list of tags to apply to the batch segment job.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_create_batch_segment_job
+personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn, tags = NULL) {
+  op <- new_operation(
+    name = "CreateBatchSegmentJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$create_batch_segment_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, tags = tags)
+  output <- .personalize$create_batch_segment_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$create_batch_segment_job <- personalize_create_batch_segment_job
+
+#' Creates a campaign that deploys a solution version
+#'
+#' @description
+#' Creates a campaign that deploys a solution version. When a client calls the [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html) and [GetPersonalizedRanking](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetPersonalizedRanking.html) APIs, a campaign is specified in the request.
+#'
+#' See [https://paws-r.github.io/docs/personalize/create_campaign.html](https://paws-r.github.io/docs/personalize/create_campaign.html) for full documentation.
 #'
 #' @param name &#91;required&#93; A name for the new campaign. The campaign name must be unique within
 #' your account.
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version to deploy.
-#' @param minProvisionedTPS &#91;required&#93; Specifies the requested minimum provisioned transactions
+#' @param minProvisionedTPS Specifies the requested minimum provisioned transactions
 #' (recommendations) per second that Amazon Personalize will support.
 #' @param campaignConfig The configuration details of a campaign.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   campaignArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_campaign(
-#'   name = "string",
-#'   solutionVersionArn = "string",
-#'   minProvisionedTPS = 123,
-#'   campaignConfig = list(
-#'     itemExplorationConfig = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param tags A list of tags to apply to the campaign.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_campaign
-personalize_create_campaign <- function(name, solutionVersionArn, minProvisionedTPS, campaignConfig = NULL) {
+personalize_create_campaign <- function(name, solutionVersionArn, minProvisionedTPS = NULL, campaignConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCampaign",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_campaign_input(name = name, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig)
+  input <- .personalize$create_campaign_input(name = name, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig, tags = tags)
   output <- .personalize$create_campaign_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -191,45 +127,9 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' Creates an empty dataset and adds it to the specified dataset group
 #'
 #' @description
-#' Creates an empty dataset and adds it to the specified dataset group. Use
-#' [`create_dataset_import_job`][personalize_create_dataset_import_job] to
-#' import your training data to a dataset.
-#' 
-#' There are three types of datasets:
-#' 
-#' -   Interactions
-#' 
-#' -   Items
-#' 
-#' -   Users
-#' 
-#' Each dataset type has an associated schema with required field types.
-#' Only the `Interactions` dataset is required in order to train a model
-#' (also referred to as creating a solution).
-#' 
-#' A dataset can be in one of the following states:
-#' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
-#' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
-#' 
-#' To get the status of the dataset, call
-#' [`describe_dataset`][personalize_describe_dataset].
-#' 
-#' **Related APIs**
-#' 
-#' -   [`create_dataset_group`][personalize_create_dataset_group]
-#' 
-#' -   [`list_datasets`][personalize_list_datasets]
-#' 
-#' -   [`describe_dataset`][personalize_describe_dataset]
-#' 
-#' -   [`delete_dataset`][personalize_delete_dataset]
+#' Creates an empty dataset and adds it to the specified dataset group. Use [`create_dataset_import_job`][personalize_create_dataset_import_job] to import your training data to a dataset.
 #'
-#' @usage
-#' personalize_create_dataset(name, schemaArn, datasetGroupArn,
-#'   datasetType)
+#' See [https://paws-r.github.io/docs/personalize/create_dataset.html](https://paws-r.github.io/docs/personalize/create_dataset.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name for the dataset.
 #' @param schemaArn &#91;required&#93; The ARN of the schema to associate with the dataset. The schema defines
@@ -245,36 +145,19 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' -   Items
 #' 
 #' -   Users
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   datasetArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_dataset(
-#'   name = "string",
-#'   schemaArn = "string",
-#'   datasetGroupArn = "string",
-#'   datasetType = "string"
-#' )
-#' ```
+#' @param tags A list of tags to apply to the dataset.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_dataset
-personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, datasetType) {
+personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, datasetType, tags = NULL) {
   op <- new_operation(
     name = "CreateDataset",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_dataset_input(name = name, schemaArn = schemaArn, datasetGroupArn = datasetGroupArn, datasetType = datasetType)
+  input <- .personalize$create_dataset_input(name = name, schemaArn = schemaArn, datasetGroupArn = datasetGroupArn, datasetType = datasetType, tags = tags)
   output <- .personalize$create_dataset_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -284,97 +167,77 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 }
 .personalize$operations$create_dataset <- personalize_create_dataset
 
+#' Creates a job that exports data from your dataset to an Amazon S3 bucket
+#'
+#' @description
+#' Creates a job that exports data from your dataset to an Amazon S3 bucket. To allow Amazon Personalize to export the training data, you must specify an service-linked IAM role that gives Amazon Personalize `PutObject` permissions for your Amazon S3 bucket. For information, see [Exporting a dataset](https://docs.aws.amazon.com/personalize/latest/dg/export-data.html) in the Amazon Personalize developer guide.
+#'
+#' See [https://paws-r.github.io/docs/personalize/create_dataset_export_job.html](https://paws-r.github.io/docs/personalize/create_dataset_export_job.html) for full documentation.
+#'
+#' @param jobName &#91;required&#93; The name for the dataset export job.
+#' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset that contains the data to
+#' export.
+#' @param ingestionMode The data to export, based on how you imported the data. You can choose
+#' to export only `BULK` data that you imported using a dataset import job,
+#' only `PUT` data that you imported incrementally (using the console,
+#' PutEvents, PutUsers and PutItems operations), or `ALL` for both types.
+#' The default value is `PUT`.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM service role that has
+#' permissions to add data to your output Amazon S3 bucket.
+#' @param jobOutput &#91;required&#93; The path to the Amazon S3 bucket where the job's output is stored.
+#' @param tags A list of tags to apply to the dataset export job.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_create_dataset_export_job
+personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestionMode = NULL, roleArn, jobOutput, tags = NULL) {
+  op <- new_operation(
+    name = "CreateDatasetExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$create_dataset_export_job_input(jobName = jobName, datasetArn = datasetArn, ingestionMode = ingestionMode, roleArn = roleArn, jobOutput = jobOutput, tags = tags)
+  output <- .personalize$create_dataset_export_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$create_dataset_export_job <- personalize_create_dataset_export_job
+
 #' Creates an empty dataset group
 #'
 #' @description
-#' Creates an empty dataset group. A dataset group contains related
-#' datasets that supply data for training a model. A dataset group can
-#' contain at most three datasets, one for each type of dataset:
-#' 
-#' -   Interactions
-#' 
-#' -   Items
-#' 
-#' -   Users
-#' 
-#' To train a model (create a solution), a dataset group that contains an
-#' `Interactions` dataset is required. Call
-#' [`create_dataset`][personalize_create_dataset] to add a dataset to the
-#' group.
-#' 
-#' A dataset group can be in one of the following states:
-#' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
-#' 
-#' -   DELETE PENDING
-#' 
-#' To get the status of the dataset group, call
-#' [`describe_dataset_group`][personalize_describe_dataset_group]. If the
-#' status shows as CREATE FAILED, the response includes a `failureReason`
-#' key, which describes why the creation failed.
-#' 
-#' You must wait until the `status` of the dataset group is `ACTIVE` before
-#' adding a dataset to the group.
-#' 
-#' You can specify an AWS Key Management Service (KMS) key to encrypt the
-#' datasets in the group. If you specify a KMS key, you must also include
-#' an AWS Identity and Access Management (IAM) role that has permission to
-#' access the key.
-#' 
-#' **APIs that require a dataset group ARN in the request**
-#' 
-#' -   [`create_dataset`][personalize_create_dataset]
-#' 
-#' -   [`create_event_tracker`][personalize_create_event_tracker]
-#' 
-#' -   [`create_solution`][personalize_create_solution]
-#' 
-#' **Related APIs**
-#' 
-#' -   [`list_dataset_groups`][personalize_list_dataset_groups]
-#' 
-#' -   [`describe_dataset_group`][personalize_describe_dataset_group]
-#' 
-#' -   [`delete_dataset_group`][personalize_delete_dataset_group]
+#' Creates an empty dataset group. A dataset group is a container for Amazon Personalize resources. A dataset group can contain at most three datasets, one for each type of dataset:
 #'
-#' @usage
-#' personalize_create_dataset_group(name, roleArn, kmsKeyArn)
+#' See [https://paws-r.github.io/docs/personalize/create_dataset_group.html](https://paws-r.github.io/docs/personalize/create_dataset_group.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name for the new dataset group.
-#' @param roleArn The ARN of the IAM role that has permissions to access the KMS key.
-#' Supplying an IAM role is only valid when also specifying a KMS key.
-#' @param kmsKeyArn The Amazon Resource Name (ARN) of a KMS key used to encrypt the
-#' datasets.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   datasetGroupArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_dataset_group(
-#'   name = "string",
-#'   roleArn = "string",
-#'   kmsKeyArn = "string"
-#' )
-#' ```
+#' @param roleArn The ARN of the Identity and Access Management (IAM) role that has
+#' permissions to access the Key Management Service (KMS) key. Supplying an
+#' IAM role is only valid when also specifying a KMS key.
+#' @param kmsKeyArn The Amazon Resource Name (ARN) of a Key Management Service (KMS) key
+#' used to encrypt the datasets.
+#' @param domain The domain of the dataset group. Specify a domain to create a Domain
+#' dataset group. The domain you specify determines the default schemas for
+#' datasets and the use cases available for recommenders. If you don't
+#' specify a domain, you create a Custom dataset group with solution
+#' versions that you deploy with a campaign.
+#' @param tags A list of tags to apply to the dataset group.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_dataset_group
-personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = NULL) {
+personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = NULL, domain = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDatasetGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_dataset_group_input(name = name, roleArn = roleArn, kmsKeyArn = kmsKeyArn)
+  input <- .personalize$create_dataset_group_input(name = name, roleArn = roleArn, kmsKeyArn = kmsKeyArn, domain = domain, tags = tags)
   output <- .personalize$create_dataset_group_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -388,79 +251,38 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' Amazon S3 bucket) to an Amazon Personalize dataset
 #'
 #' @description
-#' Creates a job that imports training data from your data source (an
-#' Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon
-#' Personalize to import the training data, you must specify an AWS
-#' Identity and Access Management (IAM) role that has permission to read
-#' from the data source, as Amazon Personalize makes a copy of your data
-#' and processes it in an internal AWS system.
-#' 
-#' The dataset import job replaces any previous data in the dataset.
-#' 
-#' **Status**
-#' 
-#' A dataset import job can be in one of the following states:
-#' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
-#' 
-#' To get the status of the import job, call
-#' [`describe_dataset_import_job`][personalize_describe_dataset_import_job],
-#' providing the Amazon Resource Name (ARN) of the dataset import job. The
-#' dataset import is complete when the status shows as ACTIVE. If the
-#' status shows as CREATE FAILED, the response includes a `failureReason`
-#' key, which describes why the job failed.
-#' 
-#' Importing takes time. You must wait until the status shows as ACTIVE
-#' before training a model using the dataset.
-#' 
-#' **Related APIs**
-#' 
-#' -   [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs]
-#' 
-#' -   [`describe_dataset_import_job`][personalize_describe_dataset_import_job]
+#' Creates a job that imports training data from your data source (an Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon Personalize to import the training data, you must specify an IAM service role that has permission to read from the data source, as Amazon Personalize makes a copy of your data and processes it internally. For information on granting access to your Amazon S3 bucket, see [Giving Amazon Personalize Access to Amazon S3 Resources](https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html).
 #'
-#' @usage
-#' personalize_create_dataset_import_job(jobName, datasetArn, dataSource,
-#'   roleArn)
+#' See [https://paws-r.github.io/docs/personalize/create_dataset_import_job.html](https://paws-r.github.io/docs/personalize/create_dataset_import_job.html) for full documentation.
 #'
 #' @param jobName &#91;required&#93; The name for the dataset import job.
 #' @param datasetArn &#91;required&#93; The ARN of the dataset that receives the imported data.
 #' @param dataSource &#91;required&#93; The Amazon S3 bucket that contains the training data to import.
 #' @param roleArn &#91;required&#93; The ARN of the IAM role that has permissions to read from the Amazon S3
 #' data source.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   datasetImportJobArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_dataset_import_job(
-#'   jobName = "string",
-#'   datasetArn = "string",
-#'   dataSource = list(
-#'     dataLocation = "string"
-#'   ),
-#'   roleArn = "string"
-#' )
-#' ```
+#' @param tags A list of tags to apply to the dataset import job.
+#' @param importMode Specify how to add the new records to an existing dataset. The default
+#' import mode is `FULL`. If you haven't imported bulk records into the
+#' dataset previously, you can only specify `FULL`.
+#' 
+#' -   Specify `FULL` to overwrite all existing bulk data in your dataset.
+#'     Data you imported individually is not replaced.
+#' 
+#' -   Specify `INCREMENTAL` to append the new records to the existing data
+#'     in your dataset. Amazon Personalize replaces any record with the
+#'     same ID with the new one.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_dataset_import_job
-personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSource, roleArn) {
+personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSource, roleArn, tags = NULL, importMode = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_dataset_import_job_input(jobName = jobName, datasetArn = datasetArn, dataSource = dataSource, roleArn = roleArn)
+  input <- .personalize$create_dataset_import_job_input(jobName = jobName, datasetArn = datasetArn, dataSource = dataSource, roleArn = roleArn, tags = tags, importMode = importMode)
   output <- .personalize$create_dataset_import_job_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -470,85 +292,30 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 }
 .personalize$operations$create_dataset_import_job <- personalize_create_dataset_import_job
 
-#' Creates an event tracker that you use when sending event data to the
+#' Creates an event tracker that you use when adding event data to a
 #' specified dataset group using the PutEvents API
 #'
 #' @description
-#' Creates an event tracker that you use when sending event data to the
-#' specified dataset group using the
-#' [PutEvents](https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html)
-#' API.
-#' 
-#' When Amazon Personalize creates an event tracker, it also creates an
-#' *event-interactions* dataset in the dataset group associated with the
-#' event tracker. The event-interactions dataset stores the event data from
-#' the `PutEvents` call. The contents of this dataset are not available to
-#' the user.
-#' 
-#' Only one event tracker can be associated with a dataset group. You will
-#' get an error if you call
-#' [`create_event_tracker`][personalize_create_event_tracker] using the
-#' same dataset group as an existing event tracker.
-#' 
-#' When you send event data you include your tracking ID. The tracking ID
-#' identifies the customer and authorizes the customer to send the data.
-#' 
-#' The event tracker can be in one of the following states:
-#' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
-#' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
-#' 
-#' To get the status of the event tracker, call
-#' [`describe_event_tracker`][personalize_describe_event_tracker].
-#' 
-#' The event tracker must be in the ACTIVE state before using the tracking
-#' ID.
-#' 
-#' **Related APIs**
-#' 
-#' -   [`list_event_trackers`][personalize_list_event_trackers]
-#' 
-#' -   [`describe_event_tracker`][personalize_describe_event_tracker]
-#' 
-#' -   [`delete_event_tracker`][personalize_delete_event_tracker]
+#' Creates an event tracker that you use when adding event data to a specified dataset group using the [PutEvents](https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html) API.
 #'
-#' @usage
-#' personalize_create_event_tracker(name, datasetGroupArn)
+#' See [https://paws-r.github.io/docs/personalize/create_event_tracker.html](https://paws-r.github.io/docs/personalize/create_event_tracker.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name for the event tracker.
 #' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group that receives the
 #' event data.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   eventTrackerArn = "string",
-#'   trackingId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_event_tracker(
-#'   name = "string",
-#'   datasetGroupArn = "string"
-#' )
-#' ```
+#' @param tags A list of tags to apply to the event tracker.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_event_tracker
-personalize_create_event_tracker <- function(name, datasetGroupArn) {
+personalize_create_event_tracker <- function(name, datasetGroupArn, tags = NULL) {
   op <- new_operation(
     name = "CreateEventTracker",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_event_tracker_input(name = name, datasetGroupArn = datasetGroupArn)
+  input <- .personalize$create_event_tracker_input(name = name, datasetGroupArn = datasetGroupArn, tags = tags)
   output <- .personalize$create_event_tracker_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -561,54 +328,30 @@ personalize_create_event_tracker <- function(name, datasetGroupArn) {
 #' Creates a recommendation filter
 #'
 #' @description
-#' Creates a recommendation filter. For more information, see [Using
-#' Filters with Amazon
-#' Personalize](https://docs.aws.amazon.com/personalize/latest/dg/).
+#' Creates a recommendation filter. For more information, see [Filtering recommendations and user segments](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
 #'
-#' @usage
-#' personalize_create_filter(name, datasetGroupArn, filterExpression)
+#' See [https://paws-r.github.io/docs/personalize/create_filter.html](https://paws-r.github.io/docs/personalize/create_filter.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the filter to create.
 #' @param datasetGroupArn &#91;required&#93; The ARN of the dataset group that the filter will belong to.
-#' @param filterExpression &#91;required&#93; The filter expression that designates the interaction types that the
-#' filter will filter out. A filter expression must follow the following
-#' format:
-#' 
-#' `EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")`
-#' 
-#' Where "EVENT_TYPE" is the type of event to filter out. To filter out
-#' all items with any interactions history, set `"*"` as the EVENT_TYPE.
-#' For more information, see [Using Filters with Amazon
-#' Personalize](https://docs.aws.amazon.com/personalize/latest/dg/).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   filterArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_filter(
-#'   name = "string",
-#'   datasetGroupArn = "string",
-#'   filterExpression = "string"
-#' )
-#' ```
+#' @param filterExpression &#91;required&#93; The filter expression defines which items are included or excluded from
+#' recommendations. Filter expression must follow specific format rules.
+#' For information about filter expression structure and syntax, see
+#' [Filter
+#' expressions](https://docs.aws.amazon.com/personalize/latest/dg/filter-expressions.html).
+#' @param tags A list of tags to apply to the filter.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_filter
-personalize_create_filter <- function(name, datasetGroupArn, filterExpression) {
+personalize_create_filter <- function(name, datasetGroupArn, filterExpression, tags = NULL) {
   op <- new_operation(
     name = "CreateFilter",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_filter_input(name = name, datasetGroupArn = datasetGroupArn, filterExpression = filterExpression)
+  input <- .personalize$create_filter_input(name = name, datasetGroupArn = datasetGroupArn, filterExpression = filterExpression, tags = tags)
   output <- .personalize$create_filter_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -618,58 +361,69 @@ personalize_create_filter <- function(name, datasetGroupArn, filterExpression) {
 }
 .personalize$operations$create_filter <- personalize_create_filter
 
+#' Creates a recommender with the recipe (a Domain dataset group use case)
+#' you specify
+#'
+#' @description
+#' Creates a recommender with the recipe (a Domain dataset group use case) you specify. You create recommenders for a Domain dataset group and specify the recommender's Amazon Resource Name (ARN) when you make a [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html) request.
+#'
+#' See [https://paws-r.github.io/docs/personalize/create_recommender.html](https://paws-r.github.io/docs/personalize/create_recommender.html) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the recommender.
+#' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the destination domain dataset group
+#' for the recommender.
+#' @param recipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the recipe that the recommender will
+#' use. For a recommender, a recipe is a Domain dataset group use case.
+#' Only Domain dataset group use cases can be used to create a recommender.
+#' For information about use cases see [Choosing recommender use
+#' cases](https://docs.aws.amazon.com/personalize/latest/dg/domain-use-cases.html).
+#' @param recommenderConfig The configuration details of the recommender.
+#' @param tags A list of tags to apply to the recommender.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_create_recommender
+personalize_create_recommender <- function(name, datasetGroupArn, recipeArn, recommenderConfig = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateRecommender",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$create_recommender_input(name = name, datasetGroupArn = datasetGroupArn, recipeArn = recipeArn, recommenderConfig = recommenderConfig, tags = tags)
+  output <- .personalize$create_recommender_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$create_recommender <- personalize_create_recommender
+
 #' Creates an Amazon Personalize schema from the specified schema string
 #'
 #' @description
-#' Creates an Amazon Personalize schema from the specified schema string.
-#' The schema you create must be in Avro JSON format.
-#' 
-#' Amazon Personalize recognizes three schema variants. Each schema is
-#' associated with a dataset type and has a set of required field and
-#' keywords. You specify a schema when you call
-#' [`create_dataset`][personalize_create_dataset].
-#' 
-#' **Related APIs**
-#' 
-#' -   [`list_schemas`][personalize_list_schemas]
-#' 
-#' -   [`describe_schema`][personalize_describe_schema]
-#' 
-#' -   [`delete_schema`][personalize_delete_schema]
+#' Creates an Amazon Personalize schema from the specified schema string. The schema you create must be in Avro JSON format.
 #'
-#' @usage
-#' personalize_create_schema(name, schema)
+#' See [https://paws-r.github.io/docs/personalize/create_schema.html](https://paws-r.github.io/docs/personalize/create_schema.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name for the schema.
 #' @param schema &#91;required&#93; A schema in Avro JSON format.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   schemaArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_schema(
-#'   name = "string",
-#'   schema = "string"
-#' )
-#' ```
+#' @param domain The domain for the schema. If you are creating a schema for a dataset in
+#' a Domain dataset group, specify the domain you chose when you created
+#' the Domain dataset group.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_schema
-personalize_create_schema <- function(name, schema) {
+personalize_create_schema <- function(name, schema, domain = NULL) {
   op <- new_operation(
     name = "CreateSchema",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_schema_input(name = name, schema = schema)
+  input <- .personalize$create_schema_input(name = name, schema = schema, domain = domain)
   output <- .personalize$create_schema_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -682,62 +436,9 @@ personalize_create_schema <- function(name, schema) {
 #' Creates the configuration for training a model
 #'
 #' @description
-#' Creates the configuration for training a model. A trained model is known
-#' as a solution. After the configuration is created, you train the model
-#' (create a solution) by calling the
-#' [`create_solution_version`][personalize_create_solution_version]
-#' operation. Every time you call
-#' [`create_solution_version`][personalize_create_solution_version], a new
-#' version of the solution is created.
-#' 
-#' After creating a solution version, you check its accuracy by calling
-#' [`get_solution_metrics`][personalize_get_solution_metrics]. When you are
-#' satisfied with the version, you deploy it using
-#' [`create_campaign`][personalize_create_campaign]. The campaign provides
-#' recommendations to a client through the
-#' [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html)
-#' API.
-#' 
-#' To train a model, Amazon Personalize requires training data and a
-#' recipe. The training data comes from the dataset group that you provide
-#' in the request. A recipe specifies the training algorithm and a feature
-#' transformation. You can specify one of the predefined recipes provided
-#' by Amazon Personalize. Alternatively, you can specify `performAutoML`
-#' and Amazon Personalize will analyze your data and select the optimum
-#' USER_PERSONALIZATION recipe for you.
-#' 
-#' **Status**
-#' 
-#' A solution can be in one of the following states:
-#' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
-#' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
-#' 
-#' To get the status of the solution, call
-#' [`describe_solution`][personalize_describe_solution]. Wait until the
-#' status shows as ACTIVE before calling
-#' [`create_solution_version`][personalize_create_solution_version].
-#' 
-#' **Related APIs**
-#' 
-#' -   [`list_solutions`][personalize_list_solutions]
-#' 
-#' -   [`create_solution_version`][personalize_create_solution_version]
-#' 
-#' -   [`describe_solution`][personalize_describe_solution]
-#' 
-#' -   [`delete_solution`][personalize_delete_solution]
-#' 
-#' 
-#' -   [`list_solution_versions`][personalize_list_solution_versions]
-#' 
-#' -   [`describe_solution_version`][personalize_describe_solution_version]
+#' Creates the configuration for training a model. A trained model is known as a solution. After the configuration is created, you train the model (create a solution) by calling the [`create_solution_version`][personalize_create_solution_version] operation. Every time you call [`create_solution_version`][personalize_create_solution_version], a new version of the solution is created.
 #'
-#' @usage
-#' personalize_create_solution(name, performHPO, performAutoML, recipeArn,
-#'   datasetGroupArn, eventType, solutionConfig)
+#' See [https://paws-r.github.io/docs/personalize/create_solution.html](https://paws-r.github.io/docs/personalize/create_solution.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name for the solution.
 #' @param performHPO Whether to perform hyperparameter optimization (HPO) on the specified or
@@ -761,91 +462,28 @@ personalize_create_schema <- function(name, schema) {
 #' @param eventType When your have multiple event types (using an `EVENT_TYPE` schema
 #' field), this parameter specifies which event type (for example, 'click'
 #' or 'like') is used for training the model.
+#' 
+#' If you do not provide an `eventType`, Amazon Personalize will use all
+#' interactions for training with equal weight regardless of type.
 #' @param solutionConfig The configuration to use with the solution. When `performAutoML` is set
 #' to true, Amazon Personalize only evaluates the `autoMLConfig` section of
 #' the solution configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   solutionArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_solution(
-#'   name = "string",
-#'   performHPO = TRUE|FALSE,
-#'   performAutoML = TRUE|FALSE,
-#'   recipeArn = "string",
-#'   datasetGroupArn = "string",
-#'   eventType = "string",
-#'   solutionConfig = list(
-#'     eventValueThreshold = "string",
-#'     hpoConfig = list(
-#'       hpoObjective = list(
-#'         type = "string",
-#'         metricName = "string",
-#'         metricRegex = "string"
-#'       ),
-#'       hpoResourceConfig = list(
-#'         maxNumberOfTrainingJobs = "string",
-#'         maxParallelTrainingJobs = "string"
-#'       ),
-#'       algorithmHyperParameterRanges = list(
-#'         integerHyperParameterRanges = list(
-#'           list(
-#'             name = "string",
-#'             minValue = 123,
-#'             maxValue = 123
-#'           )
-#'         ),
-#'         continuousHyperParameterRanges = list(
-#'           list(
-#'             name = "string",
-#'             minValue = 123.0,
-#'             maxValue = 123.0
-#'           )
-#'         ),
-#'         categoricalHyperParameterRanges = list(
-#'           list(
-#'             name = "string",
-#'             values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     algorithmHyperParameters = list(
-#'       "string"
-#'     ),
-#'     featureTransformationParameters = list(
-#'       "string"
-#'     ),
-#'     autoMLConfig = list(
-#'       metricName = "string",
-#'       recipeList = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' 
+#' Amazon Personalize doesn't support configuring the `hpoObjective` at
+#' this time.
+#' @param tags A list of tags to apply to the solution.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_solution
-personalize_create_solution <- function(name, performHPO = NULL, performAutoML = NULL, recipeArn = NULL, datasetGroupArn, eventType = NULL, solutionConfig = NULL) {
+personalize_create_solution <- function(name, performHPO = NULL, performAutoML = NULL, recipeArn = NULL, datasetGroupArn, eventType = NULL, solutionConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSolution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig)
+  input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
   output <- .personalize$create_solution_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -855,47 +493,12 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 }
 .personalize$operations$create_solution <- personalize_create_solution
 
-#' Trains or retrains an active solution
+#' Trains or retrains an active solution in a Custom dataset group
 #'
 #' @description
-#' Trains or retrains an active solution. A solution is created using the
-#' [`create_solution`][personalize_create_solution] operation and must be
-#' in the ACTIVE state before calling
-#' [`create_solution_version`][personalize_create_solution_version]. A new
-#' version of the solution is created every time you call this operation.
-#' 
-#' **Status**
-#' 
-#' A solution version can be in one of the following states:
-#' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
-#' 
-#' To get the status of the version, call
-#' [`describe_solution_version`][personalize_describe_solution_version].
-#' Wait until the status shows as ACTIVE before calling
-#' [`create_campaign`][personalize_create_campaign].
-#' 
-#' If the status shows as CREATE FAILED, the response includes a
-#' `failureReason` key, which describes why the job failed.
-#' 
-#' **Related APIs**
-#' 
-#' -   [`list_solution_versions`][personalize_list_solution_versions]
-#' 
-#' -   [`describe_solution_version`][personalize_describe_solution_version]
-#' 
-#' 
-#' -   [`list_solutions`][personalize_list_solutions]
-#' 
-#' -   [`create_solution`][personalize_create_solution]
-#' 
-#' -   [`describe_solution`][personalize_describe_solution]
-#' 
-#' -   [`delete_solution`][personalize_delete_solution]
+#' Trains or retrains an active solution in a Custom dataset group. A solution is created using the [`create_solution`][personalize_create_solution] operation and must be in the ACTIVE state before calling [`create_solution_version`][personalize_create_solution_version]. A new version of the solution is created every time you call this operation.
 #'
-#' @usage
-#' personalize_create_solution_version(solutionArn, trainingMode)
+#' See [https://paws-r.github.io/docs/personalize/create_solution_version.html](https://paws-r.github.io/docs/personalize/create_solution_version.html) for full documentation.
 #'
 #' @param solutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution containing the training
 #' configuration information.
@@ -908,36 +511,24 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' 
 #' The `UPDATE` option can only be used when you already have an active
 #' solution version created from the input solution using the `FULL` option
-#' and the input solution was trained with the native-recipe-hrnn-coldstart
+#' and the input solution was trained with the
+#' [User-Personalization](https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html)
+#' recipe or the
+#' [HRNN-Coldstart](https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-hrnn-coldstart.html)
 #' recipe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   solutionVersionArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_solution_version(
-#'   solutionArn = "string",
-#'   trainingMode = "FULL"|"UPDATE"
-#' )
-#' ```
+#' @param tags A list of tags to apply to the solution version.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_solution_version
-personalize_create_solution_version <- function(solutionArn, trainingMode = NULL) {
+personalize_create_solution_version <- function(solutionArn, trainingMode = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSolutionVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_solution_version_input(solutionArn = solutionArn, trainingMode = trainingMode)
+  input <- .personalize$create_solution_version_input(solutionArn = solutionArn, trainingMode = trainingMode, tags = tags)
   output <- .personalize$create_solution_version_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -950,27 +541,11 @@ personalize_create_solution_version <- function(solutionArn, trainingMode = NULL
 #' Removes a campaign by deleting the solution deployment
 #'
 #' @description
-#' Removes a campaign by deleting the solution deployment. The solution
-#' that the campaign is based on is not deleted and can be redeployed when
-#' needed. A deleted campaign can no longer be specified in a
-#' [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html)
-#' request. For more information on campaigns, see
-#' [`create_campaign`][personalize_create_campaign].
+#' Removes a campaign by deleting the solution deployment. The solution that the campaign is based on is not deleted and can be redeployed when needed. A deleted campaign can no longer be specified in a [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html) request. For information on creating campaigns, see [`create_campaign`][personalize_create_campaign].
 #'
-#' @usage
-#' personalize_delete_campaign(campaignArn)
+#' See [https://paws-r.github.io/docs/personalize/delete_campaign.html](https://paws-r.github.io/docs/personalize/delete_campaign.html) for full documentation.
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_campaign(
-#'   campaignArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -995,25 +570,11 @@ personalize_delete_campaign <- function(campaignArn) {
 #' Deletes a dataset
 #'
 #' @description
-#' Deletes a dataset. You can't delete a dataset if an associated
-#' `DatasetImportJob` or `SolutionVersion` is in the CREATE PENDING or IN
-#' PROGRESS state. For more information on datasets, see
-#' [`create_dataset`][personalize_create_dataset].
+#' Deletes a dataset. You can't delete a dataset if an associated `DatasetImportJob` or `SolutionVersion` is in the CREATE PENDING or IN PROGRESS state. For more information on datasets, see [`create_dataset`][personalize_create_dataset].
 #'
-#' @usage
-#' personalize_delete_dataset(datasetArn)
+#' See [https://paws-r.github.io/docs/personalize/delete_dataset.html](https://paws-r.github.io/docs/personalize/delete_dataset.html) for full documentation.
 #'
 #' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_dataset(
-#'   datasetArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1038,29 +599,11 @@ personalize_delete_dataset <- function(datasetArn) {
 #' Deletes a dataset group
 #'
 #' @description
-#' Deletes a dataset group. Before you delete a dataset group, you must
-#' delete the following:
-#' 
-#' -   All associated event trackers.
-#' 
-#' -   All associated solutions.
-#' 
-#' -   All datasets in the dataset group.
+#' Deletes a dataset group. Before you delete a dataset group, you must delete the following:
 #'
-#' @usage
-#' personalize_delete_dataset_group(datasetGroupArn)
+#' See [https://paws-r.github.io/docs/personalize/delete_dataset_group.html](https://paws-r.github.io/docs/personalize/delete_dataset_group.html) for full documentation.
 #'
 #' @param datasetGroupArn &#91;required&#93; The ARN of the dataset group to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_dataset_group(
-#'   datasetGroupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1085,25 +628,11 @@ personalize_delete_dataset_group <- function(datasetGroupArn) {
 #' Deletes the event tracker
 #'
 #' @description
-#' Deletes the event tracker. Does not delete the event-interactions
-#' dataset from the associated dataset group. For more information on event
-#' trackers, see
-#' [`create_event_tracker`][personalize_create_event_tracker].
+#' Deletes the event tracker. Does not delete the event-interactions dataset from the associated dataset group. For more information on event trackers, see [`create_event_tracker`][personalize_create_event_tracker].
 #'
-#' @usage
-#' personalize_delete_event_tracker(eventTrackerArn)
+#' See [https://paws-r.github.io/docs/personalize/delete_event_tracker.html](https://paws-r.github.io/docs/personalize/delete_event_tracker.html) for full documentation.
 #'
 #' @param eventTrackerArn &#91;required&#93; The Amazon Resource Name (ARN) of the event tracker to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_event_tracker(
-#'   eventTrackerArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1130,20 +659,9 @@ personalize_delete_event_tracker <- function(eventTrackerArn) {
 #' @description
 #' Deletes a filter.
 #'
-#' @usage
-#' personalize_delete_filter(filterArn)
+#' See [https://paws-r.github.io/docs/personalize/delete_filter.html](https://paws-r.github.io/docs/personalize/delete_filter.html) for full documentation.
 #'
 #' @param filterArn &#91;required&#93; The ARN of the filter to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_filter(
-#'   filterArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1165,27 +683,43 @@ personalize_delete_filter <- function(filterArn) {
 }
 .personalize$operations$delete_filter <- personalize_delete_filter
 
+#' Deactivates and removes a recommender
+#'
+#' @description
+#' Deactivates and removes a recommender. A deleted recommender can no longer be specified in a [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html) request.
+#'
+#' See [https://paws-r.github.io/docs/personalize/delete_recommender.html](https://paws-r.github.io/docs/personalize/delete_recommender.html) for full documentation.
+#'
+#' @param recommenderArn &#91;required&#93; The Amazon Resource Name (ARN) of the recommender to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_delete_recommender
+personalize_delete_recommender <- function(recommenderArn) {
+  op <- new_operation(
+    name = "DeleteRecommender",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$delete_recommender_input(recommenderArn = recommenderArn)
+  output <- .personalize$delete_recommender_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$delete_recommender <- personalize_delete_recommender
+
 #' Deletes a schema
 #'
 #' @description
-#' Deletes a schema. Before deleting a schema, you must delete all datasets
-#' referencing the schema. For more information on schemas, see
-#' [`create_schema`][personalize_create_schema].
+#' Deletes a schema. Before deleting a schema, you must delete all datasets referencing the schema. For more information on schemas, see [`create_schema`][personalize_create_schema].
 #'
-#' @usage
-#' personalize_delete_schema(schemaArn)
+#' See [https://paws-r.github.io/docs/personalize/delete_schema.html](https://paws-r.github.io/docs/personalize/delete_schema.html) for full documentation.
 #'
 #' @param schemaArn &#91;required&#93; The Amazon Resource Name (ARN) of the schema to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_schema(
-#'   schemaArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1210,29 +744,11 @@ personalize_delete_schema <- function(schemaArn) {
 #' Deletes all versions of a solution and the Solution object itself
 #'
 #' @description
-#' Deletes all versions of a solution and the `Solution` object itself.
-#' Before deleting a solution, you must delete all campaigns based on the
-#' solution. To determine what campaigns are using the solution, call
-#' [`list_campaigns`][personalize_list_campaigns] and supply the Amazon
-#' Resource Name (ARN) of the solution. You can't delete a solution if an
-#' associated `SolutionVersion` is in the CREATE PENDING or IN PROGRESS
-#' state. For more information on solutions, see
-#' [`create_solution`][personalize_create_solution].
+#' Deletes all versions of a solution and the `Solution` object itself. Before deleting a solution, you must delete all campaigns based on the solution. To determine what campaigns are using the solution, call [`list_campaigns`][personalize_list_campaigns] and supply the Amazon Resource Name (ARN) of the solution. You can't delete a solution if an associated `SolutionVersion` is in the CREATE PENDING or IN PROGRESS state. For more information on solutions, see [`create_solution`][personalize_create_solution].
 #'
-#' @usage
-#' personalize_delete_solution(solutionArn)
+#' See [https://paws-r.github.io/docs/personalize/delete_solution.html](https://paws-r.github.io/docs/personalize/delete_solution.html) for full documentation.
 #'
 #' @param solutionArn &#91;required&#93; The ARN of the solution to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_solution(
-#'   solutionArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1259,73 +775,9 @@ personalize_delete_solution <- function(solutionArn) {
 #' @description
 #' Describes the given algorithm.
 #'
-#' @usage
-#' personalize_describe_algorithm(algorithmArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_algorithm.html](https://paws-r.github.io/docs/personalize/describe_algorithm.html) for full documentation.
 #'
 #' @param algorithmArn &#91;required&#93; The Amazon Resource Name (ARN) of the algorithm to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   algorithm = list(
-#'     name = "string",
-#'     algorithmArn = "string",
-#'     algorithmImage = list(
-#'       name = "string",
-#'       dockerURI = "string"
-#'     ),
-#'     defaultHyperParameters = list(
-#'       "string"
-#'     ),
-#'     defaultHyperParameterRanges = list(
-#'       integerHyperParameterRanges = list(
-#'         list(
-#'           name = "string",
-#'           minValue = 123,
-#'           maxValue = 123,
-#'           isTunable = TRUE|FALSE
-#'         )
-#'       ),
-#'       continuousHyperParameterRanges = list(
-#'         list(
-#'           name = "string",
-#'           minValue = 123.0,
-#'           maxValue = 123.0,
-#'           isTunable = TRUE|FALSE
-#'         )
-#'       ),
-#'       categoricalHyperParameterRanges = list(
-#'         list(
-#'           name = "string",
-#'           values = list(
-#'             "string"
-#'           ),
-#'           isTunable = TRUE|FALSE
-#'         )
-#'       )
-#'     ),
-#'     defaultResourceConfig = list(
-#'       "string"
-#'     ),
-#'     trainingInputMode = "string",
-#'     roleArn = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_algorithm(
-#'   algorithmArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1352,61 +804,11 @@ personalize_describe_algorithm <- function(algorithmArn) {
 #' ARN of the solution version used to generate the recommendations
 #'
 #' @description
-#' Gets the properties of a batch inference job including name, Amazon
-#' Resource Name (ARN), status, input and output configurations, and the
-#' ARN of the solution version used to generate the recommendations.
+#' Gets the properties of a batch inference job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate the recommendations.
 #'
-#' @usage
-#' personalize_describe_batch_inference_job(batchInferenceJobArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_batch_inference_job.html](https://paws-r.github.io/docs/personalize/describe_batch_inference_job.html) for full documentation.
 #'
 #' @param batchInferenceJobArn &#91;required&#93; The ARN of the batch inference job to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   batchInferenceJob = list(
-#'     jobName = "string",
-#'     batchInferenceJobArn = "string",
-#'     filterArn = "string",
-#'     failureReason = "string",
-#'     solutionVersionArn = "string",
-#'     numResults = 123,
-#'     jobInput = list(
-#'       s3DataSource = list(
-#'         path = "string",
-#'         kmsKeyArn = "string"
-#'       )
-#'     ),
-#'     jobOutput = list(
-#'       s3DataDestination = list(
-#'         path = "string",
-#'         kmsKeyArn = "string"
-#'       )
-#'     ),
-#'     batchInferenceJobConfig = list(
-#'       itemExplorationConfig = list(
-#'         "string"
-#'       )
-#'     ),
-#'     roleArn = "string",
-#'     status = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_batch_inference_job(
-#'   batchInferenceJobArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1428,78 +830,45 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
 }
 .personalize$operations$describe_batch_inference_job <- personalize_describe_batch_inference_job
 
+#' Gets the properties of a batch segment job including name, Amazon
+#' Resource Name (ARN), status, input and output configurations, and the
+#' ARN of the solution version used to generate segments
+#'
+#' @description
+#' Gets the properties of a batch segment job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate segments.
+#'
+#' See [https://paws-r.github.io/docs/personalize/describe_batch_segment_job.html](https://paws-r.github.io/docs/personalize/describe_batch_segment_job.html) for full documentation.
+#'
+#' @param batchSegmentJobArn &#91;required&#93; The ARN of the batch segment job to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_describe_batch_segment_job
+personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
+  op <- new_operation(
+    name = "DescribeBatchSegmentJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$describe_batch_segment_job_input(batchSegmentJobArn = batchSegmentJobArn)
+  output <- .personalize$describe_batch_segment_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$describe_batch_segment_job <- personalize_describe_batch_segment_job
+
 #' Describes the given campaign, including its status
 #'
 #' @description
 #' Describes the given campaign, including its status.
-#' 
-#' A campaign can be in one of the following states:
-#' 
-#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
-#'     FAILED
-#' 
-#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
-#' 
-#' When the `status` is `CREATE FAILED`, the response includes the
-#' `failureReason` key, which describes why.
-#' 
-#' For more information on campaigns, see
-#' [`create_campaign`][personalize_create_campaign].
 #'
-#' @usage
-#' personalize_describe_campaign(campaignArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_campaign.html](https://paws-r.github.io/docs/personalize/describe_campaign.html) for full documentation.
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   campaign = list(
-#'     name = "string",
-#'     campaignArn = "string",
-#'     solutionVersionArn = "string",
-#'     minProvisionedTPS = 123,
-#'     campaignConfig = list(
-#'       itemExplorationConfig = list(
-#'         "string"
-#'       )
-#'     ),
-#'     status = "string",
-#'     failureReason = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     latestCampaignUpdate = list(
-#'       solutionVersionArn = "string",
-#'       minProvisionedTPS = 123,
-#'       campaignConfig = list(
-#'         itemExplorationConfig = list(
-#'           "string"
-#'         )
-#'       ),
-#'       status = "string",
-#'       failureReason = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_campaign(
-#'   campaignArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1524,41 +893,11 @@ personalize_describe_campaign <- function(campaignArn) {
 #' Describes the given dataset
 #'
 #' @description
-#' Describes the given dataset. For more information on datasets, see
-#' [`create_dataset`][personalize_create_dataset].
+#' Describes the given dataset. For more information on datasets, see [`create_dataset`][personalize_create_dataset].
 #'
-#' @usage
-#' personalize_describe_dataset(datasetArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_dataset.html](https://paws-r.github.io/docs/personalize/describe_dataset.html) for full documentation.
 #'
 #' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   dataset = list(
-#'     name = "string",
-#'     datasetArn = "string",
-#'     datasetGroupArn = "string",
-#'     datasetType = "string",
-#'     schemaArn = "string",
-#'     status = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_dataset(
-#'   datasetArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1580,44 +919,44 @@ personalize_describe_dataset <- function(datasetArn) {
 }
 .personalize$operations$describe_dataset <- personalize_describe_dataset
 
+#' Describes the dataset export job created by CreateDatasetExportJob,
+#' including the export job status
+#'
+#' @description
+#' Describes the dataset export job created by [`create_dataset_export_job`][personalize_create_dataset_export_job], including the export job status.
+#'
+#' See [https://paws-r.github.io/docs/personalize/describe_dataset_export_job.html](https://paws-r.github.io/docs/personalize/describe_dataset_export_job.html) for full documentation.
+#'
+#' @param datasetExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset export job to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_describe_dataset_export_job
+personalize_describe_dataset_export_job <- function(datasetExportJobArn) {
+  op <- new_operation(
+    name = "DescribeDatasetExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$describe_dataset_export_job_input(datasetExportJobArn = datasetExportJobArn)
+  output <- .personalize$describe_dataset_export_job_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$describe_dataset_export_job <- personalize_describe_dataset_export_job
+
 #' Describes the given dataset group
 #'
 #' @description
-#' Describes the given dataset group. For more information on dataset
-#' groups, see [`create_dataset_group`][personalize_create_dataset_group].
+#' Describes the given dataset group. For more information on dataset groups, see [`create_dataset_group`][personalize_create_dataset_group].
 #'
-#' @usage
-#' personalize_describe_dataset_group(datasetGroupArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_dataset_group.html](https://paws-r.github.io/docs/personalize/describe_dataset_group.html) for full documentation.
 #'
 #' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   datasetGroup = list(
-#'     name = "string",
-#'     datasetGroupArn = "string",
-#'     status = "string",
-#'     roleArn = "string",
-#'     kmsKeyArn = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     failureReason = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_dataset_group(
-#'   datasetGroupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1643,45 +982,11 @@ personalize_describe_dataset_group <- function(datasetGroupArn) {
 #' including the import job status
 #'
 #' @description
-#' Describes the dataset import job created by
-#' [`create_dataset_import_job`][personalize_create_dataset_import_job],
-#' including the import job status.
+#' Describes the dataset import job created by [`create_dataset_import_job`][personalize_create_dataset_import_job], including the import job status.
 #'
-#' @usage
-#' personalize_describe_dataset_import_job(datasetImportJobArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_dataset_import_job.html](https://paws-r.github.io/docs/personalize/describe_dataset_import_job.html) for full documentation.
 #'
 #' @param datasetImportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset import job to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   datasetImportJob = list(
-#'     jobName = "string",
-#'     datasetImportJobArn = "string",
-#'     datasetArn = "string",
-#'     dataSource = list(
-#'       dataLocation = "string"
-#'     ),
-#'     roleArn = "string",
-#'     status = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     failureReason = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_dataset_import_job(
-#'   datasetImportJobArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1706,42 +1011,11 @@ personalize_describe_dataset_import_job <- function(datasetImportJobArn) {
 #' Describes an event tracker
 #'
 #' @description
-#' Describes an event tracker. The response includes the `trackingId` and
-#' `status` of the event tracker. For more information on event trackers,
-#' see [`create_event_tracker`][personalize_create_event_tracker].
+#' Describes an event tracker. The response includes the `trackingId` and `status` of the event tracker. For more information on event trackers, see [`create_event_tracker`][personalize_create_event_tracker].
 #'
-#' @usage
-#' personalize_describe_event_tracker(eventTrackerArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_event_tracker.html](https://paws-r.github.io/docs/personalize/describe_event_tracker.html) for full documentation.
 #'
 #' @param eventTrackerArn &#91;required&#93; The Amazon Resource Name (ARN) of the event tracker to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   eventTracker = list(
-#'     name = "string",
-#'     eventTrackerArn = "string",
-#'     accountId = "string",
-#'     trackingId = "string",
-#'     datasetGroupArn = "string",
-#'     status = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_event_tracker(
-#'   eventTrackerArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1768,39 +1042,10 @@ personalize_describe_event_tracker <- function(eventTrackerArn) {
 #' @description
 #' Describes the given feature transformation.
 #'
-#' @usage
-#' personalize_describe_feature_transformation(featureTransformationArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_feature_transformation.html](https://paws-r.github.io/docs/personalize/describe_feature_transformation.html) for full documentation.
 #'
 #' @param featureTransformationArn &#91;required&#93; The Amazon Resource Name (ARN) of the feature transformation to
 #' describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   featureTransformation = list(
-#'     name = "string",
-#'     featureTransformationArn = "string",
-#'     defaultParameters = list(
-#'       "string"
-#'     ),
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     status = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_feature_transformation(
-#'   featureTransformationArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1827,38 +1072,9 @@ personalize_describe_feature_transformation <- function(featureTransformationArn
 #' @description
 #' Describes a filter's properties.
 #'
-#' @usage
-#' personalize_describe_filter(filterArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_filter.html](https://paws-r.github.io/docs/personalize/describe_filter.html) for full documentation.
 #'
 #' @param filterArn &#91;required&#93; The ARN of the filter to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   filter = list(
-#'     name = "string",
-#'     filterArn = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     datasetGroupArn = "string",
-#'     failureReason = "string",
-#'     filterExpression = "string",
-#'     status = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_filter(
-#'   filterArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1884,59 +1100,10 @@ personalize_describe_filter <- function(filterArn) {
 #'
 #' @description
 #' Describes a recipe.
-#' 
-#' A recipe contains three items:
-#' 
-#' -   An algorithm that trains a model.
-#' 
-#' -   Hyperparameters that govern the training.
-#' 
-#' -   Feature transformation information for modifying the input data
-#'     before training.
-#' 
-#' Amazon Personalize provides a set of predefined recipes. You specify a
-#' recipe when you create a solution with the
-#' [`create_solution`][personalize_create_solution] API.
-#' [`create_solution`][personalize_create_solution] trains a model by using
-#' the algorithm in the specified recipe and a training dataset. The
-#' solution, when deployed as a campaign, can provide recommendations using
-#' the
-#' [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html)
-#' API.
 #'
-#' @usage
-#' personalize_describe_recipe(recipeArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_recipe.html](https://paws-r.github.io/docs/personalize/describe_recipe.html) for full documentation.
 #'
 #' @param recipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the recipe to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   recipe = list(
-#'     name = "string",
-#'     recipeArn = "string",
-#'     algorithmArn = "string",
-#'     featureTransformationArn = "string",
-#'     status = "string",
-#'     description = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     recipeType = "string",
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_recipe(
-#'   recipeArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1958,41 +1125,43 @@ personalize_describe_recipe <- function(recipeArn) {
 }
 .personalize$operations$describe_recipe <- personalize_describe_recipe
 
+#' Describes the given recommender, including its status
+#'
+#' @description
+#' Describes the given recommender, including its status.
+#'
+#' See [https://paws-r.github.io/docs/personalize/describe_recommender.html](https://paws-r.github.io/docs/personalize/describe_recommender.html) for full documentation.
+#'
+#' @param recommenderArn &#91;required&#93; The Amazon Resource Name (ARN) of the recommender to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_describe_recommender
+personalize_describe_recommender <- function(recommenderArn) {
+  op <- new_operation(
+    name = "DescribeRecommender",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$describe_recommender_input(recommenderArn = recommenderArn)
+  output <- .personalize$describe_recommender_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$describe_recommender <- personalize_describe_recommender
+
 #' Describes a schema
 #'
 #' @description
-#' Describes a schema. For more information on schemas, see
-#' [`create_schema`][personalize_create_schema].
+#' Describes a schema. For more information on schemas, see [`create_schema`][personalize_create_schema].
 #'
-#' @usage
-#' personalize_describe_schema(schemaArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_schema.html](https://paws-r.github.io/docs/personalize/describe_schema.html) for full documentation.
 #'
 #' @param schemaArn &#91;required&#93; The Amazon Resource Name (ARN) of the schema to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   schema = list(
-#'     name = "string",
-#'     schemaArn = "string",
-#'     schema = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_schema(
-#'   schemaArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2017,107 +1186,11 @@ personalize_describe_schema <- function(schemaArn) {
 #' Describes a solution
 #'
 #' @description
-#' Describes a solution. For more information on solutions, see
-#' [`create_solution`][personalize_create_solution].
+#' Describes a solution. For more information on solutions, see [`create_solution`][personalize_create_solution].
 #'
-#' @usage
-#' personalize_describe_solution(solutionArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_solution.html](https://paws-r.github.io/docs/personalize/describe_solution.html) for full documentation.
 #'
 #' @param solutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   solution = list(
-#'     name = "string",
-#'     solutionArn = "string",
-#'     performHPO = TRUE|FALSE,
-#'     performAutoML = TRUE|FALSE,
-#'     recipeArn = "string",
-#'     datasetGroupArn = "string",
-#'     eventType = "string",
-#'     solutionConfig = list(
-#'       eventValueThreshold = "string",
-#'       hpoConfig = list(
-#'         hpoObjective = list(
-#'           type = "string",
-#'           metricName = "string",
-#'           metricRegex = "string"
-#'         ),
-#'         hpoResourceConfig = list(
-#'           maxNumberOfTrainingJobs = "string",
-#'           maxParallelTrainingJobs = "string"
-#'         ),
-#'         algorithmHyperParameterRanges = list(
-#'           integerHyperParameterRanges = list(
-#'             list(
-#'               name = "string",
-#'               minValue = 123,
-#'               maxValue = 123
-#'             )
-#'           ),
-#'           continuousHyperParameterRanges = list(
-#'             list(
-#'               name = "string",
-#'               minValue = 123.0,
-#'               maxValue = 123.0
-#'             )
-#'           ),
-#'           categoricalHyperParameterRanges = list(
-#'             list(
-#'               name = "string",
-#'               values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       algorithmHyperParameters = list(
-#'         "string"
-#'       ),
-#'       featureTransformationParameters = list(
-#'         "string"
-#'       ),
-#'       autoMLConfig = list(
-#'         metricName = "string",
-#'         recipeList = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     autoMLResult = list(
-#'       bestRecipeArn = "string"
-#'     ),
-#'     status = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     latestSolutionVersion = list(
-#'       solutionVersionArn = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       failureReason = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_solution(
-#'   solutionArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2142,101 +1215,11 @@ personalize_describe_solution <- function(solutionArn) {
 #' Describes a specific version of a solution
 #'
 #' @description
-#' Describes a specific version of a solution. For more information on
-#' solutions, see [`create_solution`][personalize_create_solution].
+#' Describes a specific version of a solution. For more information on solutions, see [`create_solution`][personalize_create_solution]
 #'
-#' @usage
-#' personalize_describe_solution_version(solutionVersionArn)
+#' See [https://paws-r.github.io/docs/personalize/describe_solution_version.html](https://paws-r.github.io/docs/personalize/describe_solution_version.html) for full documentation.
 #'
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   solutionVersion = list(
-#'     solutionVersionArn = "string",
-#'     solutionArn = "string",
-#'     performHPO = TRUE|FALSE,
-#'     performAutoML = TRUE|FALSE,
-#'     recipeArn = "string",
-#'     eventType = "string",
-#'     datasetGroupArn = "string",
-#'     solutionConfig = list(
-#'       eventValueThreshold = "string",
-#'       hpoConfig = list(
-#'         hpoObjective = list(
-#'           type = "string",
-#'           metricName = "string",
-#'           metricRegex = "string"
-#'         ),
-#'         hpoResourceConfig = list(
-#'           maxNumberOfTrainingJobs = "string",
-#'           maxParallelTrainingJobs = "string"
-#'         ),
-#'         algorithmHyperParameterRanges = list(
-#'           integerHyperParameterRanges = list(
-#'             list(
-#'               name = "string",
-#'               minValue = 123,
-#'               maxValue = 123
-#'             )
-#'           ),
-#'           continuousHyperParameterRanges = list(
-#'             list(
-#'               name = "string",
-#'               minValue = 123.0,
-#'               maxValue = 123.0
-#'             )
-#'           ),
-#'           categoricalHyperParameterRanges = list(
-#'             list(
-#'               name = "string",
-#'               values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       algorithmHyperParameters = list(
-#'         "string"
-#'       ),
-#'       featureTransformationParameters = list(
-#'         "string"
-#'       ),
-#'       autoMLConfig = list(
-#'         metricName = "string",
-#'         recipeList = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     trainingHours = 123.0,
-#'     trainingMode = "FULL"|"UPDATE",
-#'     tunedHPOParams = list(
-#'       algorithmHyperParameters = list(
-#'         "string"
-#'       )
-#'     ),
-#'     status = "string",
-#'     failureReason = "string",
-#'     creationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUpdatedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_solution_version(
-#'   solutionVersionArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2263,29 +1246,10 @@ personalize_describe_solution_version <- function(solutionVersionArn) {
 #' @description
 #' Gets the metrics for the specified solution version.
 #'
-#' @usage
-#' personalize_get_solution_metrics(solutionVersionArn)
+#' See [https://paws-r.github.io/docs/personalize/get_solution_metrics.html](https://paws-r.github.io/docs/personalize/get_solution_metrics.html) for full documentation.
 #'
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version for which to get
 #' metrics.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   solutionVersionArn = "string",
-#'   metrics = list(
-#'     123.0
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_solution_metrics(
-#'   solutionVersionArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2311,50 +1275,15 @@ personalize_get_solution_metrics <- function(solutionVersionArn) {
 #' a solution version
 #'
 #' @description
-#' Gets a list of the batch inference jobs that have been performed off of
-#' a solution version.
+#' Gets a list of the batch inference jobs that have been performed off of a solution version.
 #'
-#' @usage
-#' personalize_list_batch_inference_jobs(solutionVersionArn, nextToken,
-#'   maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_batch_inference_jobs.html](https://paws-r.github.io/docs/personalize/list_batch_inference_jobs.html) for full documentation.
 #'
 #' @param solutionVersionArn The Amazon Resource Name (ARN) of the solution version from which the
 #' batch inference jobs were created.
 #' @param nextToken The token to request the next page of results.
 #' @param maxResults The maximum number of batch inference job results to return in each
 #' page. The default value is 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   batchInferenceJobs = list(
-#'     list(
-#'       batchInferenceJobArn = "string",
-#'       jobName = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       failureReason = "string",
-#'       solutionVersionArn = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_batch_inference_jobs(
-#'   solutionVersionArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2376,17 +1305,46 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
 }
 .personalize$operations$list_batch_inference_jobs <- personalize_list_batch_inference_jobs
 
+#' Gets a list of the batch segment jobs that have been performed off of a
+#' solution version that you specify
+#'
+#' @description
+#' Gets a list of the batch segment jobs that have been performed off of a solution version that you specify.
+#'
+#' See [https://paws-r.github.io/docs/personalize/list_batch_segment_jobs.html](https://paws-r.github.io/docs/personalize/list_batch_segment_jobs.html) for full documentation.
+#'
+#' @param solutionVersionArn The Amazon Resource Name (ARN) of the solution version that the batch
+#' segment jobs used to generate batch segments.
+#' @param nextToken The token to request the next page of results.
+#' @param maxResults The maximum number of batch segment job results to return in each page.
+#' The default value is 100.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_batch_segment_jobs
+personalize_list_batch_segment_jobs <- function(solutionVersionArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListBatchSegmentJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$list_batch_segment_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .personalize$list_batch_segment_jobs_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_batch_segment_jobs <- personalize_list_batch_segment_jobs
+
 #' Returns a list of campaigns that use the given solution
 #'
 #' @description
-#' Returns a list of campaigns that use the given solution. When a solution
-#' is not specified, all the campaigns associated with the account are
-#' listed. The response provides the properties for each campaign,
-#' including the Amazon Resource Name (ARN). For more information on
-#' campaigns, see [`create_campaign`][personalize_create_campaign].
+#' Returns a list of campaigns that use the given solution. When a solution is not specified, all the campaigns associated with the account are listed. The response provides the properties for each campaign, including the Amazon Resource Name (ARN). For more information on campaigns, see [`create_campaign`][personalize_create_campaign].
 #'
-#' @usage
-#' personalize_list_campaigns(solutionArn, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_campaigns.html](https://paws-r.github.io/docs/personalize/list_campaigns.html) for full documentation.
 #'
 #' @param solutionArn The Amazon Resource Name (ARN) of the solution to list the campaigns
 #' for. When a solution is not specified, all the campaigns associated with
@@ -2395,37 +1353,6 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
 #' [`list_campaigns`][personalize_list_campaigns] for getting the next set
 #' of campaigns (if they exist).
 #' @param maxResults The maximum number of campaigns to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   campaigns = list(
-#'     list(
-#'       name = "string",
-#'       campaignArn = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       failureReason = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_campaigns(
-#'   solutionArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2447,51 +1374,51 @@ personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, max
 }
 .personalize$operations$list_campaigns <- personalize_list_campaigns
 
+#' Returns a list of dataset export jobs that use the given dataset
+#'
+#' @description
+#' Returns a list of dataset export jobs that use the given dataset. When a dataset is not specified, all the dataset export jobs associated with the account are listed. The response provides the properties for each dataset export job, including the Amazon Resource Name (ARN). For more information on dataset export jobs, see [`create_dataset_export_job`][personalize_create_dataset_export_job]. For more information on datasets, see [`create_dataset`][personalize_create_dataset].
+#'
+#' See [https://paws-r.github.io/docs/personalize/list_dataset_export_jobs.html](https://paws-r.github.io/docs/personalize/list_dataset_export_jobs.html) for full documentation.
+#'
+#' @param datasetArn The Amazon Resource Name (ARN) of the dataset to list the dataset export
+#' jobs for.
+#' @param nextToken A token returned from the previous call to
+#' [`list_dataset_export_jobs`][personalize_list_dataset_export_jobs] for
+#' getting the next set of dataset export jobs (if they exist).
+#' @param maxResults The maximum number of dataset export jobs to return.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_dataset_export_jobs
+personalize_list_dataset_export_jobs <- function(datasetArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListDatasetExportJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$list_dataset_export_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .personalize$list_dataset_export_jobs_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_dataset_export_jobs <- personalize_list_dataset_export_jobs
+
 #' Returns a list of dataset groups
 #'
 #' @description
-#' Returns a list of dataset groups. The response provides the properties
-#' for each dataset group, including the Amazon Resource Name (ARN). For
-#' more information on dataset groups, see
-#' [`create_dataset_group`][personalize_create_dataset_group].
+#' Returns a list of dataset groups. The response provides the properties for each dataset group, including the Amazon Resource Name (ARN). For more information on dataset groups, see [`create_dataset_group`][personalize_create_dataset_group].
 #'
-#' @usage
-#' personalize_list_dataset_groups(nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_dataset_groups.html](https://paws-r.github.io/docs/personalize/list_dataset_groups.html) for full documentation.
 #'
 #' @param nextToken A token returned from the previous call to
 #' [`list_dataset_groups`][personalize_list_dataset_groups] for getting the
 #' next set of dataset groups (if they exist).
 #' @param maxResults The maximum number of dataset groups to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   datasetGroups = list(
-#'     list(
-#'       name = "string",
-#'       datasetGroupArn = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       failureReason = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_dataset_groups(
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2516,17 +1443,9 @@ personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL)
 #' Returns a list of dataset import jobs that use the given dataset
 #'
 #' @description
-#' Returns a list of dataset import jobs that use the given dataset. When a
-#' dataset is not specified, all the dataset import jobs associated with
-#' the account are listed. The response provides the properties for each
-#' dataset import job, including the Amazon Resource Name (ARN). For more
-#' information on dataset import jobs, see
-#' [`create_dataset_import_job`][personalize_create_dataset_import_job].
-#' For more information on datasets, see
-#' [`create_dataset`][personalize_create_dataset].
+#' Returns a list of dataset import jobs that use the given dataset. When a dataset is not specified, all the dataset import jobs associated with the account are listed. The response provides the properties for each dataset import job, including the Amazon Resource Name (ARN). For more information on dataset import jobs, see [`create_dataset_import_job`][personalize_create_dataset_import_job]. For more information on datasets, see [`create_dataset`][personalize_create_dataset].
 #'
-#' @usage
-#' personalize_list_dataset_import_jobs(datasetArn, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_dataset_import_jobs.html](https://paws-r.github.io/docs/personalize/list_dataset_import_jobs.html) for full documentation.
 #'
 #' @param datasetArn The Amazon Resource Name (ARN) of the dataset to list the dataset import
 #' jobs for.
@@ -2534,37 +1453,6 @@ personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL)
 #' [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs] for
 #' getting the next set of dataset import jobs (if they exist).
 #' @param maxResults The maximum number of dataset import jobs to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   datasetImportJobs = list(
-#'     list(
-#'       datasetImportJobArn = "string",
-#'       jobName = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       failureReason = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_dataset_import_jobs(
-#'   datasetArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2589,13 +1477,9 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
 #' Returns the list of datasets contained in the given dataset group
 #'
 #' @description
-#' Returns the list of datasets contained in the given dataset group. The
-#' response provides the properties for each dataset, including the Amazon
-#' Resource Name (ARN). For more information on datasets, see
-#' [`create_dataset`][personalize_create_dataset].
+#' Returns the list of datasets contained in the given dataset group. The response provides the properties for each dataset, including the Amazon Resource Name (ARN). For more information on datasets, see [`create_dataset`][personalize_create_dataset].
 #'
-#' @usage
-#' personalize_list_datasets(datasetGroupArn, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_datasets.html](https://paws-r.github.io/docs/personalize/list_datasets.html) for full documentation.
 #'
 #' @param datasetGroupArn The Amazon Resource Name (ARN) of the dataset group that contains the
 #' datasets to list.
@@ -2603,37 +1487,6 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
 #' [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs] for
 #' getting the next set of dataset import jobs (if they exist).
 #' @param maxResults The maximum number of datasets to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   datasets = list(
-#'     list(
-#'       name = "string",
-#'       datasetArn = "string",
-#'       datasetType = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_datasets(
-#'   datasetGroupArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2658,50 +1511,15 @@ personalize_list_datasets <- function(datasetGroupArn = NULL, nextToken = NULL, 
 #' Returns the list of event trackers associated with the account
 #'
 #' @description
-#' Returns the list of event trackers associated with the account. The
-#' response provides the properties for each event tracker, including the
-#' Amazon Resource Name (ARN) and tracking ID. For more information on
-#' event trackers, see
-#' [`create_event_tracker`][personalize_create_event_tracker].
+#' Returns the list of event trackers associated with the account. The response provides the properties for each event tracker, including the Amazon Resource Name (ARN) and tracking ID. For more information on event trackers, see [`create_event_tracker`][personalize_create_event_tracker].
 #'
-#' @usage
-#' personalize_list_event_trackers(datasetGroupArn, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_event_trackers.html](https://paws-r.github.io/docs/personalize/list_event_trackers.html) for full documentation.
 #'
 #' @param datasetGroupArn The ARN of a dataset group used to filter the response.
 #' @param nextToken A token returned from the previous call to
 #' [`list_event_trackers`][personalize_list_event_trackers] for getting the
 #' next set of event trackers (if they exist).
 #' @param maxResults The maximum number of event trackers to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   eventTrackers = list(
-#'     list(
-#'       name = "string",
-#'       eventTrackerArn = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_event_trackers(
-#'   datasetGroupArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2728,46 +1546,13 @@ personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = 
 #' @description
 #' Lists all filters that belong to a given dataset group.
 #'
-#' @usage
-#' personalize_list_filters(datasetGroupArn, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_filters.html](https://paws-r.github.io/docs/personalize/list_filters.html) for full documentation.
 #'
 #' @param datasetGroupArn The ARN of the dataset group that contains the filters.
 #' @param nextToken A token returned from the previous call to
 #' [`list_filters`][personalize_list_filters] for getting the next set of
 #' filters (if they exist).
 #' @param maxResults The maximum number of filters to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Filters = list(
-#'     list(
-#'       name = "string",
-#'       filterArn = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       datasetGroupArn = "string",
-#'       failureReason = "string",
-#'       status = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_filters(
-#'   datasetGroupArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2792,60 +1577,30 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
 #' Returns a list of available recipes
 #'
 #' @description
-#' Returns a list of available recipes. The response provides the
-#' properties for each recipe, including the recipe's Amazon Resource Name
-#' (ARN).
+#' Returns a list of available recipes. The response provides the properties for each recipe, including the recipe's Amazon Resource Name (ARN).
 #'
-#' @usage
-#' personalize_list_recipes(recipeProvider, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_recipes.html](https://paws-r.github.io/docs/personalize/list_recipes.html) for full documentation.
 #'
 #' @param recipeProvider The default is `SERVICE`.
 #' @param nextToken A token returned from the previous call to
 #' [`list_recipes`][personalize_list_recipes] for getting the next set of
 #' recipes (if they exist).
 #' @param maxResults The maximum number of recipes to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   recipes = list(
-#'     list(
-#'       name = "string",
-#'       recipeArn = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_recipes(
-#'   recipeProvider = "SERVICE",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
+#' @param domain Filters returned recipes by domain for a Domain dataset group. Only
+#' recipes (Domain dataset group use cases) for this domain are included in
+#' the response. If you don't specify a domain, all recipes are returned.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_list_recipes
-personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, maxResults = NULL) {
+personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, maxResults = NULL, domain = NULL) {
   op <- new_operation(
     name = "ListRecipes",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$list_recipes_input(recipeProvider = recipeProvider, nextToken = nextToken, maxResults = maxResults)
+  input <- .personalize$list_recipes_input(recipeProvider = recipeProvider, nextToken = nextToken, maxResults = maxResults, domain = domain)
   output <- .personalize$list_recipes_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -2855,49 +1610,52 @@ personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, ma
 }
 .personalize$operations$list_recipes <- personalize_list_recipes
 
+#' Returns a list of recommenders in a given Domain dataset group
+#'
+#' @description
+#' Returns a list of recommenders in a given Domain dataset group. When a Domain dataset group is not specified, all the recommenders associated with the account are listed. The response provides the properties for each recommender, including the Amazon Resource Name (ARN). For more information on recommenders, see [`create_recommender`][personalize_create_recommender].
+#'
+#' See [https://paws-r.github.io/docs/personalize/list_recommenders.html](https://paws-r.github.io/docs/personalize/list_recommenders.html) for full documentation.
+#'
+#' @param datasetGroupArn The Amazon Resource Name (ARN) of the Domain dataset group to list the
+#' recommenders for. When a Domain dataset group is not specified, all the
+#' recommenders associated with the account are listed.
+#' @param nextToken A token returned from the previous call to
+#' [`list_recommenders`][personalize_list_recommenders] for getting the
+#' next set of recommenders (if they exist).
+#' @param maxResults The maximum number of recommenders to return.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_recommenders
+personalize_list_recommenders <- function(datasetGroupArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListRecommenders",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$list_recommenders_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .personalize$list_recommenders_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_recommenders <- personalize_list_recommenders
+
 #' Returns the list of schemas associated with the account
 #'
 #' @description
-#' Returns the list of schemas associated with the account. The response
-#' provides the properties for each schema, including the Amazon Resource
-#' Name (ARN). For more information on schemas, see
-#' [`create_schema`][personalize_create_schema].
+#' Returns the list of schemas associated with the account. The response provides the properties for each schema, including the Amazon Resource Name (ARN). For more information on schemas, see [`create_schema`][personalize_create_schema].
 #'
-#' @usage
-#' personalize_list_schemas(nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_schemas.html](https://paws-r.github.io/docs/personalize/list_schemas.html) for full documentation.
 #'
 #' @param nextToken A token returned from the previous call to
 #' [`list_schemas`][personalize_list_schemas] for getting the next set of
 #' schemas (if they exist).
 #' @param maxResults The maximum number of schemas to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   schemas = list(
-#'     list(
-#'       name = "string",
-#'       schemaArn = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_schemas(
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2922,51 +1680,15 @@ personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
 #' Returns a list of solution versions for the given solution
 #'
 #' @description
-#' Returns a list of solution versions for the given solution. When a
-#' solution is not specified, all the solution versions associated with the
-#' account are listed. The response provides the properties for each
-#' solution version, including the Amazon Resource Name (ARN). For more
-#' information on solutions, see
-#' [`create_solution`][personalize_create_solution].
+#' Returns a list of solution versions for the given solution. When a solution is not specified, all the solution versions associated with the account are listed. The response provides the properties for each solution version, including the Amazon Resource Name (ARN).
 #'
-#' @usage
-#' personalize_list_solution_versions(solutionArn, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_solution_versions.html](https://paws-r.github.io/docs/personalize/list_solution_versions.html) for full documentation.
 #'
 #' @param solutionArn The Amazon Resource Name (ARN) of the solution.
 #' @param nextToken A token returned from the previous call to
 #' [`list_solution_versions`][personalize_list_solution_versions] for
 #' getting the next set of solution versions (if they exist).
 #' @param maxResults The maximum number of solution versions to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   solutionVersions = list(
-#'     list(
-#'       solutionVersionArn = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       failureReason = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_solution_versions(
-#'   solutionArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2991,50 +1713,15 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
 #' Returns a list of solutions that use the given dataset group
 #'
 #' @description
-#' Returns a list of solutions that use the given dataset group. When a
-#' dataset group is not specified, all the solutions associated with the
-#' account are listed. The response provides the properties for each
-#' solution, including the Amazon Resource Name (ARN). For more information
-#' on solutions, see [`create_solution`][personalize_create_solution].
+#' Returns a list of solutions that use the given dataset group. When a dataset group is not specified, all the solutions associated with the account are listed. The response provides the properties for each solution, including the Amazon Resource Name (ARN). For more information on solutions, see [`create_solution`][personalize_create_solution].
 #'
-#' @usage
-#' personalize_list_solutions(datasetGroupArn, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/personalize/list_solutions.html](https://paws-r.github.io/docs/personalize/list_solutions.html) for full documentation.
 #'
 #' @param datasetGroupArn The Amazon Resource Name (ARN) of the dataset group.
 #' @param nextToken A token returned from the previous call to
 #' [`list_solutions`][personalize_list_solutions] for getting the next set
 #' of solutions (if they exist).
 #' @param maxResults The maximum number of solutions to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   solutions = list(
-#'     list(
-#'       name = "string",
-#'       solutionArn = "string",
-#'       status = "string",
-#'       creationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_solutions(
-#'   datasetGroupArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3056,54 +1743,198 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
 }
 .personalize$operations$list_solutions <- personalize_list_solutions
 
+#' Get a list of tags attached to a resource
+#'
+#' @description
+#' Get a list of tags attached to a resource.
+#'
+#' See [https://paws-r.github.io/docs/personalize/list_tags_for_resource.html](https://paws-r.github.io/docs/personalize/list_tags_for_resource.html) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The resource's Amazon Resource Name.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_tags_for_resource
+personalize_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .personalize$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_tags_for_resource <- personalize_list_tags_for_resource
+
+#' Starts a recommender that is INACTIVE
+#'
+#' @description
+#' Starts a recommender that is INACTIVE. Starting a recommender does not create any new models, but resumes billing and automatic retraining for the recommender.
+#'
+#' See [https://paws-r.github.io/docs/personalize/start_recommender.html](https://paws-r.github.io/docs/personalize/start_recommender.html) for full documentation.
+#'
+#' @param recommenderArn &#91;required&#93; The Amazon Resource Name (ARN) of the recommender to start.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_start_recommender
+personalize_start_recommender <- function(recommenderArn) {
+  op <- new_operation(
+    name = "StartRecommender",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$start_recommender_input(recommenderArn = recommenderArn)
+  output <- .personalize$start_recommender_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$start_recommender <- personalize_start_recommender
+
+#' Stops a recommender that is ACTIVE
+#'
+#' @description
+#' Stops a recommender that is ACTIVE. Stopping a recommender halts billing and automatic retraining for the recommender.
+#'
+#' See [https://paws-r.github.io/docs/personalize/stop_recommender.html](https://paws-r.github.io/docs/personalize/stop_recommender.html) for full documentation.
+#'
+#' @param recommenderArn &#91;required&#93; The Amazon Resource Name (ARN) of the recommender to stop.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_stop_recommender
+personalize_stop_recommender <- function(recommenderArn) {
+  op <- new_operation(
+    name = "StopRecommender",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$stop_recommender_input(recommenderArn = recommenderArn)
+  output <- .personalize$stop_recommender_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$stop_recommender <- personalize_stop_recommender
+
+#' Stops creating a solution version that is in a state of CREATE_PENDING
+#' or CREATE IN_PROGRESS
+#'
+#' @description
+#' Stops creating a solution version that is in a state of CREATE_PENDING or CREATE IN_PROGRESS.
+#'
+#' See [https://paws-r.github.io/docs/personalize/stop_solution_version_creation.html](https://paws-r.github.io/docs/personalize/stop_solution_version_creation.html) for full documentation.
+#'
+#' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version you want to stop
+#' creating.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_stop_solution_version_creation
+personalize_stop_solution_version_creation <- function(solutionVersionArn) {
+  op <- new_operation(
+    name = "StopSolutionVersionCreation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$stop_solution_version_creation_input(solutionVersionArn = solutionVersionArn)
+  output <- .personalize$stop_solution_version_creation_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$stop_solution_version_creation <- personalize_stop_solution_version_creation
+
+#' Add a list of tags to a resource
+#'
+#' @description
+#' Add a list of tags to a resource.
+#'
+#' See [https://paws-r.github.io/docs/personalize/tag_resource.html](https://paws-r.github.io/docs/personalize/tag_resource.html) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The resource's Amazon Resource Name (ARN).
+#' @param tags &#91;required&#93; Tags to apply to the resource. For more information see Tagging
+#' Personalize resources.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_tag_resource
+personalize_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .personalize$tag_resource_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$tag_resource <- personalize_tag_resource
+
+#' Remove tags that are attached to a resource
+#'
+#' @description
+#' Remove tags that are attached to a resource.
+#'
+#' See [https://paws-r.github.io/docs/personalize/untag_resource.html](https://paws-r.github.io/docs/personalize/untag_resource.html) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The resource's Amazon Resource Name (ARN).
+#' @param tagKeys &#91;required&#93; Keys to remove from the resource's tags.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_untag_resource
+personalize_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .personalize$untag_resource_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$untag_resource <- personalize_untag_resource
+
 #' Updates a campaign by either deploying a new solution or changing the
 #' value of the campaign's minProvisionedTPS parameter
 #'
 #' @description
-#' Updates a campaign by either deploying a new solution or changing the
-#' value of the campaign's `minProvisionedTPS` parameter.
-#' 
-#' To update a campaign, the campaign status must be ACTIVE or CREATE
-#' FAILED. Check the campaign status using the
-#' [`describe_campaign`][personalize_describe_campaign] API.
-#' 
-#' You must wait until the `status` of the updated campaign is `ACTIVE`
-#' before asking the campaign for recommendations.
-#' 
-#' For more information on campaigns, see
-#' [`create_campaign`][personalize_create_campaign].
+#' Updates a campaign by either deploying a new solution or changing the value of the campaign's `minProvisionedTPS` parameter.
 #'
-#' @usage
-#' personalize_update_campaign(campaignArn, solutionVersionArn,
-#'   minProvisionedTPS, campaignConfig)
+#' See [https://paws-r.github.io/docs/personalize/update_campaign.html](https://paws-r.github.io/docs/personalize/update_campaign.html) for full documentation.
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign.
 #' @param solutionVersionArn The ARN of a new solution version to deploy.
 #' @param minProvisionedTPS Specifies the requested minimum provisioned transactions
 #' (recommendations) per second that Amazon Personalize will support.
 #' @param campaignConfig The configuration details of a campaign.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   campaignArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_campaign(
-#'   campaignArn = "string",
-#'   solutionVersionArn = "string",
-#'   minProvisionedTPS = 123,
-#'   campaignConfig = list(
-#'     itemExplorationConfig = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3124,3 +1955,33 @@ personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, 
   return(response)
 }
 .personalize$operations$update_campaign <- personalize_update_campaign
+
+#' Updates the recommender to modify the recommender configuration
+#'
+#' @description
+#' Updates the recommender to modify the recommender configuration.
+#'
+#' See [https://paws-r.github.io/docs/personalize/update_recommender.html](https://paws-r.github.io/docs/personalize/update_recommender.html) for full documentation.
+#'
+#' @param recommenderArn &#91;required&#93; The Amazon Resource Name (ARN) of the recommender to modify.
+#' @param recommenderConfig &#91;required&#93; The configuration details of the recommender.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_update_recommender
+personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
+  op <- new_operation(
+    name = "UpdateRecommender",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$update_recommender_input(recommenderArn = recommenderArn, recommenderConfig = recommenderConfig)
+  output <- .personalize$update_recommender_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$update_recommender <- personalize_update_recommender

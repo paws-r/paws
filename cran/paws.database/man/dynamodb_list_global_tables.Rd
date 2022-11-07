@@ -4,8 +4,11 @@
 \alias{dynamodb_list_global_tables}
 \title{Lists all global tables that have a replica in the specified Region}
 \usage{
-dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
-  RegionName)
+dynamodb_list_global_tables(
+  ExclusiveStartGlobalTableName = NULL,
+  Limit = NULL,
+  RegionName = NULL
+)
 }
 \arguments{
 \item{ExclusiveStartGlobalTableName}{The first global table name that this operation will evaluate.}
@@ -21,35 +24,9 @@ parameter.}
 
 \item{RegionName}{Lists the global tables in a specific Region.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalTables = list(
-    list(
-      GlobalTableName = "string",
-      ReplicationGroup = list(
-        list(
-          RegionName = "string"
-        )
-      )
-    )
-  ),
-  LastEvaluatedGlobalTableName = "string"
-)
-}
-}
 \description{
 Lists all global tables that have a replica in the specified Region.
 
-This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
-of global tables.
+See \url{https://paws-r.github.io/docs/dynamodb/list_global_tables.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_global_tables(
-  ExclusiveStartGlobalTableName = "string",
-  Limit = 123,
-  RegionName = "string"
-)
-}
-}
-
 \keyword{internal}

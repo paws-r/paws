@@ -4,56 +4,19 @@
 \alias{s3_get_bucket_encryption}
 \title{Returns the default encryption configuration for an Amazon S3 bucket}
 \usage{
-s3_get_bucket_encryption(Bucket, ExpectedBucketOwner)
+s3_get_bucket_encryption(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which the server-side encryption
 configuration is retrieved.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ServerSideEncryptionConfiguration = list(
-    Rules = list(
-      list(
-        ApplyServerSideEncryptionByDefault = list(
-          SSEAlgorithm = "AES256"|"aws:kms",
-          KMSMasterKeyID = "string"
-        ),
-        BucketKeyEnabled = TRUE|FALSE
-      )
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the default encryption configuration for an Amazon S3 bucket.
-For information about the Amazon S3 default encryption feature, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}.
+Returns the default encryption configuration for an Amazon S3 bucket. If the bucket does not have a default encryption configuration, GetBucketEncryption returns \code{ServerSideEncryptionConfigurationNotFoundError}.
 
-To use this operation, you must have permission to perform the
-\code{s3:GetEncryptionConfiguration} action. The bucket owner has this
-permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
-
-The following operations are related to
-\code{\link[=s3_get_bucket_encryption]{get_bucket_encryption}}:
-\itemize{
-\item \code{\link[=s3_put_bucket_encryption]{put_bucket_encryption}}
-\item \code{\link[=s3_delete_bucket_encryption]{delete_bucket_encryption}}
+See \url{https://paws-r.github.io/docs/s3/get_bucket_encryption.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_encryption(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

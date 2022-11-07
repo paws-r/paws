@@ -4,9 +4,16 @@
 \alias{sagemaker_list_model_quality_job_definitions}
 \title{Gets a list of model quality monitoring job definitions in your account}
 \usage{
-sagemaker_list_model_quality_job_definitions(EndpointName, SortBy,
-  SortOrder, NextToken, MaxResults, NameContains, CreationTimeBefore,
-  CreationTimeAfter)
+sagemaker_list_model_quality_job_definitions(
+  EndpointName = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL
+)
 }
 \arguments{
 \item{EndpointName}{A filter that returns only model quality monitoring job definitions that
@@ -35,41 +42,9 @@ created before the specified time.}
 \item{CreationTimeAfter}{A filter that returns only model quality monitoring job definitions
 created after the specified time.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobDefinitionSummaries = list(
-    list(
-      MonitoringJobDefinitionName = "string",
-      MonitoringJobDefinitionArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndpointName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of model quality monitoring job definitions in your account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_model_quality_job_definitions(
-  EndpointName = "string",
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_model_quality_job_definitions.html} for full documentation.
+}
 \keyword{internal}

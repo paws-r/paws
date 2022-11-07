@@ -5,10 +5,16 @@
 \title{Provides information about the queues for the specified Amazon Connect
 instance}
 \usage{
-connect_list_queues(InstanceId, QueueTypes, NextToken, MaxResults)
+connect_list_queues(
+  InstanceId,
+  QueueTypes = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{QueueTypes}{The type of queue.}
 
@@ -16,39 +22,11 @@ connect_list_queues(InstanceId, QueueTypes, NextToken, MaxResults)
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  QueueSummaryList = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string",
-      QueueType = "STANDARD"|"AGENT"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-Provides information about the queues for the specified Amazon Connect
-instance.
+Provides information about the queues for the specified Amazon Connect instance.
 
-For more information about queues, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/concepts-queues-standard-and-agent.html}{Queues: Standard and Agent}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/list_queues.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_queues(
-  InstanceId = "string",
-  QueueTypes = list(
-    "STANDARD"|"AGENT"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

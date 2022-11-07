@@ -13,6 +13,18 @@ NULL
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -24,10 +36,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -66,9 +82,10 @@ NULL
 #'  \link[=kinesis_register_stream_consumer]{register_stream_consumer} \tab Registers a consumer with a Kinesis data stream\cr
 #'  \link[=kinesis_remove_tags_from_stream]{remove_tags_from_stream} \tab Removes tags from the specified Kinesis data stream\cr
 #'  \link[=kinesis_split_shard]{split_shard} \tab Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data\cr
-#'  \link[=kinesis_start_stream_encryption]{start_stream_encryption} \tab Enables or updates server-side encryption using an AWS KMS key for a specified stream\cr
+#'  \link[=kinesis_start_stream_encryption]{start_stream_encryption} \tab Enables or updates server-side encryption using an Amazon Web Services KMS key for a specified stream\cr
 #'  \link[=kinesis_stop_stream_encryption]{stop_stream_encryption} \tab Disables server-side encryption for a specified stream\cr
-#'  \link[=kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards
+#'  \link[=kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards\cr
+#'  \link[=kinesis_update_stream_mode]{update_stream_mode} \tab Updates the capacity mode of the data stream
 #' }
 #'
 #' @return

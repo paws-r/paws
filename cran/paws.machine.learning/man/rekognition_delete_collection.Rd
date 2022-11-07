@@ -9,34 +9,9 @@ rekognition_delete_collection(CollectionId)
 \arguments{
 \item{CollectionId}{[required] ID of the collection to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StatusCode = 123
-)
-}
-}
 \description{
-Deletes the specified collection. Note that this operation removes all
-faces in the collection. For an example, see
-delete-collection-procedure.
+Deletes the specified collection. Note that this operation removes all faces in the collection. For an example, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/delete-collection-procedure.html}{Deleting a collection}.
 
-This operation requires permissions to perform the
-\code{rekognition:DeleteCollection} action.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_collection(
-  CollectionId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation deletes a Rekognition collection.
-svc$delete_collection(
-  CollectionId = "myphotos"
-)
-}
-
+See \url{https://paws-r.github.io/docs/rekognition/delete_collection.html} for full documentation.
 }
 \keyword{internal}

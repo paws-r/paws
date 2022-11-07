@@ -2,46 +2,28 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_list_log_subscriptions}
 \alias{directoryservice_list_log_subscriptions}
-\title{Lists the active log subscriptions for the AWS account}
+\title{Lists the active log subscriptions for the Amazon Web Services account}
 \usage{
-directoryservice_list_log_subscriptions(DirectoryId, NextToken, Limit)
+directoryservice_list_log_subscriptions(
+  DirectoryId = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{If a \emph{DirectoryID} is provided, lists only the log subscription
 associated with that directory. If no \emph{DirectoryId} is provided, lists
-all log subscriptions associated with your AWS account. If there are no
-log subscriptions for the AWS account or the directory, an empty list
-will be returned.}
+all log subscriptions associated with your Amazon Web Services account.
+If there are no log subscriptions for the Amazon Web Services account or
+the directory, an empty list will be returned.}
 
 \item{NextToken}{The token for the next set of items to return.}
 
 \item{Limit}{The maximum number of items returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LogSubscriptions = list(
-    list(
-      DirectoryId = "string",
-      LogGroupName = "string",
-      SubscriptionCreatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the active log subscriptions for the AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_log_subscriptions(
-  DirectoryId = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Lists the active log subscriptions for the Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/directoryservice/list_log_subscriptions.html} for full documentation.
+}
 \keyword{internal}

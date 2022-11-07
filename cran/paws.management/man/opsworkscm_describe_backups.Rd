@@ -4,7 +4,12 @@
 \alias{opsworkscm_describe_backups}
 \title{Describes backups}
 \usage{
-opsworkscm_describe_backups(BackupId, ServerName, NextToken, MaxResults)
+opsworkscm_describe_backups(
+  BackupId = NULL,
+  ServerName = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{BackupId}{Describes a single backup.}
@@ -17,65 +22,9 @@ opsworkscm_describe_backups(BackupId, ServerName, NextToken, MaxResults)
 \item{MaxResults}{This is not currently implemented for
 \code{\link[=opsworkscm_describe_backups]{describe_backups}} requests.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Backups = list(
-    list(
-      BackupArn = "string",
-      BackupId = "string",
-      BackupType = "AUTOMATED"|"MANUAL",
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      Description = "string",
-      Engine = "string",
-      EngineModel = "string",
-      EngineVersion = "string",
-      InstanceProfileArn = "string",
-      InstanceType = "string",
-      KeyPair = "string",
-      PreferredBackupWindow = "string",
-      PreferredMaintenanceWindow = "string",
-      S3DataSize = 123,
-      S3DataUrl = "string",
-      S3LogUrl = "string",
-      SecurityGroupIds = list(
-        "string"
-      ),
-      ServerName = "string",
-      ServiceRoleArn = "string",
-      Status = "IN_PROGRESS"|"OK"|"FAILED"|"DELETING",
-      StatusDescription = "string",
-      SubnetIds = list(
-        "string"
-      ),
-      ToolsVersion = "string",
-      UserArn = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes backups. The results are ordered by time, with newest backups
-first. If you do not specify a BackupId or ServerName, the command
-returns all backups.
+Describes backups. The results are ordered by time, with newest backups first. If you do not specify a BackupId or ServerName, the command returns all backups.
 
-This operation is synchronous.
-
-A \code{ResourceNotFoundException} is thrown when the backup does not exist.
-A \code{ValidationException} is raised when parameters of the request are not
-valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/describe_backups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_backups(
-  BackupId = "string",
-  ServerName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

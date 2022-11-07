@@ -2,12 +2,14 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_vpc_peering_connection_options}
 \alias{ec2_modify_vpc_peering_connection_options}
-\title{Modifies the VPC peering connection options on one side of a VPC peering
-connection}
+\title{We are retiring EC2-Classic on August 15, 2022}
 \usage{
 ec2_modify_vpc_peering_connection_options(
-  AccepterPeeringConnectionOptions, DryRun,
-  RequesterPeeringConnectionOptions, VpcPeeringConnectionId)
+  AccepterPeeringConnectionOptions = NULL,
+  DryRun = NULL,
+  RequesterPeeringConnectionOptions = NULL,
+  VpcPeeringConnectionId
+)
 }
 \arguments{
 \item{AccepterPeeringConnectionOptions}{The VPC peering connection options for the accepter VPC.}
@@ -21,65 +23,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccepterPeeringConnectionOptions = list(
-    AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
-    AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
-    AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
-  ),
-  RequesterPeeringConnectionOptions = list(
-    AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
-    AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
-    AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Modifies the VPC peering connection options on one side of a VPC peering
-connection. You can do the following:
-\itemize{
-\item Enable/disable communication over the peering connection between an
-EC2-Classic instance that's linked to your VPC (using ClassicLink)
-and instances in the peer VPC.
-\item Enable/disable communication over the peering connection between
-instances in your VPC and an EC2-Classic instance that's linked to
-the peer VPC.
-\item Enable/disable the ability to resolve public DNS hostnames to
-private IP addresses when queried from instances in the peer VPC.
-}
+We are retiring EC2-Classic on August 15, 2022. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-If the peered VPCs are in the same AWS account, you can enable DNS
-resolution for queries from the local VPC. This ensures that queries
-from the local VPC resolve to private IP addresses in the peer VPC. This
-option is not available if the peered VPCs are in different AWS accounts
-or different Regions. For peered VPCs in different AWS accounts, each
-AWS account owner must initiate a separate request to modify the peering
-connection options. For inter-region peering connections, you must use
-the Region for the requester VPC to modify the requester VPC peering
-options and the Region for the accepter VPC to modify the accepter VPC
-peering options. To verify which VPCs are the accepter and the requester
-for a VPC peering connection, use the
-\code{\link[=ec2_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
-command.
+See \url{https://paws-r.github.io/docs/ec2/modify_vpc_peering_connection_options.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_vpc_peering_connection_options(
-  AccepterPeeringConnectionOptions = list(
-    AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
-    AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
-    AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
-  ),
-  DryRun = TRUE|FALSE,
-  RequesterPeeringConnectionOptions = list(
-    AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
-    AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
-    AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
-  ),
-  VpcPeeringConnectionId = "string"
-)
-}
-}
-
 \keyword{internal}

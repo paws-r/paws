@@ -6,14 +6,18 @@
 transit gateway with the specified Direct Connect gateway}
 \usage{
 directconnect_create_direct_connect_gateway_association_proposal(
-  directConnectGatewayId, directConnectGatewayOwnerAccount, gatewayId,
-  addAllowedPrefixesToDirectConnectGateway,
-  removeAllowedPrefixesToDirectConnectGateway)
+  directConnectGatewayId,
+  directConnectGatewayOwnerAccount,
+  gatewayId,
+  addAllowedPrefixesToDirectConnectGateway = NULL,
+  removeAllowedPrefixesToDirectConnectGateway = NULL
+)
 }
 \arguments{
 \item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
 
-\item{directConnectGatewayOwnerAccount}{[required] The ID of the AWS account that owns the Direct Connect gateway.}
+\item{directConnectGatewayOwnerAccount}{[required] The ID of the Amazon Web Services account that owns the Direct Connect
+gateway.}
 
 \item{gatewayId}{[required] The ID of the virtual private gateway or transit gateway.}
 
@@ -22,57 +26,9 @@ directconnect_create_direct_connect_gateway_association_proposal(
 \item{removeAllowedPrefixesToDirectConnectGateway}{The Amazon VPC prefixes to no longer advertise to the Direct Connect
 gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  directConnectGatewayAssociationProposal = list(
-    proposalId = "string",
-    directConnectGatewayId = "string",
-    directConnectGatewayOwnerAccount = "string",
-    proposalState = "requested"|"accepted"|"deleted",
-    associatedGateway = list(
-      id = "string",
-      type = "virtualPrivateGateway"|"transitGateway",
-      ownerAccount = "string",
-      region = "string"
-    ),
-    existingAllowedPrefixesToDirectConnectGateway = list(
-      list(
-        cidr = "string"
-      )
-    ),
-    requestedAllowedPrefixesToDirectConnectGateway = list(
-      list(
-        cidr = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a proposal to associate the specified virtual private gateway or
-transit gateway with the specified Direct Connect gateway.
+Creates a proposal to associate the specified virtual private gateway or transit gateway with the specified Direct Connect gateway.
 
-You can associate a Direct Connect gateway and virtual private gateway
-or transit gateway that is owned by any AWS account.
+See \url{https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway_association_proposal.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_direct_connect_gateway_association_proposal(
-  directConnectGatewayId = "string",
-  directConnectGatewayOwnerAccount = "string",
-  gatewayId = "string",
-  addAllowedPrefixesToDirectConnectGateway = list(
-    list(
-      cidr = "string"
-    )
-  ),
-  removeAllowedPrefixesToDirectConnectGateway = list(
-    list(
-      cidr = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

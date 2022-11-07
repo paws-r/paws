@@ -9,29 +9,11 @@ efs_tag_resource(ResourceId, Tags)
 \arguments{
 \item{ResourceId}{[required] The ID specifying the EFS resource that you want to create a tag for.}
 
-\item{Tags}{[required]}
-}
-\value{
-An empty list.
+\item{Tags}{[required] An array of \code{Tag} objects to add. Each \code{Tag} object is a key-value pair.}
 }
 \description{
-Creates a tag for an EFS resource. You can create tags for EFS file
-systems and access points using this API operation.
+Creates a tag for an EFS resource. You can create tags for EFS file systems and access points using this API operation.
 
-This operation requires permissions for the
-\code{elasticfilesystem:TagResource} action.
+See \url{https://paws-r.github.io/docs/efs/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

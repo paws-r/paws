@@ -5,8 +5,11 @@
 \title{Modifies the credit option for CPU usage on a running or stopped
 burstable performance instance}
 \usage{
-ec2_modify_instance_credit_specification(DryRun, ClientToken,
-  InstanceCreditSpecifications)
+ec2_modify_instance_credit_specification(
+  DryRun = NULL,
+  ClientToken = NULL,
+  InstanceCreditSpecifications
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -19,45 +22,9 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 
 \item{InstanceCreditSpecifications}{[required] Information about the credit option for CPU usage.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SuccessfulInstanceCreditSpecifications = list(
-    list(
-      InstanceId = "string"
-    )
-  ),
-  UnsuccessfulInstanceCreditSpecifications = list(
-    list(
-      InstanceId = "string",
-      Error = list(
-        Code = "InvalidInstanceID.Malformed"|"InvalidInstanceID.NotFound"|"IncorrectInstanceState"|"InstanceCreditSpecification.NotSupported",
-        Message = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Modifies the credit option for CPU usage on a running or stopped
-burstable performance instance. The credit options are \code{standard} and
-\code{unlimited}.
+Modifies the credit option for CPU usage on a running or stopped burstable performance instance. The credit options are \code{standard} and \code{unlimited}.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable performance instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/modify_instance_credit_specification.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_instance_credit_specification(
-  DryRun = TRUE|FALSE,
-  ClientToken = "string",
-  InstanceCreditSpecifications = list(
-    list(
-      InstanceId = "string",
-      CpuCredits = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

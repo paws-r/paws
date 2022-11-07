@@ -6,17 +6,19 @@ NULL
 #' Cancels a query that has been issued
 #'
 #' @description
-#' Cancels a query that has been issued. Cancellation is guaranteed only if
-#' the query has not completed execution before the cancellation request
-#' was issued. Because cancellation is an idempotent operation, subsequent
+#' Cancels a query that has been issued. Cancellation is provided only if
+#' the query has not completed running before the cancellation request was
+#' issued. Because cancellation is an idempotent operation, subsequent
 #' cancellation requests will return a `CancellationMessage`, indicating
-#' that the query has already been canceled.
+#' that the query has already been canceled. See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.cancel-query.html)
+#' for details.
 #'
 #' @usage
 #' timestreamquery_cancel_query(QueryId)
 #'
-#' @param QueryId &#91;required&#93; The id of the query that needs to be cancelled. `QueryID` is returned as
-#' part of QueryResult.
+#' @param QueryId &#91;required&#93; The ID of the query that needs to be cancelled. `QueryID` is returned as
+#' part of the query result.
 #'
 #' @return
 #' A list with the following syntax:
@@ -53,6 +55,202 @@ timestreamquery_cancel_query <- function(QueryId) {
 }
 .timestreamquery$operations$cancel_query <- timestreamquery_cancel_query
 
+#' Create a scheduled query that will be run on your behalf at the
+#' configured schedule
+#'
+#' @description
+#' Create a scheduled query that will be run on your behalf at the
+#' configured schedule. Timestream assumes the execution role provided as
+#' part of the `ScheduledQueryExecutionRoleArn` parameter to run the query.
+#' You can use the `NotificationConfiguration` parameter to configure
+#' notification for your scheduled query operations.
+#'
+#' @usage
+#' timestreamquery_create_scheduled_query(Name, QueryString,
+#'   ScheduleConfiguration, NotificationConfiguration, TargetConfiguration,
+#'   ClientToken, ScheduledQueryExecutionRoleArn, Tags, KmsKeyId,
+#'   ErrorReportConfiguration)
+#'
+#' @param Name &#91;required&#93; Name of the scheduled query.
+#' @param QueryString &#91;required&#93; The query string to run. Parameter names can be specified in the query
+#' string `@@` character followed by an identifier. The named Parameter
+#' `@@scheduled_runtime` is reserved and can be used in the query to get the
+#' time at which the query is scheduled to run.
+#' 
+#' The timestamp calculated according to the ScheduleConfiguration
+#' parameter, will be the value of `@@scheduled_runtime` paramater for each
+#' query run. For example, consider an instance of a scheduled query
+#' executing on 2021-12-01 00:00:00. For this instance, the
+#' `@@scheduled_runtime` parameter is initialized to the timestamp
+#' 2021-12-01 00:00:00 when invoking the query.
+#' @param ScheduleConfiguration &#91;required&#93; The schedule configuration for the query.
+#' @param NotificationConfiguration &#91;required&#93; Notification configuration for the scheduled query. A notification is
+#' sent by Timestream when a query run finishes, when the state is updated
+#' or when you delete it.
+#' @param TargetConfiguration Configuration used for writing the result of a query.
+#' @param ClientToken Using a ClientToken makes the call to CreateScheduledQuery idempotent,
+#' in other words, making the same request repeatedly will produce the same
+#' result. Making multiple identical CreateScheduledQuery requests has the
+#' same effect as making a single request.
+#' 
+#' -   If CreateScheduledQuery is called without a `ClientToken`, the Query
+#'     SDK generates a `ClientToken` on your behalf.
+#' 
+#' -   After 8 hours, any request with the same `ClientToken` is treated as
+#'     a new request.
+#' @param ScheduledQueryExecutionRoleArn &#91;required&#93; The ARN for the IAM role that Timestream will assume when running the
+#' scheduled query.
+#' @param Tags A list of key-value pairs to label the scheduled query.
+#' @param KmsKeyId The Amazon KMS key used to encrypt the scheduled query resource,
+#' at-rest. If the Amazon KMS key is not specified, the scheduled query
+#' resource will be encrypted with a Timestream owned Amazon KMS key. To
+#' specify a KMS key, use the key ID, key ARN, alias name, or alias ARN.
+#' When using an alias name, prefix the name with *alias/*
+#' 
+#' If ErrorReportConfiguration uses `SSE_KMS` as encryption type, the same
+#' KmsKeyId is used to encrypt the error report at rest.
+#' @param ErrorReportConfiguration &#91;required&#93; Configuration for error reporting. Error reports will be generated when
+#' a problem is encountered when writing the query results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_scheduled_query(
+#'   Name = "string",
+#'   QueryString = "string",
+#'   ScheduleConfiguration = list(
+#'     ScheduleExpression = "string"
+#'   ),
+#'   NotificationConfiguration = list(
+#'     SnsConfiguration = list(
+#'       TopicArn = "string"
+#'     )
+#'   ),
+#'   TargetConfiguration = list(
+#'     TimestreamConfiguration = list(
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       TimeColumn = "string",
+#'       DimensionMappings = list(
+#'         list(
+#'           Name = "string",
+#'           DimensionValueType = "VARCHAR"
+#'         )
+#'       ),
+#'       MultiMeasureMappings = list(
+#'         TargetMultiMeasureName = "string",
+#'         MultiMeasureAttributeMappings = list(
+#'           list(
+#'             SourceColumn = "string",
+#'             TargetMultiMeasureAttributeName = "string",
+#'             MeasureValueType = "BIGINT"|"BOOLEAN"|"DOUBLE"|"VARCHAR"|"TIMESTAMP"
+#'           )
+#'         )
+#'       ),
+#'       MixedMeasureMappings = list(
+#'         list(
+#'           MeasureName = "string",
+#'           SourceColumn = "string",
+#'           TargetMeasureName = "string",
+#'           MeasureValueType = "BIGINT"|"BOOLEAN"|"DOUBLE"|"VARCHAR"|"MULTI",
+#'           MultiMeasureAttributeMappings = list(
+#'             list(
+#'               SourceColumn = "string",
+#'               TargetMultiMeasureAttributeName = "string",
+#'               MeasureValueType = "BIGINT"|"BOOLEAN"|"DOUBLE"|"VARCHAR"|"TIMESTAMP"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       MeasureNameColumn = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string",
+#'   ScheduledQueryExecutionRoleArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   KmsKeyId = "string",
+#'   ErrorReportConfiguration = list(
+#'     S3Configuration = list(
+#'       BucketName = "string",
+#'       ObjectKeyPrefix = "string",
+#'       EncryptionOption = "SSE_S3"|"SSE_KMS"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_create_scheduled_query
+timestreamquery_create_scheduled_query <- function(Name, QueryString, ScheduleConfiguration, NotificationConfiguration, TargetConfiguration = NULL, ClientToken = NULL, ScheduledQueryExecutionRoleArn, Tags = NULL, KmsKeyId = NULL, ErrorReportConfiguration) {
+  op <- new_operation(
+    name = "CreateScheduledQuery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$create_scheduled_query_input(Name = Name, QueryString = QueryString, ScheduleConfiguration = ScheduleConfiguration, NotificationConfiguration = NotificationConfiguration, TargetConfiguration = TargetConfiguration, ClientToken = ClientToken, ScheduledQueryExecutionRoleArn = ScheduledQueryExecutionRoleArn, Tags = Tags, KmsKeyId = KmsKeyId, ErrorReportConfiguration = ErrorReportConfiguration)
+  output <- .timestreamquery$create_scheduled_query_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$create_scheduled_query <- timestreamquery_create_scheduled_query
+
+#' Deletes a given scheduled query
+#'
+#' @description
+#' Deletes a given scheduled query. This is an irreversible operation.
+#'
+#' @usage
+#' timestreamquery_delete_scheduled_query(ScheduledQueryArn)
+#'
+#' @param ScheduledQueryArn &#91;required&#93; The ARN of the scheduled query.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_scheduled_query(
+#'   ScheduledQueryArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_delete_scheduled_query
+timestreamquery_delete_scheduled_query <- function(ScheduledQueryArn) {
+  op <- new_operation(
+    name = "DeleteScheduledQuery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$delete_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn)
+  output <- .timestreamquery$delete_scheduled_query_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$delete_scheduled_query <- timestreamquery_delete_scheduled_query
+
 #' DescribeEndpoints returns a list of available endpoints to make
 #' Timestream API calls against
 #'
@@ -61,18 +259,21 @@ timestreamquery_cancel_query <- function(QueryId) {
 #' Timestream API calls against. This API is available through both Write
 #' and Query.
 #' 
-#' Because Timestream’s SDKs are designed to transparently work with the
+#' Because the Timestream SDKs are designed to transparently work with the
 #' service’s architecture, including the management and mapping of the
 #' service endpoints, *it is not recommended that you use this API unless*:
+#' 
+#' -   You are using [VPC endpoints (Amazon Web Services PrivateLink) with
+#'     Timestream](https://docs.aws.amazon.com/timestream/latest/developerguide/VPCEndpoints.html)
 #' 
 #' -   Your application uses a programming language that does not yet have
 #'     SDK support
 #' 
 #' -   You require better control over the client-side implementation
 #' 
-#' For detailed information on how to use DescribeEndpoints, see [The
-#' Endpoint Discovery Pattern and REST
-#' APIs](https://docs.aws.amazon.com/timestream/latest/developerguide/).
+#' For detailed information on how and when to use and implement
+#' DescribeEndpoints, see [The Endpoint Discovery
+#' Pattern](https://docs.aws.amazon.com/timestream/latest/developerguide/Using.API.html#Using-API.endpoint-discovery).
 #'
 #' @usage
 #' timestreamquery_describe_endpoints()
@@ -115,39 +316,570 @@ timestreamquery_describe_endpoints <- function() {
 }
 .timestreamquery$operations$describe_endpoints <- timestreamquery_describe_endpoints
 
-#' Query is a synchronous operation that enables you to execute a query
+#' Provides detailed information about a scheduled query
 #'
 #' @description
-#' Query is a synchronous operation that enables you to execute a query.
-#' Query will timeout after 60 seconds. You must update the default timeout
-#' in the SDK to support a timeout of 60 seconds. The result set will be
-#' truncated to 1MB. Service quotas apply. For more information, see Quotas
-#' in the Timestream Developer Guide.
+#' Provides detailed information about a scheduled query.
+#'
+#' @usage
+#' timestreamquery_describe_scheduled_query(ScheduledQueryArn)
+#'
+#' @param ScheduledQueryArn &#91;required&#93; The ARN of the scheduled query.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScheduledQuery = list(
+#'     Arn = "string",
+#'     Name = "string",
+#'     QueryString = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "ENABLED"|"DISABLED",
+#'     PreviousInvocationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     NextInvocationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ScheduleConfiguration = list(
+#'       ScheduleExpression = "string"
+#'     ),
+#'     NotificationConfiguration = list(
+#'       SnsConfiguration = list(
+#'         TopicArn = "string"
+#'       )
+#'     ),
+#'     TargetConfiguration = list(
+#'       TimestreamConfiguration = list(
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         TimeColumn = "string",
+#'         DimensionMappings = list(
+#'           list(
+#'             Name = "string",
+#'             DimensionValueType = "VARCHAR"
+#'           )
+#'         ),
+#'         MultiMeasureMappings = list(
+#'           TargetMultiMeasureName = "string",
+#'           MultiMeasureAttributeMappings = list(
+#'             list(
+#'               SourceColumn = "string",
+#'               TargetMultiMeasureAttributeName = "string",
+#'               MeasureValueType = "BIGINT"|"BOOLEAN"|"DOUBLE"|"VARCHAR"|"TIMESTAMP"
+#'             )
+#'           )
+#'         ),
+#'         MixedMeasureMappings = list(
+#'           list(
+#'             MeasureName = "string",
+#'             SourceColumn = "string",
+#'             TargetMeasureName = "string",
+#'             MeasureValueType = "BIGINT"|"BOOLEAN"|"DOUBLE"|"VARCHAR"|"MULTI",
+#'             MultiMeasureAttributeMappings = list(
+#'               list(
+#'                 SourceColumn = "string",
+#'                 TargetMultiMeasureAttributeName = "string",
+#'                 MeasureValueType = "BIGINT"|"BOOLEAN"|"DOUBLE"|"VARCHAR"|"TIMESTAMP"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         MeasureNameColumn = "string"
+#'       )
+#'     ),
+#'     ScheduledQueryExecutionRoleArn = "string",
+#'     KmsKeyId = "string",
+#'     ErrorReportConfiguration = list(
+#'       S3Configuration = list(
+#'         BucketName = "string",
+#'         ObjectKeyPrefix = "string",
+#'         EncryptionOption = "SSE_S3"|"SSE_KMS"
+#'       )
+#'     ),
+#'     LastRunSummary = list(
+#'       InvocationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TriggerTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RunStatus = "AUTO_TRIGGER_SUCCESS"|"AUTO_TRIGGER_FAILURE"|"MANUAL_TRIGGER_SUCCESS"|"MANUAL_TRIGGER_FAILURE",
+#'       ExecutionStats = list(
+#'         ExecutionTimeInMillis = 123,
+#'         DataWrites = 123,
+#'         BytesMetered = 123,
+#'         RecordsIngested = 123,
+#'         QueryResultRows = 123
+#'       ),
+#'       ErrorReportLocation = list(
+#'         S3ReportLocation = list(
+#'           BucketName = "string",
+#'           ObjectKey = "string"
+#'         )
+#'       ),
+#'       FailureReason = "string"
+#'     ),
+#'     RecentlyFailedRuns = list(
+#'       list(
+#'         InvocationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         TriggerTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         RunStatus = "AUTO_TRIGGER_SUCCESS"|"AUTO_TRIGGER_FAILURE"|"MANUAL_TRIGGER_SUCCESS"|"MANUAL_TRIGGER_FAILURE",
+#'         ExecutionStats = list(
+#'           ExecutionTimeInMillis = 123,
+#'           DataWrites = 123,
+#'           BytesMetered = 123,
+#'           RecordsIngested = 123,
+#'           QueryResultRows = 123
+#'         ),
+#'         ErrorReportLocation = list(
+#'           S3ReportLocation = list(
+#'             BucketName = "string",
+#'             ObjectKey = "string"
+#'           )
+#'         ),
+#'         FailureReason = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_scheduled_query(
+#'   ScheduledQueryArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_describe_scheduled_query
+timestreamquery_describe_scheduled_query <- function(ScheduledQueryArn) {
+  op <- new_operation(
+    name = "DescribeScheduledQuery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$describe_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn)
+  output <- .timestreamquery$describe_scheduled_query_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$describe_scheduled_query <- timestreamquery_describe_scheduled_query
+
+#' You can use this API to run a scheduled query manually
+#'
+#' @description
+#' You can use this API to run a scheduled query manually.
+#'
+#' @usage
+#' timestreamquery_execute_scheduled_query(ScheduledQueryArn,
+#'   InvocationTime, ClientToken)
+#'
+#' @param ScheduledQueryArn &#91;required&#93; ARN of the scheduled query.
+#' @param InvocationTime &#91;required&#93; The timestamp in UTC. Query will be run as if it was invoked at this
+#' timestamp.
+#' @param ClientToken Not used.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$execute_scheduled_query(
+#'   ScheduledQueryArn = "string",
+#'   InvocationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_execute_scheduled_query
+timestreamquery_execute_scheduled_query <- function(ScheduledQueryArn, InvocationTime, ClientToken = NULL) {
+  op <- new_operation(
+    name = "ExecuteScheduledQuery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$execute_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn, InvocationTime = InvocationTime, ClientToken = ClientToken)
+  output <- .timestreamquery$execute_scheduled_query_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$execute_scheduled_query <- timestreamquery_execute_scheduled_query
+
+#' Gets a list of all scheduled queries in the caller's Amazon account and
+#' Region
+#'
+#' @description
+#' Gets a list of all scheduled queries in the caller's Amazon account and
+#' Region.
+#' [`list_scheduled_queries`][timestreamquery_list_scheduled_queries] is
+#' eventually consistent.
+#'
+#' @usage
+#' timestreamquery_list_scheduled_queries(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of items to return in the output. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the output. To resume pagination, provide the `NextToken`
+#' value as the argument to the subsequent call to
+#' `ListScheduledQueriesRequest`.
+#' @param NextToken A pagination token to resume pagination.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScheduledQueries = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "ENABLED"|"DISABLED",
+#'       PreviousInvocationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NextInvocationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ErrorReportConfiguration = list(
+#'         S3Configuration = list(
+#'           BucketName = "string",
+#'           ObjectKeyPrefix = "string",
+#'           EncryptionOption = "SSE_S3"|"SSE_KMS"
+#'         )
+#'       ),
+#'       TargetDestination = list(
+#'         TimestreamDestination = list(
+#'           DatabaseName = "string",
+#'           TableName = "string"
+#'         )
+#'       ),
+#'       LastRunStatus = "AUTO_TRIGGER_SUCCESS"|"AUTO_TRIGGER_FAILURE"|"MANUAL_TRIGGER_SUCCESS"|"MANUAL_TRIGGER_FAILURE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_scheduled_queries(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_list_scheduled_queries
+timestreamquery_list_scheduled_queries <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListScheduledQueries",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$list_scheduled_queries_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .timestreamquery$list_scheduled_queries_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$list_scheduled_queries <- timestreamquery_list_scheduled_queries
+
+#' List all tags on a Timestream query resource
+#'
+#' @description
+#' List all tags on a Timestream query resource.
+#'
+#' @usage
+#' timestreamquery_list_tags_for_resource(ResourceARN, MaxResults,
+#'   NextToken)
+#'
+#' @param ResourceARN &#91;required&#93; The Timestream resource with tags to be listed. This value is an Amazon
+#' Resource Name (ARN).
+#' @param MaxResults The maximum number of tags to return.
+#' @param NextToken A pagination token to resume pagination.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_list_tags_for_resource
+timestreamquery_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$list_tags_for_resource_input(ResourceARN = ResourceARN, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .timestreamquery$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$list_tags_for_resource <- timestreamquery_list_tags_for_resource
+
+#' A synchronous operation that allows you to submit a query with
+#' parameters to be stored by Timestream for later running
+#'
+#' @description
+#' A synchronous operation that allows you to submit a query with
+#' parameters to be stored by Timestream for later running. Timestream only
+#' supports using this operation with the
+#' `PrepareQueryRequest$ValidateOnly` set to `true`.
+#'
+#' @usage
+#' timestreamquery_prepare_query(QueryString, ValidateOnly)
+#'
+#' @param QueryString &#91;required&#93; The Timestream query string that you want to use as a prepared
+#' statement. Parameter names can be specified in the query string `@@`
+#' character followed by an identifier.
+#' @param ValidateOnly By setting this value to `true`, Timestream will only validate that the
+#' query string is a valid Timestream query, and not store the prepared
+#' query for later use.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueryString = "string",
+#'   Columns = list(
+#'     list(
+#'       Name = "string",
+#'       Type = list(
+#'         ScalarType = "VARCHAR"|"BOOLEAN"|"BIGINT"|"DOUBLE"|"TIMESTAMP"|"DATE"|"TIME"|"INTERVAL_DAY_TO_SECOND"|"INTERVAL_YEAR_TO_MONTH"|"UNKNOWN"|"INTEGER",
+#'         ArrayColumnInfo = list(
+#'           Name = "string",
+#'           Type = list()
+#'         ),
+#'         TimeSeriesMeasureValueColumnInfo = list(
+#'           Name = "string",
+#'           Type = list()
+#'         ),
+#'         RowColumnInfo = list(
+#'           list(
+#'             Name = "string",
+#'             Type = list()
+#'           )
+#'         )
+#'       ),
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       Aliased = TRUE|FALSE
+#'     )
+#'   ),
+#'   Parameters = list(
+#'     list(
+#'       Name = "string",
+#'       Type = list(
+#'         ScalarType = "VARCHAR"|"BOOLEAN"|"BIGINT"|"DOUBLE"|"TIMESTAMP"|"DATE"|"TIME"|"INTERVAL_DAY_TO_SECOND"|"INTERVAL_YEAR_TO_MONTH"|"UNKNOWN"|"INTEGER",
+#'         ArrayColumnInfo = list(
+#'           Name = "string",
+#'           Type = list()
+#'         ),
+#'         TimeSeriesMeasureValueColumnInfo = list(
+#'           Name = "string",
+#'           Type = list()
+#'         ),
+#'         RowColumnInfo = list(
+#'           list(
+#'             Name = "string",
+#'             Type = list()
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$prepare_query(
+#'   QueryString = "string",
+#'   ValidateOnly = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_prepare_query
+timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
+  op <- new_operation(
+    name = "PrepareQuery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$prepare_query_input(QueryString = QueryString, ValidateOnly = ValidateOnly)
+  output <- .timestreamquery$prepare_query_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$prepare_query <- timestreamquery_prepare_query
+
+#' Query is a synchronous operation that enables you to run a query against
+#' your Amazon Timestream data
+#'
+#' @description
+#' [`query`][timestreamquery_query] is a synchronous operation that enables
+#' you to run a query against your Amazon Timestream data.
+#' [`query`][timestreamquery_query] will time out after 60 seconds. You
+#' must update the default timeout in the SDK to support a timeout of 60
+#' seconds. See the [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.run-query.html)
+#' for details.
+#' 
+#' Your query request will fail in the following cases:
+#' 
+#' -   If you submit a [`query`][timestreamquery_query] request with the
+#'     same client token outside of the 5-minute idempotency window.
+#' 
+#' -   If you submit a [`query`][timestreamquery_query] request with the
+#'     same client token, but change other parameters, within the 5-minute
+#'     idempotency window.
+#' 
+#' -   If the size of the row (including the query metadata) exceeds 1 MB,
+#'     then the query will fail with the following error message:
+#' 
+#'     `Query aborted as max page response size has been exceeded by the output result row`
+#' 
+#' -   If the IAM principal of the query initiator and the result reader
+#'     are not the same and/or the query initiator and the result reader do
+#'     not have the same query string in the query requests, the query will
+#'     fail with an `Invalid pagination token` error.
 #'
 #' @usage
 #' timestreamquery_query(QueryString, ClientToken, NextToken, MaxRows)
 #'
-#' @param QueryString &#91;required&#93; The query to be executed by Timestream.
-#' @param ClientToken Unique, case-sensitive string of up to 64 ASCII characters that you
-#' specify when you make a Query request. Providing a `ClientToken` makes
-#' the call to [`query`][timestreamquery_query] idempotent, meaning that
-#' multiple identical calls have the same effect as one single call.
+#' @param QueryString &#91;required&#93; The query to be run by Timestream.
+#' @param ClientToken Unique, case-sensitive string of up to 64 ASCII characters specified
+#' when a [`query`][timestreamquery_query] request is made. Providing a
+#' `ClientToken` makes the call to [`query`][timestreamquery_query]
+#' *idempotent*. This means that running the same query repeatedly will
+#' produce the same result. In other words, making multiple identical
+#' [`query`][timestreamquery_query] requests has the same effect as making
+#' a single request. When using `ClientToken` in a query, note the
+#' following:
 #' 
-#' Your query request will fail in the following cases:
+#' -   If the Query API is instantiated without a `ClientToken`, the Query
+#'     SDK generates a `ClientToken` on your behalf.
 #' 
-#' -   If you submit a request with the same client token outside the
-#'     5-minute idepotency window.
+#' -   If the [`query`][timestreamquery_query] invocation only contains the
+#'     `ClientToken` but does not include a `NextToken`, that invocation of
+#'     [`query`][timestreamquery_query] is assumed to be a new query run.
 #' 
-#' -   If you submit a request with the same client token but a change in
-#'     other parameters within the 5-minute idempotency window.
+#' -   If the invocation contains `NextToken`, that particular invocation
+#'     is assumed to be a subsequent invocation of a prior call to the
+#'     Query API, and a result set is returned.
 #' 
-#' After 4 hours, any request with the same client token is treated as a
-#' new request.
-#' @param NextToken A pagination token passed to get a set of results.
-#' @param MaxRows The total number of rows to return in the output. If the total number of
-#' rows available is more than the value specified, a NextToken is provided
-#' in the command's output. To resume pagination, provide the NextToken
-#' value in the starting-token argument of a subsequent command.
+#' -   After 4 hours, any request with the same `ClientToken` is treated as
+#'     a new request.
+#' @param NextToken A pagination token used to return a set of results. When the
+#' [`query`][timestreamquery_query] API is invoked using `NextToken`, that
+#' particular invocation is assumed to be a subsequent invocation of a
+#' prior call to [`query`][timestreamquery_query], and a result set is
+#' returned. However, if the [`query`][timestreamquery_query] invocation
+#' only contains the `ClientToken`, that invocation of
+#' [`query`][timestreamquery_query] is assumed to be a new query run.
+#' 
+#' Note the following when using NextToken in a query:
+#' 
+#' -   A pagination token can be used for up to five
+#'     [`query`][timestreamquery_query] invocations, OR for a duration of
+#'     up to 1 hour – whichever comes first.
+#' 
+#' -   Using the same `NextToken` will return the same set of records. To
+#'     keep paginating through the result set, you must to use the most
+#'     recent `nextToken`.
+#' 
+#' -   Suppose a [`query`][timestreamquery_query] invocation returns two
+#'     `NextToken` values, `TokenA` and `TokenB`. If `TokenB` is used in a
+#'     subsequent [`query`][timestreamquery_query] invocation, then
+#'     `TokenA` is invalidated and cannot be reused.
+#' 
+#' -   To request a previous result set from a query after pagination has
+#'     begun, you must re-invoke the Query API.
+#' 
+#' -   The latest `NextToken` should be used to paginate until `null` is
+#'     returned, at which point a new `NextToken` should be used.
+#' 
+#' -   If the IAM principal of the query initiator and the result reader
+#'     are not the same and/or the query initiator and the result reader do
+#'     not have the same query string in the query requests, the query will
+#'     fail with an `Invalid pagination token` error.
+#' @param MaxRows The total number of rows to be returned in the
+#' [`query`][timestreamquery_query] output. The initial run of
+#' [`query`][timestreamquery_query] with a `MaxRows` value specified will
+#' return the result set of the query in two cases:
+#' 
+#' -   The size of the result is less than `1MB`.
+#' 
+#' -   The number of rows in the result set is less than the value of
+#'     `maxRows`.
+#' 
+#' Otherwise, the initial invocation of [`query`][timestreamquery_query]
+#' only returns a `NextToken`, which can then be used in subsequent calls
+#' to fetch the result set. To resume pagination, provide the `NextToken`
+#' value in the subsequent command.
+#' 
+#' If the row size is large (e.g. a row has many columns), Timestream may
+#' return fewer rows to keep the response size from exceeding the 1 MB
+#' limit. If `MaxRows` is not provided, Timestream will send the necessary
+#' number of rows to meet the 1 MB limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -221,3 +953,141 @@ timestreamquery_query <- function(QueryString, ClientToken = NULL, NextToken = N
   return(response)
 }
 .timestreamquery$operations$query <- timestreamquery_query
+
+#' Associate a set of tags with a Timestream resource
+#'
+#' @description
+#' Associate a set of tags with a Timestream resource. You can then
+#' activate these user-defined tags so that they appear on the Billing and
+#' Cost Management console for cost allocation tracking.
+#'
+#' @usage
+#' timestreamquery_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; Identifies the Timestream resource to which tags should be added. This
+#' value is an Amazon Resource Name (ARN).
+#' @param Tags &#91;required&#93; The tags to be assigned to the Timestream resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_tag_resource
+timestreamquery_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .timestreamquery$tag_resource_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$tag_resource <- timestreamquery_tag_resource
+
+#' Removes the association of tags from a Timestream query resource
+#'
+#' @description
+#' Removes the association of tags from a Timestream query resource.
+#'
+#' @usage
+#' timestreamquery_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The Timestream resource that the tags will be removed from. This value
+#' is an Amazon Resource Name (ARN).
+#' @param TagKeys &#91;required&#93; A list of tags keys. Existing tags of the resource whose keys are
+#' members of this list will be removed from the Timestream resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_untag_resource
+timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .timestreamquery$untag_resource_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$untag_resource <- timestreamquery_untag_resource
+
+#' Update a scheduled query
+#'
+#' @description
+#' Update a scheduled query.
+#'
+#' @usage
+#' timestreamquery_update_scheduled_query(ScheduledQueryArn, State)
+#'
+#' @param ScheduledQueryArn &#91;required&#93; ARN of the scheuled query.
+#' @param State &#91;required&#93; State of the scheduled query.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_scheduled_query(
+#'   ScheduledQueryArn = "string",
+#'   State = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_update_scheduled_query
+timestreamquery_update_scheduled_query <- function(ScheduledQueryArn, State) {
+  op <- new_operation(
+    name = "UpdateScheduledQuery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$update_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn, State = State)
+  output <- .timestreamquery$update_scheduled_query_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$update_scheduled_query <- timestreamquery_update_scheduled_query

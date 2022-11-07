@@ -14,23 +14,9 @@ updated.}
 
 \item{RunProperties}{[required] The properties to put for the specified run.}
 }
-\value{
-An empty list.
-}
 \description{
-Puts the specified workflow run properties for the given workflow run.
-If a property already exists for the specified run, then it overrides
-the value otherwise adds the property to existing properties.
-}
-\section{Request syntax}{
-\preformatted{svc$put_workflow_run_properties(
-  Name = "string",
-  RunId = "string",
-  RunProperties = list(
-    "string"
-  )
-)
-}
-}
+Puts the specified workflow run properties for the given workflow run. If a property already exists for the specified run, then it overrides the value otherwise adds the property to existing properties.
 
+See \url{https://paws-r.github.io/docs/glue/put_workflow_run_properties.html} for full documentation.
+}
 \keyword{internal}

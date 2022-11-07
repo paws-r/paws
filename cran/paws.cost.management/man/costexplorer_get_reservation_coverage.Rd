@@ -2,10 +2,21 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_get_reservation_coverage}
 \alias{costexplorer_get_reservation_coverage}
-\title{Retrieves the reservation coverage for your account}
+\title{Retrieves the reservation coverage for your account, which you can use
+to see how much of your Amazon Elastic Compute Cloud, Amazon
+ElastiCache, Amazon Relational Database Service, or Amazon Redshift
+usage is covered by a reservation}
 \usage{
-costexplorer_get_reservation_coverage(TimePeriod, GroupBy, Granularity,
-  Filter, Metrics, NextPageToken, SortBy, MaxResults)
+costexplorer_get_reservation_coverage(
+  TimePeriod,
+  GroupBy = NULL,
+  Granularity = NULL,
+  Filter = NULL,
+  Metrics = NULL,
+  NextPageToken = NULL,
+  SortBy = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{TimePeriod}{[required] The start and end dates of the period that you want to retrieve data
@@ -23,6 +34,7 @@ including \code{2017-05-01}.}
 \item DATABASE_ENGINE
 \item DEPLOYMENT_OPTION
 \item INSTANCE_TYPE
+\item INVOICING_ENTITY
 \item LINKED_ACCOUNT
 \item OPERATING_SYSTEM
 \item PLATFORM
@@ -30,8 +42,8 @@ including \code{2017-05-01}.}
 \item TENANCY
 }}
 
-\item{Granularity}{The granularity of the AWS cost data for the reservation. Valid values
-are \code{MONTHLY} and \code{DAILY}.
+\item{Granularity}{The granularity of the Amazon Web Services cost data for the
+reservation. Valid values are \code{MONTHLY} and \code{DAILY}.
 
 If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity} isn't
 set, the response object doesn't include \code{Granularity}, either \code{MONTHLY}
@@ -73,9 +85,9 @@ Cost category is also supported.}
 Valid values are \code{Hour}, \code{Unit}, and \code{Cost}. You can use multiple values
 in a request.}
 
-\item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
-when the response from a previous call has more results than the maximum
-page size.}
+\item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
+provides the token when the response from a previous call has more
+results than the maximum page size.}
 
 \item{SortBy}{The value by which you want to sort the data.
 
@@ -96,168 +108,13 @@ The following values are supported for \code{Key}:
 Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
 
 \item{MaxResults}{The maximum number of objects that you returned for this request. If
-more objects are available, in the response, AWS provides a
-NextPageToken value that you can use in a subsequent call to get the
-next batch of objects.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CoveragesByTime = list(
-    list(
-      TimePeriod = list(
-        Start = "string",
-        End = "string"
-      ),
-      Groups = list(
-        list(
-          Attributes = list(
-            "string"
-          ),
-          Coverage = list(
-            CoverageHours = list(
-              OnDemandHours = "string",
-              ReservedHours = "string",
-              TotalRunningHours = "string",
-              CoverageHoursPercentage = "string"
-            ),
-            CoverageNormalizedUnits = list(
-              OnDemandNormalizedUnits = "string",
-              ReservedNormalizedUnits = "string",
-              TotalRunningNormalizedUnits = "string",
-              CoverageNormalizedUnitsPercentage = "string"
-            ),
-            CoverageCost = list(
-              OnDemandCost = "string"
-            )
-          )
-        )
-      ),
-      Total = list(
-        CoverageHours = list(
-          OnDemandHours = "string",
-          ReservedHours = "string",
-          TotalRunningHours = "string",
-          CoverageHoursPercentage = "string"
-        ),
-        CoverageNormalizedUnits = list(
-          OnDemandNormalizedUnits = "string",
-          ReservedNormalizedUnits = "string",
-          TotalRunningNormalizedUnits = "string",
-          CoverageNormalizedUnitsPercentage = "string"
-        ),
-        CoverageCost = list(
-          OnDemandCost = "string"
-        )
-      )
-    )
-  ),
-  Total = list(
-    CoverageHours = list(
-      OnDemandHours = "string",
-      ReservedHours = "string",
-      TotalRunningHours = "string",
-      CoverageHoursPercentage = "string"
-    ),
-    CoverageNormalizedUnits = list(
-      OnDemandNormalizedUnits = "string",
-      ReservedNormalizedUnits = "string",
-      TotalRunningNormalizedUnits = "string",
-      CoverageNormalizedUnitsPercentage = "string"
-    ),
-    CoverageCost = list(
-      OnDemandCost = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
+more objects are available, in the response, Amazon Web Services
+provides a NextPageToken value that you can use in a subsequent call to
+get the next batch of objects.}
 }
 \description{
-Retrieves the reservation coverage for your account. This enables you to
-see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache,
-Amazon Relational Database Service, or Amazon Redshift usage is covered
-by a reservation. An organization's management account can see the
-coverage of the associated member accounts. This supports dimensions,
-Cost Categories, and nested expressions. For any time period, you can
-filter data about reservation usage by the following dimensions:
-\itemize{
-\item AZ
-\item CACHE_ENGINE
-\item DATABASE_ENGINE
-\item DEPLOYMENT_OPTION
-\item INSTANCE_TYPE
-\item LINKED_ACCOUNT
-\item OPERATING_SYSTEM
-\item PLATFORM
-\item REGION
-\item SERVICE
-\item TAG
-\item TENANCY
-}
+Retrieves the reservation coverage for your account, which you can use to see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage is covered by a reservation. An organization's management account can see the coverage of the associated member accounts. This supports dimensions, Cost Categories, and nested expressions. For any time period, you can filter data about reservation usage by the following dimensions:
 
-To determine valid values for a dimension, use the
-\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation.
+See \url{https://paws-r.github.io/docs/costexplorer/get_reservation_coverage.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_reservation_coverage(
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  GroupBy = list(
-    list(
-      Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
-      Key = "string"
-    )
-  ),
-  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  Metrics = list(
-    "string"
-  ),
-  NextPageToken = "string",
-  SortBy = list(
-    Key = "string",
-    SortOrder = "ASCENDING"|"DESCENDING"
-  ),
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

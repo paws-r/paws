@@ -8,32 +8,11 @@ NULL
 #' @description
 #' Removes session information for a specified bot, alias, and user ID.
 #'
-#' @usage
-#' lexruntimeservice_delete_session(botName, botAlias, userId)
+#' See [https://paws-r.github.io/docs/lexruntimeservice/delete_session.html](https://paws-r.github.io/docs/lexruntimeservice/delete_session.html) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot that contains the session data.
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
 #' @param userId &#91;required&#93; The identifier of the user associated with the session data.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   botName = "string",
-#'   botAlias = "string",
-#'   userId = "string",
-#'   sessionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_session(
-#'   botName = "string",
-#'   botAlias = "string",
-#'   userId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -60,9 +39,7 @@ lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
 #' @description
 #' Returns session information for a specified bot, alias, and user ID.
 #'
-#' @usage
-#' lexruntimeservice_get_session(botName, botAlias, userId,
-#'   checkpointLabelFilter)
+#' See [https://paws-r.github.io/docs/lexruntimeservice/get_session.html](https://paws-r.github.io/docs/lexruntimeservice/get_session.html) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot that contains the session data.
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
@@ -73,63 +50,6 @@ lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
 #' 
 #' When you specify a filter, only intents with their `checkpointLabel`
 #' field set to that string are returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   recentIntentSummaryView = list(
-#'     list(
-#'       intentName = "string",
-#'       checkpointLabel = "string",
-#'       slots = list(
-#'         "string"
-#'       ),
-#'       confirmationStatus = "None"|"Confirmed"|"Denied",
-#'       dialogActionType = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
-#'       fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
-#'       slotToElicit = "string"
-#'     )
-#'   ),
-#'   sessionAttributes = list(
-#'     "string"
-#'   ),
-#'   sessionId = "string",
-#'   dialogAction = list(
-#'     type = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
-#'     intentName = "string",
-#'     slots = list(
-#'       "string"
-#'     ),
-#'     slotToElicit = "string",
-#'     fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
-#'     message = "string",
-#'     messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite"
-#'   ),
-#'   activeContexts = list(
-#'     list(
-#'       name = "string",
-#'       timeToLive = list(
-#'         timeToLiveInSeconds = 123,
-#'         turnsToLive = 123
-#'       ),
-#'       parameters = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_session(
-#'   botName = "string",
-#'   botAlias = "string",
-#'   userId = "string",
-#'   checkpointLabelFilter = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -154,68 +74,9 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' Sends user input (text or speech) to Amazon Lex
 #'
 #' @description
-#' Sends user input (text or speech) to Amazon Lex. Clients use this API to
-#' send text and audio requests to Amazon Lex at runtime. Amazon Lex
-#' interprets the user input using the machine learning model that it built
-#' for the bot.
-#' 
-#' The [`post_content`][lexruntimeservice_post_content] operation supports
-#' audio input at 8kHz and 16kHz. You can use 8kHz audio to achieve higher
-#' speech recognition accuracy in telephone audio applications.
-#' 
-#' In response, Amazon Lex returns the next message to convey to the user.
-#' Consider the following example messages:
-#' 
-#' -   For a user input "I would like a pizza," Amazon Lex might return a
-#'     response with a message eliciting slot data (for example,
-#'     `PizzaSize`): "What size pizza would you like?".
-#' 
-#' -   After the user provides all of the pizza order information, Amazon
-#'     Lex might return a response with a message to get user confirmation:
-#'     "Order the pizza?".
-#' 
-#' -   After the user replies "Yes" to the confirmation prompt, Amazon Lex
-#'     might return a conclusion statement: "Thank you, your cheese pizza
-#'     has been ordered.".
-#' 
-#' Not all Amazon Lex messages require a response from the user. For
-#' example, conclusion statements do not require a response. Some messages
-#' require only a yes or no response. In addition to the `message`, Amazon
-#' Lex provides additional context about the message in the response that
-#' you can use to enhance client behavior, such as displaying the
-#' appropriate client user interface. Consider the following examples:
-#' 
-#' -   If the message is to elicit slot data, Amazon Lex returns the
-#'     following context information:
-#' 
-#'     -   `x-amz-lex-dialog-state` header set to `ElicitSlot`
-#' 
-#'     -   `x-amz-lex-intent-name` header set to the intent name in the
-#'         current context
-#' 
-#'     -   `x-amz-lex-slot-to-elicit` header set to the slot name for which
-#'         the `message` is eliciting information
-#' 
-#'     -   `x-amz-lex-slots` header set to a map of slots configured for
-#'         the intent with their current values
-#' 
-#' -   If the message is a confirmation prompt, the
-#'     `x-amz-lex-dialog-state` header is set to `Confirmation` and the
-#'     `x-amz-lex-slot-to-elicit` header is omitted.
-#' 
-#' -   If the message is a clarification prompt configured for the intent,
-#'     indicating that the user intent is not understood, the
-#'     `x-amz-dialog-state` header is set to `ElicitIntent` and the
-#'     `x-amz-slot-to-elicit` header is omitted.
-#' 
-#' In addition, Amazon Lex also returns your application-specific
-#' `sessionAttributes`. For more information, see [Managing Conversation
-#' Context](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
+#' Sends user input (text or speech) to Amazon Lex. Clients use this API to send text and audio requests to Amazon Lex at runtime. Amazon Lex interprets the user input using the machine learning model that it built for the bot.
 #'
-#' @usage
-#' lexruntimeservice_post_content(botName, botAlias, userId,
-#'   sessionAttributes, requestAttributes, contentType, accept, inputStream,
-#'   activeContexts)
+#' See [https://paws-r.github.io/docs/lexruntimeservice/post_content.html](https://paws-r.github.io/docs/lexruntimeservice/post_content.html) for full documentation.
 #'
 #' @param botName &#91;required&#93; Name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; Alias of the Amazon Lex bot.
@@ -250,8 +111,7 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' with string keys and values. The total size of the `sessionAttributes`
 #' and `requestAttributes` headers is limited to 12 KB.
 #' 
-#' For more information, see [Setting Session
-#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
+#' For more information, see Setting Session Attributes.
 #' @param requestAttributes You pass this value as the `x-amz-lex-request-attributes` HTTP header.
 #' 
 #' Request-specific information passed between Amazon Lex and a client
@@ -262,8 +122,7 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' The namespace `x-amz-lex:` is reserved for special attributes. Don't
 #' create any request attributes with the prefix `x-amz-lex:`.
 #' 
-#' For more information, see [Setting Request
-#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+#' For more information, see Setting Request Attributes.
 #' @param contentType &#91;required&#93; You pass this value as the `Content-Type` HTTP header.
 #' 
 #' Indicates the audio format or text. The header value must start with one
@@ -329,44 +188,6 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' list of contexts for the session. If you specify an empty list, all
 #' contexts for the session are cleared.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   contentType = "string",
-#'   intentName = "string",
-#'   nluIntentConfidence = "string",
-#'   alternativeIntents = "string",
-#'   slots = "string",
-#'   sessionAttributes = "string",
-#'   sentimentResponse = "string",
-#'   message = "string",
-#'   messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
-#'   dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
-#'   slotToElicit = "string",
-#'   inputTranscript = "string",
-#'   audioStream = raw,
-#'   botVersion = "string",
-#'   sessionId = "string",
-#'   activeContexts = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$post_content(
-#'   botName = "string",
-#'   botAlias = "string",
-#'   userId = "string",
-#'   sessionAttributes = "string",
-#'   requestAttributes = "string",
-#'   contentType = "string",
-#'   accept = "string",
-#'   inputStream = raw,
-#'   activeContexts = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lexruntimeservice_post_content
@@ -390,62 +211,9 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' Sends user input to Amazon Lex
 #'
 #' @description
-#' Sends user input to Amazon Lex. Client applications can use this API to
-#' send requests to Amazon Lex at runtime. Amazon Lex then interprets the
-#' user input using the machine learning model it built for the bot.
-#' 
-#' In response, Amazon Lex returns the next `message` to convey to the user
-#' an optional `responseCard` to display. Consider the following example
-#' messages:
-#' 
-#' -   For a user input "I would like a pizza", Amazon Lex might return a
-#'     response with a message eliciting slot data (for example,
-#'     PizzaSize): "What size pizza would you like?"
-#' 
-#' -   After the user provides all of the pizza order information, Amazon
-#'     Lex might return a response with a message to obtain user
-#'     confirmation "Proceed with the pizza order?".
-#' 
-#' -   After the user replies to a confirmation prompt with a "yes", Amazon
-#'     Lex might return a conclusion statement: "Thank you, your cheese
-#'     pizza has been ordered.".
-#' 
-#' Not all Amazon Lex messages require a user response. For example, a
-#' conclusion statement does not require a response. Some messages require
-#' only a "yes" or "no" user response. In addition to the `message`, Amazon
-#' Lex provides additional context about the message in the response that
-#' you might use to enhance client behavior, for example, to display the
-#' appropriate client user interface. These are the `slotToElicit`,
-#' `dialogState`, `intentName`, and `slots` fields in the response.
-#' Consider the following examples:
-#' 
-#' -   If the message is to elicit slot data, Amazon Lex returns the
-#'     following context information:
-#' 
-#'     -   `dialogState` set to ElicitSlot
-#' 
-#'     -   `intentName` set to the intent name in the current context
-#' 
-#'     -   `slotToElicit` set to the slot name for which the `message` is
-#'         eliciting information
-#' 
-#'     -   `slots` set to a map of slots, configured for the intent, with
-#'         currently known values
-#' 
-#' -   If the message is a confirmation prompt, the `dialogState` is set to
-#'     ConfirmIntent and `SlotToElicit` is set to null.
-#' 
-#' -   If the message is a clarification prompt (configured for the intent)
-#'     that indicates that user intent is not understood, the `dialogState`
-#'     is set to ElicitIntent and `slotToElicit` is set to null.
-#' 
-#' In addition, Amazon Lex also returns your application-specific
-#' `sessionAttributes`. For more information, see [Managing Conversation
-#' Context](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
+#' Sends user input to Amazon Lex. Client applications can use this API to send requests to Amazon Lex at runtime. Amazon Lex then interprets the user input using the machine learning model it built for the bot.
 #'
-#' @usage
-#' lexruntimeservice_post_text(botName, botAlias, userId,
-#'   sessionAttributes, requestAttributes, inputText, activeContexts)
+#' See [https://paws-r.github.io/docs/lexruntimeservice/post_text.html](https://paws-r.github.io/docs/lexruntimeservice/post_text.html) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; The alias of the Amazon Lex bot.
@@ -476,16 +244,14 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' @param sessionAttributes Application-specific information passed between Amazon Lex and a client
 #' application.
 #' 
-#' For more information, see [Setting Session
-#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs).
+#' For more information, see Setting Session Attributes.
 #' @param requestAttributes Request-specific information passed between Amazon Lex and a client
 #' application.
 #' 
 #' The namespace `x-amz-lex:` is reserved for special attributes. Don't
 #' create any request attributes with the prefix `x-amz-lex:`.
 #' 
-#' For more information, see [Setting Request
-#' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
+#' For more information, see Setting Request Attributes.
 #' @param inputText &#91;required&#93; The text that the user entered (Amazon Lex interprets this text).
 #' @param activeContexts A list of contexts active for the request. A context can be activated
 #' when a previous intent is fulfilled, or by including the context in the
@@ -494,102 +260,6 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' If you don't specify a list of contexts, Amazon Lex will use the current
 #' list of contexts for the session. If you specify an empty list, all
 #' contexts for the session are cleared.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   intentName = "string",
-#'   nluIntentConfidence = list(
-#'     score = 123.0
-#'   ),
-#'   alternativeIntents = list(
-#'     list(
-#'       intentName = "string",
-#'       nluIntentConfidence = list(
-#'         score = 123.0
-#'       ),
-#'       slots = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   slots = list(
-#'     "string"
-#'   ),
-#'   sessionAttributes = list(
-#'     "string"
-#'   ),
-#'   message = "string",
-#'   sentimentResponse = list(
-#'     sentimentLabel = "string",
-#'     sentimentScore = "string"
-#'   ),
-#'   messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
-#'   dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
-#'   slotToElicit = "string",
-#'   responseCard = list(
-#'     version = "string",
-#'     contentType = "application/vnd.amazonaws.card.generic",
-#'     genericAttachments = list(
-#'       list(
-#'         title = "string",
-#'         subTitle = "string",
-#'         attachmentLinkUrl = "string",
-#'         imageUrl = "string",
-#'         buttons = list(
-#'           list(
-#'             text = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   sessionId = "string",
-#'   botVersion = "string",
-#'   activeContexts = list(
-#'     list(
-#'       name = "string",
-#'       timeToLive = list(
-#'         timeToLiveInSeconds = 123,
-#'         turnsToLive = 123
-#'       ),
-#'       parameters = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$post_text(
-#'   botName = "string",
-#'   botAlias = "string",
-#'   userId = "string",
-#'   sessionAttributes = list(
-#'     "string"
-#'   ),
-#'   requestAttributes = list(
-#'     "string"
-#'   ),
-#'   inputText = "string",
-#'   activeContexts = list(
-#'     list(
-#'       name = "string",
-#'       timeToLive = list(
-#'         timeToLiveInSeconds = 123,
-#'         turnsToLive = 123
-#'       ),
-#'       parameters = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -615,17 +285,9 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #' bot
 #'
 #' @description
-#' Creates a new session or modifies an existing session with an Amazon Lex
-#' bot. Use this operation to enable your application to set the state of
-#' the bot.
-#' 
-#' For more information, see [Managing
-#' Sessions](https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html).
+#' Creates a new session or modifies an existing session with an Amazon Lex bot. Use this operation to enable your application to set the state of the bot.
 #'
-#' @usage
-#' lexruntimeservice_put_session(botName, botAlias, userId,
-#'   sessionAttributes, dialogAction, recentIntentSummaryView, accept,
-#'   activeContexts)
+#' See [https://paws-r.github.io/docs/lexruntimeservice/put_session.html](https://paws-r.github.io/docs/lexruntimeservice/put_session.html) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot that contains the session data.
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
@@ -693,73 +355,6 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #' If you don't specify a list of contexts, Amazon Lex will use the current
 #' list of contexts for the session. If you specify an empty list, all
 #' contexts for the session are cleared.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   contentType = "string",
-#'   intentName = "string",
-#'   slots = "string",
-#'   sessionAttributes = "string",
-#'   message = "string",
-#'   messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
-#'   dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
-#'   slotToElicit = "string",
-#'   audioStream = raw,
-#'   sessionId = "string",
-#'   activeContexts = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_session(
-#'   botName = "string",
-#'   botAlias = "string",
-#'   userId = "string",
-#'   sessionAttributes = list(
-#'     "string"
-#'   ),
-#'   dialogAction = list(
-#'     type = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
-#'     intentName = "string",
-#'     slots = list(
-#'       "string"
-#'     ),
-#'     slotToElicit = "string",
-#'     fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
-#'     message = "string",
-#'     messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite"
-#'   ),
-#'   recentIntentSummaryView = list(
-#'     list(
-#'       intentName = "string",
-#'       checkpointLabel = "string",
-#'       slots = list(
-#'         "string"
-#'       ),
-#'       confirmationStatus = "None"|"Confirmed"|"Denied",
-#'       dialogActionType = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
-#'       fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
-#'       slotToElicit = "string"
-#'     )
-#'   ),
-#'   accept = "string",
-#'   activeContexts = list(
-#'     list(
-#'       name = "string",
-#'       timeToLive = list(
-#'         timeToLiveInSeconds = 123,
-#'         turnsToLive = 123
-#'       ),
-#'       parameters = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

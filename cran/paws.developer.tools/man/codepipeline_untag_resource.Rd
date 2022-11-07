@@ -11,20 +11,9 @@ codepipeline_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The list of keys for the tags to be removed from the resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes tags from an AWS resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codepipeline/untag_resource.html} for full documentation.
+}
 \keyword{internal}

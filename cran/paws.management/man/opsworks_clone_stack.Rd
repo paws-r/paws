@@ -4,12 +4,30 @@
 \alias{opsworks_clone_stack}
 \title{Creates a clone of a specified stack}
 \usage{
-opsworks_clone_stack(SourceStackId, Name, Region, VpcId, Attributes,
-  ServiceRoleArn, DefaultInstanceProfileArn, DefaultOs, HostnameTheme,
-  DefaultAvailabilityZone, DefaultSubnetId, CustomJson,
-  ConfigurationManager, ChefConfiguration, UseCustomCookbooks,
-  UseOpsworksSecurityGroups, CustomCookbooksSource, DefaultSshKeyName,
-  ClonePermissions, CloneAppIds, DefaultRootDeviceType, AgentVersion)
+opsworks_clone_stack(
+  SourceStackId,
+  Name = NULL,
+  Region = NULL,
+  VpcId = NULL,
+  Attributes = NULL,
+  ServiceRoleArn,
+  DefaultInstanceProfileArn = NULL,
+  DefaultOs = NULL,
+  HostnameTheme = NULL,
+  DefaultAvailabilityZone = NULL,
+  DefaultSubnetId = NULL,
+  CustomJson = NULL,
+  ConfigurationManager = NULL,
+  ChefConfiguration = NULL,
+  UseCustomCookbooks = NULL,
+  UseOpsworksSecurityGroups = NULL,
+  CustomCookbooksSource = NULL,
+  DefaultSshKeyName = NULL,
+  ClonePermissions = NULL,
+  CloneAppIds = NULL,
+  DefaultRootDeviceType = NULL,
+  AgentVersion = NULL
+)
 }
 \arguments{
 \item{SourceStackId}{[required] The source stack ID.}
@@ -210,64 +228,9 @@ AgentVersion cannot be set to Chef 12.2.
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackId = "string"
-)
-}
-}
 \description{
-Creates a clone of a specified stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html}{Clone a Stack}.
-By default, all parameters are set to the values used by the parent
-stack.
+Creates a clone of a specified stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html}{Clone a Stack}. By default, all parameters are set to the values used by the parent stack.
 
-\strong{Required Permissions}: To use this action, an IAM user must have an
-attached policy that explicitly grants permissions. For more information
-about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/clone_stack.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$clone_stack(
-  SourceStackId = "string",
-  Name = "string",
-  Region = "string",
-  VpcId = "string",
-  Attributes = list(
-    "string"
-  ),
-  ServiceRoleArn = "string",
-  DefaultInstanceProfileArn = "string",
-  DefaultOs = "string",
-  HostnameTheme = "string",
-  DefaultAvailabilityZone = "string",
-  DefaultSubnetId = "string",
-  CustomJson = "string",
-  ConfigurationManager = list(
-    Name = "string",
-    Version = "string"
-  ),
-  ChefConfiguration = list(
-    ManageBerkshelf = TRUE|FALSE,
-    BerkshelfVersion = "string"
-  ),
-  UseCustomCookbooks = TRUE|FALSE,
-  UseOpsworksSecurityGroups = TRUE|FALSE,
-  CustomCookbooksSource = list(
-    Type = "git"|"svn"|"archive"|"s3",
-    Url = "string",
-    Username = "string",
-    Password = "string",
-    SshKey = "string",
-    Revision = "string"
-  ),
-  DefaultSshKeyName = "string",
-  ClonePermissions = TRUE|FALSE,
-  CloneAppIds = list(
-    "string"
-  ),
-  DefaultRootDeviceType = "ebs"|"instance-store",
-  AgentVersion = "string"
-)
-}
-}
-
 \keyword{internal}

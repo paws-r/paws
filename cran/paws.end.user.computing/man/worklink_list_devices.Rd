@@ -4,7 +4,7 @@
 \alias{worklink_list_devices}
 \title{Retrieves a list of devices registered with the specified fleet}
 \usage{
-worklink_list_devices(FleetArn, NextToken, MaxResults)
+worklink_list_devices(FleetArn, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
@@ -14,28 +14,9 @@ operation. If this value is null, it retrieves the first page.}
 
 \item{MaxResults}{The maximum number of results to be included in the next page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Devices = list(
-    list(
-      DeviceId = "string",
-      DeviceStatus = "ACTIVE"|"SIGNED_OUT"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves a list of devices registered with the specified fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$list_devices(
-  FleetArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/list_devices.html} for full documentation.
+}
 \keyword{internal}

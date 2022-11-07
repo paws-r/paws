@@ -2,24 +2,17 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_delete_vocabulary}
 \alias{transcribeservice_delete_vocabulary}
-\title{Deletes a vocabulary from Amazon Transcribe}
+\title{Deletes a custom vocabulary}
 \usage{
 transcribeservice_delete_vocabulary(VocabularyName)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the vocabulary to delete.}
-}
-\value{
-An empty list.
+\item{VocabularyName}{[required] The name of the custom vocabulary you want to delete. Vocabulary names
+are case sensitive.}
 }
 \description{
-Deletes a vocabulary from Amazon Transcribe.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vocabulary(
-  VocabularyName = "string"
-)
-}
-}
+Deletes a custom vocabulary. To use this operation, specify the name of the vocabulary you want to delete using \code{VocabularyName}. Vocabulary names are case sensitive.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/delete_vocabulary.html} for full documentation.
+}
 \keyword{internal}

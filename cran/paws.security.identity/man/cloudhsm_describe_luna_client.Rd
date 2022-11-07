@@ -4,39 +4,16 @@
 \alias{cloudhsm_describe_luna_client}
 \title{This is documentation for AWS CloudHSM Classic}
 \usage{
-cloudhsm_describe_luna_client(ClientArn, CertificateFingerprint)
+cloudhsm_describe_luna_client(ClientArn = NULL, CertificateFingerprint = NULL)
 }
 \arguments{
 \item{ClientArn}{The ARN of the client.}
 
 \item{CertificateFingerprint}{The certificate fingerprint.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientArn = "string",
-  Certificate = "string",
-  CertificateFingerprint = "string",
-  LastModifiedTimestamp = "string",
-  Label = "string"
-)
-}
-}
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more
-information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
-and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
-\strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
-
-Retrieves information about an HSM client.
+See \url{https://paws-r.github.io/docs/cloudhsm/describe_luna_client.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_luna_client(
-  ClientArn = "string",
-  CertificateFingerprint = "string"
-)
-}
-}
-
 \keyword{internal}

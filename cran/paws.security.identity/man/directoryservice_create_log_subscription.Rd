@@ -4,7 +4,7 @@
 \alias{directoryservice_create_log_subscription}
 \title{Creates a subscription to forward real-time Directory Service domain
 controller security logs to the specified Amazon CloudWatch log group in
-your AWS account}
+your Amazon Web Services account}
 \usage{
 directoryservice_create_log_subscription(DirectoryId, LogGroupName)
 }
@@ -15,20 +15,9 @@ real-time logs to your specified CloudWatch log group.}
 \item{LogGroupName}{[required] The name of the CloudWatch log group where the real-time domain
 controller logs are forwarded.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a subscription to forward real-time Directory Service domain
-controller security logs to the specified Amazon CloudWatch log group in
-your AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$create_log_subscription(
-  DirectoryId = "string",
-  LogGroupName = "string"
-)
-}
-}
+Creates a subscription to forward real-time Directory Service domain controller security logs to the specified Amazon CloudWatch log group in your Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/directoryservice/create_log_subscription.html} for full documentation.
+}
 \keyword{internal}

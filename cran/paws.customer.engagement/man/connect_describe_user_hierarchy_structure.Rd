@@ -8,49 +8,12 @@ instance}
 connect_describe_user_hierarchy_structure(InstanceId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  HierarchyStructure = list(
-    LevelOne = list(
-      Id = "string",
-      Arn = "string",
-      Name = "string"
-    ),
-    LevelTwo = list(
-      Id = "string",
-      Arn = "string",
-      Name = "string"
-    ),
-    LevelThree = list(
-      Id = "string",
-      Arn = "string",
-      Name = "string"
-    ),
-    LevelFour = list(
-      Id = "string",
-      Arn = "string",
-      Name = "string"
-    ),
-    LevelFive = list(
-      Id = "string",
-      Arn = "string",
-      Name = "string"
-    )
-  )
-)
-}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
-Describes the hierarchy structure of the specified Amazon Connect
-instance.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_user_hierarchy_structure(
-  InstanceId = "string"
-)
-}
-}
+Describes the hierarchy structure of the specified Amazon Connect instance.
 
+See \url{https://paws-r.github.io/docs/connect/describe_user_hierarchy_structure.html} for full documentation.
+}
 \keyword{internal}

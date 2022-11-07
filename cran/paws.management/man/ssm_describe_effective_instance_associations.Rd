@@ -2,13 +2,16 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_effective_instance_associations}
 \alias{ssm_describe_effective_instance_associations}
-\title{All associations for the instance(s)}
+\title{All associations for the managed node(s)}
 \usage{
-ssm_describe_effective_instance_associations(InstanceId, MaxResults,
-  NextToken)
+ssm_describe_effective_instance_associations(
+  InstanceId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The instance ID for which you want to view all associations.}
+\item{InstanceId}{[required] The managed node ID for which you want to view all associations.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -17,30 +20,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Associations = list(
-    list(
-      AssociationId = "string",
-      InstanceId = "string",
-      Content = "string",
-      AssociationVersion = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-All associations for the instance(s).
-}
-\section{Request syntax}{
-\preformatted{svc$describe_effective_instance_associations(
-  InstanceId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+All associations for the managed node(s).
 
+See \url{https://paws-r.github.io/docs/ssm/describe_effective_instance_associations.html} for full documentation.
+}
 \keyword{internal}

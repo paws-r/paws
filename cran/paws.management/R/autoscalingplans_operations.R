@@ -8,9 +8,7 @@ NULL
 #' @description
 #' Creates a scaling plan.
 #'
-#' @usage
-#' autoscalingplans_create_scaling_plan(ScalingPlanName, ApplicationSource,
-#'   ScalingInstructions)
+#' See [https://paws-r.github.io/docs/autoscalingplans/create_scaling_plan.html](https://paws-r.github.io/docs/autoscalingplans/create_scaling_plan.html) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan. Names cannot contain vertical bars,
 #' colons, or forward slashes.
@@ -25,88 +23,6 @@ NULL
 #' For more information, see
 #' [ScalingInstruction](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html)
 #' in the *AWS Auto Scaling API Reference*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ScalingPlanVersion = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_scaling_plan(
-#'   ScalingPlanName = "string",
-#'   ApplicationSource = list(
-#'     CloudFormationStackARN = "string",
-#'     TagFilters = list(
-#'       list(
-#'         Key = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ScalingInstructions = list(
-#'     list(
-#'       ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
-#'       ResourceId = "string",
-#'       ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       TargetTrackingConfigurations = list(
-#'         list(
-#'           PredefinedScalingMetricSpecification = list(
-#'             PredefinedScalingMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut",
-#'             ResourceLabel = "string"
-#'           ),
-#'           CustomizedScalingMetricSpecification = list(
-#'             MetricName = "string",
-#'             Namespace = "string",
-#'             Dimensions = list(
-#'               list(
-#'                 Name = "string",
-#'                 Value = "string"
-#'               )
-#'             ),
-#'             Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'             Unit = "string"
-#'           ),
-#'           TargetValue = 123.0,
-#'           DisableScaleIn = TRUE|FALSE,
-#'           ScaleOutCooldown = 123,
-#'           ScaleInCooldown = 123,
-#'           EstimatedInstanceWarmup = 123
-#'         )
-#'       ),
-#'       PredefinedLoadMetricSpecification = list(
-#'         PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
-#'         ResourceLabel = "string"
-#'       ),
-#'       CustomizedLoadMetricSpecification = list(
-#'         MetricName = "string",
-#'         Namespace = "string",
-#'         Dimensions = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'         Unit = "string"
-#'       ),
-#'       ScheduledActionBufferTime = 123,
-#'       PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
-#'       PredictiveScalingMaxCapacityBuffer = 123,
-#'       PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
-#'       ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
-#'       DisableDynamicScaling = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -132,31 +48,12 @@ autoscalingplans_create_scaling_plan <- function(ScalingPlanName, ApplicationSou
 #'
 #' @description
 #' Deletes the specified scaling plan.
-#' 
-#' Deleting a scaling plan deletes the underlying ScalingInstruction for
-#' all of the scalable resources that are covered by the plan.
-#' 
-#' If the plan has launched resources or has scaling activities in
-#' progress, you must delete those resources separately.
 #'
-#' @usage
-#' autoscalingplans_delete_scaling_plan(ScalingPlanName,
-#'   ScalingPlanVersion)
+#' See [https://paws-r.github.io/docs/autoscalingplans/delete_scaling_plan.html](https://paws-r.github.io/docs/autoscalingplans/delete_scaling_plan.html) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
 #' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. Currently, the only valid value
 #' is `1`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_scaling_plan(
-#'   ScalingPlanName = "string",
-#'   ScalingPlanVersion = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -183,9 +80,7 @@ autoscalingplans_delete_scaling_plan <- function(ScalingPlanName, ScalingPlanVer
 #' @description
 #' Describes the scalable resources in the specified scaling plan.
 #'
-#' @usage
-#' autoscalingplans_describe_scaling_plan_resources(ScalingPlanName,
-#'   ScalingPlanVersion, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plan_resources.html](https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plan_resources.html) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
 #' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. Currently, the only valid value
@@ -193,64 +88,6 @@ autoscalingplans_delete_scaling_plan <- function(ScalingPlanName, ScalingPlanVer
 #' @param MaxResults The maximum number of scalable resources to return. The value must be
 #' between 1 and 50. The default value is 50.
 #' @param NextToken The token for the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ScalingPlanResources = list(
-#'     list(
-#'       ScalingPlanName = "string",
-#'       ScalingPlanVersion = 123,
-#'       ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
-#'       ResourceId = "string",
-#'       ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
-#'       ScalingPolicies = list(
-#'         list(
-#'           PolicyName = "string",
-#'           PolicyType = "TargetTrackingScaling",
-#'           TargetTrackingConfiguration = list(
-#'             PredefinedScalingMetricSpecification = list(
-#'               PredefinedScalingMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut",
-#'               ResourceLabel = "string"
-#'             ),
-#'             CustomizedScalingMetricSpecification = list(
-#'               MetricName = "string",
-#'               Namespace = "string",
-#'               Dimensions = list(
-#'                 list(
-#'                   Name = "string",
-#'                   Value = "string"
-#'                 )
-#'               ),
-#'               Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'               Unit = "string"
-#'             ),
-#'             TargetValue = 123.0,
-#'             DisableScaleIn = TRUE|FALSE,
-#'             ScaleOutCooldown = 123,
-#'             ScaleInCooldown = 123,
-#'             EstimatedInstanceWarmup = 123
-#'           )
-#'         )
-#'       ),
-#'       ScalingStatusCode = "Inactive"|"PartiallyActive"|"Active",
-#'       ScalingStatusMessage = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_scaling_plan_resources(
-#'   ScalingPlanName = "string",
-#'   ScalingPlanVersion = 123,
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -277,9 +114,7 @@ autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, Sc
 #' @description
 #' Describes one or more of your scaling plans.
 #'
-#' @usage
-#' autoscalingplans_describe_scaling_plans(ScalingPlanNames,
-#'   ScalingPlanVersion, ApplicationSources, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plans.html](https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plans.html) for full documentation.
 #'
 #' @param ScalingPlanNames The names of the scaling plans (up to 10). If you specify application
 #' sources, you cannot specify scaling plan names.
@@ -293,120 +128,6 @@ autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, Sc
 #' @param MaxResults The maximum number of scalable resources to return. This value can be
 #' between 1 and 50. The default value is 50.
 #' @param NextToken The token for the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ScalingPlans = list(
-#'     list(
-#'       ScalingPlanName = "string",
-#'       ScalingPlanVersion = 123,
-#'       ApplicationSource = list(
-#'         CloudFormationStackARN = "string",
-#'         TagFilters = list(
-#'           list(
-#'             Key = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       ScalingInstructions = list(
-#'         list(
-#'           ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
-#'           ResourceId = "string",
-#'           ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
-#'           MinCapacity = 123,
-#'           MaxCapacity = 123,
-#'           TargetTrackingConfigurations = list(
-#'             list(
-#'               PredefinedScalingMetricSpecification = list(
-#'                 PredefinedScalingMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut",
-#'                 ResourceLabel = "string"
-#'               ),
-#'               CustomizedScalingMetricSpecification = list(
-#'                 MetricName = "string",
-#'                 Namespace = "string",
-#'                 Dimensions = list(
-#'                   list(
-#'                     Name = "string",
-#'                     Value = "string"
-#'                   )
-#'                 ),
-#'                 Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'                 Unit = "string"
-#'               ),
-#'               TargetValue = 123.0,
-#'               DisableScaleIn = TRUE|FALSE,
-#'               ScaleOutCooldown = 123,
-#'               ScaleInCooldown = 123,
-#'               EstimatedInstanceWarmup = 123
-#'             )
-#'           ),
-#'           PredefinedLoadMetricSpecification = list(
-#'             PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
-#'             ResourceLabel = "string"
-#'           ),
-#'           CustomizedLoadMetricSpecification = list(
-#'             MetricName = "string",
-#'             Namespace = "string",
-#'             Dimensions = list(
-#'               list(
-#'                 Name = "string",
-#'                 Value = "string"
-#'               )
-#'             ),
-#'             Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'             Unit = "string"
-#'           ),
-#'           ScheduledActionBufferTime = 123,
-#'           PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
-#'           PredictiveScalingMaxCapacityBuffer = 123,
-#'           PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
-#'           ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
-#'           DisableDynamicScaling = TRUE|FALSE
-#'         )
-#'       ),
-#'       StatusCode = "Active"|"ActiveWithProblems"|"CreationInProgress"|"CreationFailed"|"DeletionInProgress"|"DeletionFailed"|"UpdateInProgress"|"UpdateFailed",
-#'       StatusMessage = "string",
-#'       StatusStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_scaling_plans(
-#'   ScalingPlanNames = list(
-#'     "string"
-#'   ),
-#'   ScalingPlanVersion = 123,
-#'   ApplicationSources = list(
-#'     list(
-#'       CloudFormationStackARN = "string",
-#'       TagFilters = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -432,15 +153,8 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
 #'
 #' @description
 #' Retrieves the forecast data for a scalable resource.
-#' 
-#' Capacity forecasts are represented as predicted values, or data points,
-#' that are calculated using historical data points from a specified
-#' CloudWatch load metric. Data points are available for up to 56 days.
 #'
-#' @usage
-#' autoscalingplans_get_scaling_plan_resource_forecast_data(
-#'   ScalingPlanName, ScalingPlanVersion, ServiceNamespace, ResourceId,
-#'   ScalableDimension, ForecastDataType, StartTime, EndTime)
+#' See [https://paws-r.github.io/docs/autoscalingplans/get_scaling_plan_resource_forecast_data.html](https://paws-r.github.io/docs/autoscalingplans/get_scaling_plan_resource_forecast_data.html) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
 #' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. Currently, the only valid value
@@ -476,39 +190,6 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
 #' days in the future, the availability of forecast data has limits. AWS
 #' Auto Scaling only issues forecasts for periods of two days in advance.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Datapoints = list(
-#'     list(
-#'       Timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Value = 123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_scaling_plan_resource_forecast_data(
-#'   ScalingPlanName = "string",
-#'   ScalingPlanVersion = 123,
-#'   ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
-#'   ResourceId = "string",
-#'   ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
-#'   ForecastDataType = "CapacityForecast"|"LoadForecast"|"ScheduledActionMinCapacity"|"ScheduledActionMaxCapacity",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname autoscalingplans_get_scaling_plan_resource_forecast_data
@@ -533,13 +214,8 @@ autoscalingplans_get_scaling_plan_resource_forecast_data <- function(ScalingPlan
 #'
 #' @description
 #' Updates the specified scaling plan.
-#' 
-#' You cannot update a scaling plan if it is in the process of being
-#' created, updated, or deleted.
 #'
-#' @usage
-#' autoscalingplans_update_scaling_plan(ScalingPlanName,
-#'   ScalingPlanVersion, ApplicationSource, ScalingInstructions)
+#' See [https://paws-r.github.io/docs/autoscalingplans/update_scaling_plan.html](https://paws-r.github.io/docs/autoscalingplans/update_scaling_plan.html) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
 #' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. The only valid value is `1`.
@@ -554,84 +230,6 @@ autoscalingplans_get_scaling_plan_resource_forecast_data <- function(ScalingPlan
 #' For more information, see
 #' [ScalingInstruction](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html)
 #' in the *AWS Auto Scaling API Reference*.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_scaling_plan(
-#'   ScalingPlanName = "string",
-#'   ScalingPlanVersion = 123,
-#'   ApplicationSource = list(
-#'     CloudFormationStackARN = "string",
-#'     TagFilters = list(
-#'       list(
-#'         Key = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ScalingInstructions = list(
-#'     list(
-#'       ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
-#'       ResourceId = "string",
-#'       ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       TargetTrackingConfigurations = list(
-#'         list(
-#'           PredefinedScalingMetricSpecification = list(
-#'             PredefinedScalingMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut",
-#'             ResourceLabel = "string"
-#'           ),
-#'           CustomizedScalingMetricSpecification = list(
-#'             MetricName = "string",
-#'             Namespace = "string",
-#'             Dimensions = list(
-#'               list(
-#'                 Name = "string",
-#'                 Value = "string"
-#'               )
-#'             ),
-#'             Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'             Unit = "string"
-#'           ),
-#'           TargetValue = 123.0,
-#'           DisableScaleIn = TRUE|FALSE,
-#'           ScaleOutCooldown = 123,
-#'           ScaleInCooldown = 123,
-#'           EstimatedInstanceWarmup = 123
-#'         )
-#'       ),
-#'       PredefinedLoadMetricSpecification = list(
-#'         PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
-#'         ResourceLabel = "string"
-#'       ),
-#'       CustomizedLoadMetricSpecification = list(
-#'         MetricName = "string",
-#'         Namespace = "string",
-#'         Dimensions = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'         Unit = "string"
-#'       ),
-#'       ScheduledActionBufferTime = 123,
-#'       PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
-#'       PredictiveScalingMaxCapacityBuffer = 123,
-#'       PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
-#'       ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
-#'       DisableDynamicScaling = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

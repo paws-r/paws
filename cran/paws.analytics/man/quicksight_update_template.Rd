@@ -5,12 +5,17 @@
 \title{Updates a template from an existing Amazon QuickSight analysis or
 another template}
 \usage{
-quicksight_update_template(AwsAccountId, TemplateId, SourceEntity,
-  VersionDescription, Name)
+quicksight_update_template(
+  AwsAccountId,
+  TemplateId,
+  SourceEntity,
+  VersionDescription = NULL,
+  Name = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you're
-updating.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the template
+that you're updating.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
@@ -20,8 +25,8 @@ source: \code{SourceTemplate} for a template or \code{SourceAnalysis} for an
 analysis. Both of these require an Amazon Resource Name (ARN). For
 \code{SourceTemplate}, specify the ARN of the source template. For
 \code{SourceAnalysis}, specify the ARN of the source analysis. The
-\code{SourceTemplate} ARN can contain any AWS Account and any
-QuickSight-supported AWS Region.
+\code{SourceTemplate} ARN can contain any Amazon Web Services account and any
+Amazon QuickSight-supported Amazon Web Services Region;.
 
 Use the \code{DataSetReferences} entity within \code{SourceTemplate} or
 \code{SourceAnalysis} to list the replacement datasets for the placeholders
@@ -36,43 +41,9 @@ field.}
 
 \item{Name}{The name for the template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateId = "string",
-  Arn = "string",
-  VersionArn = "string",
-  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Updates a template from an existing Amazon QuickSight analysis or
-another template.
-}
-\section{Request syntax}{
-\preformatted{svc$update_template(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  SourceEntity = list(
-    SourceAnalysis = list(
-      Arn = "string",
-      DataSetReferences = list(
-        list(
-          DataSetPlaceholder = "string",
-          DataSetArn = "string"
-        )
-      )
-    ),
-    SourceTemplate = list(
-      Arn = "string"
-    )
-  ),
-  VersionDescription = "string",
-  Name = "string"
-)
-}
-}
+Updates a template from an existing Amazon QuickSight analysis or another template.
 
+See \url{https://paws-r.github.io/docs/quicksight/update_template.html} for full documentation.
+}
 \keyword{internal}

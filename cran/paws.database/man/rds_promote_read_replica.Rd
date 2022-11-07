@@ -4,8 +4,11 @@
 \alias{rds_promote_read_replica}
 \title{Promotes a read replica DB instance to a standalone DB instance}
 \usage{
-rds_promote_read_replica(DBInstanceIdentifier, BackupRetentionPeriod,
-  PreferredBackupWindow)
+rds_promote_read_replica(
+  DBInstanceIdentifier,
+  BackupRetentionPeriod = NULL,
+  PreferredBackupWindow = NULL
+)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
@@ -34,8 +37,8 @@ automated backups are enabled, using the \code{BackupRetentionPeriod}
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Adjusting the Preferred Maintenance Window} in the
+block of time for each Amazon Web Services Region. To see the time
+blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Adjusting the Preferred Maintenance Window} in the
 \emph{Amazon RDS User Guide.}
 
 Constraints:
@@ -46,216 +49,9 @@ Constraints:
 \item Must be at least 30 minutes.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstance = list(
-    DBInstanceIdentifier = "string",
-    DBInstanceClass = "string",
-    Engine = "string",
-    DBInstanceStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    AllocatedStorage = 123,
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredBackupWindow = "string",
-    BackupRetentionPeriod = 123,
-    DBSecurityGroups = list(
-      list(
-        DBSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    DBParameterGroups = list(
-      list(
-        DBParameterGroupName = "string",
-        ParameterApplyStatus = "string"
-      )
-    ),
-    AvailabilityZone = "string",
-    DBSubnetGroup = list(
-      DBSubnetGroupName = "string",
-      DBSubnetGroupDescription = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string"
-          ),
-          SubnetOutpost = list(
-            Arn = "string"
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      DBSubnetGroupArn = "string"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      DBInstanceClass = "string",
-      AllocatedStorage = 123,
-      MasterUserPassword = "string",
-      Port = 123,
-      BackupRetentionPeriod = 123,
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      LicenseModel = "string",
-      Iops = 123,
-      DBInstanceIdentifier = "string",
-      StorageType = "string",
-      CACertificateIdentifier = "string",
-      DBSubnetGroupName = "string",
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      ),
-      ProcessorFeatures = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-    ),
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MultiAZ = TRUE|FALSE,
-    EngineVersion = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    ReadReplicaSourceDBInstanceIdentifier = "string",
-    ReadReplicaDBInstanceIdentifiers = list(
-      "string"
-    ),
-    ReadReplicaDBClusterIdentifiers = list(
-      "string"
-    ),
-    ReplicaMode = "open-read-only"|"mounted",
-    LicenseModel = "string",
-    Iops = 123,
-    OptionGroupMemberships = list(
-      list(
-        OptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    CharacterSetName = "string",
-    NcharCharacterSetName = "string",
-    SecondaryAvailabilityZone = "string",
-    PubliclyAccessible = TRUE|FALSE,
-    StatusInfos = list(
-      list(
-        StatusType = "string",
-        Normal = TRUE|FALSE,
-        Status = "string",
-        Message = "string"
-      )
-    ),
-    StorageType = "string",
-    TdeCredentialArn = "string",
-    DbInstancePort = 123,
-    DBClusterIdentifier = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbiResourceId = "string",
-    CACertificateIdentifier = "string",
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    CopyTagsToSnapshot = TRUE|FALSE,
-    MonitoringInterval = 123,
-    EnhancedMonitoringResourceArn = "string",
-    MonitoringRoleArn = "string",
-    PromotionTier = 123,
-    DBInstanceArn = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    PerformanceInsightsEnabled = TRUE|FALSE,
-    PerformanceInsightsKMSKeyId = "string",
-    PerformanceInsightsRetentionPeriod = 123,
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    ProcessorFeatures = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    DeletionProtection = TRUE|FALSE,
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        FeatureName = "string",
-        Status = "string"
-      )
-    ),
-    ListenerEndpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    MaxAllocatedStorage = 123,
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    DBInstanceAutomatedBackupsReplications = list(
-      list(
-        DBInstanceAutomatedBackupsArn = "string"
-      )
-    ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
-  )
-)
-}
-}
 \description{
 Promotes a read replica DB instance to a standalone DB instance.
-\itemize{
-\item Backup duration is a function of the amount of changes to the
-database since the previous backup. If you plan to promote a read
-replica to a standalone instance, we recommend that you enable
-backups and complete at least one backup prior to promotion. In
-addition, a read replica cannot be promoted to a standalone instance
-when it is in the \code{backing-up} status. If you have enabled backups
-on your read replica, configure the automated backup window so that
-daily backups do not interfere with read replica promotion.
-\item This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$promote_read_replica(
-  DBInstanceIdentifier = "string",
-  BackupRetentionPeriod = 123,
-  PreferredBackupWindow = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/promote_read_replica.html} for full documentation.
+}
 \keyword{internal}

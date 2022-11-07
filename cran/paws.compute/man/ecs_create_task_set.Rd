@@ -4,9 +4,21 @@
 \alias{ecs_create_task_set}
 \title{Create a task set in the specified cluster and service}
 \usage{
-ecs_create_task_set(service, cluster, externalId, taskDefinition,
-  networkConfiguration, loadBalancers, serviceRegistries, launchType,
-  capacityProviderStrategy, platformVersion, scale, clientToken, tags)
+ecs_create_task_set(
+  service,
+  cluster,
+  externalId = NULL,
+  taskDefinition,
+  networkConfiguration = NULL,
+  loadBalancers = NULL,
+  serviceRegistries = NULL,
+  launchType = NULL,
+  capacityProviderStrategy = NULL,
+  platformVersion = NULL,
+  scale = NULL,
+  clientToken = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{service}{[required] The short name or full Amazon Resource Name (ARN) of the service to
@@ -18,22 +30,22 @@ hosts the service to create the task set in.}
 \item{externalId}{An optional non-unique tag that identifies this task set in external
 systems. If the task set is associated with a service discovery
 registry, the tasks in this task set will have the
-\code{ECS_TASK_SET_EXTERNAL_ID} AWS Cloud Map attribute set to the provided
+\code{ECS_TASK_SET_EXTERNAL_ID} Cloud Map attribute set to the provided
 value.}
 
 \item{taskDefinition}{[required] The task definition for the tasks in the task set to use.}
 
-\item{networkConfiguration}{}
+\item{networkConfiguration}{An object representing the network configuration for a task set.}
 
 \item{loadBalancers}{A load balancer object representing the load balancer to use with the
 task set. The supported load balancer types are either an Application
 Load Balancer or a Network Load Balancer.}
 
 \item{serviceRegistries}{The details of the service discovery registries to assign to this task
-set. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html}{Service Discovery}.}
+set. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html}{Service discovery}.}
 
-\item{launchType}{The launch type that new tasks in the task set will use. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}
+\item{launchType}{The launch type that new tasks in the task set uses. For more
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS launch types}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 If a \code{launchType} is specified, the \code{capacityProviderStrategy} parameter
@@ -60,30 +72,30 @@ created with the
 \code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
 operation.
 
-To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
-\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
-are available to all accounts and only need to be associated with a
-cluster to be used.
+To use a Fargate capacity provider, specify either the \code{FARGATE} or
+\code{FARGATE_SPOT} capacity providers. The Fargate capacity providers are
+available to all accounts and only need to be associated with a cluster
+to be used.
 
 The
 \code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
 API operation is used to update the list of available capacity providers
 for a cluster after the cluster is created.}
 
-\item{platformVersion}{The platform version that the tasks in the task set should use. A
-platform version is specified only for tasks using the Fargate launch
-type. If one isn't specified, the \code{LATEST} platform version is used by
-default.}
+\item{platformVersion}{The platform version that the tasks in the task set uses. A platform
+version is specified only for tasks using the Fargate launch type. If
+one isn't specified, the \code{LATEST} platform version is used.}
 
-\item{scale}{}
+\item{scale}{A floating-point percentage of the desired number of tasks to place and
+keep running in the task set.}
 
-\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. Up to 32 ASCII characters are allowed.}
+\item{clientToken}{The identifier that you provide to ensure the idempotency of the
+request. It's case sensitive and must be unique. It can be up to 32
+ASCII characters are allowed.}
 
 \item{tags}{The metadata that you apply to the task set to help you categorize and
-organize them. Each tag consists of a key and an optional value, both of
-which you define. When a service is deleted, the tags are deleted as
-well.
+organize them. Each tag consists of a key and an optional value. You
+define both. When a service is deleted, the tags are deleted.
 
 The following basic restrictions apply to tags:
 \itemize{
@@ -99,147 +111,15 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for either keys or values as it is reserved for AWS
-use. You cannot edit or delete tag keys or values with this prefix.
-Tags with this prefix do not count against your tags per resource
-limit.
+such as a prefix for either keys or values as it is reserved for
+Amazon Web Services use. You cannot edit or delete tag keys or
+values with this prefix. Tags with this prefix do not count against
+your tags per resource limit.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  taskSet = list(
-    id = "string",
-    taskSetArn = "string",
-    serviceArn = "string",
-    clusterArn = "string",
-    startedBy = "string",
-    externalId = "string",
-    status = "string",
-    taskDefinition = "string",
-    computedDesiredCount = 123,
-    pendingCount = 123,
-    runningCount = 123,
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    updatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    launchType = "EC2"|"FARGATE",
-    capacityProviderStrategy = list(
-      list(
-        capacityProvider = "string",
-        weight = 123,
-        base = 123
-      )
-    ),
-    platformVersion = "string",
-    networkConfiguration = list(
-      awsvpcConfiguration = list(
-        subnets = list(
-          "string"
-        ),
-        securityGroups = list(
-          "string"
-        ),
-        assignPublicIp = "ENABLED"|"DISABLED"
-      )
-    ),
-    loadBalancers = list(
-      list(
-        targetGroupArn = "string",
-        loadBalancerName = "string",
-        containerName = "string",
-        containerPort = 123
-      )
-    ),
-    serviceRegistries = list(
-      list(
-        registryArn = "string",
-        port = 123,
-        containerName = "string",
-        containerPort = 123
-      )
-    ),
-    scale = list(
-      value = 123.0,
-      unit = "PERCENT"
-    ),
-    stabilityStatus = "STEADY_STATE"|"STABILIZING",
-    stabilityStatusAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Create a task set in the specified cluster and service. This is used
-when a service uses the \code{EXTERNAL} deployment controller type. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_task_set(
-  service = "string",
-  cluster = "string",
-  externalId = "string",
-  taskDefinition = "string",
-  networkConfiguration = list(
-    awsvpcConfiguration = list(
-      subnets = list(
-        "string"
-      ),
-      securityGroups = list(
-        "string"
-      ),
-      assignPublicIp = "ENABLED"|"DISABLED"
-    )
-  ),
-  loadBalancers = list(
-    list(
-      targetGroupArn = "string",
-      loadBalancerName = "string",
-      containerName = "string",
-      containerPort = 123
-    )
-  ),
-  serviceRegistries = list(
-    list(
-      registryArn = "string",
-      port = 123,
-      containerName = "string",
-      containerPort = 123
-    )
-  ),
-  launchType = "EC2"|"FARGATE",
-  capacityProviderStrategy = list(
-    list(
-      capacityProvider = "string",
-      weight = 123,
-      base = 123
-    )
-  ),
-  platformVersion = "string",
-  scale = list(
-    value = 123.0,
-    unit = "PERCENT"
-  ),
-  clientToken = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Create a task set in the specified cluster and service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS deployment types} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/ecs/create_task_set.html} for full documentation.
+}
 \keyword{internal}

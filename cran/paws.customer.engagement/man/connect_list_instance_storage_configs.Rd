@@ -5,11 +5,16 @@
 \title{This API is in preview release for Amazon Connect and is subject to
 change}
 \usage{
-connect_list_instance_storage_configs(InstanceId, ResourceType,
-  NextToken, MaxResults)
+connect_list_instance_storage_configs(
+  InstanceId,
+  ResourceType,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{ResourceType}{[required] A valid resource type.}
 
@@ -17,57 +22,11 @@ connect_list_instance_storage_configs(InstanceId, ResourceType,
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StorageConfigs = list(
-    list(
-      AssociationId = "string",
-      StorageType = "S3"|"KINESIS_VIDEO_STREAM"|"KINESIS_STREAM"|"KINESIS_FIREHOSE",
-      S3Config = list(
-        BucketName = "string",
-        BucketPrefix = "string",
-        EncryptionConfig = list(
-          EncryptionType = "KMS",
-          KeyId = "string"
-        )
-      ),
-      KinesisVideoStreamConfig = list(
-        Prefix = "string",
-        RetentionPeriodHours = 123,
-        EncryptionConfig = list(
-          EncryptionType = "KMS",
-          KeyId = "string"
-        )
-      ),
-      KinesisStreamConfig = list(
-        StreamArn = "string"
-      ),
-      KinesisFirehoseConfig = list(
-        FirehoseArn = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Returns a paginated list of storage configs for the identified instance
-and resource type.
+See \url{https://paws-r.github.io/docs/connect/list_instance_storage_configs.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_instance_storage_configs(
-  InstanceId = "string",
-  ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

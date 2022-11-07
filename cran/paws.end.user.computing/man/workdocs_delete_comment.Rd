@@ -4,8 +4,12 @@
 \alias{workdocs_delete_comment}
 \title{Deletes the specified comment from the document version}
 \usage{
-workdocs_delete_comment(AuthenticationToken, DocumentId, VersionId,
-  CommentId)
+workdocs_delete_comment(
+  AuthenticationToken = NULL,
+  DocumentId,
+  VersionId,
+  CommentId
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -17,20 +21,9 @@ administrator credentials to access the API.}
 
 \item{CommentId}{[required] The ID of the comment.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified comment from the document version.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_comment(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  VersionId = "string",
-  CommentId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/delete_comment.html} for full documentation.
+}
 \keyword{internal}

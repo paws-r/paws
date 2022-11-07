@@ -5,9 +5,21 @@
 \title{Creates an EBS volume that can be attached to an instance in the same
 Availability Zone}
 \usage{
-ec2_create_volume(AvailabilityZone, Encrypted, Iops, KmsKeyId,
-  OutpostArn, Size, SnapshotId, VolumeType, DryRun, TagSpecifications,
-  MultiAttachEnabled, Throughput)
+ec2_create_volume(
+  AvailabilityZone,
+  Encrypted = NULL,
+  Iops = NULL,
+  KmsKeyId = NULL,
+  OutpostArn = NULL,
+  Size = NULL,
+  SnapshotId = NULL,
+  VolumeType = NULL,
+  DryRun = NULL,
+  TagSpecifications = NULL,
+  MultiAttachEnabled = NULL,
+  Throughput = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{AvailabilityZone}{[required] The Availability Zone in which to create the volume.}
@@ -34,20 +46,19 @@ The following are the supported values for each volume type:
 \item \code{io2}: 100-64,000 IOPS
 }
 
-For \code{io1} and \code{io2} volumes, we guarantee 64,000 IOPS only for
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Instances built on the Nitro System}.
-Other instance families guarantee performance up to 32,000 IOPS.
+\code{io1} and \code{io2} volumes support up to 64,000 IOPS only on \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Instances built on the Nitro System}.
+Other instance families support performance up to 32,000 IOPS.
 
 This parameter is required for \code{io1} and \code{io2} volumes. The default for
 \code{gp3} volumes is 3,000 IOPS. This parameter is not supported for \code{gp2},
 \code{st1}, \code{sc1}, or \code{standard} volumes.}
 
-\item{KmsKeyId}{The identifier of the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use for Amazon EBS encryption. If this parameter is
-not specified, your AWS managed CMK for EBS is used. If \code{KmsKeyId} is
-specified, the encrypted state must be \code{true}.
+\item{KmsKeyId}{The identifier of the Key Management Service (KMS) KMS key to use for
+Amazon EBS encryption. If this parameter is not specified, your KMS key
+for Amazon EBS is used. If \code{KmsKeyId} is specified, the encrypted state
+must be \code{true}.
 
-You can specify the CMK using any of the following:
+You can specify the KMS key using any of the following:
 \itemize{
 \item Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 \item Key alias. For example, alias/ExampleAlias.
@@ -57,9 +68,9 @@ arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 }
 
-AWS authenticates the CMK asynchronously. Therefore, if you specify an
-ID, alias, or ARN that is not valid, the action can appear to complete,
-but eventually fails.}
+Amazon Web Services authenticates the KMS key asynchronously. Therefore,
+if you specify an ID, alias, or ARN that is not valid, the action can
+appear to complete, but eventually fails.}
 
 \item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost.}
 
@@ -111,115 +122,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 This parameter is valid only for \code{gp3} volumes.
 
 Valid Range: Minimum value of 125. Maximum value of 1000.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Attachments = list(
-    list(
-      AttachTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Device = "string",
-      InstanceId = "string",
-      State = "attaching"|"attached"|"detaching"|"detached"|"busy",
-      VolumeId = "string",
-      DeleteOnTermination = TRUE|FALSE
-    )
-  ),
-  AvailabilityZone = "string",
-  CreateTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  OutpostArn = "string",
-  Size = 123,
-  SnapshotId = "string",
-  State = "creating"|"available"|"in-use"|"deleting"|"deleted"|"error",
-  VolumeId = "string",
-  Iops = 123,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-  FastRestored = TRUE|FALSE,
-  MultiAttachEnabled = TRUE|FALSE,
-  Throughput = 123
-)
-}
+
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensure Idempotency}.}
 }
 \description{
-Creates an EBS volume that can be attached to an instance in the same
-Availability Zone.
+Creates an EBS volume that can be attached to an instance in the same Availability Zone.
 
-You can create a new empty volume or restore a volume from an EBS
-snapshot. Any AWS Marketplace product codes from the snapshot are
-propagated to the volume.
-
-You can create encrypted volumes. Encrypted volumes must be attached to
-instances that support Amazon EBS encryption. Volumes that are created
-from encrypted snapshots are also automatically encrypted. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-You can tag your volumes during creation. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging your Amazon EC2 resources}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html}{Creating an Amazon EBS volume}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_volume(
-  AvailabilityZone = "string",
-  Encrypted = TRUE|FALSE,
-  Iops = 123,
-  KmsKeyId = "string",
-  OutpostArn = "string",
-  Size = 123,
-  SnapshotId = "string",
-  VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-  DryRun = TRUE|FALSE,
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  MultiAttachEnabled = TRUE|FALSE,
-  Throughput = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates an 80 GiB General Purpose (SSD) volume in the
-# Availability Zone `us-east-1a`.
-svc$create_volume(
-  AvailabilityZone = "us-east-1a",
-  Size = 80L,
-  VolumeType = "gp2"
-)
-
-# This example creates a new Provisioned IOPS (SSD) volume with 1000
-# provisioned IOPS from a snapshot in the Availability Zone
-# `us-east-1a`.
-svc$create_volume(
-  AvailabilityZone = "us-east-1a",
-  Iops = 1000L,
-  SnapshotId = "snap-066877671789bd71b",
-  VolumeType = "io1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_volume.html} for full documentation.
 }
 \keyword{internal}

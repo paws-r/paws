@@ -15,32 +15,9 @@ of a required tag key (\code{Key}) and an associated tag value (\code{Value}). T
 maximum length of a tag key is 128 characters. The maximum length of a
 tag value is 256 characters.}
 }
-\value{
-An empty list.
-}
 \description{
-Add one or more tags (keys and values) to a specified resource. A
-\emph{tag} is a label that you optionally define and associate with a
-resource in Amazon Pinpoint. Tags can help you categorize and manage
-resources in different ways, such as by purpose, owner, environment, or
-other criteria. A resource can have as many as 50 tags.
+Add one or more tags (keys and values) to a specified resource. A \emph{tag} is a label that you optionally define and associate with a resource in Amazon Pinpoint. Tags can help you categorize and manage resources in different ways, such as by purpose, owner, environment, or other criteria. A resource can have as many as 50 tags.
 
-Each tag consists of a required \emph{tag key} and an associated \emph{tag value},
-both of which you define. A tag key is a general label that acts as a
-category for more specific tag values. A tag value acts as a descriptor
-within a tag key.
+See \url{https://paws-r.github.io/docs/pinpointemail/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

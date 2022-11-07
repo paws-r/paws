@@ -20,27 +20,9 @@ lambda_delete_function_concurrency(FunctionName)
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes a concurrent execution limit from a function.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_function_concurrency(
-  FunctionName = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following example deletes the reserved concurrent execution limit
-# from a function named my-function.
-svc$delete_function_concurrency(
-  FunctionName = "my-function"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/delete_function_concurrency.html} for full documentation.
 }
 \keyword{internal}

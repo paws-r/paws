@@ -9,20 +9,9 @@ comprehendmedical_stop_rx_norm_inference_job(JobId)
 \arguments{
 \item{JobId}{[required] The identifier of the job.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
 Stops an InferRxNorm inference job in progress.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_rx_norm_inference_job(
-  JobId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/comprehendmedical/stop_rx_norm_inference_job.html} for full documentation.
+}
 \keyword{internal}

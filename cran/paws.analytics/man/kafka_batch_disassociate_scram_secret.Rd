@@ -11,30 +11,9 @@ kafka_batch_disassociate_scram_secret(ClusterArn, SecretArnList)
 
 \item{SecretArnList}{[required] List of AWS Secrets Manager secret ARNs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterArn = "string",
-  UnprocessedScramSecrets = list(
-    list(
-      ErrorCode = "string",
-      ErrorMessage = "string",
-      SecretArn = "string"
-    )
-  )
-)
-}
-}
 \description{
 Disassociates one or more Scram Secrets from an Amazon MSK cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_disassociate_scram_secret(
-  ClusterArn = "string",
-  SecretArnList = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/batch_disassociate_scram_secret.html} for full documentation.
+}
 \keyword{internal}

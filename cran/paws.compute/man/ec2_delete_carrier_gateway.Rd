@@ -4,7 +4,7 @@
 \alias{ec2_delete_carrier_gateway}
 \title{Deletes a carrier gateway}
 \usage{
-ec2_delete_carrier_gateway(CarrierGatewayId, DryRun)
+ec2_delete_carrier_gateway(CarrierGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{CarrierGatewayId}{[required] The ID of the carrier gateway.}
@@ -14,36 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CarrierGateway = list(
-    CarrierGatewayId = "string",
-    VpcId = "string",
-    State = "pending"|"available"|"deleting"|"deleted",
-    OwnerId = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Deletes a carrier gateway.
 
-If you do not delete the route that contains the carrier gateway as the
-Target, the route is a blackhole route. For information about how to
-delete a route, see \code{\link[=ec2_delete_route]{delete_route}}.
+See \url{https://paws-r.github.io/docs/ec2/delete_carrier_gateway.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_carrier_gateway(
-  CarrierGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

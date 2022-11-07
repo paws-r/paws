@@ -4,7 +4,7 @@
 \alias{ec2_delete_internet_gateway}
 \title{Deletes the specified internet gateway}
 \usage{
-ec2_delete_internet_gateway(DryRun, InternetGatewayId)
+ec2_delete_internet_gateway(DryRun = NULL, InternetGatewayId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,28 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InternetGatewayId}{[required] The ID of the internet gateway.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified internet gateway. You must detach the internet
-gateway from the VPC before you can delete it.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_internet_gateway(
-  DryRun = TRUE|FALSE,
-  InternetGatewayId = "string"
-)
-}
-}
+Deletes the specified internet gateway. You must detach the internet gateway from the VPC before you can delete it.
 
-\examples{
-\dontrun{
-# This example deletes the specified Internet gateway.
-svc$delete_internet_gateway(
-  InternetGatewayId = "igw-c0a643a9"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_internet_gateway.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{eks_describe_addon_versions}
 \title{Describes the Kubernetes versions that the add-on can be used with}
 \usage{
-eks_describe_addon_versions(kubernetesVersion, maxResults, nextToken,
-  addonName)
+eks_describe_addon_versions(
+  kubernetesVersion = NULL,
+  maxResults = NULL,
+  nextToken = NULL,
+  addonName = NULL
+)
 }
 \arguments{
 \item{kubernetesVersion}{The Kubernetes versions that the add-on can be used with.}
@@ -25,46 +29,9 @@ purposes.}
 \href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
 .}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  addons = list(
-    list(
-      addonName = "string",
-      type = "string",
-      addonVersions = list(
-        list(
-          addonVersion = "string",
-          architecture = list(
-            "string"
-          ),
-          compatibilities = list(
-            list(
-              clusterVersion = "string",
-              platformVersions = list(
-                "string"
-              ),
-              defaultVersion = TRUE|FALSE
-            )
-          )
-        )
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Describes the Kubernetes versions that the add-on can be used with.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_addon_versions(
-  kubernetesVersion = "string",
-  maxResults = 123,
-  nextToken = "string",
-  addonName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/eks/describe_addon_versions.html} for full documentation.
+}
 \keyword{internal}

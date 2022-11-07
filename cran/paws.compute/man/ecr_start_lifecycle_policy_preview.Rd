@@ -4,40 +4,25 @@
 \alias{ecr_start_lifecycle_policy_preview}
 \title{Starts a preview of a lifecycle policy for the specified repository}
 \usage{
-ecr_start_lifecycle_policy_preview(registryId, repositoryName,
-  lifecyclePolicyText)
+ecr_start_lifecycle_policy_preview(
+  registryId = NULL,
+  repositoryName,
+  lifecyclePolicyText = NULL
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository. If you do not specify a registry, the default registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository. If you do not specify a registry, the default
+registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository to be evaluated.}
 
 \item{lifecyclePolicyText}{The policy to be evaluated against. If you do not specify a policy, the
 current policy for the repository is used.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  repositoryName = "string",
-  lifecyclePolicyText = "string",
-  status = "IN_PROGRESS"|"COMPLETE"|"EXPIRED"|"FAILED"
-)
-}
-}
 \description{
-Starts a preview of a lifecycle policy for the specified repository.
-This allows you to see the results before associating the lifecycle
-policy with the repository.
-}
-\section{Request syntax}{
-\preformatted{svc$start_lifecycle_policy_preview(
-  registryId = "string",
-  repositoryName = "string",
-  lifecyclePolicyText = "string"
-)
-}
-}
+Starts a preview of a lifecycle policy for the specified repository. This allows you to see the results before associating the lifecycle policy with the repository.
 
+See \url{https://paws-r.github.io/docs/ecr/start_lifecycle_policy_preview.html} for full documentation.
+}
 \keyword{internal}

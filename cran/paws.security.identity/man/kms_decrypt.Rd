@@ -2,49 +2,61 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_decrypt}
 \alias{kms_decrypt}
-\title{Decrypts ciphertext that was encrypted by a AWS KMS customer master key
-(CMK) using any of the following operations:}
+\title{Decrypts ciphertext that was encrypted by a KMS key using any of the
+following operations:}
 \usage{
-kms_decrypt(CiphertextBlob, EncryptionContext, GrantTokens, KeyId,
-  EncryptionAlgorithm)
+kms_decrypt(
+  CiphertextBlob,
+  EncryptionContext = NULL,
+  GrantTokens = NULL,
+  KeyId = NULL,
+  EncryptionAlgorithm = NULL
+)
 }
 \arguments{
 \item{CiphertextBlob}{[required] Ciphertext to be decrypted. The blob includes metadata.}
 
 \item{EncryptionContext}{Specifies the encryption context to use when decrypting the data. An
 encryption context is valid only for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
-with a symmetric CMK. The standard asymmetric encryption algorithms that
-AWS KMS uses do not support an encryption context.
+with a symmetric encryption KMS key. The standard asymmetric encryption
+algorithms and HMAC algorithms that KMS uses do not support an
+encryption context.
 
 An \emph{encryption context} is a collection of non-secret key-value pairs
-that represents additional authenticated data. When you use an
-encryption context to encrypt data, you must specify the same (an exact
+that represent additional authenticated data. When you use an encryption
+context to encrypt data, you must specify the same (an exact
 case-sensitive match) encryption context to decrypt the data. An
-encryption context is optional when encrypting with a symmetric CMK, but
-it is highly recommended.
+encryption context is supported only on operations with symmetric
+encryption KMS keys. On operations with symmetric encryption KMS keys,
+an encryption context is optional, but it is strongly recommended.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
-in the \emph{AWS Key Management Service Developer Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
+in the \emph{Key Management Service Developer Guide}.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
-in the \emph{AWS Key Management Service Developer Guide}.}
+Use a grant token when your permission to call this operation comes from
+a new grant that has not yet achieved \emph{eventual consistency}. For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
+in the \emph{Key Management Service Developer Guide}.}
 
-\item{KeyId}{Specifies the customer master key (CMK) that AWS KMS uses to decrypt the
-ciphertext. Enter a key ID of the CMK that was used to encrypt the
-ciphertext.
+\item{KeyId}{Specifies the KMS key that KMS uses to decrypt the ciphertext.
+
+Enter a key ID of the KMS key that was used to encrypt the ciphertext.
+If you identify a different KMS key, the \code{\link[=kms_decrypt]{decrypt}}
+operation throws an \code{IncorrectKeyException}.
 
 This parameter is required only when the ciphertext was encrypted under
-an asymmetric CMK. If you used a symmetric CMK, AWS KMS can get the CMK
-from metadata that it adds to the symmetric ciphertext blob. However, it
-is always recommended as a best practice. This practice ensures that you
-use the CMK that you intend.
+an asymmetric KMS key. If you used a symmetric encryption KMS key, KMS
+can get the KMS key from metadata that it adds to the symmetric
+ciphertext blob. However, it is always recommended as a best practice.
+This practice ensures that you use the KMS key that you intend.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
-To specify a CMK in a different AWS account, you must use the key ARN or
-alias ARN.
+To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
+When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
+key in a different Amazon Web Services account, you must use the key ARN
+or alias ARN.
 
 For example:
 \itemize{
@@ -55,7 +67,7 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
 get the alias name and alias ARN, use
 \code{\link[=kms_list_aliases]{list_aliases}}.}
@@ -66,107 +78,13 @@ data. If you specify a different algorithm, the \code{\link[=kms_decrypt]{decryp
 operation fails.
 
 This parameter is required only when the ciphertext was encrypted under
-an asymmetric CMK. The default value, \code{SYMMETRIC_DEFAULT}, represents
-the only supported algorithm that is valid for symmetric CMKs.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  KeyId = "string",
-  Plaintext = raw,
-  EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
-)
-}
+an asymmetric KMS key. The default value, \code{SYMMETRIC_DEFAULT},
+represents the only supported algorithm that is valid for symmetric
+encryption KMS keys.}
 }
 \description{
-Decrypts ciphertext that was encrypted by a AWS KMS customer master key
-(CMK) using any of the following operations:
-\itemize{
-\item \code{\link[=kms_encrypt]{encrypt}}
-\item \code{\link[=kms_generate_data_key]{generate_data_key}}
-\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
-\item \code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
-\item \code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
-}
+Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:
 
-You can use this operation to decrypt ciphertext that was encrypted
-under a symmetric or asymmetric CMK. When the CMK is asymmetric, you
-must specify the CMK and the encryption algorithm that was used to
-encrypt the ciphertext. For information about symmetric and asymmetric
-CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-The Decrypt operation also decrypts ciphertext that was encrypted
-outside of AWS KMS by the public key in an AWS KMS asymmetric CMK.
-However, it cannot decrypt ciphertext produced by other libraries, such
-as the \href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK}
-or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}.
-These libraries return a ciphertext format that is incompatible with AWS
-KMS.
-
-If the ciphertext was encrypted under a symmetric CMK, the \code{KeyId}
-parameter is optional. AWS KMS can get this information from metadata
-that it adds to the symmetric ciphertext blob. This feature adds
-durability to your implementation by ensuring that authorized users can
-decrypt ciphertext decades after it was encrypted, even if they've lost
-track of the CMK ID. However, specifying the CMK is always recommended
-as a best practice. When you use the \code{KeyId} parameter to specify a CMK,
-AWS KMS only uses the CMK you specify. If the ciphertext was encrypted
-under a different CMK, the \code{\link[=kms_decrypt]{decrypt}} operation fails.
-This practice ensures that you use the CMK that you intend.
-
-Whenever possible, use key policies to give users permission to call the
-\code{\link[=kms_decrypt]{decrypt}} operation on a particular CMK, instead of using
-IAM policies. Otherwise, you might create an IAM user policy that gives
-the user \code{\link[=kms_decrypt]{decrypt}} permission on all CMKs. This user
-could decrypt ciphertext that was encrypted by CMKs in other accounts if
-the key policy for the cross-account CMK permits it. If you must use an
-IAM policy for \code{\link[=kms_decrypt]{decrypt}} permissions, limit the user to
-particular CMKs or particular trusted accounts. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html#iam-policies-best-practices}{Best practices for IAM policies}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-The CMK that you use for this operation must be in a compatible key
-state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: Yes. You can decrypt a ciphertext using a CMK in
-a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:Decrypt}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_encrypt]{encrypt}}
-\item \code{\link[=kms_generate_data_key]{generate_data_key}}
-\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
-\item \code{\link[=kms_re_encrypt]{re_encrypt}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$decrypt(
-  CiphertextBlob = raw,
-  EncryptionContext = list(
-    "string"
-  ),
-  GrantTokens = list(
-    "string"
-  ),
-  KeyId = "string",
-  EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example decrypts data that was encrypted with a customer
-# master key (CMK) in AWS KMS.
-svc$decrypt(
-  CiphertextBlob = "<binary data>",
-  KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/decrypt.html} for full documentation.
 }
 \keyword{internal}

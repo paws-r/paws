@@ -4,15 +4,33 @@
 \alias{elasticache_modify_replication_group}
 \title{Modifies the settings for a replication group}
 \usage{
-elasticache_modify_replication_group(ReplicationGroupId,
-  ReplicationGroupDescription, PrimaryClusterId, SnapshottingClusterId,
-  AutomaticFailoverEnabled, MultiAZEnabled, NodeGroupId,
-  CacheSecurityGroupNames, SecurityGroupIds, PreferredMaintenanceWindow,
-  NotificationTopicArn, CacheParameterGroupName, NotificationTopicStatus,
-  ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
-  SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
-  AuthTokenUpdateStrategy, UserGroupIdsToAdd, UserGroupIdsToRemove,
-  RemoveUserGroups)
+elasticache_modify_replication_group(
+  ReplicationGroupId,
+  ReplicationGroupDescription = NULL,
+  PrimaryClusterId = NULL,
+  SnapshottingClusterId = NULL,
+  AutomaticFailoverEnabled = NULL,
+  MultiAZEnabled = NULL,
+  NodeGroupId = NULL,
+  CacheSecurityGroupNames = NULL,
+  SecurityGroupIds = NULL,
+  PreferredMaintenanceWindow = NULL,
+  NotificationTopicArn = NULL,
+  CacheParameterGroupName = NULL,
+  NotificationTopicStatus = NULL,
+  ApplyImmediately = NULL,
+  EngineVersion = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  SnapshotRetentionLimit = NULL,
+  SnapshotWindow = NULL,
+  CacheNodeType = NULL,
+  AuthToken = NULL,
+  AuthTokenUpdateStrategy = NULL,
+  UserGroupIdsToAdd = NULL,
+  UserGroupIdsToRemove = NULL,
+  RemoveUserGroups = NULL,
+  LogDeliveryConfigurations = NULL
+)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The identifier of the replication group to modify.}
@@ -34,8 +52,7 @@ read/write primary if the existing primary encounters a failure.
 
 Valid values: \code{true} | \code{false}}
 
-\item{MultiAZEnabled}{A flag indicating if you have Multi-AZ enabled to enhance fault
-tolerance. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
+\item{MultiAZEnabled}{A flag to indicate MultiAZ is enabled.}
 
 \item{NodeGroupId}{Deprecated. This parameter is not used.}
 
@@ -110,7 +127,9 @@ but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing replication
 group and create it anew with the earlier engine version.}
 
-\item{AutoMinorVersionUpgrade}{This parameter is currently disabled.}
+\item{AutoMinorVersionUpgrade}{If you are running Redis engine version 6.0 or later, set this
+parameter to yes if you want to opt-in to the next auto minor version
+upgrade campaign. This parameter is disabled for previous versions.}
 
 \item{SnapshotRetentionLimit}{The number of days for which ElastiCache retains automatic node group
 (shard) snapshots before deleting them. For example, if you set
@@ -154,148 +173,19 @@ must be specified with the \code{auth-token} parameter. Possible values:
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}
 
-\item{UserGroupIdsToAdd}{A list of user group IDs.}
+\item{UserGroupIdsToAdd}{The ID of the user group you are associating with the replication group.}
 
-\item{UserGroupIdsToRemove}{A list of users groups to remove, meaning the users in the group no
-longer can access thereplication group.}
+\item{UserGroupIdsToRemove}{The ID of the user group to disassociate from the replication group,
+meaning the users in the group no longer can access the replication
+group.}
 
-\item{RemoveUserGroups}{Removes the user groups that can access this replication group.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ReplicationGroup = list(
-    ReplicationGroupId = "string",
-    Description = "string",
-    GlobalReplicationGroupInfo = list(
-      GlobalReplicationGroupId = "string",
-      GlobalReplicationGroupMemberRole = "string"
-    ),
-    Status = "string",
-    PendingModifiedValues = list(
-      PrimaryClusterId = "string",
-      AutomaticFailoverStatus = "enabled"|"disabled",
-      Resharding = list(
-        SlotMigration = list(
-          ProgressPercentage = 123.0
-        )
-      ),
-      AuthTokenStatus = "SETTING"|"ROTATING",
-      UserGroups = list(
-        UserGroupIdsToAdd = list(
-          "string"
-        ),
-        UserGroupIdsToRemove = list(
-          "string"
-        )
-      )
-    ),
-    MemberClusters = list(
-      "string"
-    ),
-    NodeGroups = list(
-      list(
-        NodeGroupId = "string",
-        Status = "string",
-        PrimaryEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        ReaderEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        Slots = "string",
-        NodeGroupMembers = list(
-          list(
-            CacheClusterId = "string",
-            CacheNodeId = "string",
-            ReadEndpoint = list(
-              Address = "string",
-              Port = 123
-            ),
-            PreferredAvailabilityZone = "string",
-            PreferredOutpostArn = "string",
-            CurrentRole = "string"
-          )
-        )
-      )
-    ),
-    SnapshottingClusterId = "string",
-    AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-    MultiAZ = "enabled"|"disabled",
-    ConfigurationEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    ClusterEnabled = TRUE|FALSE,
-    CacheNodeType = "string",
-    AuthTokenEnabled = TRUE|FALSE,
-    AuthTokenLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    MemberClustersOutpostArns = list(
-      "string"
-    ),
-    KmsKeyId = "string",
-    ARN = "string",
-    UserGroupIds = list(
-      "string"
-    )
-  )
-)
-}
+\item{RemoveUserGroups}{Removes the user group associated with this replication group.}
+
+\item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 }
 \description{
 Modifies the settings for a replication group.
-\itemize{
-\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html}{Scaling for Amazon ElastiCache for Redis (cluster mode enabled)}
-in the ElastiCache User Guide
-\item \code{\link[=elasticache_modify_replication_group_shard_configuration]{modify_replication_group_shard_configuration}}
-in the ElastiCache API Reference
-}
 
-This operation is valid for Redis only.
+See \url{https://paws-r.github.io/docs/elasticache/modify_replication_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_replication_group(
-  ReplicationGroupId = "string",
-  ReplicationGroupDescription = "string",
-  PrimaryClusterId = "string",
-  SnapshottingClusterId = "string",
-  AutomaticFailoverEnabled = TRUE|FALSE,
-  MultiAZEnabled = TRUE|FALSE,
-  NodeGroupId = "string",
-  CacheSecurityGroupNames = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  PreferredMaintenanceWindow = "string",
-  NotificationTopicArn = "string",
-  CacheParameterGroupName = "string",
-  NotificationTopicStatus = "string",
-  ApplyImmediately = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  SnapshotRetentionLimit = 123,
-  SnapshotWindow = "string",
-  CacheNodeType = "string",
-  AuthToken = "string",
-  AuthTokenUpdateStrategy = "SET"|"ROTATE"|"DELETE",
-  UserGroupIdsToAdd = list(
-    "string"
-  ),
-  UserGroupIdsToRemove = list(
-    "string"
-  ),
-  RemoveUserGroups = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

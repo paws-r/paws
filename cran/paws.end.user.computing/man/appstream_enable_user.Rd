@@ -16,20 +16,9 @@ not exist" error message displays.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables a user in the user pool. After being enabled, users can sign in
-to AppStream 2.0 and open applications from the stacks to which they are
-assigned.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_user(
-  UserName = "string",
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
-}
-}
+Enables a user in the user pool. After being enabled, users can sign in to AppStream 2.0 and open applications from the stacks to which they are assigned.
 
+See \url{https://paws-r.github.io/docs/appstream/enable_user.html} for full documentation.
+}
 \keyword{internal}

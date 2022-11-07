@@ -1,10 +1,10 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.1.13
+Version: 0.1.12
 Authors@R: c(
-    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut")),
+    person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
-    person("Dyfan", "Jones", email = "dyfan.r.jones@gmail.com", role = "cre"),
+    person("Dyfan", "Jones", , "dyfan.r.jones@gmail.com", role = "cre"),
     person("Amazon.com, Inc.", role = "cph")
   )
 Description: Interface to 'Amazon Web Services' security, identity, and
@@ -20,8 +20,14 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Collate: 
+    'accessanalyzer_service.R'
+    'accessanalyzer_interfaces.R'
+    'accessanalyzer_operations.R'
+    'account_service.R'
+    'account_interfaces.R'
+    'account_operations.R'
     'acm_service.R'
     'acm_interfaces.R'
     'acm_operations.R'
@@ -46,6 +52,9 @@ Collate:
     'cognitosync_service.R'
     'cognitosync_interfaces.R'
     'cognitosync_operations.R'
+    'detective_service.R'
+    'detective_interfaces.R'
+    'detective_operations.R'
     'directoryservice_service.R'
     'directoryservice_interfaces.R'
     'directoryservice_operations.R'
@@ -58,12 +67,24 @@ Collate:
     'iam_service.R'
     'iam_interfaces.R'
     'iam_operations.R'
+    'iamrolesanywhere_service.R'
+    'iamrolesanywhere_interfaces.R'
+    'iamrolesanywhere_operations.R'
+    'identitystore_service.R'
+    'identitystore_interfaces.R'
+    'identitystore_operations.R'
+    'inspector2_service.R'
+    'inspector2_interfaces.R'
+    'inspector2_operations.R'
     'inspector_service.R'
     'inspector_interfaces.R'
     'inspector_operations.R'
     'kms_service.R'
     'kms_interfaces.R'
     'kms_operations.R'
+    'macie2_service.R'
+    'macie2_interfaces.R'
+    'macie2_operations.R'
     'macie_service.R'
     'macie_interfaces.R'
     'macie_operations.R'
@@ -82,6 +103,12 @@ Collate:
     'sso_service.R'
     'sso_interfaces.R'
     'sso_operations.R'
+    'ssoadmin_service.R'
+    'ssoadmin_interfaces.R'
+    'ssoadmin_operations.R'
+    'ssooidc_service.R'
+    'ssooidc_interfaces.R'
+    'ssooidc_operations.R'
     'sts_service.R'
     'sts_interfaces.R'
     'sts_operations.R'
@@ -91,3 +118,6 @@ Collate:
     'wafregional_service.R'
     'wafregional_interfaces.R'
     'wafregional_operations.R'
+    'wafv2_service.R'
+    'wafv2_interfaces.R'
+    'wafv2_operations.R'

@@ -4,7 +4,7 @@
 \alias{resourcegroups_list_groups}
 \title{Returns a list of existing resource groups in your account}
 \usage{
-resourcegroups_list_groups(Filters, MaxResults, NextToken)
+resourcegroups_list_groups(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{Filters, formatted as GroupFilter objects, that you want to apply to a
@@ -40,49 +40,9 @@ indicates that more output is available. Set this parameter to the value
 provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GroupIdentifiers = list(
-    list(
-      GroupName = "string",
-      GroupArn = "string"
-    )
-  ),
-  Groups = list(
-    list(
-      GroupArn = "string",
-      Name = "string",
-      Description = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of existing resource groups in your account.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:ListGroups}
+See \url{https://paws-r.github.io/docs/resourcegroups/list_groups.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$list_groups(
-  Filters = list(
-    list(
-      Name = "resource-type"|"configuration-type",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

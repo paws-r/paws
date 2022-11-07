@@ -4,15 +4,23 @@
 \alias{route53domains_register_domain}
 \title{This operation registers a domain}
 \usage{
-route53domains_register_domain(DomainName, IdnLangCode, DurationInYears,
-  AutoRenew, AdminContact, RegistrantContact, TechContact,
-  PrivacyProtectAdminContact, PrivacyProtectRegistrantContact,
-  PrivacyProtectTechContact)
+route53domains_register_domain(
+  DomainName,
+  IdnLangCode = NULL,
+  DurationInYears,
+  AutoRenew = NULL,
+  AdminContact,
+  RegistrantContact,
+  TechContact,
+  PrivacyProtectAdminContact = NULL,
+  PrivacyProtectRegistrantContact = NULL,
+  PrivacyProtectTechContact = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The domain name that you want to register. The top-level domain (TLD),
 such as .com, must be a TLD that Route 53 supports. For a list of
-supported TLDs, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
+supported TLDs, see Domains that You Can Register with Amazon Route 53
 in the \emph{Amazon Route 53 Developer Guide}.
 
 The domain name can contain only the following characters:
@@ -27,16 +35,17 @@ label.
 
 Internationalized domain names are not supported for some top-level
 domains. To determine whether the TLD that you want to use supports
-internationalized domain names, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}.
-For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns}{Formatting Internationalized Domain Names}.}
+internationalized domain names, see Domains that You Can Register with
+Amazon Route 53. For more information, see Formatting Internationalized
+Domain Names.}
 
 \item{IdnLangCode}{Reserved for future use.}
 
 \item{DurationInYears}{[required] The number of years that you want to register the domain for. Domains
 are registered for a minimum of one year. The maximum period depends on
 the top-level domain. For the range of valid values for your domain, see
-\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
-in the \emph{Amazon Route 53 Developer Guide}.
+Domains that You Can Register with Amazon Route 53 in the \emph{Amazon Route
+53 Developer Guide}.
 
 Default: 1}
 
@@ -47,16 +56,13 @@ charged.
 Default: \code{true}}
 
 \item{AdminContact}{[required] Provides detailed contact information. For information about the values
-that you specify for each element, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html}{ContactDetail}.}
+that you specify for each element, see ContactDetail.}
 
 \item{RegistrantContact}{[required] Provides detailed contact information. For information about the values
-that you specify for each element, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html}{ContactDetail}.}
+that you specify for each element, see ContactDetail.}
 
 \item{TechContact}{[required] Provides detailed contact information. For information about the values
-that you specify for each element, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html}{ContactDetail}.}
+that you specify for each element, see ContactDetail.}
 
 \item{PrivacyProtectAdminContact}{Whether you want to conceal contact information from WHOIS queries. If
 you specify \code{true}, WHOIS ("who is") queries return contact information
@@ -64,6 +70,9 @@ either for Amazon Registrar (for .com, .net, and .org domains) or for
 our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
 admin contact.
+
+You must specify the same privacy setting for the administrative,
+registrant, and technical contacts.
 
 Default: \code{true}}
 
@@ -74,6 +83,9 @@ our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
 registrant contact (the domain owner).
 
+You must specify the same privacy setting for the administrative,
+registrant, and technical contacts.
+
 Default: \code{true}}
 
 \item{PrivacyProtectTechContact}{Whether you want to conceal contact information from WHOIS queries. If
@@ -83,117 +95,14 @@ our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
 technical contact.
 
+You must specify the same privacy setting for the administrative,
+registrant, and technical contacts.
+
 Default: \code{true}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
-}
 \description{
-This operation registers a domain. Domains are registered either by
-Amazon Registrar (for .com, .net, and .org domains) or by our registrar
-associate, Gandi (for all other domains). For some top-level domains
-(TLDs), this operation requires extra parameters.
+This operation registers a domain. Domains are registered either by Amazon Registrar (for .com, .net, and .org domains) or by our registrar associate, Gandi (for all other domains). For some top-level domains (TLDs), this operation requires extra parameters.
 
-When you register a domain, Amazon Route 53 does the following:
-\itemize{
-\item Creates a Route 53 hosted zone that has the same name as the domain.
-Route 53 assigns four name servers to your hosted zone and
-automatically updates your domain registration with the names of
-these name servers.
-\item Enables autorenew, so your domain registration will renew
-automatically each year. We'll notify you in advance of the renewal
-date so you can choose whether to renew the registration.
-\item Optionally enables privacy protection, so WHOIS queries return
-contact information either for Amazon Registrar (for .com, .net, and
-.org domains) or for our registrar associate, Gandi (for all other
-TLDs). If you don't enable privacy protection, WHOIS queries return
-the information that you entered for the registrant, admin, and tech
-contacts.
-\item If registration is successful, returns an operation ID that you can
-use to track the progress and completion of the action. If the
-request is not completed successfully, the domain registrant is
-notified by email.
-\item Charges your AWS account an amount based on the top-level domain.
-For more information, see \href{https://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.
+See \url{https://paws-r.github.io/docs/route53domains/register_domain.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$register_domain(
-  DomainName = "string",
-  IdnLangCode = "string",
-  DurationInYears = 123,
-  AutoRenew = TRUE|FALSE,
-  AdminContact = list(
-    FirstName = "string",
-    LastName = "string",
-    ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-    OrganizationName = "string",
-    AddressLine1 = "string",
-    AddressLine2 = "string",
-    City = "string",
-    State = "string",
-    CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-    ZipCode = "string",
-    PhoneNumber = "string",
-    Email = "string",
-    Fax = "string",
-    ExtraParams = list(
-      list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-        Value = "string"
-      )
-    )
-  ),
-  RegistrantContact = list(
-    FirstName = "string",
-    LastName = "string",
-    ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-    OrganizationName = "string",
-    AddressLine1 = "string",
-    AddressLine2 = "string",
-    City = "string",
-    State = "string",
-    CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-    ZipCode = "string",
-    PhoneNumber = "string",
-    Email = "string",
-    Fax = "string",
-    ExtraParams = list(
-      list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-        Value = "string"
-      )
-    )
-  ),
-  TechContact = list(
-    FirstName = "string",
-    LastName = "string",
-    ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-    OrganizationName = "string",
-    AddressLine1 = "string",
-    AddressLine2 = "string",
-    City = "string",
-    State = "string",
-    CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-    ZipCode = "string",
-    PhoneNumber = "string",
-    Email = "string",
-    Fax = "string",
-    ExtraParams = list(
-      list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-        Value = "string"
-      )
-    )
-  ),
-  PrivacyProtectAdminContact = TRUE|FALSE,
-  PrivacyProtectRegistrantContact = TRUE|FALSE,
-  PrivacyProtectTechContact = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

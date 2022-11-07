@@ -4,8 +4,10 @@
 \alias{servicecatalog_describe_copy_product_status}
 \title{Gets the status of the specified copy product operation}
 \usage{
-servicecatalog_describe_copy_product_status(AcceptLanguage,
-  CopyProductToken)
+servicecatalog_describe_copy_product_status(
+  AcceptLanguage = NULL,
+  CopyProductToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -18,23 +20,9 @@ servicecatalog_describe_copy_product_status(AcceptLanguage,
 \item{CopyProductToken}{[required] The token for the copy product operation. This token is returned by
 \code{\link[=servicecatalog_copy_product]{copy_product}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CopyProductStatus = "SUCCEEDED"|"IN_PROGRESS"|"FAILED",
-  TargetProductId = "string",
-  StatusDetail = "string"
-)
-}
-}
 \description{
 Gets the status of the specified copy product operation.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_copy_product_status(
-  AcceptLanguage = "string",
-  CopyProductToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_copy_product_status.html} for full documentation.
+}
 \keyword{internal}

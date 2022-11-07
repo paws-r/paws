@@ -4,43 +4,16 @@
 \alias{opsworks_describe_agent_versions}
 \title{Describes the available AWS OpsWorks Stacks agent versions}
 \usage{
-opsworks_describe_agent_versions(StackId, ConfigurationManager)
+opsworks_describe_agent_versions(StackId = NULL, ConfigurationManager = NULL)
 }
 \arguments{
 \item{StackId}{The stack ID.}
 
 \item{ConfigurationManager}{The configuration manager.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AgentVersions = list(
-    list(
-      Version = "string",
-      ConfigurationManager = list(
-        Name = "string",
-        Version = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the available AWS OpsWorks Stacks agent versions. You must
-specify a stack ID or a configuration manager.
-\code{\link[=opsworks_describe_agent_versions]{describe_agent_versions}} returns a
-list of available agent versions for the specified stack or
-configuration manager.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_agent_versions(
-  StackId = "string",
-  ConfigurationManager = list(
-    Name = "string",
-    Version = "string"
-  )
-)
-}
-}
+Describes the available AWS OpsWorks Stacks agent versions. You must specify a stack ID or a configuration manager. \code{\link[=opsworks_describe_agent_versions]{describe_agent_versions}} returns a list of available agent versions for the specified stack or configuration manager.
 
+See \url{https://paws-r.github.io/docs/opsworks/describe_agent_versions.html} for full documentation.
+}
 \keyword{internal}

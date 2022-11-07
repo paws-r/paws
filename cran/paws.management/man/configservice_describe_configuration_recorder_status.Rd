@@ -5,51 +5,17 @@
 \title{Returns the current status of the specified configuration recorder}
 \usage{
 configservice_describe_configuration_recorder_status(
-  ConfigurationRecorderNames)
+  ConfigurationRecorderNames = NULL
+)
 }
 \arguments{
 \item{ConfigurationRecorderNames}{The name(s) of the configuration recorder. If the name is not specified,
 the action returns the current status of all the configuration recorders
 associated with the account.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConfigurationRecordersStatus = list(
-    list(
-      name = "string",
-      lastStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastStopTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      recording = TRUE|FALSE,
-      lastStatus = "Pending"|"Success"|"Failure",
-      lastErrorCode = "string",
-      lastErrorMessage = "string",
-      lastStatusChangeTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns the current status of the specified configuration recorder. If a
-configuration recorder is not specified, this action returns the status
-of all configuration recorders associated with the account.
+Returns the current status of the specified configuration recorder. If a configuration recorder is not specified, this action returns the status of all configuration recorders associated with the account.
 
-Currently, you can specify only one configuration recorder per region in
-your account.
+See \url{https://paws-r.github.io/docs/configservice/describe_configuration_recorder_status.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_configuration_recorder_status(
-  ConfigurationRecorderNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

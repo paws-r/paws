@@ -4,9 +4,15 @@
 \alias{cognitoidentityprovider_respond_to_auth_challenge}
 \title{Responds to the authentication challenge}
 \usage{
-cognitoidentityprovider_respond_to_auth_challenge(ClientId,
-  ChallengeName, Session, ChallengeResponses, AnalyticsMetadata,
-  UserContextData, ClientMetadata)
+cognitoidentityprovider_respond_to_auth_challenge(
+  ClientId,
+  ChallengeName,
+  Session = NULL,
+  ChallengeResponses = NULL,
+  AnalyticsMetadata = NULL,
+  UserContextData = NULL,
+  ClientMetadata = NULL
+)
 }
 \arguments{
 \item{ClientId}{[required] The app client ID.}
@@ -14,15 +20,15 @@ cognitoidentityprovider_respond_to_auth_challenge(ClientId,
 \item{ChallengeName}{[required] The challenge name. For more information, see
 \code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}}.
 
-\code{ADMIN_NO_SRP_AUTH} is not a valid value.}
+\code{ADMIN_NO_SRP_AUTH} isn't a valid value.}
 
-\item{Session}{The session which should be passed both ways in challenge-response calls
+\item{Session}{The session that should be passed both ways in challenge-response calls
 to the service. If
 \code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} or
 \code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
-API call determines that the caller needs to go through another
-challenge, they return a session with other challenge parameters. This
-session should be passed as it is to the next
+API call determines that the caller must pass another challenge, they
+return a session with other challenge parameters. This session should be
+passed as it is to the next
 \code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
 API call.}
 
@@ -30,103 +36,85 @@ API call.}
 \code{ChallengeName}, for example:
 
 \code{SECRET_HASH} (if app client is configured with client secret) applies
-to all inputs below (including \code{SOFTWARE_TOKEN_MFA}).
+to all of the inputs that follow (including \code{SOFTWARE_TOKEN_MFA}).
 \itemize{
 \item \code{SMS_MFA}: \code{SMS_MFA_CODE}, \code{USERNAME}.
 \item \code{PASSWORD_VERIFIER}: \code{PASSWORD_CLAIM_SIGNATURE},
 \code{PASSWORD_CLAIM_SECRET_BLOCK}, \code{TIMESTAMP}, \code{USERNAME}.
-\item \code{NEW_PASSWORD_REQUIRED}: \code{NEW_PASSWORD}, any other required
-attributes, \code{USERNAME}.
+
+\code{PASSWORD_VERIFIER} requires \code{DEVICE_KEY} when you sign in with a
+remembered device.
+\item \code{NEW_PASSWORD_REQUIRED}: \code{NEW_PASSWORD}, \code{USERNAME}, \code{SECRET_HASH}
+(if app client is configured with client secret). To set any
+required attributes that Amazon Cognito returned as
+\code{requiredAttributes} in the
+\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} response,
+add a \code{userAttributes.attributename } parameter. This parameter can
+also set values for writable attributes that aren't required by your
+user pool.
+
+In a \code{NEW_PASSWORD_REQUIRED} challenge response, you can't modify a
+required attribute that already has a value. In
+\code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}},
+set a value for any keys that Amazon Cognito returned in the
+\code{requiredAttributes} parameter, then use the
+\code{\link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes}}
+API operation to modify the value of any additional attributes.
 \item \code{SOFTWARE_TOKEN_MFA}: \code{USERNAME} and \code{SOFTWARE_TOKEN_MFA_CODE} are
 required attributes.
 \item \code{DEVICE_SRP_AUTH} requires \code{USERNAME}, \code{DEVICE_KEY}, \code{SRP_A} (and
 \code{SECRET_HASH}).
 \item \code{DEVICE_PASSWORD_VERIFIER} requires everything that
-\code{PASSWORD_VERIFIER} requires plus \code{DEVICE_KEY}.
+\code{PASSWORD_VERIFIER} requires, plus \code{DEVICE_KEY}.
+\item \code{MFA_SETUP} requires \code{USERNAME}, plus you must use the session value
+returned by
+\code{\link[=cognitoidentityprovider_verify_software_token]{verify_software_token}}
+in the \code{Session} parameter.
 }}
 
-\item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
+\item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata that contributes to your metrics
+for
 \code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
 calls.}
 
-\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
-location used for evaluating the risk of an unexpected event by Amazon
-Cognito advanced security.}
+\item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
+IP address, or location. Amazon Cognito advanced security evaluates the
+risk of an authentication event based on the context that your app
+generates and passes to Amazon Cognito when it makes API requests.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
 
-You create custom workflows by assigning AWS Lambda functions to user
-pool triggers. When you use the RespondToAuthChallenge API action,
-Amazon Cognito invokes any functions that are assigned to the following
+You create custom workflows by assigning Lambda functions to user pool
+triggers. When you use the RespondToAuthChallenge API action, Amazon
+Cognito invokes any functions that are assigned to the following
 triggers: \emph{post authentication}, \emph{pre token generation}, \emph{define auth
 challenge}, \emph{create auth challenge}, and \emph{verify auth challenge}. When
 Amazon Cognito invokes any of these functions, it passes a JSON payload,
 which the function receives as input. This payload contains a
 \code{clientMetadata} attribute, which provides the data that you assigned to
 the ClientMetadata parameter in your RespondToAuthChallenge request. In
-your function code in AWS Lambda, you can process the \code{clientMetadata}
-value to enhance your workflow for your specific needs.
+your function code in Lambda, you can process the \code{clientMetadata} value
+to enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-Take the following limitations into consideration when you use the
-ClientMetadata parameter:
+When you use the ClientMetadata parameter, remember that Amazon Cognito
+won't do the following:
 \itemize{
-\item Amazon Cognito does not store the ClientMetadata value. This data is
-available only to AWS Lambda triggers that are assigned to a user
-pool to support custom workflows. If your user pool configuration
-does not include triggers, the ClientMetadata parameter serves no
-purpose.
-\item Amazon Cognito does not validate the ClientMetadata value.
-\item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don't use it to provide sensitive information.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
+\item Validate the ClientMetadata value.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
-  Session = "string",
-  ChallengeParameters = list(
-    "string"
-  ),
-  AuthenticationResult = list(
-    AccessToken = "string",
-    ExpiresIn = 123,
-    TokenType = "string",
-    RefreshToken = "string",
-    IdToken = "string",
-    NewDeviceMetadata = list(
-      DeviceKey = "string",
-      DeviceGroupKey = "string"
-    )
-  )
-)
-}
 }
 \description{
 Responds to the authentication challenge.
-}
-\section{Request syntax}{
-\preformatted{svc$respond_to_auth_challenge(
-  ClientId = "string",
-  ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
-  Session = "string",
-  ChallengeResponses = list(
-    "string"
-  ),
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  ),
-  UserContextData = list(
-    EncodedData = "string"
-  ),
-  ClientMetadata = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/respond_to_auth_challenge.html} for full documentation.
+}
 \keyword{internal}

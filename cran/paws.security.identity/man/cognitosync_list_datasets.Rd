@@ -4,8 +4,12 @@
 \alias{cognitosync_list_datasets}
 \title{Lists datasets for an identity}
 \usage{
-cognitosync_list_datasets(IdentityPoolId, IdentityId, NextToken,
-  MaxResults)
+cognitosync_list_datasets(
+  IdentityPoolId,
+  IdentityId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example,
@@ -20,45 +24,9 @@ Cognito. GUID generation is unique within a region.}
 
 \item{MaxResults}{The maximum number of results to be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Datasets = list(
-    list(
-      IdentityId = "string",
-      DatasetName = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedBy = "string",
-      DataStorage = 123,
-      NumRecords = 123
-    )
-  ),
-  Count = 123,
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists datasets for an identity. With Amazon Cognito Sync, each identity
-has access only to its own data. Thus, the credentials used to make this
-API call need to have access to the identity data.
+Lists datasets for an identity. With Amazon Cognito Sync, each identity has access only to its own data. Thus, the credentials used to make this API call need to have access to the identity data.
 
-ListDatasets can be called with temporary user credentials provided by
-Cognito Identity or with developer credentials. You should use the
-Cognito Identity credentials to make this API call.
+See \url{https://paws-r.github.io/docs/cognitosync/list_datasets.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_datasets(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

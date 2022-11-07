@@ -4,7 +4,11 @@
 \alias{personalize_list_event_trackers}
 \title{Returns the list of event trackers associated with the account}
 \usage{
-personalize_list_event_trackers(datasetGroupArn, nextToken, maxResults)
+personalize_list_event_trackers(
+  datasetGroupArn = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{datasetGroupArn}{The ARN of a dataset group used to filter the response.}
@@ -15,39 +19,9 @@ next set of event trackers (if they exist).}
 
 \item{maxResults}{The maximum number of event trackers to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  eventTrackers = list(
-    list(
-      name = "string",
-      eventTrackerArn = "string",
-      status = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns the list of event trackers associated with the account. The
-response provides the properties for each event tracker, including the
-Amazon Resource Name (ARN) and tracking ID. For more information on
-event trackers, see
-\code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_event_trackers(
-  datasetGroupArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns the list of event trackers associated with the account. The response provides the properties for each event tracker, including the Amazon Resource Name (ARN) and tracking ID. For more information on event trackers, see \code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
 
+See \url{https://paws-r.github.io/docs/personalize/list_event_trackers.html} for full documentation.
+}
 \keyword{internal}

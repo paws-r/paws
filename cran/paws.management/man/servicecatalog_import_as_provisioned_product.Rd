@@ -6,9 +6,14 @@
 product that is associated to a Service Catalog product and provisioning
 artifact}
 \usage{
-servicecatalog_import_as_provisioned_product(AcceptLanguage, ProductId,
-  ProvisioningArtifactId, ProvisionedProductName, PhysicalId,
-  IdempotencyToken)
+servicecatalog_import_as_provisioned_product(
+  AcceptLanguage = NULL,
+  ProductId,
+  ProvisioningArtifactId,
+  ProvisionedProductName,
+  PhysicalId,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -33,72 +38,9 @@ supports CloudFormation stack IDs.}
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RecordDetail = list(
-    RecordId = "string",
-    ProvisionedProductName = "string",
-    Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    UpdatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProvisionedProductType = "string",
-    RecordType = "string",
-    ProvisionedProductId = "string",
-    ProductId = "string",
-    ProvisioningArtifactId = "string",
-    PathId = "string",
-    RecordErrors = list(
-      list(
-        Code = "string",
-        Description = "string"
-      )
-    ),
-    RecordTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    LaunchRoleArn = "string"
-  )
-)
-}
-}
 \description{
-Requests the import of a resource as a Service Catalog provisioned
-product that is associated to a Service Catalog product and provisioning
-artifact. Once imported, all supported Service Catalog governance
-actions are supported on the provisioned product.
+Requests the import of a resource as a Service Catalog provisioned product that is associated to a Service Catalog product and provisioning artifact. Once imported, all supported Service Catalog governance actions are supported on the provisioned product.
 
-Resource import only supports CloudFormation stack ARNs. CloudFormation
-StackSets and non-root nested stacks are not supported.
-
-The CloudFormation stack must have one of the following statuses to be
-imported: \code{CREATE_COMPLETE}, \code{UPDATE_COMPLETE},
-\code{UPDATE_ROLLBACK_COMPLETE}, \code{IMPORT_COMPLETE},
-\code{IMPORT_ROLLBACK_COMPLETE}.
-
-Import of the resource requires that the CloudFormation stack template
-matches the associated Service Catalog product provisioning artifact.
-
-The user or role that performs this operation must have the
-\code{cloudformation:GetTemplate} and \code{cloudformation:DescribeStacks} IAM
-policy permissions.
+See \url{https://paws-r.github.io/docs/servicecatalog/import_as_provisioned_product.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$import_as_provisioned_product(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  ProvisionedProductName = "string",
-  PhysicalId = "string",
-  IdempotencyToken = "string"
-)
-}
-}
-
 \keyword{internal}

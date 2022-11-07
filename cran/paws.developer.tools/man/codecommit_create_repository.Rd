@@ -4,8 +4,11 @@
 \alias{codecommit_create_repository}
 \title{Creates a new, empty repository}
 \usage{
-codecommit_create_repository(repositoryName, repositoryDescription,
-  tags)
+codecommit_create_repository(
+  repositoryName,
+  repositoryDescription = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the new repository to be created.
@@ -28,39 +31,9 @@ on a webpage.}
 
 \item{tags}{One or more tag key-value pairs to use when tagging this repository.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  repositoryMetadata = list(
-    accountId = "string",
-    repositoryId = "string",
-    repositoryName = "string",
-    repositoryDescription = "string",
-    defaultBranch = "string",
-    lastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    cloneUrlHttp = "string",
-    cloneUrlSsh = "string",
-    Arn = "string"
-  )
-)
-}
-}
 \description{
 Creates a new, empty repository.
-}
-\section{Request syntax}{
-\preformatted{svc$create_repository(
-  repositoryName = "string",
-  repositoryDescription = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/create_repository.html} for full documentation.
+}
 \keyword{internal}

@@ -4,11 +4,24 @@
 \alias{mturk_create_hit}
 \title{The CreateHIT operation creates a new Human Intelligence Task (HIT)}
 \usage{
-mturk_create_hit(MaxAssignments, AutoApprovalDelayInSeconds,
-  LifetimeInSeconds, AssignmentDurationInSeconds, Reward, Title, Keywords,
-  Description, Question, RequesterAnnotation, QualificationRequirements,
-  UniqueRequestToken, AssignmentReviewPolicy, HITReviewPolicy,
-  HITLayoutId, HITLayoutParameters)
+mturk_create_hit(
+  MaxAssignments = NULL,
+  AutoApprovalDelayInSeconds = NULL,
+  LifetimeInSeconds,
+  AssignmentDurationInSeconds,
+  Reward,
+  Title,
+  Keywords = NULL,
+  Description,
+  Question = NULL,
+  RequesterAnnotation = NULL,
+  QualificationRequirements = NULL,
+  UniqueRequestToken = NULL,
+  AssignmentReviewPolicy = NULL,
+  HITReviewPolicy = NULL,
+  HITLayoutId = NULL,
+  HITLayoutParameters = NULL
+)
 }
 \arguments{
 \item{MaxAssignments}{The number of times the HIT can be accepted and completed before the HIT
@@ -105,158 +118,9 @@ be provided.}
 with values using the HITLayoutParameter structure. For more
 information, see HITLayout.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HIT = list(
-    HITId = "string",
-    HITTypeId = "string",
-    HITGroupId = "string",
-    HITLayoutId = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Title = "string",
-    Description = "string",
-    Question = "string",
-    Keywords = "string",
-    HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
-    MaxAssignments = 123,
-    Reward = "string",
-    AutoApprovalDelayInSeconds = 123,
-    Expiration = as.POSIXct(
-      "2015-01-01"
-    ),
-    AssignmentDurationInSeconds = 123,
-    RequesterAnnotation = "string",
-    QualificationRequirements = list(
-      list(
-        QualificationTypeId = "string",
-        Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
-        IntegerValues = list(
-          123
-        ),
-        LocaleValues = list(
-          list(
-            Country = "string",
-            Subdivision = "string"
-          )
-        ),
-        RequiredToPreview = TRUE|FALSE,
-        ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
-      )
-    ),
-    HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
-    NumberOfAssignmentsPending = 123,
-    NumberOfAssignmentsAvailable = 123,
-    NumberOfAssignmentsCompleted = 123
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_create_hit]{create_hit}} operation creates a new Human
-Intelligence Task (HIT). The new HIT is made available for Workers to
-find and accept on the Amazon Mechanical Turk website.
+The \code{\link[=mturk_create_hit]{create_hit}} operation creates a new Human Intelligence Task (HIT). The new HIT is made available for Workers to find and accept on the Amazon Mechanical Turk website.
 
-This operation allows you to specify a new HIT by passing in values for
-the properties of the HIT, such as its title, reward amount and number
-of assignments. When you pass these values to
-\code{\link[=mturk_create_hit]{create_hit}}, a new HIT is created for you, with a
-new \code{HITTypeID}. The HITTypeID can be used to create additional HITs in
-the future without needing to specify common parameters such as the
-title, description and reward amount each time.
-
-An alternative way to create HITs is to first generate a HITTypeID using
-the \code{\link[=mturk_create_hit_type]{create_hit_type}} operation and then call
-the \code{\link[=mturk_create_hit_with_hit_type]{create_hit_with_hit_type}}
-operation. This is the recommended best practice for Requesters who are
-creating large numbers of HITs.
-
-CreateHIT also supports several ways to provide question data: by
-providing a value for the \code{Question} parameter that fully specifies the
-contents of the HIT, or by providing a \code{HitLayoutId} and associated
-\code{HitLayoutParameters}.
-
-If a HIT is created with 10 or more maximum assignments, there is an
-additional fee. For more information, see \href{https://requester.mturk.com/pricing}{Amazon Mechanical Turk Pricing}.
+See \url{https://paws-r.github.io/docs/mturk/create_hit.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_hit(
-  MaxAssignments = 123,
-  AutoApprovalDelayInSeconds = 123,
-  LifetimeInSeconds = 123,
-  AssignmentDurationInSeconds = 123,
-  Reward = "string",
-  Title = "string",
-  Keywords = "string",
-  Description = "string",
-  Question = "string",
-  RequesterAnnotation = "string",
-  QualificationRequirements = list(
-    list(
-      QualificationTypeId = "string",
-      Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
-      IntegerValues = list(
-        123
-      ),
-      LocaleValues = list(
-        list(
-          Country = "string",
-          Subdivision = "string"
-        )
-      ),
-      RequiredToPreview = TRUE|FALSE,
-      ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
-    )
-  ),
-  UniqueRequestToken = "string",
-  AssignmentReviewPolicy = list(
-    PolicyName = "string",
-    Parameters = list(
-      list(
-        Key = "string",
-        Values = list(
-          "string"
-        ),
-        MapEntries = list(
-          list(
-            Key = "string",
-            Values = list(
-              "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  HITReviewPolicy = list(
-    PolicyName = "string",
-    Parameters = list(
-      list(
-        Key = "string",
-        Values = list(
-          "string"
-        ),
-        MapEntries = list(
-          list(
-            Key = "string",
-            Values = list(
-              "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  HITLayoutId = "string",
-  HITLayoutParameters = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

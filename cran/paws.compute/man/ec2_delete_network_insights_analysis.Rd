@@ -4,7 +4,7 @@
 \alias{ec2_delete_network_insights_analysis}
 \title{Deletes the specified network insights analysis}
 \usage{
-ec2_delete_network_insights_analysis(DryRun, NetworkInsightsAnalysisId)
+ec2_delete_network_insights_analysis(DryRun = NULL, NetworkInsightsAnalysisId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,21 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInsightsAnalysisId}{[required] The ID of the network insights analysis.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NetworkInsightsAnalysisId = "string"
-)
-}
-}
 \description{
 Deletes the specified network insights analysis.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_network_insights_analysis(
-  DryRun = TRUE|FALSE,
-  NetworkInsightsAnalysisId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_network_insights_analysis.html} for full documentation.
+}
 \keyword{internal}

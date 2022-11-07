@@ -108,7 +108,16 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #'     ),
 #'     StorageInfo = list(
 #'       EbsStorageInfo = list(
+#'         ProvisionedThroughput = list(
+#'           Enabled = TRUE|FALSE,
+#'           VolumeThroughput = 123
+#'         ),
 #'         VolumeSize = 123
+#'       )
+#'     ),
+#'     ConnectivityInfo = list(
+#'       PublicAccess = list(
+#'         Type = "string"
 #'       )
 #'     )
 #'   ),
@@ -116,12 +125,19 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #'     Sasl = list(
 #'       Scram = list(
 #'         Enabled = TRUE|FALSE
+#'       ),
+#'       Iam = list(
+#'         Enabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     Tls = list(
 #'       CertificateAuthorityArnList = list(
 #'         "string"
-#'       )
+#'       ),
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     Unauthenticated = list(
+#'       Enabled = TRUE|FALSE
 #'     )
 #'   ),
 #'   ClusterName = "string",
@@ -193,6 +209,167 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
   return(response)
 }
 .kafka$operations$create_cluster <- kafka_create_cluster
+
+#' Creates a new MSK cluster
+#'
+#' @description
+#' Creates a new MSK cluster.
+#'
+#' @usage
+#' kafka_create_cluster_v2(ClusterName, Tags, Provisioned, Serverless)
+#'
+#' @param ClusterName &#91;required&#93; The name of the cluster.
+#' @param Tags A map of tags that you want the cluster to have.
+#' @param Provisioned Information about the provisioned cluster.
+#' @param Serverless Information about the serverless cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterArn = "string",
+#'   ClusterName = "string",
+#'   State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING",
+#'   ClusterType = "PROVISIONED"|"SERVERLESS"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_cluster_v2(
+#'   ClusterName = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Provisioned = list(
+#'     BrokerNodeGroupInfo = list(
+#'       BrokerAZDistribution = "DEFAULT",
+#'       ClientSubnets = list(
+#'         "string"
+#'       ),
+#'       InstanceType = "string",
+#'       SecurityGroups = list(
+#'         "string"
+#'       ),
+#'       StorageInfo = list(
+#'         EbsStorageInfo = list(
+#'           ProvisionedThroughput = list(
+#'             Enabled = TRUE|FALSE,
+#'             VolumeThroughput = 123
+#'           ),
+#'           VolumeSize = 123
+#'         )
+#'       ),
+#'       ConnectivityInfo = list(
+#'         PublicAccess = list(
+#'           Type = "string"
+#'         )
+#'       )
+#'     ),
+#'     ClientAuthentication = list(
+#'       Sasl = list(
+#'         Scram = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         Iam = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       Tls = list(
+#'         CertificateAuthorityArnList = list(
+#'           "string"
+#'         ),
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       Unauthenticated = list(
+#'         Enabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     ConfigurationInfo = list(
+#'       Arn = "string",
+#'       Revision = 123
+#'     ),
+#'     EncryptionInfo = list(
+#'       EncryptionAtRest = list(
+#'         DataVolumeKMSKeyId = "string"
+#'       ),
+#'       EncryptionInTransit = list(
+#'         ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+#'         InCluster = TRUE|FALSE
+#'       )
+#'     ),
+#'     EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
+#'     OpenMonitoring = list(
+#'       Prometheus = list(
+#'         JmxExporter = list(
+#'           EnabledInBroker = TRUE|FALSE
+#'         ),
+#'         NodeExporter = list(
+#'           EnabledInBroker = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     KafkaVersion = "string",
+#'     LoggingInfo = list(
+#'       BrokerLogs = list(
+#'         CloudWatchLogs = list(
+#'           Enabled = TRUE|FALSE,
+#'           LogGroup = "string"
+#'         ),
+#'         Firehose = list(
+#'           DeliveryStream = "string",
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         S3 = list(
+#'           Bucket = "string",
+#'           Enabled = TRUE|FALSE,
+#'           Prefix = "string"
+#'         )
+#'       )
+#'     ),
+#'     NumberOfBrokerNodes = 123
+#'   ),
+#'   Serverless = list(
+#'     VpcConfigs = list(
+#'       list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ClientAuthentication = list(
+#'       Sasl = list(
+#'         Iam = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_create_cluster_v2
+kafka_create_cluster_v2 <- function(ClusterName, Tags = NULL, Provisioned = NULL, Serverless = NULL) {
+  op <- new_operation(
+    name = "CreateClusterV2",
+    http_method = "POST",
+    http_path = "/api/v2/clusters",
+    paginator = list()
+  )
+  input <- .kafka$create_cluster_v2_input(ClusterName = ClusterName, Tags = Tags, Provisioned = Provisioned, Serverless = Serverless)
+  output <- .kafka$create_cluster_v2_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$create_cluster_v2 <- kafka_create_cluster_v2
 
 #' Creates a new MSK configuration
 #'
@@ -390,7 +567,16 @@ kafka_delete_configuration <- function(Arn) {
 #'       ),
 #'       StorageInfo = list(
 #'         EbsStorageInfo = list(
+#'           ProvisionedThroughput = list(
+#'             Enabled = TRUE|FALSE,
+#'             VolumeThroughput = 123
+#'           ),
 #'           VolumeSize = 123
+#'         )
+#'       ),
+#'       ConnectivityInfo = list(
+#'         PublicAccess = list(
+#'           Type = "string"
 #'         )
 #'       )
 #'     ),
@@ -398,12 +584,19 @@ kafka_delete_configuration <- function(Arn) {
 #'       Sasl = list(
 #'         Scram = list(
 #'           Enabled = TRUE|FALSE
+#'         ),
+#'         Iam = list(
+#'           Enabled = TRUE|FALSE
 #'         )
 #'       ),
 #'       Tls = list(
 #'         CertificateAuthorityArnList = list(
 #'           "string"
-#'         )
+#'         ),
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       Unauthenticated = list(
+#'         Enabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     ClusterArn = "string",
@@ -496,6 +689,179 @@ kafka_describe_cluster <- function(ClusterArn) {
 }
 .kafka$operations$describe_cluster <- kafka_describe_cluster
 
+#' Returns a description of the MSK cluster whose Amazon Resource Name
+#' (ARN) is specified in the request
+#'
+#' @description
+#' Returns a description of the MSK cluster whose Amazon Resource Name
+#' (ARN) is specified in the request.
+#'
+#' @usage
+#' kafka_describe_cluster_v2(ClusterArn)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterInfo = list(
+#'     ActiveOperationArn = "string",
+#'     ClusterType = "PROVISIONED"|"SERVERLESS",
+#'     ClusterArn = "string",
+#'     ClusterName = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CurrentVersion = "string",
+#'     State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING",
+#'     StateInfo = list(
+#'       Code = "string",
+#'       Message = "string"
+#'     ),
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     Provisioned = list(
+#'       BrokerNodeGroupInfo = list(
+#'         BrokerAZDistribution = "DEFAULT",
+#'         ClientSubnets = list(
+#'           "string"
+#'         ),
+#'         InstanceType = "string",
+#'         SecurityGroups = list(
+#'           "string"
+#'         ),
+#'         StorageInfo = list(
+#'           EbsStorageInfo = list(
+#'             ProvisionedThroughput = list(
+#'               Enabled = TRUE|FALSE,
+#'               VolumeThroughput = 123
+#'             ),
+#'             VolumeSize = 123
+#'           )
+#'         ),
+#'         ConnectivityInfo = list(
+#'           PublicAccess = list(
+#'             Type = "string"
+#'           )
+#'         )
+#'       ),
+#'       CurrentBrokerSoftwareInfo = list(
+#'         ConfigurationArn = "string",
+#'         ConfigurationRevision = 123,
+#'         KafkaVersion = "string"
+#'       ),
+#'       ClientAuthentication = list(
+#'         Sasl = list(
+#'           Scram = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           Iam = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         Tls = list(
+#'           CertificateAuthorityArnList = list(
+#'             "string"
+#'           ),
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         Unauthenticated = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       EncryptionInfo = list(
+#'         EncryptionAtRest = list(
+#'           DataVolumeKMSKeyId = "string"
+#'         ),
+#'         EncryptionInTransit = list(
+#'           ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+#'           InCluster = TRUE|FALSE
+#'         )
+#'       ),
+#'       EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
+#'       OpenMonitoring = list(
+#'         Prometheus = list(
+#'           JmxExporter = list(
+#'             EnabledInBroker = TRUE|FALSE
+#'           ),
+#'           NodeExporter = list(
+#'             EnabledInBroker = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       LoggingInfo = list(
+#'         BrokerLogs = list(
+#'           CloudWatchLogs = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroup = "string"
+#'           ),
+#'           Firehose = list(
+#'             DeliveryStream = "string",
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           S3 = list(
+#'             Bucket = "string",
+#'             Enabled = TRUE|FALSE,
+#'             Prefix = "string"
+#'           )
+#'         )
+#'       ),
+#'       NumberOfBrokerNodes = 123,
+#'       ZookeeperConnectString = "string",
+#'       ZookeeperConnectStringTls = "string"
+#'     ),
+#'     Serverless = list(
+#'       VpcConfigs = list(
+#'         list(
+#'           SubnetIds = list(
+#'             "string"
+#'           ),
+#'           SecurityGroupIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ClientAuthentication = list(
+#'         Sasl = list(
+#'           Iam = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_cluster_v2(
+#'   ClusterArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_cluster_v2
+kafka_describe_cluster_v2 <- function(ClusterArn) {
+  op <- new_operation(
+    name = "DescribeClusterV2",
+    http_method = "GET",
+    http_path = "/api/v2/clusters/{clusterArn}",
+    paginator = list()
+  )
+  input <- .kafka$describe_cluster_v2_input(ClusterArn = ClusterArn)
+  output <- .kafka$describe_cluster_v2_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_cluster_v2 <- kafka_describe_cluster_v2
+
 #' Returns a description of the cluster operation specified by the ARN
 #'
 #' @description
@@ -539,6 +905,10 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'       BrokerEBSVolumeInfo = list(
 #'         list(
 #'           KafkaBrokerNodeId = "string",
+#'           ProvisionedThroughput = list(
+#'             Enabled = TRUE|FALSE,
+#'             VolumeThroughput = 123
+#'           ),
 #'           VolumeSizeGB = 123
 #'         )
 #'       ),
@@ -574,6 +944,40 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'             Enabled = TRUE|FALSE,
 #'             Prefix = "string"
 #'           )
+#'         )
+#'       ),
+#'       InstanceType = "string",
+#'       ClientAuthentication = list(
+#'         Sasl = list(
+#'           Scram = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           Iam = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         Tls = list(
+#'           CertificateAuthorityArnList = list(
+#'             "string"
+#'           ),
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         Unauthenticated = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       EncryptionInfo = list(
+#'         EncryptionAtRest = list(
+#'           DataVolumeKMSKeyId = "string"
+#'         ),
+#'         EncryptionInTransit = list(
+#'           ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+#'           InCluster = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConnectivityInfo = list(
+#'         PublicAccess = list(
+#'           Type = "string"
 #'         )
 #'       )
 #'     ),
@@ -581,6 +985,10 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'       BrokerEBSVolumeInfo = list(
 #'         list(
 #'           KafkaBrokerNodeId = "string",
+#'           ProvisionedThroughput = list(
+#'             Enabled = TRUE|FALSE,
+#'             VolumeThroughput = 123
+#'           ),
 #'           VolumeSizeGB = 123
 #'         )
 #'       ),
@@ -616,6 +1024,40 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'             Enabled = TRUE|FALSE,
 #'             Prefix = "string"
 #'           )
+#'         )
+#'       ),
+#'       InstanceType = "string",
+#'       ClientAuthentication = list(
+#'         Sasl = list(
+#'           Scram = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           Iam = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         Tls = list(
+#'           CertificateAuthorityArnList = list(
+#'             "string"
+#'           ),
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         Unauthenticated = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       EncryptionInfo = list(
+#'         EncryptionAtRest = list(
+#'           DataVolumeKMSKeyId = "string"
+#'         ),
+#'         EncryptionInTransit = list(
+#'           ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+#'           InCluster = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConnectivityInfo = list(
+#'         PublicAccess = list(
+#'           Type = "string"
 #'         )
 #'       )
 #'     )
@@ -838,7 +1280,11 @@ kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' list(
 #'   BootstrapBrokerString = "string",
 #'   BootstrapBrokerStringTls = "string",
-#'   BootstrapBrokerStringSaslScram = "string"
+#'   BootstrapBrokerStringSaslScram = "string",
+#'   BootstrapBrokerStringSaslIam = "string",
+#'   BootstrapBrokerStringPublicTls = "string",
+#'   BootstrapBrokerStringPublicSaslScram = "string",
+#'   BootstrapBrokerStringPublicSaslIam = "string"
 #' )
 #' ```
 #'
@@ -971,6 +1417,10 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #'         BrokerEBSVolumeInfo = list(
 #'           list(
 #'             KafkaBrokerNodeId = "string",
+#'             ProvisionedThroughput = list(
+#'               Enabled = TRUE|FALSE,
+#'               VolumeThroughput = 123
+#'             ),
 #'             VolumeSizeGB = 123
 #'           )
 #'         ),
@@ -1006,6 +1456,40 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #'               Enabled = TRUE|FALSE,
 #'               Prefix = "string"
 #'             )
+#'           )
+#'         ),
+#'         InstanceType = "string",
+#'         ClientAuthentication = list(
+#'           Sasl = list(
+#'             Scram = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
+#'             Iam = list(
+#'               Enabled = TRUE|FALSE
+#'             )
+#'           ),
+#'           Tls = list(
+#'             CertificateAuthorityArnList = list(
+#'               "string"
+#'             ),
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           Unauthenticated = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         EncryptionInfo = list(
+#'           EncryptionAtRest = list(
+#'             DataVolumeKMSKeyId = "string"
+#'           ),
+#'           EncryptionInTransit = list(
+#'             ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+#'             InCluster = TRUE|FALSE
+#'           )
+#'         ),
+#'         ConnectivityInfo = list(
+#'           PublicAccess = list(
+#'             Type = "string"
 #'           )
 #'         )
 #'       ),
@@ -1013,6 +1497,10 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #'         BrokerEBSVolumeInfo = list(
 #'           list(
 #'             KafkaBrokerNodeId = "string",
+#'             ProvisionedThroughput = list(
+#'               Enabled = TRUE|FALSE,
+#'               VolumeThroughput = 123
+#'             ),
 #'             VolumeSizeGB = 123
 #'           )
 #'         ),
@@ -1048,6 +1536,40 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #'               Enabled = TRUE|FALSE,
 #'               Prefix = "string"
 #'             )
+#'           )
+#'         ),
+#'         InstanceType = "string",
+#'         ClientAuthentication = list(
+#'           Sasl = list(
+#'             Scram = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
+#'             Iam = list(
+#'               Enabled = TRUE|FALSE
+#'             )
+#'           ),
+#'           Tls = list(
+#'             CertificateAuthorityArnList = list(
+#'               "string"
+#'             ),
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           Unauthenticated = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         EncryptionInfo = list(
+#'           EncryptionAtRest = list(
+#'             DataVolumeKMSKeyId = "string"
+#'           ),
+#'           EncryptionInTransit = list(
+#'             ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+#'             InCluster = TRUE|FALSE
+#'           )
+#'         ),
+#'         ConnectivityInfo = list(
+#'           PublicAccess = list(
+#'             Type = "string"
 #'           )
 #'         )
 #'       )
@@ -1120,7 +1642,16 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
 #'         ),
 #'         StorageInfo = list(
 #'           EbsStorageInfo = list(
+#'             ProvisionedThroughput = list(
+#'               Enabled = TRUE|FALSE,
+#'               VolumeThroughput = 123
+#'             ),
 #'             VolumeSize = 123
+#'           )
+#'         ),
+#'         ConnectivityInfo = list(
+#'           PublicAccess = list(
+#'             Type = "string"
 #'           )
 #'         )
 #'       ),
@@ -1128,12 +1659,19 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
 #'         Sasl = list(
 #'           Scram = list(
 #'             Enabled = TRUE|FALSE
+#'           ),
+#'           Iam = list(
+#'             Enabled = TRUE|FALSE
 #'           )
 #'         ),
 #'         Tls = list(
 #'           CertificateAuthorityArnList = list(
 #'             "string"
-#'           )
+#'           ),
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         Unauthenticated = list(
+#'           Enabled = TRUE|FALSE
 #'         )
 #'       ),
 #'       ClusterArn = "string",
@@ -1229,6 +1767,191 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
   return(response)
 }
 .kafka$operations$list_clusters <- kafka_list_clusters
+
+#' Returns a list of all the MSK clusters in the current Region
+#'
+#' @description
+#' Returns a list of all the MSK clusters in the current Region.
+#'
+#' @usage
+#' kafka_list_clusters_v2(ClusterNameFilter, ClusterTypeFilter, MaxResults,
+#'   NextToken)
+#'
+#' @param ClusterNameFilter Specify a prefix of the names of the clusters that you want to list. The
+#' service lists all the clusters whose names start with this prefix.
+#' @param ClusterTypeFilter Specify either PROVISIONED or SERVERLESS.
+#' @param MaxResults The maximum number of results to return in the response. If there are
+#' more results, the response includes a NextToken parameter.
+#' @param NextToken The paginated results marker. When the result of the operation is
+#' truncated, the call returns NextToken in the response. To get the next
+#' batch, provide this token in your next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterInfoList = list(
+#'     list(
+#'       ActiveOperationArn = "string",
+#'       ClusterType = "PROVISIONED"|"SERVERLESS",
+#'       ClusterArn = "string",
+#'       ClusterName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CurrentVersion = "string",
+#'       State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING",
+#'       StateInfo = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       Provisioned = list(
+#'         BrokerNodeGroupInfo = list(
+#'           BrokerAZDistribution = "DEFAULT",
+#'           ClientSubnets = list(
+#'             "string"
+#'           ),
+#'           InstanceType = "string",
+#'           SecurityGroups = list(
+#'             "string"
+#'           ),
+#'           StorageInfo = list(
+#'             EbsStorageInfo = list(
+#'               ProvisionedThroughput = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 VolumeThroughput = 123
+#'               ),
+#'               VolumeSize = 123
+#'             )
+#'           ),
+#'           ConnectivityInfo = list(
+#'             PublicAccess = list(
+#'               Type = "string"
+#'             )
+#'           )
+#'         ),
+#'         CurrentBrokerSoftwareInfo = list(
+#'           ConfigurationArn = "string",
+#'           ConfigurationRevision = 123,
+#'           KafkaVersion = "string"
+#'         ),
+#'         ClientAuthentication = list(
+#'           Sasl = list(
+#'             Scram = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
+#'             Iam = list(
+#'               Enabled = TRUE|FALSE
+#'             )
+#'           ),
+#'           Tls = list(
+#'             CertificateAuthorityArnList = list(
+#'               "string"
+#'             ),
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           Unauthenticated = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         EncryptionInfo = list(
+#'           EncryptionAtRest = list(
+#'             DataVolumeKMSKeyId = "string"
+#'           ),
+#'           EncryptionInTransit = list(
+#'             ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+#'             InCluster = TRUE|FALSE
+#'           )
+#'         ),
+#'         EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
+#'         OpenMonitoring = list(
+#'           Prometheus = list(
+#'             JmxExporter = list(
+#'               EnabledInBroker = TRUE|FALSE
+#'             ),
+#'             NodeExporter = list(
+#'               EnabledInBroker = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         LoggingInfo = list(
+#'           BrokerLogs = list(
+#'             CloudWatchLogs = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroup = "string"
+#'             ),
+#'             Firehose = list(
+#'               DeliveryStream = "string",
+#'               Enabled = TRUE|FALSE
+#'             ),
+#'             S3 = list(
+#'               Bucket = "string",
+#'               Enabled = TRUE|FALSE,
+#'               Prefix = "string"
+#'             )
+#'           )
+#'         ),
+#'         NumberOfBrokerNodes = 123,
+#'         ZookeeperConnectString = "string",
+#'         ZookeeperConnectStringTls = "string"
+#'       ),
+#'       Serverless = list(
+#'         VpcConfigs = list(
+#'           list(
+#'             SubnetIds = list(
+#'               "string"
+#'             ),
+#'             SecurityGroupIds = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         ClientAuthentication = list(
+#'           Sasl = list(
+#'             Iam = list(
+#'               Enabled = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_clusters_v2(
+#'   ClusterNameFilter = "string",
+#'   ClusterTypeFilter = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_clusters_v2
+kafka_list_clusters_v2 <- function(ClusterNameFilter = NULL, ClusterTypeFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListClustersV2",
+    http_method = "GET",
+    http_path = "/api/v2/clusters",
+    paginator = list()
+  )
+  input <- .kafka$list_clusters_v2_input(ClusterNameFilter = ClusterNameFilter, ClusterTypeFilter = ClusterTypeFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kafka$list_clusters_v2_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_clusters_v2 <- kafka_list_clusters_v2
 
 #' Returns a list of all the MSK configurations in this Region
 #'
@@ -1363,10 +2086,10 @@ kafka_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .kafka$operations$list_configurations <- kafka_list_configurations
 
-#' Returns a list of Kafka versions
+#' Returns a list of Apache Kafka versions
 #'
 #' @description
-#' Returns a list of Kafka versions.
+#' Returns a list of Apache Kafka versions.
 #'
 #' @usage
 #' kafka_list_kafka_versions(MaxResults, NextToken)
@@ -1813,6 +2536,58 @@ kafka_update_broker_count <- function(ClusterArn, CurrentVersion, TargetNumberOf
 }
 .kafka$operations$update_broker_count <- kafka_update_broker_count
 
+#' Updates EC2 instance type
+#'
+#' @description
+#' Updates EC2 instance type.
+#'
+#' @usage
+#' kafka_update_broker_type(ClusterArn, CurrentVersion, TargetInstanceType)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param CurrentVersion &#91;required&#93; The cluster version that you want to change. After this operation
+#' completes successfully, the cluster will have a new version.
+#' @param TargetInstanceType &#91;required&#93; The Amazon MSK broker type that you want all of the brokers in this
+#' cluster to be.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterArn = "string",
+#'   ClusterOperationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_broker_type(
+#'   ClusterArn = "string",
+#'   CurrentVersion = "string",
+#'   TargetInstanceType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_broker_type
+kafka_update_broker_type <- function(ClusterArn, CurrentVersion, TargetInstanceType) {
+  op <- new_operation(
+    name = "UpdateBrokerType",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/nodes/type",
+    paginator = list()
+  )
+  input <- .kafka$update_broker_type_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, TargetInstanceType = TargetInstanceType)
+  output <- .kafka$update_broker_type_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_broker_type <- kafka_update_broker_type
+
 #' Updates the EBS storage associated with MSK brokers
 #'
 #' @description
@@ -1845,6 +2620,10 @@ kafka_update_broker_count <- function(ClusterArn, CurrentVersion, TargetNumberOf
 #'   TargetBrokerEBSVolumeInfo = list(
 #'     list(
 #'       KafkaBrokerNodeId = "string",
+#'       ProvisionedThroughput = list(
+#'         Enabled = TRUE|FALSE,
+#'         VolumeThroughput = 123
+#'       ),
 #'       VolumeSizeGB = 123
 #'     )
 #'   )
@@ -1929,6 +2708,62 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
   return(response)
 }
 .kafka$operations$update_configuration <- kafka_update_configuration
+
+#' Updates the cluster's connectivity configuration
+#'
+#' @description
+#' Updates the cluster's connectivity configuration.
+#'
+#' @usage
+#' kafka_update_connectivity(ClusterArn, ConnectivityInfo, CurrentVersion)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the configuration.
+#' @param ConnectivityInfo &#91;required&#93; Information about the broker access configuration.
+#' @param CurrentVersion &#91;required&#93; The version of the MSK cluster to update. Cluster versions aren't simple
+#' numbers. You can describe an MSK cluster to find its version. When this
+#' update operation is successful, it generates a new cluster version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterArn = "string",
+#'   ClusterOperationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connectivity(
+#'   ClusterArn = "string",
+#'   ConnectivityInfo = list(
+#'     PublicAccess = list(
+#'       Type = "string"
+#'     )
+#'   ),
+#'   CurrentVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_connectivity
+kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo, CurrentVersion) {
+  op <- new_operation(
+    name = "UpdateConnectivity",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/connectivity",
+    paginator = list()
+  )
+  input <- .kafka$update_connectivity_input(ClusterArn = ClusterArn, ConnectivityInfo = ConnectivityInfo, CurrentVersion = CurrentVersion)
+  output <- .kafka$update_connectivity_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_connectivity <- kafka_update_connectivity
 
 #' Updates the cluster with the configuration that is specified in the
 #' request body
@@ -2129,3 +2964,85 @@ kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitori
   return(response)
 }
 .kafka$operations$update_monitoring <- kafka_update_monitoring
+
+#' Updates the security settings for the cluster
+#'
+#' @description
+#' Updates the security settings for the cluster. You can use this
+#' operation to specify encryption and authentication on existing clusters.
+#'
+#' @usage
+#' kafka_update_security(ClientAuthentication, ClusterArn, CurrentVersion,
+#'   EncryptionInfo)
+#'
+#' @param ClientAuthentication Includes all client authentication related information.
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param CurrentVersion &#91;required&#93; The version of the MSK cluster to update. Cluster versions aren't simple
+#' numbers. You can describe an MSK cluster to find its version. When this
+#' update operation is successful, it generates a new cluster version.
+#' @param EncryptionInfo Includes all encryption-related information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterArn = "string",
+#'   ClusterOperationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_security(
+#'   ClientAuthentication = list(
+#'     Sasl = list(
+#'       Scram = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       Iam = list(
+#'         Enabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     Tls = list(
+#'       CertificateAuthorityArnList = list(
+#'         "string"
+#'       ),
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     Unauthenticated = list(
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   ClusterArn = "string",
+#'   CurrentVersion = "string",
+#'   EncryptionInfo = list(
+#'     EncryptionAtRest = list(
+#'       DataVolumeKMSKeyId = "string"
+#'     ),
+#'     EncryptionInTransit = list(
+#'       ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+#'       InCluster = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_security
+kafka_update_security <- function(ClientAuthentication = NULL, ClusterArn, CurrentVersion, EncryptionInfo = NULL) {
+  op <- new_operation(
+    name = "UpdateSecurity",
+    http_method = "PATCH",
+    http_path = "/v1/clusters/{clusterArn}/security",
+    paginator = list()
+  )
+  input <- .kafka$update_security_input(ClientAuthentication = ClientAuthentication, ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, EncryptionInfo = EncryptionInfo)
+  output <- .kafka$update_security_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_security <- kafka_update_security

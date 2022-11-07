@@ -5,43 +5,20 @@
 \title{Creates a traffic policy, which you use to create multiple DNS resource
 record sets for one domain name (such as example}
 \usage{
-route53_create_traffic_policy(Name, Document, Comment)
+route53_create_traffic_policy(Name, Document, Comment = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the traffic policy.}
 
 \item{Document}{[required] The definition of this traffic policy in JSON format. For more
-information, see \href{https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html}{Traffic Policy Document Format}.}
+information, see Traffic Policy Document Format.}
 
 \item{Comment}{(Optional) Any comments that you want to include about the traffic
 policy.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficPolicy = list(
-    Id = "string",
-    Version = 123,
-    Name = "string",
-    Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-    Document = "string",
-    Comment = "string"
-  ),
-  Location = "string"
-)
-}
-}
 \description{
-Creates a traffic policy, which you use to create multiple DNS resource
-record sets for one domain name (such as example.com) or one subdomain
-name (such as www.example.com).
-}
-\section{Request syntax}{
-\preformatted{svc$create_traffic_policy(
-  Name = "string",
-  Document = "string",
-  Comment = "string"
-)
-}
-}
+Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com).
 
+See \url{https://paws-r.github.io/docs/route53/create_traffic_policy.html} for full documentation.
+}
 \keyword{internal}

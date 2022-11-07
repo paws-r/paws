@@ -5,7 +5,7 @@
 \title{Lists the names of the inline policies that are embedded in the
 specified IAM group}
 \usage{
-iam_list_group_policies(GroupName, Marker, MaxItems)
+iam_list_group_policies(GroupName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group to list policies for.
@@ -29,47 +29,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyNames = list(
-    "string"
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the names of the inline policies that are embedded in the
-specified IAM group.
+Lists the names of the inline policies that are embedded in the specified IAM group.
 
-An IAM group can also have managed policies attached to it. To list the
-managed policies that are attached to a group, use
-\code{\link[=iam_list_attached_group_policies]{list_attached_group_policies}}. For
-more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters. If there are no inline policies embedded with the specified
-group, the operation returns an empty list.
-}
-\section{Request syntax}{
-\preformatted{svc$list_group_policies(
-  GroupName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command lists the names of in-line policies that are
-# embedded in the IAM group named Admins.
-svc$list_group_policies(
-  GroupName = "Admins"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/list_group_policies.html} for full documentation.
 }
 \keyword{internal}

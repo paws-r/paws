@@ -5,9 +5,13 @@
 \title{Returns information about the merge options available for merging two
 specified branches}
 \usage{
-codecommit_get_merge_options(repositoryName, sourceCommitSpecifier,
-  destinationCommitSpecifier, conflictDetailLevel,
-  conflictResolutionStrategy)
+codecommit_get_merge_options(
+  repositoryName,
+  sourceCommitSpecifier,
+  destinationCommitSpecifier,
+  conflictDetailLevel = NULL,
+  conflictResolutionStrategy = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the commits about which you
@@ -30,31 +34,9 @@ attempt automatically merging two versions of a file. The default is
 NONE, which requires any conflicts to be resolved manually before the
 merge operation is successful.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  mergeOptions = list(
-    "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-  ),
-  sourceCommitId = "string",
-  destinationCommitId = "string",
-  baseCommitId = "string"
-)
-}
-}
 \description{
-Returns information about the merge options available for merging two
-specified branches. For details about why a merge option is not
-available, use GetMergeConflicts or DescribeMergeConflicts.
-}
-\section{Request syntax}{
-\preformatted{svc$get_merge_options(
-  repositoryName = "string",
-  sourceCommitSpecifier = "string",
-  destinationCommitSpecifier = "string",
-  conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-  conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE"
-)
-}
-}
+Returns information about the merge options available for merging two specified branches. For details about why a merge option is not available, use GetMergeConflicts or DescribeMergeConflicts.
 
+See \url{https://paws-r.github.io/docs/codecommit/get_merge_options.html} for full documentation.
+}
 \keyword{internal}

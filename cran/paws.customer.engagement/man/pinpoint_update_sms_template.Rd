@@ -5,8 +5,12 @@
 \title{Updates an existing message template for messages that are sent through
 the SMS channel}
 \usage{
-pinpoint_update_sms_template(CreateNewVersion, SMSTemplateRequest,
-  TemplateName, Version)
+pinpoint_update_sms_template(
+  CreateNewVersion = NULL,
+  SMSTemplateRequest,
+  TemplateName,
+  Version = NULL
+)
 }
 \arguments{
 \item{CreateNewVersion}{Specifies whether to save the updates as a new version of the message
@@ -48,35 +52,9 @@ parameter isn't used or is set to false.
 of the template.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageBody = list(
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Updates an existing message template for messages that are sent through
-the SMS channel.
-}
-\section{Request syntax}{
-\preformatted{svc$update_sms_template(
-  CreateNewVersion = TRUE|FALSE,
-  SMSTemplateRequest = list(
-    Body = "string",
-    DefaultSubstitutions = "string",
-    RecommenderId = "string",
-    tags = list(
-      "string"
-    ),
-    TemplateDescription = "string"
-  ),
-  TemplateName = "string",
-  Version = "string"
-)
-}
-}
+Updates an existing message template for messages that are sent through the SMS channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_sms_template.html} for full documentation.
+}
 \keyword{internal}

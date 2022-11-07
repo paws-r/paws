@@ -14,31 +14,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@:/-}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a virtual MFA device.
 
-You must deactivate a user's virtual MFA device before you can delete
-it. For information about deactivating MFA devices, see
-\code{\link[=iam_deactivate_mfa_device]{deactivate_mfa_device}}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_virtual_mfa_device(
-  SerialNumber = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following delete-virtual-mfa-device command removes the specified
-# MFA device from the current AWS account.
-svc$delete_virtual_mfa_device(
-  SerialNumber = "arn:aws:iam::123456789012:mfa/ExampleName"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_virtual_mfa_device.html} for full documentation.
 }
 \keyword{internal}

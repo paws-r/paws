@@ -16,53 +16,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  vaultNotificationConfig = list(
-    SNSTopic = "string",
-    Events = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-This operation retrieves the \code{notification-configuration} subresource of
-the specified vault.
+This operation retrieves the \code{notification-configuration} subresource of the specified vault.
 
-For information about setting a notification configuration on a vault,
-see \code{\link[=glacier_set_vault_notifications]{set_vault_notifications}}. If a
-notification configuration for a vault is not set, the operation returns
-a \verb{404 Not Found} error. For more information about vault notifications,
-see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html}{Configuring Vault Notifications in Amazon S3 Glacier}.
-
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html}{Access Control Using AWS Identity and Access Management (IAM)}.
-
-For conceptual information and underlying REST API, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html}{Configuring Vault Notifications in Amazon S3 Glacier}
-and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-get.html}{Get Vault Notification Configuration}
-in the \emph{Amazon Glacier Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_vault_notifications(
-  accountId = "string",
-  vaultName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The example retrieves the notification-configuration for the vault named
-# my-vault.
-svc$get_vault_notifications(
-  accountId = "-",
-  vaultName = "my-vault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/get_vault_notifications.html} for full documentation.
 }
 \keyword{internal}

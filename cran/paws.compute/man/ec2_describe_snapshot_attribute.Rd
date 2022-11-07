@@ -4,7 +4,7 @@
 \alias{ec2_describe_snapshot_attribute}
 \title{Describes the specified attribute of the specified snapshot}
 \usage{
-ec2_describe_snapshot_attribute(Attribute, SnapshotId, DryRun)
+ec2_describe_snapshot_attribute(Attribute, SnapshotId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The snapshot attribute you would like to view.}
@@ -16,49 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CreateVolumePermissions = list(
-    list(
-      Group = "all",
-      UserId = "string"
-    )
-  ),
-  ProductCodes = list(
-    list(
-      ProductCodeId = "string",
-      ProductCodeType = "devpay"|"marketplace"
-    )
-  ),
-  SnapshotId = "string"
-)
-}
-}
 \description{
-Describes the specified attribute of the specified snapshot. You can
-specify only one attribute at a time.
+Describes the specified attribute of the specified snapshot. You can specify only one attribute at a time.
 
-For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS snapshots}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_snapshot_attribute(
-  Attribute = "productCodes"|"createVolumePermission",
-  SnapshotId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the `createVolumePermission` attribute on a
-# snapshot with the snapshot ID of `snap-066877671789bd71b`.
-svc$describe_snapshot_attribute(
-  Attribute = "createVolumePermission",
-  SnapshotId = "snap-066877671789bd71b"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_snapshot_attribute.html} for full documentation.
 }
 \keyword{internal}

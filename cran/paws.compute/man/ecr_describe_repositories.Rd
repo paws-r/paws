@@ -4,13 +4,17 @@
 \alias{ecr_describe_repositories}
 \title{Describes image repositories in a registry}
 \usage{
-ecr_describe_repositories(registryId, repositoryNames, nextToken,
-  maxResults)
+ecr_describe_repositories(
+  registryId = NULL,
+  repositoryNames = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repositories to be described. If you do not specify a registry, the
-default registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repositories to be described. If you do not specify a
+registry, the default registry is assumed.}
 
 \item{repositoryNames}{A list of repositories to describe. If this parameter is omitted, then
 all repositories in a registry are described.}
@@ -40,52 +44,9 @@ and 1000. If this parameter is not used, then
 results and a \code{nextToken} value, if applicable. This option cannot be
 used when you specify repositories with \code{repositoryNames}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  repositories = list(
-    list(
-      repositoryArn = "string",
-      registryId = "string",
-      repositoryName = "string",
-      repositoryUri = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      imageTagMutability = "MUTABLE"|"IMMUTABLE",
-      imageScanningConfiguration = list(
-        scanOnPush = TRUE|FALSE
-      ),
-      encryptionConfiguration = list(
-        encryptionType = "AES256"|"KMS",
-        kmsKey = "string"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Describes image repositories in a registry.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_repositories(
-  registryId = "string",
-  repositoryNames = list(
-    "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following example obtains a list and description of all repositories
-# in the default registry to which the current user has access.
-svc$describe_repositories()
-}
-
+See \url{https://paws-r.github.io/docs/ecr/describe_repositories.html} for full documentation.
 }
 \keyword{internal}

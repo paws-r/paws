@@ -4,7 +4,7 @@
 \alias{workdocs_activate_user}
 \title{Activates the specified user}
 \usage{
-workdocs_activate_user(UserId, AuthenticationToken)
+workdocs_activate_user(UserId, AuthenticationToken = NULL)
 }
 \arguments{
 \item{UserId}{[required] The ID of the user.}
@@ -12,48 +12,9 @@ workdocs_activate_user(UserId, AuthenticationToken)
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
 administrator credentials to access the API.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  User = list(
-    Id = "string",
-    Username = "string",
-    EmailAddress = "string",
-    GivenName = "string",
-    Surname = "string",
-    OrganizationId = "string",
-    RootFolderId = "string",
-    RecycleBinFolderId = "string",
-    Status = "ACTIVE"|"INACTIVE"|"PENDING",
-    Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-    CreatedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ModifiedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    TimeZoneId = "string",
-    Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-    Storage = list(
-      StorageUtilizedInBytes = 123,
-      StorageRule = list(
-        StorageAllocatedInBytes = 123,
-        StorageType = "UNLIMITED"|"QUOTA"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Activates the specified user. Only active users can access Amazon
-WorkDocs.
-}
-\section{Request syntax}{
-\preformatted{svc$activate_user(
-  UserId = "string",
-  AuthenticationToken = "string"
-)
-}
-}
+Activates the specified user. Only active users can access Amazon WorkDocs.
 
+See \url{https://paws-r.github.io/docs/workdocs/activate_user.html} for full documentation.
+}
 \keyword{internal}

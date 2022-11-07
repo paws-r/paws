@@ -12,22 +12,9 @@ worklink_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] The tags to add to the resource. A tag is a key-value pair.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or overwrites one or more tags for the specified resource, such as
-a fleet. Each tag consists of a key and an optional value. If a resource
-already has a tag with the same key, this operation updates its value.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+Adds or overwrites one or more tags for the specified resource, such as a fleet. Each tag consists of a key and an optional value. If a resource already has a tag with the same key, this operation updates its value.
 
+See \url{https://paws-r.github.io/docs/worklink/tag_resource.html} for full documentation.
+}
 \keyword{internal}

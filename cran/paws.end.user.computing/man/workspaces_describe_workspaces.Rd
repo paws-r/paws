@@ -4,8 +4,14 @@
 \alias{workspaces_describe_workspaces}
 \title{Describes the specified WorkSpaces}
 \usage{
-workspaces_describe_workspaces(WorkspaceIds, DirectoryId, UserName,
-  BundleId, Limit, NextToken)
+workspaces_describe_workspaces(
+  WorkspaceIds = NULL,
+  DirectoryId = NULL,
+  UserName = NULL,
+  BundleId = NULL,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{WorkspaceIds}{The identifiers of the WorkSpaces. You cannot combine this parameter
@@ -33,60 +39,9 @@ filter.}
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Workspaces = list(
-    list(
-      WorkspaceId = "string",
-      DirectoryId = "string",
-      UserName = "string",
-      IpAddress = "string",
-      State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
-      BundleId = "string",
-      SubnetId = "string",
-      ErrorMessage = "string",
-      ErrorCode = "string",
-      ComputerName = "string",
-      VolumeEncryptionKey = "string",
-      UserVolumeEncryptionEnabled = TRUE|FALSE,
-      RootVolumeEncryptionEnabled = TRUE|FALSE,
-      WorkspaceProperties = list(
-        RunningMode = "AUTO_STOP"|"ALWAYS_ON",
-        RunningModeAutoStopTimeoutInMinutes = 123,
-        RootVolumeSizeGib = 123,
-        UserVolumeSizeGib = 123,
-        ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
-      ),
-      ModificationStates = list(
-        list(
-          Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
-          State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the specified WorkSpaces.
 
-You can filter the results by using the bundle identifier, directory
-identifier, or owner, but you can specify only one filter at a time.
+See \url{https://paws-r.github.io/docs/workspaces/describe_workspaces.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_workspaces(
-  WorkspaceIds = list(
-    "string"
-  ),
-  DirectoryId = "string",
-  UserName = "string",
-  BundleId = "string",
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,39 +5,16 @@
 \title{An auto-complete API for the search functionality in the Amazon
 SageMaker console}
 \usage{
-sagemaker_get_search_suggestions(Resource, SuggestionQuery)
+sagemaker_get_search_suggestions(Resource, SuggestionQuery = NULL)
 }
 \arguments{
 \item{Resource}{[required] The name of the Amazon SageMaker resource to search for.}
 
 \item{SuggestionQuery}{Limits the property names that are included in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PropertyNameSuggestions = list(
-    list(
-      PropertyName = "string"
-    )
-  )
-)
-}
-}
 \description{
-An auto-complete API for the search functionality in the Amazon
-SageMaker console. It returns suggestions of possible matches for the
-property name to use in \code{\link[=sagemaker_search]{search}} queries. Provides
-suggestions for \code{HyperParameters}, \code{Tags}, and \code{Metrics}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_search_suggestions(
-  Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup",
-  SuggestionQuery = list(
-    PropertyNameQuery = list(
-      PropertyNameHint = "string"
-    )
-  )
-)
-}
-}
+An auto-complete API for the search functionality in the Amazon SageMaker console. It returns suggestions of possible matches for the property name to use in \code{\link[=sagemaker_search]{search}} queries. Provides suggestions for \code{HyperParameters}, \code{Tags}, and \code{Metrics}.
 
+See \url{https://paws-r.github.io/docs/sagemaker/get_search_suggestions.html} for full documentation.
+}
 \keyword{internal}

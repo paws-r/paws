@@ -6,7 +6,7 @@
 connection that are referencing the security groups you've specified in
 this request}
 \usage{
-ec2_describe_security_group_references(DryRun, GroupId)
+ec2_describe_security_group_references(DryRun = NULL, GroupId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -16,43 +16,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupId}{[required] The IDs of the security groups in your account.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SecurityGroupReferenceSet = list(
-    list(
-      GroupId = "string",
-      ReferencingVpcId = "string",
-      VpcPeeringConnectionId = "string"
-    )
-  )
-)
-}
-}
 \description{
-[VPC only] Describes the VPCs on the other side of a VPC peering
-connection that are referencing the security groups you've specified in
-this request.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_security_group_references(
-  DryRun = TRUE|FALSE,
-  GroupId = list(
-    "string"
-  )
-)
-}
-}
+[VPC only] Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request.
 
-\examples{
-\dontrun{
-# This example describes the security group references for the specified
-# security group.
-svc$describe_security_group_references(
-  GroupId = list(
-    "sg-903004f8"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_security_group_references.html} for full documentation.
 }
 \keyword{internal}

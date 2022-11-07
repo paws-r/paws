@@ -28,9 +28,9 @@ contain before Amazon SQS rejects it. Valid values: An integer from
 Amazon SQS retains a message. Valid values: An integer representing
 seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600
 (4 days).
-\item \code{Policy} – The queue's policy. A valid AWS policy. For more
-information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html}{Overview of AWS IAM Policies}
-in the \emph{Amazon IAM User Guide}.
+\item \code{Policy} – The queue's policy. A valid Amazon Web Services policy.
+For more information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html}{Overview of Amazon Web Services IAM Policies}
+in the \emph{Identity and Access Management User Guide}.
 \item \code{ReceiveMessageWaitTimeSeconds} – The length of time, in seconds,
 for which a \code{\link[=sqs_receive_message]{receive_message}} action waits
 for a message to arrive. Valid values: An integer from 0 to 20
@@ -39,7 +39,7 @@ for a message to arrive. Valid values: An integer from 0 to 20
 dead-letter queue functionality of the source queue as a JSON
 object. For more information about the redrive policy and
 dead-letter queues, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon SQS Developer Guide}.
 \itemize{
 \item \code{deadLetterTargetArn} – The Amazon Resource Name (ARN) of the
 dead-letter queue to which Amazon SQS moves messages after the
@@ -58,35 +58,40 @@ standard queue.
 seconds. Valid values: An integer from 0 to 43,200 (12 hours).
 Default: 30. For more information about the visibility timeout, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon SQS Developer Guide}.
 }
 
 The following attributes apply only to
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html}{server-side-encryption}:
 \itemize{
-\item \code{KmsMasterKeyId} – The ID of an AWS-managed customer master key
-(CMK) for Amazon SQS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
+\item \code{KmsMasterKeyId} – The ID of an Amazon Web Services managed customer
+master key (CMK) for Amazon SQS or a custom CMK. For more
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
 While the alias of the AWS-managed CMK for Amazon SQS is always
 \code{alias/aws/sqs}, the alias of a custom CMK can, for example, be
 \code{alias/MyAlias }. For more examples, see
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
-in the \emph{AWS Key Management Service API Reference}.
+in the \emph{Key Management Service API Reference}.
 \item \code{KmsDataKeyReusePeriodSeconds} – The length of time, in seconds, for
 which Amazon SQS can reuse a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data key}
-to encrypt or decrypt messages before calling AWS KMS again. An
-integer representing seconds, between 60 seconds (1 minute) and
-86,400 seconds (24 hours). Default: 300 (5 minutes). A shorter time
-period provides better security but results in more calls to KMS
-which might incur charges after Free Tier. For more information, see
-\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}.
+to encrypt or decrypt messages before calling KMS again. An integer
+representing seconds, between 60 seconds (1 minute) and 86,400
+seconds (24 hours). Default: 300 (5 minutes). A shorter time period
+provides better security but results in more calls to KMS which
+might incur charges after Free Tier. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}.
+\item \code{SqsManagedSseEnabled} – Enables server-side queue encryption using
+SQS owned encryption keys. Only one server-side encryption option is
+supported per queue (e.g.
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html}{SSE-KMS}
+or
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
 }
 
 The following attribute applies only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
 \itemize{
 \item \code{ContentBasedDeduplication} – Enables content-based deduplication.
-For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
-in the \emph{Amazon Simple Queue Service Developer Guide}. Note the
-following:
+For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html}{Exactly-once processing}
+in the \emph{Amazon SQS Developer Guide}. Note the following:
 \itemize{
 \item Every message must have a unique \code{MessageDeduplicationId}.
 \itemize{
@@ -114,15 +119,7 @@ duplicates and only one copy of the message is delivered.
 }
 }
 
-\strong{Preview: High throughput for FIFO queues}
-
-\strong{High throughput for Amazon SQS FIFO queues is in preview release and
-is subject to change.} This feature provides a high number of
-transactions per second (TPS) for messages in FIFO queues. For
-information on throughput quotas, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html}{Quotas related to messages}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-
-This preview includes two new attributes:
+The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html}{high throughput for FIFO queues}:
 \itemize{
 \item \code{DeduplicationScope} – Specifies whether message deduplication
 occurs at the message group or queue level. Valid values are
@@ -141,51 +138,15 @@ To enable high throughput for FIFO queues, do the following:
 }
 
 If you set these attributes to anything other than the values shown for
-enabling high throughput, standard throughput is in effect and
+enabling high throughput, normal throughput is in effect and
 deduplication occurs as specified.
 
-This preview is available in the following AWS Regions:
-\itemize{
-\item US East (Ohio); us-east-2
-\item US East (N. Virginia); us-east-1
-\item US West (Oregon); us-west-2
-\item Europe (Ireland); eu-west-1
-}
-
-For more information about high throughput for FIFO queues, see
-\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html}{Preview: High throughput for FIFO queues}
-in the \emph{Amazon Simple Queue Service Developer Guide}.}
-}
-\value{
-An empty list.
+For information on throughput quotas, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html}{Quotas related to messages}
+in the \emph{Amazon SQS Developer Guide}.}
 }
 \description{
-Sets the value of one or more queue attributes. When you change a
-queue's attributes, the change can take up to 60 seconds for most of the
-attributes to propagate throughout the Amazon SQS system. Changes made
-to the \code{MessageRetentionPeriod} attribute can take up to 15 minutes.
-\itemize{
-\item In the future, new attributes might be added. If you write code that
-calls this action, we recommend that you structure your code so that
-it can handle new attributes gracefully.
-\item Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-\item To remove the ability to change queue permissions, you must deny
-permission to the \code{\link[=sqs_add_permission]{add_permission}},
-\code{\link[=sqs_remove_permission]{remove_permission}}, and
-\code{\link[=sqs_set_queue_attributes]{set_queue_attributes}} actions in your
-IAM policy.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$set_queue_attributes(
-  QueueUrl = "string",
-  Attributes = list(
-    "string"
-  )
-)
-}
-}
+Sets the value of one or more queue attributes. When you change a queue's attributes, the change can take up to 60 seconds for most of the attributes to propagate throughout the Amazon SQS system. Changes made to the \code{MessageRetentionPeriod} attribute can take up to 15 minutes.
 
+See \url{https://paws-r.github.io/docs/sqs/set_queue_attributes.html} for full documentation.
+}
 \keyword{internal}

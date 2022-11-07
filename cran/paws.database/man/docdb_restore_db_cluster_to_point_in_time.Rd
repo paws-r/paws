@@ -4,10 +4,20 @@
 \alias{docdb_restore_db_cluster_to_point_in_time}
 \title{Restores a cluster to an arbitrary point in time}
 \usage{
-docdb_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
-  SourceDBClusterIdentifier, RestoreToTime, UseLatestRestorableTime, Port,
-  DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
-  EnableCloudwatchLogsExports, DeletionProtection)
+docdb_restore_db_cluster_to_point_in_time(
+  DBClusterIdentifier,
+  RestoreType = NULL,
+  SourceDBClusterIdentifier,
+  RestoreToTime = NULL,
+  UseLatestRestorableTime = NULL,
+  Port = NULL,
+  DBSubnetGroupName = NULL,
+  VpcSecurityGroupIds = NULL,
+  Tags = NULL,
+  KmsKeyId = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  DeletionProtection = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new cluster to be created.
@@ -18,6 +28,21 @@ Constraints:
 \item The first character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 }}
+
+\item{RestoreType}{The type of restore to be performed. You can specify one of the
+following values:
+\itemize{
+\item \code{full-copy} - The new DB cluster is restored as a full copy of the
+source DB cluster.
+\item \code{copy-on-write} - The new DB cluster is restored as a clone of the
+source DB cluster.
+}
+
+Constraints: You can't specify \code{copy-on-write} if the engine version of
+the source DB cluster is earlier than 1.11.
+
+If you don't specify a \code{RestoreType} value, then the new DB cluster is
+restored as a full copy of the source DB cluster.}
 
 \item{SourceDBClusterIdentifier}{[required] The identifier of the source cluster from which to restore.
 
@@ -68,25 +93,25 @@ Example: \code{mySubnetgroup}}
 
 \item{Tags}{The tags to be assigned to the restored cluster.}
 
-\item{KmsKeyId}{The AWS KMS key identifier to use when restoring an encrypted cluster
-from an encrypted cluster.
+\item{KmsKeyId}{The KMS key identifier to use when restoring an encrypted cluster from
+an encrypted cluster.
 
-The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-KMS encryption key. If you are restoring a cluster with the same AWS
-account that owns the AWS KMS encryption key used to encrypt the new
-cluster, then you can use the AWS KMS key alias instead of the ARN for
-the AWS KMS encryption key.
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are restoring a cluster with the same Amazon Web
+Services account that owns the KMS encryption key used to encrypt the
+new cluster, then you can use the KMS key alias instead of the ARN for
+the KMS encryption key.
 
-You can restore to a new cluster and encrypt the new cluster with an AWS
-KMS key that is different from the AWS KMS key used to encrypt the
-source cluster. The new DB cluster is encrypted with the AWS KMS key
-identified by the \code{KmsKeyId} parameter.
+You can restore to a new cluster and encrypt the new cluster with an KMS
+key that is different from the KMS key used to encrypt the source
+cluster. The new DB cluster is encrypted with the KMS key identified by
+the \code{KmsKeyId} parameter.
 
 If you do not specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
 \item If the cluster is encrypted, then the restored cluster is encrypted
-using the AWS KMS key that was used to encrypt the source cluster.
+using the KMS key that was used to encrypt the source cluster.
 \item If the cluster is not encrypted, then the restored cluster is not
 encrypted.
 }
@@ -102,102 +127,9 @@ is enabled, the cluster cannot be deleted unless it is modified and
 \code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
 from being accidentally deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string"
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Restores a cluster to an arbitrary point in time. Users can restore to
-any point in time before \code{LatestRestorableTime} for up to
-\code{BackupRetentionPeriod} days. The target cluster is created from the
-source cluster with the same configuration as the original cluster,
-except that the new cluster is created with the default security group.
-}
-\section{Request syntax}{
-\preformatted{svc$restore_db_cluster_to_point_in_time(
-  DBClusterIdentifier = "string",
-  SourceDBClusterIdentifier = "string",
-  RestoreToTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  UseLatestRestorableTime = TRUE|FALSE,
-  Port = 123,
-  DBSubnetGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
+Restores a cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target cluster is created from the source cluster with the same configuration as the original cluster, except that the new cluster is created with the default security group.
 
+See \url{https://paws-r.github.io/docs/docdb/restore_db_cluster_to_point_in_time.html} for full documentation.
+}
 \keyword{internal}

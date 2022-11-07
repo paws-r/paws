@@ -9,17 +9,9 @@ translate_delete_terminology(Name)
 \arguments{
 \item{Name}{[required] The name of the custom terminology being deleted.}
 }
-\value{
-An empty list.
-}
 \description{
 A synchronous action that deletes a custom terminology.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_terminology(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/translate/delete_terminology.html} for full documentation.
+}
 \keyword{internal}

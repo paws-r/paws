@@ -10,28 +10,9 @@ opsworkscm_delete_server(ServerName)
 \arguments{
 \item{ServerName}{[required] The ID of the server to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the server and the underlying AWS CloudFormation stacks
-(including the server's EC2 instance). When you run this command, the
-server state is updated to \code{DELETING}. After the server is deleted, it
-is no longer returned by \code{DescribeServer} requests. If the AWS
-CloudFormation stack cannot be deleted, the server cannot be deleted.
+Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance). When you run this command, the server state is updated to \code{DELETING}. After the server is deleted, it is no longer returned by \code{DescribeServer} requests. If the AWS CloudFormation stack cannot be deleted, the server cannot be deleted.
 
-This operation is asynchronous.
-
-An \code{InvalidStateException} is thrown when a server deletion is already
-in progress. A \code{ResourceNotFoundException} is thrown when the server
-does not exist. A \code{ValidationException} is raised when parameters of the
-request are not valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/delete_server.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_server(
-  ServerName = "string"
-)
-}
-}
-
 \keyword{internal}

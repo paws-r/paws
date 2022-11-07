@@ -5,7 +5,7 @@
 \title{Retrieves settings for one or more trails associated with the current
 region for your account}
 \usage{
-cloudtrail_describe_trails(trailNameList, includeShadowTrails)
+cloudtrail_describe_trails(trailNameList = NULL, includeShadowTrails = NULL)
 }
 \arguments{
 \item{trailNameList}{Specifies a list of trail names, trail ARNs, or both, of the trails to
@@ -35,43 +35,9 @@ replication of an organization trail in member accounts. If you do not
 include shadow trails, organization trails in a member account and
 region replication trails will not be returned. The default is true.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  trailList = list(
-    list(
-      Name = "string",
-      S3BucketName = "string",
-      S3KeyPrefix = "string",
-      SnsTopicName = "string",
-      SnsTopicARN = "string",
-      IncludeGlobalServiceEvents = TRUE|FALSE,
-      IsMultiRegionTrail = TRUE|FALSE,
-      HomeRegion = "string",
-      TrailARN = "string",
-      LogFileValidationEnabled = TRUE|FALSE,
-      CloudWatchLogsLogGroupArn = "string",
-      CloudWatchLogsRoleArn = "string",
-      KmsKeyId = "string",
-      HasCustomEventSelectors = TRUE|FALSE,
-      HasInsightSelectors = TRUE|FALSE,
-      IsOrganizationTrail = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Retrieves settings for one or more trails associated with the current
-region for your account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_trails(
-  trailNameList = list(
-    "string"
-  ),
-  includeShadowTrails = TRUE|FALSE
-)
-}
-}
+Retrieves settings for one or more trails associated with the current region for your account.
 
+See \url{https://paws-r.github.io/docs/cloudtrail/describe_trails.html} for full documentation.
+}
 \keyword{internal}

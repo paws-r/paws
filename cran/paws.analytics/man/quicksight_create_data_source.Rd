@@ -4,274 +4,53 @@
 \alias{quicksight_create_data_source}
 \title{Creates a data source}
 \usage{
-quicksight_create_data_source(AwsAccountId, DataSourceId, Name, Type,
-  DataSourceParameters, Credentials, Permissions, VpcConnectionProperties,
-  SslProperties, Tags)
+quicksight_create_data_source(
+  AwsAccountId,
+  DataSourceId,
+  Name,
+  Type,
+  DataSourceParameters = NULL,
+  Credentials = NULL,
+  Permissions = NULL,
+  VpcConnectionProperties = NULL,
+  SslProperties = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
-\item{DataSourceId}{[required] An ID for the data source. This ID is unique per AWS Region for each AWS
-account.}
+\item{DataSourceId}{[required] An ID for the data source. This ID is unique per Amazon Web Services
+Region for each Amazon Web Services account.}
 
 \item{Name}{[required] A display name for the data source.}
 
-\item{Type}{[required] The type of the data source. Currently, the supported types for this
-operation are:
-\verb{ATHENA, AURORA, AURORA_POSTGRESQL, MARIADB, MYSQL, POSTGRESQL, PRESTO, REDSHIFT, S3, SNOWFLAKE, SPARK, SQLSERVER, TERADATA}.
-Use \code{\link[=quicksight_list_data_sources]{list_data_sources}} to return a list
-of all data sources.}
+\item{Type}{[required] The type of the data source. To return a list of all data sources, use
+\code{\link[=quicksight_list_data_sources]{list_data_sources}}.
 
-\item{DataSourceParameters}{The parameters that QuickSight uses to connect to your underlying
+Use \code{AMAZON_ELASTICSEARCH} for Amazon OpenSearch Service.}
+
+\item{DataSourceParameters}{The parameters that Amazon QuickSight uses to connect to your underlying
 source.}
 
-\item{Credentials}{The credentials QuickSight that uses to connect to your underlying
-source. Currently, only credentials based on user name and password are
-supported.}
+\item{Credentials}{The credentials Amazon QuickSight that uses to connect to your
+underlying source. Currently, only credentials based on user name and
+password are supported.}
 
 \item{Permissions}{A list of resource permissions on the data source.}
 
-\item{VpcConnectionProperties}{Use this parameter only when you want QuickSight to use a VPC connection
-when connecting to your underlying source.}
+\item{VpcConnectionProperties}{Use this parameter only when you want Amazon QuickSight to use a VPC
+connection when connecting to your underlying source.}
 
-\item{SslProperties}{Secure Socket Layer (SSL) properties that apply when QuickSight connects
-to your underlying source.}
+\item{SslProperties}{Secure Socket Layer (SSL) properties that apply when Amazon QuickSight
+connects to your underlying source.}
 
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the data source.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  DataSourceId = "string",
-  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Creates a data source.
-}
-\section{Request syntax}{
-\preformatted{svc$create_data_source(
-  AwsAccountId = "string",
-  DataSourceId = "string",
-  Name = "string",
-  Type = "ADOBE_ANALYTICS"|"AMAZON_ELASTICSEARCH"|"ATHENA"|"AURORA"|"AURORA_POSTGRESQL"|"AWS_IOT_ANALYTICS"|"GITHUB"|"JIRA"|"MARIADB"|"MYSQL"|"ORACLE"|"POSTGRESQL"|"PRESTO"|"REDSHIFT"|"S3"|"SALESFORCE"|"SERVICENOW"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"TWITTER"|"TIMESTREAM",
-  DataSourceParameters = list(
-    AmazonElasticsearchParameters = list(
-      Domain = "string"
-    ),
-    AthenaParameters = list(
-      WorkGroup = "string"
-    ),
-    AuroraParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    AuroraPostgreSqlParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    AwsIotAnalyticsParameters = list(
-      DataSetName = "string"
-    ),
-    JiraParameters = list(
-      SiteBaseUrl = "string"
-    ),
-    MariaDbParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    MySqlParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    OracleParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    PostgreSqlParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    PrestoParameters = list(
-      Host = "string",
-      Port = 123,
-      Catalog = "string"
-    ),
-    RdsParameters = list(
-      InstanceId = "string",
-      Database = "string"
-    ),
-    RedshiftParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string",
-      ClusterId = "string"
-    ),
-    S3Parameters = list(
-      ManifestFileLocation = list(
-        Bucket = "string",
-        Key = "string"
-      )
-    ),
-    ServiceNowParameters = list(
-      SiteBaseUrl = "string"
-    ),
-    SnowflakeParameters = list(
-      Host = "string",
-      Database = "string",
-      Warehouse = "string"
-    ),
-    SparkParameters = list(
-      Host = "string",
-      Port = 123
-    ),
-    SqlServerParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    TeradataParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    TwitterParameters = list(
-      Query = "string",
-      MaxRows = 123
-    )
-  ),
-  Credentials = list(
-    CredentialPair = list(
-      Username = "string",
-      Password = "string",
-      AlternateDataSourceParameters = list(
-        list(
-          AmazonElasticsearchParameters = list(
-            Domain = "string"
-          ),
-          AthenaParameters = list(
-            WorkGroup = "string"
-          ),
-          AuroraParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          AuroraPostgreSqlParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          AwsIotAnalyticsParameters = list(
-            DataSetName = "string"
-          ),
-          JiraParameters = list(
-            SiteBaseUrl = "string"
-          ),
-          MariaDbParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          MySqlParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          OracleParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          PostgreSqlParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          PrestoParameters = list(
-            Host = "string",
-            Port = 123,
-            Catalog = "string"
-          ),
-          RdsParameters = list(
-            InstanceId = "string",
-            Database = "string"
-          ),
-          RedshiftParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string",
-            ClusterId = "string"
-          ),
-          S3Parameters = list(
-            ManifestFileLocation = list(
-              Bucket = "string",
-              Key = "string"
-            )
-          ),
-          ServiceNowParameters = list(
-            SiteBaseUrl = "string"
-          ),
-          SnowflakeParameters = list(
-            Host = "string",
-            Database = "string",
-            Warehouse = "string"
-          ),
-          SparkParameters = list(
-            Host = "string",
-            Port = 123
-          ),
-          SqlServerParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          TeradataParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          TwitterParameters = list(
-            Query = "string",
-            MaxRows = 123
-          )
-        )
-      )
-    ),
-    CopySourceArn = "string"
-  ),
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  VpcConnectionProperties = list(
-    VpcConnectionArn = "string"
-  ),
-  SslProperties = list(
-    DisableSsl = TRUE|FALSE
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/create_data_source.html} for full documentation.
+}
 \keyword{internal}

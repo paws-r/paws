@@ -4,44 +4,24 @@
 \alias{mq_describe_broker_engine_types}
 \title{Describe available engine types and versions}
 \usage{
-mq_describe_broker_engine_types(EngineType, MaxResults, NextToken)
+mq_describe_broker_engine_types(
+  EngineType = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{EngineType}{Filter response by engine type.}
 
-\item{MaxResults}{The maximum number of engine types that Amazon MQ can return per page
-(20 by default). This value must be an integer from 5 to 100.}
+\item{MaxResults}{The maximum number of brokers that Amazon MQ can return per page (20 by
+default). This value must be an integer from 5 to 100.}
 
 \item{NextToken}{The token that specifies the next page of results Amazon MQ should
 return. To request the first page, leave nextToken empty.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BrokerEngineTypes = list(
-    list(
-      EngineType = "ACTIVEMQ"|"RABBITMQ",
-      EngineVersions = list(
-        list(
-          Name = "string"
-        )
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 \description{
 Describe available engine types and versions.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_broker_engine_types(
-  EngineType = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/describe_broker_engine_types.html} for full documentation.
+}
 \keyword{internal}

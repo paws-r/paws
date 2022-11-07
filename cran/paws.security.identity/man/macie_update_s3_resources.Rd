@@ -2,54 +2,22 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_update_s3_resources}
 \alias{macie_update_s3_resources}
-\title{Updates the classification types for the specified S3 resources}
+\title{(Discontinued) Updates the classification types for the specified S3
+resources}
 \usage{
-macie_update_s3_resources(memberAccountId, s3ResourcesUpdate)
+macie_update_s3_resources(memberAccountId = NULL, s3ResourcesUpdate)
 }
 \arguments{
-\item{memberAccountId}{The AWS ID of the Amazon Macie Classic member account whose S3
-resources' classification types you want to update.}
+\item{memberAccountId}{(Discontinued) The Amazon Web Services account ID of the Amazon Macie
+Classic member account whose S3 resources' classification types you want
+to update.}
 
-\item{s3ResourcesUpdate}{[required] The S3 resources whose classification types you want to update.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  failedS3Resources = list(
-    list(
-      failedItem = list(
-        bucketName = "string",
-        prefix = "string"
-      ),
-      errorCode = "string",
-      errorMessage = "string"
-    )
-  )
-)
-}
+\item{s3ResourcesUpdate}{[required] (Discontinued) The S3 resources whose classification types you want to
+update.}
 }
 \description{
-Updates the classification types for the specified S3 resources. If
-memberAccountId isn't specified, the action updates the classification
-types of the S3 resources associated with Amazon Macie Classic for the
-current master account. If memberAccountId is specified, the action
-updates the classification types of the S3 resources associated with
-Amazon Macie Classic for the specified member account.
-}
-\section{Request syntax}{
-\preformatted{svc$update_s3_resources(
-  memberAccountId = "string",
-  s3ResourcesUpdate = list(
-    list(
-      bucketName = "string",
-      prefix = "string",
-      classificationTypeUpdate = list(
-        oneTime = "FULL"|"NONE",
-        continuous = "FULL"
-      )
-    )
-  )
-)
-}
-}
+(Discontinued) Updates the classification types for the specified S3 resources. If \code{memberAccountId} isn't specified, the action updates the classification types of the S3 resources associated with Amazon Macie Classic for the current Macie Classic administrator account. If \code{memberAccountId} is specified, the action updates the classification types of the S3 resources associated with Macie Classic for the specified member account.
 
+See \url{https://paws-r.github.io/docs/macie/update_s3_resources.html} for full documentation.
+}
 \keyword{internal}

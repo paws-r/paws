@@ -2,7 +2,7 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_get_database}
 \alias{athena_get_database}
-\title{Returns a database object for the specfied database and data catalog}
+\title{Returns a database object for the specified database and data catalog}
 \usage{
 athena_get_database(CatalogName, DatabaseName)
 }
@@ -11,27 +11,9 @@ athena_get_database(CatalogName, DatabaseName)
 
 \item{DatabaseName}{[required] The name of the database to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Database = list(
-    Name = "string",
-    Description = "string",
-    Parameters = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a database object for the specfied database and data catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$get_database(
-  CatalogName = "string",
-  DatabaseName = "string"
-)
-}
-}
+Returns a database object for the specified database and data catalog.
 
+See \url{https://paws-r.github.io/docs/athena/get_database.html} for full documentation.
+}
 \keyword{internal}

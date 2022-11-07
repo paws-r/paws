@@ -9,17 +9,9 @@ sagemaker_stop_edge_packaging_job(EdgePackagingJobName)
 \arguments{
 \item{EdgePackagingJobName}{[required] The name of the edge packaging job.}
 }
-\value{
-An empty list.
-}
 \description{
 Request to stop an edge packaging job.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_edge_packaging_job(
-  EdgePackagingJobName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/stop_edge_packaging_job.html} for full documentation.
+}
 \keyword{internal}

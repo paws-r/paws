@@ -6,45 +6,37 @@
 application}
 \usage{
 kinesisanalyticsv2_delete_application_cloud_watch_logging_option(
-  ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId)
+  ApplicationName,
+  CurrentApplicationVersionId = NULL,
+  CloudWatchLoggingOptionId,
+  ConditionalToken = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The application name.}
 
-\item{CurrentApplicationVersionId}{[required] The version ID of the application. You can retrieve the application
-version ID using
-\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
+\item{CurrentApplicationVersionId}{The version ID of the application. You must provide the
+\code{CurrentApplicationVersionId} or the \code{ConditionalToken}. You can
+retrieve the application version ID using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}. For
+better concurrency support, use the \code{ConditionalToken} parameter instead
+of \code{CurrentApplicationVersionId}.}
 
 \item{CloudWatchLoggingOptionId}{[required] The \code{CloudWatchLoggingOptionId} of the Amazon CloudWatch logging option
 to delete. You can get the \code{CloudWatchLoggingOptionId} by using the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationARN = "string",
-  ApplicationVersionId = 123,
-  CloudWatchLoggingOptionDescriptions = list(
-    list(
-      CloudWatchLoggingOptionId = "string",
-      LogStreamARN = "string",
-      RoleARN = "string"
-    )
-  )
-)
-}
+
+\item{ConditionalToken}{A value you use to implement strong concurrency for application updates.
+You must provide the \code{CurrentApplicationVersionId} or the
+\code{ConditionalToken}. You get the application's current \code{ConditionalToken}
+using \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.
+For better concurrency support, use the \code{ConditionalToken} parameter
+instead of \code{CurrentApplicationVersionId}.}
 }
 \description{
-Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics
-application.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application_cloud_watch_logging_option(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  CloudWatchLoggingOptionId = "string"
-)
-}
-}
+Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics application.
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_cloud_watch_logging_option.html} for full documentation.
+}
 \keyword{internal}

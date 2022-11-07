@@ -23,19 +23,9 @@ example, \verb{:container-service-1.mystaticwebsite.1}. Container images
 sourced from a public registry like Docker Hub don't start with a colon.
 For example, \code{nginx:latest} or \code{nginx}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a container image that is registered to your Amazon Lightsail
-container service.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_container_image(
-  serviceName = "string",
-  image = "string"
-)
-}
-}
+Deletes a container image that is registered to your Amazon Lightsail container service.
 
+See \url{https://paws-r.github.io/docs/lightsail/delete_container_image.html} for full documentation.
+}
 \keyword{internal}

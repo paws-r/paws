@@ -6,25 +6,9 @@
 \usage{
 servicecatalog_enable_aws_organizations_access()
 }
-\value{
-An empty list.
-}
 \description{
-Enable portfolio sharing feature through AWS Organizations. This API
-will allow Service Catalog to receive updates on your organization in
-order to sync your shares with the current structure. This API can only
-be called by the management account in the organization.
+Enable portfolio sharing feature through AWS Organizations. This API will allow Service Catalog to receive updates on your organization in order to sync your shares with the current structure. This API can only be called by the management account in the organization.
 
-By calling this API Service Catalog will make a call to
-organizations:EnableAWSServiceAccess on your behalf so that your shares
-can be in sync with any changes in your AWS Organizations structure.
-
-Note that a delegated administrator is not authorized to invoke
-\code{\link[=servicecatalog_enable_aws_organizations_access]{enable_aws_organizations_access}}.
+See \url{https://paws-r.github.io/docs/servicecatalog/enable_aws_organizations_access.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$enable_aws_organizations_access()
-}
-}
-
 \keyword{internal}

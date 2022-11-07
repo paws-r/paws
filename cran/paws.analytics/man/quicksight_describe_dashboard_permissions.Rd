@@ -7,37 +7,14 @@
 quicksight_describe_dashboard_permissions(AwsAccountId, DashboardId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you're
-describing permissions for.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the dashboard
+that you're describing permissions for.}
 
 \item{DashboardId}{[required] The ID for the dashboard, also added to the IAM policy.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DashboardId = "string",
-  DashboardArn = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Describes read and write permissions for a dashboard.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_dashboard_permissions(
-  AwsAccountId = "string",
-  DashboardId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_dashboard_permissions.html} for full documentation.
+}
 \keyword{internal}

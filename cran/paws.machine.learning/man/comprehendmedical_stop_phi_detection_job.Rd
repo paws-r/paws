@@ -9,20 +9,9 @@ comprehendmedical_stop_phi_detection_job(JobId)
 \arguments{
 \item{JobId}{[required] The identifier of the PHI detection job to stop.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
 Stops a protected health information (PHI) detection job in progress.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_phi_detection_job(
-  JobId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/comprehendmedical/stop_phi_detection_job.html} for full documentation.
+}
 \keyword{internal}

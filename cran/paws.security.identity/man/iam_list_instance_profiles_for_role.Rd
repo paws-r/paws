@@ -4,7 +4,7 @@
 \alias{iam_list_instance_profiles_for_role}
 \title{Lists the instance profiles that have the specified associated IAM role}
 \usage{
-iam_list_instance_profiles_for_role(RoleName, Marker, MaxItems)
+iam_list_instance_profiles_for_role(RoleName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role to list instance profiles for.
@@ -28,69 +28,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceProfiles = list(
-    list(
-      Path = "string",
-      InstanceProfileName = "string",
-      InstanceProfileId = "string",
-      Arn = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Roles = list(
-        list(
-          Path = "string",
-          RoleName = "string",
-          RoleId = "string",
-          Arn = "string",
-          CreateDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          AssumeRolePolicyDocument = "string",
-          Description = "string",
-          MaxSessionDuration = 123,
-          PermissionsBoundary = list(
-            PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-            PermissionsBoundaryArn = "string"
-          ),
-          Tags = list(
-            list(
-              Key = "string",
-              Value = "string"
-            )
-          ),
-          RoleLastUsed = list(
-            LastUsedDate = as.POSIXct(
-              "2015-01-01"
-            ),
-            Region = "string"
-          )
-        )
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the instance profiles that have the specified associated IAM role.
-If there are none, the operation returns an empty list. For more
-information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
+Lists the instance profiles that have the specified associated IAM role. If there are none, the operation returns an empty list. For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About instance profiles}.
 
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
+See \url{https://paws-r.github.io/docs/iam/list_instance_profiles_for_role.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_instance_profiles_for_role(
-  RoleName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

@@ -4,9 +4,21 @@
 \alias{ec2_create_vpc_endpoint}
 \title{Creates a VPC endpoint for a specified service}
 \usage{
-ec2_create_vpc_endpoint(DryRun, VpcEndpointType, VpcId, ServiceName,
-  PolicyDocument, RouteTableIds, SubnetIds, SecurityGroupIds, ClientToken,
-  PrivateDnsEnabled, TagSpecifications)
+ec2_create_vpc_endpoint(
+  DryRun = NULL,
+  VpcEndpointType = NULL,
+  VpcId,
+  ServiceName,
+  PolicyDocument = NULL,
+  RouteTableIds = NULL,
+  SubnetIds = NULL,
+  SecurityGroupIds = NULL,
+  IpAddressType = NULL,
+  DnsOptions = NULL,
+  ClientToken = NULL,
+  PrivateDnsEnabled = NULL,
+  TagSpecifications = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -38,8 +50,12 @@ Load Balancer endpoint, you can specify one subnet only.}
 \item{SecurityGroupIds}{(Interface endpoint) The ID of one or more security groups to associate
 with the endpoint network interface.}
 
+\item{IpAddressType}{The IP address type for the endpoint.}
+
+\item{DnsOptions}{The DNS options for the endpoint.}
+
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 
 \item{PrivateDnsEnabled}{(Interface endpoint) Indicates whether to associate a private hosted
 zone with the specified VPC. The private hosted zone contains a record
@@ -59,114 +75,9 @@ Default: \code{true}}
 
 \item{TagSpecifications}{The tags to associate with the endpoint.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpcEndpoint = list(
-    VpcEndpointId = "string",
-    VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
-    VpcId = "string",
-    ServiceName = "string",
-    State = "PendingAcceptance"|"Pending"|"Available"|"Deleting"|"Deleted"|"Rejected"|"Failed"|"Expired",
-    PolicyDocument = "string",
-    RouteTableIds = list(
-      "string"
-    ),
-    SubnetIds = list(
-      "string"
-    ),
-    Groups = list(
-      list(
-        GroupId = "string",
-        GroupName = "string"
-      )
-    ),
-    PrivateDnsEnabled = TRUE|FALSE,
-    RequesterManaged = TRUE|FALSE,
-    NetworkInterfaceIds = list(
-      "string"
-    ),
-    DnsEntries = list(
-      list(
-        DnsName = "string",
-        HostedZoneId = "string"
-      )
-    ),
-    CreationTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    OwnerId = "string",
-    LastError = list(
-      Message = "string",
-      Code = "string"
-    )
-  ),
-  ClientToken = "string"
-)
-}
-}
 \description{
-Creates a VPC endpoint for a specified service. An endpoint enables you
-to create a private connection between your VPC and the service. The
-service may be provided by AWS, an AWS Marketplace Partner, or another
-AWS account. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html}{VPC Endpoints}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between your VPC and the service. The service may be provided by Amazon Web Services, an Amazon Web Services Marketplace Partner, or another Amazon Web Services account. For more information, see the \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{Amazon Web Services PrivateLink Guide}.
 
-A \code{gateway} endpoint serves as a target for a route in your route table
-for traffic destined for the AWS service. You can specify an endpoint
-policy to attach to the endpoint, which will control access to the
-service from your VPC. You can also specify the VPC route tables that
-use the endpoint.
-
-An \code{interface} endpoint is a network interface in your subnet that
-serves as an endpoint for communicating with the specified service. You
-can specify the subnets in which to create an endpoint, and the security
-groups to associate with the endpoint network interface.
-
-A \code{GatewayLoadBalancer} endpoint is a network interface in your subnet
-that serves an endpoint for communicating with a Gateway Load Balancer
-that you've configured as a VPC endpoint service.
-
-Use
-\code{\link[=ec2_describe_vpc_endpoint_services]{describe_vpc_endpoint_services}}
-to get a list of supported services.
+See \url{https://paws-r.github.io/docs/ec2/create_vpc_endpoint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_vpc_endpoint(
-  DryRun = TRUE|FALSE,
-  VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
-  VpcId = "string",
-  ServiceName = "string",
-  PolicyDocument = "string",
-  RouteTableIds = list(
-    "string"
-  ),
-  SubnetIds = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  ClientToken = "string",
-  PrivateDnsEnabled = TRUE|FALSE,
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

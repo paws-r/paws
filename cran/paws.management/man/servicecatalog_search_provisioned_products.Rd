@@ -5,8 +5,15 @@
 \title{Gets information about the provisioned products that meet the specified
 criteria}
 \usage{
-servicecatalog_search_provisioned_products(AcceptLanguage,
-  AccessLevelFilter, Filters, SortBy, SortOrder, PageSize, PageToken)
+servicecatalog_search_provisioned_products(
+  AcceptLanguage = NULL,
+  AccessLevelFilter = NULL,
+  Filters = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  PageSize = NULL,
+  PageToken = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -39,65 +46,9 @@ The valid values are \code{arn}, \code{id}, \code{name}, and \code{lastRecordId}
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisionedProducts = list(
-    list(
-      Name = "string",
-      Arn = "string",
-      Type = "string",
-      Id = "string",
-      Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
-      StatusMessage = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      IdempotencyToken = "string",
-      LastRecordId = "string",
-      LastProvisioningRecordId = "string",
-      LastSuccessfulProvisioningRecordId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      PhysicalId = "string",
-      ProductId = "string",
-      ProductName = "string",
-      ProvisioningArtifactId = "string",
-      ProvisioningArtifactName = "string",
-      UserArn = "string",
-      UserArnSession = "string"
-    )
-  ),
-  TotalResultsCount = 123,
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Gets information about the provisioned products that meet the specified
-criteria.
-}
-\section{Request syntax}{
-\preformatted{svc$search_provisioned_products(
-  AcceptLanguage = "string",
-  AccessLevelFilter = list(
-    Key = "Account"|"Role"|"User",
-    Value = "string"
-  ),
-  Filters = list(
-    list(
-      "string"
-    )
-  ),
-  SortBy = "string",
-  SortOrder = "ASCENDING"|"DESCENDING",
-  PageSize = 123,
-  PageToken = "string"
-)
-}
-}
+Gets information about the provisioned products that meet the specified criteria.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/search_provisioned_products.html} for full documentation.
+}
 \keyword{internal}

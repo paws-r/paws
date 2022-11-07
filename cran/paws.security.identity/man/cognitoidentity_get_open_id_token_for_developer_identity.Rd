@@ -5,8 +5,13 @@
 \title{Registers (or retrieves) a Cognito IdentityId and an OpenID Connect
 token for a user authenticated by your backend authentication process}
 \usage{
-cognitoidentity_get_open_id_token_for_developer_identity(IdentityPoolId,
-  IdentityId, Logins, TokenDuration)
+cognitoidentity_get_open_id_token_for_developer_identity(
+  IdentityPoolId,
+  IdentityId = NULL,
+  Logins,
+  PrincipalTags = NULL,
+  TokenDuration = NULL
+)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -24,6 +29,8 @@ developer user identifier is an identifier from your backend that
 uniquely identifies a user. When you create an identity pool, you can
 specify the supported logins.}
 
+\item{PrincipalTags}{Use this operation to configure attribute mappings for custom providers.}
+
 \item{TokenDuration}{The expiration time of the token, in seconds. You can specify a custom
 expiration time for the token so that you can cache it. If you don't
 provide an expiration time, the token is valid for 15 minutes. You can
@@ -37,43 +44,9 @@ duration.
 Please provide for a small grace period, usually no more than 5 minutes,
 to account for clock skew.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityId = "string",
-  Token = "string"
-)
-}
-}
 \description{
-Registers (or retrieves) a Cognito \code{IdentityId} and an OpenID Connect
-token for a user authenticated by your backend authentication process.
-Supplying multiple logins will create an implicit linked account. You
-can only specify one developer provider as part of the \code{Logins} map,
-which is linked to the identity pool. The developer provider is the
-"domain" by which Cognito will refer to your users.
+Registers (or retrieves) a Cognito \code{IdentityId} and an OpenID Connect token for a user authenticated by your backend authentication process. Supplying multiple logins will create an implicit linked account. You can only specify one developer provider as part of the \code{Logins} map, which is linked to the identity pool. The developer provider is the "domain" by which Cognito will refer to your users.
 
-You can use
-\code{\link[=cognitoidentity_get_open_id_token_for_developer_identity]{get_open_id_token_for_developer_identity}}
-to create a new identity and to link new logins (that is, user
-credentials issued by a public provider or developer provider) to an
-existing identity. When you want to create a new identity, the
-\code{IdentityId} should be null. When you want to associate a new login with
-an existing authenticated/unauthenticated identity, you can do so by
-providing the existing \code{IdentityId}. This API will create the identity
-in the specified \code{IdentityPoolId}.
-
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/get_open_id_token_for_developer_identity.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_open_id_token_for_developer_identity(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  Logins = list(
-    "string"
-  ),
-  TokenDuration = 123
-)
-}
-}
-
 \keyword{internal}

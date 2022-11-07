@@ -4,19 +4,19 @@
 \alias{ecs_create_capacity_provider}
 \title{Creates a new capacity provider}
 \usage{
-ecs_create_capacity_provider(name, autoScalingGroupProvider, tags)
+ecs_create_capacity_provider(name, autoScalingGroupProvider, tags = NULL)
 }
 \arguments{
-\item{name}{[required] The name of the capacity provider. Up to 255 characters are allowed,
-including letters (upper and lowercase), numbers, underscores, and
-hyphens. The name cannot be prefixed with "\code{aws}", "\code{ecs}", or
-"\code{fargate}".}
+\item{name}{[required] The name of the capacity provider. Up to 255 characters are allowed.
+They include letters (both upper and lowercase letters), numbers,
+underscores (_), and hyphens (-). The name can't be prefixed with
+"\code{aws}", "\code{ecs}", or "\code{fargate}".}
 
 \item{autoScalingGroupProvider}{[required] The details of the Auto Scaling group for the capacity provider.}
 
-\item{tags}{The metadata that you apply to the capacity provider to help you
-categorize and organize them. Each tag consists of a key and an optional
-value, both of which you define.
+\item{tags}{The metadata that you apply to the capacity provider to categorize and
+organize them more conveniently. Each tag consists of a key and an
+optional value. You define both of them.
 
 The following basic restrictions apply to tags:
 \itemize{
@@ -32,73 +32,15 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for either keys or values as it is reserved for AWS
-use. You cannot edit or delete tag keys or values with this prefix.
-Tags with this prefix do not count against your tags per resource
-limit.
+such as a prefix for either keys or values as it is reserved for
+Amazon Web Services use. You cannot edit or delete tag keys or
+values with this prefix. Tags with this prefix do not count against
+your tags per resource limit.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  capacityProvider = list(
-    capacityProviderArn = "string",
-    name = "string",
-    status = "ACTIVE"|"INACTIVE",
-    autoScalingGroupProvider = list(
-      autoScalingGroupArn = "string",
-      managedScaling = list(
-        status = "ENABLED"|"DISABLED",
-        targetCapacity = 123,
-        minimumScalingStepSize = 123,
-        maximumScalingStepSize = 123,
-        instanceWarmupPeriod = 123
-      ),
-      managedTerminationProtection = "ENABLED"|"DISABLED"
-    ),
-    updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-    updateStatusReason = "string",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a new capacity provider. Capacity providers are associated with
-an Amazon ECS cluster and are used in capacity provider strategies to
-facilitate cluster auto scaling.
+Creates a new capacity provider. Capacity providers are associated with an Amazon ECS cluster and are used in capacity provider strategies to facilitate cluster auto scaling.
 
-Only capacity providers using an Auto Scaling group can be created.
-Amazon ECS tasks on AWS Fargate use the \code{FARGATE} and \code{FARGATE_SPOT}
-capacity providers which are already created and available to all
-accounts in Regions supported by AWS Fargate.
+See \url{https://paws-r.github.io/docs/ecs/create_capacity_provider.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_capacity_provider(
-  name = "string",
-  autoScalingGroupProvider = list(
-    autoScalingGroupArn = "string",
-    managedScaling = list(
-      status = "ENABLED"|"DISABLED",
-      targetCapacity = 123,
-      minimumScalingStepSize = 123,
-      maximumScalingStepSize = 123,
-      instanceWarmupPeriod = 123
-    ),
-    managedTerminationProtection = "ENABLED"|"DISABLED"
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

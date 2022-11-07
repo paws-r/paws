@@ -4,8 +4,13 @@
 \alias{ec2_describe_route_tables}
 \title{Describes one or more of your route tables}
 \usage{
-ec2_describe_route_tables(Filters, DryRun, RouteTableIds, NextToken,
-  MaxResults)
+ec2_describe_route_tables(
+  Filters = NULL,
+  DryRun = NULL,
+  RouteTableIds = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -19,14 +24,15 @@ association.
 \item \code{association.main} - Indicates whether the route table is the main
 route table for the VPC (\code{true} | \code{false}). Route tables that do not
 have an association ID are not returned in the response.
-\item \code{owner-id} - The ID of the AWS account that owns the route table.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+route table.
 \item \code{route-table-id} - The ID of the route table.
 \item \code{route.destination-cidr-block} - The IPv4 CIDR range specified in a
 route in the table.
 \item \code{route.destination-ipv6-cidr-block} - The IPv6 CIDR range specified
 in a route in the route table.
-\item \code{route.destination-prefix-list-id} - The ID (prefix) of the AWS
-service specified in a route in the table.
+\item \code{route.destination-prefix-list-id} - The ID (prefix) of the Amazon
+Web Service specified in a route in the table.
 \item \code{route.egress-only-internet-gateway-id} - The ID of an egress-only
 Internet gateway specified in a route in the route table.
 \item \code{route.gateway-id} - The ID of a gateway specified in a route in the
@@ -49,11 +55,11 @@ to the VPC, the specified NAT instance has been terminated, and so
 on).
 \item \code{route.vpc-peering-connection-id} - The ID of a VPC peering
 connection specified in a route in the table.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -75,102 +81,9 @@ Default: Describes all your route tables.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RouteTables = list(
-    list(
-      Associations = list(
-        list(
-          Main = TRUE|FALSE,
-          RouteTableAssociationId = "string",
-          RouteTableId = "string",
-          SubnetId = "string",
-          GatewayId = "string",
-          AssociationState = list(
-            State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
-            StatusMessage = "string"
-          )
-        )
-      ),
-      PropagatingVgws = list(
-        list(
-          GatewayId = "string"
-        )
-      ),
-      RouteTableId = "string",
-      Routes = list(
-        list(
-          DestinationCidrBlock = "string",
-          DestinationIpv6CidrBlock = "string",
-          DestinationPrefixListId = "string",
-          EgressOnlyInternetGatewayId = "string",
-          GatewayId = "string",
-          InstanceId = "string",
-          InstanceOwnerId = "string",
-          NatGatewayId = "string",
-          TransitGatewayId = "string",
-          LocalGatewayId = "string",
-          CarrierGatewayId = "string",
-          NetworkInterfaceId = "string",
-          Origin = "CreateRouteTable"|"CreateRoute"|"EnableVgwRoutePropagation",
-          State = "active"|"blackhole",
-          VpcPeeringConnectionId = "string"
-        )
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      VpcId = "string",
-      OwnerId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your route tables.
 
-Each subnet in your VPC must be associated with a route table. If a
-subnet is not explicitly associated with any route table, it is
-implicitly associated with the main route table. This command does not
-return the subnet ID for implicit associations.
-
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_route_tables(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  RouteTableIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the specified route table.
-svc$describe_route_tables(
-  RouteTableIds = list(
-    "rtb-1f382e7d"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_route_tables.html} for full documentation.
 }
 \keyword{internal}

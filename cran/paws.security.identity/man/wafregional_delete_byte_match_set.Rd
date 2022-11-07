@@ -15,60 +15,9 @@ wafregional_delete_byte_match_set(ByteMatchSetId, ChangeToken)
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Permanently deletes a ByteMatchSet. You can't delete a \code{ByteMatchSet} if
-it's still used in any \code{Rules} or if it still includes any
-ByteMatchTuple objects (any filters).
-
-If you just want to remove a \code{ByteMatchSet} from a \code{Rule}, use
-\code{\link[=wafregional_update_rule]{update_rule}}.
-
-To permanently delete a \code{ByteMatchSet}, perform the following steps:
-\enumerate{
-\item Update the \code{ByteMatchSet} to remove filters, if any. For more
-information, see
-\code{\link[=wafregional_update_byte_match_set]{update_byte_match_set}}.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of a
-\code{\link[=wafregional_delete_byte_match_set]{delete_byte_match_set}}
-request.
-\item Submit a
-\code{\link[=wafregional_delete_byte_match_set]{delete_byte_match_set}}
-request.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_byte_match_set(
-  ByteMatchSetId = "string",
-  ChangeToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes a byte match set with the ID
-# exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-svc$delete_byte_match_set(
-  ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
-  ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-)
-}
-
+See \url{https://paws-r.github.io/docs/wafregional/delete_byte_match_set.html} for full documentation.
 }
 \keyword{internal}

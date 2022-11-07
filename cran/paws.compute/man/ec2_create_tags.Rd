@@ -5,7 +5,7 @@
 \title{Adds or overwrites only the specified tags for the specified Amazon EC2
 resource or resources}
 \usage{
-ec2_create_tags(DryRun, Resources, Tags)
+ec2_create_tags(DryRun = NULL, Resources, Tags)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -22,54 +22,9 @@ request into smaller batches.}
 tag to have a value, specify the parameter with no value, and we set the
 value to an empty string.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or overwrites only the specified tags for the specified Amazon EC2
-resource or resources. When you specify an existing tag key, the value
-is overwritten with the new value. Each resource can have a maximum of
-50 tags. Each tag consists of a key and optional value. Tag keys must be
-unique per resource.
+Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
-For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources}
-in the \emph{Amazon Elastic Compute Cloud User Guide}. For more information
-about creating IAM policies that control users' access to resources
-based on tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policy-structure.html#ec2-supported-iam-actions-resources}{Supported Resource-Level Permissions for Amazon EC2 API Actions}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_tags(
-  DryRun = TRUE|FALSE,
-  Resources = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example adds the tag Stack=production to the specified image, or
-# overwrites an existing tag for the AMI where the tag key is Stack.
-svc$create_tags(
-  Resources = list(
-    "ami-78a54011"
-  ),
-  Tags = list(
-    list(
-      Key = "Stack",
-      Value = "production"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_tags.html} for full documentation.
 }
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Previews the agents installed on the EC2 instances that are part of the
 specified assessment target}
 \usage{
-inspector_preview_agents(previewAgentsArn, nextToken, maxResults)
+inspector_preview_agents(previewAgentsArn, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{previewAgentsArn}{[required] The ARN of the assessment target whose agents you want to preview.}
@@ -19,46 +19,9 @@ listing data.}
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  agentPreviews = list(
-    list(
-      hostname = "string",
-      agentId = "string",
-      autoScalingGroup = "string",
-      agentHealth = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-      agentVersion = "string",
-      operatingSystem = "string",
-      kernelVersion = "string",
-      ipv4Address = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Previews the agents installed on the EC2 instances that are part of the
-specified assessment target.
-}
-\section{Request syntax}{
-\preformatted{svc$preview_agents(
-  previewAgentsArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Previews the agents installed on the EC2 instances that are part of the specified assessment target.
 
-\examples{
-\dontrun{
-# Previews the agents installed on the EC2 instances that are part of the
-# specified assessment target.
-svc$preview_agents(
-  maxResults = 123L,
-  previewAgentsArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/preview_agents.html} for full documentation.
 }
 \keyword{internal}

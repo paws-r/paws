@@ -5,7 +5,10 @@
 \title{Allows you to purchase reserved Elasticsearch instances}
 \usage{
 elasticsearchservice_purchase_reserved_elasticsearch_instance_offering(
-  ReservedElasticsearchInstanceOfferingId, ReservationName, InstanceCount)
+  ReservedElasticsearchInstanceOfferingId,
+  ReservationName,
+  InstanceCount = NULL
+)
 }
 \arguments{
 \item{ReservedElasticsearchInstanceOfferingId}{[required] The ID of the reserved Elasticsearch instance offering to purchase.}
@@ -14,23 +17,9 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering(
 
 \item{InstanceCount}{The number of Elasticsearch instances to reserve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReservedElasticsearchInstanceId = "string",
-  ReservationName = "string"
-)
-}
-}
 \description{
 Allows you to purchase reserved Elasticsearch instances.
-}
-\section{Request syntax}{
-\preformatted{svc$purchase_reserved_elasticsearch_instance_offering(
-  ReservedElasticsearchInstanceOfferingId = "string",
-  ReservationName = "string",
-  InstanceCount = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/purchase_reserved_elasticsearch_instance_offering.html} for full documentation.
+}
 \keyword{internal}

@@ -2,24 +2,17 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_delete_language_model}
 \alias{transcribeservice_delete_language_model}
-\title{Deletes a custom language model using its name}
+\title{Deletes a custom language model}
 \usage{
 transcribeservice_delete_language_model(ModelName)
 }
 \arguments{
-\item{ModelName}{[required] The name of the model you're choosing to delete.}
-}
-\value{
-An empty list.
+\item{ModelName}{[required] The name of the custom language model you want to delete. Model names
+are case sensitive.}
 }
 \description{
-Deletes a custom language model using its name.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_language_model(
-  ModelName = "string"
-)
-}
-}
+Deletes a custom language model. To use this operation, specify the name of the language model you want to delete using \code{ModelName}. Language model names are case sensitive.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/delete_language_model.html} for full documentation.
+}
 \keyword{internal}

@@ -10,58 +10,9 @@ rds_describe_valid_db_instance_modifications(DBInstanceIdentifier)
 \arguments{
 \item{DBInstanceIdentifier}{[required] The customer identifier or the ARN of your DB instance.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ValidDBInstanceModificationsMessage = list(
-    Storage = list(
-      list(
-        StorageType = "string",
-        StorageSize = list(
-          list(
-            From = 123,
-            To = 123,
-            Step = 123
-          )
-        ),
-        ProvisionedIops = list(
-          list(
-            From = 123,
-            To = 123,
-            Step = 123
-          )
-        ),
-        IopsToStorageRatio = list(
-          list(
-            From = 123.0,
-            To = 123.0
-          )
-        ),
-        SupportsStorageAutoscaling = TRUE|FALSE
-      )
-    ),
-    ValidProcessorFeatures = list(
-      list(
-        Name = "string",
-        DefaultValue = "string",
-        AllowedValues = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-You can call
-\code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}}
-to learn what modifications you can make to your DB instance. You can
-use this information when you call
-\code{\link[=rds_modify_db_instance]{modify_db_instance}}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_valid_db_instance_modifications(
-  DBInstanceIdentifier = "string"
-)
-}
-}
+You can call \code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} to learn what modifications you can make to your DB instance. You can use this information when you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.
 
+See \url{https://paws-r.github.io/docs/rds/describe_valid_db_instance_modifications.html} for full documentation.
+}
 \keyword{internal}

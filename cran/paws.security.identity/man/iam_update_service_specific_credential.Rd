@@ -4,8 +4,11 @@
 \alias{iam_update_service_specific_credential}
 \title{Sets the status of a service-specific credential to Active or Inactive}
 \usage{
-iam_update_service_specific_credential(UserName,
-  ServiceSpecificCredentialId, Status)
+iam_update_service_specific_credential(
+  UserName = NULL,
+  ServiceSpecificCredentialId,
+  Status
+)
 }
 \arguments{
 \item{UserName}{The name of the IAM user associated with the service-specific
@@ -23,23 +26,9 @@ that can consist of any upper or lowercased letter or digit.}
 
 \item{Status}{[required] The status to be assigned to the service-specific credential.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets the status of a service-specific credential to \code{Active} or
-\code{Inactive}. Service-specific credentials that are inactive cannot be
-used for authentication to the service. This operation can be used to
-disable a user's service-specific credential as part of a credential
-rotation work flow.
-}
-\section{Request syntax}{
-\preformatted{svc$update_service_specific_credential(
-  UserName = "string",
-  ServiceSpecificCredentialId = "string",
-  Status = "Active"|"Inactive"
-)
-}
-}
+Sets the status of a service-specific credential to \code{Active} or \code{Inactive}. Service-specific credentials that are inactive cannot be used for authentication to the service. This operation can be used to disable a user's service-specific credential as part of a credential rotation work flow.
 
+See \url{https://paws-r.github.io/docs/iam/update_service_specific_credential.html} for full documentation.
+}
 \keyword{internal}

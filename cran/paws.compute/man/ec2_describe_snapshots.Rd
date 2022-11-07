@@ -5,8 +5,15 @@
 \title{Describes the specified EBS snapshots available to you or all of the EBS
 snapshots available to you}
 \usage{
-ec2_describe_snapshots(Filters, MaxResults, NextToken, OwnerIds,
-  RestorableByUserIds, SnapshotIds, DryRun)
+ec2_describe_snapshots(
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  OwnerIds = NULL,
+  RestorableByUserIds = NULL,
+  SnapshotIds = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters.
@@ -15,22 +22,24 @@ ec2_describe_snapshots(Filters, MaxResults, NextToken, OwnerIds,
 \item \code{encrypted} - Indicates whether the snapshot is encrypted (\code{true} |
 \code{false})
 \item \code{owner-alias} - The owner alias, from an Amazon-maintained list
-(\code{amazon}). This is not the user-configured AWS account alias set
-using the IAM console. We recommend that you use the related
-parameter instead of this filter.
-\item \code{owner-id} - The AWS account ID of the owner. We recommend that you
-use the related parameter instead of this filter.
+(\code{amazon}). This is not the user-configured Amazon Web Services
+account alias set using the IAM console. We recommend that you use
+the related parameter instead of this filter.
+\item \code{owner-id} - The Amazon Web Services account ID of the owner. We
+recommend that you use the related parameter instead of this filter.
 \item \code{progress} - The progress of the snapshot, as a percentage (for
 example, 80\%).
 \item \code{snapshot-id} - The snapshot ID.
 \item \code{start-time} - The time stamp when the snapshot was initiated.
 \item \code{status} - The status of the snapshot (\code{pending} | \code{completed} |
 \code{error}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{storage-tier} - The storage tier of the snapshot (\code{archive} |
+\code{standard}).
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -60,9 +69,11 @@ that returned the \code{NextToken} value. This value is \code{null} when there a
 no more results to return.}
 
 \item{OwnerIds}{Scopes the results to snapshots with the specified owners. You can
-specify a combination of AWS account IDs, \code{self}, and \code{amazon}.}
+specify a combination of Amazon Web Services account IDs, \code{self}, and
+\code{amazon}.}
 
-\item{RestorableByUserIds}{The IDs of the AWS accounts that can create volumes from the snapshot.}
+\item{RestorableByUserIds}{The IDs of the Amazon Web Services accounts that can create volumes from
+the snapshot.}
 
 \item{SnapshotIds}{The snapshot IDs.
 
@@ -74,143 +85,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Snapshots = list(
-    list(
-      DataEncryptionKeyId = "string",
-      Description = "string",
-      Encrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      OwnerId = "string",
-      Progress = "string",
-      SnapshotId = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      State = "pending"|"completed"|"error",
-      StateMessage = "string",
-      VolumeId = "string",
-      VolumeSize = 123,
-      OwnerAlias = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the specified EBS snapshots available to you or all of the EBS
-snapshots available to you.
+Describes the specified EBS snapshots available to you or all of the EBS snapshots available to you.
 
-The snapshots available to you include public snapshots, private
-snapshots that you own, and private snapshots owned by other AWS
-accounts for which you have explicit create volume permissions.
-
-The create volume permissions fall into the following categories:
-\itemize{
-\item \emph{public}: The owner of the snapshot granted create volume
-permissions for the snapshot to the \code{all} group. All AWS accounts
-have create volume permissions for these snapshots.
-\item \emph{explicit}: The owner of the snapshot granted create volume
-permissions to a specific AWS account.
-\item \emph{implicit}: An AWS account has implicit create volume permissions
-for all snapshots it owns.
-}
-
-The list of snapshots returned can be filtered by specifying snapshot
-IDs, snapshot owners, or AWS accounts with create volume permissions. If
-no options are specified, Amazon EC2 returns all snapshots for which you
-have create volume permissions.
-
-If you specify one or more snapshot IDs, only snapshots that have the
-specified IDs are returned. If you specify an invalid snapshot ID, an
-error is returned. If you specify a snapshot ID for which you do not
-have access, it is not included in the returned results.
-
-If you specify one or more snapshot owners using the \code{OwnerIds} option,
-only snapshots from the specified owners and for which you have access
-are returned. The results can include the AWS account IDs of the
-specified owners, \code{amazon} for snapshots owned by Amazon, or \code{self} for
-snapshots that you own.
-
-If you specify a list of restorable users, only snapshots with create
-snapshot permissions for those users are returned. You can specify AWS
-account IDs (if you own the snapshots), \code{self} for snapshots for which
-you own or have explicit permissions, or \code{all} for public snapshots.
-
-If you are describing a long list of snapshots, we recommend that you
-paginate the output to make the list more manageable. The \code{MaxResults}
-parameter sets the maximum number of results returned in a single page.
-If the list of results exceeds your \code{MaxResults} value, then that number
-of results is returned along with a \code{NextToken} value that can be passed
-to a subsequent \code{\link[=ec2_describe_snapshots]{describe_snapshots}} request
-to retrieve the remaining results.
-
-To get the state of fast snapshot restores for a snapshot, use
-\code{\link[=ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores}}.
-
-For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS snapshots}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_snapshots(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  OwnerIds = list(
-    "string"
-  ),
-  RestorableByUserIds = list(
-    "string"
-  ),
-  SnapshotIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes a snapshot with the snapshot ID of
-# `snap-1234567890abcdef0`.
-svc$describe_snapshots(
-  SnapshotIds = list(
-    "snap-1234567890abcdef0"
-  )
-)
-
-# This example describes all snapshots owned by the ID 012345678910 that
-# are in the `pending` status.
-svc$describe_snapshots(
-  Filters = list(
-    list(
-      Name = "status",
-      Values = list(
-        "pending"
-      )
-    )
-  ),
-  OwnerIds = list(
-    "012345678910"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_snapshots.html} for full documentation.
 }
 \keyword{internal}

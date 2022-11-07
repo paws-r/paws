@@ -4,8 +4,15 @@
 \alias{sagemaker_list_models}
 \title{Lists models created with the CreateModel API}
 \usage{
-sagemaker_list_models(SortBy, SortOrder, NextToken, MaxResults,
-  NameContains, CreationTimeBefore, CreationTimeAfter)
+sagemaker_list_models(
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL
+)
 }
 \arguments{
 \item{SortBy}{Sorts the list of results. The default is \code{CreationTime}.}
@@ -18,8 +25,8 @@ the next set of models, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of models to return in the response.}
 
-\item{NameContains}{A string in the training job name. This filter returns only models in
-the training job whose name contains the specified string.}
+\item{NameContains}{A string in the model name. This filter returns only models whose name
+contains the specified string.}
 
 \item{CreationTimeBefore}{A filter that returns only models created before the specified time
 (timestamp).}
@@ -27,40 +34,9 @@ the training job whose name contains the specified string.}
 \item{CreationTimeAfter}{A filter that returns only models with a creation time greater than or
 equal to the specified time (timestamp).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Models = list(
-    list(
-      ModelName = "string",
-      ModelArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists models created with the \code{\link[=sagemaker_create_model]{create_model}}
-API.
-}
-\section{Request syntax}{
-\preformatted{svc$list_models(
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
+Lists models created with the \code{\link[=sagemaker_create_model]{create_model}} API.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_models.html} for full documentation.
+}
 \keyword{internal}

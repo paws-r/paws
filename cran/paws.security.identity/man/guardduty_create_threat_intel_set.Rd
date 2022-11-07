@@ -4,8 +4,15 @@
 \alias{guardduty_create_threat_intel_set}
 \title{Creates a new ThreatIntelSet}
 \usage{
-guardduty_create_threat_intel_set(DetectorId, Name, Format, Location,
-  Activate, ClientToken, Tags)
+guardduty_create_threat_intel_set(
+  DetectorId,
+  Name,
+  Format,
+  Location,
+  Activate,
+  ClientToken = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
@@ -17,8 +24,7 @@ ThreatIntelSet.}
 
 \item{Format}{[required] The format of the file that contains the ThreatIntelSet.}
 
-\item{Location}{[required] The URI of the file that contains the ThreatIntelSet. For example:
-https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.}
+\item{Location}{[required] The URI of the file that contains the ThreatIntelSet.}
 
 \item{Activate}{[required] A Boolean value that indicates whether GuardDuty is to start using the
 uploaded ThreatIntelSet.}
@@ -27,30 +33,9 @@ uploaded ThreatIntelSet.}
 
 \item{Tags}{The tags to be added to a new threat list resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThreatIntelSetId = "string"
-)
-}
-}
 \description{
-Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious
-IP addresses. GuardDuty generates findings based on ThreatIntelSets.
-Only users of the administrator account can use this operation.
-}
-\section{Request syntax}{
-\preformatted{svc$create_threat_intel_set(
-  DetectorId = "string",
-  Name = "string",
-  Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
-  Location = "string",
-  Activate = TRUE|FALSE,
-  ClientToken = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty generates findings based on ThreatIntelSets. Only users of the administrator account can use this operation.
 
+See \url{https://paws-r.github.io/docs/guardduty/create_threat_intel_set.html} for full documentation.
+}
 \keyword{internal}

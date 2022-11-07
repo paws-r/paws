@@ -3,11 +3,14 @@
 \name{route53_list_traffic_policy_instances}
 \alias{route53_list_traffic_policy_instances}
 \title{Gets information about the traffic policy instances that you created by
-using the current AWS account}
+using the current Amazon Web Services account}
 \usage{
-route53_list_traffic_policy_instances(HostedZoneIdMarker,
-  TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker,
-  MaxItems)
+route53_list_traffic_policy_instances(
+  HostedZoneIdMarker = NULL,
+  TrafficPolicyInstanceNameMarker = NULL,
+  TrafficPolicyInstanceTypeMarker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{HostedZoneIdMarker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you
@@ -55,51 +58,9 @@ values of \code{HostedZoneIdMarker}, \code{TrafficPolicyInstanceNameMarker}, and
 \code{TrafficPolicyInstanceTypeMarker} represent the first traffic policy
 instance in the next group of \code{MaxItems} traffic policy instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficPolicyInstances = list(
-    list(
-      Id = "string",
-      HostedZoneId = "string",
-      Name = "string",
-      TTL = 123,
-      State = "string",
-      Message = "string",
-      TrafficPolicyId = "string",
-      TrafficPolicyVersion = 123,
-      TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
-    )
-  ),
-  HostedZoneIdMarker = "string",
-  TrafficPolicyInstanceNameMarker = "string",
-  TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-  IsTruncated = TRUE|FALSE,
-  MaxItems = "string"
-)
-}
-}
 \description{
-Gets information about the traffic policy instances that you created by
-using the current AWS account.
+Gets information about the traffic policy instances that you created by using the current Amazon Web Services account.
 
-After you submit an
-\code{\link[=route53_update_traffic_policy_instance]{update_traffic_policy_instance}}
-request, there's a brief delay while Amazon Route 53 creates the
-resource record sets that are specified in the traffic policy
-definition. For more information, see the \code{State} response element.
-
-Route 53 returns a maximum of 100 items in each response. If you have a
-lot of traffic policy instances, you can use the \code{MaxItems} parameter to
-list them in groups of up to 100.
+See \url{https://paws-r.github.io/docs/route53/list_traffic_policy_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_traffic_policy_instances(
-  HostedZoneIdMarker = "string",
-  TrafficPolicyInstanceNameMarker = "string",
-  TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-  MaxItems = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -2,9 +2,13 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_list_tags_for_resource}
 \alias{configservice_list_tags_for_resource}
-\title{List the tags for AWS Config resource}
+\title{List the tags for Config resource}
 \usage{
-configservice_list_tags_for_resource(ResourceArn, Limit, NextToken)
+configservice_list_tags_for_resource(
+  ResourceArn,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to
@@ -12,34 +16,15 @@ list the tags. Currently, the supported resources are \code{ConfigRule},
 \code{ConfigurationAggregator} and \code{AggregatorAuthorization}.}
 
 \item{Limit}{The maximum number of tags returned on each page. The limit maximum is
-50. You cannot specify a number greater than 50. If you specify 0, AWS
+50. You cannot specify a number greater than 50. If you specify 0,
 Config uses the default.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List the tags for AWS Config resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string",
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
+List the tags for Config resource.
 
+See \url{https://paws-r.github.io/docs/configservice/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

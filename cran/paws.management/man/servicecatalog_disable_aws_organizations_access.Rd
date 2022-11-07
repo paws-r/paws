@@ -6,26 +6,9 @@
 \usage{
 servicecatalog_disable_aws_organizations_access()
 }
-\value{
-An empty list.
-}
 \description{
-Disable portfolio sharing through AWS Organizations feature. This
-feature will not delete your current shares but it will prevent you from
-creating new shares throughout your organization. Current shares will
-not be in sync with your organization structure if it changes after
-calling this API. This API can only be called by the management account
-in the organization.
+Disable portfolio sharing through AWS Organizations feature. This feature will not delete your current shares but it will prevent you from creating new shares throughout your organization. Current shares will not be in sync with your organization structure if it changes after calling this API. This API can only be called by the management account in the organization.
 
-This API can't be invoked if there are active delegated administrators
-in the organization.
-
-Note that a delegated administrator is not authorized to invoke
-\code{\link[=servicecatalog_disable_aws_organizations_access]{disable_aws_organizations_access}}.
+See \url{https://paws-r.github.io/docs/servicecatalog/disable_aws_organizations_access.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disable_aws_organizations_access()
-}
-}
-
 \keyword{internal}

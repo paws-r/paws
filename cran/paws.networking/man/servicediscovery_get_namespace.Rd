@@ -9,48 +9,9 @@ servicediscovery_get_namespace(Id)
 \arguments{
 \item{Id}{[required] The ID of the namespace that you want to get information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Namespace = list(
-    Id = "string",
-    Arn = "string",
-    Name = "string",
-    Type = "DNS_PUBLIC"|"DNS_PRIVATE"|"HTTP",
-    Description = "string",
-    ServiceCount = 123,
-    Properties = list(
-      DnsProperties = list(
-        HostedZoneId = "string"
-      ),
-      HttpProperties = list(
-        HttpName = "string"
-      )
-    ),
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreatorRequestId = "string"
-  )
-)
-}
-}
 \description{
 Gets information about a namespace.
-}
-\section{Request syntax}{
-\preformatted{svc$get_namespace(
-  Id = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example gets information about a specified namespace.
-svc$get_namespace(
-  Id = "ns-e4anhexample0004"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/get_namespace.html} for full documentation.
 }
 \keyword{internal}

@@ -3,6 +3,55 @@
 #' @include guardduty_service.R
 NULL
 
+#' Accepts the invitation to be a member account and get monitored by a
+#' GuardDuty administrator account that sent the invitation
+#'
+#' @description
+#' Accepts the invitation to be a member account and get monitored by a
+#' GuardDuty administrator account that sent the invitation.
+#'
+#' @usage
+#' guardduty_accept_administrator_invitation(DetectorId, AdministratorId,
+#'   InvitationId)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
+#' @param AdministratorId &#91;required&#93; The account ID of the GuardDuty administrator account whose invitation
+#' you're accepting.
+#' @param InvitationId &#91;required&#93; The value that is used to validate the administrator account to the
+#' member account.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$accept_administrator_invitation(
+#'   DetectorId = "string",
+#'   AdministratorId = "string",
+#'   InvitationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_accept_administrator_invitation
+guardduty_accept_administrator_invitation <- function(DetectorId, AdministratorId, InvitationId) {
+  op <- new_operation(
+    name = "AcceptAdministratorInvitation",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/administrator",
+    paginator = list()
+  )
+  input <- .guardduty$accept_administrator_invitation_input(DetectorId = DetectorId, AdministratorId = AdministratorId, InvitationId = InvitationId)
+  output <- .guardduty$accept_administrator_invitation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$accept_administrator_invitation <- guardduty_accept_administrator_invitation
+
 #' Accepts the invitation to be monitored by a GuardDuty administrator
 #' account
 #'
@@ -137,6 +186,16 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #'   DataSources = list(
 #'     S3Logs = list(
 #'       Enable = TRUE|FALSE
+#'     ),
+#'     Kubernetes = list(
+#'       AuditLogs = list(
+#'         Enable = TRUE|FALSE
+#'       )
+#'     ),
+#'     MalwareProtection = list(
+#'       ScanEc2InstanceWithFindings = list(
+#'         EbsVolumes = TRUE|FALSE
+#'       )
 #'     )
 #'   ),
 #'   Tags = list(
@@ -243,6 +302,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.awsApiCallAction.errorCode
 #' 
+#' -   service.action.awsApiCallAction.userAgent
+#' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.city.cityName
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.country.countryName
@@ -280,6 +341,16 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.action.networkConnectionAction.remotePortDetails.port
 #' 
 #' -   service.additionalInfo.threatListName
+#' 
+#' -   resource.s3BucketDetails.publicAccess.effectivePermissions
+#' 
+#' -   resource.s3BucketDetails.name
+#' 
+#' -   resource.s3BucketDetails.tags.key
+#' 
+#' -   resource.s3BucketDetails.tags.value
+#' 
+#' -   resource.s3BucketDetails.type
 #' 
 #' -   service.archived
 #' 
@@ -376,9 +447,10 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' @description
 #' Creates a new IPSet, which is called a trusted IP list in the console
 #' user interface. An IPSet is a list of IP addresses that are trusted for
-#' secure communication with AWS infrastructure and applications. GuardDuty
-#' doesn't generate findings for IP addresses that are included in IPSets.
-#' Only users from the administrator account can use this operation.
+#' secure communication with Amazon Web Services infrastructure and
+#' applications. GuardDuty doesn't generate findings for IP addresses that
+#' are included in IPSets. Only users from the administrator account can
+#' use this operation.
 #'
 #' @usage
 #' guardduty_create_ip_set(DetectorId, Name, Format, Location, Activate,
@@ -391,8 +463,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' Allowed characters are alphanumerics, spaces, hyphens (-), and
 #' underscores (_).
 #' @param Format &#91;required&#93; The format of the file that contains the IPSet.
-#' @param Location &#91;required&#93; The URI of the file that contains the IPSet. For example:
-#' https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
+#' @param Location &#91;required&#93; The URI of the file that contains the IPSet.
 #' @param Activate &#91;required&#93; A Boolean value that indicates whether GuardDuty is to start using the
 #' uploaded IPSet.
 #' @param ClientToken The idempotency token for the create request.
@@ -441,14 +512,14 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 }
 .guardduty$operations$create_ip_set <- guardduty_create_ip_set
 
-#' Creates member accounts of the current AWS account by specifying a list
-#' of AWS account IDs
+#' Creates member accounts of the current Amazon Web Services account by
+#' specifying a list of Amazon Web Services account IDs
 #'
 #' @description
-#' Creates member accounts of the current AWS account by specifying a list
-#' of AWS account IDs. This step is a prerequisite for managing the
-#' associated member accounts either by invitation or through an
-#' organization.
+#' Creates member accounts of the current Amazon Web Services account by
+#' specifying a list of Amazon Web Services account IDs. This step is a
+#' prerequisite for managing the associated member accounts either by
+#' invitation or through an organization.
 #' 
 #' When using `Create Members` as an organizations delegated administrator
 #' this action will enable GuardDuty in the added member accounts, with the
@@ -637,8 +708,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #' generated by activity that involves IP addresses included in this
 #' ThreatIntelSet.
 #' @param Format &#91;required&#93; The format of the file that contains the ThreatIntelSet.
-#' @param Location &#91;required&#93; The URI of the file that contains the ThreatIntelSet. For example:
-#' https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
+#' @param Location &#91;required&#93; The URI of the file that contains the ThreatIntelSet.
 #' @param Activate &#91;required&#93; A Boolean value that indicates whether GuardDuty is to start using the
 #' uploaded ThreatIntelSet.
 #' @param ClientToken The idempotency token for the create request.
@@ -687,18 +757,19 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
 }
 .guardduty$operations$create_threat_intel_set <- guardduty_create_threat_intel_set
 
-#' Declines invitations sent to the current member account by AWS accounts
-#' specified by their account IDs
+#' Declines invitations sent to the current member account by Amazon Web
+#' Services accounts specified by their account IDs
 #'
 #' @description
-#' Declines invitations sent to the current member account by AWS accounts
-#' specified by their account IDs.
+#' Declines invitations sent to the current member account by Amazon Web
+#' Services accounts specified by their account IDs.
 #'
 #' @usage
 #' guardduty_decline_invitations(AccountIds)
 #'
-#' @param AccountIds &#91;required&#93; A list of account IDs of the AWS accounts that sent invitations to the
-#' current member account that you want to decline invitations from.
+#' @param AccountIds &#91;required&#93; A list of account IDs of the Amazon Web Services accounts that sent
+#' invitations to the current member account that you want to decline
+#' invitations from.
 #'
 #' @return
 #' A list with the following syntax:
@@ -869,18 +940,19 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
 }
 .guardduty$operations$delete_ip_set <- guardduty_delete_ip_set
 
-#' Deletes invitations sent to the current member account by AWS accounts
-#' specified by their account IDs
+#' Deletes invitations sent to the current member account by Amazon Web
+#' Services accounts specified by their account IDs
 #'
 #' @description
-#' Deletes invitations sent to the current member account by AWS accounts
-#' specified by their account IDs.
+#' Deletes invitations sent to the current member account by Amazon Web
+#' Services accounts specified by their account IDs.
 #'
 #' @usage
 #' guardduty_delete_invitations(AccountIds)
 #'
-#' @param AccountIds &#91;required&#93; A list of account IDs of the AWS accounts that sent invitations to the
-#' current member account that you want to delete invitations from.
+#' @param AccountIds &#91;required&#93; A list of account IDs of the Amazon Web Services accounts that sent
+#' invitations to the current member account that you want to delete
+#' invitations from.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1068,6 +1140,119 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 }
 .guardduty$operations$delete_threat_intel_set <- guardduty_delete_threat_intel_set
 
+#' Returns a list of malware scans
+#'
+#' @description
+#' Returns a list of malware scans.
+#'
+#' @usage
+#' guardduty_describe_malware_scans(DetectorId, NextToken, MaxResults,
+#'   FilterCriteria, SortCriteria)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector that the request is associated with.
+#' @param NextToken You can use this parameter when paginating results. Set the value of
+#' this parameter to null on your first call to the list action. For
+#' subsequent calls to the action, fill nextToken in the request with the
+#' value of NextToken from the previous response to continue listing data.
+#' @param MaxResults You can use this parameter to indicate the maximum number of items that
+#' you want in the response. The default value is 50. The maximum value is
+#' 50.
+#' @param FilterCriteria Represents the criteria to be used in the filter for describing scan
+#' entries.
+#' @param SortCriteria Represents the criteria used for sorting scan entries.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Scans = list(
+#'     list(
+#'       DetectorId = "string",
+#'       AdminDetectorId = "string",
+#'       ScanId = "string",
+#'       ScanStatus = "RUNNING"|"COMPLETED"|"FAILED",
+#'       FailureReason = "string",
+#'       ScanStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ScanEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TriggerDetails = list(
+#'         GuardDutyFindingId = "string",
+#'         Description = "string"
+#'       ),
+#'       ResourceDetails = list(
+#'         InstanceArn = "string"
+#'       ),
+#'       ScanResultDetails = list(
+#'         ScanResult = "CLEAN"|"INFECTED"
+#'       ),
+#'       AccountId = "string",
+#'       TotalBytes = 123,
+#'       FileCount = 123,
+#'       AttachedVolumes = list(
+#'         list(
+#'           VolumeArn = "string",
+#'           VolumeType = "string",
+#'           DeviceName = "string",
+#'           VolumeSizeInGB = 123,
+#'           EncryptionType = "string",
+#'           SnapshotArn = "string",
+#'           KmsKeyArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_malware_scans(
+#'   DetectorId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   FilterCriteria = list(
+#'     FilterCriterion = list(
+#'       list(
+#'         CriterionKey = "EC2_INSTANCE_ARN"|"SCAN_ID"|"ACCOUNT_ID"|"GUARDDUTY_FINDING_ID"|"SCAN_START_TIME"|"SCAN_STATUS",
+#'         FilterCondition = list(
+#'           EqualsValue = "string",
+#'           GreaterThan = 123,
+#'           LessThan = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   SortCriteria = list(
+#'     AttributeName = "string",
+#'     OrderBy = "ASC"|"DESC"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_describe_malware_scans
+guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxResults = NULL, FilterCriteria = NULL, SortCriteria = NULL) {
+  op <- new_operation(
+    name = "DescribeMalwareScans",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/malware-scans",
+    paginator = list()
+  )
+  input <- .guardduty$describe_malware_scans_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
+  output <- .guardduty$describe_malware_scans_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$describe_malware_scans <- guardduty_describe_malware_scans
+
 #' Returns information about the account selected as the delegated
 #' administrator for GuardDuty
 #'
@@ -1090,6 +1275,18 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'   DataSources = list(
 #'     S3Logs = list(
 #'       AutoEnable = TRUE|FALSE
+#'     ),
+#'     Kubernetes = list(
+#'       AuditLogs = list(
+#'         AutoEnable = TRUE|FALSE
+#'       )
+#'     ),
+#'     MalwareProtection = list(
+#'       ScanEc2InstanceWithFindings = list(
+#'         EbsVolumes = list(
+#'           AutoEnable = TRUE|FALSE
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1179,18 +1376,18 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
 }
 .guardduty$operations$describe_publishing_destination <- guardduty_describe_publishing_destination
 
-#' Disables an AWS account within the Organization as the GuardDuty
-#' delegated administrator
+#' Disables an Amazon Web Services account within the Organization as the
+#' GuardDuty delegated administrator
 #'
 #' @description
-#' Disables an AWS account within the Organization as the GuardDuty
-#' delegated administrator.
+#' Disables an Amazon Web Services account within the Organization as the
+#' GuardDuty delegated administrator.
 #'
 #' @usage
 #' guardduty_disable_organization_admin_account(AdminAccountId)
 #'
-#' @param AdminAccountId &#91;required&#93; The AWS Account ID for the organizations account to be disabled as a
-#' GuardDuty delegated administrator.
+#' @param AdminAccountId &#91;required&#93; The Amazon Web Services Account ID for the organizations account to be
+#' disabled as a GuardDuty delegated administrator.
 #'
 #' @return
 #' An empty list.
@@ -1221,6 +1418,48 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
   return(response)
 }
 .guardduty$operations$disable_organization_admin_account <- guardduty_disable_organization_admin_account
+
+#' Disassociates the current GuardDuty member account from its
+#' administrator account
+#'
+#' @description
+#' Disassociates the current GuardDuty member account from its
+#' administrator account.
+#'
+#' @usage
+#' guardduty_disassociate_from_administrator_account(DetectorId)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_from_administrator_account(
+#'   DetectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_disassociate_from_administrator_account
+guardduty_disassociate_from_administrator_account <- function(DetectorId) {
+  op <- new_operation(
+    name = "DisassociateFromAdministratorAccount",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/administrator/disassociate",
+    paginator = list()
+  )
+  input <- .guardduty$disassociate_from_administrator_account_input(DetectorId = DetectorId)
+  output <- .guardduty$disassociate_from_administrator_account_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$disassociate_from_administrator_account <- guardduty_disassociate_from_administrator_account
 
 #' Disassociates the current GuardDuty member account from its
 #' administrator account
@@ -1322,18 +1561,18 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$disassociate_members <- guardduty_disassociate_members
 
-#' Enables an AWS account within the organization as the GuardDuty
-#' delegated administrator
+#' Enables an Amazon Web Services account within the organization as the
+#' GuardDuty delegated administrator
 #'
 #' @description
-#' Enables an AWS account within the organization as the GuardDuty
-#' delegated administrator.
+#' Enables an Amazon Web Services account within the organization as the
+#' GuardDuty delegated administrator.
 #'
 #' @usage
 #' guardduty_enable_organization_admin_account(AdminAccountId)
 #'
-#' @param AdminAccountId &#91;required&#93; The AWS Account ID for the organization account to be enabled as a
-#' GuardDuty delegated administrator.
+#' @param AdminAccountId &#91;required&#93; The Amazon Web Services Account ID for the organization account to be
+#' enabled as a GuardDuty delegated administrator.
 #'
 #' @return
 #' An empty list.
@@ -1364,6 +1603,58 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
   return(response)
 }
 .guardduty$operations$enable_organization_admin_account <- guardduty_enable_organization_admin_account
+
+#' Provides the details for the GuardDuty administrator account associated
+#' with the current GuardDuty member account
+#'
+#' @description
+#' Provides the details for the GuardDuty administrator account associated
+#' with the current GuardDuty member account.
+#'
+#' @usage
+#' guardduty_get_administrator_account(DetectorId)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Administrator = list(
+#'     AccountId = "string",
+#'     InvitationId = "string",
+#'     RelationshipStatus = "string",
+#'     InvitedAt = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_administrator_account(
+#'   DetectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_administrator_account
+guardduty_get_administrator_account <- function(DetectorId) {
+  op <- new_operation(
+    name = "GetAdministratorAccount",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/administrator",
+    paginator = list()
+  )
+  input <- .guardduty$get_administrator_account_input(DetectorId = DetectorId)
+  output <- .guardduty$get_administrator_account_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_administrator_account <- guardduty_get_administrator_account
 
 #' Retrieves an Amazon GuardDuty detector specified by the detectorId
 #'
@@ -1396,6 +1687,19 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
 #'     ),
 #'     S3Logs = list(
 #'       Status = "ENABLED"|"DISABLED"
+#'     ),
+#'     Kubernetes = list(
+#'       AuditLogs = list(
+#'         Status = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     MalwareProtection = list(
+#'       ScanEc2InstanceWithFindings = list(
+#'         EbsVolumes = list(
+#'           Status = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       ServiceRole = "string"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -1649,7 +1953,163 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'             )
 #'           )
 #'         ),
-#'         ResourceType = "string"
+#'         EksClusterDetails = list(
+#'           Name = "string",
+#'           Arn = "string",
+#'           VpcId = "string",
+#'           Status = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           CreatedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         KubernetesDetails = list(
+#'           KubernetesUserDetails = list(
+#'             Username = "string",
+#'             Uid = "string",
+#'             Groups = list(
+#'               "string"
+#'             )
+#'           ),
+#'           KubernetesWorkloadDetails = list(
+#'             Name = "string",
+#'             Type = "string",
+#'             Uid = "string",
+#'             Namespace = "string",
+#'             HostNetwork = TRUE|FALSE,
+#'             Containers = list(
+#'               list(
+#'                 ContainerRuntime = "string",
+#'                 Id = "string",
+#'                 Name = "string",
+#'                 Image = "string",
+#'                 ImagePrefix = "string",
+#'                 VolumeMounts = list(
+#'                   list(
+#'                     Name = "string",
+#'                     MountPath = "string"
+#'                   )
+#'                 ),
+#'                 SecurityContext = list(
+#'                   Privileged = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             Volumes = list(
+#'               list(
+#'                 Name = "string",
+#'                 HostPath = list(
+#'                   Path = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ResourceType = "string",
+#'         EbsVolumeDetails = list(
+#'           ScannedVolumeDetails = list(
+#'             list(
+#'               VolumeArn = "string",
+#'               VolumeType = "string",
+#'               DeviceName = "string",
+#'               VolumeSizeInGB = 123,
+#'               EncryptionType = "string",
+#'               SnapshotArn = "string",
+#'               KmsKeyArn = "string"
+#'             )
+#'           ),
+#'           SkippedVolumeDetails = list(
+#'             list(
+#'               VolumeArn = "string",
+#'               VolumeType = "string",
+#'               DeviceName = "string",
+#'               VolumeSizeInGB = 123,
+#'               EncryptionType = "string",
+#'               SnapshotArn = "string",
+#'               KmsKeyArn = "string"
+#'             )
+#'           )
+#'         ),
+#'         EcsClusterDetails = list(
+#'           Name = "string",
+#'           Arn = "string",
+#'           Status = "string",
+#'           ActiveServicesCount = 123,
+#'           RegisteredContainerInstancesCount = 123,
+#'           RunningTasksCount = 123,
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           TaskDetails = list(
+#'             Arn = "string",
+#'             DefinitionArn = "string",
+#'             Version = "string",
+#'             TaskCreatedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             StartedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             StartedBy = "string",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             Volumes = list(
+#'               list(
+#'                 Name = "string",
+#'                 HostPath = list(
+#'                   Path = "string"
+#'                 )
+#'               )
+#'             ),
+#'             Containers = list(
+#'               list(
+#'                 ContainerRuntime = "string",
+#'                 Id = "string",
+#'                 Name = "string",
+#'                 Image = "string",
+#'                 ImagePrefix = "string",
+#'                 VolumeMounts = list(
+#'                   list(
+#'                     Name = "string",
+#'                     MountPath = "string"
+#'                   )
+#'                 ),
+#'                 SecurityContext = list(
+#'                   Privileged = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             Group = "string"
+#'           )
+#'         ),
+#'         ContainerDetails = list(
+#'           ContainerRuntime = "string",
+#'           Id = "string",
+#'           Name = "string",
+#'           Image = "string",
+#'           ImagePrefix = "string",
+#'           VolumeMounts = list(
+#'             list(
+#'               Name = "string",
+#'               MountPath = "string"
+#'             )
+#'           ),
+#'           SecurityContext = list(
+#'             Privileged = TRUE|FALSE
+#'           )
+#'         )
 #'       ),
 #'       SchemaVersion = "string",
 #'       Service = list(
@@ -1662,6 +2122,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'               Domain = "string"
 #'             ),
 #'             ErrorCode = "string",
+#'             UserAgent = "string",
 #'             RemoteIpDetails = list(
 #'               City = list(
 #'                 CityName = "string"
@@ -1682,10 +2143,19 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                 Org = "string"
 #'               )
 #'             ),
-#'             ServiceName = "string"
+#'             ServiceName = "string",
+#'             RemoteAccountDetails = list(
+#'               AccountId = "string",
+#'               Affiliated = TRUE|FALSE
+#'             ),
+#'             AffectedResources = list(
+#'               "string"
+#'             )
 #'           ),
 #'           DnsRequestAction = list(
-#'             Domain = "string"
+#'             Domain = "string",
+#'             Protocol = "string",
+#'             Blocked = TRUE|FALSE
 #'           ),
 #'           NetworkConnectionAction = list(
 #'             Blocked = TRUE|FALSE,
@@ -1756,6 +2226,36 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           KubernetesApiCallAction = list(
+#'             RequestUri = "string",
+#'             Verb = "string",
+#'             SourceIps = list(
+#'               "string"
+#'             ),
+#'             UserAgent = "string",
+#'             RemoteIpDetails = list(
+#'               City = list(
+#'                 CityName = "string"
+#'               ),
+#'               Country = list(
+#'                 CountryCode = "string",
+#'                 CountryName = "string"
+#'               ),
+#'               GeoLocation = list(
+#'                 Lat = 123.0,
+#'                 Lon = 123.0
+#'               ),
+#'               IpAddressV4 = "string",
+#'               Organization = list(
+#'                 Asn = "string",
+#'                 AsnOrg = "string",
+#'                 Isp = "string",
+#'                 Org = "string"
+#'               )
+#'             ),
+#'             StatusCode = 123,
+#'             Parameters = "string"
 #'           )
 #'         ),
 #'         Evidence = list(
@@ -1775,7 +2275,60 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'         EventLastSeen = "string",
 #'         ResourceRole = "string",
 #'         ServiceName = "string",
-#'         UserFeedback = "string"
+#'         UserFeedback = "string",
+#'         AdditionalInfo = list(
+#'           Value = "string",
+#'           Type = "string"
+#'         ),
+#'         FeatureName = "string",
+#'         EbsVolumeScanDetails = list(
+#'           ScanId = "string",
+#'           ScanStartedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ScanCompletedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TriggerFindingId = "string",
+#'           Sources = list(
+#'             "string"
+#'           ),
+#'           ScanDetections = list(
+#'             ScannedItemCount = list(
+#'               TotalGb = 123,
+#'               Files = 123,
+#'               Volumes = 123
+#'             ),
+#'             ThreatsDetectedItemCount = list(
+#'               Files = 123
+#'             ),
+#'             HighestSeverityThreatDetails = list(
+#'               Severity = "string",
+#'               ThreatName = "string",
+#'               Count = 123
+#'             ),
+#'             ThreatDetectedByName = list(
+#'               ItemCount = 123,
+#'               UniqueThreatNameCount = 123,
+#'               Shortened = TRUE|FALSE,
+#'               ThreatNames = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Severity = "string",
+#'                   ItemCount = 123,
+#'                   FilePaths = list(
+#'                     list(
+#'                       FilePath = "string",
+#'                       VolumeArn = "string",
+#'                       Hash = "string",
+#'                       FileName = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       Severity = 123.0,
 #'       Title = "string",
@@ -1999,6 +2552,73 @@ guardduty_get_invitations_count <- function() {
 }
 .guardduty$operations$get_invitations_count <- guardduty_get_invitations_count
 
+#' Returns the details of the malware scan settings
+#'
+#' @description
+#' Returns the details of the malware scan settings.
+#'
+#' @usage
+#' guardduty_get_malware_scan_settings(DetectorId)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector that the scan setting is associated with.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScanResourceCriteria = list(
+#'     Include = list(
+#'       list(
+#'         MapEquals = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Exclude = list(
+#'       list(
+#'         MapEquals = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   EbsSnapshotPreservation = "NO_RETENTION"|"RETENTION_WITH_FINDING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_malware_scan_settings(
+#'   DetectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_malware_scan_settings
+guardduty_get_malware_scan_settings <- function(DetectorId) {
+  op <- new_operation(
+    name = "GetMalwareScanSettings",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/malware-scan-settings",
+    paginator = list()
+  )
+  input <- .guardduty$get_malware_scan_settings_input(DetectorId = DetectorId)
+  output <- .guardduty$get_malware_scan_settings_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_malware_scan_settings <- guardduty_get_malware_scan_settings
+
 #' Provides the details for the GuardDuty administrator account associated
 #' with the current GuardDuty member account
 #'
@@ -2083,6 +2703,19 @@ guardduty_get_master_account <- function(DetectorId) {
 #'         ),
 #'         S3Logs = list(
 #'           Status = "ENABLED"|"DISABLED"
+#'         ),
+#'         Kubernetes = list(
+#'           AuditLogs = list(
+#'             Status = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         MalwareProtection = list(
+#'           ScanEc2InstanceWithFindings = list(
+#'             EbsVolumes = list(
+#'               Status = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
+#'           ServiceRole = "string"
 #'         )
 #'       )
 #'     )
@@ -2153,7 +2786,8 @@ guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
 #'       Email = "string",
 #'       RelationshipStatus = "string",
 #'       InvitedAt = "string",
-#'       UpdatedAt = "string"
+#'       UpdatedAt = "string",
+#'       AdministratorId = "string"
 #'     )
 #'   ),
 #'   UnprocessedAccounts = list(
@@ -2194,6 +2828,91 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
   return(response)
 }
 .guardduty$operations$get_members <- guardduty_get_members
+
+#' Provides the number of days left for each data source used in the free
+#' trial period
+#'
+#' @description
+#' Provides the number of days left for each data source used in the free
+#' trial period.
+#'
+#' @usage
+#' guardduty_get_remaining_free_trial_days(DetectorId, AccountIds)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
+#' @param AccountIds A list of account identifiers of the GuardDuty member account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       DataSources = list(
+#'         CloudTrail = list(
+#'           FreeTrialDaysRemaining = 123
+#'         ),
+#'         DnsLogs = list(
+#'           FreeTrialDaysRemaining = 123
+#'         ),
+#'         FlowLogs = list(
+#'           FreeTrialDaysRemaining = 123
+#'         ),
+#'         S3Logs = list(
+#'           FreeTrialDaysRemaining = 123
+#'         ),
+#'         Kubernetes = list(
+#'           AuditLogs = list(
+#'             FreeTrialDaysRemaining = 123
+#'           )
+#'         ),
+#'         MalwareProtection = list(
+#'           ScanEc2InstanceWithFindings = list(
+#'             FreeTrialDaysRemaining = 123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_remaining_free_trial_days(
+#'   DetectorId = "string",
+#'   AccountIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_remaining_free_trial_days
+guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds = NULL) {
+  op <- new_operation(
+    name = "GetRemainingFreeTrialDays",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/freeTrial/daysRemaining",
+    paginator = list()
+  )
+  input <- .guardduty$get_remaining_free_trial_days_input(DetectorId = DetectorId, AccountIds = AccountIds)
+  output <- .guardduty$get_remaining_free_trial_days_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_remaining_free_trial_days <- guardduty_get_remaining_free_trial_days
 
 #' Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID
 #'
@@ -2254,10 +2973,10 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'
 #' @description
 #' Lists Amazon GuardDuty usage statistics over the last 30 days for the
-#' specified detector ID. For newly enabled detectors or data sources the
-#' cost returned will include only the usage so far under 30 days, this may
-#' differ from the cost metrics in the console, which projects usage over
-#' 30 days to provide a monthly cost estimate. For more information see
+#' specified detector ID. For newly enabled detectors or data sources, the
+#' cost returned will include only the usage so far under 30 days. This may
+#' differ from the cost metrics in the console, which project usage over 30
+#' days to provide a monthly cost estimate. For more information, see
 #' [Understanding How Usage Costs are
 #' Calculated](https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations).
 #'
@@ -2293,7 +3012,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'     ),
 #'     SumByDataSource = list(
 #'       list(
-#'         DataSource = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS",
+#'         DataSource = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS"|"KUBERNETES_AUDIT_LOGS"|"EC2_MALWARE_SCAN",
 #'         Total = list(
 #'           Amount = "string",
 #'           Unit = "string"
@@ -2333,7 +3052,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'       "string"
 #'     ),
 #'     DataSources = list(
-#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS"
+#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS"|"KUBERNETES_AUDIT_LOGS"|"EC2_MALWARE_SCAN"
 #'     ),
 #'     Resources = list(
 #'       "string"
@@ -2365,16 +3084,18 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 }
 .guardduty$operations$get_usage_statistics <- guardduty_get_usage_statistics
 
-#' Invites other AWS accounts (created as members of the current AWS
-#' account by CreateMembers) to enable GuardDuty, and allow the current AWS
-#' account to view and manage these accounts' findings on their behalf as
-#' the GuardDuty administrator account
+#' Invites other Amazon Web Services accounts (created as members of the
+#' current Amazon Web Services account by CreateMembers) to enable
+#' GuardDuty, and allow the current Amazon Web Services account to view and
+#' manage these accounts' findings on their behalf as the GuardDuty
+#' administrator account
 #'
 #' @description
-#' Invites other AWS accounts (created as members of the current AWS
-#' account by CreateMembers) to enable GuardDuty, and allow the current AWS
-#' account to view and manage these accounts' findings on their behalf as
-#' the GuardDuty administrator account.
+#' Invites other Amazon Web Services accounts (created as members of the
+#' current Amazon Web Services account by CreateMembers) to enable
+#' GuardDuty, and allow the current Amazon Web Services account to view and
+#' manage these accounts' findings on their behalf as the GuardDuty
+#' administrator account.
 #'
 #' @usage
 #' guardduty_invite_members(DetectorId, AccountIds,
@@ -2637,8 +3358,6 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' 
 #' -   service.action.networkConnectionAction.protocol
 #' 
-#' -   service.action.networkConnectionAction.remoteIpDetails.city.cityName
-#' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.country.countryName
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
@@ -2804,11 +3523,11 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
 .guardduty$operations$list_ip_sets <- guardduty_list_ip_sets
 
 #' Lists all GuardDuty membership invitations that were sent to the current
-#' AWS account
+#' Amazon Web Services account
 #'
 #' @description
 #' Lists all GuardDuty membership invitations that were sent to the current
-#' AWS account.
+#' Amazon Web Services account.
 #'
 #' @usage
 #' guardduty_list_invitations(MaxResults, NextToken)
@@ -2899,7 +3618,8 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #'       Email = "string",
 #'       RelationshipStatus = "string",
 #'       InvitedAt = "string",
-#'       UpdatedAt = "string"
+#'       UpdatedAt = "string",
+#'       AdministratorId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2993,11 +3713,11 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
 .guardduty$operations$list_organization_admin_accounts <- guardduty_list_organization_admin_accounts
 
 #' Returns a list of publishing destinations associated with the specified
-#' dectectorId
+#' detectorId
 #'
 #' @description
 #' Returns a list of publishing destinations associated with the specified
-#' `dectectorId`.
+#' `detectorId`.
 #'
 #' @usage
 #' guardduty_list_publishing_destinations(DetectorId, MaxResults,
@@ -3442,6 +4162,16 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #'   DataSources = list(
 #'     S3Logs = list(
 #'       Enable = TRUE|FALSE
+#'     ),
+#'     Kubernetes = list(
+#'       AuditLogs = list(
+#'         Enable = TRUE|FALSE
+#'       )
+#'     ),
+#'     MalwareProtection = list(
+#'       ScanEc2InstanceWithFindings = list(
+#'         EbsVolumes = TRUE|FALSE
+#'       )
 #'     )
 #'   )
 #' )
@@ -3614,8 +4344,7 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
 #' to update.
 #' @param IpSetId &#91;required&#93; The unique ID that specifies the IPSet that you want to update.
 #' @param Name The unique ID that specifies the IPSet that you want to update.
-#' @param Location The updated URI of the file that contains the IPSet. For example:
-#' https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
+#' @param Location The updated URI of the file that contains the IPSet.
 #' @param Activate The updated Boolean value that specifies whether the IPSet is active or
 #' not.
 #'
@@ -3653,6 +4382,74 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 }
 .guardduty$operations$update_ip_set <- guardduty_update_ip_set
 
+#' Updates the malware scan settings
+#'
+#' @description
+#' Updates the malware scan settings.
+#'
+#' @usage
+#' guardduty_update_malware_scan_settings(DetectorId, ScanResourceCriteria,
+#'   EbsSnapshotPreservation)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector that specifies the GuardDuty service where
+#' you want to update scan settings.
+#' @param ScanResourceCriteria Represents the criteria to be used in the filter for selecting resources
+#' to scan.
+#' @param EbsSnapshotPreservation An enum value representing possible snapshot preservations.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_malware_scan_settings(
+#'   DetectorId = "string",
+#'   ScanResourceCriteria = list(
+#'     Include = list(
+#'       list(
+#'         MapEquals = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Exclude = list(
+#'       list(
+#'         MapEquals = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   EbsSnapshotPreservation = "NO_RETENTION"|"RETENTION_WITH_FINDING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_malware_scan_settings
+guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCriteria = NULL, EbsSnapshotPreservation = NULL) {
+  op <- new_operation(
+    name = "UpdateMalwareScanSettings",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/malware-scan-settings",
+    paginator = list()
+  )
+  input <- .guardduty$update_malware_scan_settings_input(DetectorId = DetectorId, ScanResourceCriteria = ScanResourceCriteria, EbsSnapshotPreservation = EbsSnapshotPreservation)
+  output <- .guardduty$update_malware_scan_settings_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_malware_scan_settings <- guardduty_update_malware_scan_settings
+
 #' Contains information on member accounts to be updated
 #'
 #' @description
@@ -3688,6 +4485,16 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 #'   DataSources = list(
 #'     S3Logs = list(
 #'       Enable = TRUE|FALSE
+#'     ),
+#'     Kubernetes = list(
+#'       AuditLogs = list(
+#'         Enable = TRUE|FALSE
+#'       )
+#'     ),
+#'     MalwareProtection = list(
+#'       ScanEc2InstanceWithFindings = list(
+#'         EbsVolumes = TRUE|FALSE
+#'       )
 #'     )
 #'   )
 #' )
@@ -3738,6 +4545,18 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #'   DataSources = list(
 #'     S3Logs = list(
 #'       AutoEnable = TRUE|FALSE
+#'     ),
+#'     Kubernetes = list(
+#'       AuditLogs = list(
+#'         AutoEnable = TRUE|FALSE
+#'       )
+#'     ),
+#'     MalwareProtection = list(
+#'       ScanEc2InstanceWithFindings = list(
+#'         EbsVolumes = list(
+#'           AutoEnable = TRUE|FALSE
+#'         )
+#'       )
 #'     )
 #'   )
 #' )

@@ -4,17 +4,22 @@
 \alias{globalaccelerator_update_custom_routing_accelerator}
 \title{Update a custom routing accelerator}
 \usage{
-globalaccelerator_update_custom_routing_accelerator(AcceleratorArn,
-  Name, IpAddressType, Enabled)
+globalaccelerator_update_custom_routing_accelerator(
+  AcceleratorArn,
+  Name = NULL,
+  IpAddressType = NULL,
+  Enabled = NULL
+)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator to update.}
 
-\item{Name}{The name of the accelerator. The name can have a maximum of 32
-characters, must contain only alphanumeric characters or hyphens (-),
-and must not begin or end with a hyphen.}
+\item{Name}{The name of the accelerator. The name can have a maximum of 64
+characters, must contain only alphanumeric characters, periods (.), or
+hyphens (-), and must not begin or end with a hyphen or period.}
 
-\item{IpAddressType}{The value for the address type must be IPv4.}
+\item{IpAddressType}{The IP address type that an accelerator supports. For a custom routing
+accelerator, the value must be IPV4.}
 
 \item{Enabled}{Indicates whether an accelerator is enabled. The value is true or false.
 The default value is true.
@@ -22,44 +27,9 @@ The default value is true.
 If the value is set to true, the accelerator cannot be deleted. If set
 to false, the accelerator can be deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Accelerator = list(
-    AcceleratorArn = "string",
-    Name = "string",
-    IpAddressType = "IPV4",
-    Enabled = TRUE|FALSE,
-    IpSets = list(
-      list(
-        IpFamily = "string",
-        IpAddresses = list(
-          "string"
-        )
-      )
-    ),
-    DnsName = "string",
-    Status = "DEPLOYED"|"IN_PROGRESS",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Update a custom routing accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$update_custom_routing_accelerator(
-  AcceleratorArn = "string",
-  Name = "string",
-  IpAddressType = "IPV4",
-  Enabled = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator.html} for full documentation.
+}
 \keyword{internal}

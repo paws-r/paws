@@ -11,45 +11,9 @@ cloudhsmv2_restore_backup(BackupId)
 \item{BackupId}{[required] The ID of the backup to be restored. To find the ID of a backup, use the
 \code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Backup = list(
-    BackupId = "string",
-    BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
-    ClusterId = "string",
-    CreateTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    CopyTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    NeverExpires = TRUE|FALSE,
-    SourceRegion = "string",
-    SourceBackup = "string",
-    SourceCluster = "string",
-    DeleteTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Restores a specified AWS CloudHSM backup that is in the
-\code{PENDING_DELETION} state. For mor information on deleting a backup, see
-\code{\link[=cloudhsmv2_delete_backup]{delete_backup}}.
-}
-\section{Request syntax}{
-\preformatted{svc$restore_backup(
-  BackupId = "string"
-)
-}
-}
+Restores a specified AWS CloudHSM backup that is in the \code{PENDING_DELETION} state. For mor information on deleting a backup, see \code{\link[=cloudhsmv2_delete_backup]{delete_backup}}.
 
+See \url{https://paws-r.github.io/docs/cloudhsmv2/restore_backup.html} for full documentation.
+}
 \keyword{internal}

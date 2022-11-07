@@ -4,8 +4,11 @@
 \alias{ec2_delete_local_gateway_route}
 \title{Deletes the specified route from the specified local gateway route table}
 \usage{
-ec2_delete_local_gateway_route(DestinationCidrBlock,
-  LocalGatewayRouteTableId, DryRun)
+ec2_delete_local_gateway_route(
+  DestinationCidrBlock,
+  LocalGatewayRouteTableId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{DestinationCidrBlock}{[required] The CIDR range for the route. This must match the CIDR for the route
@@ -18,31 +21,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Route = list(
-    DestinationCidrBlock = "string",
-    LocalGatewayVirtualInterfaceGroupId = "string",
-    Type = "static"|"propagated",
-    State = "pending"|"active"|"blackhole"|"deleting"|"deleted",
-    LocalGatewayRouteTableId = "string",
-    LocalGatewayRouteTableArn = "string",
-    OwnerId = "string"
-  )
-)
-}
-}
 \description{
-Deletes the specified route from the specified local gateway route
-table.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_local_gateway_route(
-  DestinationCidrBlock = "string",
-  LocalGatewayRouteTableId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes the specified route from the specified local gateway route table.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_local_gateway_route.html} for full documentation.
+}
 \keyword{internal}

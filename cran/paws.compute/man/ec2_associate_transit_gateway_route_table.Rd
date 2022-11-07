@@ -5,8 +5,11 @@
 \title{Associates the specified attachment with the specified transit gateway
 route table}
 \usage{
-ec2_associate_transit_gateway_route_table(TransitGatewayRouteTableId,
-  TransitGatewayAttachmentId, DryRun)
+ec2_associate_transit_gateway_route_table(
+  TransitGatewayRouteTableId,
+  TransitGatewayAttachmentId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -18,29 +21,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Association = list(
-    TransitGatewayRouteTableId = "string",
-    TransitGatewayAttachmentId = "string",
-    ResourceId = "string",
-    ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
-    State = "associating"|"associated"|"disassociating"|"disassociated"
-  )
-)
-}
-}
 \description{
-Associates the specified attachment with the specified transit gateway
-route table. You can associate only one route table with an attachment.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_transit_gateway_route_table(
-  TransitGatewayRouteTableId = "string",
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Associates the specified attachment with the specified transit gateway route table. You can associate only one route table with an attachment.
 
+See \url{https://paws-r.github.io/docs/ec2/associate_transit_gateway_route_table.html} for full documentation.
+}
 \keyword{internal}

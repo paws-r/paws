@@ -4,41 +4,15 @@
 \alias{sns_list_subscriptions}
 \title{Returns a list of the requester's subscriptions}
 \usage{
-sns_list_subscriptions(NextToken)
+sns_list_subscriptions(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{Token returned by the previous
 \code{\link[=sns_list_subscriptions]{list_subscriptions}} request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Subscriptions = list(
-    list(
-      SubscriptionArn = "string",
-      Owner = "string",
-      Protocol = "string",
-      Endpoint = "string",
-      TopicArn = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of the requester's subscriptions. Each call returns a
-limited list of subscriptions, up to 100. If there are more
-subscriptions, a \code{NextToken} is also returned. Use the \code{NextToken}
-parameter in a new \code{\link[=sns_list_subscriptions]{list_subscriptions}} call
-to get further results.
+Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a \code{NextToken} is also returned. Use the \code{NextToken} parameter in a new \code{\link[=sns_list_subscriptions]{list_subscriptions}} call to get further results.
 
-This action is throttled at 30 transactions per second (TPS).
+See \url{https://paws-r.github.io/docs/sns/list_subscriptions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_subscriptions(
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

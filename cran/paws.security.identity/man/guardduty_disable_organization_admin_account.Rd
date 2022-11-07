@@ -2,27 +2,18 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_disable_organization_admin_account}
 \alias{guardduty_disable_organization_admin_account}
-\title{Disables an AWS account within the Organization as the GuardDuty
-delegated administrator}
+\title{Disables an Amazon Web Services account within the Organization as the
+GuardDuty delegated administrator}
 \usage{
 guardduty_disable_organization_admin_account(AdminAccountId)
 }
 \arguments{
-\item{AdminAccountId}{[required] The AWS Account ID for the organizations account to be disabled as a
-GuardDuty delegated administrator.}
-}
-\value{
-An empty list.
+\item{AdminAccountId}{[required] The Amazon Web Services Account ID for the organizations account to be
+disabled as a GuardDuty delegated administrator.}
 }
 \description{
-Disables an AWS account within the Organization as the GuardDuty
-delegated administrator.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_organization_admin_account(
-  AdminAccountId = "string"
-)
-}
-}
+Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator.
 
+See \url{https://paws-r.github.io/docs/guardduty/disable_organization_admin_account.html} for full documentation.
+}
 \keyword{internal}

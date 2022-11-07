@@ -2,53 +2,17 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_describe_interconnects}
 \alias{directconnect_describe_interconnects}
-\title{Lists the interconnects owned by the AWS account or only the specified
-interconnect}
+\title{Lists the interconnects owned by the Amazon Web Services account or only
+the specified interconnect}
 \usage{
-directconnect_describe_interconnects(interconnectId)
+directconnect_describe_interconnects(interconnectId = NULL)
 }
 \arguments{
 \item{interconnectId}{The ID of the interconnect.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  interconnects = list(
-    list(
-      interconnectId = "string",
-      interconnectName = "string",
-      interconnectState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
-      region = "string",
-      location = "string",
-      bandwidth = "string",
-      loaIssueTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lagId = "string",
-      awsDevice = "string",
-      jumboFrameCapable = TRUE|FALSE,
-      awsDeviceV2 = "string",
-      hasLogicalRedundancy = "unknown"|"yes"|"no",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      providerName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the interconnects owned by the AWS account or only the specified
-interconnect.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_interconnects(
-  interconnectId = "string"
-)
-}
-}
+Lists the interconnects owned by the Amazon Web Services account or only the specified interconnect.
 
+See \url{https://paws-r.github.io/docs/directconnect/describe_interconnects.html} for full documentation.
+}
 \keyword{internal}

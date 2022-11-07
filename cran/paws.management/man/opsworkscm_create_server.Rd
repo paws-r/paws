@@ -4,12 +4,29 @@
 \alias{opsworkscm_create_server}
 \title{Creates and immedately starts a new server}
 \usage{
-opsworkscm_create_server(AssociatePublicIpAddress, CustomDomain,
-  CustomCertificate, CustomPrivateKey, DisableAutomatedBackup, Engine,
-  EngineModel, EngineVersion, EngineAttributes, BackupRetentionCount,
-  ServerName, InstanceProfileArn, InstanceType, KeyPair,
-  PreferredMaintenanceWindow, PreferredBackupWindow, SecurityGroupIds,
-  ServiceRoleArn, SubnetIds, Tags, BackupId)
+opsworkscm_create_server(
+  AssociatePublicIpAddress = NULL,
+  CustomDomain = NULL,
+  CustomCertificate = NULL,
+  CustomPrivateKey = NULL,
+  DisableAutomatedBackup = NULL,
+  Engine,
+  EngineModel = NULL,
+  EngineVersion = NULL,
+  EngineAttributes = NULL,
+  BackupRetentionCount = NULL,
+  ServerName,
+  InstanceProfileArn,
+  InstanceType,
+  KeyPair = NULL,
+  PreferredMaintenanceWindow = NULL,
+  PreferredBackupWindow = NULL,
+  SecurityGroupIds = NULL,
+  ServiceRoleArn,
+  SubnetIds = NULL,
+  Tags = NULL,
+  BackupId = NULL
+)
 }
 \arguments{
 \item{AssociatePublicIpAddress}{Associate a public IP address with a server that you are launching.
@@ -59,7 +76,7 @@ The default value is \code{true}.}
 
 \item{EngineVersion}{The major release version of the engine that you want to use. For a Chef
 server, the valid value for EngineVersion is currently \code{2}. For a Puppet
-server, the valid value is \code{2017}.}
+server, valid values are \code{2019} or \code{2017}.}
 
 \item{EngineAttributes}{Optional engine attributes on a specified server.
 
@@ -67,16 +84,16 @@ server, the valid value is \code{2017}.}
 \itemize{
 \item \code{CHEF_AUTOMATE_PIVOTAL_KEY}: A base64-encoded RSA public key. The
 corresponding private key is required to access the Chef API. When
-no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated
-and returned in the response.
+no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+returned in the response.
 \item \code{CHEF_AUTOMATE_ADMIN_PASSWORD}: The password for the administrative
 user in the Chef Automate web-based dashboard. The password length
 is a minimum of eight characters, and a maximum of 32. The password
-can contain letters, numbers, and special characters
-(!/@#$\%^&+=_). The password must contain at least one lower case
-letter, one upper case letter, one number, and one special
-character. When no CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is
-generated and returned in the response.
+can contain letters, numbers, and special characters (!/@#$\%^&+=_).
+The password must contain at least one lower case letter, one upper
+case letter, one number, and one special character. When no
+CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned
+in the response.
 }
 
 \strong{Attributes accepted in a Puppet createServer request:}
@@ -190,122 +207,9 @@ server.
 \item{BackupId}{If you specify this field, AWS OpsWorks CM creates the server by using
 the backup represented by BackupId.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Server = list(
-    AssociatePublicIpAddress = TRUE|FALSE,
-    BackupRetentionCount = 123,
-    ServerName = "string",
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    CloudFormationStackArn = "string",
-    CustomDomain = "string",
-    DisableAutomatedBackup = TRUE|FALSE,
-    Endpoint = "string",
-    Engine = "string",
-    EngineModel = "string",
-    EngineAttributes = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    EngineVersion = "string",
-    InstanceProfileArn = "string",
-    InstanceType = "string",
-    KeyPair = "string",
-    MaintenanceStatus = "SUCCESS"|"FAILED",
-    PreferredMaintenanceWindow = "string",
-    PreferredBackupWindow = "string",
-    SecurityGroupIds = list(
-      "string"
-    ),
-    ServiceRoleArn = "string",
-    Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-    StatusReason = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    ServerArn = "string"
-  )
-)
-}
-}
 \description{
-Creates and immedately starts a new server. The server is ready to use
-when it is in the \code{HEALTHY} state. By default, you can create a maximum
-of 10 servers.
+Creates and immedately starts a new server. The server is ready to use when it is in the \code{HEALTHY} state. By default, you can create a maximum of 10 servers.
 
-This operation is asynchronous.
-
-A \code{LimitExceededException} is thrown when you have created the maximum
-number of servers (10). A \code{ResourceAlreadyExistsException} is thrown
-when a server with the same name already exists in the account. A
-\code{ResourceNotFoundException} is thrown when you specify a backup ID that
-is not valid or is for a backup that does not exist. A
-\code{ValidationException} is thrown when parameters of the request are not
-valid.
-
-If you do not specify a security group by adding the \code{SecurityGroupIds}
-parameter, AWS OpsWorks creates a new security group.
-
-\emph{Chef Automate:} The default security group opens the Chef server to the
-world on TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH
-access. SSH is also open to the world on TCP port 22.
-
-\emph{Puppet Enterprise:} The default security group opens TCP ports 22, 443,
-4433, 8140, 8142, 8143, and 8170. If a KeyName is present, AWS OpsWorks
-enables SSH access. SSH is also open to the world on TCP port 22.
-
-By default, your server is accessible from any IP address. We recommend
-that you update your security group rules to allow access from known IP
-addresses and address ranges only. To edit security group rules, open
-Security Groups in the navigation pane of the EC2 management console.
-
-To specify your own domain for a server, and provide your own
-self-signed or CA-signed certificate and private key, specify values for
-\code{CustomDomain}, \code{CustomCertificate}, and \code{CustomPrivateKey}.
+See \url{https://paws-r.github.io/docs/opsworkscm/create_server.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_server(
-  AssociatePublicIpAddress = TRUE|FALSE,
-  CustomDomain = "string",
-  CustomCertificate = "string",
-  CustomPrivateKey = "string",
-  DisableAutomatedBackup = TRUE|FALSE,
-  Engine = "string",
-  EngineModel = "string",
-  EngineVersion = "string",
-  EngineAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  BackupRetentionCount = 123,
-  ServerName = "string",
-  InstanceProfileArn = "string",
-  InstanceType = "string",
-  KeyPair = "string",
-  PreferredMaintenanceWindow = "string",
-  PreferredBackupWindow = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  ServiceRoleArn = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  BackupId = "string"
-)
-}
-}
-
 \keyword{internal}

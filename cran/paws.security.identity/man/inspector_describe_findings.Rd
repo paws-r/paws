@@ -4,7 +4,7 @@
 \alias{inspector_describe_findings}
 \title{Describes the findings that are specified by the ARNs of the findings}
 \usage{
-inspector_describe_findings(findingArns, locale)
+inspector_describe_findings(findingArns, locale = NULL)
 }
 \arguments{
 \item{findingArns}{[required] The ARN that specifies the finding that you want to describe.}
@@ -12,120 +12,9 @@ inspector_describe_findings(findingArns, locale)
 \item{locale}{The locale into which you want to translate a finding description,
 recommendation, and the short description that identifies the finding.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  findings = list(
-    list(
-      arn = "string",
-      schemaVersion = 123,
-      service = "string",
-      serviceAttributes = list(
-        schemaVersion = 123,
-        assessmentRunArn = "string",
-        rulesPackageArn = "string"
-      ),
-      assetType = "ec2-instance",
-      assetAttributes = list(
-        schemaVersion = 123,
-        agentId = "string",
-        autoScalingGroup = "string",
-        amiId = "string",
-        hostname = "string",
-        ipv4Addresses = list(
-          "string"
-        ),
-        tags = list(
-          list(
-            key = "string",
-            value = "string"
-          )
-        ),
-        networkInterfaces = list(
-          list(
-            networkInterfaceId = "string",
-            subnetId = "string",
-            vpcId = "string",
-            privateDnsName = "string",
-            privateIpAddress = "string",
-            privateIpAddresses = list(
-              list(
-                privateDnsName = "string",
-                privateIpAddress = "string"
-              )
-            ),
-            publicDnsName = "string",
-            publicIp = "string",
-            ipv6Addresses = list(
-              "string"
-            ),
-            securityGroups = list(
-              list(
-                groupName = "string",
-                groupId = "string"
-              )
-            )
-          )
-        )
-      ),
-      id = "string",
-      title = "string",
-      description = "string",
-      recommendation = "string",
-      severity = "Low"|"Medium"|"High"|"Informational"|"Undefined",
-      numericSeverity = 123.0,
-      confidence = 123,
-      indicatorOfCompromise = TRUE|FALSE,
-      attributes = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      userAttributes = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      updatedAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  failedItems = list(
-    list(
-      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
-      retryable = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
 Describes the findings that are specified by the ARNs of the findings.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_findings(
-  findingArns = list(
-    "string"
-  ),
-  locale = "EN_US"
-)
-}
-}
 
-\examples{
-\dontrun{
-# Describes the findings that are specified by the ARNs of the findings.
-svc$describe_findings(
-  findingArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/describe_findings.html} for full documentation.
 }
 \keyword{internal}

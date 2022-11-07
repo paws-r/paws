@@ -12,24 +12,9 @@ ec2_create_vpn_connection_route(DestinationCidrBlock, VpnConnectionId)
 
 \item{VpnConnectionId}{[required] The ID of the VPN connection.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a static route associated with a VPN connection between an
-existing virtual private gateway and a VPN customer gateway. The static
-route allows traffic to be routed from the virtual private gateway to
-the VPN customer gateway.
+Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
 
-For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
-\emph{AWS Site-to-Site VPN User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/create_vpn_connection_route.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_vpn_connection_route(
-  DestinationCidrBlock = "string",
-  VpnConnectionId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -7,29 +7,14 @@
 personalizeevents_put_users(datasetArn, users)
 }
 \arguments{
-\item{datasetArn}{[required] The Amazon Resource Number (ARN) of the Users dataset you are adding the
+\item{datasetArn}{[required] The Amazon Resource Name (ARN) of the Users dataset you are adding the
 user or users to.}
 
 \item{users}{[required] A list of user data.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds one or more users to a Users dataset. For more information see
-importing-users.
-}
-\section{Request syntax}{
-\preformatted{svc$put_users(
-  datasetArn = "string",
-  users = list(
-    list(
-      userId = "string",
-      properties = "string"
-    )
-  )
-)
-}
-}
+Adds one or more users to a Users dataset. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html}{Importing Users Incrementally}.
 
+See \url{https://paws-r.github.io/docs/personalizeevents/put_users.html} for full documentation.
+}
 \keyword{internal}

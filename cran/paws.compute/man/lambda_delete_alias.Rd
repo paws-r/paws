@@ -22,30 +22,9 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Name}{[required] The name of the alias.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a Lambda function
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_alias(
-  FunctionName = "string",
-  Name = "string"
-)
-}
-}
+Deletes a Lambda function \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
 
-\examples{
-\dontrun{
-# The following example deletes an alias named BLUE from a function named
-# my-function
-svc$delete_alias(
-  FunctionName = "my-function",
-  Name = "BLUE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/delete_alias.html} for full documentation.
 }
 \keyword{internal}

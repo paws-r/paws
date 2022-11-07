@@ -9,33 +9,9 @@ workspaces_stop_workspaces(StopWorkspaceRequests)
 \arguments{
 \item{StopWorkspaceRequests}{[required] The WorkSpaces to stop. You can specify up to 25 WorkSpaces.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedRequests = list(
-    list(
-      WorkspaceId = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Stops the specified WorkSpaces.
 
-You cannot stop a WorkSpace unless it has a running mode of \code{AutoStop}
-and a state of \code{AVAILABLE}, \code{IMPAIRED}, \code{UNHEALTHY}, or \code{ERROR}.
+See \url{https://paws-r.github.io/docs/workspaces/stop_workspaces.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_workspaces(
-  StopWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

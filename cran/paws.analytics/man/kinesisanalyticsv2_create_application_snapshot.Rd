@@ -4,26 +4,16 @@
 \alias{kinesisanalyticsv2_create_application_snapshot}
 \title{Creates a snapshot of the application's state data}
 \usage{
-kinesisanalyticsv2_create_application_snapshot(ApplicationName,
-  SnapshotName)
+kinesisanalyticsv2_create_application_snapshot(ApplicationName, SnapshotName)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application}
 
 \item{SnapshotName}{[required] An identifier for the application snapshot.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates a snapshot of the application's state data.
-}
-\section{Request syntax}{
-\preformatted{svc$create_application_snapshot(
-  ApplicationName = "string",
-  SnapshotName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/create_application_snapshot.html} for full documentation.
+}
 \keyword{internal}

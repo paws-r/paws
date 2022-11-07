@@ -4,26 +4,16 @@
 \alias{servicecatalog_disassociate_tag_option_from_resource}
 \title{Disassociates the specified TagOption from the specified resource}
 \usage{
-servicecatalog_disassociate_tag_option_from_resource(ResourceId,
-  TagOptionId)
+servicecatalog_disassociate_tag_option_from_resource(ResourceId, TagOptionId)
 }
 \arguments{
 \item{ResourceId}{[required] The resource identifier.}
 
 \item{TagOptionId}{[required] The TagOption identifier.}
 }
-\value{
-An empty list.
-}
 \description{
 Disassociates the specified TagOption from the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_tag_option_from_resource(
-  ResourceId = "string",
-  TagOptionId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/disassociate_tag_option_from_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -4,9 +4,17 @@
 \alias{sagemaker_list_feature_groups}
 \title{List FeatureGroups based on given filter and order}
 \usage{
-sagemaker_list_feature_groups(NameContains, FeatureGroupStatusEquals,
-  OfflineStoreStatusEquals, CreationTimeAfter, CreationTimeBefore,
-  SortOrder, SortBy, MaxResults, NextToken)
+sagemaker_list_feature_groups(
+  NameContains = NULL,
+  FeatureGroupStatusEquals = NULL,
+  OfflineStoreStatusEquals = NULL,
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  SortOrder = NULL,
+  SortBy = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{NameContains}{A string that partially matches one or more \code{FeatureGroup}s names.
@@ -32,46 +40,9 @@ specific date and time.}
 \item{NextToken}{A token to resume pagination of
 \code{\link[=sagemaker_list_feature_groups]{list_feature_groups}} results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FeatureGroupSummaries = list(
-    list(
-      FeatureGroupName = "string",
-      FeatureGroupArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FeatureGroupStatus = "Creating"|"Created"|"CreateFailed"|"Deleting"|"DeleteFailed",
-      OfflineStoreStatus = list(
-        Status = "Active"|"Blocked"|"Disabled",
-        BlockedReason = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 List \code{FeatureGroup}s based on given filter and order.
-}
-\section{Request syntax}{
-\preformatted{svc$list_feature_groups(
-  NameContains = "string",
-  FeatureGroupStatusEquals = "Creating"|"Created"|"CreateFailed"|"Deleting"|"DeleteFailed",
-  OfflineStoreStatusEquals = "Active"|"Blocked"|"Disabled",
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortOrder = "Ascending"|"Descending",
-  SortBy = "Name"|"FeatureGroupStatus"|"OfflineStoreStatus"|"CreationTime",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_feature_groups.html} for full documentation.
+}
 \keyword{internal}

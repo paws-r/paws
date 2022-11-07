@@ -4,8 +4,12 @@
 \alias{route53_change_tags_for_resource}
 \title{Adds, edits, or deletes tags for a health check or a hosted zone}
 \usage{
-route53_change_tags_for_resource(ResourceType, ResourceId, AddTags,
-  RemoveTagKeys)
+route53_change_tags_for_resource(
+  ResourceType,
+  ResourceId,
+  AddTags = NULL,
+  RemoveTagKeys = NULL
+)
 }
 \arguments{
 \item{ResourceType}{[required] The type of the resource.
@@ -27,54 +31,9 @@ You can add a maximum of 10 tags to a health check or a hosted zone.}
 from the specified health check or hosted zone. You can specify up to 10
 keys.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds, edits, or deletes tags for a health check or a hosted zone.
 
-For information about using tags for cost allocation, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$change_tags_for_resource(
-  ResourceType = "healthcheck"|"hostedzone",
-  ResourceId = "string",
-  AddTags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  RemoveTagKeys = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example adds two tags and removes one tag from the hosted
-# zone with ID Z3M3LMPEXAMPLE.
-svc$change_tags_for_resource(
-  AddTags = list(
-    list(
-      Key = "apex",
-      Value = "3874"
-    ),
-    list(
-      Key = "acme",
-      Value = "4938"
-    )
-  ),
-  RemoveTagKeys = list(
-    "Nadir"
-  ),
-  ResourceId = "Z3M3LMPEXAMPLE",
-  ResourceType = "hostedzone"
-)
-}
-
+See \url{https://paws-r.github.io/docs/route53/change_tags_for_resource.html} for full documentation.
 }
 \keyword{internal}

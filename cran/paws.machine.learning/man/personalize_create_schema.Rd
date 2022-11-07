@@ -4,41 +4,20 @@
 \alias{personalize_create_schema}
 \title{Creates an Amazon Personalize schema from the specified schema string}
 \usage{
-personalize_create_schema(name, schema)
+personalize_create_schema(name, schema, domain = NULL)
 }
 \arguments{
 \item{name}{[required] The name for the schema.}
 
 \item{schema}{[required] A schema in Avro JSON format.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  schemaArn = "string"
-)
-}
+
+\item{domain}{The domain for the schema. If you are creating a schema for a dataset in
+a Domain dataset group, specify the domain you chose when you created
+the Domain dataset group.}
 }
 \description{
-Creates an Amazon Personalize schema from the specified schema string.
-The schema you create must be in Avro JSON format.
+Creates an Amazon Personalize schema from the specified schema string. The schema you create must be in Avro JSON format.
 
-Amazon Personalize recognizes three schema variants. Each schema is
-associated with a dataset type and has a set of required field and
-keywords. You specify a schema when you call
-\code{\link[=personalize_create_dataset]{create_dataset}}.
-
-\strong{Related APIs}
-\itemize{
-\item \code{\link[=personalize_list_schemas]{list_schemas}}
-\item \code{\link[=personalize_describe_schema]{describe_schema}}
-\item \code{\link[=personalize_delete_schema]{delete_schema}}
+See \url{https://paws-r.github.io/docs/personalize/create_schema.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$create_schema(
-  name = "string",
-  schema = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -3,129 +3,100 @@
 \name{cloudformation_create_stack_instances}
 \alias{cloudformation_create_stack_instances}
 \title{Creates stack instances for the specified accounts, within the specified
-Regions}
+Amazon Web Services Regions}
 \usage{
-cloudformation_create_stack_instances(StackSetName, Accounts,
-  DeploymentTargets, Regions, ParameterOverrides, OperationPreferences,
-  OperationId)
+cloudformation_create_stack_instances(
+  StackSetName,
+  Accounts = NULL,
+  DeploymentTargets = NULL,
+  Regions,
+  ParameterOverrides = NULL,
+  OperationPreferences = NULL,
+  OperationId = NULL,
+  CallAs = NULL
+)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to create stack
 instances from.}
 
-\item{Accounts}{[\code{Self-managed} permissions] The names of one or more AWS accounts
-that you want to create stack instances in the specified Region(s) for.
+\item{Accounts}{[Self-managed permissions] The names of one or more Amazon Web
+Services accounts that you want to create stack instances in the
+specified Region(s) for.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts for
-which to create stack instances in the specified Regions.
+\item{DeploymentTargets}{[Service-managed permissions] The Organizations accounts for which to
+create stack instances in the specified Amazon Web Services Regions.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{Regions}{[required] The names of one or more Regions where you want to create stack
-instances using the specified AWS account(s).}
+\item{Regions}{[required] The names of one or more Amazon Web Services Regions where you want to
+create stack instances using the specified Amazon Web Services accounts.}
 
 \item{ParameterOverrides}{A list of stack set parameters whose values you want to override in the
 selected stack instances.
 
 Any overridden parameter values will be applied to all stack instances
-in the specified accounts and Regions. When specifying parameters and
-their values, be aware of how AWS CloudFormation sets parameter values
-during stack instance operations:
+in the specified accounts and Amazon Web Services Regions. When
+specifying parameters and their values, be aware of how CloudFormation
+sets parameter values during stack instance operations:
 \itemize{
 \item To override the current value for a parameter, include the parameter
 and specify its value.
-\item To leave a parameter set to its present value, you can do one of the
-following:
-\itemize{
-\item Do not include the parameter in the list.
-\item Include the parameter and specify \code{UsePreviousValue} as \code{true}.
-(You cannot specify both a value and set \code{UsePreviousValue} to
-\code{true}.)
-}
-\item To set all overridden parameter back to the values specified in the
-stack set, specify a parameter list but do not include any
-parameters.
-\item To leave all parameters set to their present values, do not specify
+\item To leave an overridden parameter set to its present value, include
+the parameter and specify \code{UsePreviousValue} as \code{true}. (You can't
+specify both a value and set \code{UsePreviousValue} to \code{true}.)
+\item To set an overridden parameter back to the value specified in the
+stack set, specify a parameter list but don't include the parameter
+in the list.
+\item To leave all parameters set to their present values, don't specify
 this property at all.
 }
 
 During stack set updates, any parameter values overridden for a stack
-instance are not updated, but retain their overridden value.
+instance aren't updated, but retain their overridden value.
 
 You can only override the parameter \emph{values} that are specified in the
 stack set; to add or delete a parameter itself, use
 \code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update the
 stack set template.}
 
-\item{OperationPreferences}{Preferences for how AWS CloudFormation performs this stack set
-operation.}
+\item{OperationPreferences}{Preferences for how CloudFormation performs this stack set operation.}
 
 \item{OperationId}{The unique identifier for this stack set operation.
 
 The operation ID also functions as an idempotency token, to ensure that
-AWS CloudFormation performs the stack set operation only once, even if
-you retry the request multiple times. You might retry stack set
-operation requests to ensure that AWS CloudFormation successfully
-received them.
+CloudFormation performs the stack set operation only once, even if you
+retry the request multiple times. You might retry stack set operation
+requests to ensure that CloudFormation successfully received them.
 
 If you don't specify an operation ID, the SDK generates one
 automatically.
 
 Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
-Creates stack instances for the specified accounts, within the specified
-Regions. A stack instance refers to a stack in a specific account and
-Region. You must specify at least one value for either \code{Accounts} or
-\code{DeploymentTargets}, and you must specify at least one value for
-\code{Regions}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_stack_instances(
-  StackSetName = "string",
-  Accounts = list(
-    "string"
-  ),
-  DeploymentTargets = list(
-    Accounts = list(
-      "string"
-    ),
-    OrganizationalUnitIds = list(
-      "string"
-    )
-  ),
-  Regions = list(
-    "string"
-  ),
-  ParameterOverrides = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  OperationPreferences = list(
-    RegionOrder = list(
-      "string"
-    ),
-    FailureToleranceCount = 123,
-    FailureTolerancePercentage = 123,
-    MaxConcurrentCount = 123,
-    MaxConcurrentPercentage = 123
-  ),
-  OperationId = "string"
-)
-}
-}
+Creates stack instances for the specified accounts, within the specified Amazon Web Services Regions. A stack instance refers to a stack in a specific account and Region. You must specify at least one value for either \code{Accounts} or \code{DeploymentTargets}, and you must specify at least one value for \code{Regions}.
 
+See \url{https://paws-r.github.io/docs/cloudformation/create_stack_instances.html} for full documentation.
+}
 \keyword{internal}

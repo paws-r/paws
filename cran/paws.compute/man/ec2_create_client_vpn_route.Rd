@@ -4,8 +4,14 @@
 \alias{ec2_create_client_vpn_route}
 \title{Adds a route to a network to a Client VPN endpoint}
 \usage{
-ec2_create_client_vpn_route(ClientVpnEndpointId, DestinationCidrBlock,
-  TargetVpcSubnetId, Description, ClientToken, DryRun)
+ec2_create_client_vpn_route(
+  ClientVpnEndpointId,
+  DestinationCidrBlock,
+  TargetVpcSubnetId,
+  Description = NULL,
+  ClientToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to which to add the route.}
@@ -16,8 +22,8 @@ example:
 \item To add a route for Internet access, enter \verb{0.0.0.0/0}
 \item To add a route for a peered VPC, enter the peered VPC's IPv4 CIDR
 range
-\item To add a route for an on-premises network, enter the AWS
-Site-to-Site VPN connection's IPv4 CIDR range
+\item To add a route for an on-premises network, enter the Amazon Web
+Services Site-to-Site VPN connection's IPv4 CIDR range
 \item To add a route for the local network, enter the client CIDR range
 }}
 
@@ -31,38 +37,16 @@ Alternatively, if you're adding a route for the local network, specify
 \item{Description}{A brief description of the route.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = list(
-    Code = "creating"|"active"|"failed"|"deleting",
-    Message = "string"
-  )
-)
-}
-}
 \description{
-Adds a route to a network to a Client VPN endpoint. Each Client VPN
-endpoint has a route table that describes the available destination
-network routes. Each route in the route table specifies the path for
-traﬃc to speciﬁc resources or networks.
-}
-\section{Request syntax}{
-\preformatted{svc$create_client_vpn_route(
-  ClientVpnEndpointId = "string",
-  DestinationCidrBlock = "string",
-  TargetVpcSubnetId = "string",
-  Description = "string",
-  ClientToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that describes the available destination network routes. Each route in the route table specifies the path for traﬃc to speciﬁc resources or networks.
 
+See \url{https://paws-r.github.io/docs/ec2/create_client_vpn_route.html} for full documentation.
+}
 \keyword{internal}

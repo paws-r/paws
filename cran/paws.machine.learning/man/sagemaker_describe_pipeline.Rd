@@ -9,45 +9,9 @@ sagemaker_describe_pipeline(PipelineName)
 \arguments{
 \item{PipelineName}{[required] The name of the pipeline to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineArn = "string",
-  PipelineName = "string",
-  PipelineDisplayName = "string",
-  PipelineDefinition = "string",
-  PipelineDescription = "string",
-  RoleArn = "string",
-  PipelineStatus = "Active",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastRunTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBy = list(
-    UserProfileArn = "string",
-    UserProfileName = "string",
-    DomainId = "string"
-  ),
-  LastModifiedBy = list(
-    UserProfileArn = "string",
-    UserProfileName = "string",
-    DomainId = "string"
-  )
-)
-}
-}
 \description{
 Describes the details of a pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_pipeline(
-  PipelineName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_pipeline.html} for full documentation.
+}
 \keyword{internal}

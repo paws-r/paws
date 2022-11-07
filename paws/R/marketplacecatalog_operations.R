@@ -96,7 +96,8 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
 #'           ErrorCode = "string",
 #'           ErrorMessage = "string"
 #'         )
-#'       )
+#'       ),
+#'       ChangeName = "string"
 #'     )
 #'   )
 #' )
@@ -362,8 +363,12 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #' 
 #' For example, you cannot start the ChangeSet described in the
 #' [example](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples)
-#' below because it contains two changes to execute the same change type
-#' (`AddRevisions`) against the same entity (`entity-id@@1)`.
+#' later in this topic, because it contains two changes to execute the same
+#' change type (`AddRevisions`) against the same entity (`entity-id@@1)`.
+#' 
+#' For more information about working with change sets, see [Working with
+#' change
+#' sets](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
 #'
 #' @usage
 #' marketplacecatalog_start_change_set(Catalog, ChangeSet, ChangeSetName,
@@ -395,7 +400,8 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #'         Type = "string",
 #'         Identifier = "string"
 #'       ),
-#'       Details = "string"
+#'       Details = "string",
+#'       ChangeName = "string"
 #'     )
 #'   ),
 #'   ChangeSetName = "string",

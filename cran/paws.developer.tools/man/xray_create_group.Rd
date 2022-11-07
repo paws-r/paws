@@ -4,8 +4,12 @@
 \alias{xray_create_group}
 \title{Creates a group resource with a name and a filter expression}
 \usage{
-xray_create_group(GroupName, FilterExpression, InsightsConfiguration,
-  Tags)
+xray_create_group(
+  GroupName,
+  FilterExpression = NULL,
+  InsightsConfiguration = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{GroupName}{[required] The case-sensitive name of the new group. Default is a reserved name and
@@ -23,8 +27,8 @@ enabled on a group with InsightsEnabled set to true.
 }}
 
 \item{Tags}{A map that contains one or more tag keys and tag values to attach to an
-X-Ray group. For more information about ways to use tags, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
-in the \emph{AWS General Reference}.
+X-Ray group. For more information about ways to use tags, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+in the \emph{Amazon Web Services General Reference}.
 
 The following restrictions apply to tags:
 \itemize{
@@ -34,42 +38,13 @@ The following restrictions apply to tags:
 \item Valid values for key and value: a-z, A-Z, 0-9, space, and the
 following characters: _ . : / = + - and @
 \item Tag keys and values are case sensitive.
-\item Don't use \verb{aws:} as a prefix for keys; it's reserved for AWS use.
+\item Don't use \verb{aws:} as a prefix for keys; it's reserved for Amazon Web
+Services use.
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    GroupName = "string",
-    GroupARN = "string",
-    FilterExpression = "string",
-    InsightsConfiguration = list(
-      InsightsEnabled = TRUE|FALSE,
-      NotificationsEnabled = TRUE|FALSE
-    )
-  )
-)
-}
 }
 \description{
 Creates a group resource with a name and a filter expression.
-}
-\section{Request syntax}{
-\preformatted{svc$create_group(
-  GroupName = "string",
-  FilterExpression = "string",
-  InsightsConfiguration = list(
-    InsightsEnabled = TRUE|FALSE,
-    NotificationsEnabled = TRUE|FALSE
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/create_group.html} for full documentation.
+}
 \keyword{internal}

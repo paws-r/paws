@@ -4,9 +4,19 @@
 \alias{docdb_modify_db_instance}
 \title{Modifies settings for an instance}
 \usage{
-docdb_modify_db_instance(DBInstanceIdentifier, DBInstanceClass,
-  ApplyImmediately, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
-  NewDBInstanceIdentifier, CACertificateIdentifier, PromotionTier)
+docdb_modify_db_instance(
+  DBInstanceIdentifier,
+  DBInstanceClass = NULL,
+  ApplyImmediately = NULL,
+  PreferredMaintenanceWindow = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  NewDBInstanceIdentifier = NULL,
+  CACertificateIdentifier = NULL,
+  CopyTagsToSnapshot = NULL,
+  PromotionTier = NULL,
+  EnablePerformanceInsights = NULL,
+  PerformanceInsightsKMSKeyId = NULL
+)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The instance identifier. This value is stored as a lowercase string.
@@ -17,8 +27,8 @@ Constraints:
 }}
 
 \item{DBInstanceClass}{The new compute and memory capacity of the instance; for example,
-\code{db.r5.large}. Not all instance classes are available in all AWS
-Regions.
+\code{db.r5.large}. Not all instance classes are available in all Amazon Web
+Services Regions.
 
 If you modify the instance class, an outage occurs during the change.
 The change is applied during the next maintenance window, unless
@@ -54,13 +64,8 @@ Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Must be at least 30 minutes.}
 
-\item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
-instance during the maintenance window. Changing this parameter doesn't
-result in an outage except in the following case, and the change is
-asynchronously applied as soon as possible. An outage results if this
-parameter is set to \code{true} during the maintenance window, and a newer
-minor version is available, and Amazon DocumentDB has enabled automatic
-patching for that engine version.}
+\item{AutoMinorVersionUpgrade}{This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB
+does not perform minor version upgrades regardless of the value set.}
 
 \item{NewDBInstanceIdentifier}{The new instance identifier for the instance when renaming an instance.
 When you change the instance identifier, an instance reboot occurs
@@ -79,6 +84,9 @@ Example: \code{mydbinstance}}
 
 \item{CACertificateIdentifier}{Indicates the certificate that needs to be associated with the instance.}
 
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB instance to
+snapshots of the DB instance. By default, tags are not copied.}
+
 \item{PromotionTier}{A value that specifies the order in which an Amazon DocumentDB replica
 is promoted to the primary instance after a failure of the existing
 primary instance.
@@ -86,116 +94,23 @@ primary instance.
 Default: 1
 
 Valid values: 0-15}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstance = list(
-    DBInstanceIdentifier = "string",
-    DBInstanceClass = "string",
-    Engine = "string",
-    DBInstanceStatus = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredBackupWindow = "string",
-    BackupRetentionPeriod = 123,
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    AvailabilityZone = "string",
-    DBSubnetGroup = list(
-      DBSubnetGroupName = "string",
-      DBSubnetGroupDescription = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string"
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      DBSubnetGroupArn = "string"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      DBInstanceClass = "string",
-      AllocatedStorage = 123,
-      MasterUserPassword = "string",
-      Port = 123,
-      BackupRetentionPeriod = 123,
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      LicenseModel = "string",
-      Iops = 123,
-      DBInstanceIdentifier = "string",
-      StorageType = "string",
-      CACertificateIdentifier = "string",
-      DBSubnetGroupName = "string",
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      )
-    ),
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EngineVersion = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    PubliclyAccessible = TRUE|FALSE,
-    StatusInfos = list(
-      list(
-        StatusType = "string",
-        Normal = TRUE|FALSE,
-        Status = "string",
-        Message = "string"
-      )
-    ),
-    DBClusterIdentifier = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbiResourceId = "string",
-    CACertificateIdentifier = "string",
-    PromotionTier = 123,
-    DBInstanceArn = "string",
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    )
-  )
-)
-}
+
+\item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the DB
+Instance. For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{Using Amazon Performance Insights}.}
+
+\item{PerformanceInsightsKMSKeyId}{The KMS key identifier for encryption of Performance Insights data.
+
+The KMS key identifier is the key ARN, key ID, alias ARN, or alias name
+for the KMS key.
+
+If you do not specify a value for PerformanceInsightsKMSKeyId, then
+Amazon DocumentDB uses your default KMS key. There is a default KMS key
+for your Amazon Web Services account. Your Amazon Web Services account
+has a different default KMS key for each Amazon Web Services region.}
 }
 \description{
-Modifies settings for an instance. You can change one or more database
-configuration parameters by specifying these parameters and the new
-values in the request.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_db_instance(
-  DBInstanceIdentifier = "string",
-  DBInstanceClass = "string",
-  ApplyImmediately = TRUE|FALSE,
-  PreferredMaintenanceWindow = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  NewDBInstanceIdentifier = "string",
-  CACertificateIdentifier = "string",
-  PromotionTier = 123
-)
-}
-}
+Modifies settings for an instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 
+See \url{https://paws-r.github.io/docs/docdb/modify_db_instance.html} for full documentation.
+}
 \keyword{internal}

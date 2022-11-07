@@ -4,8 +4,11 @@
 \alias{elasticbeanstalk_update_tags_for_resource}
 \title{Update the list of tags applied to an AWS Elastic Beanstalk resource}
 \usage{
-elasticbeanstalk_update_tags_for_resource(ResourceArn, TagsToAdd,
-  TagsToRemove)
+elasticbeanstalk_update_tags_for_resource(
+  ResourceArn,
+  TagsToAdd = NULL,
+  TagsToRemove = NULL
+)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resouce to be updated.
@@ -22,50 +25,9 @@ ignored.
 
 Specify at least one of these parameters: \code{TagsToAdd}, \code{TagsToRemove}.}
 }
-\value{
-An empty list.
-}
 \description{
-Update the list of tags applied to an AWS Elastic Beanstalk resource.
-Two lists can be passed: \code{TagsToAdd} for tags to add or update, and
-\code{TagsToRemove}.
+Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed: \code{TagsToAdd} for tags to add or update, and \code{TagsToRemove}.
 
-Elastic Beanstalk supports tagging of all of its resources. For details
-about resource tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html}{Tagging Application Resources}.
-
-If you create a custom IAM user policy to control permission to this
-operation, specify one of the following two virtual actions (or both)
-instead of the API operation name:
-\subsection{elasticbeanstalk:AddTags}{
-
-Controls permission to call
-\code{\link[=elasticbeanstalk_update_tags_for_resource]{update_tags_for_resource}}
-and pass a list of tags to add in the \code{TagsToAdd} parameter.
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_tags_for_resource.html} for full documentation.
 }
-
-\subsection{elasticbeanstalk:RemoveTags}{
-
-Controls permission to call
-\code{\link[=elasticbeanstalk_update_tags_for_resource]{update_tags_for_resource}}
-and pass a list of tag keys to remove in the \code{TagsToRemove} parameter.
-
-For details about creating a custom user policy, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies}{Creating a Custom User Policy}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$update_tags_for_resource(
-  ResourceArn = "string",
-  TagsToAdd = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  TagsToRemove = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

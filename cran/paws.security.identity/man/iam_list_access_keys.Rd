@@ -5,7 +5,7 @@
 \title{Returns information about the access key IDs associated with the
 specified IAM user}
 \usage{
-iam_list_access_keys(UserName, Marker, MaxItems)
+iam_list_access_keys(UserName = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{The name of the user.
@@ -29,57 +29,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccessKeyMetadata = list(
-    list(
-      UserName = "string",
-      AccessKeyId = "string",
-      Status = "Active"|"Inactive",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Returns information about the access key IDs associated with the
-specified IAM user. If there is none, the operation returns an empty
-list.
+Returns information about the access key IDs associated with the specified IAM user. If there is none, the operation returns an empty list.
 
-Although each user is limited to a small number of keys, you can still
-paginate the results using the \code{MaxItems} and \code{Marker} parameters.
-
-If the \code{UserName} field is not specified, the user name is determined
-implicitly based on the AWS access key ID used to sign the request. This
-operation works for access keys under the AWS account. Consequently, you
-can use this operation to manage AWS account root user credentials even
-if the AWS account has no associated users.
-
-To ensure the security of your AWS account, the secret access key is
-accessible only during key and user creation.
-}
-\section{Request syntax}{
-\preformatted{svc$list_access_keys(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command lists the access keys IDs for the IAM user named
-# Alice.
-svc$list_access_keys(
-  UserName = "Alice"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/list_access_keys.html} for full documentation.
 }
 \keyword{internal}

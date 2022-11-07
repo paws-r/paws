@@ -5,7 +5,11 @@
 \title{Describes the current user's special folders; the RootFolder and the
 RecycleBin}
 \usage{
-workdocs_describe_root_folders(AuthenticationToken, Limit, Marker)
+workdocs_describe_root_folders(
+  AuthenticationToken,
+  Limit = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{[required] Amazon WorkDocs authentication token.}
@@ -15,51 +19,9 @@ workdocs_describe_root_folders(AuthenticationToken, Limit, Marker)
 \item{Marker}{The marker for the next set of results. (You received this marker from a
 previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Folders = list(
-    list(
-      Id = "string",
-      Name = "string",
-      CreatorId = "string",
-      ParentFolderId = "string",
-      CreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModifiedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-      Signature = "string",
-      Labels = list(
-        "string"
-      ),
-      Size = 123,
-      LatestVersionSize = 123
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Describes the current user's special folders; the \code{RootFolder} and the
-\code{RecycleBin}. \code{RootFolder} is the root of user's files and folders and
-\code{RecycleBin} is the root of recycled items. This is not a valid action
-for SigV4 (administrative API) clients.
+Describes the current user's special folders; the \code{RootFolder} and the \code{RecycleBin}. \code{RootFolder} is the root of user's files and folders and \code{RecycleBin} is the root of recycled items. This is not a valid action for SigV4 (administrative API) clients.
 
-This action requires an authentication token. To get an authentication
-token, register an application with Amazon WorkDocs. For more
-information, see \href{https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html}{Authentication and Access Control for User Applications}
-in the \emph{Amazon WorkDocs Developer Guide}.
+See \url{https://paws-r.github.io/docs/workdocs/describe_root_folders.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_root_folders(
-  AuthenticationToken = "string",
-  Limit = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

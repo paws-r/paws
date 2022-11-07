@@ -11,20 +11,9 @@ workspaces_revoke_ip_rules(GroupId, UserRules)
 
 \item{UserRules}{[required] The rules to remove from the group.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes one or more rules from the specified IP access control group.
-}
-\section{Request syntax}{
-\preformatted{svc$revoke_ip_rules(
-  GroupId = "string",
-  UserRules = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workspaces/revoke_ip_rules.html} for full documentation.
+}
 \keyword{internal}

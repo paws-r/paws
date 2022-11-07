@@ -4,68 +4,36 @@
 \alias{s3_put_bucket_accelerate_configuration}
 \title{Sets the accelerate configuration of an existing bucket}
 \usage{
-s3_put_bucket_accelerate_configuration(Bucket, AccelerateConfiguration,
-  ExpectedBucketOwner)
+s3_put_bucket_accelerate_configuration(
+  Bucket,
+  AccelerateConfiguration,
+  ExpectedBucketOwner = NULL,
+  ChecksumAlgorithm = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which the accelerate configuration is set.}
 
 \item{AccelerateConfiguration}{[required] Container for setting the transfer acceleration state.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see Checking object integrity
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
 }
 \description{
-Sets the accelerate configuration of an existing bucket. Amazon S3
-Transfer Acceleration is a bucket-level feature that enables you to
-perform faster data transfers to Amazon S3.
+Sets the accelerate configuration of an existing bucket. Amazon S3 Transfer Acceleration is a bucket-level feature that enables you to perform faster data transfers to Amazon S3.
 
-To use this operation, you must have permission to perform the
-s3:PutAccelerateConfiguration action. The bucket owner has this
-permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
-
-The Transfer Acceleration state of a bucket can be set to one of the
-following two values:
-\itemize{
-\item Enabled – Enables accelerated data transfers to the bucket.
-\item Suspended – Disables accelerated data transfers to the bucket.
+See \url{https://paws-r.github.io/docs/s3/put_bucket_accelerate_configuration.html} for full documentation.
 }
-
-The
-\code{\link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration}}
-operation returns the transfer acceleration state of a bucket.
-
-After setting the Transfer Acceleration state of a bucket to Enabled, it
-might take up to thirty minutes before the data transfer rates to the
-bucket increase.
-
-The name of the bucket used for Transfer Acceleration must be
-DNS-compliant and must not contain periods (".").
-
-For more information about transfer acceleration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html}{Transfer Acceleration}.
-
-The following operations are related to
-\code{\link[=s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration}}:
-\itemize{
-\item \code{\link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration}}
-\item \code{\link[=s3_create_bucket]{create_bucket}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_bucket_accelerate_configuration(
-  Bucket = "string",
-  AccelerateConfiguration = list(
-    Status = "Enabled"|"Suspended"
-  ),
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

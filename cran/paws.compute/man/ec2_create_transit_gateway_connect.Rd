@@ -4,12 +4,16 @@
 \alias{ec2_create_transit_gateway_connect}
 \title{Creates a Connect attachment from a specified transit gateway attachment}
 \usage{
-ec2_create_transit_gateway_connect(TransportTransitGatewayAttachmentId,
-  Options, TagSpecifications, DryRun)
+ec2_create_transit_gateway_connect(
+  TransportTransitGatewayAttachmentId,
+  Options,
+  TagSpecifications = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransportTransitGatewayAttachmentId}{[required] The ID of the transit gateway attachment. You can specify a VPC
-attachment or a AWS Direct Connect attachment.}
+attachment or Amazon Web Services Direct Connect attachment.}
 
 \item{Options}{[required] The Connect attachment options.}
 
@@ -20,58 +24,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayConnect = list(
-    TransitGatewayAttachmentId = "string",
-    TransportTransitGatewayAttachmentId = "string",
-    TransitGatewayId = "string",
-    State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Options = list(
-      Protocol = "gre"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a Connect attachment from a specified transit gateway
-attachment. A Connect attachment is a GRE-based tunnel attachment that
-you can use to establish a connection between a transit gateway and an
-appliance.
+Creates a Connect attachment from a specified transit gateway attachment. A Connect attachment is a GRE-based tunnel attachment that you can use to establish a connection between a transit gateway and an appliance.
 
-A Connect attachment uses an existing VPC or AWS Direct Connect
-attachment as the underlying transport mechanism.
+See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway_connect.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_transit_gateway_connect(
-  TransportTransitGatewayAttachmentId = "string",
-  Options = list(
-    Protocol = "gre"
-  ),
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

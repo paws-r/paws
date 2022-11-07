@@ -7,7 +7,9 @@
 neptune_copy_db_cluster_parameter_group(
   SourceDBClusterParameterGroupIdentifier,
   TargetDBClusterParameterGroupIdentifier,
-  TargetDBClusterParameterGroupDescription, Tags)
+  TargetDBClusterParameterGroupDescription,
+  Tags = NULL
+)
 }
 \arguments{
 \item{SourceDBClusterParameterGroupIdentifier}{[required] The identifier or Amazon Resource Name (ARN) for the source DB cluster
@@ -17,11 +19,11 @@ parameter group. For information about creating an ARN, see
 Constraints:
 \itemize{
 \item Must specify a valid DB cluster parameter group.
-\item If the source DB cluster parameter group is in the same AWS Region
-as the copy, specify a valid DB parameter group identifier, for
-example \code{my-db-cluster-param-group}, or a valid ARN.
-\item If the source DB parameter group is in a different AWS Region than
-the copy, specify a valid DB cluster parameter group ARN, for
+\item If the source DB cluster parameter group is in the same Amazon
+Region as the copy, specify a valid DB parameter group identifier,
+for example \code{my-db-cluster-param-group}, or a valid ARN.
+\item If the source DB parameter group is in a different Amazon Region
+than the copy, specify a valid DB cluster parameter group ARN, for
 example
 \code{arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1}.
 }}
@@ -42,33 +44,9 @@ Example: \code{my-cluster-param-group1}}
 
 \item{Tags}{The tags to be assigned to the copied DB cluster parameter group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterParameterGroup = list(
-    DBClusterParameterGroupName = "string",
-    DBParameterGroupFamily = "string",
-    Description = "string",
-    DBClusterParameterGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Copies the specified DB cluster parameter group.
-}
-\section{Request syntax}{
-\preformatted{svc$copy_db_cluster_parameter_group(
-  SourceDBClusterParameterGroupIdentifier = "string",
-  TargetDBClusterParameterGroupIdentifier = "string",
-  TargetDBClusterParameterGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/neptune/copy_db_cluster_parameter_group.html} for full documentation.
+}
 \keyword{internal}

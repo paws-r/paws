@@ -5,8 +5,14 @@
 \title{Describes the specified Scheduled Instances or all your Scheduled
 Instances}
 \usage{
-ec2_describe_scheduled_instances(DryRun, Filters, MaxResults, NextToken,
-  ScheduledInstanceIds, SlotStartTimeRange)
+ec2_describe_scheduled_instances(
+  DryRun = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  ScheduledInstanceIds = NULL,
+  SlotStartTimeRange = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -35,90 +41,9 @@ value.}
 
 \item{SlotStartTimeRange}{The time period for the first schedule to start.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  ScheduledInstanceSet = list(
-    list(
-      AvailabilityZone = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      HourlyPrice = "string",
-      InstanceCount = 123,
-      InstanceType = "string",
-      NetworkPlatform = "string",
-      NextSlotStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Platform = "string",
-      PreviousSlotEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Recurrence = list(
-        Frequency = "string",
-        Interval = 123,
-        OccurrenceDaySet = list(
-          123
-        ),
-        OccurrenceRelativeToEnd = TRUE|FALSE,
-        OccurrenceUnit = "string"
-      ),
-      ScheduledInstanceId = "string",
-      SlotDurationInHours = 123,
-      TermEndDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      TermStartDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      TotalScheduledInstanceHours = 123
-    )
-  )
-)
-}
-}
 \description{
-Describes the specified Scheduled Instances or all your Scheduled
-Instances.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_scheduled_instances(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  ScheduledInstanceIds = list(
-    "string"
-  ),
-  SlotStartTimeRange = list(
-    EarliestTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LatestTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
+Describes the specified Scheduled Instances or all your Scheduled Instances.
 
-\examples{
-\dontrun{
-# This example describes the specified Scheduled Instance.
-svc$describe_scheduled_instances(
-  ScheduledInstanceIds = list(
-    "sci-1234-1234-1234-1234-123456789012"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_scheduled_instances.html} for full documentation.
 }
 \keyword{internal}

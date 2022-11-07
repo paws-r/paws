@@ -2,11 +2,18 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_add_layer_version_permission}
 \alias{lambda_add_layer_version_permission}
-\title{Adds permissions to the resource-based policy of a version of an AWS
-Lambda layer}
+\title{Adds permissions to the resource-based policy of a version of an Lambda
+layer}
 \usage{
-lambda_add_layer_version_permission(LayerName, VersionNumber,
-  StatementId, Action, Principal, OrganizationId, RevisionId)
+lambda_add_layer_version_permission(
+  LayerName,
+  VersionNumber,
+  StatementId,
+  Action,
+  Principal,
+  OrganizationId = NULL,
+  RevisionId = NULL
+)
 }
 \arguments{
 \item{LayerName}{[required] The name or Amazon Resource Name (ARN) of the layer.}
@@ -19,7 +26,11 @@ layer version.}
 \item{Action}{[required] The API action that grants access to the layer. For example,
 \code{lambda:GetLayerVersion}.}
 
-\item{Principal}{[required] An account ID, or \code{*} to grant permission to all AWS accounts.}
+\item{Principal}{[required] An account ID, or \code{*} to grant layer usage permission to all accounts in
+an organization, or all Amazon Web Services accounts (if
+\code{organizationId} is not specified). For the last case, make sure that
+you really do want all Amazon Web Services accounts to have usage
+permission to this layer.}
 
 \item{OrganizationId}{With the principal set to \code{*}, grant permission to all accounts in the
 specified organization.}
@@ -28,48 +39,9 @@ specified organization.}
 this option to avoid modifying a policy that has changed since you last
 read it.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Statement = "string",
-  RevisionId = "string"
-)
-}
-}
 \description{
-Adds permissions to the resource-based policy of a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
-Use this action to grant layer usage permission to other accounts. You
-can grant permission to a single account, all AWS accounts, or all
-accounts in an organization.
+Adds permissions to the resource-based policy of a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}. Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all accounts in an organization, or all Amazon Web Services accounts.
 
-To revoke permission, call
-\code{\link[=lambda_remove_layer_version_permission]{remove_layer_version_permission}}
-with the statement ID that you specified when you added it.
-}
-\section{Request syntax}{
-\preformatted{svc$add_layer_version_permission(
-  LayerName = "string",
-  VersionNumber = 123,
-  StatementId = "string",
-  Action = "string",
-  Principal = "string",
-  OrganizationId = "string",
-  RevisionId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example grants permission for the account 223456789012 to
-# use version 1 of a layer named my-layer.
-svc$add_layer_version_permission(
-  Action = "lambda:GetLayerVersion",
-  LayerName = "my-layer",
-  Principal = "223456789012",
-  StatementId = "xaccount",
-  VersionNumber = 1L
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/add_layer_version_permission.html} for full documentation.
 }
 \keyword{internal}

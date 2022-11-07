@@ -7,10 +7,20 @@ updates the configuration settings to an entirely new configuration
 template, or updates select configuration option values in the running
 environment}
 \usage{
-elasticbeanstalk_update_environment(ApplicationName, EnvironmentId,
-  EnvironmentName, GroupName, Description, Tier, VersionLabel,
-  TemplateName, SolutionStackName, PlatformArn, OptionSettings,
-  OptionsToRemove)
+elasticbeanstalk_update_environment(
+  ApplicationName = NULL,
+  EnvironmentId = NULL,
+  EnvironmentName = NULL,
+  GroupName = NULL,
+  Description = NULL,
+  Tier = NULL,
+  VersionLabel = NULL,
+  TemplateName = NULL,
+  SolutionStackName = NULL,
+  PlatformArn = NULL,
+  OptionSettings = NULL,
+  OptionsToRemove = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{The name of the application with which the environment is associated.}
@@ -66,144 +76,9 @@ configuration options to the requested value.}
 \item{OptionsToRemove}{A list of custom user-defined configuration options to remove from the
 configuration set for this environment.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EnvironmentName = "string",
-  EnvironmentId = "string",
-  ApplicationName = "string",
-  VersionLabel = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  TemplateName = "string",
-  Description = "string",
-  EndpointURL = "string",
-  CNAME = "string",
-  DateCreated = as.POSIXct(
-    "2015-01-01"
-  ),
-  DateUpdated = as.POSIXct(
-    "2015-01-01"
-  ),
-  Status = "Aborting"|"Launching"|"Updating"|"LinkingFrom"|"LinkingTo"|"Ready"|"Terminating"|"Terminated",
-  AbortableOperationInProgress = TRUE|FALSE,
-  Health = "Green"|"Yellow"|"Red"|"Grey",
-  HealthStatus = "NoData"|"Unknown"|"Pending"|"Ok"|"Info"|"Warning"|"Degraded"|"Severe"|"Suspended",
-  Resources = list(
-    LoadBalancer = list(
-      LoadBalancerName = "string",
-      Domain = "string",
-      Listeners = list(
-        list(
-          Protocol = "string",
-          Port = 123
-        )
-      )
-    )
-  ),
-  Tier = list(
-    Name = "string",
-    Type = "string",
-    Version = "string"
-  ),
-  EnvironmentLinks = list(
-    list(
-      LinkName = "string",
-      EnvironmentName = "string"
-    )
-  ),
-  EnvironmentArn = "string",
-  OperationsRole = "string"
-)
-}
-}
 \description{
-Updates the environment description, deploys a new application version,
-updates the configuration settings to an entirely new configuration
-template, or updates select configuration option values in the running
-environment.
+Updates the environment description, deploys a new application version, updates the configuration settings to an entirely new configuration template, or updates select configuration option values in the running environment.
 
-Attempting to update both the release and configuration is not allowed
-and AWS Elastic Beanstalk returns an \code{InvalidParameterCombination}
-error.
-
-When updating the configuration settings to a new template or individual
-settings, a draft configuration is created and
-\code{\link[=elasticbeanstalk_describe_configuration_settings]{describe_configuration_settings}}
-for this environment returns two setting descriptions with different
-\code{DeploymentStatus} values.
-}
-\section{Request syntax}{
-\preformatted{svc$update_environment(
-  ApplicationName = "string",
-  EnvironmentId = "string",
-  EnvironmentName = "string",
-  GroupName = "string",
-  Description = "string",
-  Tier = list(
-    Name = "string",
-    Type = "string",
-    Version = "string"
-  ),
-  VersionLabel = "string",
-  TemplateName = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  ),
-  OptionsToRemove = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation updates an environment named "my-env" to version
-# "v2" of the application to which it belongs:
-svc$update_environment(
-  EnvironmentName = "my-env",
-  VersionLabel = "v2"
-)
-
-# The following operation configures several options in the
-# aws:elb:loadbalancer namespace:
-svc$update_environment(
-  EnvironmentName = "my-env",
-  OptionSettings = list(
-    list(
-      Namespace = "aws:elb:healthcheck",
-      OptionName = "Interval",
-      Value = "15"
-    ),
-    list(
-      Namespace = "aws:elb:healthcheck",
-      OptionName = "Timeout",
-      Value = "8"
-    ),
-    list(
-      Namespace = "aws:elb:healthcheck",
-      OptionName = "HealthyThreshold",
-      Value = "2"
-    ),
-    list(
-      Namespace = "aws:elb:healthcheck",
-      OptionName = "UnhealthyThreshold",
-      Value = "3"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_environment.html} for full documentation.
 }
 \keyword{internal}

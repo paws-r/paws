@@ -9,30 +9,9 @@ ses_delete_receipt_filter(FilterName)
 \arguments{
 \item{FilterName}{[required] The name of the IP address filter to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified IP address filter.
 
-For information about managing IP address filters, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_receipt_filter(
-  FilterName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes an IP address filter:
-svc$delete_receipt_filter(
-  FilterName = "MyFilter"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/delete_receipt_filter.html} for full documentation.
 }
 \keyword{internal}

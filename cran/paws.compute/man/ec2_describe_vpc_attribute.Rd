@@ -4,7 +4,7 @@
 \alias{ec2_describe_vpc_attribute}
 \title{Describes the specified attribute of the specified VPC}
 \usage{
-ec2_describe_vpc_attribute(Attribute, VpcId, DryRun)
+ec2_describe_vpc_attribute(Attribute, VpcId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The VPC attribute.}
@@ -16,51 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpcId = "string",
-  EnableDnsHostnames = list(
-    Value = TRUE|FALSE
-  ),
-  EnableDnsSupport = list(
-    Value = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Describes the specified attribute of the specified VPC. You can specify
-only one attribute at a time.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vpc_attribute(
-  Attribute = "enableDnsSupport"|"enableDnsHostnames",
-  VpcId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.
 
-\examples{
-\dontrun{
-# This example describes the enableDnsSupport attribute. This attribute
-# indicates whether DNS resolution is enabled for the VPC. If this
-# attribute is true, the Amazon DNS server resolves DNS hostnames for your
-# instances to their corresponding IP addresses; otherwise, it does not.
-svc$describe_vpc_attribute(
-  Attribute = "enableDnsSupport",
-  VpcId = "vpc-a01106c2"
-)
-
-# This example describes the enableDnsHostnames attribute. This attribute
-# indicates whether the instances launched in the VPC get DNS hostnames.
-# If this attribute is true, instances in the VPC get DNS hostnames;
-# otherwise, they do not.
-svc$describe_vpc_attribute(
-  Attribute = "enableDnsHostnames",
-  VpcId = "vpc-a01106c2"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_vpc_attribute.html} for full documentation.
 }
 \keyword{internal}

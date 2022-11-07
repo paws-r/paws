@@ -2,10 +2,17 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_create_role}
 \alias{iam_create_role}
-\title{Creates a new role for your AWS account}
+\title{Creates a new role for your Amazon Web Services account}
 \usage{
-iam_create_role(Path, RoleName, AssumeRolePolicyDocument, Description,
-  MaxSessionDuration, PermissionsBoundary, Tags)
+iam_create_role(
+  Path = NULL,
+  RoleName,
+  AssumeRolePolicyDocument,
+  Description = NULL,
+  MaxSessionDuration = NULL,
+  PermissionsBoundary = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Path}{The path to the role. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
@@ -31,8 +38,8 @@ create resources named both "MyResource" and "myresource".}
 to assume the role.
 
 In IAM, you must provide a JSON policy that has been converted to a
-string. However, for AWS CloudFormation templates formatted in YAML, you
-can provide the policy in JSON or YAML format. AWS CloudFormation always
+string. However, for CloudFormation templates formatted in YAML, you can
+provide the policy in JSON or YAML format. CloudFormation always
 converts a YAML policy to JSON format before submitting it to IAM.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
@@ -54,10 +61,10 @@ format.}
 
 \item{MaxSessionDuration}{The maximum session duration (in seconds) that you want to set for the
 specified role. If you do not specify a value for this setting, the
-default maximum of one hour is applied. This setting can have a value
-from 1 hour to 12 hours.
+default value of one hour is applied. This setting can have a value from
+1 hour to 12 hours.
 
-Anyone who assumes the role from the AWS CLI or API can use the
+Anyone who assumes the role from the or API can use the
 \code{DurationSeconds} API parameter or the \code{duration-seconds} CLI parameter
 to request a longer session. The \code{MaxSessionDuration} setting determines
 the maximum duration that can be requested using the \code{DurationSeconds}
@@ -65,90 +72,24 @@ parameter. If users don't specify a value for the \code{DurationSeconds}
 parameter, their security credentials are valid for one hour by default.
 This applies when you use the \verb{AssumeRole*} API operations or the
 \verb{assume-role*} CLI operations but does not apply when you use those
-operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
+operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM roles}
 in the \emph{IAM User Guide}.}
 
 \item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for
 the role.}
 
-\item{Tags}{A list of tags that you want to attach to the newly created role. Each
-tag consists of a key name and an associated value. For more information
-about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+\item{Tags}{A list of tags that you want to attach to the new role. Each tag
+consists of a key name and an associated value. For more information
+about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
 in the \emph{IAM User Guide}.
 
-If any one of the tags is invalid or if you exceed the allowed number of
-tags per role, then the entire request fails and the role is not
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
 created.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Role = list(
-    Path = "string",
-    RoleName = "string",
-    RoleId = "string",
-    Arn = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    AssumeRolePolicyDocument = "string",
-    Description = "string",
-    MaxSessionDuration = 123,
-    PermissionsBoundary = list(
-      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-      PermissionsBoundaryArn = "string"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    RoleLastUsed = list(
-      LastUsedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Region = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a new role for your AWS account. For more information about
-roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM Roles}.
-The number and size of IAM resources in an AWS account are limited. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_role(
-  Path = "string",
-  RoleName = "string",
-  AssumeRolePolicyDocument = "string",
-  Description = "string",
-  MaxSessionDuration = 123,
-  PermissionsBoundary = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a new role for your Amazon Web Services account. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM roles}. For information about quotas for role names and the number of roles you can create, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS quotas} in the \emph{IAM User Guide}.
 
-\examples{
-\dontrun{
-# The following command creates a role named Test-Role and attaches a
-# trust policy that you must convert from JSON to a string. Upon success,
-# the response includes the same policy as a URL-encoded JSON string.
-svc$create_role(
-  AssumeRolePolicyDocument = "<Stringified-JSON>",
-  Path = "/",
-  RoleName = "Test-Role"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/create_role.html} for full documentation.
 }
 \keyword{internal}

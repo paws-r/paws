@@ -4,49 +4,20 @@
 \alias{quicksight_list_templates}
 \title{Lists all the templates in the current Amazon QuickSight account}
 \usage{
-quicksight_list_templates(AwsAccountId, NextToken, MaxResults)
+quicksight_list_templates(AwsAccountId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the templates that you're
-listing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the templates
+that you're listing.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateSummaryList = list(
-    list(
-      Arn = "string",
-      TemplateId = "string",
-      Name = "string",
-      LatestVersionNumber = 123,
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Lists all the templates in the current Amazon QuickSight account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_templates(
-  AwsAccountId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/list_templates.html} for full documentation.
+}
 \keyword{internal}

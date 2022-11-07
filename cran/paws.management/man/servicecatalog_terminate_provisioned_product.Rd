@@ -4,9 +4,14 @@
 \alias{servicecatalog_terminate_provisioned_product}
 \title{Terminates the specified provisioned product}
 \usage{
-servicecatalog_terminate_provisioned_product(ProvisionedProductName,
-  ProvisionedProductId, TerminateToken, IgnoreErrors, AcceptLanguage,
-  RetainPhysicalResources)
+servicecatalog_terminate_provisioned_product(
+  ProvisionedProductName = NULL,
+  ProvisionedProductId = NULL,
+  TerminateToken,
+  IgnoreErrors = NULL,
+  AcceptLanguage = NULL,
+  RetainPhysicalResources = NULL
+)
 }
 \arguments{
 \item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both
@@ -37,60 +42,9 @@ not remove the CloudFormation stack, stack set, or the underlying
 resources of the deleted provisioned product. The default value is
 false.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RecordDetail = list(
-    RecordId = "string",
-    ProvisionedProductName = "string",
-    Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    UpdatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProvisionedProductType = "string",
-    RecordType = "string",
-    ProvisionedProductId = "string",
-    ProductId = "string",
-    ProvisioningArtifactId = "string",
-    PathId = "string",
-    RecordErrors = list(
-      list(
-        Code = "string",
-        Description = "string"
-      )
-    ),
-    RecordTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    LaunchRoleArn = "string"
-  )
-)
-}
-}
 \description{
 Terminates the specified provisioned product.
 
-This operation does not delete any records associated with the
-provisioned product.
-
-You can check the status of this request using
-\code{\link[=servicecatalog_describe_record]{describe_record}}.
+See \url{https://paws-r.github.io/docs/servicecatalog/terminate_provisioned_product.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$terminate_provisioned_product(
-  ProvisionedProductName = "string",
-  ProvisionedProductId = "string",
-  TerminateToken = "string",
-  IgnoreErrors = TRUE|FALSE,
-  AcceptLanguage = "string",
-  RetainPhysicalResources = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

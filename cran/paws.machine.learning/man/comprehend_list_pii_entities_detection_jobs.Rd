@@ -4,8 +4,11 @@
 \alias{comprehend_list_pii_entities_detection_jobs}
 \title{Gets a list of the PII entity detection jobs that you have submitted}
 \usage{
-comprehend_list_pii_entities_detection_jobs(Filter, NextToken,
-  MaxResults)
+comprehend_list_pii_entities_detection_jobs(
+  Filter = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filter}{Filters the jobs that are returned. You can filter jobs on their name,
@@ -16,63 +19,9 @@ one filter at a time.}
 
 \item{MaxResults}{The maximum number of results to return in each page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PiiEntitiesDetectionJobPropertiesList = list(
-    list(
-      JobId = "string",
-      JobName = "string",
-      JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-      Message = "string",
-      SubmitTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      InputDataConfig = list(
-        S3Uri = "string",
-        InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-      ),
-      OutputDataConfig = list(
-        S3Uri = "string",
-        KmsKeyId = "string"
-      ),
-      RedactionConfig = list(
-        PiiEntityTypes = list(
-          "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL"
-        ),
-        MaskMode = "MASK"|"REPLACE_WITH_PII_ENTITY_TYPE",
-        MaskCharacter = "string"
-      ),
-      LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-      DataAccessRoleArn = "string",
-      Mode = "ONLY_REDACTION"|"ONLY_OFFSETS"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of the PII entity detection jobs that you have submitted.
-}
-\section{Request syntax}{
-\preformatted{svc$list_pii_entities_detection_jobs(
-  Filter = list(
-    JobName = "string",
-    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-    SubmitTimeBefore = as.POSIXct(
-      "2015-01-01"
-    ),
-    SubmitTimeAfter = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/comprehend/list_pii_entities_detection_jobs.html} for full documentation.
+}
 \keyword{internal}

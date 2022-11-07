@@ -13,41 +13,9 @@ a maximum of 25 documents. Each document should contain at least 20
 characters and must contain fewer than 5,000 bytes of UTF-8 encoded
 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResultList = list(
-    list(
-      Index = 123,
-      Languages = list(
-        list(
-          LanguageCode = "string",
-          Score = 123.0
-        )
-      )
-    )
-  ),
-  ErrorList = list(
-    list(
-      Index = 123,
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Determines the dominant language of the input text for a batch of
-documents. For a list of languages that Amazon Comprehend can detect,
-see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html}{Amazon Comprehend Supported Languages}.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_detect_dominant_language(
-  TextList = list(
-    "string"
-  )
-)
-}
-}
+Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html}{Amazon Comprehend Supported Languages}.
 
+See \url{https://paws-r.github.io/docs/comprehend/batch_detect_dominant_language.html} for full documentation.
+}
 \keyword{internal}

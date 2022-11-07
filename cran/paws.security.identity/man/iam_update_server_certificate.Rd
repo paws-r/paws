@@ -5,8 +5,11 @@
 \title{Updates the name and/or the path of the specified server certificate
 stored in IAM}
 \usage{
-iam_update_server_certificate(ServerCertificateName, NewPath,
-  NewServerCertificateName)
+iam_update_server_certificate(
+  ServerCertificateName,
+  NewPath = NULL,
+  NewServerCertificateName = NULL
+)
 }
 \arguments{
 \item{ServerCertificateName}{[required] The name of the server certificate that you want to update.
@@ -33,38 +36,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the name and/or the path of the specified server certificate
-stored in IAM.
+Updates the name and/or the path of the specified server certificate stored in IAM.
 
-For more information about working with server certificates, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
-in the \emph{IAM User Guide}. This topic also includes a list of AWS services
-that can use the server certificates that you manage with IAM.
-
-You should understand the implications of changing a server
-certificate's path or name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html#RenamingServerCerts}{Renaming a Server Certificate}
-in the \emph{IAM User Guide}.
-
-The person making the request (the principal), must have permission to
-change the server certificate with the old name and the new name. For
-example, to change the certificate named \code{ProductionCert} to \code{ProdCert},
-the principal must have a policy that allows them to update both
-certificates. If the principal has permission to update the
-\code{ProductionCert} group, but not the \code{ProdCert} certificate, then the
-update fails. For more information about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}
-in the \emph{IAM User Guide}.
+See \url{https://paws-r.github.io/docs/iam/update_server_certificate.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_server_certificate(
-  ServerCertificateName = "string",
-  NewPath = "string",
-  NewServerCertificateName = "string"
-)
-}
-}
-
 \keyword{internal}

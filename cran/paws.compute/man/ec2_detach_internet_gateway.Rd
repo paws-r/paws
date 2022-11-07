@@ -5,7 +5,7 @@
 \title{Detaches an internet gateway from a VPC, disabling connectivity between
 the internet and the VPC}
 \usage{
-ec2_detach_internet_gateway(DryRun, InternetGatewayId, VpcId)
+ec2_detach_internet_gateway(DryRun = NULL, InternetGatewayId, VpcId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,32 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
-\value{
-An empty list.
-}
 \description{
-Detaches an internet gateway from a VPC, disabling connectivity between
-the internet and the VPC. The VPC must not contain any running instances
-with Elastic IP addresses or public IPv4 addresses.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_internet_gateway(
-  DryRun = TRUE|FALSE,
-  InternetGatewayId = "string",
-  VpcId = "string"
-)
-}
-}
+Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.
 
-\examples{
-\dontrun{
-# This example detaches the specified Internet gateway from the specified
-# VPC.
-svc$detach_internet_gateway(
-  InternetGatewayId = "igw-c0a643a9",
-  VpcId = "vpc-a01106c2"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/detach_internet_gateway.html} for full documentation.
 }
 \keyword{internal}

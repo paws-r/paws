@@ -4,10 +4,10 @@
 \alias{apigateway_get_gateway_responses}
 \title{Gets the GatewayResponses collection on the given RestApi}
 \usage{
-apigateway_get_gateway_responses(restApiId, position, limit)
+apigateway_get_gateway_responses(restApiId, position = NULL, limit = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
 \item{position}{The current pagination position in the paged result set. The
 GatewayResponse collection does not support pagination and the position
@@ -17,38 +17,9 @@ does not apply here.}
 and the maximum value is 500. The GatewayResponses collection does not
 support pagination and the limit does not apply here.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
-      statusCode = "string",
-      responseParameters = list(
-        "string"
-      ),
-      responseTemplates = list(
-        "string"
-      ),
-      defaultResponse = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Gets the GatewayResponses collection on the given RestApi. If an API
-developer has not added any definitions for gateway responses, the
-result will be the API Gateway-generated default GatewayResponses
-collection for the supported response types.
-}
-\section{Request syntax}{
-\preformatted{svc$get_gateway_responses(
-  restApiId = "string",
-  position = "string",
-  limit = 123
-)
-}
-}
+Gets the GatewayResponses collection on the given RestApi. If an API developer has not added any definitions for gateway responses, the result will be the API Gateway-generated default GatewayResponses collection for the supported response types.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_gateway_responses.html} for full documentation.
+}
 \keyword{internal}

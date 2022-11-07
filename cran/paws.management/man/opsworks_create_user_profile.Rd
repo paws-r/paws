@@ -4,8 +4,12 @@
 \alias{opsworks_create_user_profile}
 \title{Creates a new user profile}
 \usage{
-opsworks_create_user_profile(IamUserArn, SshUsername, SshPublicKey,
-  AllowSelfManagement)
+opsworks_create_user_profile(
+  IamUserArn,
+  SshUsername = NULL,
+  SshPublicKey = NULL,
+  AllowSelfManagement = NULL
+)
 }
 \arguments{
 \item{IamUserArn}{[required] The user's IAM ARN; this can also be a federated user's ARN.}
@@ -21,27 +25,9 @@ OpsWorks Stacks generates one from the IAM user name.}
 \item{AllowSelfManagement}{Whether users can specify their own SSH public key through the My
 Settings page. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html}{Setting an IAM User's Public SSH Key}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IamUserArn = "string"
-)
-}
-}
 \description{
 Creates a new user profile.
 
-\strong{Required Permissions}: To use this action, an IAM user must have an
-attached policy that explicitly grants permissions. For more information
-about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/create_user_profile.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_user_profile(
-  IamUserArn = "string",
-  SshUsername = "string",
-  SshPublicKey = "string",
-  AllowSelfManagement = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

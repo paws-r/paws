@@ -5,8 +5,13 @@
 \title{Enables ingress to a DBSecurityGroup using one of two forms of
 authorization}
 \usage{
-rds_authorize_db_security_group_ingress(DBSecurityGroupName, CIDRIP,
-  EC2SecurityGroupName, EC2SecurityGroupId, EC2SecurityGroupOwnerId)
+rds_authorize_db_security_group_ingress(
+  DBSecurityGroupName,
+  CIDRIP = NULL,
+  EC2SecurityGroupName = NULL,
+  EC2SecurityGroupId = NULL,
+  EC2SecurityGroupOwnerId = NULL
+)
 }
 \arguments{
 \item{DBSecurityGroupName}{[required] The name of the DB security group to add authorization to.}
@@ -23,64 +28,16 @@ rds_authorize_db_security_group_ingress(DBSecurityGroupName, CIDRIP,
 \code{EC2SecurityGroupOwnerId} and either \code{EC2SecurityGroupName} or
 \code{EC2SecurityGroupId} must be provided.}
 
-\item{EC2SecurityGroupOwnerId}{AWS account number of the owner of the EC2 security group specified in
-the \code{EC2SecurityGroupName} parameter. The AWS access key ID isn't an
-acceptable value. For VPC DB security groups, \code{EC2SecurityGroupId} must
-be provided. Otherwise, \code{EC2SecurityGroupOwnerId} and either
-\code{EC2SecurityGroupName} or \code{EC2SecurityGroupId} must be provided.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBSecurityGroup = list(
-    OwnerId = "string",
-    DBSecurityGroupName = "string",
-    DBSecurityGroupDescription = "string",
-    VpcId = "string",
-    EC2SecurityGroups = list(
-      list(
-        Status = "string",
-        EC2SecurityGroupName = "string",
-        EC2SecurityGroupId = "string",
-        EC2SecurityGroupOwnerId = "string"
-      )
-    ),
-    IPRanges = list(
-      list(
-        Status = "string",
-        CIDRIP = "string"
-      )
-    ),
-    DBSecurityGroupArn = "string"
-  )
-)
-}
+\item{EC2SecurityGroupOwnerId}{Amazon Web Services account number of the owner of the EC2 security
+group specified in the \code{EC2SecurityGroupName} parameter. The Amazon Web
+Services access key ID isn't an acceptable value. For VPC DB security
+groups, \code{EC2SecurityGroupId} must be provided. Otherwise,
+\code{EC2SecurityGroupOwnerId} and either \code{EC2SecurityGroupName} or
+\code{EC2SecurityGroupId} must be provided.}
 }
 \description{
-Enables ingress to a DBSecurityGroup using one of two forms of
-authorization. First, EC2 or VPC security groups can be added to the
-DBSecurityGroup if the application using the database is running on EC2
-or VPC instances. Second, IP ranges are available if the application
-accessing your database is running on the Internet. Required parameters
-for this API are one of CIDR range, EC2SecurityGroupId for VPC, or
-(EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
-EC2SecurityGroupId for non-VPC).
+Enables ingress to a DBSecurityGroup using one of two forms of authorization. First, EC2 or VPC security groups can be added to the DBSecurityGroup if the application using the database is running on EC2 or VPC instances. Second, IP ranges are available if the application accessing your database is running on the internet. Required parameters for this API are one of CIDR range, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId for non-VPC).
 
-You can't authorize ingress from an EC2 security group in one AWS Region
-to an Amazon RDS DB instance in another. You can't authorize ingress
-from a VPC security group in one VPC to an Amazon RDS DB instance in
-another.
-
-For an overview of CIDR ranges, go to the \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
+See \url{https://paws-r.github.io/docs/rds/authorize_db_security_group_ingress.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$authorize_db_security_group_ingress(
-  DBSecurityGroupName = "string",
-  CIDRIP = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupId = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
-}
-}
-
 \keyword{internal}

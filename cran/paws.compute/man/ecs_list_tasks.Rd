@@ -2,115 +2,80 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_list_tasks}
 \alias{ecs_list_tasks}
-\title{Returns a list of tasks for a specified cluster}
+\title{Returns a list of tasks}
 \usage{
-ecs_list_tasks(cluster, containerInstance, family, nextToken,
-  maxResults, startedBy, serviceName, desiredStatus, launchType)
+ecs_list_tasks(
+  cluster = NULL,
+  containerInstance = NULL,
+  family = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  startedBy = NULL,
+  serviceName = NULL,
+  desiredStatus = NULL,
+  launchType = NULL
+)
 }
 \arguments{
-\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the tasks to list. If you do not specify a cluster, the default
-cluster is assumed.}
+\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to use
+when filtering the \code{\link[=ecs_list_tasks]{list_tasks}} results. If you do not
+specify a cluster, the default cluster is assumed.}
 
-\item{containerInstance}{The container instance ID or full ARN of the container instance with
-which to filter the \code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a
+\item{containerInstance}{The container instance ID or full ARN of the container instance to use
+when filtering the \code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a
 \code{containerInstance} limits the results to tasks that belong to that
 container instance.}
 
-\item{family}{The name of the family with which to filter the
+\item{family}{The name of the task definition family to use when filtering the
 \code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a \code{family} limits the
 results to tasks that belong to that family.}
 
 \item{nextToken}{The \code{nextToken} value returned from a \code{\link[=ecs_list_tasks]{list_tasks}}
 request indicating that more results are available to fulfill the
 request and further calls will be needed. If \code{maxResults} was provided,
-it is possible the number of results to be fewer than \code{maxResults}.
+it's possible the number of results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of task results returned by
-\code{\link[=ecs_list_tasks]{list_tasks}} in paginated output. When this parameter
-is used, \code{\link[=ecs_list_tasks]{list_tasks}} only returns \code{maxResults}
-results in a single page along with a \code{nextToken} response element. The
-remaining results of the initial request can be seen by sending another
+\item{maxResults}{The maximum number of task results that \code{\link[=ecs_list_tasks]{list_tasks}}
+returned in paginated output. When this parameter is used,
+\code{\link[=ecs_list_tasks]{list_tasks}} only returns \code{maxResults} results in a
+single page along with a \code{nextToken} response element. The remaining
+results of the initial request can be seen by sending another
 \code{\link[=ecs_list_tasks]{list_tasks}} request with the returned \code{nextToken}
-value. This value can be between 1 and 100. If this parameter is not
+value. This value can be between 1 and 100. If this parameter isn't
 used, then \code{\link[=ecs_list_tasks]{list_tasks}} returns up to 100 results and
 a \code{nextToken} value if applicable.}
 
-\item{startedBy}{The \code{startedBy} value with which to filter the task results. Specifying
-a \code{startedBy} value limits the results to tasks that were started with
+\item{startedBy}{The \code{startedBy} value to filter the task results with. Specifying a
+\code{startedBy} value limits the results to tasks that were started with
 that value.}
 
-\item{serviceName}{The name of the service with which to filter the
+\item{serviceName}{The name of the service to use when filtering the
 \code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a \code{serviceName}
 limits the results to tasks that belong to that service.}
 
-\item{desiredStatus}{The task desired status with which to filter the
+\item{desiredStatus}{The task desired status to use when filtering the
 \code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a \code{desiredStatus} of
 \code{STOPPED} limits the results to tasks that Amazon ECS has set the
 desired status to \code{STOPPED}. This can be useful for debugging tasks that
-are not starting properly or have died or finished. The default status
+aren't starting properly or have died or finished. The default status
 filter is \code{RUNNING}, which shows tasks that Amazon ECS has set the
 desired status to \code{RUNNING}.
 
 Although you can filter results based on a desired status of \code{PENDING},
-this does not return any results. Amazon ECS never sets the desired
+this doesn't return any results. Amazon ECS never sets the desired
 status of a task to that value (only a task's \code{lastStatus} may have a
 value of \code{PENDING}).}
 
-\item{launchType}{The launch type for services to list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  taskArns = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
+\item{launchType}{The launch type to use when filtering the \code{\link[=ecs_list_tasks]{list_tasks}}
+results.}
 }
 \description{
-Returns a list of tasks for a specified cluster. You can filter the
-results by family name, by a particular container instance, or by the
-desired status of the task with the \code{family}, \code{containerInstance}, and
-\code{desiredStatus} parameters.
+Returns a list of tasks. You can filter the results by cluster, task definition family, container instance, launch type, what IAM principal started the task, or by the desired status of the task.
 
-Recently stopped tasks might appear in the returned results. Currently,
-stopped tasks appear in the returned results for at least one hour.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tasks(
-  cluster = "string",
-  containerInstance = "string",
-  family = "string",
-  nextToken = "string",
-  maxResults = 123,
-  startedBy = "string",
-  serviceName = "string",
-  desiredStatus = "RUNNING"|"PENDING"|"STOPPED",
-  launchType = "EC2"|"FARGATE"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example lists all of the tasks in a cluster.
-svc$list_tasks(
-  cluster = "default"
-)
-
-# This example lists the tasks of a specified container instance.
-# Specifying a `containerInstance` value limits  the  results  to  tasks
-#  that belong to that container instance.
-svc$list_tasks(
-  cluster = "default",
-  containerInstance = "f6bbb147-5370-4ace-8c73-c7181ded911f"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/list_tasks.html} for full documentation.
 }
 \keyword{internal}

@@ -6,7 +6,11 @@
 with the specified CFN_STACKSET type provisioned product}
 \usage{
 servicecatalog_list_stack_instances_for_provisioned_product(
-  AcceptLanguage, ProvisionedProductId, PageToken, PageSize)
+  AcceptLanguage = NULL,
+  ProvisionedProductId,
+  PageToken = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -23,33 +27,9 @@ results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackInstances = list(
-    list(
-      Account = "string",
-      Region = "string",
-      StackInstanceStatus = "CURRENT"|"OUTDATED"|"INOPERABLE"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Returns summary information about stack instances that are associated
-with the specified \code{CFN_STACKSET} type provisioned product. You can
-filter for stack instances that are associated with a specific AWS
-account name or region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_stack_instances_for_provisioned_product(
-  AcceptLanguage = "string",
-  ProvisionedProductId = "string",
-  PageToken = "string",
-  PageSize = 123
-)
-}
-}
+Returns summary information about stack instances that are associated with the specified \code{CFN_STACKSET} type provisioned product. You can filter for stack instances that are associated with a specific AWS account name or region.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_stack_instances_for_provisioned_product.html} for full documentation.
+}
 \keyword{internal}

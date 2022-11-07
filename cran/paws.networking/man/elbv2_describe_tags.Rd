@@ -10,46 +10,9 @@ elbv2_describe_tags(ResourceArns)
 \item{ResourceArns}{[required] The Amazon Resource Names (ARN) of the resources. You can specify up to
 20 resources in a single call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagDescriptions = list(
-    list(
-      ResourceArn = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the tags for the specified Elastic Load Balancing resources.
-You can describe the tags for one or more Application Load Balancers,
-Network Load Balancers, Gateway Load Balancers, target groups,
-listeners, or rules.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tags(
-  ResourceArns = list(
-    "string"
-  )
-)
-}
-}
+Describes the tags for the specified Elastic Load Balancing resources. You can describe the tags for one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, listeners, or rules.
 
-\examples{
-\dontrun{
-# This example describes the tags assigned to the specified load balancer.
-svc$describe_tags(
-  ResourceArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/describe_tags.html} for full documentation.
 }
 \keyword{internal}

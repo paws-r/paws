@@ -6,7 +6,10 @@
 is used}
 \usage{
 acmpca_create_certificate_authority_audit_report(
-  CertificateAuthorityArn, S3BucketName, AuditReportResponseFormat)
+  CertificateAuthorityArn,
+  S3BucketName,
+  AuditReportResponseFormat
+)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the CA to be audited. This is of the
@@ -19,35 +22,9 @@ form:
 \item{AuditReportResponseFormat}{[required] The format in which to create the report. This can be either \strong{JSON} or
 \strong{CSV}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AuditReportId = "string",
-  S3Key = "string"
-)
-}
-}
 \description{
-Creates an audit report that lists every time that your CA private key
-is used. The report is saved in the Amazon S3 bucket that you specify on
-input. The \code{\link[=acmpca_issue_certificate]{issue_certificate}} and
-\code{\link[=acmpca_revoke_certificate]{revoke_certificate}} actions use the
-private key.
+Creates an audit report that lists every time that your CA private key is used. The report is saved in the Amazon S3 bucket that you specify on input. The \code{\link[=acmpca_issue_certificate]{issue_certificate}} and \code{\link[=acmpca_revoke_certificate]{revoke_certificate}} actions use the private key.
 
-Both PCA and the IAM principal must have permission to write to the S3
-bucket that you specify. If the IAM principal making the call does not
-have permission to write to the bucket, then an exception is thrown. For
-more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
-
-ACM Private CAA assets that are stored in Amazon S3 can be protected
-with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption}{Encrypting Your Audit Reports}.
+See \url{https://paws-r.github.io/docs/acmpca/create_certificate_authority_audit_report.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_certificate_authority_audit_report(
-  CertificateAuthorityArn = "string",
-  S3BucketName = "string",
-  AuditReportResponseFormat = "JSON"|"CSV"
-)
-}
-}
-
 \keyword{internal}

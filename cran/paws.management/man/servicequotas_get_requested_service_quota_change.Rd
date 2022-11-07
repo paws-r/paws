@@ -9,39 +9,9 @@ servicequotas_get_requested_service_quota_change(RequestId)
 \arguments{
 \item{RequestId}{[required] The ID of the quota increase request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestedQuota = list(
-    Id = "string",
-    CaseId = "string",
-    ServiceCode = "string",
-    ServiceName = "string",
-    QuotaCode = "string",
-    QuotaName = "string",
-    DesiredValue = 123.0,
-    Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
-    Created = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdated = as.POSIXct(
-      "2015-01-01"
-    ),
-    Requester = "string",
-    QuotaArn = "string",
-    GlobalQuota = TRUE|FALSE,
-    Unit = "string"
-  )
-)
-}
-}
 \description{
 Retrieves information about the specified quota increase request.
-}
-\section{Request syntax}{
-\preformatted{svc$get_requested_service_quota_change(
-  RequestId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicequotas/get_requested_service_quota_change.html} for full documentation.
+}
 \keyword{internal}

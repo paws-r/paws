@@ -4,8 +4,11 @@
 \alias{ec2_disassociate_transit_gateway_route_table}
 \title{Disassociates a resource attachment from a transit gateway route table}
 \usage{
-ec2_disassociate_transit_gateway_route_table(TransitGatewayRouteTableId,
-  TransitGatewayAttachmentId, DryRun)
+ec2_disassociate_transit_gateway_route_table(
+  TransitGatewayRouteTableId,
+  TransitGatewayAttachmentId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -17,28 +20,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Association = list(
-    TransitGatewayRouteTableId = "string",
-    TransitGatewayAttachmentId = "string",
-    ResourceId = "string",
-    ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
-    State = "associating"|"associated"|"disassociating"|"disassociated"
-  )
-)
-}
-}
 \description{
 Disassociates a resource attachment from a transit gateway route table.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_transit_gateway_route_table(
-  TransitGatewayRouteTableId = "string",
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/disassociate_transit_gateway_route_table.html} for full documentation.
+}
 \keyword{internal}

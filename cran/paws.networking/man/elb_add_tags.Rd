@@ -11,54 +11,9 @@ elb_add_tags(LoadBalancerNames, Tags)
 
 \item{Tags}{[required] The tags.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds the specified tags to the specified load balancer. Each load
-balancer can have a maximum of 10 tags.
+Adds the specified tags to the specified load balancer. Each load balancer can have a maximum of 10 tags.
 
-Each tag consists of a key and an optional value. If a tag with the same
-key is already associated with the load balancer,
-\code{\link[=elb_add_tags]{add_tags}} updates its value.
-
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html}{Tag Your Classic Load Balancer}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags(
-  LoadBalancerNames = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example adds two tags to the specified load balancer.
-svc$add_tags(
-  LoadBalancerNames = list(
-    "my-load-balancer"
-  ),
-  Tags = list(
-    list(
-      Key = "project",
-      Value = "lima"
-    ),
-    list(
-      Key = "department",
-      Value = "digital-media"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/add_tags.html} for full documentation.
 }
 \keyword{internal}

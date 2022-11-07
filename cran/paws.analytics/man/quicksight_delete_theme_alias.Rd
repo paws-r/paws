@@ -8,34 +8,16 @@ to}
 quicksight_delete_theme_alias(AwsAccountId, ThemeId, AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme alias to delete.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the theme alias
+to delete.}
 
 \item{ThemeId}{[required] The ID for the theme that the specified alias is for.}
 
 \item{AliasName}{[required] The unique name for the theme alias to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AliasName = "string",
-  Arn = "string",
-  RequestId = "string",
-  Status = 123,
-  ThemeId = "string"
-)
-}
-}
 \description{
-Deletes the version of the theme that the specified theme alias points
-to. If you provide a specific alias, you delete the version of the theme
-that the alias points to.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_theme_alias(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  AliasName = "string"
-)
-}
-}
+Deletes the version of the theme that the specified theme alias points to. If you provide a specific alias, you delete the version of the theme that the alias points to.
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_theme_alias.html} for full documentation.
+}
 \keyword{internal}

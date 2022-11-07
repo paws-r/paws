@@ -11,24 +11,9 @@ workspaces_modify_workspace_state(WorkspaceId, WorkspaceState)
 
 \item{WorkspaceState}{[required] The WorkSpace state.}
 }
-\value{
-An empty list.
-}
 \description{
 Sets the state of the specified WorkSpace.
 
-To maintain a WorkSpace without being interrupted, set the WorkSpace
-state to \code{ADMIN_MAINTENANCE}. WorkSpaces in this state do not respond to
-requests to reboot, stop, start, rebuild, or restore. An AutoStop
-WorkSpace in this state is not stopped. Users cannot log into a
-WorkSpace in the \code{ADMIN_MAINTENANCE} state.
+See \url{https://paws-r.github.io/docs/workspaces/modify_workspace_state.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_workspace_state(
-  WorkspaceId = "string",
-  WorkspaceState = "AVAILABLE"|"ADMIN_MAINTENANCE"
-)
-}
-}
-
 \keyword{internal}

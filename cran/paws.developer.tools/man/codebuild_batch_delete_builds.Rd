@@ -9,30 +9,9 @@ codebuild_batch_delete_builds(ids)
 \arguments{
 \item{ids}{[required] The IDs of the builds to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  buildsDeleted = list(
-    "string"
-  ),
-  buildsNotDeleted = list(
-    list(
-      id = "string",
-      statusCode = "string"
-    )
-  )
-)
-}
-}
 \description{
 Deletes one or more builds.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_delete_builds(
-  ids = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/batch_delete_builds.html} for full documentation.
+}
 \keyword{internal}

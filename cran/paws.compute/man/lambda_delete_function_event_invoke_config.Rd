@@ -5,7 +5,7 @@
 \title{Deletes the configuration for asynchronous invocation for a function,
 version, or alias}
 \usage{
-lambda_delete_function_event_invoke_config(FunctionName, Qualifier)
+lambda_delete_function_event_invoke_config(FunctionName, Qualifier = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function, version, or alias.
@@ -25,33 +25,9 @@ function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{A version number or alias name.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the configuration for asynchronous invocation for a function,
-version, or alias.
+Deletes the configuration for asynchronous invocation for a function, version, or alias.
 
-To configure options for asynchronous invocation, use
-\code{\link[=lambda_put_function_event_invoke_config]{put_function_event_invoke_config}}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_function_event_invoke_config(
-  FunctionName = "string",
-  Qualifier = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes the asynchronous invocation configuration
-# for the GREEN alias of a function named my-function.
-svc$delete_function_event_invoke_config(
-  FunctionName = "my-function",
-  Qualifier = "GREEN"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/delete_function_event_invoke_config.html} for full documentation.
 }
 \keyword{internal}

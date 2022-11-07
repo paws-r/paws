@@ -3,23 +3,13 @@
 \name{route53_get_health_check_count}
 \alias{route53_get_health_check_count}
 \title{Retrieves the number of health checks that are associated with the
-current AWS account}
+current Amazon Web Services account}
 \usage{
 route53_get_health_check_count()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HealthCheckCount = 123
-)
-}
-}
 \description{
-Retrieves the number of health checks that are associated with the
-current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$get_health_check_count()
-}
-}
+Retrieves the number of health checks that are associated with the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/route53/get_health_check_count.html} for full documentation.
+}
 \keyword{internal}

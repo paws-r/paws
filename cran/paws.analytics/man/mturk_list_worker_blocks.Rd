@@ -5,36 +5,16 @@
 \title{The ListWorkersBlocks operation retrieves a list of Workers who are
 blocked from working on your HITs}
 \usage{
-mturk_list_worker_blocks(NextToken, MaxResults)
+mturk_list_worker_blocks(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token}
 
 \item{MaxResults}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  NumResults = 123,
-  WorkerBlocks = list(
-    list(
-      WorkerId = "string",
-      Reason = "string"
-    )
-  )
-)
-}
-}
 \description{
-The \code{ListWorkersBlocks} operation retrieves a list of Workers who are
-blocked from working on your HITs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_worker_blocks(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+The \code{ListWorkersBlocks} operation retrieves a list of Workers who are blocked from working on your HITs.
 
+See \url{https://paws-r.github.io/docs/mturk/list_worker_blocks.html} for full documentation.
+}
 \keyword{internal}

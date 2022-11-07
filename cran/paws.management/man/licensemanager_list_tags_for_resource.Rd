@@ -9,25 +9,9 @@ licensemanager_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Lists the tags for the specified license configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

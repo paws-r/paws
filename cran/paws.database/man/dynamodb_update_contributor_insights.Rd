@@ -5,8 +5,11 @@
 \title{Updates the status for contributor insights for a specific table or
 index}
 \usage{
-dynamodb_update_contributor_insights(TableName, IndexName,
-  ContributorInsightsAction)
+dynamodb_update_contributor_insights(
+  TableName,
+  IndexName = NULL,
+  ContributorInsightsAction
+)
 }
 \arguments{
 \item{TableName}{[required] The name of the table.}
@@ -15,25 +18,9 @@ dynamodb_update_contributor_insights(TableName, IndexName,
 
 \item{ContributorInsightsAction}{[required] Represents the contributor insights action.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TableName = "string",
-  IndexName = "string",
-  ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED"
-)
-}
-}
 \description{
-Updates the status for contributor insights for a specific table or
-index.
-}
-\section{Request syntax}{
-\preformatted{svc$update_contributor_insights(
-  TableName = "string",
-  IndexName = "string",
-  ContributorInsightsAction = "ENABLE"|"DISABLE"
-)
-}
-}
+Updates the status for contributor insights for a specific table or index. CloudWatch Contributor Insights for DynamoDB graphs display the partition key and (if applicable) sort key of frequently accessed items and frequently throttled items in plaintext. If you require the use of Amazon Web Services Key Management Service (KMS) to encrypt this table’s partition key and sort key data with an Amazon Web Services managed key or customer managed key, you should not enable CloudWatch Contributor Insights for DynamoDB for this table.
 
+See \url{https://paws-r.github.io/docs/dynamodb/update_contributor_insights.html} for full documentation.
+}
 \keyword{internal}

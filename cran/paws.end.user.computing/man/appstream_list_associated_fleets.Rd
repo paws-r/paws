@@ -5,7 +5,7 @@
 \title{Retrieves the name of the fleet that is associated with the specified
 stack}
 \usage{
-appstream_list_associated_fleets(StackName, NextToken)
+appstream_list_associated_fleets(StackName, NextToken = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name of the stack.}
@@ -13,25 +13,9 @@ appstream_list_associated_fleets(StackName, NextToken)
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Names = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the name of the fleet that is associated with the specified
-stack.
-}
-\section{Request syntax}{
-\preformatted{svc$list_associated_fleets(
-  StackName = "string",
-  NextToken = "string"
-)
-}
-}
+Retrieves the name of the fleet that is associated with the specified stack.
 
+See \url{https://paws-r.github.io/docs/appstream/list_associated_fleets.html} for full documentation.
+}
 \keyword{internal}

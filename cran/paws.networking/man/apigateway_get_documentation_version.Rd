@@ -2,35 +2,18 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_get_documentation_version}
 \alias{apigateway_get_documentation_version}
-\title{Get documentation version}
+\title{Gets a documentation version}
 \usage{
 apigateway_get_documentation_version(restApiId, documentationVersion)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{documentationVersion}{[required] [Required] The version identifier of the to-be-retrieved documentation
-snapshot.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  version = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  description = "string"
-)
-}
+\item{documentationVersion}{[required] The version identifier of the to-be-retrieved documentation snapshot.}
 }
 \description{
-Get documentation version
-}
-\section{Request syntax}{
-\preformatted{svc$get_documentation_version(
-  restApiId = "string",
-  documentationVersion = "string"
-)
-}
-}
+Gets a documentation version.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_documentation_version.html} for full documentation.
+}
 \keyword{internal}

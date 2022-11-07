@@ -10,27 +10,9 @@ opsworks_get_hostname_suggestion(LayerId)
 \arguments{
 \item{LayerId}{[required] The layer ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LayerId = "string",
-  Hostname = "string"
-)
-}
-}
 \description{
-Gets a generated host name for the specified layer, based on the current
-host name theme.
+Gets a generated host name for the specified layer, based on the current host name theme.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/get_hostname_suggestion.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_hostname_suggestion(
-  LayerId = "string"
-)
-}
-}
-
 \keyword{internal}

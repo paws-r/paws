@@ -7,27 +7,13 @@
 ssm_register_patch_baseline_for_patch_group(BaselineId, PatchGroup)
 }
 \arguments{
-\item{BaselineId}{[required] The ID of the patch baseline to register the patch group with.}
+\item{BaselineId}{[required] The ID of the patch baseline to register with the patch group.}
 
-\item{PatchGroup}{[required] The name of the patch group that should be registered with the patch
-baseline.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BaselineId = "string",
-  PatchGroup = "string"
-)
-}
+\item{PatchGroup}{[required] The name of the patch group to be registered with the patch baseline.}
 }
 \description{
 Registers a patch baseline for a patch group.
-}
-\section{Request syntax}{
-\preformatted{svc$register_patch_baseline_for_patch_group(
-  BaselineId = "string",
-  PatchGroup = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/register_patch_baseline_for_patch_group.html} for full documentation.
+}
 \keyword{internal}

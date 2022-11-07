@@ -4,16 +4,28 @@
 \alias{ec2_modify_client_vpn_endpoint}
 \title{Modifies the specified Client VPN endpoint}
 \usage{
-ec2_modify_client_vpn_endpoint(ClientVpnEndpointId,
-  ServerCertificateArn, ConnectionLogOptions, DnsServers, VpnPort,
-  Description, SplitTunnel, DryRun, SecurityGroupIds, VpcId,
-  SelfServicePortal, ClientConnectOptions)
+ec2_modify_client_vpn_endpoint(
+  ClientVpnEndpointId,
+  ServerCertificateArn = NULL,
+  ConnectionLogOptions = NULL,
+  DnsServers = NULL,
+  VpnPort = NULL,
+  Description = NULL,
+  SplitTunnel = NULL,
+  DryRun = NULL,
+  SecurityGroupIds = NULL,
+  VpcId = NULL,
+  SelfServicePortal = NULL,
+  ClientConnectOptions = NULL,
+  SessionTimeoutHours = NULL,
+  ClientLoginBannerOptions = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to modify.}
 
 \item{ServerCertificateArn}{The ARN of the server certificate to be used. The server certificate
-must be provisioned in AWS Certificate Manager (ACM).}
+must be provisioned in Certificate Manager (ACM).}
 
 \item{ConnectionLogOptions}{Information about the client connection logging options.
 
@@ -41,8 +53,8 @@ Default Value: \code{443}}
 
 \item{SplitTunnel}{Indicates whether the VPN is split-tunnel.
 
-For information about split-tunnel VPN endpoints, see \href{https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html}{Split-Tunnel AWS Client VPN Endpoint}
-in the \emph{AWS Client VPN Administrator Guide}.}
+For information about split-tunnel VPN endpoints, see \href{https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html}{Split-tunnel Client VPN endpoint}
+in the \emph{Client VPN Administrator Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -58,47 +70,20 @@ endpoint.}
 
 \item{ClientConnectOptions}{The options for managing connection authorization for new client
 connections.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
+
+\item{SessionTimeoutHours}{The maximum VPN session duration time in hours.
+
+Valid values: \code{8 | 10 | 12 | 24}
+
+Default value: \code{24}}
+
+\item{ClientLoginBannerOptions}{Options for enabling a customizable text banner that will be displayed
+on Amazon Web Services provided clients when a VPN session is
+established.}
 }
 \description{
-Modifies the specified Client VPN endpoint. Modifying the DNS server
-resets existing client connections.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_client_vpn_endpoint(
-  ClientVpnEndpointId = "string",
-  ServerCertificateArn = "string",
-  ConnectionLogOptions = list(
-    Enabled = TRUE|FALSE,
-    CloudwatchLogGroup = "string",
-    CloudwatchLogStream = "string"
-  ),
-  DnsServers = list(
-    CustomDnsServers = list(
-      "string"
-    ),
-    Enabled = TRUE|FALSE
-  ),
-  VpnPort = 123,
-  Description = "string",
-  SplitTunnel = TRUE|FALSE,
-  DryRun = TRUE|FALSE,
-  SecurityGroupIds = list(
-    "string"
-  ),
-  VpcId = "string",
-  SelfServicePortal = "enabled"|"disabled",
-  ClientConnectOptions = list(
-    Enabled = TRUE|FALSE,
-    LambdaFunctionArn = "string"
-  )
-)
-}
-}
+Modifies the specified Client VPN endpoint. Modifying the DNS server resets existing client connections.
 
+See \url{https://paws-r.github.io/docs/ec2/modify_client_vpn_endpoint.html} for full documentation.
+}
 \keyword{internal}

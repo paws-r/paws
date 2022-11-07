@@ -12,20 +12,9 @@ to.}
 
 \item{Tags}{[required] The tags to be added to a resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds tags to a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/tag_resource.html} for full documentation.
+}
 \keyword{internal}

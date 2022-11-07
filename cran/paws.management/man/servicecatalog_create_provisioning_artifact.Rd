@@ -5,8 +5,12 @@
 \title{Creates a provisioning artifact (also known as a version) for the
 specified product}
 \usage{
-servicecatalog_create_provisioning_artifact(AcceptLanguage, ProductId,
-  Parameters, IdempotencyToken)
+servicecatalog_create_provisioning_artifact(
+  AcceptLanguage = NULL,
+  ProductId,
+  Parameters,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -24,54 +28,9 @@ servicecatalog_create_provisioning_artifact(AcceptLanguage, ProductId,
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisioningArtifactDetail = list(
-    Id = "string",
-    Name = "string",
-    Description = "string",
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Active = TRUE|FALSE,
-    Guidance = "DEFAULT"|"DEPRECATED"
-  ),
-  Info = list(
-    "string"
-  ),
-  Status = "AVAILABLE"|"CREATING"|"FAILED"
-)
-}
-}
 \description{
-Creates a provisioning artifact (also known as a version) for the
-specified product.
+Creates a provisioning artifact (also known as a version) for the specified product.
 
-You cannot create a provisioning artifact for a product that was shared
-with you.
-
-The user or role that performs this operation must have the
-\code{cloudformation:GetTemplate} IAM policy permission. This policy
-permission is required when using the \code{ImportFromPhysicalId} template
-source in the information data section.
+See \url{https://paws-r.github.io/docs/servicecatalog/create_provisioning_artifact.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_provisioning_artifact(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  Parameters = list(
-    Name = "string",
-    Description = "string",
-    Info = list(
-      "string"
-    ),
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-    DisableTemplateValidation = TRUE|FALSE
-  ),
-  IdempotencyToken = "string"
-)
-}
-}
-
 \keyword{internal}

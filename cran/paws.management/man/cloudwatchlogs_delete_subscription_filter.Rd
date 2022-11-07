@@ -11,18 +11,9 @@ cloudwatchlogs_delete_subscription_filter(logGroupName, filterName)
 
 \item{filterName}{[required] The name of the subscription filter.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified subscription filter.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_subscription_filter(
-  logGroupName = "string",
-  filterName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_subscription_filter.html} for full documentation.
+}
 \keyword{internal}

@@ -5,9 +5,18 @@
 \title{Returns a list of closed workflow executions in the specified domain
 that meet the filtering criteria}
 \usage{
-swf_list_closed_workflow_executions(domain, startTimeFilter,
-  closeTimeFilter, executionFilter, closeStatusFilter, typeFilter,
-  tagFilter, nextPageToken, maximumPageSize, reverseOrder)
+swf_list_closed_workflow_executions(
+  domain,
+  startTimeFilter = NULL,
+  closeTimeFilter = NULL,
+  executionFilter = NULL,
+  closeStatusFilter = NULL,
+  typeFilter = NULL,
+  tagFilter = NULL,
+  nextPageToken = NULL,
+  maximumPageSize = NULL,
+  reverseOrder = NULL
+)
 }
 \arguments{
 \item{domain}{[required] The name of the domain that contains the workflow executions to list.}
@@ -69,114 +78,9 @@ returned in a single call.}
 results are returned in descending order of the start or the close time
 of the executions.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  executionInfos = list(
-    list(
-      execution = list(
-        workflowId = "string",
-        runId = "string"
-      ),
-      workflowType = list(
-        name = "string",
-        version = "string"
-      ),
-      startTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      closeTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      executionStatus = "OPEN"|"CLOSED",
-      closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
-      parent = list(
-        workflowId = "string",
-        runId = "string"
-      ),
-      tagList = list(
-        "string"
-      ),
-      cancelRequested = TRUE|FALSE
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
-Returns a list of closed workflow executions in the specified domain
-that meet the filtering criteria. The results may be split into multiple
-pages. To retrieve subsequent pages, make the call again using the
-nextPageToken returned by the initial call.
+Returns a list of closed workflow executions in the specified domain that meet the filtering criteria. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the nextPageToken returned by the initial call.
 
-This operation is eventually consistent. The results are best effort and
-may not exactly reflect recent updates and changes.
-
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item Constrain the following parameters by using a \code{Condition} element
-with the appropriate keys.
-\itemize{
-\item \code{tagFilter.tag}: String constraint. The key is
-\code{swf:tagFilter.tag}.
-\item \code{typeFilter.name}: String constraint. The key is
-\code{swf:typeFilter.name}.
-\item \code{typeFilter.version}: String constraint. The key is
-\code{swf:typeFilter.version}.
+See \url{https://paws-r.github.io/docs/swf/list_closed_workflow_executions.html} for full documentation.
 }
-}
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_closed_workflow_executions(
-  domain = "string",
-  startTimeFilter = list(
-    oldestDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    latestDate = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  closeTimeFilter = list(
-    oldestDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    latestDate = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  executionFilter = list(
-    workflowId = "string"
-  ),
-  closeStatusFilter = list(
-    status = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT"
-  ),
-  typeFilter = list(
-    name = "string",
-    version = "string"
-  ),
-  tagFilter = list(
-    tag = "string"
-  ),
-  nextPageToken = "string",
-  maximumPageSize = 123,
-  reverseOrder = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

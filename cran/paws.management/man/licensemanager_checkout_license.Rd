@@ -4,8 +4,15 @@
 \alias{licensemanager_checkout_license}
 \title{Checks out the specified license}
 \usage{
-licensemanager_checkout_license(ProductSKU, CheckoutType,
-  KeyFingerprint, Entitlements, ClientToken, Beneficiary, NodeId)
+licensemanager_checkout_license(
+  ProductSKU,
+  CheckoutType,
+  KeyFingerprint,
+  Entitlements,
+  ClientToken,
+  Beneficiary = NULL,
+  NodeId = NULL
+)
 }
 \arguments{
 \item{ProductSKU}{[required] Product SKU.}
@@ -23,44 +30,9 @@ idempotency of the request.}
 
 \item{NodeId}{Node ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CheckoutType = "PROVISIONAL",
-  LicenseConsumptionToken = "string",
-  EntitlementsAllowed = list(
-    list(
-      Name = "string",
-      Value = "string",
-      Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-    )
-  ),
-  SignedToken = "string",
-  NodeId = "string",
-  IssuedAt = "string",
-  Expiration = "string"
-)
-}
-}
 \description{
 Checks out the specified license.
-}
-\section{Request syntax}{
-\preformatted{svc$checkout_license(
-  ProductSKU = "string",
-  CheckoutType = "PROVISIONAL",
-  KeyFingerprint = "string",
-  Entitlements = list(
-    list(
-      Name = "string",
-      Value = "string",
-      Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-    )
-  ),
-  ClientToken = "string",
-  Beneficiary = "string",
-  NodeId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/checkout_license.html} for full documentation.
+}
 \keyword{internal}

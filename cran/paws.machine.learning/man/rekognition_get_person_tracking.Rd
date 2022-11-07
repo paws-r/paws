@@ -5,7 +5,12 @@
 \title{Gets the path tracking results of a Amazon Rekognition Video analysis
 started by StartPersonTracking}
 \usage{
-rekognition_get_person_tracking(JobId, MaxResults, NextToken, SortBy)
+rekognition_get_person_tracking(
+  JobId,
+  MaxResults = NULL,
+  NextToken = NULL,
+  SortBy = NULL
+)
 }
 \arguments{
 \item{JobId}{[required] The identifier for a job that tracks persons in a video. You get the
@@ -27,153 +32,9 @@ the tracked persons. If you sort by \code{INDEX}, the array elements for each
 person are sorted by detection confidence. The default sort is by
 \code{TIMESTAMP}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
-  StatusMessage = "string",
-  VideoMetadata = list(
-    Codec = "string",
-    DurationMillis = 123,
-    Format = "string",
-    FrameRate = 123.0,
-    FrameHeight = 123,
-    FrameWidth = 123
-  ),
-  NextToken = "string",
-  Persons = list(
-    list(
-      Timestamp = 123,
-      Person = list(
-        Index = 123,
-        BoundingBox = list(
-          Width = 123.0,
-          Height = 123.0,
-          Left = 123.0,
-          Top = 123.0
-        ),
-        Face = list(
-          BoundingBox = list(
-            Width = 123.0,
-            Height = 123.0,
-            Left = 123.0,
-            Top = 123.0
-          ),
-          AgeRange = list(
-            Low = 123,
-            High = 123
-          ),
-          Smile = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Eyeglasses = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Sunglasses = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Gender = list(
-            Value = "Male"|"Female",
-            Confidence = 123.0
-          ),
-          Beard = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Mustache = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          EyesOpen = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          MouthOpen = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Emotions = list(
-            list(
-              Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
-              Confidence = 123.0
-            )
-          ),
-          Landmarks = list(
-            list(
-              Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
-              X = 123.0,
-              Y = 123.0
-            )
-          ),
-          Pose = list(
-            Roll = 123.0,
-            Yaw = 123.0,
-            Pitch = 123.0
-          ),
-          Quality = list(
-            Brightness = 123.0,
-            Sharpness = 123.0
-          ),
-          Confidence = 123.0
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Gets the path tracking results of a Amazon Rekognition Video analysis
-started by \code{\link[=rekognition_start_person_tracking]{start_person_tracking}}.
+Gets the path tracking results of a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_person_tracking]{start_person_tracking}}.
 
-The person path tracking operation is started by a call to
-\code{\link[=rekognition_start_person_tracking]{start_person_tracking}} which
-returns a job identifier (\code{JobId}). When the operation finishes, Amazon
-Rekognition Video publishes a completion status to the Amazon Simple
-Notification Service topic registered in the initial call to
-\code{\link[=rekognition_start_person_tracking]{start_person_tracking}}.
-
-To get the results of the person path tracking operation, first check
-that the status value published to the Amazon SNS topic is \code{SUCCEEDED}.
-If so, call \code{\link[=rekognition_get_person_tracking]{get_person_tracking}} and
-pass the job identifier (\code{JobId}) from the initial call to
-\code{\link[=rekognition_start_person_tracking]{start_person_tracking}}.
-
-\code{\link[=rekognition_get_person_tracking]{get_person_tracking}} returns an
-array, \code{Persons}, of tracked persons and the time(s) their paths were
-tracked in the video.
-
-\code{\link[=rekognition_get_person_tracking]{get_person_tracking}} only returns
-the default facial attributes (\code{BoundingBox}, \code{Confidence}, \code{Landmarks},
-\code{Pose}, and \code{Quality}). The other facial attributes listed in the \code{Face}
-object of the following response syntax are not returned.
-
-For more information, see FaceDetail in the Amazon Rekognition Developer
-Guide.
-
-By default, the array is sorted by the time(s) a person's path is
-tracked in the video. You can sort by tracked persons by specifying
-\code{INDEX} for the \code{SortBy} input parameter.
-
-Use the \code{MaxResults} parameter to limit the number of items returned. If
-there are more results than specified in \code{MaxResults}, the value of
-\code{NextToken} in the operation response contains a pagination token for
-getting the next set of results. To get the next page of results, call
-\code{\link[=rekognition_get_person_tracking]{get_person_tracking}} and populate
-the \code{NextToken} request parameter with the token value returned from the
-previous call to
-\code{\link[=rekognition_get_person_tracking]{get_person_tracking}}.
+See \url{https://paws-r.github.io/docs/rekognition/get_person_tracking.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_person_tracking(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "INDEX"|"TIMESTAMP"
-)
-}
-}
-
 \keyword{internal}

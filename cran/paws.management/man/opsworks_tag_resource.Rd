@@ -25,23 +25,9 @@ value.
 \item A maximum of 40 tags is allowed for any resource.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks
-Stacks. For more information about how tagging works, see
-\href{https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html}{Tags}
-in the AWS OpsWorks User Guide.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more information about how tagging works, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html}{Tags} in the AWS OpsWorks User Guide.
 
+See \url{https://paws-r.github.io/docs/opsworks/tag_resource.html} for full documentation.
+}
 \keyword{internal}

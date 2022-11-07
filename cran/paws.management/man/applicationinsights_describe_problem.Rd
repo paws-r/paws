@@ -9,37 +9,9 @@ applicationinsights_describe_problem(ProblemId)
 \arguments{
 \item{ProblemId}{[required] The ID of the problem.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Problem = list(
-    Id = "string",
-    Title = "string",
-    Insights = "string",
-    Status = "IGNORE"|"RESOLVED"|"PENDING",
-    AffectedResource = "string",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    SeverityLevel = "Low"|"Medium"|"High",
-    ResourceGroupName = "string",
-    Feedback = list(
-      "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
-    )
-  )
-)
-}
-}
 \description{
 Describes an application problem.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_problem(
-  ProblemId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/describe_problem.html} for full documentation.
+}
 \keyword{internal}

@@ -2,50 +2,20 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_delete_backup}
 \alias{fsx_delete_backup}
-\title{Deletes an Amazon FSx backup, deleting its contents}
+\title{Deletes an Amazon FSx backup}
 \usage{
-fsx_delete_backup(BackupId, ClientRequestToken)
+fsx_delete_backup(BackupId, ClientRequestToken = NULL)
 }
 \arguments{
-\item{BackupId}{[required] The ID of the backup you want to delete.}
+\item{BackupId}{[required] The ID of the backup that you want to delete.}
 
 \item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
-idempotent deletion. This is automatically filled on your behalf when
-using the AWS CLI or SDK.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupId = "string",
-  Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"
-)
-}
+idempotent deletion. This parameter is automatically filled on your
+behalf when using the CLI or SDK.}
 }
 \description{
-Deletes an Amazon FSx backup, deleting its contents. After deletion, the
-backup no longer exists, and its data is gone.
+Deletes an Amazon FSx backup. After deletion, the backup no longer exists, and its data is gone.
 
-The \code{\link[=fsx_delete_backup]{delete_backup}} call returns instantly. The
-backup will not show up in later
-\code{\link[=fsx_describe_backups]{describe_backups}} calls.
-
-The data in a deleted backup is also deleted and can't be recovered by
-any means.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_backup(
-  BackupId = "string",
-  ClientRequestToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation deletes an Amazon FSx file system backup.
-svc$delete_backup(
-  BackupId = "backup-03e3c82e0183b7b6b"
-)
-}
-
+See \url{https://paws-r.github.io/docs/fsx/delete_backup.html} for full documentation.
 }
 \keyword{internal}

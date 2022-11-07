@@ -2,24 +2,16 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_delete_protection}
 \alias{shield_delete_protection}
-\title{Deletes an AWS Shield Advanced Protection}
+\title{Deletes an Shield Advanced Protection}
 \usage{
 shield_delete_protection(ProtectionId)
 }
 \arguments{
 \item{ProtectionId}{[required] The unique identifier (ID) for the Protection object to be deleted.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an AWS Shield Advanced Protection.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_protection(
-  ProtectionId = "string"
-)
-}
-}
+Deletes an Shield Advanced Protection.
 
+See \url{https://paws-r.github.io/docs/shield/delete_protection.html} for full documentation.
+}
 \keyword{internal}

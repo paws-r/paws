@@ -4,29 +4,14 @@
 \alias{sagemaker_describe_pipeline_definition_for_execution}
 \title{Describes the details of an execution's pipeline definition}
 \usage{
-sagemaker_describe_pipeline_definition_for_execution(
-  PipelineExecutionArn)
+sagemaker_describe_pipeline_definition_for_execution(PipelineExecutionArn)
 }
 \arguments{
 \item{PipelineExecutionArn}{[required] The Amazon Resource Name (ARN) of the pipeline execution.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineDefinition = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Describes the details of an execution's pipeline definition.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_pipeline_definition_for_execution(
-  PipelineExecutionArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_pipeline_definition_for_execution.html} for full documentation.
+}
 \keyword{internal}

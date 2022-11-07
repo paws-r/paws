@@ -5,8 +5,19 @@
 \title{Returns a list of DataSource that match the search criteria in the
 request}
 \usage{
-machinelearning_describe_data_sources(FilterVariable, EQ, GT, LT, GE,
-  LE, NE, Prefix, SortOrder, NextToken, Limit)
+machinelearning_describe_data_sources(
+  FilterVariable = NULL,
+  EQ = NULL,
+  GT = NULL,
+  LT = NULL,
+  GE = NULL,
+  LE = NULL,
+  NE = NULL,
+  Prefix = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{FilterVariable}{Use one of the following variables to filter a list of \code{DataSource}:
@@ -72,78 +83,9 @@ Results are sorted by \code{FilterVariable}.}
 
 \item{Limit}{The maximum number of \code{DataSource} to include in the result.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Results = list(
-    list(
-      DataSourceId = "string",
-      DataLocationS3 = "string",
-      DataRearrangement = "string",
-      CreatedByIamUser = "string",
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      DataSizeInBytes = 123,
-      NumberOfFiles = 123,
-      Name = "string",
-      Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-      Message = "string",
-      RedshiftMetadata = list(
-        RedshiftDatabase = list(
-          DatabaseName = "string",
-          ClusterIdentifier = "string"
-        ),
-        DatabaseUserName = "string",
-        SelectSqlQuery = "string"
-      ),
-      RDSMetadata = list(
-        Database = list(
-          InstanceIdentifier = "string",
-          DatabaseName = "string"
-        ),
-        DatabaseUserName = "string",
-        SelectSqlQuery = "string",
-        ResourceRole = "string",
-        ServiceRole = "string",
-        DataPipelineId = "string"
-      ),
-      RoleARN = "string",
-      ComputeStatistics = TRUE|FALSE,
-      ComputeTime = 123,
-      FinishedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      StartedAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of \code{DataSource} that match the search criteria in the
-request.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_data_sources(
-  FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"DataLocationS3"|"IAMUser",
-  EQ = "string",
-  GT = "string",
-  LT = "string",
-  GE = "string",
-  LE = "string",
-  NE = "string",
-  Prefix = "string",
-  SortOrder = "asc"|"dsc",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Returns a list of \code{DataSource} that match the search criteria in the request.
 
+See \url{https://paws-r.github.io/docs/machinelearning/describe_data_sources.html} for full documentation.
+}
 \keyword{internal}

@@ -5,67 +5,28 @@
 \title{A remediation exception is when a specific resource is no longer
 considered for auto-remediation}
 \usage{
-configservice_put_remediation_exceptions(ConfigRuleName, ResourceKeys,
-  Message, ExpirationTime)
+configservice_put_remediation_exceptions(
+  ConfigRuleName,
+  ResourceKeys,
+  Message = NULL,
+  ExpirationTime = NULL
+)
 }
 \arguments{
-\item{ConfigRuleName}{[required] The name of the AWS Config rule for which you want to create remediation
+\item{ConfigRuleName}{[required] The name of the Config rule for which you want to create remediation
 exception.}
 
 \item{ResourceKeys}{[required] An exception list of resource exception keys to be processed with the
-current request. AWS Config adds exception for each resource key. For
-example, AWS Config adds 3 exceptions for 3 resource keys.}
+current request. Config adds exception for each resource key. For
+example, Config adds 3 exceptions for 3 resource keys.}
 
 \item{Message}{The message contains an explanation of the exception.}
 
 \item{ExpirationTime}{The exception is automatically deleted after the expiration date.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedBatches = list(
-    list(
-      FailureMessage = "string",
-      FailedItems = list(
-        list(
-          ConfigRuleName = "string",
-          ResourceType = "string",
-          ResourceId = "string",
-          Message = "string",
-          ExpirationTime = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-A remediation exception is when a specific resource is no longer
-considered for auto-remediation. This API adds a new exception or
-updates an exisiting exception for a specific resource with a specific
-AWS Config rule.
+A remediation exception is when a specific resource is no longer considered for auto-remediation. This API adds a new exception or updates an existing exception for a specific resource with a specific Config rule.
 
-AWS Config generates a remediation exception when a problem occurs
-executing a remediation action to a specific resource. Remediation
-exceptions blocks auto-remediation until the exception is cleared.
+See \url{https://paws-r.github.io/docs/configservice/put_remediation_exceptions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_remediation_exceptions(
-  ConfigRuleName = "string",
-  ResourceKeys = list(
-    list(
-      ResourceType = "string",
-      ResourceId = "string"
-    )
-  ),
-  Message = "string",
-  ExpirationTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

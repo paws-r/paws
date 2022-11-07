@@ -11,7 +11,7 @@ organizations_untag_resource(ResourceId, TagKeys)
 
 You can specify any of the following taggable resources.
 \itemize{
-\item AWS account – specify the account ID number.
+\item Amazon Web Services account – specify the account ID number.
 \item Organizational unit – specify the OU ID that begins with \verb{ou-} and
 looks similar to: \verb{ou-1a2b-34uvwxyz }
 \item Root – specify the root ID that begins with \verb{r-} and looks similar
@@ -22,31 +22,9 @@ similar to: \verb{p-12abcdefg3 }
 
 \item{TagKeys}{[required] The list of keys for tags to remove from the specified resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes any tags with the specified keys from the specified resource.
 
-You can attach tags to the following resources in AWS Organizations.
-\itemize{
-\item AWS account
-\item Organization root
-\item Organizational unit (OU)
-\item Policy (any type)
+See \url{https://paws-r.github.io/docs/organizations/untag_resource.html} for full documentation.
 }
-
-This operation can be called only from the organization's management
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,14 +4,34 @@
 \alias{neptune_create_db_cluster}
 \title{Creates a new Amazon Neptune DB cluster}
 \usage{
-neptune_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
-  CharacterSetName, DatabaseName, DBClusterIdentifier,
-  DBClusterParameterGroupName, VpcSecurityGroupIds, DBSubnetGroupName,
-  Engine, EngineVersion, Port, MasterUsername, MasterUserPassword,
-  OptionGroupName, PreferredBackupWindow, PreferredMaintenanceWindow,
-  ReplicationSourceIdentifier, Tags, StorageEncrypted, KmsKeyId,
-  PreSignedUrl, EnableIAMDatabaseAuthentication,
-  EnableCloudwatchLogsExports, DeletionProtection)
+neptune_create_db_cluster(
+  AvailabilityZones = NULL,
+  BackupRetentionPeriod = NULL,
+  CharacterSetName = NULL,
+  CopyTagsToSnapshot = NULL,
+  DatabaseName = NULL,
+  DBClusterIdentifier,
+  DBClusterParameterGroupName = NULL,
+  VpcSecurityGroupIds = NULL,
+  DBSubnetGroupName = NULL,
+  Engine,
+  EngineVersion = NULL,
+  Port = NULL,
+  MasterUsername = NULL,
+  MasterUserPassword = NULL,
+  OptionGroupName = NULL,
+  PreferredBackupWindow = NULL,
+  PreferredMaintenanceWindow = NULL,
+  ReplicationSourceIdentifier = NULL,
+  Tags = NULL,
+  StorageEncrypted = NULL,
+  KmsKeyId = NULL,
+  PreSignedUrl = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  DeletionProtection = NULL,
+  GlobalClusterIdentifier = NULL
+)
 }
 \arguments{
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be
@@ -28,6 +48,9 @@ Constraints:
 }}
 
 \item{CharacterSetName}{\emph{(Not supported by Neptune)}}
+
+\item{CopyTagsToSnapshot}{\emph{If set to true, tags are copied to any snapshot of the DB cluster that
+is created.}}
 
 \item{DatabaseName}{The name for your database of up to 64 alpha-numeric characters. If you
 do not provide a name, Amazon Neptune will not create a database in the
@@ -76,19 +99,9 @@ connections.
 
 Default: \code{8182}}
 
-\item{MasterUsername}{The name of the master user for the DB cluster.
+\item{MasterUsername}{Not supported by Neptune.}
 
-Constraints:
-\itemize{
-\item Must be 1 to 16 letters or numbers.
-\item First character must be a letter.
-\item Cannot be a reserved word for the chosen database engine.
-}}
-
-\item{MasterUserPassword}{The password for the master database user. This password can contain any
-printable ASCII character except "/", """, or "@".
-
-Constraints: Must contain from 8 to 41 characters.}
+\item{MasterUserPassword}{Not supported by Neptune.}
 
 \item{OptionGroupName}{\emph{(Not supported by Neptune)}}
 
@@ -97,8 +110,8 @@ automated backups are enabled using the \code{BackupRetentionPeriod}
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Adjusting the Preferred Maintenance Window} in the
+block of time for each Amazon Region. To see the time blocks available,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Adjusting the Preferred Maintenance Window} in the
 \emph{Amazon Neptune User Guide.}
 
 Constraints:
@@ -115,7 +128,7 @@ Universal Coordinated Time (UTC).
 Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
+block of time for each Amazon Region, occurring on a random day of the
 week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Adjusting the Preferred Maintenance Window} in the
 \emph{Amazon Neptune User Guide.}
 
@@ -130,10 +143,10 @@ if this DB cluster is created as a Read Replica.}
 
 \item{StorageEncrypted}{Specifies whether the DB cluster is encrypted.}
 
-\item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB cluster.
+\item{KmsKeyId}{The Amazon KMS key identifier for an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB cluster with the same AWS
+encryption key. If you are creating a DB cluster with the same Amazon
 account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
@@ -149,17 +162,22 @@ key.
 will use your default encryption key.
 }
 
-AWS KMS creates the default encryption key for your AWS account. Your
-AWS account has a different default encryption key for each AWS Region.
+Amazon KMS creates the default encryption key for your Amazon account.
+Your Amazon account has a different default encryption key for each
+Amazon Region.
 
-If you create a Read Replica of an encrypted DB cluster in another AWS
-Region, you must set \code{KmsKeyId} to a KMS key ID that is valid in the
-destination AWS Region. This key is used to encrypt the Read Replica in
-that AWS Region.}
+If you create a Read Replica of an encrypted DB cluster in another
+Amazon Region, you must set \code{KmsKeyId} to a KMS key ID that is valid in
+the destination Amazon Region. This key is used to encrypt the Read
+Replica in that Amazon Region.}
 
 \item{PreSignedUrl}{This parameter is not currently supported.}
 
-\item{EnableIAMDatabaseAuthentication}{Not supported by Neptune.}
+\item{EnableIAMDatabaseAuthentication}{If set to \code{true}, enables Amazon Identity and Access Management (IAM)
+authentication for the entire DB cluster (this cannot be set at an
+instance level).
+
+Default: \code{false}.}
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
 CloudWatch Logs.}
@@ -167,139 +185,13 @@ CloudWatch Logs.}
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is enabled.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AllocatedStorage = 123,
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    CharacterSetName = "string",
-    DatabaseName = "string",
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    DBClusterOptionGroupMemberships = list(
-      list(
-        DBClusterOptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    ReplicationSourceIdentifier = "string",
-    ReadReplicaIdentifiers = list(
-      "string"
-    ),
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string",
-        FeatureName = "string"
-      )
-    ),
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    CloneGroupId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
+
+\item{GlobalClusterIdentifier}{The ID of the Neptune global database to which this new DB cluster
+should be added.}
 }
 \description{
 Creates a new Amazon Neptune DB cluster.
 
-You can use the \code{ReplicationSourceIdentifier} parameter to create the DB
-cluster as a Read Replica of another DB cluster or Amazon Neptune DB
-instance.
-
-Note that when you create a new cluster using
-\code{\link[=neptune_create_db_cluster]{create_db_cluster}} directly, deletion
-protection is disabled by default (when you create a new production
-cluster in the console, deletion protection is enabled by default). You
-can only delete a DB cluster if its \code{DeletionProtection} field is set to
-\code{false}.
+See \url{https://paws-r.github.io/docs/neptune/create_db_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_db_cluster(
-  AvailabilityZones = list(
-    "string"
-  ),
-  BackupRetentionPeriod = 123,
-  CharacterSetName = "string",
-  DatabaseName = "string",
-  DBClusterIdentifier = "string",
-  DBClusterParameterGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  DBSubnetGroupName = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  Port = 123,
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  OptionGroupName = "string",
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  ReplicationSourceIdentifier = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  PreSignedUrl = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

@@ -16,33 +16,9 @@ Cognito. GUID generation is unique within a region.}
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityUsage = list(
-    IdentityId = "string",
-    IdentityPoolId = "string",
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    DatasetCount = 123,
-    DataStorage = 123
-  )
-)
-}
-}
 \description{
-Gets usage information for an identity, including number of datasets and
-data usage.
+Gets usage information for an identity, including number of datasets and data usage.
 
-This API can be called with temporary user credentials provided by
-Cognito Identity or with developer credentials.
+See \url{https://paws-r.github.io/docs/cognitosync/describe_identity_usage.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_identity_usage(
-  IdentityPoolId = "string",
-  IdentityId = "string"
-)
-}
-}
-
 \keyword{internal}

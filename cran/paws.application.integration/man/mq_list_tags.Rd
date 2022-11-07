@@ -9,22 +9,9 @@ mq_list_tags(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource tag.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Lists tags for a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags(
-  ResourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/list_tags.html} for full documentation.
+}
 \keyword{internal}

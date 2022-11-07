@@ -4,7 +4,7 @@
 \alias{worklink_update_audit_stream_configuration}
 \title{Updates the audit stream configuration for the fleet}
 \usage{
-worklink_update_audit_stream_configuration(FleetArn, AuditStreamArn)
+worklink_update_audit_stream_configuration(FleetArn, AuditStreamArn = NULL)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
@@ -12,18 +12,9 @@ worklink_update_audit_stream_configuration(FleetArn, AuditStreamArn)
 \item{AuditStreamArn}{The ARN of the Amazon Kinesis data stream that receives the audit
 events.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the audit stream configuration for the fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$update_audit_stream_configuration(
-  FleetArn = "string",
-  AuditStreamArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/update_audit_stream_configuration.html} for full documentation.
+}
 \keyword{internal}

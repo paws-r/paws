@@ -4,13 +4,22 @@
 \alias{sagemaker_create_trial_component}
 \title{Creates a trial component, which is a stage of a machine learning trial}
 \usage{
-sagemaker_create_trial_component(TrialComponentName, DisplayName,
-  Status, StartTime, EndTime, Parameters, InputArtifacts, OutputArtifacts,
-  MetadataProperties, Tags)
+sagemaker_create_trial_component(
+  TrialComponentName,
+  DisplayName = NULL,
+  Status = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  Parameters = NULL,
+  InputArtifacts = NULL,
+  OutputArtifacts = NULL,
+  MetadataProperties = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{TrialComponentName}{[required] The name of the component. The name must be unique in your AWS account
-and is not case-sensitive.}
+\item{TrialComponentName}{[required] The name of the component. The name must be unique in your Amazon Web
+Services account and is not case-sensitive.}
 
 \item{DisplayName}{The name of the component as displayed. The name doesn't need to be
 unique. If \code{DisplayName} isn't specified, \code{TrialComponentName} is
@@ -40,81 +49,9 @@ metrics, snapshots, logs, and images.}
 \item{Tags}{A list of tags to associate with the component. You can use
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrialComponentArn = "string"
-)
-}
-}
 \description{
-Creates a \emph{trial component}, which is a stage of a machine learning
-\emph{trial}. A trial is composed of one or more trial components. A trial
-component can be used in multiple trials.
+Creates a \emph{trial component}, which is a stage of a machine learning \emph{trial}. A trial is composed of one or more trial components. A trial component can be used in multiple trials.
 
-Trial components include pre-processing jobs, training jobs, and batch
-transform jobs.
-
-When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-all experiments, trials, and trial components are automatically tracked,
-logged, and indexed. When you use the AWS SDK for Python (Boto), you
-must use the logging APIs provided by the SDK.
-
-You can add tags to a trial component and then use the
-\code{\link[=sagemaker_search]{search}} API to search for the tags.
-
-\code{\link[=sagemaker_create_trial_component]{create_trial_component}} can only be
-invoked from within an Amazon SageMaker managed environment. This
-includes Amazon SageMaker training jobs, processing jobs, transform
-jobs, and Amazon SageMaker notebooks. A call to
-\code{\link[=sagemaker_create_trial_component]{create_trial_component}} from
-outside one of these environments results in an error.
+See \url{https://paws-r.github.io/docs/sagemaker/create_trial_component.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_trial_component(
-  TrialComponentName = "string",
-  DisplayName = "string",
-  Status = list(
-    PrimaryStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-    Message = "string"
-  ),
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Parameters = list(
-    list(
-      StringValue = "string",
-      NumberValue = 123.0
-    )
-  ),
-  InputArtifacts = list(
-    list(
-      MediaType = "string",
-      Value = "string"
-    )
-  ),
-  OutputArtifacts = list(
-    list(
-      MediaType = "string",
-      Value = "string"
-    )
-  ),
-  MetadataProperties = list(
-    CommitId = "string",
-    Repository = "string",
-    GeneratedBy = "string",
-    ProjectId = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

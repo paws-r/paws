@@ -4,20 +4,25 @@
 \alias{s3_get_object_retention}
 \title{Retrieves an object's retention settings}
 \usage{
-s3_get_object_retention(Bucket, Key, VersionId, RequestPayer,
-  ExpectedBucketOwner)
+s3_get_object_retention(
+  Bucket,
+  Key,
+  VersionId = NULL,
+  RequestPayer = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name containing the object whose retention settings you want
 to retrieve.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see Using access
+points in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] The key name for the object whose retention settings you want to
 retrieve.}
@@ -27,36 +32,13 @@ retrieve.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Retention = list(
-    Mode = "GOVERNANCE"|"COMPLIANCE",
-    RetainUntilDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Retrieves an object's retention settings. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
+Retrieves an object's retention settings. For more information, see Locking Objects.
 
-This action is not supported by Amazon S3 on Outposts.
+See \url{https://paws-r.github.io/docs/s3/get_object_retention.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_object_retention(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string",
-  RequestPayer = "requester",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

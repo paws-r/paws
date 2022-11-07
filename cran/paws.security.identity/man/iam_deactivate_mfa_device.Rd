@@ -21,23 +21,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@:/-}
 }
-\value{
-An empty list.
-}
 \description{
-Deactivates the specified MFA device and removes it from association
-with the user name for which it was originally enabled.
+Deactivates the specified MFA device and removes it from association with the user name for which it was originally enabled.
 
-For more information about creating and working with virtual MFA
-devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Enabling a Virtual Multi-factor Authentication (MFA) Device}
-in the \emph{IAM User Guide}.
+See \url{https://paws-r.github.io/docs/iam/deactivate_mfa_device.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$deactivate_mfa_device(
-  UserName = "string",
-  SerialNumber = "string"
-)
-}
-}
-
 \keyword{internal}

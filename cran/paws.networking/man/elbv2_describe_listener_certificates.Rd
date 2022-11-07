@@ -5,7 +5,11 @@
 \title{Describes the default certificate and the certificate list for the
 specified HTTPS or TLS listener}
 \usage{
-elbv2_describe_listener_certificates(ListenerArn, Marker, PageSize)
+elbv2_describe_listener_certificates(
+  ListenerArn,
+  Marker = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Names (ARN) of the listener.}
@@ -15,37 +19,9 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Certificates = list(
-    list(
-      CertificateArn = "string",
-      IsDefault = TRUE|FALSE
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Describes the default certificate and the certificate list for the
-specified HTTPS or TLS listener.
+Describes the default certificate and the certificate list for the specified HTTPS or TLS listener.
 
-If the default certificate is also in the certificate list, it appears
-twice in the results (once with \code{IsDefault} set to true and once with
-\code{IsDefault} set to false).
-
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates}{SSL certificates}
-in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#tls-listener-certificate}{Server certificates}
-in the \emph{Network Load Balancers Guide}.
+See \url{https://paws-r.github.io/docs/elbv2/describe_listener_certificates.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_listener_certificates(
-  ListenerArn = "string",
-  Marker = "string",
-  PageSize = 123
-)
-}
-}
-
 \keyword{internal}

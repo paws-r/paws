@@ -13,32 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{WriteEventStream}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventStream = list(
-    ApplicationId = "string",
-    DestinationStreamArn = "string",
-    ExternalId = "string",
-    LastModifiedDate = "string",
-    LastUpdatedBy = "string",
-    RoleArn = "string"
-  )
-)
-}
-}
 \description{
-Creates a new event stream for an application or updates the settings of
-an existing event stream for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$put_event_stream(
-  ApplicationId = "string",
-  WriteEventStream = list(
-    DestinationStreamArn = "string",
-    RoleArn = "string"
-  )
-)
-}
-}
+Creates a new event stream for an application or updates the settings of an existing event stream for an application.
 
+See \url{https://paws-r.github.io/docs/pinpoint/put_event_stream.html} for full documentation.
+}
 \keyword{internal}

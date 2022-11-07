@@ -4,9 +4,13 @@
 \alias{cognitoidentityprovider_set_risk_configuration}
 \title{Configures actions on detected risks}
 \usage{
-cognitoidentityprovider_set_risk_configuration(UserPoolId, ClientId,
-  CompromisedCredentialsRiskConfiguration,
-  AccountTakeoverRiskConfiguration, RiskExceptionConfiguration)
+cognitoidentityprovider_set_risk_configuration(
+  UserPoolId,
+  ClientId = NULL,
+  CompromisedCredentialsRiskConfiguration = NULL,
+  AccountTakeoverRiskConfiguration = NULL,
+  RiskExceptionConfiguration = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -15,7 +19,7 @@ cognitoidentityprovider_set_risk_configuration(UserPoolId, ClientId,
 mapped to \code{userPoolId}. When the client ID is null, the same risk
 configuration is applied to all the clients in the userPool.
 
-Otherwise, \code{ClientId} is mapped to the client. When the client ID is not
+Otherwise, \code{ClientId} is mapped to the client. When the client ID isn't
 null, the user pool configuration is overridden and the risk
 configuration for the client is used instead.}
 
@@ -25,136 +29,9 @@ configuration for the client is used instead.}
 
 \item{RiskExceptionConfiguration}{The configuration to override the risk decision.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RiskConfiguration = list(
-    UserPoolId = "string",
-    ClientId = "string",
-    CompromisedCredentialsRiskConfiguration = list(
-      EventFilter = list(
-        "SIGN_IN"|"PASSWORD_CHANGE"|"SIGN_UP"
-      ),
-      Actions = list(
-        EventAction = "BLOCK"|"NO_ACTION"
-      )
-    ),
-    AccountTakeoverRiskConfiguration = list(
-      NotifyConfiguration = list(
-        From = "string",
-        ReplyTo = "string",
-        SourceArn = "string",
-        BlockEmail = list(
-          Subject = "string",
-          HtmlBody = "string",
-          TextBody = "string"
-        ),
-        NoActionEmail = list(
-          Subject = "string",
-          HtmlBody = "string",
-          TextBody = "string"
-        ),
-        MfaEmail = list(
-          Subject = "string",
-          HtmlBody = "string",
-          TextBody = "string"
-        )
-      ),
-      Actions = list(
-        LowAction = list(
-          Notify = TRUE|FALSE,
-          EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
-        ),
-        MediumAction = list(
-          Notify = TRUE|FALSE,
-          EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
-        ),
-        HighAction = list(
-          Notify = TRUE|FALSE,
-          EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
-        )
-      )
-    ),
-    RiskExceptionConfiguration = list(
-      BlockedIPRangeList = list(
-        "string"
-      ),
-      SkippedIPRangeList = list(
-        "string"
-      )
-    ),
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Configures actions on detected risks. To delete the risk configuration
-for \code{UserPoolId} or \code{ClientId}, pass null values for all four
-configuration types.
+Configures actions on detected risks. To delete the risk configuration for \code{UserPoolId} or \code{ClientId}, pass null values for all four configuration types.
 
-To enable Amazon Cognito advanced security features, update the user
-pool to include the \code{UserPoolAddOns} key\code{AdvancedSecurityMode}.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/set_risk_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$set_risk_configuration(
-  UserPoolId = "string",
-  ClientId = "string",
-  CompromisedCredentialsRiskConfiguration = list(
-    EventFilter = list(
-      "SIGN_IN"|"PASSWORD_CHANGE"|"SIGN_UP"
-    ),
-    Actions = list(
-      EventAction = "BLOCK"|"NO_ACTION"
-    )
-  ),
-  AccountTakeoverRiskConfiguration = list(
-    NotifyConfiguration = list(
-      From = "string",
-      ReplyTo = "string",
-      SourceArn = "string",
-      BlockEmail = list(
-        Subject = "string",
-        HtmlBody = "string",
-        TextBody = "string"
-      ),
-      NoActionEmail = list(
-        Subject = "string",
-        HtmlBody = "string",
-        TextBody = "string"
-      ),
-      MfaEmail = list(
-        Subject = "string",
-        HtmlBody = "string",
-        TextBody = "string"
-      )
-    ),
-    Actions = list(
-      LowAction = list(
-        Notify = TRUE|FALSE,
-        EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
-      ),
-      MediumAction = list(
-        Notify = TRUE|FALSE,
-        EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
-      ),
-      HighAction = list(
-        Notify = TRUE|FALSE,
-        EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
-      )
-    )
-  ),
-  RiskExceptionConfiguration = list(
-    BlockedIPRangeList = list(
-      "string"
-    ),
-    SkippedIPRangeList = list(
-      "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,15 @@
 \alias{cloudwatchlogs_get_log_events}
 \title{Lists log events from the specified log stream}
 \usage{
-cloudwatchlogs_get_log_events(logGroupName, logStreamName, startTime,
-  endTime, nextToken, limit, startFromHead)
+cloudwatchlogs_get_log_events(
+  logGroupName,
+  logStreamName,
+  startTime = NULL,
+  endTime = NULL,
+  nextToken = NULL,
+  limit = NULL,
+  startFromHead = NULL
+)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -22,9 +29,7 @@ Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to or later than
 this time are not included.}
 
 \item{nextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)
-
-Using this token works only when you specify \code{true} for \code{startFromHead}.}
+from a previous call.)}
 
 \item{limit}{The maximum number of log events returned. If you don't specify a value,
 the maximum is as many log events as can fit in a response size of 1 MB,
@@ -34,44 +39,12 @@ up to 10,000 log events.}
 value is false, the latest log events are returned first. The default
 value is false.
 
-If you are using \code{nextToken} in this operation, you must specify \code{true}
-for \code{startFromHead}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  events = list(
-    list(
-      timestamp = 123,
-      message = "string",
-      ingestionTime = 123
-    )
-  ),
-  nextForwardToken = "string",
-  nextBackwardToken = "string"
-)
-}
+If you are using a previous \code{nextForwardToken} value as the \code{nextToken}
+in this operation, you must specify \code{true} for \code{startFromHead}.}
 }
 \description{
-Lists log events from the specified log stream. You can list all of the
-log events or filter using a time range.
+Lists log events from the specified log stream. You can list all of the log events or filter using a time range.
 
-By default, this operation returns as many log events as can fit in a
-response size of 1MB (up to 10,000 log events). You can get additional
-log events by specifying one of the tokens in a subsequent call. This
-operation can return empty results while there are more log events
-available through the token.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/get_log_events.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_log_events(
-  logGroupName = "string",
-  logStreamName = "string",
-  startTime = 123,
-  endTime = 123,
-  nextToken = "string",
-  limit = 123,
-  startFromHead = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

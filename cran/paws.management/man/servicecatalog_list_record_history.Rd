@@ -4,8 +4,13 @@
 \alias{servicecatalog_list_record_history}
 \title{Lists the specified requests or all performed requests}
 \usage{
-servicecatalog_list_record_history(AcceptLanguage, AccessLevelFilter,
-  SearchFilter, PageSize, PageToken)
+servicecatalog_list_record_history(
+  AcceptLanguage = NULL,
+  AccessLevelFilter = NULL,
+  SearchFilter = NULL,
+  PageSize = NULL,
+  PageToken = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -24,62 +29,9 @@ servicecatalog_list_record_history(AcceptLanguage, AccessLevelFilter,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RecordDetails = list(
-    list(
-      RecordId = "string",
-      ProvisionedProductName = "string",
-      Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ProvisionedProductType = "string",
-      RecordType = "string",
-      ProvisionedProductId = "string",
-      ProductId = "string",
-      ProvisioningArtifactId = "string",
-      PathId = "string",
-      RecordErrors = list(
-        list(
-          Code = "string",
-          Description = "string"
-        )
-      ),
-      RecordTags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      LaunchRoleArn = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
 Lists the specified requests or all performed requests.
-}
-\section{Request syntax}{
-\preformatted{svc$list_record_history(
-  AcceptLanguage = "string",
-  AccessLevelFilter = list(
-    Key = "Account"|"Role"|"User",
-    Value = "string"
-  ),
-  SearchFilter = list(
-    Key = "string",
-    Value = "string"
-  ),
-  PageSize = 123,
-  PageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_record_history.html} for full documentation.
+}
 \keyword{internal}

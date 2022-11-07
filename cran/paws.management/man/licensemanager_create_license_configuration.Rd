@@ -4,9 +4,17 @@
 \alias{licensemanager_create_license_configuration}
 \title{Creates a license configuration}
 \usage{
-licensemanager_create_license_configuration(Name, Description,
-  LicenseCountingType, LicenseCount, LicenseCountHardLimit, LicenseRules,
-  Tags, DisassociateWhenNotFound, ProductInformationList)
+licensemanager_create_license_configuration(
+  Name,
+  Description = NULL,
+  LicenseCountingType,
+  LicenseCount = NULL,
+  LicenseCountHardLimit = NULL,
+  LicenseRules = NULL,
+  Tags = NULL,
+  DisassociateWhenNotFound = NULL,
+  ProductInformationList = NULL
+)
 }
 \arguments{
 \item{Name}{[required] Name of the license configuration.}
@@ -20,8 +28,8 @@ licensemanager_create_license_configuration(Name, Description,
 \item{LicenseCountHardLimit}{Indicates whether hard or soft license enforcement is used. Exceeding a
 hard limit blocks the launch of new instances.}
 
-\item{LicenseRules}{License rules. The syntax is #name=value (for example,
-#allowedTenancy=EC2-DedicatedHost). The available rules vary by
+\item{LicenseRules}{License rules. The syntax is \#name=value (for example,
+\#allowedTenancy=EC2-DedicatedHost). The available rules vary by
 dimension, as follows.
 \itemize{
 \item \code{Cores} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} |
@@ -46,56 +54,9 @@ for \code{honorVcpuOptimization} are \code{True} and \code{False}.}
 
 \item{ProductInformationList}{Product information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseConfigurationArn = "string"
-)
-}
-}
 \description{
 Creates a license configuration.
 
-A license configuration is an abstraction of a customer license
-agreement that can be consumed and enforced by License Manager.
-Components include specifications for the license type (licensing by
-instance, socket, CPU, or vCPU), allowed tenancy (shared tenancy,
-Dedicated Instance, Dedicated Host, or all of these), license affinity
-to host (how long a license must be associated with a host), and the
-number of licenses purchased and used.
+See \url{https://paws-r.github.io/docs/licensemanager/create_license_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_license_configuration(
-  Name = "string",
-  Description = "string",
-  LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
-  LicenseCount = 123,
-  LicenseCountHardLimit = TRUE|FALSE,
-  LicenseRules = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  DisassociateWhenNotFound = TRUE|FALSE,
-  ProductInformationList = list(
-    list(
-      ResourceType = "string",
-      ProductInformationFilterList = list(
-        list(
-          ProductInformationFilterName = "string",
-          ProductInformationFilterValue = list(
-            "string"
-          ),
-          ProductInformationFilterComparator = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

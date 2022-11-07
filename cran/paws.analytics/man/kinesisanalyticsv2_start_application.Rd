@@ -4,44 +4,17 @@
 \alias{kinesisanalyticsv2_start_application}
 \title{Starts the specified Kinesis Data Analytics application}
 \usage{
-kinesisanalyticsv2_start_application(ApplicationName, RunConfiguration)
+kinesisanalyticsv2_start_application(ApplicationName, RunConfiguration = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application.}
 
-\item{RunConfiguration}{[required] Identifies the run configuration (start parameters) of a Kinesis Data
+\item{RunConfiguration}{Identifies the run configuration (start parameters) of a Kinesis Data
 Analytics application.}
 }
-\value{
-An empty list.
-}
 \description{
-Starts the specified Kinesis Data Analytics application. After creating
-an application, you must exclusively call this operation to start your
-application.
-}
-\section{Request syntax}{
-\preformatted{svc$start_application(
-  ApplicationName = "string",
-  RunConfiguration = list(
-    FlinkRunConfiguration = list(
-      AllowNonRestoredState = TRUE|FALSE
-    ),
-    SqlRunConfigurations = list(
-      list(
-        InputId = "string",
-        InputStartingPositionConfiguration = list(
-          InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
-        )
-      )
-    ),
-    ApplicationRestoreConfiguration = list(
-      ApplicationRestoreType = "SKIP_RESTORE_FROM_SNAPSHOT"|"RESTORE_FROM_LATEST_SNAPSHOT"|"RESTORE_FROM_CUSTOM_SNAPSHOT",
-      SnapshotName = "string"
-    )
-  )
-)
-}
-}
+Starts the specified Kinesis Data Analytics application. After creating an application, you must exclusively call this operation to start your application.
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/start_application.html} for full documentation.
+}
 \keyword{internal}

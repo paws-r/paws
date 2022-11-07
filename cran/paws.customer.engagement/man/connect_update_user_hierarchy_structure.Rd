@@ -10,37 +10,12 @@ connect_update_user_hierarchy_structure(HierarchyStructure, InstanceId)
 \arguments{
 \item{HierarchyStructure}{[required] The hierarchy levels to update.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-An empty list.
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
-Updates the user hierarchy structure: add, remove, and rename user
-hierarchy levels.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user_hierarchy_structure(
-  HierarchyStructure = list(
-    LevelOne = list(
-      Name = "string"
-    ),
-    LevelTwo = list(
-      Name = "string"
-    ),
-    LevelThree = list(
-      Name = "string"
-    ),
-    LevelFour = list(
-      Name = "string"
-    ),
-    LevelFive = list(
-      Name = "string"
-    )
-  ),
-  InstanceId = "string"
-)
-}
-}
+Updates the user hierarchy structure: add, remove, and rename user hierarchy levels.
 
+See \url{https://paws-r.github.io/docs/connect/update_user_hierarchy_structure.html} for full documentation.
+}
 \keyword{internal}

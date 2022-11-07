@@ -9,46 +9,9 @@ storagegateway_delete_gateway(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Deletes a gateway. To specify which gateway to delete, use the Amazon
-Resource Name (ARN) of the gateway in your request. The operation
-deletes the gateway; however, it does not delete the gateway virtual
-machine (VM) from your host computer.
+Deletes a gateway. To specify which gateway to delete, use the Amazon Resource Name (ARN) of the gateway in your request. The operation deletes the gateway; however, it does not delete the gateway virtual machine (VM) from your host computer.
 
-After you delete a gateway, you cannot reactivate it. Completed
-snapshots of the gateway volumes are not deleted upon deleting the
-gateway, however, pending snapshots will not complete. After you delete
-a gateway, your next step is to remove it from your environment.
-
-You no longer pay software charges after the gateway is deleted;
-however, your existing Amazon EBS snapshots persist and you will
-continue to be billed for these snapshots. You can choose to remove all
-remaining Amazon EBS snapshots by canceling your Amazon EC2
-subscription.  If you prefer not to cancel your Amazon EC2 subscription,
-you can delete your snapshots using the Amazon EC2 console. For more
-information, see the \href{https://aws.amazon.com/storagegateway/}{AWS Storage Gateway detail page}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_gateway(
-  GatewayARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation deletes the gateway, but not the gateway's VM from the
-# host computer.
-svc$delete_gateway(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/delete_gateway.html} for full documentation.
 }
 \keyword{internal}

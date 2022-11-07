@@ -20,33 +20,9 @@ representable in UTF-8, and the following special characters:
 
 _ . : / = + \\ - @}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or overwrites one or more tags for the specified AppStream 2.0
-resource. You can tag AppStream 2.0 image builders, images, fleets, and
-stacks.
+Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 
-Each tag consists of a key and an optional value. If a resource already
-has a tag with the same key, this operation updates its value.
-
-To list the current tags for your resources, use
-\code{\link[=appstream_list_tags_for_resource]{list_tags_for_resource}}. To
-disassociate tags from your resources, use
-\code{\link[=appstream_untag_resource]{untag_resource}}.
-
-For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
-in the \emph{Amazon AppStream 2.0 Administration Guide}.
+See \url{https://paws-r.github.io/docs/appstream/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

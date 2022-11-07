@@ -2,11 +2,14 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_notification_configurations}
 \alias{autoscaling_describe_notification_configurations}
-\title{Describes the notification actions associated with the specified Auto
-Scaling group}
+\title{Gets information about the Amazon SNS notifications that are configured
+for one or more Auto Scaling groups}
 \usage{
-autoscaling_describe_notification_configurations(AutoScalingGroupNames,
-  NextToken, MaxRecords)
+autoscaling_describe_notification_configurations(
+  AutoScalingGroupNames = NULL,
+  NextToken = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupNames}{The name of the Auto Scaling group.}
@@ -17,44 +20,9 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NotificationConfigurations = list(
-    list(
-      AutoScalingGroupName = "string",
-      TopicARN = "string",
-      NotificationType = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the notification actions associated with the specified Auto
-Scaling group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_notification_configurations(
-  AutoScalingGroupNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
-}
-}
+Gets information about the Amazon SNS notifications that are configured for one or more Auto Scaling groups.
 
-\examples{
-\dontrun{
-# This example describes the notification configurations for the specified
-# Auto Scaling group.
-svc$describe_notification_configurations(
-  AutoScalingGroupNames = list(
-    "my-auto-scaling-group"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_notification_configurations.html} for full documentation.
 }
 \keyword{internal}

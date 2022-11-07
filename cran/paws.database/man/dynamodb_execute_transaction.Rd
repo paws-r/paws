@@ -5,85 +5,26 @@
 \title{This operation allows you to perform transactional reads or writes on
 data stored in DynamoDB, using PartiQL}
 \usage{
-dynamodb_execute_transaction(TransactStatements, ClientRequestToken)
+dynamodb_execute_transaction(
+  TransactStatements,
+  ClientRequestToken = NULL,
+  ReturnConsumedCapacity = NULL
+)
 }
 \arguments{
 \item{TransactStatements}{[required] The list of PartiQL statements representing the transaction to run.}
 
 \item{ClientRequestToken}{Set this value to get remaining results, if \code{NextToken} was returned in
 the statement response.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Responses = list(
-    list(
-      Item = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      )
-    )
-  )
-)
-}
+
+\item{ReturnConsumedCapacity}{Determines the level of detail about either provisioned or on-demand
+throughput consumption that is returned in the response. For more
+information, see \code{\link[=dynamodb_transact_get_items]{transact_get_items}} and
+\code{\link[=dynamodb_transact_write_items]{transact_write_items}}.}
 }
 \description{
-This operation allows you to perform transactional reads or writes on
-data stored in DynamoDB, using PartiQL.
-}
-\section{Request syntax}{
-\preformatted{svc$execute_transaction(
-  TransactStatements = list(
-    list(
-      Statement = "string",
-      Parameters = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  ClientRequestToken = "string"
-)
-}
-}
+This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL.
 
+See \url{https://paws-r.github.io/docs/dynamodb/execute_transaction.html} for full documentation.
+}
 \keyword{internal}

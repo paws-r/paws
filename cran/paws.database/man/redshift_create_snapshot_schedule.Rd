@@ -5,8 +5,14 @@
 \title{Create a snapshot schedule that can be associated to a cluster and which
 overrides the default system backup schedule}
 \usage{
-redshift_create_snapshot_schedule(ScheduleDefinitions,
-  ScheduleIdentifier, ScheduleDescription, Tags, DryRun, NextInvocations)
+redshift_create_snapshot_schedule(
+  ScheduleDefinitions = NULL,
+  ScheduleIdentifier = NULL,
+  ScheduleDescription = NULL,
+  Tags = NULL,
+  DryRun = NULL,
+  NextInvocations = NULL
+)
 }
 \arguments{
 \item{ScheduleDefinitions}{The definition of the snapshot schedule. The definition is made up of
@@ -23,55 +29,9 @@ characters are allowed for the identifier.}
 
 \item{NextInvocations}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScheduleDefinitions = list(
-    "string"
-  ),
-  ScheduleIdentifier = "string",
-  ScheduleDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextInvocations = list(
-    as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  AssociatedClusterCount = 123,
-  AssociatedClusters = list(
-    list(
-      ClusterIdentifier = "string",
-      ScheduleAssociationState = "MODIFYING"|"ACTIVE"|"FAILED"
-    )
-  )
-)
-}
-}
 \description{
-Create a snapshot schedule that can be associated to a cluster and which
-overrides the default system backup schedule.
-}
-\section{Request syntax}{
-\preformatted{svc$create_snapshot_schedule(
-  ScheduleDefinitions = list(
-    "string"
-  ),
-  ScheduleIdentifier = "string",
-  ScheduleDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  NextInvocations = 123
-)
-}
-}
+Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup schedule.
 
+See \url{https://paws-r.github.io/docs/redshift/create_snapshot_schedule.html} for full documentation.
+}
 \keyword{internal}

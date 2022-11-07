@@ -7,23 +7,9 @@ Scaling}
 \usage{
 autoscaling_describe_auto_scaling_notification_types()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoScalingNotificationTypes = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Describes the notification types that are supported by Amazon EC2 Auto
-Scaling.
-}
-\examples{
-\dontrun{
-# This example describes the available notification types.
-svc$describe_auto_scaling_notification_types()
-}
+Describes the notification types that are supported by Amazon EC2 Auto Scaling.
 
+See \url{https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_notification_types.html} for full documentation.
 }
 \keyword{internal}

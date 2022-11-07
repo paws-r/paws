@@ -15,48 +15,9 @@ from.}
 \item{attributeKeys}{[required] The array of attribute keys that you want to remove from specified
 findings.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  failedItems = list(
-    list(
-      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
-      retryable = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Removes entire attributes (key and value pairs) from the findings that
-are specified by the ARNs of the findings where an attribute with the
-specified key exists.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_attributes_from_findings(
-  findingArns = list(
-    "string"
-  ),
-  attributeKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes entire attributes (key and value pairs) from the findings that are specified by the ARNs of the findings where an attribute with the specified key exists.
 
-\examples{
-\dontrun{
-# Removes entire attributes (key and value pairs) from the findings that
-# are specified by the ARNs of the findings where an attribute with the
-# specified key exists.
-svc$remove_attributes_from_findings(
-  attributeKeys = list(
-    "key=Example,value=example"
-  ),
-  findingArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/remove_attributes_from_findings.html} for full documentation.
 }
 \keyword{internal}

@@ -5,10 +5,16 @@
 \title{Returns information about merge conflicts between the before and after
 commit IDs for a pull request in a repository}
 \usage{
-codecommit_get_merge_conflicts(repositoryName,
-  destinationCommitSpecifier, sourceCommitSpecifier, mergeOption,
-  conflictDetailLevel, maxConflictFiles, conflictResolutionStrategy,
-  nextToken)
+codecommit_get_merge_conflicts(
+  repositoryName,
+  destinationCommitSpecifier,
+  sourceCommitSpecifier,
+  mergeOption,
+  conflictDetailLevel = NULL,
+  maxConflictFiles = NULL,
+  conflictResolutionStrategy = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where the pull request was created.}
@@ -37,65 +43,9 @@ merge operation is successful.}
 \item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  mergeable = TRUE|FALSE,
-  destinationCommitId = "string",
-  sourceCommitId = "string",
-  baseCommitId = "string",
-  conflictMetadataList = list(
-    list(
-      filePath = "string",
-      fileSizes = list(
-        source = 123,
-        destination = 123,
-        base = 123
-      ),
-      fileModes = list(
-        source = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-        destination = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-        base = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-      ),
-      objectTypes = list(
-        source = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-        destination = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-        base = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK"
-      ),
-      numberOfConflicts = 123,
-      isBinaryFile = list(
-        source = TRUE|FALSE,
-        destination = TRUE|FALSE,
-        base = TRUE|FALSE
-      ),
-      contentConflict = TRUE|FALSE,
-      fileModeConflict = TRUE|FALSE,
-      objectTypeConflict = TRUE|FALSE,
-      mergeOperations = list(
-        source = "A"|"M"|"D",
-        destination = "A"|"M"|"D"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns information about merge conflicts between the before and after
-commit IDs for a pull request in a repository.
-}
-\section{Request syntax}{
-\preformatted{svc$get_merge_conflicts(
-  repositoryName = "string",
-  destinationCommitSpecifier = "string",
-  sourceCommitSpecifier = "string",
-  mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
-  conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-  maxConflictFiles = 123,
-  conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-  nextToken = "string"
-)
-}
-}
+Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository.
 
+See \url{https://paws-r.github.io/docs/codecommit/get_merge_conflicts.html} for full documentation.
+}
 \keyword{internal}

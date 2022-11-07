@@ -4,8 +4,15 @@
 \alias{servicecatalog_update_portfolio}
 \title{Updates the specified portfolio}
 \usage{
-servicecatalog_update_portfolio(AcceptLanguage, Id, DisplayName,
-  Description, ProviderName, AddTags, RemoveTags)
+servicecatalog_update_portfolio(
+  AcceptLanguage = NULL,
+  Id,
+  DisplayName = NULL,
+  Description = NULL,
+  ProviderName = NULL,
+  AddTags = NULL,
+  RemoveTags = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -27,50 +34,9 @@ servicecatalog_update_portfolio(AcceptLanguage, Id, DisplayName,
 
 \item{RemoveTags}{The tags to remove.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PortfolioDetail = list(
-    Id = "string",
-    ARN = "string",
-    DisplayName = "string",
-    Description = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProviderName = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Updates the specified portfolio.
 
-You cannot update a product that was shared with you.
+See \url{https://paws-r.github.io/docs/servicecatalog/update_portfolio.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_portfolio(
-  AcceptLanguage = "string",
-  Id = "string",
-  DisplayName = "string",
-  Description = "string",
-  ProviderName = "string",
-  AddTags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  RemoveTags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

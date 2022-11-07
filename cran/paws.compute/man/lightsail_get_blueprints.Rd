@@ -4,11 +4,11 @@
 \alias{lightsail_get_blueprints}
 \title{Returns the list of available instance images, or blueprints}
 \usage{
-lightsail_get_blueprints(includeInactive, pageToken)
+lightsail_get_blueprints(includeInactive = NULL, pageToken = NULL)
 }
 \arguments{
-\item{includeInactive}{A Boolean value indicating whether to include inactive results in your
-request.}
+\item{includeInactive}{A Boolean value that indicates whether to include inactive (unavailable)
+blueprints in the response of your request.}
 
 \item{pageToken}{The token to advance to the next page of results from your request.
 
@@ -17,47 +17,9 @@ To get a page token, perform an initial
 are paginated, the response will return a next page token that you can
 specify as the page token in a subsequent request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  blueprints = list(
-    list(
-      blueprintId = "string",
-      name = "string",
-      group = "string",
-      type = "os"|"app",
-      description = "string",
-      isActive = TRUE|FALSE,
-      minPower = 123,
-      version = "string",
-      versionCode = "string",
-      productUrl = "string",
-      licenseUrl = "string",
-      platform = "LINUX_UNIX"|"WINDOWS"
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
-Returns the list of available instance images, or \emph{blueprints}. You can
-use a blueprint to create a new instance already running a specific
-operating system, as well as a preinstalled app or development stack.
-The software each instance is running depends on the blueprint image you
-choose.
+Returns the list of available instance images, or \emph{blueprints}. You can use a blueprint to create a new instance already running a specific operating system, as well as a preinstalled app or development stack. The software each instance is running depends on the blueprint image you choose.
 
-Use active blueprints when creating new instances. Inactive blueprints
-are listed to support customers with existing instances and are not
-necessarily available to create new instances. Blueprints are marked
-inactive when they become outdated due to operating system updates or
-new application releases.
+See \url{https://paws-r.github.io/docs/lightsail/get_blueprints.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_blueprints(
-  includeInactive = TRUE|FALSE,
-  pageToken = "string"
-)
-}
-}
-
 \keyword{internal}

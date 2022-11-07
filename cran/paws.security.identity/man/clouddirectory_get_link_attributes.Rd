@@ -4,8 +4,12 @@
 \alias{clouddirectory_get_link_attributes}
 \title{Retrieves attributes that are associated with a typed link}
 \usage{
-clouddirectory_get_link_attributes(DirectoryArn, TypedLinkSpecifier,
-  AttributeNames, ConsistencyLevel)
+clouddirectory_get_link_attributes(
+  DirectoryArn,
+  TypedLinkSpecifier,
+  AttributeNames,
+  ConsistencyLevel = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -18,67 +22,9 @@ where the typed link resides. For more information, see arns or \href{https://do
 \item{ConsistencyLevel}{The consistency level at which to retrieve the attributes on a typed
 link.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      Key = list(
-        SchemaArn = "string",
-        FacetName = "string",
-        Name = "string"
-      ),
-      Value = list(
-        StringValue = "string",
-        BinaryValue = raw,
-        BooleanValue = TRUE|FALSE,
-        NumberValue = "string",
-        DatetimeValue = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Retrieves attributes that are associated with a typed link.
-}
-\section{Request syntax}{
-\preformatted{svc$get_link_attributes(
-  DirectoryArn = "string",
-  TypedLinkSpecifier = list(
-    TypedLinkFacet = list(
-      SchemaArn = "string",
-      TypedLinkName = "string"
-    ),
-    SourceObjectReference = list(
-      Selector = "string"
-    ),
-    TargetObjectReference = list(
-      Selector = "string"
-    ),
-    IdentityAttributeValues = list(
-      list(
-        AttributeName = "string",
-        Value = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  AttributeNames = list(
-    "string"
-  ),
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/get_link_attributes.html} for full documentation.
+}
 \keyword{internal}

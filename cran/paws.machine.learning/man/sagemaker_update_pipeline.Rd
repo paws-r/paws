@@ -4,8 +4,15 @@
 \alias{sagemaker_update_pipeline}
 \title{Updates a pipeline}
 \usage{
-sagemaker_update_pipeline(PipelineName, PipelineDisplayName,
-  PipelineDefinition, PipelineDescription, RoleArn)
+sagemaker_update_pipeline(
+  PipelineName,
+  PipelineDisplayName = NULL,
+  PipelineDefinition = NULL,
+  PipelineDefinitionS3Location = NULL,
+  PipelineDescription = NULL,
+  RoleArn = NULL,
+  ParallelismConfiguration = NULL
+)
 }
 \arguments{
 \item{PipelineName}{[required] The name of the pipeline to update.}
@@ -14,28 +21,19 @@ sagemaker_update_pipeline(PipelineName, PipelineDisplayName,
 
 \item{PipelineDefinition}{The JSON pipeline definition.}
 
+\item{PipelineDefinitionS3Location}{The location of the pipeline definition stored in Amazon S3. If
+specified, SageMaker will retrieve the pipeline definition from this
+location.}
+
 \item{PipelineDescription}{The description of the pipeline.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) that the pipeline uses to execute.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineArn = "string"
-)
-}
+
+\item{ParallelismConfiguration}{If specified, it applies to all executions of this pipeline by default.}
 }
 \description{
 Updates a pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$update_pipeline(
-  PipelineName = "string",
-  PipelineDisplayName = "string",
-  PipelineDefinition = "string",
-  PipelineDescription = "string",
-  RoleArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_pipeline.html} for full documentation.
+}
 \keyword{internal}

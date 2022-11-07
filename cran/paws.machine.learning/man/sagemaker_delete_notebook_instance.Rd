@@ -2,30 +2,16 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_delete_notebook_instance}
 \alias{sagemaker_delete_notebook_instance}
-\title{Deletes an Amazon SageMaker notebook instance}
+\title{Deletes an SageMaker notebook instance}
 \usage{
 sagemaker_delete_notebook_instance(NotebookInstanceName)
 }
 \arguments{
-\item{NotebookInstanceName}{[required] The name of the Amazon SageMaker notebook instance to delete.}
-}
-\value{
-An empty list.
+\item{NotebookInstanceName}{[required] The name of the SageMaker notebook instance to delete.}
 }
 \description{
-Deletes an Amazon SageMaker notebook instance. Before you can delete a
-notebook instance, you must call the
-\code{\link[=sagemaker_stop_notebook_instance]{stop_notebook_instance}} API.
+Deletes an SageMaker notebook instance. Before you can delete a notebook instance, you must call the \code{\link[=sagemaker_stop_notebook_instance]{stop_notebook_instance}} API.
 
-When you delete a notebook instance, you lose all of your data. Amazon
-SageMaker removes the ML compute instance, and deletes the ML storage
-volume and the network interface associated with the notebook instance.
+See \url{https://paws-r.github.io/docs/sagemaker/delete_notebook_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_notebook_instance(
-  NotebookInstanceName = "string"
-)
-}
-}
-
 \keyword{internal}

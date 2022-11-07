@@ -5,8 +5,14 @@
 \title{Requests a VPC peering connection between two VPCs: a requester VPC that
 you own and an accepter VPC with which to create the connection}
 \usage{
-ec2_create_vpc_peering_connection(DryRun, PeerOwnerId, PeerVpcId, VpcId,
-  PeerRegion, TagSpecifications)
+ec2_create_vpc_peering_connection(
+  DryRun = NULL,
+  PeerOwnerId = NULL,
+  PeerVpcId = NULL,
+  VpcId = NULL,
+  PeerRegion = NULL,
+  TagSpecifications = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,9 +20,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{PeerOwnerId}{The AWS account ID of the owner of the accepter VPC.
+\item{PeerOwnerId}{The Amazon Web Services account ID of the owner of the accepter VPC.
 
-Default: Your AWS account ID}
+Default: Your Amazon Web Services account ID}
 
 \item{PeerVpcId}{The ID of the VPC with which you are creating the VPC peering
 connection. You must specify this parameter in the request.}
@@ -31,109 +37,9 @@ Default: The Region in which you make the request.}
 
 \item{TagSpecifications}{The tags to assign to the peering connection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpcPeeringConnection = list(
-    AccepterVpcInfo = list(
-      CidrBlock = "string",
-      Ipv6CidrBlockSet = list(
-        list(
-          Ipv6CidrBlock = "string"
-        )
-      ),
-      CidrBlockSet = list(
-        list(
-          CidrBlock = "string"
-        )
-      ),
-      OwnerId = "string",
-      PeeringOptions = list(
-        AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
-        AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
-        AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
-      ),
-      VpcId = "string",
-      Region = "string"
-    ),
-    ExpirationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    RequesterVpcInfo = list(
-      CidrBlock = "string",
-      Ipv6CidrBlockSet = list(
-        list(
-          Ipv6CidrBlock = "string"
-        )
-      ),
-      CidrBlockSet = list(
-        list(
-          CidrBlock = "string"
-        )
-      ),
-      OwnerId = "string",
-      PeeringOptions = list(
-        AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
-        AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
-        AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
-      ),
-      VpcId = "string",
-      Region = "string"
-    ),
-    Status = list(
-      Code = "initiating-request"|"pending-acceptance"|"active"|"deleted"|"rejected"|"failed"|"expired"|"provisioning"|"deleting",
-      Message = "string"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    VpcPeeringConnectionId = "string"
-  )
-)
-}
-}
 \description{
-Requests a VPC peering connection between two VPCs: a requester VPC that
-you own and an accepter VPC with which to create the connection. The
-accepter VPC can belong to another AWS account and can be in a different
-Region to the requester VPC. The requester VPC and accepter VPC cannot
-have overlapping CIDR blocks.
+Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another Amazon Web Services account and can be in a different Region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.
 
-Limitations and rules apply to a VPC peering connection. For more
-information, see the
-\href{https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html#vpc-peering-limitations}{limitations}
-section in the \emph{VPC Peering Guide}.
-
-The owner of the accepter VPC must accept the peering request to
-activate the peering connection. The VPC peering connection request
-expires after 7 days, after which it cannot be accepted or rejected.
-
-If you create a VPC peering connection request between VPCs with
-overlapping CIDR blocks, the VPC peering connection has a status of
-\code{failed}.
+See \url{https://paws-r.github.io/docs/ec2/create_vpc_peering_connection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_vpc_peering_connection(
-  DryRun = TRUE|FALSE,
-  PeerOwnerId = "string",
-  PeerVpcId = "string",
-  VpcId = "string",
-  PeerRegion = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

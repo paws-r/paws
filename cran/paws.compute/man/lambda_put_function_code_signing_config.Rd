@@ -4,8 +4,7 @@
 \alias{lambda_put_function_code_signing_config}
 \title{Update the code signing configuration for the function}
 \usage{
-lambda_put_function_code_signing_config(CodeSigningConfigArn,
-  FunctionName)
+lambda_put_function_code_signing_config(CodeSigningConfigArn, FunctionName)
 }
 \arguments{
 \item{CodeSigningConfigArn}{[required] The The Amazon Resource Name (ARN) of the code signing configuration.}
@@ -23,24 +22,9 @@ lambda_put_function_code_signing_config(CodeSigningConfigArn,
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CodeSigningConfigArn = "string",
-  FunctionName = "string"
-)
-}
-}
 \description{
-Update the code signing configuration for the function. Changes to the
-code signing configuration take effect the next time a user tries to
-deploy a code package to the function.
-}
-\section{Request syntax}{
-\preformatted{svc$put_function_code_signing_config(
-  CodeSigningConfigArn = "string",
-  FunctionName = "string"
-)
-}
-}
+Update the code signing configuration for the function. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
 
+See \url{https://paws-r.github.io/docs/lambda/put_function_code_signing_config.html} for full documentation.
+}
 \keyword{internal}

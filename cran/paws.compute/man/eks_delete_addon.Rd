@@ -4,7 +4,7 @@
 \alias{eks_delete_addon}
 \title{Delete an Amazon EKS add-on}
 \usage{
-eks_delete_addon(clusterName, addonName)
+eks_delete_addon(clusterName, addonName, preserve = NULL)
 }
 \arguments{
 \item{clusterName}{[required] The name of the cluster to delete the add-on from.}
@@ -12,53 +12,14 @@ eks_delete_addon(clusterName, addonName)
 \item{addonName}{[required] The name of the add-on. The name must match one of the names returned by
 \href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
 .}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  addon = list(
-    addonName = "string",
-    clusterName = "string",
-    status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETE_FAILED"|"DEGRADED",
-    addonVersion = "string",
-    health = list(
-      issues = list(
-        list(
-          code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-          message = "string",
-          resourceIds = list(
-            "string"
-          )
-        )
-      )
-    ),
-    addonArn = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    modifiedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    serviceAccountRoleArn = "string",
-    tags = list(
-      "string"
-    )
-  )
-)
-}
+
+\item{preserve}{Specifying this option preserves the add-on software on your cluster but
+Amazon EKS stops managing any settings for the add-on. If an IAM account
+is associated with the add-on, it is not removed.}
 }
 \description{
 Delete an Amazon EKS add-on.
 
-When you remove the add-on, it will also be deleted from the cluster.
-You can always manually start an add-on on the cluster using the
-Kubernetes API.
+See \url{https://paws-r.github.io/docs/eks/delete_addon.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_addon(
-  clusterName = "string",
-  addonName = "string"
-)
-}
-}
-
 \keyword{internal}

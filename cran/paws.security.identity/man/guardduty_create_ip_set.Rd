@@ -5,8 +5,15 @@
 \title{Creates a new IPSet, which is called a trusted IP list in the console
 user interface}
 \usage{
-guardduty_create_ip_set(DetectorId, Name, Format, Location, Activate,
-  ClientToken, Tags)
+guardduty_create_ip_set(
+  DetectorId,
+  Name,
+  Format,
+  Location,
+  Activate,
+  ClientToken = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
@@ -19,8 +26,7 @@ underscores (_).}
 
 \item{Format}{[required] The format of the file that contains the IPSet.}
 
-\item{Location}{[required] The URI of the file that contains the IPSet. For example:
-https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.}
+\item{Location}{[required] The URI of the file that contains the IPSet.}
 
 \item{Activate}{[required] A Boolean value that indicates whether GuardDuty is to start using the
 uploaded IPSet.}
@@ -29,32 +35,9 @@ uploaded IPSet.}
 
 \item{Tags}{The tags to be added to a new IP set resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IpSetId = "string"
-)
-}
-}
 \description{
-Creates a new IPSet, which is called a trusted IP list in the console
-user interface. An IPSet is a list of IP addresses that are trusted for
-secure communication with AWS infrastructure and applications. GuardDuty
-doesn't generate findings for IP addresses that are included in IPSets.
-Only users from the administrator account can use this operation.
-}
-\section{Request syntax}{
-\preformatted{svc$create_ip_set(
-  DetectorId = "string",
-  Name = "string",
-  Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
-  Location = "string",
-  Activate = TRUE|FALSE,
-  ClientToken = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+Creates a new IPSet, which is called a trusted IP list in the console user interface. An IPSet is a list of IP addresses that are trusted for secure communication with Amazon Web Services infrastructure and applications. GuardDuty doesn't generate findings for IP addresses that are included in IPSets. Only users from the administrator account can use this operation.
 
+See \url{https://paws-r.github.io/docs/guardduty/create_ip_set.html} for full documentation.
+}
 \keyword{internal}

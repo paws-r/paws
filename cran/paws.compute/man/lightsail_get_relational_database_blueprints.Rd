@@ -4,7 +4,7 @@
 \alias{lightsail_get_relational_database_blueprints}
 \title{Returns a list of available database blueprints in Amazon Lightsail}
 \usage{
-lightsail_get_relational_database_blueprints(pageToken)
+lightsail_get_relational_database_blueprints(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{The token to advance to the next page of results from your request.
@@ -15,34 +15,9 @@ request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  blueprints = list(
-    list(
-      blueprintId = "string",
-      engine = "mysql",
-      engineVersion = "string",
-      engineDescription = "string",
-      engineVersionDescription = "string",
-      isEngineDefault = TRUE|FALSE
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
-Returns a list of available database blueprints in Amazon Lightsail. A
-blueprint describes the major engine version of a database.
+Returns a list of available database blueprints in Amazon Lightsail. A blueprint describes the major engine version of a database.
 
-You can use a blueprint ID to create a new database that runs a specific
-database engine.
+See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_blueprints.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_relational_database_blueprints(
-  pageToken = "string"
-)
-}
-}
-
 \keyword{internal}

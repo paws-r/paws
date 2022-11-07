@@ -4,11 +4,11 @@
 \alias{apigateway_import_api_keys}
 \title{Import API keys from an external source, such as a CSV-formatted file}
 \usage{
-apigateway_import_api_keys(body, format, failOnWarnings)
+apigateway_import_api_keys(body, format, failOnWarnings = NULL)
 }
 \arguments{
 \item{body}{[required] The payload of the POST request to import API keys. For the payload
-format, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html}{API Key File Format}.}
+format, see API Key File Format.}
 
 \item{format}{[required] A query parameter to specify the input format to imported API keys.
 Currently, only the \code{csv} format is supported.}
@@ -16,27 +16,9 @@ Currently, only the \code{csv} format is supported.}
 \item{failOnWarnings}{A query parameter to indicate whether to rollback ApiKey importation
 (\code{true}) or not (\code{false}) when error is encountered.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ids = list(
-    "string"
-  ),
-  warnings = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Import API keys from an external source, such as a CSV-formatted file.
-}
-\section{Request syntax}{
-\preformatted{svc$import_api_keys(
-  body = raw,
-  format = "csv",
-  failOnWarnings = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/import_api_keys.html} for full documentation.
+}
 \keyword{internal}

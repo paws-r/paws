@@ -6,28 +6,9 @@
 \usage{
 autoscaling_describe_lifecycle_hook_types()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LifecycleHookTypes = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Describes the available types of lifecycle hooks.
 
-The following hook types are supported:
-\itemize{
-\item autoscaling:EC2_INSTANCE_LAUNCHING
-\item autoscaling:EC2_INSTANCE_TERMINATING
-}
-}
-\examples{
-\dontrun{
-# This example describes the available lifecycle hook types.
-svc$describe_lifecycle_hook_types()
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_lifecycle_hook_types.html} for full documentation.
 }
 \keyword{internal}

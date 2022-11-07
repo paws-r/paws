@@ -2,7 +2,8 @@
 % Please edit documentation in R/xray_operations.R
 \name{xray_tag_resource}
 \alias{xray_tag_resource}
-\title{Applies tags to an existing AWS X-Ray group or sampling rule}
+\title{Applies tags to an existing Amazon Web Services X-Ray group or sampling
+rule}
 \usage{
 xray_tag_resource(ResourceARN, Tags)
 }
@@ -11,8 +12,8 @@ xray_tag_resource(ResourceARN, Tags)
 
 \item{Tags}{[required] A map that contains one or more tag keys and tag values to attach to an
 X-Ray group or sampling rule. For more information about ways to use
-tags, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
-in the \emph{AWS General Reference}.
+tags, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+in the \emph{Amazon Web Services General Reference}.
 
 The following restrictions apply to tags:
 \itemize{
@@ -22,27 +23,13 @@ The following restrictions apply to tags:
 \item Valid values for key and value: a-z, A-Z, 0-9, space, and the
 following characters: _ . : / = + - and @
 \item Tag keys and values are case sensitive.
-\item Don't use \verb{aws:} as a prefix for keys; it's reserved for AWS use.
-You cannot edit or delete system tags.
+\item Don't use \verb{aws:} as a prefix for keys; it's reserved for Amazon Web
+Services use. You cannot edit or delete system tags.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Applies tags to an existing AWS X-Ray group or sampling rule.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Applies tags to an existing Amazon Web Services X-Ray group or sampling rule.
 
+See \url{https://paws-r.github.io/docs/xray/tag_resource.html} for full documentation.
+}
 \keyword{internal}

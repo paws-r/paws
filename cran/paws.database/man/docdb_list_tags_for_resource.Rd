@@ -4,7 +4,7 @@
 \alias{docdb_list_tags_for_resource}
 \title{Lists all tags on an Amazon DocumentDB resource}
 \usage{
-docdb_list_tags_for_resource(ResourceName, Filters)
+docdb_list_tags_for_resource(ResourceName, Filters = NULL)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon DocumentDB resource with tags to be listed. This value is an
@@ -12,33 +12,9 @@ Amazon Resource Name (ARN).}
 
 \item{Filters}{This parameter is not currently supported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Lists all tags on an Amazon DocumentDB resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/docdb/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -2,10 +2,10 @@
 % Please edit documentation in R/xray_operations.R
 \name{xray_list_tags_for_resource}
 \alias{xray_list_tags_for_resource}
-\title{Returns a list of tags that are applied to the specified AWS X-Ray group
-or sampling rule}
+\title{Returns a list of tags that are applied to the specified Amazon Web
+Services X-Ray group or sampling rule}
 \usage{
-xray_list_tags_for_resource(ResourceARN, NextToken)
+xray_list_tags_for_resource(ResourceARN, NextToken = NULL)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.}
@@ -14,28 +14,9 @@ xray_list_tags_for_resource(ResourceARN, NextToken)
 \code{NextToken} value returned with the current page of results as the value
 of this parameter to get the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of tags that are applied to the specified AWS X-Ray group
-or sampling rule.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceARN = "string",
-  NextToken = "string"
-)
-}
-}
+Returns a list of tags that are applied to the specified Amazon Web Services X-Ray group or sampling rule.
 
+See \url{https://paws-r.github.io/docs/xray/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

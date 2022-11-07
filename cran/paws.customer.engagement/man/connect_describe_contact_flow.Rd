@@ -11,33 +11,9 @@ connect_describe_contact_flow(InstanceId, ContactFlowId)
 
 \item{ContactFlowId}{[required] The identifier of the contact flow.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContactFlow = list(
-    Arn = "string",
-    Id = "string",
-    Name = "string",
-    Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER",
-    Description = "string",
-    Content = "string",
-    Tags = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes the specified contact flow.
 
-You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
+See \url{https://paws-r.github.io/docs/connect/describe_contact_flow.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_contact_flow(
-  InstanceId = "string",
-  ContactFlowId = "string"
-)
-}
-}
-
 \keyword{internal}

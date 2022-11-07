@@ -2,18 +2,23 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_network_interface_permission}
 \alias{ec2_create_network_interface_permission}
-\title{Grants an AWS-authorized account permission to attach the specified
-network interface to an instance in their account}
+\title{Grants an Amazon Web Services-authorized account permission to attach
+the specified network interface to an instance in their account}
 \usage{
-ec2_create_network_interface_permission(NetworkInterfaceId,
-  AwsAccountId, AwsService, Permission, DryRun)
+ec2_create_network_interface_permission(
+  NetworkInterfaceId,
+  AwsAccountId = NULL,
+  AwsService = NULL,
+  Permission,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
-\item{AwsAccountId}{The AWS account ID.}
+\item{AwsAccountId}{The Amazon Web Services account ID.}
 
-\item{AwsService}{The AWS service. Currently not supported.}
+\item{AwsService}{The Amazon Web Service. Currently not supported.}
 
 \item{Permission}{[required] The type of permission to grant.}
 
@@ -22,38 +27,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InterfacePermission = list(
-    NetworkInterfacePermissionId = "string",
-    NetworkInterfaceId = "string",
-    AwsAccountId = "string",
-    AwsService = "string",
-    Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
-    PermissionState = list(
-      State = "pending"|"granted"|"revoking"|"revoked",
-      StatusMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Grants an AWS-authorized account permission to attach the specified
-network interface to an instance in their account.
+Grants an Amazon Web Services-authorized account permission to attach the specified network interface to an instance in their account.
 
-You can grant permission to a single AWS account only, and only one
-account at a time.
+See \url{https://paws-r.github.io/docs/ec2/create_network_interface_permission.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_network_interface_permission(
-  NetworkInterfaceId = "string",
-  AwsAccountId = "string",
-  AwsService = "string",
-  Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

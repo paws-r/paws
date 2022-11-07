@@ -5,7 +5,10 @@
 \title{Updates the content of an approval rule template}
 \usage{
 codecommit_update_approval_rule_template_content(
-  approvalRuleTemplateName, newRuleContent, existingRuleContentSha256)
+  approvalRuleTemplateName,
+  newRuleContent,
+  existingRuleContentSha256 = NULL
+)
 }
 \arguments{
 \item{approvalRuleTemplateName}{[required] The name of the approval rule template where you want to update the
@@ -18,37 +21,9 @@ statements must be complete. You cannot provide only the changes.}
 retrieve this information by using
 \code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvalRuleTemplate = list(
-    approvalRuleTemplateId = "string",
-    approvalRuleTemplateName = "string",
-    approvalRuleTemplateDescription = "string",
-    approvalRuleTemplateContent = "string",
-    ruleContentSha256 = "string",
-    lastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastModifiedUser = "string"
-  )
-)
-}
-}
 \description{
-Updates the content of an approval rule template. You can change the
-number of required approvals, the membership of the approval rule, and
-whether an approval pool is defined.
-}
-\section{Request syntax}{
-\preformatted{svc$update_approval_rule_template_content(
-  approvalRuleTemplateName = "string",
-  newRuleContent = "string",
-  existingRuleContentSha256 = "string"
-)
-}
-}
+Updates the content of an approval rule template. You can change the number of required approvals, the membership of the approval rule, and whether an approval pool is defined.
 
+See \url{https://paws-r.github.io/docs/codecommit/update_approval_rule_template_content.html} for full documentation.
+}
 \keyword{internal}

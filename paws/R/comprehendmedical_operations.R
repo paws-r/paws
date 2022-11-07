@@ -12,7 +12,7 @@ NULL
 #' @usage
 #' comprehendmedical_describe_entities_detection_v2_job(JobId)
 #'
-#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
+#' @param JobId &#91;required&#93; The identifier that Comprehend Medical; generated for the job. The
 #' [`start_entities_detection_v2_job`][comprehendmedical_start_entities_detection_v2_job]
 #' operation returns this identifier in its response.
 #'
@@ -163,7 +163,7 @@ comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
 #' @usage
 #' comprehendmedical_describe_phi_detection_job(JobId)
 #'
-#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
+#' @param JobId &#91;required&#93; The identifier that Comprehend Medical; generated for the job. The
 #' [`start_phi_detection_job`][comprehendmedical_start_phi_detection_job]
 #' operation returns this identifier in its response.
 #'
@@ -304,6 +304,81 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
 }
 .comprehendmedical$operations$describe_rx_norm_inference_job <- comprehendmedical_describe_rx_norm_inference_job
 
+#' Gets the properties associated with an InferSNOMEDCT job
+#'
+#' @description
+#' Gets the properties associated with an InferSNOMEDCT job. Use this
+#' operation to get the status of an inference job.
+#'
+#' @usage
+#' comprehendmedical_describe_snomedct_inference_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
+#' StartSNOMEDCTInferenceJob operation returns this identifier in its
+#' response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ComprehendMedicalAsyncJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpirationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDataConfig = list(
+#'       S3Bucket = "string",
+#'       S3Key = "string"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Bucket = "string",
+#'       S3Key = "string"
+#'     ),
+#'     LanguageCode = "en",
+#'     DataAccessRoleArn = "string",
+#'     ManifestFilePath = "string",
+#'     KMSKey = "string",
+#'     ModelVersion = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_snomedct_inference_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_describe_snomedct_inference_job
+comprehendmedical_describe_snomedct_inference_job <- function(JobId) {
+  op <- new_operation(
+    name = "DescribeSNOMEDCTInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$describe_snomedct_inference_job_input(JobId = JobId)
+  output <- .comprehendmedical$describe_snomedct_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$describe_snomedct_inference_job <- comprehendmedical_describe_snomedct_inference_job
+
 #' The DetectEntities operation is deprecated
 #'
 #' @description
@@ -335,7 +410,7 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
 #'       Score = 123.0,
 #'       Text = "string",
 #'       Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'       Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
+#'       Type = "NAME"|"DX_NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"PHONE_OR_FAX"|"EMAIL"|"IDENTIFIER"|"ID"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
 #'       Traits = list(
 #'         list(
 #'           Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
@@ -344,10 +419,10 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
 #'       ),
 #'       Attributes = list(
 #'         list(
-#'           Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
+#'           Type = "NAME"|"DX_NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"PHONE_OR_FAX"|"EMAIL"|"IDENTIFIER"|"ID"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
 #'           Score = 123.0,
 #'           RelationshipScore = 123.0,
-#'           RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
+#'           RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
 #'           Id = 123,
 #'           BeginOffset = 123,
 #'           EndOffset = 123,
@@ -367,10 +442,10 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
 #'     list(
 #'       Type = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
 #'       Attribute = list(
-#'         Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
+#'         Type = "NAME"|"DX_NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"PHONE_OR_FAX"|"EMAIL"|"IDENTIFIER"|"ID"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
 #'         Score = 123.0,
 #'         RelationshipScore = 123.0,
-#'         RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
+#'         RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
 #'         Id = 123,
 #'         BeginOffset = 123,
 #'         EndOffset = 123,
@@ -459,7 +534,7 @@ comprehendmedical_detect_entities <- function(Text) {
 #'       Score = 123.0,
 #'       Text = "string",
 #'       Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'       Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
+#'       Type = "NAME"|"DX_NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"PHONE_OR_FAX"|"EMAIL"|"IDENTIFIER"|"ID"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
 #'       Traits = list(
 #'         list(
 #'           Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
@@ -468,10 +543,10 @@ comprehendmedical_detect_entities <- function(Text) {
 #'       ),
 #'       Attributes = list(
 #'         list(
-#'           Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
+#'           Type = "NAME"|"DX_NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"PHONE_OR_FAX"|"EMAIL"|"IDENTIFIER"|"ID"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
 #'           Score = 123.0,
 #'           RelationshipScore = 123.0,
-#'           RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
+#'           RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
 #'           Id = 123,
 #'           BeginOffset = 123,
 #'           EndOffset = 123,
@@ -491,10 +566,10 @@ comprehendmedical_detect_entities <- function(Text) {
 #'     list(
 #'       Type = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
 #'       Attribute = list(
-#'         Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
+#'         Type = "NAME"|"DX_NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"PHONE_OR_FAX"|"EMAIL"|"IDENTIFIER"|"ID"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
 #'         Score = 123.0,
 #'         RelationshipScore = 123.0,
-#'         RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
+#'         RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
 #'         Id = 123,
 #'         BeginOffset = 123,
 #'         EndOffset = 123,
@@ -570,7 +645,7 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
 #'       Score = 123.0,
 #'       Text = "string",
 #'       Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'       Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
+#'       Type = "NAME"|"DX_NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"PHONE_OR_FAX"|"EMAIL"|"IDENTIFIER"|"ID"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
 #'       Traits = list(
 #'         list(
 #'           Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
@@ -579,10 +654,10 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
 #'       ),
 #'       Attributes = list(
 #'         list(
-#'           Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
+#'           Type = "NAME"|"DX_NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"PHONE_OR_FAX"|"EMAIL"|"IDENTIFIER"|"ID"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
 #'           Score = 123.0,
 #'           RelationshipScore = 123.0,
-#'           RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
+#'           RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"TEST_UNIT"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
 #'           Id = 123,
 #'           BeginOffset = 123,
 #'           EndOffset = 123,
@@ -656,13 +731,13 @@ comprehendmedical_detect_phi <- function(Text) {
 #'       Id = 123,
 #'       Text = "string",
 #'       Category = "MEDICAL_CONDITION",
-#'       Type = "DX_NAME",
+#'       Type = "DX_NAME"|"TIME_EXPRESSION",
 #'       Score = 123.0,
 #'       BeginOffset = 123,
 #'       EndOffset = 123,
 #'       Attributes = list(
 #'         list(
-#'           Type = "ACUITY"|"DIRECTION"|"SYSTEM_ORGAN_SITE"|"QUALITY"|"QUANTITY",
+#'           Type = "ACUITY"|"DIRECTION"|"SYSTEM_ORGAN_SITE"|"QUALITY"|"QUANTITY"|"TIME_TO_DX_NAME"|"TIME_EXPRESSION",
 #'           Score = 123.0,
 #'           RelationshipScore = 123.0,
 #'           Id = 123,
@@ -674,7 +749,9 @@ comprehendmedical_detect_phi <- function(Text) {
 #'               Name = "NEGATION"|"DIAGNOSIS"|"SIGN"|"SYMPTOM",
 #'               Score = 123.0
 #'             )
-#'           )
+#'           ),
+#'           Category = "DX_NAME"|"TIME_EXPRESSION",
+#'           RelationshipType = "OVERLAP"|"SYSTEM_ORGAN_SITE"
 #'         )
 #'       ),
 #'       Traits = list(
@@ -816,6 +893,115 @@ comprehendmedical_infer_rx_norm <- function(Text) {
   return(response)
 }
 .comprehendmedical$operations$infer_rx_norm <- comprehendmedical_infer_rx_norm
+
+#' InferSNOMEDCT detects possible medical concepts as entities and links
+#' them to codes from the Systematized Nomenclature of Medicine, Clinical
+#' Terms (SNOMED-CT) ontology
+#'
+#' @description
+#' InferSNOMEDCT detects possible medical concepts as entities and links
+#' them to codes from the Systematized Nomenclature of Medicine, Clinical
+#' Terms (SNOMED-CT) ontology
+#'
+#' @usage
+#' comprehendmedical_infer_snomedct(Text)
+#'
+#' @param Text &#91;required&#93; The input text to be analyzed using InferSNOMEDCT. The text should be a
+#' string with 1 to 10000 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entities = list(
+#'     list(
+#'       Id = 123,
+#'       Text = "string",
+#'       Category = "MEDICAL_CONDITION"|"ANATOMY"|"TEST_TREATMENT_PROCEDURE",
+#'       Type = "DX_NAME"|"TEST_NAME"|"PROCEDURE_NAME"|"TREATMENT_NAME",
+#'       Score = 123.0,
+#'       BeginOffset = 123,
+#'       EndOffset = 123,
+#'       Attributes = list(
+#'         list(
+#'           Category = "MEDICAL_CONDITION"|"ANATOMY"|"TEST_TREATMENT_PROCEDURE",
+#'           Type = "ACUITY"|"QUALITY"|"DIRECTION"|"SYSTEM_ORGAN_SITE"|"TEST_VALUE"|"TEST_UNIT",
+#'           Score = 123.0,
+#'           RelationshipScore = 123.0,
+#'           RelationshipType = "ACUITY"|"QUALITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
+#'           Id = 123,
+#'           BeginOffset = 123,
+#'           EndOffset = 123,
+#'           Text = "string",
+#'           Traits = list(
+#'             list(
+#'               Name = "NEGATION"|"DIAGNOSIS"|"SIGN"|"SYMPTOM",
+#'               Score = 123.0
+#'             )
+#'           ),
+#'           SNOMEDCTConcepts = list(
+#'             list(
+#'               Description = "string",
+#'               Code = "string",
+#'               Score = 123.0
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Traits = list(
+#'         list(
+#'           Name = "NEGATION"|"DIAGNOSIS"|"SIGN"|"SYMPTOM",
+#'           Score = 123.0
+#'         )
+#'       ),
+#'       SNOMEDCTConcepts = list(
+#'         list(
+#'           Description = "string",
+#'           Code = "string",
+#'           Score = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   PaginationToken = "string",
+#'   ModelVersion = "string",
+#'   SNOMEDCTDetails = list(
+#'     Edition = "string",
+#'     Language = "string",
+#'     VersionDate = "string"
+#'   ),
+#'   Characters = list(
+#'     OriginalTextCharacters = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$infer_snomedct(
+#'   Text = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_infer_snomedct
+comprehendmedical_infer_snomedct <- function(Text) {
+  op <- new_operation(
+    name = "InferSNOMEDCT",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$infer_snomedct_input(Text = Text)
+  output <- .comprehendmedical$infer_snomedct_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$infer_snomedct <- comprehendmedical_infer_snomedct
 
 #' Gets a list of medical entity detection jobs that you have submitted
 #'
@@ -1185,6 +1371,96 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
 }
 .comprehendmedical$operations$list_rx_norm_inference_jobs <- comprehendmedical_list_rx_norm_inference_jobs
 
+#' Gets a list of InferSNOMEDCT jobs a user has submitted
+#'
+#' @description
+#' Gets a list of InferSNOMEDCT jobs a user has submitted.
+#'
+#' @usage
+#' comprehendmedical_list_snomedct_inference_jobs(Filter, NextToken,
+#'   MaxResults)
+#'
+#' @param Filter 
+#' @param NextToken Identifies the next page of InferSNOMEDCT results to return.
+#' @param MaxResults The maximum number of results to return in each page. The default is
+#' 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ComprehendMedicalAsyncJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InputDataConfig = list(
+#'         S3Bucket = "string",
+#'         S3Key = "string"
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Bucket = "string",
+#'         S3Key = "string"
+#'       ),
+#'       LanguageCode = "en",
+#'       DataAccessRoleArn = "string",
+#'       ManifestFilePath = "string",
+#'       KMSKey = "string",
+#'       ModelVersion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_snomedct_inference_jobs(
+#'   Filter = list(
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     SubmitTimeBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SubmitTimeAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_list_snomedct_inference_jobs
+comprehendmedical_list_snomedct_inference_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListSNOMEDCTInferenceJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$list_snomedct_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehendmedical$list_snomedct_inference_jobs_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$list_snomedct_inference_jobs <- comprehendmedical_list_snomedct_inference_jobs
+
 #' Starts an asynchronous medical entity detection job for a collection of
 #' documents
 #'
@@ -1199,20 +1475,21 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
 #'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
 #'   KMSKey, LanguageCode)
 #'
-#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
-#' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
+#' @param InputDataConfig &#91;required&#93; The input configuration that specifies the format and location of the
+#' input data for the job.
+#' @param OutputDataConfig &#91;required&#93; The output configuration that specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend Medical read access to your
-#' input data. For more information, see [Role-Based Permissions Required
-#' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' (IAM) role that grants Comprehend Medical; read access to your input
+#' data. For more information, see [Role-Based Permissions Required for
+#' Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Amazon Comprehend Medical generates one.
+#' token, Comprehend Medical; generates one for you.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
-#' language.
+#' language. Comprehend Medical; processes files in US English (en).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1278,13 +1555,13 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend Medical read access to your
-#' input data. For more information, see [Role-Based Permissions Required
-#' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' (IAM) role that grants Comprehend Medical; read access to your input
+#' data. For more information, see [Role-Based Permissions Required for
+#' Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Amazon Comprehend Medical generates one.
+#' token, Comprehend Medical; generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
@@ -1353,13 +1630,13 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend Medical read access to your
-#' input data. For more information, see [Role-Based Permissions Required
-#' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' (IAM) role that grants Comprehend Medical; read access to your input
+#' data. For more information, see [Role-Based Permissions Required for
+#' Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Amazon Comprehend Medical generates one.
+#' token, Comprehend Medical; generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
@@ -1429,13 +1706,13 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend Medical read access to your
-#' input data. For more information, see [Role-Based Permissions Required
-#' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' (IAM) role that grants Comprehend Medical; read access to your input
+#' data. For more information, see [Role-Based Permissions Required for
+#' Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Amazon Comprehend Medical generates one.
+#' token, Comprehend Medical; generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
@@ -1487,6 +1764,79 @@ comprehendmedical_start_rx_norm_inference_job <- function(InputDataConfig, Outpu
   return(response)
 }
 .comprehendmedical$operations$start_rx_norm_inference_job <- comprehendmedical_start_rx_norm_inference_job
+
+#' Starts an asynchronous job to detect medical concepts and link them to
+#' the SNOMED-CT ontology
+#'
+#' @description
+#' Starts an asynchronous job to detect medical concepts and link them to
+#' the SNOMED-CT ontology. Use the DescribeSNOMEDCTInferenceJob operation
+#' to track the status of a job.
+#'
+#' @usage
+#' comprehendmedical_start_snomedct_inference_job(InputDataConfig,
+#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
+#'   KMSKey, LanguageCode)
+#'
+#' @param InputDataConfig &#91;required&#93; 
+#' @param OutputDataConfig &#91;required&#93; 
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data.
+#' @param JobName The user generated name the asynchronous InferSNOMEDCT job.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend Medical generates one.
+#' @param KMSKey An AWS Key Management Service key used to encrypt your output files. If
+#' you do not specify a key, the files are written in plain text.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
+#' language.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_snomedct_inference_job(
+#'   InputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   OutputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   DataAccessRoleArn = "string",
+#'   JobName = "string",
+#'   ClientRequestToken = "string",
+#'   KMSKey = "string",
+#'   LanguageCode = "en"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_start_snomedct_inference_job
+comprehendmedical_start_snomedct_inference_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
+  op <- new_operation(
+    name = "StartSNOMEDCTInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$start_snomedct_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
+  output <- .comprehendmedical$start_snomedct_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$start_snomedct_inference_job <- comprehendmedical_start_snomedct_inference_job
 
 #' Stops a medical entities detection job in progress
 #'
@@ -1667,3 +2017,48 @@ comprehendmedical_stop_rx_norm_inference_job <- function(JobId) {
   return(response)
 }
 .comprehendmedical$operations$stop_rx_norm_inference_job <- comprehendmedical_stop_rx_norm_inference_job
+
+#' Stops an InferSNOMEDCT inference job in progress
+#'
+#' @description
+#' Stops an InferSNOMEDCT inference job in progress.
+#'
+#' @usage
+#' comprehendmedical_stop_snomedct_inference_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The job id of the asynchronous InferSNOMEDCT job to be stopped.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_snomedct_inference_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_stop_snomedct_inference_job
+comprehendmedical_stop_snomedct_inference_job <- function(JobId) {
+  op <- new_operation(
+    name = "StopSNOMEDCTInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$stop_snomedct_inference_job_input(JobId = JobId)
+  output <- .comprehendmedical$stop_snomedct_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$stop_snomedct_inference_job <- comprehendmedical_stop_snomedct_inference_job

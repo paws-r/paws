@@ -4,9 +4,15 @@
 \alias{apigatewayv2_create_integration_response}
 \title{Creates an IntegrationResponses}
 \usage{
-apigatewayv2_create_integration_response(ApiId, ContentHandlingStrategy,
-  IntegrationId, IntegrationResponseKey, ResponseParameters,
-  ResponseTemplates, TemplateSelectionExpression)
+apigatewayv2_create_integration_response(
+  ApiId,
+  ContentHandlingStrategy = NULL,
+  IntegrationId,
+  IntegrationResponseKey,
+  ResponseParameters = NULL,
+  ResponseTemplates = NULL,
+  TemplateSelectionExpression = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -49,39 +55,9 @@ template as the value.}
 \item{TemplateSelectionExpression}{The template selection expression for the integration response.
 Supported only for WebSocket APIs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  IntegrationResponseId = "string",
-  IntegrationResponseKey = "string",
-  ResponseParameters = list(
-    "string"
-  ),
-  ResponseTemplates = list(
-    "string"
-  ),
-  TemplateSelectionExpression = "string"
-)
-}
-}
 \description{
 Creates an IntegrationResponses.
-}
-\section{Request syntax}{
-\preformatted{svc$create_integration_response(
-  ApiId = "string",
-  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  IntegrationId = "string",
-  IntegrationResponseKey = "string",
-  ResponseParameters = list(
-    "string"
-  ),
-  ResponseTemplates = list(
-    "string"
-  ),
-  TemplateSelectionExpression = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_integration_response.html} for full documentation.
+}
 \keyword{internal}

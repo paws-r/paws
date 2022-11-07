@@ -4,7 +4,7 @@
 \alias{ec2_delete_flow_logs}
 \title{Deletes one or more flow logs}
 \usage{
-ec2_delete_flow_logs(DryRun, FlowLogIds)
+ec2_delete_flow_logs(DryRun = NULL, FlowLogIds)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -16,31 +16,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Constraint: Maximum of 1000 flow log IDs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Unsuccessful = list(
-    list(
-      Error = list(
-        Code = "string",
-        Message = "string"
-      ),
-      ResourceId = "string"
-    )
-  )
-)
-}
-}
 \description{
 Deletes one or more flow logs.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_flow_logs(
-  DryRun = TRUE|FALSE,
-  FlowLogIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_flow_logs.html} for full documentation.
+}
 \keyword{internal}

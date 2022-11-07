@@ -5,8 +5,15 @@
 \title{Gets paginated records, optionally changed after a particular sync count
 for a dataset and identity}
 \usage{
-cognitosync_list_records(IdentityPoolId, IdentityId, DatasetName,
-  LastSyncCount, NextToken, MaxResults, SyncSessionToken)
+cognitosync_list_records(
+  IdentityPoolId,
+  IdentityId,
+  DatasetName,
+  LastSyncCount = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  SyncSessionToken = NULL
+)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example,
@@ -28,56 +35,9 @@ Cognito. GUID generation is unique within a region.}
 
 \item{SyncSessionToken}{A token containing a session ID, identity ID, and expiration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Records = list(
-    list(
-      Key = "string",
-      Value = "string",
-      SyncCount = 123,
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedBy = "string",
-      DeviceLastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string",
-  Count = 123,
-  DatasetSyncCount = 123,
-  LastModifiedBy = "string",
-  MergedDatasetNames = list(
-    "string"
-  ),
-  DatasetExists = TRUE|FALSE,
-  DatasetDeletedAfterRequestedSyncCount = TRUE|FALSE,
-  SyncSessionToken = "string"
-)
-}
-}
 \description{
-Gets paginated records, optionally changed after a particular sync count
-for a dataset and identity. With Amazon Cognito Sync, each identity has
-access only to its own data. Thus, the credentials used to make this API
-call need to have access to the identity data.
+Gets paginated records, optionally changed after a particular sync count for a dataset and identity. With Amazon Cognito Sync, each identity has access only to its own data. Thus, the credentials used to make this API call need to have access to the identity data.
 
-ListRecords can be called with temporary user credentials provided by
-Cognito Identity or with developer credentials. You should use Cognito
-Identity credentials to make this API call.
+See \url{https://paws-r.github.io/docs/cognitosync/list_records.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_records(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DatasetName = "string",
-  LastSyncCount = 123,
-  NextToken = "string",
-  MaxResults = 123,
-  SyncSessionToken = "string"
-)
-}
-}
-
 \keyword{internal}

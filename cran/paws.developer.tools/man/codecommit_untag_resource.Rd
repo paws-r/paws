@@ -12,22 +12,9 @@ remove tags.}
 
 \item{tagKeys}{[required] The tag key for each tag that you want to remove from the resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes tags for a resource in AWS CodeCommit. For a list of valid
-resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations}
-in the \emph{AWS CodeCommit User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations} in the \emph{AWS CodeCommit User Guide}.
 
+See \url{https://paws-r.github.io/docs/codecommit/untag_resource.html} for full documentation.
+}
 \keyword{internal}

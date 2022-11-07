@@ -5,53 +5,16 @@
 \title{Specify the time-based auto scaling configuration for a specified
 instance}
 \usage{
-opsworks_set_time_based_auto_scaling(InstanceId, AutoScalingSchedule)
+opsworks_set_time_based_auto_scaling(InstanceId, AutoScalingSchedule = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
 
 \item{AutoScalingSchedule}{An \code{AutoScalingSchedule} with the instance schedule.}
 }
-\value{
-An empty list.
-}
 \description{
-Specify the time-based auto scaling configuration for a specified
-instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
+Specify the time-based auto scaling configuration for a specified instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/set_time_based_auto_scaling.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$set_time_based_auto_scaling(
-  InstanceId = "string",
-  AutoScalingSchedule = list(
-    Monday = list(
-      "string"
-    ),
-    Tuesday = list(
-      "string"
-    ),
-    Wednesday = list(
-      "string"
-    ),
-    Thursday = list(
-      "string"
-    ),
-    Friday = list(
-      "string"
-    ),
-    Saturday = list(
-      "string"
-    ),
-    Sunday = list(
-      "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

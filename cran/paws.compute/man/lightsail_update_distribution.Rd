@@ -5,8 +5,14 @@
 \title{Updates an existing Amazon Lightsail content delivery network (CDN)
 distribution}
 \usage{
-lightsail_update_distribution(distributionName, origin,
-  defaultCacheBehavior, cacheBehaviorSettings, cacheBehaviors, isEnabled)
+lightsail_update_distribution(
+  distributionName,
+  origin = NULL,
+  defaultCacheBehavior = NULL,
+  cacheBehaviorSettings = NULL,
+  cacheBehaviors = NULL,
+  isEnabled = NULL
+)
 }
 \arguments{
 \item{distributionName}{[required] The name of the distribution to update.
@@ -15,7 +21,7 @@ Use the \code{\link[=lightsail_get_distributions]{get_distributions}} action to 
 a list of distribution names that you can specify.}
 
 \item{origin}{An object that describes the origin resource for the distribution, such
-as a Lightsail instance or load balancer.
+as a Lightsail instance, bucket, or load balancer.
 
 The distribution pulls, caches, and serves content from the origin.}
 
@@ -34,84 +40,9 @@ distribution.}
 
 \item{isEnabled}{Indicates whether to enable the distribution.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  operation = list(
-    id = "string",
-    resourceName = "string",
-    resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    location = list(
-      availabilityZone = "string",
-      regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-    ),
-    isTerminal = TRUE|FALSE,
-    operationDetails = "string",
-    operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-    status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-    statusChangedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    errorCode = "string",
-    errorDetails = "string"
-  )
-)
-}
-}
 \description{
-Updates an existing Amazon Lightsail content delivery network (CDN)
-distribution.
+Updates an existing Amazon Lightsail content delivery network (CDN) distribution.
 
-Use this action to update the configuration of your existing
-distribution
+See \url{https://paws-r.github.io/docs/lightsail/update_distribution.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_distribution(
-  distributionName = "string",
-  origin = list(
-    name = "string",
-    regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2",
-    protocolPolicy = "http-only"|"https-only"
-  ),
-  defaultCacheBehavior = list(
-    behavior = "dont-cache"|"cache"
-  ),
-  cacheBehaviorSettings = list(
-    defaultTTL = 123,
-    minimumTTL = 123,
-    maximumTTL = 123,
-    allowedHTTPMethods = "string",
-    cachedHTTPMethods = "string",
-    forwardedCookies = list(
-      option = "none"|"allow-list"|"all",
-      cookiesAllowList = list(
-        "string"
-      )
-    ),
-    forwardedHeaders = list(
-      option = "none"|"allow-list"|"all",
-      headersAllowList = list(
-        "Accept"|"Accept-Charset"|"Accept-Datetime"|"Accept-Encoding"|"Accept-Language"|"Authorization"|"CloudFront-Forwarded-Proto"|"CloudFront-Is-Desktop-Viewer"|"CloudFront-Is-Mobile-Viewer"|"CloudFront-Is-SmartTV-Viewer"|"CloudFront-Is-Tablet-Viewer"|"CloudFront-Viewer-Country"|"Host"|"Origin"|"Referer"
-      )
-    ),
-    forwardedQueryStrings = list(
-      option = TRUE|FALSE,
-      queryStringsAllowList = list(
-        "string"
-      )
-    )
-  ),
-  cacheBehaviors = list(
-    list(
-      path = "string",
-      behavior = "dont-cache"|"cache"
-    )
-  ),
-  isEnabled = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

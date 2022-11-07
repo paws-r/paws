@@ -4,14 +4,25 @@
 \alias{ssm_create_patch_baseline}
 \title{Creates a patch baseline}
 \usage{
-ssm_create_patch_baseline(OperatingSystem, Name, GlobalFilters,
-  ApprovalRules, ApprovedPatches, ApprovedPatchesComplianceLevel,
-  ApprovedPatchesEnableNonSecurity, RejectedPatches,
-  RejectedPatchesAction, Description, Sources, ClientToken, Tags)
+ssm_create_patch_baseline(
+  OperatingSystem = NULL,
+  Name,
+  GlobalFilters = NULL,
+  ApprovalRules = NULL,
+  ApprovedPatches = NULL,
+  ApprovedPatchesComplianceLevel = NULL,
+  ApprovedPatchesEnableNonSecurity = NULL,
+  RejectedPatches = NULL,
+  RejectedPatchesAction = NULL,
+  Description = NULL,
+  Sources = NULL,
+  ClientToken = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{OperatingSystem}{Defines the operating system the patch baseline applies to. The Default
-value is WINDOWS.}
+\item{OperatingSystem}{Defines the operating system the patch baseline applies to. The default
+value is \code{WINDOWS}.}
 
 \item{Name}{[required] The name of the patch baseline.}
 
@@ -23,42 +34,42 @@ value is WINDOWS.}
 
 For information about accepted formats for lists of approved patches and
 rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{About package name formats for approved and rejected patch lists}
-in the \emph{AWS Systems Manager User Guide}.}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{ApprovedPatchesComplianceLevel}{Defines the compliance level for approved patches. This means that if an
-approved patch is reported as missing, this is the severity of the
-compliance violation. The default value is UNSPECIFIED.}
+\item{ApprovedPatchesComplianceLevel}{Defines the compliance level for approved patches. When an approved
+patch is reported as missing, this value describes the severity of the
+compliance violation. The default value is \code{UNSPECIFIED}.}
 
 \item{ApprovedPatchesEnableNonSecurity}{Indicates whether the list of approved patches includes non-security
-updates that should be applied to the instances. The default value is
-'false'. Applies to Linux instances only.}
+updates that should be applied to the managed nodes. The default value
+is \code{false}. Applies to Linux managed nodes only.}
 
 \item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
 
 For information about accepted formats for lists of approved patches and
 rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{About package name formats for approved and rejected patch lists}
-in the \emph{AWS Systems Manager User Guide}.}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the
-RejectedPackages list.
+\code{RejectedPackages} list.
 \itemize{
-\item \strong{ALLOW_AS_DEPENDENCY}: A package in the Rejected patches list is
-installed only if it is a dependency of another package. It is
+\item \strong{\code{ALLOW_AS_DEPENDENCY}} : A package in the \code{Rejected} patches list
+is installed only if it is a dependency of another package. It is
 considered compliant with the patch baseline, and its status is
-reported as \emph{InstalledOther}. This is the default action if no
+reported as \code{InstalledOther}. This is the default action if no
 option is specified.
-\item \strong{BLOCK}: Packages in the RejectedPatches list, and packages that
-include them as dependencies, are not installed under any
+\item \strong{\code{BLOCK}} : Packages in the \code{RejectedPatches} list, and packages
+that include them as dependencies, aren't installed under any
 circumstances. If a package was installed before it was added to the
 Rejected patches list, it is considered non-compliant with the patch
-baseline, and its status is reported as \emph{InstalledRejected}.
+baseline, and its status is reported as \code{InstalledRejected}.
 }}
 
 \item{Description}{A description of the patch baseline.}
 
-\item{Sources}{Information about the patches to use to update the instances, including
-target operating systems and source repositories. Applies to Linux
-instances only.}
+\item{Sources}{Information about the patches to use to update the managed nodes,
+including target operating systems and source repositories. Applies to
+Linux managed nodes only.}
 
 \item{ClientToken}{User-provided idempotency token.}
 
@@ -67,90 +78,18 @@ categorize a resource in different ways, such as by purpose, owner, or
 environment. For example, you might want to tag a patch baseline to
 identify the severity level of patches it specifies and the operating
 system family it applies to. In this case, you could specify the
-following key name/value pairs:
+following key-value pairs:
 \itemize{
 \item \verb{Key=PatchSeverity,Value=Critical}
 \item \verb{Key=OS,Value=Windows}
 }
 
 To add tags to an existing patch baseline, use the
-\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BaselineId = "string"
-)
-}
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} operation.}
 }
 \description{
 Creates a patch baseline.
 
-For information about valid key and value pairs in \code{PatchFilters} for
-each supported operating system type, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html}{PatchFilter}.
+See \url{https://paws-r.github.io/docs/ssm/create_patch_baseline.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_patch_baseline(
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-  Name = "string",
-  GlobalFilters = list(
-    PatchFilters = list(
-      list(
-        Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-        Values = list(
-          "string"
-        )
-      )
-    )
-  ),
-  ApprovalRules = list(
-    PatchRules = list(
-      list(
-        PatchFilterGroup = list(
-          PatchFilters = list(
-            list(
-              Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-              Values = list(
-                "string"
-              )
-            )
-          )
-        ),
-        ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-        ApproveAfterDays = 123,
-        ApproveUntilDate = "string",
-        EnableNonSecurity = TRUE|FALSE
-      )
-    )
-  ),
-  ApprovedPatches = list(
-    "string"
-  ),
-  ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-  ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
-  RejectedPatches = list(
-    "string"
-  ),
-  RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
-  Description = "string",
-  Sources = list(
-    list(
-      Name = "string",
-      Products = list(
-        "string"
-      ),
-      Configuration = "string"
-    )
-  ),
-  ClientToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

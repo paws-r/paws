@@ -4,8 +4,12 @@
 \alias{ec2_describe_spot_fleet_instances}
 \title{Describes the running instances for the specified Spot Fleet}
 \usage{
-ec2_describe_spot_fleet_instances(DryRun, MaxResults, NextToken,
-  SpotFleetRequestId)
+ec2_describe_spot_fleet_instances(
+  DryRun = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  SpotFleetRequestId
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -22,42 +26,9 @@ value.}
 
 \item{SpotFleetRequestId}{[required] The ID of the Spot Fleet request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActiveInstances = list(
-    list(
-      InstanceId = "string",
-      InstanceType = "string",
-      SpotInstanceRequestId = "string",
-      InstanceHealth = "healthy"|"unhealthy"
-    )
-  ),
-  NextToken = "string",
-  SpotFleetRequestId = "string"
-)
-}
-}
 \description{
 Describes the running instances for the specified Spot Fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_spot_fleet_instances(
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string",
-  SpotFleetRequestId = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example lists the Spot Instances associated with the specified Spot
-# fleet.
-svc$describe_spot_fleet_instances(
-  SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_spot_fleet_instances.html} for full documentation.
 }
 \keyword{internal}

@@ -4,15 +4,25 @@
 \alias{ec2_modify_traffic_mirror_filter_rule}
 \title{Modifies the specified Traffic Mirror rule}
 \usage{
-ec2_modify_traffic_mirror_filter_rule(TrafficMirrorFilterRuleId,
-  TrafficDirection, RuleNumber, RuleAction, DestinationPortRange,
-  SourcePortRange, Protocol, DestinationCidrBlock, SourceCidrBlock,
-  Description, RemoveFields, DryRun)
+ec2_modify_traffic_mirror_filter_rule(
+  TrafficMirrorFilterRuleId,
+  TrafficDirection = NULL,
+  RuleNumber = NULL,
+  RuleAction = NULL,
+  DestinationPortRange = NULL,
+  SourcePortRange = NULL,
+  Protocol = NULL,
+  DestinationCidrBlock = NULL,
+  SourceCidrBlock = NULL,
+  Description = NULL,
+  RemoveFields = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TrafficMirrorFilterRuleId}{[required] The ID of the Traffic Mirror rule.}
 
-\item{TrafficDirection}{The type of traffic (\code{ingress} | \code{egress}) to assign to the rule.}
+\item{TrafficDirection}{The type of traffic to assign to the rule.}
 
 \item{RuleNumber}{The number of the Traffic Mirror rule. This number must be unique for
 each Traffic Mirror rule in a given direction. The rules are processed
@@ -43,60 +53,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorFilterRule = list(
-    TrafficMirrorFilterRuleId = "string",
-    TrafficMirrorFilterId = "string",
-    TrafficDirection = "ingress"|"egress",
-    RuleNumber = 123,
-    RuleAction = "accept"|"reject",
-    Protocol = 123,
-    DestinationPortRange = list(
-      FromPort = 123,
-      ToPort = 123
-    ),
-    SourcePortRange = list(
-      FromPort = 123,
-      ToPort = 123
-    ),
-    DestinationCidrBlock = "string",
-    SourceCidrBlock = "string",
-    Description = "string"
-  )
-)
-}
-}
 \description{
 Modifies the specified Traffic Mirror rule.
 
-\code{DestinationCidrBlock} and \code{SourceCidrBlock} must both be an IPv4 range
-or an IPv6 range.
+See \url{https://paws-r.github.io/docs/ec2/modify_traffic_mirror_filter_rule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_traffic_mirror_filter_rule(
-  TrafficMirrorFilterRuleId = "string",
-  TrafficDirection = "ingress"|"egress",
-  RuleNumber = 123,
-  RuleAction = "accept"|"reject",
-  DestinationPortRange = list(
-    FromPort = 123,
-    ToPort = 123
-  ),
-  SourcePortRange = list(
-    FromPort = 123,
-    ToPort = 123
-  ),
-  Protocol = 123,
-  DestinationCidrBlock = "string",
-  SourceCidrBlock = "string",
-  Description = "string",
-  RemoveFields = list(
-    "destination-port-range"|"source-port-range"|"protocol"|"description"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

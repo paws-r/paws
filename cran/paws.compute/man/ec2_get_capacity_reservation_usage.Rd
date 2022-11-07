@@ -4,8 +4,12 @@
 \alias{ec2_get_capacity_reservation_usage}
 \title{Gets usage information about a Capacity Reservation}
 \usage{
-ec2_get_capacity_reservation_usage(CapacityReservationId, NextToken,
-  MaxResults, DryRun)
+ec2_get_capacity_reservation_usage(
+  CapacityReservationId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{CapacityReservationId}{[required] The ID of the Capacity Reservation.}
@@ -24,38 +28,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  CapacityReservationId = "string",
-  InstanceType = "string",
-  TotalInstanceCount = 123,
-  AvailableInstanceCount = 123,
-  State = "active"|"expired"|"cancelled"|"pending"|"failed",
-  InstanceUsages = list(
-    list(
-      AccountId = "string",
-      UsedInstanceCount = 123
-    )
-  )
-)
-}
-}
 \description{
-Gets usage information about a Capacity Reservation. If the Capacity
-Reservation is shared, it shows usage information for the Capacity
-Reservation owner and each AWS account that is currently using the
-shared capacity. If the Capacity Reservation is not shared, it shows
-only the Capacity Reservation owner's usage.
-}
-\section{Request syntax}{
-\preformatted{svc$get_capacity_reservation_usage(
-  CapacityReservationId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  DryRun = TRUE|FALSE
-)
-}
-}
+Gets usage information about a Capacity Reservation. If the Capacity Reservation is shared, it shows usage information for the Capacity Reservation owner and each Amazon Web Services account that is currently using the shared capacity. If the Capacity Reservation is not shared, it shows only the Capacity Reservation owner's usage.
 
+See \url{https://paws-r.github.io/docs/ec2/get_capacity_reservation_usage.html} for full documentation.
+}
 \keyword{internal}

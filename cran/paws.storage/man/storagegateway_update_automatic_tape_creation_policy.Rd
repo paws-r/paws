@@ -5,7 +5,9 @@
 \title{Updates the automatic tape creation policy of a gateway}
 \usage{
 storagegateway_update_automatic_tape_creation_policy(
-  AutomaticTapeCreationRules, GatewayARN)
+  AutomaticTapeCreationRules,
+  GatewayARN
+)
 }
 \arguments{
 \item{AutomaticTapeCreationRules}{[required] An automatic tape creation policy consists of a list of automatic tape
@@ -14,35 +16,9 @@ new tapes.}
 
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Updates the automatic tape creation policy of a gateway. Use this to
-update the policy with a new set of automatic tape creation rules. This
-is only supported for tape gateways.
+Updates the automatic tape creation policy of a gateway. Use this to update the policy with a new set of automatic tape creation rules. This is only supported for tape gateways.
 
-By default, there is no automatic tape creation policy.
-
-A gateway can have only one automatic tape creation policy.
+See \url{https://paws-r.github.io/docs/storagegateway/update_automatic_tape_creation_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_automatic_tape_creation_policy(
-  AutomaticTapeCreationRules = list(
-    list(
-      TapeBarcodePrefix = "string",
-      PoolId = "string",
-      TapeSizeInBytes = 123,
-      MinimumNumTapes = 123,
-      Worm = TRUE|FALSE
-    )
-  ),
-  GatewayARN = "string"
-)
-}
-}
-
 \keyword{internal}

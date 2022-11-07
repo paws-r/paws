@@ -4,75 +4,141 @@
 \alias{s3_put_object}
 \title{Adds an object to a bucket}
 \usage{
-s3_put_object(ACL, Body, Bucket, CacheControl, ContentDisposition,
-  ContentEncoding, ContentLanguage, ContentLength, ContentMD5,
-  ContentType, Expires, GrantFullControl, GrantRead, GrantReadACP,
-  GrantWriteACP, Key, Metadata, ServerSideEncryption, StorageClass,
-  WebsiteRedirectLocation, SSECustomerAlgorithm, SSECustomerKey,
-  SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext,
-  BucketKeyEnabled, RequestPayer, Tagging, ObjectLockMode,
-  ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus,
-  ExpectedBucketOwner)
+s3_put_object(
+  ACL = NULL,
+  Body = NULL,
+  Bucket,
+  CacheControl = NULL,
+  ContentDisposition = NULL,
+  ContentEncoding = NULL,
+  ContentLanguage = NULL,
+  ContentLength = NULL,
+  ContentMD5 = NULL,
+  ContentType = NULL,
+  ChecksumAlgorithm = NULL,
+  ChecksumCRC32 = NULL,
+  ChecksumCRC32C = NULL,
+  ChecksumSHA1 = NULL,
+  ChecksumSHA256 = NULL,
+  Expires = NULL,
+  GrantFullControl = NULL,
+  GrantRead = NULL,
+  GrantReadACP = NULL,
+  GrantWriteACP = NULL,
+  Key,
+  Metadata = NULL,
+  ServerSideEncryption = NULL,
+  StorageClass = NULL,
+  WebsiteRedirectLocation = NULL,
+  SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL,
+  SSECustomerKeyMD5 = NULL,
+  SSEKMSKeyId = NULL,
+  SSEKMSEncryptionContext = NULL,
+  BucketKeyEnabled = NULL,
+  RequestPayer = NULL,
+  Tagging = NULL,
+  ObjectLockMode = NULL,
+  ObjectLockRetainUntilDate = NULL,
+  ObjectLockLegalHoldStatus = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
-\item{ACL}{The canned ACL to apply to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL}{Canned ACL}.
+\item{ACL}{The canned ACL to apply to the object. For more information, see Canned
+ACL.
 
 This action is not supported by Amazon S3 on Outposts.}
 
 \item{Body}{Object data.}
 
-\item{Bucket}{[required] The bucket name to which the PUT operation was initiated.
+\item{Bucket}{[required] The bucket name to which the PUT action was initiated.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see Using access
+points in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see Using
+Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Can be used to specify caching behavior along the request/reply chain.
 For more information, see
-\url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9}.}
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.}
 
 \item{ContentDisposition}{Specifies presentational information for the object. For more
 information, see
-\url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1}.}
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1.}
 
 \item{ContentEncoding}{Specifies what content encodings have been applied to the object and
 thus what decoding mechanisms must be applied to obtain the media-type
 referenced by the Content-Type header field. For more information, see
-\url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11}.}
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11.}
 
 \item{ContentLanguage}{The language the content is in.}
 
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
 body cannot be determined automatically. For more information, see
-\url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13}.}
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the message (without the
 headers) according to RFC 1864. This header can be used as a message
 integrity check to verify that the data is the same data that was
 originally sent. Although it is optional, we recommend using the
 Content-MD5 mechanism as an end-to-end integrity check. For more
-information about REST request authentication, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html}{REST Authentication}.}
+information about REST request authentication, see REST Authentication.}
 
 \item{ContentType}{A standard MIME type describing the format of the contents. For more
 information, see
-\url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17}.}
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17.}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see Checking object integrity
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
+
+\item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the base64-encoded, 32-bit CRC32 checksum of the object. For
+more information, see Checking object integrity in the \emph{Amazon S3 User
+Guide}.}
+
+\item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the base64-encoded, 32-bit CRC32C checksum of the object. For
+more information, see Checking object integrity in the \emph{Amazon S3 User
+Guide}.}
+
+\item{ChecksumSHA1}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
+more information, see Checking object integrity in the \emph{Amazon S3 User
+Guide}.}
+
+\item{ChecksumSHA256}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
+more information, see Checking object integrity in the \emph{Amazon S3 User
+Guide}.}
 
 \item{Expires}{The date and time at which the object is no longer cacheable. For more
 information, see
-\url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21}.}
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21.}
 
 \item{GrantFullControl}{Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 object.
@@ -91,7 +157,7 @@ This action is not supported by Amazon S3 on Outposts.}
 
 This action is not supported by Amazon S3 on Outposts.}
 
-\item{Key}{[required] Object key for which the PUT operation was initiated.}
+\item{Key}{[required] Object key for which the PUT action was initiated.}
 
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
@@ -102,13 +168,13 @@ Amazon S3 (for example, AES256, aws:kms).}
 created objects. The STANDARD storage class provides high durability and
 high availability. Depending on performance needs, you can specify a
 different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
-in the \emph{Amazon S3 Service Developer Guide}.}
+Storage Class. For more information, see Storage Classes in the \emph{Amazon
+S3 User Guide}.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
 Amazon S3 stores the value of this header in the object metadata. For
-information about object metadata, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html}{Object Key and Metadata}.
+information about object metadata, see Object Key and Metadata.
 
 In the following example, the request header sets the redirect to an
 object (anotherPage.html) in the same bucket:
@@ -120,8 +186,8 @@ another website:
 
 \verb{x-amz-website-redirect-location: http://www.example.com/}
 
-For more information about website hosting in Amazon S3, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html}{How to Configure Website Page Redirects}.}
+For more information about website hosting in Amazon S3, see Hosting
+Websites on Amazon S3 and How to Configure Website Page Redirects.}
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (for
 example, AES256).}
@@ -137,27 +203,25 @@ appropriate for use with the algorithm specified in the
 that the encryption key was transmitted without error.}
 
 \item{SSEKMSKeyId}{If \code{x-amz-server-side-encryption} is present and has the value of
-\code{aws:kms}, this header specifies the ID of the AWS Key Management
-Service (AWS KMS) symmetrical customer managed customer master key (CMK)
-that was used for the object.
-
-If the value of \code{x-amz-server-side-encryption} is \code{aws:kms}, this header
-specifies the ID of the symmetric customer managed AWS KMS CMK that will
-be used for the object. If you specify
+\code{aws:kms}, this header specifies the ID of the Amazon Web Services Key
+Management Service (Amazon Web Services KMS) symmetrical customer
+managed key that was used for the object. If you specify
 \code{x-amz-server-side-encryption:aws:kms}, but do not
 provide\code{ x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3 uses
-the AWS managed CMK in AWS to protect the data.}
+the Amazon Web Services managed key to protect the data. If the KMS key
+does not exist in the same account issuing the command, you must use the
+full ARN and not just the ID.}
 
-\item{SSEKMSEncryptionContext}{Specifies the AWS KMS Encryption Context to use for object encryption.
-The value of this header is a base64-encoded UTF-8 string holding JSON
-with the encryption context key-value pairs.}
+\item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for
+object encryption. The value of this header is a base64-encoded UTF-8
+string holding JSON with the encryption context key-value pairs.}
 
 \item{BucketKeyEnabled}{Specifies whether Amazon S3 should use an S3 Bucket Key for object
 encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
 this header to \code{true} causes Amazon S3 to use an S3 Bucket Key for
 object encryption with SSE-KMS.
 
-Specifying this header with a PUT operation doesn’t affect bucket-level
+Specifying this header with a PUT action doesn’t affect bucket-level
 settings for S3 Bucket Key.}
 
 \item{RequestPayer}{}
@@ -167,224 +231,19 @@ parameters. (For example, "Key1=Value1")}
 
 \item{ObjectLockMode}{The Object Lock mode that you want to apply to this object.}
 
-\item{ObjectLockRetainUntilDate}{The date and time when you want this object's Object Lock to expire.}
+\item{ObjectLockRetainUntilDate}{The date and time when you want this object's Object Lock to expire.
+Must be formatted as a timestamp parameter.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether a legal hold will be applied to this object. For more
-information about S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Object Lock}.}
+information about S3 Object Lock, see Object Lock.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Expiration = "string",
-  ETag = "string",
-  ServerSideEncryption = "AES256"|"aws:kms",
-  VersionId = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKeyMD5 = "string",
-  SSEKMSKeyId = "string",
-  SSEKMSEncryptionContext = "string",
-  BucketKeyEnabled = TRUE|FALSE,
-  RequestCharged = "requester"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Adds an object to a bucket. You must have WRITE permissions on a bucket
-to add an object to it.
+Adds an object to a bucket. You must have WRITE permissions on a bucket to add an object to it.
 
-Amazon S3 never adds partial objects; if you receive a success response,
-Amazon S3 added the entire object to the bucket.
-
-Amazon S3 is a distributed system. If it receives multiple write
-requests for the same object simultaneously, it overwrites all but the
-last object written. Amazon S3 does not provide object locking; if you
-need this, make sure to build it into your application layer or use
-versioning instead.
-
-To ensure that data is not corrupted traversing the network, use the
-\code{Content-MD5} header. When you use this header, Amazon S3 checks the
-object against the provided MD5 value and, if they do not match, returns
-an error. Additionally, you can calculate the MD5 while putting an
-object to Amazon S3 and compare the returned ETag to the calculated MD5
-value.
-
-The \code{Content-MD5} header is required for any request to upload an object
-with a retention period configured using Amazon S3 Object Lock. For more
-information about Amazon S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html}{Amazon S3 Object Lock Overview}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-\strong{Server-side Encryption}
-
-You can optionally request server-side encryption. With server-side
-encryption, Amazon S3 encrypts your data as it writes it to disks in its
-data centers and decrypts the data when you access it. You have the
-option to provide your own encryption key or use AWS managed encryption
-keys (SSE-S3 or SSE-KMS). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html}{Using Server-Side Encryption}.
-
-If you request server-side encryption using AWS Key Management Service
-(SSE-KMS), you can enable an S3 Bucket Key at the object-level. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{Amazon S3 Bucket Keys}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-\strong{Access Control List (ACL)-Specific Request Headers}
-
-You can use headers to grant ACL- based permissions. By default, all
-objects are private. Only the owner has full access control. When adding
-a new object, you can grant permissions to individual AWS accounts or to
-predefined groups defined by Amazon S3. These permissions are then added
-to the ACL on the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Access Control List (ACL) Overview}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/managing-acls.html}{Managing ACLs Using the REST API}.
-
-\strong{Storage Class Options}
-
-By default, Amazon S3 uses the STANDARD Storage Class to store newly
-created objects. The STANDARD storage class provides high durability and
-high availability. Depending on performance needs, you can specify a
-different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
-in the \emph{Amazon S3 Service Developer Guide}.
-
-\strong{Versioning}
-
-If you enable versioning for a bucket, Amazon S3 automatically generates
-a unique version ID for the object being stored. Amazon S3 returns this
-ID in the response. When you enable versioning for a bucket, if Amazon
-S3 receives multiple write requests for the same object simultaneously,
-it stores all of the objects.
-
-For more information about versioning, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/AddingObjectstoVersioningEnabledBuckets.html}{Adding Objects to Versioning Enabled Buckets}.
-For information about returning the versioning state of a bucket, see
-\code{\link[=s3_get_bucket_versioning]{get_bucket_versioning}}.
-
-\strong{Related Resources}
-\itemize{
-\item \code{\link[=s3_copy_object]{copy_object}}
-\item \code{\link[=s3_delete_object]{delete_object}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_object(
-  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
-  Body = raw,
-  Bucket = "string",
-  CacheControl = "string",
-  ContentDisposition = "string",
-  ContentEncoding = "string",
-  ContentLanguage = "string",
-  ContentLength = 123,
-  ContentMD5 = "string",
-  ContentType = "string",
-  Expires = as.POSIXct(
-    "2015-01-01"
-  ),
-  GrantFullControl = "string",
-  GrantRead = "string",
-  GrantReadACP = "string",
-  GrantWriteACP = "string",
-  Key = "string",
-  Metadata = list(
-    "string"
-  ),
-  ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
-  WebsiteRedirectLocation = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  SSEKMSKeyId = "string",
-  SSEKMSEncryptionContext = "string",
-  BucketKeyEnabled = TRUE|FALSE,
-  RequestPayer = "requester",
-  Tagging = "string",
-  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
-  ObjectLockRetainUntilDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  ObjectLockLegalHoldStatus = "ON"|"OFF",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example uploads and object. The request specifies the
-# optional server-side encryption option. The request also specifies
-# optional object tags. If the bucket is versioning enabled, S3 returns
-# version ID in response.
-svc$put_object(
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "exampleobject",
-  ServerSideEncryption = "AES256",
-  Tagging = "key1=value1&key2=value2"
-)
-
-# The following example creates an object. If the bucket is versioning
-# enabled, S3 returns version ID in response.
-svc$put_object(
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "objectkey"
-)
-
-# The following example uploads an object. The request specifies optional
-# object tags. The bucket is versioned, therefore S3 returns version ID of
-# the newly created object.
-svc$put_object(
-  Body = "c:\\\\HappyFace.jpg",
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
-  Tagging = "key1=value1&key2=value2"
-)
-
-# The following example uploads an object. The request specifies optional
-# request headers to directs S3 to use specific storage class and use
-# server-side encryption.
-svc$put_object(
-  Body = "HappyFace.jpg",
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
-  ServerSideEncryption = "AES256",
-  StorageClass = "STANDARD_IA"
-)
-
-# The following example creates an object. The request also specifies
-# optional metadata. If the bucket is versioning enabled, S3 returns
-# version ID in response.
-svc$put_object(
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "exampleobject",
-  Metadata = list(
-    metadata1 = "value1",
-    metadata2 = "value2"
-  )
-)
-
-# The following example uploads and object. The request specifies optional
-# canned ACL (access control list) to all READ access to authenticated
-# users. If the bucket is versioning enabled, S3 returns version ID in
-# response.
-svc$put_object(
-  ACL = "authenticated-read",
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "exampleobject"
-)
-
-# The following example uploads an object to a versioning-enabled bucket.
-# The source file is specified using Windows file syntax. S3 returns
-# VersionId of the newly created object.
-svc$put_object(
-  Body = "HappyFace.jpg",
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/put_object.html} for full documentation.
 }
 \keyword{internal}

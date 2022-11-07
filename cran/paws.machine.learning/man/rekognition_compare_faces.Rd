@@ -5,8 +5,12 @@
 \title{Compares a face in the source input image with each of the 100 largest
 faces detected in the target input image}
 \usage{
-rekognition_compare_faces(SourceImage, TargetImage, SimilarityThreshold,
-  QualityFilter)
+rekognition_compare_faces(
+  SourceImage,
+  TargetImage,
+  SimilarityThreshold = NULL,
+  QualityFilter = NULL
+)
 }
 \arguments{
 \item{SourceImage}{[required] The input image as base64-encoded bytes or an S3 object. If you use the
@@ -41,178 +45,9 @@ blurry, or a face with a pose that's too extreme to use. If you specify
 To use quality filtering, the collection you are using must be
 associated with version 3 of the face model or higher.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SourceImageFace = list(
-    BoundingBox = list(
-      Width = 123.0,
-      Height = 123.0,
-      Left = 123.0,
-      Top = 123.0
-    ),
-    Confidence = 123.0
-  ),
-  FaceMatches = list(
-    list(
-      Similarity = 123.0,
-      Face = list(
-        BoundingBox = list(
-          Width = 123.0,
-          Height = 123.0,
-          Left = 123.0,
-          Top = 123.0
-        ),
-        Confidence = 123.0,
-        Landmarks = list(
-          list(
-            Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
-            X = 123.0,
-            Y = 123.0
-          )
-        ),
-        Pose = list(
-          Roll = 123.0,
-          Yaw = 123.0,
-          Pitch = 123.0
-        ),
-        Quality = list(
-          Brightness = 123.0,
-          Sharpness = 123.0
-        )
-      )
-    )
-  ),
-  UnmatchedFaces = list(
-    list(
-      BoundingBox = list(
-        Width = 123.0,
-        Height = 123.0,
-        Left = 123.0,
-        Top = 123.0
-      ),
-      Confidence = 123.0,
-      Landmarks = list(
-        list(
-          Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
-          X = 123.0,
-          Y = 123.0
-        )
-      ),
-      Pose = list(
-        Roll = 123.0,
-        Yaw = 123.0,
-        Pitch = 123.0
-      ),
-      Quality = list(
-        Brightness = 123.0,
-        Sharpness = 123.0
-      )
-    )
-  ),
-  SourceImageOrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270",
-  TargetImageOrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
-)
-}
-}
 \description{
-Compares a face in the \emph{source} input image with each of the 100 largest
-faces detected in the \emph{target} input image.
+Compares a face in the \emph{source} input image with each of the 100 largest faces detected in the \emph{target} input image.
 
-If the source image contains multiple faces, the service detects the
-largest face and compares it with each face detected in the target
-image.
-
-You pass the input and target images either as base64-encoded image
-bytes or as references to images in an Amazon S3 bucket. If you use the
-AWS CLI to call Amazon Rekognition operations, passing image bytes isn't
-supported. The image must be formatted as a PNG or JPEG file.
-
-In response, the operation returns an array of face matches ordered by
-similarity score in descending order. For each face match, the response
-provides a bounding box of the face, facial landmarks, pose details
-(pitch, role, and yaw), quality (brightness and sharpness), and
-confidence value (indicating the level of confidence that the bounding
-box contains a face). The response also provides a similarity score,
-which indicates how closely the faces match.
-
-By default, only faces with a similarity score of greater than or equal
-to 80\% are returned in the response. You can change this value by
-specifying the \code{SimilarityThreshold} parameter.
-
-\code{\link[=rekognition_compare_faces]{compare_faces}} also returns an array of
-faces that don't match the source image. For each face, it returns a
-bounding box, confidence value, landmarks, pose details, and quality.
-The response also returns information about the face in the source
-image, including the bounding box of the face and confidence value.
-
-The \code{QualityFilter} input parameter allows you to filter out detected
-faces that don’t meet a required quality bar. The quality bar is based
-on a variety of common use cases. Use \code{QualityFilter} to set the quality
-bar by specifying \code{LOW}, \code{MEDIUM}, or \code{HIGH}. If you do not want to
-filter detected faces, specify \code{NONE}. The default value is \code{NONE}.
-
-If the image doesn't contain Exif metadata,
-\code{\link[=rekognition_compare_faces]{compare_faces}} returns orientation
-information for the source and target images. Use these values to
-display the images with the correct image orientation.
-
-If no faces are detected in the source or target images,
-\code{\link[=rekognition_compare_faces]{compare_faces}} returns an
-\code{InvalidParameterException} error.
-
-This is a stateless API operation. That is, data returned by this
-operation doesn't persist.
-
-For an example, see Comparing Faces in Images in the Amazon Rekognition
-Developer Guide.
-
-This operation requires permissions to perform the
-\code{rekognition:CompareFaces} action.
-}
-\section{Request syntax}{
-\preformatted{svc$compare_faces(
-  SourceImage = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  TargetImage = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  SimilarityThreshold = 123.0,
-  QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation compares the largest face detected in the source image
-# with each face detected in the target image.
-svc$compare_faces(
-  SimilarityThreshold = 90L,
-  SourceImage = list(
-    S3Object = list(
-      Bucket = "mybucket",
-      Name = "mysourceimage"
-    )
-  ),
-  TargetImage = list(
-    S3Object = list(
-      Bucket = "mybucket",
-      Name = "mytargetimage"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/rekognition/compare_faces.html} for full documentation.
 }
 \keyword{internal}

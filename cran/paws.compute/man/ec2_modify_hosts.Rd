@@ -4,8 +4,13 @@
 \alias{ec2_modify_hosts}
 \title{Modify the auto-placement setting of a Dedicated Host}
 \usage{
-ec2_modify_hosts(AutoPlacement, HostIds, HostRecovery, InstanceType,
-  InstanceFamily)
+ec2_modify_hosts(
+  AutoPlacement = NULL,
+  HostIds,
+  HostRecovery = NULL,
+  InstanceType = NULL,
+  InstanceFamily = NULL
+)
 }
 \arguments{
 \item{AutoPlacement}{Specify whether to enable or disable auto-placement.}
@@ -13,8 +18,8 @@ ec2_modify_hosts(AutoPlacement, HostIds, HostRecovery, InstanceType,
 \item{HostIds}{[required] The IDs of the Dedicated Hosts to modify.}
 
 \item{HostRecovery}{Indicates whether to enable or disable host recovery for the Dedicated
-Host. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host Recovery}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+Host. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host recovery}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{InstanceType}{Specifies the instance type to be supported by the Dedicated Host.
 Specify this parameter to modify a Dedicated Host to support only a
@@ -34,47 +39,9 @@ type only, omit this parameter and specify \strong{InstanceType} instead. You
 cannot specify \strong{InstanceFamily} and \strong{InstanceType} in the same
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Successful = list(
-    "string"
-  ),
-  Unsuccessful = list(
-    list(
-      Error = list(
-        Code = "string",
-        Message = "string"
-      ),
-      ResourceId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Modify the auto-placement setting of a Dedicated Host. When
-auto-placement is enabled, any instances that you launch with a tenancy
-of \code{host} but without a specific host ID are placed onto any available
-Dedicated Host in your account that has auto-placement enabled. When
-auto-placement is disabled, you need to provide a host ID to have the
-instance launch onto a specific host. If no host ID is provided, the
-instance is launched onto a suitable host with auto-placement enabled.
+Modify the auto-placement setting of a Dedicated Host. When auto-placement is enabled, any instances that you launch with a tenancy of \code{host} but without a specific host ID are placed onto any available Dedicated Host in your account that has auto-placement enabled. When auto-placement is disabled, you need to provide a host ID to have the instance launch onto a specific host. If no host ID is provided, the instance is launched onto a suitable host with auto-placement enabled.
 
-You can also use this API action to modify a Dedicated Host to support
-either multiple instance types in an instance family, or to support a
-specific instance type only.
+See \url{https://paws-r.github.io/docs/ec2/modify_hosts.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_hosts(
-  AutoPlacement = "on"|"off",
-  HostIds = list(
-    "string"
-  ),
-  HostRecovery = "on"|"off",
-  InstanceType = "string",
-  InstanceFamily = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -6,8 +6,10 @@
 push notification service, such as GCM (Firebase Cloud Messaging) and
 APNS}
 \usage{
-sns_list_endpoints_by_platform_application(PlatformApplicationArn,
-  NextToken)
+sns_list_endpoints_by_platform_application(
+  PlatformApplicationArn,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{PlatformApplicationArn}{[required] PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
@@ -17,41 +19,9 @@ action.}
 action to retrieve additional records that are available after the first
 page results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Endpoints = list(
-    list(
-      EndpointArn = "string",
-      Attributes = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the endpoints and endpoint attributes for devices in a supported
-push notification service, such as GCM (Firebase Cloud Messaging) and
-APNS. The results for
-\code{\link[=sns_list_endpoints_by_platform_application]{list_endpoints_by_platform_application}}
-are paginated and return a limited list of endpoints, up to 100. If
-additional records are available after the first page results, then a
-NextToken string will be returned. To receive the next page, you call
-\code{\link[=sns_list_endpoints_by_platform_application]{list_endpoints_by_platform_application}}
-again using the NextToken string received from the previous call. When
-there are no more records to return, NextToken will be null. For more
-information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
+Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM (Firebase Cloud Messaging) and APNS. The results for \code{\link[=sns_list_endpoints_by_platform_application]{list_endpoints_by_platform_application}} are paginated and return a limited list of endpoints, up to 100. If additional records are available after the first page results, then a NextToken string will be returned. To receive the next page, you call \code{\link[=sns_list_endpoints_by_platform_application]{list_endpoints_by_platform_application}} again using the NextToken string received from the previous call. When there are no more records to return, NextToken will be null. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
 
-This action is throttled at 30 transactions per second (TPS).
+See \url{https://paws-r.github.io/docs/sns/list_endpoints_by_platform_application.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_endpoints_by_platform_application(
-  PlatformApplicationArn = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

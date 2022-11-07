@@ -6,42 +6,15 @@
 search connection request}
 \usage{
 elasticsearchservice_reject_inbound_cross_cluster_search_connection(
-  CrossClusterSearchConnectionId)
+  CrossClusterSearchConnectionId
+)
 }
 \arguments{
 \item{CrossClusterSearchConnectionId}{[required] The id of the inbound connection that you want to reject.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CrossClusterSearchConnection = list(
-    SourceDomainInfo = list(
-      OwnerId = "string",
-      DomainName = "string",
-      Region = "string"
-    ),
-    DestinationDomainInfo = list(
-      OwnerId = "string",
-      DomainName = "string",
-      Region = "string"
-    ),
-    CrossClusterSearchConnectionId = "string",
-    ConnectionStatus = list(
-      StatusCode = "PENDING_ACCEPTANCE"|"APPROVED"|"REJECTING"|"REJECTED"|"DELETING"|"DELETED",
-      Message = "string"
-    )
-  )
-)
-}
-}
 \description{
-Allows the destination domain owner to reject an inbound cross-cluster
-search connection request.
-}
-\section{Request syntax}{
-\preformatted{svc$reject_inbound_cross_cluster_search_connection(
-  CrossClusterSearchConnectionId = "string"
-)
-}
-}
+Allows the destination domain owner to reject an inbound cross-cluster search connection request.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/reject_inbound_cross_cluster_search_connection.html} for full documentation.
+}
 \keyword{internal}

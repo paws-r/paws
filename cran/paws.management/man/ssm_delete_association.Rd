@@ -2,38 +2,30 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_delete_association}
 \alias{ssm_delete_association}
-\title{Disassociates the specified Systems Manager document from the specified
-instance}
+\title{Disassociates the specified Amazon Web Services Systems Manager document
+(SSM document) from the specified managed node}
 \usage{
-ssm_delete_association(Name, InstanceId, AssociationId)
+ssm_delete_association(Name = NULL, InstanceId = NULL, AssociationId = NULL)
 }
 \arguments{
-\item{Name}{The name of the Systems Manager document.}
+\item{Name}{The name of the SSM document.}
 
-\item{InstanceId}{The ID of the instance.}
+\item{InstanceId}{The managed node ID.
+
+\code{InstanceId} has been deprecated. To specify a managed node ID for an
+association, use the \code{Targets} parameter. Requests that include the
+parameter \code{InstanceID} with Systems Manager documents (SSM documents)
+that use schema version 2.0 or later will fail. In addition, if you use
+the parameter \code{InstanceId}, you can't use the parameters
+\code{AssociationName}, \code{DocumentVersion}, \code{MaxErrors}, \code{MaxConcurrency},
+\code{OutputLocation}, or \code{ScheduleExpression}. To use these parameters, you
+must use the \code{Targets} parameter.}
 
 \item{AssociationId}{The association ID that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates the specified Systems Manager document from the specified
-instance.
+Disassociates the specified Amazon Web Services Systems Manager document (SSM document) from the specified managed node. If you created the association by using the \code{Targets} parameter, then you must delete the association by using the association ID.
 
-When you disassociate a document from an instance, it does not change
-the configuration of the instance. To change the configuration state of
-an instance after you disassociate a document, you must create a new
-document with the desired configuration and associate it with the
-instance.
+See \url{https://paws-r.github.io/docs/ssm/delete_association.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_association(
-  Name = "string",
-  InstanceId = "string",
-  AssociationId = "string"
-)
-}
-}
-
 \keyword{internal}

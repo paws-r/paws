@@ -4,8 +4,11 @@
 \alias{applicationinsights_delete_log_pattern}
 \title{Removes the specified log pattern from a LogPatternSet}
 \usage{
-applicationinsights_delete_log_pattern(ResourceGroupName,
-  PatternSetName, PatternName)
+applicationinsights_delete_log_pattern(
+  ResourceGroupName,
+  PatternSetName,
+  PatternName
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
@@ -14,19 +17,9 @@ applicationinsights_delete_log_pattern(ResourceGroupName,
 
 \item{PatternName}{[required] The name of the log pattern.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the specified log pattern from a \code{LogPatternSet}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_log_pattern(
-  ResourceGroupName = "string",
-  PatternSetName = "string",
-  PatternName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/delete_log_pattern.html} for full documentation.
+}
 \keyword{internal}

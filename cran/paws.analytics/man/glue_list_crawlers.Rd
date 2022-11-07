@@ -2,10 +2,10 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_list_crawlers}
 \alias{glue_list_crawlers}
-\title{Retrieves the names of all crawler resources in this AWS account, or the
-resources with the specified tag}
+\title{Retrieves the names of all crawler resources in this Amazon Web Services
+account, or the resources with the specified tag}
 \usage{
-glue_list_crawlers(MaxResults, NextToken, Tags)
+glue_list_crawlers(MaxResults = NULL, NextToken = NULL, Tags = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum size of a list to return.}
@@ -14,34 +14,9 @@ glue_list_crawlers(MaxResults, NextToken, Tags)
 
 \item{Tags}{Specifies to return only these tagged resources.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CrawlerNames = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the names of all crawler resources in this AWS account, or the
-resources with the specified tag. This operation allows you to see which
-resources are available in your account, and their names.
+Retrieves the names of all crawler resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
 
-This operation takes the optional \code{Tags} field, which you can use as a
-filter on the response so that tagged resources can be retrieved as a
-group. If you choose to use tags filtering, only resources with the tag
-are retrieved.
+See \url{https://paws-r.github.io/docs/glue/list_crawlers.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_crawlers(
-  MaxResults = 123,
-  NextToken = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

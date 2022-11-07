@@ -4,7 +4,7 @@
 \alias{workdocs_delete_user}
 \title{Deletes the specified user from a Simple AD or Microsoft AD directory}
 \usage{
-workdocs_delete_user(AuthenticationToken, UserId)
+workdocs_delete_user(AuthenticationToken = NULL, UserId)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using
@@ -13,18 +13,9 @@ credentials.}
 
 \item{UserId}{[required] The ID of the user.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified user from a Simple AD or Microsoft AD directory.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user(
-  AuthenticationToken = "string",
-  UserId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/delete_user.html} for full documentation.
+}
 \keyword{internal}

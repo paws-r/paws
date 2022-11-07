@@ -4,21 +4,27 @@
 \alias{sagemaker_create_hyper_parameter_tuning_job}
 \title{Starts a hyperparameter tuning job}
 \usage{
-sagemaker_create_hyper_parameter_tuning_job(HyperParameterTuningJobName,
-  HyperParameterTuningJobConfig, TrainingJobDefinition,
-  TrainingJobDefinitions, WarmStartConfig, Tags)
+sagemaker_create_hyper_parameter_tuning_job(
+  HyperParameterTuningJobName,
+  HyperParameterTuningJobConfig,
+  TrainingJobDefinition = NULL,
+  TrainingJobDefinitions = NULL,
+  WarmStartConfig = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{HyperParameterTuningJobName}{[required] The name of the tuning job. This name is the prefix for the names of all
 training jobs that this tuning job launches. The name must be unique
-within the same AWS account and AWS Region. The name must have 1 to 32
-characters. Valid characters are a-z, A-Z, 0-9, and : + = @ _ \% -
-(hyphen). The name is not case sensitive.}
+within the same Amazon Web Services account and Amazon Web Services
+Region. The name must have 1 to 32 characters. Valid characters are a-z,
+A-Z, 0-9, and : + = @ _ \% - (hyphen). The name is not case sensitive.}
 
 \item{HyperParameterTuningJobConfig}{[required] The HyperParameterTuningJobConfig object that describes the tuning job,
 including the search strategy, the objective metric used to evaluate
 training jobs, ranges of parameters to search, and resource limits for
-the tuning job. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html}{How Hyperparameter Tuning Works}.}
+the tuning job. For more information, see How Hyperparameter Tuning
+Works.}
 
 \item{TrainingJobDefinition}{The HyperParameterTrainingJobDefinition object that describes the
 training jobs that this tuning job launches, including static
@@ -45,299 +51,16 @@ All training jobs launched by parent hyperparameter tuning jobs and the
 new hyperparameter tuning jobs count against the limit of training jobs
 for the tuning job.}
 
-\item{Tags}{An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.
 
 Tags that you specify for the tuning job are also added to all training
 jobs that the tuning job launches.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HyperParameterTuningJobArn = "string"
-)
-}
-}
 \description{
-Starts a hyperparameter tuning job. A hyperparameter tuning job finds
-the best version of a model by running many training jobs on your
-dataset using the algorithm you choose and values for hyperparameters
-within ranges that you specify. It then chooses the hyperparameter
-values that result in a model that performs the best, as measured by an
-objective metric that you choose.
-}
-\section{Request syntax}{
-\preformatted{svc$create_hyper_parameter_tuning_job(
-  HyperParameterTuningJobName = "string",
-  HyperParameterTuningJobConfig = list(
-    Strategy = "Bayesian"|"Random",
-    HyperParameterTuningJobObjective = list(
-      Type = "Maximize"|"Minimize",
-      MetricName = "string"
-    ),
-    ResourceLimits = list(
-      MaxNumberOfTrainingJobs = 123,
-      MaxParallelTrainingJobs = 123
-    ),
-    ParameterRanges = list(
-      IntegerParameterRanges = list(
-        list(
-          Name = "string",
-          MinValue = "string",
-          MaxValue = "string",
-          ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
-        )
-      ),
-      ContinuousParameterRanges = list(
-        list(
-          Name = "string",
-          MinValue = "string",
-          MaxValue = "string",
-          ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
-        )
-      ),
-      CategoricalParameterRanges = list(
-        list(
-          Name = "string",
-          Values = list(
-            "string"
-          )
-        )
-      )
-    ),
-    TrainingJobEarlyStoppingType = "Off"|"Auto",
-    TuningJobCompletionCriteria = list(
-      TargetObjectiveMetricValue = 123.0
-    )
-  ),
-  TrainingJobDefinition = list(
-    DefinitionName = "string",
-    TuningObjective = list(
-      Type = "Maximize"|"Minimize",
-      MetricName = "string"
-    ),
-    HyperParameterRanges = list(
-      IntegerParameterRanges = list(
-        list(
-          Name = "string",
-          MinValue = "string",
-          MaxValue = "string",
-          ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
-        )
-      ),
-      ContinuousParameterRanges = list(
-        list(
-          Name = "string",
-          MinValue = "string",
-          MaxValue = "string",
-          ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
-        )
-      ),
-      CategoricalParameterRanges = list(
-        list(
-          Name = "string",
-          Values = list(
-            "string"
-          )
-        )
-      )
-    ),
-    StaticHyperParameters = list(
-      "string"
-    ),
-    AlgorithmSpecification = list(
-      TrainingImage = "string",
-      TrainingInputMode = "Pipe"|"File",
-      AlgorithmName = "string",
-      MetricDefinitions = list(
-        list(
-          Name = "string",
-          Regex = "string"
-        )
-      )
-    ),
-    RoleArn = "string",
-    InputDataConfig = list(
-      list(
-        ChannelName = "string",
-        DataSource = list(
-          S3DataSource = list(
-            S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
-            S3Uri = "string",
-            S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
-            AttributeNames = list(
-              "string"
-            )
-          ),
-          FileSystemDataSource = list(
-            FileSystemId = "string",
-            FileSystemAccessMode = "rw"|"ro",
-            FileSystemType = "EFS"|"FSxLustre",
-            DirectoryPath = "string"
-          )
-        ),
-        ContentType = "string",
-        CompressionType = "None"|"Gzip",
-        RecordWrapperType = "None"|"RecordIO",
-        InputMode = "Pipe"|"File",
-        ShuffleConfig = list(
-          Seed = 123
-        )
-      )
-    ),
-    VpcConfig = list(
-      SecurityGroupIds = list(
-        "string"
-      ),
-      Subnets = list(
-        "string"
-      )
-    ),
-    OutputDataConfig = list(
-      KmsKeyId = "string",
-      S3OutputPath = "string"
-    ),
-    ResourceConfig = list(
-      InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
-      InstanceCount = 123,
-      VolumeSizeInGB = 123,
-      VolumeKmsKeyId = "string"
-    ),
-    StoppingCondition = list(
-      MaxRuntimeInSeconds = 123,
-      MaxWaitTimeInSeconds = 123
-    ),
-    EnableNetworkIsolation = TRUE|FALSE,
-    EnableInterContainerTrafficEncryption = TRUE|FALSE,
-    EnableManagedSpotTraining = TRUE|FALSE,
-    CheckpointConfig = list(
-      S3Uri = "string",
-      LocalPath = "string"
-    )
-  ),
-  TrainingJobDefinitions = list(
-    list(
-      DefinitionName = "string",
-      TuningObjective = list(
-        Type = "Maximize"|"Minimize",
-        MetricName = "string"
-      ),
-      HyperParameterRanges = list(
-        IntegerParameterRanges = list(
-          list(
-            Name = "string",
-            MinValue = "string",
-            MaxValue = "string",
-            ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
-          )
-        ),
-        ContinuousParameterRanges = list(
-          list(
-            Name = "string",
-            MinValue = "string",
-            MaxValue = "string",
-            ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
-          )
-        ),
-        CategoricalParameterRanges = list(
-          list(
-            Name = "string",
-            Values = list(
-              "string"
-            )
-          )
-        )
-      ),
-      StaticHyperParameters = list(
-        "string"
-      ),
-      AlgorithmSpecification = list(
-        TrainingImage = "string",
-        TrainingInputMode = "Pipe"|"File",
-        AlgorithmName = "string",
-        MetricDefinitions = list(
-          list(
-            Name = "string",
-            Regex = "string"
-          )
-        )
-      ),
-      RoleArn = "string",
-      InputDataConfig = list(
-        list(
-          ChannelName = "string",
-          DataSource = list(
-            S3DataSource = list(
-              S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
-              S3Uri = "string",
-              S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
-              AttributeNames = list(
-                "string"
-              )
-            ),
-            FileSystemDataSource = list(
-              FileSystemId = "string",
-              FileSystemAccessMode = "rw"|"ro",
-              FileSystemType = "EFS"|"FSxLustre",
-              DirectoryPath = "string"
-            )
-          ),
-          ContentType = "string",
-          CompressionType = "None"|"Gzip",
-          RecordWrapperType = "None"|"RecordIO",
-          InputMode = "Pipe"|"File",
-          ShuffleConfig = list(
-            Seed = 123
-          )
-        )
-      ),
-      VpcConfig = list(
-        SecurityGroupIds = list(
-          "string"
-        ),
-        Subnets = list(
-          "string"
-        )
-      ),
-      OutputDataConfig = list(
-        KmsKeyId = "string",
-        S3OutputPath = "string"
-      ),
-      ResourceConfig = list(
-        InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
-        InstanceCount = 123,
-        VolumeSizeInGB = 123,
-        VolumeKmsKeyId = "string"
-      ),
-      StoppingCondition = list(
-        MaxRuntimeInSeconds = 123,
-        MaxWaitTimeInSeconds = 123
-      ),
-      EnableNetworkIsolation = TRUE|FALSE,
-      EnableInterContainerTrafficEncryption = TRUE|FALSE,
-      EnableManagedSpotTraining = TRUE|FALSE,
-      CheckpointConfig = list(
-        S3Uri = "string",
-        LocalPath = "string"
-      )
-    )
-  ),
-  WarmStartConfig = list(
-    ParentHyperParameterTuningJobs = list(
-      list(
-        HyperParameterTuningJobName = "string"
-      )
-    ),
-    WarmStartType = "IdenticalDataAndAlgorithm"|"TransferLearning"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Starts a hyperparameter tuning job. A hyperparameter tuning job finds the best version of a model by running many training jobs on your dataset using the algorithm you choose and values for hyperparameters within ranges that you specify. It then chooses the hyperparameter values that result in a model that performs the best, as measured by an objective metric that you choose.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_hyper_parameter_tuning_job.html} for full documentation.
+}
 \keyword{internal}

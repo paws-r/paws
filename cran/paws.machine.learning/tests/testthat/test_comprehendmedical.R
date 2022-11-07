@@ -31,3 +31,11 @@ test_that("list_rx_norm_inference_jobs", {
 test_that("list_rx_norm_inference_jobs", {
   expect_error(svc$list_rx_norm_inference_jobs(MaxResults = 20), NA)
 })
+
+test_that("list_snomedct_inference_jobs", {
+  expect_error(svc$list_snomedct_inference_jobs(), NA)
+})
+
+test_that("list_snomedct_inference_jobs", {
+  expect_error(svc$list_snomedct_inference_jobs(MaxResults = 20), NA)
+})

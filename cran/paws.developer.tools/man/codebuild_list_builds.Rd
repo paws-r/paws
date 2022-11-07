@@ -4,7 +4,7 @@
 \alias{codebuild_list_builds}
 \title{Gets a list of build IDs, with each build ID representing a single build}
 \usage{
-codebuild_list_builds(sortOrder, nextToken)
+codebuild_list_builds(sortOrder = NULL, nextToken = NULL)
 }
 \arguments{
 \item{sortOrder}{The order to list build IDs. Valid values include:
@@ -20,25 +20,9 @@ operation again, adding the next token to the call. To get all of the
 items in the list, keep calling this operation with each subsequent next
 token that is returned, until no more next tokens are returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ids = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Gets a list of build IDs, with each build ID representing a single
-build.
-}
-\section{Request syntax}{
-\preformatted{svc$list_builds(
-  sortOrder = "ASCENDING"|"DESCENDING",
-  nextToken = "string"
-)
-}
-}
+Gets a list of build IDs, with each build ID representing a single build.
 
+See \url{https://paws-r.github.io/docs/codebuild/list_builds.html} for full documentation.
+}
 \keyword{internal}

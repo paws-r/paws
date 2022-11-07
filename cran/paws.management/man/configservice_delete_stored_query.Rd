@@ -2,24 +2,17 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_delete_stored_query}
 \alias{configservice_delete_stored_query}
-\title{Deletes the stored query for an AWS account in an AWS Region}
+\title{Deletes the stored query for a single Amazon Web Services account and a
+single Amazon Web Services Region}
 \usage{
 configservice_delete_stored_query(QueryName)
 }
 \arguments{
 \item{QueryName}{[required] The name of the query that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the stored query for an AWS account in an AWS Region.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_stored_query(
-  QueryName = "string"
-)
-}
-}
+Deletes the stored query for a single Amazon Web Services account and a single Amazon Web Services Region.
 
+See \url{https://paws-r.github.io/docs/configservice/delete_stored_query.html} for full documentation.
+}
 \keyword{internal}

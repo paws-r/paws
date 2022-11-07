@@ -2,7 +2,7 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_delete_conformance_pack}
 \alias{configservice_delete_conformance_pack}
-\title{Deletes the specified conformance pack and all the AWS Config rules,
+\title{Deletes the specified conformance pack and all the Config rules,
 remediation actions, and all evaluation results within that conformance
 pack}
 \usage{
@@ -11,23 +11,9 @@ configservice_delete_conformance_pack(ConformancePackName)
 \arguments{
 \item{ConformancePackName}{[required] Name of the conformance pack you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified conformance pack and all the AWS Config rules,
-remediation actions, and all evaluation results within that conformance
-pack.
+Deletes the specified conformance pack and all the Config rules, remediation actions, and all evaluation results within that conformance pack.
 
-AWS Config sets the conformance pack to \code{DELETE_IN_PROGRESS} until the
-deletion is complete. You cannot update a conformance pack while it is
-in this state.
+See \url{https://paws-r.github.io/docs/configservice/delete_conformance_pack.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_conformance_pack(
-  ConformancePackName = "string"
-)
-}
-}
-
 \keyword{internal}

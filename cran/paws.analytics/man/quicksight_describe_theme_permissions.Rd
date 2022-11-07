@@ -7,37 +7,14 @@
 quicksight_describe_theme_permissions(AwsAccountId, ThemeId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme that you're
-describing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the theme that
+you're describing.}
 
 \item{ThemeId}{[required] The ID for the theme that you want to describe permissions for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThemeId = "string",
-  ThemeArn = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Describes the read and write permissions for a theme.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_theme_permissions(
-  AwsAccountId = "string",
-  ThemeId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_theme_permissions.html} for full documentation.
+}
 \keyword{internal}

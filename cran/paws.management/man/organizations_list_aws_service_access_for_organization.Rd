@@ -2,11 +2,13 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_list_aws_service_access_for_organization}
 \alias{organizations_list_aws_service_access_for_organization}
-\title{Returns a list of the AWS services that you enabled to integrate with
-your organization}
+\title{Returns a list of the Amazon Web Services services that you enabled to
+integrate with your organization}
 \usage{
-organizations_list_aws_service_access_for_organization(NextToken,
-  MaxResults)
+organizations_list_aws_service_access_for_organization(
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{NextToken}{The parameter for receiving additional results if you receive a
@@ -26,41 +28,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EnabledServicePrincipals = list(
-    list(
-      ServicePrincipal = "string",
-      DateEnabled = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of the AWS services that you enabled to integrate with
-your organization. After a service on this list creates the resources
-that it requires for the integration, it can perform operations on your
-organization and its accounts.
+Returns a list of the Amazon Web Services services that you enabled to integrate with your organization. After a service on this list creates the resources that it requires for the integration, it can perform operations on your organization and its accounts.
 
-For more information about integrating other services with AWS
-Organizations, including the list of services that currently work with
-Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
-in the \emph{AWS Organizations User Guide.}
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
+See \url{https://paws-r.github.io/docs/organizations/list_aws_service_access_for_organization.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_aws_service_access_for_organization(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

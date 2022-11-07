@@ -4,57 +4,16 @@
 \alias{efs_modify_mount_target_security_groups}
 \title{Modifies the set of security groups in effect for a mount target}
 \usage{
-efs_modify_mount_target_security_groups(MountTargetId, SecurityGroups)
+efs_modify_mount_target_security_groups(MountTargetId, SecurityGroups = NULL)
 }
 \arguments{
 \item{MountTargetId}{[required] The ID of the mount target whose security groups you want to modify.}
 
 \item{SecurityGroups}{An array of up to five VPC security group IDs.}
 }
-\value{
-An empty list.
-}
 \description{
 Modifies the set of security groups in effect for a mount target.
 
-When you create a mount target, Amazon EFS also creates a new network
-interface. For more information, see
-\code{\link[=efs_create_mount_target]{create_mount_target}}. This operation
-replaces the security groups in effect for the network interface
-associated with a mount target, with the \code{SecurityGroups} provided in
-the request. This operation requires that the network interface of the
-mount target has been created and the lifecycle state of the mount
-target is not \code{deleted}.
-
-The operation requires permissions for the following actions:
-\itemize{
-\item \code{elasticfilesystem:ModifyMountTargetSecurityGroups} action on the
-mount target's file system.
-\item \code{ec2:ModifyNetworkInterfaceAttribute} action on the mount target's
-network interface.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$modify_mount_target_security_groups(
-  MountTargetId = "string",
-  SecurityGroups = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation modifies the security groups associated with a mount
-# target for a file system.
-svc$modify_mount_target_security_groups(
-  MountTargetId = "fsmt-12340abc",
-  SecurityGroups = list(
-    "sg-abcd1234"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/efs/modify_mount_target_security_groups.html} for full documentation.
 }
 \keyword{internal}

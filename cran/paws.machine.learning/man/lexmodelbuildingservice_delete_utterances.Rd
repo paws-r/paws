@@ -16,36 +16,9 @@ or
 \href{https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html}{PostText}
 operation request that contained the utterance.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes stored utterances.
 
-Amazon Lex stores the utterances that users send to your bot. Utterances
-are stored for 15 days for use with the
-\code{\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view}}
-operation, and then stored indefinitely for use in improving the ability
-of your bot to respond to user input.
-
-Use the \code{\link[=lexmodelbuildingservice_delete_utterances]{delete_utterances}}
-operation to manually delete stored utterances for a specific user. When
-you use the
-\code{\link[=lexmodelbuildingservice_delete_utterances]{delete_utterances}}
-operation, utterances stored for improving your bot's ability to respond
-to user input are deleted immediately. Utterances stored for use with
-the \code{\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view}}
-operation are deleted after 15 days.
-
-This operation requires permissions for the \code{lex:DeleteUtterances}
-action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_utterances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_utterances(
-  botName = "string",
-  userId = "string"
-)
-}
-}
-
 \keyword{internal}

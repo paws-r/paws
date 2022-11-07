@@ -4,7 +4,13 @@
 \alias{ec2_describe_vpcs}
 \title{Describes one or more of your VPCs}
 \usage{
-ec2_describe_vpcs(Filters, VpcIds, DryRun, NextToken, MaxResults)
+ec2_describe_vpcs(
+  Filters = NULL,
+  VpcIds = NULL,
+  DryRun = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -28,14 +34,15 @@ pool from which the IPv6 CIDR block is allocated.
 for an IPv6 CIDR block associated with the VPC.
 \item \code{ipv6-cidr-block-association.state} - The state of an IPv6 CIDR
 block associated with the VPC.
-\item \code{isDefault} - Indicates whether the VPC is the default VPC.
-\item \code{owner-id} - The ID of the AWS account that owns the VPC.
+\item \code{is-default} - Indicates whether the VPC is the default VPC.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+VPC.
 \item \code{state} - The state of the VPC (\code{pending} | \code{available}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -57,83 +64,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Vpcs = list(
-    list(
-      CidrBlock = "string",
-      DhcpOptionsId = "string",
-      State = "pending"|"available",
-      VpcId = "string",
-      OwnerId = "string",
-      InstanceTenancy = "default"|"dedicated"|"host",
-      Ipv6CidrBlockAssociationSet = list(
-        list(
-          AssociationId = "string",
-          Ipv6CidrBlock = "string",
-          Ipv6CidrBlockState = list(
-            State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-            StatusMessage = "string"
-          ),
-          NetworkBorderGroup = "string",
-          Ipv6Pool = "string"
-        )
-      ),
-      CidrBlockAssociationSet = list(
-        list(
-          AssociationId = "string",
-          CidrBlock = "string",
-          CidrBlockState = list(
-            State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-            StatusMessage = "string"
-          )
-        )
-      ),
-      IsDefault = TRUE|FALSE,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your VPCs.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vpcs(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  VpcIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example describes the specified VPC.
-svc$describe_vpcs(
-  VpcIds = list(
-    "vpc-a01106c2"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_vpcs.html} for full documentation.
 }
 \keyword{internal}

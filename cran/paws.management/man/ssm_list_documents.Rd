@@ -2,21 +2,30 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_documents}
 \alias{ssm_list_documents}
-\title{Returns all Systems Manager (SSM) documents in the current AWS account
-and Region}
+\title{Returns all Systems Manager (SSM) documents in the current Amazon Web
+Services account and Amazon Web Services Region}
 \usage{
-ssm_list_documents(DocumentFilterList, Filters, MaxResults, NextToken)
+ssm_list_documents(
+  DocumentFilterList = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DocumentFilterList}{This data type is deprecated. Instead, use \code{Filters}.}
 
-\item{Filters}{One or more DocumentKeyValuesFilter objects. Use a filter to return a
+\item{Filters}{One or more \code{DocumentKeyValuesFilter} objects. Use a filter to return a
 more specific list of results. For keys, you can specify one or more
 key-value pair tags that have been applied to a document. Other valid
 keys include \code{Owner}, \code{Name}, \code{PlatformTypes}, \code{DocumentType}, and
 \code{TargetType}. For example, to return documents you own use
 \verb{Key=Owner,Values=Self}. To specify a custom key-value pair, use the
-format \verb{Key=tag:tagName,Values=valueName}.}
+format \verb{Key=tag:tagName,Values=valueName}.
+
+This API operation only supports filtering documents by using a single
+tag key and one or more tag values. For example:
+\verb{Key=tag:tagName,Values=valueName1,valueName2}}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -25,65 +34,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DocumentIdentifiers = list(
-    list(
-      Name = "string",
-      Owner = "string",
-      VersionName = "string",
-      PlatformTypes = list(
-        "Windows"|"Linux"
-      ),
-      DocumentVersion = "string",
-      DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
-      SchemaVersion = "string",
-      DocumentFormat = "YAML"|"JSON"|"TEXT",
-      TargetType = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      Requires = list(
-        list(
-          Name = "string",
-          Version = "string"
-        )
-      ),
-      ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
-      Author = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns all Systems Manager (SSM) documents in the current AWS account
-and Region. You can limit the results of this request by using a filter.
-}
-\section{Request syntax}{
-\preformatted{svc$list_documents(
-  DocumentFilterList = list(
-    list(
-      key = "Name"|"Owner"|"PlatformTypes"|"DocumentType",
-      value = "string"
-    )
-  ),
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns all Systems Manager (SSM) documents in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results of this request by using a filter.
 
+See \url{https://paws-r.github.io/docs/ssm/list_documents.html} for full documentation.
+}
 \keyword{internal}

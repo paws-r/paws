@@ -4,10 +4,20 @@
 \alias{licensemanager_create_license_version}
 \title{Creates a new version of the specified license}
 \usage{
-licensemanager_create_license_version(LicenseArn, LicenseName,
-  ProductName, Issuer, HomeRegion, Validity, LicenseMetadata,
-  Entitlements, ConsumptionConfiguration, Status, ClientToken,
-  SourceVersion)
+licensemanager_create_license_version(
+  LicenseArn,
+  LicenseName,
+  ProductName,
+  Issuer,
+  HomeRegion,
+  Validity,
+  LicenseMetadata = NULL,
+  Entitlements,
+  ConsumptionConfiguration,
+  Status,
+  ClientToken,
+  SourceVersion = NULL
+)
 }
 \arguments{
 \item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license.}
@@ -38,62 +48,9 @@ idempotency of the request.}
 
 \item{SourceVersion}{Current version of the license.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseArn = "string",
-  Version = "string",
-  Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED"
-)
-}
-}
 \description{
 Creates a new version of the specified license.
-}
-\section{Request syntax}{
-\preformatted{svc$create_license_version(
-  LicenseArn = "string",
-  LicenseName = "string",
-  ProductName = "string",
-  Issuer = list(
-    Name = "string",
-    SignKey = "string"
-  ),
-  HomeRegion = "string",
-  Validity = list(
-    Begin = "string",
-    End = "string"
-  ),
-  LicenseMetadata = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  Entitlements = list(
-    list(
-      Name = "string",
-      Value = "string",
-      MaxCount = 123,
-      Overage = TRUE|FALSE,
-      Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-      AllowCheckIn = TRUE|FALSE
-    )
-  ),
-  ConsumptionConfiguration = list(
-    RenewType = "None"|"Weekly"|"Monthly",
-    ProvisionalConfiguration = list(
-      MaxTimeToLiveInMinutes = 123
-    ),
-    BorrowConfiguration = list(
-      AllowEarlyCheckIn = TRUE|FALSE,
-      MaxTimeToLiveInMinutes = 123
-    )
-  ),
-  Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-  ClientToken = "string",
-  SourceVersion = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/create_license_version.html} for full documentation.
+}
 \keyword{internal}

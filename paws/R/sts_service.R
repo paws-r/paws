@@ -5,16 +5,30 @@ NULL
 #' AWS Security Token Service
 #'
 #' @description
-#' AWS Security Token Service (STS) enables you to request temporary,
-#' limited-privilege credentials for AWS Identity and Access Management
-#' (IAM) users or for users that you authenticate (federated users). This
-#' guide provides descriptions of the STS API. For more information about
-#' using this service, see [Temporary Security
+#' Security Token Service
+#' 
+#' Security Token Service (STS) enables you to request temporary,
+#' limited-privilege credentials for Identity and Access Management (IAM)
+#' users or for users that you authenticate (federated users). This guide
+#' provides descriptions of the STS API. For more information about using
+#' this service, see [Temporary Security
 #' Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html).
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -26,10 +40,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -66,14 +84,14 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=sts_assume_role]{assume_role} \tab Returns a set of temporary security credentials that you can use to access AWS resources that you might not normally have access to\cr
+#'  \link[=sts_assume_role]{assume_role} \tab Returns a set of temporary security credentials that you can use to access Amazon Web Services resources that you might not normally have access to\cr
 #'  \link[=sts_assume_role_with_saml]{assume_role_with_saml} \tab Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response\cr
 #'  \link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity} \tab Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider\cr
-#'  \link[=sts_decode_authorization_message]{decode_authorization_message} \tab Decodes additional information about the authorization status of a request from an encoded message returned in response to an AWS request\cr
+#'  \link[=sts_decode_authorization_message]{decode_authorization_message} \tab Decodes additional information about the authorization status of a request from an encoded message returned in response to an Amazon Web Services request\cr
 #'  \link[=sts_get_access_key_info]{get_access_key_info} \tab Returns the account identifier for the specified access key ID\cr
 #'  \link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM user or role whose credentials are used to call the operation\cr
 #'  \link[=sts_get_federation_token]{get_federation_token} \tab Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user\cr
-#'  \link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an AWS account or IAM user
+#'  \link[=sts_get_session_token]{get_session_token} \tab Returns a set of temporary credentials for an Amazon Web Services account or IAM user
 #' }
 #'
 #' @return

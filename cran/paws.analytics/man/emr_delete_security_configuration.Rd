@@ -9,17 +9,9 @@ emr_delete_security_configuration(Name)
 \arguments{
 \item{Name}{[required] The name of the security configuration.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a security configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_security_configuration(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/emr/delete_security_configuration.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,9 @@
 \title{Delete an event destination}
 \usage{
 pinpointemail_delete_configuration_set_event_destination(
-  ConfigurationSetName, EventDestinationName)
+  ConfigurationSetName,
+  EventDestinationName
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that contains the event destination
@@ -13,25 +15,9 @@ that you want to delete.}
 
 \item{EventDestinationName}{[required] The name of the event destination that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Delete an event destination.
 
-In Amazon Pinpoint, \emph{events} include message sends, deliveries, opens,
-clicks, bounces, and complaints. \emph{Event destinations} are places that
-you can send information about these events to. For example, you can
-send event data to Amazon SNS to receive notifications when you receive
-bounces or complaints, or you can use Amazon Kinesis Data Firehose to
-stream data to Amazon S3 for long-term storage.
+See \url{https://paws-r.github.io/docs/pinpointemail/delete_configuration_set_event_destination.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_configuration_set_event_destination(
-  ConfigurationSetName = "string",
-  EventDestinationName = "string"
-)
-}
-}
-
 \keyword{internal}

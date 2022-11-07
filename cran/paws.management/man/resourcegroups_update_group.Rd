@@ -4,7 +4,7 @@
 \alias{resourcegroups_update_group}
 \title{Updates the description for an existing group}
 \usage{
-resourcegroups_update_group(GroupName, Group, Description)
+resourcegroups_update_group(GroupName = NULL, Group = NULL, Description = NULL)
 }
 \arguments{
 \item{GroupName}{Don't use this parameter. Use \code{Group} instead.}
@@ -15,34 +15,9 @@ resourcegroups_update_group(GroupName, Group, Description)
 Descriptions can contain letters, numbers, hyphens, underscores,
 periods, and spaces.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    GroupArn = "string",
-    Name = "string",
-    Description = "string"
-  )
-)
-}
-}
 \description{
-Updates the description for an existing group. You cannot update the
-name of a resource group.
+Updates the description for an existing group. You cannot update the name of a resource group.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:UpdateGroup}
+See \url{https://paws-r.github.io/docs/resourcegroups/update_group.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$update_group(
-  GroupName = "string",
-  Group = "string",
-  Description = "string"
-)
-}
-}
-
 \keyword{internal}

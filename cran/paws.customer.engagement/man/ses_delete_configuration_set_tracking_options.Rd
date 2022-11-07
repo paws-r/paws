@@ -11,27 +11,9 @@ ses_delete_configuration_set_tracking_options(ConfigurationSetName)
 \item{ConfigurationSetName}{[required] The name of the configuration set from which you want to delete the
 tracking options.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an association between a configuration set and a custom domain
-for open and click event tracking.
+Deletes an association between a configuration set and a custom domain for open and click event tracking.
 
-By default, images and links used for tracking open and click events are
-hosted on domains operated by Amazon SES. You can configure a subdomain
-of your own to handle these events. For information about using custom
-domains, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html}{Amazon SES Developer Guide}.
-
-Deleting this kind of association will result in emails sent using the
-specified configuration set to capture open and click events using the
-standard, Amazon SES-operated domains.
+See \url{https://paws-r.github.io/docs/ses/delete_configuration_set_tracking_options.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_configuration_set_tracking_options(
-  ConfigurationSetName = "string"
-)
-}
-}
-
 \keyword{internal}

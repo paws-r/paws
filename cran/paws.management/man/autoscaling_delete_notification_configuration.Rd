@@ -4,38 +4,16 @@
 \alias{autoscaling_delete_notification_configuration}
 \title{Deletes the specified notification}
 \usage{
-autoscaling_delete_notification_configuration(AutoScalingGroupName,
-  TopicARN)
+autoscaling_delete_notification_configuration(AutoScalingGroupName, TopicARN)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{TopicARN}{[required] The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
-(Amazon SNS) topic.}
-}
-\value{
-An empty list.
+\item{TopicARN}{[required] The Amazon Resource Name (ARN) of the Amazon SNS topic.}
 }
 \description{
 Deletes the specified notification.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_notification_configuration(
-  AutoScalingGroupName = "string",
-  TopicARN = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example deletes the specified notification from the specified Auto
-# Scaling group.
-svc$delete_notification_configuration(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  TopicARN = "arn:aws:sns:us-west-2:123456789012:my-sns-topic"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/delete_notification_configuration.html} for full documentation.
 }
 \keyword{internal}

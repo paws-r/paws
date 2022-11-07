@@ -5,8 +5,12 @@
 \title{Creates or updates a metric filter and associates it with the specified
 log group}
 \usage{
-cloudwatchlogs_put_metric_filter(logGroupName, filterName,
-  filterPattern, metricTransformations)
+cloudwatchlogs_put_metric_filter(
+  logGroupName,
+  filterName,
+  filterPattern,
+  metricTransformations
+)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -17,33 +21,9 @@ cloudwatchlogs_put_metric_filter(logGroupName, filterName,
 
 \item{metricTransformations}{[required] A collection of information that defines how metric data gets emitted.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates or updates a metric filter and associates it with the specified
-log group. Metric filters allow you to configure rules to extract metric
-data from log events ingested through
-\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}}.
+Creates or updates a metric filter and associates it with the specified log group. Metric filters allow you to configure rules to extract metric data from log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}}.
 
-The maximum number of metric filters that can be associated with a log
-group is 100.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_metric_filter.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_metric_filter(
-  logGroupName = "string",
-  filterName = "string",
-  filterPattern = "string",
-  metricTransformations = list(
-    list(
-      metricName = "string",
-      metricNamespace = "string",
-      metricValue = "string",
-      defaultValue = 123.0
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

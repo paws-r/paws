@@ -5,8 +5,10 @@
 \title{Returns the current status of an existing association or disassociation
 request}
 \usage{
-opsworkscm_describe_node_association_status(NodeAssociationStatusToken,
-  ServerName)
+opsworkscm_describe_node_association_status(
+  NodeAssociationStatusToken,
+  ServerName
+)
 }
 \arguments{
 \item{NodeAssociationStatusToken}{[required] The token returned in either the AssociateNodeResponse or the
@@ -14,33 +16,9 @@ DisassociateNodeResponse.}
 
 \item{ServerName}{[required] The name of the server from which to disassociate the node.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NodeAssociationStatus = "SUCCESS"|"FAILED"|"IN_PROGRESS",
-  EngineAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns the current status of an existing association or disassociation
-request.
+Returns the current status of an existing association or disassociation request.
 
-A \code{ResourceNotFoundException} is thrown when no recent association or
-disassociation request with the specified token is found, or when the
-server does not exist. A \code{ValidationException} is raised when parameters
-of the request are not valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/describe_node_association_status.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_node_association_status(
-  NodeAssociationStatusToken = "string",
-  ServerName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -9,20 +9,9 @@ servicecatalog_delete_tag_option(Id)
 \arguments{
 \item{Id}{[required] The TagOption identifier.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified TagOption.
 
-You cannot delete a TagOption if it is associated with a product or
-portfolio.
+See \url{https://paws-r.github.io/docs/servicecatalog/delete_tag_option.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_tag_option(
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

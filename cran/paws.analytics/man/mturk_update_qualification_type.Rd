@@ -6,9 +6,17 @@
 existing Qualification type, which is represented by a QualificationType
 data structure}
 \usage{
-mturk_update_qualification_type(QualificationTypeId, Description,
-  QualificationTypeStatus, Test, AnswerKey, TestDurationInSeconds,
-  RetryDelayInSeconds, AutoGranted, AutoGrantedValue)
+mturk_update_qualification_type(
+  QualificationTypeId,
+  Description = NULL,
+  QualificationTypeStatus = NULL,
+  Test = NULL,
+  AnswerKey = NULL,
+  TestDurationInSeconds = NULL,
+  RetryDelayInSeconds = NULL,
+  AutoGranted = NULL,
+  AutoGrantedValue = NULL
+)
 }
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the Qualification type to update.}
@@ -52,78 +60,9 @@ be true.}
 \item{AutoGrantedValue}{The Qualification value to use for automatically granted Qualifications.
 This parameter is used only if the AutoGranted parameter is true.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  QualificationType = list(
-    QualificationTypeId = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Name = "string",
-    Description = "string",
-    Keywords = "string",
-    QualificationTypeStatus = "Active"|"Inactive",
-    Test = "string",
-    TestDurationInSeconds = 123,
-    AnswerKey = "string",
-    RetryDelayInSeconds = 123,
-    IsRequestable = TRUE|FALSE,
-    AutoGranted = TRUE|FALSE,
-    AutoGrantedValue = 123
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_update_qualification_type]{update_qualification_type}}
-operation modifies the attributes of an existing Qualification type,
-which is represented by a QualificationType data structure. Only the
-owner of a Qualification type can modify its attributes.
+The \code{\link[=mturk_update_qualification_type]{update_qualification_type}} operation modifies the attributes of an existing Qualification type, which is represented by a QualificationType data structure. Only the owner of a Qualification type can modify its attributes.
 
-Most attributes of a Qualification type can be changed after the type
-has been created. However, the Name and Keywords fields cannot be
-modified. The RetryDelayInSeconds parameter can be modified or added to
-change the delay or to enable retries, but RetryDelayInSeconds cannot be
-used to disable retries.
-
-You can use this operation to update the test for a Qualification type.
-The test is updated based on the values specified for the Test,
-TestDurationInSeconds and AnswerKey parameters. All three parameters
-specify the updated test. If you are updating the test for a type, you
-must specify the Test and TestDurationInSeconds parameters. The
-AnswerKey parameter is optional; omitting it specifies that the updated
-test does not have an answer key.
-
-If you omit the Test parameter, the test for the Qualification type is
-unchanged. There is no way to remove a test from a Qualification type
-that has one. If the type already has a test, you cannot update it to be
-AutoGranted. If the Qualification type does not have a test and one is
-provided by an update, the type will henceforth have a test.
-
-If you want to update the test duration or answer key for an existing
-test without changing the questions, you must specify a Test parameter
-with the original questions, along with the updated values.
-
-If you provide an updated Test but no AnswerKey, the new test will not
-have an answer key. Requests for such Qualifications must be granted
-manually.
-
-You can also update the AutoGranted and AutoGrantedValue attributes of
-the Qualification type.
+See \url{https://paws-r.github.io/docs/mturk/update_qualification_type.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_qualification_type(
-  QualificationTypeId = "string",
-  Description = "string",
-  QualificationTypeStatus = "Active"|"Inactive",
-  Test = "string",
-  AnswerKey = "string",
-  TestDurationInSeconds = 123,
-  RetryDelayInSeconds = 123,
-  AutoGranted = TRUE|FALSE,
-  AutoGrantedValue = 123
-)
-}
-}
-
 \keyword{internal}

@@ -4,11 +4,19 @@
 \alias{personalizeruntime_get_recommendations}
 \title{Returns a list of recommended items}
 \usage{
-personalizeruntime_get_recommendations(campaignArn, itemId, userId,
-  numResults, context, filterArn, filterValues)
+personalizeruntime_get_recommendations(
+  campaignArn = NULL,
+  itemId = NULL,
+  userId = NULL,
+  numResults = NULL,
+  context = NULL,
+  filterArn = NULL,
+  filterValues = NULL,
+  recommenderArn = NULL
+)
 }
 \arguments{
-\item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign to use for getting
+\item{campaignArn}{The Amazon Resource Name (ARN) of the campaign to use for getting
 recommendations.}
 
 \item{itemId}{The item ID to provide recommendations for.
@@ -44,46 +52,14 @@ Personalize doesn't use that portion of the expression to filter
 recommendations.
 
 For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter.html}{Filtering Recommendations}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  itemList = list(
-    list(
-      itemId = "string",
-      score = 123.0
-    )
-  ),
-  recommendationId = "string"
-)
-}
+
+\item{recommenderArn}{The Amazon Resource Name (ARN) of the recommender to use to get
+recommendations. Provide a recommender ARN if you created a Domain
+dataset group with a recommender for a domain use case.}
 }
 \description{
-Returns a list of recommended items. The required input depends on the
-recipe type used to create the solution backing the campaign, as
-follows:
-\itemize{
-\item RELATED_ITEMS - \code{itemId} required, \code{userId} not used
-\item USER_PERSONALIZATION - \code{itemId} optional, \code{userId} required
-}
+Returns a list of recommended items. For campaigns, the campaign's Amazon Resource Name (ARN) is required and the required user and item input depends on the recipe type used to create the solution backing the campaign as follows:
 
-Campaigns that are backed by a solution created using a recipe of type
-PERSONALIZED_RANKING use the API.
+See \url{https://paws-r.github.io/docs/personalizeruntime/get_recommendations.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_recommendations(
-  campaignArn = "string",
-  itemId = "string",
-  userId = "string",
-  numResults = 123,
-  context = list(
-    "string"
-  ),
-  filterArn = "string",
-  filterValues = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

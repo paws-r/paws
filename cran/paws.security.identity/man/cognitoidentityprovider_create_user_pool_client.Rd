@@ -4,13 +4,29 @@
 \alias{cognitoidentityprovider_create_user_pool_client}
 \title{Creates the user pool client}
 \usage{
-cognitoidentityprovider_create_user_pool_client(UserPoolId, ClientName,
-  GenerateSecret, RefreshTokenValidity, AccessTokenValidity,
-  IdTokenValidity, TokenValidityUnits, ReadAttributes, WriteAttributes,
-  ExplicitAuthFlows, SupportedIdentityProviders, CallbackURLs, LogoutURLs,
-  DefaultRedirectURI, AllowedOAuthFlows, AllowedOAuthScopes,
-  AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration,
-  PreventUserExistenceErrors)
+cognitoidentityprovider_create_user_pool_client(
+  UserPoolId,
+  ClientName,
+  GenerateSecret = NULL,
+  RefreshTokenValidity = NULL,
+  AccessTokenValidity = NULL,
+  IdTokenValidity = NULL,
+  TokenValidityUnits = NULL,
+  ReadAttributes = NULL,
+  WriteAttributes = NULL,
+  ExplicitAuthFlows = NULL,
+  SupportedIdentityProviders = NULL,
+  CallbackURLs = NULL,
+  LogoutURLs = NULL,
+  DefaultRedirectURI = NULL,
+  AllowedOAuthFlows = NULL,
+  AllowedOAuthScopes = NULL,
+  AllowedOAuthFlowsUserPoolClient = NULL,
+  AnalyticsConfiguration = NULL,
+  PreventUserExistenceErrors = NULL,
+  EnableTokenRevocation = NULL,
+  EnablePropagateAdditionalUserContextData = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to create a user pool
@@ -21,58 +37,108 @@ client.}
 \item{GenerateSecret}{Boolean to specify whether you want to generate a secret for the user
 pool client being created.}
 
-\item{RefreshTokenValidity}{The time limit, in days, after which the refresh token is no longer
-valid and cannot be used.}
+\item{RefreshTokenValidity}{The refresh token time limit. After this limit expires, your user can't
+use their refresh token. To specify the time unit for
+\code{RefreshTokenValidity} as \code{seconds}, \code{minutes}, \code{hours}, or \code{days}, set
+a \code{TokenValidityUnits} value in your API request.
 
-\item{AccessTokenValidity}{The time limit, between 5 minutes and 1 day, after which the access
-token is no longer valid and cannot be used. This value will be
-overridden if you have entered a value in TokenValidityUnits.}
+For example, when you set \code{RefreshTokenValidity} as \code{10} and
+\code{TokenValidityUnits} as \code{days}, your user can refresh their session and
+retrieve new access and ID tokens for 10 days.
 
-\item{IdTokenValidity}{The time limit, between 5 minutes and 1 day, after which the ID token is
-no longer valid and cannot be used. This value will be overridden if you
-have entered a value in TokenValidityUnits.}
+The default time unit for \code{RefreshTokenValidity} in an API request is
+days. You can't set \code{RefreshTokenValidity} to 0. If you do, Amazon
+Cognito overrides the value with the default value of 30 days. \emph{Valid
+range} is displayed below in seconds.}
 
-\item{TokenValidityUnits}{The units in which the validity times are represented in. Default for
-RefreshToken is days, and default for ID and access tokens are hours.}
+\item{AccessTokenValidity}{The access token time limit. After this limit expires, your user can't
+use their access token. To specify the time unit for
+\code{AccessTokenValidity} as \code{seconds}, \code{minutes}, \code{hours}, or \code{days}, set a
+\code{TokenValidityUnits} value in your API request.
+
+For example, when you set \code{AccessTokenValidity} to \code{10} and
+\code{TokenValidityUnits} to \code{hours}, your user can authorize access with
+their access token for 10 hours.
+
+The default time unit for \code{AccessTokenValidity} in an API request is
+hours. \emph{Valid range} is displayed below in seconds.}
+
+\item{IdTokenValidity}{The ID token time limit. After this limit expires, your user can't use
+their ID token. To specify the time unit for \code{IdTokenValidity} as
+\code{seconds}, \code{minutes}, \code{hours}, or \code{days}, set a \code{TokenValidityUnits}
+value in your API request.
+
+For example, when you set \code{IdTokenValidity} as \code{10} and
+\code{TokenValidityUnits} as \code{hours}, your user can authenticate their
+session with their ID token for 10 hours.
+
+The default time unit for \code{AccessTokenValidity} in an API request is
+hours. \emph{Valid range} is displayed below in seconds.}
+
+\item{TokenValidityUnits}{The units in which the validity times are represented. The default unit
+for RefreshToken is days, and default for ID and access tokens are
+hours.}
 
 \item{ReadAttributes}{The read attributes.}
 
 \item{WriteAttributes}{The user pool attributes that the app client can write to.
 
-If your app client allows users to sign in through an identity provider,
-this array must include all attributes that are mapped to identity
-provider attributes. Amazon Cognito updates mapped attributes when users
-sign in to your application through an identity provider. If your app
-client lacks write access to a mapped attribute, Amazon Cognito throws
-an error when it attempts to update the attribute. For more information,
-see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html}{Specifying Identity Provider Attribute Mappings for Your User Pool}.}
+If your app client allows users to sign in through an IdP, this array
+must include all attributes that you have mapped to IdP attributes.
+Amazon Cognito updates mapped attributes when users sign in to your
+application through an IdP. If your app client does not have write
+access to a mapped attribute, Amazon Cognito throws an error when it
+tries to update the attribute. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html}{Specifying IdP Attribute Mappings for Your user pool}.}
 
 \item{ExplicitAuthFlows}{The authentication flows that are supported by the user pool clients.
-Flow names without the \code{ALLOW_} prefix are deprecated in favor of new
-names with the \code{ALLOW_} prefix. Note that values with \code{ALLOW_} prefix
-cannot be used along with values without \code{ALLOW_} prefix.
+Flow names without the \code{ALLOW_} prefix are no longer supported, in favor
+of new names with the \code{ALLOW_} prefix.
+
+Values with \code{ALLOW_} prefix must be used only along with the \code{ALLOW_}
+prefix.
 
 Valid values include:
-\itemize{
-\item \code{ALLOW_ADMIN_USER_PASSWORD_AUTH}: Enable admin based user password
-authentication flow \code{ADMIN_USER_PASSWORD_AUTH}. This setting
-replaces the \code{ADMIN_NO_SRP_AUTH} setting. With this authentication
-flow, Cognito receives the password in the request instead of using
-the SRP (Secure Remote Password protocol) protocol to verify
-passwords.
-\item \code{ALLOW_CUSTOM_AUTH}: Enable Lambda trigger based authentication.
-\item \code{ALLOW_USER_PASSWORD_AUTH}: Enable user password-based
-authentication. In this flow, Cognito receives the password in the
-request instead of using the SRP protocol to verify passwords.
-\item \code{ALLOW_USER_SRP_AUTH}: Enable SRP based authentication.
-\item \code{ALLOW_REFRESH_TOKEN_AUTH}: Enable authflow to refresh tokens.
+\subsection{ALLOW_ADMIN_USER_PASSWORD_AUTH}{
+
+Enable admin based user password authentication flow
+\code{ADMIN_USER_PASSWORD_AUTH}. This setting replaces the
+\code{ADMIN_NO_SRP_AUTH} setting. With this authentication flow, Amazon
+Cognito receives the password in the request instead of using the Secure
+Remote Password (SRP) protocol to verify passwords.
+}
+
+\subsection{ALLOW_CUSTOM_AUTH}{
+
+Enable Lambda trigger based authentication.
+}
+
+\subsection{ALLOW_USER_PASSWORD_AUTH}{
+
+Enable user password-based authentication. In this flow, Amazon Cognito
+receives the password in the request instead of using the SRP protocol
+to verify passwords.
+}
+
+\subsection{ALLOW_USER_SRP_AUTH}{
+
+Enable SRP-based authentication.
+}
+
+\subsection{ALLOW_REFRESH_TOKEN_AUTH}{
+
+Enable the authflow that refreshes tokens.
+
+If you don't specify a value for \code{ExplicitAuthFlows}, your user client
+supports \code{ALLOW_USER_SRP_AUTH} and \code{ALLOW_CUSTOM_AUTH}.
 }}
 
-\item{SupportedIdentityProviders}{A list of provider names for the identity providers that are supported
-on this client. The following are supported: \code{COGNITO}, \code{Facebook},
-\code{Google} and \code{LoginWithAmazon}.}
+\item{SupportedIdentityProviders}{A list of provider names for the identity providers (IdPs) that are
+supported on this client. The following are supported: \code{COGNITO},
+\code{Facebook}, \code{Google}, \code{SignInWithApple}, and \code{LoginWithAmazon}. You can
+also specify the names that you configured for the SAML and OIDC IdPs in
+your user pool, for example \code{MySAMLIdP} or \code{MyOIDCIdP}.}
 
-\item{CallbackURLs}{A list of allowed redirect (callback) URLs for the identity providers.
+\item{CallbackURLs}{A list of allowed redirect (callback) URLs for the IdPs.
 
 A redirect URI must:
 \itemize{
@@ -81,14 +147,14 @@ A redirect URI must:
 \item Not include a fragment component.
 }
 
-See \href{https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
+See OAuth 2.0 - Redirection Endpoint.
 
 Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 testing purposes only.
 
 App callback URLs such as myapp://example are also supported.}
 
-\item{LogoutURLs}{A list of allowed logout URLs for the identity providers.}
+\item{LogoutURLs}{A list of allowed logout URLs for the IdPs.}
 
 \item{DefaultRedirectURI}{The default redirect URI. Must be in the \code{CallbackURLs} list.
 
@@ -99,7 +165,7 @@ A redirect URI must:
 \item Not include a fragment component.
 }
 
-See \href{https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
+See OAuth 2.0 - Redirection Endpoint.
 
 Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 testing purposes only.
@@ -107,166 +173,77 @@ testing purposes only.
 App callback URLs such as myapp://example are also supported.}
 
 \item{AllowedOAuthFlows}{The allowed OAuth flows.
+\subsection{code}{
 
-Set to \code{code} to initiate a code grant flow, which provides an
-authorization code as the response. This code can be exchanged for
-access tokens with the token endpoint.
+Use a code grant flow, which provides an authorization code as the
+response. This code can be exchanged for access tokens with the
+\verb{/oauth2/token} endpoint.
+}
 
-Set to \code{implicit} to specify that the client should get the access token
-(and, optionally, ID token, based on scopes) directly.
+\subsection{implicit}{
 
-Set to \code{client_credentials} to specify that the client should get the
-access token (and, optionally, ID token, based on scopes) from the token
-endpoint using a combination of client and client_secret.}
+Issue the access token (and, optionally, ID token, based on scopes)
+directly to your user.
+}
 
-\item{AllowedOAuthScopes}{The allowed OAuth scopes. Possible values provided by OAuth are:
-\code{phone}, \code{email}, \code{openid}, and \code{profile}. Possible values provided by
-AWS are: \code{aws.cognito.signin.user.admin}. Custom scopes created in
+\subsection{client_credentials}{
+
+Issue the access token from the \verb{/oauth2/token} endpoint directly to a
+non-person user using a combination of the client ID and client secret.
+}}
+
+\item{AllowedOAuthScopes}{The allowed OAuth scopes. Possible values provided by OAuth are \code{phone},
+\code{email}, \code{openid}, and \code{profile}. Possible values provided by Amazon Web
+Services are \code{aws.cognito.signin.user.admin}. Custom scopes created in
 Resource Servers are also supported.}
 
 \item{AllowedOAuthFlowsUserPoolClient}{Set to true if the client is allowed to follow the OAuth protocol when
-interacting with Cognito user pools.}
+interacting with Amazon Cognito user pools.}
 
-\item{AnalyticsConfiguration}{The Amazon Pinpoint analytics configuration for collecting metrics for
-this user pool.
+\item{AnalyticsConfiguration}{The user pool analytics configuration for collecting metrics and sending
+them to your Amazon Pinpoint campaign.
 
-In regions where Pinpoint is not available, Cognito User Pools only
-supports sending events to Amazon Pinpoint projects in us-east-1. In
-regions where Pinpoint is available, Cognito User Pools will support
-sending events to Amazon Pinpoint projects within that same region.}
+In Amazon Web Services Regions where Amazon Pinpoint isn't available,
+user pools only support sending events to Amazon Pinpoint projects in
+Amazon Web Services Region us-east-1. In Regions where Amazon Pinpoint
+is available, user pools support sending events to Amazon Pinpoint
+projects within that same Region.}
 
-\item{PreventUserExistenceErrors}{Use this setting to choose which errors and responses are returned by
-Cognito APIs during authentication, account confirmation, and password
-recovery when the user does not exist in the user pool. When set to
-\code{ENABLED} and the user does not exist, authentication returns an error
-indicating either the username or password was incorrect, and account
-confirmation and password recovery return a response indicating a code
-was sent to a simulated destination. When set to \code{LEGACY}, those APIs
-will return a \code{UserNotFoundException} exception if the user does not
-exist in the user pool.
+\item{PreventUserExistenceErrors}{Errors and responses that you want Amazon Cognito APIs to return during
+authentication, account confirmation, and password recovery when the
+user doesn't exist in the user pool. When set to \code{ENABLED} and the user
+doesn't exist, authentication returns an error indicating either the
+username or password was incorrect. Account confirmation and password
+recovery return a response indicating a code was sent to a simulated
+destination. When set to \code{LEGACY}, those APIs return a
+\code{UserNotFoundException} exception if the user doesn't exist in the user
+pool.
 
 Valid values include:
 \itemize{
 \item \code{ENABLED} - This prevents user existence-related errors.
-\item \code{LEGACY} - This represents the old behavior of Cognito where user
-existence related errors are not prevented.
-}
+\item \code{LEGACY} - This represents the early behavior of Amazon Cognito
+where user existence related errors aren't prevented.
+}}
 
-After February 15th 2020, the value of \code{PreventUserExistenceErrors} will
-default to \code{ENABLED} for newly created user pool clients if no value is
-provided.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UserPoolClient = list(
-    UserPoolId = "string",
-    ClientName = "string",
-    ClientId = "string",
-    ClientSecret = "string",
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    RefreshTokenValidity = 123,
-    AccessTokenValidity = 123,
-    IdTokenValidity = 123,
-    TokenValidityUnits = list(
-      AccessToken = "seconds"|"minutes"|"hours"|"days",
-      IdToken = "seconds"|"minutes"|"hours"|"days",
-      RefreshToken = "seconds"|"minutes"|"hours"|"days"
-    ),
-    ReadAttributes = list(
-      "string"
-    ),
-    WriteAttributes = list(
-      "string"
-    ),
-    ExplicitAuthFlows = list(
-      "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"|"ALLOW_ADMIN_USER_PASSWORD_AUTH"|"ALLOW_CUSTOM_AUTH"|"ALLOW_USER_PASSWORD_AUTH"|"ALLOW_USER_SRP_AUTH"|"ALLOW_REFRESH_TOKEN_AUTH"
-    ),
-    SupportedIdentityProviders = list(
-      "string"
-    ),
-    CallbackURLs = list(
-      "string"
-    ),
-    LogoutURLs = list(
-      "string"
-    ),
-    DefaultRedirectURI = "string",
-    AllowedOAuthFlows = list(
-      "code"|"implicit"|"client_credentials"
-    ),
-    AllowedOAuthScopes = list(
-      "string"
-    ),
-    AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
-    AnalyticsConfiguration = list(
-      ApplicationId = "string",
-      ApplicationArn = "string",
-      RoleArn = "string",
-      ExternalId = "string",
-      UserDataShared = TRUE|FALSE
-    ),
-    PreventUserExistenceErrors = "LEGACY"|"ENABLED"
-  )
-)
-}
+\item{EnableTokenRevocation}{Activates or deactivates token revocation. For more information about
+revoking tokens, see
+\code{\link[=cognitoidentityprovider_revoke_token]{revoke_token}}.
+
+If you don't include this parameter, token revocation is automatically
+activated for the new user pool client.}
+
+\item{EnablePropagateAdditionalUserContextData}{Activates the propagation of additional user context data. For more
+information about propagation of user context data, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html}{Adding advanced security to a user pool}.
+If you don’t include this parameter, you can't send device fingerprint
+information, including source IP address, to Amazon Cognito advanced
+security. You can only activate
+\code{EnablePropagateAdditionalUserContextData} in an app client that has a
+client secret.}
 }
 \description{
 Creates the user pool client.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user_pool_client(
-  UserPoolId = "string",
-  ClientName = "string",
-  GenerateSecret = TRUE|FALSE,
-  RefreshTokenValidity = 123,
-  AccessTokenValidity = 123,
-  IdTokenValidity = 123,
-  TokenValidityUnits = list(
-    AccessToken = "seconds"|"minutes"|"hours"|"days",
-    IdToken = "seconds"|"minutes"|"hours"|"days",
-    RefreshToken = "seconds"|"minutes"|"hours"|"days"
-  ),
-  ReadAttributes = list(
-    "string"
-  ),
-  WriteAttributes = list(
-    "string"
-  ),
-  ExplicitAuthFlows = list(
-    "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"|"ALLOW_ADMIN_USER_PASSWORD_AUTH"|"ALLOW_CUSTOM_AUTH"|"ALLOW_USER_PASSWORD_AUTH"|"ALLOW_USER_SRP_AUTH"|"ALLOW_REFRESH_TOKEN_AUTH"
-  ),
-  SupportedIdentityProviders = list(
-    "string"
-  ),
-  CallbackURLs = list(
-    "string"
-  ),
-  LogoutURLs = list(
-    "string"
-  ),
-  DefaultRedirectURI = "string",
-  AllowedOAuthFlows = list(
-    "code"|"implicit"|"client_credentials"
-  ),
-  AllowedOAuthScopes = list(
-    "string"
-  ),
-  AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
-  AnalyticsConfiguration = list(
-    ApplicationId = "string",
-    ApplicationArn = "string",
-    RoleArn = "string",
-    ExternalId = "string",
-    UserDataShared = TRUE|FALSE
-  ),
-  PreventUserExistenceErrors = "LEGACY"|"ENABLED"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool_client.html} for full documentation.
+}
 \keyword{internal}

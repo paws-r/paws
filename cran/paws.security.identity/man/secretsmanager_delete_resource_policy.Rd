@@ -7,72 +7,15 @@
 secretsmanager_delete_resource_policy(SecretId)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret that you want to delete the attached resource-based
-policy for. You can specify either the Amazon Resource Name (ARN) or the
-friendly name of the secret.
+\item{SecretId}{[required] The ARN or name of the secret to delete the attached resource-based
+policy for.
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too—for example, if you
-don’t include the final hyphen and six random characters that Secrets
-Manager adds at the end of the ARN when you created the secret. A
-partial ARN match can work as long as it uniquely matches only one
-secret. However, if your secret has a name that ends in a hyphen
-followed by six characters (before Secrets Manager adds the hyphen and
-six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you’re
-specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don’t create secret names
-ending with a hyphen followed by six characters.
-
-If you specify an incomplete ARN without the random suffix, and instead
-provide the 'friendly name', you \emph{must} not include the random suffix.
-If you do include the random suffix added by Secrets Manager, you
-receive either a \emph{ResourceNotFoundException} or an
-\emph{AccessDeniedException} error, depending on your permissions.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ARN = "string",
-  Name = "string"
-)
-}
+For an ARN, we recommend that you specify a complete ARN rather than a
+partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 }
 \description{
-Deletes the resource-based permission policy attached to the secret.
+Deletes the resource-based permission policy attached to the secret. To attach a policy to a secret, use \code{\link[=secretsmanager_put_resource_policy]{put_resource_policy}}.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:DeleteResourcePolicy
-}
-
-\strong{Related operations}
-\itemize{
-\item To attach a resource policy to a secret, use
-\code{\link[=secretsmanager_put_resource_policy]{put_resource_policy}}.
-\item To retrieve the current resource-based policy that's attached to a
-secret, use
-\code{\link[=secretsmanager_get_resource_policy]{get_resource_policy}}.
-\item To list all of the currently available secrets, use
-\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_resource_policy(
-  SecretId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to delete the resource-based policy that
-# is attached to a secret.
-svc$delete_resource_policy(
-  SecretId = "MyTestDatabaseSecret"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/delete_resource_policy.html} for full documentation.
 }
 \keyword{internal}

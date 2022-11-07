@@ -2,18 +2,30 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_create_file_system_from_backup}
 \alias{fsx_create_file_system_from_backup}
-\title{Creates a new Amazon FSx file system from an existing Amazon FSx backup}
+\title{Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server,
+or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup}
 \usage{
-fsx_create_file_system_from_backup(BackupId, ClientRequestToken,
-  SubnetIds, SecurityGroupIds, Tags, WindowsConfiguration,
-  LustreConfiguration, StorageType)
+fsx_create_file_system_from_backup(
+  BackupId,
+  ClientRequestToken = NULL,
+  SubnetIds,
+  SecurityGroupIds = NULL,
+  Tags = NULL,
+  WindowsConfiguration = NULL,
+  LustreConfiguration = NULL,
+  StorageType = NULL,
+  KmsKeyId = NULL,
+  FileSystemTypeVersion = NULL,
+  OpenZFSConfiguration = NULL
+)
 }
 \arguments{
 \item{BackupId}{[required]}
 
 \item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
 idempotent creation. This string is automatically filled on your behalf
-when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
+when you use the Command Line Interface (CLI) or an Amazon Web Services
+SDK.}
 
 \item{SubnetIds}{[required] Specifies the IDs of the subnets that the file system will be accessible
 from. For Windows \code{MULTI_AZ_1} file system deployment types, provide
@@ -22,14 +34,14 @@ the standby file server. You specify one of these subnets as the
 preferred subnet using the \code{WindowsConfiguration > PreferredSubnetID}
 property.
 
-For Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} deployment types and Lustre
-file systems, provide exactly one subnet ID. The file server is launched
-in that subnet's Availability Zone.}
+Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} file system deployment types,
+Lustre file systems, and OpenZFS file systems provide exactly one subnet
+ID. The file server is launched in that subnet's Availability Zone.}
 
 \item{SecurityGroupIds}{A list of IDs for the security groups that apply to the specified
 network interfaces created for file system access. These security groups
 apply to all network interfaces. This value isn't returned in later
-DescribeFileSystem requests.}
+\code{DescribeFileSystem} requests.}
 
 \item{Tags}{The tags to be applied to the file system at file system creation. The
 key value of the \code{Name} tag appears in the console as the file system
@@ -39,239 +51,39 @@ name.}
 
 \item{LustreConfiguration}{}
 
-\item{StorageType}{Sets the storage type for the Windows file system you're creating from a
-backup. Valid values are \code{SSD} and \code{HDD}.
+\item{StorageType}{Sets the storage type for the Windows or OpenZFS file system that you're
+creating from a backup. Valid values are \code{SSD} and \code{HDD}.
 \itemize{
-\item Set to \code{SSD} to use solid state drive storage. Supported on all
-Windows deployment types.
-\item Set to \code{HDD} to use hard disk drive storage. Supported on
-\code{SINGLE_AZ_2} and \code{MULTI_AZ_1} Windows file system deployment types.
+\item Set to \code{SSD} to use solid state drive storage. SSD is supported on
+all Windows and OpenZFS deployment types.
+\item Set to \code{HDD} to use hard disk drive storage. HDD is supported on
+\code{SINGLE_AZ_2} and \code{MULTI_AZ_1} FSx for Windows File Server file
+system deployment types.
 }
 
-Default value is \code{SSD}.
+The default value is \code{SSD}.
 
 HDD and SSD storage types have different minimum storage capacity
 requirements. A restored file system's storage capacity is tied to the
 file system that was backed up. You can create a file system that uses
-HDD storage from a backup of a file system that used SSD storage only if
-the original SSD file system had a storage capacity of at least 2000
-GiB.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  FileSystem = list(
-    OwnerId = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FileSystemId = "string",
-    FileSystemType = "WINDOWS"|"LUSTRE",
-    Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-    FailureDetails = list(
-      Message = "string"
-    ),
-    StorageCapacity = 123,
-    StorageType = "SSD"|"HDD",
-    VpcId = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    NetworkInterfaceIds = list(
-      "string"
-    ),
-    DNSName = "string",
-    KmsKeyId = "string",
-    ResourceARN = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    WindowsConfiguration = list(
-      ActiveDirectoryId = "string",
-      SelfManagedActiveDirectoryConfiguration = list(
-        DomainName = "string",
-        OrganizationalUnitDistinguishedName = "string",
-        FileSystemAdministratorsGroup = "string",
-        UserName = "string",
-        DnsIps = list(
-          "string"
-        )
-      ),
-      DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-      RemoteAdministrationEndpoint = "string",
-      PreferredSubnetId = "string",
-      PreferredFileServerIp = "string",
-      ThroughputCapacity = 123,
-      MaintenanceOperationsInProgress = list(
-        "PATCHING"|"BACKING_UP"
-      ),
-      WeeklyMaintenanceStartTime = "string",
-      DailyAutomaticBackupStartTime = "string",
-      AutomaticBackupRetentionDays = 123,
-      CopyTagsToBackups = TRUE|FALSE,
-      Aliases = list(
-        list(
-          Name = "string",
-          Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-        )
-      )
-    ),
-    LustreConfiguration = list(
-      WeeklyMaintenanceStartTime = "string",
-      DataRepositoryConfiguration = list(
-        Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-        ImportPath = "string",
-        ExportPath = "string",
-        ImportedFileChunkSize = 123,
-        AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-        FailureDetails = list(
-          Message = "string"
-        )
-      ),
-      DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-      PerUnitStorageThroughput = 123,
-      MountName = "string",
-      DailyAutomaticBackupStartTime = "string",
-      AutomaticBackupRetentionDays = 123,
-      CopyTagsToBackups = TRUE|FALSE,
-      DriveCacheType = "NONE"|"READ"
-    ),
-    AdministrativeActions = list(
-      list(
-        AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-        ProgressPercent = 123,
-        RequestTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-        TargetFileSystemValues = list(),
-        FailureDetails = list(
-          Message = "string"
-        )
-      )
-    )
-  )
-)
-}
+HDD storage from a backup of a file system that used SSD storage if the
+original SSD file system had a storage capacity of at least 2000 GiB.}
+
+\item{KmsKeyId}{}
+
+\item{FileSystemTypeVersion}{Sets the version for the Amazon FSx for Lustre file system that you're
+creating from a backup. Valid values are \code{2.10} and \code{2.12}.
+
+You don't need to specify \code{FileSystemTypeVersion} because it will be
+applied using the backup's \code{FileSystemTypeVersion} setting. If you
+choose to specify \code{FileSystemTypeVersion} when creating from backup, the
+value must match the backup's \code{FileSystemTypeVersion} setting.}
+
+\item{OpenZFSConfiguration}{The OpenZFS configuration for the file system that's being created.}
 }
 \description{
-Creates a new Amazon FSx file system from an existing Amazon FSx backup.
+Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server, or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup.
 
-If a file system with the specified client request token exists and the
-parameters match, this operation returns the description of the file
-system. If a client request token specified by the file system exists
-and the parameters don't match, this call returns
-\code{IncompatibleParameterError}. If a file system with the specified client
-request token doesn't exist, this operation does the following:
-\itemize{
-\item Creates a new Amazon FSx file system from backup with an assigned
-ID, and an initial lifecycle state of \code{CREATING}.
-\item Returns the description of the file system.
-}
-
-Parameters like Active Directory, default share name, automatic backup,
-and backup settings default to the parameters of the file system that
-was backed up, unless overridden. You can explicitly supply other
-settings.
-
-By using the idempotent operation, you can retry a
-\code{\link[=fsx_create_file_system_from_backup]{create_file_system_from_backup}}
-call without the risk of creating an extra file system. This approach
-can be useful when an initial call fails in a way that makes it unclear
-whether a file system was created. Examples are if a transport level
-timeout occurred, or your connection was reset. If you use the same
-client request token and the initial call created a file system, the
-client receives success as long as the parameters are the same.
-
-The
-\code{\link[=fsx_create_file_system_from_backup]{create_file_system_from_backup}}
-call returns while the file system's lifecycle state is still
-\code{CREATING}. You can check the file-system creation status by calling the
-\code{\link[=fsx_describe_file_systems]{describe_file_systems}} operation, which
-returns the file system state along with other information.
-}
-\section{Request syntax}{
-\preformatted{svc$create_file_system_from_backup(
-  BackupId = "string",
-  ClientRequestToken = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  WindowsConfiguration = list(
-    ActiveDirectoryId = "string",
-    SelfManagedActiveDirectoryConfiguration = list(
-      DomainName = "string",
-      OrganizationalUnitDistinguishedName = "string",
-      FileSystemAdministratorsGroup = "string",
-      UserName = "string",
-      Password = "string",
-      DnsIps = list(
-        "string"
-      )
-    ),
-    DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-    PreferredSubnetId = "string",
-    ThroughputCapacity = 123,
-    WeeklyMaintenanceStartTime = "string",
-    DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123,
-    CopyTagsToBackups = TRUE|FALSE,
-    Aliases = list(
-      "string"
-    )
-  ),
-  LustreConfiguration = list(
-    WeeklyMaintenanceStartTime = "string",
-    ImportPath = "string",
-    ExportPath = "string",
-    ImportedFileChunkSize = 123,
-    DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-    AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-    PerUnitStorageThroughput = 123,
-    DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123,
-    CopyTagsToBackups = TRUE|FALSE,
-    DriveCacheType = "NONE"|"READ"
-  ),
-  StorageType = "SSD"|"HDD"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation creates a new file system from backup.
-svc$create_file_system_from_backup(
-  BackupId = "backup-03e3c82e0183b7b6b",
-  ClientRequestToken = "f4c94ed7-238d-4c46-93db-48cd62ec33b7",
-  SecurityGroupIds = list(
-    "sg-edcd9784"
-  ),
-  SubnetIds = list(
-    "subnet-1234abcd"
-  ),
-  Tags = list(
-    list(
-      Key = "Name",
-      Value = "MyFileSystem"
-    )
-  ),
-  WindowsConfiguration = list(
-    ThroughputCapacity = 8L
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/fsx/create_file_system_from_backup.html} for full documentation.
 }
 \keyword{internal}

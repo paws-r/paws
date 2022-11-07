@@ -2,15 +2,20 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_list_services}
 \alias{ecs_list_services}
-\title{Lists the services that are running in a specified cluster}
+\title{Returns a list of services}
 \usage{
-ecs_list_services(cluster, nextToken, maxResults, launchType,
-  schedulingStrategy)
+ecs_list_services(
+  cluster = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  launchType = NULL,
+  schedulingStrategy = NULL
+)
 }
 \arguments{
-\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the services to list. If you do not specify a cluster, the default
-cluster is assumed.}
+\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to use
+when filtering the \code{\link[=ecs_list_services]{list_services}} results. If you
+do not specify a cluster, the default cluster is assumed.}
 
 \item{nextToken}{The \code{nextToken} value returned from a
 \code{\link[=ecs_list_services]{list_services}} request indicating that more
@@ -22,49 +27,26 @@ This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of service results returned by
-\code{\link[=ecs_list_services]{list_services}} in paginated output. When this
-parameter is used, \code{\link[=ecs_list_services]{list_services}} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
-sending another \code{\link[=ecs_list_services]{list_services}} request with the
-returned \code{nextToken} value. This value can be between 1 and 100. If this
-parameter is not used, then \code{\link[=ecs_list_services]{list_services}} returns
-up to 10 results and a \code{nextToken} value if applicable.}
+\item{maxResults}{The maximum number of service results that
+\code{\link[=ecs_list_services]{list_services}} returned in paginated output. When
+this parameter is used, \code{\link[=ecs_list_services]{list_services}} only
+returns \code{maxResults} results in a single page along with a \code{nextToken}
+response element. The remaining results of the initial request can be
+seen by sending another \code{\link[=ecs_list_services]{list_services}} request
+with the returned \code{nextToken} value. This value can be between 1 and
+100. If this parameter isn't used, then
+\code{\link[=ecs_list_services]{list_services}} returns up to 10 results and a
+\code{nextToken} value if applicable.}
 
-\item{launchType}{The launch type for the services to list.}
+\item{launchType}{The launch type to use when filtering the
+\code{\link[=ecs_list_services]{list_services}} results.}
 
-\item{schedulingStrategy}{The scheduling strategy for services to list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  serviceArns = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
+\item{schedulingStrategy}{The scheduling strategy to use when filtering the
+\code{\link[=ecs_list_services]{list_services}} results.}
 }
 \description{
-Lists the services that are running in a specified cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$list_services(
-  cluster = "string",
-  nextToken = "string",
-  maxResults = 123,
-  launchType = "EC2"|"FARGATE",
-  schedulingStrategy = "REPLICA"|"DAEMON"
-)
-}
-}
+Returns a list of services. You can filter the results by cluster, launch type, and scheduling strategy.
 
-\examples{
-\dontrun{
-# This example lists the services running in the default cluster for an
-# account.
-svc$list_services()
-}
-
+See \url{https://paws-r.github.io/docs/ecs/list_services.html} for full documentation.
 }
 \keyword{internal}

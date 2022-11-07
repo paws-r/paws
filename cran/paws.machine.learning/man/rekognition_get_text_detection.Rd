@@ -5,7 +5,7 @@
 \title{Gets the text detection results of a Amazon Rekognition Video analysis
 started by StartTextDetection}
 \usage{
-rekognition_get_text_detection(JobId, MaxResults, NextToken)
+rekognition_get_text_detection(JobId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{JobId}{[required] Job identifier for the text detection operation for which you want
@@ -20,91 +20,9 @@ to retrieve), Amazon Rekognition Video returns a pagination token in the
 response. You can use this pagination token to retrieve the next set of
 text.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
-  StatusMessage = "string",
-  VideoMetadata = list(
-    Codec = "string",
-    DurationMillis = 123,
-    Format = "string",
-    FrameRate = 123.0,
-    FrameHeight = 123,
-    FrameWidth = 123
-  ),
-  TextDetections = list(
-    list(
-      Timestamp = 123,
-      TextDetection = list(
-        DetectedText = "string",
-        Type = "LINE"|"WORD",
-        Id = 123,
-        ParentId = 123,
-        Confidence = 123.0,
-        Geometry = list(
-          BoundingBox = list(
-            Width = 123.0,
-            Height = 123.0,
-            Left = 123.0,
-            Top = 123.0
-          ),
-          Polygon = list(
-            list(
-              X = 123.0,
-              Y = 123.0
-            )
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string",
-  TextModelVersion = "string"
-)
-}
-}
 \description{
-Gets the text detection results of a Amazon Rekognition Video analysis
-started by \code{\link[=rekognition_start_text_detection]{start_text_detection}}.
+Gets the text detection results of a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_text_detection]{start_text_detection}}.
 
-Text detection with Amazon Rekognition Video is an asynchronous
-operation. You start text detection by calling
-\code{\link[=rekognition_start_text_detection]{start_text_detection}} which returns
-a job identifier (\code{JobId}) When the text detection operation finishes,
-Amazon Rekognition publishes a completion status to the Amazon Simple
-Notification Service topic registered in the initial call to
-\code{\link[=rekognition_start_text_detection]{start_text_detection}}. To get the
-results of the text detection operation, first check that the status
-value published to the Amazon SNS topic is \code{SUCCEEDED}. if so, call
-\code{\link[=rekognition_get_text_detection]{get_text_detection}} and pass the job
-identifier (\code{JobId}) from the initial call of
-\code{\link[=rekognition_start_label_detection]{start_label_detection}}.
-
-\code{\link[=rekognition_get_text_detection]{get_text_detection}} returns an array
-of detected text (\code{TextDetections}) sorted by the time the text was
-detected, up to 50 words per frame of video.
-
-Each element of the array includes the detected text, the precentage
-confidence in the acuracy of the detected text, the time the text was
-detected, bounding box information for where the text was located, and
-unique identifiers for words and their lines.
-
-Use MaxResults parameter to limit the number of text detections
-returned. If there are more results than specified in \code{MaxResults}, the
-value of \code{NextToken} in the operation response contains a pagination
-token for getting the next set of results. To get the next page of
-results, call \code{\link[=rekognition_get_text_detection]{get_text_detection}} and
-populate the \code{NextToken} request parameter with the token value returned
-from the previous call to
-\code{\link[=rekognition_get_text_detection]{get_text_detection}}.
+See \url{https://paws-r.github.io/docs/rekognition/get_text_detection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_text_detection(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

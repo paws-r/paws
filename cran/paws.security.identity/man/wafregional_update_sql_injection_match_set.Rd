@@ -4,8 +4,11 @@
 \alias{wafregional_update_sql_injection_match_set}
 \title{This is AWS WAF Classic documentation}
 \usage{
-wafregional_update_sql_injection_match_set(SqlInjectionMatchSetId,
-  ChangeToken, Updates)
+wafregional_update_sql_injection_match_set(
+  SqlInjectionMatchSetId,
+  ChangeToken,
+  Updates
+)
 }
 \arguments{
 \item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the \code{SqlInjectionMatchSet} that you want
@@ -28,105 +31,9 @@ the applicable data types:
 \item FieldToMatch: Contains \code{Data} and \code{Type}
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
-SqlInjectionMatchSet. For each \code{SqlInjectionMatchTuple} object, you
-specify the following values:
-\itemize{
-\item \code{Action}: Whether to insert the object into or delete the object
-from the array. To change a \code{SqlInjectionMatchTuple}, you delete the
-existing object and add a new one.
-\item \code{FieldToMatch}: The part of web requests that you want AWS WAF to
-inspect and, if you want AWS WAF to inspect a header or custom query
-parameter, the name of the header or parameter.
-\item \code{TextTransformation}: Which text transformation, if any, to perform
-on the web request before inspecting the request for snippets of
-malicious SQL code.
-
-You can only specify a single type of TextTransformation.
-}
-
-You use \code{SqlInjectionMatchSet} objects to specify which CloudFront
-requests that you want to allow, block, or count. For example, if you're
-receiving requests that contain snippets of SQL code in the query string
-and you want to block the requests, you can create a
-\code{SqlInjectionMatchSet} with the applicable settings, and then configure
-AWS WAF to block the requests.
-
-To create and configure a \code{SqlInjectionMatchSet}, perform the following
-steps:
-\enumerate{
-\item Submit a
-\code{\link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set}}
-request.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=wafregional_update_ip_set]{update_ip_set}} request.
-\item Submit an
-\code{\link[=wafregional_update_sql_injection_match_set]{update_sql_injection_match_set}}
-request to specify the parts of web requests that you want AWS WAF
-to inspect for snippets of SQL code.
-}
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_sql_injection_match_set(
-  SqlInjectionMatchSetId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      SqlInjectionMatchTuple = list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes a SqlInjectionMatchTuple object (filters)
-# in a SQL injection match set with the ID
-# example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-svc$update_sql_injection_match_set(
-  ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-  SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
-  Updates = list(
-    list(
-      Action = "DELETE",
-      SqlInjectionMatchTuple = list(
-        FieldToMatch = list(
-          Type = "QUERY_STRING"
-        ),
-        TextTransformation = "URL_DECODE"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/wafregional/update_sql_injection_match_set.html} for full documentation.
 }
 \keyword{internal}

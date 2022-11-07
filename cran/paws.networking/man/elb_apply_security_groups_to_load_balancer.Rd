@@ -5,8 +5,7 @@
 \title{Associates one or more security groups with your load balancer in a
 virtual private cloud (VPC)}
 \usage{
-elb_apply_security_groups_to_load_balancer(LoadBalancerName,
-  SecurityGroups)
+elb_apply_security_groups_to_load_balancer(LoadBalancerName, SecurityGroups)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -14,43 +13,9 @@ elb_apply_security_groups_to_load_balancer(LoadBalancerName,
 \item{SecurityGroups}{[required] The IDs of the security groups to associate with the load balancer. Note
 that you cannot specify the name of the security group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SecurityGroups = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Associates one or more security groups with your load balancer in a
-virtual private cloud (VPC). The specified security groups override the
-previously associated security groups.
+Associates one or more security groups with your load balancer in a virtual private cloud (VPC). The specified security groups override the previously associated security groups.
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups}{Security Groups for Load Balancers in a VPC}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$apply_security_groups_to_load_balancer(
-  LoadBalancerName = "string",
-  SecurityGroups = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example associates a security group with the specified load
-# balancer in a VPC.
-svc$apply_security_groups_to_load_balancer(
-  LoadBalancerName = "my-load-balancer",
-  SecurityGroups = list(
-    "sg-fc448899"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/apply_security_groups_to_load_balancer.html} for full documentation.
 }
 \keyword{internal}

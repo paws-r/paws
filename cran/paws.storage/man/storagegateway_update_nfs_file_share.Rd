@@ -4,16 +4,29 @@
 \alias{storagegateway_update_nfs_file_share}
 \title{Updates a Network File System (NFS) file share}
 \usage{
-storagegateway_update_nfs_file_share(FileShareARN, KMSEncrypted, KMSKey,
-  NFSFileShareDefaults, DefaultStorageClass, ObjectACL, ClientList,
-  Squash, ReadOnly, GuessMIMETypeEnabled, RequesterPays, FileShareName,
-  CacheAttributes, NotificationPolicy)
+storagegateway_update_nfs_file_share(
+  FileShareARN,
+  KMSEncrypted = NULL,
+  KMSKey = NULL,
+  NFSFileShareDefaults = NULL,
+  DefaultStorageClass = NULL,
+  ObjectACL = NULL,
+  ClientList = NULL,
+  Squash = NULL,
+  ReadOnly = NULL,
+  GuessMIMETypeEnabled = NULL,
+  RequesterPays = NULL,
+  FileShareName = NULL,
+  CacheAttributes = NULL,
+  NotificationPolicy = NULL,
+  AuditDestinationARN = NULL
+)
 }
 \arguments{
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the file share to be updated.}
 
-\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
-KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own KMS
+key, or \code{false} to use a key managed by Amazon S3. Optional.
 
 Valid Values: \code{true} | \code{false}}
 
@@ -25,17 +38,16 @@ is \code{true}. Optional.}
 \item{NFSFileShareDefaults}{The default values for the file share. Optional.}
 
 \item{DefaultStorageClass}{The default storage class for objects put into an Amazon S3 bucket by
-the file gateway. The default value is \code{S3_INTELLIGENT_TIERING}.
-Optional.
+the S3 File Gateway. The default value is \code{S3_STANDARD}. Optional.
 
 Valid Values: \code{S3_STANDARD} | \code{S3_INTELLIGENT_TIERING} |
 \code{S3_STANDARD_IA} | \code{S3_ONEZONE_IA}}
 
 \item{ObjectACL}{A value that sets the access control list (ACL) permission for objects
-in the S3 bucket that a file gateway puts objects into. The default
+in the S3 bucket that a S3 File Gateway puts objects into. The default
 value is \code{private}.}
 
-\item{ClientList}{The list of clients that are allowed to access the file gateway. The
+\item{ClientList}{The list of clients that are allowed to access the S3 File Gateway. The
 list must contain either valid IP addresses or valid CIDR blocks.}
 
 \item{Squash}{The user mapped to anonymous user.
@@ -72,61 +84,34 @@ Valid Values: \code{true} | \code{false}}
 \item{FileShareName}{The name of the file share. Optional.
 
 \code{FileShareName} must be set if an S3 prefix name is set in
-\code{LocationARN}.}
+\code{LocationARN}, or if an access point or access point alias is used.}
 
-\item{CacheAttributes}{Refresh cache information.}
+\item{CacheAttributes}{Specifies refresh cache information for the file share.}
 
-\item{NotificationPolicy}{The notification policy of the file share.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  FileShareARN = "string"
-)
-}
+\item{NotificationPolicy}{The notification policy of the file share. \code{SettlingTimeInSeconds}
+controls the number of seconds to wait after the last point in time a
+client wrote to a file before generating an \code{ObjectUploaded}
+notification. Because clients can make many small writes to files, it's
+best to set this parameter for as long as possible to avoid generating
+multiple notifications for the same file in a small time period.
+
+\code{SettlingTimeInSeconds} has no effect on the timing of the object
+uploading to Amazon S3, only the timing of the notification.
+
+The following example sets \code{NotificationPolicy} on with
+\code{SettlingTimeInSeconds} set to 60.
+
+\verb{\{\\"Upload\\": \{\\"SettlingTimeInSeconds\\": 60\}\}}
+
+The following example sets \code{NotificationPolicy} off.
+
+\code{{}}}
+
+\item{AuditDestinationARN}{The Amazon Resource Name (ARN) of the storage used for audit logs.}
 }
 \description{
-Updates a Network File System (NFS) file share. This operation is only
-supported in the file gateway type.
+Updates a Network File System (NFS) file share. This operation is only supported in S3 File Gateways.
 
-To leave a file share field unchanged, set the corresponding input field
-to null.
-
-Updates the following file share settings:
-\itemize{
-\item Default storage class for your S3 bucket
-\item Metadata defaults for your S3 bucket
-\item Allowed NFS clients for your file share
-\item Squash settings
-\item Write status of your file share
+See \url{https://paws-r.github.io/docs/storagegateway/update_nfs_file_share.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$update_nfs_file_share(
-  FileShareARN = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string",
-  NFSFileShareDefaults = list(
-    FileMode = "string",
-    DirectoryMode = "string",
-    GroupId = 123,
-    OwnerId = 123
-  ),
-  DefaultStorageClass = "string",
-  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
-  ClientList = list(
-    "string"
-  ),
-  Squash = "string",
-  ReadOnly = TRUE|FALSE,
-  GuessMIMETypeEnabled = TRUE|FALSE,
-  RequesterPays = TRUE|FALSE,
-  FileShareName = "string",
-  CacheAttributes = list(
-    CacheStaleTimeoutInSeconds = 123
-  ),
-  NotificationPolicy = "string"
-)
-}
-}
-
 \keyword{internal}

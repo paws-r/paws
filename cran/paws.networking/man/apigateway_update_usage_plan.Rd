@@ -4,63 +4,16 @@
 \alias{apigateway_update_usage_plan}
 \title{Updates a usage plan of a given plan Id}
 \usage{
-apigateway_update_usage_plan(usagePlanId, patchOperations)
+apigateway_update_usage_plan(usagePlanId, patchOperations = NULL)
 }
 \arguments{
-\item{usagePlanId}{[required] [Required] The Id of the to-be-updated usage plan.}
+\item{usagePlanId}{[required] The Id of the to-be-updated usage plan.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  apiStages = list(
-    list(
-      apiId = "string",
-      stage = "string",
-      throttle = list(
-        list(
-          burstLimit = 123,
-          rateLimit = 123.0
-        )
-      )
-    )
-  ),
-  throttle = list(
-    burstLimit = 123,
-    rateLimit = 123.0
-  ),
-  quota = list(
-    limit = 123,
-    offset = 123,
-    period = "DAY"|"WEEK"|"MONTH"
-  ),
-  productCode = "string",
-  tags = list(
-    "string"
-  )
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Updates a usage plan of a given plan Id.
-}
-\section{Request syntax}{
-\preformatted{svc$update_usage_plan(
-  usagePlanId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_usage_plan.html} for full documentation.
+}
 \keyword{internal}

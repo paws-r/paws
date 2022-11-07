@@ -4,7 +4,7 @@
 \alias{apigatewayv2_get_domain_names}
 \title{Gets the domain names for an AWS account}
 \usage{
-apigatewayv2_get_domain_names(MaxResults, NextToken)
+apigatewayv2_get_domain_names(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of elements to be returned for this resource.}
@@ -12,52 +12,9 @@ apigatewayv2_get_domain_names(MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      ApiMappingSelectionExpression = "string",
-      DomainName = "string",
-      DomainNameConfigurations = list(
-        list(
-          ApiGatewayDomainName = "string",
-          CertificateArn = "string",
-          CertificateName = "string",
-          CertificateUploadDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          DomainNameStatus = "AVAILABLE"|"UPDATING",
-          DomainNameStatusMessage = "string",
-          EndpointType = "REGIONAL"|"EDGE",
-          HostedZoneId = "string",
-          SecurityPolicy = "TLS_1_0"|"TLS_1_2"
-        )
-      ),
-      MutualTlsAuthentication = list(
-        TruststoreUri = "string",
-        TruststoreVersion = "string",
-        TruststoreWarnings = list(
-          "string"
-        )
-      ),
-      Tags = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets the domain names for an AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$get_domain_names(
-  MaxResults = "string",
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_domain_names.html} for full documentation.
+}
 \keyword{internal}

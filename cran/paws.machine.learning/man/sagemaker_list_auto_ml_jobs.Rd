@@ -4,9 +4,18 @@
 \alias{sagemaker_list_auto_ml_jobs}
 \title{Request a list of jobs}
 \usage{
-sagemaker_list_auto_ml_jobs(CreationTimeAfter, CreationTimeBefore,
-  LastModifiedTimeAfter, LastModifiedTimeBefore, NameContains,
-  StatusEquals, SortOrder, SortBy, MaxResults, NextToken)
+sagemaker_list_auto_ml_jobs(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  NameContains = NULL,
+  StatusEquals = NULL,
+  SortOrder = NULL,
+  SortBy = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{Request a list of jobs, using a filter for time.}
@@ -21,65 +30,18 @@ sagemaker_list_auto_ml_jobs(CreationTimeAfter, CreationTimeBefore,
 
 \item{StatusEquals}{Request a list of jobs, using a filter for status.}
 
-\item{SortOrder}{The sort order for the results. The default is Descending.}
+\item{SortOrder}{The sort order for the results. The default is \code{Descending}.}
 
-\item{SortBy}{The parameter by which to sort the results. The default is
-AutoMLJobName.}
+\item{SortBy}{The parameter by which to sort the results. The default is \code{Name}.}
 
 \item{MaxResults}{Request a list of jobs up to a specified limit.}
 
 \item{NextToken}{If the previous response was truncated, you receive this token. Use it
 in your next request to receive the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoMLJobSummaries = list(
-    list(
-      AutoMLJobName = "string",
-      AutoMLJobArn = "string",
-      AutoMLJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-      AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FailureReason = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Request a list of jobs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_auto_ml_jobs(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  NameContains = "string",
-  StatusEquals = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-  SortOrder = "Ascending"|"Descending",
-  SortBy = "Name"|"CreationTime"|"Status",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_auto_ml_jobs.html} for full documentation.
+}
 \keyword{internal}

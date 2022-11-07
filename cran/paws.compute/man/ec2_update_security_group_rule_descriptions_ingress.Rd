@@ -4,8 +4,13 @@
 \alias{ec2_update_security_group_rule_descriptions_ingress}
 \title{Updates the description of an ingress (inbound) security group rule}
 \usage{
-ec2_update_security_group_rule_descriptions_ingress(DryRun, GroupId,
-  GroupName, IpPermissions)
+ec2_update_security_group_rule_descriptions_ingress(
+  DryRun = NULL,
+  GroupId = NULL,
+  GroupName = NULL,
+  IpPermissions = NULL,
+  SecurityGroupRuleDescriptions = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -21,89 +26,15 @@ nondefault VPC, you must specify the security group ID.}
 specify either the security group ID or the security group name in the
 request.}
 
-\item{IpPermissions}{[required] The IP permissions for the security group rule.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
+\item{IpPermissions}{The IP permissions for the security group rule. You must specify either
+IP permissions or a description.}
+
+\item{SecurityGroupRuleDescriptions}{[VPC only] The description for the ingress security group rules. You
+must specify either a description or IP permissions.}
 }
 \description{
-Updates the description of an ingress (inbound) security group rule. You
-can replace an existing description, or add a description to a rule that
-did not have one previously.
+Updates the description of an ingress (inbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously. You can remove a description for a security group rule by omitting the description parameter in the request.
 
-You specify the description as part of the IP permissions structure. You
-can remove a description for a security group rule by omitting the
-description parameter in the request.
-}
-\section{Request syntax}{
-\preformatted{svc$update_security_group_rule_descriptions_ingress(
-  DryRun = TRUE|FALSE,
-  GroupId = "string",
-  GroupName = "string",
-  IpPermissions = list(
-    list(
-      FromPort = 123,
-      IpProtocol = "string",
-      IpRanges = list(
-        list(
-          CidrIp = "string",
-          Description = "string"
-        )
-      ),
-      Ipv6Ranges = list(
-        list(
-          CidrIpv6 = "string",
-          Description = "string"
-        )
-      ),
-      PrefixListIds = list(
-        list(
-          Description = "string",
-          PrefixListId = "string"
-        )
-      ),
-      ToPort = 123,
-      UserIdGroupPairs = list(
-        list(
-          Description = "string",
-          GroupId = "string",
-          GroupName = "string",
-          PeeringStatus = "string",
-          UserId = "string",
-          VpcId = "string",
-          VpcPeeringConnectionId = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example updates the description for the specified security group
-# rule.
-svc$update_security_group_rule_descriptions_ingress(
-  GroupId = "sg-123abc12",
-  IpPermissions = list(
-    list(
-      FromPort = 22L,
-      IpProtocol = "tcp",
-      IpRanges = list(
-        list(
-          CidrIp = "203.0.113.0/16",
-          Description = "SSH access from the LA office"
-        )
-      ),
-      ToPort = 22L
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/update_security_group_rule_descriptions_ingress.html} for full documentation.
 }
 \keyword{internal}

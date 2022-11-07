@@ -9,51 +9,9 @@ storagegateway_describe_bandwidth_rate_limit_schedule(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  BandwidthRateLimitIntervals = list(
-    list(
-      StartHourOfDay = 123,
-      StartMinuteOfHour = 123,
-      EndHourOfDay = 123,
-      EndMinuteOfHour = 123,
-      DaysOfWeek = list(
-        123
-      ),
-      AverageUploadRateLimitInBitsPerSec = 123,
-      AverageDownloadRateLimitInBitsPerSec = 123
-    )
-  )
-)
-}
-}
 \description{
-Returns information about the bandwidth rate limit schedule of a
-gateway. By default, gateways do not have bandwidth rate limit
-schedules, which means no bandwidth rate limiting is in effect. This
-operation is supported only in the volume and tape gateway types.
+Returns information about the bandwidth rate limit schedule of a gateway. By default, gateways do not have bandwidth rate limit schedules, which means no bandwidth rate limiting is in effect. This operation is supported only for volume, tape and S3 file gateways. FSx file gateways do not support bandwidth rate limits.
 
-This operation returns information about a gateway's bandwidth rate
-limit schedule. A bandwidth rate limit schedule consists of one or more
-bandwidth rate limit intervals. A bandwidth rate limit interval defines
-a period of time on one or more days of the week, during which bandwidth
-rate limits are specified for uploading, downloading, or both.
-
-A bandwidth rate limit interval consists of one or more days of the
-week, a start hour and minute, an ending hour and minute, and bandwidth
-rate limits for uploading and downloading
-
-If no bandwidth rate limit schedule intervals are set for the gateway,
-this operation returns an empty response. To specify which gateway to
-describe, use the Amazon Resource Name (ARN) of the gateway in your
-request.
+See \url{https://paws-r.github.io/docs/storagegateway/describe_bandwidth_rate_limit_schedule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_bandwidth_rate_limit_schedule(
-  GatewayARN = "string"
-)
-}
-}
-
 \keyword{internal}

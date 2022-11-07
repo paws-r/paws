@@ -3,47 +3,24 @@
 \name{licensemanager_update_license_specifications_for_resource}
 \alias{licensemanager_update_license_specifications_for_resource}
 \title{Adds or removes the specified license configurations for the specified
-AWS resource}
+Amazon Web Services resource}
 \usage{
-licensemanager_update_license_specifications_for_resource(ResourceArn,
-  AddLicenseSpecifications, RemoveLicenseSpecifications)
+licensemanager_update_license_specifications_for_resource(
+  ResourceArn,
+  AddLicenseSpecifications = NULL,
+  RemoveLicenseSpecifications = NULL
+)
 }
 \arguments{
-\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the AWS resource.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the Amazon Web Services resource.}
 
 \item{AddLicenseSpecifications}{ARNs of the license configurations to add.}
 
 \item{RemoveLicenseSpecifications}{ARNs of the license configurations to remove.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or removes the specified license configurations for the specified
-AWS resource.
+Adds or removes the specified license configurations for the specified Amazon Web Services resource.
 
-You can update the license specifications of AMIs, instances, and hosts.
-You cannot update the license specifications for launch templates and
-AWS CloudFormation templates, as they send license configurations to the
-operation that creates the resource.
+See \url{https://paws-r.github.io/docs/licensemanager/update_license_specifications_for_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_license_specifications_for_resource(
-  ResourceArn = "string",
-  AddLicenseSpecifications = list(
-    list(
-      LicenseConfigurationArn = "string",
-      AmiAssociationScope = "string"
-    )
-  ),
-  RemoveLicenseSpecifications = list(
-    list(
-      LicenseConfigurationArn = "string",
-      AmiAssociationScope = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

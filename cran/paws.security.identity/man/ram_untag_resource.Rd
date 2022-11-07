@@ -2,31 +2,22 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_untag_resource}
 \alias{ram_untag_resource}
-\title{Removes the specified tags from the specified resource share that you
-own}
+\title{Removes the specified tag key and value pairs from the specified
+resource share}
 \usage{
 ram_untag_resource(resourceShareArn, tagKeys)
 }
 \arguments{
-\item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the resource share that you want to remove tags from. The tags are
+removed from the resource share, not the resources in the resource
+share.}
 
-\item{tagKeys}{[required] The tag keys of the tags to remove.}
-}
-\value{
-An empty list.
+\item{tagKeys}{[required] Specifies a list of one or more tag keys that you want to remove.}
 }
 \description{
-Removes the specified tags from the specified resource share that you
-own.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceShareArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes the specified tag key and value pairs from the specified resource share.
 
+See \url{https://paws-r.github.io/docs/ram/untag_resource.html} for full documentation.
+}
 \keyword{internal}

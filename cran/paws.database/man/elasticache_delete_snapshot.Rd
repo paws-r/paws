@@ -9,80 +9,9 @@ elasticache_delete_snapshot(SnapshotName)
 \arguments{
 \item{SnapshotName}{[required] The name of the snapshot to be deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Snapshot = list(
-    SnapshotName = "string",
-    ReplicationGroupId = "string",
-    ReplicationGroupDescription = "string",
-    CacheClusterId = "string",
-    SnapshotStatus = "string",
-    SnapshotSource = "string",
-    CacheNodeType = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    NumCacheNodes = 123,
-    PreferredAvailabilityZone = "string",
-    PreferredOutpostArn = "string",
-    CacheClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredMaintenanceWindow = "string",
-    TopicArn = "string",
-    Port = 123,
-    CacheParameterGroupName = "string",
-    CacheSubnetGroupName = "string",
-    VpcId = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    NumNodeGroups = 123,
-    AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-    NodeSnapshots = list(
-      list(
-        CacheClusterId = "string",
-        NodeGroupId = "string",
-        CacheNodeId = "string",
-        NodeGroupConfiguration = list(
-          NodeGroupId = "string",
-          Slots = "string",
-          ReplicaCount = 123,
-          PrimaryAvailabilityZone = "string",
-          ReplicaAvailabilityZones = list(
-            "string"
-          ),
-          PrimaryOutpostArn = "string",
-          ReplicaOutpostArns = list(
-            "string"
-          )
-        ),
-        CacheSize = "string",
-        CacheNodeCreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        SnapshotCreateTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    KmsKeyId = "string",
-    ARN = "string"
-  )
-)
-}
-}
 \description{
-Deletes an existing snapshot. When you receive a successful response
-from this operation, ElastiCache immediately begins deleting the
-snapshot; you cannot cancel or revert this operation.
+Deletes an existing snapshot. When you receive a successful response from this operation, ElastiCache immediately begins deleting the snapshot; you cannot cancel or revert this operation.
 
-This operation is valid for Redis only.
+See \url{https://paws-r.github.io/docs/elasticache/delete_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_snapshot(
-  SnapshotName = "string"
-)
-}
-}
-
 \keyword{internal}

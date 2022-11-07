@@ -5,7 +5,7 @@
 \title{Disconnects a volume from an iSCSI connection and then detaches the
 volume from the specified gateway}
 \usage{
-storagegateway_detach_volume(VolumeARN, ForceDetach)
+storagegateway_detach_volume(VolumeARN, ForceDetach = NULL)
 }
 \arguments{
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume to detach from the gateway.}
@@ -17,26 +17,9 @@ the target volume.
 
 Valid Values: \code{true} | \code{false}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VolumeARN = "string"
-)
-}
-}
 \description{
-Disconnects a volume from an iSCSI connection and then detaches the
-volume from the specified gateway. Detaching and attaching a volume
-enables you to recover your data from one gateway to a different gateway
-without creating a snapshot. It also makes it easier to move your
-volumes from an on-premises gateway to a gateway hosted on an Amazon EC2
-instance. This operation is only supported in the volume gateway type.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_volume(
-  VolumeARN = "string",
-  ForceDetach = TRUE|FALSE
-)
-}
-}
+Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway. Detaching and attaching a volume enables you to recover your data from one gateway to a different gateway without creating a snapshot. It also makes it easier to move your volumes from an on-premises gateway to a gateway hosted on an Amazon EC2 instance. This operation is only supported in the volume gateway type.
 
+See \url{https://paws-r.github.io/docs/storagegateway/detach_volume.html} for full documentation.
+}
 \keyword{internal}

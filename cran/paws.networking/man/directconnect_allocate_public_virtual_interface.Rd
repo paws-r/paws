@@ -2,113 +2,27 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_allocate_public_virtual_interface}
 \alias{directconnect_allocate_public_virtual_interface}
-\title{Provisions a public virtual interface to be owned by the specified AWS
-account}
+\title{Provisions a public virtual interface to be owned by the specified
+Amazon Web Services account}
 \usage{
-directconnect_allocate_public_virtual_interface(connectionId,
-  ownerAccount, newPublicVirtualInterfaceAllocation)
+directconnect_allocate_public_virtual_interface(
+  connectionId,
+  ownerAccount,
+  newPublicVirtualInterfaceAllocation
+)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection on which the public virtual interface is
 provisioned.}
 
-\item{ownerAccount}{[required] The ID of the AWS account that owns the public virtual interface.}
+\item{ownerAccount}{[required] The ID of the Amazon Web Services account that owns the public virtual
+interface.}
 
 \item{newPublicVirtualInterfaceAllocation}{[required] Information about the public virtual interface.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ownerAccount = "string",
-  virtualInterfaceId = "string",
-  location = "string",
-  connectionId = "string",
-  virtualInterfaceType = "string",
-  virtualInterfaceName = "string",
-  vlan = 123,
-  asn = 123,
-  amazonSideAsn = 123,
-  authKey = "string",
-  amazonAddress = "string",
-  customerAddress = "string",
-  addressFamily = "ipv4"|"ipv6",
-  virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-  customerRouterConfig = "string",
-  mtu = 123,
-  jumboFrameCapable = TRUE|FALSE,
-  virtualGatewayId = "string",
-  directConnectGatewayId = "string",
-  routeFilterPrefixes = list(
-    list(
-      cidr = "string"
-    )
-  ),
-  bgpPeers = list(
-    list(
-      bgpPeerId = "string",
-      asn = 123,
-      authKey = "string",
-      addressFamily = "ipv4"|"ipv6",
-      amazonAddress = "string",
-      customerAddress = "string",
-      bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
-      bgpStatus = "up"|"down"|"unknown",
-      awsDeviceV2 = "string"
-    )
-  ),
-  region = "string",
-  awsDeviceV2 = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Provisions a public virtual interface to be owned by the specified AWS
-account.
+Provisions a public virtual interface to be owned by the specified Amazon Web Services account.
 
-The owner of a connection calls this function to provision a public
-virtual interface to be owned by the specified AWS account.
-
-Virtual interfaces created using this function must be confirmed by the
-owner using
-\code{\link[=directconnect_confirm_public_virtual_interface]{confirm_public_virtual_interface}}.
-Until this step has been completed, the virtual interface is in the
-\code{confirming} state and is not available to handle traffic.
-
-When creating an IPv6 public virtual interface, omit the Amazon address
-and customer address. IPv6 addresses are automatically assigned from the
-Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
+See \url{https://paws-r.github.io/docs/directconnect/allocate_public_virtual_interface.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$allocate_public_virtual_interface(
-  connectionId = "string",
-  ownerAccount = "string",
-  newPublicVirtualInterfaceAllocation = list(
-    virtualInterfaceName = "string",
-    vlan = 123,
-    asn = 123,
-    authKey = "string",
-    amazonAddress = "string",
-    customerAddress = "string",
-    addressFamily = "ipv4"|"ipv6",
-    routeFilterPrefixes = list(
-      list(
-        cidr = "string"
-      )
-    ),
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

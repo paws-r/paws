@@ -4,7 +4,7 @@
 \alias{support_add_attachments_to_set}
 \title{Adds one or more attachments to an attachment set}
 \usage{
-support_add_attachments_to_set(attachmentSetId, attachments)
+support_add_attachments_to_set(attachmentSetId = NULL, attachments)
 }
 \arguments{
 \item{attachmentSetId}{The ID of the attachment set. If an \code{attachmentSetId} is not specified,
@@ -21,40 +21,9 @@ value for \code{data} appear as \code{blob}, which is represented as a
 base64-encoded string. The value for \code{fileName} is the name of the
 attachment, such as \code{troubleshoot-screenshot.png}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  attachmentSetId = "string",
-  expiryTime = "string"
-)
-}
-}
 \description{
 Adds one or more attachments to an attachment set.
 
-An attachment set is a temporary container for attachments that you add
-to a case or case communication. The set is available for 1 hour after
-it's created. The \code{expiryTime} returned in the response is when the set
-expires.
-\itemize{
-\item You must have a Business or Enterprise support plan to use the AWS
-Support API.
-\item If you call the AWS Support API from an account that does not have a
-Business or Enterprise support plan, the
-\code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
+See \url{https://paws-r.github.io/docs/support/add_attachments_to_set.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$add_attachments_to_set(
-  attachmentSetId = "string",
-  attachments = list(
-    list(
-      fileName = "string",
-      data = raw
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

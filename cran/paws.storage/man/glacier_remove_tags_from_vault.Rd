@@ -5,7 +5,7 @@
 \title{This operation removes one or more tags from the set of tags attached to
 a vault}
 \usage{
-glacier_remove_tags_from_vault(accountId, vaultName, TagKeys)
+glacier_remove_tags_from_vault(accountId, vaultName, TagKeys = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
@@ -18,38 +18,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{TagKeys}{A list of tag keys. Each corresponding tag is removed from the vault.}
 }
-\value{
-An empty list.
-}
 \description{
-This operation removes one or more tags from the set of tags attached to
-a vault. For more information about tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}.
-This operation is idempotent. The operation will be successful, even if
-there are no tags attached to the vault.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_tags_from_vault(
-  accountId = "string",
-  vaultName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+This operation removes one or more tags from the set of tags attached to a vault. For more information about tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}. This operation is idempotent. The operation will be successful, even if there are no tags attached to the vault.
 
-\examples{
-\dontrun{
-# The example removes two tags from the vault named examplevault.
-svc$remove_tags_from_vault(
-  TagKeys = list(
-    "examplekey1",
-    "examplekey2"
-  ),
-  accountId = "-",
-  vaultName = "examplevault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/remove_tags_from_vault.html} for full documentation.
 }
 \keyword{internal}

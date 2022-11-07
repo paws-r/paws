@@ -4,7 +4,7 @@
 \alias{inspector_list_rules_packages}
 \title{Lists all available Amazon Inspector rules packages}
 \usage{
-inspector_list_rules_packages(nextToken, maxResults)
+inspector_list_rules_packages(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{You can use this parameter when paginating results. Set the value of
@@ -16,33 +16,9 @@ listing data.}
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  rulesPackageArns = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists all available Amazon Inspector rules packages.
-}
-\section{Request syntax}{
-\preformatted{svc$list_rules_packages(
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
 
-\examples{
-\dontrun{
-# Lists all available Amazon Inspector rules packages.
-svc$list_rules_packages(
-  maxResults = 123L
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/list_rules_packages.html} for full documentation.
 }
 \keyword{internal}

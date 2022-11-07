@@ -4,7 +4,7 @@
 \alias{ssm_list_document_versions}
 \title{List all versions for a document}
 \usage{
-ssm_list_document_versions(Name, MaxResults, NextToken)
+ssm_list_document_versions(Name, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the document. You can specify an Amazon Resource Name (ARN).}
@@ -16,37 +16,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DocumentVersions = list(
-    list(
-      Name = "string",
-      DocumentVersion = "string",
-      VersionName = "string",
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      IsDefaultVersion = TRUE|FALSE,
-      DocumentFormat = "YAML"|"JSON"|"TEXT",
-      Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
-      StatusInformation = "string",
-      ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 List all versions for a document.
-}
-\section{Request syntax}{
-\preformatted{svc$list_document_versions(
-  Name = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/list_document_versions.html} for full documentation.
+}
 \keyword{internal}

@@ -9,25 +9,9 @@ codecommit_delete_repository(repositoryName)
 \arguments{
 \item{repositoryName}{[required] The name of the repository to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  repositoryId = "string"
-)
-}
-}
 \description{
-Deletes a repository. If a specified repository was already deleted, a
-null repository ID is returned.
+Deletes a repository. If a specified repository was already deleted, a null repository ID is returned.
 
-Deleting a repository also deletes all associated objects and metadata.
-After a repository is deleted, all future push calls to the deleted
-repository fail.
+See \url{https://paws-r.github.io/docs/codecommit/delete_repository.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_repository(
-  repositoryName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,8 +5,10 @@
 \title{Deletes one or more scheduled actions for the specified Auto Scaling
 group}
 \usage{
-autoscaling_batch_delete_scheduled_action(AutoScalingGroupName,
-  ScheduledActionNames)
+autoscaling_batch_delete_scheduled_action(
+  AutoScalingGroupName,
+  ScheduledActionNames
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -14,30 +16,9 @@ autoscaling_batch_delete_scheduled_action(AutoScalingGroupName,
 \item{ScheduledActionNames}{[required] The names of the scheduled actions to delete. The maximum number allowed
 is 50.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedScheduledActions = list(
-    list(
-      ScheduledActionName = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Deletes one or more scheduled actions for the specified Auto Scaling
-group.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_delete_scheduled_action(
-  AutoScalingGroupName = "string",
-  ScheduledActionNames = list(
-    "string"
-  )
-)
-}
-}
+Deletes one or more scheduled actions for the specified Auto Scaling group.
 
+See \url{https://paws-r.github.io/docs/autoscaling/batch_delete_scheduled_action.html} for full documentation.
+}
 \keyword{internal}

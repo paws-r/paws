@@ -5,7 +5,7 @@
 \title{Describes the specified attribute of the specified Amazon FPGA Image
 (AFI)}
 \usage{
-ec2_describe_fpga_image_attribute(DryRun, FpgaImageId, Attribute)
+ec2_describe_fpga_image_attribute(DryRun = NULL, FpgaImageId, Attribute)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,39 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Attribute}{[required] The AFI attribute.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FpgaImageAttribute = list(
-    FpgaImageId = "string",
-    Name = "string",
-    Description = "string",
-    LoadPermissions = list(
-      list(
-        UserId = "string",
-        Group = "all"
-      )
-    ),
-    ProductCodes = list(
-      list(
-        ProductCodeId = "string",
-        ProductCodeType = "devpay"|"marketplace"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the specified attribute of the specified Amazon FPGA Image
-(AFI).
-}
-\section{Request syntax}{
-\preformatted{svc$describe_fpga_image_attribute(
-  DryRun = TRUE|FALSE,
-  FpgaImageId = "string",
-  Attribute = "description"|"name"|"loadPermission"|"productCodes"
-)
-}
-}
+Describes the specified attribute of the specified Amazon FPGA Image (AFI).
 
+See \url{https://paws-r.github.io/docs/ec2/describe_fpga_image_attribute.html} for full documentation.
+}
 \keyword{internal}

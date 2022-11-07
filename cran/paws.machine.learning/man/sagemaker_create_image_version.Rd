@@ -8,34 +8,20 @@ sagemaker_create_image_version(BaseImage, ClientToken, ImageName)
 }
 \arguments{
 \item{BaseImage}{[required] The registry path of the container image to use as the starting point
-for this version. The path is an Amazon Container Registry (ECR) URI in
-the following format:
+for this version. The path is an Amazon Elastic Container Registry (ECR)
+URI in the following format:
 
 \verb{<acct-id>.dkr.ecr.<region>.amazonaws.com/<repo-name[:tag] or [@digest]>}}
 
-\item{ClientToken}{[required] A unique ID. If not specified, the AWS CLI and AWS SDKs, such as the SDK
-for Python (Boto3), add a unique value to the call.}
+\item{ClientToken}{[required] A unique ID. If not specified, the Amazon Web Services CLI and Amazon
+Web Services SDKs, such as the SDK for Python (Boto3), add a unique
+value to the call.}
 
 \item{ImageName}{[required] The \code{ImageName} of the \code{Image} to create a version of.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageVersionArn = "string"
-)
-}
-}
 \description{
-Creates a version of the SageMaker image specified by \code{ImageName}. The
-version represents the Amazon Container Registry (ECR) container image
-specified by \code{BaseImage}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_image_version(
-  BaseImage = "string",
-  ClientToken = "string",
-  ImageName = "string"
-)
-}
-}
+Creates a version of the SageMaker image specified by \code{ImageName}. The version represents the Amazon Elastic Container Registry (ECR) container image specified by \code{BaseImage}.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_image_version.html} for full documentation.
+}
 \keyword{internal}

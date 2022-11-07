@@ -4,7 +4,12 @@
 \alias{health_describe_event_types}
 \title{Returns the event types that meet the specified filter criteria}
 \usage{
-health_describe_event_types(filter, locale, nextToken, maxResults)
+health_describe_event_types(
+  filter = NULL,
+  locale = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{filter}{Values to narrow the results returned.}
@@ -21,45 +26,9 @@ returned, the response does not contain a pagination token value.}
 \item{maxResults}{The maximum number of items to return in one batch, between 10 and 100,
 inclusive.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  eventTypes = list(
-    list(
-      service = "string",
-      code = "string",
-      category = "issue"|"accountNotification"|"scheduledChange"|"investigation"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns the event types that meet the specified filter criteria. If no
-filter criteria are specified, all event types are returned, in no
-particular order.
+Returns the event types that meet the specified filter criteria. You can use this API operation to find information about the Health event, such as the category, Amazon Web Services service, and event code. The metadata for each event appears in the \href{https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html}{EventType} object.
 
-This API operation uses pagination. Specify the \code{nextToken} parameter in
-the next request to return more results.
+See \url{https://paws-r.github.io/docs/health/describe_event_types.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_event_types(
-  filter = list(
-    eventTypeCodes = list(
-      "string"
-    ),
-    services = list(
-      "string"
-    ),
-    eventTypeCategories = list(
-      "issue"|"accountNotification"|"scheduledChange"|"investigation"
-    )
-  ),
-  locale = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
 \keyword{internal}

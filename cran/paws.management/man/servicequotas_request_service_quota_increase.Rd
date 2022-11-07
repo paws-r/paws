@@ -4,8 +4,11 @@
 \alias{servicequotas_request_service_quota_increase}
 \title{Submits a quota increase request for the specified quota}
 \usage{
-servicequotas_request_service_quota_increase(ServiceCode, QuotaCode,
-  DesiredValue)
+servicequotas_request_service_quota_increase(
+  ServiceCode,
+  QuotaCode,
+  DesiredValue
+)
 }
 \arguments{
 \item{ServiceCode}{[required] The service identifier.}
@@ -14,41 +17,9 @@ servicequotas_request_service_quota_increase(ServiceCode, QuotaCode,
 
 \item{DesiredValue}{[required] The new, increased value for the quota.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestedQuota = list(
-    Id = "string",
-    CaseId = "string",
-    ServiceCode = "string",
-    ServiceName = "string",
-    QuotaCode = "string",
-    QuotaName = "string",
-    DesiredValue = 123.0,
-    Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
-    Created = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdated = as.POSIXct(
-      "2015-01-01"
-    ),
-    Requester = "string",
-    QuotaArn = "string",
-    GlobalQuota = TRUE|FALSE,
-    Unit = "string"
-  )
-)
-}
-}
 \description{
 Submits a quota increase request for the specified quota.
-}
-\section{Request syntax}{
-\preformatted{svc$request_service_quota_increase(
-  ServiceCode = "string",
-  QuotaCode = "string",
-  DesiredValue = 123.0
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicequotas/request_service_quota_increase.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{opsworkscm_update_server_engine_attributes}
 \title{Updates engine-specific attributes on a specified server}
 \usage{
-opsworkscm_update_server_engine_attributes(ServerName, AttributeName,
-  AttributeValue)
+opsworkscm_update_server_engine_attributes(
+  ServerName,
+  AttributeName,
+  AttributeValue = NULL
+)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server to update.}
@@ -14,70 +17,9 @@ opsworkscm_update_server_engine_attributes(ServerName, AttributeName,
 
 \item{AttributeValue}{The value to set for the attribute.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Server = list(
-    AssociatePublicIpAddress = TRUE|FALSE,
-    BackupRetentionCount = 123,
-    ServerName = "string",
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    CloudFormationStackArn = "string",
-    CustomDomain = "string",
-    DisableAutomatedBackup = TRUE|FALSE,
-    Endpoint = "string",
-    Engine = "string",
-    EngineModel = "string",
-    EngineAttributes = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    EngineVersion = "string",
-    InstanceProfileArn = "string",
-    InstanceType = "string",
-    KeyPair = "string",
-    MaintenanceStatus = "SUCCESS"|"FAILED",
-    PreferredMaintenanceWindow = "string",
-    PreferredBackupWindow = "string",
-    SecurityGroupIds = list(
-      "string"
-    ),
-    ServiceRoleArn = "string",
-    Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-    StatusReason = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    ServerArn = "string"
-  )
-)
-}
-}
 \description{
-Updates engine-specific attributes on a specified server. The server
-enters the \code{MODIFYING} state when this operation is in progress. Only
-one update can occur at a time. You can use this command to reset a Chef
-server's public key (\code{CHEF_PIVOTAL_KEY}) or a Puppet server's admin
-password (\code{PUPPET_ADMIN_PASSWORD}).
+Updates engine-specific attributes on a specified server. The server enters the \code{MODIFYING} state when this operation is in progress. Only one update can occur at a time. You can use this command to reset a Chef server's public key (\code{CHEF_PIVOTAL_KEY}) or a Puppet server's admin password (\code{PUPPET_ADMIN_PASSWORD}).
 
-This operation is asynchronous.
-
-This operation can only be called for servers in \code{HEALTHY} or
-\code{UNHEALTHY} states. Otherwise, an \code{InvalidStateException} is raised. A
-\code{ResourceNotFoundException} is thrown when the server does not exist. A
-\code{ValidationException} is raised when parameters of the request are not
-valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/update_server_engine_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_server_engine_attributes(
-  ServerName = "string",
-  AttributeName = "string",
-  AttributeValue = "string"
-)
-}
-}
-
 \keyword{internal}

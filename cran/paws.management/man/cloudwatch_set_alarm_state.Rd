@@ -4,8 +4,12 @@
 \alias{cloudwatch_set_alarm_state}
 \title{Temporarily sets the state of an alarm for testing purposes}
 \usage{
-cloudwatch_set_alarm_state(AlarmName, StateValue, StateReason,
-  StateReasonData)
+cloudwatch_set_alarm_state(
+  AlarmName,
+  StateValue,
+  StateReason,
+  StateReasonData = NULL
+)
 }
 \arguments{
 \item{AlarmName}{[required] The name of the alarm.}
@@ -22,40 +26,9 @@ For SNS or EC2 alarm actions, this is just informational. But for EC2
 Auto Scaling or application Auto Scaling alarm actions, the Auto Scaling
 policy uses the information in this field to take the correct action.}
 }
-\value{
-An empty list.
-}
 \description{
-Temporarily sets the state of an alarm for testing purposes. When the
-updated state differs from the previous value, the action configured for
-the appropriate state is invoked. For example, if your alarm is
-configured to send an Amazon SNS message when an alarm is triggered,
-temporarily changing the alarm state to \code{ALARM} sends an SNS message.
+Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to \code{ALARM} sends an SNS message.
 
-Metric alarms returns to their actual state quickly, often within
-seconds. Because the metric alarm state change happens quickly, it is
-typically only visible in the alarm's \strong{History} tab in the Amazon
-CloudWatch console or through
-\code{\link[=cloudwatch_describe_alarm_history]{describe_alarm_history}}.
-
-If you use \code{\link[=cloudwatch_set_alarm_state]{set_alarm_state}} on a
-composite alarm, the composite alarm is not guaranteed to return to its
-actual state. It returns to its actual state only once any of its
-children alarms change state. It is also reevaluated if you update its
-configuration.
-
-If an alarm triggers EC2 Auto Scaling policies or application Auto
-Scaling policies, you must include information in the \code{StateReasonData}
-parameter to enable the policy to take the correct action.
+See \url{https://paws-r.github.io/docs/cloudwatch/set_alarm_state.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$set_alarm_state(
-  AlarmName = "string",
-  StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
-  StateReason = "string",
-  StateReasonData = "string"
-)
-}
-}
-
 \keyword{internal}

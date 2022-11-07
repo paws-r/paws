@@ -5,7 +5,7 @@
 \title{The AcceptQualificationRequest operation approves a Worker's request for
 a Qualification}
 \usage{
-mturk_accept_qualification_request(QualificationRequestId, IntegerValue)
+mturk_accept_qualification_request(QualificationRequestId, IntegerValue = NULL)
 }
 \arguments{
 \item{QualificationRequestId}{[required] The ID of the Qualification request, as returned by the
@@ -15,26 +15,9 @@ mturk_accept_qualification_request(QualificationRequestId, IntegerValue)
 the presence or absence of the Qualification as the basis for a HIT
 requirement.}
 }
-\value{
-An empty list.
-}
 \description{
-The \code{\link[=mturk_accept_qualification_request]{accept_qualification_request}}
-operation approves a Worker's request for a Qualification.
+The \code{\link[=mturk_accept_qualification_request]{accept_qualification_request}} operation approves a Worker's request for a Qualification.
 
-Only the owner of the Qualification type can grant a Qualification
-request for that type.
-
-A successful request for the
-\code{\link[=mturk_accept_qualification_request]{accept_qualification_request}}
-operation returns with no errors and an empty body.
+See \url{https://paws-r.github.io/docs/mturk/accept_qualification_request.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$accept_qualification_request(
-  QualificationRequestId = "string",
-  IntegerValue = 123
-)
-}
-}
-
 \keyword{internal}

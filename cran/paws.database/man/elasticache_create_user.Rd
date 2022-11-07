@@ -4,8 +4,15 @@
 \alias{elasticache_create_user}
 \title{For Redis engine version 6}
 \usage{
-elasticache_create_user(UserId, UserName, Engine, Passwords,
-  AccessString, NoPasswordRequired)
+elasticache_create_user(
+  UserId,
+  UserName,
+  Engine,
+  Passwords = NULL,
+  AccessString,
+  NoPasswordRequired = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{UserId}{[required] The ID of the user.}
@@ -20,41 +27,13 @@ each user.}
 \item{AccessString}{[required] Access permissions string used for this user.}
 
 \item{NoPasswordRequired}{Indicates a password is not required for this user.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UserId = "string",
-  UserName = "string",
-  Status = "string",
-  Engine = "string",
-  AccessString = "string",
-  UserGroupIds = list(
-    "string"
-  ),
-  Authentication = list(
-    Type = "password"|"no-password",
-    PasswordCount = 123
-  ),
-  ARN = "string"
-)
-}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-For Redis engine version 6.x onwards: Creates a Redis user. For more
-information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user(
-  UserId = "string",
-  UserName = "string",
-  Engine = "string",
-  Passwords = list(
-    "string"
-  ),
-  AccessString = "string",
-  NoPasswordRequired = TRUE|FALSE
-)
-}
-}
+For Redis engine version 6.0 onwards: Creates a Redis user. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 
+See \url{https://paws-r.github.io/docs/elasticache/create_user.html} for full documentation.
+}
 \keyword{internal}

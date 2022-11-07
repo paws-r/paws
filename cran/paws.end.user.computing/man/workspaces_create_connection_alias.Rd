@@ -5,41 +5,23 @@
 \title{Creates the specified connection alias for use with cross-Region
 redirection}
 \usage{
-workspaces_create_connection_alias(ConnectionString, Tags)
+workspaces_create_connection_alias(ConnectionString, Tags = NULL)
 }
 \arguments{
 \item{ConnectionString}{[required] A connection string in the form of a fully qualified domain name (FQDN),
 such as \code{www.example.com}.
 
 After you create a connection string, it is always associated to your
-AWS account. You cannot recreate the same connection string with a
-different account, even if you delete all instances of it from the
-original account. The connection string is globally reserved for your
-account.}
+Amazon Web Services account. You cannot recreate the same connection
+string with a different account, even if you delete all instances of it
+from the original account. The connection string is globally reserved
+for your account.}
 
 \item{Tags}{The tags to associate with the connection alias.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AliasId = "string"
-)
-}
-}
 \description{
-Creates the specified connection alias for use with cross-Region
-redirection. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_connection_alias(
-  ConnectionString = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates the specified connection alias for use with cross-Region redirection. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 
+See \url{https://paws-r.github.io/docs/workspaces/create_connection_alias.html} for full documentation.
+}
 \keyword{internal}

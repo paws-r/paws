@@ -5,7 +5,7 @@
 \title{Retrieves a list that describes one or more specified stacks, if the
 stack names are provided}
 \usage{
-appstream_describe_stacks(Names, NextToken)
+appstream_describe_stacks(Names = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Names}{The names of the stacks to describe.}
@@ -13,73 +13,9 @@ appstream_describe_stacks(Names, NextToken)
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Stacks = list(
-    list(
-      Arn = "string",
-      Name = "string",
-      Description = "string",
-      DisplayName = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StorageConnectors = list(
-        list(
-          ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-          ResourceIdentifier = "string",
-          Domains = list(
-            "string"
-          )
-        )
-      ),
-      RedirectURL = "string",
-      FeedbackURL = "string",
-      StackErrors = list(
-        list(
-          ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
-          ErrorMessage = "string"
-        )
-      ),
-      UserSettings = list(
-        list(
-          Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-          Permission = "ENABLED"|"DISABLED"
-        )
-      ),
-      ApplicationSettings = list(
-        Enabled = TRUE|FALSE,
-        SettingsGroup = "string",
-        S3BucketName = "string"
-      ),
-      AccessEndpoints = list(
-        list(
-          EndpointType = "STREAMING",
-          VpceId = "string"
-        )
-      ),
-      EmbedHostDomains = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list that describes one or more specified stacks, if the
-stack names are provided. Otherwise, all stacks in the account are
-described.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_stacks(
-  Names = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
+Retrieves a list that describes one or more specified stacks, if the stack names are provided. Otherwise, all stacks in the account are described.
 
+See \url{https://paws-r.github.io/docs/appstream/describe_stacks.html} for full documentation.
+}
 \keyword{internal}

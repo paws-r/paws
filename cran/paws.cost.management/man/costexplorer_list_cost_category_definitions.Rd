@@ -2,11 +2,14 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_list_cost_category_definitions}
 \alias{costexplorer_list_cost_category_definitions}
-\title{Returns the name, ARN, NumberOfRules and effective dates of all Cost
-Categories defined in the account}
+\title{Returns the name, Amazon Resource Name (ARN), NumberOfRules and
+effective dates of all Cost Categories defined in the account}
 \usage{
-costexplorer_list_cost_category_definitions(EffectiveOn, NextToken,
-  MaxResults)
+costexplorer_list_cost_category_definitions(
+  EffectiveOn = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{EffectiveOn}{The date when the Cost Category was effective.}
@@ -17,48 +20,9 @@ results than the maximum page size.}
 
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CostCategoryReferences = list(
-    list(
-      CostCategoryArn = "string",
-      Name = "string",
-      EffectiveStart = "string",
-      EffectiveEnd = "string",
-      NumberOfRules = 123,
-      ProcessingStatus = list(
-        list(
-          Component = "COST_EXPLORER",
-          Status = "PROCESSING"|"APPLIED"
-        )
-      ),
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the name, ARN, \code{NumberOfRules} and effective dates of all Cost
-Categories defined in the account. You have the option to use
-\code{EffectiveOn} to return a list of Cost Categories that were active on a
-specific date. If there is no \code{EffectiveOn} specified, you’ll see Cost
-Categories that are effective on the current date. If Cost Category is
-still effective, \code{EffectiveEnd} is omitted in the response.
-\code{\link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions}}
-supports pagination. The request can have a \code{MaxResults} range up to
-100.
-}
-\section{Request syntax}{
-\preformatted{svc$list_cost_category_definitions(
-  EffectiveOn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns the name, Amazon Resource Name (ARN), \code{NumberOfRules} and effective dates of all Cost Categories defined in the account. You have the option to use \code{EffectiveOn} to return a list of Cost Categories that were active on a specific date. If there is no \code{EffectiveOn} specified, you’ll see Cost Categories that are effective on the current date. If Cost Category is still effective, \code{EffectiveEnd} is omitted in the response. \code{\link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions}} supports pagination. The request can have a \code{MaxResults} range up to 100.
 
+See \url{https://paws-r.github.io/docs/costexplorer/list_cost_category_definitions.html} for full documentation.
+}
 \keyword{internal}

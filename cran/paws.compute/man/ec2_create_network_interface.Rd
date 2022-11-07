@@ -4,10 +4,24 @@
 \alias{ec2_create_network_interface}
 \title{Creates a network interface in the specified subnet}
 \usage{
-ec2_create_network_interface(Description, DryRun, Groups,
-  Ipv6AddressCount, Ipv6Addresses, PrivateIpAddress, PrivateIpAddresses,
-  SecondaryPrivateIpAddressCount, InterfaceType, SubnetId,
-  TagSpecifications)
+ec2_create_network_interface(
+  Description = NULL,
+  DryRun = NULL,
+  Groups = NULL,
+  Ipv6AddressCount = NULL,
+  Ipv6Addresses = NULL,
+  PrivateIpAddress = NULL,
+  PrivateIpAddresses = NULL,
+  SecondaryPrivateIpAddressCount = NULL,
+  Ipv4Prefixes = NULL,
+  Ipv4PrefixCount = NULL,
+  Ipv6Prefixes = NULL,
+  Ipv6PrefixCount = NULL,
+  InterfaceType = NULL,
+  SubnetId,
+  TagSpecifications = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{Description}{A description for the network interface.}
@@ -47,146 +61,34 @@ The number of IP addresses you can assign to a network interface varies
 by instance type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI}{IP Addresses Per ENI Per Instance Type}
 in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
-\item{InterfaceType}{Indicates the type of network interface. To create an Elastic Fabric
-Adapter (EFA), specify \code{efa}. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html}{Elastic Fabric Adapter}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{Ipv4Prefixes}{One or more IPv4 prefixes assigned to the network interface. You cannot
+use this option if you use the \code{Ipv4PrefixCount} option.}
+
+\item{Ipv4PrefixCount}{The number of IPv4 prefixes that Amazon Web Services automatically
+assigns to the network interface. You cannot use this option if you use
+the \verb{Ipv4 Prefixes} option.}
+
+\item{Ipv6Prefixes}{One or more IPv6 prefixes assigned to the network interface. You cannot
+use this option if you use the \code{Ipv6PrefixCount} option.}
+
+\item{Ipv6PrefixCount}{The number of IPv6 prefixes that Amazon Web Services automatically
+assigns to the network interface. You cannot use this option if you use
+the \code{Ipv6Prefixes} option.}
+
+\item{InterfaceType}{The type of network interface. The default is \code{interface}.
+
+The only supported values are \code{efa} and \code{trunk}.}
 
 \item{SubnetId}{[required] The ID of the subnet to associate with the network interface.}
 
 \item{TagSpecifications}{The tags to apply to the new network interface.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NetworkInterface = list(
-    Association = list(
-      AllocationId = "string",
-      AssociationId = "string",
-      IpOwnerId = "string",
-      PublicDnsName = "string",
-      PublicIp = "string",
-      CustomerOwnedIp = "string",
-      CarrierIp = "string"
-    ),
-    Attachment = list(
-      AttachTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      AttachmentId = "string",
-      DeleteOnTermination = TRUE|FALSE,
-      DeviceIndex = 123,
-      NetworkCardIndex = 123,
-      InstanceId = "string",
-      InstanceOwnerId = "string",
-      Status = "attaching"|"attached"|"detaching"|"detached"
-    ),
-    AvailabilityZone = "string",
-    Description = "string",
-    Groups = list(
-      list(
-        GroupName = "string",
-        GroupId = "string"
-      )
-    ),
-    InterfaceType = "interface"|"natGateway"|"efa",
-    Ipv6Addresses = list(
-      list(
-        Ipv6Address = "string"
-      )
-    ),
-    MacAddress = "string",
-    NetworkInterfaceId = "string",
-    OutpostArn = "string",
-    OwnerId = "string",
-    PrivateDnsName = "string",
-    PrivateIpAddress = "string",
-    PrivateIpAddresses = list(
-      list(
-        Association = list(
-          AllocationId = "string",
-          AssociationId = "string",
-          IpOwnerId = "string",
-          PublicDnsName = "string",
-          PublicIp = "string",
-          CustomerOwnedIp = "string",
-          CarrierIp = "string"
-        ),
-        Primary = TRUE|FALSE,
-        PrivateDnsName = "string",
-        PrivateIpAddress = "string"
-      )
-    ),
-    RequesterId = "string",
-    RequesterManaged = TRUE|FALSE,
-    SourceDestCheck = TRUE|FALSE,
-    Status = "available"|"associated"|"attaching"|"in-use"|"detaching",
-    SubnetId = "string",
-    TagSet = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    VpcId = "string"
-  )
-)
-}
+
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 }
 \description{
 Creates a network interface in the specified subnet.
 
-For more information about network interfaces, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html}{Elastic Network Interfaces}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_network_interface(
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  Ipv6AddressCount = 123,
-  Ipv6Addresses = list(
-    list(
-      Ipv6Address = "string"
-    )
-  ),
-  PrivateIpAddress = "string",
-  PrivateIpAddresses = list(
-    list(
-      Primary = TRUE|FALSE,
-      PrivateIpAddress = "string"
-    )
-  ),
-  SecondaryPrivateIpAddressCount = 123,
-  InterfaceType = "efa",
-  SubnetId = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a network interface for the specified subnet.
-svc$create_network_interface(
-  Description = "my network interface",
-  Groups = list(
-    "sg-903004f8"
-  ),
-  PrivateIpAddress = "10.0.2.17",
-  SubnetId = "subnet-9d4a7b6c"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_network_interface.html} for full documentation.
 }
 \keyword{internal}

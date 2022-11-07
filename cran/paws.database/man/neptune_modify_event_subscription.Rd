@@ -4,8 +4,13 @@
 \alias{neptune_modify_event_subscription}
 \title{Modifies an existing event notification subscription}
 \usage{
-neptune_modify_event_subscription(SubscriptionName, SnsTopicArn,
-  SourceType, EventCategories, Enabled)
+neptune_modify_event_subscription(
+  SubscriptionName,
+  SnsTopicArn = NULL,
+  SourceType = NULL,
+  EventCategories = NULL,
+  Enabled = NULL
+)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the event notification subscription.}
@@ -28,50 +33,9 @@ the \strong{DescribeEventCategories} action.}
 
 \item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventSubscription = list(
-    CustomerAwsId = "string",
-    CustSubscriptionId = "string",
-    SnsTopicArn = "string",
-    Status = "string",
-    SubscriptionCreationTime = "string",
-    SourceType = "string",
-    SourceIdsList = list(
-      "string"
-    ),
-    EventCategoriesList = list(
-      "string"
-    ),
-    Enabled = TRUE|FALSE,
-    EventSubscriptionArn = "string"
-  )
-)
-}
-}
 \description{
-Modifies an existing event notification subscription. Note that you
-can't modify the source identifiers using this call; to change source
-identifiers for a subscription, use the
-\code{\link[=neptune_add_source_identifier_to_subscription]{add_source_identifier_to_subscription}}
-and
-\code{\link[=neptune_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription}}
-calls.
+Modifies an existing event notification subscription. Note that you can't modify the source identifiers using this call; to change source identifiers for a subscription, use the \code{\link[=neptune_add_source_identifier_to_subscription]{add_source_identifier_to_subscription}} and \code{\link[=neptune_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription}} calls.
 
-You can see a list of the event categories for a given SourceType by
-using the \strong{DescribeEventCategories} action.
+See \url{https://paws-r.github.io/docs/neptune/modify_event_subscription.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_event_subscription(
-  SubscriptionName = "string",
-  SnsTopicArn = "string",
-  SourceType = "string",
-  EventCategories = list(
-    "string"
-  ),
-  Enabled = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

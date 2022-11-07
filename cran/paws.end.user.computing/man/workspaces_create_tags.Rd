@@ -13,23 +13,9 @@ access control groups, and connection aliases.}
 
 \item{Tags}{[required] The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates the specified tags for the specified WorkSpaces resource.
-}
-\section{Request syntax}{
-\preformatted{svc$create_tags(
-  ResourceId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workspaces/create_tags.html} for full documentation.
+}
 \keyword{internal}

@@ -25,7 +25,9 @@ See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IA
 for more information on using IAM database authentication with RDS.
 }
 \section{Request syntax}{
-\preformatted{svc$build_auth_token(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$build_auth_token(
   endpoint = "string",
   region = "string",
   user = "string",
@@ -35,7 +37,7 @@ for more information on using IAM database authentication with RDS.
     session_token = "string"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

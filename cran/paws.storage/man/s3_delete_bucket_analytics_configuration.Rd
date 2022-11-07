@@ -5,48 +5,24 @@
 \title{Deletes an analytics configuration for the bucket (specified by the
 analytics configuration ID)}
 \usage{
-s3_delete_bucket_analytics_configuration(Bucket, Id,
-  ExpectedBucketOwner)
+s3_delete_bucket_analytics_configuration(
+  Bucket,
+  Id,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which an analytics configuration is deleted.}
 
 \item{Id}{[required] The ID that identifies the analytics configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Deletes an analytics configuration for the bucket (specified by the
-analytics configuration ID).
+Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
 
-To use this operation, you must have permissions to perform the
-\code{s3:PutAnalyticsConfiguration} action. The bucket owner has this
-permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
-
-For information about the Amazon S3 analytics feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/analytics-storage-class.html}{Amazon S3 Analytics – Storage Class Analysis}.
-
-The following operations are related to
-\code{\link[=s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration}}:
-\itemize{
-\item \code{\link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration}}
-\item \code{\link[=s3_list_bucket_analytics_configurations]{list_bucket_analytics_configurations}}
-\item \code{\link[=s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration}}
+See \url{https://paws-r.github.io/docs/s3/delete_bucket_analytics_configuration.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$delete_bucket_analytics_configuration(
-  Bucket = "string",
-  Id = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

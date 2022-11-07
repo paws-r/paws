@@ -4,32 +4,25 @@
 \alias{apigateway_delete_method_response}
 \title{Deletes an existing MethodResponse resource}
 \usage{
-apigateway_delete_method_response(restApiId, resourceId, httpMethod,
-  statusCode)
+apigateway_delete_method_response(
+  restApiId,
+  resourceId,
+  httpMethod,
+  statusCode
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] The Resource identifier for the MethodResponse resource.}
+\item{resourceId}{[required] The Resource identifier for the MethodResponse resource.}
 
-\item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
+\item{httpMethod}{[required] The HTTP verb of the Method resource.}
 
-\item{statusCode}{[required] [Required] The status code identifier for the MethodResponse resource.}
-}
-\value{
-An empty list.
+\item{statusCode}{[required] The status code identifier for the MethodResponse resource.}
 }
 \description{
 Deletes an existing MethodResponse resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_method_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_method_response.html} for full documentation.
+}
 \keyword{internal}

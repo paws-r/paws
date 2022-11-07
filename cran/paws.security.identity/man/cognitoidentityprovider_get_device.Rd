@@ -4,45 +4,17 @@
 \alias{cognitoidentityprovider_get_device}
 \title{Gets the device}
 \usage{
-cognitoidentityprovider_get_device(DeviceKey, AccessToken)
+cognitoidentityprovider_get_device(DeviceKey, AccessToken = NULL)
 }
 \arguments{
 \item{DeviceKey}{[required] The device key.}
 
-\item{AccessToken}{The access token.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Device = list(
-    DeviceKey = "string",
-    DeviceAttributes = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    DeviceCreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    DeviceLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    DeviceLastAuthenticatedDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+\item{AccessToken}{A valid access token that Amazon Cognito issued to the user whose device
+information you want to request.}
 }
 \description{
 Gets the device.
-}
-\section{Request syntax}{
-\preformatted{svc$get_device(
-  DeviceKey = "string",
-  AccessToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_device.html} for full documentation.
+}
 \keyword{internal}

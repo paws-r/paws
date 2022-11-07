@@ -16,37 +16,9 @@ route53_list_tags_for_resources(ResourceType, ResourceIds)
 \item{ResourceIds}{[required] A complex type that contains the ResourceId element for each resource
 for which you want to get a list of tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceTagSets = list(
-    list(
-      ResourceType = "healthcheck"|"hostedzone",
-      ResourceId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Lists tags for up to 10 health checks or hosted zones.
 
-For information about using tags for cost allocation, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}.
+See \url{https://paws-r.github.io/docs/route53/list_tags_for_resources.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resources(
-  ResourceType = "healthcheck"|"hostedzone",
-  ResourceIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

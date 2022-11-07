@@ -5,33 +5,16 @@
 \title{Associates one of the stack's registered Elastic IP addresses with a
 specified instance}
 \usage{
-opsworks_associate_elastic_ip(ElasticIp, InstanceId)
+opsworks_associate_elastic_ip(ElasticIp, InstanceId = NULL)
 }
 \arguments{
 \item{ElasticIp}{[required] The Elastic IP address.}
 
 \item{InstanceId}{The instance ID.}
 }
-\value{
-An empty list.
-}
 \description{
-Associates one of the stack's registered Elastic IP addresses with a
-specified instance. The address must first be registered with the stack
-by calling \code{\link[=opsworks_register_elastic_ip]{register_elastic_ip}}. For
-more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
+Associates one of the stack's registered Elastic IP addresses with a specified instance. The address must first be registered with the stack by calling \code{\link[=opsworks_register_elastic_ip]{register_elastic_ip}}. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/associate_elastic_ip.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_elastic_ip(
-  ElasticIp = "string",
-  InstanceId = "string"
-)
-}
-}
-
 \keyword{internal}

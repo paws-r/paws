@@ -5,7 +5,7 @@
 \title{Stops advertising an address range that is provisioned as an address
 pool}
 \usage{
-ec2_withdraw_byoip_cidr(Cidr, DryRun)
+ec2_withdraw_byoip_cidr(Cidr, DryRun = NULL)
 }
 \arguments{
 \item{Cidr}{[required] The address range, in CIDR notation.}
@@ -15,33 +15,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ByoipCidr = list(
-    Cidr = "string",
-    Description = "string",
-    StatusMessage = "string",
-    State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
-  )
-)
-}
-}
 \description{
-Stops advertising an address range that is provisioned as an address
-pool.
+Stops advertising an address range that is provisioned as an address pool.
 
-You can perform this operation at most once every 10 seconds, even if
-you specify different address ranges each time.
-
-It can take a few minutes before traffic to the specified addresses
-stops routing to AWS because of BGP propagation delays.
+See \url{https://paws-r.github.io/docs/ec2/withdraw_byoip_cidr.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$withdraw_byoip_cidr(
-  Cidr = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

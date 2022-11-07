@@ -7,7 +7,19 @@
 applicationautoscaling(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -19,20 +31,22 @@ Operations section.
 With Application Auto Scaling, you can configure automatic scaling for
 the following resources:
 \itemize{
-\item Amazon ECS services
-\item Amazon EC2 Spot Fleet requests
-\item Amazon EMR clusters
 \item Amazon AppStream 2.0 fleets
-\item Amazon DynamoDB tables and global secondary indexes throughput
-capacity
 \item Amazon Aurora Replicas
-\item Amazon SageMaker endpoint variants
-\item Custom resources provided by your own applications or services
 \item Amazon Comprehend document classification and entity recognizer
 endpoints
-\item AWS Lambda function provisioned concurrency
+\item Amazon DynamoDB tables and global secondary indexes throughput
+capacity
+\item Amazon ECS services
+\item Amazon ElastiCache for Redis clusters (replication groups)
+\item Amazon EMR clusters
 \item Amazon Keyspaces (for Apache Cassandra) tables
-\item Amazon Managed Streaming for Apache Kafka cluster storage
+\item Lambda function provisioned concurrency
+\item Amazon Managed Streaming for Apache Kafka broker storage
+\item Amazon Neptune clusters
+\item Amazon SageMaker endpoint variants
+\item Spot Fleets (Amazon EC2)
+\item Custom resources provided by your own applications or services
 }
 
 \strong{API Summary}
@@ -40,10 +54,10 @@ endpoints
 The Application Auto Scaling service API includes three key sets of
 actions:
 \itemize{
-\item Register and manage scalable targets - Register AWS or custom
-resources as scalable targets (a resource that Application Auto
-Scaling can scale), set minimum and maximum capacity limits, and
-retrieve information on existing scalable targets.
+\item Register and manage scalable targets - Register Amazon Web Services
+or custom resources as scalable targets (a resource that Application
+Auto Scaling can scale), set minimum and maximum capacity limits,
+and retrieve information on existing scalable targets.
 \item Configure and manage automatic scaling - Define scaling policies to
 dynamically scale your resources in response to CloudWatch alarms,
 schedule one-time or recurring scaling actions, and retrieve your
@@ -63,7 +77,9 @@ about granting IAM users required permissions for Application Auto
 Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- applicationautoscaling(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- applicationautoscaling(
   config = list(
     credentials = list(
       creds = list(
@@ -71,13 +87,17 @@ Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/applicati
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

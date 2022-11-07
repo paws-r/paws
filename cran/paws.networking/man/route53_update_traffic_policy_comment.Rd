@@ -15,29 +15,9 @@ the comment for.}
 
 \item{Comment}{[required] The new comment for the specified traffic policy and version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficPolicy = list(
-    Id = "string",
-    Version = 123,
-    Name = "string",
-    Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-    Document = "string",
-    Comment = "string"
-  )
-)
-}
-}
 \description{
 Updates the comment for a specified traffic policy version.
-}
-\section{Request syntax}{
-\preformatted{svc$update_traffic_policy_comment(
-  Id = "string",
-  Version = 123,
-  Comment = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/route53/update_traffic_policy_comment.html} for full documentation.
+}
 \keyword{internal}

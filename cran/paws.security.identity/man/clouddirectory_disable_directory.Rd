@@ -9,22 +9,9 @@ clouddirectory_disable_directory(DirectoryArn)
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory to disable.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DirectoryArn = "string"
-)
-}
-}
 \description{
-Disables the specified directory. Disabled directories cannot be read or
-written to. Only enabled directories can be disabled. Disabled
-directories may be reenabled.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_directory(
-  DirectoryArn = "string"
-)
-}
-}
+Disables the specified directory. Disabled directories cannot be read or written to. Only enabled directories can be disabled. Disabled directories may be reenabled.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/disable_directory.html} for full documentation.
+}
 \keyword{internal}

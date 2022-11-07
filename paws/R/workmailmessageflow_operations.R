@@ -48,3 +48,67 @@ workmailmessageflow_get_raw_message_content <- function(messageId) {
   return(response)
 }
 .workmailmessageflow$operations$get_raw_message_content <- workmailmessageflow_get_raw_message_content
+
+#' Updates the raw content of an in-transit email message, in MIME format
+#'
+#' @description
+#' Updates the raw content of an in-transit email message, in MIME format.
+#' 
+#' This example describes how to update in-transit email message. For more
+#' information and examples for using this API, see [Updating message
+#' content with AWS
+#' Lambda](https://docs.aws.amazon.com/workmail/latest/adminguide/update-with-lambda.html).
+#' 
+#' Updates to an in-transit message only appear when you call
+#' [`put_raw_message_content`][workmailmessageflow_put_raw_message_content]
+#' from an AWS Lambda function configured with a synchronous [Run
+#' Lambda](https://docs.aws.amazon.com/workmail/latest/adminguide/lambda.html#synchronous-rules)
+#' rule. If you call
+#' [`put_raw_message_content`][workmailmessageflow_put_raw_message_content]
+#' on a delivered or sent message, the message remains unchanged, even
+#' though
+#' [`get_raw_message_content`][workmailmessageflow_get_raw_message_content]
+#' returns an updated message.
+#'
+#' @usage
+#' workmailmessageflow_put_raw_message_content(messageId, content)
+#'
+#' @param messageId &#91;required&#93; The identifier of the email message being updated.
+#' @param content &#91;required&#93; Describes the raw message content of the updated email message.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_raw_message_content(
+#'   messageId = "string",
+#'   content = list(
+#'     s3Reference = list(
+#'       bucket = "string",
+#'       key = "string",
+#'       objectVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmailmessageflow_put_raw_message_content
+workmailmessageflow_put_raw_message_content <- function(messageId, content) {
+  op <- new_operation(
+    name = "PutRawMessageContent",
+    http_method = "POST",
+    http_path = "/messages/{messageId}",
+    paginator = list()
+  )
+  input <- .workmailmessageflow$put_raw_message_content_input(messageId = messageId, content = content)
+  output <- .workmailmessageflow$put_raw_message_content_output()
+  config <- get_config()
+  svc <- .workmailmessageflow$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmailmessageflow$operations$put_raw_message_content <- workmailmessageflow_put_raw_message_content

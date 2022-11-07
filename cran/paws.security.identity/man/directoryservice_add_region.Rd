@@ -16,25 +16,9 @@ replication. For example, \code{us-east-1}.}
 
 \item{VPCSettings}{[required]}
 }
-\value{
-An empty list.
-}
 \description{
-Adds two domain controllers in the specified Region for the specified
-directory.
-}
-\section{Request syntax}{
-\preformatted{svc$add_region(
-  DirectoryId = "string",
-  RegionName = "string",
-  VPCSettings = list(
-    VpcId = "string",
-    SubnetIds = list(
-      "string"
-    )
-  )
-)
-}
-}
+Adds two domain controllers in the specified Region for the specified directory.
 
+See \url{https://paws-r.github.io/docs/directoryservice/add_region.html} for full documentation.
+}
 \keyword{internal}

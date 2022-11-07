@@ -4,36 +4,16 @@
 \alias{glue_get_job_bookmark}
 \title{Returns information on a job bookmark entry}
 \usage{
-glue_get_job_bookmark(JobName, RunId)
+glue_get_job_bookmark(JobName, RunId = NULL)
 }
 \arguments{
 \item{JobName}{[required] The name of the job in question.}
 
 \item{RunId}{The unique run identifier associated with this job run.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobBookmarkEntry = list(
-    JobName = "string",
-    Version = 123,
-    Run = 123,
-    Attempt = 123,
-    PreviousRunId = "string",
-    RunId = "string",
-    JobBookmark = "string"
-  )
-)
-}
-}
 \description{
 Returns information on a job bookmark entry.
-}
-\section{Request syntax}{
-\preformatted{svc$get_job_bookmark(
-  JobName = "string",
-  RunId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_job_bookmark.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{ec2_attach_network_interface}
 \title{Attaches a network interface to an instance}
 \usage{
-ec2_attach_network_interface(DeviceIndex, DryRun, InstanceId,
-  NetworkInterfaceId, NetworkCardIndex)
+ec2_attach_network_interface(
+  DeviceIndex,
+  DryRun = NULL,
+  InstanceId,
+  NetworkInterfaceId,
+  NetworkCardIndex = NULL
+)
 }
 \arguments{
 \item{DeviceIndex}{[required] The index of the device for the network interface attachment.}
@@ -23,37 +28,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 network cards. The primary network interface must be assigned to network
 card index 0. The default is network card index 0.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AttachmentId = "string",
-  NetworkCardIndex = 123
-)
-}
-}
 \description{
 Attaches a network interface to an instance.
-}
-\section{Request syntax}{
-\preformatted{svc$attach_network_interface(
-  DeviceIndex = 123,
-  DryRun = TRUE|FALSE,
-  InstanceId = "string",
-  NetworkInterfaceId = "string",
-  NetworkCardIndex = 123
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example attaches the specified network interface to the specified
-# instance.
-svc$attach_network_interface(
-  DeviceIndex = 1L,
-  InstanceId = "i-1234567890abcdef0",
-  NetworkInterfaceId = "eni-e5aa89a3"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/attach_network_interface.html} for full documentation.
 }
 \keyword{internal}

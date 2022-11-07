@@ -4,9 +4,15 @@
 \alias{sqs_receive_message}
 \title{Retrieves one or more messages (up to 10), from the specified queue}
 \usage{
-sqs_receive_message(QueueUrl, AttributeNames, MessageAttributeNames,
-  MaxNumberOfMessages, VisibilityTimeout, WaitTimeSeconds,
-  ReceiveRequestAttemptId)
+sqs_receive_message(
+  QueueUrl,
+  AttributeNames = NULL,
+  MessageAttributeNames = NULL,
+  MaxNumberOfMessages = NULL,
+  VisibilityTimeout = NULL,
+  WaitTimeSeconds = NULL,
+  ReceiveRequestAttemptId = NULL
+)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue from which messages are received.
@@ -21,7 +27,7 @@ These attributes include:
 was first received from the queue (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
 \item \code{ApproximateReceiveCount} – Returns the number of times a message
 has been received across all queues but not deleted.
-\item \code{AWSTraceHeader} – Returns the AWS X-Ray trace header string.
+\item \code{AWSTraceHeader} – Returns the X-Ray trace header string.
 \item \code{SenderId}
 \itemize{
 \item For an IAM user, returns the IAM user ID, for example
@@ -32,6 +38,12 @@ has been received across all queues but not deleted.
 \item \code{SentTimestamp} – Returns the time the message was sent to the queue
 (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in
 milliseconds).
+\item \code{SqsManagedSseEnabled} – Enables server-side queue encryption using
+SQS owned encryption keys. Only one server-side encryption option is
+supported per queue (e.g.
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html}{SSE-KMS}
+or
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
 \item \code{MessageDeduplicationId} – Returns the value provided by the
 producer that calls the \code{\link[=sqs_send_message]{send_message}} action.
 \item \code{MessageGroupId} – Returns the value provided by the producer that
@@ -107,7 +119,7 @@ changes).
 \code{ReceiveRequestAttemptId} return the same messages and receipt
 handles. If a retry occurs within the deduplication interval, it
 resets the visibility timeout. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon SQS Developer Guide}.
 
 If a caller of the \code{\link[=sqs_receive_message]{receive_message}} action
 still processes messages when the visibility timeout expires and
@@ -136,105 +148,16 @@ The maximum length of \code{ReceiveRequestAttemptId} is 128 characters.
 (\verb{!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~}).
 
 For best practices of using \code{ReceiveRequestAttemptId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html}{Using the ReceiveRequestAttemptId Request Parameter}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon SQS Developer Guide}.
 
 []: R:\%5C
 [Using the
 ReceiveRequestAttemptId Request
 Parameter]: R:Using\%20the\%0AReceiveRequestAttemptId\%20Request\%0AParameter}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Messages = list(
-    list(
-      MessageId = "string",
-      ReceiptHandle = "string",
-      MD5OfBody = "string",
-      Body = "string",
-      Attributes = list(
-        "string"
-      ),
-      MD5OfMessageAttributes = "string",
-      MessageAttributes = list(
-        list(
-          StringValue = "string",
-          BinaryValue = raw,
-          StringListValues = list(
-            "string"
-          ),
-          BinaryListValues = list(
-            raw
-          ),
-          DataType = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves one or more messages (up to 10), from the specified queue.
-Using the \code{WaitTimeSeconds} parameter enables long-poll support. For
-more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html#sqs-long-polling}{Amazon SQS Long Polling}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+Retrieves one or more messages (up to 10), from the specified queue. Using the \code{WaitTimeSeconds} parameter enables long-poll support. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html#sqs-long-polling}{Amazon SQS Long Polling} in the \emph{Amazon SQS Developer Guide}.
 
-Short poll is the default behavior where a weighted random set of
-machines is sampled on a \code{\link[=sqs_receive_message]{receive_message}} call.
-Thus, only the messages on the sampled machines are returned. If the
-number of messages in the queue is small (fewer than 1,000), you most
-likely get fewer messages than you requested per
-\code{\link[=sqs_receive_message]{receive_message}} call. If the number of messages
-in the queue is extremely small, you might not receive any messages in a
-particular \code{\link[=sqs_receive_message]{receive_message}} response. If this
-happens, repeat the request.
-
-For each message returned, the response includes the following:
-\itemize{
-\item The message body.
-\item An MD5 digest of the message body. For information about MD5, see
-\href{https://www.ietf.org/rfc/rfc1321.txt}{RFC1321}.
-\item The \code{MessageId} you received when you sent the message to the queue.
-\item The receipt handle.
-\item The message attributes.
-\item An MD5 digest of the message attributes.
+See \url{https://paws-r.github.io/docs/sqs/receive_message.html} for full documentation.
 }
-
-The receipt handle is the identifier you must provide when deleting the
-message. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html}{Queue and Message Identifiers}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-
-You can provide the \code{VisibilityTimeout} parameter in your request. The
-parameter is applied to the messages that Amazon SQS returns in the
-response. If you don't include the parameter, the overall visibility
-timeout for the queue is used for the returned messages. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-
-A message that isn't deleted or a message whose visibility isn't
-extended before the visibility timeout expires counts as a failed
-receive. Depending on the configuration of the queue, the message might
-be sent to the dead-letter queue.
-
-In the future, new attributes might be added. If you write code that
-calls this action, we recommend that you structure your code so that it
-can handle new attributes gracefully.
-}
-\section{Request syntax}{
-\preformatted{svc$receive_message(
-  QueueUrl = "string",
-  AttributeNames = list(
-    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"|"DeduplicationScope"|"FifoThroughputLimit"
-  ),
-  MessageAttributeNames = list(
-    "string"
-  ),
-  MaxNumberOfMessages = 123,
-  VisibilityTimeout = 123,
-  WaitTimeSeconds = 123,
-  ReceiveRequestAttemptId = "string"
-)
-}
-}
-
 \keyword{internal}

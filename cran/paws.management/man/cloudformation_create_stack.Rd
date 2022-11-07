@@ -4,32 +4,46 @@
 \alias{cloudformation_create_stack}
 \title{Creates a stack as specified in the template}
 \usage{
-cloudformation_create_stack(StackName, TemplateBody, TemplateURL,
-  Parameters, DisableRollback, RollbackConfiguration, TimeoutInMinutes,
-  NotificationARNs, Capabilities, ResourceTypes, RoleARN, OnFailure,
-  StackPolicyBody, StackPolicyURL, Tags, ClientRequestToken,
-  EnableTerminationProtection)
+cloudformation_create_stack(
+  StackName,
+  TemplateBody = NULL,
+  TemplateURL = NULL,
+  Parameters = NULL,
+  DisableRollback = NULL,
+  RollbackConfiguration = NULL,
+  TimeoutInMinutes = NULL,
+  NotificationARNs = NULL,
+  Capabilities = NULL,
+  ResourceTypes = NULL,
+  RoleARN = NULL,
+  OnFailure = NULL,
+  StackPolicyBody = NULL,
+  StackPolicyURL = NULL,
+  Tags = NULL,
+  ClientRequestToken = NULL,
+  EnableTerminationProtection = NULL
+)
 }
 \arguments{
-\item{StackName}{[required] The name that is associated with the stack. The name must be unique in
+\item{StackName}{[required] The name that's associated with the stack. The name must be unique in
 the Region in which you are creating the stack.
 
 A stack name can contain only alphanumeric characters (case sensitive)
-and hyphens. It must start with an alphabetic character and cannot be
+and hyphens. It must start with an alphabetical character and can't be
 longer than 128 characters.}
 
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information, go to
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
+in the CloudFormation User Guide.
 
 Conditional: You must specify either the \code{TemplateBody} or the
 \code{TemplateURL} parameter, but not both.}
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
-template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information, go to the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.
+template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
+or a Systems Manager document. For more information, go to the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
+in the CloudFormation User Guide.
 
 Conditional: You must specify either the \code{TemplateBody} or the
 \code{TemplateURL} parameter, but not both.}
@@ -44,29 +58,29 @@ You can specify either \code{DisableRollback} or \code{OnFailure}, but not both.
 
 Default: \code{false}}
 
-\item{RollbackConfiguration}{The rollback triggers for AWS CloudFormation to monitor during stack
+\item{RollbackConfiguration}{The rollback triggers for CloudFormation to monitor during stack
 creation and updating operations, and for the specified monitoring
 period afterwards.}
 
 \item{TimeoutInMinutes}{The amount of time that can pass before the stack status becomes
-CREATE_FAILED; if \code{DisableRollback} is not set or is set to \code{false},
-the stack will be rolled back.}
+CREATE_FAILED; if \code{DisableRollback} is not set or is set to \code{false}, the
+stack will be rolled back.}
 
-\item{NotificationARNs}{The Simple Notification Service (SNS) topic ARNs to publish stack
-related events. You can find your SNS topic ARNs using the SNS console
-or your Command Line Interface (CLI).}
+\item{NotificationARNs}{The Amazon Simple Notification Service (Amazon SNS) topic ARNs to
+publish stack related events. You can find your Amazon SNS topic ARNs
+using the Amazon SNS console or your Command Line Interface (CLI).}
 
 \item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template
-contains certain capabilities in order for AWS CloudFormation to create
-the stack.
+contains certain capabilities in order for CloudFormation to create the
+stack.
 \itemize{
 \item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
 
 Some stack templates might include resources that can affect
-permissions in your AWS account; for example, by creating new AWS
-Identity and Access Management (IAM) users. For those stacks, you
-must explicitly acknowledge this by specifying one of these
-capabilities.
+permissions in your Amazon Web Services account; for example, by
+creating new Identity and Access Management (IAM) users. For those
+stacks, you must explicitly acknowledge this by specifying one of
+these capabilities.
 
 The following IAM resources require you to specify either the
 \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
@@ -74,7 +88,7 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities, AWS
+\item If you don't specify either of these capabilities,
 CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
@@ -91,7 +105,7 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in CloudFormation Templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some template contain macros. Macros perform custom processing on
@@ -107,7 +121,7 @@ acknowledge this capability. This includes the
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
-transforms, which are macros hosted by AWS CloudFormation.
+transforms, which are macros hosted by CloudFormation.
 
 If you want to create a stack from a stack template that contains
 macros \emph{and} nested stacks, you must create the stack directly from
@@ -118,49 +132,50 @@ contains macros if you know what processing the macro performs.
 
 Each macro relies on an underlying Lambda service function for
 processing stack templates. Be aware that the Lambda function owner
-can update the function operation without AWS CloudFormation being
+can update the function operation without CloudFormation being
 notified.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation macros to perform custom processing on templates}.
 }}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with for
 this create stack action, such as \verb{AWS::EC2::Instance}, \verb{AWS::EC2::*},
 or \code{Custom::MyCustomInstance}. Use the following syntax to describe
-template resource types: \verb{AWS::*} (for all AWS resource), \verb{Custom::*}
-(for all custom resources), \code{Custom::logical_ID } (for a specific custom
-resource), \verb{AWS::service_name::*} (for all resources of a particular AWS
-service), and \verb{AWS::service_name::resource_logical_ID } (for a specific
-AWS resource).
+template resource types: \verb{AWS::*} (for all Amazon Web Services
+resources), \verb{Custom::*} (for all custom resources),
+\code{Custom::logical_ID } (for a specific custom resource),
+\verb{AWS::service_name::*} (for all resources of a particular Amazon Web
+Services service), and \verb{AWS::service_name::resource_logical_ID } (for a
+specific Amazon Web Services resource).
 
 If the list of resource types doesn't include a resource that you're
-creating, the stack creation fails. By default, AWS CloudFormation
-grants permissions to all resource types. AWS Identity and Access
-Management (IAM) uses this parameter for AWS CloudFormation-specific
-condition keys in IAM policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with AWS Identity and Access Management}.}
+creating, the stack creation fails. By default, CloudFormation grants
+permissions to all resource types. Identity and Access Management (IAM)
+uses this parameter for CloudFormation-specific condition keys in IAM
+policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with Identity and Access Management}.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an AWS Identity and Access Management
-(IAM) role that AWS CloudFormation assumes to create the stack. AWS
+\item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
+(IAM) role that CloudFormation assumes to create the stack.
 CloudFormation uses the role's credentials to make calls on your behalf.
-AWS CloudFormation always uses this role for all future operations on
-the stack. As long as users have permission to operate on the stack, AWS
+CloudFormation always uses this role for all future operations on the
+stack. Provided that users have permission to operate on the stack,
 CloudFormation uses this role even if the users don't have permission to
 pass it. Ensure that the role grants least privilege.
 
-If you don't specify a value, AWS CloudFormation uses the role that was
-previously associated with the stack. If no role is available, AWS
-CloudFormation uses a temporary session that is generated from your user
+If you don't specify a value, CloudFormation uses the role that was
+previously associated with the stack. If no role is available,
+CloudFormation uses a temporary session that's generated from your user
 credentials.}
 
 \item{OnFailure}{Determines what action will be taken if stack creation fails. This must
-be one of: DO_NOTHING, ROLLBACK, or DELETE. You can specify either
+be one of: \code{DO_NOTHING}, \code{ROLLBACK}, or \code{DELETE}. You can specify either
 \code{OnFailure} or \code{DisableRollback}, but not both.
 
 Default: \code{ROLLBACK}}
 
 \item{StackPolicyBody}{Structure containing the stack policy body. For more information, go to
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent Updates to Stack Resources}
-in the \emph{AWS CloudFormation User Guide}. You can specify either the
+in the \emph{CloudFormation User Guide}. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 
 \item{StackPolicyURL}{Location of a file containing the stack policy. The URL must point to a
@@ -168,18 +183,18 @@ policy (maximum size: 16 KB) located in an S3 bucket in the same Region
 as the stack. You can specify either the \code{StackPolicyBody} or the
 \code{StackPolicyURL} parameter, but not both.}
 
-\item{Tags}{Key-value pairs to associate with this stack. AWS CloudFormation also
+\item{Tags}{Key-value pairs to associate with this stack. CloudFormation also
 propagates these tags to the resources created in the stack. A maximum
 number of 50 tags can be specified.}
 
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_create_stack]{create_stack}} request. Specify this
-token if you plan to retry requests so that AWS CloudFormation knows
-that you're not attempting to create a stack with the same name. You
-might retry \code{\link[=cloudformation_create_stack]{create_stack}} requests to
-ensure that AWS CloudFormation successfully received them.
+token if you plan to retry requests so that CloudFormation knows that
+you're not attempting to create a stack with the same name. You might
+retry \code{\link[=cloudformation_create_stack]{create_stack}} requests to ensure
+that CloudFormation successfully received them.
 
-All events triggered by a given stack operation are assigned the same
+All events initiated by a given stack operation are assigned the same
 client request token, which you can use to track operations. For
 example, if you execute a \code{\link[=cloudformation_create_stack]{create_stack}}
 operation with the token \code{token1}, then all the \code{StackEvents} generated
@@ -197,71 +212,16 @@ following format:
 user attempts to delete a stack with termination protection enabled, the
 operation fails and the stack remains unchanged. For more information,
 see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html}{Protecting a Stack From Being Deleted}
-in the \emph{AWS CloudFormation User Guide}. Termination protection is
-disabled on stacks by default.
+in the \emph{CloudFormation User Guide}. Termination protection is
+deactivated on stacks by default.
 
 For \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html}{nested stacks},
-termination protection is set on the root stack and cannot be changed
+termination protection is set on the root stack and can't be changed
 directly on the nested stack.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackId = "string"
-)
-}
-}
 \description{
-Creates a stack as specified in the template. After the call completes
-successfully, the stack creation starts. You can check the status of the
-stack via the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} API.
-}
-\section{Request syntax}{
-\preformatted{svc$create_stack(
-  StackName = "string",
-  TemplateBody = "string",
-  TemplateURL = "string",
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  DisableRollback = TRUE|FALSE,
-  RollbackConfiguration = list(
-    RollbackTriggers = list(
-      list(
-        Arn = "string",
-        Type = "string"
-      )
-    ),
-    MonitoringTimeInMinutes = 123
-  ),
-  TimeoutInMinutes = 123,
-  NotificationARNs = list(
-    "string"
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  ResourceTypes = list(
-    "string"
-  ),
-  RoleARN = "string",
-  OnFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE",
-  StackPolicyBody = "string",
-  StackPolicyURL = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  EnableTerminationProtection = TRUE|FALSE
-)
-}
-}
+Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}}operation.
 
+See \url{https://paws-r.github.io/docs/cloudformation/create_stack.html} for full documentation.
+}
 \keyword{internal}

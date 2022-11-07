@@ -5,24 +5,15 @@
 \title{In a blue/green deployment, overrides any specified wait time and starts
 terminating instances immediately after the traffic routing is complete}
 \usage{
-codedeploy_skip_wait_time_for_instance_termination(deploymentId)
+codedeploy_skip_wait_time_for_instance_termination(deploymentId = NULL)
 }
 \arguments{
 \item{deploymentId}{The unique ID of a blue/green deployment for which you want to skip the
 instance termination wait time.}
 }
-\value{
-An empty list.
-}
 \description{
-In a blue/green deployment, overrides any specified wait time and starts
-terminating instances immediately after the traffic routing is complete.
-}
-\section{Request syntax}{
-\preformatted{svc$skip_wait_time_for_instance_termination(
-  deploymentId = "string"
-)
-}
-}
+In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete.
 
+See \url{https://paws-r.github.io/docs/codedeploy/skip_wait_time_for_instance_termination.html} for full documentation.
+}
 \keyword{internal}

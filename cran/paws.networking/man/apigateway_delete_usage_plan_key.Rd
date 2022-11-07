@@ -8,25 +8,14 @@ associated usage plan}
 apigateway_delete_usage_plan_key(usagePlanId, keyId)
 }
 \arguments{
-\item{usagePlanId}{[required] [Required] The Id of the UsagePlan resource representing the usage
-plan containing the to-be-deleted UsagePlanKey resource representing a
-plan customer.}
+\item{usagePlanId}{[required] The Id of the UsagePlan resource representing the usage plan containing
+the to-be-deleted UsagePlanKey resource representing a plan customer.}
 
-\item{keyId}{[required] [Required] The Id of the UsagePlanKey resource to be deleted.}
-}
-\value{
-An empty list.
+\item{keyId}{[required] The Id of the UsagePlanKey resource to be deleted.}
 }
 \description{
-Deletes a usage plan key and remove the underlying API key from the
-associated usage plan.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_usage_plan_key(
-  usagePlanId = "string",
-  keyId = "string"
-)
-}
-}
+Deletes a usage plan key and remove the underlying API key from the associated usage plan.
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_usage_plan_key.html} for full documentation.
+}
 \keyword{internal}

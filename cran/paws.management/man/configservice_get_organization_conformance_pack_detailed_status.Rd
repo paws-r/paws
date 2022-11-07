@@ -6,7 +6,11 @@
 for a given organization conformance pack}
 \usage{
 configservice_get_organization_conformance_pack_detailed_status(
-  OrganizationConformancePackName, Filters, Limit, NextToken)
+  OrganizationConformancePackName,
+  Filters = NULL,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{OrganizationConformancePackName}{[required] The name of organization conformance pack for which you want status
@@ -15,45 +19,15 @@ details for member accounts.}
 \item{Filters}{An \code{OrganizationResourceDetailedStatusFilters} object.}
 
 \item{Limit}{The maximum number of \code{OrganizationConformancePackDetailedStatuses}
-returned on each page. If you do not specify a number, AWS Config uses
-the default. The default is 100.}
+returned on each page. If you do not specify a number, Config uses the
+default. The default is 100.}
 
 \item{NextToken}{The nextToken string returned on a previous page that you use to get the
 next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OrganizationConformancePackDetailedStatuses = list(
-    list(
-      AccountId = "string",
-      ConformancePackName = "string",
-      Status = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
-      ErrorCode = "string",
-      ErrorMessage = "string",
-      LastUpdateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns detailed status for each member account within an organization
-for a given organization conformance pack.
-}
-\section{Request syntax}{
-\preformatted{svc$get_organization_conformance_pack_detailed_status(
-  OrganizationConformancePackName = "string",
-  Filters = list(
-    AccountId = "string",
-    Status = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
+Returns detailed status for each member account within an organization for a given organization conformance pack.
 
+See \url{https://paws-r.github.io/docs/configservice/get_organization_conformance_pack_detailed_status.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{servicecatalog_delete_constraint}
 \title{Deletes the specified constraint}
 \usage{
-servicecatalog_delete_constraint(AcceptLanguage, Id)
+servicecatalog_delete_constraint(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -16,20 +16,9 @@ servicecatalog_delete_constraint(AcceptLanguage, Id)
 
 \item{Id}{[required] The identifier of the constraint.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified constraint.
 
-A delegated admin is authorized to invoke this command.
+See \url{https://paws-r.github.io/docs/servicecatalog/delete_constraint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_constraint(
-  AcceptLanguage = "string",
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

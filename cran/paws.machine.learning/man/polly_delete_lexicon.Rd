@@ -2,7 +2,8 @@
 % Please edit documentation in R/polly_operations.R
 \name{polly_delete_lexicon}
 \alias{polly_delete_lexicon}
-\title{Deletes the specified pronunciation lexicon stored in an AWS Region}
+\title{Deletes the specified pronunciation lexicon stored in an Amazon Web
+Services Region}
 \usage{
 polly_delete_lexicon(Name)
 }
@@ -10,31 +11,9 @@ polly_delete_lexicon(Name)
 \item{Name}{[required] The name of the lexicon to delete. Must be an existing lexicon in the
 region.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified pronunciation lexicon stored in an AWS Region. A
-lexicon which has been deleted is not available for speech synthesis,
-nor is it possible to retrieve it using either the
-\code{\link[=polly_get_lexicon]{get_lexicon}} or \code{ListLexicon} APIs.
+Deletes the specified pronunciation lexicon stored in an Amazon Web Services Region. A lexicon which has been deleted is not available for speech synthesis, nor is it possible to retrieve it using either the \code{\link[=polly_get_lexicon]{get_lexicon}} or \code{ListLexicon} APIs.
 
-For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_lexicon(
-  Name = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Deletes a specified pronunciation lexicon stored in an AWS Region.
-svc$delete_lexicon(
-  Name = "example"
-)
-}
-
+See \url{https://paws-r.github.io/docs/polly/delete_lexicon.html} for full documentation.
 }
 \keyword{internal}

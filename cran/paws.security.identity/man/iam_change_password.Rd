@@ -9,8 +9,8 @@ iam_change_password(OldPassword, NewPassword)
 \arguments{
 \item{OldPassword}{[required] The IAM user's current password.}
 
-\item{NewPassword}{[required] The new password. The new password must conform to the AWS account's
-password policy, if one exists.
+\item{NewPassword}{[required] The new password. The new password must conform to the Amazon Web
+Services account's password policy, if one exists.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of characters. That string can
@@ -18,38 +18,13 @@ include almost any printable ASCII character from the space (\verb{\\u0020})
 through the end of the ASCII character range (\verb{\\u00FF}). You can also
 include the tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and carriage return
 (\verb{\\u000D}) characters. Any of these characters are valid in a password.
-However, many tools, such as the AWS Management Console, might restrict
-the ability to type certain characters because they have special meaning
-within that tool.}
-}
-\value{
-An empty list.
+However, many tools, such as the Amazon Web Services Management Console,
+might restrict the ability to type certain characters because they have
+special meaning within that tool.}
 }
 \description{
-Changes the password of the IAM user who is calling this operation. The
-AWS account root user password is not affected by this operation.
+Changes the password of the IAM user who is calling this operation. This operation can be performed using the CLI, the Amazon Web Services API, or the \strong{My Security Credentials} page in the Amazon Web Services Management Console. The Amazon Web Services account root user password is not affected by this operation.
 
-To change the password for a different user, see
-\code{\link[=iam_update_login_profile]{update_login_profile}}. For more information
-about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$change_password(
-  OldPassword = "string",
-  NewPassword = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command changes the password for the current IAM user.
-svc$change_password(
-  NewPassword = "]35d/\{pB9Fo9wJ",
-  OldPassword = "3s0K_;xh4~8XXI"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/change_password.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,18 @@
 \alias{glue_create_trigger}
 \title{Creates a new trigger}
 \usage{
-glue_create_trigger(Name, WorkflowName, Type, Schedule, Predicate,
-  Actions, Description, StartOnCreation, Tags)
+glue_create_trigger(
+  Name,
+  WorkflowName = NULL,
+  Type,
+  Schedule = NULL,
+  Predicate = NULL,
+  Actions,
+  Description = NULL,
+  StartOnCreation = NULL,
+  Tags = NULL,
+  EventBatchingCondition = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the trigger.}
@@ -32,57 +42,15 @@ This field is required when the trigger type is \code{CONDITIONAL}.}
 created. True is not supported for \code{ON_DEMAND} triggers.}
 
 \item{Tags}{The tags to use with this trigger. You may use tags to limit access to
-the trigger. For more information about tags in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+the trigger. For more information about tags in Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{Amazon Web Services Tags in Glue} in
 the developer guide.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string"
-)
-}
+
+\item{EventBatchingCondition}{Batch condition that must be met (specified number of events received or
+batch time window expired) before EventBridge event trigger fires.}
 }
 \description{
 Creates a new trigger.
-}
-\section{Request syntax}{
-\preformatted{svc$create_trigger(
-  Name = "string",
-  WorkflowName = "string",
-  Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-  Schedule = "string",
-  Predicate = list(
-    Logical = "AND"|"ANY",
-    Conditions = list(
-      list(
-        LogicalOperator = "EQUALS",
-        JobName = "string",
-        State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-        CrawlerName = "string",
-        CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-      )
-    )
-  ),
-  Actions = list(
-    list(
-      JobName = "string",
-      Arguments = list(
-        "string"
-      ),
-      Timeout = 123,
-      SecurityConfiguration = "string",
-      NotificationProperty = list(
-        NotifyDelayAfter = 123
-      ),
-      CrawlerName = "string"
-    )
-  ),
-  Description = "string",
-  StartOnCreation = TRUE|FALSE,
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/create_trigger.html} for full documentation.
+}
 \keyword{internal}

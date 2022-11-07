@@ -9,27 +9,9 @@ applicationinsights_describe_application(ResourceGroupName)
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationInfo = list(
-    ResourceGroupName = "string",
-    LifeCycle = "string",
-    OpsItemSNSTopicArn = "string",
-    OpsCenterEnabled = TRUE|FALSE,
-    CWEMonitorEnabled = TRUE|FALSE,
-    Remarks = "string"
-  )
-)
-}
-}
 \description{
 Describes the application.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_application(
-  ResourceGroupName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/describe_application.html} for full documentation.
+}
 \keyword{internal}

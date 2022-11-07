@@ -4,12 +4,23 @@
 \alias{ec2_create_vpc}
 \title{Creates a VPC with the specified IPv4 CIDR block}
 \usage{
-ec2_create_vpc(CidrBlock, AmazonProvidedIpv6CidrBlock, Ipv6Pool,
-  Ipv6CidrBlock, DryRun, InstanceTenancy, Ipv6CidrBlockNetworkBorderGroup,
-  TagSpecifications)
+ec2_create_vpc(
+  CidrBlock = NULL,
+  AmazonProvidedIpv6CidrBlock = NULL,
+  Ipv6Pool = NULL,
+  Ipv6CidrBlock = NULL,
+  Ipv4IpamPoolId = NULL,
+  Ipv4NetmaskLength = NULL,
+  Ipv6IpamPoolId = NULL,
+  Ipv6NetmaskLength = NULL,
+  DryRun = NULL,
+  InstanceTenancy = NULL,
+  Ipv6CidrBlockNetworkBorderGroup = NULL,
+  TagSpecifications = NULL
+)
 }
 \arguments{
-\item{CidrBlock}{[required] The IPv4 network range for the VPC, in CIDR notation. For example,
+\item{CidrBlock}{The IPv4 network range for the VPC, in CIDR notation. For example,
 \verb{10.0.0.0/16}. We modify the specified CIDR block to its canonical form;
 for example, if you specify \verb{100.68.0.18/18}, we modify it to
 \verb{100.68.0.0/18}.}
@@ -25,6 +36,28 @@ block.}
 \code{Ipv6Pool} in the request.
 
 To let Amazon choose the IPv6 CIDR block for you, omit this parameter.}
+
+\item{Ipv4IpamPoolId}{The ID of an IPv4 IPAM pool you want to use for allocating this VPC's
+CIDR. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?} in the \emph{Amazon VPC
+IPAM User Guide}.}
+
+\item{Ipv4NetmaskLength}{The netmask length of the IPv4 CIDR you want to allocate to this VPC
+from an Amazon VPC IP Address Manager (IPAM) pool. For more information
+about IPAM, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?} in the \emph{Amazon VPC
+IPAM User Guide}.}
+
+\item{Ipv6IpamPoolId}{The ID of an IPv6 IPAM pool which will be used to allocate this VPC an
+IPv6 CIDR. IPAM is a VPC feature that you can use to automate your IP
+address management workflows including assigning, tracking,
+troubleshooting, and auditing IP addresses across Amazon Web Services
+Regions and accounts throughout your Amazon Web Services Organization.
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?} in the \emph{Amazon VPC
+IPAM User Guide}.}
+
+\item{Ipv6NetmaskLength}{The netmask length of the IPv6 CIDR you want to allocate to this VPC
+from an Amazon VPC IP Address Manager (IPAM) pool. For more information
+about IPAM, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?} in the \emph{Amazon VPC
+IPAM User Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -51,102 +84,9 @@ parameter.}
 
 \item{TagSpecifications}{The tags to assign to the VPC.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Vpc = list(
-    CidrBlock = "string",
-    DhcpOptionsId = "string",
-    State = "pending"|"available",
-    VpcId = "string",
-    OwnerId = "string",
-    InstanceTenancy = "default"|"dedicated"|"host",
-    Ipv6CidrBlockAssociationSet = list(
-      list(
-        AssociationId = "string",
-        Ipv6CidrBlock = "string",
-        Ipv6CidrBlockState = list(
-          State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-          StatusMessage = "string"
-        ),
-        NetworkBorderGroup = "string",
-        Ipv6Pool = "string"
-      )
-    ),
-    CidrBlockAssociationSet = list(
-      list(
-        AssociationId = "string",
-        CidrBlock = "string",
-        CidrBlockState = list(
-          State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-          StatusMessage = "string"
-        )
-      )
-    ),
-    IsDefault = TRUE|FALSE,
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
-can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
-a /16 netmask (65,536 IPv4 addresses). For more information about how
-large to make your VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). For more information about how large to make your VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{Your VPC and subnets} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-You can optionally request an IPv6 CIDR block for the VPC. You can
-request an Amazon-provided IPv6 CIDR block from Amazon's pool of IPv6
-addresses, or an IPv6 CIDR block from an IPv6 address pool that you
-provisioned through bring your own IP addresses
-(\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{BYOIP}).
-
-By default, each instance you launch in the VPC has the default DHCP
-options, which include only a default DNS server that we provide
-(AmazonProvidedDNS). For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html}{DHCP Options Sets}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-
-You can specify the instance tenancy value for the VPC when you create
-it. You can't change this value for the VPC after you create it. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html}{Dedicated Instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_vpc(
-  CidrBlock = "string",
-  AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
-  Ipv6Pool = "string",
-  Ipv6CidrBlock = "string",
-  DryRun = TRUE|FALSE,
-  InstanceTenancy = "default"|"dedicated"|"host",
-  Ipv6CidrBlockNetworkBorderGroup = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a VPC with the specified CIDR block.
-svc$create_vpc(
-  CidrBlock = "10.0.0.0/16"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_vpc.html} for full documentation.
 }
 \keyword{internal}

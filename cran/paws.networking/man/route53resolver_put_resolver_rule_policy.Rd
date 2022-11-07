@@ -2,9 +2,10 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_put_resolver_rule_policy}
 \alias{route53resolver_put_resolver_rule_policy}
-\title{Specifies an AWS rule that you want to share with another account, the
-account that you want to share the rule with, and the operations that
-you want the account to be able to perform on the rule}
+\title{Specifies an Amazon Web Services rule that you want to share with
+another account, the account that you want to share the rule with, and
+the operations that you want the account to be able to perform on the
+rule}
 \usage{
 route53resolver_put_resolver_rule_policy(Arn, ResolverRulePolicy)
 }
@@ -12,10 +13,11 @@ route53resolver_put_resolver_rule_policy(Arn, ResolverRulePolicy)
 \item{Arn}{[required] The Amazon Resource Name (ARN) of the rule that you want to share with
 another account.}
 
-\item{ResolverRulePolicy}{[required] An AWS Identity and Access Management policy statement that lists the
-rules that you want to share with another AWS account and the operations
-that you want the account to be able to perform. You can specify the
-following operations in the \code{Action} section of the statement:
+\item{ResolverRulePolicy}{[required] An Identity and Access Management policy statement that lists the rules
+that you want to share with another Amazon Web Services account and the
+operations that you want the account to be able to perform. You can
+specify the following operations in the \code{Action} section of the
+statement:
 \itemize{
 \item \code{route53resolver:GetResolverRule}
 \item \code{route53resolver:AssociateResolverRule}
@@ -28,23 +30,9 @@ In the \code{Resource} section of the statement, specify the ARN for the rule
 that you want to share with another account. Specify the same ARN that
 you specified in \code{Arn}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReturnValue = TRUE|FALSE
-)
-}
-}
 \description{
-Specifies an AWS rule that you want to share with another account, the
-account that you want to share the rule with, and the operations that
-you want the account to be able to perform on the rule.
-}
-\section{Request syntax}{
-\preformatted{svc$put_resolver_rule_policy(
-  Arn = "string",
-  ResolverRulePolicy = "string"
-)
-}
-}
+Specifies an Amazon Web Services rule that you want to share with another account, the account that you want to share the rule with, and the operations that you want the account to be able to perform on the rule.
 
+See \url{https://paws-r.github.io/docs/route53resolver/put_resolver_rule_policy.html} for full documentation.
+}
 \keyword{internal}

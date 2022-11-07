@@ -4,41 +4,14 @@
 \alias{apigateway_update_account}
 \title{Changes information about the current Account resource}
 \usage{
-apigateway_update_account(patchOperations)
+apigateway_update_account(patchOperations = NULL)
 }
 \arguments{
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  cloudwatchRoleArn = "string",
-  throttleSettings = list(
-    burstLimit = 123,
-    rateLimit = 123.0
-  ),
-  features = list(
-    "string"
-  ),
-  apiKeyVersion = "string"
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Changes information about the current Account resource.
-}
-\section{Request syntax}{
-\preformatted{svc$update_account(
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_account.html} for full documentation.
+}
 \keyword{internal}

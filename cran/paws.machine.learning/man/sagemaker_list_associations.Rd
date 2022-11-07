@@ -4,9 +4,19 @@
 \alias{sagemaker_list_associations}
 \title{Lists the associations in your account and their properties}
 \usage{
-sagemaker_list_associations(SourceArn, DestinationArn, SourceType,
-  DestinationType, AssociationType, CreatedAfter, CreatedBefore, SortBy,
-  SortOrder, NextToken, MaxResults)
+sagemaker_list_associations(
+  SourceArn = NULL,
+  DestinationArn = NULL,
+  SourceType = NULL,
+  DestinationType = NULL,
+  AssociationType = NULL,
+  CreatedAfter = NULL,
+  CreatedBefore = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SourceArn}{A filter that returns only associations with the specified source ARN.}
@@ -39,53 +49,9 @@ set of associations.}
 \item{MaxResults}{The maximum number of associations to return in the response. The
 default value is 10.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociationSummaries = list(
-    list(
-      SourceArn = "string",
-      DestinationArn = "string",
-      SourceType = "string",
-      DestinationType = "string",
-      AssociationType = "ContributedTo"|"AssociatedWith"|"DerivedFrom"|"Produced",
-      SourceName = "string",
-      DestinationName = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatedBy = list(
-        UserProfileArn = "string",
-        UserProfileName = "string",
-        DomainId = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the associations in your account and their properties.
-}
-\section{Request syntax}{
-\preformatted{svc$list_associations(
-  SourceArn = "string",
-  DestinationArn = "string",
-  SourceType = "string",
-  DestinationType = "string",
-  AssociationType = "ContributedTo"|"AssociatedWith"|"DerivedFrom"|"Produced",
-  CreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "SourceArn"|"DestinationArn"|"SourceType"|"DestinationType"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_associations.html} for full documentation.
+}
 \keyword{internal}

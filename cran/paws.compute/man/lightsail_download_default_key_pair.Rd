@@ -2,23 +2,13 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_download_default_key_pair}
 \alias{lightsail_download_default_key_pair}
-\title{Downloads the default SSH key pair from the user's account}
+\title{Downloads the regional Amazon Lightsail default key pair}
 \usage{
 lightsail_download_default_key_pair()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  publicKeyBase64 = "string",
-  privateKeyBase64 = "string"
-)
-}
-}
 \description{
-Downloads the default SSH key pair from the user's account.
-}
-\section{Request syntax}{
-\preformatted{svc$download_default_key_pair()
-}
-}
+Downloads the regional Amazon Lightsail default key pair.
 
+See \url{https://paws-r.github.io/docs/lightsail/download_default_key_pair.html} for full documentation.
+}
 \keyword{internal}

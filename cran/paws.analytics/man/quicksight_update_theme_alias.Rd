@@ -4,12 +4,16 @@
 \alias{quicksight_update_theme_alias}
 \title{Updates an alias of a theme}
 \usage{
-quicksight_update_theme_alias(AwsAccountId, ThemeId, AliasName,
-  ThemeVersionNumber)
+quicksight_update_theme_alias(
+  AwsAccountId,
+  ThemeId,
+  AliasName,
+  ThemeVersionNumber
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme alias that you're
-updating.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the theme alias
+that you're updating.}
 
 \item{ThemeId}{[required] The ID for the theme.}
 
@@ -17,29 +21,9 @@ updating.}
 
 \item{ThemeVersionNumber}{[required] The version number of the theme that the alias should reference.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThemeAlias = list(
-    Arn = "string",
-    AliasName = "string",
-    ThemeVersionNumber = 123
-  ),
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Updates an alias of a theme.
-}
-\section{Request syntax}{
-\preformatted{svc$update_theme_alias(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  AliasName = "string",
-  ThemeVersionNumber = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_theme_alias.html} for full documentation.
+}
 \keyword{internal}

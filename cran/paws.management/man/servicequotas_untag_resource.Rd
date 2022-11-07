@@ -17,21 +17,9 @@ operation.}
 
 \item{TagKeys}{[required] The keys of the tags that you want to remove from the resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes tags from the specified applied quota. You can specify one or
-more tags to remove.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceARN = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes tags from the specified applied quota. You can specify one or more tags to remove.
 
+See \url{https://paws-r.github.io/docs/servicequotas/untag_resource.html} for full documentation.
+}
 \keyword{internal}

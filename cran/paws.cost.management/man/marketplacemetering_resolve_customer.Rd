@@ -10,27 +10,12 @@ marketplacemetering_resolve_customer(RegistrationToken)
 \arguments{
 \item{RegistrationToken}{[required] When a buyer visits your website during the registration process, the
 buyer submits a registration token through the browser. The registration
-token is resolved to obtain a CustomerIdentifier and product code.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CustomerIdentifier = "string",
-  ProductCode = "string"
-)
-}
+token is resolved to obtain a \code{CustomerIdentifier} along with the
+\code{CustomerAWSAccountId} and \code{ProductCode}.}
 }
 \description{
-ResolveCustomer is called by a SaaS application during the registration
-process. When a buyer visits your website during the registration
-process, the buyer submits a registration token through their browser.
-The registration token is resolved through this API to obtain a
-CustomerIdentifier and product code.
-}
-\section{Request syntax}{
-\preformatted{svc$resolve_customer(
-  RegistrationToken = "string"
-)
-}
-}
+\code{\link[=marketplacemetering_resolve_customer]{resolve_customer}} is called by a SaaS application during the registration process. When a buyer visits your website during the registration process, the buyer submits a registration token through their browser. The registration token is resolved through this API to obtain a \code{CustomerIdentifier} along with the \code{CustomerAWSAccountId} and \code{ProductCode}.
 
+See \url{https://paws-r.github.io/docs/marketplacemetering/resolve_customer.html} for full documentation.
+}
 \keyword{internal}

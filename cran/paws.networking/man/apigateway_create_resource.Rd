@@ -7,98 +7,15 @@
 apigateway_create_resource(restApiId, parentId, pathPart)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{parentId}{[required] [Required] The parent resource's identifier.}
+\item{parentId}{[required] The parent resource's identifier.}
 
 \item{pathPart}{[required] The last path segment for this resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  parentId = "string",
-  pathPart = "string",
-  path = "string",
-  resourceMethods = list(
-    list(
-      httpMethod = "string",
-      authorizationType = "string",
-      authorizerId = "string",
-      apiKeyRequired = TRUE|FALSE,
-      requestValidatorId = "string",
-      operationName = "string",
-      requestParameters = list(
-        TRUE|FALSE
-      ),
-      requestModels = list(
-        "string"
-      ),
-      methodResponses = list(
-        list(
-          statusCode = "string",
-          responseParameters = list(
-            TRUE|FALSE
-          ),
-          responseModels = list(
-            "string"
-          )
-        )
-      ),
-      methodIntegration = list(
-        type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-        httpMethod = "string",
-        uri = "string",
-        connectionType = "INTERNET"|"VPC_LINK",
-        connectionId = "string",
-        credentials = "string",
-        requestParameters = list(
-          "string"
-        ),
-        requestTemplates = list(
-          "string"
-        ),
-        passthroughBehavior = "string",
-        contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-        timeoutInMillis = 123,
-        cacheNamespace = "string",
-        cacheKeyParameters = list(
-          "string"
-        ),
-        integrationResponses = list(
-          list(
-            statusCode = "string",
-            selectionPattern = "string",
-            responseParameters = list(
-              "string"
-            ),
-            responseTemplates = list(
-              "string"
-            ),
-            contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-          )
-        ),
-        tlsConfig = list(
-          insecureSkipVerification = TRUE|FALSE
-        )
-      ),
-      authorizationScopes = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Creates a Resource resource.
-}
-\section{Request syntax}{
-\preformatted{svc$create_resource(
-  restApiId = "string",
-  parentId = "string",
-  pathPart = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/create_resource.html} for full documentation.
+}
 \keyword{internal}

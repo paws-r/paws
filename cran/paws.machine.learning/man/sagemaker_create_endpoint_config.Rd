@@ -2,11 +2,17 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_endpoint_config}
 \alias{sagemaker_create_endpoint_config}
-\title{Creates an endpoint configuration that Amazon SageMaker hosting services
-uses to deploy models}
+\title{Creates an endpoint configuration that SageMaker hosting services uses
+to deploy models}
 \usage{
-sagemaker_create_endpoint_config(EndpointConfigName, ProductionVariants,
-  DataCaptureConfig, Tags, KmsKeyId)
+sagemaker_create_endpoint_config(
+  EndpointConfigName,
+  ProductionVariants,
+  DataCaptureConfig = NULL,
+  Tags = NULL,
+  KmsKeyId = NULL,
+  AsyncInferenceConfig = NULL
+)
 }
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration. You specify this name in a
@@ -17,13 +23,13 @@ to host at this endpoint.}
 
 \item{DataCaptureConfig}{}
 
-\item{Tags}{An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
 
-\item{KmsKeyId}{The Amazon Resource Name (ARN) of a AWS Key Management Service key that
-Amazon SageMaker uses to encrypt data on the storage volume attached to
-the ML compute instance that hosts the endpoint.
+\item{KmsKeyId}{The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
+Service key that SageMaker uses to encrypt data on the storage volume
+attached to the ML compute instance that hosts the endpoint.
 
 The KmsKeyId can be any of the following formats:
 \itemize{
@@ -38,7 +44,8 @@ The KmsKeyId can be any of the following formats:
 The KMS key policy must grant permission to the IAM role that you
 specify in your \code{\link[=sagemaker_create_endpoint]{create_endpoint}},
 \code{\link[=sagemaker_update_endpoint]{update_endpoint}} requests. For more
-information, refer to the AWS Key Management Service section \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Using Key Policies in AWS KMS}
+information, refer to the Amazon Web Services Key Management Service
+section \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Using Key Policies in Amazon Web Services KMS}
 
 Certain Nitro-based instances include local storage, dependent on the
 instance type. Local storage volumes are encrypted using a hardware
@@ -51,96 +58,18 @@ with local storage, the call to
 \code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} fails.
 
 For a list of instance types that support local instance storage, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes}{Instance Store Volumes}.
+Instance Store Volumes.
 
-For more information about local instance storage encryption, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html}{SSD Instance Store Volumes}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointConfigArn = "string"
-)
-}
+For more information about local instance storage encryption, see SSD
+Instance Store Volumes.}
+
+\item{AsyncInferenceConfig}{Specifies configuration for how an endpoint performs asynchronous
+inference. This is a required field in order for your Endpoint to be
+invoked using InvokeEndpointAsync.}
 }
 \description{
-Creates an endpoint configuration that Amazon SageMaker hosting services
-uses to deploy models. In the configuration, you identify one or more
-models, created using the \code{\link[=sagemaker_create_model]{create_model}} API,
-to deploy and the resources that you want Amazon SageMaker to provision.
-Then you call the \code{\link[=sagemaker_create_endpoint]{create_endpoint}} API.
+Creates an endpoint configuration that SageMaker hosting services uses to deploy models. In the configuration, you identify one or more models, created using the \code{\link[=sagemaker_create_model]{create_model}} API, to deploy and the resources that you want SageMaker to provision. Then you call the \code{\link[=sagemaker_create_endpoint]{create_endpoint}} API.
 
-Use this API if you want to use Amazon SageMaker hosting services to
-deploy models into production.
-
-In the request, you define a \code{ProductionVariant}, for each model that
-you want to deploy. Each \code{ProductionVariant} parameter also describes
-the resources that you want Amazon SageMaker to provision. This includes
-the number and type of ML compute instances to deploy.
-
-If you are hosting multiple models, you also assign a \code{VariantWeight} to
-specify how much traffic you want to allocate to each model. For
-example, suppose that you want to host two models, A and B, and you
-assign traffic weight 2 for model A and 1 for model B. Amazon SageMaker
-distributes two-thirds of the traffic to Model A, and one-third to model
-B.
-
-For an example that calls this method when deploying a model to Amazon
-SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
-
-When you call \code{\link[=sagemaker_create_endpoint]{create_endpoint}}, a load
-call is made to DynamoDB to verify that your endpoint configuration
-exists. When you read data from a DynamoDB table supporting
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html}{\verb{Eventually Consistent Reads}}
-, the response might not reflect the results of a recently completed
-write operation. The response might include some stale data. If the
-dependent entities are not yet in DynamoDB, this causes a validation
-error. If you repeat your read request after a short time, the response
-should return the latest data. So retry logic is recommended to handle
-these possible issues. We also recommend that customers call
-\code{\link[=sagemaker_describe_endpoint_config]{describe_endpoint_config}} before
-calling \code{\link[=sagemaker_create_endpoint]{create_endpoint}} to minimize the
-potential impact of a DynamoDB eventually consistent read.
+See \url{https://paws-r.github.io/docs/sagemaker/create_endpoint_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_endpoint_config(
-  EndpointConfigName = "string",
-  ProductionVariants = list(
-    list(
-      VariantName = "string",
-      ModelName = "string",
-      InitialInstanceCount = 123,
-      InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge",
-      InitialVariantWeight = 123.0,
-      AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge"
-    )
-  ),
-  DataCaptureConfig = list(
-    EnableCapture = TRUE|FALSE,
-    InitialSamplingPercentage = 123,
-    DestinationS3Uri = "string",
-    KmsKeyId = "string",
-    CaptureOptions = list(
-      list(
-        CaptureMode = "Input"|"Output"
-      )
-    ),
-    CaptureContentTypeHeader = list(
-      CsvContentTypes = list(
-        "string"
-      ),
-      JsonContentTypes = list(
-        "string"
-      )
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string"
-)
-}
-}
-
 \keyword{internal}

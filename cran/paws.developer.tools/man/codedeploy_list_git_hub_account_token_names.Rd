@@ -4,30 +4,16 @@
 \alias{codedeploy_list_git_hub_account_token_names}
 \title{Lists the names of stored connections to GitHub accounts}
 \usage{
-codedeploy_list_git_hub_account_token_names(nextToken)
+codedeploy_list_git_hub_account_token_names(nextToken = NULL)
 }
 \arguments{
 \item{nextToken}{An identifier returned from the previous
 \code{\link[=codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names}}
 call. It can be used to return the next set of names in the list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tokenNameList = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists the names of stored connections to GitHub accounts.
-}
-\section{Request syntax}{
-\preformatted{svc$list_git_hub_account_token_names(
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/list_git_hub_account_token_names.html} for full documentation.
+}
 \keyword{internal}

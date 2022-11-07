@@ -8,37 +8,9 @@ NULL
 #' @description
 #' Creates an application.
 #'
-#' @usage
-#' pinpoint_create_app(CreateApplicationRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/create_app.html](https://paws-r.github.io/docs/pinpoint/create_app.html) for full documentation.
 #'
 #' @param CreateApplicationRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationResponse = list(
-#'     Arn = "string",
-#'     Id = "string",
-#'     Name = "string",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_app(
-#'   CreateApplicationRequest = list(
-#'     Name = "string",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -64,691 +36,13 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #' existing campaign for an application
 #'
 #' @description
-#' Creates a new campaign for an application or updates the settings of an
-#' existing campaign for an application.
+#' Creates a new campaign for an application or updates the settings of an existing campaign for an application.
 #'
-#' @usage
-#' pinpoint_create_campaign(ApplicationId, WriteCampaignRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/create_campaign.html](https://paws-r.github.io/docs/pinpoint/create_campaign.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param WriteCampaignRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CampaignResponse = list(
-#'     AdditionalTreatments = list(
-#'       list(
-#'         CustomDeliveryConfiguration = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           )
-#'         ),
-#'         Id = "string",
-#'         MessageConfiguration = list(
-#'           ADMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           APNSMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           BaiduMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           CustomMessage = list(
-#'             Data = "string"
-#'           ),
-#'           DefaultMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           EmailMessage = list(
-#'             Body = "string",
-#'             FromAddress = "string",
-#'             HtmlBody = "string",
-#'             Title = "string"
-#'           ),
-#'           GCMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           SMSMessage = list(
-#'             Body = "string",
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           )
-#'         ),
-#'         Schedule = list(
-#'           EndTime = "string",
-#'           EventFilter = list(
-#'             Dimensions = list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               EventType = list(
-#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               )
-#'             ),
-#'             FilterType = "SYSTEM"|"ENDPOINT"
-#'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'           IsLocalTime = TRUE|FALSE,
-#'           QuietTime = list(
-#'             End = "string",
-#'             Start = "string"
-#'           ),
-#'           StartTime = "string",
-#'           Timezone = "string"
-#'         ),
-#'         SizePercent = 123,
-#'         State = list(
-#'           CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'         ),
-#'         TemplateConfiguration = list(
-#'           EmailTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           PushTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           SMSTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           VoiceTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           )
-#'         ),
-#'         TreatmentDescription = "string",
-#'         TreatmentName = "string"
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     CustomDeliveryConfiguration = list(
-#'       DeliveryUri = "string",
-#'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'       )
-#'     ),
-#'     DefaultState = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     Description = "string",
-#'     HoldoutPercent = 123,
-#'     Hook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     Id = "string",
-#'     IsPaused = TRUE|FALSE,
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     MessageConfiguration = list(
-#'       ADMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       APNSMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       BaiduMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       CustomMessage = list(
-#'         Data = "string"
-#'       ),
-#'       DefaultMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       EmailMessage = list(
-#'         Body = "string",
-#'         FromAddress = "string",
-#'         HtmlBody = "string",
-#'         Title = "string"
-#'       ),
-#'       GCMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       SMSMessage = list(
-#'         Body = "string",
-#'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
-#'       )
-#'     ),
-#'     Name = "string",
-#'     Schedule = list(
-#'       EndTime = "string",
-#'       EventFilter = list(
-#'         Dimensions = list(
-#'           Attributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           EventType = list(
-#'             DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           Metrics = list(
-#'             list(
-#'               ComparisonOperator = "string",
-#'               Value = 123.0
-#'             )
-#'           )
-#'         ),
-#'         FilterType = "SYSTEM"|"ENDPOINT"
-#'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'       IsLocalTime = TRUE|FALSE,
-#'       QuietTime = list(
-#'         End = "string",
-#'         Start = "string"
-#'       ),
-#'       StartTime = "string",
-#'       Timezone = "string"
-#'     ),
-#'     SegmentId = "string",
-#'     SegmentVersion = 123,
-#'     State = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateConfiguration = list(
-#'       EmailTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       PushTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       SMSTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       VoiceTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     TreatmentDescription = "string",
-#'     TreatmentName = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_campaign(
-#'   ApplicationId = "string",
-#'   WriteCampaignRequest = list(
-#'     AdditionalTreatments = list(
-#'       list(
-#'         CustomDeliveryConfiguration = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           )
-#'         ),
-#'         MessageConfiguration = list(
-#'           ADMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           APNSMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           BaiduMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           CustomMessage = list(
-#'             Data = "string"
-#'           ),
-#'           DefaultMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           EmailMessage = list(
-#'             Body = "string",
-#'             FromAddress = "string",
-#'             HtmlBody = "string",
-#'             Title = "string"
-#'           ),
-#'           GCMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           SMSMessage = list(
-#'             Body = "string",
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           )
-#'         ),
-#'         Schedule = list(
-#'           EndTime = "string",
-#'           EventFilter = list(
-#'             Dimensions = list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               EventType = list(
-#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               )
-#'             ),
-#'             FilterType = "SYSTEM"|"ENDPOINT"
-#'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'           IsLocalTime = TRUE|FALSE,
-#'           QuietTime = list(
-#'             End = "string",
-#'             Start = "string"
-#'           ),
-#'           StartTime = "string",
-#'           Timezone = "string"
-#'         ),
-#'         SizePercent = 123,
-#'         TemplateConfiguration = list(
-#'           EmailTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           PushTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           SMSTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           VoiceTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           )
-#'         ),
-#'         TreatmentDescription = "string",
-#'         TreatmentName = "string"
-#'       )
-#'     ),
-#'     CustomDeliveryConfiguration = list(
-#'       DeliveryUri = "string",
-#'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'       )
-#'     ),
-#'     Description = "string",
-#'     HoldoutPercent = 123,
-#'     Hook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     IsPaused = TRUE|FALSE,
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     MessageConfiguration = list(
-#'       ADMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       APNSMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       BaiduMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       CustomMessage = list(
-#'         Data = "string"
-#'       ),
-#'       DefaultMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       EmailMessage = list(
-#'         Body = "string",
-#'         FromAddress = "string",
-#'         HtmlBody = "string",
-#'         Title = "string"
-#'       ),
-#'       GCMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       SMSMessage = list(
-#'         Body = "string",
-#'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
-#'       )
-#'     ),
-#'     Name = "string",
-#'     Schedule = list(
-#'       EndTime = "string",
-#'       EventFilter = list(
-#'         Dimensions = list(
-#'           Attributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           EventType = list(
-#'             DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           Metrics = list(
-#'             list(
-#'               ComparisonOperator = "string",
-#'               Value = 123.0
-#'             )
-#'           )
-#'         ),
-#'         FilterType = "SYSTEM"|"ENDPOINT"
-#'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'       IsLocalTime = TRUE|FALSE,
-#'       QuietTime = list(
-#'         End = "string",
-#'         Start = "string"
-#'       ),
-#'       StartTime = "string",
-#'       Timezone = "string"
-#'     ),
-#'     SegmentId = "string",
-#'     SegmentVersion = 123,
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateConfiguration = list(
-#'       EmailTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       PushTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       SMSTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       VoiceTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     TreatmentDescription = "string",
-#'     TreatmentName = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -774,47 +68,15 @@ pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
 #' channel
 #'
 #' @description
-#' Creates a message template for messages that are sent through the email
-#' channel.
+#' Creates a message template for messages that are sent through the email channel.
 #'
-#' @usage
-#' pinpoint_create_email_template(EmailTemplateRequest, TemplateName)
+#' See [https://paws-r.github.io/docs/pinpoint/create_email_template.html](https://paws-r.github.io/docs/pinpoint/create_email_template.html) for full documentation.
 #'
 #' @param EmailTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (_), or hyphens
 #' (-). Template names are case sensitive.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CreateTemplateMessageBody = list(
-#'     Arn = "string",
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_email_template(
-#'   EmailTemplateRequest = list(
-#'     DefaultSubstitutions = "string",
-#'     HtmlPart = "string",
-#'     RecommenderId = "string",
-#'     Subject = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string",
-#'     TextPart = "string"
-#'   ),
-#'   TemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -841,54 +103,11 @@ pinpoint_create_email_template <- function(EmailTemplateRequest, TemplateName) {
 #' @description
 #' Creates an export job for an application.
 #'
-#' @usage
-#' pinpoint_create_export_job(ApplicationId, ExportJobRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/create_export_job.html](https://paws-r.github.io/docs/pinpoint/create_export_job.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param ExportJobRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ExportJobResponse = list(
-#'     ApplicationId = "string",
-#'     CompletedPieces = 123,
-#'     CompletionDate = "string",
-#'     CreationDate = "string",
-#'     Definition = list(
-#'       RoleArn = "string",
-#'       S3UrlPrefix = "string",
-#'       SegmentId = "string",
-#'       SegmentVersion = 123
-#'     ),
-#'     FailedPieces = 123,
-#'     Failures = list(
-#'       "string"
-#'     ),
-#'     Id = "string",
-#'     JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-#'     TotalFailures = 123,
-#'     TotalPieces = 123,
-#'     TotalProcessed = 123,
-#'     Type = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_export_job(
-#'   ApplicationId = "string",
-#'   ExportJobRequest = list(
-#'     RoleArn = "string",
-#'     S3UrlPrefix = "string",
-#'     SegmentId = "string",
-#'     SegmentVersion = 123
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -915,62 +134,11 @@ pinpoint_create_export_job <- function(ApplicationId, ExportJobRequest) {
 #' @description
 #' Creates an import job for an application.
 #'
-#' @usage
-#' pinpoint_create_import_job(ApplicationId, ImportJobRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/create_import_job.html](https://paws-r.github.io/docs/pinpoint/create_import_job.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param ImportJobRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImportJobResponse = list(
-#'     ApplicationId = "string",
-#'     CompletedPieces = 123,
-#'     CompletionDate = "string",
-#'     CreationDate = "string",
-#'     Definition = list(
-#'       DefineSegment = TRUE|FALSE,
-#'       ExternalId = "string",
-#'       Format = "CSV"|"JSON",
-#'       RegisterEndpoints = TRUE|FALSE,
-#'       RoleArn = "string",
-#'       S3Url = "string",
-#'       SegmentId = "string",
-#'       SegmentName = "string"
-#'     ),
-#'     FailedPieces = 123,
-#'     Failures = list(
-#'       "string"
-#'     ),
-#'     Id = "string",
-#'     JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-#'     TotalFailures = 123,
-#'     TotalPieces = 123,
-#'     TotalProcessed = 123,
-#'     Type = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_import_job(
-#'   ApplicationId = "string",
-#'   ImportJobRequest = list(
-#'     DefineSegment = TRUE|FALSE,
-#'     ExternalId = "string",
-#'     Format = "CSV"|"JSON",
-#'     RegisterEndpoints = TRUE|FALSE,
-#'     RoleArn = "string",
-#'     S3Url = "string",
-#'     SegmentId = "string",
-#'     SegmentName = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -992,782 +160,50 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 }
 .pinpoint$operations$create_import_job <- pinpoint_create_import_job
 
+#' Creates a new message template for messages using the in-app message
+#' channel
+#'
+#' @description
+#' Creates a new message template for messages using the in-app message channel.
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/create_in_app_template.html](https://paws-r.github.io/docs/pinpoint/create_in_app_template.html) for full documentation.
+#'
+#' @param InAppTemplateRequest &#91;required&#93; 
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (_), or hyphens
+#' (-). Template names are case sensitive.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_create_in_app_template
+pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) {
+  op <- new_operation(
+    name = "CreateInAppTemplate",
+    http_method = "POST",
+    http_path = "/v1/templates/{template-name}/inapp",
+    paginator = list()
+  )
+  input <- .pinpoint$create_in_app_template_input(InAppTemplateRequest = InAppTemplateRequest, TemplateName = TemplateName)
+  output <- .pinpoint$create_in_app_template_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$create_in_app_template <- pinpoint_create_in_app_template
+
 #' Creates a journey for an application
 #'
 #' @description
 #' Creates a journey for an application.
 #'
-#' @usage
-#' pinpoint_create_journey(ApplicationId, WriteJourneyRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/create_journey.html](https://paws-r.github.io/docs/pinpoint/create_journey.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param WriteJourneyRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JourneyResponse = list(
-#'     Activities = list(
-#'       list(
-#'         CUSTOM = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           ),
-#'           MessageConfig = list(
-#'             Data = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         ConditionalSplit = list(
-#'           Condition = list(
-#'             Conditions = list(
-#'               list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             Operator = "ALL"|"ANY"
-#'           ),
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           ),
-#'           FalseActivity = "string",
-#'           TrueActivity = "string"
-#'         ),
-#'         Description = "string",
-#'         EMAIL = list(
-#'           MessageConfig = list(
-#'             FromAddress = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Holdout = list(
-#'           NextActivity = "string",
-#'           Percentage = 123
-#'         ),
-#'         MultiCondition = list(
-#'           Branches = list(
-#'             list(
-#'               Condition = list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               NextActivity = "string"
-#'             )
-#'           ),
-#'           DefaultActivity = "string",
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         ),
-#'         PUSH = list(
-#'           MessageConfig = list(
-#'             TimeToLive = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         RandomSplit = list(
-#'           Branches = list(
-#'             list(
-#'               NextActivity = "string",
-#'               Percentage = 123
-#'             )
-#'           )
-#'         ),
-#'         SMS = list(
-#'           MessageConfig = list(
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Wait = list(
-#'           NextActivity = "string",
-#'           WaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Id = "string",
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       DailyCap = 123,
-#'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
-#'     ),
-#'     LocalTime = TRUE|FALSE,
-#'     Name = "string",
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     ),
-#'     RefreshFrequency = "string",
-#'     Schedule = list(
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Timezone = "string"
-#'     ),
-#'     StartActivity = "string",
-#'     StartCondition = list(
-#'       Description = "string",
-#'       EventStartCondition = list(
-#'         EventFilter = list(
-#'           Dimensions = list(
-#'             Attributes = list(
-#'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               )
-#'             ),
-#'             EventType = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Metrics = list(
-#'               list(
-#'                 ComparisonOperator = "string",
-#'                 Value = 123.0
-#'               )
-#'             )
-#'           ),
-#'           FilterType = "SYSTEM"|"ENDPOINT"
-#'         ),
-#'         SegmentId = "string"
-#'       ),
-#'       SegmentStartCondition = list(
-#'         SegmentId = "string"
-#'       )
-#'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_journey(
-#'   ApplicationId = "string",
-#'   WriteJourneyRequest = list(
-#'     Activities = list(
-#'       list(
-#'         CUSTOM = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           ),
-#'           MessageConfig = list(
-#'             Data = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         ConditionalSplit = list(
-#'           Condition = list(
-#'             Conditions = list(
-#'               list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             Operator = "ALL"|"ANY"
-#'           ),
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           ),
-#'           FalseActivity = "string",
-#'           TrueActivity = "string"
-#'         ),
-#'         Description = "string",
-#'         EMAIL = list(
-#'           MessageConfig = list(
-#'             FromAddress = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Holdout = list(
-#'           NextActivity = "string",
-#'           Percentage = 123
-#'         ),
-#'         MultiCondition = list(
-#'           Branches = list(
-#'             list(
-#'               Condition = list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               NextActivity = "string"
-#'             )
-#'           ),
-#'           DefaultActivity = "string",
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         ),
-#'         PUSH = list(
-#'           MessageConfig = list(
-#'             TimeToLive = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         RandomSplit = list(
-#'           Branches = list(
-#'             list(
-#'               NextActivity = "string",
-#'               Percentage = 123
-#'             )
-#'           )
-#'         ),
-#'         SMS = list(
-#'           MessageConfig = list(
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Wait = list(
-#'           NextActivity = "string",
-#'           WaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     CreationDate = "string",
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       DailyCap = 123,
-#'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
-#'     ),
-#'     LocalTime = TRUE|FALSE,
-#'     Name = "string",
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     ),
-#'     RefreshFrequency = "string",
-#'     Schedule = list(
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Timezone = "string"
-#'     ),
-#'     StartActivity = "string",
-#'     StartCondition = list(
-#'       Description = "string",
-#'       EventStartCondition = list(
-#'         EventFilter = list(
-#'           Dimensions = list(
-#'             Attributes = list(
-#'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               )
-#'             ),
-#'             EventType = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Metrics = list(
-#'               list(
-#'                 ComparisonOperator = "string",
-#'                 Value = 123.0
-#'               )
-#'             )
-#'           ),
-#'           FilterType = "SYSTEM"|"ENDPOINT"
-#'         ),
-#'         SegmentId = "string"
-#'       ),
-#'       SegmentStartCondition = list(
-#'         SegmentId = "string"
-#'       )
-#'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1793,94 +229,15 @@ pinpoint_create_journey <- function(ApplicationId, WriteJourneyRequest) {
 #' notification channel
 #'
 #' @description
-#' Creates a message template for messages that are sent through a push
-#' notification channel.
+#' Creates a message template for messages that are sent through a push notification channel.
 #'
-#' @usage
-#' pinpoint_create_push_template(PushNotificationTemplateRequest,
-#'   TemplateName)
+#' See [https://paws-r.github.io/docs/pinpoint/create_push_template.html](https://paws-r.github.io/docs/pinpoint/create_push_template.html) for full documentation.
 #'
 #' @param PushNotificationTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (_), or hyphens
 #' (-). Template names are case sensitive.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CreateTemplateMessageBody = list(
-#'     Arn = "string",
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_push_template(
-#'   PushNotificationTemplateRequest = list(
-#'     ADM = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       ImageIconUrl = "string",
-#'       ImageUrl = "string",
-#'       RawContent = "string",
-#'       SmallImageIconUrl = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     APNS = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       MediaUrl = "string",
-#'       RawContent = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     Baidu = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       ImageIconUrl = "string",
-#'       ImageUrl = "string",
-#'       RawContent = "string",
-#'       SmallImageIconUrl = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     Default = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     DefaultSubstitutions = "string",
-#'     GCM = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       ImageIconUrl = "string",
-#'       ImageUrl = "string",
-#'       RawContent = "string",
-#'       SmallImageIconUrl = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     RecommenderId = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string"
-#'   ),
-#'   TemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1907,53 +264,9 @@ pinpoint_create_push_template <- function(PushNotificationTemplateRequest, Templ
 #' @description
 #' Creates an Amazon Pinpoint configuration for a recommender model.
 #'
-#' @usage
-#' pinpoint_create_recommender_configuration(
-#'   CreateRecommenderConfiguration)
+#' See [https://paws-r.github.io/docs/pinpoint/create_recommender_configuration.html](https://paws-r.github.io/docs/pinpoint/create_recommender_configuration.html) for full documentation.
 #'
 #' @param CreateRecommenderConfiguration &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecommenderConfigurationResponse = list(
-#'     Attributes = list(
-#'       "string"
-#'     ),
-#'     CreationDate = "string",
-#'     Description = "string",
-#'     Id = "string",
-#'     LastModifiedDate = "string",
-#'     Name = "string",
-#'     RecommendationProviderIdType = "string",
-#'     RecommendationProviderRoleArn = "string",
-#'     RecommendationProviderUri = "string",
-#'     RecommendationTransformerUri = "string",
-#'     RecommendationsDisplayName = "string",
-#'     RecommendationsPerMessage = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_recommender_configuration(
-#'   CreateRecommenderConfiguration = list(
-#'     Attributes = list(
-#'       "string"
-#'     ),
-#'     Description = "string",
-#'     Name = "string",
-#'     RecommendationProviderIdType = "string",
-#'     RecommendationProviderRoleArn = "string",
-#'     RecommendationProviderUri = "string",
-#'     RecommendationTransformerUri = "string",
-#'     RecommendationsDisplayName = "string",
-#'     RecommendationsPerMessage = 123
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1980,425 +293,13 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #' with an application
 #'
 #' @description
-#' Creates a new segment for an application or updates the configuration,
-#' dimension, and other settings for an existing segment that's associated
-#' with an application.
+#' Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application.
 #'
-#' @usage
-#' pinpoint_create_segment(ApplicationId, WriteSegmentRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/create_segment.html](https://paws-r.github.io/docs/pinpoint/create_segment.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param WriteSegmentRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SegmentResponse = list(
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     Dimensions = list(
-#'       Attributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Behavior = list(
-#'         Recency = list(
-#'           Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'           RecencyType = "ACTIVE"|"INACTIVE"
-#'         )
-#'       ),
-#'       Demographic = list(
-#'         AppVersion = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Channel = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DeviceType = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Make = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Model = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Platform = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = list(
-#'         Country = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         GPSPoint = list(
-#'           Coordinates = list(
-#'             Latitude = 123.0,
-#'             Longitude = 123.0
-#'           ),
-#'           RangeInKilometers = 123.0
-#'         )
-#'       ),
-#'       Metrics = list(
-#'         list(
-#'           ComparisonOperator = "string",
-#'           Value = 123.0
-#'         )
-#'       ),
-#'       UserAttributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Id = "string",
-#'     ImportDefinition = list(
-#'       ChannelCounts = list(
-#'         123
-#'       ),
-#'       ExternalId = "string",
-#'       Format = "CSV"|"JSON",
-#'       RoleArn = "string",
-#'       S3Url = "string",
-#'       Size = 123
-#'     ),
-#'     LastModifiedDate = "string",
-#'     Name = "string",
-#'     SegmentGroups = list(
-#'       Groups = list(
-#'         list(
-#'           Dimensions = list(
-#'             list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Behavior = list(
-#'                 Recency = list(
-#'                   Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                   RecencyType = "ACTIVE"|"INACTIVE"
-#'                 )
-#'               ),
-#'               Demographic = list(
-#'                 AppVersion = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Channel = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 DeviceType = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Make = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Model = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Platform = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Location = list(
-#'                 Country = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 GPSPoint = list(
-#'                   Coordinates = list(
-#'                     Latitude = 123.0,
-#'                     Longitude = 123.0
-#'                   ),
-#'                   RangeInKilometers = 123.0
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               ),
-#'               UserAttributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           SourceSegments = list(
-#'             list(
-#'               Id = "string",
-#'               Version = 123
-#'             )
-#'           ),
-#'           SourceType = "ALL"|"ANY"|"NONE",
-#'           Type = "ALL"|"ANY"|"NONE"
-#'         )
-#'       ),
-#'       Include = "ALL"|"ANY"|"NONE"
-#'     ),
-#'     SegmentType = "DIMENSIONAL"|"IMPORT",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_segment(
-#'   ApplicationId = "string",
-#'   WriteSegmentRequest = list(
-#'     Dimensions = list(
-#'       Attributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Behavior = list(
-#'         Recency = list(
-#'           Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'           RecencyType = "ACTIVE"|"INACTIVE"
-#'         )
-#'       ),
-#'       Demographic = list(
-#'         AppVersion = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Channel = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DeviceType = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Make = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Model = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Platform = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = list(
-#'         Country = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         GPSPoint = list(
-#'           Coordinates = list(
-#'             Latitude = 123.0,
-#'             Longitude = 123.0
-#'           ),
-#'           RangeInKilometers = 123.0
-#'         )
-#'       ),
-#'       Metrics = list(
-#'         list(
-#'           ComparisonOperator = "string",
-#'           Value = 123.0
-#'         )
-#'       ),
-#'       UserAttributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Name = "string",
-#'     SegmentGroups = list(
-#'       Groups = list(
-#'         list(
-#'           Dimensions = list(
-#'             list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Behavior = list(
-#'                 Recency = list(
-#'                   Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                   RecencyType = "ACTIVE"|"INACTIVE"
-#'                 )
-#'               ),
-#'               Demographic = list(
-#'                 AppVersion = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Channel = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 DeviceType = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Make = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Model = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Platform = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Location = list(
-#'                 Country = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 GPSPoint = list(
-#'                   Coordinates = list(
-#'                     Latitude = 123.0,
-#'                     Longitude = 123.0
-#'                   ),
-#'                   RangeInKilometers = 123.0
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               ),
-#'               UserAttributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           SourceSegments = list(
-#'             list(
-#'               Id = "string",
-#'               Version = 123
-#'             )
-#'           ),
-#'           SourceType = "ALL"|"ANY"|"NONE",
-#'           Type = "ALL"|"ANY"|"NONE"
-#'         )
-#'       ),
-#'       Include = "ALL"|"ANY"|"NONE"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2424,45 +325,15 @@ pinpoint_create_segment <- function(ApplicationId, WriteSegmentRequest) {
 #' channel
 #'
 #' @description
-#' Creates a message template for messages that are sent through the SMS
-#' channel.
+#' Creates a message template for messages that are sent through the SMS channel.
 #'
-#' @usage
-#' pinpoint_create_sms_template(SMSTemplateRequest, TemplateName)
+#' See [https://paws-r.github.io/docs/pinpoint/create_sms_template.html](https://paws-r.github.io/docs/pinpoint/create_sms_template.html) for full documentation.
 #'
 #' @param SMSTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (_), or hyphens
 #' (-). Template names are case sensitive.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CreateTemplateMessageBody = list(
-#'     Arn = "string",
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_sms_template(
-#'   SMSTemplateRequest = list(
-#'     Body = "string",
-#'     DefaultSubstitutions = "string",
-#'     RecommenderId = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string"
-#'   ),
-#'   TemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2488,46 +359,15 @@ pinpoint_create_sms_template <- function(SMSTemplateRequest, TemplateName) {
 #' channel
 #'
 #' @description
-#' Creates a message template for messages that are sent through the voice
-#' channel.
+#' Creates a message template for messages that are sent through the voice channel.
 #'
-#' @usage
-#' pinpoint_create_voice_template(TemplateName, VoiceTemplateRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/create_voice_template.html](https://paws-r.github.io/docs/pinpoint/create_voice_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (_), or hyphens
 #' (-). Template names are case sensitive.
 #' @param VoiceTemplateRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CreateTemplateMessageBody = list(
-#'     Arn = "string",
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_voice_template(
-#'   TemplateName = "string",
-#'   VoiceTemplateRequest = list(
-#'     Body = "string",
-#'     DefaultSubstitutions = "string",
-#'     LanguageCode = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string",
-#'     VoiceId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2553,40 +393,12 @@ pinpoint_create_voice_template <- function(TemplateName, VoiceTemplateRequest) {
 #' settings for the channel
 #'
 #' @description
-#' Disables the ADM channel for an application and deletes any existing
-#' settings for the channel.
+#' Disables the ADM channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_adm_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_adm_channel.html](https://paws-r.github.io/docs/pinpoint/delete_adm_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ADMChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_adm_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2612,42 +424,12 @@ pinpoint_delete_adm_channel <- function(ApplicationId) {
 #' settings for the channel
 #'
 #' @description
-#' Disables the APNs channel for an application and deletes any existing
-#' settings for the channel.
+#' Disables the APNs channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_apns_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_apns_channel.html](https://paws-r.github.io/docs/pinpoint/delete_apns_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_apns_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2673,42 +455,12 @@ pinpoint_delete_apns_channel <- function(ApplicationId) {
 #' existing settings for the channel
 #'
 #' @description
-#' Disables the APNs sandbox channel for an application and deletes any
-#' existing settings for the channel.
+#' Disables the APNs sandbox channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_apns_sandbox_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_apns_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/delete_apns_sandbox_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSSandboxChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_apns_sandbox_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2734,42 +486,12 @@ pinpoint_delete_apns_sandbox_channel <- function(ApplicationId) {
 #' existing settings for the channel
 #'
 #' @description
-#' Disables the APNs VoIP channel for an application and deletes any
-#' existing settings for the channel.
+#' Disables the APNs VoIP channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_apns_voip_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_apns_voip_channel.html](https://paws-r.github.io/docs/pinpoint/delete_apns_voip_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSVoipChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_apns_voip_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2795,42 +517,12 @@ pinpoint_delete_apns_voip_channel <- function(ApplicationId) {
 #' any existing settings for the channel
 #'
 #' @description
-#' Disables the APNs VoIP sandbox channel for an application and deletes
-#' any existing settings for the channel.
+#' Disables the APNs VoIP sandbox channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_apns_voip_sandbox_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_apns_voip_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/delete_apns_voip_sandbox_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSVoipSandboxChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_apns_voip_sandbox_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2857,33 +549,10 @@ pinpoint_delete_apns_voip_sandbox_channel <- function(ApplicationId) {
 #' @description
 #' Deletes an application.
 #'
-#' @usage
-#' pinpoint_delete_app(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_app.html](https://paws-r.github.io/docs/pinpoint/delete_app.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationResponse = list(
-#'     Arn = "string",
-#'     Id = "string",
-#'     Name = "string",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_app(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2909,41 +578,12 @@ pinpoint_delete_app <- function(ApplicationId) {
 #' settings for the channel
 #'
 #' @description
-#' Disables the Baidu channel for an application and deletes any existing
-#' settings for the channel.
+#' Disables the Baidu channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_baidu_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_baidu_channel.html](https://paws-r.github.io/docs/pinpoint/delete_baidu_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaiduChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Credential = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_baidu_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2970,366 +610,11 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #' @description
 #' Deletes a campaign from an application.
 #'
-#' @usage
-#' pinpoint_delete_campaign(ApplicationId, CampaignId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_campaign.html](https://paws-r.github.io/docs/pinpoint/delete_campaign.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CampaignResponse = list(
-#'     AdditionalTreatments = list(
-#'       list(
-#'         CustomDeliveryConfiguration = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           )
-#'         ),
-#'         Id = "string",
-#'         MessageConfiguration = list(
-#'           ADMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           APNSMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           BaiduMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           CustomMessage = list(
-#'             Data = "string"
-#'           ),
-#'           DefaultMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           EmailMessage = list(
-#'             Body = "string",
-#'             FromAddress = "string",
-#'             HtmlBody = "string",
-#'             Title = "string"
-#'           ),
-#'           GCMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           SMSMessage = list(
-#'             Body = "string",
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           )
-#'         ),
-#'         Schedule = list(
-#'           EndTime = "string",
-#'           EventFilter = list(
-#'             Dimensions = list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               EventType = list(
-#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               )
-#'             ),
-#'             FilterType = "SYSTEM"|"ENDPOINT"
-#'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'           IsLocalTime = TRUE|FALSE,
-#'           QuietTime = list(
-#'             End = "string",
-#'             Start = "string"
-#'           ),
-#'           StartTime = "string",
-#'           Timezone = "string"
-#'         ),
-#'         SizePercent = 123,
-#'         State = list(
-#'           CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'         ),
-#'         TemplateConfiguration = list(
-#'           EmailTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           PushTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           SMSTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           VoiceTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           )
-#'         ),
-#'         TreatmentDescription = "string",
-#'         TreatmentName = "string"
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     CustomDeliveryConfiguration = list(
-#'       DeliveryUri = "string",
-#'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'       )
-#'     ),
-#'     DefaultState = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     Description = "string",
-#'     HoldoutPercent = 123,
-#'     Hook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     Id = "string",
-#'     IsPaused = TRUE|FALSE,
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     MessageConfiguration = list(
-#'       ADMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       APNSMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       BaiduMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       CustomMessage = list(
-#'         Data = "string"
-#'       ),
-#'       DefaultMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       EmailMessage = list(
-#'         Body = "string",
-#'         FromAddress = "string",
-#'         HtmlBody = "string",
-#'         Title = "string"
-#'       ),
-#'       GCMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       SMSMessage = list(
-#'         Body = "string",
-#'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
-#'       )
-#'     ),
-#'     Name = "string",
-#'     Schedule = list(
-#'       EndTime = "string",
-#'       EventFilter = list(
-#'         Dimensions = list(
-#'           Attributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           EventType = list(
-#'             DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           Metrics = list(
-#'             list(
-#'               ComparisonOperator = "string",
-#'               Value = 123.0
-#'             )
-#'           )
-#'         ),
-#'         FilterType = "SYSTEM"|"ENDPOINT"
-#'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'       IsLocalTime = TRUE|FALSE,
-#'       QuietTime = list(
-#'         End = "string",
-#'         Start = "string"
-#'       ),
-#'       StartTime = "string",
-#'       Timezone = "string"
-#'     ),
-#'     SegmentId = "string",
-#'     SegmentVersion = 123,
-#'     State = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateConfiguration = list(
-#'       EmailTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       PushTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       SMSTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       VoiceTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     TreatmentDescription = "string",
-#'     TreatmentName = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_campaign(
-#'   ApplicationId = "string",
-#'   CampaignId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3355,45 +640,12 @@ pinpoint_delete_campaign <- function(ApplicationId, CampaignId) {
 #' settings for the channel
 #'
 #' @description
-#' Disables the email channel for an application and deletes any existing
-#' settings for the channel.
+#' Disables the email channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_email_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_email_channel.html](https://paws-r.github.io/docs/pinpoint/delete_email_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EmailChannelResponse = list(
-#'     ApplicationId = "string",
-#'     ConfigurationSet = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     FromAddress = "string",
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     Identity = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     MessagesPerSecond = 123,
-#'     Platform = "string",
-#'     RoleArn = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_email_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3419,11 +671,9 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 #' channel
 #'
 #' @description
-#' Deletes a message template for messages that were sent through the email
-#' channel.
+#' Deletes a message template for messages that were sent through the email channel.
 #'
-#' @usage
-#' pinpoint_delete_email_template(TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_email_template.html](https://paws-r.github.io/docs/pinpoint/delete_email_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -3451,25 +701,6 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_email_template(
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3496,73 +727,11 @@ pinpoint_delete_email_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Deletes an endpoint from an application.
 #'
-#' @usage
-#' pinpoint_delete_endpoint(ApplicationId, EndpointId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_endpoint.html](https://paws-r.github.io/docs/pinpoint/delete_endpoint.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointResponse = list(
-#'     Address = "string",
-#'     ApplicationId = "string",
-#'     Attributes = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-#'     CohortId = "string",
-#'     CreationDate = "string",
-#'     Demographic = list(
-#'       AppVersion = "string",
-#'       Locale = "string",
-#'       Make = "string",
-#'       Model = "string",
-#'       ModelVersion = "string",
-#'       Platform = "string",
-#'       PlatformVersion = "string",
-#'       Timezone = "string"
-#'     ),
-#'     EffectiveDate = "string",
-#'     EndpointStatus = "string",
-#'     Id = "string",
-#'     Location = list(
-#'       City = "string",
-#'       Country = "string",
-#'       Latitude = 123.0,
-#'       Longitude = 123.0,
-#'       PostalCode = "string",
-#'       Region = "string"
-#'     ),
-#'     Metrics = list(
-#'       123.0
-#'     ),
-#'     OptOut = "string",
-#'     RequestId = "string",
-#'     User = list(
-#'       UserAttributes = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       UserId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_endpoint(
-#'   ApplicationId = "string",
-#'   EndpointId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3589,33 +758,10 @@ pinpoint_delete_endpoint <- function(ApplicationId, EndpointId) {
 #' @description
 #' Deletes the event stream for an application.
 #'
-#' @usage
-#' pinpoint_delete_event_stream(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_event_stream.html](https://paws-r.github.io/docs/pinpoint/delete_event_stream.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventStream = list(
-#'     ApplicationId = "string",
-#'     DestinationStreamArn = "string",
-#'     ExternalId = "string",
-#'     LastModifiedDate = "string",
-#'     LastUpdatedBy = "string",
-#'     RoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_event_stream(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3641,41 +787,12 @@ pinpoint_delete_event_stream <- function(ApplicationId) {
 #' settings for the channel
 #'
 #' @description
-#' Disables the GCM channel for an application and deletes any existing
-#' settings for the channel.
+#' Disables the GCM channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_gcm_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_gcm_channel.html](https://paws-r.github.io/docs/pinpoint/delete_gcm_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GCMChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Credential = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_gcm_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3697,440 +814,13 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_gcm_channel <- pinpoint_delete_gcm_channel
 
-#' Deletes a journey from an application
+#' Deletes a message template for messages sent using the in-app message
+#' channel
 #'
 #' @description
-#' Deletes a journey from an application.
+#' Deletes a message template for messages sent using the in-app message channel.
 #'
-#' @usage
-#' pinpoint_delete_journey(ApplicationId, JourneyId)
-#'
-#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
-#' as the **Project ID** on the Amazon Pinpoint console.
-#' @param JourneyId &#91;required&#93; The unique identifier for the journey.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JourneyResponse = list(
-#'     Activities = list(
-#'       list(
-#'         CUSTOM = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           ),
-#'           MessageConfig = list(
-#'             Data = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         ConditionalSplit = list(
-#'           Condition = list(
-#'             Conditions = list(
-#'               list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             Operator = "ALL"|"ANY"
-#'           ),
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           ),
-#'           FalseActivity = "string",
-#'           TrueActivity = "string"
-#'         ),
-#'         Description = "string",
-#'         EMAIL = list(
-#'           MessageConfig = list(
-#'             FromAddress = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Holdout = list(
-#'           NextActivity = "string",
-#'           Percentage = 123
-#'         ),
-#'         MultiCondition = list(
-#'           Branches = list(
-#'             list(
-#'               Condition = list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               NextActivity = "string"
-#'             )
-#'           ),
-#'           DefaultActivity = "string",
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         ),
-#'         PUSH = list(
-#'           MessageConfig = list(
-#'             TimeToLive = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         RandomSplit = list(
-#'           Branches = list(
-#'             list(
-#'               NextActivity = "string",
-#'               Percentage = 123
-#'             )
-#'           )
-#'         ),
-#'         SMS = list(
-#'           MessageConfig = list(
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Wait = list(
-#'           NextActivity = "string",
-#'           WaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Id = "string",
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       DailyCap = 123,
-#'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
-#'     ),
-#'     LocalTime = TRUE|FALSE,
-#'     Name = "string",
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     ),
-#'     RefreshFrequency = "string",
-#'     Schedule = list(
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Timezone = "string"
-#'     ),
-#'     StartActivity = "string",
-#'     StartCondition = list(
-#'       Description = "string",
-#'       EventStartCondition = list(
-#'         EventFilter = list(
-#'           Dimensions = list(
-#'             Attributes = list(
-#'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               )
-#'             ),
-#'             EventType = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Metrics = list(
-#'               list(
-#'                 ComparisonOperator = "string",
-#'                 Value = 123.0
-#'               )
-#'             )
-#'           ),
-#'           FilterType = "SYSTEM"|"ENDPOINT"
-#'         ),
-#'         SegmentId = "string"
-#'       ),
-#'       SegmentStartCondition = list(
-#'         SegmentId = "string"
-#'       )
-#'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_journey(
-#'   ApplicationId = "string",
-#'   JourneyId = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname pinpoint_delete_journey
-pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
-  op <- new_operation(
-    name = "DeleteJourney",
-    http_method = "DELETE",
-    http_path = "/v1/apps/{application-id}/journeys/{journey-id}",
-    paginator = list()
-  )
-  input <- .pinpoint$delete_journey_input(ApplicationId = ApplicationId, JourneyId = JourneyId)
-  output <- .pinpoint$delete_journey_output()
-  config <- get_config()
-  svc <- .pinpoint$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.pinpoint$operations$delete_journey <- pinpoint_delete_journey
-
-#' Deletes a message template for messages that were sent through a push
-#' notification channel
-#'
-#' @description
-#' Deletes a message template for messages that were sent through a push
-#' notification channel.
-#'
-#' @usage
-#' pinpoint_delete_push_template(TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_in_app_template.html](https://paws-r.github.io/docs/pinpoint/delete_in_app_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -4159,24 +849,91 @@ pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
+#' @keywords internal
 #'
-#' @section Request syntax:
-#' ```
-#' svc$delete_push_template(
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
+#' @rdname pinpoint_delete_in_app_template
+pinpoint_delete_in_app_template <- function(TemplateName, Version = NULL) {
+  op <- new_operation(
+    name = "DeleteInAppTemplate",
+    http_method = "DELETE",
+    http_path = "/v1/templates/{template-name}/inapp",
+    paginator = list()
+  )
+  input <- .pinpoint$delete_in_app_template_input(TemplateName = TemplateName, Version = Version)
+  output <- .pinpoint$delete_in_app_template_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$delete_in_app_template <- pinpoint_delete_in_app_template
+
+#' Deletes a journey from an application
+#'
+#' @description
+#' Deletes a journey from an application.
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/delete_journey.html](https://paws-r.github.io/docs/pinpoint/delete_journey.html) for full documentation.
+#'
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param JourneyId &#91;required&#93; The unique identifier for the journey.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_delete_journey
+pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
+  op <- new_operation(
+    name = "DeleteJourney",
+    http_method = "DELETE",
+    http_path = "/v1/apps/{application-id}/journeys/{journey-id}",
+    paginator = list()
+  )
+  input <- .pinpoint$delete_journey_input(ApplicationId = ApplicationId, JourneyId = JourneyId)
+  output <- .pinpoint$delete_journey_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$delete_journey <- pinpoint_delete_journey
+
+#' Deletes a message template for messages that were sent through a push
+#' notification channel
+#'
+#' @description
+#' Deletes a message template for messages that were sent through a push notification channel.
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/delete_push_template.html](https://paws-r.github.io/docs/pinpoint/delete_push_template.html) for full documentation.
+#'
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (_), or hyphens
+#' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier for an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier for the latest existing version of the template.
+#' This restriction helps ensure that race conditions don't occur.
+#' 
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn't used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
 #'
 #' @keywords internal
 #'
@@ -4203,42 +960,11 @@ pinpoint_delete_push_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Deletes an Amazon Pinpoint configuration for a recommender model.
 #'
-#' @usage
-#' pinpoint_delete_recommender_configuration(RecommenderId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_recommender_configuration.html](https://paws-r.github.io/docs/pinpoint/delete_recommender_configuration.html) for full documentation.
 #'
 #' @param RecommenderId &#91;required&#93; The unique identifier for the recommender model configuration. This
 #' identifier is displayed as the **Recommender ID** on the Amazon Pinpoint
 #' console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecommenderConfigurationResponse = list(
-#'     Attributes = list(
-#'       "string"
-#'     ),
-#'     CreationDate = "string",
-#'     Description = "string",
-#'     Id = "string",
-#'     LastModifiedDate = "string",
-#'     Name = "string",
-#'     RecommendationProviderIdType = "string",
-#'     RecommendationProviderRoleArn = "string",
-#'     RecommendationProviderUri = "string",
-#'     RecommendationTransformerUri = "string",
-#'     RecommendationsDisplayName = "string",
-#'     RecommendationsPerMessage = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_recommender_configuration(
-#'   RecommenderId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4265,233 +991,11 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #' @description
 #' Deletes a segment from an application.
 #'
-#' @usage
-#' pinpoint_delete_segment(ApplicationId, SegmentId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_segment.html](https://paws-r.github.io/docs/pinpoint/delete_segment.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SegmentResponse = list(
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     Dimensions = list(
-#'       Attributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Behavior = list(
-#'         Recency = list(
-#'           Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'           RecencyType = "ACTIVE"|"INACTIVE"
-#'         )
-#'       ),
-#'       Demographic = list(
-#'         AppVersion = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Channel = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DeviceType = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Make = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Model = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Platform = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = list(
-#'         Country = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         GPSPoint = list(
-#'           Coordinates = list(
-#'             Latitude = 123.0,
-#'             Longitude = 123.0
-#'           ),
-#'           RangeInKilometers = 123.0
-#'         )
-#'       ),
-#'       Metrics = list(
-#'         list(
-#'           ComparisonOperator = "string",
-#'           Value = 123.0
-#'         )
-#'       ),
-#'       UserAttributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Id = "string",
-#'     ImportDefinition = list(
-#'       ChannelCounts = list(
-#'         123
-#'       ),
-#'       ExternalId = "string",
-#'       Format = "CSV"|"JSON",
-#'       RoleArn = "string",
-#'       S3Url = "string",
-#'       Size = 123
-#'     ),
-#'     LastModifiedDate = "string",
-#'     Name = "string",
-#'     SegmentGroups = list(
-#'       Groups = list(
-#'         list(
-#'           Dimensions = list(
-#'             list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Behavior = list(
-#'                 Recency = list(
-#'                   Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                   RecencyType = "ACTIVE"|"INACTIVE"
-#'                 )
-#'               ),
-#'               Demographic = list(
-#'                 AppVersion = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Channel = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 DeviceType = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Make = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Model = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Platform = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Location = list(
-#'                 Country = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 GPSPoint = list(
-#'                   Coordinates = list(
-#'                     Latitude = 123.0,
-#'                     Longitude = 123.0
-#'                   ),
-#'                   RangeInKilometers = 123.0
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               ),
-#'               UserAttributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           SourceSegments = list(
-#'             list(
-#'               Id = "string",
-#'               Version = 123
-#'             )
-#'           ),
-#'           SourceType = "ALL"|"ANY"|"NONE",
-#'           Type = "ALL"|"ANY"|"NONE"
-#'         )
-#'       ),
-#'       Include = "ALL"|"ANY"|"NONE"
-#'     ),
-#'     SegmentType = "DIMENSIONAL"|"IMPORT",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_segment(
-#'   ApplicationId = "string",
-#'   SegmentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4517,44 +1021,12 @@ pinpoint_delete_segment <- function(ApplicationId, SegmentId) {
 #' settings for the channel
 #'
 #' @description
-#' Disables the SMS channel for an application and deletes any existing
-#' settings for the channel.
+#' Disables the SMS channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_sms_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_sms_channel.html](https://paws-r.github.io/docs/pinpoint/delete_sms_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SMSChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     PromotionalMessagesPerSecond = 123,
-#'     SenderId = "string",
-#'     ShortCode = "string",
-#'     TransactionalMessagesPerSecond = 123,
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_sms_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4580,11 +1052,9 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 #' channel
 #'
 #' @description
-#' Deletes a message template for messages that were sent through the SMS
-#' channel.
+#' Deletes a message template for messages that were sent through the SMS channel.
 #'
-#' @usage
-#' pinpoint_delete_sms_template(TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_sms_template.html](https://paws-r.github.io/docs/pinpoint/delete_sms_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -4612,25 +1082,6 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_sms_template(
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4657,77 +1108,11 @@ pinpoint_delete_sms_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Deletes all the endpoints that are associated with a specific user ID.
 #'
-#' @usage
-#' pinpoint_delete_user_endpoints(ApplicationId, UserId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_user_endpoints.html](https://paws-r.github.io/docs/pinpoint/delete_user_endpoints.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param UserId &#91;required&#93; The unique identifier for the user.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointsResponse = list(
-#'     Item = list(
-#'       list(
-#'         Address = "string",
-#'         ApplicationId = "string",
-#'         Attributes = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-#'         CohortId = "string",
-#'         CreationDate = "string",
-#'         Demographic = list(
-#'           AppVersion = "string",
-#'           Locale = "string",
-#'           Make = "string",
-#'           Model = "string",
-#'           ModelVersion = "string",
-#'           Platform = "string",
-#'           PlatformVersion = "string",
-#'           Timezone = "string"
-#'         ),
-#'         EffectiveDate = "string",
-#'         EndpointStatus = "string",
-#'         Id = "string",
-#'         Location = list(
-#'           City = "string",
-#'           Country = "string",
-#'           Latitude = 123.0,
-#'           Longitude = 123.0,
-#'           PostalCode = "string",
-#'           Region = "string"
-#'         ),
-#'         Metrics = list(
-#'           123.0
-#'         ),
-#'         OptOut = "string",
-#'         RequestId = "string",
-#'         User = list(
-#'           UserAttributes = list(
-#'             list(
-#'               "string"
-#'             )
-#'           ),
-#'           UserId = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_user_endpoints(
-#'   ApplicationId = "string",
-#'   UserId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4753,40 +1138,12 @@ pinpoint_delete_user_endpoints <- function(ApplicationId, UserId) {
 #' settings for the channel
 #'
 #' @description
-#' Disables the voice channel for an application and deletes any existing
-#' settings for the channel.
+#' Disables the voice channel for an application and deletes any existing settings for the channel.
 #'
-#' @usage
-#' pinpoint_delete_voice_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_voice_channel.html](https://paws-r.github.io/docs/pinpoint/delete_voice_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VoiceChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_voice_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4812,11 +1169,9 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 #' channel
 #'
 #' @description
-#' Deletes a message template for messages that were sent through the voice
-#' channel.
+#' Deletes a message template for messages that were sent through the voice channel.
 #'
-#' @usage
-#' pinpoint_delete_voice_template(TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/delete_voice_template.html](https://paws-r.github.io/docs/pinpoint/delete_voice_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -4845,25 +1200,6 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_voice_template(
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_voice_template
@@ -4888,40 +1224,12 @@ pinpoint_delete_voice_template <- function(TemplateName, Version = NULL) {
 #' for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the ADM channel
-#' for an application.
+#' Retrieves information about the status and settings of the ADM channel for an application.
 #'
-#' @usage
-#' pinpoint_get_adm_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_adm_channel.html](https://paws-r.github.io/docs/pinpoint/get_adm_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ADMChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_adm_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4947,42 +1255,12 @@ pinpoint_get_adm_channel <- function(ApplicationId) {
 #' for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the APNs channel
-#' for an application.
+#' Retrieves information about the status and settings of the APNs channel for an application.
 #'
-#' @usage
-#' pinpoint_get_apns_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_apns_channel.html](https://paws-r.github.io/docs/pinpoint/get_apns_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_apns_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5008,42 +1286,12 @@ pinpoint_get_apns_channel <- function(ApplicationId) {
 #' channel for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the APNs sandbox
-#' channel for an application.
+#' Retrieves information about the status and settings of the APNs sandbox channel for an application.
 #'
-#' @usage
-#' pinpoint_get_apns_sandbox_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_apns_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/get_apns_sandbox_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSSandboxChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_apns_sandbox_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5069,42 +1317,12 @@ pinpoint_get_apns_sandbox_channel <- function(ApplicationId) {
 #' channel for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the APNs VoIP
-#' channel for an application.
+#' Retrieves information about the status and settings of the APNs VoIP channel for an application.
 #'
-#' @usage
-#' pinpoint_get_apns_voip_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_apns_voip_channel.html](https://paws-r.github.io/docs/pinpoint/get_apns_voip_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSVoipChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_apns_voip_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5130,42 +1348,12 @@ pinpoint_get_apns_voip_channel <- function(ApplicationId) {
 #' sandbox channel for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the APNs VoIP
-#' sandbox channel for an application.
+#' Retrieves information about the status and settings of the APNs VoIP sandbox channel for an application.
 #'
-#' @usage
-#' pinpoint_get_apns_voip_sandbox_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_apns_voip_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/get_apns_voip_sandbox_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSVoipSandboxChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_apns_voip_sandbox_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5192,33 +1380,10 @@ pinpoint_get_apns_voip_sandbox_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves information about an application.
 #'
-#' @usage
-#' pinpoint_get_app(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_app.html](https://paws-r.github.io/docs/pinpoint/get_app.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationResponse = list(
-#'     Arn = "string",
-#'     Id = "string",
-#'     Name = "string",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_app(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5244,12 +1409,9 @@ pinpoint_get_app <- function(ApplicationId) {
 #' applies to an application
 #'
 #' @description
-#' Retrieves (queries) pre-aggregated data for a standard metric that
-#' applies to an application.
+#' Retrieves (queries) pre-aggregated data for a standard metric that applies to an application.
 #'
-#' @usage
-#' pinpoint_get_application_date_range_kpi(ApplicationId, EndTime, KpiName,
-#'   NextToken, PageSize, StartTime)
+#' See [https://paws-r.github.io/docs/pinpoint/get_application_date_range_kpi.html](https://paws-r.github.io/docs/pinpoint/get_application_date_range_kpi.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -5275,60 +1437,6 @@ pinpoint_get_app <- function(ApplicationId) {
 #' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
 #' example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
 #' should also be fewer than 90 days from the current day.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationDateRangeKpiResponse = list(
-#'     ApplicationId = "string",
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     KpiName = "string",
-#'     KpiResult = list(
-#'       Rows = list(
-#'         list(
-#'           GroupedBys = list(
-#'             list(
-#'               Key = "string",
-#'               Type = "string",
-#'               Value = "string"
-#'             )
-#'           ),
-#'           Values = list(
-#'             list(
-#'               Key = "string",
-#'               Type = "string",
-#'               Value = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     NextToken = "string",
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_application_date_range_kpi(
-#'   ApplicationId = "string",
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   KpiName = "string",
-#'   NextToken = "string",
-#'   PageSize = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5355,44 +1463,10 @@ pinpoint_get_application_date_range_kpi <- function(ApplicationId, EndTime = NUL
 #' @description
 #' Retrieves information about the settings for an application.
 #'
-#' @usage
-#' pinpoint_get_application_settings(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_application_settings.html](https://paws-r.github.io/docs/pinpoint/get_application_settings.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationSettingsResource = list(
-#'     ApplicationId = "string",
-#'     CampaignHook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_application_settings(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5418,45 +1492,15 @@ pinpoint_get_application_settings <- function(ApplicationId) {
 #' with your Amazon Pinpoint account
 #'
 #' @description
-#' Retrieves information about all the applications that are associated
-#' with your Amazon Pinpoint account.
+#' Retrieves information about all the applications that are associated with your Amazon Pinpoint account.
 #'
-#' @usage
-#' pinpoint_get_apps(PageSize, Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_apps.html](https://paws-r.github.io/docs/pinpoint/get_apps.html) for full documentation.
 #'
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationsResponse = list(
-#'     Item = list(
-#'       list(
-#'         Arn = "string",
-#'         Id = "string",
-#'         Name = "string",
-#'         tags = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_apps(
-#'   PageSize = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5482,41 +1526,12 @@ pinpoint_get_apps <- function(PageSize = NULL, Token = NULL) {
 #' for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the Baidu channel
-#' for an application.
+#' Retrieves information about the status and settings of the Baidu channel for an application.
 #'
-#' @usage
-#' pinpoint_get_baidu_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_baidu_channel.html](https://paws-r.github.io/docs/pinpoint/get_baidu_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaiduChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Credential = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_baidu_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5542,369 +1557,13 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #' settings for a campaign
 #'
 #' @description
-#' Retrieves information about the status, configuration, and other
-#' settings for a campaign.
+#' Retrieves information about the status, configuration, and other settings for a campaign.
 #'
-#' @usage
-#' pinpoint_get_campaign(ApplicationId, CampaignId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_campaign.html](https://paws-r.github.io/docs/pinpoint/get_campaign.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CampaignResponse = list(
-#'     AdditionalTreatments = list(
-#'       list(
-#'         CustomDeliveryConfiguration = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           )
-#'         ),
-#'         Id = "string",
-#'         MessageConfiguration = list(
-#'           ADMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           APNSMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           BaiduMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           CustomMessage = list(
-#'             Data = "string"
-#'           ),
-#'           DefaultMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           EmailMessage = list(
-#'             Body = "string",
-#'             FromAddress = "string",
-#'             HtmlBody = "string",
-#'             Title = "string"
-#'           ),
-#'           GCMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           SMSMessage = list(
-#'             Body = "string",
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           )
-#'         ),
-#'         Schedule = list(
-#'           EndTime = "string",
-#'           EventFilter = list(
-#'             Dimensions = list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               EventType = list(
-#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               )
-#'             ),
-#'             FilterType = "SYSTEM"|"ENDPOINT"
-#'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'           IsLocalTime = TRUE|FALSE,
-#'           QuietTime = list(
-#'             End = "string",
-#'             Start = "string"
-#'           ),
-#'           StartTime = "string",
-#'           Timezone = "string"
-#'         ),
-#'         SizePercent = 123,
-#'         State = list(
-#'           CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'         ),
-#'         TemplateConfiguration = list(
-#'           EmailTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           PushTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           SMSTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           VoiceTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           )
-#'         ),
-#'         TreatmentDescription = "string",
-#'         TreatmentName = "string"
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     CustomDeliveryConfiguration = list(
-#'       DeliveryUri = "string",
-#'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'       )
-#'     ),
-#'     DefaultState = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     Description = "string",
-#'     HoldoutPercent = 123,
-#'     Hook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     Id = "string",
-#'     IsPaused = TRUE|FALSE,
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     MessageConfiguration = list(
-#'       ADMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       APNSMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       BaiduMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       CustomMessage = list(
-#'         Data = "string"
-#'       ),
-#'       DefaultMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       EmailMessage = list(
-#'         Body = "string",
-#'         FromAddress = "string",
-#'         HtmlBody = "string",
-#'         Title = "string"
-#'       ),
-#'       GCMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       SMSMessage = list(
-#'         Body = "string",
-#'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
-#'       )
-#'     ),
-#'     Name = "string",
-#'     Schedule = list(
-#'       EndTime = "string",
-#'       EventFilter = list(
-#'         Dimensions = list(
-#'           Attributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           EventType = list(
-#'             DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           Metrics = list(
-#'             list(
-#'               ComparisonOperator = "string",
-#'               Value = 123.0
-#'             )
-#'           )
-#'         ),
-#'         FilterType = "SYSTEM"|"ENDPOINT"
-#'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'       IsLocalTime = TRUE|FALSE,
-#'       QuietTime = list(
-#'         End = "string",
-#'         Start = "string"
-#'       ),
-#'       StartTime = "string",
-#'       Timezone = "string"
-#'     ),
-#'     SegmentId = "string",
-#'     SegmentVersion = 123,
-#'     State = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateConfiguration = list(
-#'       EmailTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       PushTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       SMSTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       VoiceTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     TreatmentDescription = "string",
-#'     TreatmentName = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_campaign(
-#'   ApplicationId = "string",
-#'   CampaignId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5931,9 +1590,7 @@ pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
 #' @description
 #' Retrieves information about all the activities for a campaign.
 #'
-#' @usage
-#' pinpoint_get_campaign_activities(ApplicationId, CampaignId, PageSize,
-#'   Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_campaign_activities.html](https://paws-r.github.io/docs/pinpoint/get_campaign_activities.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -5943,43 +1600,6 @@ pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
 #' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ActivitiesResponse = list(
-#'     Item = list(
-#'       list(
-#'         ApplicationId = "string",
-#'         CampaignId = "string",
-#'         End = "string",
-#'         Id = "string",
-#'         Result = "string",
-#'         ScheduledStart = "string",
-#'         Start = "string",
-#'         State = "string",
-#'         SuccessfulEndpointCount = 123,
-#'         TimezonesCompletedCount = 123,
-#'         TimezonesTotalCount = 123,
-#'         TotalEndpointCount = 123,
-#'         TreatmentId = "string"
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_campaign_activities(
-#'   ApplicationId = "string",
-#'   CampaignId = "string",
-#'   PageSize = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6005,12 +1625,9 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 #' applies to a campaign
 #'
 #' @description
-#' Retrieves (queries) pre-aggregated data for a standard metric that
-#' applies to a campaign.
+#' Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign.
 #'
-#' @usage
-#' pinpoint_get_campaign_date_range_kpi(ApplicationId, CampaignId, EndTime,
-#'   KpiName, NextToken, PageSize, StartTime)
+#' See [https://paws-r.github.io/docs/pinpoint/get_campaign_date_range_kpi.html](https://paws-r.github.io/docs/pinpoint/get_campaign_date_range_kpi.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -6037,62 +1654,6 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 #' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
 #' example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
 #' should also be fewer than 90 days from the current day.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CampaignDateRangeKpiResponse = list(
-#'     ApplicationId = "string",
-#'     CampaignId = "string",
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     KpiName = "string",
-#'     KpiResult = list(
-#'       Rows = list(
-#'         list(
-#'           GroupedBys = list(
-#'             list(
-#'               Key = "string",
-#'               Type = "string",
-#'               Value = "string"
-#'             )
-#'           ),
-#'           Values = list(
-#'             list(
-#'               Key = "string",
-#'               Type = "string",
-#'               Value = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     NextToken = "string",
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_campaign_date_range_kpi(
-#'   ApplicationId = "string",
-#'   CampaignId = "string",
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   KpiName = "string",
-#'   NextToken = "string",
-#'   PageSize = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6118,371 +1679,14 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #' settings for a specific version of a campaign
 #'
 #' @description
-#' Retrieves information about the status, configuration, and other
-#' settings for a specific version of a campaign.
+#' Retrieves information about the status, configuration, and other settings for a specific version of a campaign.
 #'
-#' @usage
-#' pinpoint_get_campaign_version(ApplicationId, CampaignId, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/get_campaign_version.html](https://paws-r.github.io/docs/pinpoint/get_campaign_version.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
 #' @param Version &#91;required&#93; The unique version number (Version property) for the campaign version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CampaignResponse = list(
-#'     AdditionalTreatments = list(
-#'       list(
-#'         CustomDeliveryConfiguration = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           )
-#'         ),
-#'         Id = "string",
-#'         MessageConfiguration = list(
-#'           ADMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           APNSMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           BaiduMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           CustomMessage = list(
-#'             Data = "string"
-#'           ),
-#'           DefaultMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           EmailMessage = list(
-#'             Body = "string",
-#'             FromAddress = "string",
-#'             HtmlBody = "string",
-#'             Title = "string"
-#'           ),
-#'           GCMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           SMSMessage = list(
-#'             Body = "string",
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           )
-#'         ),
-#'         Schedule = list(
-#'           EndTime = "string",
-#'           EventFilter = list(
-#'             Dimensions = list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               EventType = list(
-#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               )
-#'             ),
-#'             FilterType = "SYSTEM"|"ENDPOINT"
-#'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'           IsLocalTime = TRUE|FALSE,
-#'           QuietTime = list(
-#'             End = "string",
-#'             Start = "string"
-#'           ),
-#'           StartTime = "string",
-#'           Timezone = "string"
-#'         ),
-#'         SizePercent = 123,
-#'         State = list(
-#'           CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'         ),
-#'         TemplateConfiguration = list(
-#'           EmailTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           PushTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           SMSTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           VoiceTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           )
-#'         ),
-#'         TreatmentDescription = "string",
-#'         TreatmentName = "string"
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     CustomDeliveryConfiguration = list(
-#'       DeliveryUri = "string",
-#'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'       )
-#'     ),
-#'     DefaultState = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     Description = "string",
-#'     HoldoutPercent = 123,
-#'     Hook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     Id = "string",
-#'     IsPaused = TRUE|FALSE,
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     MessageConfiguration = list(
-#'       ADMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       APNSMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       BaiduMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       CustomMessage = list(
-#'         Data = "string"
-#'       ),
-#'       DefaultMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       EmailMessage = list(
-#'         Body = "string",
-#'         FromAddress = "string",
-#'         HtmlBody = "string",
-#'         Title = "string"
-#'       ),
-#'       GCMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       SMSMessage = list(
-#'         Body = "string",
-#'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
-#'       )
-#'     ),
-#'     Name = "string",
-#'     Schedule = list(
-#'       EndTime = "string",
-#'       EventFilter = list(
-#'         Dimensions = list(
-#'           Attributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           EventType = list(
-#'             DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           Metrics = list(
-#'             list(
-#'               ComparisonOperator = "string",
-#'               Value = 123.0
-#'             )
-#'           )
-#'         ),
-#'         FilterType = "SYSTEM"|"ENDPOINT"
-#'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'       IsLocalTime = TRUE|FALSE,
-#'       QuietTime = list(
-#'         End = "string",
-#'         Start = "string"
-#'       ),
-#'       StartTime = "string",
-#'       Timezone = "string"
-#'     ),
-#'     SegmentId = "string",
-#'     SegmentVersion = 123,
-#'     State = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateConfiguration = list(
-#'       EmailTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       PushTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       SMSTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       VoiceTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     TreatmentDescription = "string",
-#'     TreatmentName = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_campaign_version(
-#'   ApplicationId = "string",
-#'   CampaignId = "string",
-#'   Version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6508,12 +1712,9 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #' settings for all versions of a campaign
 #'
 #' @description
-#' Retrieves information about the status, configuration, and other
-#' settings for all versions of a campaign.
+#' Retrieves information about the status, configuration, and other settings for all versions of a campaign.
 #'
-#' @usage
-#' pinpoint_get_campaign_versions(ApplicationId, CampaignId, PageSize,
-#'   Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_campaign_versions.html](https://paws-r.github.io/docs/pinpoint/get_campaign_versions.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -6523,367 +1724,6 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CampaignsResponse = list(
-#'     Item = list(
-#'       list(
-#'         AdditionalTreatments = list(
-#'           list(
-#'             CustomDeliveryConfiguration = list(
-#'               DeliveryUri = "string",
-#'               EndpointTypes = list(
-#'                 "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'               )
-#'             ),
-#'             Id = "string",
-#'             MessageConfiguration = list(
-#'               ADMMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               APNSMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               BaiduMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               CustomMessage = list(
-#'                 Data = "string"
-#'               ),
-#'               DefaultMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               EmailMessage = list(
-#'                 Body = "string",
-#'                 FromAddress = "string",
-#'                 HtmlBody = "string",
-#'                 Title = "string"
-#'               ),
-#'               GCMMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               SMSMessage = list(
-#'                 Body = "string",
-#'                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'                 SenderId = "string"
-#'               )
-#'             ),
-#'             Schedule = list(
-#'               EndTime = "string",
-#'               EventFilter = list(
-#'                 Dimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   EventType = list(
-#'                     DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                     Values = list(
-#'                       "string"
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   )
-#'                 ),
-#'                 FilterType = "SYSTEM"|"ENDPOINT"
-#'               ),
-#'               Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'               IsLocalTime = TRUE|FALSE,
-#'               QuietTime = list(
-#'                 End = "string",
-#'                 Start = "string"
-#'               ),
-#'               StartTime = "string",
-#'               Timezone = "string"
-#'             ),
-#'             SizePercent = 123,
-#'             State = list(
-#'               CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'             ),
-#'             TemplateConfiguration = list(
-#'               EmailTemplate = list(
-#'                 Name = "string",
-#'                 Version = "string"
-#'               ),
-#'               PushTemplate = list(
-#'                 Name = "string",
-#'                 Version = "string"
-#'               ),
-#'               SMSTemplate = list(
-#'                 Name = "string",
-#'                 Version = "string"
-#'               ),
-#'               VoiceTemplate = list(
-#'                 Name = "string",
-#'                 Version = "string"
-#'               )
-#'             ),
-#'             TreatmentDescription = "string",
-#'             TreatmentName = "string"
-#'           )
-#'         ),
-#'         ApplicationId = "string",
-#'         Arn = "string",
-#'         CreationDate = "string",
-#'         CustomDeliveryConfiguration = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           )
-#'         ),
-#'         DefaultState = list(
-#'           CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'         ),
-#'         Description = "string",
-#'         HoldoutPercent = 123,
-#'         Hook = list(
-#'           LambdaFunctionName = "string",
-#'           Mode = "DELIVERY"|"FILTER",
-#'           WebUrl = "string"
-#'         ),
-#'         Id = "string",
-#'         IsPaused = TRUE|FALSE,
-#'         LastModifiedDate = "string",
-#'         Limits = list(
-#'           Daily = 123,
-#'           MaximumDuration = 123,
-#'           MessagesPerSecond = 123,
-#'           Total = 123
-#'         ),
-#'         MessageConfiguration = list(
-#'           ADMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           APNSMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           BaiduMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           CustomMessage = list(
-#'             Data = "string"
-#'           ),
-#'           DefaultMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           EmailMessage = list(
-#'             Body = "string",
-#'             FromAddress = "string",
-#'             HtmlBody = "string",
-#'             Title = "string"
-#'           ),
-#'           GCMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           SMSMessage = list(
-#'             Body = "string",
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           )
-#'         ),
-#'         Name = "string",
-#'         Schedule = list(
-#'           EndTime = "string",
-#'           EventFilter = list(
-#'             Dimensions = list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               EventType = list(
-#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               )
-#'             ),
-#'             FilterType = "SYSTEM"|"ENDPOINT"
-#'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'           IsLocalTime = TRUE|FALSE,
-#'           QuietTime = list(
-#'             End = "string",
-#'             Start = "string"
-#'           ),
-#'           StartTime = "string",
-#'           Timezone = "string"
-#'         ),
-#'         SegmentId = "string",
-#'         SegmentVersion = 123,
-#'         State = list(
-#'           CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'         ),
-#'         tags = list(
-#'           "string"
-#'         ),
-#'         TemplateConfiguration = list(
-#'           EmailTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           PushTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           SMSTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           VoiceTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           )
-#'         ),
-#'         TreatmentDescription = "string",
-#'         TreatmentName = "string",
-#'         Version = 123
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_campaign_versions(
-#'   ApplicationId = "string",
-#'   CampaignId = "string",
-#'   PageSize = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6909,11 +1749,9 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #' settings for all the campaigns that are associated with an application
 #'
 #' @description
-#' Retrieves information about the status, configuration, and other
-#' settings for all the campaigns that are associated with an application.
+#' Retrieves information about the status, configuration, and other settings for all the campaigns that are associated with an application.
 #'
-#' @usage
-#' pinpoint_get_campaigns(ApplicationId, PageSize, Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_campaigns.html](https://paws-r.github.io/docs/pinpoint/get_campaigns.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -6922,366 +1760,6 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CampaignsResponse = list(
-#'     Item = list(
-#'       list(
-#'         AdditionalTreatments = list(
-#'           list(
-#'             CustomDeliveryConfiguration = list(
-#'               DeliveryUri = "string",
-#'               EndpointTypes = list(
-#'                 "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'               )
-#'             ),
-#'             Id = "string",
-#'             MessageConfiguration = list(
-#'               ADMMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               APNSMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               BaiduMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               CustomMessage = list(
-#'                 Data = "string"
-#'               ),
-#'               DefaultMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               EmailMessage = list(
-#'                 Body = "string",
-#'                 FromAddress = "string",
-#'                 HtmlBody = "string",
-#'                 Title = "string"
-#'               ),
-#'               GCMMessage = list(
-#'                 Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'                 Body = "string",
-#'                 ImageIconUrl = "string",
-#'                 ImageSmallIconUrl = "string",
-#'                 ImageUrl = "string",
-#'                 JsonBody = "string",
-#'                 MediaUrl = "string",
-#'                 RawContent = "string",
-#'                 SilentPush = TRUE|FALSE,
-#'                 TimeToLive = 123,
-#'                 Title = "string",
-#'                 Url = "string"
-#'               ),
-#'               SMSMessage = list(
-#'                 Body = "string",
-#'                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'                 SenderId = "string"
-#'               )
-#'             ),
-#'             Schedule = list(
-#'               EndTime = "string",
-#'               EventFilter = list(
-#'                 Dimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   EventType = list(
-#'                     DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                     Values = list(
-#'                       "string"
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   )
-#'                 ),
-#'                 FilterType = "SYSTEM"|"ENDPOINT"
-#'               ),
-#'               Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'               IsLocalTime = TRUE|FALSE,
-#'               QuietTime = list(
-#'                 End = "string",
-#'                 Start = "string"
-#'               ),
-#'               StartTime = "string",
-#'               Timezone = "string"
-#'             ),
-#'             SizePercent = 123,
-#'             State = list(
-#'               CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'             ),
-#'             TemplateConfiguration = list(
-#'               EmailTemplate = list(
-#'                 Name = "string",
-#'                 Version = "string"
-#'               ),
-#'               PushTemplate = list(
-#'                 Name = "string",
-#'                 Version = "string"
-#'               ),
-#'               SMSTemplate = list(
-#'                 Name = "string",
-#'                 Version = "string"
-#'               ),
-#'               VoiceTemplate = list(
-#'                 Name = "string",
-#'                 Version = "string"
-#'               )
-#'             ),
-#'             TreatmentDescription = "string",
-#'             TreatmentName = "string"
-#'           )
-#'         ),
-#'         ApplicationId = "string",
-#'         Arn = "string",
-#'         CreationDate = "string",
-#'         CustomDeliveryConfiguration = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           )
-#'         ),
-#'         DefaultState = list(
-#'           CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'         ),
-#'         Description = "string",
-#'         HoldoutPercent = 123,
-#'         Hook = list(
-#'           LambdaFunctionName = "string",
-#'           Mode = "DELIVERY"|"FILTER",
-#'           WebUrl = "string"
-#'         ),
-#'         Id = "string",
-#'         IsPaused = TRUE|FALSE,
-#'         LastModifiedDate = "string",
-#'         Limits = list(
-#'           Daily = 123,
-#'           MaximumDuration = 123,
-#'           MessagesPerSecond = 123,
-#'           Total = 123
-#'         ),
-#'         MessageConfiguration = list(
-#'           ADMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           APNSMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           BaiduMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           CustomMessage = list(
-#'             Data = "string"
-#'           ),
-#'           DefaultMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           EmailMessage = list(
-#'             Body = "string",
-#'             FromAddress = "string",
-#'             HtmlBody = "string",
-#'             Title = "string"
-#'           ),
-#'           GCMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           SMSMessage = list(
-#'             Body = "string",
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           )
-#'         ),
-#'         Name = "string",
-#'         Schedule = list(
-#'           EndTime = "string",
-#'           EventFilter = list(
-#'             Dimensions = list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               EventType = list(
-#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               )
-#'             ),
-#'             FilterType = "SYSTEM"|"ENDPOINT"
-#'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'           IsLocalTime = TRUE|FALSE,
-#'           QuietTime = list(
-#'             End = "string",
-#'             Start = "string"
-#'           ),
-#'           StartTime = "string",
-#'           Timezone = "string"
-#'         ),
-#'         SegmentId = "string",
-#'         SegmentVersion = 123,
-#'         State = list(
-#'           CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'         ),
-#'         tags = list(
-#'           "string"
-#'         ),
-#'         TemplateConfiguration = list(
-#'           EmailTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           PushTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           SMSTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           VoiceTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           )
-#'         ),
-#'         TreatmentDescription = "string",
-#'         TreatmentName = "string",
-#'         Version = 123
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_campaigns(
-#'   ApplicationId = "string",
-#'   PageSize = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7307,43 +1785,12 @@ pinpoint_get_campaigns <- function(ApplicationId, PageSize = NULL, Token = NULL)
 #' an application
 #'
 #' @description
-#' Retrieves information about the history and status of each channel for
-#' an application.
+#' Retrieves information about the history and status of each channel for an application.
 #'
-#' @usage
-#' pinpoint_get_channels(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_channels.html](https://paws-r.github.io/docs/pinpoint/get_channels.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChannelsResponse = list(
-#'     Channels = list(
-#'       list(
-#'         ApplicationId = "string",
-#'         CreationDate = "string",
-#'         Enabled = TRUE|FALSE,
-#'         HasCredential = TRUE|FALSE,
-#'         Id = "string",
-#'         IsArchived = TRUE|FALSE,
-#'         LastModifiedBy = "string",
-#'         LastModifiedDate = "string",
-#'         Version = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_channels(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7369,45 +1816,12 @@ pinpoint_get_channels <- function(ApplicationId) {
 #' for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the email channel
-#' for an application.
+#' Retrieves information about the status and settings of the email channel for an application.
 #'
-#' @usage
-#' pinpoint_get_email_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_email_channel.html](https://paws-r.github.io/docs/pinpoint/get_email_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EmailChannelResponse = list(
-#'     ApplicationId = "string",
-#'     ConfigurationSet = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     FromAddress = "string",
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     Identity = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     MessagesPerSecond = 123,
-#'     Platform = "string",
-#'     RoleArn = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_email_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7433,11 +1847,9 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #' that are sent through the email channel
 #'
 #' @description
-#' Retrieves the content and settings of a message template for messages
-#' that are sent through the email channel.
+#' Retrieves the content and settings of a message template for messages that are sent through the email channel.
 #'
-#' @usage
-#' pinpoint_get_email_template(TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/get_email_template.html](https://paws-r.github.io/docs/pinpoint/get_email_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -7466,38 +1878,6 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EmailTemplateResponse = list(
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     DefaultSubstitutions = "string",
-#'     HtmlPart = "string",
-#'     LastModifiedDate = "string",
-#'     RecommenderId = "string",
-#'     Subject = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string",
-#'     TemplateName = "string",
-#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
-#'     TextPart = "string",
-#'     Version = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_email_template(
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_email_template
@@ -7522,76 +1902,13 @@ pinpoint_get_email_template <- function(TemplateName, Version = NULL) {
 #' endpoint for an application
 #'
 #' @description
-#' Retrieves information about the settings and attributes of a specific
-#' endpoint for an application.
+#' Retrieves information about the settings and attributes of a specific endpoint for an application.
 #'
-#' @usage
-#' pinpoint_get_endpoint(ApplicationId, EndpointId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_endpoint.html](https://paws-r.github.io/docs/pinpoint/get_endpoint.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointResponse = list(
-#'     Address = "string",
-#'     ApplicationId = "string",
-#'     Attributes = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-#'     CohortId = "string",
-#'     CreationDate = "string",
-#'     Demographic = list(
-#'       AppVersion = "string",
-#'       Locale = "string",
-#'       Make = "string",
-#'       Model = "string",
-#'       ModelVersion = "string",
-#'       Platform = "string",
-#'       PlatformVersion = "string",
-#'       Timezone = "string"
-#'     ),
-#'     EffectiveDate = "string",
-#'     EndpointStatus = "string",
-#'     Id = "string",
-#'     Location = list(
-#'       City = "string",
-#'       Country = "string",
-#'       Latitude = 123.0,
-#'       Longitude = 123.0,
-#'       PostalCode = "string",
-#'       Region = "string"
-#'     ),
-#'     Metrics = list(
-#'       123.0
-#'     ),
-#'     OptOut = "string",
-#'     RequestId = "string",
-#'     User = list(
-#'       UserAttributes = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       UserId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_endpoint(
-#'   ApplicationId = "string",
-#'   EndpointId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7616,36 +1933,12 @@ pinpoint_get_endpoint <- function(ApplicationId, EndpointId) {
 #' Retrieves information about the event stream settings for an application
 #'
 #' @description
-#' Retrieves information about the event stream settings for an
-#' application.
+#' Retrieves information about the event stream settings for an application.
 #'
-#' @usage
-#' pinpoint_get_event_stream(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_event_stream.html](https://paws-r.github.io/docs/pinpoint/get_event_stream.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventStream = list(
-#'     ApplicationId = "string",
-#'     DestinationStreamArn = "string",
-#'     ExternalId = "string",
-#'     LastModifiedDate = "string",
-#'     LastUpdatedBy = "string",
-#'     RoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_event_stream(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7671,52 +1964,13 @@ pinpoint_get_event_stream <- function(ApplicationId) {
 #' job for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of a specific export
-#' job for an application.
+#' Retrieves information about the status and settings of a specific export job for an application.
 #'
-#' @usage
-#' pinpoint_get_export_job(ApplicationId, JobId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_export_job.html](https://paws-r.github.io/docs/pinpoint/get_export_job.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JobId &#91;required&#93; The unique identifier for the job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ExportJobResponse = list(
-#'     ApplicationId = "string",
-#'     CompletedPieces = 123,
-#'     CompletionDate = "string",
-#'     CreationDate = "string",
-#'     Definition = list(
-#'       RoleArn = "string",
-#'       S3UrlPrefix = "string",
-#'       SegmentId = "string",
-#'       SegmentVersion = 123
-#'     ),
-#'     FailedPieces = 123,
-#'     Failures = list(
-#'       "string"
-#'     ),
-#'     Id = "string",
-#'     JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-#'     TotalFailures = 123,
-#'     TotalPieces = 123,
-#'     TotalProcessed = 123,
-#'     Type = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_export_job(
-#'   ApplicationId = "string",
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7742,11 +1996,9 @@ pinpoint_get_export_job <- function(ApplicationId, JobId) {
 #' jobs for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of all the export
-#' jobs for an application.
+#' Retrieves information about the status and settings of all the export jobs for an application.
 #'
-#' @usage
-#' pinpoint_get_export_jobs(ApplicationId, PageSize, Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_export_jobs.html](https://paws-r.github.io/docs/pinpoint/get_export_jobs.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -7755,49 +2007,6 @@ pinpoint_get_export_job <- function(ApplicationId, JobId) {
 #' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ExportJobsResponse = list(
-#'     Item = list(
-#'       list(
-#'         ApplicationId = "string",
-#'         CompletedPieces = 123,
-#'         CompletionDate = "string",
-#'         CreationDate = "string",
-#'         Definition = list(
-#'           RoleArn = "string",
-#'           S3UrlPrefix = "string",
-#'           SegmentId = "string",
-#'           SegmentVersion = 123
-#'         ),
-#'         FailedPieces = 123,
-#'         Failures = list(
-#'           "string"
-#'         ),
-#'         Id = "string",
-#'         JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-#'         TotalFailures = 123,
-#'         TotalPieces = 123,
-#'         TotalProcessed = 123,
-#'         Type = "string"
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_export_jobs(
-#'   ApplicationId = "string",
-#'   PageSize = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7823,41 +2032,12 @@ pinpoint_get_export_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #' for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the GCM channel
-#' for an application.
+#' Retrieves information about the status and settings of the GCM channel for an application.
 #'
-#' @usage
-#' pinpoint_get_gcm_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_gcm_channel.html](https://paws-r.github.io/docs/pinpoint/get_gcm_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GCMChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Credential = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_gcm_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7883,56 +2063,13 @@ pinpoint_get_gcm_channel <- function(ApplicationId) {
 #' job for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of a specific import
-#' job for an application.
+#' Retrieves information about the status and settings of a specific import job for an application.
 #'
-#' @usage
-#' pinpoint_get_import_job(ApplicationId, JobId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_import_job.html](https://paws-r.github.io/docs/pinpoint/get_import_job.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JobId &#91;required&#93; The unique identifier for the job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImportJobResponse = list(
-#'     ApplicationId = "string",
-#'     CompletedPieces = 123,
-#'     CompletionDate = "string",
-#'     CreationDate = "string",
-#'     Definition = list(
-#'       DefineSegment = TRUE|FALSE,
-#'       ExternalId = "string",
-#'       Format = "CSV"|"JSON",
-#'       RegisterEndpoints = TRUE|FALSE,
-#'       RoleArn = "string",
-#'       S3Url = "string",
-#'       SegmentId = "string",
-#'       SegmentName = "string"
-#'     ),
-#'     FailedPieces = 123,
-#'     Failures = list(
-#'       "string"
-#'     ),
-#'     Id = "string",
-#'     JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-#'     TotalFailures = 123,
-#'     TotalPieces = 123,
-#'     TotalProcessed = 123,
-#'     Type = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_import_job(
-#'   ApplicationId = "string",
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7958,11 +2095,9 @@ pinpoint_get_import_job <- function(ApplicationId, JobId) {
 #' jobs for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of all the import
-#' jobs for an application.
+#' Retrieves information about the status and settings of all the import jobs for an application.
 #'
-#' @usage
-#' pinpoint_get_import_jobs(ApplicationId, PageSize, Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_import_jobs.html](https://paws-r.github.io/docs/pinpoint/get_import_jobs.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -7971,53 +2106,6 @@ pinpoint_get_import_job <- function(ApplicationId, JobId) {
 #' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImportJobsResponse = list(
-#'     Item = list(
-#'       list(
-#'         ApplicationId = "string",
-#'         CompletedPieces = 123,
-#'         CompletionDate = "string",
-#'         CreationDate = "string",
-#'         Definition = list(
-#'           DefineSegment = TRUE|FALSE,
-#'           ExternalId = "string",
-#'           Format = "CSV"|"JSON",
-#'           RegisterEndpoints = TRUE|FALSE,
-#'           RoleArn = "string",
-#'           S3Url = "string",
-#'           SegmentId = "string",
-#'           SegmentName = "string"
-#'         ),
-#'         FailedPieces = 123,
-#'         Failures = list(
-#'           "string"
-#'         ),
-#'         Id = "string",
-#'         JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-#'         TotalFailures = 123,
-#'         TotalPieces = 123,
-#'         TotalProcessed = 123,
-#'         Type = "string"
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_import_jobs(
-#'   ApplicationId = "string",
-#'   PageSize = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8039,412 +2127,103 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 }
 .pinpoint$operations$get_import_jobs <- pinpoint_get_import_jobs
 
+#' Retrieves the in-app messages targeted for the provided endpoint ID
+#'
+#' @description
+#' Retrieves the in-app messages targeted for the provided endpoint ID.
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/get_in_app_messages.html](https://paws-r.github.io/docs/pinpoint/get_in_app_messages.html) for full documentation.
+#'
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_in_app_messages
+pinpoint_get_in_app_messages <- function(ApplicationId, EndpointId) {
+  op <- new_operation(
+    name = "GetInAppMessages",
+    http_method = "GET",
+    http_path = "/v1/apps/{application-id}/endpoints/{endpoint-id}/inappmessages",
+    paginator = list()
+  )
+  input <- .pinpoint$get_in_app_messages_input(ApplicationId = ApplicationId, EndpointId = EndpointId)
+  output <- .pinpoint$get_in_app_messages_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_in_app_messages <- pinpoint_get_in_app_messages
+
+#' Retrieves the content and settings of a message template for messages
+#' sent through the in-app channel
+#'
+#' @description
+#' Retrieves the content and settings of a message template for messages sent through the in-app channel.
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/get_in_app_template.html](https://paws-r.github.io/docs/pinpoint/get_in_app_template.html) for full documentation.
+#'
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (_), or hyphens
+#' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier for an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier for the latest existing version of the template.
+#' This restriction helps ensure that race conditions don't occur.
+#' 
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn't used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_in_app_template
+pinpoint_get_in_app_template <- function(TemplateName, Version = NULL) {
+  op <- new_operation(
+    name = "GetInAppTemplate",
+    http_method = "GET",
+    http_path = "/v1/templates/{template-name}/inapp",
+    paginator = list()
+  )
+  input <- .pinpoint$get_in_app_template_input(TemplateName = TemplateName, Version = Version)
+  output <- .pinpoint$get_in_app_template_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_in_app_template <- pinpoint_get_in_app_template
+
 #' Retrieves information about the status, configuration, and other
 #' settings for a journey
 #'
 #' @description
-#' Retrieves information about the status, configuration, and other
-#' settings for a journey.
+#' Retrieves information about the status, configuration, and other settings for a journey.
 #'
-#' @usage
-#' pinpoint_get_journey(ApplicationId, JourneyId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_journey.html](https://paws-r.github.io/docs/pinpoint/get_journey.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JourneyResponse = list(
-#'     Activities = list(
-#'       list(
-#'         CUSTOM = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           ),
-#'           MessageConfig = list(
-#'             Data = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         ConditionalSplit = list(
-#'           Condition = list(
-#'             Conditions = list(
-#'               list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             Operator = "ALL"|"ANY"
-#'           ),
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           ),
-#'           FalseActivity = "string",
-#'           TrueActivity = "string"
-#'         ),
-#'         Description = "string",
-#'         EMAIL = list(
-#'           MessageConfig = list(
-#'             FromAddress = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Holdout = list(
-#'           NextActivity = "string",
-#'           Percentage = 123
-#'         ),
-#'         MultiCondition = list(
-#'           Branches = list(
-#'             list(
-#'               Condition = list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               NextActivity = "string"
-#'             )
-#'           ),
-#'           DefaultActivity = "string",
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         ),
-#'         PUSH = list(
-#'           MessageConfig = list(
-#'             TimeToLive = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         RandomSplit = list(
-#'           Branches = list(
-#'             list(
-#'               NextActivity = "string",
-#'               Percentage = 123
-#'             )
-#'           )
-#'         ),
-#'         SMS = list(
-#'           MessageConfig = list(
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Wait = list(
-#'           NextActivity = "string",
-#'           WaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Id = "string",
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       DailyCap = 123,
-#'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
-#'     ),
-#'     LocalTime = TRUE|FALSE,
-#'     Name = "string",
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     ),
-#'     RefreshFrequency = "string",
-#'     Schedule = list(
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Timezone = "string"
-#'     ),
-#'     StartActivity = "string",
-#'     StartCondition = list(
-#'       Description = "string",
-#'       EventStartCondition = list(
-#'         EventFilter = list(
-#'           Dimensions = list(
-#'             Attributes = list(
-#'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               )
-#'             ),
-#'             EventType = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Metrics = list(
-#'               list(
-#'                 ComparisonOperator = "string",
-#'                 Value = 123.0
-#'               )
-#'             )
-#'           ),
-#'           FilterType = "SYSTEM"|"ENDPOINT"
-#'         ),
-#'         SegmentId = "string"
-#'       ),
-#'       SegmentStartCondition = list(
-#'         SegmentId = "string"
-#'       )
-#'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_journey(
-#'   ApplicationId = "string",
-#'   JourneyId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8470,12 +2249,9 @@ pinpoint_get_journey <- function(ApplicationId, JourneyId) {
 #' that applies to a journey
 #'
 #' @description
-#' Retrieves (queries) pre-aggregated data for a standard engagement metric
-#' that applies to a journey.
+#' Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey.
 #'
-#' @usage
-#' pinpoint_get_journey_date_range_kpi(ApplicationId, EndTime, JourneyId,
-#'   KpiName, NextToken, PageSize, StartTime)
+#' See [https://paws-r.github.io/docs/pinpoint/get_journey_date_range_kpi.html](https://paws-r.github.io/docs/pinpoint/get_journey_date_range_kpi.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -8503,62 +2279,6 @@ pinpoint_get_journey <- function(ApplicationId, JourneyId) {
 #' example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
 #' should also be fewer than 90 days from the current day.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JourneyDateRangeKpiResponse = list(
-#'     ApplicationId = "string",
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     JourneyId = "string",
-#'     KpiName = "string",
-#'     KpiResult = list(
-#'       Rows = list(
-#'         list(
-#'           GroupedBys = list(
-#'             list(
-#'               Key = "string",
-#'               Type = "string",
-#'               Value = "string"
-#'             )
-#'           ),
-#'           Values = list(
-#'             list(
-#'               Key = "string",
-#'               Type = "string",
-#'               Value = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     NextToken = "string",
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_journey_date_range_kpi(
-#'   ApplicationId = "string",
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   JourneyId = "string",
-#'   KpiName = "string",
-#'   NextToken = "string",
-#'   PageSize = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_journey_date_range_kpi
@@ -8583,12 +2303,9 @@ pinpoint_get_journey_date_range_kpi <- function(ApplicationId, EndTime = NULL, J
 #' that applies to a journey activity
 #'
 #' @description
-#' Retrieves (queries) pre-aggregated data for a standard execution metric
-#' that applies to a journey activity.
+#' Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity.
 #'
-#' @usage
-#' pinpoint_get_journey_execution_activity_metrics(ApplicationId,
-#'   JourneyActivityId, JourneyId, NextToken, PageSize)
+#' See [https://paws-r.github.io/docs/pinpoint/get_journey_execution_activity_metrics.html](https://paws-r.github.io/docs/pinpoint/get_journey_execution_activity_metrics.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -8600,34 +2317,6 @@ pinpoint_get_journey_date_range_kpi <- function(ApplicationId, EndTime = NULL, J
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JourneyExecutionActivityMetricsResponse = list(
-#'     ActivityType = "string",
-#'     ApplicationId = "string",
-#'     JourneyActivityId = "string",
-#'     JourneyId = "string",
-#'     LastEvaluatedTime = "string",
-#'     Metrics = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_journey_execution_activity_metrics(
-#'   ApplicationId = "string",
-#'   JourneyActivityId = "string",
-#'   JourneyId = "string",
-#'   NextToken = "string",
-#'   PageSize = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8653,12 +2342,9 @@ pinpoint_get_journey_execution_activity_metrics <- function(ApplicationId, Journ
 #' that applies to a journey
 #'
 #' @description
-#' Retrieves (queries) pre-aggregated data for a standard execution metric
-#' that applies to a journey.
+#' Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey.
 #'
-#' @usage
-#' pinpoint_get_journey_execution_metrics(ApplicationId, JourneyId,
-#'   NextToken, PageSize)
+#' See [https://paws-r.github.io/docs/pinpoint/get_journey_execution_metrics.html](https://paws-r.github.io/docs/pinpoint/get_journey_execution_metrics.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -8669,31 +2355,6 @@ pinpoint_get_journey_execution_activity_metrics <- function(ApplicationId, Journ
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JourneyExecutionMetricsResponse = list(
-#'     ApplicationId = "string",
-#'     JourneyId = "string",
-#'     LastEvaluatedTime = "string",
-#'     Metrics = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_journey_execution_metrics(
-#'   ApplicationId = "string",
-#'   JourneyId = "string",
-#'   NextToken = "string",
-#'   PageSize = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8719,11 +2380,9 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #' that are sent through a push notification channel
 #'
 #' @description
-#' Retrieves the content and settings of a message template for messages
-#' that are sent through a push notification channel.
+#' Retrieves the content and settings of a message template for messages that are sent through a push notification channel.
 #'
-#' @usage
-#' pinpoint_get_push_template(TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/get_push_template.html](https://paws-r.github.io/docs/pinpoint/get_push_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -8752,84 +2411,6 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PushNotificationTemplateResponse = list(
-#'     ADM = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       ImageIconUrl = "string",
-#'       ImageUrl = "string",
-#'       RawContent = "string",
-#'       SmallImageIconUrl = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     APNS = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       MediaUrl = "string",
-#'       RawContent = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     Arn = "string",
-#'     Baidu = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       ImageIconUrl = "string",
-#'       ImageUrl = "string",
-#'       RawContent = "string",
-#'       SmallImageIconUrl = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     CreationDate = "string",
-#'     Default = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     DefaultSubstitutions = "string",
-#'     GCM = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       ImageIconUrl = "string",
-#'       ImageUrl = "string",
-#'       RawContent = "string",
-#'       SmallImageIconUrl = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     LastModifiedDate = "string",
-#'     RecommenderId = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string",
-#'     TemplateName = "string",
-#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
-#'     Version = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_push_template(
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_push_template
@@ -8854,45 +2435,13 @@ pinpoint_get_push_template <- function(TemplateName, Version = NULL) {
 #' recommender model
 #'
 #' @description
-#' Retrieves information about an Amazon Pinpoint configuration for a
-#' recommender model.
+#' Retrieves information about an Amazon Pinpoint configuration for a recommender model.
 #'
-#' @usage
-#' pinpoint_get_recommender_configuration(RecommenderId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_recommender_configuration.html](https://paws-r.github.io/docs/pinpoint/get_recommender_configuration.html) for full documentation.
 #'
 #' @param RecommenderId &#91;required&#93; The unique identifier for the recommender model configuration. This
 #' identifier is displayed as the **Recommender ID** on the Amazon Pinpoint
 #' console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecommenderConfigurationResponse = list(
-#'     Attributes = list(
-#'       "string"
-#'     ),
-#'     CreationDate = "string",
-#'     Description = "string",
-#'     Id = "string",
-#'     LastModifiedDate = "string",
-#'     Name = "string",
-#'     RecommendationProviderIdType = "string",
-#'     RecommendationProviderRoleArn = "string",
-#'     RecommendationProviderUri = "string",
-#'     RecommendationTransformerUri = "string",
-#'     RecommendationsDisplayName = "string",
-#'     RecommendationsPerMessage = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_recommender_configuration(
-#'   RecommenderId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8918,53 +2467,15 @@ pinpoint_get_recommender_configuration <- function(RecommenderId) {
 #' that are associated with your Amazon Pinpoint account
 #'
 #' @description
-#' Retrieves information about all the recommender model configurations
-#' that are associated with your Amazon Pinpoint account.
+#' Retrieves information about all the recommender model configurations that are associated with your Amazon Pinpoint account.
 #'
-#' @usage
-#' pinpoint_get_recommender_configurations(PageSize, Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_recommender_configurations.html](https://paws-r.github.io/docs/pinpoint/get_recommender_configurations.html) for full documentation.
 #'
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ListRecommenderConfigurationsResponse = list(
-#'     Item = list(
-#'       list(
-#'         Attributes = list(
-#'           "string"
-#'         ),
-#'         CreationDate = "string",
-#'         Description = "string",
-#'         Id = "string",
-#'         LastModifiedDate = "string",
-#'         Name = "string",
-#'         RecommendationProviderIdType = "string",
-#'         RecommendationProviderRoleArn = "string",
-#'         RecommendationProviderUri = "string",
-#'         RecommendationTransformerUri = "string",
-#'         RecommendationsDisplayName = "string",
-#'         RecommendationsPerMessage = 123
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_recommender_configurations(
-#'   PageSize = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8990,236 +2501,13 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #' settings for a specific segment that's associated with an application
 #'
 #' @description
-#' Retrieves information about the configuration, dimension, and other
-#' settings for a specific segment that's associated with an application.
+#' Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application.
 #'
-#' @usage
-#' pinpoint_get_segment(ApplicationId, SegmentId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_segment.html](https://paws-r.github.io/docs/pinpoint/get_segment.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SegmentResponse = list(
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     Dimensions = list(
-#'       Attributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Behavior = list(
-#'         Recency = list(
-#'           Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'           RecencyType = "ACTIVE"|"INACTIVE"
-#'         )
-#'       ),
-#'       Demographic = list(
-#'         AppVersion = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Channel = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DeviceType = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Make = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Model = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Platform = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = list(
-#'         Country = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         GPSPoint = list(
-#'           Coordinates = list(
-#'             Latitude = 123.0,
-#'             Longitude = 123.0
-#'           ),
-#'           RangeInKilometers = 123.0
-#'         )
-#'       ),
-#'       Metrics = list(
-#'         list(
-#'           ComparisonOperator = "string",
-#'           Value = 123.0
-#'         )
-#'       ),
-#'       UserAttributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Id = "string",
-#'     ImportDefinition = list(
-#'       ChannelCounts = list(
-#'         123
-#'       ),
-#'       ExternalId = "string",
-#'       Format = "CSV"|"JSON",
-#'       RoleArn = "string",
-#'       S3Url = "string",
-#'       Size = 123
-#'     ),
-#'     LastModifiedDate = "string",
-#'     Name = "string",
-#'     SegmentGroups = list(
-#'       Groups = list(
-#'         list(
-#'           Dimensions = list(
-#'             list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Behavior = list(
-#'                 Recency = list(
-#'                   Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                   RecencyType = "ACTIVE"|"INACTIVE"
-#'                 )
-#'               ),
-#'               Demographic = list(
-#'                 AppVersion = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Channel = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 DeviceType = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Make = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Model = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Platform = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Location = list(
-#'                 Country = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 GPSPoint = list(
-#'                   Coordinates = list(
-#'                     Latitude = 123.0,
-#'                     Longitude = 123.0
-#'                   ),
-#'                   RangeInKilometers = 123.0
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               ),
-#'               UserAttributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           SourceSegments = list(
-#'             list(
-#'               Id = "string",
-#'               Version = 123
-#'             )
-#'           ),
-#'           SourceType = "ALL"|"ANY"|"NONE",
-#'           Type = "ALL"|"ANY"|"NONE"
-#'         )
-#'       ),
-#'       Include = "ALL"|"ANY"|"NONE"
-#'     ),
-#'     SegmentType = "DIMENSIONAL"|"IMPORT",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_segment(
-#'   ApplicationId = "string",
-#'   SegmentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9245,12 +2533,9 @@ pinpoint_get_segment <- function(ApplicationId, SegmentId) {
 #' for a segment
 #'
 #' @description
-#' Retrieves information about the status and settings of the export jobs
-#' for a segment.
+#' Retrieves information about the status and settings of the export jobs for a segment.
 #'
-#' @usage
-#' pinpoint_get_segment_export_jobs(ApplicationId, PageSize, SegmentId,
-#'   Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_segment_export_jobs.html](https://paws-r.github.io/docs/pinpoint/get_segment_export_jobs.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -9260,50 +2545,6 @@ pinpoint_get_segment <- function(ApplicationId, SegmentId) {
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ExportJobsResponse = list(
-#'     Item = list(
-#'       list(
-#'         ApplicationId = "string",
-#'         CompletedPieces = 123,
-#'         CompletionDate = "string",
-#'         CreationDate = "string",
-#'         Definition = list(
-#'           RoleArn = "string",
-#'           S3UrlPrefix = "string",
-#'           SegmentId = "string",
-#'           SegmentVersion = 123
-#'         ),
-#'         FailedPieces = 123,
-#'         Failures = list(
-#'           "string"
-#'         ),
-#'         Id = "string",
-#'         JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-#'         TotalFailures = 123,
-#'         TotalPieces = 123,
-#'         TotalProcessed = 123,
-#'         Type = "string"
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_segment_export_jobs(
-#'   ApplicationId = "string",
-#'   PageSize = "string",
-#'   SegmentId = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9329,12 +2570,9 @@ pinpoint_get_segment_export_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #' for a segment
 #'
 #' @description
-#' Retrieves information about the status and settings of the import jobs
-#' for a segment.
+#' Retrieves information about the status and settings of the import jobs for a segment.
 #'
-#' @usage
-#' pinpoint_get_segment_import_jobs(ApplicationId, PageSize, SegmentId,
-#'   Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_segment_import_jobs.html](https://paws-r.github.io/docs/pinpoint/get_segment_import_jobs.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -9344,54 +2582,6 @@ pinpoint_get_segment_export_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImportJobsResponse = list(
-#'     Item = list(
-#'       list(
-#'         ApplicationId = "string",
-#'         CompletedPieces = 123,
-#'         CompletionDate = "string",
-#'         CreationDate = "string",
-#'         Definition = list(
-#'           DefineSegment = TRUE|FALSE,
-#'           ExternalId = "string",
-#'           Format = "CSV"|"JSON",
-#'           RegisterEndpoints = TRUE|FALSE,
-#'           RoleArn = "string",
-#'           S3Url = "string",
-#'           SegmentId = "string",
-#'           SegmentName = "string"
-#'         ),
-#'         FailedPieces = 123,
-#'         Failures = list(
-#'           "string"
-#'         ),
-#'         Id = "string",
-#'         JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-#'         TotalFailures = 123,
-#'         TotalPieces = 123,
-#'         TotalProcessed = 123,
-#'         Type = "string"
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_segment_import_jobs(
-#'   ApplicationId = "string",
-#'   PageSize = "string",
-#'   SegmentId = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9418,239 +2608,14 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #' application
 #'
 #' @description
-#' Retrieves information about the configuration, dimension, and other
-#' settings for a specific version of a segment that's associated with an
-#' application.
+#' Retrieves information about the configuration, dimension, and other settings for a specific version of a segment that's associated with an application.
 #'
-#' @usage
-#' pinpoint_get_segment_version(ApplicationId, SegmentId, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/get_segment_version.html](https://paws-r.github.io/docs/pinpoint/get_segment_version.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #' @param Version &#91;required&#93; The unique version number (Version property) for the campaign version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SegmentResponse = list(
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     Dimensions = list(
-#'       Attributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Behavior = list(
-#'         Recency = list(
-#'           Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'           RecencyType = "ACTIVE"|"INACTIVE"
-#'         )
-#'       ),
-#'       Demographic = list(
-#'         AppVersion = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Channel = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DeviceType = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Make = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Model = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Platform = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = list(
-#'         Country = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         GPSPoint = list(
-#'           Coordinates = list(
-#'             Latitude = 123.0,
-#'             Longitude = 123.0
-#'           ),
-#'           RangeInKilometers = 123.0
-#'         )
-#'       ),
-#'       Metrics = list(
-#'         list(
-#'           ComparisonOperator = "string",
-#'           Value = 123.0
-#'         )
-#'       ),
-#'       UserAttributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Id = "string",
-#'     ImportDefinition = list(
-#'       ChannelCounts = list(
-#'         123
-#'       ),
-#'       ExternalId = "string",
-#'       Format = "CSV"|"JSON",
-#'       RoleArn = "string",
-#'       S3Url = "string",
-#'       Size = 123
-#'     ),
-#'     LastModifiedDate = "string",
-#'     Name = "string",
-#'     SegmentGroups = list(
-#'       Groups = list(
-#'         list(
-#'           Dimensions = list(
-#'             list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Behavior = list(
-#'                 Recency = list(
-#'                   Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                   RecencyType = "ACTIVE"|"INACTIVE"
-#'                 )
-#'               ),
-#'               Demographic = list(
-#'                 AppVersion = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Channel = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 DeviceType = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Make = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Model = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Platform = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Location = list(
-#'                 Country = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 GPSPoint = list(
-#'                   Coordinates = list(
-#'                     Latitude = 123.0,
-#'                     Longitude = 123.0
-#'                   ),
-#'                   RangeInKilometers = 123.0
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               ),
-#'               UserAttributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           SourceSegments = list(
-#'             list(
-#'               Id = "string",
-#'               Version = 123
-#'             )
-#'           ),
-#'           SourceType = "ALL"|"ANY"|"NONE",
-#'           Type = "ALL"|"ANY"|"NONE"
-#'         )
-#'       ),
-#'       Include = "ALL"|"ANY"|"NONE"
-#'     ),
-#'     SegmentType = "DIMENSIONAL"|"IMPORT",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_segment_version(
-#'   ApplicationId = "string",
-#'   SegmentId = "string",
-#'   Version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9677,12 +2642,9 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #' with an application
 #'
 #' @description
-#' Retrieves information about the configuration, dimension, and other
-#' settings for all the versions of a specific segment that's associated
-#' with an application.
+#' Retrieves information about the configuration, dimension, and other settings for all the versions of a specific segment that's associated with an application.
 #'
-#' @usage
-#' pinpoint_get_segment_versions(ApplicationId, PageSize, SegmentId, Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_segment_versions.html](https://paws-r.github.io/docs/pinpoint/get_segment_versions.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -9692,234 +2654,6 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SegmentsResponse = list(
-#'     Item = list(
-#'       list(
-#'         ApplicationId = "string",
-#'         Arn = "string",
-#'         CreationDate = "string",
-#'         Dimensions = list(
-#'           Attributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           Behavior = list(
-#'             Recency = list(
-#'               Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'               RecencyType = "ACTIVE"|"INACTIVE"
-#'             )
-#'           ),
-#'           Demographic = list(
-#'             AppVersion = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Channel = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             DeviceType = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Make = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Model = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Platform = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           Location = list(
-#'             Country = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             GPSPoint = list(
-#'               Coordinates = list(
-#'                 Latitude = 123.0,
-#'                 Longitude = 123.0
-#'               ),
-#'               RangeInKilometers = 123.0
-#'             )
-#'           ),
-#'           Metrics = list(
-#'             list(
-#'               ComparisonOperator = "string",
-#'               Value = 123.0
-#'             )
-#'           ),
-#'           UserAttributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         Id = "string",
-#'         ImportDefinition = list(
-#'           ChannelCounts = list(
-#'             123
-#'           ),
-#'           ExternalId = "string",
-#'           Format = "CSV"|"JSON",
-#'           RoleArn = "string",
-#'           S3Url = "string",
-#'           Size = 123
-#'         ),
-#'         LastModifiedDate = "string",
-#'         Name = "string",
-#'         SegmentGroups = list(
-#'           Groups = list(
-#'             list(
-#'               Dimensions = list(
-#'                 list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               SourceSegments = list(
-#'                 list(
-#'                   Id = "string",
-#'                   Version = 123
-#'                 )
-#'               ),
-#'               SourceType = "ALL"|"ANY"|"NONE",
-#'               Type = "ALL"|"ANY"|"NONE"
-#'             )
-#'           ),
-#'           Include = "ALL"|"ANY"|"NONE"
-#'         ),
-#'         SegmentType = "DIMENSIONAL"|"IMPORT",
-#'         tags = list(
-#'           "string"
-#'         ),
-#'         Version = 123
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_segment_versions(
-#'   ApplicationId = "string",
-#'   PageSize = "string",
-#'   SegmentId = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9945,11 +2679,9 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #' settings for all the segments that are associated with an application
 #'
 #' @description
-#' Retrieves information about the configuration, dimension, and other
-#' settings for all the segments that are associated with an application.
+#' Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application.
 #'
-#' @usage
-#' pinpoint_get_segments(ApplicationId, PageSize, Token)
+#' See [https://paws-r.github.io/docs/pinpoint/get_segments.html](https://paws-r.github.io/docs/pinpoint/get_segments.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -9958,233 +2690,6 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SegmentsResponse = list(
-#'     Item = list(
-#'       list(
-#'         ApplicationId = "string",
-#'         Arn = "string",
-#'         CreationDate = "string",
-#'         Dimensions = list(
-#'           Attributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           Behavior = list(
-#'             Recency = list(
-#'               Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'               RecencyType = "ACTIVE"|"INACTIVE"
-#'             )
-#'           ),
-#'           Demographic = list(
-#'             AppVersion = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Channel = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             DeviceType = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Make = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Model = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Platform = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           Location = list(
-#'             Country = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             GPSPoint = list(
-#'               Coordinates = list(
-#'                 Latitude = 123.0,
-#'                 Longitude = 123.0
-#'               ),
-#'               RangeInKilometers = 123.0
-#'             )
-#'           ),
-#'           Metrics = list(
-#'             list(
-#'               ComparisonOperator = "string",
-#'               Value = 123.0
-#'             )
-#'           ),
-#'           UserAttributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         Id = "string",
-#'         ImportDefinition = list(
-#'           ChannelCounts = list(
-#'             123
-#'           ),
-#'           ExternalId = "string",
-#'           Format = "CSV"|"JSON",
-#'           RoleArn = "string",
-#'           S3Url = "string",
-#'           Size = 123
-#'         ),
-#'         LastModifiedDate = "string",
-#'         Name = "string",
-#'         SegmentGroups = list(
-#'           Groups = list(
-#'             list(
-#'               Dimensions = list(
-#'                 list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               SourceSegments = list(
-#'                 list(
-#'                   Id = "string",
-#'                   Version = 123
-#'                 )
-#'               ),
-#'               SourceType = "ALL"|"ANY"|"NONE",
-#'               Type = "ALL"|"ANY"|"NONE"
-#'             )
-#'           ),
-#'           Include = "ALL"|"ANY"|"NONE"
-#'         ),
-#'         SegmentType = "DIMENSIONAL"|"IMPORT",
-#'         tags = list(
-#'           "string"
-#'         ),
-#'         Version = 123
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_segments(
-#'   ApplicationId = "string",
-#'   PageSize = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10210,44 +2715,12 @@ pinpoint_get_segments <- function(ApplicationId, PageSize = NULL, Token = NULL) 
 #' for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the SMS channel
-#' for an application.
+#' Retrieves information about the status and settings of the SMS channel for an application.
 #'
-#' @usage
-#' pinpoint_get_sms_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_sms_channel.html](https://paws-r.github.io/docs/pinpoint/get_sms_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SMSChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     PromotionalMessagesPerSecond = 123,
-#'     SenderId = "string",
-#'     ShortCode = "string",
-#'     TransactionalMessagesPerSecond = 123,
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sms_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10273,11 +2746,9 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #' that are sent through the SMS channel
 #'
 #' @description
-#' Retrieves the content and settings of a message template for messages
-#' that are sent through the SMS channel.
+#' Retrieves the content and settings of a message template for messages that are sent through the SMS channel.
 #'
-#' @usage
-#' pinpoint_get_sms_template(TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/get_sms_template.html](https://paws-r.github.io/docs/pinpoint/get_sms_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -10305,36 +2776,6 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SMSTemplateResponse = list(
-#'     Arn = "string",
-#'     Body = "string",
-#'     CreationDate = "string",
-#'     DefaultSubstitutions = "string",
-#'     LastModifiedDate = "string",
-#'     RecommenderId = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string",
-#'     TemplateName = "string",
-#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
-#'     Version = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sms_template(
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10360,80 +2801,13 @@ pinpoint_get_sms_template <- function(TemplateName, Version = NULL) {
 #' specific user ID
 #'
 #' @description
-#' Retrieves information about all the endpoints that are associated with a
-#' specific user ID.
+#' Retrieves information about all the endpoints that are associated with a specific user ID.
 #'
-#' @usage
-#' pinpoint_get_user_endpoints(ApplicationId, UserId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_user_endpoints.html](https://paws-r.github.io/docs/pinpoint/get_user_endpoints.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param UserId &#91;required&#93; The unique identifier for the user.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointsResponse = list(
-#'     Item = list(
-#'       list(
-#'         Address = "string",
-#'         ApplicationId = "string",
-#'         Attributes = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-#'         CohortId = "string",
-#'         CreationDate = "string",
-#'         Demographic = list(
-#'           AppVersion = "string",
-#'           Locale = "string",
-#'           Make = "string",
-#'           Model = "string",
-#'           ModelVersion = "string",
-#'           Platform = "string",
-#'           PlatformVersion = "string",
-#'           Timezone = "string"
-#'         ),
-#'         EffectiveDate = "string",
-#'         EndpointStatus = "string",
-#'         Id = "string",
-#'         Location = list(
-#'           City = "string",
-#'           Country = "string",
-#'           Latitude = 123.0,
-#'           Longitude = 123.0,
-#'           PostalCode = "string",
-#'           Region = "string"
-#'         ),
-#'         Metrics = list(
-#'           123.0
-#'         ),
-#'         OptOut = "string",
-#'         RequestId = "string",
-#'         User = list(
-#'           UserAttributes = list(
-#'             list(
-#'               "string"
-#'             )
-#'           ),
-#'           UserId = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_user_endpoints(
-#'   ApplicationId = "string",
-#'   UserId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10459,40 +2833,12 @@ pinpoint_get_user_endpoints <- function(ApplicationId, UserId) {
 #' for an application
 #'
 #' @description
-#' Retrieves information about the status and settings of the voice channel
-#' for an application.
+#' Retrieves information about the status and settings of the voice channel for an application.
 #'
-#' @usage
-#' pinpoint_get_voice_channel(ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/get_voice_channel.html](https://paws-r.github.io/docs/pinpoint/get_voice_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VoiceChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_voice_channel(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10518,11 +2864,9 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #' that are sent through the voice channel
 #'
 #' @description
-#' Retrieves the content and settings of a message template for messages
-#' that are sent through the voice channel.
+#' Retrieves the content and settings of a message template for messages that are sent through the voice channel.
 #'
-#' @usage
-#' pinpoint_get_voice_template(TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/get_voice_template.html](https://paws-r.github.io/docs/pinpoint/get_voice_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -10551,37 +2895,6 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VoiceTemplateResponse = list(
-#'     Arn = "string",
-#'     Body = "string",
-#'     CreationDate = "string",
-#'     DefaultSubstitutions = "string",
-#'     LanguageCode = "string",
-#'     LastModifiedDate = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string",
-#'     TemplateName = "string",
-#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
-#'     Version = "string",
-#'     VoiceId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_voice_template(
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_voice_template
@@ -10606,11 +2919,9 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #' settings for all the journeys that are associated with an application
 #'
 #' @description
-#' Retrieves information about the status, configuration, and other
-#' settings for all the journeys that are associated with an application.
+#' Retrieves information about the status, configuration, and other settings for all the journeys that are associated with an application.
 #'
-#' @usage
-#' pinpoint_list_journeys(ApplicationId, PageSize, Token)
+#' See [https://paws-r.github.io/docs/pinpoint/list_journeys.html](https://paws-r.github.io/docs/pinpoint/list_journeys.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -10619,405 +2930,6 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JourneysResponse = list(
-#'     Item = list(
-#'       list(
-#'         Activities = list(
-#'           list(
-#'             CUSTOM = list(
-#'               DeliveryUri = "string",
-#'               EndpointTypes = list(
-#'                 "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'               ),
-#'               MessageConfig = list(
-#'                 Data = "string"
-#'               ),
-#'               NextActivity = "string",
-#'               TemplateName = "string",
-#'               TemplateVersion = "string"
-#'             ),
-#'             ConditionalSplit = list(
-#'               Condition = list(
-#'                 Conditions = list(
-#'                   list(
-#'                     EventCondition = list(
-#'                       Dimensions = list(
-#'                         Attributes = list(
-#'                           list(
-#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                             Values = list(
-#'                               "string"
-#'                             )
-#'                           )
-#'                         ),
-#'                         EventType = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Metrics = list(
-#'                           list(
-#'                             ComparisonOperator = "string",
-#'                             Value = 123.0
-#'                           )
-#'                         )
-#'                       ),
-#'                       MessageActivity = "string"
-#'                     ),
-#'                     SegmentCondition = list(
-#'                       SegmentId = "string"
-#'                     ),
-#'                     SegmentDimensions = list(
-#'                       Attributes = list(
-#'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         )
-#'                       ),
-#'                       Behavior = list(
-#'                         Recency = list(
-#'                           Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                           RecencyType = "ACTIVE"|"INACTIVE"
-#'                         )
-#'                       ),
-#'                       Demographic = list(
-#'                         AppVersion = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Channel = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         DeviceType = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Make = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Model = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Platform = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         )
-#'                       ),
-#'                       Location = list(
-#'                         Country = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         GPSPoint = list(
-#'                           Coordinates = list(
-#'                             Latitude = 123.0,
-#'                             Longitude = 123.0
-#'                           ),
-#'                           RangeInKilometers = 123.0
-#'                         )
-#'                       ),
-#'                       Metrics = list(
-#'                         list(
-#'                           ComparisonOperator = "string",
-#'                           Value = 123.0
-#'                         )
-#'                       ),
-#'                       UserAttributes = list(
-#'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   )
-#'                 ),
-#'                 Operator = "ALL"|"ANY"
-#'               ),
-#'               EvaluationWaitTime = list(
-#'                 WaitFor = "string",
-#'                 WaitUntil = "string"
-#'               ),
-#'               FalseActivity = "string",
-#'               TrueActivity = "string"
-#'             ),
-#'             Description = "string",
-#'             EMAIL = list(
-#'               MessageConfig = list(
-#'                 FromAddress = "string"
-#'               ),
-#'               NextActivity = "string",
-#'               TemplateName = "string",
-#'               TemplateVersion = "string"
-#'             ),
-#'             Holdout = list(
-#'               NextActivity = "string",
-#'               Percentage = 123
-#'             ),
-#'             MultiCondition = list(
-#'               Branches = list(
-#'                 list(
-#'                   Condition = list(
-#'                     EventCondition = list(
-#'                       Dimensions = list(
-#'                         Attributes = list(
-#'                           list(
-#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                             Values = list(
-#'                               "string"
-#'                             )
-#'                           )
-#'                         ),
-#'                         EventType = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Metrics = list(
-#'                           list(
-#'                             ComparisonOperator = "string",
-#'                             Value = 123.0
-#'                           )
-#'                         )
-#'                       ),
-#'                       MessageActivity = "string"
-#'                     ),
-#'                     SegmentCondition = list(
-#'                       SegmentId = "string"
-#'                     ),
-#'                     SegmentDimensions = list(
-#'                       Attributes = list(
-#'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         )
-#'                       ),
-#'                       Behavior = list(
-#'                         Recency = list(
-#'                           Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                           RecencyType = "ACTIVE"|"INACTIVE"
-#'                         )
-#'                       ),
-#'                       Demographic = list(
-#'                         AppVersion = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Channel = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         DeviceType = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Make = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Model = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         Platform = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         )
-#'                       ),
-#'                       Location = list(
-#'                         Country = list(
-#'                           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         ),
-#'                         GPSPoint = list(
-#'                           Coordinates = list(
-#'                             Latitude = 123.0,
-#'                             Longitude = 123.0
-#'                           ),
-#'                           RangeInKilometers = 123.0
-#'                         )
-#'                       ),
-#'                       Metrics = list(
-#'                         list(
-#'                           ComparisonOperator = "string",
-#'                           Value = 123.0
-#'                         )
-#'                       ),
-#'                       UserAttributes = list(
-#'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                           Values = list(
-#'                             "string"
-#'                           )
-#'                         )
-#'                       )
-#'                     )
-#'                   ),
-#'                   NextActivity = "string"
-#'                 )
-#'               ),
-#'               DefaultActivity = "string",
-#'               EvaluationWaitTime = list(
-#'                 WaitFor = "string",
-#'                 WaitUntil = "string"
-#'               )
-#'             ),
-#'             PUSH = list(
-#'               MessageConfig = list(
-#'                 TimeToLive = "string"
-#'               ),
-#'               NextActivity = "string",
-#'               TemplateName = "string",
-#'               TemplateVersion = "string"
-#'             ),
-#'             RandomSplit = list(
-#'               Branches = list(
-#'                 list(
-#'                   NextActivity = "string",
-#'                   Percentage = 123
-#'                 )
-#'               )
-#'             ),
-#'             SMS = list(
-#'               MessageConfig = list(
-#'                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'                 SenderId = "string"
-#'               ),
-#'               NextActivity = "string",
-#'               TemplateName = "string",
-#'               TemplateVersion = "string"
-#'             ),
-#'             Wait = list(
-#'               NextActivity = "string",
-#'               WaitTime = list(
-#'                 WaitFor = "string",
-#'                 WaitUntil = "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ApplicationId = "string",
-#'         CreationDate = "string",
-#'         Id = "string",
-#'         LastModifiedDate = "string",
-#'         Limits = list(
-#'           DailyCap = 123,
-#'           EndpointReentryCap = 123,
-#'           MessagesPerSecond = 123
-#'         ),
-#'         LocalTime = TRUE|FALSE,
-#'         Name = "string",
-#'         QuietTime = list(
-#'           End = "string",
-#'           Start = "string"
-#'         ),
-#'         RefreshFrequency = "string",
-#'         Schedule = list(
-#'           EndTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           StartTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           Timezone = "string"
-#'         ),
-#'         StartActivity = "string",
-#'         StartCondition = list(
-#'           Description = "string",
-#'           EventStartCondition = list(
-#'             EventFilter = list(
-#'               Dimensions = list(
-#'                 Attributes = list(
-#'                   list(
-#'                     AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                     Values = list(
-#'                       "string"
-#'                     )
-#'                   )
-#'                 ),
-#'                 EventType = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Metrics = list(
-#'                   list(
-#'                     ComparisonOperator = "string",
-#'                     Value = 123.0
-#'                   )
-#'                 )
-#'               ),
-#'               FilterType = "SYSTEM"|"ENDPOINT"
-#'             ),
-#'             SegmentId = "string"
-#'           ),
-#'           SegmentStartCondition = list(
-#'             SegmentId = "string"
-#'           )
-#'         ),
-#'         State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
-#'         tags = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_journeys(
-#'   ApplicationId = "string",
-#'   PageSize = "string",
-#'   Token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11043,32 +2955,11 @@ pinpoint_list_journeys <- function(ApplicationId, PageSize = NULL, Token = NULL)
 #' application, campaign, message template, or segment
 #'
 #' @description
-#' Retrieves all the tags (keys and values) that are associated with an
-#' application, campaign, message template, or segment.
+#' Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or segment.
 #'
-#' @usage
-#' pinpoint_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/pinpoint/list_tags_for_resource.html](https://paws-r.github.io/docs/pinpoint/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagsModel = list(
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11094,12 +2985,9 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
 #' template
 #'
 #' @description
-#' Retrieves information about all the versions of a specific message
-#' template.
+#' Retrieves information about all the versions of a specific message template.
 #'
-#' @usage
-#' pinpoint_list_template_versions(NextToken, PageSize, TemplateName,
-#'   TemplateType)
+#' See [https://paws-r.github.io/docs/pinpoint/list_template_versions.html](https://paws-r.github.io/docs/pinpoint/list_template_versions.html) for full documentation.
 #'
 #' @param NextToken The string that specifies which page of results to return in a paginated
 #' response. This parameter is not supported for application, campaign, and
@@ -11113,39 +3001,6 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
 #' (-). Template names are case sensitive.
 #' @param TemplateType &#91;required&#93; The type of channel that the message template is designed for. Valid
 #' values are: EMAIL, PUSH, SMS, and VOICE.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateVersionsResponse = list(
-#'     Item = list(
-#'       list(
-#'         CreationDate = "string",
-#'         DefaultSubstitutions = "string",
-#'         LastModifiedDate = "string",
-#'         TemplateDescription = "string",
-#'         TemplateName = "string",
-#'         TemplateType = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     Message = "string",
-#'     NextToken = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_template_versions(
-#'   NextToken = "string",
-#'   PageSize = "string",
-#'   TemplateName = "string",
-#'   TemplateType = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11171,11 +3026,9 @@ pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, T
 #' associated with your Amazon Pinpoint account
 #'
 #' @description
-#' Retrieves information about all the message templates that are
-#' associated with your Amazon Pinpoint account.
+#' Retrieves information about all the message templates that are associated with your Amazon Pinpoint account.
 #'
-#' @usage
-#' pinpoint_list_templates(NextToken, PageSize, Prefix, TemplateType)
+#' See [https://paws-r.github.io/docs/pinpoint/list_templates.html](https://paws-r.github.io/docs/pinpoint/list_templates.html) for full documentation.
 #'
 #' @param NextToken The string that specifies which page of results to return in a paginated
 #' response. This parameter is not supported for application, campaign, and
@@ -11189,41 +3042,6 @@ pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, T
 #' @param TemplateType The type of message template to include in the results. Valid values
 #' are: EMAIL, PUSH, SMS, and VOICE. To include all types of templates in
 #' the results, don't include this parameter in your request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplatesResponse = list(
-#'     Item = list(
-#'       list(
-#'         Arn = "string",
-#'         CreationDate = "string",
-#'         DefaultSubstitutions = "string",
-#'         LastModifiedDate = "string",
-#'         tags = list(
-#'           "string"
-#'         ),
-#'         TemplateDescription = "string",
-#'         TemplateName = "string",
-#'         TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     NextToken = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_templates(
-#'   NextToken = "string",
-#'   PageSize = "string",
-#'   Prefix = "string",
-#'   TemplateType = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11250,43 +3068,9 @@ pinpoint_list_templates <- function(NextToken = NULL, PageSize = NULL, Prefix = 
 #' @description
 #' Retrieves information about a phone number.
 #'
-#' @usage
-#' pinpoint_phone_number_validate(NumberValidateRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/phone_number_validate.html](https://paws-r.github.io/docs/pinpoint/phone_number_validate.html) for full documentation.
 #'
 #' @param NumberValidateRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NumberValidateResponse = list(
-#'     Carrier = "string",
-#'     City = "string",
-#'     CleansedPhoneNumberE164 = "string",
-#'     CleansedPhoneNumberNational = "string",
-#'     Country = "string",
-#'     CountryCodeIso2 = "string",
-#'     CountryCodeNumeric = "string",
-#'     County = "string",
-#'     OriginalCountryCodeIso2 = "string",
-#'     OriginalPhoneNumber = "string",
-#'     PhoneType = "string",
-#'     PhoneTypeCode = 123,
-#'     Timezone = "string",
-#'     ZipCode = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$phone_number_validate(
-#'   NumberValidateRequest = list(
-#'     IsoCountryCode = "string",
-#'     PhoneNumber = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11312,41 +3096,13 @@ pinpoint_phone_number_validate <- function(NumberValidateRequest) {
 #' an existing event stream for an application
 #'
 #' @description
-#' Creates a new event stream for an application or updates the settings of
-#' an existing event stream for an application.
+#' Creates a new event stream for an application or updates the settings of an existing event stream for an application.
 #'
-#' @usage
-#' pinpoint_put_event_stream(ApplicationId, WriteEventStream)
+#' See [https://paws-r.github.io/docs/pinpoint/put_event_stream.html](https://paws-r.github.io/docs/pinpoint/put_event_stream.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param WriteEventStream &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventStream = list(
-#'     ApplicationId = "string",
-#'     DestinationStreamArn = "string",
-#'     ExternalId = "string",
-#'     LastModifiedDate = "string",
-#'     LastUpdatedBy = "string",
-#'     RoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_event_stream(
-#'   ApplicationId = "string",
-#'   WriteEventStream = list(
-#'     DestinationStreamArn = "string",
-#'     RoleArn = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11372,116 +3128,13 @@ pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
 #' endpoint data that existing events are associated with
 #'
 #' @description
-#' Creates a new event to record for endpoints, or creates or updates
-#' endpoint data that existing events are associated with.
+#' Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with.
 #'
-#' @usage
-#' pinpoint_put_events(ApplicationId, EventsRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/put_events.html](https://paws-r.github.io/docs/pinpoint/put_events.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EventsRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventsResponse = list(
-#'     Results = list(
-#'       list(
-#'         EndpointItemResponse = list(
-#'           Message = "string",
-#'           StatusCode = 123
-#'         ),
-#'         EventsItemResponse = list(
-#'           list(
-#'             Message = "string",
-#'             StatusCode = 123
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_events(
-#'   ApplicationId = "string",
-#'   EventsRequest = list(
-#'     BatchItem = list(
-#'       list(
-#'         Endpoint = list(
-#'           Address = "string",
-#'           Attributes = list(
-#'             list(
-#'               "string"
-#'             )
-#'           ),
-#'           ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-#'           Demographic = list(
-#'             AppVersion = "string",
-#'             Locale = "string",
-#'             Make = "string",
-#'             Model = "string",
-#'             ModelVersion = "string",
-#'             Platform = "string",
-#'             PlatformVersion = "string",
-#'             Timezone = "string"
-#'           ),
-#'           EffectiveDate = "string",
-#'           EndpointStatus = "string",
-#'           Location = list(
-#'             City = "string",
-#'             Country = "string",
-#'             Latitude = 123.0,
-#'             Longitude = 123.0,
-#'             PostalCode = "string",
-#'             Region = "string"
-#'           ),
-#'           Metrics = list(
-#'             123.0
-#'           ),
-#'           OptOut = "string",
-#'           RequestId = "string",
-#'           User = list(
-#'             UserAttributes = list(
-#'               list(
-#'                 "string"
-#'               )
-#'             ),
-#'             UserId = "string"
-#'           )
-#'         ),
-#'         Events = list(
-#'           list(
-#'             AppPackageName = "string",
-#'             AppTitle = "string",
-#'             AppVersionCode = "string",
-#'             Attributes = list(
-#'               "string"
-#'             ),
-#'             ClientSdkVersion = "string",
-#'             EventType = "string",
-#'             Metrics = list(
-#'               123.0
-#'             ),
-#'             SdkName = "string",
-#'             Session = list(
-#'               Duration = 123,
-#'               Id = "string",
-#'               StartTimestamp = "string",
-#'               StopTimestamp = "string"
-#'             ),
-#'             Timestamp = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11507,12 +3160,9 @@ pinpoint_put_events <- function(ApplicationId, EventsRequest) {
 #' endpoints that are associated with an application
 #'
 #' @description
-#' Removes one or more attributes, of the same attribute type, from all the
-#' endpoints that are associated with an application.
+#' Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application.
 #'
-#' @usage
-#' pinpoint_remove_attributes(ApplicationId, AttributeType,
-#'   UpdateAttributesRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/remove_attributes.html](https://paws-r.github.io/docs/pinpoint/remove_attributes.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -11530,33 +3180,6 @@ pinpoint_put_events <- function(ApplicationId, EventsRequest) {
 #' -   endpoint-user-attributes - Custom attributes that describe users,
 #'     such as first name, last name, and age.
 #' @param UpdateAttributesRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AttributesResource = list(
-#'     ApplicationId = "string",
-#'     AttributeType = "string",
-#'     Attributes = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_attributes(
-#'   ApplicationId = "string",
-#'   AttributeType = "string",
-#'   UpdateAttributesRequest = list(
-#'     Blacklist = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11583,280 +3206,11 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #' @description
 #' Creates and sends a direct message.
 #'
-#' @usage
-#' pinpoint_send_messages(ApplicationId, MessageRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/send_messages.html](https://paws-r.github.io/docs/pinpoint/send_messages.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param MessageRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageResponse = list(
-#'     ApplicationId = "string",
-#'     EndpointResult = list(
-#'       list(
-#'         Address = "string",
-#'         DeliveryStatus = "SUCCESSFUL"|"THROTTLED"|"TEMPORARY_FAILURE"|"PERMANENT_FAILURE"|"UNKNOWN_FAILURE"|"OPT_OUT"|"DUPLICATE",
-#'         MessageId = "string",
-#'         StatusCode = 123,
-#'         StatusMessage = "string",
-#'         UpdatedToken = "string"
-#'       )
-#'     ),
-#'     RequestId = "string",
-#'     Result = list(
-#'       list(
-#'         DeliveryStatus = "SUCCESSFUL"|"THROTTLED"|"TEMPORARY_FAILURE"|"PERMANENT_FAILURE"|"UNKNOWN_FAILURE"|"OPT_OUT"|"DUPLICATE",
-#'         MessageId = "string",
-#'         StatusCode = 123,
-#'         StatusMessage = "string",
-#'         UpdatedToken = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_messages(
-#'   ApplicationId = "string",
-#'   MessageRequest = list(
-#'     Addresses = list(
-#'       list(
-#'         BodyOverride = "string",
-#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-#'         Context = list(
-#'           "string"
-#'         ),
-#'         RawContent = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         TitleOverride = "string"
-#'       )
-#'     ),
-#'     Context = list(
-#'       "string"
-#'     ),
-#'     Endpoints = list(
-#'       list(
-#'         BodyOverride = "string",
-#'         Context = list(
-#'           "string"
-#'         ),
-#'         RawContent = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         TitleOverride = "string"
-#'       )
-#'     ),
-#'     MessageConfiguration = list(
-#'       ADMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ConsolidationKey = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         ExpiresAfter = "string",
-#'         IconReference = "string",
-#'         ImageIconUrl = "string",
-#'         ImageUrl = "string",
-#'         MD5 = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         SmallImageIconUrl = "string",
-#'         Sound = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       APNSMessage = list(
-#'         APNSPushType = "string",
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Badge = 123,
-#'         Body = "string",
-#'         Category = "string",
-#'         CollapseId = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         MediaUrl = "string",
-#'         PreferredAuthenticationMethod = "string",
-#'         Priority = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         Sound = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         ThreadId = "string",
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       BaiduMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         IconReference = "string",
-#'         ImageIconUrl = "string",
-#'         ImageUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         SmallImageIconUrl = "string",
-#'         Sound = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       DefaultMessage = list(
-#'         Body = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       DefaultPushNotificationMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         SilentPush = TRUE|FALSE,
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       EmailMessage = list(
-#'         Body = "string",
-#'         FeedbackForwardingAddress = "string",
-#'         FromAddress = "string",
-#'         RawEmail = list(
-#'           Data = raw
-#'         ),
-#'         ReplyToAddresses = list(
-#'           "string"
-#'         ),
-#'         SimpleEmail = list(
-#'           HtmlPart = list(
-#'             Charset = "string",
-#'             Data = "string"
-#'           ),
-#'           Subject = list(
-#'             Charset = "string",
-#'             Data = "string"
-#'           ),
-#'           TextPart = list(
-#'             Charset = "string",
-#'             Data = "string"
-#'           )
-#'         ),
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       GCMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         CollapseKey = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         IconReference = "string",
-#'         ImageIconUrl = "string",
-#'         ImageUrl = "string",
-#'         Priority = "string",
-#'         RawContent = "string",
-#'         RestrictedPackageName = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         SmallImageIconUrl = "string",
-#'         Sound = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       SMSMessage = list(
-#'         Body = "string",
-#'         Keyword = "string",
-#'         MediaUrl = "string",
-#'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         OriginationNumber = "string",
-#'         SenderId = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       VoiceMessage = list(
-#'         Body = "string",
-#'         LanguageCode = "string",
-#'         OriginationNumber = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         VoiceId = "string"
-#'       )
-#'     ),
-#'     TemplateConfiguration = list(
-#'       EmailTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       PushTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       SMSTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       VoiceTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     TraceId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11878,262 +3232,46 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
 }
 .pinpoint$operations$send_messages <- pinpoint_send_messages
 
+#' Send an OTP message
+#'
+#' @description
+#' Send an OTP message
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/send_otp_message.html](https://paws-r.github.io/docs/pinpoint/send_otp_message.html) for full documentation.
+#'
+#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param SendOTPMessageRequestParameters &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_send_otp_message
+pinpoint_send_otp_message <- function(ApplicationId, SendOTPMessageRequestParameters) {
+  op <- new_operation(
+    name = "SendOTPMessage",
+    http_method = "POST",
+    http_path = "/v1/apps/{application-id}/otp",
+    paginator = list()
+  )
+  input <- .pinpoint$send_otp_message_input(ApplicationId = ApplicationId, SendOTPMessageRequestParameters = SendOTPMessageRequestParameters)
+  output <- .pinpoint$send_otp_message_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$send_otp_message <- pinpoint_send_otp_message
+
 #' Creates and sends a message to a list of users
 #'
 #' @description
 #' Creates and sends a message to a list of users.
 #'
-#' @usage
-#' pinpoint_send_users_messages(ApplicationId, SendUsersMessageRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/send_users_messages.html](https://paws-r.github.io/docs/pinpoint/send_users_messages.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param SendUsersMessageRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SendUsersMessageResponse = list(
-#'     ApplicationId = "string",
-#'     RequestId = "string",
-#'     Result = list(
-#'       list(
-#'         list(
-#'           Address = "string",
-#'           DeliveryStatus = "SUCCESSFUL"|"THROTTLED"|"TEMPORARY_FAILURE"|"PERMANENT_FAILURE"|"UNKNOWN_FAILURE"|"OPT_OUT"|"DUPLICATE",
-#'           MessageId = "string",
-#'           StatusCode = 123,
-#'           StatusMessage = "string",
-#'           UpdatedToken = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_users_messages(
-#'   ApplicationId = "string",
-#'   SendUsersMessageRequest = list(
-#'     Context = list(
-#'       "string"
-#'     ),
-#'     MessageConfiguration = list(
-#'       ADMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ConsolidationKey = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         ExpiresAfter = "string",
-#'         IconReference = "string",
-#'         ImageIconUrl = "string",
-#'         ImageUrl = "string",
-#'         MD5 = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         SmallImageIconUrl = "string",
-#'         Sound = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       APNSMessage = list(
-#'         APNSPushType = "string",
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Badge = 123,
-#'         Body = "string",
-#'         Category = "string",
-#'         CollapseId = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         MediaUrl = "string",
-#'         PreferredAuthenticationMethod = "string",
-#'         Priority = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         Sound = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         ThreadId = "string",
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       BaiduMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         IconReference = "string",
-#'         ImageIconUrl = "string",
-#'         ImageUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         SmallImageIconUrl = "string",
-#'         Sound = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       DefaultMessage = list(
-#'         Body = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       DefaultPushNotificationMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         SilentPush = TRUE|FALSE,
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       EmailMessage = list(
-#'         Body = "string",
-#'         FeedbackForwardingAddress = "string",
-#'         FromAddress = "string",
-#'         RawEmail = list(
-#'           Data = raw
-#'         ),
-#'         ReplyToAddresses = list(
-#'           "string"
-#'         ),
-#'         SimpleEmail = list(
-#'           HtmlPart = list(
-#'             Charset = "string",
-#'             Data = "string"
-#'           ),
-#'           Subject = list(
-#'             Charset = "string",
-#'             Data = "string"
-#'           ),
-#'           TextPart = list(
-#'             Charset = "string",
-#'             Data = "string"
-#'           )
-#'         ),
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       GCMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         CollapseKey = "string",
-#'         Data = list(
-#'           "string"
-#'         ),
-#'         IconReference = "string",
-#'         ImageIconUrl = "string",
-#'         ImageUrl = "string",
-#'         Priority = "string",
-#'         RawContent = "string",
-#'         RestrictedPackageName = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         SmallImageIconUrl = "string",
-#'         Sound = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       SMSMessage = list(
-#'         Body = "string",
-#'         Keyword = "string",
-#'         MediaUrl = "string",
-#'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         OriginationNumber = "string",
-#'         SenderId = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       VoiceMessage = list(
-#'         Body = "string",
-#'         LanguageCode = "string",
-#'         OriginationNumber = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         VoiceId = "string"
-#'       )
-#'     ),
-#'     TemplateConfiguration = list(
-#'       EmailTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       PushTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       SMSTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       VoiceTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     TraceId = "string",
-#'     Users = list(
-#'       list(
-#'         BodyOverride = "string",
-#'         Context = list(
-#'           "string"
-#'         ),
-#'         RawContent = "string",
-#'         Substitutions = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         TitleOverride = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12159,29 +3297,12 @@ pinpoint_send_users_messages <- function(ApplicationId, SendUsersMessageRequest)
 #' message template, or segment
 #'
 #' @description
-#' Adds one or more tags (keys and values) to an application, campaign,
-#' message template, or segment.
+#' Adds one or more tags (keys and values) to an application, campaign, message template, or segment.
 #'
-#' @usage
-#' pinpoint_tag_resource(ResourceArn, TagsModel)
+#' See [https://paws-r.github.io/docs/pinpoint/tag_resource.html](https://paws-r.github.io/docs/pinpoint/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagsModel &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   TagsModel = list(
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12207,29 +3328,14 @@ pinpoint_tag_resource <- function(ResourceArn, TagsModel) {
 #' campaign, message template, or segment
 #'
 #' @description
-#' Removes one or more tags (keys and values) from an application,
-#' campaign, message template, or segment.
+#' Removes one or more tags (keys and values) from an application, campaign, message template, or segment.
 #'
-#' @usage
-#' pinpoint_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/pinpoint/untag_resource.html](https://paws-r.github.io/docs/pinpoint/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The key of the tag to remove from the resource. To remove multiple tags,
 #' append the tagKeys parameter and argument for each additional tag to
 #' remove, separated by an ampersand (&).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12255,46 +3361,13 @@ pinpoint_untag_resource <- function(ResourceArn, TagKeys) {
 #' settings of the ADM channel for an application
 #'
 #' @description
-#' Enables the ADM channel for an application or updates the status and
-#' settings of the ADM channel for an application.
+#' Enables the ADM channel for an application or updates the status and settings of the ADM channel for an application.
 #'
-#' @usage
-#' pinpoint_update_adm_channel(ADMChannelRequest, ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/update_adm_channel.html](https://paws-r.github.io/docs/pinpoint/update_adm_channel.html) for full documentation.
 #'
 #' @param ADMChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ADMChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_adm_channel(
-#'   ADMChannelRequest = list(
-#'     ClientId = "string",
-#'     ClientSecret = "string",
-#'     Enabled = TRUE|FALSE
-#'   ),
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12320,53 +3393,13 @@ pinpoint_update_adm_channel <- function(ADMChannelRequest, ApplicationId) {
 #' settings of the APNs channel for an application
 #'
 #' @description
-#' Enables the APNs channel for an application or updates the status and
-#' settings of the APNs channel for an application.
+#' Enables the APNs channel for an application or updates the status and settings of the APNs channel for an application.
 #'
-#' @usage
-#' pinpoint_update_apns_channel(APNSChannelRequest, ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/update_apns_channel.html](https://paws-r.github.io/docs/pinpoint/update_apns_channel.html) for full documentation.
 #'
 #' @param APNSChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_apns_channel(
-#'   APNSChannelRequest = list(
-#'     BundleId = "string",
-#'     Certificate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     PrivateKey = "string",
-#'     TeamId = "string",
-#'     TokenKey = "string",
-#'     TokenKeyId = "string"
-#'   ),
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12392,54 +3425,13 @@ pinpoint_update_apns_channel <- function(APNSChannelRequest, ApplicationId) {
 #' status and settings of the APNs sandbox channel for an application
 #'
 #' @description
-#' Enables the APNs sandbox channel for an application or updates the
-#' status and settings of the APNs sandbox channel for an application.
+#' Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox channel for an application.
 #'
-#' @usage
-#' pinpoint_update_apns_sandbox_channel(APNSSandboxChannelRequest,
-#'   ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/update_apns_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/update_apns_sandbox_channel.html) for full documentation.
 #'
 #' @param APNSSandboxChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSSandboxChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_apns_sandbox_channel(
-#'   APNSSandboxChannelRequest = list(
-#'     BundleId = "string",
-#'     Certificate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     PrivateKey = "string",
-#'     TeamId = "string",
-#'     TokenKey = "string",
-#'     TokenKeyId = "string"
-#'   ),
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12465,53 +3457,13 @@ pinpoint_update_apns_sandbox_channel <- function(APNSSandboxChannelRequest, Appl
 #' and settings of the APNs VoIP channel for an application
 #'
 #' @description
-#' Enables the APNs VoIP channel for an application or updates the status
-#' and settings of the APNs VoIP channel for an application.
+#' Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP channel for an application.
 #'
-#' @usage
-#' pinpoint_update_apns_voip_channel(APNSVoipChannelRequest, ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/update_apns_voip_channel.html](https://paws-r.github.io/docs/pinpoint/update_apns_voip_channel.html) for full documentation.
 #'
 #' @param APNSVoipChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSVoipChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_apns_voip_channel(
-#'   APNSVoipChannelRequest = list(
-#'     BundleId = "string",
-#'     Certificate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     PrivateKey = "string",
-#'     TeamId = "string",
-#'     TokenKey = "string",
-#'     TokenKeyId = "string"
-#'   ),
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12537,54 +3489,13 @@ pinpoint_update_apns_voip_channel <- function(APNSVoipChannelRequest, Applicatio
 #' status and settings of the APNs VoIP sandbox channel for an application
 #'
 #' @description
-#' Enables the APNs VoIP sandbox channel for an application or updates the
-#' status and settings of the APNs VoIP sandbox channel for an application.
+#' Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the APNs VoIP sandbox channel for an application.
 #'
-#' @usage
-#' pinpoint_update_apns_voip_sandbox_channel(APNSVoipSandboxChannelRequest,
-#'   ApplicationId)
+#' See [https://paws-r.github.io/docs/pinpoint/update_apns_voip_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/update_apns_voip_sandbox_channel.html) for full documentation.
 #'
 #' @param APNSVoipSandboxChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   APNSVoipSandboxChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     HasTokenKey = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_apns_voip_sandbox_channel(
-#'   APNSVoipSandboxChannelRequest = list(
-#'     BundleId = "string",
-#'     Certificate = "string",
-#'     DefaultAuthenticationMethod = "string",
-#'     Enabled = TRUE|FALSE,
-#'     PrivateKey = "string",
-#'     TeamId = "string",
-#'     TokenKey = "string",
-#'     TokenKeyId = "string"
-#'   ),
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12611,65 +3522,11 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 #' @description
 #' Updates the settings for an application.
 #'
-#' @usage
-#' pinpoint_update_application_settings(ApplicationId,
-#'   WriteApplicationSettingsRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_application_settings.html](https://paws-r.github.io/docs/pinpoint/update_application_settings.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param WriteApplicationSettingsRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationSettingsResource = list(
-#'     ApplicationId = "string",
-#'     CampaignHook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_application_settings(
-#'   ApplicationId = "string",
-#'   WriteApplicationSettingsRequest = list(
-#'     CampaignHook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     CloudWatchMetricsEnabled = TRUE|FALSE,
-#'     EventTaggingEnabled = TRUE|FALSE,
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12695,47 +3552,13 @@ pinpoint_update_application_settings <- function(ApplicationId, WriteApplication
 #' settings of the Baidu channel for an application
 #'
 #' @description
-#' Enables the Baidu channel for an application or updates the status and
-#' settings of the Baidu channel for an application.
+#' Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an application.
 #'
-#' @usage
-#' pinpoint_update_baidu_channel(ApplicationId, BaiduChannelRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_baidu_channel.html](https://paws-r.github.io/docs/pinpoint/update_baidu_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param BaiduChannelRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaiduChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Credential = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_baidu_channel(
-#'   ApplicationId = "string",
-#'   BaiduChannelRequest = list(
-#'     ApiKey = "string",
-#'     Enabled = TRUE|FALSE,
-#'     SecretKey = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12762,691 +3585,12 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #' @description
 #' Updates the configuration and other settings for a campaign.
 #'
-#' @usage
-#' pinpoint_update_campaign(ApplicationId, CampaignId,
-#'   WriteCampaignRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_campaign.html](https://paws-r.github.io/docs/pinpoint/update_campaign.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
 #' @param WriteCampaignRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CampaignResponse = list(
-#'     AdditionalTreatments = list(
-#'       list(
-#'         CustomDeliveryConfiguration = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           )
-#'         ),
-#'         Id = "string",
-#'         MessageConfiguration = list(
-#'           ADMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           APNSMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           BaiduMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           CustomMessage = list(
-#'             Data = "string"
-#'           ),
-#'           DefaultMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           EmailMessage = list(
-#'             Body = "string",
-#'             FromAddress = "string",
-#'             HtmlBody = "string",
-#'             Title = "string"
-#'           ),
-#'           GCMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           SMSMessage = list(
-#'             Body = "string",
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           )
-#'         ),
-#'         Schedule = list(
-#'           EndTime = "string",
-#'           EventFilter = list(
-#'             Dimensions = list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               EventType = list(
-#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               )
-#'             ),
-#'             FilterType = "SYSTEM"|"ENDPOINT"
-#'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'           IsLocalTime = TRUE|FALSE,
-#'           QuietTime = list(
-#'             End = "string",
-#'             Start = "string"
-#'           ),
-#'           StartTime = "string",
-#'           Timezone = "string"
-#'         ),
-#'         SizePercent = 123,
-#'         State = list(
-#'           CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'         ),
-#'         TemplateConfiguration = list(
-#'           EmailTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           PushTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           SMSTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           VoiceTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           )
-#'         ),
-#'         TreatmentDescription = "string",
-#'         TreatmentName = "string"
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     CustomDeliveryConfiguration = list(
-#'       DeliveryUri = "string",
-#'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'       )
-#'     ),
-#'     DefaultState = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     Description = "string",
-#'     HoldoutPercent = 123,
-#'     Hook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     Id = "string",
-#'     IsPaused = TRUE|FALSE,
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     MessageConfiguration = list(
-#'       ADMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       APNSMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       BaiduMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       CustomMessage = list(
-#'         Data = "string"
-#'       ),
-#'       DefaultMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       EmailMessage = list(
-#'         Body = "string",
-#'         FromAddress = "string",
-#'         HtmlBody = "string",
-#'         Title = "string"
-#'       ),
-#'       GCMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       SMSMessage = list(
-#'         Body = "string",
-#'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
-#'       )
-#'     ),
-#'     Name = "string",
-#'     Schedule = list(
-#'       EndTime = "string",
-#'       EventFilter = list(
-#'         Dimensions = list(
-#'           Attributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           EventType = list(
-#'             DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           Metrics = list(
-#'             list(
-#'               ComparisonOperator = "string",
-#'               Value = 123.0
-#'             )
-#'           )
-#'         ),
-#'         FilterType = "SYSTEM"|"ENDPOINT"
-#'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'       IsLocalTime = TRUE|FALSE,
-#'       QuietTime = list(
-#'         End = "string",
-#'         Start = "string"
-#'       ),
-#'       StartTime = "string",
-#'       Timezone = "string"
-#'     ),
-#'     SegmentId = "string",
-#'     SegmentVersion = 123,
-#'     State = list(
-#'       CampaignStatus = "SCHEDULED"|"EXECUTING"|"PENDING_NEXT_RUN"|"COMPLETED"|"PAUSED"|"DELETED"|"INVALID"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateConfiguration = list(
-#'       EmailTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       PushTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       SMSTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       VoiceTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     TreatmentDescription = "string",
-#'     TreatmentName = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_campaign(
-#'   ApplicationId = "string",
-#'   CampaignId = "string",
-#'   WriteCampaignRequest = list(
-#'     AdditionalTreatments = list(
-#'       list(
-#'         CustomDeliveryConfiguration = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           )
-#'         ),
-#'         MessageConfiguration = list(
-#'           ADMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           APNSMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           BaiduMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           CustomMessage = list(
-#'             Data = "string"
-#'           ),
-#'           DefaultMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           EmailMessage = list(
-#'             Body = "string",
-#'             FromAddress = "string",
-#'             HtmlBody = "string",
-#'             Title = "string"
-#'           ),
-#'           GCMMessage = list(
-#'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'             Body = "string",
-#'             ImageIconUrl = "string",
-#'             ImageSmallIconUrl = "string",
-#'             ImageUrl = "string",
-#'             JsonBody = "string",
-#'             MediaUrl = "string",
-#'             RawContent = "string",
-#'             SilentPush = TRUE|FALSE,
-#'             TimeToLive = 123,
-#'             Title = "string",
-#'             Url = "string"
-#'           ),
-#'           SMSMessage = list(
-#'             Body = "string",
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           )
-#'         ),
-#'         Schedule = list(
-#'           EndTime = "string",
-#'           EventFilter = list(
-#'             Dimensions = list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               EventType = list(
-#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               )
-#'             ),
-#'             FilterType = "SYSTEM"|"ENDPOINT"
-#'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'           IsLocalTime = TRUE|FALSE,
-#'           QuietTime = list(
-#'             End = "string",
-#'             Start = "string"
-#'           ),
-#'           StartTime = "string",
-#'           Timezone = "string"
-#'         ),
-#'         SizePercent = 123,
-#'         TemplateConfiguration = list(
-#'           EmailTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           PushTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           SMSTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           ),
-#'           VoiceTemplate = list(
-#'             Name = "string",
-#'             Version = "string"
-#'           )
-#'         ),
-#'         TreatmentDescription = "string",
-#'         TreatmentName = "string"
-#'       )
-#'     ),
-#'     CustomDeliveryConfiguration = list(
-#'       DeliveryUri = "string",
-#'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'       )
-#'     ),
-#'     Description = "string",
-#'     HoldoutPercent = 123,
-#'     Hook = list(
-#'       LambdaFunctionName = "string",
-#'       Mode = "DELIVERY"|"FILTER",
-#'       WebUrl = "string"
-#'     ),
-#'     IsPaused = TRUE|FALSE,
-#'     Limits = list(
-#'       Daily = 123,
-#'       MaximumDuration = 123,
-#'       MessagesPerSecond = 123,
-#'       Total = 123
-#'     ),
-#'     MessageConfiguration = list(
-#'       ADMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       APNSMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       BaiduMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       CustomMessage = list(
-#'         Data = "string"
-#'       ),
-#'       DefaultMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       EmailMessage = list(
-#'         Body = "string",
-#'         FromAddress = "string",
-#'         HtmlBody = "string",
-#'         Title = "string"
-#'       ),
-#'       GCMMessage = list(
-#'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'         Body = "string",
-#'         ImageIconUrl = "string",
-#'         ImageSmallIconUrl = "string",
-#'         ImageUrl = "string",
-#'         JsonBody = "string",
-#'         MediaUrl = "string",
-#'         RawContent = "string",
-#'         SilentPush = TRUE|FALSE,
-#'         TimeToLive = 123,
-#'         Title = "string",
-#'         Url = "string"
-#'       ),
-#'       SMSMessage = list(
-#'         Body = "string",
-#'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
-#'       )
-#'     ),
-#'     Name = "string",
-#'     Schedule = list(
-#'       EndTime = "string",
-#'       EventFilter = list(
-#'         Dimensions = list(
-#'           Attributes = list(
-#'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           EventType = list(
-#'             DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           Metrics = list(
-#'             list(
-#'               ComparisonOperator = "string",
-#'               Value = 123.0
-#'             )
-#'           )
-#'         ),
-#'         FilterType = "SYSTEM"|"ENDPOINT"
-#'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
-#'       IsLocalTime = TRUE|FALSE,
-#'       QuietTime = list(
-#'         End = "string",
-#'         Start = "string"
-#'       ),
-#'       StartTime = "string",
-#'       Timezone = "string"
-#'     ),
-#'     SegmentId = "string",
-#'     SegmentVersion = 123,
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateConfiguration = list(
-#'       EmailTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       PushTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       SMSTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       VoiceTemplate = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     TreatmentDescription = "string",
-#'     TreatmentName = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13472,53 +3616,13 @@ pinpoint_update_campaign <- function(ApplicationId, CampaignId, WriteCampaignReq
 #' settings of the email channel for an application
 #'
 #' @description
-#' Enables the email channel for an application or updates the status and
-#' settings of the email channel for an application.
+#' Enables the email channel for an application or updates the status and settings of the email channel for an application.
 #'
-#' @usage
-#' pinpoint_update_email_channel(ApplicationId, EmailChannelRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_email_channel.html](https://paws-r.github.io/docs/pinpoint/update_email_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EmailChannelRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EmailChannelResponse = list(
-#'     ApplicationId = "string",
-#'     ConfigurationSet = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     FromAddress = "string",
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     Identity = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     MessagesPerSecond = 123,
-#'     Platform = "string",
-#'     RoleArn = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_email_channel(
-#'   ApplicationId = "string",
-#'   EmailChannelRequest = list(
-#'     ConfigurationSet = "string",
-#'     Enabled = TRUE|FALSE,
-#'     FromAddress = "string",
-#'     Identity = "string",
-#'     RoleArn = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13544,12 +3648,9 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #' the email channel
 #'
 #' @description
-#' Updates an existing message template for messages that are sent through
-#' the email channel.
+#' Updates an existing message template for messages that are sent through the email channel.
 #'
-#' @usage
-#' pinpoint_update_email_template(CreateNewVersion, EmailTemplateRequest,
-#'   TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/update_email_template.html](https://paws-r.github.io/docs/pinpoint/update_email_template.html) for full documentation.
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
@@ -13588,37 +3689,6 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_email_template(
-#'   CreateNewVersion = TRUE|FALSE,
-#'   EmailTemplateRequest = list(
-#'     DefaultSubstitutions = "string",
-#'     HtmlPart = "string",
-#'     RecommenderId = "string",
-#'     Subject = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string",
-#'     TextPart = "string"
-#'   ),
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_email_template
@@ -13643,80 +3713,14 @@ pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplat
 #' attributes of an existing endpoint for an application
 #'
 #' @description
-#' Creates a new endpoint for an application or updates the settings and
-#' attributes of an existing endpoint for an application. You can also use
-#' this operation to define custom attributes for an endpoint. If an update
-#' includes one or more values for a custom attribute, Amazon Pinpoint
-#' replaces (overwrites) any existing values with the new values.
+#' Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application. You can also use this operation to define custom attributes for an endpoint. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values.
 #'
-#' @usage
-#' pinpoint_update_endpoint(ApplicationId, EndpointId, EndpointRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_endpoint.html](https://paws-r.github.io/docs/pinpoint/update_endpoint.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
 #' @param EndpointRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_endpoint(
-#'   ApplicationId = "string",
-#'   EndpointId = "string",
-#'   EndpointRequest = list(
-#'     Address = "string",
-#'     Attributes = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-#'     Demographic = list(
-#'       AppVersion = "string",
-#'       Locale = "string",
-#'       Make = "string",
-#'       Model = "string",
-#'       ModelVersion = "string",
-#'       Platform = "string",
-#'       PlatformVersion = "string",
-#'       Timezone = "string"
-#'     ),
-#'     EffectiveDate = "string",
-#'     EndpointStatus = "string",
-#'     Location = list(
-#'       City = "string",
-#'       Country = "string",
-#'       Latitude = 123.0,
-#'       Longitude = 123.0,
-#'       PostalCode = "string",
-#'       Region = "string"
-#'     ),
-#'     Metrics = list(
-#'       123.0
-#'     ),
-#'     OptOut = "string",
-#'     RequestId = "string",
-#'     User = list(
-#'       UserAttributes = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       UserId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13743,84 +3747,13 @@ pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest)
 #' application
 #'
 #' @description
-#' Creates a new batch of endpoints for an application or updates the
-#' settings and attributes of a batch of existing endpoints for an
-#' application. You can also use this operation to define custom attributes
-#' for a batch of endpoints. If an update includes one or more values for a
-#' custom attribute, Amazon Pinpoint replaces (overwrites) any existing
-#' values with the new values.
+#' Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application. You can also use this operation to define custom attributes for a batch of endpoints. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values.
 #'
-#' @usage
-#' pinpoint_update_endpoints_batch(ApplicationId, EndpointBatchRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_endpoints_batch.html](https://paws-r.github.io/docs/pinpoint/update_endpoints_batch.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EndpointBatchRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_endpoints_batch(
-#'   ApplicationId = "string",
-#'   EndpointBatchRequest = list(
-#'     Item = list(
-#'       list(
-#'         Address = "string",
-#'         Attributes = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-#'         Demographic = list(
-#'           AppVersion = "string",
-#'           Locale = "string",
-#'           Make = "string",
-#'           Model = "string",
-#'           ModelVersion = "string",
-#'           Platform = "string",
-#'           PlatformVersion = "string",
-#'           Timezone = "string"
-#'         ),
-#'         EffectiveDate = "string",
-#'         EndpointStatus = "string",
-#'         Id = "string",
-#'         Location = list(
-#'           City = "string",
-#'           Country = "string",
-#'           Latitude = 123.0,
-#'           Longitude = 123.0,
-#'           PostalCode = "string",
-#'           Region = "string"
-#'         ),
-#'         Metrics = list(
-#'           123.0
-#'         ),
-#'         OptOut = "string",
-#'         RequestId = "string",
-#'         User = list(
-#'           UserAttributes = list(
-#'             list(
-#'               "string"
-#'             )
-#'           ),
-#'           UserId = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13846,46 +3779,13 @@ pinpoint_update_endpoints_batch <- function(ApplicationId, EndpointBatchRequest)
 #' settings of the GCM channel for an application
 #'
 #' @description
-#' Enables the GCM channel for an application or updates the status and
-#' settings of the GCM channel for an application.
+#' Enables the GCM channel for an application or updates the status and settings of the GCM channel for an application.
 #'
-#' @usage
-#' pinpoint_update_gcm_channel(ApplicationId, GCMChannelRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_gcm_channel.html](https://paws-r.github.io/docs/pinpoint/update_gcm_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param GCMChannelRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GCMChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Credential = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_gcm_channel(
-#'   ApplicationId = "string",
-#'   GCMChannelRequest = list(
-#'     ApiKey = "string",
-#'     Enabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13907,784 +3807,82 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 }
 .pinpoint$operations$update_gcm_channel <- pinpoint_update_gcm_channel
 
+#' Updates an existing message template for messages sent through the
+#' in-app message channel
+#'
+#' @description
+#' Updates an existing message template for messages sent through the in-app message channel.
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/update_in_app_template.html](https://paws-r.github.io/docs/pinpoint/update_in_app_template.html) for full documentation.
+#'
+#' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
+#' template. Valid values are: true, save the updates as a new version;
+#' and, false, save the updates to (overwrite) the latest existing version
+#' of the template.
+#' 
+#' If you don't specify a value for this parameter, Amazon Pinpoint saves
+#' the updates to (overwrites) the latest existing version of the template.
+#' If you specify a value of true for this parameter, don't specify a value
+#' for the version parameter. Otherwise, an error will occur.
+#' @param InAppTemplateRequest &#91;required&#93; 
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (_), or hyphens
+#' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier for an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier for the latest existing version of the template.
+#' This restriction helps ensure that race conditions don't occur.
+#' 
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn't used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_update_in_app_template
+pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTemplateRequest, TemplateName, Version = NULL) {
+  op <- new_operation(
+    name = "UpdateInAppTemplate",
+    http_method = "PUT",
+    http_path = "/v1/templates/{template-name}/inapp",
+    paginator = list()
+  )
+  input <- .pinpoint$update_in_app_template_input(CreateNewVersion = CreateNewVersion, InAppTemplateRequest = InAppTemplateRequest, TemplateName = TemplateName, Version = Version)
+  output <- .pinpoint$update_in_app_template_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$update_in_app_template <- pinpoint_update_in_app_template
+
 #' Updates the configuration and other settings for a journey
 #'
 #' @description
 #' Updates the configuration and other settings for a journey.
 #'
-#' @usage
-#' pinpoint_update_journey(ApplicationId, JourneyId, WriteJourneyRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_journey.html](https://paws-r.github.io/docs/pinpoint/update_journey.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
 #' @param WriteJourneyRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JourneyResponse = list(
-#'     Activities = list(
-#'       list(
-#'         CUSTOM = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           ),
-#'           MessageConfig = list(
-#'             Data = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         ConditionalSplit = list(
-#'           Condition = list(
-#'             Conditions = list(
-#'               list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             Operator = "ALL"|"ANY"
-#'           ),
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           ),
-#'           FalseActivity = "string",
-#'           TrueActivity = "string"
-#'         ),
-#'         Description = "string",
-#'         EMAIL = list(
-#'           MessageConfig = list(
-#'             FromAddress = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Holdout = list(
-#'           NextActivity = "string",
-#'           Percentage = 123
-#'         ),
-#'         MultiCondition = list(
-#'           Branches = list(
-#'             list(
-#'               Condition = list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               NextActivity = "string"
-#'             )
-#'           ),
-#'           DefaultActivity = "string",
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         ),
-#'         PUSH = list(
-#'           MessageConfig = list(
-#'             TimeToLive = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         RandomSplit = list(
-#'           Branches = list(
-#'             list(
-#'               NextActivity = "string",
-#'               Percentage = 123
-#'             )
-#'           )
-#'         ),
-#'         SMS = list(
-#'           MessageConfig = list(
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Wait = list(
-#'           NextActivity = "string",
-#'           WaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Id = "string",
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       DailyCap = 123,
-#'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
-#'     ),
-#'     LocalTime = TRUE|FALSE,
-#'     Name = "string",
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     ),
-#'     RefreshFrequency = "string",
-#'     Schedule = list(
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Timezone = "string"
-#'     ),
-#'     StartActivity = "string",
-#'     StartCondition = list(
-#'       Description = "string",
-#'       EventStartCondition = list(
-#'         EventFilter = list(
-#'           Dimensions = list(
-#'             Attributes = list(
-#'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               )
-#'             ),
-#'             EventType = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Metrics = list(
-#'               list(
-#'                 ComparisonOperator = "string",
-#'                 Value = 123.0
-#'               )
-#'             )
-#'           ),
-#'           FilterType = "SYSTEM"|"ENDPOINT"
-#'         ),
-#'         SegmentId = "string"
-#'       ),
-#'       SegmentStartCondition = list(
-#'         SegmentId = "string"
-#'       )
-#'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_journey(
-#'   ApplicationId = "string",
-#'   JourneyId = "string",
-#'   WriteJourneyRequest = list(
-#'     Activities = list(
-#'       list(
-#'         CUSTOM = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           ),
-#'           MessageConfig = list(
-#'             Data = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         ConditionalSplit = list(
-#'           Condition = list(
-#'             Conditions = list(
-#'               list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             Operator = "ALL"|"ANY"
-#'           ),
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           ),
-#'           FalseActivity = "string",
-#'           TrueActivity = "string"
-#'         ),
-#'         Description = "string",
-#'         EMAIL = list(
-#'           MessageConfig = list(
-#'             FromAddress = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Holdout = list(
-#'           NextActivity = "string",
-#'           Percentage = 123
-#'         ),
-#'         MultiCondition = list(
-#'           Branches = list(
-#'             list(
-#'               Condition = list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               NextActivity = "string"
-#'             )
-#'           ),
-#'           DefaultActivity = "string",
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         ),
-#'         PUSH = list(
-#'           MessageConfig = list(
-#'             TimeToLive = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         RandomSplit = list(
-#'           Branches = list(
-#'             list(
-#'               NextActivity = "string",
-#'               Percentage = 123
-#'             )
-#'           )
-#'         ),
-#'         SMS = list(
-#'           MessageConfig = list(
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Wait = list(
-#'           NextActivity = "string",
-#'           WaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     CreationDate = "string",
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       DailyCap = 123,
-#'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
-#'     ),
-#'     LocalTime = TRUE|FALSE,
-#'     Name = "string",
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     ),
-#'     RefreshFrequency = "string",
-#'     Schedule = list(
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Timezone = "string"
-#'     ),
-#'     StartActivity = "string",
-#'     StartCondition = list(
-#'       Description = "string",
-#'       EventStartCondition = list(
-#'         EventFilter = list(
-#'           Dimensions = list(
-#'             Attributes = list(
-#'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               )
-#'             ),
-#'             EventType = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Metrics = list(
-#'               list(
-#'                 ComparisonOperator = "string",
-#'                 Value = 123.0
-#'               )
-#'             )
-#'           ),
-#'           FilterType = "SYSTEM"|"ENDPOINT"
-#'         ),
-#'         SegmentId = "string"
-#'       ),
-#'       SegmentStartCondition = list(
-#'         SegmentId = "string"
-#'       )
-#'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -14711,410 +3909,12 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #' @description
 #' Cancels (stops) an active journey.
 #'
-#' @usage
-#' pinpoint_update_journey_state(ApplicationId, JourneyId,
-#'   JourneyStateRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_journey_state.html](https://paws-r.github.io/docs/pinpoint/update_journey_state.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
 #' @param JourneyStateRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JourneyResponse = list(
-#'     Activities = list(
-#'       list(
-#'         CUSTOM = list(
-#'           DeliveryUri = "string",
-#'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
-#'           ),
-#'           MessageConfig = list(
-#'             Data = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         ConditionalSplit = list(
-#'           Condition = list(
-#'             Conditions = list(
-#'               list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             Operator = "ALL"|"ANY"
-#'           ),
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           ),
-#'           FalseActivity = "string",
-#'           TrueActivity = "string"
-#'         ),
-#'         Description = "string",
-#'         EMAIL = list(
-#'           MessageConfig = list(
-#'             FromAddress = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Holdout = list(
-#'           NextActivity = "string",
-#'           Percentage = 123
-#'         ),
-#'         MultiCondition = list(
-#'           Branches = list(
-#'             list(
-#'               Condition = list(
-#'                 EventCondition = list(
-#'                   Dimensions = list(
-#'                     Attributes = list(
-#'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                         Values = list(
-#'                           "string"
-#'                         )
-#'                       )
-#'                     ),
-#'                     EventType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Metrics = list(
-#'                       list(
-#'                         ComparisonOperator = "string",
-#'                         Value = 123.0
-#'                       )
-#'                     )
-#'                   ),
-#'                   MessageActivity = "string"
-#'                 ),
-#'                 SegmentCondition = list(
-#'                   SegmentId = "string"
-#'                 ),
-#'                 SegmentDimensions = list(
-#'                   Attributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Behavior = list(
-#'                     Recency = list(
-#'                       Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                       RecencyType = "ACTIVE"|"INACTIVE"
-#'                     )
-#'                   ),
-#'                   Demographic = list(
-#'                     AppVersion = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Channel = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     DeviceType = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Make = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Model = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     Platform = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   ),
-#'                   Location = list(
-#'                     Country = list(
-#'                       DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     GPSPoint = list(
-#'                       Coordinates = list(
-#'                         Latitude = 123.0,
-#'                         Longitude = 123.0
-#'                       ),
-#'                       RangeInKilometers = 123.0
-#'                     )
-#'                   ),
-#'                   Metrics = list(
-#'                     list(
-#'                       ComparisonOperator = "string",
-#'                       Value = 123.0
-#'                     )
-#'                   ),
-#'                   UserAttributes = list(
-#'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                       Values = list(
-#'                         "string"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               NextActivity = "string"
-#'             )
-#'           ),
-#'           DefaultActivity = "string",
-#'           EvaluationWaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         ),
-#'         PUSH = list(
-#'           MessageConfig = list(
-#'             TimeToLive = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         RandomSplit = list(
-#'           Branches = list(
-#'             list(
-#'               NextActivity = "string",
-#'               Percentage = 123
-#'             )
-#'           )
-#'         ),
-#'         SMS = list(
-#'           MessageConfig = list(
-#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
-#'           ),
-#'           NextActivity = "string",
-#'           TemplateName = "string",
-#'           TemplateVersion = "string"
-#'         ),
-#'         Wait = list(
-#'           NextActivity = "string",
-#'           WaitTime = list(
-#'             WaitFor = "string",
-#'             WaitUntil = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Id = "string",
-#'     LastModifiedDate = "string",
-#'     Limits = list(
-#'       DailyCap = 123,
-#'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
-#'     ),
-#'     LocalTime = TRUE|FALSE,
-#'     Name = "string",
-#'     QuietTime = list(
-#'       End = "string",
-#'       Start = "string"
-#'     ),
-#'     RefreshFrequency = "string",
-#'     Schedule = list(
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Timezone = "string"
-#'     ),
-#'     StartActivity = "string",
-#'     StartCondition = list(
-#'       Description = "string",
-#'       EventStartCondition = list(
-#'         EventFilter = list(
-#'           Dimensions = list(
-#'             Attributes = list(
-#'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               )
-#'             ),
-#'             EventType = list(
-#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             Metrics = list(
-#'               list(
-#'                 ComparisonOperator = "string",
-#'                 Value = 123.0
-#'               )
-#'             )
-#'           ),
-#'           FilterType = "SYSTEM"|"ENDPOINT"
-#'         ),
-#'         SegmentId = "string"
-#'       ),
-#'       SegmentStartCondition = list(
-#'         SegmentId = "string"
-#'       )
-#'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_journey_state(
-#'   ApplicationId = "string",
-#'   JourneyId = "string",
-#'   JourneyStateRequest = list(
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -15140,12 +3940,9 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #' a push notification channel
 #'
 #' @description
-#' Updates an existing message template for messages that are sent through
-#' a push notification channel.
+#' Updates an existing message template for messages that are sent through a push notification channel.
 #'
-#' @usage
-#' pinpoint_update_push_template(CreateNewVersion,
-#'   PushNotificationTemplateRequest, TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/update_push_template.html](https://paws-r.github.io/docs/pinpoint/update_push_template.html) for full documentation.
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
@@ -15184,83 +3981,6 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_push_template(
-#'   CreateNewVersion = TRUE|FALSE,
-#'   PushNotificationTemplateRequest = list(
-#'     ADM = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       ImageIconUrl = "string",
-#'       ImageUrl = "string",
-#'       RawContent = "string",
-#'       SmallImageIconUrl = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     APNS = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       MediaUrl = "string",
-#'       RawContent = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     Baidu = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       ImageIconUrl = "string",
-#'       ImageUrl = "string",
-#'       RawContent = "string",
-#'       SmallImageIconUrl = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     Default = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     DefaultSubstitutions = "string",
-#'     GCM = list(
-#'       Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-#'       Body = "string",
-#'       ImageIconUrl = "string",
-#'       ImageUrl = "string",
-#'       RawContent = "string",
-#'       SmallImageIconUrl = "string",
-#'       Sound = "string",
-#'       Title = "string",
-#'       Url = "string"
-#'     ),
-#'     RecommenderId = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string"
-#'   ),
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_push_template
@@ -15286,57 +4006,12 @@ pinpoint_update_push_template <- function(CreateNewVersion = NULL, PushNotificat
 #' @description
 #' Updates an Amazon Pinpoint configuration for a recommender model.
 #'
-#' @usage
-#' pinpoint_update_recommender_configuration(RecommenderId,
-#'   UpdateRecommenderConfiguration)
+#' See [https://paws-r.github.io/docs/pinpoint/update_recommender_configuration.html](https://paws-r.github.io/docs/pinpoint/update_recommender_configuration.html) for full documentation.
 #'
 #' @param RecommenderId &#91;required&#93; The unique identifier for the recommender model configuration. This
 #' identifier is displayed as the **Recommender ID** on the Amazon Pinpoint
 #' console.
 #' @param UpdateRecommenderConfiguration &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecommenderConfigurationResponse = list(
-#'     Attributes = list(
-#'       "string"
-#'     ),
-#'     CreationDate = "string",
-#'     Description = "string",
-#'     Id = "string",
-#'     LastModifiedDate = "string",
-#'     Name = "string",
-#'     RecommendationProviderIdType = "string",
-#'     RecommendationProviderRoleArn = "string",
-#'     RecommendationProviderUri = "string",
-#'     RecommendationTransformerUri = "string",
-#'     RecommendationsDisplayName = "string",
-#'     RecommendationsPerMessage = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_recommender_configuration(
-#'   RecommenderId = "string",
-#'   UpdateRecommenderConfiguration = list(
-#'     Attributes = list(
-#'       "string"
-#'     ),
-#'     Description = "string",
-#'     Name = "string",
-#'     RecommendationProviderIdType = "string",
-#'     RecommendationProviderRoleArn = "string",
-#'     RecommendationProviderUri = "string",
-#'     RecommendationTransformerUri = "string",
-#'     RecommendationsDisplayName = "string",
-#'     RecommendationsPerMessage = 123
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -15363,427 +4038,14 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #' with an application
 #'
 #' @description
-#' Creates a new segment for an application or updates the configuration,
-#' dimension, and other settings for an existing segment that's associated
-#' with an application.
+#' Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application.
 #'
-#' @usage
-#' pinpoint_update_segment(ApplicationId, SegmentId, WriteSegmentRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_segment.html](https://paws-r.github.io/docs/pinpoint/update_segment.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #' @param WriteSegmentRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SegmentResponse = list(
-#'     ApplicationId = "string",
-#'     Arn = "string",
-#'     CreationDate = "string",
-#'     Dimensions = list(
-#'       Attributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Behavior = list(
-#'         Recency = list(
-#'           Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'           RecencyType = "ACTIVE"|"INACTIVE"
-#'         )
-#'       ),
-#'       Demographic = list(
-#'         AppVersion = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Channel = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DeviceType = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Make = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Model = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Platform = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = list(
-#'         Country = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         GPSPoint = list(
-#'           Coordinates = list(
-#'             Latitude = 123.0,
-#'             Longitude = 123.0
-#'           ),
-#'           RangeInKilometers = 123.0
-#'         )
-#'       ),
-#'       Metrics = list(
-#'         list(
-#'           ComparisonOperator = "string",
-#'           Value = 123.0
-#'         )
-#'       ),
-#'       UserAttributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Id = "string",
-#'     ImportDefinition = list(
-#'       ChannelCounts = list(
-#'         123
-#'       ),
-#'       ExternalId = "string",
-#'       Format = "CSV"|"JSON",
-#'       RoleArn = "string",
-#'       S3Url = "string",
-#'       Size = 123
-#'     ),
-#'     LastModifiedDate = "string",
-#'     Name = "string",
-#'     SegmentGroups = list(
-#'       Groups = list(
-#'         list(
-#'           Dimensions = list(
-#'             list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Behavior = list(
-#'                 Recency = list(
-#'                   Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                   RecencyType = "ACTIVE"|"INACTIVE"
-#'                 )
-#'               ),
-#'               Demographic = list(
-#'                 AppVersion = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Channel = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 DeviceType = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Make = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Model = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Platform = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Location = list(
-#'                 Country = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 GPSPoint = list(
-#'                   Coordinates = list(
-#'                     Latitude = 123.0,
-#'                     Longitude = 123.0
-#'                   ),
-#'                   RangeInKilometers = 123.0
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               ),
-#'               UserAttributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           SourceSegments = list(
-#'             list(
-#'               Id = "string",
-#'               Version = 123
-#'             )
-#'           ),
-#'           SourceType = "ALL"|"ANY"|"NONE",
-#'           Type = "ALL"|"ANY"|"NONE"
-#'         )
-#'       ),
-#'       Include = "ALL"|"ANY"|"NONE"
-#'     ),
-#'     SegmentType = "DIMENSIONAL"|"IMPORT",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_segment(
-#'   ApplicationId = "string",
-#'   SegmentId = "string",
-#'   WriteSegmentRequest = list(
-#'     Dimensions = list(
-#'       Attributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Behavior = list(
-#'         Recency = list(
-#'           Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'           RecencyType = "ACTIVE"|"INACTIVE"
-#'         )
-#'       ),
-#'       Demographic = list(
-#'         AppVersion = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Channel = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DeviceType = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Make = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Model = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         Platform = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = list(
-#'         Country = list(
-#'           DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         ),
-#'         GPSPoint = list(
-#'           Coordinates = list(
-#'             Latitude = 123.0,
-#'             Longitude = 123.0
-#'           ),
-#'           RangeInKilometers = 123.0
-#'         )
-#'       ),
-#'       Metrics = list(
-#'         list(
-#'           ComparisonOperator = "string",
-#'           Value = 123.0
-#'         )
-#'       ),
-#'       UserAttributes = list(
-#'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Name = "string",
-#'     SegmentGroups = list(
-#'       Groups = list(
-#'         list(
-#'           Dimensions = list(
-#'             list(
-#'               Attributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Behavior = list(
-#'                 Recency = list(
-#'                   Duration = "HR_24"|"DAY_7"|"DAY_14"|"DAY_30",
-#'                   RecencyType = "ACTIVE"|"INACTIVE"
-#'                 )
-#'               ),
-#'               Demographic = list(
-#'                 AppVersion = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Channel = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 DeviceType = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Make = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Model = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 Platform = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               ),
-#'               Location = list(
-#'                 Country = list(
-#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 GPSPoint = list(
-#'                   Coordinates = list(
-#'                     Latitude = 123.0,
-#'                     Longitude = 123.0
-#'                   ),
-#'                   RangeInKilometers = 123.0
-#'                 )
-#'               ),
-#'               Metrics = list(
-#'                 list(
-#'                   ComparisonOperator = "string",
-#'                   Value = 123.0
-#'                 )
-#'               ),
-#'               UserAttributes = list(
-#'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
-#'                   Values = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           SourceSegments = list(
-#'             list(
-#'               Id = "string",
-#'               Version = 123
-#'             )
-#'           ),
-#'           SourceType = "ALL"|"ANY"|"NONE",
-#'           Type = "ALL"|"ANY"|"NONE"
-#'         )
-#'       ),
-#'       Include = "ALL"|"ANY"|"NONE"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -15809,50 +4071,13 @@ pinpoint_update_segment <- function(ApplicationId, SegmentId, WriteSegmentReques
 #' settings of the SMS channel for an application
 #'
 #' @description
-#' Enables the SMS channel for an application or updates the status and
-#' settings of the SMS channel for an application.
+#' Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application.
 #'
-#' @usage
-#' pinpoint_update_sms_channel(ApplicationId, SMSChannelRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_sms_channel.html](https://paws-r.github.io/docs/pinpoint/update_sms_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param SMSChannelRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SMSChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     PromotionalMessagesPerSecond = 123,
-#'     SenderId = "string",
-#'     ShortCode = "string",
-#'     TransactionalMessagesPerSecond = 123,
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_sms_channel(
-#'   ApplicationId = "string",
-#'   SMSChannelRequest = list(
-#'     Enabled = TRUE|FALSE,
-#'     SenderId = "string",
-#'     ShortCode = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -15878,12 +4103,9 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #' the SMS channel
 #'
 #' @description
-#' Updates an existing message template for messages that are sent through
-#' the SMS channel.
+#' Updates an existing message template for messages that are sent through the SMS channel.
 #'
-#' @usage
-#' pinpoint_update_sms_template(CreateNewVersion, SMSTemplateRequest,
-#'   TemplateName, Version)
+#' See [https://paws-r.github.io/docs/pinpoint/update_sms_template.html](https://paws-r.github.io/docs/pinpoint/update_sms_template.html) for full documentation.
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
@@ -15922,35 +4144,6 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_sms_template(
-#'   CreateNewVersion = TRUE|FALSE,
-#'   SMSTemplateRequest = list(
-#'     Body = "string",
-#'     DefaultSubstitutions = "string",
-#'     RecommenderId = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string"
-#'   ),
-#'   TemplateName = "string",
-#'   Version = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_sms_template
@@ -15974,12 +4167,9 @@ pinpoint_update_sms_template <- function(CreateNewVersion = NULL, SMSTemplateReq
 #' Changes the status of a specific version of a message template to active
 #'
 #' @description
-#' Changes the status of a specific version of a message template to
-#' *active*.
+#' Changes the status of a specific version of a message template to *active*.
 #'
-#' @usage
-#' pinpoint_update_template_active_version(TemplateActiveVersionRequest,
-#'   TemplateName, TemplateType)
+#' See [https://paws-r.github.io/docs/pinpoint/update_template_active_version.html](https://paws-r.github.io/docs/pinpoint/update_template_active_version.html) for full documentation.
 #'
 #' @param TemplateActiveVersionRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
@@ -15988,28 +4178,6 @@ pinpoint_update_sms_template <- function(CreateNewVersion = NULL, SMSTemplateReq
 #' (-). Template names are case sensitive.
 #' @param TemplateType &#91;required&#93; The type of channel that the message template is designed for. Valid
 #' values are: EMAIL, PUSH, SMS, and VOICE.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_template_active_version(
-#'   TemplateActiveVersionRequest = list(
-#'     Version = "string"
-#'   ),
-#'   TemplateName = "string",
-#'   TemplateType = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -16035,44 +4203,13 @@ pinpoint_update_template_active_version <- function(TemplateActiveVersionRequest
 #' settings of the voice channel for an application
 #'
 #' @description
-#' Enables the voice channel for an application or updates the status and
-#' settings of the voice channel for an application.
+#' Enables the voice channel for an application or updates the status and settings of the voice channel for an application.
 #'
-#' @usage
-#' pinpoint_update_voice_channel(ApplicationId, VoiceChannelRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_voice_channel.html](https://paws-r.github.io/docs/pinpoint/update_voice_channel.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param VoiceChannelRequest &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VoiceChannelResponse = list(
-#'     ApplicationId = "string",
-#'     CreationDate = "string",
-#'     Enabled = TRUE|FALSE,
-#'     HasCredential = TRUE|FALSE,
-#'     Id = "string",
-#'     IsArchived = TRUE|FALSE,
-#'     LastModifiedBy = "string",
-#'     LastModifiedDate = "string",
-#'     Platform = "string",
-#'     Version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_voice_channel(
-#'   ApplicationId = "string",
-#'   VoiceChannelRequest = list(
-#'     Enabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -16098,12 +4235,9 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #' the voice channel
 #'
 #' @description
-#' Updates an existing message template for messages that are sent through
-#' the voice channel.
+#' Updates an existing message template for messages that are sent through the voice channel.
 #'
-#' @usage
-#' pinpoint_update_voice_template(CreateNewVersion, TemplateName, Version,
-#'   VoiceTemplateRequest)
+#' See [https://paws-r.github.io/docs/pinpoint/update_voice_template.html](https://paws-r.github.io/docs/pinpoint/update_voice_template.html) for full documentation.
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
@@ -16142,36 +4276,6 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #'     of the template.
 #' @param VoiceTemplateRequest &#91;required&#93; 
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageBody = list(
-#'     Message = "string",
-#'     RequestID = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_voice_template(
-#'   CreateNewVersion = TRUE|FALSE,
-#'   TemplateName = "string",
-#'   Version = "string",
-#'   VoiceTemplateRequest = list(
-#'     Body = "string",
-#'     DefaultSubstitutions = "string",
-#'     LanguageCode = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     TemplateDescription = "string",
-#'     VoiceId = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_voice_template
@@ -16191,3 +4295,33 @@ pinpoint_update_voice_template <- function(CreateNewVersion = NULL, TemplateName
   return(response)
 }
 .pinpoint$operations$update_voice_template <- pinpoint_update_voice_template
+
+#' Verify an OTP
+#'
+#' @description
+#' Verify an OTP
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/verify_otp_message.html](https://paws-r.github.io/docs/pinpoint/verify_otp_message.html) for full documentation.
+#'
+#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param VerifyOTPMessageRequestParameters &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_verify_otp_message
+pinpoint_verify_otp_message <- function(ApplicationId, VerifyOTPMessageRequestParameters) {
+  op <- new_operation(
+    name = "VerifyOTPMessage",
+    http_method = "POST",
+    http_path = "/v1/apps/{application-id}/verify-otp",
+    paginator = list()
+  )
+  input <- .pinpoint$verify_otp_message_input(ApplicationId = ApplicationId, VerifyOTPMessageRequestParameters = VerifyOTPMessageRequestParameters)
+  output <- .pinpoint$verify_otp_message_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$verify_otp_message <- pinpoint_verify_otp_message

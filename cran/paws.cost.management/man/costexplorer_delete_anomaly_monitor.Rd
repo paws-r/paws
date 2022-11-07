@@ -10,17 +10,9 @@ costexplorer_delete_anomaly_monitor(MonitorArn)
 \item{MonitorArn}{[required] The unique identifier of the cost anomaly monitor that you want to
 delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a cost anomaly monitor.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_anomaly_monitor(
-  MonitorArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/costexplorer/delete_anomaly_monitor.html} for full documentation.
+}
 \keyword{internal}

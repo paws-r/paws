@@ -13,32 +13,9 @@ apigatewayv2_get_route_response(ApiId, RouteId, RouteResponseId)
 
 \item{RouteResponseId}{[required] The route response ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelSelectionExpression = "string",
-  ResponseModels = list(
-    "string"
-  ),
-  ResponseParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteResponseId = "string",
-  RouteResponseKey = "string"
-)
-}
-}
 \description{
 Gets a RouteResponse.
-}
-\section{Request syntax}{
-\preformatted{svc$get_route_response(
-  ApiId = "string",
-  RouteId = "string",
-  RouteResponseId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_route_response.html} for full documentation.
+}
 \keyword{internal}

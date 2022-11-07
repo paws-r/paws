@@ -5,7 +5,7 @@
 \title{Retrieves information about all the applications that are associated
 with your Amazon Pinpoint account}
 \usage{
-pinpoint_get_apps(PageSize, Token)
+pinpoint_get_apps(PageSize = NULL, Token = NULL)
 }
 \arguments{
 \item{PageSize}{The maximum number of items to include in each page of a paginated
@@ -15,34 +15,9 @@ journey metrics.}
 \item{Token}{The NextToken string that specifies which page of results to return in a
 paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationsResponse = list(
-    Item = list(
-      list(
-        Arn = "string",
-        Id = "string",
-        Name = "string",
-        tags = list(
-          "string"
-        )
-      )
-    ),
-    NextToken = "string"
-  )
-)
-}
-}
 \description{
-Retrieves information about all the applications that are associated
-with your Amazon Pinpoint account.
-}
-\section{Request syntax}{
-\preformatted{svc$get_apps(
-  PageSize = "string",
-  Token = "string"
-)
-}
-}
+Retrieves information about all the applications that are associated with your Amazon Pinpoint account.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_apps.html} for full documentation.
+}
 \keyword{internal}

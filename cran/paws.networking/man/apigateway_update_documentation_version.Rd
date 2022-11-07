@@ -2,47 +2,24 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_update_documentation_version}
 \alias{apigateway_update_documentation_version}
-\title{Update documentation version}
+\title{Updates a documentation version}
 \usage{
-apigateway_update_documentation_version(restApiId, documentationVersion,
-  patchOperations)
+apigateway_update_documentation_version(
+  restApiId,
+  documentationVersion,
+  patchOperations = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi..}
+\item{restApiId}{[required] The string identifier of the associated RestApi..}
 
-\item{documentationVersion}{[required] [Required] The version identifier of the to-be-updated documentation
-version.}
+\item{documentationVersion}{[required] The version identifier of the to-be-updated documentation version.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  version = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  description = "string"
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
-Update documentation version
-}
-\section{Request syntax}{
-\preformatted{svc$update_documentation_version(
-  restApiId = "string",
-  documentationVersion = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
+Updates a documentation version.
 
+See \url{https://paws-r.github.io/docs/apigateway/update_documentation_version.html} for full documentation.
+}
 \keyword{internal}

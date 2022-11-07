@@ -4,8 +4,11 @@
 \alias{codedeploy_register_on_premises_instance}
 \title{Registers an on-premises instance}
 \usage{
-codedeploy_register_on_premises_instance(instanceName, iamSessionArn,
-  iamUserArn)
+codedeploy_register_on_premises_instance(
+  instanceName,
+  iamSessionArn = NULL,
+  iamUserArn = NULL
+)
 }
 \arguments{
 \item{instanceName}{[required] The name of the on-premises instance to register.}
@@ -14,22 +17,9 @@ codedeploy_register_on_premises_instance(instanceName, iamSessionArn,
 
 \item{iamUserArn}{The ARN of the IAM user to associate with the on-premises instance.}
 }
-\value{
-An empty list.
-}
 \description{
 Registers an on-premises instance.
 
-Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in
-the request. You cannot use both.
+See \url{https://paws-r.github.io/docs/codedeploy/register_on_premises_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_on_premises_instance(
-  instanceName = "string",
-  iamSessionArn = "string",
-  iamUserArn = "string"
-)
-}
-}
-
 \keyword{internal}

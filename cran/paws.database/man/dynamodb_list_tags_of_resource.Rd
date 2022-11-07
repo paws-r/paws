@@ -4,7 +4,7 @@
 \alias{dynamodb_list_tags_of_resource}
 \title{List all tags on an Amazon DynamoDB resource}
 \usage{
-dynamodb_list_tags_of_resource(ResourceArn, NextToken)
+dynamodb_list_tags_of_resource(ResourceArn, NextToken = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon DynamoDB resource with tags to be listed. This value is an
@@ -14,31 +14,9 @@ Amazon Resource Name (ARN).}
 a previous call to ListTagOfResource. When provided in this manner, this
 API fetches the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List all tags on an Amazon DynamoDB resource. You can call
-ListTagsOfResource up to 10 times per second, per account.
+List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource up to 10 times per second, per account.
 
-For an overview on tagging DynamoDB resources, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}
-in the \emph{Amazon DynamoDB Developer Guide}.
+See \url{https://paws-r.github.io/docs/dynamodb/list_tags_of_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags_of_resource(
-  ResourceArn = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{opsworks_describe_elastic_load_balancers}
 \title{Describes a stack's Elastic Load Balancing instances}
 \usage{
-opsworks_describe_elastic_load_balancers(StackId, LayerIds)
+opsworks_describe_elastic_load_balancers(StackId = NULL, LayerIds = NULL)
 }
 \arguments{
 \item{StackId}{A stack ID. The action describes the stack's Elastic Load Balancing
@@ -13,48 +13,9 @@ instances.}
 \item{LayerIds}{A list of layer IDs. The action describes the Elastic Load Balancing
 instances for the specified layers.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ElasticLoadBalancers = list(
-    list(
-      ElasticLoadBalancerName = "string",
-      Region = "string",
-      DnsName = "string",
-      StackId = "string",
-      LayerId = "string",
-      VpcId = "string",
-      AvailabilityZones = list(
-        "string"
-      ),
-      SubnetIds = list(
-        "string"
-      ),
-      Ec2InstanceIds = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes a stack's Elastic Load Balancing instances.
 
-This call accepts only one resource-identifying parameter.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_elastic_load_balancers.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_elastic_load_balancers(
-  StackId = "string",
-  LayerIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

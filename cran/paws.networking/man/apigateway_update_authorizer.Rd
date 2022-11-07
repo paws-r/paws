@@ -4,53 +4,18 @@
 \alias{apigateway_update_authorizer}
 \title{Updates an existing Authorizer resource}
 \usage{
-apigateway_update_authorizer(restApiId, authorizerId, patchOperations)
+apigateway_update_authorizer(restApiId, authorizerId, patchOperations = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{authorizerId}{[required] [Required] The identifier of the Authorizer resource.}
+\item{authorizerId}{[required] The identifier of the Authorizer resource.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-  providerARNs = list(
-    "string"
-  ),
-  authType = "string",
-  authorizerUri = "string",
-  authorizerCredentials = "string",
-  identitySource = "string",
-  identityValidationExpression = "string",
-  authorizerResultTtlInSeconds = 123
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
-Updates an existing Authorizer resource.<div class="seeAlso">
+Updates an existing Authorizer resource.
 
-
-\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html}{AWS CLI}</div>
+See \url{https://paws-r.github.io/docs/apigateway/update_authorizer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_authorizer(
-  restApiId = "string",
-  authorizerId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

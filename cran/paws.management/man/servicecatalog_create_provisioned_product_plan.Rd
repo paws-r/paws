@@ -4,9 +4,19 @@
 \alias{servicecatalog_create_provisioned_product_plan}
 \title{Creates a plan}
 \usage{
-servicecatalog_create_provisioned_product_plan(AcceptLanguage, PlanName,
-  PlanType, NotificationArns, PathId, ProductId, ProvisionedProductName,
-  ProvisioningArtifactId, ProvisioningParameters, IdempotencyToken, Tags)
+servicecatalog_create_provisioned_product_plan(
+  AcceptLanguage = NULL,
+  PlanName,
+  PlanType,
+  NotificationArns = NULL,
+  PathId = NULL,
+  ProductId,
+  ProvisionedProductName,
+  ProvisioningArtifactId,
+  ProvisioningParameters = NULL,
+  IdempotencyToken,
+  Tags = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -49,58 +59,9 @@ If the plan is for an existing provisioned product, the product must
 have a \code{RESOURCE_UPDATE} constraint with
 \code{TagUpdatesOnProvisionedProduct} set to \code{ALLOWED} to allow tag updates.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PlanName = "string",
-  PlanId = "string",
-  ProvisionProductId = "string",
-  ProvisionedProductName = "string",
-  ProvisioningArtifactId = "string"
-)
-}
-}
 \description{
-Creates a plan. A plan includes the list of resources to be created
-(when provisioning a new product) or modified (when updating a
-provisioned product) when the plan is executed.
+Creates a plan. A plan includes the list of resources to be created (when provisioning a new product) or modified (when updating a provisioned product) when the plan is executed.
 
-You can create one plan per provisioned product. To create a plan for an
-existing provisioned product, the product status must be AVAILBLE or
-TAINTED.
-
-To view the resource changes in the change set, use
-\code{\link[=servicecatalog_describe_provisioned_product_plan]{describe_provisioned_product_plan}}.
-To create or modify the provisioned product, use
-\code{\link[=servicecatalog_execute_provisioned_product_plan]{execute_provisioned_product_plan}}.
+See \url{https://paws-r.github.io/docs/servicecatalog/create_provisioned_product_plan.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_provisioned_product_plan(
-  AcceptLanguage = "string",
-  PlanName = "string",
-  PlanType = "CLOUDFORMATION",
-  NotificationArns = list(
-    "string"
-  ),
-  PathId = "string",
-  ProductId = "string",
-  ProvisionedProductName = "string",
-  ProvisioningArtifactId = "string",
-  ProvisioningParameters = list(
-    list(
-      Key = "string",
-      Value = "string",
-      UsePreviousValue = TRUE|FALSE
-    )
-  ),
-  IdempotencyToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

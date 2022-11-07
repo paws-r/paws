@@ -11,79 +11,9 @@ lexmodelbuildingservice_get_bot(name, versionOrAlias)
 
 \item{versionOrAlias}{[required] The version or alias of the bot.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  description = "string",
-  intents = list(
-    list(
-      intentName = "string",
-      intentVersion = "string"
-    )
-  ),
-  enableModelImprovements = TRUE|FALSE,
-  nluIntentConfidenceThreshold = 123.0,
-  clarificationPrompt = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    maxAttempts = 123,
-    responseCard = "string"
-  ),
-  abortStatement = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    responseCard = "string"
-  ),
-  status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
-  failureReason = "string",
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  idleSessionTTLInSeconds = 123,
-  voiceId = "string",
-  checksum = "string",
-  version = "string",
-  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-  childDirected = TRUE|FALSE,
-  detectSentiment = TRUE|FALSE
-)
-}
-}
 \description{
-Returns metadata information for a specific bot. You must provide the
-bot name and the bot version or alias.
+Returns metadata information for a specific bot. You must provide the bot name and the bot version or alias.
 
-This operation requires permissions for the \code{lex:GetBot} action.
-}
-\section{Request syntax}{
-\preformatted{svc$get_bot(
-  name = "string",
-  versionOrAlias = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example shows how to get configuration information for a bot.
-svc$get_bot(
-  name = "DocOrderPizza",
-  versionOrAlias = "$LATEST"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot.html} for full documentation.
 }
 \keyword{internal}

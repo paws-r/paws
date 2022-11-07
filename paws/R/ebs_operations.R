@@ -78,14 +78,19 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
 #' ebs_get_snapshot_block(SnapshotId, BlockIndex, BlockToken)
 #'
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot containing the block from which to get data.
-#' @param BlockIndex &#91;required&#93; The block index of the block from which to get data.
 #' 
-#' Obtain the `BlockIndex` by running the
-#' [`list_changed_blocks`][ebs_list_changed_blocks] or
-#' [`list_snapshot_blocks`][ebs_list_snapshot_blocks] operations.
-#' @param BlockToken &#91;required&#93; The block token of the block from which to get data.
-#' 
-#' Obtain the `BlockToken` by running the
+#' If the specified snapshot is encrypted, you must have permission to use
+#' the KMS key that was used to encrypt the snapshot. For more information,
+#' see [Using
+#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param BlockIndex &#91;required&#93; The block index of the block in which to read the data. A block index is
+#' a logical index in units of `512` KiB blocks. To identify the block
+#' index, divide the logical offset of the data in the logical volume by
+#' the block size (logical offset of data/`524288`). The logical offset of
+#' the data must be `512` KiB aligned.
+#' @param BlockToken &#91;required&#93; The block token of the block from which to get data. You can obtain the
+#' `BlockToken` by running the
 #' [`list_changed_blocks`][ebs_list_changed_blocks] or
 #' [`list_snapshot_blocks`][ebs_list_snapshot_blocks] operations.
 #'
@@ -150,11 +155,23 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
 #' The `SecondSnapshotId` parameter must be specified with a
 #' `FirstSnapshotID` parameter; otherwise, an error occurs.
 #' @param NextToken The token to request the next page of results.
-#' @param MaxResults The number of results to return.
+#' 
+#' If you specify **NextToken**, then **StartingBlockIndex** is ignored.
+#' @param MaxResults The maximum number of blocks to be returned by the request.
+#' 
+#' Even if additional blocks can be retrieved from the snapshot, the
+#' request can return less blocks than **MaxResults** or an empty array of
+#' blocks.
+#' 
+#' To retrieve the next set of blocks from the snapshot, make another
+#' request with the returned **NextToken** value. The value of
+#' **NextToken** is `null` when there are no more blocks to return.
 #' @param StartingBlockIndex The block index from which the comparison should start.
 #' 
 #' The list in the response will start from this block index or the next
 #' valid block index in the snapshots.
+#' 
+#' If you specify **NextToken**, then **StartingBlockIndex** is ignored.
 #'
 #' @return
 #' A list with the following syntax:
@@ -220,10 +237,22 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
 #'
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot from which to get block indexes and block tokens.
 #' @param NextToken The token to request the next page of results.
-#' @param MaxResults The number of results to return.
+#' 
+#' If you specify **NextToken**, then **StartingBlockIndex** is ignored.
+#' @param MaxResults The maximum number of blocks to be returned by the request.
+#' 
+#' Even if additional blocks can be retrieved from the snapshot, the
+#' request can return less blocks than **MaxResults** or an empty array of
+#' blocks.
+#' 
+#' To retrieve the next set of blocks from the snapshot, make another
+#' request with the returned **NextToken** value. The value of
+#' **NextToken** is `null` when there are no more blocks to return.
 #' @param StartingBlockIndex The block index from which the list should start. The list in the
 #' response will start from this block index or the next valid block index
 #' in the snapshot.
+#' 
+#' If you specify **NextToken**, then **StartingBlockIndex** is ignored.
 #'
 #' @return
 #' A list with the following syntax:
@@ -281,13 +310,19 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #' data, the existing data is overwritten. The target snapshot must be in
 #' the `pending` state.
 #' 
-#' Data written to a snapshot must be aligned with 512-byte sectors.
+#' Data written to a snapshot must be aligned with 512-KiB sectors.
 #'
 #' @usage
 #' ebs_put_snapshot_block(SnapshotId, BlockIndex, BlockData, DataLength,
 #'   Progress, Checksum, ChecksumAlgorithm)
 #'
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot.
+#' 
+#' If the specified snapshot is encrypted, you must have permission to use
+#' the KMS key that was used to encrypt the snapshot. For more information,
+#' see [Using
+#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*..
 #' @param BlockIndex &#91;required&#93; The block index of the block in which to write the data. A block index
 #' is a logical index in units of `512` KiB blocks. To identify the block
 #' index, divide the logical offset of the data in the logical volume by
@@ -308,7 +343,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #' APIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html#ebsapis-using-checksums)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param DataLength &#91;required&#93; The size of the data to write to the block, in bytes. Currently, the
-#' only supported size is `524288`.
+#' only supported size is `524288` bytes.
 #' 
 #' Valid values: `524288`
 #' @param Progress The progress of the write process, as a percentage.
@@ -373,16 +408,29 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' ebs_start_snapshot(VolumeSize, ParentSnapshotId, Tags, Description,
 #'   ClientToken, Encrypted, KmsKeyArn, Timeout)
 #'
-#' @param VolumeSize &#91;required&#93; The size of the volume, in GiB. The maximum size is `16384` GiB (16
+#' @param VolumeSize &#91;required&#93; The size of the volume, in GiB. The maximum size is `65536` GiB (64
 #' TiB).
 #' @param ParentSnapshotId The ID of the parent snapshot. If there is no parent snapshot, or if you
 #' are creating the first snapshot for an on-premises volume, omit this
 #' parameter.
 #' 
-#' If your account is enabled for encryption by default, you cannot use an
-#' unencrypted snapshot as a parent snapshot. You must first create an
-#' encrypted copy of the parent snapshot using
-#' [CopySnapshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopySnapshot.html).
+#' You can't specify **ParentSnapshotId** and **Encrypted** in the same
+#' request. If you specify both parameters, the request fails with
+#' `ValidationException`.
+#' 
+#' The encryption status of the snapshot depends on the values that you
+#' specify for **Encrypted**, **KmsKeyArn**, and **ParentSnapshotId**, and
+#' whether your Amazon Web Services account is enabled for [encryption by
+#' default](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default).
+#' For more information, see [Using
+#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' 
+#' If you specify an encrypted parent snapshot, you must have permission to
+#' use the KMS key that was used to encrypt the parent snapshot. For more
+#' information, see [Permissions to use Key Management Service
+#' keys](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapi-permissions.html#ebsapi-kms-permissions)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param Tags The tags to apply to the snapshot.
 #' @param Description A description for the snapshot.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
@@ -393,39 +441,46 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' have no additional effect.
 #' 
 #' If you do not specify a client token, one is automatically generated by
-#' the AWS SDK.
+#' the Amazon Web Services SDK.
 #' 
 #' For more information, see [Idempotency for StartSnapshot
 #' API](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-direct-api-idempotency.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
-#' @param Encrypted Indicates whether to encrypt the snapshot. To create an encrypted
-#' snapshot, specify `true`. To create an unencrypted snapshot, omit this
-#' parameter.
+#' @param Encrypted Indicates whether to encrypt the snapshot.
 #' 
-#' If you specify a value for **ParentSnapshotId**, omit this parameter.
+#' You can't specify **Encrypted** and **ParentSnapshotId** in the same
+#' request. If you specify both parameters, the request fails with
+#' `ValidationException`.
 #' 
-#' If you specify `true`, the snapshot is encrypted using the CMK specified
-#' using the **KmsKeyArn** parameter. If no value is specified for
-#' **KmsKeyArn**, the default CMK for your account is used. If no default
-#' CMK has been specified for your account, the AWS managed CMK is used. To
-#' set a default CMK for your account, use
-#' [ModifyEbsDefaultKmsKeyId](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyEbsDefaultKmsKeyId.html).
-#' 
-#' If your account is enabled for encryption by default, you cannot set
-#' this parameter to `false`. In this case, you can omit this parameter.
-#' 
+#' The encryption status of the snapshot depends on the values that you
+#' specify for **Encrypted**, **KmsKeyArn**, and **ParentSnapshotId**, and
+#' whether your Amazon Web Services account is enabled for [encryption by
+#' default](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default).
 #' For more information, see [Using
-#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html#ebsapis-using-encryption)
+#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
-#' @param KmsKeyArn The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS
-#' KMS) customer master key (CMK) to be used to encrypt the snapshot. If
-#' you do not specify a CMK, the default AWS managed CMK is used.
 #' 
-#' If you specify a **ParentSnapshotId**, omit this parameter; the snapshot
-#' will be encrypted using the same CMK that was used to encrypt the parent
-#' snapshot.
+#' To create an encrypted snapshot, you must have permission to use the KMS
+#' key. For more information, see [Permissions to use Key Management
+#' Service
+#' keys](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapi-permissions.html#ebsapi-kms-permissions)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of the Key Management Service (KMS) key
+#' to be used to encrypt the snapshot.
 #' 
-#' If **Encrypted** is set to `true`, you must specify a CMK ARN.
+#' The encryption status of the snapshot depends on the values that you
+#' specify for **Encrypted**, **KmsKeyArn**, and **ParentSnapshotId**, and
+#' whether your Amazon Web Services account is enabled for [encryption by
+#' default](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default).
+#' For more information, see [Using
+#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' 
+#' To create an encrypted snapshot, you must have permission to use the KMS
+#' key. For more information, see [Permissions to use Key Management
+#' Service
+#' keys](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapi-permissions.html#ebsapi-kms-permissions)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param Timeout The amount of time (in minutes) after which the snapshot is
 #' automatically cancelled if:
 #' 

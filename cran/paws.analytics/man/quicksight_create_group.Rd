@@ -2,49 +2,24 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_group}
 \alias{quicksight_create_group}
-\title{Creates an Amazon QuickSight group}
+\title{Use the CreateGroup operation to create a group in Amazon QuickSight}
 \usage{
-quicksight_create_group(GroupName, Description, AwsAccountId, Namespace)
+quicksight_create_group(GroupName, Description = NULL, AwsAccountId, Namespace)
 }
 \arguments{
 \item{GroupName}{[required] A name for the group that you want to create.}
 
 \item{Description}{A description for the group that you want to create.}
 
-\item{AwsAccountId}{[required] The ID for the AWS account that the group is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
+Currently, you use the ID for the Amazon Web Services account that
+contains your Amazon QuickSight account.}
 
-\item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    Arn = "string",
-    GroupName = "string",
-    Description = "string",
-    PrincipalId = "string"
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{Namespace}{[required] The namespace that you want the group to be a part of.}
 }
 \description{
-Creates an Amazon QuickSight group.
+Use the \code{\link[=quicksight_create_group]{create_group}} operation to create a group in Amazon QuickSight. You can create up to 10,000 groups in a namespace. If you want to create more than 10,000 groups in a namespace, contact AWS Support.
 
-The permissions resource is
-\verb{arn:aws:quicksight:us-east-1:<relevant-aws-account-id>:group/default/<group-name> }.
-
-The response is a group object.
+See \url{https://paws-r.github.io/docs/quicksight/create_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_group(
-  GroupName = "string",
-  Description = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
-}
-}
-
 \keyword{internal}

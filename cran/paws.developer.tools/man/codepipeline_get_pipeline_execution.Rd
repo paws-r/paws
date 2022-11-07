@@ -14,41 +14,9 @@ codepipeline_get_pipeline_execution(pipelineName, pipelineExecutionId)
 \item{pipelineExecutionId}{[required] The ID of the pipeline execution about which you want to get execution
 details.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineExecution = list(
-    pipelineName = "string",
-    pipelineVersion = 123,
-    pipelineExecutionId = "string",
-    status = "Cancelled"|"InProgress"|"Stopped"|"Stopping"|"Succeeded"|"Superseded"|"Failed",
-    statusSummary = "string",
-    artifactRevisions = list(
-      list(
-        name = "string",
-        revisionId = "string",
-        revisionChangeIdentifier = "string",
-        revisionSummary = "string",
-        created = as.POSIXct(
-          "2015-01-01"
-        ),
-        revisionUrl = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns information about an execution of a pipeline, including details
-about artifacts, the pipeline execution ID, and the name, version, and
-status of the pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$get_pipeline_execution(
-  pipelineName = "string",
-  pipelineExecutionId = "string"
-)
-}
-}
+Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
 
+See \url{https://paws-r.github.io/docs/codepipeline/get_pipeline_execution.html} for full documentation.
+}
 \keyword{internal}

@@ -9,40 +9,9 @@ appstream_batch_associate_user_stack(UserStackAssociations)
 \arguments{
 \item{UserStackAssociations}{[required] The list of UserStackAssociation objects.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  errors = list(
-    list(
-      UserStackAssociation = list(
-        StackName = "string",
-        UserName = "string",
-        AuthenticationType = "API"|"SAML"|"USERPOOL",
-        SendEmailNotification = TRUE|FALSE
-      ),
-      ErrorCode = "STACK_NOT_FOUND"|"USER_NAME_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INTERNAL_ERROR",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Associates the specified users with the specified stacks. Users in a
-user pool cannot be assigned to stacks with fleets that are joined to an
-Active Directory domain.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_associate_user_stack(
-  UserStackAssociations = list(
-    list(
-      StackName = "string",
-      UserName = "string",
-      AuthenticationType = "API"|"SAML"|"USERPOOL",
-      SendEmailNotification = TRUE|FALSE
-    )
-  )
-)
-}
-}
+Associates the specified users with the specified stacks. Users in a user pool cannot be assigned to stacks with fleets that are joined to an Active Directory domain.
 
+See \url{https://paws-r.github.io/docs/appstream/batch_associate_user_stack.html} for full documentation.
+}
 \keyword{internal}

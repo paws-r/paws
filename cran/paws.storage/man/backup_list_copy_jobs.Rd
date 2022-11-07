@@ -4,9 +4,19 @@
 \alias{backup_list_copy_jobs}
 \title{Returns metadata about your copy jobs}
 \usage{
-backup_list_copy_jobs(NextToken, MaxResults, ByResourceArn, ByState,
-  ByCreatedBefore, ByCreatedAfter, ByResourceType, ByDestinationVaultArn,
-  ByAccountId)
+backup_list_copy_jobs(
+  NextToken = NULL,
+  MaxResults = NULL,
+  ByResourceArn = NULL,
+  ByState = NULL,
+  ByCreatedBefore = NULL,
+  ByCreatedAfter = NULL,
+  ByResourceType = NULL,
+  ByDestinationVaultArn = NULL,
+  ByAccountId = NULL,
+  ByCompleteBefore = NULL,
+  ByCompleteAfter = NULL
+)
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
@@ -27,12 +37,18 @@ Name (ARN).}
 
 \item{ByResourceType}{Returns only backup jobs for the specified resources:
 \itemize{
+\item \code{Aurora} for Amazon Aurora
+\item \code{DocumentDB} for Amazon DocumentDB (with MongoDB compatibility)
 \item \code{DynamoDB} for Amazon DynamoDB
 \item \code{EBS} for Amazon Elastic Block Store
 \item \code{EC2} for Amazon Elastic Compute Cloud
 \item \code{EFS} for Amazon Elastic File System
+\item \code{FSx} for Amazon FSx
+\item \code{Neptune} for Amazon Neptune
 \item \code{RDS} for Amazon Relational Database Service
-\item \verb{Storage Gateway} for AWS Storage Gateway
+\item \verb{Storage Gateway} for Storage Gateway
+\item \code{S3} for Amazon S3
+\item \code{VirtualMachine} for virtual machines
 }}
 
 \item{ByDestinationVaultArn}{An Amazon Resource Name (ARN) that uniquely identifies a source backup
@@ -41,61 +57,16 @@ vault to copy from; for example,
 
 \item{ByAccountId}{The account ID to list the jobs from. Returns only copy jobs associated
 with the specified account ID.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CopyJobs = list(
-    list(
-      AccountId = "string",
-      CopyJobId = "string",
-      SourceBackupVaultArn = "string",
-      SourceRecoveryPointArn = "string",
-      DestinationBackupVaultArn = "string",
-      DestinationRecoveryPointArn = "string",
-      ResourceArn = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompletionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      State = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED",
-      StatusMessage = "string",
-      BackupSizeInBytes = 123,
-      IamRoleArn = "string",
-      CreatedBy = list(
-        BackupPlanId = "string",
-        BackupPlanArn = "string",
-        BackupPlanVersion = "string",
-        BackupRuleId = "string"
-      ),
-      ResourceType = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{ByCompleteBefore}{Returns only copy jobs completed before a date expressed in Unix format
+and Coordinated Universal Time (UTC).}
+
+\item{ByCompleteAfter}{Returns only copy jobs completed after a date expressed in Unix format
+and Coordinated Universal Time (UTC).}
 }
 \description{
 Returns metadata about your copy jobs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_copy_jobs(
-  NextToken = "string",
-  MaxResults = 123,
-  ByResourceArn = "string",
-  ByState = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED",
-  ByCreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  ByCreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  ByResourceType = "string",
-  ByDestinationVaultArn = "string",
-  ByAccountId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/list_copy_jobs.html} for full documentation.
+}
 \keyword{internal}

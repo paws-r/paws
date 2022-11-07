@@ -9,20 +9,9 @@ sns_delete_topic(TopicArn)
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a topic and all its subscriptions. Deleting a topic might
-prevent some messages previously sent to the topic from being delivered
-to subscribers. This action is idempotent, so deleting a topic that does
-not exist does not result in an error.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_topic(
-  TopicArn = "string"
-)
-}
-}
+Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent to the topic from being delivered to subscribers. This action is idempotent, so deleting a topic that does not exist does not result in an error.
 
+See \url{https://paws-r.github.io/docs/sns/delete_topic.html} for full documentation.
+}
 \keyword{internal}

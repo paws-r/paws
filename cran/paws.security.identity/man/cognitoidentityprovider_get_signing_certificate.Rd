@@ -9,20 +9,9 @@ cognitoidentityprovider_get_signing_certificate(UserPoolId)
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Certificate = "string"
-)
-}
-}
 \description{
 This method takes a user pool ID, and returns the signing certificate.
-}
-\section{Request syntax}{
-\preformatted{svc$get_signing_certificate(
-  UserPoolId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_signing_certificate.html} for full documentation.
+}
 \keyword{internal}

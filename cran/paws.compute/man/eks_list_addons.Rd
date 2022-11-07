@@ -4,7 +4,7 @@
 \alias{eks_list_addons}
 \title{Lists the available add-ons}
 \usage{
-eks_list_addons(clusterName, maxResults, nextToken)
+eks_list_addons(clusterName, maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{clusterName}{[required] The name of the cluster.}
@@ -27,25 +27,9 @@ This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  addons = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists the available add-ons.
-}
-\section{Request syntax}{
-\preformatted{svc$list_addons(
-  clusterName = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/eks/list_addons.html} for full documentation.
+}
 \keyword{internal}

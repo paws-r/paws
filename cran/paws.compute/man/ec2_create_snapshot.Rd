@@ -4,12 +4,34 @@
 \alias{ec2_create_snapshot}
 \title{Creates a snapshot of an EBS volume and stores it in Amazon S3}
 \usage{
-ec2_create_snapshot(Description, VolumeId, TagSpecifications, DryRun)
+ec2_create_snapshot(
+  Description = NULL,
+  OutpostArn = NULL,
+  VolumeId,
+  TagSpecifications = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Description}{A description for the snapshot.}
 
-\item{VolumeId}{[required] The ID of the EBS volume.}
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost on which to create a local
+snapshot.
+\itemize{
+\item To create a snapshot of a volume in a Region, omit this parameter.
+The snapshot is created in the same Region as the volume.
+\item To create a snapshot of a volume on an Outpost and store the
+snapshot in the Region, omit this parameter. The snapshot is created
+in the Region for the Outpost.
+\item To create a snapshot of a volume on an Outpost and store the
+snapshot on an Outpost, specify the ARN of the destination Outpost.
+The snapshot must be created on the same Outpost as the volume.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-snapshot}{Create local snapshots from volumes on an Outpost}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+
+\item{VolumeId}{[required] The ID of the Amazon EBS volume.}
 
 \item{TagSpecifications}{The tags to apply to the snapshot during creation.}
 
@@ -18,97 +40,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DataEncryptionKeyId = "string",
-  Description = "string",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  OwnerId = "string",
-  Progress = "string",
-  SnapshotId = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  State = "pending"|"completed"|"error",
-  StateMessage = "string",
-  VolumeId = "string",
-  VolumeSize = 123,
-  OwnerAlias = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
-use snapshots for backups, to make copies of EBS volumes, and to save
-data before shutting down an instance.
+Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of EBS volumes, and to save data before shutting down an instance.
 
-When a snapshot is created, any AWS Marketplace product codes that are
-associated with the source volume are propagated to the snapshot.
-
-You can take a snapshot of an attached volume that is in use. However,
-snapshots only capture data that has been written to your EBS volume at
-the time the snapshot command is issued; this might exclude any data
-that has been cached by any applications or the operating system. If you
-can pause any file systems on the volume long enough to take a snapshot,
-your snapshot should be complete. However, if you cannot pause all file
-writes to the volume, you should unmount the volume from within the
-instance, issue the snapshot command, and then remount the volume to
-ensure a consistent and complete snapshot. You may remount and use your
-volume while the snapshot status is \code{pending}.
-
-To create a snapshot for EBS volumes that serve as root devices, you
-should stop the instance before taking the snapshot.
-
-Snapshots that are taken from encrypted volumes are automatically
-encrypted. Volumes that are created from encrypted snapshots are also
-automatically encrypted. Your encrypted volumes and any associated
-snapshots always remain protected.
-
-You can tag your snapshots during creation. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging your Amazon EC2 resources}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html}{Amazon Elastic Block Store}
-and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_snapshot(
-  Description = "string",
-  VolumeId = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a snapshot of the volume with a volume ID of
-# `vol-1234567890abcdef0` and a short description to identify the
-# snapshot.
-svc$create_snapshot(
-  Description = "This is my root volume snapshot.",
-  VolumeId = "vol-1234567890abcdef0"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_snapshot.html} for full documentation.
 }
 \keyword{internal}

@@ -5,12 +5,30 @@
 \title{Describes the specified local gateway virtual interfaces}
 \usage{
 ec2_describe_local_gateway_virtual_interfaces(
-  LocalGatewayVirtualInterfaceIds, Filters, MaxResults, NextToken, DryRun)
+  LocalGatewayVirtualInterfaceIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{LocalGatewayVirtualInterfaceIds}{The IDs of the virtual interfaces.}
 
-\item{Filters}{One or more filters.}
+\item{Filters}{One or more filters.
+\itemize{
+\item \code{local-address} - The local address.
+\item \code{local-bgp-asn} - The Border Gateway Protocol (BGP) Autonomous
+System Number (ASN) of the local gateway.
+\item \code{local-gateway-id} - The ID of the local gateway.
+\item \code{local-gateway-virtual-interface-id} - The ID of the virtual
+interface.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+local gateway virtual interface.
+\item \code{peer-address} - The peer address.
+\item \code{peer-bgp-asn} - The peer BGP ASN.
+\item \code{vlan} - The ID of the VLAN.
+}}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
 the remaining results, make another call with the returned \code{nextToken}
@@ -23,51 +41,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LocalGatewayVirtualInterfaces = list(
-    list(
-      LocalGatewayVirtualInterfaceId = "string",
-      LocalGatewayId = "string",
-      Vlan = 123,
-      LocalAddress = "string",
-      PeerAddress = "string",
-      LocalBgpAsn = 123,
-      PeerBgpAsn = 123,
-      OwnerId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the specified local gateway virtual interfaces.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_local_gateway_virtual_interfaces(
-  LocalGatewayVirtualInterfaceIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_local_gateway_virtual_interfaces.html} for full documentation.
+}
 \keyword{internal}

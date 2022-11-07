@@ -12,34 +12,9 @@ trigger.}
 
 \item{triggers}{[required] The JSON block of configuration information for each trigger.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  configurationId = "string"
-)
-}
-}
 \description{
-Replaces all triggers for a repository. Used to create or delete
-triggers.
-}
-\section{Request syntax}{
-\preformatted{svc$put_repository_triggers(
-  repositoryName = "string",
-  triggers = list(
-    list(
-      name = "string",
-      destinationArn = "string",
-      customData = "string",
-      branches = list(
-        "string"
-      ),
-      events = list(
-        "all"|"updateReference"|"createReference"|"deleteReference"
-      )
-    )
-  )
-)
-}
-}
+Replaces all triggers for a repository. Used to create or delete triggers.
 
+See \url{https://paws-r.github.io/docs/codecommit/put_repository_triggers.html} for full documentation.
+}
 \keyword{internal}

@@ -12,18 +12,9 @@ elasticache_delete_cache_parameter_group(CacheParameterGroupName)
 The specified cache security group must not be associated with any
 clusters.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified cache parameter group. You cannot delete a cache
-parameter group if it is associated with any cache clusters.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_cache_parameter_group(
-  CacheParameterGroupName = "string"
-)
-}
-}
+Deletes the specified cache parameter group. You cannot delete a cache parameter group if it is associated with any cache clusters. You cannot delete the default cache parameter groups in your account.
 
+See \url{https://paws-r.github.io/docs/elasticache/delete_cache_parameter_group.html} for full documentation.
+}
 \keyword{internal}

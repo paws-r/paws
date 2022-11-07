@@ -4,36 +4,20 @@
 \alias{quicksight_delete_dashboard}
 \title{Deletes a dashboard}
 \usage{
-quicksight_delete_dashboard(AwsAccountId, DashboardId, VersionNumber)
+quicksight_delete_dashboard(AwsAccountId, DashboardId, VersionNumber = NULL)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you're
-deleting.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the dashboard
+that you're deleting.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 
 \item{VersionNumber}{The version number of the dashboard. If the version number property is
 provided, only the specified version of the dashboard is deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = 123,
-  Arn = "string",
-  DashboardId = "string",
-  RequestId = "string"
-)
-}
-}
 \description{
 Deletes a dashboard.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_dashboard(
-  AwsAccountId = "string",
-  DashboardId = "string",
-  VersionNumber = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_dashboard.html} for full documentation.
+}
 \keyword{internal}

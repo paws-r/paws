@@ -2,7 +2,7 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_delete_apps_list}
 \alias{fms_delete_apps_list}
-\title{Permanently deletes an AWS Firewall Manager applications list}
+\title{Permanently deletes an Firewall Manager applications list}
 \usage{
 fms_delete_apps_list(ListId)
 }
@@ -12,17 +12,9 @@ retrieve this ID from \code{\link[=fms_put_apps_list]{put_apps_list}},
 \code{\link[=fms_list_apps_lists]{list_apps_lists}}, and
 \code{\link[=fms_get_apps_list]{get_apps_list}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Permanently deletes an AWS Firewall Manager applications list.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_apps_list(
-  ListId = "string"
-)
-}
-}
+Permanently deletes an Firewall Manager applications list.
 
+See \url{https://paws-r.github.io/docs/fms/delete_apps_list.html} for full documentation.
+}
 \keyword{internal}

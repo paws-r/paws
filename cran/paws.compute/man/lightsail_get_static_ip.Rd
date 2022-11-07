@@ -2,42 +2,16 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_get_static_ip}
 \alias{lightsail_get_static_ip}
-\title{Returns information about a specific static IP}
+\title{Returns information about an Amazon Lightsail static IP}
 \usage{
 lightsail_get_static_ip(staticIpName)
 }
 \arguments{
 \item{staticIpName}{[required] The name of the static IP in Lightsail.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  staticIp = list(
-    name = "string",
-    arn = "string",
-    supportCode = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    location = list(
-      availabilityZone = "string",
-      regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-    ),
-    resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-    ipAddress = "string",
-    attachedTo = "string",
-    isAttached = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Returns information about a specific static IP.
-}
-\section{Request syntax}{
-\preformatted{svc$get_static_ip(
-  staticIpName = "string"
-)
-}
-}
+Returns information about an Amazon Lightsail static IP.
 
+See \url{https://paws-r.github.io/docs/lightsail/get_static_ip.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{ec2_describe_network_interface_attribute}
 \title{Describes a network interface attribute}
 \usage{
-ec2_describe_network_interface_attribute(Attribute, DryRun,
-  NetworkInterfaceId)
+ec2_describe_network_interface_attribute(
+  Attribute = NULL,
+  DryRun = NULL,
+  NetworkInterfaceId
+)
 }
 \arguments{
 \item{Attribute}{The attribute of the network interface. This parameter is required.}
@@ -17,79 +20,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attachment = list(
-    AttachTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    AttachmentId = "string",
-    DeleteOnTermination = TRUE|FALSE,
-    DeviceIndex = 123,
-    NetworkCardIndex = 123,
-    InstanceId = "string",
-    InstanceOwnerId = "string",
-    Status = "attaching"|"attached"|"detaching"|"detached"
-  ),
-  Description = list(
-    Value = "string"
-  ),
-  Groups = list(
-    list(
-      GroupName = "string",
-      GroupId = "string"
-    )
-  ),
-  NetworkInterfaceId = "string",
-  SourceDestCheck = list(
-    Value = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Describes a network interface attribute. You can specify only one
-attribute at a time.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_network_interface_attribute(
-  Attribute = "description"|"groupSet"|"sourceDestCheck"|"attachment",
-  DryRun = TRUE|FALSE,
-  NetworkInterfaceId = "string"
-)
-}
-}
+Describes a network interface attribute. You can specify only one attribute at a time.
 
-\examples{
-\dontrun{
-# This example describes the attachment attribute of the specified network
-# interface.
-svc$describe_network_interface_attribute(
-  Attribute = "attachment",
-  NetworkInterfaceId = "eni-686ea200"
-)
-
-# This example describes the description attribute of the specified
-# network interface.
-svc$describe_network_interface_attribute(
-  Attribute = "description",
-  NetworkInterfaceId = "eni-686ea200"
-)
-
-# This example describes the groupSet attribute of the specified network
-# interface.
-svc$describe_network_interface_attribute(
-  Attribute = "groupSet",
-  NetworkInterfaceId = "eni-686ea200"
-)
-
-# This example describes the sourceDestCheck attribute of the specified
-# network interface.
-svc$describe_network_interface_attribute(
-  Attribute = "sourceDestCheck",
-  NetworkInterfaceId = "eni-686ea200"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_network_interface_attribute.html} for full documentation.
 }
 \keyword{internal}

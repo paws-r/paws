@@ -4,8 +4,13 @@
 \alias{rds_describe_db_cluster_backtracks}
 \title{Returns information about backtracks for a DB cluster}
 \usage{
-rds_describe_db_cluster_backtracks(DBClusterIdentifier,
-  BacktrackIdentifier, Filters, MaxRecords, Marker)
+rds_describe_db_cluster_backtracks(
+  DBClusterIdentifier,
+  BacktrackIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the DB cluster to be described. This
@@ -64,52 +69,9 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBClusterBacktracks = list(
-    list(
-      DBClusterIdentifier = "string",
-      BacktrackIdentifier = "string",
-      BacktrackTo = as.POSIXct(
-        "2015-01-01"
-      ),
-      BacktrackedFrom = as.POSIXct(
-        "2015-01-01"
-      ),
-      BacktrackRequestCreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns information about backtracks for a DB cluster.
 
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora MySQL DB clusters.
+See \url{https://paws-r.github.io/docs/rds/describe_db_cluster_backtracks.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_cluster_backtracks(
-  DBClusterIdentifier = "string",
-  BacktrackIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

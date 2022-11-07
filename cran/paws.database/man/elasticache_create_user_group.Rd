@@ -4,7 +4,7 @@
 \alias{elasticache_create_user_group}
 \title{For Redis engine version 6}
 \usage{
-elasticache_create_user_group(UserGroupId, Engine, UserIds)
+elasticache_create_user_group(UserGroupId, Engine, UserIds = NULL, Tags = NULL)
 }
 \arguments{
 \item{UserGroupId}{[required] The ID of the user group.}
@@ -12,43 +12,13 @@ elasticache_create_user_group(UserGroupId, Engine, UserIds)
 \item{Engine}{[required] The current supported value is Redis.}
 
 \item{UserIds}{The list of user IDs that belong to the user group.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UserGroupId = "string",
-  Status = "string",
-  Engine = "string",
-  UserIds = list(
-    "string"
-  ),
-  PendingChanges = list(
-    UserIdsToRemove = list(
-      "string"
-    ),
-    UserIdsToAdd = list(
-      "string"
-    )
-  ),
-  ReplicationGroups = list(
-    "string"
-  ),
-  ARN = "string"
-)
-}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-For Redis engine version 6.x onwards: Creates a Redis user group. For
-more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}
-}
-\section{Request syntax}{
-\preformatted{svc$create_user_group(
-  UserGroupId = "string",
-  Engine = "string",
-  UserIds = list(
-    "string"
-  )
-)
-}
-}
+For Redis engine version 6.0 onwards: Creates a Redis user group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}
 
+See \url{https://paws-r.github.io/docs/elasticache/create_user_group.html} for full documentation.
+}
 \keyword{internal}

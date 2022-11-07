@@ -4,7 +4,7 @@
 \alias{iam_update_role}
 \title{Updates the description or maximum session duration setting of a role}
 \usage{
-iam_update_role(RoleName, Description, MaxSessionDuration)
+iam_update_role(RoleName, Description = NULL, MaxSessionDuration = NULL)
 }
 \arguments{
 \item{RoleName}{[required] The name of the role that you want to modify.}
@@ -13,10 +13,10 @@ iam_update_role(RoleName, Description, MaxSessionDuration)
 
 \item{MaxSessionDuration}{The maximum session duration (in seconds) that you want to set for the
 specified role. If you do not specify a value for this setting, the
-default maximum of one hour is applied. This setting can have a value
-from 1 hour to 12 hours.
+default value of one hour is applied. This setting can have a value from
+1 hour to 12 hours.
 
-Anyone who assumes the role from the AWS CLI or API can use the
+Anyone who assumes the role from the CLI or API can use the
 \code{DurationSeconds} API parameter or the \code{duration-seconds} CLI parameter
 to request a longer session. The \code{MaxSessionDuration} setting determines
 the maximum duration that can be requested using the \code{DurationSeconds}
@@ -24,22 +24,12 @@ parameter. If users don't specify a value for the \code{DurationSeconds}
 parameter, their security credentials are valid for one hour by default.
 This applies when you use the \verb{AssumeRole*} API operations or the
 \verb{assume-role*} CLI operations but does not apply when you use those
-operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
+operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM roles}
 in the \emph{IAM User Guide}.}
-}
-\value{
-An empty list.
 }
 \description{
 Updates the description or maximum session duration setting of a role.
-}
-\section{Request syntax}{
-\preformatted{svc$update_role(
-  RoleName = "string",
-  Description = "string",
-  MaxSessionDuration = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/iam/update_role.html} for full documentation.
+}
 \keyword{internal}

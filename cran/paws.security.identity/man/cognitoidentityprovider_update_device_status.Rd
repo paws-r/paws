@@ -4,29 +4,23 @@
 \alias{cognitoidentityprovider_update_device_status}
 \title{Updates the device status}
 \usage{
-cognitoidentityprovider_update_device_status(AccessToken, DeviceKey,
-  DeviceRememberedStatus)
+cognitoidentityprovider_update_device_status(
+  AccessToken,
+  DeviceKey,
+  DeviceRememberedStatus = NULL
+)
 }
 \arguments{
-\item{AccessToken}{[required] The access token.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose device
+status you want to update.}
 
 \item{DeviceKey}{[required] The device key.}
 
 \item{DeviceRememberedStatus}{The status of whether a device is remembered.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the device status.
-}
-\section{Request syntax}{
-\preformatted{svc$update_device_status(
-  AccessToken = "string",
-  DeviceKey = "string",
-  DeviceRememberedStatus = "remembered"|"not_remembered"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_device_status.html} for full documentation.
+}
 \keyword{internal}

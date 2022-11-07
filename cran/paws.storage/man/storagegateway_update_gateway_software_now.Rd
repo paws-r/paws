@@ -9,44 +9,9 @@ storagegateway_update_gateway_software_now(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Updates the gateway virtual machine (VM) software. The request
-immediately triggers the software update.
+Updates the gateway virtual machine (VM) software. The request immediately triggers the software update.
 
-When you make this request, you get a \verb{200 OK} success response
-immediately. However, it might take some time for the update to
-complete. You can call
-\code{\link[=storagegateway_describe_gateway_information]{describe_gateway_information}}
-to verify the gateway is in the \code{STATE_RUNNING} state.
-
-A software update forces a system restart of your gateway. You can
-minimize the chance of any disruption to your applications by increasing
-your iSCSI Initiators' timeouts. For more information about increasing
-iSCSI Initiator timeouts for Windows and Linux, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/#CustomizeWindowsiSCSISettings}{Customizing your Windows iSCSI settings}
-and \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/#CustomizeLinuxiSCSISettings}{Customizing your Linux iSCSI settings},
-respectively.
-}
-\section{Request syntax}{
-\preformatted{svc$update_gateway_software_now(
-  GatewayARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Updates the gateway virtual machine (VM) software. The request
-# immediately triggers the software update.
-svc$update_gateway_software_now(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/update_gateway_software_now.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{workdocs_create_notification_subscription}
 \title{Configure Amazon WorkDocs to use Amazon SNS notifications}
 \usage{
-workdocs_create_notification_subscription(OrganizationId, Endpoint,
-  Protocol, SubscriptionType)
+workdocs_create_notification_subscription(
+  OrganizationId,
+  Endpoint,
+  Protocol,
+  SubscriptionType
+)
 }
 \arguments{
 \item{OrganizationId}{[required] The ID of the organization.}
@@ -18,31 +22,9 @@ JSON-encoded messages using HTTPS POST.}
 
 \item{SubscriptionType}{[required] The notification type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Subscription = list(
-    SubscriptionId = "string",
-    EndPoint = "string",
-    Protocol = "HTTPS"
-  )
-)
-}
-}
 \description{
-Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
-receives a confirmation message, and must confirm the subscription.
+Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint receives a confirmation message, and must confirm the subscription.
 
-For more information, see \href{https://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html}{Subscribe to Notifications}
-in the \emph{Amazon WorkDocs Developer Guide}.
+See \url{https://paws-r.github.io/docs/workdocs/create_notification_subscription.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_notification_subscription(
-  OrganizationId = "string",
-  Endpoint = "string",
-  Protocol = "HTTPS",
-  SubscriptionType = "ALL"
-)
-}
-}
-
 \keyword{internal}

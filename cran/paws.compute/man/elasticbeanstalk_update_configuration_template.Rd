@@ -5,8 +5,13 @@
 \title{Updates the specified configuration template to have the specified
 properties or configuration option values}
 \usage{
-elasticbeanstalk_update_configuration_template(ApplicationName,
-  TemplateName, Description, OptionSettings, OptionsToRemove)
+elasticbeanstalk_update_configuration_template(
+  ApplicationName,
+  TemplateName,
+  Description = NULL,
+  OptionSettings = NULL,
+  OptionsToRemove = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application associated with the configuration template
@@ -31,85 +36,9 @@ option value.}
 
 Constraint: You can remove only \code{UserDefined} configuration options.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  ApplicationName = "string",
-  TemplateName = "string",
-  Description = "string",
-  EnvironmentName = "string",
-  DeploymentStatus = "deployed"|"pending"|"failed",
-  DateCreated = as.POSIXct(
-    "2015-01-01"
-  ),
-  DateUpdated = as.POSIXct(
-    "2015-01-01"
-  ),
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Updates the specified configuration template to have the specified
-properties or configuration option values.
+Updates the specified configuration template to have the specified properties or configuration option values.
 
-If a property (for example, \code{ApplicationName}) is not provided, its
-value remains unchanged. To clear such properties, specify an empty
-string.
-
-Related Topics
-\itemize{
-\item \code{\link[=elasticbeanstalk_describe_configuration_options]{describe_configuration_options}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$update_configuration_template(
-  ApplicationName = "string",
-  TemplateName = "string",
-  Description = "string",
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  ),
-  OptionsToRemove = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation removes the configured CloudWatch custom health
-# metrics configuration ConfigDocument from a saved configuration template
-# named my-template:
-svc$update_configuration_template(
-  ApplicationName = "my-app",
-  OptionsToRemove = list(
-    list(
-      Namespace = "aws:elasticbeanstalk:healthreporting:system",
-      OptionName = "ConfigDocument"
-    )
-  ),
-  TemplateName = "my-template"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_configuration_template.html} for full documentation.
 }
 \keyword{internal}

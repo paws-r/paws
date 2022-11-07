@@ -4,74 +4,99 @@
 \alias{ssm_describe_available_patches}
 \title{Lists all patches eligible to be included in a patch baseline}
 \usage{
-ssm_describe_available_patches(Filters, MaxResults, NextToken)
+ssm_describe_available_patches(
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{Filters}{Filters used to scope down the returned patches.}
+\item{Filters}{Each element in the array is a structure containing a key-value pair.
+
+\strong{Windows Server}
+
+Supported keys for Windows Server managed node patches include the
+following:
+\itemize{
+\item \strong{\code{PATCH_SET}}
+
+Sample values: \code{OS} | \code{APPLICATION}
+\item \strong{\code{PRODUCT}}
+
+Sample values: \code{WindowsServer2012} | \verb{Office 2010} |
+\code{MicrosoftDefenderAntivirus}
+\item \strong{\code{PRODUCT_FAMILY}}
+
+Sample values: \code{Windows} | \code{Office}
+\item \strong{\code{MSRC_SEVERITY}}
+
+Sample values: \code{ServicePacks} | \code{Important} | \code{Moderate}
+\item \strong{\code{CLASSIFICATION}}
+
+Sample values: \code{ServicePacks} | \code{SecurityUpdates} |
+\code{DefinitionUpdates}
+\item \strong{\code{PATCH_ID}}
+
+Sample values: \code{KB123456} | \code{KB4516046}
+}
+
+\strong{Linux}
+
+When specifying filters for Linux patches, you must specify a key-pair
+for \code{PRODUCT}. For example, using the Command Line Interface (CLI), the
+following command fails:
+
+\verb{aws ssm describe-available-patches --filters Key=CVE_ID,Values=CVE-2018-3615}
+
+However, the following command succeeds:
+
+\verb{aws ssm describe-available-patches --filters Key=PRODUCT,Values=AmazonLinux2018.03 Key=CVE_ID,Values=CVE-2018-3615}
+
+Supported keys for Linux managed node patches include the following:
+\itemize{
+\item \strong{\code{PRODUCT}}
+
+Sample values: \code{AmazonLinux2018.03} | \code{AmazonLinux2.0}
+\item \strong{\code{NAME}}
+
+Sample values: \code{kernel-headers} | \code{samba-python} | \code{php}
+\item \strong{\code{SEVERITY}}
+
+Sample values: \code{Critical} | \code{Important} | \code{Medium} | \code{Low}
+\item \strong{\code{EPOCH}}
+
+Sample values: \code{0} | \code{1}
+\item \strong{\code{VERSION}}
+
+Sample values: \verb{78.6.1} | \verb{4.10.16}
+\item \strong{\code{RELEASE}}
+
+Sample values: \verb{9.56.amzn1} | \verb{1.amzn2}
+\item \strong{\code{ARCH}}
+
+Sample values: \code{i686} | \code{x86_64}
+\item \strong{\code{REPOSITORY}}
+
+Sample values: \code{Core} | \code{Updates}
+\item \strong{\code{ADVISORY_ID}}
+
+Sample values: \code{ALAS-2018-1058} | \code{ALAS2-2021-1594}
+\item \strong{\code{CVE_ID}}
+
+Sample values: \code{CVE-2018-3615} | \code{CVE-2020-1472}
+\item \strong{\code{BUGZILLA_ID}}
+
+Sample values: \code{1463241}
+}}
 
 \item{MaxResults}{The maximum number of patches to return (per page).}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Patches = list(
-    list(
-      Id = "string",
-      ReleaseDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Title = "string",
-      Description = "string",
-      ContentUrl = "string",
-      Vendor = "string",
-      ProductFamily = "string",
-      Product = "string",
-      Classification = "string",
-      MsrcSeverity = "string",
-      KbNumber = "string",
-      MsrcNumber = "string",
-      Language = "string",
-      AdvisoryIds = list(
-        "string"
-      ),
-      BugzillaIds = list(
-        "string"
-      ),
-      CVEIds = list(
-        "string"
-      ),
-      Name = "string",
-      Epoch = 123,
-      Version = "string",
-      Release = "string",
-      Arch = "string",
-      Severity = "string",
-      Repository = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists all patches eligible to be included in a patch baseline.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_available_patches(
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/describe_available_patches.html} for full documentation.
+}
 \keyword{internal}

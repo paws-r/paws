@@ -5,8 +5,11 @@
 \title{Used to control whether an individual security standard control is
 enabled or disabled}
 \usage{
-securityhub_update_standards_control(StandardsControlArn, ControlStatus,
-  DisabledReason)
+securityhub_update_standards_control(
+  StandardsControlArn,
+  ControlStatus = NULL,
+  DisabledReason = NULL
+)
 }
 \arguments{
 \item{StandardsControlArn}{[required] The ARN of the security standard control to enable or disable.}
@@ -16,20 +19,9 @@ securityhub_update_standards_control(StandardsControlArn, ControlStatus,
 \item{DisabledReason}{A description of the reason why you are disabling a security standard
 control. If you are disabling a control, then this is required.}
 }
-\value{
-An empty list.
-}
 \description{
-Used to control whether an individual security standard control is
-enabled or disabled.
-}
-\section{Request syntax}{
-\preformatted{svc$update_standards_control(
-  StandardsControlArn = "string",
-  ControlStatus = "ENABLED"|"DISABLED",
-  DisabledReason = "string"
-)
-}
-}
+Used to control whether an individual security standard control is enabled or disabled.
 
+See \url{https://paws-r.github.io/docs/securityhub/update_standards_control.html} for full documentation.
+}
 \keyword{internal}

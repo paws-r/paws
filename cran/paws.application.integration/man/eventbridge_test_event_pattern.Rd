@@ -10,29 +10,22 @@ eventbridge_test_event_pattern(EventPattern, Event)
 \item{EventPattern}{[required] The event pattern. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html}{Events and Event Patterns}
 in the \emph{Amazon EventBridge User Guide}.}
 
-\item{Event}{[required] The event, in JSON format, to test against the event pattern.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Result = TRUE|FALSE
-)
-}
+\item{Event}{[required] The event, in JSON format, to test against the event pattern. The JSON
+must follow the format specified in \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html}{Amazon Web Services Events},
+and the following fields are mandatory:
+\itemize{
+\item \code{id}
+\item \code{account}
+\item \code{source}
+\item \code{time}
+\item \code{region}
+\item \code{resources}
+\item \code{detail-type}
+}}
 }
 \description{
 Tests whether the specified event pattern matches the provided event.
 
-Most services in AWS treat : or / as the same character in Amazon
-Resource Names (ARNs). However, EventBridge uses an exact match in event
-patterns and rules. Be sure to use the correct ARN characters when
-creating event patterns so that they match the ARN syntax in the event
-you want to match.
+See \url{https://paws-r.github.io/docs/eventbridge/test_event_pattern.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$test_event_pattern(
-  EventPattern = "string",
-  Event = "string"
-)
-}
-}
-
 \keyword{internal}

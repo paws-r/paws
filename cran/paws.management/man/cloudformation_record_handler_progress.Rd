@@ -4,9 +4,15 @@
 \alias{cloudformation_record_handler_progress}
 \title{Reports progress of a resource handler to CloudFormation}
 \usage{
-cloudformation_record_handler_progress(BearerToken, OperationStatus,
-  CurrentOperationStatus, StatusMessage, ErrorCode, ResourceModel,
-  ClientRequestToken)
+cloudformation_record_handler_progress(
+  BearerToken,
+  OperationStatus,
+  CurrentOperationStatus = NULL,
+  StatusMessage = NULL,
+  ErrorCode = NULL,
+  ResourceModel = NULL,
+  ClientRequestToken = NULL
+)
 }
 \arguments{
 \item{BearerToken}{[required] Reserved for use by the \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html}{CloudFormation CLI}.}
@@ -23,26 +29,9 @@ cloudformation_record_handler_progress(BearerToken, OperationStatus,
 
 \item{ClientRequestToken}{Reserved for use by the \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html}{CloudFormation CLI}.}
 }
-\value{
-An empty list.
-}
 \description{
 Reports progress of a resource handler to CloudFormation.
 
-Reserved for use by the \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html}{CloudFormation CLI}.
-Do not use this API in your code.
+See \url{https://paws-r.github.io/docs/cloudformation/record_handler_progress.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$record_handler_progress(
-  BearerToken = "string",
-  OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED",
-  CurrentOperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED",
-  StatusMessage = "string",
-  ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"NetworkFailure"|"InternalFailure",
-  ResourceModel = "string",
-  ClientRequestToken = "string"
-)
-}
-}
-
 \keyword{internal}

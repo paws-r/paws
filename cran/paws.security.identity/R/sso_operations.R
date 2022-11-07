@@ -7,40 +7,17 @@ NULL
 #' assigned to the user
 #'
 #' @description
-#' Returns the STS short-term credentials for a given role name that is
-#' assigned to the user.
+#' Returns the STS short-term credentials for a given role name that is assigned to the user.
 #'
-#' @usage
-#' sso_get_role_credentials(roleName, accountId, accessToken)
+#' See [https://paws-r.github.io/docs/sso/get_role_credentials.html](https://paws-r.github.io/docs/sso/get_role_credentials.html) for full documentation.
 #'
 #' @param roleName &#91;required&#93; The friendly name of the role that is assigned to the user.
-#' @param accountId &#91;required&#93; The identifier for the AWS account that is assigned to the user.
+#' @param accountId &#91;required&#93; The identifier for the Amazon Web Services account that is assigned to
+#' the user.
 #' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
 #' see
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *AWS SSO OIDC API Reference Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   roleCredentials = list(
-#'     accessKeyId = "string",
-#'     secretAccessKey = "string",
-#'     sessionToken = "string",
-#'     expiration = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_role_credentials(
-#'   roleName = "string",
-#'   accountId = "string",
-#'   accessToken = "string"
-#' )
-#' ```
+#' in the *Amazon Web Services SSO OIDC API Reference Guide*.
 #'
 #' @keywords internal
 #'
@@ -62,13 +39,13 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
 }
 .sso$operations$get_role_credentials <- sso_get_role_credentials
 
-#' Lists all roles that are assigned to the user for a given AWS account
+#' Lists all roles that are assigned to the user for a given Amazon Web
+#' Services account
 #'
 #' @description
-#' Lists all roles that are assigned to the user for a given AWS account.
+#' Lists all roles that are assigned to the user for a given Amazon Web Services account.
 #'
-#' @usage
-#' sso_list_account_roles(nextToken, maxResults, accessToken, accountId)
+#' See [https://paws-r.github.io/docs/sso/list_account_roles.html](https://paws-r.github.io/docs/sso/list_account_roles.html) for full documentation.
 #'
 #' @param nextToken The page token from the previous response output when you request
 #' subsequent pages.
@@ -76,32 +53,9 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
 #' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
 #' see
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *AWS SSO OIDC API Reference Guide*.
-#' @param accountId &#91;required&#93; The identifier for the AWS account that is assigned to the user.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   roleList = list(
-#'     list(
-#'       roleName = "string",
-#'       accountId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_account_roles(
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   accessToken = "string",
-#'   accountId = "string"
-#' )
-#' ```
+#' in the *Amazon Web Services SSO OIDC API Reference Guide*.
+#' @param accountId &#91;required&#93; The identifier for the Amazon Web Services account that is assigned to
+#' the user.
 #'
 #' @keywords internal
 #'
@@ -123,18 +77,12 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
 }
 .sso$operations$list_account_roles <- sso_list_account_roles
 
-#' Lists all AWS accounts assigned to the user
+#' Lists all Amazon Web Services accounts assigned to the user
 #'
 #' @description
-#' Lists all AWS accounts assigned to the user. These AWS accounts are
-#' assigned by the administrator of the account. For more information, see
-#' [Assign User
-#' Access](https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers)
-#' in the *AWS SSO User Guide*. This operation returns a paginated
-#' response.
+#' Lists all Amazon Web Services accounts assigned to the user. These Amazon Web Services accounts are assigned by the administrator of the account. For more information, see [Assign User Access](https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers) in the *Amazon Web Services SSO User Guide*. This operation returns a paginated response.
 #'
-#' @usage
-#' sso_list_accounts(nextToken, maxResults, accessToken)
+#' See [https://paws-r.github.io/docs/sso/list_accounts.html](https://paws-r.github.io/docs/sso/list_accounts.html) for full documentation.
 #'
 #' @param nextToken (Optional) When requesting subsequent pages, this is the page token from
 #' the previous response output.
@@ -142,31 +90,7 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
 #' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
 #' see
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *AWS SSO OIDC API Reference Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   accountList = list(
-#'     list(
-#'       accountId = "string",
-#'       accountName = "string",
-#'       emailAddress = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_accounts(
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   accessToken = "string"
-#' )
-#' ```
+#' in the *Amazon Web Services SSO OIDC API Reference Guide*.
 #'
 #' @keywords internal
 #'
@@ -188,30 +112,19 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
 }
 .sso$operations$list_accounts <- sso_list_accounts
 
-#' Removes the client- and server-side session that is associated with the
-#' user
+#' Removes the locally stored SSO tokens from the client-side cache and
+#' sends an API call to the Amazon Web Services SSO service to invalidate
+#' the corresponding server-side Amazon Web Services SSO sign in session
 #'
 #' @description
-#' Removes the client- and server-side session that is associated with the
-#' user.
+#' Removes the locally stored SSO tokens from the client-side cache and sends an API call to the Amazon Web Services SSO service to invalidate the corresponding server-side Amazon Web Services SSO sign in session.
 #'
-#' @usage
-#' sso_logout(accessToken)
+#' See [https://paws-r.github.io/docs/sso/logout.html](https://paws-r.github.io/docs/sso/logout.html) for full documentation.
 #'
 #' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
 #' see
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *AWS SSO OIDC API Reference Guide*.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$logout(
-#'   accessToken = "string"
-#' )
-#' ```
+#' in the *Amazon Web Services SSO OIDC API Reference Guide*.
 #'
 #' @keywords internal
 #'

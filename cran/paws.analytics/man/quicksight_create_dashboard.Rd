@@ -4,12 +4,22 @@
 \alias{quicksight_create_dashboard}
 \title{Creates a dashboard from a template}
 \usage{
-quicksight_create_dashboard(AwsAccountId, DashboardId, Name, Parameters,
-  Permissions, SourceEntity, Tags, VersionDescription,
-  DashboardPublishOptions, ThemeArn)
+quicksight_create_dashboard(
+  AwsAccountId,
+  DashboardId,
+  Name,
+  Parameters = NULL,
+  Permissions = NULL,
+  SourceEntity,
+  Tags = NULL,
+  VersionDescription = NULL,
+  DashboardPublishOptions = NULL,
+  ThemeArn = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account where you want to create the dashboard.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account where you want to create the
+dashboard.}
 
 \item{DashboardId}{[required] The ID for the dashboard, also added to the IAM policy.}
 
@@ -32,8 +42,8 @@ source. You can only create a dashboard from a template, so you use a
 analysis, first convert the analysis to a template by using the
 \code{\link[=quicksight_create_template]{create_template}} API operation. For
 \code{SourceTemplate}, specify the Amazon Resource Name (ARN) of the source
-template. The \code{SourceTemplate}ARN can contain any AWS Account and any
-QuickSight-supported AWS Region.
+template. The \code{SourceTemplate}ARN can contain any Amazon Web Services
+account and any Amazon QuickSight-supported Amazon Web Services Region.
 
 Use the \code{DataSetReferences} entity within \code{SourceTemplate} to list the
 replacement datasets for the placeholders listed in the original. The
@@ -48,9 +58,9 @@ assigned to the dashboard.}
 \itemize{
 \item \code{AvailabilityStatus} for \code{AdHocFilteringOption} - This status can be
 either \code{ENABLED} or \code{DISABLED}. When this is set to \code{DISABLED},
-QuickSight disables the left filter pane on the published dashboard,
-which can be used for ad hoc (one-time) filtering. This option is
-\code{ENABLED} by default.
+Amazon QuickSight disables the left filter pane on the published
+dashboard, which can be used for ad hoc (one-time) filtering. This
+option is \code{ENABLED} by default.
 \item \code{AvailabilityStatus} for \code{ExportToCSVOption} - This status can be
 either \code{ENABLED} or \code{DISABLED}. The visual option to export data to
 .CSV format isn't enabled when this is set to \code{DISABLED}. This
@@ -63,110 +73,11 @@ by default.
 \item{ThemeArn}{The Amazon Resource Name (ARN) of the theme that is being used for this
 dashboard. If you add a value for this field, it overrides the value
 that is used in the source entity. The theme ARN must exist in the same
-AWS account where you create the dashboard.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  VersionArn = "string",
-  DashboardId = "string",
-  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  Status = 123,
-  RequestId = "string"
-)
-}
+Amazon Web Services account where you create the dashboard.}
 }
 \description{
-Creates a dashboard from a template. To first create a template, see the
-\code{\link[=quicksight_create_template]{create_template}} API operation.
+Creates a dashboard from a template. To first create a template, see the \code{\link[=quicksight_create_template]{create_template}} API operation.
 
-A dashboard is an entity in QuickSight that identifies QuickSight
-reports, created from analyses. You can share QuickSight dashboards.
-With the right permissions, you can create scheduled email reports from
-them. If you have the correct permissions, you can create a dashboard
-from a template that exists in a different AWS account.
+See \url{https://paws-r.github.io/docs/quicksight/create_dashboard.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_dashboard(
-  AwsAccountId = "string",
-  DashboardId = "string",
-  Name = "string",
-  Parameters = list(
-    StringParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          "string"
-        )
-      )
-    ),
-    IntegerParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          123
-        )
-      )
-    ),
-    DecimalParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          123.0
-        )
-      )
-    ),
-    DateTimeParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  SourceEntity = list(
-    SourceTemplate = list(
-      DataSetReferences = list(
-        list(
-          DataSetPlaceholder = "string",
-          DataSetArn = "string"
-        )
-      ),
-      Arn = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  VersionDescription = "string",
-  DashboardPublishOptions = list(
-    AdHocFilteringOption = list(
-      AvailabilityStatus = "ENABLED"|"DISABLED"
-    ),
-    ExportToCSVOption = list(
-      AvailabilityStatus = "ENABLED"|"DISABLED"
-    ),
-    SheetControlsOption = list(
-      VisibilityState = "EXPANDED"|"COLLAPSED"
-    )
-  ),
-  ThemeArn = "string"
-)
-}
-}
-
 \keyword{internal}

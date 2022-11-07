@@ -2,19 +2,34 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_start_automation_execution}
 \alias{ssm_start_automation_execution}
-\title{Initiates execution of an Automation document}
+\title{Initiates execution of an Automation runbook}
 \usage{
-ssm_start_automation_execution(DocumentName, DocumentVersion,
-  Parameters, ClientToken, Mode, TargetParameterName, Targets, TargetMaps,
-  MaxConcurrency, MaxErrors, TargetLocations, Tags)
+ssm_start_automation_execution(
+  DocumentName,
+  DocumentVersion = NULL,
+  Parameters = NULL,
+  ClientToken = NULL,
+  Mode = NULL,
+  TargetParameterName = NULL,
+  Targets = NULL,
+  TargetMaps = NULL,
+  MaxConcurrency = NULL,
+  MaxErrors = NULL,
+  TargetLocations = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{DocumentName}{[required] The name of the Automation document to use for this execution.}
+\item{DocumentName}{[required] The name of the SSM document to run. This can be a public document or a
+custom document. To run a shared document belonging to another account,
+specify the document ARN. For more information about how to use shared
+documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html}{Using shared SSM documents}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{DocumentVersion}{The version of the Automation document to use for this execution.}
+\item{DocumentVersion}{The version of the Automation runbook to use for this execution.}
 
 \item{Parameters}{A key-value map of execution parameters, which match the declared
-parameters in the Automation document.}
+parameters in the Automation runbook.}
 
 \item{ClientToken}{User-provided idempotency token. The token must be unique, is case
 insensitive, enforces the UUID format, and can't be reused.}
@@ -29,11 +44,11 @@ rate-controlled execution. Required if you specify targets.}
 TargetParameterName.}
 
 \item{TargetMaps}{A key-value mapping of document parameters to target resources. Both
-Targets and TargetMaps cannot be specified together.}
+Targets and TargetMaps can't be specified together.}
 
 \item{MaxConcurrency}{The maximum number of targets allowed to run this task in parallel. You
 can specify a number, such as 10, or a percentage, such as 10\%. The
-default value is 10.}
+default value is \code{10}.}
 
 \item{MaxErrors}{The number of errors that are allowed before the system stops running
 the automation on additional targets. You can specify either an absolute
@@ -51,85 +66,30 @@ as well. If you need to ensure that there won't be more than max-errors
 failed executions, set max-concurrency to 1 so the executions proceed
 one at a time.}
 
-\item{TargetLocations}{A location is a combination of AWS Regions and/or AWS accounts where you
-want to run the Automation. Use this action to start an Automation in
-multiple Regions and multiple accounts. For more information, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html}{Running Automation workflows in multiple AWS Regions and accounts}
-in the \emph{AWS Systems Manager User Guide}.}
+\item{TargetLocations}{A location is a combination of Amazon Web Services Regions and/or Amazon
+Web Services accounts where you want to run the automation. Use this
+operation to start an automation in multiple Amazon Web Services Regions
+and multiple Amazon Web Services accounts. For more information, see
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html}{Running Automation workflows in multiple Amazon Web Services Regions and Amazon Web Services accounts}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{Tags}{Optional metadata that you assign to a resource. You can specify a
 maximum of five tags for an automation. Tags enable you to categorize a
 resource in different ways, such as by purpose, owner, or environment.
 For example, you might want to tag an automation to identify an
 environment or operating system. In this case, you could specify the
-following key name/value pairs:
+following key-value pairs:
 \itemize{
 \item \verb{Key=environment,Value=test}
 \item \verb{Key=OS,Value=Windows}
 }
 
-To add tags to an existing patch baseline, use the
-\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AutomationExecutionId = "string"
-)
-}
+To add tags to an existing automation, use the
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} operation.}
 }
 \description{
-Initiates execution of an Automation document.
-}
-\section{Request syntax}{
-\preformatted{svc$start_automation_execution(
-  DocumentName = "string",
-  DocumentVersion = "string",
-  Parameters = list(
-    list(
-      "string"
-    )
-  ),
-  ClientToken = "string",
-  Mode = "Auto"|"Interactive",
-  TargetParameterName = "string",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  TargetMaps = list(
-    list(
-      list(
-        "string"
-      )
-    )
-  ),
-  MaxConcurrency = "string",
-  MaxErrors = "string",
-  TargetLocations = list(
-    list(
-      Accounts = list(
-        "string"
-      ),
-      Regions = list(
-        "string"
-      ),
-      TargetLocationMaxConcurrency = "string",
-      TargetLocationMaxErrors = "string",
-      ExecutionRoleName = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Initiates execution of an Automation runbook.
 
+See \url{https://paws-r.github.io/docs/ssm/start_automation_execution.html} for full documentation.
+}
 \keyword{internal}

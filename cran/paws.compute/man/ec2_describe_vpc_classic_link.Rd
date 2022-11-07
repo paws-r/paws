@@ -4,18 +4,18 @@
 \alias{ec2_describe_vpc_classic_link}
 \title{Describes the ClassicLink status of one or more VPCs}
 \usage{
-ec2_describe_vpc_classic_link(Filters, DryRun, VpcIds)
+ec2_describe_vpc_classic_link(Filters = NULL, DryRun = NULL, VpcIds = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{is-classic-link-enabled} - Whether the VPC is enabled for
 ClassicLink (\code{true} | \code{false}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -28,42 +28,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcIds}{One or more VPCs for which you want to describe the ClassicLink status.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Vpcs = list(
-    list(
-      ClassicLinkEnabled = TRUE|FALSE,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      VpcId = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes the ClassicLink status of one or more VPCs.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vpc_classic_link(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  VpcIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_vpc_classic_link.html} for full documentation.
+}
 \keyword{internal}

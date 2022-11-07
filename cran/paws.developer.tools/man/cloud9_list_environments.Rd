@@ -2,9 +2,9 @@
 % Please edit documentation in R/cloud9_operations.R
 \name{cloud9_list_environments}
 \alias{cloud9_list_environments}
-\title{Gets a list of AWS Cloud9 development environment identifiers}
+\title{Gets a list of Cloud9 development environment identifiers}
 \usage{
-cloud9_list_environments(nextToken, maxResults)
+cloud9_list_environments(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{During a previous call, if there are more than 25 items in the list,
@@ -16,31 +16,9 @@ token that is returned, until no more next tokens are returned.}
 
 \item{maxResults}{The maximum number of environments to get identifiers for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  environmentIds = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Gets a list of AWS Cloud9 development environment identifiers.
-}
-\section{Request syntax}{
-\preformatted{svc$list_environments(
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Gets a list of Cloud9 development environment identifiers.
 
-\examples{
-\dontrun{
-# 
-svc$list_environments()
-}
-
+See \url{https://paws-r.github.io/docs/cloud9/list_environments.html} for full documentation.
 }
 \keyword{internal}

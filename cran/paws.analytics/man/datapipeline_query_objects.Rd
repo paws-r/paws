@@ -5,7 +5,13 @@
 \title{Queries the specified pipeline for the names of objects that match the
 specified set of conditions}
 \usage{
-datapipeline_query_objects(pipelineId, query, sphere, marker, limit)
+datapipeline_query_objects(
+  pipelineId,
+  query = NULL,
+  sphere,
+  marker = NULL,
+  limit = NULL
+)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -27,41 +33,9 @@ value from the previous call to retrieve the next set of results.}
 \code{\link[=datapipeline_query_objects]{query_objects}} will return in a single
 call. The default value is 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ids = list(
-    "string"
-  ),
-  marker = "string",
-  hasMoreResults = TRUE|FALSE
-)
-}
-}
 \description{
-Queries the specified pipeline for the names of objects that match the
-specified set of conditions.
-}
-\section{Request syntax}{
-\preformatted{svc$query_objects(
-  pipelineId = "string",
-  query = list(
-    selectors = list(
-      list(
-        fieldName = "string",
-        operator = list(
-          type = "EQ"|"REF_EQ"|"LE"|"GE"|"BETWEEN",
-          values = list(
-            "string"
-          )
-        )
-      )
-    )
-  ),
-  sphere = "string",
-  marker = "string",
-  limit = 123
-)
-}
-}
+Queries the specified pipeline for the names of objects that match the specified set of conditions.
 
+See \url{https://paws-r.github.io/docs/datapipeline/query_objects.html} for full documentation.
+}
 \keyword{internal}

@@ -9,17 +9,9 @@ redshift_delete_snapshot_schedule(ScheduleIdentifier)
 \arguments{
 \item{ScheduleIdentifier}{[required] A unique identifier of the snapshot schedule to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a snapshot schedule.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_snapshot_schedule(
-  ScheduleIdentifier = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/delete_snapshot_schedule.html} for full documentation.
+}
 \keyword{internal}

@@ -2,10 +2,16 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_modify_document_permission}
 \alias{ssm_modify_document_permission}
-\title{Shares a Systems Manager document publicly or privately}
+\title{Shares a Amazon Web Services Systems Manager document (SSM
+document)publicly or privately}
 \usage{
-ssm_modify_document_permission(Name, PermissionType, AccountIdsToAdd,
-  AccountIdsToRemove, SharedDocumentVersion)
+ssm_modify_document_permission(
+  Name,
+  PermissionType,
+  AccountIdsToAdd = NULL,
+  AccountIdsToRemove = NULL,
+  SharedDocumentVersion = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the document that you want to share.}
@@ -13,40 +19,21 @@ ssm_modify_document_permission(Name, PermissionType, AccountIdsToAdd,
 \item{PermissionType}{[required] The permission type for the document. The permission type can be
 \emph{Share}.}
 
-\item{AccountIdsToAdd}{The AWS user accounts that should have access to the document. The
-account IDs can either be a group of account IDs or \emph{All}.}
+\item{AccountIdsToAdd}{The Amazon Web Services user accounts that should have access to the
+document. The account IDs can either be a group of account IDs or \emph{All}.}
 
-\item{AccountIdsToRemove}{The AWS user accounts that should no longer have access to the document.
-The AWS user account can either be a group of account IDs or \emph{All}. This
-action has a higher priority than \emph{AccountIdsToAdd}. If you specify an
-account ID to add and the same ID to remove, the system removes access
-to the document.}
+\item{AccountIdsToRemove}{The Amazon Web Services user accounts that should no longer have access
+to the document. The Amazon Web Services user account can either be a
+group of account IDs or \emph{All}. This action has a higher priority than
+\emph{AccountIdsToAdd}. If you specify an account ID to add and the same ID
+to remove, the system removes access to the document.}
 
-\item{SharedDocumentVersion}{(Optional) The version of the document to share. If it's not specified,
+\item{SharedDocumentVersion}{(Optional) The version of the document to share. If it isn't specified,
 the system choose the \code{Default} version to share.}
 }
-\value{
-An empty list.
-}
 \description{
-Shares a Systems Manager document publicly or privately. If you share a
-document privately, you must specify the AWS user account IDs for those
-people who can use the document. If you share a document publicly, you
-must specify \emph{All} as the account ID.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_document_permission(
-  Name = "string",
-  PermissionType = "Share",
-  AccountIdsToAdd = list(
-    "string"
-  ),
-  AccountIdsToRemove = list(
-    "string"
-  ),
-  SharedDocumentVersion = "string"
-)
-}
-}
+Shares a Amazon Web Services Systems Manager document (SSM document)publicly or privately. If you share a document privately, you must specify the Amazon Web Services user account IDs for those people who can use the document. If you share a document publicly, you must specify \emph{All} as the account ID.
 
+See \url{https://paws-r.github.io/docs/ssm/modify_document_permission.html} for full documentation.
+}
 \keyword{internal}

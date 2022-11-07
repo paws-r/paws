@@ -5,8 +5,14 @@
 \title{Updates an existing gateway route that is associated to a specified
 virtual gateway in a service mesh}
 \usage{
-appmesh_update_gateway_route(clientToken, gatewayRouteName, meshName,
-  meshOwner, spec, virtualGatewayName)
+appmesh_update_gateway_route(
+  clientToken = NULL,
+  gatewayRouteName,
+  meshName,
+  meshOwner = NULL,
+  spec,
+  virtualGatewayName
+)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -17,9 +23,10 @@ underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh that the gateway route resides in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then it's the ID of the account that shared the mesh with
-your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then it's the ID of the account that shared
+the mesh with your account. For more information about mesh sharing, see
+\href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The new gateway route specification to apply. This overwrites the
 existing data.}
@@ -27,121 +34,9 @@ existing data.}
 \item{virtualGatewayName}{[required] The name of the virtual gateway that the gateway route is associated
 with.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  gatewayRoute = list(
-    gatewayRouteName = "string",
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      grpcRoute = list(
-        action = list(
-          target = list(
-            virtualService = list(
-              virtualServiceName = "string"
-            )
-          )
-        ),
-        match = list(
-          serviceName = "string"
-        )
-      ),
-      http2Route = list(
-        action = list(
-          target = list(
-            virtualService = list(
-              virtualServiceName = "string"
-            )
-          )
-        ),
-        match = list(
-          prefix = "string"
-        )
-      ),
-      httpRoute = list(
-        action = list(
-          target = list(
-            virtualService = list(
-              virtualServiceName = "string"
-            )
-          )
-        ),
-        match = list(
-          prefix = "string"
-        )
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    ),
-    virtualGatewayName = "string"
-  )
-)
-}
-}
 \description{
-Updates an existing gateway route that is associated to a specified
-virtual gateway in a service mesh.
-}
-\section{Request syntax}{
-\preformatted{svc$update_gateway_route(
-  clientToken = "string",
-  gatewayRouteName = "string",
-  meshName = "string",
-  meshOwner = "string",
-  spec = list(
-    grpcRoute = list(
-      action = list(
-        target = list(
-          virtualService = list(
-            virtualServiceName = "string"
-          )
-        )
-      ),
-      match = list(
-        serviceName = "string"
-      )
-    ),
-    http2Route = list(
-      action = list(
-        target = list(
-          virtualService = list(
-            virtualServiceName = "string"
-          )
-        )
-      ),
-      match = list(
-        prefix = "string"
-      )
-    ),
-    httpRoute = list(
-      action = list(
-        target = list(
-          virtualService = list(
-            virtualServiceName = "string"
-          )
-        )
-      ),
-      match = list(
-        prefix = "string"
-      )
-    )
-  ),
-  virtualGatewayName = "string"
-)
-}
-}
+Updates an existing gateway route that is associated to a specified virtual gateway in a service mesh.
 
+See \url{https://paws-r.github.io/docs/appmesh/update_gateway_route.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{ec2_delete_client_vpn_endpoint}
 \title{Deletes the specified Client VPN endpoint}
 \usage{
-ec2_delete_client_vpn_endpoint(ClientVpnEndpointId, DryRun)
+ec2_delete_client_vpn_endpoint(ClientVpnEndpointId, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN to be deleted.}
@@ -14,25 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = list(
-    Code = "pending-associate"|"available"|"deleting"|"deleted",
-    Message = "string"
-  )
-)
-}
-}
 \description{
-Deletes the specified Client VPN endpoint. You must disassociate all
-target networks before you can delete a Client VPN endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_client_vpn_endpoint(
-  ClientVpnEndpointId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes the specified Client VPN endpoint. You must disassociate all target networks before you can delete a Client VPN endpoint.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_client_vpn_endpoint.html} for full documentation.
+}
 \keyword{internal}

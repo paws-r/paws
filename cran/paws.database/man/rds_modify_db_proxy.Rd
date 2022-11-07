@@ -4,8 +4,16 @@
 \alias{rds_modify_db_proxy}
 \title{Changes the settings for an existing DB proxy}
 \usage{
-rds_modify_db_proxy(DBProxyName, NewDBProxyName, Auth, RequireTLS,
-  IdleClientTimeout, DebugLogging, RoleArn, SecurityGroups)
+rds_modify_db_proxy(
+  DBProxyName,
+  NewDBProxyName = NULL,
+  Auth = NULL,
+  RequireTLS = NULL,
+  IdleClientTimeout = NULL,
+  DebugLogging = NULL,
+  RoleArn = NULL,
+  SecurityGroups = NULL
+)
 }
 \arguments{
 \item{DBProxyName}{[required] The identifier for the \code{DBProxy} to modify.}
@@ -34,72 +42,13 @@ debugging, and only when you have security measures in place to
 safeguard any sensitive information that appears in the logs.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role that the proxy uses to
-access secrets in AWS Secrets Manager.}
+access secrets in Amazon Web Services Secrets Manager.}
 
 \item{SecurityGroups}{The new list of security groups for the \code{DBProxy}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBProxy = list(
-    DBProxyName = "string",
-    DBProxyArn = "string",
-    Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
-    EngineFamily = "string",
-    VpcSecurityGroupIds = list(
-      "string"
-    ),
-    VpcSubnetIds = list(
-      "string"
-    ),
-    Auth = list(
-      list(
-        Description = "string",
-        UserName = "string",
-        AuthScheme = "SECRETS",
-        SecretArn = "string",
-        IAMAuth = "DISABLED"|"REQUIRED"
-      )
-    ),
-    RoleArn = "string",
-    Endpoint = "string",
-    RequireTLS = TRUE|FALSE,
-    IdleClientTimeout = 123,
-    DebugLogging = TRUE|FALSE,
-    CreatedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    UpdatedDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Changes the settings for an existing DB proxy.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_db_proxy(
-  DBProxyName = "string",
-  NewDBProxyName = "string",
-  Auth = list(
-    list(
-      Description = "string",
-      UserName = "string",
-      AuthScheme = "SECRETS",
-      SecretArn = "string",
-      IAMAuth = "DISABLED"|"REQUIRED"
-    )
-  ),
-  RequireTLS = TRUE|FALSE,
-  IdleClientTimeout = 123,
-  DebugLogging = TRUE|FALSE,
-  RoleArn = "string",
-  SecurityGroups = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/modify_db_proxy.html} for full documentation.
+}
 \keyword{internal}

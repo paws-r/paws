@@ -3,32 +3,16 @@
 \name{sns_check_if_phone_number_is_opted_out}
 \alias{sns_check_if_phone_number_is_opted_out}
 \title{Accepts a phone number and indicates whether the phone holder has opted
-out of receiving SMS messages from your account}
+out of receiving SMS messages from your Amazon Web Services account}
 \usage{
 sns_check_if_phone_number_is_opted_out(phoneNumber)
 }
 \arguments{
 \item{phoneNumber}{[required] The phone number for which you want to check the opt out status.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  isOptedOut = TRUE|FALSE
-)
-}
-}
 \description{
-Accepts a phone number and indicates whether the phone holder has opted
-out of receiving SMS messages from your account. You cannot send SMS
-messages to a number that is opted out.
+Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your Amazon Web Services account. You cannot send SMS messages to a number that is opted out.
 
-To resume sending messages, you can opt in the number by using the
-\code{\link[=sns_opt_in_phone_number]{opt_in_phone_number}} action.
+See \url{https://paws-r.github.io/docs/sns/check_if_phone_number_is_opted_out.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$check_if_phone_number_is_opted_out(
-  phoneNumber = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -7,90 +7,15 @@
 apigateway_get_method(restApiId, resourceId, httpMethod)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] The Resource identifier for the Method resource.}
+\item{resourceId}{[required] The Resource identifier for the Method resource.}
 
-\item{httpMethod}{[required] [Required] Specifies the method request's HTTP method type.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  httpMethod = "string",
-  authorizationType = "string",
-  authorizerId = "string",
-  apiKeyRequired = TRUE|FALSE,
-  requestValidatorId = "string",
-  operationName = "string",
-  requestParameters = list(
-    TRUE|FALSE
-  ),
-  requestModels = list(
-    "string"
-  ),
-  methodResponses = list(
-    list(
-      statusCode = "string",
-      responseParameters = list(
-        TRUE|FALSE
-      ),
-      responseModels = list(
-        "string"
-      )
-    )
-  ),
-  methodIntegration = list(
-    type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-    httpMethod = "string",
-    uri = "string",
-    connectionType = "INTERNET"|"VPC_LINK",
-    connectionId = "string",
-    credentials = "string",
-    requestParameters = list(
-      "string"
-    ),
-    requestTemplates = list(
-      "string"
-    ),
-    passthroughBehavior = "string",
-    contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-    timeoutInMillis = 123,
-    cacheNamespace = "string",
-    cacheKeyParameters = list(
-      "string"
-    ),
-    integrationResponses = list(
-      list(
-        statusCode = "string",
-        selectionPattern = "string",
-        responseParameters = list(
-          "string"
-        ),
-        responseTemplates = list(
-          "string"
-        ),
-        contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-      )
-    ),
-    tlsConfig = list(
-      insecureSkipVerification = TRUE|FALSE
-    )
-  ),
-  authorizationScopes = list(
-    "string"
-  )
-)
-}
+\item{httpMethod}{[required] Specifies the method request's HTTP method type.}
 }
 \description{
 Describe an existing Method resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_method(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_method.html} for full documentation.
+}
 \keyword{internal}

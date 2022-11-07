@@ -4,7 +4,7 @@
 \alias{ec2_delete_route_table}
 \title{Deletes the specified route table}
 \usage{
-ec2_delete_route_table(DryRun, RouteTableId)
+ec2_delete_route_table(DryRun = NULL, RouteTableId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,29 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RouteTableId}{[required] The ID of the route table.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified route table. You must disassociate the route table
-from any subnets before you can delete it. You can't delete the main
-route table.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_route_table(
-  DryRun = TRUE|FALSE,
-  RouteTableId = "string"
-)
-}
-}
+Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.
 
-\examples{
-\dontrun{
-# This example deletes the specified route table.
-svc$delete_route_table(
-  RouteTableId = "rtb-22574640"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_route_table.html} for full documentation.
 }
 \keyword{internal}

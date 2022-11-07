@@ -4,8 +4,11 @@
 \alias{elasticache_describe_cache_security_groups}
 \title{Returns a list of cache security group descriptions}
 \usage{
-elasticache_describe_cache_security_groups(CacheSecurityGroupName,
-  MaxRecords, Marker)
+elasticache_describe_cache_security_groups(
+  CacheSecurityGroupName = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{CacheSecurityGroupName}{The name of the cache security group to return details for.}
@@ -23,39 +26,9 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  CacheSecurityGroups = list(
-    list(
-      OwnerId = "string",
-      CacheSecurityGroupName = "string",
-      Description = "string",
-      EC2SecurityGroups = list(
-        list(
-          Status = "string",
-          EC2SecurityGroupName = "string",
-          EC2SecurityGroupOwnerId = "string"
-        )
-      ),
-      ARN = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of cache security group descriptions. If a cache security
-group name is specified, the list contains only the description of that
-group. This applicable only when you have ElastiCache in Classic setup
-}
-\section{Request syntax}{
-\preformatted{svc$describe_cache_security_groups(
-  CacheSecurityGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns a list of cache security group descriptions. If a cache security group name is specified, the list contains only the description of that group. This applicable only when you have ElastiCache in Classic setup
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_cache_security_groups.html} for full documentation.
+}
 \keyword{internal}

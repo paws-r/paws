@@ -7,40 +7,14 @@
 quicksight_describe_data_set_permissions(AwsAccountId, DataSetId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
 \item{DataSetId}{[required] The ID for the dataset that you want to create. This ID is unique per
-AWS Region for each AWS account.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DataSetArn = "string",
-  DataSetId = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
+Amazon Web Services Region for each Amazon Web Services account.}
 }
 \description{
 Describes the permissions on a dataset.
 
-The permissions resource is
-\code{arn:aws:quicksight:region:aws-account-id:dataset/data-set-id}.
+See \url{https://paws-r.github.io/docs/quicksight/describe_data_set_permissions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_data_set_permissions(
-  AwsAccountId = "string",
-  DataSetId = "string"
-)
-}
-}
-
 \keyword{internal}

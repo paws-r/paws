@@ -5,7 +5,7 @@
 \title{List all of the dedicated IP pools that exist in your Amazon Pinpoint
 account in the current AWS Region}
 \usage{
-pinpointemail_list_dedicated_ip_pools(NextToken, PageSize)
+pinpointemail_list_dedicated_ip_pools(NextToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to
@@ -18,25 +18,9 @@ the number of results is larger than the number you specified in this
 parameter, then the response includes a \code{NextToken} element, which you
 can use to obtain additional results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DedicatedIpPools = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List all of the dedicated IP pools that exist in your Amazon Pinpoint
-account in the current AWS Region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_dedicated_ip_pools(
-  NextToken = "string",
-  PageSize = 123
-)
-}
-}
+List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS Region.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/list_dedicated_ip_pools.html} for full documentation.
+}
 \keyword{internal}

@@ -4,11 +4,26 @@
 \alias{opsworks_create_instance}
 \title{Creates an instance in a specified stack}
 \usage{
-opsworks_create_instance(StackId, LayerIds, InstanceType,
-  AutoScalingType, Hostname, Os, AmiId, SshKeyName, AvailabilityZone,
-  VirtualizationType, SubnetId, Architecture, RootDeviceType,
-  BlockDeviceMappings, InstallUpdatesOnBoot, EbsOptimized, AgentVersion,
-  Tenancy)
+opsworks_create_instance(
+  StackId,
+  LayerIds,
+  InstanceType,
+  AutoScalingType = NULL,
+  Hostname = NULL,
+  Os = NULL,
+  AmiId = NULL,
+  SshKeyName = NULL,
+  AvailabilityZone = NULL,
+  VirtualizationType = NULL,
+  SubnetId = NULL,
+  Architecture = NULL,
+  RootDeviceType = NULL,
+  BlockDeviceMappings = NULL,
+  InstallUpdatesOnBoot = NULL,
+  EbsOptimized = NULL,
+  AgentVersion = NULL,
+  Tenancy = NULL
+)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -126,58 +141,9 @@ hosts, see \href{https://aws.amazon.com/ec2/dedicated-hosts/}{Dedicated Hosts Ov
 information about dedicated instances, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Dedicated Instances} and
 \href{https://aws.amazon.com/ec2/pricing/dedicated-instances/}{Amazon EC2 Dedicated Instances}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceId = "string"
-)
-}
-}
 \description{
-Creates an instance in a specified stack. For more information, see
-\href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html}{Adding an Instance to a Layer}.
+Creates an instance in a specified stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html}{Adding an Instance to a Layer}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/create_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_instance(
-  StackId = "string",
-  LayerIds = list(
-    "string"
-  ),
-  InstanceType = "string",
-  AutoScalingType = "load"|"timer",
-  Hostname = "string",
-  Os = "string",
-  AmiId = "string",
-  SshKeyName = "string",
-  AvailabilityZone = "string",
-  VirtualizationType = "string",
-  SubnetId = "string",
-  Architecture = "x86_64"|"i386",
-  RootDeviceType = "ebs"|"instance-store",
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "string",
-      NoDevice = "string",
-      VirtualName = "string",
-      Ebs = list(
-        SnapshotId = "string",
-        Iops = 123,
-        VolumeSize = 123,
-        VolumeType = "gp2"|"io1"|"standard",
-        DeleteOnTermination = TRUE|FALSE
-      )
-    )
-  ),
-  InstallUpdatesOnBoot = TRUE|FALSE,
-  EbsOptimized = TRUE|FALSE,
-  AgentVersion = "string",
-  Tenancy = "string"
-)
-}
-}
-
 \keyword{internal}

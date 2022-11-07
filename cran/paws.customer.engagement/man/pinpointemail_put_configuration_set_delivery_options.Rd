@@ -5,7 +5,10 @@
 \title{Associate a configuration set with a dedicated IP pool}
 \usage{
 pinpointemail_put_configuration_set_delivery_options(
-  ConfigurationSetName, TlsPolicy, SendingPoolName)
+  ConfigurationSetName,
+  TlsPolicy = NULL,
+  SendingPoolName = NULL
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to associate with a
@@ -20,21 +23,9 @@ TLS connection can't be established.}
 \item{SendingPoolName}{The name of the dedicated IP pool that you want to associate with the
 configuration set.}
 }
-\value{
-An empty list.
-}
 \description{
-Associate a configuration set with a dedicated IP pool. You can use
-dedicated IP pools to create groups of dedicated IP addresses for
-sending specific types of email.
-}
-\section{Request syntax}{
-\preformatted{svc$put_configuration_set_delivery_options(
-  ConfigurationSetName = "string",
-  TlsPolicy = "REQUIRE"|"OPTIONAL",
-  SendingPoolName = "string"
-)
-}
-}
+Associate a configuration set with a dedicated IP pool. You can use dedicated IP pools to create groups of dedicated IP addresses for sending specific types of email.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/put_configuration_set_delivery_options.html} for full documentation.
+}
 \keyword{internal}

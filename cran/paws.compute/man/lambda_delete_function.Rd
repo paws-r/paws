@@ -4,7 +4,7 @@
 \alias{lambda_delete_function}
 \title{Deletes a Lambda function}
 \usage{
-lambda_delete_function(FunctionName, Qualifier)
+lambda_delete_function(FunctionName, Qualifier = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function or version.
@@ -25,36 +25,9 @@ function name, it is limited to 64 characters in length.}
 \item{Qualifier}{Specify a version to delete. You can't delete a version that's
 referenced by an alias.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a Lambda function. To delete a specific function version, use
-the \code{Qualifier} parameter. Otherwise, all versions and aliases are
-deleted.
+Deletes a Lambda function. To delete a specific function version, use the \code{Qualifier} parameter. Otherwise, all versions and aliases are deleted.
 
-To delete Lambda event source mappings that invoke a function, use
-\code{\link[=lambda_delete_event_source_mapping]{delete_event_source_mapping}}. For
-AWS services and resources that invoke your function directly, delete
-the trigger in the service where you originally configured it.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_function(
-  FunctionName = "string",
-  Qualifier = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes version 1 of a Lambda function named
-# my-function.
-svc$delete_function(
-  FunctionName = "my-function",
-  Qualifier = "1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/delete_function.html} for full documentation.
 }
 \keyword{internal}

@@ -9,17 +9,9 @@ directoryservice_delete_log_subscription(DirectoryId)
 \arguments{
 \item{DirectoryId}{[required] Identifier of the directory whose log subscription you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified log subscription.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_log_subscription(
-  DirectoryId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/delete_log_subscription.html} for full documentation.
+}
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_delete_tags}
 \alias{sagemaker_delete_tags}
-\title{Deletes the specified tags from an Amazon SageMaker resource}
+\title{Deletes the specified tags from an SageMaker resource}
 \usage{
 sagemaker_delete_tags(ResourceArn, TagKeys)
 }
@@ -12,27 +12,9 @@ delete.}
 
 \item{TagKeys}{[required] An array or one or more tag keys to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified tags from an Amazon SageMaker resource.
+Deletes the specified tags from an SageMaker resource.
 
-To list a resource's tags, use the \code{\link[=sagemaker_list_tags]{list_tags}}
-API.
-
-When you call this API to delete tags from a hyperparameter tuning job,
-the deleted tags are not removed from training jobs that the
-hyperparameter tuning job launched before you called this API.
+See \url{https://paws-r.github.io/docs/sagemaker/delete_tags.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_tags(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -10,28 +10,9 @@ emr_get_managed_scaling_policy(ClusterId)
 \item{ClusterId}{[required] Specifies the ID of the cluster for which the managed scaling policy
 will be fetched.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ManagedScalingPolicy = list(
-    ComputeLimits = list(
-      UnitType = "InstanceFleetUnits"|"Instances"|"VCPU",
-      MinimumCapacityUnits = 123,
-      MaximumCapacityUnits = 123,
-      MaximumOnDemandCapacityUnits = 123,
-      MaximumCoreCapacityUnits = 123
-    )
-  )
-)
-}
-}
 \description{
 Fetches the attached managed scaling policy for an Amazon EMR cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$get_managed_scaling_policy(
-  ClusterId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/emr/get_managed_scaling_policy.html} for full documentation.
+}
 \keyword{internal}

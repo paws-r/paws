@@ -2,72 +2,67 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_get_resource_share_associations}
 \alias{ram_get_resource_share_associations}
-\title{Gets the resources or principals for the resource shares that you own}
+\title{Retrieves the resource and principal associations for resource shares
+that you own}
 \usage{
-ram_get_resource_share_associations(associationType, resourceShareArns,
-  resourceArn, principal, associationStatus, nextToken, maxResults)
+ram_get_resource_share_associations(
+  associationType,
+  resourceShareArns = NULL,
+  resourceArn = NULL,
+  principal = NULL,
+  associationStatus = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
-\item{associationType}{[required] The association type. Specify \code{PRINCIPAL} to list the principals that
-are associated with the specified resource share. Specify \code{RESOURCE} to
-list the resources that are associated with the specified resource
-share.}
+\item{associationType}{[required] Specifies whether you want to retrieve the associations that involve a
+specified resource or principal.
+\itemize{
+\item \code{PRINCIPAL} – list the principals that are associated with the
+specified resource share.
+\item \code{RESOURCE} – list the resources that are associated with the
+specified resource share.
+}}
 
-\item{resourceShareArns}{The Amazon Resource Names (ARN) of the resource shares.}
+\item{resourceShareArns}{Specifies a list of \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+of the resource share whose associations you want to retrieve.}
 
-\item{resourceArn}{The Amazon Resource Name (ARN) of the resource. You cannot specify this
-parameter if the association type is \code{PRINCIPAL}.}
+\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the resource whose resource shares you want to retrieve.
 
-\item{principal}{The principal. You cannot specify this parameter if the association type
-is \code{RESOURCE}.}
+You cannot specify this parameter if the association type is
+\code{PRINCIPAL}.}
 
-\item{associationStatus}{The association status.}
+\item{principal}{Specifies the ID of the principal whose resource shares you want to
+retrieve. This can be an Amazon Web Services account ID, an organization
+ID, an organizational unit ID, or the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of an individual IAM user or role.
 
-\item{nextToken}{The token for the next page of results.}
+You cannot specify this parameter if the association type is \code{RESOURCE}.}
 
-\item{maxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceShareAssociations = list(
-    list(
-      resourceShareArn = "string",
-      resourceShareName = "string",
-      associatedEntity = "string",
-      associationType = "PRINCIPAL"|"RESOURCE",
-      status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
-      statusMessage = "string",
-      creationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      external = TRUE|FALSE
-    )
-  ),
-  nextToken = "string"
-)
-}
+\item{associationStatus}{Specifies that you want to retrieve only associations with this status.}
+
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
+if you received a \code{NextToken} response in the previous request. If you
+did, it indicates that more output is available. Set this parameter to
+the value provided by the previous call's \code{NextToken} response to
+request the next page of results.}
+
+\item{maxResults}{Specifies the total number of results that you want included on each
+page of the response. If you do not include this parameter, it defaults
+to a value that is specific to the operation. If additional items exist
+beyond the number you specify, the \code{NextToken} response element is
+returned with a value (not null). Include the specified value as the
+\code{NextToken} request parameter in the next call to the operation to get
+the next part of the results. Note that the service might return fewer
+results than the maximum even when there are more results available. You
+should check \code{NextToken} after every operation to ensure that you
+receive all of the results.}
 }
 \description{
-Gets the resources or principals for the resource shares that you own.
-}
-\section{Request syntax}{
-\preformatted{svc$get_resource_share_associations(
-  associationType = "PRINCIPAL"|"RESOURCE",
-  resourceShareArns = list(
-    "string"
-  ),
-  resourceArn = "string",
-  principal = "string",
-  associationStatus = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Retrieves the resource and principal associations for resource shares that you own.
 
+See \url{https://paws-r.github.io/docs/ram/get_resource_share_associations.html} for full documentation.
+}
 \keyword{internal}

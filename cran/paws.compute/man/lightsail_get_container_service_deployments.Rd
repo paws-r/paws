@@ -9,64 +9,9 @@ lightsail_get_container_service_deployments(serviceName)
 \arguments{
 \item{serviceName}{[required] The name of the container service for which to return deployments.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  deployments = list(
-    list(
-      version = 123,
-      state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-      containers = list(
-        list(
-          image = "string",
-          command = list(
-            "string"
-          ),
-          environment = list(
-            "string"
-          ),
-          ports = list(
-            "HTTP"|"HTTPS"|"TCP"|"UDP"
-          )
-        )
-      ),
-      publicEndpoint = list(
-        containerName = "string",
-        containerPort = 123,
-        healthCheck = list(
-          healthyThreshold = 123,
-          unhealthyThreshold = 123,
-          timeoutSeconds = 123,
-          intervalSeconds = 123,
-          path = "string",
-          successCodes = "string"
-        )
-      ),
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Returns the deployments for your Amazon Lightsail container service
 
-A deployment specifies the settings, such as the ports and launch
-command, of containers that are deployed to your container service.
-
-The deployments are ordered by version in ascending order. The newest
-version is listed at the top of the response.
-
-A set number of deployments are kept before the oldest one is replaced
-with the newest one. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/lightsail.html}{Amazon Lightsail endpoints and quotas} in
-the \emph{AWS General Reference}.
+See \url{https://paws-r.github.io/docs/lightsail/get_container_service_deployments.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_container_service_deployments(
-  serviceName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{licensemanager_create_token}
 \title{Creates a long-lived token}
 \usage{
-licensemanager_create_token(LicenseArn, RoleArns, ExpirationInDays,
-  TokenProperties, ClientToken)
+licensemanager_create_token(
+  LicenseArn,
+  RoleArns = NULL,
+  ExpirationInDays = NULL,
+  TokenProperties = NULL,
+  ClientToken
+)
 }
 \arguments{
 \item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license. The ARN is mapped to the aud
@@ -22,35 +27,9 @@ is mapped to the amr claim of the JWT token.}
 
 \item{ClientToken}{[required] Idempotency token, valid for 10 minutes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TokenId = "string",
-  TokenType = "REFRESH_TOKEN",
-  Token = "string"
-)
-}
-}
 \description{
 Creates a long-lived token.
 
-A refresh token is a JWT token used to get an access token. With an
-access token, you can call AssumeRoleWithWebIdentity to get role
-credentials that you can use to call License Manager to manage the
-specified license.
+See \url{https://paws-r.github.io/docs/licensemanager/create_token.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_token(
-  LicenseArn = "string",
-  RoleArns = list(
-    "string"
-  ),
-  ExpirationInDays = 123,
-  TokenProperties = list(
-    "string"
-  ),
-  ClientToken = "string"
-)
-}
-}
-
 \keyword{internal}

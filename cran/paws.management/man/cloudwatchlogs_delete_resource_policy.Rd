@@ -4,23 +4,14 @@
 \alias{cloudwatchlogs_delete_resource_policy}
 \title{Deletes a resource policy from this account}
 \usage{
-cloudwatchlogs_delete_resource_policy(policyName)
+cloudwatchlogs_delete_resource_policy(policyName = NULL)
 }
 \arguments{
 \item{policyName}{The name of the policy to be revoked. This parameter is required.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a resource policy from this account. This revokes the access of
-the identities in that policy to put log events to this account.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_resource_policy(
-  policyName = "string"
-)
-}
-}
+Deletes a resource policy from this account. This revokes the access of the identities in that policy to put log events to this account.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_resource_policy.html} for full documentation.
+}
 \keyword{internal}

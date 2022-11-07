@@ -5,9 +5,16 @@
 \title{Get an aggregation of service statistics defined by a specific time
 range}
 \usage{
-xray_get_time_series_service_statistics(StartTime, EndTime, GroupName,
-  GroupARN, EntitySelectorExpression, Period, ForecastStatistics,
-  NextToken)
+xray_get_time_series_service_statistics(
+  StartTime,
+  EndTime,
+  GroupName = NULL,
+  GroupARN = NULL,
+  EntitySelectorExpression = NULL,
+  Period = NULL,
+  ForecastStatistics = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{StartTime}{[required] The start of the time frame for which to aggregate statistics.}
@@ -30,78 +37,9 @@ requests require the EntitySelectorExpression ID be provided.}
 
 \item{NextToken}{Pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TimeSeriesServiceStatistics = list(
-    list(
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      EdgeSummaryStatistics = list(
-        OkCount = 123,
-        ErrorStatistics = list(
-          ThrottleCount = 123,
-          OtherCount = 123,
-          TotalCount = 123
-        ),
-        FaultStatistics = list(
-          OtherCount = 123,
-          TotalCount = 123
-        ),
-        TotalCount = 123,
-        TotalResponseTime = 123.0
-      ),
-      ServiceSummaryStatistics = list(
-        OkCount = 123,
-        ErrorStatistics = list(
-          ThrottleCount = 123,
-          OtherCount = 123,
-          TotalCount = 123
-        ),
-        FaultStatistics = list(
-          OtherCount = 123,
-          TotalCount = 123
-        ),
-        TotalCount = 123,
-        TotalResponseTime = 123.0
-      ),
-      ServiceForecastStatistics = list(
-        FaultCountHigh = 123,
-        FaultCountLow = 123
-      ),
-      ResponseTimeHistogram = list(
-        list(
-          Value = 123.0,
-          Count = 123
-        )
-      )
-    )
-  ),
-  ContainsOldGroupVersions = TRUE|FALSE,
-  NextToken = "string"
-)
-}
-}
 \description{
-Get an aggregation of service statistics defined by a specific time
-range.
-}
-\section{Request syntax}{
-\preformatted{svc$get_time_series_service_statistics(
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  GroupName = "string",
-  GroupARN = "string",
-  EntitySelectorExpression = "string",
-  Period = 123,
-  ForecastStatistics = TRUE|FALSE,
-  NextToken = "string"
-)
-}
-}
+Get an aggregation of service statistics defined by a specific time range.
 
+See \url{https://paws-r.github.io/docs/xray/get_time_series_service_statistics.html} for full documentation.
+}
 \keyword{internal}

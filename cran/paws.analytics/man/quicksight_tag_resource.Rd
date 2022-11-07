@@ -2,8 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_tag_resource}
 \alias{quicksight_tag_resource}
-\title{Assigns one or more tags (key-value pairs) to the specified QuickSight
-resource}
+\title{Assigns one or more tags (key-value pairs) to the specified Amazon
+QuickSight resource}
 \usage{
 quicksight_tag_resource(ResourceArn, Tags)
 }
@@ -13,50 +13,9 @@ quicksight_tag_resource(ResourceArn, Tags)
 \item{Tags}{[required] Contains a map of the key-value pairs for the resource tag or tags
 assigned to the resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Assigns one or more tags (key-value pairs) to the specified QuickSight
-resource.
+Assigns one or more tags (key-value pairs) to the specified Amazon QuickSight resource.
 
-Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions, by granting a user permission to
-access or change only resources with certain tag values. You can use the
-\code{\link[=quicksight_tag_resource]{tag_resource}} operation with a resource that
-already has tags. If you specify a new tag key for the resource, this
-tag is appended to the list of tags associated with the resource. If you
-specify a tag key that is already associated with the resource, the new
-tag value that you specify replaces the previous value for that tag.
-
-You can associate as many as 50 tags with a resource. QuickSight
-supports tagging on data set, data source, dashboard, and template.
-
-Tagging for QuickSight works in a similar way to tagging for other AWS
-services, except for the following:
-\itemize{
-\item You can't use tags to track AWS costs for QuickSight. This
-restriction is because QuickSight costs are based on users and SPICE
-capacity, which aren't taggable resources.
-\item QuickSight doesn't currently support the Tag Editor for AWS Resource
-Groups.
+See \url{https://paws-r.github.io/docs/quicksight/tag_resource.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

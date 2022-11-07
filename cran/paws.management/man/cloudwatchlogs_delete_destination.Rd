@@ -10,19 +10,9 @@ cloudwatchlogs_delete_destination(destinationName)
 \arguments{
 \item{destinationName}{[required] The name of the destination.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified destination, and eventually disables all the
-subscription filters that publish to it. This operation does not delete
-the physical resource encapsulated by the destination.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_destination(
-  destinationName = "string"
-)
-}
-}
+Deletes the specified destination, and eventually disables all the subscription filters that publish to it. This operation does not delete the physical resource encapsulated by the destination.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_destination.html} for full documentation.
+}
 \keyword{internal}

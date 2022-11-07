@@ -4,7 +4,7 @@
 \alias{ec2_detach_network_interface}
 \title{Detaches a network interface from an instance}
 \usage{
-ec2_detach_network_interface(AttachmentId, DryRun, Force)
+ec2_detach_network_interface(AttachmentId, DryRun = NULL, Force = NULL)
 }
 \arguments{
 \item{AttachmentId}{[required] The ID of the attachment.}
@@ -29,29 +29,9 @@ instance metadata will get updated when you stop and start the
 instance.
 }}
 }
-\value{
-An empty list.
-}
 \description{
 Detaches a network interface from an instance.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_network_interface(
-  AttachmentId = "string",
-  DryRun = TRUE|FALSE,
-  Force = TRUE|FALSE
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example detaches the specified network interface from its attached
-# instance.
-svc$detach_network_interface(
-  AttachmentId = "eni-attach-66c4350a"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/detach_network_interface.html} for full documentation.
 }
 \keyword{internal}

@@ -6,8 +6,11 @@
 SES includes the original email headers in the Amazon Simple
 Notification Service (Amazon SNS) notifications of a specified type}
 \usage{
-ses_set_identity_headers_in_notifications_enabled(Identity,
-  NotificationType, Enabled)
+ses_set_identity_headers_in_notifications_enabled(
+  Identity,
+  NotificationType,
+  Enabled
+)
 }
 \arguments{
 \item{Identity}{[required] The identity for which to enable or disable headers in notifications.
@@ -25,38 +28,9 @@ notifications.
 This value can only be set when \code{NotificationType} is already set to use
 a particular Amazon SNS topic.}
 }
-\value{
-An empty list.
-}
 \description{
-Given an identity (an email address or a domain), sets whether Amazon
-SES includes the original email headers in the Amazon Simple
-Notification Service (Amazon SNS) notifications of a specified type.
+Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type.
 
-You can execute this operation no more than once per second.
-
-For more information about using notifications with Amazon SES, see the
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_identity_headers_in_notifications_enabled(
-  Identity = "string",
-  NotificationType = "Bounce"|"Complaint"|"Delivery",
-  Enabled = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example configures Amazon SES to include the original
-# email headers in the Amazon SNS bounce notifications for an identity:
-svc$set_identity_headers_in_notifications_enabled(
-  Enabled = TRUE,
-  Identity = "user@example.com",
-  NotificationType = "Bounce"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/set_identity_headers_in_notifications_enabled.html} for full documentation.
 }
 \keyword{internal}

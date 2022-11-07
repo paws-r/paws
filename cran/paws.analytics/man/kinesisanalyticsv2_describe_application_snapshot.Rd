@@ -4,8 +4,7 @@
 \alias{kinesisanalyticsv2_describe_application_snapshot}
 \title{Returns information about a snapshot of application state data}
 \usage{
-kinesisanalyticsv2_describe_application_snapshot(ApplicationName,
-  SnapshotName)
+kinesisanalyticsv2_describe_application_snapshot(ApplicationName, SnapshotName)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
@@ -13,28 +12,9 @@ kinesisanalyticsv2_describe_application_snapshot(ApplicationName,
 \item{SnapshotName}{[required] The identifier of an application snapshot. You can retrieve this value
 using .}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SnapshotDetails = list(
-    SnapshotName = "string",
-    SnapshotStatus = "CREATING"|"READY"|"DELETING"|"FAILED",
-    ApplicationVersionId = 123,
-    SnapshotCreationTimestamp = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Returns information about a snapshot of application state data.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_application_snapshot(
-  ApplicationName = "string",
-  SnapshotName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application_snapshot.html} for full documentation.
+}
 \keyword{internal}

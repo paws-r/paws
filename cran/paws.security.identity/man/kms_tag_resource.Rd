@@ -2,14 +2,14 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_tag_resource}
 \alias{kms_tag_resource}
-\title{Adds or edits tags on a customer managed CMK}
+\title{Adds or edits tags on a customer managed key}
 \usage{
 kms_tag_resource(KeyId, Tags)
 }
 \arguments{
-\item{KeyId}{[required] Identifies a customer managed CMK in the account and Region.
+\item{KeyId}{[required] Identifies a customer managed key in the account and Region.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
@@ -18,7 +18,7 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Tags}{[required] One or more tags.
@@ -26,75 +26,13 @@ To get the key ID and key ARN for a CMK, use
 Each tag consists of a tag key and a tag value. The tag value can be an
 empty (null) string.
 
-You cannot have more than one tag on a CMK with the same tag key. If you
-specify an existing tag key with a different tag value, AWS KMS replaces
+You cannot have more than one tag on a KMS key with the same tag key. If
+you specify an existing tag key with a different tag value, KMS replaces
 the current tag value with the specified one.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or edits tags on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}.
+Adds or edits tags on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}.
 
-Each tag consists of a tag key and a tag value, both of which are
-case-sensitive strings. The tag value can be an empty (null) string.
-
-To add a tag, specify a new tag key and a tag value. To edit a tag,
-specify an existing tag key and a new tag value.
-
-You can use this operation to tag a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK},
-but you cannot tag an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{AWS managed CMK},
-an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk}{AWS owned CMK},
-or an alias.
-
-For general information about tags, including the format and syntax, see
-\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
-in the \emph{Amazon Web Services General Reference}. For information about
-using tags in AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tagging keys}.
-
-The CMK that you use for this operation must be in a compatible key
-state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
-a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:TagResource}
-(key policy)
-
-\strong{Related operations}
-\itemize{
-\item \code{\link[=kms_untag_resource]{untag_resource}}
-\item \code{\link[=kms_list_resource_tags]{list_resource_tags}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  KeyId = "string",
-  Tags = list(
-    list(
-      TagKey = "string",
-      TagValue = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example tags a CMK.
-svc$tag_resource(
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-  Tags = list(
-    list(
-      TagKey = "Purpose",
-      TagValue = "Test"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/tag_resource.html} for full documentation.
 }
 \keyword{internal}

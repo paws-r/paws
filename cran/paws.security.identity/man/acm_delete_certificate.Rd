@@ -12,28 +12,11 @@ must be of the form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
-}
-\value{
-An empty list.
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
 }
 \description{
-Deletes a certificate and its associated private key. If this action
-succeeds, the certificate no longer appears in the list that can be
-displayed by calling the \code{\link[=acm_list_certificates]{list_certificates}}
-action or be retrieved by calling the
-\code{\link[=acm_get_certificate]{get_certificate}} action. The certificate will
-not be available for use by AWS services integrated with ACM.
+Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the \code{\link[=acm_list_certificates]{list_certificates}} action or be retrieved by calling the \code{\link[=acm_get_certificate]{get_certificate}} action. The certificate will not be available for use by Amazon Web Services services integrated with ACM.
 
-You cannot delete an ACM certificate that is being used by another AWS
-service. To delete a certificate that is in use, the certificate
-association must first be removed.
+See \url{https://paws-r.github.io/docs/acm/delete_certificate.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_certificate(
-  CertificateArn = "string"
-)
-}
-}
-
 \keyword{internal}

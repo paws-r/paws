@@ -2,54 +2,22 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_dashboards}
 \alias{quicksight_list_dashboards}
-\title{Lists dashboards in an AWS account}
+\title{Lists dashboards in an Amazon Web Services account}
 \usage{
-quicksight_list_dashboards(AwsAccountId, NextToken, MaxResults)
+quicksight_list_dashboards(AwsAccountId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboards that you're
-listing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the dashboards
+that you're listing.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DashboardSummaryList = list(
-    list(
-      Arn = "string",
-      DashboardId = "string",
-      Name = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      PublishedVersionNumber = 123,
-      LastPublishedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Lists dashboards in an AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_dashboards(
-  AwsAccountId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists dashboards in an Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/quicksight/list_dashboards.html} for full documentation.
+}
 \keyword{internal}

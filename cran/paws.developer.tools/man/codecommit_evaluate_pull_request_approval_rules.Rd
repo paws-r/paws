@@ -5,8 +5,7 @@
 \title{Evaluates whether a pull request has met all the conditions specified in
 its associated approval rules}
 \usage{
-codecommit_evaluate_pull_request_approval_rules(pullRequestId,
-  revisionId)
+codecommit_evaluate_pull_request_approval_rules(pullRequestId, revisionId)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request you want to evaluate.}
@@ -15,31 +14,9 @@ codecommit_evaluate_pull_request_approval_rules(pullRequestId,
 most recent revision ID for a pull request, use
 \code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  evaluation = list(
-    approved = TRUE|FALSE,
-    overridden = TRUE|FALSE,
-    approvalRulesSatisfied = list(
-      "string"
-    ),
-    approvalRulesNotSatisfied = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Evaluates whether a pull request has met all the conditions specified in
-its associated approval rules.
-}
-\section{Request syntax}{
-\preformatted{svc$evaluate_pull_request_approval_rules(
-  pullRequestId = "string",
-  revisionId = "string"
-)
-}
-}
+Evaluates whether a pull request has met all the conditions specified in its associated approval rules.
 
+See \url{https://paws-r.github.io/docs/codecommit/evaluate_pull_request_approval_rules.html} for full documentation.
+}
 \keyword{internal}

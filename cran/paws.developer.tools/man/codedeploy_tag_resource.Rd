@@ -15,24 +15,9 @@ group.}
 with a resource. The resource is identified by the \code{ResourceArn} input
 parameter.}
 }
-\value{
-An empty list.
-}
 \description{
-Associates the list of tags in the input \code{Tags} parameter with the
-resource identified by the \code{ResourceArn} input parameter.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Associates the list of tags in the input \code{Tags} parameter with the resource identified by the \code{ResourceArn} input parameter.
 
+See \url{https://paws-r.github.io/docs/codedeploy/tag_resource.html} for full documentation.
+}
 \keyword{internal}

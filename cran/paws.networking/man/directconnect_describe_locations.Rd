@@ -2,32 +2,14 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_describe_locations}
 \alias{directconnect_describe_locations}
-\title{Lists the AWS Direct Connect locations in the current AWS Region}
+\title{Lists the Direct Connect locations in the current Amazon Web Services
+Region}
 \usage{
 directconnect_describe_locations()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  locations = list(
-    list(
-      locationCode = "string",
-      locationName = "string",
-      region = "string",
-      availablePortSpeeds = list(
-        "string"
-      ),
-      availableProviders = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Lists the AWS Direct Connect locations in the current AWS Region. These
-are the locations that can be selected when calling
-\code{\link[=directconnect_create_connection]{create_connection}} or
-\code{\link[=directconnect_create_interconnect]{create_interconnect}}.
+Lists the Direct Connect locations in the current Amazon Web Services Region. These are the locations that can be selected when calling \code{\link[=directconnect_create_connection]{create_connection}} or \code{\link[=directconnect_create_interconnect]{create_interconnect}}.
+
+See \url{https://paws-r.github.io/docs/directconnect/describe_locations.html} for full documentation.
 }
 \keyword{internal}

@@ -11,32 +11,12 @@ iam_get_saml_provider(SAMLProviderArn)
 \item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider resource object in
 IAM to get information about.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SAMLMetadataDocument = "string",
-  CreateDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  ValidUntil = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
-Returns the SAML provider metadocument that was uploaded when the IAM
-SAML provider resource object was created or updated.
+Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object was created or updated.
 
-This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+See \url{https://paws-r.github.io/docs/iam/get_saml_provider.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_saml_provider(
-  SAMLProviderArn = "string"
-)
-}
-}
-
 \keyword{internal}

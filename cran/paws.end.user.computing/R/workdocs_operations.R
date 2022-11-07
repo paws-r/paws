@@ -7,32 +7,14 @@ NULL
 #' initiated by InitiateDocumentVersionUpload
 #'
 #' @description
-#' Aborts the upload of the specified document version that was previously
-#' initiated by
-#' [`initiate_document_version_upload`][workdocs_initiate_document_version_upload].
-#' The client should make this call only when it no longer intends to
-#' upload the document version, or fails to do so.
+#' Aborts the upload of the specified document version that was previously initiated by [`initiate_document_version_upload`][workdocs_initiate_document_version_upload]. The client should make this call only when it no longer intends to upload the document version, or fails to do so.
 #'
-#' @usage
-#' workdocs_abort_document_version_upload(AuthenticationToken, DocumentId,
-#'   VersionId)
+#' See [https://paws-r.github.io/docs/workdocs/abort_document_version_upload.html](https://paws-r.github.io/docs/workdocs/abort_document_version_upload.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the version.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$abort_document_version_upload(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   VersionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -57,57 +39,13 @@ workdocs_abort_document_version_upload <- function(AuthenticationToken = NULL, D
 #' Activates the specified user
 #'
 #' @description
-#' Activates the specified user. Only active users can access Amazon
-#' WorkDocs.
+#' Activates the specified user. Only active users can access Amazon WorkDocs.
 #'
-#' @usage
-#' workdocs_activate_user(UserId, AuthenticationToken)
+#' See [https://paws-r.github.io/docs/workdocs/activate_user.html](https://paws-r.github.io/docs/workdocs/activate_user.html) for full documentation.
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   User = list(
-#'     Id = "string",
-#'     Username = "string",
-#'     EmailAddress = "string",
-#'     GivenName = "string",
-#'     Surname = "string",
-#'     OrganizationId = "string",
-#'     RootFolderId = "string",
-#'     RecycleBinFolderId = "string",
-#'     Status = "ACTIVE"|"INACTIVE"|"PENDING",
-#'     Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TimeZoneId = "string",
-#'     Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-#'     Storage = list(
-#'       StorageUtilizedInBytes = 123,
-#'       StorageRule = list(
-#'         StorageAllocatedInBytes = 123,
-#'         StorageType = "UNLIMITED"|"QUOTA"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$activate_user(
-#'   UserId = "string",
-#'   AuthenticationToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -132,55 +70,15 @@ workdocs_activate_user <- function(UserId, AuthenticationToken = NULL) {
 #' Creates a set of permissions for the specified folder or document
 #'
 #' @description
-#' Creates a set of permissions for the specified folder or document. The
-#' resource permissions are overwritten if the principals already have
-#' different permissions.
+#' Creates a set of permissions for the specified folder or document. The resource permissions are overwritten if the principals already have different permissions.
 #'
-#' @usage
-#' workdocs_add_resource_permissions(AuthenticationToken, ResourceId,
-#'   Principals, NotificationOptions)
+#' See [https://paws-r.github.io/docs/workdocs/add_resource_permissions.html](https://paws-r.github.io/docs/workdocs/add_resource_permissions.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param Principals &#91;required&#93; The users, groups, or organization being granted permission.
 #' @param NotificationOptions The notification options.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ShareResults = list(
-#'     list(
-#'       PrincipalId = "string",
-#'       InviteePrincipalId = "string",
-#'       Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER",
-#'       Status = "SUCCESS"|"FAILURE",
-#'       ShareId = "string",
-#'       StatusMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_resource_permissions(
-#'   AuthenticationToken = "string",
-#'   ResourceId = "string",
-#'   Principals = list(
-#'     list(
-#'       Id = "string",
-#'       Type = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION",
-#'       Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER"
-#'     )
-#'   ),
-#'   NotificationOptions = list(
-#'     SendEmail = TRUE|FALSE,
-#'     EmailMessage = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -207,9 +105,7 @@ workdocs_add_resource_permissions <- function(AuthenticationToken = NULL, Resour
 #' @description
 #' Adds a new comment to the specified document version.
 #'
-#' @usage
-#' workdocs_create_comment(AuthenticationToken, DocumentId, VersionId,
-#'   ParentId, ThreadId, Text, Visibility, NotifyCollaborators)
+#' See [https://paws-r.github.io/docs/workdocs/create_comment.html](https://paws-r.github.io/docs/workdocs/create_comment.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -224,66 +120,6 @@ workdocs_add_resource_permissions <- function(AuthenticationToken = NULL, Resour
 #' co-owners, and contributors.
 #' @param NotifyCollaborators Set this parameter to TRUE to send an email out to the document
 #' collaborators after the comment is created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Comment = list(
-#'     CommentId = "string",
-#'     ParentId = "string",
-#'     ThreadId = "string",
-#'     Text = "string",
-#'     Contributor = list(
-#'       Id = "string",
-#'       Username = "string",
-#'       EmailAddress = "string",
-#'       GivenName = "string",
-#'       Surname = "string",
-#'       OrganizationId = "string",
-#'       RootFolderId = "string",
-#'       RecycleBinFolderId = "string",
-#'       Status = "ACTIVE"|"INACTIVE"|"PENDING",
-#'       Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TimeZoneId = "string",
-#'       Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-#'       Storage = list(
-#'         StorageUtilizedInBytes = 123,
-#'         StorageRule = list(
-#'           StorageAllocatedInBytes = 123,
-#'           StorageType = "UNLIMITED"|"QUOTA"
-#'         )
-#'       )
-#'     ),
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = "DRAFT"|"PUBLISHED"|"DELETED",
-#'     Visibility = "PUBLIC"|"PRIVATE",
-#'     RecipientId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_comment(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   VersionId = "string",
-#'   ParentId = "string",
-#'   ThreadId = "string",
-#'   Text = "string",
-#'   Visibility = "PUBLIC"|"PRIVATE",
-#'   NotifyCollaborators = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -309,12 +145,9 @@ workdocs_create_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' document, or version)
 #'
 #' @description
-#' Adds one or more custom properties to the specified resource (a folder,
-#' document, or version).
+#' Adds one or more custom properties to the specified resource (a folder, document, or version).
 #'
-#' @usage
-#' workdocs_create_custom_metadata(AuthenticationToken, ResourceId,
-#'   VersionId, CustomMetadata)
+#' See [https://paws-r.github.io/docs/workdocs/create_custom_metadata.html](https://paws-r.github.io/docs/workdocs/create_custom_metadata.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -322,21 +155,6 @@ workdocs_create_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' @param VersionId The ID of the version, if the custom metadata is being added to a
 #' document version.
 #' @param CustomMetadata &#91;required&#93; Custom metadata in the form of name-value pairs.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_custom_metadata(
-#'   AuthenticationToken = "string",
-#'   ResourceId = "string",
-#'   VersionId = "string",
-#'   CustomMetadata = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -363,48 +181,12 @@ workdocs_create_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' @description
 #' Creates a folder with the specified name and parent folder.
 #'
-#' @usage
-#' workdocs_create_folder(AuthenticationToken, Name, ParentFolderId)
+#' See [https://paws-r.github.io/docs/workdocs/create_folder.html](https://paws-r.github.io/docs/workdocs/create_folder.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param Name The name of the new folder.
 #' @param ParentFolderId &#91;required&#93; The ID of the parent folder.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Metadata = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     CreatorId = "string",
-#'     ParentFolderId = "string",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-#'     Signature = "string",
-#'     Labels = list(
-#'       "string"
-#'     ),
-#'     Size = 123,
-#'     LatestVersionSize = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_folder(
-#'   AuthenticationToken = "string",
-#'   Name = "string",
-#'   ParentFolderId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -430,30 +212,14 @@ workdocs_create_folder <- function(AuthenticationToken = NULL, Name = NULL, Pare
 #' folder)
 #'
 #' @description
-#' Adds the specified list of labels to the given resource (a document or
-#' folder)
+#' Adds the specified list of labels to the given resource (a document or folder)
 #'
-#' @usage
-#' workdocs_create_labels(ResourceId, Labels, AuthenticationToken)
+#' See [https://paws-r.github.io/docs/workdocs/create_labels.html](https://paws-r.github.io/docs/workdocs/create_labels.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param Labels &#91;required&#93; List of labels to add to the resource.
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_labels(
-#'   ResourceId = "string",
-#'   Labels = list(
-#'     "string"
-#'   ),
-#'   AuthenticationToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -478,16 +244,9 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #' Configure Amazon WorkDocs to use Amazon SNS notifications
 #'
 #' @description
-#' Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
-#' receives a confirmation message, and must confirm the subscription.
-#' 
-#' For more information, see [Subscribe to
-#' Notifications](https://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html)
-#' in the *Amazon WorkDocs Developer Guide*.
+#' Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint receives a confirmation message, and must confirm the subscription.
 #'
-#' @usage
-#' workdocs_create_notification_subscription(OrganizationId, Endpoint,
-#'   Protocol, SubscriptionType)
+#' See [https://paws-r.github.io/docs/workdocs/create_notification_subscription.html](https://paws-r.github.io/docs/workdocs/create_notification_subscription.html) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The ID of the organization.
 #' @param Endpoint &#91;required&#93; The endpoint to receive the notifications. If the protocol is HTTPS, the
@@ -495,28 +254,6 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #' @param Protocol &#91;required&#93; The protocol to use. The supported value is https, which delivers
 #' JSON-encoded messages using HTTPS POST.
 #' @param SubscriptionType &#91;required&#93; The notification type.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Subscription = list(
-#'     SubscriptionId = "string",
-#'     EndPoint = "string",
-#'     Protocol = "HTTPS"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_notification_subscription(
-#'   OrganizationId = "string",
-#'   Endpoint = "string",
-#'   Protocol = "HTTPS",
-#'   SubscriptionType = "ALL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -541,12 +278,9 @@ workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, 
 #' Creates a user in a Simple AD or Microsoft AD directory
 #'
 #' @description
-#' Creates a user in a Simple AD or Microsoft AD directory. The status of a
-#' newly created user is "ACTIVE". New users can access Amazon WorkDocs.
+#' Creates a user in a Simple AD or Microsoft AD directory. The status of a newly created user is "ACTIVE". New users can access Amazon WorkDocs.
 #'
-#' @usage
-#' workdocs_create_user(OrganizationId, Username, EmailAddress, GivenName,
-#'   Surname, Password, TimeZoneId, StorageRule, AuthenticationToken)
+#' See [https://paws-r.github.io/docs/workdocs/create_user.html](https://paws-r.github.io/docs/workdocs/create_user.html) for full documentation.
 #'
 #' @param OrganizationId The ID of the organization.
 #' @param Username &#91;required&#93; The login name of the user.
@@ -558,58 +292,6 @@ workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, 
 #' @param StorageRule The amount of storage for the user.
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   User = list(
-#'     Id = "string",
-#'     Username = "string",
-#'     EmailAddress = "string",
-#'     GivenName = "string",
-#'     Surname = "string",
-#'     OrganizationId = "string",
-#'     RootFolderId = "string",
-#'     RecycleBinFolderId = "string",
-#'     Status = "ACTIVE"|"INACTIVE"|"PENDING",
-#'     Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TimeZoneId = "string",
-#'     Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-#'     Storage = list(
-#'       StorageUtilizedInBytes = 123,
-#'       StorageRule = list(
-#'         StorageAllocatedInBytes = 123,
-#'         StorageType = "UNLIMITED"|"QUOTA"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_user(
-#'   OrganizationId = "string",
-#'   Username = "string",
-#'   EmailAddress = "string",
-#'   GivenName = "string",
-#'   Surname = "string",
-#'   Password = "string",
-#'   TimeZoneId = "string",
-#'   StorageRule = list(
-#'     StorageAllocatedInBytes = 123,
-#'     StorageType = "UNLIMITED"|"QUOTA"
-#'   ),
-#'   AuthenticationToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -635,26 +317,13 @@ workdocs_create_user <- function(OrganizationId = NULL, Username, EmailAddress =
 #' Amazon WorkDocs
 #'
 #' @description
-#' Deactivates the specified user, which revokes the user's access to
-#' Amazon WorkDocs.
+#' Deactivates the specified user, which revokes the user's access to Amazon WorkDocs.
 #'
-#' @usage
-#' workdocs_deactivate_user(UserId, AuthenticationToken)
+#' See [https://paws-r.github.io/docs/workdocs/deactivate_user.html](https://paws-r.github.io/docs/workdocs/deactivate_user.html) for full documentation.
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deactivate_user(
-#'   UserId = "string",
-#'   AuthenticationToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -681,28 +350,13 @@ workdocs_deactivate_user <- function(UserId, AuthenticationToken = NULL) {
 #' @description
 #' Deletes the specified comment from the document version.
 #'
-#' @usage
-#' workdocs_delete_comment(AuthenticationToken, DocumentId, VersionId,
-#'   CommentId)
+#' See [https://paws-r.github.io/docs/workdocs/delete_comment.html](https://paws-r.github.io/docs/workdocs/delete_comment.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the document version.
 #' @param CommentId &#91;required&#93; The ID of the comment.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_comment(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   VersionId = "string",
-#'   CommentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -729,9 +383,7 @@ workdocs_delete_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' @description
 #' Deletes custom metadata from the specified resource.
 #'
-#' @usage
-#' workdocs_delete_custom_metadata(AuthenticationToken, ResourceId,
-#'   VersionId, Keys, DeleteAll)
+#' See [https://paws-r.github.io/docs/workdocs/delete_custom_metadata.html](https://paws-r.github.io/docs/workdocs/delete_custom_metadata.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -741,22 +393,6 @@ workdocs_delete_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' @param Keys List of properties to remove.
 #' @param DeleteAll Flag to indicate removal of all custom metadata properties from the
 #' specified resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_custom_metadata(
-#'   AuthenticationToken = "string",
-#'   ResourceId = "string",
-#'   VersionId = "string",
-#'   Keys = list(
-#'     "string"
-#'   ),
-#'   DeleteAll = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -783,23 +419,11 @@ workdocs_delete_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' @description
 #' Permanently deletes the specified document and its associated metadata.
 #'
-#' @usage
-#' workdocs_delete_document(AuthenticationToken, DocumentId)
+#' See [https://paws-r.github.io/docs/workdocs/delete_document.html](https://paws-r.github.io/docs/workdocs/delete_document.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_document(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -826,23 +450,11 @@ workdocs_delete_document <- function(AuthenticationToken = NULL, DocumentId) {
 #' @description
 #' Permanently deletes the specified folder and its contents.
 #'
-#' @usage
-#' workdocs_delete_folder(AuthenticationToken, FolderId)
+#' See [https://paws-r.github.io/docs/workdocs/delete_folder.html](https://paws-r.github.io/docs/workdocs/delete_folder.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_folder(
-#'   AuthenticationToken = "string",
-#'   FolderId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -869,23 +481,11 @@ workdocs_delete_folder <- function(AuthenticationToken = NULL, FolderId) {
 #' @description
 #' Deletes the contents of the specified folder.
 #'
-#' @usage
-#' workdocs_delete_folder_contents(AuthenticationToken, FolderId)
+#' See [https://paws-r.github.io/docs/workdocs/delete_folder_contents.html](https://paws-r.github.io/docs/workdocs/delete_folder_contents.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_folder_contents(
-#'   AuthenticationToken = "string",
-#'   FolderId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -912,30 +512,13 @@ workdocs_delete_folder_contents <- function(AuthenticationToken = NULL, FolderId
 #' @description
 #' Deletes the specified list of labels from a resource.
 #'
-#' @usage
-#' workdocs_delete_labels(ResourceId, AuthenticationToken, Labels,
-#'   DeleteAll)
+#' See [https://paws-r.github.io/docs/workdocs/delete_labels.html](https://paws-r.github.io/docs/workdocs/delete_labels.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param Labels List of labels to delete from the resource.
 #' @param DeleteAll Flag to request removal of all labels from the specified resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_labels(
-#'   ResourceId = "string",
-#'   AuthenticationToken = "string",
-#'   Labels = list(
-#'     "string"
-#'   ),
-#'   DeleteAll = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -962,23 +545,10 @@ workdocs_delete_labels <- function(ResourceId, AuthenticationToken = NULL, Label
 #' @description
 #' Deletes the specified subscription from the specified organization.
 #'
-#' @usage
-#' workdocs_delete_notification_subscription(SubscriptionId,
-#'   OrganizationId)
+#' See [https://paws-r.github.io/docs/workdocs/delete_notification_subscription.html](https://paws-r.github.io/docs/workdocs/delete_notification_subscription.html) for full documentation.
 #'
 #' @param SubscriptionId &#91;required&#93; The ID of the subscription.
 #' @param OrganizationId &#91;required&#93; The ID of the organization.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_notification_subscription(
-#'   SubscriptionId = "string",
-#'   OrganizationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1005,24 +575,12 @@ workdocs_delete_notification_subscription <- function(SubscriptionId, Organizati
 #' @description
 #' Deletes the specified user from a Simple AD or Microsoft AD directory.
 #'
-#' @usage
-#' workdocs_delete_user(AuthenticationToken, UserId)
+#' See [https://paws-r.github.io/docs/workdocs/delete_user.html](https://paws-r.github.io/docs/workdocs/delete_user.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
 #' administrative API actions, as in accessing the API using AWS
 #' credentials.
 #' @param UserId &#91;required&#93; The ID of the user.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_user(
-#'   AuthenticationToken = "string",
-#'   UserId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1049,10 +607,7 @@ workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
 #' @description
 #' Describes the user activities in a specified time period.
 #'
-#' @usage
-#' workdocs_describe_activities(AuthenticationToken, StartTime, EndTime,
-#'   OrganizationId, ActivityTypes, ResourceId, UserId,
-#'   IncludeIndirectActivities, Limit, Marker)
+#' See [https://paws-r.github.io/docs/workdocs/describe_activities.html](https://paws-r.github.io/docs/workdocs/describe_activities.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -1076,133 +631,6 @@ workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
 #' within the parent folder (the indirect activity).
 #' @param Limit The maximum number of items to return.
 #' @param Marker The marker for the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UserActivities = list(
-#'     list(
-#'       Type = "DOCUMENT_CHECKED_IN"|"DOCUMENT_CHECKED_OUT"|"DOCUMENT_RENAMED"|"DOCUMENT_VERSION_UPLOADED"|"DOCUMENT_VERSION_DELETED"|"DOCUMENT_VERSION_VIEWED"|"DOCUMENT_VERSION_DOWNLOADED"|"DOCUMENT_RECYCLED"|"DOCUMENT_RESTORED"|"DOCUMENT_REVERTED"|"DOCUMENT_SHARED"|"DOCUMENT_UNSHARED"|"DOCUMENT_SHARE_PERMISSION_CHANGED"|"DOCUMENT_SHAREABLE_LINK_CREATED"|"DOCUMENT_SHAREABLE_LINK_REMOVED"|"DOCUMENT_SHAREABLE_LINK_PERMISSION_CHANGED"|"DOCUMENT_MOVED"|"DOCUMENT_COMMENT_ADDED"|"DOCUMENT_COMMENT_DELETED"|"DOCUMENT_ANNOTATION_ADDED"|"DOCUMENT_ANNOTATION_DELETED"|"FOLDER_CREATED"|"FOLDER_DELETED"|"FOLDER_RENAMED"|"FOLDER_RECYCLED"|"FOLDER_RESTORED"|"FOLDER_SHARED"|"FOLDER_UNSHARED"|"FOLDER_SHARE_PERMISSION_CHANGED"|"FOLDER_SHAREABLE_LINK_CREATED"|"FOLDER_SHAREABLE_LINK_REMOVED"|"FOLDER_SHAREABLE_LINK_PERMISSION_CHANGED"|"FOLDER_MOVED",
-#'       TimeStamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       IsIndirectActivity = TRUE|FALSE,
-#'       OrganizationId = "string",
-#'       Initiator = list(
-#'         Id = "string",
-#'         Username = "string",
-#'         GivenName = "string",
-#'         Surname = "string",
-#'         EmailAddress = "string"
-#'       ),
-#'       Participants = list(
-#'         Users = list(
-#'           list(
-#'             Id = "string",
-#'             Username = "string",
-#'             GivenName = "string",
-#'             Surname = "string",
-#'             EmailAddress = "string"
-#'           )
-#'         ),
-#'         Groups = list(
-#'           list(
-#'             Id = "string",
-#'             Name = "string"
-#'           )
-#'         )
-#'       ),
-#'       ResourceMetadata = list(
-#'         Type = "FOLDER"|"DOCUMENT",
-#'         Name = "string",
-#'         OriginalName = "string",
-#'         Id = "string",
-#'         VersionId = "string",
-#'         Owner = list(
-#'           Id = "string",
-#'           Username = "string",
-#'           GivenName = "string",
-#'           Surname = "string",
-#'           EmailAddress = "string"
-#'         ),
-#'         ParentId = "string"
-#'       ),
-#'       OriginalParent = list(
-#'         Type = "FOLDER"|"DOCUMENT",
-#'         Name = "string",
-#'         OriginalName = "string",
-#'         Id = "string",
-#'         VersionId = "string",
-#'         Owner = list(
-#'           Id = "string",
-#'           Username = "string",
-#'           GivenName = "string",
-#'           Surname = "string",
-#'           EmailAddress = "string"
-#'         ),
-#'         ParentId = "string"
-#'       ),
-#'       CommentMetadata = list(
-#'         CommentId = "string",
-#'         Contributor = list(
-#'           Id = "string",
-#'           Username = "string",
-#'           EmailAddress = "string",
-#'           GivenName = "string",
-#'           Surname = "string",
-#'           OrganizationId = "string",
-#'           RootFolderId = "string",
-#'           RecycleBinFolderId = "string",
-#'           Status = "ACTIVE"|"INACTIVE"|"PENDING",
-#'           Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-#'           CreatedTimestamp = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           ModifiedTimestamp = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           TimeZoneId = "string",
-#'           Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-#'           Storage = list(
-#'             StorageUtilizedInBytes = 123,
-#'             StorageRule = list(
-#'               StorageAllocatedInBytes = 123,
-#'               StorageType = "UNLIMITED"|"QUOTA"
-#'             )
-#'           )
-#'         ),
-#'         CreatedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         CommentStatus = "DRAFT"|"PUBLISHED"|"DELETED",
-#'         RecipientId = "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_activities(
-#'   AuthenticationToken = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   OrganizationId = "string",
-#'   ActivityTypes = "string",
-#'   ResourceId = "string",
-#'   UserId = "string",
-#'   IncludeIndirectActivities = TRUE|FALSE,
-#'   Limit = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1229,9 +657,7 @@ workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime =
 #' @description
 #' List all the comments for the specified document version.
 #'
-#' @usage
-#' workdocs_describe_comments(AuthenticationToken, DocumentId, VersionId,
-#'   Limit, Marker)
+#' See [https://paws-r.github.io/docs/workdocs/describe_comments.html](https://paws-r.github.io/docs/workdocs/describe_comments.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -1240,66 +666,6 @@ workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime =
 #' @param Limit The maximum number of items to return.
 #' @param Marker The marker for the next set of results. This marker was received from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Comments = list(
-#'     list(
-#'       CommentId = "string",
-#'       ParentId = "string",
-#'       ThreadId = "string",
-#'       Text = "string",
-#'       Contributor = list(
-#'         Id = "string",
-#'         Username = "string",
-#'         EmailAddress = "string",
-#'         GivenName = "string",
-#'         Surname = "string",
-#'         OrganizationId = "string",
-#'         RootFolderId = "string",
-#'         RecycleBinFolderId = "string",
-#'         Status = "ACTIVE"|"INACTIVE"|"PENDING",
-#'         Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-#'         CreatedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ModifiedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         TimeZoneId = "string",
-#'         Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-#'         Storage = list(
-#'           StorageUtilizedInBytes = 123,
-#'           StorageRule = list(
-#'             StorageAllocatedInBytes = 123,
-#'             StorageType = "UNLIMITED"|"QUOTA"
-#'           )
-#'         )
-#'       ),
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "DRAFT"|"PUBLISHED"|"DELETED",
-#'       Visibility = "PUBLIC"|"PRIVATE",
-#'       RecipientId = "string"
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_comments(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   VersionId = "string",
-#'   Limit = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1325,12 +691,8 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
 #'
 #' @description
 #' Retrieves the document versions for the specified document.
-#' 
-#' By default, only active versions are returned.
 #'
-#' @usage
-#' workdocs_describe_document_versions(AuthenticationToken, DocumentId,
-#'   Marker, Limit, Include, Fields)
+#' See [https://paws-r.github.io/docs/workdocs/describe_document_versions.html](https://paws-r.github.io/docs/workdocs/describe_document_versions.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -1342,55 +704,6 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
 #' incomplete versions.
 #' @param Fields Specify "SOURCE" to include initialized versions and a URL for the
 #' source document.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentVersions = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       ContentType = "string",
-#'       Size = 123,
-#'       Signature = "string",
-#'       Status = "INITIALIZED"|"ACTIVE",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ContentCreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ContentModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CreatorId = "string",
-#'       Thumbnail = list(
-#'         "string"
-#'       ),
-#'       Source = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_document_versions(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   Marker = "string",
-#'   Limit = 123,
-#'   Include = "string",
-#'   Fields = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1416,17 +729,9 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
 #' and subfolders
 #'
 #' @description
-#' Describes the contents of the specified folder, including its documents
-#' and subfolders.
-#' 
-#' By default, Amazon WorkDocs returns the first 100 active document and
-#' folder metadata items. If there are more results, the response includes
-#' a marker that you can use to request the next set of results. You can
-#' also request initialized documents.
+#' Describes the contents of the specified folder, including its documents and subfolders.
 #'
-#' @usage
-#' workdocs_describe_folder_contents(AuthenticationToken, FolderId, Sort,
-#'   Order, Limit, Marker, Type, Include)
+#' See [https://paws-r.github.io/docs/workdocs/describe_folder_contents.html](https://paws-r.github.io/docs/workdocs/describe_folder_contents.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -1439,93 +744,6 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
 #' @param Type The type of items.
 #' @param Include The contents to include. Specify "INITIALIZED" to include initialized
 #' documents.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Folders = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       CreatorId = "string",
-#'       ParentFolderId = "string",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-#'       Signature = "string",
-#'       Labels = list(
-#'         "string"
-#'       ),
-#'       Size = 123,
-#'       LatestVersionSize = 123
-#'     )
-#'   ),
-#'   Documents = list(
-#'     list(
-#'       Id = "string",
-#'       CreatorId = "string",
-#'       ParentFolderId = "string",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LatestVersionMetadata = list(
-#'         Id = "string",
-#'         Name = "string",
-#'         ContentType = "string",
-#'         Size = 123,
-#'         Signature = "string",
-#'         Status = "INITIALIZED"|"ACTIVE",
-#'         CreatedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ModifiedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ContentCreatedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ContentModifiedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         CreatorId = "string",
-#'         Thumbnail = list(
-#'           "string"
-#'         ),
-#'         Source = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-#'       Labels = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_folder_contents(
-#'   AuthenticationToken = "string",
-#'   FolderId = "string",
-#'   Sort = "DATE"|"NAME",
-#'   Order = "ASCENDING"|"DESCENDING",
-#'   Limit = 123,
-#'   Marker = "string",
-#'   Type = "ALL"|"DOCUMENT"|"FOLDER",
-#'   Include = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1550,12 +768,9 @@ workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, Folder
 #' Describes the groups specified by the query
 #'
 #' @description
-#' Describes the groups specified by the query. Groups are defined by the
-#' underlying Active Directory.
+#' Describes the groups specified by the query. Groups are defined by the underlying Active Directory.
 #'
-#' @usage
-#' workdocs_describe_groups(AuthenticationToken, SearchQuery,
-#'   OrganizationId, Marker, Limit)
+#' See [https://paws-r.github.io/docs/workdocs/describe_groups.html](https://paws-r.github.io/docs/workdocs/describe_groups.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -1564,31 +779,6 @@ workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, Folder
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param Limit The maximum number of items to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Groups = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string"
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_groups(
-#'   AuthenticationToken = "string",
-#'   SearchQuery = "string",
-#'   OrganizationId = "string",
-#'   Marker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1615,38 +805,12 @@ workdocs_describe_groups <- function(AuthenticationToken = NULL, SearchQuery, Or
 #' @description
 #' Lists the specified notification subscriptions.
 #'
-#' @usage
-#' workdocs_describe_notification_subscriptions(OrganizationId, Marker,
-#'   Limit)
+#' See [https://paws-r.github.io/docs/workdocs/describe_notification_subscriptions.html](https://paws-r.github.io/docs/workdocs/describe_notification_subscriptions.html) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The ID of the organization.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param Limit The maximum number of items to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Subscriptions = list(
-#'     list(
-#'       SubscriptionId = "string",
-#'       EndPoint = "string",
-#'       Protocol = "HTTPS"
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_notification_subscriptions(
-#'   OrganizationId = "string",
-#'   Marker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1673,9 +837,7 @@ workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker 
 #' @description
 #' Describes the permissions of a specified resource.
 #'
-#' @usage
-#' workdocs_describe_resource_permissions(AuthenticationToken, ResourceId,
-#'   PrincipalId, Limit, Marker)
+#' See [https://paws-r.github.io/docs/workdocs/describe_resource_permissions.html](https://paws-r.github.io/docs/workdocs/describe_resource_permissions.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -1684,37 +846,6 @@ workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker 
 #' @param Limit The maximum number of items to return with this call.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Principals = list(
-#'     list(
-#'       Id = "string",
-#'       Type = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION",
-#'       Roles = list(
-#'         list(
-#'           Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER",
-#'           Type = "DIRECT"|"INHERITED"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_resource_permissions(
-#'   AuthenticationToken = "string",
-#'   ResourceId = "string",
-#'   PrincipalId = "string",
-#'   Limit = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1740,62 +871,14 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
 #' RecycleBin
 #'
 #' @description
-#' Describes the current user's special folders; the `RootFolder` and the
-#' `RecycleBin`. `RootFolder` is the root of user's files and folders and
-#' `RecycleBin` is the root of recycled items. This is not a valid action
-#' for SigV4 (administrative API) clients.
-#' 
-#' This action requires an authentication token. To get an authentication
-#' token, register an application with Amazon WorkDocs. For more
-#' information, see [Authentication and Access Control for User
-#' Applications](https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
-#' in the *Amazon WorkDocs Developer Guide*.
+#' Describes the current user's special folders; the `RootFolder` and the `RecycleBin`. `RootFolder` is the root of user's files and folders and `RecycleBin` is the root of recycled items. This is not a valid action for SigV4 (administrative API) clients.
 #'
-#' @usage
-#' workdocs_describe_root_folders(AuthenticationToken, Limit, Marker)
+#' See [https://paws-r.github.io/docs/workdocs/describe_root_folders.html](https://paws-r.github.io/docs/workdocs/describe_root_folders.html) for full documentation.
 #'
 #' @param AuthenticationToken &#91;required&#93; Amazon WorkDocs authentication token.
 #' @param Limit The maximum number of items to return.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Folders = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       CreatorId = "string",
-#'       ParentFolderId = "string",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-#'       Signature = "string",
-#'       Labels = list(
-#'         "string"
-#'       ),
-#'       Size = 123,
-#'       LatestVersionSize = 123
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_root_folders(
-#'   AuthenticationToken = "string",
-#'   Limit = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1820,16 +903,9 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
 #' Describes the specified users
 #'
 #' @description
-#' Describes the specified users. You can describe all users or filter the
-#' results (for example, by status or organization).
-#' 
-#' By default, Amazon WorkDocs returns the first 24 active or pending
-#' users. If there are more results, the response includes a marker that
-#' you can use to request the next set of results.
+#' Describes the specified users. You can describe all users or filter the results (for example, by status or organization).
 #'
-#' @usage
-#' workdocs_describe_users(AuthenticationToken, OrganizationId, UserIds,
-#'   Query, Include, Order, Sort, Marker, Limit, Fields)
+#' See [https://paws-r.github.io/docs/workdocs/describe_users.html](https://paws-r.github.io/docs/workdocs/describe_users.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -1844,60 +920,6 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
 #' @param Limit The maximum number of items to return.
 #' @param Fields A comma-separated list of values. Specify "STORAGE_METADATA" to include
 #' the user storage quota and utilization information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Users = list(
-#'     list(
-#'       Id = "string",
-#'       Username = "string",
-#'       EmailAddress = "string",
-#'       GivenName = "string",
-#'       Surname = "string",
-#'       OrganizationId = "string",
-#'       RootFolderId = "string",
-#'       RecycleBinFolderId = "string",
-#'       Status = "ACTIVE"|"INACTIVE"|"PENDING",
-#'       Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TimeZoneId = "string",
-#'       Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-#'       Storage = list(
-#'         StorageUtilizedInBytes = 123,
-#'         StorageRule = list(
-#'           StorageAllocatedInBytes = 123,
-#'           StorageType = "UNLIMITED"|"QUOTA"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   TotalNumberOfUsers = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_users(
-#'   AuthenticationToken = "string",
-#'   OrganizationId = "string",
-#'   UserIds = "string",
-#'   Query = "string",
-#'   Include = "ALL"|"ACTIVE_PENDING",
-#'   Order = "ASCENDING"|"DESCENDING",
-#'   Sort = "USER_NAME"|"FULL_NAME"|"STORAGE_LIMIT"|"USER_STATUS"|"STORAGE_USED",
-#'   Marker = "string",
-#'   Limit = 123,
-#'   Fields = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1923,61 +945,11 @@ workdocs_describe_users <- function(AuthenticationToken = NULL, OrganizationId =
 #' was generated
 #'
 #' @description
-#' Retrieves details of the current user for whom the authentication token
-#' was generated. This is not a valid action for SigV4 (administrative API)
-#' clients.
-#' 
-#' This action requires an authentication token. To get an authentication
-#' token, register an application with Amazon WorkDocs. For more
-#' information, see [Authentication and Access Control for User
-#' Applications](https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
-#' in the *Amazon WorkDocs Developer Guide*.
+#' Retrieves details of the current user for whom the authentication token was generated. This is not a valid action for SigV4 (administrative API) clients.
 #'
-#' @usage
-#' workdocs_get_current_user(AuthenticationToken)
+#' See [https://paws-r.github.io/docs/workdocs/get_current_user.html](https://paws-r.github.io/docs/workdocs/get_current_user.html) for full documentation.
 #'
 #' @param AuthenticationToken &#91;required&#93; Amazon WorkDocs authentication token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   User = list(
-#'     Id = "string",
-#'     Username = "string",
-#'     EmailAddress = "string",
-#'     GivenName = "string",
-#'     Surname = "string",
-#'     OrganizationId = "string",
-#'     RootFolderId = "string",
-#'     RecycleBinFolderId = "string",
-#'     Status = "ACTIVE"|"INACTIVE"|"PENDING",
-#'     Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TimeZoneId = "string",
-#'     Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-#'     Storage = list(
-#'       StorageUtilizedInBytes = 123,
-#'       StorageRule = list(
-#'         StorageAllocatedInBytes = 123,
-#'         StorageType = "UNLIMITED"|"QUOTA"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_current_user(
-#'   AuthenticationToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2004,75 +976,12 @@ workdocs_get_current_user <- function(AuthenticationToken) {
 #' @description
 #' Retrieves details of a document.
 #'
-#' @usage
-#' workdocs_get_document(AuthenticationToken, DocumentId,
-#'   IncludeCustomMetadata)
+#' See [https://paws-r.github.io/docs/workdocs/get_document.html](https://paws-r.github.io/docs/workdocs/get_document.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param IncludeCustomMetadata Set this to `TRUE` to include custom metadata in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Metadata = list(
-#'     Id = "string",
-#'     CreatorId = "string",
-#'     ParentFolderId = "string",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LatestVersionMetadata = list(
-#'       Id = "string",
-#'       Name = "string",
-#'       ContentType = "string",
-#'       Size = 123,
-#'       Signature = "string",
-#'       Status = "INITIALIZED"|"ACTIVE",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ContentCreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ContentModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CreatorId = "string",
-#'       Thumbnail = list(
-#'         "string"
-#'       ),
-#'       Source = list(
-#'         "string"
-#'       )
-#'     ),
-#'     ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-#'     Labels = list(
-#'       "string"
-#'     )
-#'   ),
-#'   CustomMetadata = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_document(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   IncludeCustomMetadata = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2098,17 +1007,9 @@ workdocs_get_document <- function(AuthenticationToken = NULL, DocumentId, Includ
 #' the requested document
 #'
 #' @description
-#' Retrieves the path information (the hierarchy from the root folder) for
-#' the requested document.
-#' 
-#' By default, Amazon WorkDocs returns a maximum of 100 levels upwards from
-#' the requested document and only includes the IDs of the parent folders
-#' in the path. You can limit the maximum number of levels. You can also
-#' request the names of the parent folders.
+#' Retrieves the path information (the hierarchy from the root folder) for the requested document.
 #'
-#' @usage
-#' workdocs_get_document_path(AuthenticationToken, DocumentId, Limit,
-#'   Fields, Marker)
+#' See [https://paws-r.github.io/docs/workdocs/get_document_path.html](https://paws-r.github.io/docs/workdocs/get_document_path.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -2117,32 +1018,6 @@ workdocs_get_document <- function(AuthenticationToken = NULL, DocumentId, Includ
 #' @param Fields A comma-separated list of values. Specify `NAME` to include the names of
 #' the parent folders.
 #' @param Marker This value is not supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Path = list(
-#'     Components = list(
-#'       list(
-#'         Id = "string",
-#'         Name = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_document_path(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   Limit = 123,
-#'   Fields = "string",
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2169,9 +1044,7 @@ workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, L
 #' @description
 #' Retrieves version metadata for the specified document.
 #'
-#' @usage
-#' workdocs_get_document_version(AuthenticationToken, DocumentId,
-#'   VersionId, Fields, IncludeCustomMetadata)
+#' See [https://paws-r.github.io/docs/workdocs/get_document_version.html](https://paws-r.github.io/docs/workdocs/get_document_version.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -2180,54 +1053,6 @@ workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, L
 #' @param Fields A comma-separated list of values. Specify "SOURCE" to include a URL for
 #' the source document.
 #' @param IncludeCustomMetadata Set this to TRUE to include custom metadata in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Metadata = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     ContentType = "string",
-#'     Size = 123,
-#'     Signature = "string",
-#'     Status = "INITIALIZED"|"ACTIVE",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ContentCreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ContentModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreatorId = "string",
-#'     Thumbnail = list(
-#'       "string"
-#'     ),
-#'     Source = list(
-#'       "string"
-#'     )
-#'   ),
-#'   CustomMetadata = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_document_version(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   VersionId = "string",
-#'   Fields = "string",
-#'   IncludeCustomMetadata = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2254,52 +1079,12 @@ workdocs_get_document_version <- function(AuthenticationToken = NULL, DocumentId
 #' @description
 #' Retrieves the metadata of the specified folder.
 #'
-#' @usage
-#' workdocs_get_folder(AuthenticationToken, FolderId,
-#'   IncludeCustomMetadata)
+#' See [https://paws-r.github.io/docs/workdocs/get_folder.html](https://paws-r.github.io/docs/workdocs/get_folder.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param IncludeCustomMetadata Set to TRUE to include custom metadata in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Metadata = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     CreatorId = "string",
-#'     ParentFolderId = "string",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-#'     Signature = "string",
-#'     Labels = list(
-#'       "string"
-#'     ),
-#'     Size = 123,
-#'     LatestVersionSize = 123
-#'   ),
-#'   CustomMetadata = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_folder(
-#'   AuthenticationToken = "string",
-#'   FolderId = "string",
-#'   IncludeCustomMetadata = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2325,17 +1110,9 @@ workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCus
 #' the specified folder
 #'
 #' @description
-#' Retrieves the path information (the hierarchy from the root folder) for
-#' the specified folder.
-#' 
-#' By default, Amazon WorkDocs returns a maximum of 100 levels upwards from
-#' the requested folder and only includes the IDs of the parent folders in
-#' the path. You can limit the maximum number of levels. You can also
-#' request the parent folder names.
+#' Retrieves the path information (the hierarchy from the root folder) for the specified folder.
 #'
-#' @usage
-#' workdocs_get_folder_path(AuthenticationToken, FolderId, Limit, Fields,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/workdocs/get_folder_path.html](https://paws-r.github.io/docs/workdocs/get_folder_path.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -2344,32 +1121,6 @@ workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCus
 #' @param Fields A comma-separated list of values. Specify "NAME" to include the names of
 #' the parent folders.
 #' @param Marker This value is not supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Path = list(
-#'     Components = list(
-#'       list(
-#'         Id = "string",
-#'         Name = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_folder_path(
-#'   AuthenticationToken = "string",
-#'   FolderId = "string",
-#'   Limit = 123,
-#'   Fields = "string",
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2394,12 +1145,9 @@ workdocs_get_folder_path <- function(AuthenticationToken = NULL, FolderId, Limit
 #' Retrieves a collection of resources, including folders and documents
 #'
 #' @description
-#' Retrieves a collection of resources, including folders and documents.
-#' The only `CollectionType` supported is `SHARED_WITH_ME`.
+#' Retrieves a collection of resources, including folders and documents. The only `CollectionType` supported is `SHARED_WITH_ME`.
 #'
-#' @usage
-#' workdocs_get_resources(AuthenticationToken, UserId, CollectionType,
-#'   Limit, Marker)
+#' See [https://paws-r.github.io/docs/workdocs/get_resources.html](https://paws-r.github.io/docs/workdocs/get_resources.html) for full documentation.
 #'
 #' @param AuthenticationToken The Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -2409,90 +1157,6 @@ workdocs_get_folder_path <- function(AuthenticationToken = NULL, FolderId, Limit
 #' @param Limit The maximum number of resources to return.
 #' @param Marker The marker for the next set of results. This marker was received from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Folders = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       CreatorId = "string",
-#'       ParentFolderId = "string",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-#'       Signature = "string",
-#'       Labels = list(
-#'         "string"
-#'       ),
-#'       Size = 123,
-#'       LatestVersionSize = 123
-#'     )
-#'   ),
-#'   Documents = list(
-#'     list(
-#'       Id = "string",
-#'       CreatorId = "string",
-#'       ParentFolderId = "string",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LatestVersionMetadata = list(
-#'         Id = "string",
-#'         Name = "string",
-#'         ContentType = "string",
-#'         Size = 123,
-#'         Signature = "string",
-#'         Status = "INITIALIZED"|"ACTIVE",
-#'         CreatedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ModifiedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ContentCreatedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ContentModifiedTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         CreatorId = "string",
-#'         Thumbnail = list(
-#'           "string"
-#'         ),
-#'         Source = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-#'       Labels = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resources(
-#'   AuthenticationToken = "string",
-#'   UserId = "string",
-#'   CollectionType = "SHARED_WITH_ME",
-#'   Limit = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2518,20 +1182,8 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
 #'
 #' @description
 #' Creates a new document object and version object.
-#' 
-#' The client specifies the parent folder ID and name of the document to
-#' upload. The ID is optionally specified when creating a new version of an
-#' existing document. This is the first step to upload a document. Next,
-#' upload the document to the URL returned from the call, and then call
-#' [`update_document_version`][workdocs_update_document_version].
-#' 
-#' To cancel the document upload, call
-#' [`abort_document_version_upload`][workdocs_abort_document_version_upload].
 #'
-#' @usage
-#' workdocs_initiate_document_version_upload(AuthenticationToken, Id, Name,
-#'   ContentCreatedTimestamp, ContentModifiedTimestamp, ContentType,
-#'   DocumentSizeInBytes, ParentFolderId)
+#' See [https://paws-r.github.io/docs/workdocs/initiate_document_version_upload.html](https://paws-r.github.io/docs/workdocs/initiate_document_version_upload.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -2542,79 +1194,6 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
 #' @param ContentType The content type of the document.
 #' @param DocumentSizeInBytes The size of the document, in bytes.
 #' @param ParentFolderId &#91;required&#93; The ID of the parent folder.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Metadata = list(
-#'     Id = "string",
-#'     CreatorId = "string",
-#'     ParentFolderId = "string",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LatestVersionMetadata = list(
-#'       Id = "string",
-#'       Name = "string",
-#'       ContentType = "string",
-#'       Size = 123,
-#'       Signature = "string",
-#'       Status = "INITIALIZED"|"ACTIVE",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ContentCreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ContentModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CreatorId = "string",
-#'       Thumbnail = list(
-#'         "string"
-#'       ),
-#'       Source = list(
-#'         "string"
-#'       )
-#'     ),
-#'     ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-#'     Labels = list(
-#'       "string"
-#'     )
-#'   ),
-#'   UploadMetadata = list(
-#'     UploadUrl = "string",
-#'     SignedHeaders = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$initiate_document_version_upload(
-#'   AuthenticationToken = "string",
-#'   Id = "string",
-#'   Name = "string",
-#'   ContentCreatedTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ContentModifiedTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ContentType = "string",
-#'   DocumentSizeInBytes = 123,
-#'   ParentFolderId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2641,24 +1220,11 @@ workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL
 #' @description
 #' Removes all the permissions from the specified resource.
 #'
-#' @usage
-#' workdocs_remove_all_resource_permissions(AuthenticationToken,
-#'   ResourceId)
+#' See [https://paws-r.github.io/docs/workdocs/remove_all_resource_permissions.html](https://paws-r.github.io/docs/workdocs/remove_all_resource_permissions.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_all_resource_permissions(
-#'   AuthenticationToken = "string",
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2684,31 +1250,15 @@ workdocs_remove_all_resource_permissions <- function(AuthenticationToken = NULL,
 #' resource
 #'
 #' @description
-#' Removes the permission for the specified principal from the specified
-#' resource.
+#' Removes the permission for the specified principal from the specified resource.
 #'
-#' @usage
-#' workdocs_remove_resource_permission(AuthenticationToken, ResourceId,
-#'   PrincipalId, PrincipalType)
+#' See [https://paws-r.github.io/docs/workdocs/remove_resource_permission.html](https://paws-r.github.io/docs/workdocs/remove_resource_permission.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param PrincipalId &#91;required&#93; The principal ID of the resource.
 #' @param PrincipalType The principal type of the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_resource_permission(
-#'   AuthenticationToken = "string",
-#'   ResourceId = "string",
-#'   PrincipalId = "string",
-#'   PrincipalType = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2733,12 +1283,9 @@ workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, Reso
 #' Updates the specified attributes of a document
 #'
 #' @description
-#' Updates the specified attributes of a document. The user must have
-#' access to both the document and its parent folder, if applicable.
+#' Updates the specified attributes of a document. The user must have access to both the document and its parent folder, if applicable.
 #'
-#' @usage
-#' workdocs_update_document(AuthenticationToken, DocumentId, Name,
-#'   ParentFolderId, ResourceState)
+#' See [https://paws-r.github.io/docs/workdocs/update_document.html](https://paws-r.github.io/docs/workdocs/update_document.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -2747,20 +1294,6 @@ workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, Reso
 #' @param ParentFolderId The ID of the parent folder.
 #' @param ResourceState The resource state of the document. Only ACTIVE and RECYCLED are
 #' supported.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_document(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   Name = "string",
-#'   ParentFolderId = "string",
-#'   ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2786,34 +1319,14 @@ workdocs_update_document <- function(AuthenticationToken = NULL, DocumentId, Nam
 #'
 #' @description
 #' Changes the status of the document version to ACTIVE.
-#' 
-#' Amazon WorkDocs also sets its document container to ACTIVE. This is the
-#' last step in a document upload, after the client uploads the document to
-#' an S3-presigned URL returned by
-#' [`initiate_document_version_upload`][workdocs_initiate_document_version_upload].
 #'
-#' @usage
-#' workdocs_update_document_version(AuthenticationToken, DocumentId,
-#'   VersionId, VersionStatus)
+#' See [https://paws-r.github.io/docs/workdocs/update_document_version.html](https://paws-r.github.io/docs/workdocs/update_document_version.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The version ID of the document.
 #' @param VersionStatus The status of the version.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_document_version(
-#'   AuthenticationToken = "string",
-#'   DocumentId = "string",
-#'   VersionId = "string",
-#'   VersionStatus = "ACTIVE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2838,12 +1351,9 @@ workdocs_update_document_version <- function(AuthenticationToken = NULL, Documen
 #' Updates the specified attributes of the specified folder
 #'
 #' @description
-#' Updates the specified attributes of the specified folder. The user must
-#' have access to both the folder and its parent folder, if applicable.
+#' Updates the specified attributes of the specified folder. The user must have access to both the folder and its parent folder, if applicable.
 #'
-#' @usage
-#' workdocs_update_folder(AuthenticationToken, FolderId, Name,
-#'   ParentFolderId, ResourceState)
+#' See [https://paws-r.github.io/docs/workdocs/update_folder.html](https://paws-r.github.io/docs/workdocs/update_folder.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -2852,20 +1362,6 @@ workdocs_update_document_version <- function(AuthenticationToken = NULL, Documen
 #' @param ParentFolderId The ID of the parent folder.
 #' @param ResourceState The resource state of the folder. Only ACTIVE and RECYCLED are accepted
 #' values from the API.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_folder(
-#'   AuthenticationToken = "string",
-#'   FolderId = "string",
-#'   Name = "string",
-#'   ParentFolderId = "string",
-#'   ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2891,12 +1387,9 @@ workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = 
 #' revokes administrative privileges to the Amazon WorkDocs site
 #'
 #' @description
-#' Updates the specified attributes of the specified user, and grants or
-#' revokes administrative privileges to the Amazon WorkDocs site.
+#' Updates the specified attributes of the specified user, and grants or revokes administrative privileges to the Amazon WorkDocs site.
 #'
-#' @usage
-#' workdocs_update_user(AuthenticationToken, UserId, GivenName, Surname,
-#'   Type, StorageRule, TimeZoneId, Locale, GrantPoweruserPrivileges)
+#' See [https://paws-r.github.io/docs/workdocs/update_user.html](https://paws-r.github.io/docs/workdocs/update_user.html) for full documentation.
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
@@ -2909,58 +1402,6 @@ workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = 
 #' @param Locale The locale of the user.
 #' @param GrantPoweruserPrivileges Boolean value to determine whether the user is granted Poweruser
 #' privileges.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   User = list(
-#'     Id = "string",
-#'     Username = "string",
-#'     EmailAddress = "string",
-#'     GivenName = "string",
-#'     Surname = "string",
-#'     OrganizationId = "string",
-#'     RootFolderId = "string",
-#'     RecycleBinFolderId = "string",
-#'     Status = "ACTIVE"|"INACTIVE"|"PENDING",
-#'     Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TimeZoneId = "string",
-#'     Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-#'     Storage = list(
-#'       StorageUtilizedInBytes = 123,
-#'       StorageRule = list(
-#'         StorageAllocatedInBytes = 123,
-#'         StorageType = "UNLIMITED"|"QUOTA"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_user(
-#'   AuthenticationToken = "string",
-#'   UserId = "string",
-#'   GivenName = "string",
-#'   Surname = "string",
-#'   Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
-#'   StorageRule = list(
-#'     StorageAllocatedInBytes = 123,
-#'     StorageType = "UNLIMITED"|"QUOTA"
-#'   ),
-#'   TimeZoneId = "string",
-#'   Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
-#'   GrantPoweruserPrivileges = "TRUE"|"FALSE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

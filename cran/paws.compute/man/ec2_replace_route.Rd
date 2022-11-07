@@ -4,11 +4,25 @@
 \alias{ec2_replace_route}
 \title{Replaces an existing route within a route table in a VPC}
 \usage{
-ec2_replace_route(DestinationCidrBlock, DestinationIpv6CidrBlock,
-  DestinationPrefixListId, DryRun, VpcEndpointId,
-  EgressOnlyInternetGatewayId, GatewayId, InstanceId, LocalTarget,
-  NatGatewayId, TransitGatewayId, LocalGatewayId, CarrierGatewayId,
-  NetworkInterfaceId, RouteTableId, VpcPeeringConnectionId)
+ec2_replace_route(
+  DestinationCidrBlock = NULL,
+  DestinationIpv6CidrBlock = NULL,
+  DestinationPrefixListId = NULL,
+  DryRun = NULL,
+  VpcEndpointId = NULL,
+  EgressOnlyInternetGatewayId = NULL,
+  GatewayId = NULL,
+  InstanceId = NULL,
+  LocalTarget = NULL,
+  NatGatewayId = NULL,
+  TransitGatewayId = NULL,
+  LocalGatewayId = NULL,
+  CarrierGatewayId = NULL,
+  NetworkInterfaceId = NULL,
+  RouteTableId,
+  VpcPeeringConnectionId = NULL,
+  CoreNetworkArn = NULL
+)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. The value
@@ -49,52 +63,12 @@ only.}
 \item{RouteTableId}{[required] The ID of the route table.}
 
 \item{VpcPeeringConnectionId}{The ID of a VPC peering connection.}
-}
-\value{
-An empty list.
+
+\item{CoreNetworkArn}{The Amazon Resource Name (ARN) of the core network.}
 }
 \description{
-Replaces an existing route within a route table in a VPC. You must
-provide only one of the following: internet gateway, virtual private
-gateway, NAT instance, NAT gateway, VPC peering connection, network
-interface, egress-only internet gateway, or transit gateway.
+Replaces an existing route within a route table in a VPC.
 
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$replace_route(
-  DestinationCidrBlock = "string",
-  DestinationIpv6CidrBlock = "string",
-  DestinationPrefixListId = "string",
-  DryRun = TRUE|FALSE,
-  VpcEndpointId = "string",
-  EgressOnlyInternetGatewayId = "string",
-  GatewayId = "string",
-  InstanceId = "string",
-  LocalTarget = TRUE|FALSE,
-  NatGatewayId = "string",
-  TransitGatewayId = "string",
-  LocalGatewayId = "string",
-  CarrierGatewayId = "string",
-  NetworkInterfaceId = "string",
-  RouteTableId = "string",
-  VpcPeeringConnectionId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example replaces the specified route in the specified table table.
-# The new route matches the specified CIDR and sends the traffic to the
-# specified virtual private gateway.
-svc$replace_route(
-  DestinationCidrBlock = "10.0.0.0/16",
-  GatewayId = "vgw-9a4cacf3",
-  RouteTableId = "rtb-22574640"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/replace_route.html} for full documentation.
 }
 \keyword{internal}

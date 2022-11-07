@@ -4,50 +4,16 @@
 \alias{ec2_replace_iam_instance_profile_association}
 \title{Replaces an IAM instance profile for the specified running instance}
 \usage{
-ec2_replace_iam_instance_profile_association(IamInstanceProfile,
-  AssociationId)
+ec2_replace_iam_instance_profile_association(IamInstanceProfile, AssociationId)
 }
 \arguments{
 \item{IamInstanceProfile}{[required] The IAM instance profile.}
 
 \item{AssociationId}{[required] The ID of the existing IAM instance profile association.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IamInstanceProfileAssociation = list(
-    AssociationId = "string",
-    InstanceId = "string",
-    IamInstanceProfile = list(
-      Arn = "string",
-      Id = "string"
-    ),
-    State = "associating"|"associated"|"disassociating"|"disassociated",
-    Timestamp = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Replaces an IAM instance profile for the specified running instance. You
-can use this action to change the IAM instance profile that's associated
-with an instance without having to disassociate the existing IAM
-instance profile first.
+Replaces an IAM instance profile for the specified running instance. You can use this action to change the IAM instance profile that's associated with an instance without having to disassociate the existing IAM instance profile first.
 
-Use
-\code{\link[=ec2_describe_iam_instance_profile_associations]{describe_iam_instance_profile_associations}}
-to get the association ID.
+See \url{https://paws-r.github.io/docs/ec2/replace_iam_instance_profile_association.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$replace_iam_instance_profile_association(
-  IamInstanceProfile = list(
-    Arn = "string",
-    Name = "string"
-  ),
-  AssociationId = "string"
-)
-}
-}
-
 \keyword{internal}

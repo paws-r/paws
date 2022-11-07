@@ -4,38 +4,20 @@
 \alias{codepipeline_list_pipelines}
 \title{Gets a summary of all of the pipelines associated with your account}
 \usage{
-codepipeline_list_pipelines(nextToken)
+codepipeline_list_pipelines(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{An identifier that was returned from the previous list pipelines call.
 It can be used to return the next set of pipelines in the list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelines = list(
-    list(
-      name = "string",
-      version = 123,
-      created = as.POSIXct(
-        "2015-01-01"
-      ),
-      updated = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
+
+\item{maxResults}{The maximum number of pipelines to return in a single call. To retrieve
+the remaining pipelines, make another call with the returned nextToken
+value. The minimum value you can specify is 1. The maximum accepted
+value is 1000.}
 }
 \description{
 Gets a summary of all of the pipelines associated with your account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_pipelines(
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codepipeline/list_pipelines.html} for full documentation.
+}
 \keyword{internal}

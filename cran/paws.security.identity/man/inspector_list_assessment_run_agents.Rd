@@ -5,8 +5,12 @@
 \title{Lists the agents of the assessment runs that are specified by the ARNs
 of the assessment runs}
 \usage{
-inspector_list_assessment_run_agents(assessmentRunArn, filter,
-  nextToken, maxResults)
+inspector_list_assessment_run_agents(
+  assessmentRunArn,
+  filter = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{assessmentRunArn}{[required] The ARN that specifies the assessment run whose agents you want to list.}
@@ -28,59 +32,9 @@ previous response to continue listing data.}
 you want in the response. The default value is 10. The maximum value is
 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  assessmentRunAgents = list(
-    list(
-      agentId = "string",
-      assessmentRunArn = "string",
-      agentHealth = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-      agentHealthCode = "IDLE"|"RUNNING"|"SHUTDOWN"|"UNHEALTHY"|"THROTTLED"|"UNKNOWN",
-      agentHealthDetails = "string",
-      autoScalingGroup = "string",
-      telemetryMetadata = list(
-        list(
-          messageType = "string",
-          count = 123,
-          dataSize = 123
-        )
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the agents of the assessment runs that are specified by the ARNs
-of the assessment runs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_assessment_run_agents(
-  assessmentRunArn = "string",
-  filter = list(
-    agentHealths = list(
-      "HEALTHY"|"UNHEALTHY"|"UNKNOWN"
-    ),
-    agentHealthCodes = list(
-      "IDLE"|"RUNNING"|"SHUTDOWN"|"UNHEALTHY"|"THROTTLED"|"UNKNOWN"
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists the agents of the assessment runs that are specified by the ARNs of the assessment runs.
 
-\examples{
-\dontrun{
-# Lists the agents of the assessment runs that are specified by the ARNs
-# of the assessment runs.
-svc$list_assessment_run_agents(
-  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kF...",
-  maxResults = 123L
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/list_assessment_run_agents.html} for full documentation.
 }
 \keyword{internal}

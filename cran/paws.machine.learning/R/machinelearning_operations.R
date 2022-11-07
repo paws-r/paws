@@ -6,42 +6,15 @@ NULL
 #' Adds one or more tags to an object, up to a limit of 10
 #'
 #' @description
-#' Adds one or more tags to an object, up to a limit of 10. Each tag
-#' consists of a key and an optional value. If you add a tag using a key
-#' that is already associated with the ML object,
-#' [`add_tags`][machinelearning_add_tags] updates the tag's value.
+#' Adds one or more tags to an object, up to a limit of 10. Each tag consists of a key and an optional value. If you add a tag using a key that is already associated with the ML object, [`add_tags`][machinelearning_add_tags] updates the tag's value.
 #'
-#' @usage
-#' machinelearning_add_tags(Tags, ResourceId, ResourceType)
+#' See [https://paws-r.github.io/docs/machinelearning/add_tags.html](https://paws-r.github.io/docs/machinelearning/add_tags.html) for full documentation.
 #'
 #' @param Tags &#91;required&#93; The key-value pairs to use to create tags. If you specify a key without
 #' specifying a value, Amazon ML creates a tag with the specified key and a
 #' value of null.
 #' @param ResourceId &#91;required&#93; The ID of the ML object to tag. For example, `exampleModelId`.
 #' @param ResourceType &#91;required&#93; The type of the ML object to tag.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceId = "string",
-#'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_tags(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ResourceId = "string",
-#'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -66,28 +39,9 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
 #' Generates predictions for a group of observations
 #'
 #' @description
-#' Generates predictions for a group of observations. The observations to
-#' process exist in one or more data files referenced by a `DataSource`.
-#' This operation creates a new `BatchPrediction`, and uses an `MLModel`
-#' and the data files referenced by the `DataSource` as information
-#' sources.
-#' 
-#' [`create_batch_prediction`][machinelearning_create_batch_prediction] is
-#' an asynchronous operation. In response to
-#' [`create_batch_prediction`][machinelearning_create_batch_prediction],
-#' Amazon Machine Learning (Amazon ML) immediately returns and sets the
-#' `BatchPrediction` status to `PENDING`. After the `BatchPrediction`
-#' completes, Amazon ML sets the status to `COMPLETED`.
-#' 
-#' You can poll for status updates by using the
-#' [`get_batch_prediction`][machinelearning_get_batch_prediction] operation
-#' and checking the `Status` parameter of the result. After the `COMPLETED`
-#' status appears, the results are available in the location specified by
-#' the `OutputUri` parameter.
+#' Generates predictions for a group of observations. The observations to process exist in one or more data files referenced by a `DataSource`. This operation creates a new `BatchPrediction`, and uses an `MLModel` and the data files referenced by the `DataSource` as information sources.
 #'
-#' @usage
-#' machinelearning_create_batch_prediction(BatchPredictionId,
-#'   BatchPredictionName, MLModelId, BatchPredictionDataSourceId, OutputUri)
+#' See [https://paws-r.github.io/docs/machinelearning/create_batch_prediction.html](https://paws-r.github.io/docs/machinelearning/create_batch_prediction.html) for full documentation.
 #'
 #' @param BatchPredictionId &#91;required&#93; A user-supplied ID that uniquely identifies the `BatchPrediction`.
 #' @param BatchPredictionName A user-supplied name or description of the `BatchPrediction`.
@@ -105,25 +59,6 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
 #' behalf. For information about how to set permissions, see the [Amazon
 #' Machine Learning Developer
 #' Guide](https://docs.aws.amazon.com/machine-learning/latest/dg/).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BatchPredictionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_batch_prediction(
-#'   BatchPredictionId = "string",
-#'   BatchPredictionName = "string",
-#'   MLModelId = "string",
-#'   BatchPredictionDataSourceId = "string",
-#'   OutputUri = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -149,34 +84,9 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' (Amazon RDS)
 #'
 #' @description
-#' Creates a `DataSource` object from an [Amazon Relational Database
-#' Service](https://aws.amazon.com/rds/) (Amazon RDS). A `DataSource`
-#' references data that can be used to perform
-#' [`create_ml_model`][machinelearning_create_ml_model],
-#' [`create_evaluation`][machinelearning_create_evaluation], or
-#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
-#' operations.
-#' 
-#' [`create_data_source_from_rds`][machinelearning_create_data_source_from_rds]
-#' is an asynchronous operation. In response to
-#' [`create_data_source_from_rds`][machinelearning_create_data_source_from_rds],
-#' Amazon Machine Learning (Amazon ML) immediately returns and sets the
-#' `DataSource` status to `PENDING`. After the `DataSource` is created and
-#' ready for use, Amazon ML sets the `Status` parameter to `COMPLETED`.
-#' `DataSource` in the `COMPLETED` or `PENDING` state can be used only to
-#' perform `>CreateMLModel`&gt;,
-#' [`create_evaluation`][machinelearning_create_evaluation], or
-#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
-#' operations.
-#' 
-#' If Amazon ML cannot accept the input source, it sets the `Status`
-#' parameter to `FAILED` and includes an error message in the `Message`
-#' attribute of the [`get_data_source`][machinelearning_get_data_source]
-#' operation response.
+#' Creates a `DataSource` object from an [Amazon Relational Database Service](https://aws.amazon.com/rds/) (Amazon RDS). A `DataSource` references data that can be used to perform [`create_ml_model`][machinelearning_create_ml_model], [`create_evaluation`][machinelearning_create_evaluation], or [`create_batch_prediction`][machinelearning_create_batch_prediction] operations.
 #'
-#' @usage
-#' machinelearning_create_data_source_from_rds(DataSourceId,
-#'   DataSourceName, RDSData, RoleARN, ComputeStatistics)
+#' See [https://paws-r.github.io/docs/machinelearning/create_data_source_from_rds.html](https://paws-r.github.io/docs/machinelearning/create_data_source_from_rds.html) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; A user-supplied ID that uniquely identifies the `DataSource`. Typically,
 #' an Amazon Resource Number (ARN) becomes the ID for a `DataSource`.
@@ -186,6 +96,7 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' -   DatabaseInformation -
 #' 
 #'     -   `DatabaseName` - The name of the Amazon RDS database.
+#' 
 #'     -   `InstanceIdentifier ` - A unique identifier for the Amazon RDS
 #'         database instance.
 #' 
@@ -225,8 +136,6 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' -   DataRearrangement - A JSON string that represents the splitting and
 #'     rearrangement requirements for the `Datasource`.
 #' 
-#'       
-#' 
 #'     Sample -
 #'     ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
 #' @param RoleARN &#91;required&#93; The role that Amazon ML assumes on behalf of the user to create and
@@ -237,45 +146,6 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' the statistics internally during `MLModel` training. This parameter must
 #' be set to `true` if the ``DataSource`` needs to be used for `MLModel`
 #' training.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSourceId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_data_source_from_rds(
-#'   DataSourceId = "string",
-#'   DataSourceName = "string",
-#'   RDSData = list(
-#'     DatabaseInformation = list(
-#'       InstanceIdentifier = "string",
-#'       DatabaseName = "string"
-#'     ),
-#'     SelectSqlQuery = "string",
-#'     DatabaseCredentials = list(
-#'       Username = "string",
-#'       Password = "string"
-#'     ),
-#'     S3StagingLocation = "string",
-#'     DataRearrangement = "string",
-#'     DataSchema = "string",
-#'     DataSchemaUri = "string",
-#'     ResourceRole = "string",
-#'     ServiceRole = "string",
-#'     SubnetId = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   RoleARN = "string",
-#'   ComputeStatistics = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -301,55 +171,9 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' cluster
 #'
 #' @description
-#' Creates a `DataSource` from a database hosted on an Amazon Redshift
-#' cluster. A `DataSource` references data that can be used to perform
-#' either [`create_ml_model`][machinelearning_create_ml_model],
-#' [`create_evaluation`][machinelearning_create_evaluation], or
-#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
-#' operations.
-#' 
-#' [`create_data_source_from_redshift`][machinelearning_create_data_source_from_redshift]
-#' is an asynchronous operation. In response to
-#' [`create_data_source_from_redshift`][machinelearning_create_data_source_from_redshift],
-#' Amazon Machine Learning (Amazon ML) immediately returns and sets the
-#' `DataSource` status to `PENDING`. After the `DataSource` is created and
-#' ready for use, Amazon ML sets the `Status` parameter to `COMPLETED`.
-#' `DataSource` in `COMPLETED` or `PENDING` states can be used to perform
-#' only [`create_ml_model`][machinelearning_create_ml_model],
-#' [`create_evaluation`][machinelearning_create_evaluation], or
-#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
-#' operations.
-#' 
-#' If Amazon ML can't accept the input source, it sets the `Status`
-#' parameter to `FAILED` and includes an error message in the `Message`
-#' attribute of the [`get_data_source`][machinelearning_get_data_source]
-#' operation response.
-#' 
-#' The observations should be contained in the database hosted on an Amazon
-#' Redshift cluster and should be specified by a `SelectSqlQuery` query.
-#' Amazon ML executes an `Unload` command in Amazon Redshift to transfer
-#' the result set of the `SelectSqlQuery` query to `S3StagingLocation`.
-#' 
-#' After the `DataSource` has been created, it's ready for use in
-#' evaluations and batch predictions. If you plan to use the `DataSource`
-#' to train an `MLModel`, the `DataSource` also requires a recipe. A recipe
-#' describes how each input variable will be used in training an `MLModel`.
-#' Will the variable be included or excluded from training? Will the
-#' variable be manipulated; for example, will it be combined with another
-#' variable or will it be split apart into word combinations? The recipe
-#' provides answers to these questions.
-#' 
-#' You can't change an existing datasource, but you can copy and modify the
-#' settings from an existing Amazon Redshift datasource to create a new
-#' datasource. To do so, call
-#' [`get_data_source`][machinelearning_get_data_source] for an existing
-#' datasource and copy the values to a `CreateDataSource` call. Change the
-#' settings that you want to change and make sure that all required fields
-#' have the appropriate values.
+#' Creates a `DataSource` from a database hosted on an Amazon Redshift cluster. A `DataSource` references data that can be used to perform either [`create_ml_model`][machinelearning_create_ml_model], [`create_evaluation`][machinelearning_create_evaluation], or [`create_batch_prediction`][machinelearning_create_batch_prediction] operations.
 #'
-#' @usage
-#' machinelearning_create_data_source_from_redshift(DataSourceId,
-#'   DataSourceName, DataSpec, RoleARN, ComputeStatistics)
+#' See [https://paws-r.github.io/docs/machinelearning/create_data_source_from_redshift.html](https://paws-r.github.io/docs/machinelearning/create_data_source_from_redshift.html) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; A user-supplied ID that uniquely identifies the `DataSource`.
 #' @param DataSourceName A user-supplied name or description of the `DataSource`.
@@ -358,6 +182,7 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' -   DatabaseInformation -
 #' 
 #'     -   `DatabaseName` - The name of the Amazon Redshift database.
+#' 
 #'     -   ` ClusterIdentifier` - The unique ID for the Amazon Redshift
 #'         cluster.
 #' 
@@ -397,39 +222,6 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' be set to `true` if the `DataSource` needs to be used for `MLModel`
 #' training.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSourceId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_data_source_from_redshift(
-#'   DataSourceId = "string",
-#'   DataSourceName = "string",
-#'   DataSpec = list(
-#'     DatabaseInformation = list(
-#'       DatabaseName = "string",
-#'       ClusterIdentifier = "string"
-#'     ),
-#'     SelectSqlQuery = "string",
-#'     DatabaseCredentials = list(
-#'       Username = "string",
-#'       Password = "string"
-#'     ),
-#'     S3StagingLocation = "string",
-#'     DataRearrangement = "string",
-#'     DataSchema = "string",
-#'     DataSchemaUri = "string"
-#'   ),
-#'   RoleARN = "string",
-#'   ComputeStatistics = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname machinelearning_create_data_source_from_redshift
@@ -453,50 +245,9 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
 #' Creates a DataSource object
 #'
 #' @description
-#' Creates a `DataSource` object. A `DataSource` references data that can
-#' be used to perform [`create_ml_model`][machinelearning_create_ml_model],
-#' [`create_evaluation`][machinelearning_create_evaluation], or
-#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
-#' operations.
-#' 
-#' [`create_data_source_from_s3`][machinelearning_create_data_source_from_s3]
-#' is an asynchronous operation. In response to
-#' [`create_data_source_from_s3`][machinelearning_create_data_source_from_s3],
-#' Amazon Machine Learning (Amazon ML) immediately returns and sets the
-#' `DataSource` status to `PENDING`. After the `DataSource` has been
-#' created and is ready for use, Amazon ML sets the `Status` parameter to
-#' `COMPLETED`. `DataSource` in the `COMPLETED` or `PENDING` state can be
-#' used to perform only
-#' [`create_ml_model`][machinelearning_create_ml_model],
-#' [`create_evaluation`][machinelearning_create_evaluation] or
-#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
-#' operations.
-#' 
-#' If Amazon ML can't accept the input source, it sets the `Status`
-#' parameter to `FAILED` and includes an error message in the `Message`
-#' attribute of the [`get_data_source`][machinelearning_get_data_source]
-#' operation response.
-#' 
-#' The observation data used in a `DataSource` should be ready to use; that
-#' is, it should have a consistent structure, and missing data values
-#' should be kept to a minimum. The observation data must reside in one or
-#' more .csv files in an Amazon Simple Storage Service (Amazon S3)
-#' location, along with a schema that describes the data items by name and
-#' type. The same schema must be used for all of the data files referenced
-#' by the `DataSource`.
-#' 
-#' After the `DataSource` has been created, it's ready to use in
-#' evaluations and batch predictions. If you plan to use the `DataSource`
-#' to train an `MLModel`, the `DataSource` also needs a recipe. A recipe
-#' describes how each input variable will be used in training an `MLModel`.
-#' Will the variable be included or excluded from training? Will the
-#' variable be manipulated; for example, will it be combined with another
-#' variable or will it be split apart into word combinations? The recipe
-#' provides answers to these questions.
+#' Creates a `DataSource` object. A `DataSource` references data that can be used to perform [`create_ml_model`][machinelearning_create_ml_model], [`create_evaluation`][machinelearning_create_evaluation], or [`create_batch_prediction`][machinelearning_create_batch_prediction] operations.
 #'
-#' @usage
-#' machinelearning_create_data_source_from_s3(DataSourceId, DataSourceName,
-#'   DataSpec, ComputeStatistics)
+#' See [https://paws-r.github.io/docs/machinelearning/create_data_source_from_s3.html](https://paws-r.github.io/docs/machinelearning/create_data_source_from_s3.html) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; A user-supplied identifier that uniquely identifies the `DataSource`.
 #' @param DataSourceName A user-supplied name or description of the `DataSource`.
@@ -519,29 +270,6 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
 #' the statistics internally during `MLModel` training. This parameter must
 #' be set to `true` if the ``DataSource`` needs to be used for `MLModel`
 #' training.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSourceId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_data_source_from_s3(
-#'   DataSourceId = "string",
-#'   DataSourceName = "string",
-#'   DataSpec = list(
-#'     DataLocationS3 = "string",
-#'     DataRearrangement = "string",
-#'     DataSchema = "string",
-#'     DataSchemaLocationS3 = "string"
-#'   ),
-#'   ComputeStatistics = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -566,30 +294,9 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
 #' Creates a new Evaluation of an MLModel
 #'
 #' @description
-#' Creates a new `Evaluation` of an `MLModel`. An `MLModel` is evaluated on
-#' a set of observations associated to a `DataSource`. Like a `DataSource`
-#' for an `MLModel`, the `DataSource` for an `Evaluation` contains values
-#' for the `Target Variable`. The `Evaluation` compares the predicted
-#' result for each observation to the actual outcome and provides a summary
-#' so that you know how effective the `MLModel` functions on the test data.
-#' Evaluation generates a relevant performance metric, such as BinaryAUC,
-#' RegressionRMSE or MulticlassAvgFScore based on the corresponding
-#' `MLModelType`: `BINARY`, `REGRESSION` or `MULTICLASS`.
-#' 
-#' [`create_evaluation`][machinelearning_create_evaluation] is an
-#' asynchronous operation. In response to
-#' [`create_evaluation`][machinelearning_create_evaluation], Amazon Machine
-#' Learning (Amazon ML) immediately returns and sets the evaluation status
-#' to `PENDING`. After the `Evaluation` is created and ready for use,
-#' Amazon ML sets the status to `COMPLETED`.
-#' 
-#' You can use the [`get_evaluation`][machinelearning_get_evaluation]
-#' operation to check progress of the evaluation during the creation
-#' operation.
+#' Creates a new `Evaluation` of an `MLModel`. An `MLModel` is evaluated on a set of observations associated to a `DataSource`. Like a `DataSource` for an `MLModel`, the `DataSource` for an `Evaluation` contains values for the `Target Variable`. The `Evaluation` compares the predicted result for each observation to the actual outcome and provides a summary so that you know how effective the `MLModel` functions on the test data. Evaluation generates a relevant performance metric, such as BinaryAUC, RegressionRMSE or MulticlassAvgFScore based on the corresponding `MLModelType`: `BINARY`, `REGRESSION` or `MULTICLASS`.
 #'
-#' @usage
-#' machinelearning_create_evaluation(EvaluationId, EvaluationName,
-#'   MLModelId, EvaluationDataSourceId)
+#' See [https://paws-r.github.io/docs/machinelearning/create_evaluation.html](https://paws-r.github.io/docs/machinelearning/create_evaluation.html) for full documentation.
 #'
 #' @param EvaluationId &#91;required&#93; A user-supplied ID that uniquely identifies the `Evaluation`.
 #' @param EvaluationName A user-supplied name or description of the `Evaluation`.
@@ -599,24 +306,6 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
 #' `DataSource` used in the `Evaluation`.
 #' @param EvaluationDataSourceId &#91;required&#93; The ID of the `DataSource` for the evaluation. The schema of the
 #' `DataSource` must match the schema used to create the `MLModel`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EvaluationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_evaluation(
-#'   EvaluationId = "string",
-#'   EvaluationName = "string",
-#'   MLModelId = "string",
-#'   EvaluationDataSourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -642,35 +331,9 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' sources
 #'
 #' @description
-#' Creates a new `MLModel` using the `DataSource` and the recipe as
-#' information sources.
-#' 
-#' An `MLModel` is nearly immutable. Users can update only the
-#' `MLModelName` and the `ScoreThreshold` in an `MLModel` without creating
-#' a new `MLModel`.
-#' 
-#' [`create_ml_model`][machinelearning_create_ml_model] is an asynchronous
-#' operation. In response to
-#' [`create_ml_model`][machinelearning_create_ml_model], Amazon Machine
-#' Learning (Amazon ML) immediately returns and sets the `MLModel` status
-#' to `PENDING`. After the `MLModel` has been created and ready is for use,
-#' Amazon ML sets the status to `COMPLETED`.
-#' 
-#' You can use the [`get_ml_model`][machinelearning_get_ml_model] operation
-#' to check the progress of the `MLModel` during the creation operation.
-#' 
-#' [`create_ml_model`][machinelearning_create_ml_model] requires a
-#' `DataSource` with computed statistics, which can be created by setting
-#' `ComputeStatistics` to `true` in
-#' [`create_data_source_from_rds`][machinelearning_create_data_source_from_rds],
-#' [`create_data_source_from_s3`][machinelearning_create_data_source_from_s3],
-#' or
-#' [`create_data_source_from_redshift`][machinelearning_create_data_source_from_redshift]
-#' operations.
+#' Creates a new `MLModel` using the `DataSource` and the recipe as information sources.
 #'
-#' @usage
-#' machinelearning_create_ml_model(MLModelId, MLModelName, MLModelType,
-#'   Parameters, TrainingDataSourceId, Recipe, RecipeUri)
+#' See [https://paws-r.github.io/docs/machinelearning/create_ml_model.html](https://paws-r.github.io/docs/machinelearning/create_ml_model.html) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; A user-supplied ID that uniquely identifies the `MLModel`.
 #' @param MLModelName A user-supplied name or description of the `MLModel`.
@@ -679,7 +342,9 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' 
 #' -   Choose `REGRESSION` if the `MLModel` will be used to predict a
 #'     numeric value.
+#' 
 #' -   Choose `BINARY` if the `MLModel` result has two possible values.
+#' 
 #' -   Choose `MULTICLASS` if the `MLModel` result has a limited number of
 #'     values.
 #' 
@@ -735,29 +400,6 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' or its URI. If you don't specify a recipe or its URI, Amazon ML creates
 #' a default.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MLModelId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_ml_model(
-#'   MLModelId = "string",
-#'   MLModelName = "string",
-#'   MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
-#'   Parameters = list(
-#'     "string"
-#'   ),
-#'   TrainingDataSourceId = "string",
-#'   Recipe = "string",
-#'   RecipeUri = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname machinelearning_create_ml_model
@@ -781,37 +423,11 @@ machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLMod
 #' Creates a real-time endpoint for the MLModel
 #'
 #' @description
-#' Creates a real-time endpoint for the `MLModel`. The endpoint contains
-#' the URI of the `MLModel`; that is, the location to send real-time
-#' prediction requests for the specified `MLModel`.
+#' Creates a real-time endpoint for the `MLModel`. The endpoint contains the URI of the `MLModel`; that is, the location to send real-time prediction requests for the specified `MLModel`.
 #'
-#' @usage
-#' machinelearning_create_realtime_endpoint(MLModelId)
+#' See [https://paws-r.github.io/docs/machinelearning/create_realtime_endpoint.html](https://paws-r.github.io/docs/machinelearning/create_realtime_endpoint.html) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` during creation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MLModelId = "string",
-#'   RealtimeEndpointInfo = list(
-#'     PeakRequestsPerSecond = 123,
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndpointUrl = "string",
-#'     EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_realtime_endpoint(
-#'   MLModelId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -836,38 +452,11 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
 #' Assigns the DELETED status to a BatchPrediction, rendering it unusable
 #'
 #' @description
-#' Assigns the DELETED status to a `BatchPrediction`, rendering it
-#' unusable.
-#' 
-#' After using the
-#' [`delete_batch_prediction`][machinelearning_delete_batch_prediction]
-#' operation, you can use the
-#' [`get_batch_prediction`][machinelearning_get_batch_prediction] operation
-#' to verify that the status of the `BatchPrediction` changed to DELETED.
-#' 
-#' **Caution:** The result of the
-#' [`delete_batch_prediction`][machinelearning_delete_batch_prediction]
-#' operation is irreversible.
+#' Assigns the DELETED status to a `BatchPrediction`, rendering it unusable.
 #'
-#' @usage
-#' machinelearning_delete_batch_prediction(BatchPredictionId)
+#' See [https://paws-r.github.io/docs/machinelearning/delete_batch_prediction.html](https://paws-r.github.io/docs/machinelearning/delete_batch_prediction.html) for full documentation.
 #'
 #' @param BatchPredictionId &#91;required&#93; A user-supplied ID that uniquely identifies the `BatchPrediction`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BatchPredictionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_batch_prediction(
-#'   BatchPredictionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -893,36 +482,10 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
 #'
 #' @description
 #' Assigns the DELETED status to a `DataSource`, rendering it unusable.
-#' 
-#' After using the
-#' [`delete_data_source`][machinelearning_delete_data_source] operation,
-#' you can use the [`get_data_source`][machinelearning_get_data_source]
-#' operation to verify that the status of the `DataSource` changed to
-#' DELETED.
-#' 
-#' **Caution:** The results of the
-#' [`delete_data_source`][machinelearning_delete_data_source] operation are
-#' irreversible.
 #'
-#' @usage
-#' machinelearning_delete_data_source(DataSourceId)
+#' See [https://paws-r.github.io/docs/machinelearning/delete_data_source.html](https://paws-r.github.io/docs/machinelearning/delete_data_source.html) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; A user-supplied ID that uniquely identifies the `DataSource`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSourceId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_data_source(
-#'   DataSourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -948,37 +511,10 @@ machinelearning_delete_data_source <- function(DataSourceId) {
 #'
 #' @description
 #' Assigns the `DELETED` status to an `Evaluation`, rendering it unusable.
-#' 
-#' After invoking the
-#' [`delete_evaluation`][machinelearning_delete_evaluation] operation, you
-#' can use the [`get_evaluation`][machinelearning_get_evaluation] operation
-#' to verify that the status of the `Evaluation` changed to `DELETED`.
-#' 
-#' Caution
-#' 
-#' The results of the
-#' [`delete_evaluation`][machinelearning_delete_evaluation] operation are
-#' irreversible.
 #'
-#' @usage
-#' machinelearning_delete_evaluation(EvaluationId)
+#' See [https://paws-r.github.io/docs/machinelearning/delete_evaluation.html](https://paws-r.github.io/docs/machinelearning/delete_evaluation.html) for full documentation.
 #'
 #' @param EvaluationId &#91;required&#93; A user-supplied ID that uniquely identifies the `Evaluation` to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EvaluationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_evaluation(
-#'   EvaluationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1004,35 +540,10 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
 #'
 #' @description
 #' Assigns the `DELETED` status to an `MLModel`, rendering it unusable.
-#' 
-#' After using the [`delete_ml_model`][machinelearning_delete_ml_model]
-#' operation, you can use the
-#' [`get_ml_model`][machinelearning_get_ml_model] operation to verify that
-#' the status of the `MLModel` changed to DELETED.
-#' 
-#' **Caution:** The result of the
-#' [`delete_ml_model`][machinelearning_delete_ml_model] operation is
-#' irreversible.
 #'
-#' @usage
-#' machinelearning_delete_ml_model(MLModelId)
+#' See [https://paws-r.github.io/docs/machinelearning/delete_ml_model.html](https://paws-r.github.io/docs/machinelearning/delete_ml_model.html) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; A user-supplied ID that uniquely identifies the `MLModel`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MLModelId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_ml_model(
-#'   MLModelId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1059,33 +570,9 @@ machinelearning_delete_ml_model <- function(MLModelId) {
 #' @description
 #' Deletes a real time endpoint of an `MLModel`.
 #'
-#' @usage
-#' machinelearning_delete_realtime_endpoint(MLModelId)
+#' See [https://paws-r.github.io/docs/machinelearning/delete_realtime_endpoint.html](https://paws-r.github.io/docs/machinelearning/delete_realtime_endpoint.html) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` during creation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MLModelId = "string",
-#'   RealtimeEndpointInfo = list(
-#'     PeakRequestsPerSecond = 123,
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndpointUrl = "string",
-#'     EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_realtime_endpoint(
-#'   MLModelId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1110,37 +597,13 @@ machinelearning_delete_realtime_endpoint <- function(MLModelId) {
 #' Deletes the specified tags associated with an ML object
 #'
 #' @description
-#' Deletes the specified tags associated with an ML object. After this
-#' operation is complete, you can't recover deleted tags.
-#' 
-#' If you specify a tag that doesn't exist, Amazon ML ignores it.
+#' Deletes the specified tags associated with an ML object. After this operation is complete, you can't recover deleted tags.
 #'
-#' @usage
-#' machinelearning_delete_tags(TagKeys, ResourceId, ResourceType)
+#' See [https://paws-r.github.io/docs/machinelearning/delete_tags.html](https://paws-r.github.io/docs/machinelearning/delete_tags.html) for full documentation.
 #'
 #' @param TagKeys &#91;required&#93; One or more tags to delete.
 #' @param ResourceId &#91;required&#93; The ID of the tagged ML object. For example, `exampleModelId`.
 #' @param ResourceType &#91;required&#93; The type of the tagged ML object.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceId = "string",
-#'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_tags(
-#'   TagKeys = list(
-#'     "string"
-#'   ),
-#'   ResourceId = "string",
-#'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1166,27 +629,30 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' criteria in the request
 #'
 #' @description
-#' Returns a list of `BatchPrediction` operations that match the search
-#' criteria in the request.
+#' Returns a list of `BatchPrediction` operations that match the search criteria in the request.
 #'
-#' @usage
-#' machinelearning_describe_batch_predictions(FilterVariable, EQ, GT, LT,
-#'   GE, LE, NE, Prefix, SortOrder, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/machinelearning/describe_batch_predictions.html](https://paws-r.github.io/docs/machinelearning/describe_batch_predictions.html) for full documentation.
 #'
 #' @param FilterVariable Use one of the following variables to filter a list of
 #' `BatchPrediction`:
 #' 
 #' -   `CreatedAt` - Sets the search criteria to the `BatchPrediction`
 #'     creation date.
+#' 
 #' -   `Status` - Sets the search criteria to the `BatchPrediction` status.
+#' 
 #' -   `Name` - Sets the search criteria to the contents of the
 #'     `BatchPrediction` `Name`.
+#' 
 #' -   `IAMUser` - Sets the search criteria to the user account that
 #'     invoked the `BatchPrediction` creation.
+#' 
 #' -   `MLModelId` - Sets the search criteria to the `MLModel` used in the
 #'     `BatchPrediction`.
+#' 
 #' -   `DataSourceId` - Sets the search criteria to the `DataSource` used
 #'     in the `BatchPrediction`.
+#' 
 #' -   `DataURI` - Sets the search criteria to the data file(s) used in the
 #'     `BatchPrediction`. The URL can identify either a file or an Amazon
 #'     Simple Storage Solution (Amazon S3) bucket or directory.
@@ -1224,65 +690,13 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' of `MLModel`s.
 #' 
 #' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' 
 #' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
 #' @param NextToken An ID of the page in the paginated results.
 #' @param Limit The number of pages of information to include in the result. The range
 #' of acceptable values is `1` through `100`. The default value is `100`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Results = list(
-#'     list(
-#'       BatchPredictionId = "string",
-#'       MLModelId = "string",
-#'       BatchPredictionDataSourceId = "string",
-#'       InputDataLocationS3 = "string",
-#'       CreatedByIamUser = "string",
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "string",
-#'       Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-#'       OutputUri = "string",
-#'       Message = "string",
-#'       ComputeTime = 123,
-#'       FinishedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TotalRecordCount = 123,
-#'       InvalidRecordCount = 123
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_batch_predictions(
-#'   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
-#'   EQ = "string",
-#'   GT = "string",
-#'   LT = "string",
-#'   GE = "string",
-#'   LE = "string",
-#'   NE = "string",
-#'   Prefix = "string",
-#'   SortOrder = "asc"|"dsc",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1308,23 +722,24 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #' request
 #'
 #' @description
-#' Returns a list of `DataSource` that match the search criteria in the
-#' request.
+#' Returns a list of `DataSource` that match the search criteria in the request.
 #'
-#' @usage
-#' machinelearning_describe_data_sources(FilterVariable, EQ, GT, LT, GE,
-#'   LE, NE, Prefix, SortOrder, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/machinelearning/describe_data_sources.html](https://paws-r.github.io/docs/machinelearning/describe_data_sources.html) for full documentation.
 #'
 #' @param FilterVariable Use one of the following variables to filter a list of `DataSource`:
 #' 
 #' -   `CreatedAt` - Sets the search criteria to `DataSource` creation
 #'     dates.
+#' 
 #' -   `Status` - Sets the search criteria to `DataSource` statuses.
+#' 
 #' -   `Name` - Sets the search criteria to the contents of `DataSource`
 #'     `Name`.
+#' 
 #' -   `DataUri` - Sets the search criteria to the URI of data files used
 #'     to create the `DataSource`. The URI can identify either a file or an
 #'     Amazon Simple Storage Service (Amazon S3) bucket or directory.
+#' 
 #' -   `IAMUser` - Sets the search criteria to the user account that
 #'     invoked the `DataSource` creation.
 #' @param EQ The equal to operator. The `DataSource` results will have
@@ -1361,83 +776,12 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #' of `DataSource`.
 #' 
 #' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' 
 #' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
 #' @param NextToken The ID of the page in the paginated results.
 #' @param Limit The maximum number of `DataSource` to include in the result.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Results = list(
-#'     list(
-#'       DataSourceId = "string",
-#'       DataLocationS3 = "string",
-#'       DataRearrangement = "string",
-#'       CreatedByIamUser = "string",
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DataSizeInBytes = 123,
-#'       NumberOfFiles = 123,
-#'       Name = "string",
-#'       Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-#'       Message = "string",
-#'       RedshiftMetadata = list(
-#'         RedshiftDatabase = list(
-#'           DatabaseName = "string",
-#'           ClusterIdentifier = "string"
-#'         ),
-#'         DatabaseUserName = "string",
-#'         SelectSqlQuery = "string"
-#'       ),
-#'       RDSMetadata = list(
-#'         Database = list(
-#'           InstanceIdentifier = "string",
-#'           DatabaseName = "string"
-#'         ),
-#'         DatabaseUserName = "string",
-#'         SelectSqlQuery = "string",
-#'         ResourceRole = "string",
-#'         ServiceRole = "string",
-#'         DataPipelineId = "string"
-#'       ),
-#'       RoleARN = "string",
-#'       ComputeStatistics = TRUE|FALSE,
-#'       ComputeTime = 123,
-#'       FinishedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_data_sources(
-#'   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"DataLocationS3"|"IAMUser",
-#'   EQ = "string",
-#'   GT = "string",
-#'   LT = "string",
-#'   GE = "string",
-#'   LE = "string",
-#'   NE = "string",
-#'   Prefix = "string",
-#'   SortOrder = "asc"|"dsc",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1463,28 +807,30 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' the request
 #'
 #' @description
-#' Returns a list of
-#' [`describe_evaluations`][machinelearning_describe_evaluations] that
-#' match the search criteria in the request.
+#' Returns a list of [`describe_evaluations`][machinelearning_describe_evaluations] that match the search criteria in the request.
 #'
-#' @usage
-#' machinelearning_describe_evaluations(FilterVariable, EQ, GT, LT, GE, LE,
-#'   NE, Prefix, SortOrder, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/machinelearning/describe_evaluations.html](https://paws-r.github.io/docs/machinelearning/describe_evaluations.html) for full documentation.
 #'
 #' @param FilterVariable Use one of the following variable to filter a list of `Evaluation`
 #' objects:
 #' 
 #' -   `CreatedAt` - Sets the search criteria to the `Evaluation` creation
 #'     date.
+#' 
 #' -   `Status` - Sets the search criteria to the `Evaluation` status.
+#' 
 #' -   `Name` - Sets the search criteria to the contents of `Evaluation`
 #'     `Name`.
+#' 
 #' -   `IAMUser` - Sets the search criteria to the user account that
 #'     invoked an `Evaluation`.
+#' 
 #' -   `MLModelId` - Sets the search criteria to the `MLModel` that was
 #'     evaluated.
+#' 
 #' -   `DataSourceId` - Sets the search criteria to the `DataSource` used
 #'     in `Evaluation`.
+#' 
 #' -   `DataUri` - Sets the search criteria to the data file(s) used in
 #'     `Evaluation`. The URL can identify either a file or an Amazon Simple
 #'     Storage Solution (Amazon S3) bucket or directory.
@@ -1522,66 +868,12 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' of `Evaluation`.
 #' 
 #' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' 
 #' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
 #' @param NextToken The ID of the page in the paginated results.
 #' @param Limit The maximum number of `Evaluation` to include in the result.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Results = list(
-#'     list(
-#'       EvaluationId = "string",
-#'       MLModelId = "string",
-#'       EvaluationDataSourceId = "string",
-#'       InputDataLocationS3 = "string",
-#'       CreatedByIamUser = "string",
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "string",
-#'       Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-#'       PerformanceMetrics = list(
-#'         Properties = list(
-#'           "string"
-#'         )
-#'       ),
-#'       Message = "string",
-#'       ComputeTime = 123,
-#'       FinishedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_evaluations(
-#'   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
-#'   EQ = "string",
-#'   GT = "string",
-#'   LT = "string",
-#'   GE = "string",
-#'   LE = "string",
-#'   NE = "string",
-#'   Prefix = "string",
-#'   SortOrder = "asc"|"dsc",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1606,29 +898,34 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #' Returns a list of MLModel that match the search criteria in the request
 #'
 #' @description
-#' Returns a list of `MLModel` that match the search criteria in the
-#' request.
+#' Returns a list of `MLModel` that match the search criteria in the request.
 #'
-#' @usage
-#' machinelearning_describe_ml_models(FilterVariable, EQ, GT, LT, GE, LE,
-#'   NE, Prefix, SortOrder, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/machinelearning/describe_ml_models.html](https://paws-r.github.io/docs/machinelearning/describe_ml_models.html) for full documentation.
 #'
 #' @param FilterVariable Use one of the following variables to filter a list of `MLModel`:
 #' 
 #' -   `CreatedAt` - Sets the search criteria to `MLModel` creation date.
+#' 
 #' -   `Status` - Sets the search criteria to `MLModel` status.
+#' 
 #' -   `Name` - Sets the search criteria to the contents of `MLModel`
 #'     `Name`.
+#' 
 #' -   `IAMUser` - Sets the search criteria to the user account that
 #'     invoked the `MLModel` creation.
+#' 
 #' -   `TrainingDataSourceId` - Sets the search criteria to the
 #'     `DataSource` used to train one or more `MLModel`.
+#' 
 #' -   `RealtimeEndpointStatus` - Sets the search criteria to the `MLModel`
 #'     real-time endpoint status.
+#' 
 #' -   `MLModelType` - Sets the search criteria to `MLModel` type: binary,
 #'     regression, or multi-class.
+#' 
 #' -   `Algorithm` - Sets the search criteria to the algorithm that the
 #'     `MLModel` uses.
+#' 
 #' -   `TrainingDataURI` - Sets the search criteria to the data file(s)
 #'     used in training a `MLModel`. The URL can identify either a file or
 #'     an Amazon Simple Storage Service (Amazon S3) bucket or directory.
@@ -1664,79 +961,13 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #' of `MLModel`.
 #' 
 #' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' 
 #' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
 #' @param NextToken The ID of the page in the paginated results.
 #' @param Limit The number of pages of information to include in the result. The range
 #' of acceptable values is `1` through `100`. The default value is `100`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Results = list(
-#'     list(
-#'       MLModelId = "string",
-#'       TrainingDataSourceId = "string",
-#'       CreatedByIamUser = "string",
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "string",
-#'       Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-#'       SizeInBytes = 123,
-#'       EndpointInfo = list(
-#'         PeakRequestsPerSecond = 123,
-#'         CreatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         EndpointUrl = "string",
-#'         EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
-#'       ),
-#'       TrainingParameters = list(
-#'         "string"
-#'       ),
-#'       InputDataLocationS3 = "string",
-#'       Algorithm = "sgd",
-#'       MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
-#'       ScoreThreshold = 123.0,
-#'       ScoreThresholdLastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Message = "string",
-#'       ComputeTime = 123,
-#'       FinishedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_ml_models(
-#'   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"TrainingDataSourceId"|"RealtimeEndpointStatus"|"MLModelType"|"Algorithm"|"TrainingDataURI",
-#'   EQ = "string",
-#'   GT = "string",
-#'   LT = "string",
-#'   GE = "string",
-#'   LE = "string",
-#'   NE = "string",
-#'   Prefix = "string",
-#'   SortOrder = "asc"|"dsc",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1763,34 +994,10 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
 #' @description
 #' Describes one or more of the tags for your Amazon ML object.
 #'
-#' @usage
-#' machinelearning_describe_tags(ResourceId, ResourceType)
+#' See [https://paws-r.github.io/docs/machinelearning/describe_tags.html](https://paws-r.github.io/docs/machinelearning/describe_tags.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the ML object. For example, `exampleModelId`.
 #' @param ResourceType &#91;required&#93; The type of the ML object.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceId = "string",
-#'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_tags(
-#'   ResourceId = "string",
-#'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1816,52 +1023,11 @@ machinelearning_describe_tags <- function(ResourceId, ResourceType) {
 #' data file information for a Batch Prediction request
 #'
 #' @description
-#' Returns a `BatchPrediction` that includes detailed metadata, status, and
-#' data file information for a `Batch Prediction` request.
+#' Returns a `BatchPrediction` that includes detailed metadata, status, and data file information for a `Batch Prediction` request.
 #'
-#' @usage
-#' machinelearning_get_batch_prediction(BatchPredictionId)
+#' See [https://paws-r.github.io/docs/machinelearning/get_batch_prediction.html](https://paws-r.github.io/docs/machinelearning/get_batch_prediction.html) for full documentation.
 #'
 #' @param BatchPredictionId &#91;required&#93; An ID assigned to the `BatchPrediction` at creation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BatchPredictionId = "string",
-#'   MLModelId = "string",
-#'   BatchPredictionDataSourceId = "string",
-#'   InputDataLocationS3 = "string",
-#'   CreatedByIamUser = "string",
-#'   CreatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastUpdatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Name = "string",
-#'   Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-#'   OutputUri = "string",
-#'   LogUri = "string",
-#'   Message = "string",
-#'   ComputeTime = 123,
-#'   FinishedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   StartedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   TotalRecordCount = 123,
-#'   InvalidRecordCount = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_batch_prediction(
-#'   BatchPredictionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1887,15 +1053,9 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
 #' as well as the current status of the DataSource
 #'
 #' @description
-#' Returns a `DataSource` that includes metadata and data file information,
-#' as well as the current status of the `DataSource`.
-#' 
-#' [`get_data_source`][machinelearning_get_data_source] provides results in
-#' normal or verbose format. The verbose format adds the schema description
-#' and the list of files pointed to by the DataSource to the normal format.
+#' Returns a `DataSource` that includes metadata and data file information, as well as the current status of the `DataSource`.
 #'
-#' @usage
-#' machinelearning_get_data_source(DataSourceId, Verbose)
+#' See [https://paws-r.github.io/docs/machinelearning/get_data_source.html](https://paws-r.github.io/docs/machinelearning/get_data_source.html) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; The ID assigned to the `DataSource` at creation.
 #' @param Verbose Specifies whether the
@@ -1905,66 +1065,6 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
 #' If true, `DataSourceSchema` is returned.
 #' 
 #' If false, `DataSourceSchema` is not returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSourceId = "string",
-#'   DataLocationS3 = "string",
-#'   DataRearrangement = "string",
-#'   CreatedByIamUser = "string",
-#'   CreatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastUpdatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DataSizeInBytes = 123,
-#'   NumberOfFiles = 123,
-#'   Name = "string",
-#'   Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-#'   LogUri = "string",
-#'   Message = "string",
-#'   RedshiftMetadata = list(
-#'     RedshiftDatabase = list(
-#'       DatabaseName = "string",
-#'       ClusterIdentifier = "string"
-#'     ),
-#'     DatabaseUserName = "string",
-#'     SelectSqlQuery = "string"
-#'   ),
-#'   RDSMetadata = list(
-#'     Database = list(
-#'       InstanceIdentifier = "string",
-#'       DatabaseName = "string"
-#'     ),
-#'     DatabaseUserName = "string",
-#'     SelectSqlQuery = "string",
-#'     ResourceRole = "string",
-#'     ServiceRole = "string",
-#'     DataPipelineId = "string"
-#'   ),
-#'   RoleARN = "string",
-#'   ComputeStatistics = TRUE|FALSE,
-#'   ComputeTime = 123,
-#'   FinishedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   StartedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DataSourceSchema = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_data_source(
-#'   DataSourceId = "string",
-#'   Verbose = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1990,56 +1090,13 @@ machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
 #' status of the Evaluation
 #'
 #' @description
-#' Returns an `Evaluation` that includes metadata as well as the current
-#' status of the `Evaluation`.
+#' Returns an `Evaluation` that includes metadata as well as the current status of the `Evaluation`.
 #'
-#' @usage
-#' machinelearning_get_evaluation(EvaluationId)
+#' See [https://paws-r.github.io/docs/machinelearning/get_evaluation.html](https://paws-r.github.io/docs/machinelearning/get_evaluation.html) for full documentation.
 #'
 #' @param EvaluationId &#91;required&#93; The ID of the `Evaluation` to retrieve. The evaluation of each `MLModel`
 #' is recorded and cataloged. The ID provides the means to access the
 #' information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EvaluationId = "string",
-#'   MLModelId = "string",
-#'   EvaluationDataSourceId = "string",
-#'   InputDataLocationS3 = "string",
-#'   CreatedByIamUser = "string",
-#'   CreatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastUpdatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Name = "string",
-#'   Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-#'   PerformanceMetrics = list(
-#'     Properties = list(
-#'       "string"
-#'     )
-#'   ),
-#'   LogUri = "string",
-#'   Message = "string",
-#'   ComputeTime = 123,
-#'   FinishedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   StartedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_evaluation(
-#'   EvaluationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2065,14 +1122,9 @@ machinelearning_get_evaluation <- function(EvaluationId) {
 #' information, and the current status of the MLModel
 #'
 #' @description
-#' Returns an `MLModel` that includes detailed metadata, data source
-#' information, and the current status of the `MLModel`.
-#' 
-#' [`get_ml_model`][machinelearning_get_ml_model] provides results in
-#' normal or verbose format.
+#' Returns an `MLModel` that includes detailed metadata, data source information, and the current status of the `MLModel`.
 #'
-#' @usage
-#' machinelearning_get_ml_model(MLModelId, Verbose)
+#' See [https://paws-r.github.io/docs/machinelearning/get_ml_model.html](https://paws-r.github.io/docs/machinelearning/get_ml_model.html) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` at creation.
 #' @param Verbose Specifies whether the [`get_ml_model`][machinelearning_get_ml_model]
@@ -2081,61 +1133,6 @@ machinelearning_get_evaluation <- function(EvaluationId) {
 #' If true, `Recipe` is returned.
 #' 
 #' If false, `Recipe` is not returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MLModelId = "string",
-#'   TrainingDataSourceId = "string",
-#'   CreatedByIamUser = "string",
-#'   CreatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastUpdatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Name = "string",
-#'   Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-#'   SizeInBytes = 123,
-#'   EndpointInfo = list(
-#'     PeakRequestsPerSecond = 123,
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndpointUrl = "string",
-#'     EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
-#'   ),
-#'   TrainingParameters = list(
-#'     "string"
-#'   ),
-#'   InputDataLocationS3 = "string",
-#'   MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
-#'   ScoreThreshold = 123.0,
-#'   ScoreThresholdLastUpdatedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LogUri = "string",
-#'   Message = "string",
-#'   ComputeTime = 123,
-#'   FinishedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   StartedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Recipe = "string",
-#'   Schema = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ml_model(
-#'   MLModelId = "string",
-#'   Verbose = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2160,48 +1157,13 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
 #' Generates a prediction for the observation using the specified ML Model
 #'
 #' @description
-#' Generates a prediction for the observation using the specified
-#' `ML Model`.
-#' 
-#' Note
-#' 
-#' Not all response parameters will be populated. Whether a response
-#' parameter is populated depends on the type of model requested.
+#' Generates a prediction for the observation using the specified `ML Model`.
 #'
-#' @usage
-#' machinelearning_predict(MLModelId, Record, PredictEndpoint)
+#' See [https://paws-r.github.io/docs/machinelearning/predict.html](https://paws-r.github.io/docs/machinelearning/predict.html) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; A unique identifier of the `MLModel`.
 #' @param Record &#91;required&#93; 
 #' @param PredictEndpoint &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Prediction = list(
-#'     predictedLabel = "string",
-#'     predictedValue = 123.0,
-#'     predictedScores = list(
-#'       123.0
-#'     ),
-#'     details = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$predict(
-#'   MLModelId = "string",
-#'   Record = list(
-#'     "string"
-#'   ),
-#'   PredictEndpoint = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2227,33 +1189,11 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
 #'
 #' @description
 #' Updates the `BatchPredictionName` of a `BatchPrediction`.
-#' 
-#' You can use the
-#' [`get_batch_prediction`][machinelearning_get_batch_prediction] operation
-#' to view the contents of the updated data element.
 #'
-#' @usage
-#' machinelearning_update_batch_prediction(BatchPredictionId,
-#'   BatchPredictionName)
+#' See [https://paws-r.github.io/docs/machinelearning/update_batch_prediction.html](https://paws-r.github.io/docs/machinelearning/update_batch_prediction.html) for full documentation.
 #'
 #' @param BatchPredictionId &#91;required&#93; The ID assigned to the `BatchPrediction` during creation.
 #' @param BatchPredictionName &#91;required&#93; A new user-supplied name or description of the `BatchPrediction`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BatchPredictionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_batch_prediction(
-#'   BatchPredictionId = "string",
-#'   BatchPredictionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2279,32 +1219,12 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
 #'
 #' @description
 #' Updates the `DataSourceName` of a `DataSource`.
-#' 
-#' You can use the [`get_data_source`][machinelearning_get_data_source]
-#' operation to view the contents of the updated data element.
 #'
-#' @usage
-#' machinelearning_update_data_source(DataSourceId, DataSourceName)
+#' See [https://paws-r.github.io/docs/machinelearning/update_data_source.html](https://paws-r.github.io/docs/machinelearning/update_data_source.html) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; The ID assigned to the `DataSource` during creation.
 #' @param DataSourceName &#91;required&#93; A new user-supplied name or description of the `DataSource` that will
 #' replace the current description.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSourceId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_data_source(
-#'   DataSourceId = "string",
-#'   DataSourceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2330,32 +1250,12 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
 #'
 #' @description
 #' Updates the `EvaluationName` of an `Evaluation`.
-#' 
-#' You can use the [`get_evaluation`][machinelearning_get_evaluation]
-#' operation to view the contents of the updated data element.
 #'
-#' @usage
-#' machinelearning_update_evaluation(EvaluationId, EvaluationName)
+#' See [https://paws-r.github.io/docs/machinelearning/update_evaluation.html](https://paws-r.github.io/docs/machinelearning/update_evaluation.html) for full documentation.
 #'
 #' @param EvaluationId &#91;required&#93; The ID assigned to the `Evaluation` during creation.
 #' @param EvaluationName &#91;required&#93; A new user-supplied name or description of the `Evaluation` that will
 #' replace the current content.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EvaluationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_evaluation(
-#'   EvaluationId = "string",
-#'   EvaluationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2381,12 +1281,8 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
 #'
 #' @description
 #' Updates the `MLModelName` and the `ScoreThreshold` of an `MLModel`.
-#' 
-#' You can use the [`get_ml_model`][machinelearning_get_ml_model] operation
-#' to view the contents of the updated data element.
 #'
-#' @usage
-#' machinelearning_update_ml_model(MLModelId, MLModelName, ScoreThreshold)
+#' See [https://paws-r.github.io/docs/machinelearning/update_ml_model.html](https://paws-r.github.io/docs/machinelearning/update_ml_model.html) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` during creation.
 #' @param MLModelName A user-supplied name or description of the `MLModel`.
@@ -2397,23 +1293,6 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
 #' positive result from the `MLModel`, such as `true`. Output values less
 #' than the `ScoreThreshold` receive a negative response from the
 #' `MLModel`, such as `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MLModelId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_ml_model(
-#'   MLModelId = "string",
-#'   MLModelName = "string",
-#'   ScoreThreshold = 123.0
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

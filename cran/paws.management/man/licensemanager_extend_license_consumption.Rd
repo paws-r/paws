@@ -4,8 +4,10 @@
 \alias{licensemanager_extend_license_consumption}
 \title{Extends the expiration date for license consumption}
 \usage{
-licensemanager_extend_license_consumption(LicenseConsumptionToken,
-  DryRun)
+licensemanager_extend_license_consumption(
+  LicenseConsumptionToken,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{LicenseConsumptionToken}{[required] License consumption token.}
@@ -14,22 +16,9 @@ licensemanager_extend_license_consumption(LicenseConsumptionToken,
 actually making the request. Provides an error response if you do not
 have the required permissions.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseConsumptionToken = "string",
-  Expiration = "string"
-)
-}
-}
 \description{
 Extends the expiration date for license consumption.
-}
-\section{Request syntax}{
-\preformatted{svc$extend_license_consumption(
-  LicenseConsumptionToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/extend_license_consumption.html} for full documentation.
+}
 \keyword{internal}

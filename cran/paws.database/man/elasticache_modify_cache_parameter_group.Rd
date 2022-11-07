@@ -4,8 +4,10 @@
 \alias{elasticache_modify_cache_parameter_group}
 \title{Modifies the parameters of a cache parameter group}
 \usage{
-elasticache_modify_cache_parameter_group(CacheParameterGroupName,
-  ParameterNameValues)
+elasticache_modify_cache_parameter_group(
+  CacheParameterGroupName,
+  ParameterNameValues
+)
 }
 \arguments{
 \item{CacheParameterGroupName}{[required] The name of the cache parameter group to modify.}
@@ -14,28 +16,9 @@ elasticache_modify_cache_parameter_group(CacheParameterGroupName,
 must supply at least one parameter name and value; subsequent arguments
 are optional. A maximum of 20 parameters may be modified per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheParameterGroupName = "string"
-)
-}
-}
 \description{
-Modifies the parameters of a cache parameter group. You can modify up to
-20 parameters in a single request by submitting a list parameter name
-and value pairs.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_cache_parameter_group(
-  CacheParameterGroupName = "string",
-  ParameterNameValues = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string"
-    )
-  )
-)
-}
-}
+Modifies the parameters of a cache parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.
 
+See \url{https://paws-r.github.io/docs/elasticache/modify_cache_parameter_group.html} for full documentation.
+}
 \keyword{internal}

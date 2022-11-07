@@ -2,7 +2,7 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_get_layer_version_policy}
 \alias{lambda_get_layer_version_policy}
-\title{Returns the permission policy for a version of an AWS Lambda layer}
+\title{Returns the permission policy for a version of an Lambda layer}
 \usage{
 lambda_get_layer_version_policy(LayerName, VersionNumber)
 }
@@ -11,24 +11,9 @@ lambda_get_layer_version_policy(LayerName, VersionNumber)
 
 \item{VersionNumber}{[required] The version number.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policy = "string",
-  RevisionId = "string"
-)
-}
-}
 \description{
-Returns the permission policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
-For more information, see
-\code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_layer_version_policy(
-  LayerName = "string",
-  VersionNumber = 123
-)
-}
-}
+Returns the permission policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}. For more information, see \code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
 
+See \url{https://paws-r.github.io/docs/lambda/get_layer_version_policy.html} for full documentation.
+}
 \keyword{internal}

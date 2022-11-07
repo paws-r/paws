@@ -4,7 +4,7 @@
 \alias{lightsail_get_contact_methods}
 \title{Returns information about the configured contact methods}
 \usage{
-lightsail_get_contact_methods(protocols)
+lightsail_get_contact_methods(protocols = NULL)
 }
 \arguments{
 \item{protocols}{The protocols used to send notifications, such as \code{Email}, or \code{SMS}
@@ -13,48 +13,9 @@ lightsail_get_contact_methods(protocols)
 Specify a protocol in your request to return information about a
 specific contact method protocol.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  contactMethods = list(
-    list(
-      contactEndpoint = "string",
-      status = "PendingVerification"|"Valid"|"Invalid",
-      protocol = "Email"|"SMS",
-      name = "string",
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      supportCode = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns information about the configured contact methods. Specify a
-protocol in your request to return information about a specific contact
-method.
+Returns information about the configured contact methods. Specify a protocol in your request to return information about a specific contact method.
 
-A contact method is used to send you notifications about your Amazon
-Lightsail resources. You can add one email address and one mobile phone
-number contact method in each AWS Region. However, SMS text messaging is
-not supported in some AWS Regions, and SMS text messages cannot be sent
-to some countries/regions. For more information, see Notifications in
-Amazon Lightsail.
+See \url{https://paws-r.github.io/docs/lightsail/get_contact_methods.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_contact_methods(
-  protocols = list(
-    "Email"|"SMS"
-  )
-)
-}
-}
-
 \keyword{internal}

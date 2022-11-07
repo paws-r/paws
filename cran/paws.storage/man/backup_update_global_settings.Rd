@@ -2,28 +2,18 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_update_global_settings}
 \alias{backup_update_global_settings}
-\title{Updates the current global settings for the AWS Account}
+\title{Updates whether the Amazon Web Services account is opted in to
+cross-account backup}
 \usage{
-backup_update_global_settings(GlobalSettings)
+backup_update_global_settings(GlobalSettings = NULL)
 }
 \arguments{
-\item{GlobalSettings}{A list of resources along with the opt-in preferences for the account.}
-}
-\value{
-An empty list.
+\item{GlobalSettings}{A value for \code{isCrossAccountBackupEnabled} and a Region. Example:
+\verb{update-global-settings --global-settings isCrossAccountBackupEnabled=false --region us-west-2}.}
 }
 \description{
-Updates the current global settings for the AWS Account. Use the
-\code{\link[=backup_describe_global_settings]{describe_global_settings}} API to
-determine the current settings.
-}
-\section{Request syntax}{
-\preformatted{svc$update_global_settings(
-  GlobalSettings = list(
-    "string"
-  )
-)
-}
-}
+Updates whether the Amazon Web Services account is opted in to cross-account backup. Returns an error if the account is not an Organizations management account. Use the \code{\link[=backup_describe_global_settings]{describe_global_settings}} API to determine the current settings.
 
+See \url{https://paws-r.github.io/docs/backup/update_global_settings.html} for full documentation.
+}
 \keyword{internal}

@@ -4,9 +4,19 @@
 \alias{ssm_start_change_request_execution}
 \title{Creates a change request for Change Manager}
 \usage{
-ssm_start_change_request_execution(ScheduledTime, DocumentName,
-  DocumentVersion, Parameters, ChangeRequestName, ClientToken, Runbooks,
-  Tags)
+ssm_start_change_request_execution(
+  ScheduledTime = NULL,
+  DocumentName,
+  DocumentVersion = NULL,
+  Parameters = NULL,
+  ChangeRequestName = NULL,
+  ClientToken = NULL,
+  AutoApprove = NULL,
+  Runbooks,
+  Tags = NULL,
+  ScheduledEndTime = NULL,
+  ChangeDetails = NULL
+)
 }
 \arguments{
 \item{ScheduledTime}{The date and time specified in the change request to run the Automation
@@ -30,8 +40,22 @@ be run.}
 \item{ClientToken}{The user-provided idempotency token. The token must be unique, is case
 insensitive, enforces the UUID format, and can't be reused.}
 
-\item{Runbooks}{[required] Information about the Automation runbooks (Automation documents) that
-are run during the runbook workflow.
+\item{AutoApprove}{Indicates whether the change request can be approved automatically
+without the need for manual approvals.
+
+If \code{AutoApprovable} is enabled in a change template, then setting
+\code{AutoApprove} to \code{true} in
+\code{\link[=ssm_start_change_request_execution]{start_change_request_execution}}
+creates a change request that bypasses approver review.
+
+Change Calendar restrictions are not bypassed in this scenario. If the
+state of an associated calendar is \code{CLOSED}, change freeze approvers
+must still grant permission for this change request to run. If they
+don't, the change won't be processed until the calendar state is again
+\code{OPEN}.}
+
+\item{Runbooks}{[required] Information about the Automation runbooks that are run during the
+runbook workflow.
 
 The Automation runbooks specified for the runbook workflow can't run
 until all required approvals for the change request have been received.}
@@ -40,81 +64,24 @@ until all required approvals for the change request have been received.}
 maximum of five tags for a change request. Tags enable you to categorize
 a resource in different ways, such as by purpose, owner, or environment.
 For example, you might want to tag a change request to identify an
-environment or target AWS Region. In this case, you could specify the
-following key-value pairs:
+environment or target Amazon Web Services Region. In this case, you
+could specify the following key-value pairs:
 \itemize{
 \item \verb{Key=Environment,Value=Production}
 \item \verb{Key=Region,Value=us-east-2}
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AutomationExecutionId = "string"
-)
-}
+
+\item{ScheduledEndTime}{The time that the requester expects the runbook workflow related to the
+change request to complete. The time is an estimate only that the
+requester provides for reviewers.}
+
+\item{ChangeDetails}{User-provided details about the change. If no details are provided,
+content specified in the \strong{Template information} section of the
+associated change template is added.}
 }
 \description{
-Creates a change request for Change Manager. The runbooks (Automation
-documents) specified in the change request run only after all required
-approvals for the change request have been received.
-}
-\section{Request syntax}{
-\preformatted{svc$start_change_request_execution(
-  ScheduledTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  DocumentName = "string",
-  DocumentVersion = "string",
-  Parameters = list(
-    list(
-      "string"
-    )
-  ),
-  ChangeRequestName = "string",
-  ClientToken = "string",
-  Runbooks = list(
-    list(
-      DocumentName = "string",
-      DocumentVersion = "string",
-      Parameters = list(
-        list(
-          "string"
-        )
-      ),
-      TargetParameterName = "string",
-      Targets = list(
-        list(
-          Key = "string",
-          Values = list(
-            "string"
-          )
-        )
-      ),
-      MaxConcurrency = "string",
-      MaxErrors = "string",
-      TargetLocations = list(
-        list(
-          Accounts = list(
-            "string"
-          ),
-          Regions = list(
-            "string"
-          ),
-          TargetLocationMaxConcurrency = "string",
-          TargetLocationMaxErrors = "string",
-          ExecutionRoleName = "string"
-        )
-      )
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a change request for Change Manager. The Automation runbooks specified in the change request run only after all required approvals for the change request have been received.
 
+See \url{https://paws-r.github.io/docs/ssm/start_change_request_execution.html} for full documentation.
+}
 \keyword{internal}

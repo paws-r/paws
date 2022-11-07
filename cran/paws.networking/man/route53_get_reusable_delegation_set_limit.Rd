@@ -14,31 +14,9 @@ delegation set.}
 
 \item{DelegationSetId}{[required] The ID of the delegation set that you want to get the limit for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Limit = list(
-    Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
-    Value = 123
-  ),
-  Count = 123
-)
-}
-}
 \description{
-Gets the maximum number of hosted zones that you can associate with the
-specified reusable delegation set.
+Gets the maximum number of hosted zones that you can associate with the specified reusable delegation set.
 
-For the default limit, see
-\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits}
-in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit,
-open a case.
+See \url{https://paws-r.github.io/docs/route53/get_reusable_delegation_set_limit.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_reusable_delegation_set_limit(
-  Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
-  DelegationSetId = "string"
-)
-}
-}
-
 \keyword{internal}

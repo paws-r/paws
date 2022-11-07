@@ -13,20 +13,9 @@ Users' email addresses are case-sensitive.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }
-\value{
-An empty list.
-}
 \description{
-Disables the specified user in the user pool. Users can't sign in to
-AppStream 2.0 until they are re-enabled. This action does not delete the
-user.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_user(
-  UserName = "string",
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
-}
-}
+Disables the specified user in the user pool. Users can't sign in to AppStream 2.0 until they are re-enabled. This action does not delete the user.
 
+See \url{https://paws-r.github.io/docs/appstream/disable_user.html} for full documentation.
+}
 \keyword{internal}

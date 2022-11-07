@@ -10,35 +10,15 @@ quicksight_describe_group(GroupName, AwsAccountId, Namespace)
 \arguments{
 \item{GroupName}{[required] The name of the group that you want to describe.}
 
-\item{AwsAccountId}{[required] The ID for the AWS account that the group is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
+Currently, you use the ID for the Amazon Web Services account that
+contains your Amazon QuickSight account.}
 
-\item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    Arn = "string",
-    GroupName = "string",
-    Description = "string",
-    PrincipalId = "string"
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{Namespace}{[required] The namespace of the group that you want described.}
 }
 \description{
-Returns an Amazon QuickSight group's description and Amazon Resource
-Name (ARN).
-}
-\section{Request syntax}{
-\preformatted{svc$describe_group(
-  GroupName = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
-}
-}
+Returns an Amazon QuickSight group's description and Amazon Resource Name (ARN).
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_group.html} for full documentation.
+}
 \keyword{internal}

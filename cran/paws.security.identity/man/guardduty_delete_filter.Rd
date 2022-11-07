@@ -11,18 +11,9 @@ guardduty_delete_filter(DetectorId, FilterName)
 
 \item{FilterName}{[required] The name of the filter that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the filter specified by the filter name.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_filter(
-  DetectorId = "string",
-  FilterName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/delete_filter.html} for full documentation.
+}
 \keyword{internal}

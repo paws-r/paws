@@ -10,37 +10,9 @@ backup_describe_restore_job(RestoreJobId)
 \arguments{
 \item{RestoreJobId}{[required] Uniquely identifies the job that restores a recovery point.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountId = "string",
-  RestoreJobId = "string",
-  RecoveryPointArn = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  CompletionDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  Status = "PENDING"|"RUNNING"|"COMPLETED"|"ABORTED"|"FAILED",
-  StatusMessage = "string",
-  PercentDone = "string",
-  BackupSizeInBytes = 123,
-  IamRoleArn = "string",
-  ExpectedCompletionTimeMinutes = 123,
-  CreatedResourceArn = "string",
-  ResourceType = "string"
-)
-}
-}
 \description{
-Returns metadata associated with a restore job that is specified by a
-job ID.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_restore_job(
-  RestoreJobId = "string"
-)
-}
-}
+Returns metadata associated with a restore job that is specified by a job ID.
 
+See \url{https://paws-r.github.io/docs/backup/describe_restore_job.html} for full documentation.
+}
 \keyword{internal}

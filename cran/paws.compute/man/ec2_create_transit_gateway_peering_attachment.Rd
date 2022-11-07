@@ -5,9 +5,15 @@
 \title{Requests a transit gateway peering attachment between the specified
 transit gateway (requester) and a peer transit gateway (accepter)}
 \usage{
-ec2_create_transit_gateway_peering_attachment(TransitGatewayId,
-  PeerTransitGatewayId, PeerAccountId, PeerRegion, TagSpecifications,
-  DryRun)
+ec2_create_transit_gateway_peering_attachment(
+  TransitGatewayId,
+  PeerTransitGatewayId,
+  PeerAccountId,
+  PeerRegion,
+  Options = NULL,
+  TagSpecifications = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayId}{[required] The ID of the transit gateway.}
@@ -15,9 +21,12 @@ ec2_create_transit_gateway_peering_attachment(TransitGatewayId,
 \item{PeerTransitGatewayId}{[required] The ID of the peer transit gateway with which to create the peering
 attachment.}
 
-\item{PeerAccountId}{[required] The AWS account ID of the owner of the peer transit gateway.}
+\item{PeerAccountId}{[required] The ID of the Amazon Web Services account that owns the peer transit
+gateway.}
 
 \item{PeerRegion}{[required] The Region where the peer transit gateway is located.}
+
+\item{Options}{Requests a transit gateway peering attachment.}
 
 \item{TagSpecifications}{The tags to apply to the transit gateway peering attachment.}
 
@@ -26,67 +35,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayPeeringAttachment = list(
-    TransitGatewayAttachmentId = "string",
-    RequesterTgwInfo = list(
-      TransitGatewayId = "string",
-      OwnerId = "string",
-      Region = "string"
-    ),
-    AccepterTgwInfo = list(
-      TransitGatewayId = "string",
-      OwnerId = "string",
-      Region = "string"
-    ),
-    Status = list(
-      Code = "string",
-      Message = "string"
-    ),
-    State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Requests a transit gateway peering attachment between the specified
-transit gateway (requester) and a peer transit gateway (accepter). The
-transit gateways must be in different Regions. The peer transit gateway
-can be in your account or a different AWS account.
+Requests a transit gateway peering attachment between the specified transit gateway (requester) and a peer transit gateway (accepter). The peer transit gateway can be in your account or a different Amazon Web Services account.
 
-After you create the peering attachment, the owner of the accepter
-transit gateway must accept the attachment request.
+See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway_peering_attachment.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_transit_gateway_peering_attachment(
-  TransitGatewayId = "string",
-  PeerTransitGatewayId = "string",
-  PeerAccountId = "string",
-  PeerRegion = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

@@ -2,11 +2,15 @@
 % Please edit documentation in R/eventbridge_operations.R
 \name{eventbridge_list_partner_event_source_accounts}
 \alias{eventbridge_list_partner_event_source_accounts}
-\title{An SaaS partner can use this operation to display the AWS account ID
-that a particular partner event source name is associated with}
+\title{An SaaS partner can use this operation to display the Amazon Web
+Services account ID that a particular partner event source name is
+associated with}
 \usage{
-eventbridge_list_partner_event_source_accounts(EventSourceName,
-  NextToken, Limit)
+eventbridge_list_partner_event_source_accounts(
+  EventSourceName,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{EventSourceName}{[required] The name of the partner event source to display account information
@@ -19,36 +23,9 @@ retrieves the next set of results.}
 The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PartnerEventSourceAccounts = list(
-    list(
-      Account = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExpirationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      State = "PENDING"|"ACTIVE"|"DELETED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-An SaaS partner can use this operation to display the AWS account ID
-that a particular partner event source name is associated with. This
-operation is not used by AWS customers.
-}
-\section{Request syntax}{
-\preformatted{svc$list_partner_event_source_accounts(
-  EventSourceName = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+An SaaS partner can use this operation to display the Amazon Web Services account ID that a particular partner event source name is associated with. This operation is not used by Amazon Web Services customers.
 
+See \url{https://paws-r.github.io/docs/eventbridge/list_partner_event_source_accounts.html} for full documentation.
+}
 \keyword{internal}

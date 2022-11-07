@@ -2,11 +2,16 @@
 % Please edit documentation in R/translate_operations.R
 \name{translate_import_terminology}
 \alias{translate_import_terminology}
-\title{Creates or updates a custom terminology, depending on whether or not one
+\title{Creates or updates a custom terminology, depending on whether one
 already exists for the given terminology name}
 \usage{
-translate_import_terminology(Name, MergeStrategy, Description,
-  TerminologyData, EncryptionKey)
+translate_import_terminology(
+  Name,
+  MergeStrategy,
+  Description = NULL,
+  TerminologyData,
+  EncryptionKey = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the custom terminology being imported.}
@@ -22,60 +27,9 @@ name.}
 
 \item{EncryptionKey}{The encryption key for the custom terminology being imported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TerminologyProperties = list(
-    Name = "string",
-    Description = "string",
-    Arn = "string",
-    SourceLanguageCode = "string",
-    TargetLanguageCodes = list(
-      "string"
-    ),
-    EncryptionKey = list(
-      Type = "KMS",
-      Id = "string"
-    ),
-    SizeBytes = 123,
-    TermCount = 123,
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedAt = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Creates or updates a custom terminology, depending on whether or not one
-already exists for the given terminology name. Importing a terminology
-with the same name as an existing one will merge the terminologies based
-on the chosen merge strategy. Currently, the only supported merge
-strategy is OVERWRITE, and so the imported terminology will overwrite an
-existing terminology of the same name.
+Creates or updates a custom terminology, depending on whether one already exists for the given terminology name. Importing a terminology with the same name as an existing one will merge the terminologies based on the chosen merge strategy. The only supported merge strategy is OVERWRITE, where the imported terminology overwrites the existing terminology of the same name.
 
-If you import a terminology that overwrites an existing one, the new
-terminology take up to 10 minutes to fully propagate and be available
-for use in a translation due to cache policies with the DataPlane
-service that performs the translations.
+See \url{https://paws-r.github.io/docs/translate/import_terminology.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$import_terminology(
-  Name = "string",
-  MergeStrategy = "OVERWRITE",
-  Description = "string",
-  TerminologyData = list(
-    File = raw,
-    Format = "CSV"|"TMX"
-  ),
-  EncryptionKey = list(
-    Type = "KMS",
-    Id = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

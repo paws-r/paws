@@ -2,11 +2,14 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_list_delegated_services_for_account}
 \alias{organizations_list_delegated_services_for_account}
-\title{List the AWS services for which the specified account is a delegated
-administrator}
+\title{List the Amazon Web Services services for which the specified account is
+a delegated administrator}
 \usage{
-organizations_list_delegated_services_for_account(AccountId, NextToken,
-  MaxResults)
+organizations_list_delegated_services_for_account(
+  AccountId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{AccountId}{[required] The account ID number of a delegated administrator account in the
@@ -29,35 +32,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DelegatedServices = list(
-    list(
-      ServicePrincipal = "string",
-      DelegationEnabledDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List the AWS services for which the specified account is a delegated
-administrator.
+List the Amazon Web Services services for which the specified account is a delegated administrator.
 
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
+See \url{https://paws-r.github.io/docs/organizations/list_delegated_services_for_account.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_delegated_services_for_account(
-  AccountId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

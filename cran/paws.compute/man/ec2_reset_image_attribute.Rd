@@ -4,7 +4,7 @@
 \alias{ec2_reset_image_attribute}
 \title{Resets an attribute of an AMI to its default value}
 \usage{
-ec2_reset_image_attribute(Attribute, ImageId, DryRun)
+ec2_reset_image_attribute(Attribute, ImageId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The attribute to reset (currently you can only reset the launch
@@ -17,32 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
 Resets an attribute of an AMI to its default value.
 
-The productCodes attribute can't be reset.
-}
-\section{Request syntax}{
-\preformatted{svc$reset_image_attribute(
-  Attribute = "launchPermission",
-  ImageId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example resets the launchPermission attribute for the specified
-# AMI. By default, AMIs are private.
-svc$reset_image_attribute(
-  Attribute = "launchPermission",
-  ImageId = "ami-5731123e"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/reset_image_attribute.html} for full documentation.
 }
 \keyword{internal}

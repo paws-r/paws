@@ -4,8 +4,11 @@
 \alias{serverlessapplicationrepository_list_application_versions}
 \title{Lists versions for the specified application}
 \usage{
-serverlessapplicationrepository_list_application_versions(ApplicationId,
-  MaxItems, NextToken)
+serverlessapplicationrepository_list_application_versions(
+  ApplicationId,
+  MaxItems = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -14,30 +17,9 @@ serverlessapplicationrepository_list_application_versions(ApplicationId,
 
 \item{NextToken}{A token to specify where to start paginating.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Versions = list(
-    list(
-      ApplicationId = "string",
-      CreationTime = "string",
-      SemanticVersion = "string",
-      SourceCodeUrl = "string"
-    )
-  )
-)
-}
-}
 \description{
 Lists versions for the specified application.
-}
-\section{Request syntax}{
-\preformatted{svc$list_application_versions(
-  ApplicationId = "string",
-  MaxItems = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_versions.html} for full documentation.
+}
 \keyword{internal}

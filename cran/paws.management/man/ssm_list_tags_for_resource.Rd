@@ -11,26 +11,9 @@ ssm_list_tags_for_resource(ResourceType, ResourceId)
 
 \item{ResourceId}{[required] The resource ID for which you want to see a list of tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of the tags assigned to the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
-  ResourceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

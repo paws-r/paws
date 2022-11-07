@@ -9,19 +9,9 @@ licensemanager_delete_license_configuration(LicenseConfigurationArn)
 \arguments{
 \item{LicenseConfigurationArn}{[required] ID of the license configuration.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified license configuration.
 
-You cannot delete a license configuration that is in use.
+See \url{https://paws-r.github.io/docs/licensemanager/delete_license_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_license_configuration(
-  LicenseConfigurationArn = "string"
-)
-}
-}
-
 \keyword{internal}

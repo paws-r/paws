@@ -5,7 +5,7 @@
 \title{Cancels a bundling operation for an instance store-backed Windows
 instance}
 \usage{
-ec2_cancel_bundle_task(BundleId, DryRun)
+ec2_cancel_bundle_task(BundleId, DryRun = NULL)
 }
 \arguments{
 \item{BundleId}{[required] The ID of the bundle task.}
@@ -15,46 +15,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BundleTask = list(
-    BundleId = "string",
-    BundleTaskError = list(
-      Code = "string",
-      Message = "string"
-    ),
-    InstanceId = "string",
-    Progress = "string",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    State = "pending"|"waiting-for-shutdown"|"bundling"|"storing"|"cancelling"|"complete"|"failed",
-    Storage = list(
-      S3 = list(
-        AWSAccessKeyId = "string",
-        Bucket = "string",
-        Prefix = "string",
-        UploadPolicy = raw,
-        UploadPolicySignature = "string"
-      )
-    ),
-    UpdateTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Cancels a bundling operation for an instance store-backed Windows
-instance.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_bundle_task(
-  BundleId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Cancels a bundling operation for an instance store-backed Windows instance.
 
+See \url{https://paws-r.github.io/docs/ec2/cancel_bundle_task.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Retrieves the encrypted administrator password for a running Windows
 instance}
 \usage{
-ec2_get_password_data(InstanceId, DryRun)
+ec2_get_password_data(InstanceId, DryRun = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the Windows instance.}
@@ -15,47 +15,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceId = "string",
-  PasswordData = "string",
-  Timestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Retrieves the encrypted administrator password for a running Windows
-instance.
+Retrieves the encrypted administrator password for a running Windows instance.
 
-The Windows password is generated at boot by the \code{EC2Config} service or
-\code{EC2Launch} scripts (Windows Server 2016 and later). This usually only
-happens the first time an instance is launched. For more information,
-see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-service.html}{EC2Config}
-and
-\href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html}{EC2Launch}
-in the Amazon Elastic Compute Cloud User Guide.
-
-For the \code{EC2Config} service, the password is not generated for rebundled
-AMIs unless \code{Ec2SetPassword} is enabled before bundling.
-
-The password is encrypted using the key pair that you specified when you
-launched the instance. You must provide the corresponding key pair file.
-
-When you launch an instance, password generation and encryption may take
-a few minutes. If you try to retrieve the password before it's
-available, the output returns an empty string. We recommend that you
-wait up to 15 minutes after launching an instance before trying to
-retrieve the generated password.
+See \url{https://paws-r.github.io/docs/ec2/get_password_data.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_password_data(
-  InstanceId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

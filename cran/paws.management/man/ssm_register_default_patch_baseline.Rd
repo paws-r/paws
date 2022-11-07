@@ -9,26 +9,9 @@ ssm_register_default_patch_baseline(BaselineId)
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline that should be the default patch baseline.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BaselineId = "string"
-)
-}
-}
 \description{
 Defines the default patch baseline for the relevant operating system.
 
-To reset the AWS predefined patch baseline as the default, specify the
-full patch baseline ARN as the baseline ID value. For example, for
-CentOS, specify
-\verb{arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed}
-instead of \verb{pb-0574b43a65ea646ed}.
+See \url{https://paws-r.github.io/docs/ssm/register_default_patch_baseline.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_default_patch_baseline(
-  BaselineId = "string"
-)
-}
-}
-
 \keyword{internal}

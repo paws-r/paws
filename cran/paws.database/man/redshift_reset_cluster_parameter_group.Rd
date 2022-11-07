@@ -6,8 +6,11 @@
 default values and sets the source values of the parameters to
 "engine-default"}
 \usage{
-redshift_reset_cluster_parameter_group(ParameterGroupName,
-  ResetAllParameters, Parameters)
+redshift_reset_cluster_parameter_group(
+  ParameterGroupName,
+  ResetAllParameters = NULL,
+  Parameters = NULL
+)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of the cluster parameter group to be reset.}
@@ -23,39 +26,9 @@ option is not used, then at least one parameter name must be supplied.
 Constraints: A maximum of 20 parameters can be reset in a single
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ParameterGroupName = "string",
-  ParameterGroupStatus = "string"
-)
-}
-}
 \description{
-Sets one or more parameters of the specified parameter group to their
-default values and sets the source values of the parameters to
-"engine-default". To reset the entire parameter group specify the
-\emph{ResetAllParameters} parameter. For parameter changes to take effect you
-must reboot any associated clusters.
-}
-\section{Request syntax}{
-\preformatted{svc$reset_cluster_parameter_group(
-  ParameterGroupName = "string",
-  ResetAllParameters = TRUE|FALSE,
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      ApplyType = "static"|"dynamic",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string"
-    )
-  )
-)
-}
-}
+Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default". To reset the entire parameter group specify the \emph{ResetAllParameters} parameter. For parameter changes to take effect you must reboot any associated clusters.
 
+See \url{https://paws-r.github.io/docs/redshift/reset_cluster_parameter_group.html} for full documentation.
+}
 \keyword{internal}

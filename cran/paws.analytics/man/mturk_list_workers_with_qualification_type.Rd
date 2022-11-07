@@ -5,8 +5,12 @@
 \title{The ListWorkersWithQualificationType operation returns all of the
 Workers that have been associated with a given Qualification type}
 \usage{
-mturk_list_workers_with_qualification_type(QualificationTypeId, Status,
-  NextToken, MaxResults)
+mturk_list_workers_with_qualification_type(
+  QualificationTypeId,
+  Status = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the Qualification type of the Qualifications to return.}
@@ -17,42 +21,9 @@ mturk_list_workers_with_qualification_type(QualificationTypeId, Status,
 
 \item{MaxResults}{Limit the number of results returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  NumResults = 123,
-  Qualifications = list(
-    list(
-      QualificationTypeId = "string",
-      WorkerId = "string",
-      GrantTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      IntegerValue = 123,
-      LocaleValue = list(
-        Country = "string",
-        Subdivision = "string"
-      ),
-      Status = "Granted"|"Revoked"
-    )
-  )
-)
-}
-}
 \description{
-The
-\code{\link[=mturk_list_workers_with_qualification_type]{list_workers_with_qualification_type}}
-operation returns all of the Workers that have been associated with a
-given Qualification type.
-}
-\section{Request syntax}{
-\preformatted{svc$list_workers_with_qualification_type(
-  QualificationTypeId = "string",
-  Status = "Granted"|"Revoked",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+The \code{\link[=mturk_list_workers_with_qualification_type]{list_workers_with_qualification_type}} operation returns all of the Workers that have been associated with a given Qualification type.
 
+See \url{https://paws-r.github.io/docs/mturk/list_workers_with_qualification_type.html} for full documentation.
+}
 \keyword{internal}

@@ -9,58 +9,9 @@ sagemaker_describe_flow_definition(FlowDefinitionName)
 \arguments{
 \item{FlowDefinitionName}{[required] The name of the flow definition.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FlowDefinitionArn = "string",
-  FlowDefinitionName = "string",
-  FlowDefinitionStatus = "Initializing"|"Active"|"Failed"|"Deleting",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  HumanLoopRequestSource = list(
-    AwsManagedHumanLoopRequestSource = "AWS/Rekognition/DetectModerationLabels/Image/V3"|"AWS/Textract/AnalyzeDocument/Forms/V1"
-  ),
-  HumanLoopActivationConfig = list(
-    HumanLoopActivationConditionsConfig = list(
-      HumanLoopActivationConditions = "string"
-    )
-  ),
-  HumanLoopConfig = list(
-    WorkteamArn = "string",
-    HumanTaskUiArn = "string",
-    TaskTitle = "string",
-    TaskDescription = "string",
-    TaskCount = 123,
-    TaskAvailabilityLifetimeInSeconds = 123,
-    TaskTimeLimitInSeconds = 123,
-    TaskKeywords = list(
-      "string"
-    ),
-    PublicWorkforceTaskPrice = list(
-      AmountInUsd = list(
-        Dollars = 123,
-        Cents = 123,
-        TenthFractionsOfACent = 123
-      )
-    )
-  ),
-  OutputConfig = list(
-    S3OutputPath = "string",
-    KmsKeyId = "string"
-  ),
-  RoleArn = "string",
-  FailureReason = "string"
-)
-}
-}
 \description{
 Returns information about the specified flow definition.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_flow_definition(
-  FlowDefinitionName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_flow_definition.html} for full documentation.
+}
 \keyword{internal}

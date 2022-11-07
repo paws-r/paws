@@ -4,7 +4,7 @@
 \alias{glue_get_mapping}
 \title{Creates mappings}
 \usage{
-glue_get_mapping(Source, Sinks, Location)
+glue_get_mapping(Source, Sinks = NULL, Location = NULL)
 }
 \arguments{
 \item{Source}{[required] Specifies the source table.}
@@ -13,61 +13,9 @@ glue_get_mapping(Source, Sinks, Location)
 
 \item{Location}{Parameters for the mapping.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Mapping = list(
-    list(
-      SourceTable = "string",
-      SourcePath = "string",
-      SourceType = "string",
-      TargetTable = "string",
-      TargetPath = "string",
-      TargetType = "string"
-    )
-  )
-)
-}
-}
 \description{
 Creates mappings.
-}
-\section{Request syntax}{
-\preformatted{svc$get_mapping(
-  Source = list(
-    DatabaseName = "string",
-    TableName = "string"
-  ),
-  Sinks = list(
-    list(
-      DatabaseName = "string",
-      TableName = "string"
-    )
-  ),
-  Location = list(
-    Jdbc = list(
-      list(
-        Name = "string",
-        Value = "string",
-        Param = TRUE|FALSE
-      )
-    ),
-    S3 = list(
-      list(
-        Name = "string",
-        Value = "string",
-        Param = TRUE|FALSE
-      )
-    ),
-    DynamoDB = list(
-      list(
-        Name = "string",
-        Value = "string",
-        Param = TRUE|FALSE
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_mapping.html} for full documentation.
+}
 \keyword{internal}

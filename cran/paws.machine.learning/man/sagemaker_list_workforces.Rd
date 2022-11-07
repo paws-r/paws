@@ -2,11 +2,16 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_list_workforces}
 \alias{sagemaker_list_workforces}
-\title{Use this operation to list all private and vendor workforces in an AWS
-Region}
+\title{Use this operation to list all private and vendor workforces in an
+Amazon Web Services Region}
 \usage{
-sagemaker_list_workforces(SortBy, SortOrder, NameContains, NextToken,
-  MaxResults)
+sagemaker_list_workforces(
+  SortBy = NULL,
+  SortOrder = NULL,
+  NameContains = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SortBy}{Sort workforces using the workforce name or creation date.}
@@ -20,57 +25,9 @@ workforce name.}
 
 \item{MaxResults}{The maximum number of workforces returned in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Workforces = list(
-    list(
-      WorkforceName = "string",
-      WorkforceArn = "string",
-      LastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      SourceIpConfig = list(
-        Cidrs = list(
-          "string"
-        )
-      ),
-      SubDomain = "string",
-      CognitoConfig = list(
-        UserPool = "string",
-        ClientId = "string"
-      ),
-      OidcConfig = list(
-        ClientId = "string",
-        Issuer = "string",
-        AuthorizationEndpoint = "string",
-        TokenEndpoint = "string",
-        UserInfoEndpoint = "string",
-        LogoutEndpoint = "string",
-        JwksUri = "string"
-      ),
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Use this operation to list all private and vendor workforces in an AWS
-Region. Note that you can only have one private workforce per AWS
-Region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_workforces(
-  SortBy = "Name"|"CreateDate",
-  SortOrder = "Ascending"|"Descending",
-  NameContains = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Use this operation to list all private and vendor workforces in an Amazon Web Services Region. Note that you can only have one private workforce per Amazon Web Services Region.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_workforces.html} for full documentation.
+}
 \keyword{internal}

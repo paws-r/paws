@@ -4,16 +4,21 @@
 \alias{quicksight_delete_analysis}
 \title{Deletes an analysis from Amazon QuickSight}
 \usage{
-quicksight_delete_analysis(AwsAccountId, AnalysisId,
-  RecoveryWindowInDays, ForceDeleteWithoutRecovery)
+quicksight_delete_analysis(
+  AwsAccountId,
+  AnalysisId,
+  RecoveryWindowInDays = NULL,
+  ForceDeleteWithoutRecovery = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account where you want to delete an analysis.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account where you want to delete an
+analysis.}
 
 \item{AnalysisId}{[required] The ID of the analysis that you're deleting.}
 
-\item{RecoveryWindowInDays}{A value that specifies the number of days that QuickSight waits before
-it deletes the analysis. You can't use this parameter with the
+\item{RecoveryWindowInDays}{A value that specifies the number of days that Amazon QuickSight waits
+before it deletes the analysis. You can't use this parameter with the
 \code{ForceDeleteWithoutRecovery} option in the same API call. The default
 value is 30.}
 
@@ -21,44 +26,9 @@ value is 30.}
 immediately delete the analysis, add the \code{ForceDeleteWithoutRecovery}
 option. You can't restore an analysis after it's deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = 123,
-  Arn = "string",
-  AnalysisId = "string",
-  DeletionTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  RequestId = "string"
-)
-}
-}
 \description{
-Deletes an analysis from Amazon QuickSight. You can optionally include a
-recovery window during which you can restore the analysis. If you don't
-specify a recovery window value, the operation defaults to 30 days.
-QuickSight attaches a \code{DeletionTime} stamp to the response that
-specifies the end of the recovery window. At the end of the recovery
-window, QuickSight deletes the analysis permanently.
+Deletes an analysis from Amazon QuickSight. You can optionally include a recovery window during which you can restore the analysis. If you don't specify a recovery window value, the operation defaults to 30 days. Amazon QuickSight attaches a \code{DeletionTime} stamp to the response that specifies the end of the recovery window. At the end of the recovery window, Amazon QuickSight deletes the analysis permanently.
 
-At any time before recovery window ends, you can use the
-\code{\link[=quicksight_restore_analysis]{restore_analysis}} API operation to
-remove the \code{DeletionTime} stamp and cancel the deletion of the analysis.
-The analysis remains visible in the API until it's deleted, so you can
-describe it but you can't make a template from it.
-
-An analysis that's scheduled for deletion isn't accessible in the
-QuickSight console. To access it in the console, restore it. Deleting an
-analysis doesn't delete the dashboards that you publish from it.
+See \url{https://paws-r.github.io/docs/quicksight/delete_analysis.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_analysis(
-  AwsAccountId = "string",
-  AnalysisId = "string",
-  RecoveryWindowInDays = 123,
-  ForceDeleteWithoutRecovery = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

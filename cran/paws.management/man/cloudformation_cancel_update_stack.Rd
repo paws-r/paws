@@ -4,35 +4,22 @@
 \alias{cloudformation_cancel_update_stack}
 \title{Cancels an update on the specified stack}
 \usage{
-cloudformation_cancel_update_stack(StackName, ClientRequestToken)
+cloudformation_cancel_update_stack(StackName, ClientRequestToken = NULL)
 }
 \arguments{
-\item{StackName}{[required] The name or the unique stack ID that is associated with the stack.}
+\item{StackName}{[required] The name or the unique stack ID that's associated with the stack.}
 
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_cancel_update_stack]{cancel_update_stack}} request.
-Specify this token if you plan to retry requests so that AWS
-CloudFormation knows that you're not attempting to cancel an update on a
-stack with the same name. You might retry
+Specify this token if you plan to retry requests so that CloudFormation
+knows that you're not attempting to cancel an update on a stack with the
+same name. You might retry
 \code{\link[=cloudformation_cancel_update_stack]{cancel_update_stack}} requests to
-ensure that AWS CloudFormation successfully received them.}
-}
-\value{
-An empty list.
+ensure that CloudFormation successfully received them.}
 }
 \description{
-Cancels an update on the specified stack. If the call completes
-successfully, the stack rolls back the update and reverts to the
-previous stack configuration.
+Cancels an update on the specified stack. If the call completes successfully, the stack rolls back the update and reverts to the previous stack configuration.
 
-You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
+See \url{https://paws-r.github.io/docs/cloudformation/cancel_update_stack.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$cancel_update_stack(
-  StackName = "string",
-  ClientRequestToken = "string"
-)
-}
-}
-
 \keyword{internal}

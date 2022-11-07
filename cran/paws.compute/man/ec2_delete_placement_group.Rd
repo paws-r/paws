@@ -4,7 +4,7 @@
 \alias{ec2_delete_placement_group}
 \title{Deletes the specified placement group}
 \usage{
-ec2_delete_placement_group(DryRun, GroupName)
+ec2_delete_placement_group(DryRun = NULL, GroupName)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,31 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupName}{[required] The name of the placement group.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified placement group. You must terminate all instances
-in the placement group before you can delete the placement group. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_placement_group(
-  DryRun = TRUE|FALSE,
-  GroupName = "string"
-)
-}
-}
+Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups} in the \emph{Amazon EC2 User Guide}.
 
-\examples{
-\dontrun{
-# This example deletes the specified placement group.
-# 
-svc$delete_placement_group(
-  GroupName = "my-cluster"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_placement_group.html} for full documentation.
 }
 \keyword{internal}

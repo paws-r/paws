@@ -4,8 +4,13 @@
 \alias{ec2_describe_network_acls}
 \title{Describes one or more of your network ACLs}
 \usage{
-ec2_describe_network_acls(Filters, DryRun, NetworkAclIds, NextToken,
-  MaxResults)
+ec2_describe_network_acls(
+  Filters = NULL,
+  DryRun = NULL,
+  NetworkAclIds = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -30,15 +35,18 @@ entry.
 \code{udp} | \code{icmp} or a protocol number).
 \item \code{entry.rule-action} - Allows or denies the matching traffic (\code{allow}
 | \code{deny}).
+\item \code{entry.egress} - A Boolean that indicates the type of rule. Specify
+\code{true} for egress rules, or \code{false} for ingress rules.
 \item \code{entry.rule-number} - The number of an entry (in other words, rule)
 in the set of ACL entries.
 \item \code{network-acl-id} - The ID of the network ACL.
-\item \code{owner-id} - The ID of the AWS account that owns the network ACL.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+network ACL.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -60,86 +68,9 @@ Default: Describes all your network ACLs.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NetworkAcls = list(
-    list(
-      Associations = list(
-        list(
-          NetworkAclAssociationId = "string",
-          NetworkAclId = "string",
-          SubnetId = "string"
-        )
-      ),
-      Entries = list(
-        list(
-          CidrBlock = "string",
-          Egress = TRUE|FALSE,
-          IcmpTypeCode = list(
-            Code = 123,
-            Type = 123
-          ),
-          Ipv6CidrBlock = "string",
-          PortRange = list(
-            From = 123,
-            To = 123
-          ),
-          Protocol = "string",
-          RuleAction = "allow"|"deny",
-          RuleNumber = 123
-        )
-      ),
-      IsDefault = TRUE|FALSE,
-      NetworkAclId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      VpcId = "string",
-      OwnerId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your network ACLs.
 
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon
-Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_network_acls(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  NetworkAclIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the specified network ACL.
-svc$describe_network_acls(
-  NetworkAclIds = list(
-    "acl-5fb85d36"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_network_acls.html} for full documentation.
 }
 \keyword{internal}

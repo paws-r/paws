@@ -9,17 +9,9 @@ athena_delete_data_catalog(Name)
 \arguments{
 \item{Name}{[required] The name of the data catalog to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a data catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_data_catalog(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/athena/delete_data_catalog.html} for full documentation.
+}
 \keyword{internal}

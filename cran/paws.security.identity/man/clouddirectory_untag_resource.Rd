@@ -12,20 +12,9 @@ supported for directories.}
 
 \item{TagKeys}{[required] Keys of the tag that need to be removed from the resource.}
 }
-\value{
-An empty list.
-}
 \description{
 An API operation for removing tags from a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/untag_resource.html} for full documentation.
+}
 \keyword{internal}

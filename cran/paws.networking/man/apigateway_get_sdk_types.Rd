@@ -2,9 +2,9 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_get_sdk_types}
 \alias{apigateway_get_sdk_types}
-\title{Get sdk types}
+\title{Gets SDK types}
 \usage{
-apigateway_get_sdk_types(position, limit)
+apigateway_get_sdk_types(position = NULL, limit = NULL)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}
@@ -12,37 +12,9 @@ apigateway_get_sdk_types(position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      id = "string",
-      friendlyName = "string",
-      description = "string",
-      configurationProperties = list(
-        list(
-          name = "string",
-          friendlyName = "string",
-          description = "string",
-          required = TRUE|FALSE,
-          defaultValue = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Get sdk types
-}
-\section{Request syntax}{
-\preformatted{svc$get_sdk_types(
-  position = "string",
-  limit = 123
-)
-}
-}
+Gets SDK types
 
+See \url{https://paws-r.github.io/docs/apigateway/get_sdk_types.html} for full documentation.
+}
 \keyword{internal}

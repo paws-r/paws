@@ -10,25 +10,9 @@ elasticsearchservice_list_tags(ARN)
 \item{ARN}{[required] Specify the \code{ARN} for the Elasticsearch domain to which the tags are
 attached that you want to view.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns all tags for the given Elasticsearch domain.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags(
-  ARN = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/list_tags.html} for full documentation.
+}
 \keyword{internal}

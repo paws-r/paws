@@ -5,8 +5,12 @@
 \title{Updates a previously created parallel data resource by importing a new
 input file from Amazon S3}
 \usage{
-translate_update_parallel_data(Name, Description, ParallelDataConfig,
-  ClientToken)
+translate_update_parallel_data(
+  Name,
+  Description = NULL,
+  ParallelDataConfig,
+  ClientToken
+)
 }
 \arguments{
 \item{Name}{[required] The name of the parallel data resource being updated.}
@@ -18,32 +22,9 @@ translate_update_parallel_data(Name, Description, ParallelDataConfig,
 \item{ClientToken}{[required] A unique identifier for the request. This token is automatically
 generated when you use Amazon Translate through an AWS SDK.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-  LatestUpdateAttemptStatus = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-  LatestUpdateAttemptAt = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Updates a previously created parallel data resource by importing a new
-input file from Amazon S3.
-}
-\section{Request syntax}{
-\preformatted{svc$update_parallel_data(
-  Name = "string",
-  Description = "string",
-  ParallelDataConfig = list(
-    S3Uri = "string",
-    Format = "TSV"|"CSV"|"TMX"
-  ),
-  ClientToken = "string"
-)
-}
-}
+Updates a previously created parallel data resource by importing a new input file from Amazon S3.
 
+See \url{https://paws-r.github.io/docs/translate/update_parallel_data.html} for full documentation.
+}
 \keyword{internal}

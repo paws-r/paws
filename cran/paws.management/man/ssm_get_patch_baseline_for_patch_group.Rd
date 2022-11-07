@@ -5,32 +5,17 @@
 \title{Retrieves the patch baseline that should be used for the specified patch
 group}
 \usage{
-ssm_get_patch_baseline_for_patch_group(PatchGroup, OperatingSystem)
+ssm_get_patch_baseline_for_patch_group(PatchGroup, OperatingSystem = NULL)
 }
 \arguments{
 \item{PatchGroup}{[required] The name of the patch group whose patch baseline should be retrieved.}
 
-\item{OperatingSystem}{Returns he operating system rule specified for patch groups using the
+\item{OperatingSystem}{Returns the operating system rule specified for patch groups using the
 patch baseline.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BaselineId = "string",
-  PatchGroup = "string",
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
-)
-}
-}
 \description{
-Retrieves the patch baseline that should be used for the specified patch
-group.
-}
-\section{Request syntax}{
-\preformatted{svc$get_patch_baseline_for_patch_group(
-  PatchGroup = "string",
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
-)
-}
-}
+Retrieves the patch baseline that should be used for the specified patch group.
 
+See \url{https://paws-r.github.io/docs/ssm/get_patch_baseline_for_patch_group.html} for full documentation.
+}
 \keyword{internal}

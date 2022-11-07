@@ -9,30 +9,9 @@ securityhub_delete_members(AccountIds)
 \arguments{
 \item{AccountIds}{[required] The list of account IDs for the member accounts to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UnprocessedAccounts = list(
-    list(
-      AccountId = "string",
-      ProcessingResult = "string"
-    )
-  )
-)
-}
-}
 \description{
 Deletes the specified member accounts from Security Hub.
 
-Can be used to delete member accounts that belong to an organization as
-well as member accounts that were invited manually.
+See \url{https://paws-r.github.io/docs/securityhub/delete_members.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_members(
-  AccountIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

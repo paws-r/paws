@@ -7,28 +7,14 @@
 storagegateway_set_smb_guest_password(GatewayARN, Password)
 }
 \arguments{
-\item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the file gateway the SMB file share is
-associated with.}
+\item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the S3 File Gateway the SMB file share
+is associated with.}
 
 \item{Password}{[required] The password that you want to set for your SMB server.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Sets the password for the guest user \code{smbguest}. The \code{smbguest} user is
-the user when the authentication method for the file share is set to
-\code{GuestAccess}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_smb_guest_password(
-  GatewayARN = "string",
-  Password = "string"
-)
-}
-}
+Sets the password for the guest user \code{smbguest}. The \code{smbguest} user is the user when the authentication method for the file share is set to \code{GuestAccess}. This operation only supported for S3 File Gateways
 
+See \url{https://paws-r.github.io/docs/storagegateway/set_smb_guest_password.html} for full documentation.
+}
 \keyword{internal}

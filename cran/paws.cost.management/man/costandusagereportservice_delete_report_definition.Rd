@@ -4,36 +4,15 @@
 \alias{costandusagereportservice_delete_report_definition}
 \title{Deletes the specified report}
 \usage{
-costandusagereportservice_delete_report_definition(ReportName)
+costandusagereportservice_delete_report_definition(ReportName = NULL)
 }
 \arguments{
 \item{ReportName}{The name of the report that you want to delete. The name must be unique,
 is case sensitive, and can't include spaces.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResponseMessage = "string"
-)
-}
-}
 \description{
 Deletes the specified report.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_report_definition(
-  ReportName = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following example deletes the AWS Cost and Usage report named
-# ExampleReport.
-svc$delete_report_definition(
-  ReportName = "ExampleReport"
-)
-}
-
+See \url{https://paws-r.github.io/docs/costandusagereportservice/delete_report_definition.html} for full documentation.
 }
 \keyword{internal}

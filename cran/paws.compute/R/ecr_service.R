@@ -14,10 +14,27 @@ NULL
 #' Open Container Initiative (OCI) images. Amazon ECR supports private
 #' repositories with resource-based permissions using IAM so that specific
 #' users or Amazon EC2 instances can access repositories and images.
+#' 
+#' Amazon ECR has service endpoints in each supported Region. For more
+#' information, see [Amazon ECR
+#' endpoints](https://docs.aws.amazon.com/general/latest/gr/ecr.html) in
+#' the *Amazon Web Services General Reference*.
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -29,10 +46,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -57,14 +78,19 @@ NULL
 #'  \link[=ecr_batch_check_layer_availability]{batch_check_layer_availability} \tab Checks the availability of one or more image layers in a repository\cr
 #'  \link[=ecr_batch_delete_image]{batch_delete_image} \tab Deletes a list of specified images within a repository\cr
 #'  \link[=ecr_batch_get_image]{batch_get_image} \tab Gets detailed information for an image\cr
+#'  \link[=ecr_batch_get_repository_scanning_configuration]{batch_get_repository_scanning_configuration} \tab Gets the scanning configuration for one or more repositories\cr
 #'  \link[=ecr_complete_layer_upload]{complete_layer_upload} \tab Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID\cr
+#'  \link[=ecr_create_pull_through_cache_rule]{create_pull_through_cache_rule} \tab Creates a pull through cache rule\cr
 #'  \link[=ecr_create_repository]{create_repository} \tab Creates a repository\cr
 #'  \link[=ecr_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the lifecycle policy associated with the specified repository\cr
+#'  \link[=ecr_delete_pull_through_cache_rule]{delete_pull_through_cache_rule} \tab Deletes a pull through cache rule\cr
 #'  \link[=ecr_delete_registry_policy]{delete_registry_policy} \tab Deletes the registry permissions policy\cr
 #'  \link[=ecr_delete_repository]{delete_repository} \tab Deletes a repository\cr
 #'  \link[=ecr_delete_repository_policy]{delete_repository_policy} \tab Deletes the repository policy associated with the specified repository\cr
+#'  \link[=ecr_describe_image_replication_status]{describe_image_replication_status} \tab Returns the replication status for a specified image\cr
 #'  \link[=ecr_describe_images]{describe_images} \tab Returns metadata about the images in a repository\cr
 #'  \link[=ecr_describe_image_scan_findings]{describe_image_scan_findings} \tab Returns the scan findings for the specified image\cr
+#'  \link[=ecr_describe_pull_through_cache_rules]{describe_pull_through_cache_rules} \tab Returns the pull through cache rules for a registry\cr
 #'  \link[=ecr_describe_registry]{describe_registry} \tab Describes the settings for a registry\cr
 #'  \link[=ecr_describe_repositories]{describe_repositories} \tab Describes image repositories in a registry\cr
 #'  \link[=ecr_get_authorization_token]{get_authorization_token} \tab Retrieves an authorization token\cr
@@ -72,15 +98,17 @@ NULL
 #'  \link[=ecr_get_lifecycle_policy]{get_lifecycle_policy} \tab Retrieves the lifecycle policy for the specified repository\cr
 #'  \link[=ecr_get_lifecycle_policy_preview]{get_lifecycle_policy_preview} \tab Retrieves the results of the lifecycle policy preview request for the specified repository\cr
 #'  \link[=ecr_get_registry_policy]{get_registry_policy} \tab Retrieves the permissions policy for a registry\cr
+#'  \link[=ecr_get_registry_scanning_configuration]{get_registry_scanning_configuration} \tab Retrieves the scanning configuration for a registry\cr
 #'  \link[=ecr_get_repository_policy]{get_repository_policy} \tab Retrieves the repository policy for the specified repository\cr
 #'  \link[=ecr_initiate_layer_upload]{initiate_layer_upload} \tab Notifies Amazon ECR that you intend to upload an image layer\cr
 #'  \link[=ecr_list_images]{list_images} \tab Lists all the image IDs for the specified repository\cr
 #'  \link[=ecr_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECR resource\cr
 #'  \link[=ecr_put_image]{put_image} \tab Creates or updates the image manifest and tags associated with an image\cr
-#'  \link[=ecr_put_image_scanning_configuration]{put_image_scanning_configuration} \tab Updates the image scanning configuration for the specified repository\cr
+#'  \link[=ecr_put_image_scanning_configuration]{put_image_scanning_configuration} \tab The PutImageScanningConfiguration API is being deprecated, in favor of specifying the image scanning configuration at the registry level\cr
 #'  \link[=ecr_put_image_tag_mutability]{put_image_tag_mutability} \tab Updates the image tag mutability settings for the specified repository\cr
 #'  \link[=ecr_put_lifecycle_policy]{put_lifecycle_policy} \tab Creates or updates the lifecycle policy for the specified repository\cr
 #'  \link[=ecr_put_registry_policy]{put_registry_policy} \tab Creates or updates the permissions policy for your registry\cr
+#'  \link[=ecr_put_registry_scanning_configuration]{put_registry_scanning_configuration} \tab Creates or updates the scanning configuration for your private registry\cr
 #'  \link[=ecr_put_replication_configuration]{put_replication_configuration} \tab Creates or updates the replication configuration for a registry\cr
 #'  \link[=ecr_set_repository_policy]{set_repository_policy} \tab Applies a repository policy to the specified repository to control access permissions\cr
 #'  \link[=ecr_start_image_scan]{start_image_scan} \tab Starts an image vulnerability scan\cr

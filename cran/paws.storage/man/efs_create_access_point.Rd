@@ -4,15 +4,21 @@
 \alias{efs_create_access_point}
 \title{Creates an EFS access point}
 \usage{
-efs_create_access_point(ClientToken, Tags, FileSystemId, PosixUser,
-  RootDirectory)
+efs_create_access_point(
+  ClientToken,
+  Tags = NULL,
+  FileSystemId,
+  PosixUser = NULL,
+  RootDirectory = NULL
+)
 }
 \arguments{
 \item{ClientToken}{[required] A string of up to 64 ASCII characters that Amazon EFS uses to ensure
 idempotent creation.}
 
 \item{Tags}{Creates tags associated with the access point. Each tag is a key-value
-pair.}
+pair, each key must be unique. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+in the \emph{Amazon Web Services General Reference Guide}.}
 
 \item{FileSystemId}{[required] The ID of the EFS file system that the access point provides access to.}
 
@@ -22,85 +28,20 @@ made using the access point.}
 \item{RootDirectory}{Specifies the directory on the Amazon EFS file system that the access
 point exposes as the root directory of your file system to NFS clients
 using the access point. The clients using the access point can only
-access the root directory and below. If the \code{RootDirectory} > \code{Path}
+access the root directory and below. If the \code{RootDirectory} \> \code{Path}
 specified does not exist, EFS creates it and applies the \code{CreationInfo}
 settings when a client connects to an access point. When specifying a
-\code{RootDirectory}, you need to provide the \code{Path}, and the \code{CreationInfo}
-is optional.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientToken = "string",
-  Name = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  AccessPointId = "string",
-  AccessPointArn = "string",
-  FileSystemId = "string",
-  PosixUser = list(
-    Uid = 123,
-    Gid = 123,
-    SecondaryGids = list(
-      123
-    )
-  ),
-  RootDirectory = list(
-    Path = "string",
-    CreationInfo = list(
-      OwnerUid = 123,
-      OwnerGid = 123,
-      Permissions = "string"
-    )
-  ),
-  OwnerId = "string",
-  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
-)
-}
+\code{RootDirectory}, you must provide the \code{Path}, and the \code{CreationInfo}.
+
+Amazon EFS creates a root directory only if you have provided the
+CreationInfo: OwnUid, OwnGID, and permissions for the directory. If you
+do not provide this information, Amazon EFS does not create the root
+directory. If the root directory does not exist, attempts to mount using
+the access point will fail.}
 }
 \description{
-Creates an EFS access point. An access point is an application-specific
-view into an EFS file system that applies an operating system user and
-group, and a file system path, to any file system request made through
-the access point. The operating system user and group override any
-identity information provided by the NFS client. The file system path is
-exposed as the access point's root directory. Applications using the
-access point can only access data in its own directory and below. To
-learn more, see \href{https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html}{Mounting a File System Using EFS Access Points}.
+Creates an EFS access point. An access point is an application-specific view into an EFS file system that applies an operating system user and group, and a file system path, to any file system request made through the access point. The operating system user and group override any identity information provided by the NFS client. The file system path is exposed as the access point's root directory. Applications using the access point can only access data in the application's own directory and any subdirectories. To learn more, see \href{https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html}{Mounting a file system using EFS access points}.
 
-This operation requires permissions for the
-\code{elasticfilesystem:CreateAccessPoint} action.
+See \url{https://paws-r.github.io/docs/efs/create_access_point.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_access_point(
-  ClientToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  FileSystemId = "string",
-  PosixUser = list(
-    Uid = 123,
-    Gid = 123,
-    SecondaryGids = list(
-      123
-    )
-  ),
-  RootDirectory = list(
-    Path = "string",
-    CreationInfo = list(
-      OwnerUid = 123,
-      OwnerGid = 123,
-      Permissions = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

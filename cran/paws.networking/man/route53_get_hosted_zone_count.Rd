@@ -3,23 +3,13 @@
 \name{route53_get_hosted_zone_count}
 \alias{route53_get_hosted_zone_count}
 \title{Retrieves the number of hosted zones that are associated with the
-current AWS account}
+current Amazon Web Services account}
 \usage{
 route53_get_hosted_zone_count()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HostedZoneCount = 123
-)
-}
-}
 \description{
-Retrieves the number of hosted zones that are associated with the
-current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$get_hosted_zone_count()
-}
-}
+Retrieves the number of hosted zones that are associated with the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/route53/get_hosted_zone_count.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,15 @@
 \alias{sfn_create_state_machine}
 \title{Creates a state machine}
 \usage{
-sfn_create_state_machine(name, definition, roleArn, type,
-  loggingConfiguration, tags, tracingConfiguration)
+sfn_create_state_machine(
+  name,
+  definition,
+  roleArn,
+  type = NULL,
+  loggingConfiguration = NULL,
+  tags = NULL,
+  tracingConfiguration = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the state machine.
@@ -49,64 +56,9 @@ symbols: \verb{_ . : / = + - @}.}
 
 \item{tracingConfiguration}{Selects whether AWS X-Ray tracing is enabled.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  stateMachineArn = "string",
-  creationDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Creates a state machine. A state machine consists of a collection of
-states that can do work (\code{Task} states), determine to which states to
-transition next (\code{Choice} states), stop an execution with an error
-(\code{Fail} states), and so on. State machines are specified using a
-JSON-based, structured language. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}
-in the AWS Step Functions User Guide.
+Creates a state machine. A state machine consists of a collection of states that can do work (\code{Task} states), determine to which states to transition next (\code{Choice} states), stop an execution with an error (\code{Fail} states), and so on. State machines are specified using a JSON-based, structured language. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language} in the AWS Step Functions User Guide.
 
-This operation is eventually consistent. The results are best effort and
-may not reflect very recent updates and changes.
-
-\code{\link[=sfn_create_state_machine]{create_state_machine}} is an idempotent API.
-Subsequent requests won’t create a duplicate resource if it was already
-created. \code{\link[=sfn_create_state_machine]{create_state_machine}}'s
-idempotency check is based on the state machine \code{name}, \code{definition},
-\code{type}, \code{LoggingConfiguration} and \code{TracingConfiguration}. If a
-following request has a different \code{roleArn} or \code{tags}, Step Functions
-will ignore these differences and treat it as an idempotent request of
-the previous. In this case, \code{roleArn} and \code{tags} will not be updated,
-even if they are different.
+See \url{https://paws-r.github.io/docs/sfn/create_state_machine.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_state_machine(
-  name = "string",
-  definition = "string",
-  roleArn = "string",
-  type = "STANDARD"|"EXPRESS",
-  loggingConfiguration = list(
-    level = "ALL"|"ERROR"|"FATAL"|"OFF",
-    includeExecutionData = TRUE|FALSE,
-    destinations = list(
-      list(
-        cloudWatchLogsLogGroup = list(
-          logGroupArn = "string"
-        )
-      )
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  tracingConfiguration = list(
-    enabled = TRUE|FALSE
-  )
-)
-}
-}
-
 \keyword{internal}

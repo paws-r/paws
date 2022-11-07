@@ -4,8 +4,13 @@
 \alias{servicecatalog_update_service_action}
 \title{Updates a self-service action}
 \usage{
-servicecatalog_update_service_action(Id, Name, Definition, Description,
-  AcceptLanguage)
+servicecatalog_update_service_action(
+  Id,
+  Name = NULL,
+  Definition = NULL,
+  Description = NULL,
+  AcceptLanguage = NULL
+)
 }
 \arguments{
 \item{Id}{[required] The self-service action identifier.}
@@ -23,36 +28,9 @@ servicecatalog_update_service_action(Id, Name, Definition, Description,
 \item \code{zh} - Chinese
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceActionDetail = list(
-    ServiceActionSummary = list(
-      Id = "string",
-      Name = "string",
-      Description = "string",
-      DefinitionType = "SSM_AUTOMATION"
-    ),
-    Definition = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Updates a self-service action.
-}
-\section{Request syntax}{
-\preformatted{svc$update_service_action(
-  Id = "string",
-  Name = "string",
-  Definition = list(
-    "string"
-  ),
-  Description = "string",
-  AcceptLanguage = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/update_service_action.html} for full documentation.
+}
 \keyword{internal}

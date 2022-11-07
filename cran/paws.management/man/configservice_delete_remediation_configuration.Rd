@@ -4,27 +4,20 @@
 \alias{configservice_delete_remediation_configuration}
 \title{Deletes the remediation configuration}
 \usage{
-configservice_delete_remediation_configuration(ConfigRuleName,
-  ResourceType)
+configservice_delete_remediation_configuration(
+  ConfigRuleName,
+  ResourceType = NULL
+)
 }
 \arguments{
-\item{ConfigRuleName}{[required] The name of the AWS Config rule for which you want to delete remediation
+\item{ConfigRuleName}{[required] The name of the Config rule for which you want to delete remediation
 configuration.}
 
 \item{ResourceType}{The type of a resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the remediation configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_remediation_configuration(
-  ConfigRuleName = "string",
-  ResourceType = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/configservice/delete_remediation_configuration.html} for full documentation.
+}
 \keyword{internal}

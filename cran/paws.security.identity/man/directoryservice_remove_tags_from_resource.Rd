@@ -11,20 +11,9 @@ directoryservice_remove_tags_from_resource(ResourceId, TagKeys)
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes tags from a directory.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
-  ResourceId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/remove_tags_from_resource.html} for full documentation.
+}
 \keyword{internal}

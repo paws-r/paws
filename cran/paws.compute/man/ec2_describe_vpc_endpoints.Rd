@@ -4,8 +4,13 @@
 \alias{ec2_describe_vpc_endpoints}
 \title{Describes one or more of your VPC endpoints}
 \usage{
-ec2_describe_vpc_endpoints(DryRun, VpcEndpointIds, Filters, MaxResults,
-  NextToken)
+ec2_describe_vpc_endpoints(
+  DryRun = NULL,
+  VpcEndpointIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,6 +22,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{One or more filters.
 \itemize{
+\item \code{ip-address-type} - The IP address type (\code{ipv4} | \code{ipv6}).
 \item \code{service-name} - The name of the service.
 \item \code{vpc-id} - The ID of the VPC in which the endpoint resides.
 \item \code{vpc-endpoint-id} - The ID of the endpoint.
@@ -25,11 +31,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \code{deleted} | \code{rejected} | \code{failed}).
 \item \code{vpc-endpoint-type} - The type of VPC endpoint (\code{Interface} |
 \code{Gateway} | \code{GatewayLoadBalancer}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -45,80 +51,9 @@ items.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a prior call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpcEndpoints = list(
-    list(
-      VpcEndpointId = "string",
-      VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
-      VpcId = "string",
-      ServiceName = "string",
-      State = "PendingAcceptance"|"Pending"|"Available"|"Deleting"|"Deleted"|"Rejected"|"Failed"|"Expired",
-      PolicyDocument = "string",
-      RouteTableIds = list(
-        "string"
-      ),
-      SubnetIds = list(
-        "string"
-      ),
-      Groups = list(
-        list(
-          GroupId = "string",
-          GroupName = "string"
-        )
-      ),
-      PrivateDnsEnabled = TRUE|FALSE,
-      RequesterManaged = TRUE|FALSE,
-      NetworkInterfaceIds = list(
-        "string"
-      ),
-      DnsEntries = list(
-        list(
-          DnsName = "string",
-          HostedZoneId = "string"
-        )
-      ),
-      CreationTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      OwnerId = "string",
-      LastError = list(
-        Message = "string",
-        Code = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your VPC endpoints.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vpc_endpoints(
-  DryRun = TRUE|FALSE,
-  VpcEndpointIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoints.html} for full documentation.
+}
 \keyword{internal}

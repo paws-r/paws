@@ -9,19 +9,9 @@ cloudwatch_enable_alarm_actions(AlarmNames)
 \arguments{
 \item{AlarmNames}{[required] The names of the alarms.}
 }
-\value{
-An empty list.
-}
 \description{
 Enables the actions for the specified alarms.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_alarm_actions(
-  AlarmNames = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudwatch/enable_alarm_actions.html} for full documentation.
+}
 \keyword{internal}

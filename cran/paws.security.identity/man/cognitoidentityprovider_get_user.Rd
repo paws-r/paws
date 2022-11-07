@@ -7,39 +7,12 @@
 cognitoidentityprovider_get_user(AccessToken)
 }
 \arguments{
-\item{AccessToken}{[required] The access token returned by the server response to get information
-about the user.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Username = "string",
-  UserAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  MFAOptions = list(
-    list(
-      DeliveryMedium = "SMS"|"EMAIL",
-      AttributeName = "string"
-    )
-  ),
-  PreferredMfaSetting = "string",
-  UserMFASettingList = list(
-    "string"
-  )
-)
-}
+\item{AccessToken}{[required] A non-expired access token for the user whose information you want to
+query.}
 }
 \description{
 Gets the user attributes and metadata for a user.
-}
-\section{Request syntax}{
-\preformatted{svc$get_user(
-  AccessToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_user.html} for full documentation.
+}
 \keyword{internal}

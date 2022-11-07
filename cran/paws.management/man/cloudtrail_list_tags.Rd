@@ -2,46 +2,19 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_list_tags}
 \alias{cloudtrail_list_tags}
-\title{Lists the tags for the trail in the current region}
+\title{Lists the tags for the trail or event data store in the current region}
 \usage{
-cloudtrail_list_tags(ResourceIdList, NextToken)
+cloudtrail_list_tags(ResourceIdList, NextToken = NULL)
 }
 \arguments{
-\item{ResourceIdList}{[required] Specifies a list of trail ARNs whose tags will be listed. The list has a
-limit of 20 ARNs. The format of a trail ARN is:
-
-\code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
+\item{ResourceIdList}{[required] Specifies a list of trail and event data store ARNs whose tags will be
+listed. The list has a limit of 20 ARNs.}
 
 \item{NextToken}{Reserved for future use.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceTagList = list(
-    list(
-      ResourceId = "string",
-      TagsList = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the tags for the trail in the current region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags(
-  ResourceIdList = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
+Lists the tags for the trail or event data store in the current region.
 
+See \url{https://paws-r.github.io/docs/cloudtrail/list_tags.html} for full documentation.
+}
 \keyword{internal}

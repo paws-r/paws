@@ -4,8 +4,7 @@
 \alias{cloudfront_create_realtime_log_config}
 \title{Creates a real-time log configuration}
 \usage{
-cloudfront_create_realtime_log_config(EndPoints, Fields, Name,
-  SamplingRate)
+cloudfront_create_realtime_log_config(EndPoints, Fields, Name, SamplingRate)
 }
 \arguments{
 \item{EndPoints}{[required] Contains information about the Amazon Kinesis data stream where you are
@@ -23,56 +22,9 @@ rate determines the percentage of viewer requests that are represented
 in the real-time log data. You must provide an integer between 1 and
 100, inclusive.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RealtimeLogConfig = list(
-    ARN = "string",
-    Name = "string",
-    SamplingRate = 123,
-    EndPoints = list(
-      list(
-        StreamType = "string",
-        KinesisStreamConfig = list(
-          RoleARN = "string",
-          StreamARN = "string"
-        )
-      )
-    ),
-    Fields = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Creates a real-time log configuration.
 
-After you create a real-time log configuration, you can attach it to one
-or more cache behaviors to send real-time log data to the specified
-Amazon Kinesis data stream.
-
-For more information about real-time log configurations, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html}{Real-time logs}
-in the \emph{Amazon CloudFront Developer Guide}.
+See \url{https://paws-r.github.io/docs/cloudfront/create_realtime_log_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_realtime_log_config(
-  EndPoints = list(
-    list(
-      StreamType = "string",
-      KinesisStreamConfig = list(
-        RoleARN = "string",
-        StreamARN = "string"
-      )
-    )
-  ),
-  Fields = list(
-    "string"
-  ),
-  Name = "string",
-  SamplingRate = 123
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,19 @@
 \alias{machinelearning_describe_ml_models}
 \title{Returns a list of MLModel that match the search criteria in the request}
 \usage{
-machinelearning_describe_ml_models(FilterVariable, EQ, GT, LT, GE, LE,
-  NE, Prefix, SortOrder, NextToken, Limit)
+machinelearning_describe_ml_models(
+  FilterVariable = NULL,
+  EQ = NULL,
+  GT = NULL,
+  LT = NULL,
+  GE = NULL,
+  LE = NULL,
+  NE = NULL,
+  Prefix = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{FilterVariable}{Use one of the following variables to filter a list of \code{MLModel}:
@@ -77,73 +88,9 @@ Results are sorted by \code{FilterVariable}.}
 \item{Limit}{The number of pages of information to include in the result. The range
 of acceptable values is \code{1} through \code{100}. The default value is \code{100}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Results = list(
-    list(
-      MLModelId = "string",
-      TrainingDataSourceId = "string",
-      CreatedByIamUser = "string",
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      Name = "string",
-      Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-      SizeInBytes = 123,
-      EndpointInfo = list(
-        PeakRequestsPerSecond = 123,
-        CreatedAt = as.POSIXct(
-          "2015-01-01"
-        ),
-        EndpointUrl = "string",
-        EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
-      ),
-      TrainingParameters = list(
-        "string"
-      ),
-      InputDataLocationS3 = "string",
-      Algorithm = "sgd",
-      MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
-      ScoreThreshold = 123.0,
-      ScoreThresholdLastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      Message = "string",
-      ComputeTime = 123,
-      FinishedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      StartedAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of \code{MLModel} that match the search criteria in the
-request.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_ml_models(
-  FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"TrainingDataSourceId"|"RealtimeEndpointStatus"|"MLModelType"|"Algorithm"|"TrainingDataURI",
-  EQ = "string",
-  GT = "string",
-  LT = "string",
-  GE = "string",
-  LE = "string",
-  NE = "string",
-  Prefix = "string",
-  SortOrder = "asc"|"dsc",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Returns a list of \code{MLModel} that match the search criteria in the request.
 
+See \url{https://paws-r.github.io/docs/machinelearning/describe_ml_models.html} for full documentation.
+}
 \keyword{internal}

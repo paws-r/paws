@@ -4,8 +4,11 @@
 \alias{cloudwatchlogs_describe_destinations}
 \title{Lists all your destinations}
 \usage{
-cloudwatchlogs_describe_destinations(DestinationNamePrefix, nextToken,
-  limit)
+cloudwatchlogs_describe_destinations(
+  DestinationNamePrefix = NULL,
+  nextToken = NULL,
+  limit = NULL
+)
 }
 \arguments{
 \item{DestinationNamePrefix}{The prefix to match. If you don't specify a value, no prefix filter is
@@ -17,33 +20,9 @@ from a previous call.)}
 \item{limit}{The maximum number of items returned. If you don't specify a value, the
 default is up to 50 items.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  destinations = list(
-    list(
-      destinationName = "string",
-      targetArn = "string",
-      roleArn = "string",
-      accessPolicy = "string",
-      arn = "string",
-      creationTime = 123
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists all your destinations. The results are ASCII-sorted by destination
-name.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_destinations(
-  DestinationNamePrefix = "string",
-  nextToken = "string",
-  limit = 123
-)
-}
-}
+Lists all your destinations. The results are ASCII-sorted by destination name.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_destinations.html} for full documentation.
+}
 \keyword{internal}

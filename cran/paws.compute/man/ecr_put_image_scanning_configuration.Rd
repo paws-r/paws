@@ -2,15 +2,20 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_put_image_scanning_configuration}
 \alias{ecr_put_image_scanning_configuration}
-\title{Updates the image scanning configuration for the specified repository}
+\title{The PutImageScanningConfiguration API is being deprecated, in favor of
+specifying the image scanning configuration at the registry level}
 \usage{
-ecr_put_image_scanning_configuration(registryId, repositoryName,
-  imageScanningConfiguration)
+ecr_put_image_scanning_configuration(
+  registryId = NULL,
+  repositoryName,
+  imageScanningConfiguration
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository in which to update the image scanning configuration setting.
-If you do not specify a registry, the default registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository in which to update the image scanning
+configuration setting. If you do not specify a registry, the default
+registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository in which to update the image scanning
 configuration setting.}
@@ -19,28 +24,9 @@ configuration setting.}
 determines whether images are scanned for known vulnerabilities after
 being pushed to the repository.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  repositoryName = "string",
-  imageScanningConfiguration = list(
-    scanOnPush = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Updates the image scanning configuration for the specified repository.
-}
-\section{Request syntax}{
-\preformatted{svc$put_image_scanning_configuration(
-  registryId = "string",
-  repositoryName = "string",
-  imageScanningConfiguration = list(
-    scanOnPush = TRUE|FALSE
-  )
-)
-}
-}
+The \code{\link[=ecr_put_image_scanning_configuration]{put_image_scanning_configuration}} API is being deprecated, in favor of specifying the image scanning configuration at the registry level. For more information, see \code{\link[=ecr_put_registry_scanning_configuration]{put_registry_scanning_configuration}}.
 
+See \url{https://paws-r.github.io/docs/ecr/put_image_scanning_configuration.html} for full documentation.
+}
 \keyword{internal}

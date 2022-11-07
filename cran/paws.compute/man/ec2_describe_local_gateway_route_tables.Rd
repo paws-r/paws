@@ -4,8 +4,13 @@
 \alias{ec2_describe_local_gateway_route_tables}
 \title{Describes one or more local gateway route tables}
 \usage{
-ec2_describe_local_gateway_route_tables(LocalGatewayRouteTableIds,
-  Filters, MaxResults, NextToken, DryRun)
+ec2_describe_local_gateway_route_tables(
+  LocalGatewayRouteTableIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{LocalGatewayRouteTableIds}{The IDs of the local gateway route tables.}
@@ -13,9 +18,13 @@ ec2_describe_local_gateway_route_tables(LocalGatewayRouteTableIds,
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{local-gateway-id} - The ID of a local gateway.
+\item \code{local-gateway-route-table-arn} - The Amazon Resource Name (ARN) of
+the local gateway route table.
 \item \code{local-gateway-route-table-id} - The ID of a local gateway route
 table.
 \item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+local gateway route table.
 \item \code{state} - The state of the local gateway route table.
 }}
 
@@ -30,51 +39,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LocalGatewayRouteTables = list(
-    list(
-      LocalGatewayRouteTableId = "string",
-      LocalGatewayRouteTableArn = "string",
-      LocalGatewayId = "string",
-      OutpostArn = "string",
-      OwnerId = "string",
-      State = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more local gateway route tables. By default, all local
-gateway route tables are described. Alternatively, you can filter the
-results.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_local_gateway_route_tables(
-  LocalGatewayRouteTableIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes one or more local gateway route tables. By default, all local gateway route tables are described. Alternatively, you can filter the results.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_local_gateway_route_tables.html} for full documentation.
+}
 \keyword{internal}

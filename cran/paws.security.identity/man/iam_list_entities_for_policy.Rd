@@ -5,15 +5,21 @@
 \title{Lists all IAM users, groups, and roles that the specified managed policy
 is attached to}
 \usage{
-iam_list_entities_for_policy(PolicyArn, EntityFilter, PathPrefix,
-  PolicyUsageFilter, Marker, MaxItems)
+iam_list_entities_for_policy(
+  PolicyArn,
+  EntityFilter = NULL,
+  PathPrefix = NULL,
+  PolicyUsageFilter = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy for which you want the
 versions.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{EntityFilter}{The entity type to use for filtering the results.
 
@@ -58,53 +64,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyGroups = list(
-    list(
-      GroupName = "string",
-      GroupId = "string"
-    )
-  ),
-  PolicyUsers = list(
-    list(
-      UserName = "string",
-      UserId = "string"
-    )
-  ),
-  PolicyRoles = list(
-    list(
-      RoleName = "string",
-      RoleId = "string"
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists all IAM users, groups, and roles that the specified managed policy
-is attached to.
+Lists all IAM users, groups, and roles that the specified managed policy is attached to.
 
-You can use the optional \code{EntityFilter} parameter to limit the results
-to a particular type of entity (users, groups, or roles). For example,
-to list only the roles that are attached to the specified policy, set
-\code{EntityFilter} to \code{Role}.
-
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
+See \url{https://paws-r.github.io/docs/iam/list_entities_for_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_entities_for_policy(
-  PolicyArn = "string",
-  EntityFilter = "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy",
-  PathPrefix = "string",
-  PolicyUsageFilter = "PermissionsPolicy"|"PermissionsBoundary",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

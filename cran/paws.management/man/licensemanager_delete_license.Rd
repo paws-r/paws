@@ -11,22 +11,9 @@ licensemanager_delete_license(LicenseArn, SourceVersion)
 
 \item{SourceVersion}{[required] Current version of the license.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "PENDING_DELETE"|"DELETED",
-  DeletionDate = "string"
-)
-}
-}
 \description{
 Deletes the specified license.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_license(
-  LicenseArn = "string",
-  SourceVersion = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/delete_license.html} for full documentation.
+}
 \keyword{internal}

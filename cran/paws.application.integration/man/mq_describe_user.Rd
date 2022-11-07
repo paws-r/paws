@@ -13,33 +13,9 @@ mq_describe_user(BrokerId, Username)
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 2-100 characters long.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BrokerId = "string",
-  ConsoleAccess = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  Pending = list(
-    ConsoleAccess = TRUE|FALSE,
-    Groups = list(
-      "string"
-    ),
-    PendingChange = "CREATE"|"UPDATE"|"DELETE"
-  ),
-  Username = "string"
-)
-}
-}
 \description{
 Returns information about an ActiveMQ user.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_user(
-  BrokerId = "string",
-  Username = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/describe_user.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,7 @@
 \alias{rdsdataservice_rollback_transaction}
 \title{Performs a rollback of a transaction}
 \usage{
-rdsdataservice_rollback_transaction(resourceArn, secretArn,
-  transactionId)
+rdsdataservice_rollback_transaction(resourceArn, secretArn, transactionId)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
@@ -14,23 +13,9 @@ rdsdataservice_rollback_transaction(resourceArn, secretArn,
 
 \item{transactionId}{[required] The identifier of the transaction to roll back.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  transactionStatus = "string"
-)
-}
-}
 \description{
-Performs a rollback of a transaction. Rolling back a transaction cancels
-its changes.
-}
-\section{Request syntax}{
-\preformatted{svc$rollback_transaction(
-  resourceArn = "string",
-  secretArn = "string",
-  transactionId = "string"
-)
-}
-}
+Performs a rollback of a transaction. Rolling back a transaction cancels its changes.
 
+See \url{https://paws-r.github.io/docs/rdsdataservice/rollback_transaction.html} for full documentation.
+}
 \keyword{internal}

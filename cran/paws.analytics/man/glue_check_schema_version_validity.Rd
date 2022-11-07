@@ -7,30 +7,14 @@
 glue_check_schema_version_validity(DataFormat, SchemaDefinition)
 }
 \arguments{
-\item{DataFormat}{[required] The data format of the schema definition. Currently only \code{AVRO} is
-supported.}
+\item{DataFormat}{[required] The data format of the schema definition. Currently \code{AVRO}, \code{JSON} and
+\code{PROTOBUF} are supported.}
 
 \item{SchemaDefinition}{[required] The definition of the schema that has to be validated.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Valid = TRUE|FALSE,
-  Error = "string"
-)
-}
-}
 \description{
-Validates the supplied schema. This call has no side effects, it simply
-validates using the supplied schema using \code{DataFormat} as the format.
-Since it does not take a schema set name, no compatibility checks are
-performed.
-}
-\section{Request syntax}{
-\preformatted{svc$check_schema_version_validity(
-  DataFormat = "AVRO",
-  SchemaDefinition = "string"
-)
-}
-}
+Validates the supplied schema. This call has no side effects, it simply validates using the supplied schema using \code{DataFormat} as the format. Since it does not take a schema set name, no compatibility checks are performed.
 
+See \url{https://paws-r.github.io/docs/glue/check_schema_version_validity.html} for full documentation.
+}
 \keyword{internal}

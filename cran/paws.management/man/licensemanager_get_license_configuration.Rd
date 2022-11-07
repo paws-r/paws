@@ -9,70 +9,9 @@ licensemanager_get_license_configuration(LicenseConfigurationArn)
 \arguments{
 \item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseConfigurationId = "string",
-  LicenseConfigurationArn = "string",
-  Name = "string",
-  Description = "string",
-  LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
-  LicenseRules = list(
-    "string"
-  ),
-  LicenseCount = 123,
-  LicenseCountHardLimit = TRUE|FALSE,
-  ConsumedLicenses = 123,
-  Status = "string",
-  OwnerAccountId = "string",
-  ConsumedLicenseSummaryList = list(
-    list(
-      ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-      ConsumedLicenses = 123
-    )
-  ),
-  ManagedResourceSummaryList = list(
-    list(
-      ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-      AssociationCount = 123
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ProductInformationList = list(
-    list(
-      ResourceType = "string",
-      ProductInformationFilterList = list(
-        list(
-          ProductInformationFilterName = "string",
-          ProductInformationFilterValue = list(
-            "string"
-          ),
-          ProductInformationFilterComparator = "string"
-        )
-      )
-    )
-  ),
-  AutomatedDiscoveryInformation = list(
-    LastRunTime = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  DisassociateWhenNotFound = TRUE|FALSE
-)
-}
-}
 \description{
 Gets detailed information about the specified license configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$get_license_configuration(
-  LicenseConfigurationArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/get_license_configuration.html} for full documentation.
+}
 \keyword{internal}

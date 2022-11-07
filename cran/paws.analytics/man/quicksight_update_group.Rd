@@ -4,42 +4,22 @@
 \alias{quicksight_update_group}
 \title{Changes a group description}
 \usage{
-quicksight_update_group(GroupName, Description, AwsAccountId, Namespace)
+quicksight_update_group(GroupName, Description = NULL, AwsAccountId, Namespace)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group that you want to update.}
 
 \item{Description}{The description for the group that you want to update.}
 
-\item{AwsAccountId}{[required] The ID for the AWS account that the group is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in.
+Currently, you use the ID for the Amazon Web Services account that
+contains your Amazon QuickSight account.}
 
-\item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    Arn = "string",
-    GroupName = "string",
-    Description = "string",
-    PrincipalId = "string"
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{Namespace}{[required] The namespace of the group that you want to update.}
 }
 \description{
 Changes a group description.
-}
-\section{Request syntax}{
-\preformatted{svc$update_group(
-  GroupName = "string",
-  Description = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_group.html} for full documentation.
+}
 \keyword{internal}

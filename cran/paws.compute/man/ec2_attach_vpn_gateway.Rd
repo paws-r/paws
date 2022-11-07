@@ -4,7 +4,7 @@
 \alias{ec2_attach_vpn_gateway}
 \title{Attaches a virtual private gateway to a VPC}
 \usage{
-ec2_attach_vpn_gateway(VpcId, VpnGatewayId, DryRun)
+ec2_attach_vpn_gateway(VpcId, VpnGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{VpcId}{[required] The ID of the VPC.}
@@ -16,29 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpcAttachment = list(
-    State = "attaching"|"attached"|"detaching"|"detached",
-    VpcId = "string"
-  )
-)
-}
-}
 \description{
-Attaches a virtual private gateway to a VPC. You can attach one virtual
-private gateway to one VPC at a time.
+Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
 
-For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
-\emph{AWS Site-to-Site VPN User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/attach_vpn_gateway.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$attach_vpn_gateway(
-  VpcId = "string",
-  VpnGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

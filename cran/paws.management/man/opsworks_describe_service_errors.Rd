@@ -4,7 +4,11 @@
 \alias{opsworks_describe_service_errors}
 \title{Describes AWS OpsWorks Stacks service errors}
 \usage{
-opsworks_describe_service_errors(StackId, InstanceId, ServiceErrorIds)
+opsworks_describe_service_errors(
+  StackId = NULL,
+  InstanceId = NULL,
+  ServiceErrorIds = NULL
+)
 }
 \arguments{
 \item{StackId}{The stack ID. If you use this parameter,
@@ -20,40 +24,9 @@ descriptions of the errors associated with the specified instance.}
 descriptions of the specified errors. Otherwise, it returns a
 description of every error.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceErrors = list(
-    list(
-      ServiceErrorId = "string",
-      StackId = "string",
-      InstanceId = "string",
-      Type = "string",
-      Message = "string",
-      CreatedAt = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes AWS OpsWorks Stacks service errors.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
-
-This call accepts only one resource-identifying parameter.
+See \url{https://paws-r.github.io/docs/opsworks/describe_service_errors.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_service_errors(
-  StackId = "string",
-  InstanceId = "string",
-  ServiceErrorIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

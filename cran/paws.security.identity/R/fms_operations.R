@@ -3,38 +3,18 @@
 #' @include fms_service.R
 NULL
 
-#' Sets the AWS Firewall Manager administrator account
+#' Sets the Firewall Manager administrator account
 #'
 #' @description
-#' Sets the AWS Firewall Manager administrator account. AWS Firewall
-#' Manager must be associated with the master account of your AWS
-#' organization or associated with a member account that has the
-#' appropriate permissions. If the account ID that you submit is not an AWS
-#' Organizations master account, AWS Firewall Manager will set the
-#' appropriate permissions for the given member account.
-#' 
-#' The account that you associate with AWS Firewall Manager is called the
-#' AWS Firewall Manager administrator account.
+#' Sets the Firewall Manager administrator account. The account must be a member of the organization in Organizations whose resources you want to protect. Firewall Manager sets the permissions that allow the account to administer your Firewall Manager policies.
 #'
-#' @usage
-#' fms_associate_admin_account(AdminAccount)
+#' See [https://paws-r.github.io/docs/fms/associate_admin_account.html](https://paws-r.github.io/docs/fms/associate_admin_account.html) for full documentation.
 #'
-#' @param AdminAccount &#91;required&#93; The AWS account ID to associate with AWS Firewall Manager as the AWS
-#' Firewall Manager administrator account. This can be an AWS Organizations
-#' master account or a member account. For more information about AWS
-#' Organizations and master accounts, see [Managing the AWS Accounts in
-#' Your
+#' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to associate with Firewall Manager as
+#' the Firewall Manager administrator account. This must be an
+#' Organizations member account. For more information about Organizations,
+#' see [Managing the Amazon Web Services Accounts in Your
 #' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_admin_account(
-#'   AdminAccount = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -56,28 +36,47 @@ fms_associate_admin_account <- function(AdminAccount) {
 }
 .fms$operations$associate_admin_account <- fms_associate_admin_account
 
-#' Permanently deletes an AWS Firewall Manager applications list
+#' Sets the Firewall Manager policy administrator as a tenant administrator
+#' of a third-party firewall service
 #'
 #' @description
-#' Permanently deletes an AWS Firewall Manager applications list.
+#' Sets the Firewall Manager policy administrator as a tenant administrator of a third-party firewall service. A tenant is an instance of the third-party firewall service that's associated with your Amazon Web Services customer account.
 #'
-#' @usage
-#' fms_delete_apps_list(ListId)
+#' See [https://paws-r.github.io/docs/fms/associate_third_party_firewall.html](https://paws-r.github.io/docs/fms/associate_third_party_firewall.html) for full documentation.
+#'
+#' @param ThirdPartyFirewall &#91;required&#93; The name of the third-party firewall vendor.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_associate_third_party_firewall
+fms_associate_third_party_firewall <- function(ThirdPartyFirewall) {
+  op <- new_operation(
+    name = "AssociateThirdPartyFirewall",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$associate_third_party_firewall_input(ThirdPartyFirewall = ThirdPartyFirewall)
+  output <- .fms$associate_third_party_firewall_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$associate_third_party_firewall <- fms_associate_third_party_firewall
+
+#' Permanently deletes an Firewall Manager applications list
+#'
+#' @description
+#' Permanently deletes an Firewall Manager applications list.
+#'
+#' See [https://paws-r.github.io/docs/fms/delete_apps_list.html](https://paws-r.github.io/docs/fms/delete_apps_list.html) for full documentation.
 #'
 #' @param ListId &#91;required&#93; The ID of the applications list that you want to delete. You can
 #' retrieve this ID from [`put_apps_list`][fms_put_apps_list],
 #' [`list_apps_lists`][fms_list_apps_lists], and
 #' [`get_apps_list`][fms_get_apps_list].
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_apps_list(
-#'   ListId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -99,25 +98,14 @@ fms_delete_apps_list <- function(ListId) {
 }
 .fms$operations$delete_apps_list <- fms_delete_apps_list
 
-#' Deletes an AWS Firewall Manager association with the IAM role and the
-#' Amazon Simple Notification Service (SNS) topic that is used to record
-#' AWS Firewall Manager SNS logs
+#' Deletes an Firewall Manager association with the IAM role and the Amazon
+#' Simple Notification Service (SNS) topic that is used to record Firewall
+#' Manager SNS logs
 #'
 #' @description
-#' Deletes an AWS Firewall Manager association with the IAM role and the
-#' Amazon Simple Notification Service (SNS) topic that is used to record
-#' AWS Firewall Manager SNS logs.
+#' Deletes an Firewall Manager association with the IAM role and the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs.
 #'
-#' @usage
-#' fms_delete_notification_channel()
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_notification_channel()
-#' ```
+#' See [https://paws-r.github.io/docs/fms/delete_notification_channel.html](https://paws-r.github.io/docs/fms/delete_notification_channel.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -139,23 +127,21 @@ fms_delete_notification_channel <- function() {
 }
 .fms$operations$delete_notification_channel <- fms_delete_notification_channel
 
-#' Permanently deletes an AWS Firewall Manager policy
+#' Permanently deletes an Firewall Manager policy
 #'
 #' @description
-#' Permanently deletes an AWS Firewall Manager policy.
+#' Permanently deletes an Firewall Manager policy.
 #'
-#' @usage
-#' fms_delete_policy(PolicyId, DeleteAllPolicyResources)
+#' See [https://paws-r.github.io/docs/fms/delete_policy.html](https://paws-r.github.io/docs/fms/delete_policy.html) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. You can retrieve this ID
 #' from [`put_policy`][fms_put_policy] and
 #' [`list_policies`][fms_list_policies].
 #' @param DeleteAllPolicyResources If `True`, the request performs cleanup according to the policy type.
 #' 
-#' For AWS WAF and Shield Advanced policies, the cleanup does the
-#' following:
+#' For WAF and Shield Advanced policies, the cleanup does the following:
 #' 
-#' -   Deletes rule groups created by AWS Firewall Manager
+#' -   Deletes rule groups created by Firewall Manager
 #' 
 #' -   Removes web ACLs from in-scope resources
 #' 
@@ -179,17 +165,6 @@ fms_delete_notification_channel <- function() {
 #' policy. All others are out of scope. If you don't specify tags or
 #' accounts, all resources are in scope.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_policy(
-#'   PolicyId = "string",
-#'   DeleteAllPolicyResources = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname fms_delete_policy
@@ -210,28 +185,17 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
 }
 .fms$operations$delete_policy <- fms_delete_policy
 
-#' Permanently deletes an AWS Firewall Manager protocols list
+#' Permanently deletes an Firewall Manager protocols list
 #'
 #' @description
-#' Permanently deletes an AWS Firewall Manager protocols list.
+#' Permanently deletes an Firewall Manager protocols list.
 #'
-#' @usage
-#' fms_delete_protocols_list(ListId)
+#' See [https://paws-r.github.io/docs/fms/delete_protocols_list.html](https://paws-r.github.io/docs/fms/delete_protocols_list.html) for full documentation.
 #'
 #' @param ListId &#91;required&#93; The ID of the protocols list that you want to delete. You can retrieve
 #' this ID from [`put_protocols_list`][fms_put_protocols_list],
 #' [`list_protocols_lists`][fms_list_protocols_lists], and
 #' `GetProtocolsLost`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_protocols_list(
-#'   ListId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -253,25 +217,13 @@ fms_delete_protocols_list <- function(ListId) {
 }
 .fms$operations$delete_protocols_list <- fms_delete_protocols_list
 
-#' Disassociates the account that has been set as the AWS Firewall Manager
+#' Disassociates the account that has been set as the Firewall Manager
 #' administrator account
 #'
 #' @description
-#' Disassociates the account that has been set as the AWS Firewall Manager
-#' administrator account. To set a different account as the administrator
-#' account, you must submit an
-#' [`associate_admin_account`][fms_associate_admin_account] request.
+#' Disassociates the account that has been set as the Firewall Manager administrator account. To set a different account as the administrator account, you must submit an [`associate_admin_account`][fms_associate_admin_account] request.
 #'
-#' @usage
-#' fms_disassociate_admin_account()
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_admin_account()
-#' ```
+#' See [https://paws-r.github.io/docs/fms/disassociate_admin_account.html](https://paws-r.github.io/docs/fms/disassociate_admin_account.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -293,29 +245,43 @@ fms_disassociate_admin_account <- function() {
 }
 .fms$operations$disassociate_admin_account <- fms_disassociate_admin_account
 
-#' Returns the AWS Organizations master account that is associated with AWS
-#' Firewall Manager as the AWS Firewall Manager administrator
+#' Disassociates a Firewall Manager policy administrator from a third-party
+#' firewall tenant
 #'
 #' @description
-#' Returns the AWS Organizations master account that is associated with AWS
-#' Firewall Manager as the AWS Firewall Manager administrator.
+#' Disassociates a Firewall Manager policy administrator from a third-party firewall tenant. When you call [`disassociate_third_party_firewall`][fms_disassociate_third_party_firewall], the third-party firewall vendor deletes all of the firewalls that are associated with the account.
 #'
-#' @usage
-#' fms_get_admin_account()
+#' See [https://paws-r.github.io/docs/fms/disassociate_third_party_firewall.html](https://paws-r.github.io/docs/fms/disassociate_third_party_firewall.html) for full documentation.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AdminAccount = "string",
-#'   RoleStatus = "READY"|"CREATING"|"PENDING_DELETION"|"DELETING"|"DELETED"
-#' )
-#' ```
+#' @param ThirdPartyFirewall &#91;required&#93; The name of the third-party firewall vendor.
 #'
-#' @section Request syntax:
-#' ```
-#' svc$get_admin_account()
-#' ```
+#' @keywords internal
+#'
+#' @rdname fms_disassociate_third_party_firewall
+fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
+  op <- new_operation(
+    name = "DisassociateThirdPartyFirewall",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$disassociate_third_party_firewall_input(ThirdPartyFirewall = ThirdPartyFirewall)
+  output <- .fms$disassociate_third_party_firewall_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$disassociate_third_party_firewall <- fms_disassociate_third_party_firewall
+
+#' Returns the Organizations account that is associated with Firewall
+#' Manager as the Firewall Manager administrator
+#'
+#' @description
+#' Returns the Organizations account that is associated with Firewall Manager as the Firewall Manager administrator.
+#'
+#' See [https://paws-r.github.io/docs/fms/get_admin_account.html](https://paws-r.github.io/docs/fms/get_admin_account.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -337,63 +303,18 @@ fms_get_admin_account <- function() {
 }
 .fms$operations$get_admin_account <- fms_get_admin_account
 
-#' Returns information about the specified AWS Firewall Manager
-#' applications list
+#' Returns information about the specified Firewall Manager applications
+#' list
 #'
 #' @description
-#' Returns information about the specified AWS Firewall Manager
-#' applications list.
+#' Returns information about the specified Firewall Manager applications list.
 #'
-#' @usage
-#' fms_get_apps_list(ListId, DefaultList)
+#' See [https://paws-r.github.io/docs/fms/get_apps_list.html](https://paws-r.github.io/docs/fms/get_apps_list.html) for full documentation.
 #'
-#' @param ListId &#91;required&#93; The ID of the AWS Firewall Manager applications list that you want the
+#' @param ListId &#91;required&#93; The ID of the Firewall Manager applications list that you want the
 #' details for.
-#' @param DefaultList Specifies whether the list to retrieve is a default list owned by AWS
+#' @param DefaultList Specifies whether the list to retrieve is a default list owned by
 #' Firewall Manager.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AppsList = list(
-#'     ListId = "string",
-#'     ListName = "string",
-#'     ListUpdateToken = "string",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AppsList = list(
-#'       list(
-#'         AppName = "string",
-#'         Protocol = "string",
-#'         Port = 123
-#'       )
-#'     ),
-#'     PreviousAppsList = list(
-#'       list(
-#'         list(
-#'           AppName = "string",
-#'           Protocol = "string",
-#'           Port = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   AppsListArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_apps_list(
-#'   ListId = "string",
-#'   DefaultList = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -419,62 +340,15 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #' account
 #'
 #' @description
-#' Returns detailed compliance information about the specified member
-#' account. Details include resources that are in and out of compliance
-#' with the specified policy. Resources are considered noncompliant for AWS
-#' WAF and Shield Advanced policies if the specified policy has not been
-#' applied to them. Resources are considered noncompliant for security
-#' group policies if they are in scope of the policy, they violate one or
-#' more of the policy rules, and remediation is disabled or not possible.
-#' Resources are considered noncompliant for Network Firewall policies if a
-#' firewall is missing in the VPC, if the firewall endpoint isn't set up in
-#' an expected Availability Zone and subnet, if a subnet created by the
-#' Firewall Manager doesn't have the expected route table, and for
-#' modifications to a firewall policy that violate the Firewall Manager
-#' policy's rules.
+#' Returns detailed compliance information about the specified member account. Details include resources that are in and out of compliance with the specified policy.
 #'
-#' @usage
-#' fms_get_compliance_detail(PolicyId, MemberAccount)
+#' See [https://paws-r.github.io/docs/fms/get_compliance_detail.html](https://paws-r.github.io/docs/fms/get_compliance_detail.html) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy that you want to get the details for. `PolicyId` is
 #' returned by [`put_policy`][fms_put_policy] and by
 #' [`list_policies`][fms_list_policies].
-#' @param MemberAccount &#91;required&#93; The AWS account that owns the resources that you want to get the details
-#' for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PolicyComplianceDetail = list(
-#'     PolicyOwner = "string",
-#'     PolicyId = "string",
-#'     MemberAccount = "string",
-#'     Violators = list(
-#'       list(
-#'         ResourceId = "string",
-#'         ViolationReason = "WEB_ACL_MISSING_RULE_GROUP"|"RESOURCE_MISSING_WEB_ACL"|"RESOURCE_INCORRECT_WEB_ACL"|"RESOURCE_MISSING_SHIELD_PROTECTION"|"RESOURCE_MISSING_WEB_ACL_OR_SHIELD_PROTECTION"|"RESOURCE_MISSING_SECURITY_GROUP"|"RESOURCE_VIOLATES_AUDIT_SECURITY_GROUP"|"SECURITY_GROUP_UNUSED"|"SECURITY_GROUP_REDUNDANT"|"MISSING_FIREWALL"|"MISSING_FIREWALL_SUBNET_IN_AZ"|"MISSING_EXPECTED_ROUTE_TABLE"|"NETWORK_FIREWALL_POLICY_MODIFIED",
-#'         ResourceType = "string"
-#'       )
-#'     ),
-#'     EvaluationLimitExceeded = TRUE|FALSE,
-#'     ExpiredAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     IssueInfoMap = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_compliance_detail(
-#'   PolicyId = "string",
-#'   MemberAccount = "string"
-#' )
-#' ```
+#' @param MemberAccount &#91;required&#93; The Amazon Web Services account that owns the resources that you want to
+#' get the details for.
 #'
 #' @keywords internal
 #'
@@ -497,28 +371,12 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
 .fms$operations$get_compliance_detail <- fms_get_compliance_detail
 
 #' Information about the Amazon Simple Notification Service (SNS) topic
-#' that is used to record AWS Firewall Manager SNS logs
+#' that is used to record Firewall Manager SNS logs
 #'
 #' @description
-#' Information about the Amazon Simple Notification Service (SNS) topic
-#' that is used to record AWS Firewall Manager SNS logs.
+#' Information about the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs.
 #'
-#' @usage
-#' fms_get_notification_channel()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SnsTopicArn = "string",
-#'   SnsRoleName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_notification_channel()
-#' ```
+#' See [https://paws-r.github.io/docs/fms/get_notification_channel.html](https://paws-r.github.io/docs/fms/get_notification_channel.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -540,61 +398,14 @@ fms_get_notification_channel <- function() {
 }
 .fms$operations$get_notification_channel <- fms_get_notification_channel
 
-#' Returns information about the specified AWS Firewall Manager policy
+#' Returns information about the specified Firewall Manager policy
 #'
 #' @description
-#' Returns information about the specified AWS Firewall Manager policy.
+#' Returns information about the specified Firewall Manager policy.
 #'
-#' @usage
-#' fms_get_policy(PolicyId)
+#' See [https://paws-r.github.io/docs/fms/get_policy.html](https://paws-r.github.io/docs/fms/get_policy.html) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The ID of the AWS Firewall Manager policy that you want the details for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Policy = list(
-#'     PolicyId = "string",
-#'     PolicyName = "string",
-#'     PolicyUpdateToken = "string",
-#'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
-#'       ManagedServiceData = "string"
-#'     ),
-#'     ResourceType = "string",
-#'     ResourceTypeList = list(
-#'       "string"
-#'     ),
-#'     ResourceTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     ExcludeResourceTags = TRUE|FALSE,
-#'     RemediationEnabled = TRUE|FALSE,
-#'     IncludeMap = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     ExcludeMap = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   PolicyArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_policy(
-#'   PolicyId = "string"
-#' )
-#' ```
+#' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for.
 #'
 #' @keywords internal
 #'
@@ -620,63 +431,32 @@ fms_get_policy <- function(PolicyId) {
 #' summary information in the event of a potential DDoS attack
 #'
 #' @description
-#' If you created a Shield Advanced policy, returns policy-level attack
-#' summary information in the event of a potential DDoS attack. Other
-#' policy types are currently unsupported.
+#' If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a potential DDoS attack. Other policy types are currently unsupported.
 #'
-#' @usage
-#' fms_get_protection_status(PolicyId, MemberAccountId, StartTime, EndTime,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/fms/get_protection_status.html](https://paws-r.github.io/docs/fms/get_protection_status.html) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy for which you want to get the attack information.
-#' @param MemberAccountId The AWS account that is in scope of the policy that you want to get the
-#' details for.
+#' @param MemberAccountId The Amazon Web Services account that is in scope of the policy that you
+#' want to get the details for.
 #' @param StartTime The start of the time period to query for the attacks. This is a
 #' `timestamp` type. The request syntax listing indicates a `number` type
-#' because the default used by AWS Firewall Manager is Unix time in
-#' seconds. However, any valid `timestamp` format is allowed.
+#' because the default used by Firewall Manager is Unix time in seconds.
+#' However, any valid `timestamp` format is allowed.
 #' @param EndTime The end of the time period to query for the attacks. This is a
 #' `timestamp` type. The request syntax listing indicates a `number` type
-#' because the default used by AWS Firewall Manager is Unix time in
-#' seconds. However, any valid `timestamp` format is allowed.
+#' because the default used by Firewall Manager is Unix time in seconds.
+#' However, any valid `timestamp` format is allowed.
 #' @param NextToken If you specify a value for `MaxResults` and you have more objects than
-#' the number that you specify for `MaxResults`, AWS Firewall Manager
-#' returns a `NextToken` value in the response, which you can use to
-#' retrieve another group of objects. For the second and subsequent
+#' the number that you specify for `MaxResults`, Firewall Manager returns a
+#' `NextToken` value in the response, which you can use to retrieve another
+#' group of objects. For the second and subsequent
 #' [`get_protection_status`][fms_get_protection_status] requests, specify
 #' the value of `NextToken` from the previous response to get information
 #' about another batch of objects.
-#' @param MaxResults Specifies the number of objects that you want AWS Firewall Manager to
-#' return for this request. If you have more objects than the number that
-#' you specify for `MaxResults`, the response includes a `NextToken` value
-#' that you can use to get another batch of objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AdminAccountId = "string",
-#'   ServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
-#'   Data = "string",
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_protection_status(
-#'   PolicyId = "string",
-#'   MemberAccountId = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
+#' @param MaxResults Specifies the number of objects that you want Firewall Manager to return
+#' for this request. If you have more objects than the number that you
+#' specify for `MaxResults`, the response includes a `NextToken` value that
+#' you can use to get another batch of objects.
 #'
 #' @keywords internal
 #'
@@ -698,55 +478,17 @@ fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTim
 }
 .fms$operations$get_protection_status <- fms_get_protection_status
 
-#' Returns information about the specified AWS Firewall Manager protocols
-#' list
+#' Returns information about the specified Firewall Manager protocols list
 #'
 #' @description
-#' Returns information about the specified AWS Firewall Manager protocols
-#' list.
+#' Returns information about the specified Firewall Manager protocols list.
 #'
-#' @usage
-#' fms_get_protocols_list(ListId, DefaultList)
+#' See [https://paws-r.github.io/docs/fms/get_protocols_list.html](https://paws-r.github.io/docs/fms/get_protocols_list.html) for full documentation.
 #'
-#' @param ListId &#91;required&#93; The ID of the AWS Firewall Manager protocols list that you want the
-#' details for.
-#' @param DefaultList Specifies whether the list to retrieve is a default list owned by AWS
+#' @param ListId &#91;required&#93; The ID of the Firewall Manager protocols list that you want the details
+#' for.
+#' @param DefaultList Specifies whether the list to retrieve is a default list owned by
 #' Firewall Manager.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProtocolsList = list(
-#'     ListId = "string",
-#'     ListName = "string",
-#'     ListUpdateToken = "string",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProtocolsList = list(
-#'       "string"
-#'     ),
-#'     PreviousProtocolsList = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ProtocolsListArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_protocols_list(
-#'   ListId = "string",
-#'   DefaultList = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -768,175 +510,54 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
 }
 .fms$operations$get_protocols_list <- fms_get_protocols_list
 
-#' Retrieves violations for a resource based on the specified AWS Firewall
-#' Manager policy and AWS account
+#' The onboarding status of a Firewall Manager admin account to third-party
+#' firewall vendor tenant
 #'
 #' @description
-#' Retrieves violations for a resource based on the specified AWS Firewall
-#' Manager policy and AWS account.
+#' The onboarding status of a Firewall Manager admin account to third-party firewall vendor tenant.
 #'
-#' @usage
-#' fms_get_violation_details(PolicyId, MemberAccount, ResourceId,
-#'   ResourceType)
+#' See [https://paws-r.github.io/docs/fms/get_third_party_firewall_association_status.html](https://paws-r.github.io/docs/fms/get_third_party_firewall_association_status.html) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The ID of the AWS Firewall Manager policy that you want the details for.
+#' @param ThirdPartyFirewall &#91;required&#93; The name of the third-party firewall vendor.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_get_third_party_firewall_association_status
+fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) {
+  op <- new_operation(
+    name = "GetThirdPartyFirewallAssociationStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$get_third_party_firewall_association_status_input(ThirdPartyFirewall = ThirdPartyFirewall)
+  output <- .fms$get_third_party_firewall_association_status_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$get_third_party_firewall_association_status <- fms_get_third_party_firewall_association_status
+
+#' Retrieves violations for a resource based on the specified Firewall
+#' Manager policy and Amazon Web Services account
+#'
+#' @description
+#' Retrieves violations for a resource based on the specified Firewall Manager policy and Amazon Web Services account.
+#'
+#' See [https://paws-r.github.io/docs/fms/get_violation_details.html](https://paws-r.github.io/docs/fms/get_violation_details.html) for full documentation.
+#'
+#' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for.
 #' This currently only supports security group content audit policies.
-#' @param MemberAccount &#91;required&#93; The AWS account ID that you want the details for.
+#' @param MemberAccount &#91;required&#93; The Amazon Web Services account ID that you want the details for.
 #' @param ResourceId &#91;required&#93; The ID of the resource that has violations.
-#' @param ResourceType &#91;required&#93; The resource type. This is in the format shown in the [AWS Resource
-#' Types
+#' @param ResourceType &#91;required&#93; The resource type. This is in the format shown in the [Amazon Web
+#' Services Resource Types
 #' Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
 #' Supported resource types are: `AWS::EC2::Instance`,
 #' `AWS::EC2::NetworkInterface`, `AWS::EC2::SecurityGroup`,
 #' `AWS::NetworkFirewall::FirewallPolicy`, and `AWS::EC2::Subnet`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ViolationDetail = list(
-#'     PolicyId = "string",
-#'     MemberAccount = "string",
-#'     ResourceId = "string",
-#'     ResourceType = "string",
-#'     ResourceViolations = list(
-#'       list(
-#'         AwsVPCSecurityGroupViolation = list(
-#'           ViolationTarget = "string",
-#'           ViolationTargetDescription = "string",
-#'           PartialMatches = list(
-#'             list(
-#'               Reference = "string",
-#'               TargetViolationReasons = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           PossibleSecurityGroupRemediationActions = list(
-#'             list(
-#'               RemediationActionType = "REMOVE"|"MODIFY",
-#'               Description = "string",
-#'               RemediationResult = list(
-#'                 IPV4Range = "string",
-#'                 IPV6Range = "string",
-#'                 PrefixListId = "string",
-#'                 Protocol = "string",
-#'                 FromPort = 123,
-#'                 ToPort = 123
-#'               ),
-#'               IsDefaultAction = TRUE|FALSE
-#'             )
-#'           )
-#'         ),
-#'         AwsEc2NetworkInterfaceViolation = list(
-#'           ViolationTarget = "string",
-#'           ViolatingSecurityGroups = list(
-#'             "string"
-#'           )
-#'         ),
-#'         AwsEc2InstanceViolation = list(
-#'           ViolationTarget = "string",
-#'           AwsEc2NetworkInterfaceViolations = list(
-#'             list(
-#'               ViolationTarget = "string",
-#'               ViolatingSecurityGroups = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         NetworkFirewallMissingFirewallViolation = list(
-#'           ViolationTarget = "string",
-#'           VPC = "string",
-#'           AvailabilityZone = "string",
-#'           TargetViolationReason = "string"
-#'         ),
-#'         NetworkFirewallMissingSubnetViolation = list(
-#'           ViolationTarget = "string",
-#'           VPC = "string",
-#'           AvailabilityZone = "string",
-#'           TargetViolationReason = "string"
-#'         ),
-#'         NetworkFirewallMissingExpectedRTViolation = list(
-#'           ViolationTarget = "string",
-#'           VPC = "string",
-#'           AvailabilityZone = "string",
-#'           CurrentRouteTable = "string",
-#'           ExpectedRouteTable = "string"
-#'         ),
-#'         NetworkFirewallPolicyModifiedViolation = list(
-#'           ViolationTarget = "string",
-#'           CurrentPolicyDescription = list(
-#'             StatelessRuleGroups = list(
-#'               list(
-#'                 RuleGroupName = "string",
-#'                 ResourceId = "string",
-#'                 Priority = 123
-#'               )
-#'             ),
-#'             StatelessDefaultActions = list(
-#'               "string"
-#'             ),
-#'             StatelessFragmentDefaultActions = list(
-#'               "string"
-#'             ),
-#'             StatelessCustomActions = list(
-#'               "string"
-#'             ),
-#'             StatefulRuleGroups = list(
-#'               list(
-#'                 RuleGroupName = "string",
-#'                 ResourceId = "string"
-#'               )
-#'             )
-#'           ),
-#'           ExpectedPolicyDescription = list(
-#'             StatelessRuleGroups = list(
-#'               list(
-#'                 RuleGroupName = "string",
-#'                 ResourceId = "string",
-#'                 Priority = 123
-#'               )
-#'             ),
-#'             StatelessDefaultActions = list(
-#'               "string"
-#'             ),
-#'             StatelessFragmentDefaultActions = list(
-#'               "string"
-#'             ),
-#'             StatelessCustomActions = list(
-#'               "string"
-#'             ),
-#'             StatefulRuleGroups = list(
-#'               list(
-#'                 RuleGroupName = "string",
-#'                 ResourceId = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     ResourceTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     ResourceDescription = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_violation_details(
-#'   PolicyId = "string",
-#'   MemberAccount = "string",
-#'   ResourceId = "string",
-#'   ResourceType = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -963,54 +584,22 @@ fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, Resou
 #' @description
 #' Returns an array of `AppsListDataSummary` objects.
 #'
-#' @usage
-#' fms_list_apps_lists(DefaultLists, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/fms/list_apps_lists.html](https://paws-r.github.io/docs/fms/list_apps_lists.html) for full documentation.
 #'
-#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by AWS
+#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by
 #' Firewall Manager.
 #' @param NextToken If you specify a value for `MaxResults` in your list request, and you
-#' have more objects than the maximum, AWS Firewall Manager returns this
-#' token in the response. For all but the first request, you provide the
-#' token returned by the prior request in the request parameters, to
-#' retrieve the next batch of objects.
-#' @param MaxResults &#91;required&#93; The maximum number of objects that you want AWS Firewall Manager to
-#' return for this request. If more objects are available, in the response,
-#' AWS Firewall Manager provides a `NextToken` value that you can use in a
+#' have more objects than the maximum, Firewall Manager returns this token
+#' in the response. For all but the first request, you provide the token
+#' returned by the prior request in the request parameters, to retrieve the
+#' next batch of objects.
+#' @param MaxResults &#91;required&#93; The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
 #' subsequent call to get the next batch of objects.
 #' 
-#' If you don't specify this, AWS Firewall Manager returns all available
+#' If you don't specify this, Firewall Manager returns all available
 #' objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AppsLists = list(
-#'     list(
-#'       ListArn = "string",
-#'       ListId = "string",
-#'       ListName = "string",
-#'       AppsList = list(
-#'         list(
-#'           AppName = "string",
-#'           Protocol = "string",
-#'           Port = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_apps_lists(
-#'   DefaultLists = TRUE|FALSE,
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1035,65 +624,24 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
 #' Returns an array of PolicyComplianceStatus objects
 #'
 #' @description
-#' Returns an array of `PolicyComplianceStatus` objects. Use
-#' `PolicyComplianceStatus` to get a summary of which member accounts are
-#' protected by the specified policy.
+#' Returns an array of `PolicyComplianceStatus` objects. Use `PolicyComplianceStatus` to get a summary of which member accounts are protected by the specified policy.
 #'
-#' @usage
-#' fms_list_compliance_status(PolicyId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/fms/list_compliance_status.html](https://paws-r.github.io/docs/fms/list_compliance_status.html) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The ID of the AWS Firewall Manager policy that you want the details for.
+#' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for.
 #' @param NextToken If you specify a value for `MaxResults` and you have more
 #' `PolicyComplianceStatus` objects than the number that you specify for
-#' `MaxResults`, AWS Firewall Manager returns a `NextToken` value in the
+#' `MaxResults`, Firewall Manager returns a `NextToken` value in the
 #' response that allows you to list another group of
 #' `PolicyComplianceStatus` objects. For the second and subsequent
 #' [`list_compliance_status`][fms_list_compliance_status] requests, specify
 #' the value of `NextToken` from the previous response to get information
 #' about another batch of `PolicyComplianceStatus` objects.
 #' @param MaxResults Specifies the number of `PolicyComplianceStatus` objects that you want
-#' AWS Firewall Manager to return for this request. If you have more
+#' Firewall Manager to return for this request. If you have more
 #' `PolicyComplianceStatus` objects than the number that you specify for
 #' `MaxResults`, the response includes a `NextToken` value that you can use
 #' to get another batch of `PolicyComplianceStatus` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PolicyComplianceStatusList = list(
-#'     list(
-#'       PolicyOwner = "string",
-#'       PolicyId = "string",
-#'       PolicyName = "string",
-#'       MemberAccount = "string",
-#'       EvaluationResults = list(
-#'         list(
-#'           ComplianceStatus = "COMPLIANT"|"NON_COMPLIANT",
-#'           ViolatorCount = 123,
-#'           EvaluationLimitExceeded = TRUE|FALSE
-#'         )
-#'       ),
-#'       LastUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       IssueInfoMap = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_compliance_status(
-#'   PolicyId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1116,48 +664,24 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 .fms$operations$list_compliance_status <- fms_list_compliance_status
 
 #' Returns a MemberAccounts object that lists the member accounts in the
-#' administrator's AWS organization
+#' administrator's Amazon Web Services organization
 #'
 #' @description
-#' Returns a `MemberAccounts` object that lists the member accounts in the
-#' administrator's AWS organization.
-#' 
-#' The [`list_member_accounts`][fms_list_member_accounts] must be submitted
-#' by the account that is set as the AWS Firewall Manager administrator.
+#' Returns a `MemberAccounts` object that lists the member accounts in the administrator's Amazon Web Services organization.
 #'
-#' @usage
-#' fms_list_member_accounts(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/fms/list_member_accounts.html](https://paws-r.github.io/docs/fms/list_member_accounts.html) for full documentation.
 #'
 #' @param NextToken If you specify a value for `MaxResults` and you have more account IDs
-#' than the number that you specify for `MaxResults`, AWS Firewall Manager
+#' than the number that you specify for `MaxResults`, Firewall Manager
 #' returns a `NextToken` value in the response that allows you to list
 #' another group of IDs. For the second and subsequent
 #' `ListMemberAccountsRequest` requests, specify the value of `NextToken`
 #' from the previous response to get information about another batch of
 #' member account IDs.
-#' @param MaxResults Specifies the number of member account IDs that you want AWS Firewall
+#' @param MaxResults Specifies the number of member account IDs that you want Firewall
 #' Manager to return for this request. If you have more IDs than the number
 #' that you specify for `MaxResults`, the response includes a `NextToken`
 #' value that you can use to get another batch of member account IDs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MemberAccounts = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_member_accounts(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1184,48 +708,21 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Returns an array of `PolicySummary` objects.
 #'
-#' @usage
-#' fms_list_policies(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/fms/list_policies.html](https://paws-r.github.io/docs/fms/list_policies.html) for full documentation.
 #'
 #' @param NextToken If you specify a value for `MaxResults` and you have more
 #' `PolicySummary` objects than the number that you specify for
-#' `MaxResults`, AWS Firewall Manager returns a `NextToken` value in the
+#' `MaxResults`, Firewall Manager returns a `NextToken` value in the
 #' response that allows you to list another group of `PolicySummary`
 #' objects. For the second and subsequent
 #' [`list_policies`][fms_list_policies] requests, specify the value of
 #' `NextToken` from the previous response to get information about another
 #' batch of `PolicySummary` objects.
-#' @param MaxResults Specifies the number of `PolicySummary` objects that you want AWS
-#' Firewall Manager to return for this request. If you have more
-#' `PolicySummary` objects than the number that you specify for
-#' `MaxResults`, the response includes a `NextToken` value that you can use
-#' to get another batch of `PolicySummary` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PolicyList = list(
-#'     list(
-#'       PolicyArn = "string",
-#'       PolicyId = "string",
-#'       PolicyName = "string",
-#'       ResourceType = "string",
-#'       SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
-#'       RemediationEnabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_policies(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
+#' @param MaxResults Specifies the number of `PolicySummary` objects that you want Firewall
+#' Manager to return for this request. If you have more `PolicySummary`
+#' objects than the number that you specify for `MaxResults`, the response
+#' includes a `NextToken` value that you can use to get another batch of
+#' `PolicySummary` objects.
 #'
 #' @keywords internal
 #'
@@ -1252,50 +749,22 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Returns an array of `ProtocolsListDataSummary` objects.
 #'
-#' @usage
-#' fms_list_protocols_lists(DefaultLists, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/fms/list_protocols_lists.html](https://paws-r.github.io/docs/fms/list_protocols_lists.html) for full documentation.
 #'
-#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by AWS
+#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by
 #' Firewall Manager.
 #' @param NextToken If you specify a value for `MaxResults` in your list request, and you
-#' have more objects than the maximum, AWS Firewall Manager returns this
-#' token in the response. For all but the first request, you provide the
-#' token returned by the prior request in the request parameters, to
-#' retrieve the next batch of objects.
-#' @param MaxResults &#91;required&#93; The maximum number of objects that you want AWS Firewall Manager to
-#' return for this request. If more objects are available, in the response,
-#' AWS Firewall Manager provides a `NextToken` value that you can use in a
+#' have more objects than the maximum, Firewall Manager returns this token
+#' in the response. For all but the first request, you provide the token
+#' returned by the prior request in the request parameters, to retrieve the
+#' next batch of objects.
+#' @param MaxResults &#91;required&#93; The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
 #' subsequent call to get the next batch of objects.
 #' 
-#' If you don't specify this, AWS Firewall Manager returns all available
+#' If you don't specify this, Firewall Manager returns all available
 #' objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProtocolsLists = list(
-#'     list(
-#'       ListArn = "string",
-#'       ListId = "string",
-#'       ListName = "string",
-#'       ProtocolsList = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_protocols_lists(
-#'   DefaultLists = TRUE|FALSE,
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1317,37 +786,17 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
 }
 .fms$operations$list_protocols_lists <- fms_list_protocols_lists
 
-#' Retrieves the list of tags for the specified AWS resource
+#' Retrieves the list of tags for the specified Amazon Web Services
+#' resource
 #'
 #' @description
-#' Retrieves the list of tags for the specified AWS resource.
+#' Retrieves the list of tags for the specified Amazon Web Services resource.
 #'
-#' @usage
-#' fms_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/fms/list_tags_for_resource.html](https://paws-r.github.io/docs/fms/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
-#' AWS Firewall Manager resources that support tagging are policies,
+#' Firewall Manager resources that support tagging are policies,
 #' applications lists, and protocols lists.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1369,90 +818,59 @@ fms_list_tags_for_resource <- function(ResourceArn) {
 }
 .fms$operations$list_tags_for_resource <- fms_list_tags_for_resource
 
-#' Creates an AWS Firewall Manager applications list
+#' Retrieves a list of all of the third-party firewall policies that are
+#' associated with the third-party firewall administrator's account
 #'
 #' @description
-#' Creates an AWS Firewall Manager applications list.
+#' Retrieves a list of all of the third-party firewall policies that are associated with the third-party firewall administrator's account.
 #'
-#' @usage
-#' fms_put_apps_list(AppsList, TagList)
+#' See [https://paws-r.github.io/docs/fms/list_third_party_firewall_firewall_policies.html](https://paws-r.github.io/docs/fms/list_third_party_firewall_firewall_policies.html) for full documentation.
 #'
-#' @param AppsList &#91;required&#93; The details of the AWS Firewall Manager applications list to be created.
+#' @param ThirdPartyFirewall &#91;required&#93; The name of the third-party firewall vendor.
+#' @param NextToken If the previous response included a `NextToken` element, the specified
+#' third-party firewall vendor is associated with more third-party firewall
+#' policies. To get more third-party firewall policies, submit another
+#' `ListThirdPartyFirewallFirewallPoliciesRequest` request.
+#' 
+#' For the value of `NextToken`, specify the value of `NextToken` from the
+#' previous response. If the previous response didn't include a `NextToken`
+#' element, there are no more third-party firewall policies to get.
+#' @param MaxResults &#91;required&#93; The maximum number of third-party firewall policies that you want
+#' Firewall Manager to return. If the specified third-party firewall vendor
+#' is associated with more than `MaxResults` firewall policies, the
+#' response includes a `NextToken` element. `NextToken` contains an
+#' encrypted token that identifies the first third-party firewall policies
+#' that Firewall Manager will return if you submit another request.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_third_party_firewall_firewall_policies
+fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, NextToken = NULL, MaxResults) {
+  op <- new_operation(
+    name = "ListThirdPartyFirewallFirewallPolicies",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_third_party_firewall_firewall_policies_input(ThirdPartyFirewall = ThirdPartyFirewall, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$list_third_party_firewall_firewall_policies_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_third_party_firewall_firewall_policies <- fms_list_third_party_firewall_firewall_policies
+
+#' Creates an Firewall Manager applications list
+#'
+#' @description
+#' Creates an Firewall Manager applications list.
+#'
+#' See [https://paws-r.github.io/docs/fms/put_apps_list.html](https://paws-r.github.io/docs/fms/put_apps_list.html) for full documentation.
+#'
+#' @param AppsList &#91;required&#93; The details of the Firewall Manager applications list to be created.
 #' @param TagList The tags associated with the resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AppsList = list(
-#'     ListId = "string",
-#'     ListName = "string",
-#'     ListUpdateToken = "string",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AppsList = list(
-#'       list(
-#'         AppName = "string",
-#'         Protocol = "string",
-#'         Port = 123
-#'       )
-#'     ),
-#'     PreviousAppsList = list(
-#'       list(
-#'         list(
-#'           AppName = "string",
-#'           Protocol = "string",
-#'           Port = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   AppsListArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_apps_list(
-#'   AppsList = list(
-#'     ListId = "string",
-#'     ListName = "string",
-#'     ListUpdateToken = "string",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AppsList = list(
-#'       list(
-#'         AppName = "string",
-#'         Protocol = "string",
-#'         Port = 123
-#'       )
-#'     ),
-#'     PreviousAppsList = list(
-#'       list(
-#'         list(
-#'           AppName = "string",
-#'           Protocol = "string",
-#'           Port = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1475,37 +893,17 @@ fms_put_apps_list <- function(AppsList, TagList = NULL) {
 .fms$operations$put_apps_list <- fms_put_apps_list
 
 #' Designates the IAM role and Amazon Simple Notification Service (SNS)
-#' topic that AWS Firewall Manager uses to record SNS logs
+#' topic that Firewall Manager uses to record SNS logs
 #'
 #' @description
-#' Designates the IAM role and Amazon Simple Notification Service (SNS)
-#' topic that AWS Firewall Manager uses to record SNS logs.
-#' 
-#' To perform this action outside of the console, you must configure the
-#' SNS topic to allow the Firewall Manager role `AWSServiceRoleForFMS` to
-#' publish SNS logs. For more information, see [Firewall Manager required
-#' permissions for API
-#' actions](https://docs.aws.amazon.com/waf/latest/developerguide/fms-api-permissions-ref.html)
-#' in the *AWS Firewall Manager Developer Guide*.
+#' Designates the IAM role and Amazon Simple Notification Service (SNS) topic that Firewall Manager uses to record SNS logs.
 #'
-#' @usage
-#' fms_put_notification_channel(SnsTopicArn, SnsRoleName)
+#' See [https://paws-r.github.io/docs/fms/put_notification_channel.html](https://paws-r.github.io/docs/fms/put_notification_channel.html) for full documentation.
 #'
 #' @param SnsTopicArn &#91;required&#93; The Amazon Resource Name (ARN) of the SNS topic that collects
-#' notifications from AWS Firewall Manager.
+#' notifications from Firewall Manager.
 #' @param SnsRoleName &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to
-#' record AWS Firewall Manager activity.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_notification_channel(
-#'   SnsTopicArn = "string",
-#'   SnsRoleName = "string"
-#' )
-#' ```
+#' record Firewall Manager activity.
 #'
 #' @keywords internal
 #'
@@ -1527,123 +925,15 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 }
 .fms$operations$put_notification_channel <- fms_put_notification_channel
 
-#' Creates an AWS Firewall Manager policy
+#' Creates an Firewall Manager policy
 #'
 #' @description
-#' Creates an AWS Firewall Manager policy.
-#' 
-#' Firewall Manager provides the following types of policies:
-#' 
-#' -   An AWS WAF policy (type WAFV2), which defines rule groups to run
-#'     first in the corresponding AWS WAF web ACL and rule groups to run
-#'     last in the web ACL.
-#' 
-#' -   An AWS WAF Classic policy (type WAF), which defines a rule group.
-#' 
-#' -   A Shield Advanced policy, which applies Shield Advanced protection
-#'     to specified accounts and resources.
-#' 
-#' -   A security group policy, which manages VPC security groups across
-#'     your AWS organization.
-#' 
-#' -   An AWS Network Firewall policy, which provides firewall rules to
-#'     filter network traffic in specified Amazon VPCs.
-#' 
-#' Each policy is specific to one of the types. If you want to enforce more
-#' than one policy type across accounts, create multiple policies. You can
-#' create multiple policies for each type.
-#' 
-#' You must be subscribed to Shield Advanced to create a Shield Advanced
-#' policy. For more information about subscribing to Shield Advanced, see
-#' [CreateSubscription](https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html).
+#' Creates an Firewall Manager policy.
 #'
-#' @usage
-#' fms_put_policy(Policy, TagList)
+#' See [https://paws-r.github.io/docs/fms/put_policy.html](https://paws-r.github.io/docs/fms/put_policy.html) for full documentation.
 #'
-#' @param Policy &#91;required&#93; The details of the AWS Firewall Manager policy to be created.
-#' @param TagList The tags to add to the AWS resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Policy = list(
-#'     PolicyId = "string",
-#'     PolicyName = "string",
-#'     PolicyUpdateToken = "string",
-#'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
-#'       ManagedServiceData = "string"
-#'     ),
-#'     ResourceType = "string",
-#'     ResourceTypeList = list(
-#'       "string"
-#'     ),
-#'     ResourceTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     ExcludeResourceTags = TRUE|FALSE,
-#'     RemediationEnabled = TRUE|FALSE,
-#'     IncludeMap = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     ExcludeMap = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   PolicyArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_policy(
-#'   Policy = list(
-#'     PolicyId = "string",
-#'     PolicyName = "string",
-#'     PolicyUpdateToken = "string",
-#'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
-#'       ManagedServiceData = "string"
-#'     ),
-#'     ResourceType = "string",
-#'     ResourceTypeList = list(
-#'       "string"
-#'     ),
-#'     ResourceTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     ExcludeResourceTags = TRUE|FALSE,
-#'     RemediationEnabled = TRUE|FALSE,
-#'     IncludeMap = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     ExcludeMap = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Policy &#91;required&#93; The details of the Firewall Manager policy to be created.
+#' @param TagList The tags to add to the Amazon Web Services resource.
 #'
 #' @keywords internal
 #'
@@ -1665,74 +955,15 @@ fms_put_policy <- function(Policy, TagList = NULL) {
 }
 .fms$operations$put_policy <- fms_put_policy
 
-#' Creates an AWS Firewall Manager protocols list
+#' Creates an Firewall Manager protocols list
 #'
 #' @description
-#' Creates an AWS Firewall Manager protocols list.
+#' Creates an Firewall Manager protocols list.
 #'
-#' @usage
-#' fms_put_protocols_list(ProtocolsList, TagList)
+#' See [https://paws-r.github.io/docs/fms/put_protocols_list.html](https://paws-r.github.io/docs/fms/put_protocols_list.html) for full documentation.
 #'
-#' @param ProtocolsList &#91;required&#93; The details of the AWS Firewall Manager protocols list to be created.
+#' @param ProtocolsList &#91;required&#93; The details of the Firewall Manager protocols list to be created.
 #' @param TagList The tags associated with the resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProtocolsList = list(
-#'     ListId = "string",
-#'     ListName = "string",
-#'     ListUpdateToken = "string",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProtocolsList = list(
-#'       "string"
-#'     ),
-#'     PreviousProtocolsList = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ProtocolsListArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_protocols_list(
-#'   ProtocolsList = list(
-#'     ListId = "string",
-#'     ListName = "string",
-#'     ListUpdateToken = "string",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProtocolsList = list(
-#'       "string"
-#'     ),
-#'     PreviousProtocolsList = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1754,34 +985,17 @@ fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
 }
 .fms$operations$put_protocols_list <- fms_put_protocols_list
 
-#' Adds one or more tags to an AWS resource
+#' Adds one or more tags to an Amazon Web Services resource
 #'
 #' @description
-#' Adds one or more tags to an AWS resource.
+#' Adds one or more tags to an Amazon Web Services resource.
 #'
-#' @usage
-#' fms_tag_resource(ResourceArn, TagList)
+#' See [https://paws-r.github.io/docs/fms/tag_resource.html](https://paws-r.github.io/docs/fms/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
-#' AWS Firewall Manager resources that support tagging are policies,
+#' Firewall Manager resources that support tagging are policies,
 #' applications lists, and protocols lists.
 #' @param TagList &#91;required&#93; The tags to add to the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1803,31 +1017,17 @@ fms_tag_resource <- function(ResourceArn, TagList) {
 }
 .fms$operations$tag_resource <- fms_tag_resource
 
-#' Removes one or more tags from an AWS resource
+#' Removes one or more tags from an Amazon Web Services resource
 #'
 #' @description
-#' Removes one or more tags from an AWS resource.
+#' Removes one or more tags from an Amazon Web Services resource.
 #'
-#' @usage
-#' fms_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/fms/untag_resource.html](https://paws-r.github.io/docs/fms/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
-#' AWS Firewall Manager resources that support tagging are policies,
+#' Firewall Manager resources that support tagging are policies,
 #' applications lists, and protocols lists.
 #' @param TagKeys &#91;required&#93; The keys of the tags to remove from the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

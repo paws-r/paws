@@ -4,8 +4,11 @@
 \alias{worklink_update_fleet_metadata}
 \title{Updates fleet metadata, such as DisplayName}
 \usage{
-worklink_update_fleet_metadata(FleetArn, DisplayName,
-  OptimizeForEndUserLocation)
+worklink_update_fleet_metadata(
+  FleetArn,
+  DisplayName = NULL,
+  OptimizeForEndUserLocation = NULL
+)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
@@ -17,19 +20,9 @@ passed.}
 the closest AWS Region to users, which may be outside of your home
 Region.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates fleet metadata, such as DisplayName.
-}
-\section{Request syntax}{
-\preformatted{svc$update_fleet_metadata(
-  FleetArn = "string",
-  DisplayName = "string",
-  OptimizeForEndUserLocation = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/update_fleet_metadata.html} for full documentation.
+}
 \keyword{internal}

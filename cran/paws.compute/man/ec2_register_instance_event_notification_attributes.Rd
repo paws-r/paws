@@ -5,8 +5,10 @@
 \title{Registers a set of tag keys to include in scheduled event notifications
 for your resources}
 \usage{
-ec2_register_instance_event_notification_attributes(DryRun,
-  InstanceTagAttribute)
+ec2_register_instance_event_notification_attributes(
+  DryRun = NULL,
+  InstanceTagAttribute = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -16,34 +18,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceTagAttribute}{Information about the tag keys to register.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceTagAttribute = list(
-    InstanceTagKeys = list(
-      "string"
-    ),
-    IncludeAllTagsOfInstance = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Registers a set of tag keys to include in scheduled event notifications
-for your resources.
+Registers a set of tag keys to include in scheduled event notifications for your resources.
 
-To remove tags, use .
+See \url{https://paws-r.github.io/docs/ec2/register_instance_event_notification_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_instance_event_notification_attributes(
-  DryRun = TRUE|FALSE,
-  InstanceTagAttribute = list(
-    IncludeAllTagsOfInstance = TRUE|FALSE,
-    InstanceTagKeys = list(
-      "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

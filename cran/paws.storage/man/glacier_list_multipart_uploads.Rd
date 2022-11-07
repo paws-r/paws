@@ -5,7 +5,12 @@
 \title{This operation lists in-progress multipart uploads for the specified
 vault}
 \usage{
-glacier_list_multipart_uploads(accountId, vaultName, marker, limit)
+glacier_list_multipart_uploads(
+  accountId,
+  vaultName,
+  marker = NULL,
+  limit = NULL
+)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
@@ -26,73 +31,9 @@ Uploads request.}
 If this value is not specified, the List Uploads operation returns up to
 50 uploads.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UploadsList = list(
-    list(
-      MultipartUploadId = "string",
-      VaultARN = "string",
-      ArchiveDescription = "string",
-      PartSizeInBytes = 123,
-      CreationDate = "string"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-This operation lists in-progress multipart uploads for the specified
-vault. An in-progress multipart upload is a multipart upload that has
-been initiated by an
-\code{\link[=glacier_initiate_multipart_upload]{initiate_multipart_upload}}
-request, but has not yet been completed or aborted. The list returned in
-the List Multipart Upload response has no guaranteed order.
+This operation lists in-progress multipart uploads for the specified vault. An in-progress multipart upload is a multipart upload that has been initiated by an \code{\link[=glacier_initiate_multipart_upload]{initiate_multipart_upload}} request, but has not yet been completed or aborted. The list returned in the List Multipart Upload response has no guaranteed order.
 
-The List Multipart Uploads operation supports pagination. By default,
-this operation returns up to 50 multipart uploads in the response. You
-should always check the response for a \code{marker} at which to continue the
-list; if there are no more items the \code{marker} is \code{null}. To return a
-list of multipart uploads that begins at a specific upload, set the
-\code{marker} request parameter to the value you obtained from a previous
-List Multipart Upload request. You can also limit the number of uploads
-returned in the response by specifying the \code{limit} parameter in the
-request.
-
-Note the difference between this operation and listing parts
-(\code{\link[=glacier_list_parts]{list_parts}}). The List Multipart Uploads
-operation lists all multipart uploads for a vault and does not require a
-multipart upload ID. The List Parts operation requires a multipart
-upload ID since parts are associated with a single upload.
-
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html}{Access Control Using AWS Identity and Access Management (IAM)}.
-
-For conceptual information and the underlying REST API, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html}{Working with Archives in Amazon S3 Glacier}
-and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-uploads.html}{List Multipart Uploads}
-in the \emph{Amazon Glacier Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_multipart_uploads(
-  accountId = "string",
-  vaultName = "string",
-  marker = "string",
-  limit = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The example lists all the in-progress multipart uploads for the vault
-# named examplevault.
-svc$list_multipart_uploads(
-  accountId = "-",
-  vaultName = "examplevault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/list_multipart_uploads.html} for full documentation.
 }
 \keyword{internal}

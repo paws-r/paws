@@ -4,9 +4,12 @@
 \alias{neptune_copy_db_parameter_group}
 \title{Copies the specified DB parameter group}
 \usage{
-neptune_copy_db_parameter_group(SourceDBParameterGroupIdentifier,
-  TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription,
-  Tags)
+neptune_copy_db_parameter_group(
+  SourceDBParameterGroupIdentifier,
+  TargetDBParameterGroupIdentifier,
+  TargetDBParameterGroupDescription,
+  Tags = NULL
+)
 }
 \arguments{
 \item{SourceDBParameterGroupIdentifier}{[required] The identifier or ARN for the source DB parameter group. For information
@@ -35,33 +38,9 @@ Example: \code{my-db-parameter-group}}
 
 \item{Tags}{The tags to be assigned to the copied DB parameter group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBParameterGroup = list(
-    DBParameterGroupName = "string",
-    DBParameterGroupFamily = "string",
-    Description = "string",
-    DBParameterGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Copies the specified DB parameter group.
-}
-\section{Request syntax}{
-\preformatted{svc$copy_db_parameter_group(
-  SourceDBParameterGroupIdentifier = "string",
-  TargetDBParameterGroupIdentifier = "string",
-  TargetDBParameterGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/neptune/copy_db_parameter_group.html} for full documentation.
+}
 \keyword{internal}

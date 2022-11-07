@@ -2,13 +2,16 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_instance_associations_status}
 \alias{ssm_describe_instance_associations_status}
-\title{The status of the associations for the instance(s)}
+\title{The status of the associations for the managed node(s)}
 \usage{
-ssm_describe_instance_associations_status(InstanceId, MaxResults,
-  NextToken)
+ssm_describe_instance_associations_status(
+  InstanceId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The instance IDs for which you want association status information.}
+\item{InstanceId}{[required] The managed node IDs for which you want association status information.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -17,44 +20,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceAssociationStatusInfos = list(
-    list(
-      AssociationId = "string",
-      Name = "string",
-      DocumentVersion = "string",
-      AssociationVersion = "string",
-      InstanceId = "string",
-      ExecutionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "string",
-      DetailedStatus = "string",
-      ExecutionSummary = "string",
-      ErrorCode = "string",
-      OutputUrl = list(
-        S3OutputUrl = list(
-          OutputUrl = "string"
-        )
-      ),
-      AssociationName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-The status of the associations for the instance(s).
-}
-\section{Request syntax}{
-\preformatted{svc$describe_instance_associations_status(
-  InstanceId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+The status of the associations for the managed node(s).
 
+See \url{https://paws-r.github.io/docs/ssm/describe_instance_associations_status.html} for full documentation.
+}
 \keyword{internal}

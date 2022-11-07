@@ -4,8 +4,13 @@
 \alias{sagemaker_list_devices}
 \title{A list of devices}
 \usage{
-sagemaker_list_devices(NextToken, MaxResults, LatestHeartbeatAfter,
-  ModelName, DeviceFleetName)
+sagemaker_list_devices(
+  NextToken = NULL,
+  MaxResults = NULL,
+  LatestHeartbeatAfter = NULL,
+  ModelName = NULL,
+  DeviceFleetName = NULL
+)
 }
 \arguments{
 \item{NextToken}{The response from the last list when returning a list large enough to
@@ -20,47 +25,9 @@ models.}
 
 \item{DeviceFleetName}{Filter for fleets containing this name in their device fleet name.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeviceSummaries = list(
-    list(
-      DeviceName = "string",
-      DeviceArn = "string",
-      Description = "string",
-      DeviceFleetName = "string",
-      IotThingName = "string",
-      RegistrationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LatestHeartbeat = as.POSIXct(
-        "2015-01-01"
-      ),
-      Models = list(
-        list(
-          ModelName = "string",
-          ModelVersion = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 A list of devices.
-}
-\section{Request syntax}{
-\preformatted{svc$list_devices(
-  NextToken = "string",
-  MaxResults = 123,
-  LatestHeartbeatAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  ModelName = "string",
-  DeviceFleetName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_devices.html} for full documentation.
+}
 \keyword{internal}

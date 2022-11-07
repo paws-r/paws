@@ -4,8 +4,12 @@
 \alias{ec2_modify_vpc_endpoint_service_permissions}
 \title{Modifies the permissions for your VPC endpoint service}
 \usage{
-ec2_modify_vpc_endpoint_service_permissions(DryRun, ServiceId,
-  AddAllowedPrincipals, RemoveAllowedPrincipals)
+ec2_modify_vpc_endpoint_service_permissions(
+  DryRun = NULL,
+  ServiceId,
+  AddAllowedPrincipals = NULL,
+  RemoveAllowedPrincipals = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -22,34 +26,9 @@ principals, specify an asterisk (*).}
 \item{RemoveAllowedPrincipals}{The Amazon Resource Names (ARN) of one or more principals. Permissions
 are revoked for principals in this list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReturnValue = TRUE|FALSE
-)
-}
-}
 \description{
-Modifies the permissions for your \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html}{VPC endpoint service}.
-You can add or remove permissions for service consumers (IAM users, IAM
-roles, and AWS accounts) to connect to your endpoint service.
+Modifies the permissions for your VPC endpoint service. You can add or remove permissions for service consumers (IAM users, IAM roles, and Amazon Web Services accounts) to connect to your endpoint service.
 
-If you grant permissions to all principals, the service is public. Any
-users who know the name of a public service can send a request to attach
-an endpoint. If the service does not require manual approval,
-attachments are automatically approved.
+See \url{https://paws-r.github.io/docs/ec2/modify_vpc_endpoint_service_permissions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_vpc_endpoint_service_permissions(
-  DryRun = TRUE|FALSE,
-  ServiceId = "string",
-  AddAllowedPrincipals = list(
-    "string"
-  ),
-  RemoveAllowedPrincipals = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

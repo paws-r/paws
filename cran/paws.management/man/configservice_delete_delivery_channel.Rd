@@ -9,22 +9,9 @@ configservice_delete_delivery_channel(DeliveryChannelName)
 \arguments{
 \item{DeliveryChannelName}{[required] The name of the delivery channel to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the delivery channel.
 
-Before you can delete the delivery channel, you must stop the
-configuration recorder by using the
-\code{\link[=configservice_stop_configuration_recorder]{stop_configuration_recorder}}
-action.
+See \url{https://paws-r.github.io/docs/configservice/delete_delivery_channel.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_delivery_channel(
-  DeliveryChannelName = "string"
-)
-}
-}
-
 \keyword{internal}

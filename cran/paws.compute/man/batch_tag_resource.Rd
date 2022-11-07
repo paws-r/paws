@@ -9,47 +9,18 @@ batch_tag_resource(resourceArn, tags)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that tags are added to.
-AWS Batch resources that support tags are compute environments, jobs,
-job definitions, and job queues. ARNs for child jobs of array and
-multi-node parallel (MNP) jobs are not supported.}
+Batch resources that support tags are compute environments, jobs, job
+definitions, job queues, and scheduling policies. ARNs for child jobs of
+array and multi-node parallel (MNP) jobs are not supported.}
 
 \item{tags}{[required] The tags that you apply to the resource to help you categorize and
 organize your resources. Each tag consists of a key and an optional
-value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
-in \emph{AWS General Reference}.}
-}
-\value{
-An empty list.
+value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}
+in \emph{Amazon Web Services General Reference}.}
 }
 \description{
-Associates the specified tags to a resource with the specified
-\code{resourceArn}. If existing tags on a resource aren't specified in the
-request parameters, they aren't changed. When a resource is deleted, the
-tags associated with that resource are deleted as well. AWS Batch
-resources that support tags are compute environments, jobs, job
-definitions, and job queues. ARNs for child jobs of array and multi-node
-parallel (MNP) jobs are not supported.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
+Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs are not supported.
 
-\examples{
-\dontrun{
-# This demonstrates calling the TagResource action.
-svc$tag_resource(
-  resourceArn = "arn:aws:batch:us-east-1:123456789012:job-definition/sleep30:1",
-  tags = list(
-    Stage = "Alpha"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/tag_resource.html} for full documentation.
 }
 \keyword{internal}

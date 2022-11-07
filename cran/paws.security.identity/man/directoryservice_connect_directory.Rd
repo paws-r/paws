@@ -2,18 +2,25 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_connect_directory}
 \alias{directoryservice_connect_directory}
-\title{Creates an AD Connector to connect to an on-premises directory}
+\title{Creates an AD Connector to connect to a self-managed directory}
 \usage{
-directoryservice_connect_directory(Name, ShortName, Password,
-  Description, Size, ConnectSettings, Tags)
+directoryservice_connect_directory(
+  Name,
+  ShortName = NULL,
+  Password,
+  Description = NULL,
+  Size,
+  ConnectSettings,
+  Tags = NULL
+)
 }
 \arguments{
-\item{Name}{[required] The fully qualified name of the on-premises directory, such as
+\item{Name}{[required] The fully qualified name of your self-managed directory, such as
 \code{corp.example.com}.}
 
-\item{ShortName}{The NetBIOS name of the on-premises directory, such as \code{CORP}.}
+\item{ShortName}{The NetBIOS name of your self-managed directory, such as \code{CORP}.}
 
-\item{Password}{[required] The password for the on-premises user account.}
+\item{Password}{[required] The password for your self-managed user account.}
 
 \item{Description}{A description for the directory.}
 
@@ -24,47 +31,9 @@ for the operation.}
 
 \item{Tags}{The tags to be assigned to AD Connector.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DirectoryId = "string"
-)
-}
-}
 \description{
-Creates an AD Connector to connect to an on-premises directory.
+Creates an AD Connector to connect to a self-managed directory.
 
-Before you call
-\code{\link[=directoryservice_connect_directory]{connect_directory}}, ensure that
-all of the required permissions have been explicitly granted through a
-policy. For details about what permissions are required to run the
-\code{\link[=directoryservice_connect_directory]{connect_directory}} operation, see
-\href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
+See \url{https://paws-r.github.io/docs/directoryservice/connect_directory.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$connect_directory(
-  Name = "string",
-  ShortName = "string",
-  Password = "string",
-  Description = "string",
-  Size = "Small"|"Large",
-  ConnectSettings = list(
-    VpcId = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    CustomerDnsIps = list(
-      "string"
-    ),
-    CustomerUserName = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

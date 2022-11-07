@@ -4,8 +4,16 @@ test_that("list_batch_inference_jobs", {
   expect_error(svc$list_batch_inference_jobs(), NA)
 })
 
+test_that("list_batch_segment_jobs", {
+  expect_error(svc$list_batch_segment_jobs(), NA)
+})
+
 test_that("list_campaigns", {
   expect_error(svc$list_campaigns(), NA)
+})
+
+test_that("list_dataset_export_jobs", {
+  expect_error(svc$list_dataset_export_jobs(), NA)
 })
 
 test_that("list_dataset_groups", {
@@ -30,6 +38,10 @@ test_that("list_filters", {
 
 test_that("list_recipes", {
   expect_error(svc$list_recipes(), NA)
+})
+
+test_that("list_recommenders", {
+  expect_error(svc$list_recommenders(), NA)
 })
 
 test_that("list_schemas", {

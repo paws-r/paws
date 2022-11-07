@@ -4,8 +4,12 @@
 \alias{apigatewayv2_get_integration_responses}
 \title{Gets the IntegrationResponses for an Integration}
 \usage{
-apigatewayv2_get_integration_responses(ApiId, IntegrationId, MaxResults,
-  NextToken)
+apigatewayv2_get_integration_responses(
+  ApiId,
+  IntegrationId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -17,37 +21,9 @@ apigatewayv2_get_integration_responses(ApiId, IntegrationId, MaxResults,
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-      IntegrationResponseId = "string",
-      IntegrationResponseKey = "string",
-      ResponseParameters = list(
-        "string"
-      ),
-      ResponseTemplates = list(
-        "string"
-      ),
-      TemplateSelectionExpression = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets the IntegrationResponses for an Integration.
-}
-\section{Request syntax}{
-\preformatted{svc$get_integration_responses(
-  ApiId = "string",
-  IntegrationId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_integration_responses.html} for full documentation.
+}
 \keyword{internal}

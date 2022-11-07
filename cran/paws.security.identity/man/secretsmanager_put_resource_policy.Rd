@@ -2,100 +2,30 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_put_resource_policy}
 \alias{secretsmanager_put_resource_policy}
-\title{Attaches the contents of the specified resource-based permission policy
-to a secret}
+\title{Attaches a resource-based permission policy to a secret}
 \usage{
-secretsmanager_put_resource_policy(SecretId, ResourcePolicy,
-  BlockPublicPolicy)
+secretsmanager_put_resource_policy(
+  SecretId,
+  ResourcePolicy,
+  BlockPublicPolicy = NULL
+)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret that you want to attach the resource-based policy
-to. You can specify either the ARN or the friendly name of the secret.
+\item{SecretId}{[required] The ARN or name of the secret to attach the resource-based policy.
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too—for example, if you
-don’t include the final hyphen and six random characters that Secrets
-Manager adds at the end of the ARN when you created the secret. A
-partial ARN match can work as long as it uniquely matches only one
-secret. However, if your secret has a name that ends in a hyphen
-followed by six characters (before Secrets Manager adds the hyphen and
-six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you’re
-specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don’t create secret names
-ending with a hyphen followed by six characters.
+For an ARN, we recommend that you specify a complete ARN rather than a
+partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 
-If you specify an incomplete ARN without the random suffix, and instead
-provide the 'friendly name', you \emph{must} not include the random suffix.
-If you do include the random suffix added by Secrets Manager, you
-receive either a \emph{ResourceNotFoundException} or an
-\emph{AccessDeniedException} error, depending on your permissions.}
+\item{ResourcePolicy}{[required] A JSON-formatted string for an Amazon Web Services resource-based
+policy. For example policies, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html}{Permissions policy examples}.}
 
-\item{ResourcePolicy}{[required] A JSON-formatted string that's constructed according to the grammar and
-syntax for an AWS resource-based policy. The policy in the string
-identifies who can access or manage this secret and its versions. For
-information on how to format a JSON parameter for the various command
-line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
-in the \emph{AWS CLI User Guide}.}
-
-\item{BlockPublicPolicy}{Makes an optional API call to Zelkova to validate the Resource Policy to
-prevent broad access to your secret.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ARN = "string",
-  Name = "string"
-)
-}
+\item{BlockPublicPolicy}{Specifies whether to block resource-based policies that allow broad
+access to the secret, for example those that use a wildcard for the
+principal.}
 }
 \description{
-Attaches the contents of the specified resource-based permission policy
-to a secret. A resource-based policy is optional. Alternatively, you can
-use IAM identity-based policies that specify the secret's Amazon
-Resource Name (ARN) in the policy statement's \code{Resources} element. You
-can also use a combination of both identity-based and resource-based
-policies. The affected users and roles receive the permissions that are
-permitted by all of the relevant policies. For more information, see
-\href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html}{Using Resource-Based Policies for AWS Secrets Manager}.
-For the complete description of the AWS policy syntax and grammar, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
-in the \emph{IAM User Guide}.
+Attaches a resource-based permission policy to a secret. A resource-based policy is optional. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html}{Authentication and access control for Secrets Manager}
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:PutResourcePolicy
-}
-
-\strong{Related operations}
-\itemize{
-\item To retrieve the resource policy attached to a secret, use
-\code{\link[=secretsmanager_get_resource_policy]{get_resource_policy}}.
-\item To delete the resource-based policy that's attached to a secret, use
-\code{\link[=secretsmanager_delete_resource_policy]{delete_resource_policy}}.
-\item To list all of the currently available secrets, use
-\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_resource_policy(
-  SecretId = "string",
-  ResourcePolicy = "string",
-  BlockPublicPolicy = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to add a resource-based policy to a
-# secret.
-svc$put_resource_policy(
-  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"A...",
-  SecretId = "MyTestDatabaseSecret"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/put_resource_policy.html} for full documentation.
 }
 \keyword{internal}

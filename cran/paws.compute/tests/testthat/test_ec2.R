@@ -8,6 +8,14 @@ test_that("describe_addresses", {
   expect_error(svc$describe_addresses(), NA)
 })
 
+test_that("describe_addresses_attribute", {
+  expect_error(svc$describe_addresses_attribute(), NA)
+})
+
+test_that("describe_addresses_attribute", {
+  expect_error(svc$describe_addresses_attribute(MaxResults = 20), NA)
+})
+
 test_that("describe_aggregate_id_format", {
   expect_error(svc$describe_aggregate_id_format(), NA)
 })
@@ -18,6 +26,14 @@ test_that("describe_availability_zones", {
 
 test_that("describe_bundle_tasks", {
   expect_error(svc$describe_bundle_tasks(), NA)
+})
+
+test_that("describe_capacity_reservation_fleets", {
+  expect_error(svc$describe_capacity_reservation_fleets(), NA)
+})
+
+test_that("describe_capacity_reservation_fleets", {
+  expect_error(svc$describe_capacity_reservation_fleets(MaxResults = 20), NA)
 })
 
 test_that("describe_capacity_reservations", {
@@ -102,6 +118,14 @@ test_that("describe_export_image_tasks", {
 
 test_that("describe_export_tasks", {
   expect_error(svc$describe_export_tasks(), NA)
+})
+
+test_that("describe_fast_launch_images", {
+  expect_error(svc$describe_fast_launch_images(), NA)
+})
+
+test_that("describe_fast_launch_images", {
+  expect_error(svc$describe_fast_launch_images(MaxResults = 20), NA)
 })
 
 test_that("describe_fast_snapshot_restores", {
@@ -200,6 +224,14 @@ test_that("describe_instance_event_notification_attributes", {
   expect_error(svc$describe_instance_event_notification_attributes(), NA)
 })
 
+test_that("describe_instance_event_windows", {
+  expect_error(svc$describe_instance_event_windows(), NA)
+})
+
+test_that("describe_instance_event_windows", {
+  expect_error(svc$describe_instance_event_windows(MaxResults = 20), NA)
+})
+
 test_that("describe_instance_status", {
   expect_error(svc$describe_instance_status(), NA)
 })
@@ -238,6 +270,30 @@ test_that("describe_internet_gateways", {
 
 test_that("describe_internet_gateways", {
   expect_error(svc$describe_internet_gateways(MaxResults = 20), NA)
+})
+
+test_that("describe_ipam_pools", {
+  expect_error(svc$describe_ipam_pools(), NA)
+})
+
+test_that("describe_ipam_pools", {
+  expect_error(svc$describe_ipam_pools(MaxResults = 20), NA)
+})
+
+test_that("describe_ipam_scopes", {
+  expect_error(svc$describe_ipam_scopes(), NA)
+})
+
+test_that("describe_ipam_scopes", {
+  expect_error(svc$describe_ipam_scopes(MaxResults = 20), NA)
+})
+
+test_that("describe_ipams", {
+  expect_error(svc$describe_ipams(), NA)
+})
+
+test_that("describe_ipams", {
+  expect_error(svc$describe_ipams(MaxResults = 20), NA)
 })
 
 test_that("describe_ipv_6_pools", {
@@ -340,6 +396,22 @@ test_that("describe_network_acls", {
   expect_error(svc$describe_network_acls(MaxResults = 20), NA)
 })
 
+test_that("describe_network_insights_access_scope_analyses", {
+  expect_error(svc$describe_network_insights_access_scope_analyses(), NA)
+})
+
+test_that("describe_network_insights_access_scope_analyses", {
+  expect_error(svc$describe_network_insights_access_scope_analyses(MaxResults = 20), NA)
+})
+
+test_that("describe_network_insights_access_scopes", {
+  expect_error(svc$describe_network_insights_access_scopes(), NA)
+})
+
+test_that("describe_network_insights_access_scopes", {
+  expect_error(svc$describe_network_insights_access_scopes(MaxResults = 20), NA)
+})
+
 test_that("describe_network_insights_analyses", {
   expect_error(svc$describe_network_insights_analyses(), NA)
 })
@@ -396,6 +468,14 @@ test_that("describe_regions", {
   expect_error(svc$describe_regions(), NA)
 })
 
+test_that("describe_replace_root_volume_tasks", {
+  expect_error(svc$describe_replace_root_volume_tasks(), NA)
+})
+
+test_that("describe_replace_root_volume_tasks", {
+  expect_error(svc$describe_replace_root_volume_tasks(MaxResults = 20), NA)
+})
+
 test_that("describe_reserved_instances", {
   expect_error(svc$describe_reserved_instances(), NA)
 })
@@ -428,12 +508,28 @@ test_that("describe_scheduled_instances", {
   expect_error(svc$describe_scheduled_instances(MaxResults = 20), NA)
 })
 
+test_that("describe_security_group_rules", {
+  expect_error(svc$describe_security_group_rules(), NA)
+})
+
+test_that("describe_security_group_rules", {
+  expect_error(svc$describe_security_group_rules(MaxResults = 20), NA)
+})
+
 test_that("describe_security_groups", {
   expect_error(svc$describe_security_groups(), NA)
 })
 
 test_that("describe_security_groups", {
   expect_error(svc$describe_security_groups(MaxResults = 20), NA)
+})
+
+test_that("describe_snapshot_tier_status", {
+  expect_error(svc$describe_snapshot_tier_status(), NA)
+})
+
+test_that("describe_snapshot_tier_status", {
+  expect_error(svc$describe_snapshot_tier_status(MaxResults = 20), NA)
 })
 
 test_that("describe_snapshots", {
@@ -466,6 +562,14 @@ test_that("describe_spot_price_history", {
 
 test_that("describe_spot_price_history", {
   expect_error(svc$describe_spot_price_history(MaxResults = 20), NA)
+})
+
+test_that("describe_store_image_tasks", {
+  expect_error(svc$describe_store_image_tasks(), NA)
+})
+
+test_that("describe_store_image_tasks", {
+  expect_error(svc$describe_store_image_tasks(MaxResults = 20), NA)
 })
 
 test_that("describe_subnets", {
@@ -548,6 +652,22 @@ test_that("describe_transit_gateway_peering_attachments", {
   expect_error(svc$describe_transit_gateway_peering_attachments(MaxResults = 20), NA)
 })
 
+test_that("describe_transit_gateway_policy_tables", {
+  expect_error(svc$describe_transit_gateway_policy_tables(), NA)
+})
+
+test_that("describe_transit_gateway_policy_tables", {
+  expect_error(svc$describe_transit_gateway_policy_tables(MaxResults = 20), NA)
+})
+
+test_that("describe_transit_gateway_route_table_announcements", {
+  expect_error(svc$describe_transit_gateway_route_table_announcements(), NA)
+})
+
+test_that("describe_transit_gateway_route_table_announcements", {
+  expect_error(svc$describe_transit_gateway_route_table_announcements(MaxResults = 20), NA)
+})
+
 test_that("describe_transit_gateway_route_tables", {
   expect_error(svc$describe_transit_gateway_route_tables(), NA)
 })
@@ -570,6 +690,14 @@ test_that("describe_transit_gateways", {
 
 test_that("describe_transit_gateways", {
   expect_error(svc$describe_transit_gateways(MaxResults = 20), NA)
+})
+
+test_that("describe_trunk_interface_associations", {
+  expect_error(svc$describe_trunk_interface_associations(), NA)
+})
+
+test_that("describe_trunk_interface_associations", {
+  expect_error(svc$describe_trunk_interface_associations(MaxResults = 20), NA)
 })
 
 test_that("describe_volume_status", {
@@ -670,4 +798,20 @@ test_that("describe_vpn_connections", {
 
 test_that("describe_vpn_gateways", {
   expect_error(svc$describe_vpn_gateways(), NA)
+})
+
+test_that("list_images_in_recycle_bin", {
+  expect_error(svc$list_images_in_recycle_bin(), NA)
+})
+
+test_that("list_images_in_recycle_bin", {
+  expect_error(svc$list_images_in_recycle_bin(MaxResults = 20), NA)
+})
+
+test_that("list_snapshots_in_recycle_bin", {
+  expect_error(svc$list_snapshots_in_recycle_bin(), NA)
+})
+
+test_that("list_snapshots_in_recycle_bin", {
+  expect_error(svc$list_snapshots_in_recycle_bin(MaxResults = 20), NA)
 })

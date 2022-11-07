@@ -5,7 +5,7 @@
 \title{The RejectQualificationRequest operation rejects a user's request for a
 Qualification}
 \usage{
-mturk_reject_qualification_request(QualificationRequestId, Reason)
+mturk_reject_qualification_request(QualificationRequestId, Reason = NULL)
 }
 \arguments{
 \item{QualificationRequestId}{[required] The ID of the Qualification request, as returned by the
@@ -15,22 +15,9 @@ operation.}
 \item{Reason}{A text message explaining why the request was rejected, to be shown to
 the Worker who made the request.}
 }
-\value{
-An empty list.
-}
 \description{
-The \code{\link[=mturk_reject_qualification_request]{reject_qualification_request}}
-operation rejects a user's request for a Qualification.
+The \code{\link[=mturk_reject_qualification_request]{reject_qualification_request}} operation rejects a user's request for a Qualification.
 
-You can provide a text message explaining why the request was rejected.
-The Worker who made the request can see this message.
+See \url{https://paws-r.github.io/docs/mturk/reject_qualification_request.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$reject_qualification_request(
-  QualificationRequestId = "string",
-  Reason = "string"
-)
-}
-}
-
 \keyword{internal}

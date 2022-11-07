@@ -6,55 +6,24 @@
 an asynchronous operation that typically takes 2-4 minutes to complete
 and become operational}
 \usage{
-apigateway_create_vpc_link(name, description, targetArns, tags)
+apigateway_create_vpc_link(name, description = NULL, targetArns, tags = NULL)
 }
 \arguments{
-\item{name}{[required] [Required] The name used to label and identify the VPC link.}
+\item{name}{[required] The name used to label and identify the VPC link.}
 
 \item{description}{The description of the VPC link.}
 
-\item{targetArns}{[required] [Required] The ARN of the network load balancer of the VPC targeted by
-the VPC link. The network load balancer must be owned by the same AWS
-account of the API owner.}
+\item{targetArns}{[required] The ARN of the network load balancer of the VPC targeted by the VPC
+link. The network load balancer must be owned by the same AWS account of
+the API owner.}
 
 \item{tags}{The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  targetArns = list(
-    "string"
-  ),
-  status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
-  statusMessage = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Creates a VPC link, under the caller's account in a selected region, in
-an asynchronous operation that typically takes 2-4 minutes to complete
-and become operational. The caller must have permissions to create and
-update VPC Endpoint services.
-}
-\section{Request syntax}{
-\preformatted{svc$create_vpc_link(
-  name = "string",
-  description = "string",
-  targetArns = list(
-    "string"
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
-}
+Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational. The caller must have permissions to create and update VPC Endpoint services.
 
+See \url{https://paws-r.github.io/docs/apigateway/create_vpc_link.html} for full documentation.
+}
 \keyword{internal}

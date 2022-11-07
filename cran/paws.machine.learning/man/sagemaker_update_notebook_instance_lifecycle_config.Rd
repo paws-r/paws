@@ -6,7 +6,10 @@
 CreateNotebookInstanceLifecycleConfig API}
 \usage{
 sagemaker_update_notebook_instance_lifecycle_config(
-  NotebookInstanceLifecycleConfigName, OnCreate, OnStart)
+  NotebookInstanceLifecycleConfigName,
+  OnCreate = NULL,
+  OnStart = NULL
+)
 }
 \arguments{
 \item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration.}
@@ -18,29 +21,9 @@ instance. The shell script must be a base64-encoded string.}
 including when you create the notebook instance. The shell script must
 be a base64-encoded string.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates a notebook instance lifecycle configuration created with the
-\code{\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config}}
-API.
-}
-\section{Request syntax}{
-\preformatted{svc$update_notebook_instance_lifecycle_config(
-  NotebookInstanceLifecycleConfigName = "string",
-  OnCreate = list(
-    list(
-      Content = "string"
-    )
-  ),
-  OnStart = list(
-    list(
-      Content = "string"
-    )
-  )
-)
-}
-}
+Updates a notebook instance lifecycle configuration created with the \code{\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config}} API.
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_notebook_instance_lifecycle_config.html} for full documentation.
+}
 \keyword{internal}

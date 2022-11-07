@@ -7,7 +7,10 @@ specific provisioned product and returns a map of the results to the
 user}
 \usage{
 servicecatalog_describe_service_action_execution_parameters(
-  ProvisionedProductId, ServiceActionId, AcceptLanguage)
+  ProvisionedProductId,
+  ServiceActionId,
+  AcceptLanguage = NULL
+)
 }
 \arguments{
 \item{ProvisionedProductId}{[required] The identifier of the provisioned product.}
@@ -21,32 +24,9 @@ servicecatalog_describe_service_action_execution_parameters(
 \item \code{zh} - Chinese
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceActionParameters = list(
-    list(
-      Name = "string",
-      Type = "string",
-      DefaultValues = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Finds the default parameters for a specific self-service action on a
-specific provisioned product and returns a map of the results to the
-user.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_service_action_execution_parameters(
-  ProvisionedProductId = "string",
-  ServiceActionId = "string",
-  AcceptLanguage = "string"
-)
-}
-}
+Finds the default parameters for a specific self-service action on a specific provisioned product and returns a map of the results to the user.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_service_action_execution_parameters.html} for full documentation.
+}
 \keyword{internal}

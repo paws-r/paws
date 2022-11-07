@@ -3,9 +3,9 @@
 \name{route53_list_traffic_policies}
 \alias{route53_list_traffic_policies}
 \title{Gets information about the latest version for every traffic policy that
-is associated with the current AWS account}
+is associated with the current Amazon Web Services account}
 \usage{
-route53_list_traffic_policies(TrafficPolicyIdMarker, MaxItems)
+route53_list_traffic_policies(TrafficPolicyIdMarker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{TrafficPolicyIdMarker}{(Conditional) For your first request to
@@ -27,38 +27,9 @@ is \code{true}, and the value of \code{TrafficPolicyIdMarker} is the ID of the
 first traffic policy that Route 53 will return if you submit another
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficPolicySummaries = list(
-    list(
-      Id = "string",
-      Name = "string",
-      Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-      LatestVersion = 123,
-      TrafficPolicyCount = 123
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  TrafficPolicyIdMarker = "string",
-  MaxItems = "string"
-)
-}
-}
 \description{
-Gets information about the latest version for every traffic policy that
-is associated with the current AWS account. Policies are listed in the
-order that they were created in.
+Gets information about the latest version for every traffic policy that is associated with the current Amazon Web Services account. Policies are listed in the order that they were created in.
 
-For information about how of deleting a traffic policy affects the
-response from \code{\link[=route53_list_traffic_policies]{list_traffic_policies}},
-see \code{\link[=route53_delete_traffic_policy]{delete_traffic_policy}}.
+See \url{https://paws-r.github.io/docs/route53/list_traffic_policies.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_traffic_policies(
-  TrafficPolicyIdMarker = "string",
-  MaxItems = "string"
-)
-}
-}
-
 \keyword{internal}

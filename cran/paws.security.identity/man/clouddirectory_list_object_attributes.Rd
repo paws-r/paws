@@ -4,8 +4,14 @@
 \alias{clouddirectory_list_object_attributes}
 \title{Lists all attributes that are associated with an object}
 \usage{
-clouddirectory_list_object_attributes(DirectoryArn, ObjectReference,
-  NextToken, MaxResults, ConsistencyLevel, FacetFilter)
+clouddirectory_list_object_attributes(
+  DirectoryArn,
+  ObjectReference,
+  NextToken = NULL,
+  MaxResults = NULL,
+  ConsistencyLevel = NULL,
+  FacetFilter = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -26,48 +32,9 @@ object.}
 \item{FacetFilter}{Used to filter the list of object attributes that are associated with a
 certain facet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      Key = list(
-        SchemaArn = "string",
-        FacetName = "string",
-        Name = "string"
-      ),
-      Value = list(
-        StringValue = "string",
-        BinaryValue = raw,
-        BooleanValue = TRUE|FALSE,
-        NumberValue = "string",
-        DatetimeValue = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists all attributes that are associated with an object.
-}
-\section{Request syntax}{
-\preformatted{svc$list_object_attributes(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
-  FacetFilter = list(
-    SchemaArn = "string",
-    FacetName = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_object_attributes.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,9 @@
 \title{Associates multiple self-service actions with provisioning artifacts}
 \usage{
 servicecatalog_batch_associate_service_action_with_provisioning_artifact(
-  ServiceActionAssociations, AcceptLanguage)
+  ServiceActionAssociations,
+  AcceptLanguage = NULL
+)
 }
 \arguments{
 \item{ServiceActionAssociations}{[required] One or more associations, each consisting of the Action ID, the Product
@@ -18,35 +20,9 @@ ID, and the Provisioning Artifact ID.}
 \item \code{zh} - Chinese
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedServiceActionAssociations = list(
-    list(
-      ServiceActionId = "string",
-      ProductId = "string",
-      ProvisioningArtifactId = "string",
-      ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Associates multiple self-service actions with provisioning artifacts.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_associate_service_action_with_provisioning_artifact(
-  ServiceActionAssociations = list(
-    list(
-      ServiceActionId = "string",
-      ProductId = "string",
-      ProvisioningArtifactId = "string"
-    )
-  ),
-  AcceptLanguage = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/batch_associate_service_action_with_provisioning_artifact.html} for full documentation.
+}
 \keyword{internal}

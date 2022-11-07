@@ -9,21 +9,9 @@ ssm_delete_activation(ActivationId)
 \arguments{
 \item{ActivationId}{[required] The ID of the activation that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an activation. You are not required to delete an activation. If
-you delete an activation, you can no longer use it to register
-additional managed instances. Deleting an activation does not
-de-register managed instances. You must manually de-register managed
-instances.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_activation(
-  ActivationId = "string"
-)
-}
-}
+Deletes an activation. You aren't required to delete an activation. If you delete an activation, you can no longer use it to register additional managed nodes. Deleting an activation doesn't de-register managed nodes. You must manually de-register managed nodes.
 
+See \url{https://paws-r.github.io/docs/ssm/delete_activation.html} for full documentation.
+}
 \keyword{internal}

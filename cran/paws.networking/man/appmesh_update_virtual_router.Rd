@@ -4,8 +4,13 @@
 \alias{appmesh_update_virtual_router}
 \title{Updates an existing virtual router in a specified service mesh}
 \usage{
-appmesh_update_virtual_router(clientToken, meshName, meshOwner, spec,
-  virtualRouterName)
+appmesh_update_virtual_router(
+  clientToken = NULL,
+  meshName,
+  meshOwner = NULL,
+  spec,
+  virtualRouterName
+)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -14,71 +19,19 @@ underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh that the virtual router resides in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then it's the ID of the account that shared the mesh with
-your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then it's the ID of the account that shared
+the mesh with your account. For more information about mesh sharing, see
+\href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The new virtual router specification to apply. This overwrites the
 existing data.}
 
 \item{virtualRouterName}{[required] The name of the virtual router to update.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualRouter = list(
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      listeners = list(
-        list(
-          portMapping = list(
-            port = 123,
-            protocol = "http"|"tcp"|"http2"|"grpc"
-          )
-        )
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    ),
-    virtualRouterName = "string"
-  )
-)
-}
-}
 \description{
 Updates an existing virtual router in a specified service mesh.
-}
-\section{Request syntax}{
-\preformatted{svc$update_virtual_router(
-  clientToken = "string",
-  meshName = "string",
-  meshOwner = "string",
-  spec = list(
-    listeners = list(
-      list(
-        portMapping = list(
-          port = 123,
-          protocol = "http"|"tcp"|"http2"|"grpc"
-        )
-      )
-    )
-  ),
-  virtualRouterName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appmesh/update_virtual_router.html} for full documentation.
+}
 \keyword{internal}

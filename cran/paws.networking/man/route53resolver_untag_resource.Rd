@@ -21,20 +21,9 @@ tags from. To get the ARN for a resource, use the applicable \code{Get} or
 
 \item{TagKeys}{[required] The tags that you want to remove to the specified resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes one or more tags from a specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/route53resolver/untag_resource.html} for full documentation.
+}
 \keyword{internal}

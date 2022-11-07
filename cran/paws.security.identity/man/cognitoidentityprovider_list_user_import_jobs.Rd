@@ -4,8 +4,11 @@
 \alias{cognitoidentityprovider_list_user_import_jobs}
 \title{Lists the user import jobs}
 \usage{
-cognitoidentityprovider_list_user_import_jobs(UserPoolId, MaxResults,
-  PaginationToken)
+cognitoidentityprovider_list_user_import_jobs(
+  UserPoolId,
+  MaxResults,
+  PaginationToken = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported
@@ -17,45 +20,9 @@ into.}
 \code{\link[=cognitoidentityprovider_list_user_import_jobs]{list_user_import_jobs}},
 which can be used to return the next set of import jobs in the list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserImportJobs = list(
-    list(
-      JobName = "string",
-      JobId = "string",
-      UserPoolId = "string",
-      PreSignedUrl = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      StartDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompletionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "Created"|"Pending"|"InProgress"|"Stopping"|"Expired"|"Stopped"|"Failed"|"Succeeded",
-      CloudWatchLogsRoleArn = "string",
-      ImportedUsers = 123,
-      SkippedUsers = 123,
-      FailedUsers = 123,
-      CompletionMessage = "string"
-    )
-  ),
-  PaginationToken = "string"
-)
-}
-}
 \description{
 Lists the user import jobs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_user_import_jobs(
-  UserPoolId = "string",
-  MaxResults = 123,
-  PaginationToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_user_import_jobs.html} for full documentation.
+}
 \keyword{internal}

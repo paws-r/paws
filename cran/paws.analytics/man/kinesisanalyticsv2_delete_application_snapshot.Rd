@@ -4,8 +4,11 @@
 \alias{kinesisanalyticsv2_delete_application_snapshot}
 \title{Deletes a snapshot of application state}
 \usage{
-kinesisanalyticsv2_delete_application_snapshot(ApplicationName,
-  SnapshotName, SnapshotCreationTimestamp)
+kinesisanalyticsv2_delete_application_snapshot(
+  ApplicationName,
+  SnapshotName,
+  SnapshotCreationTimestamp
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
@@ -15,21 +18,9 @@ kinesisanalyticsv2_delete_application_snapshot(ApplicationName,
 \item{SnapshotCreationTimestamp}{[required] The creation timestamp of the application snapshot to delete. You can
 retrieve this value using or .}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a snapshot of application state.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application_snapshot(
-  ApplicationName = "string",
-  SnapshotName = "string",
-  SnapshotCreationTimestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_snapshot.html} for full documentation.
+}
 \keyword{internal}

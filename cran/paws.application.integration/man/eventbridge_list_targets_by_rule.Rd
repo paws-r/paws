@@ -4,7 +4,12 @@
 \alias{eventbridge_list_targets_by_rule}
 \title{Lists the targets assigned to the specified rule}
 \usage{
-eventbridge_list_targets_by_rule(Rule, EventBusName, NextToken, Limit)
+eventbridge_list_targets_by_rule(
+  Rule,
+  EventBusName = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{Rule}{[required] The name of the rule.}
@@ -17,108 +22,9 @@ results.}
 
 \item{Limit}{The maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Targets = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      RoleArn = "string",
-      Input = "string",
-      InputPath = "string",
-      InputTransformer = list(
-        InputPathsMap = list(
-          "string"
-        ),
-        InputTemplate = "string"
-      ),
-      KinesisParameters = list(
-        PartitionKeyPath = "string"
-      ),
-      RunCommandParameters = list(
-        RunCommandTargets = list(
-          list(
-            Key = "string",
-            Values = list(
-              "string"
-            )
-          )
-        )
-      ),
-      EcsParameters = list(
-        TaskDefinitionArn = "string",
-        TaskCount = 123,
-        LaunchType = "EC2"|"FARGATE",
-        NetworkConfiguration = list(
-          awsvpcConfiguration = list(
-            Subnets = list(
-              "string"
-            ),
-            SecurityGroups = list(
-              "string"
-            ),
-            AssignPublicIp = "ENABLED"|"DISABLED"
-          )
-        ),
-        PlatformVersion = "string",
-        Group = "string"
-      ),
-      BatchParameters = list(
-        JobDefinition = "string",
-        JobName = "string",
-        ArrayProperties = list(
-          Size = 123
-        ),
-        RetryStrategy = list(
-          Attempts = 123
-        )
-      ),
-      SqsParameters = list(
-        MessageGroupId = "string"
-      ),
-      HttpParameters = list(
-        PathParameterValues = list(
-          "string"
-        ),
-        HeaderParameters = list(
-          "string"
-        ),
-        QueryStringParameters = list(
-          "string"
-        )
-      ),
-      RedshiftDataParameters = list(
-        SecretManagerArn = "string",
-        Database = "string",
-        DbUser = "string",
-        Sql = "string",
-        StatementName = "string",
-        WithEvent = TRUE|FALSE
-      ),
-      DeadLetterConfig = list(
-        Arn = "string"
-      ),
-      RetryPolicy = list(
-        MaximumRetryAttempts = 123,
-        MaximumEventAgeInSeconds = 123
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the targets assigned to the specified rule.
-}
-\section{Request syntax}{
-\preformatted{svc$list_targets_by_rule(
-  Rule = "string",
-  EventBusName = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/eventbridge/list_targets_by_rule.html} for full documentation.
+}
 \keyword{internal}

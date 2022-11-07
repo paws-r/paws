@@ -4,35 +4,14 @@
 \alias{sns_list_topics}
 \title{Returns a list of the requester's topics}
 \usage{
-sns_list_topics(NextToken)
+sns_list_topics(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{Token returned by the previous \code{\link[=sns_list_topics]{list_topics}} request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Topics = list(
-    list(
-      TopicArn = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of the requester's topics. Each call returns a limited
-list of topics, up to 100. If there are more topics, a \code{NextToken} is
-also returned. Use the \code{NextToken} parameter in a new
-\code{\link[=sns_list_topics]{list_topics}} call to get further results.
+Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there are more topics, a \code{NextToken} is also returned. Use the \code{NextToken} parameter in a new \code{\link[=sns_list_topics]{list_topics}} call to get further results.
 
-This action is throttled at 30 transactions per second (TPS).
+See \url{https://paws-r.github.io/docs/sns/list_topics.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_topics(
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

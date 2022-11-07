@@ -4,7 +4,7 @@
 \alias{glue_list_schemas}
 \title{Returns a list of schemas with minimal details}
 \usage{
-glue_list_schemas(RegistryId, MaxResults, NextToken)
+glue_list_schemas(RegistryId = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{RegistryId}{A wrapper structure that may contain the registry name and Amazon
@@ -15,41 +15,9 @@ supplied, this will be defaulted to 25 per page.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Schemas = list(
-    list(
-      RegistryName = "string",
-      SchemaName = "string",
-      SchemaArn = "string",
-      Description = "string",
-      SchemaStatus = "AVAILABLE"|"PENDING"|"DELETING",
-      CreatedTime = "string",
-      UpdatedTime = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of schemas with minimal details. Schemas in Deleting
-status will not be included in the results. Empty results will be
-returned if there are no schemas available.
+Returns a list of schemas with minimal details. Schemas in Deleting status will not be included in the results. Empty results will be returned if there are no schemas available.
 
-When the \code{RegistryId} is not provided, all the schemas across registries
-will be part of the API response.
+See \url{https://paws-r.github.io/docs/glue/list_schemas.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_schemas(
-  RegistryId = list(
-    RegistryName = "string",
-    RegistryArn = "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

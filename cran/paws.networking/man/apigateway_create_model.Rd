@@ -4,45 +4,29 @@
 \alias{apigateway_create_model}
 \title{Adds a new Model resource to an existing RestApi resource}
 \usage{
-apigateway_create_model(restApiId, name, description, schema,
-  contentType)
+apigateway_create_model(
+  restApiId,
+  name,
+  description = NULL,
+  schema = NULL,
+  contentType
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The RestApi identifier under which the Model will be
-created.}
+\item{restApiId}{[required] The RestApi identifier under which the Model will be created.}
 
-\item{name}{[required] [Required] The name of the model. Must be alphanumeric.}
+\item{name}{[required] The name of the model. Must be alphanumeric.}
 
 \item{description}{The description of the model.}
 
 \item{schema}{The schema for the model. For \code{application/json} models, this should be
-\href{https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04}{JSON schema draft 4}
-model.}
+JSON schema draft 4 model.}
 
-\item{contentType}{[required] [Required] The content-type for the model.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  schema = "string",
-  contentType = "string"
-)
-}
+\item{contentType}{[required] The content-type for the model.}
 }
 \description{
 Adds a new Model resource to an existing RestApi resource.
-}
-\section{Request syntax}{
-\preformatted{svc$create_model(
-  restApiId = "string",
-  name = "string",
-  description = "string",
-  schema = "string",
-  contentType = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/create_model.html} for full documentation.
+}
 \keyword{internal}

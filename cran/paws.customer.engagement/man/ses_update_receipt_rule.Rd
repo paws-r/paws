@@ -11,91 +11,9 @@ ses_update_receipt_rule(RuleSetName, Rule)
 
 \item{Rule}{[required] A data structure that contains the updated receipt rule information.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a receipt rule.
 
-For information about managing receipt rules, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$update_receipt_rule(
-  RuleSetName = "string",
-  Rule = list(
-    Name = "string",
-    Enabled = TRUE|FALSE,
-    TlsPolicy = "Require"|"Optional",
-    Recipients = list(
-      "string"
-    ),
-    Actions = list(
-      list(
-        S3Action = list(
-          TopicArn = "string",
-          BucketName = "string",
-          ObjectKeyPrefix = "string",
-          KmsKeyArn = "string"
-        ),
-        BounceAction = list(
-          TopicArn = "string",
-          SmtpReplyCode = "string",
-          StatusCode = "string",
-          Message = "string",
-          Sender = "string"
-        ),
-        WorkmailAction = list(
-          TopicArn = "string",
-          OrganizationArn = "string"
-        ),
-        LambdaAction = list(
-          TopicArn = "string",
-          FunctionArn = "string",
-          InvocationType = "Event"|"RequestResponse"
-        ),
-        StopAction = list(
-          Scope = "RuleSet",
-          TopicArn = "string"
-        ),
-        AddHeaderAction = list(
-          HeaderName = "string",
-          HeaderValue = "string"
-        ),
-        SNSAction = list(
-          TopicArn = "string",
-          Encoding = "UTF-8"|"Base64"
-        )
-      )
-    ),
-    ScanEnabled = TRUE|FALSE
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example updates a receipt rule to use an Amazon S3 action:
-svc$update_receipt_rule(
-  Rule = list(
-    Actions = list(
-      list(
-        S3Action = list(
-          BucketName = "MyBucket",
-          ObjectKeyPrefix = "email"
-        )
-      )
-    ),
-    Enabled = TRUE,
-    Name = "MyRule",
-    ScanEnabled = TRUE,
-    TlsPolicy = "Optional"
-  ),
-  RuleSetName = "MyRuleSet"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/update_receipt_rule.html} for full documentation.
 }
 \keyword{internal}

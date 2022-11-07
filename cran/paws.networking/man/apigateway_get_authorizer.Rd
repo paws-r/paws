@@ -7,39 +7,13 @@
 apigateway_get_authorizer(restApiId, authorizerId)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{authorizerId}{[required] [Required] The identifier of the Authorizer resource.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-  providerARNs = list(
-    "string"
-  ),
-  authType = "string",
-  authorizerUri = "string",
-  authorizerCredentials = "string",
-  identitySource = "string",
-  identityValidationExpression = "string",
-  authorizerResultTtlInSeconds = 123
-)
-}
+\item{authorizerId}{[required] The identifier of the Authorizer resource.}
 }
 \description{
-Describe an existing Authorizer resource.<div class="seeAlso">
+Describe an existing Authorizer resource.
 
-
-\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html}{AWS CLI}</div>
+See \url{https://paws-r.github.io/docs/apigateway/get_authorizer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_authorizer(
-  restApiId = "string",
-  authorizerId = "string"
-)
-}
-}
-
 \keyword{internal}

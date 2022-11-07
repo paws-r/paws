@@ -4,8 +4,10 @@
 \alias{pinpoint_update_recommender_configuration}
 \title{Updates an Amazon Pinpoint configuration for a recommender model}
 \usage{
-pinpoint_update_recommender_configuration(RecommenderId,
-  UpdateRecommenderConfiguration)
+pinpoint_update_recommender_configuration(
+  RecommenderId,
+  UpdateRecommenderConfiguration
+)
 }
 \arguments{
 \item{RecommenderId}{[required] The unique identifier for the recommender model configuration. This
@@ -14,48 +16,9 @@ console.}
 
 \item{UpdateRecommenderConfiguration}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RecommenderConfigurationResponse = list(
-    Attributes = list(
-      "string"
-    ),
-    CreationDate = "string",
-    Description = "string",
-    Id = "string",
-    LastModifiedDate = "string",
-    Name = "string",
-    RecommendationProviderIdType = "string",
-    RecommendationProviderRoleArn = "string",
-    RecommendationProviderUri = "string",
-    RecommendationTransformerUri = "string",
-    RecommendationsDisplayName = "string",
-    RecommendationsPerMessage = 123
-  )
-)
-}
-}
 \description{
 Updates an Amazon Pinpoint configuration for a recommender model.
-}
-\section{Request syntax}{
-\preformatted{svc$update_recommender_configuration(
-  RecommenderId = "string",
-  UpdateRecommenderConfiguration = list(
-    Attributes = list(
-      "string"
-    ),
-    Description = "string",
-    Name = "string",
-    RecommendationProviderIdType = "string",
-    RecommendationProviderRoleArn = "string",
-    RecommendationProviderUri = "string",
-    RecommendationTransformerUri = "string",
-    RecommendationsDisplayName = "string",
-    RecommendationsPerMessage = 123
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_recommender_configuration.html} for full documentation.
+}
 \keyword{internal}

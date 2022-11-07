@@ -4,8 +4,12 @@
 \alias{route53domains_update_domain_contact_privacy}
 \title{This operation updates the specified domain contact's privacy setting}
 \usage{
-route53domains_update_domain_contact_privacy(DomainName, AdminPrivacy,
-  RegistrantPrivacy, TechPrivacy)
+route53domains_update_domain_contact_privacy(
+  DomainName,
+  AdminPrivacy = NULL,
+  RegistrantPrivacy = NULL,
+  TechPrivacy = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to update the privacy setting for.}
@@ -15,61 +19,34 @@ you specify \code{true}, WHOIS ("who is") queries return contact information
 either for Amazon Registrar (for .com, .net, and .org domains) or for
 our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
-admin contact.}
+admin contact.
+
+You must specify the same privacy setting for the administrative,
+registrant, and technical contacts.}
 
 \item{RegistrantPrivacy}{Whether you want to conceal contact information from WHOIS queries. If
 you specify \code{true}, WHOIS ("who is") queries return contact information
 either for Amazon Registrar (for .com, .net, and .org domains) or for
 our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
-registrant contact (domain owner).}
+registrant contact (domain owner).
+
+You must specify the same privacy setting for the administrative,
+registrant, and technical contacts.}
 
 \item{TechPrivacy}{Whether you want to conceal contact information from WHOIS queries. If
 you specify \code{true}, WHOIS ("who is") queries return contact information
 either for Amazon Registrar (for .com, .net, and .org domains) or for
 our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
-technical contact.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
+technical contact.
+
+You must specify the same privacy setting for the administrative,
+registrant, and technical contacts.}
 }
 \description{
-This operation updates the specified domain contact's privacy setting.
-When privacy protection is enabled, contact information such as email
-address is replaced either with contact information for Amazon Registrar
-(for .com, .net, and .org domains) or with contact information for our
-registrar associate, Gandi.
+This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, contact information such as email address is replaced either with contact information for Amazon Registrar (for .com, .net, and .org domains) or with contact information for our registrar associate, Gandi.
 
-This operation affects only the contact information for the specified
-contact type (registrant, administrator, or tech). If the request
-succeeds, Amazon Route 53 returns an operation ID that you can use with
-\code{\link[=route53domains_get_operation_detail]{get_operation_detail}} to track
-the progress and completion of the action. If the request doesn't
-complete successfully, the domain registrant will be notified by email.
-
-By disabling the privacy service via API, you consent to the publication
-of the contact information provided for this domain via the public WHOIS
-database. You certify that you are the registrant of this domain name
-and have the authority to make this decision. You may withdraw your
-consent at any time by enabling privacy protection using either
-\code{\link[=route53domains_update_domain_contact_privacy]{update_domain_contact_privacy}}
-or the Route 53 console. Enabling privacy protection removes the contact
-information provided for this domain from the WHOIS database. For more
-information on our privacy practices, see
-\url{https://aws.amazon.com/privacy/}.
+See \url{https://paws-r.github.io/docs/route53domains/update_domain_contact_privacy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_domain_contact_privacy(
-  DomainName = "string",
-  AdminPrivacy = TRUE|FALSE,
-  RegistrantPrivacy = TRUE|FALSE,
-  TechPrivacy = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

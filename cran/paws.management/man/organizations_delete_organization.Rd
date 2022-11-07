@@ -6,12 +6,9 @@
 \usage{
 organizations_delete_organization()
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the organization. You can delete an organization only by using
-credentials from the management account. The organization must be empty
-of member accounts.
+Deletes the organization. You can delete an organization only by using credentials from the management account. The organization must be empty of member accounts.
+
+See \url{https://paws-r.github.io/docs/organizations/delete_organization.html} for full documentation.
 }
 \keyword{internal}

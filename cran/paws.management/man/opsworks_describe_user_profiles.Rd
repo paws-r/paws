@@ -4,40 +4,15 @@
 \alias{opsworks_describe_user_profiles}
 \title{Describe specified users}
 \usage{
-opsworks_describe_user_profiles(IamUserArns)
+opsworks_describe_user_profiles(IamUserArns = NULL)
 }
 \arguments{
 \item{IamUserArns}{An array of IAM or federated user ARNs that identify the users to be
 described.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserProfiles = list(
-    list(
-      IamUserArn = "string",
-      Name = "string",
-      SshUsername = "string",
-      SshPublicKey = "string",
-      AllowSelfManagement = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
 Describe specified users.
 
-\strong{Required Permissions}: To use this action, an IAM user must have an
-attached policy that explicitly grants permissions. For more information
-about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_user_profiles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_user_profiles(
-  IamUserArns = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

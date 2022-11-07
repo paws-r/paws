@@ -4,8 +4,13 @@
 \alias{workdocs_delete_custom_metadata}
 \title{Deletes custom metadata from the specified resource}
 \usage{
-workdocs_delete_custom_metadata(AuthenticationToken, ResourceId,
-  VersionId, Keys, DeleteAll)
+workdocs_delete_custom_metadata(
+  AuthenticationToken = NULL,
+  ResourceId,
+  VersionId = NULL,
+  Keys = NULL,
+  DeleteAll = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -21,23 +26,9 @@ document version.}
 \item{DeleteAll}{Flag to indicate removal of all custom metadata properties from the
 specified resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes custom metadata from the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_custom_metadata(
-  AuthenticationToken = "string",
-  ResourceId = "string",
-  VersionId = "string",
-  Keys = list(
-    "string"
-  ),
-  DeleteAll = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/delete_custom_metadata.html} for full documentation.
+}
 \keyword{internal}

@@ -5,71 +5,15 @@
 \title{Create a field-level encryption profile}
 \usage{
 cloudfront_create_field_level_encryption_profile(
-  FieldLevelEncryptionProfileConfig)
+  FieldLevelEncryptionProfileConfig
+)
 }
 \arguments{
 \item{FieldLevelEncryptionProfileConfig}{[required] The request to create a field-level encryption profile.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FieldLevelEncryptionProfile = list(
-    Id = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FieldLevelEncryptionProfileConfig = list(
-      Name = "string",
-      CallerReference = "string",
-      Comment = "string",
-      EncryptionEntities = list(
-        Quantity = 123,
-        Items = list(
-          list(
-            PublicKeyId = "string",
-            ProviderId = "string",
-            FieldPatterns = list(
-              Quantity = 123,
-              Items = list(
-                "string"
-              )
-            )
-          )
-        )
-      )
-    )
-  ),
-  Location = "string",
-  ETag = "string"
-)
-}
-}
 \description{
 Create a field-level encryption profile.
-}
-\section{Request syntax}{
-\preformatted{svc$create_field_level_encryption_profile(
-  FieldLevelEncryptionProfileConfig = list(
-    Name = "string",
-    CallerReference = "string",
-    Comment = "string",
-    EncryptionEntities = list(
-      Quantity = 123,
-      Items = list(
-        list(
-          PublicKeyId = "string",
-          ProviderId = "string",
-          FieldPatterns = list(
-            Quantity = 123,
-            Items = list(
-              "string"
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/create_field_level_encryption_profile.html} for full documentation.
+}
 \keyword{internal}

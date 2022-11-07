@@ -4,8 +4,12 @@
 \alias{clouddirectory_attach_object}
 \title{Attaches an existing object to another object}
 \usage{
-clouddirectory_attach_object(DirectoryArn, ParentReference,
-  ChildReference, LinkName)
+clouddirectory_attach_object(
+  DirectoryArn,
+  ParentReference,
+  ChildReference,
+  LinkName
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] Amazon Resource Name (ARN) that is associated with the Directory where
@@ -17,32 +21,9 @@ both objects reside. For more information, see arns.}
 
 \item{LinkName}{[required] The link name with which the child object is attached to the parent.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AttachedObjectIdentifier = "string"
-)
-}
-}
 \description{
-Attaches an existing object to another object. An object can be accessed
-in two ways:
-\enumerate{
-\item Using the path
-\item Using \code{ObjectIdentifier}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$attach_object(
-  DirectoryArn = "string",
-  ParentReference = list(
-    Selector = "string"
-  ),
-  ChildReference = list(
-    Selector = "string"
-  ),
-  LinkName = "string"
-)
-}
-}
+Attaches an existing object to another object. An object can be accessed in two ways:
 
+See \url{https://paws-r.github.io/docs/clouddirectory/attach_object.html} for full documentation.
+}
 \keyword{internal}

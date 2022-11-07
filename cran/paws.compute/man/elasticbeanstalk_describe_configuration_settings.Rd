@@ -6,8 +6,11 @@
 set, that is, either a configuration template or the configuration set
 associated with a running environment}
 \usage{
-elasticbeanstalk_describe_configuration_settings(ApplicationName,
-  TemplateName, EnvironmentName)
+elasticbeanstalk_describe_configuration_settings(
+  ApplicationName,
+  TemplateName = NULL,
+  EnvironmentName = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The application for the environment or configuration template.}
@@ -27,70 +30,9 @@ If you specify both, AWS Elastic Beanstalk returns an
 \code{InvalidParameterCombination} error. If you do not specify either, AWS
 Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConfigurationSettings = list(
-    list(
-      SolutionStackName = "string",
-      PlatformArn = "string",
-      ApplicationName = "string",
-      TemplateName = "string",
-      Description = "string",
-      EnvironmentName = "string",
-      DeploymentStatus = "deployed"|"pending"|"failed",
-      DateCreated = as.POSIXct(
-        "2015-01-01"
-      ),
-      DateUpdated = as.POSIXct(
-        "2015-01-01"
-      ),
-      OptionSettings = list(
-        list(
-          ResourceName = "string",
-          Namespace = "string",
-          OptionName = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a description of the settings for the specified configuration
-set, that is, either a configuration template or the configuration set
-associated with a running environment.
+Returns a description of the settings for the specified configuration set, that is, either a configuration template or the configuration set associated with a running environment.
 
-When describing the settings for the configuration set associated with a
-running environment, it is possible to receive two sets of setting
-descriptions. One is the deployed configuration set, and the other is a
-draft configuration of an environment that is either in the process of
-deployment or that failed to deploy.
-
-Related Topics
-\itemize{
-\item \code{\link[=elasticbeanstalk_delete_environment_configuration]{delete_environment_configuration}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_configuration_settings(
-  ApplicationName = "string",
-  TemplateName = "string",
-  EnvironmentName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation retrieves configuration settings for an
-# environment named my-env:
-svc$describe_configuration_settings(
-  ApplicationName = "my-app",
-  EnvironmentName = "my-env"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_settings.html} for full documentation.
 }
 \keyword{internal}

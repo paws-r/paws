@@ -2,24 +2,13 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_create_subscription}
 \alias{shield_create_subscription}
-\title{Activates AWS Shield Advanced for an account}
+\title{Activates Shield Advanced for an account}
 \usage{
 shield_create_subscription()
 }
-\value{
-An empty list.
-}
 \description{
-Activates AWS Shield Advanced for an account.
+Activates Shield Advanced for an account.
 
-When you initally create a subscription, your subscription is set to be
-automatically renewed at the end of the existing subscription period.
-You can change this by submitting an
-\code{\link[=shield_update_subscription]{update_subscription}} request.
+See \url{https://paws-r.github.io/docs/shield/create_subscription.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_subscription()
-}
-}
-
 \keyword{internal}

@@ -10,38 +10,9 @@ personalize_describe_dataset_import_job(datasetImportJobArn)
 \arguments{
 \item{datasetImportJobArn}{[required] The Amazon Resource Name (ARN) of the dataset import job to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  datasetImportJob = list(
-    jobName = "string",
-    datasetImportJobArn = "string",
-    datasetArn = "string",
-    dataSource = list(
-      dataLocation = "string"
-    ),
-    roleArn = "string",
-    status = "string",
-    creationDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastUpdatedDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    failureReason = "string"
-  )
-)
-}
-}
 \description{
-Describes the dataset import job created by
-\code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}},
-including the import job status.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_dataset_import_job(
-  datasetImportJobArn = "string"
-)
-}
-}
+Describes the dataset import job created by \code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}}, including the import job status.
 
+See \url{https://paws-r.github.io/docs/personalize/describe_dataset_import_job.html} for full documentation.
+}
 \keyword{internal}

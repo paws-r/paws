@@ -4,8 +4,7 @@
 \alias{clouddirectory_attach_policy}
 \title{Attaches a policy object to a regular object}
 \usage{
-clouddirectory_attach_policy(DirectoryArn, PolicyReference,
-  ObjectReference)
+clouddirectory_attach_policy(DirectoryArn, PolicyReference, ObjectReference)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -16,24 +15,9 @@ where both objects reside. For more information, see arns.}
 \item{ObjectReference}{[required] The reference that identifies the object to which the policy will be
 attached.}
 }
-\value{
-An empty list.
-}
 \description{
-Attaches a policy object to a regular object. An object can have a
-limited number of attached policies.
-}
-\section{Request syntax}{
-\preformatted{svc$attach_policy(
-  DirectoryArn = "string",
-  PolicyReference = list(
-    Selector = "string"
-  ),
-  ObjectReference = list(
-    Selector = "string"
-  )
-)
-}
-}
+Attaches a policy object to a regular object. An object can have a limited number of attached policies.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/attach_policy.html} for full documentation.
+}
 \keyword{internal}

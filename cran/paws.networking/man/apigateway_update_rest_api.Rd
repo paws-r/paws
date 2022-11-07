@@ -4,63 +4,16 @@
 \alias{apigateway_update_rest_api}
 \title{Changes information about the specified API}
 \usage{
-apigateway_update_rest_api(restApiId, patchOperations)
+apigateway_update_rest_api(restApiId, patchOperations = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  version = "string",
-  warnings = list(
-    "string"
-  ),
-  binaryMediaTypes = list(
-    "string"
-  ),
-  minimumCompressionSize = 123,
-  apiKeySource = "HEADER"|"AUTHORIZER",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  policy = "string",
-  tags = list(
-    "string"
-  ),
-  disableExecuteApiEndpoint = TRUE|FALSE
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Changes information about the specified API.
-}
-\section{Request syntax}{
-\preformatted{svc$update_rest_api(
-  restApiId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_rest_api.html} for full documentation.
+}
 \keyword{internal}

@@ -9,54 +9,9 @@ storagegateway_list_local_disks(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  Disks = list(
-    list(
-      DiskId = "string",
-      DiskPath = "string",
-      DiskNode = "string",
-      DiskStatus = "string",
-      DiskSizeInBytes = 123,
-      DiskAllocationType = "string",
-      DiskAllocationResource = "string",
-      DiskAttributeList = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of the gateway's local disks. To specify which gateway to
-describe, you use the Amazon Resource Name (ARN) of the gateway in the
-body of the request.
+Returns a list of the gateway's local disks. To specify which gateway to describe, you use the Amazon Resource Name (ARN) of the gateway in the body of the request.
 
-The request returns a list of all disks, specifying which are configured
-as working storage, cache storage, or stored volume or not configured at
-all. The response includes a \code{DiskStatus} field. This field can have a
-value of present (the disk is available to use), missing (the disk is no
-longer connected to the gateway), or mismatch (the disk node is occupied
-by a disk that has incorrect metadata or the disk content is corrupted).
-}
-\section{Request syntax}{
-\preformatted{svc$list_local_disks(
-  GatewayARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The request returns a list of all disks, specifying which are configured
-# as working storage, cache storage, or stored volume or not configured at
-# all.
-svc$list_local_disks(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/list_local_disks.html} for full documentation.
 }
 \keyword{internal}

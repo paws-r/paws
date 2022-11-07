@@ -4,8 +4,16 @@
 \alias{sagemaker_list_actions}
 \title{Lists the actions in your account and their properties}
 \usage{
-sagemaker_list_actions(SourceUri, ActionType, CreatedAfter,
-  CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+sagemaker_list_actions(
+  SourceUri = NULL,
+  ActionType = NULL,
+  CreatedAfter = NULL,
+  CreatedBefore = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SourceUri}{A filter that returns only actions with the specified source URI.}
@@ -29,50 +37,9 @@ next set of actions.}
 \item{MaxResults}{The maximum number of actions to return in the response. The default
 value is 10.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActionSummaries = list(
-    list(
-      ActionArn = "string",
-      ActionName = "string",
-      Source = list(
-        SourceUri = "string",
-        SourceType = "string",
-        SourceId = "string"
-      ),
-      ActionType = "string",
-      Status = "Unknown"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the actions in your account and their properties.
-}
-\section{Request syntax}{
-\preformatted{svc$list_actions(
-  SourceUri = "string",
-  ActionType = "string",
-  CreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_actions.html} for full documentation.
+}
 \keyword{internal}

@@ -4,52 +4,28 @@
 \alias{apigateway_update_method_response}
 \title{Updates an existing MethodResponse resource}
 \usage{
-apigateway_update_method_response(restApiId, resourceId, httpMethod,
-  statusCode, patchOperations)
-}
-\arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
-
-\item{resourceId}{[required] [Required] The Resource identifier for the MethodResponse resource.}
-
-\item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
-
-\item{statusCode}{[required] [Required] The status code for the MethodResponse resource.}
-
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  statusCode = "string",
-  responseParameters = list(
-    TRUE|FALSE
-  ),
-  responseModels = list(
-    "string"
-  )
+apigateway_update_method_response(
+  restApiId,
+  resourceId,
+  httpMethod,
+  statusCode,
+  patchOperations = NULL
 )
 }
+\arguments{
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
+
+\item{resourceId}{[required] The Resource identifier for the MethodResponse resource.}
+
+\item{httpMethod}{[required] The HTTP verb of the Method resource.}
+
+\item{statusCode}{[required] The status code for the MethodResponse resource.}
+
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Updates an existing MethodResponse resource.
-}
-\section{Request syntax}{
-\preformatted{svc$update_method_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_method_response.html} for full documentation.
+}
 \keyword{internal}

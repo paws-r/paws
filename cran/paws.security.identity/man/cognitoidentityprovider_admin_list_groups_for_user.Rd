@@ -4,8 +4,12 @@
 \alias{cognitoidentityprovider_admin_list_groups_for_user}
 \title{Lists the groups that the user belongs to}
 \usage{
-cognitoidentityprovider_admin_list_groups_for_user(Username, UserPoolId,
-  Limit, NextToken)
+cognitoidentityprovider_admin_list_groups_for_user(
+  Username,
+  UserPoolId,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Username}{[required] The username for the user.}
@@ -18,40 +22,9 @@ cognitoidentityprovider_admin_list_groups_for_user(Username, UserPoolId,
 operation, which can be used to return the next set of items in the
 list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Groups = list(
-    list(
-      GroupName = "string",
-      UserPoolId = "string",
-      Description = "string",
-      RoleArn = "string",
-      Precedence = 123,
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the groups that the user belongs to.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_groups_for_user.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_list_groups_for_user(
-  Username = "string",
-  UserPoolId = "string",
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

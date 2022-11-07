@@ -15,19 +15,9 @@ Constraints:
 \item Cannot delete a default cluster parameter group.
 }}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a specified Amazon Redshift parameter group.
 
-You cannot delete a parameter group if it is associated with a cluster.
+See \url{https://paws-r.github.io/docs/redshift/delete_cluster_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_cluster_parameter_group(
-  ParameterGroupName = "string"
-)
-}
-}
-
 \keyword{internal}

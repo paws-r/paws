@@ -4,7 +4,12 @@
 \alias{health_describe_events}
 \title{Returns information about events that meet the specified filter criteria}
 \usage{
-health_describe_events(filter, nextToken, maxResults, locale)
+health_describe_events(
+  filter = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  locale = NULL
+)
 }
 \arguments{
 \item{filter}{Values to narrow the results returned.}
@@ -21,130 +26,9 @@ inclusive.}
 \item{locale}{The locale (language) to return information in. English (en) is the
 default and the only supported value at this time.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  events = list(
-    list(
-      arn = "string",
-      service = "string",
-      eventTypeCode = "string",
-      eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
-      region = "string",
-      availabilityZone = "string",
-      startTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      endTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      statusCode = "open"|"closed"|"upcoming",
-      eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns information about events that meet the specified filter
-criteria. Events are returned in a summary form and do not include the
-detailed description, any additional metadata that depends on the event
-type, or any affected resources. To retrieve that information, use the
-\code{\link[=health_describe_event_details]{describe_event_details}} and
-\code{\link[=health_describe_affected_entities]{describe_affected_entities}}
-operations.
+Returns information about events that meet the specified filter criteria. Events are returned in a summary form and do not include the detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the \code{\link[=health_describe_event_details]{describe_event_details}} and \code{\link[=health_describe_affected_entities]{describe_affected_entities}} operations.
 
-If no filter criteria are specified, all events are returned. Results
-are sorted by \code{lastModifiedTime}, starting with the most recent event.
-\itemize{
-\item When you call the \code{\link[=health_describe_events]{describe_events}}
-operation and specify an entity for the \code{entityValues} parameter,
-AWS Health might return public events that aren't specific to that
-resource. For example, if you call
-\code{\link[=health_describe_events]{describe_events}} and specify an ID for an
-Amazon Elastic Compute Cloud (Amazon EC2) instance, AWS Health might
-return events that aren't specific to that resource or service. To
-get events that are specific to a service, use the \code{services}
-parameter in the \code{filter} object. For more information, see
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
-\item This API operation uses pagination. Specify the \code{nextToken}
-parameter in the next request to return more results.
+See \url{https://paws-r.github.io/docs/health/describe_events.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$describe_events(
-  filter = list(
-    eventArns = list(
-      "string"
-    ),
-    eventTypeCodes = list(
-      "string"
-    ),
-    services = list(
-      "string"
-    ),
-    regions = list(
-      "string"
-    ),
-    availabilityZones = list(
-      "string"
-    ),
-    startTimes = list(
-      list(
-        from = as.POSIXct(
-          "2015-01-01"
-        ),
-        to = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    endTimes = list(
-      list(
-        from = as.POSIXct(
-          "2015-01-01"
-        ),
-        to = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    lastUpdatedTimes = list(
-      list(
-        from = as.POSIXct(
-          "2015-01-01"
-        ),
-        to = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    entityArns = list(
-      "string"
-    ),
-    entityValues = list(
-      "string"
-    ),
-    eventTypeCategories = list(
-      "issue"|"accountNotification"|"scheduledChange"|"investigation"
-    ),
-    tags = list(
-      list(
-        "string"
-      )
-    ),
-    eventStatusCodes = list(
-      "open"|"closed"|"upcoming"
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123,
-  locale = "string"
-)
-}
-}
-
 \keyword{internal}

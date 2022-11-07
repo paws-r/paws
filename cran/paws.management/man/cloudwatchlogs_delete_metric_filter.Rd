@@ -11,18 +11,9 @@ cloudwatchlogs_delete_metric_filter(logGroupName, filterName)
 
 \item{filterName}{[required] The name of the metric filter.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified metric filter.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_metric_filter(
-  logGroupName = "string",
-  filterName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_metric_filter.html} for full documentation.
+}
 \keyword{internal}

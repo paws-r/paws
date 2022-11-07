@@ -5,7 +5,11 @@
 \title{Lists the accounts in an organization that are contained by the
 specified target root or organizational unit (OU)}
 \usage{
-organizations_list_accounts_for_parent(ParentId, NextToken, MaxResults)
+organizations_list_accounts_for_parent(
+  ParentId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ParentId}{[required] The unique identifier (ID) for the parent root or organization unit (OU)
@@ -28,60 +32,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Accounts = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Email = "string",
-      Name = "string",
-      Status = "ACTIVE"|"SUSPENDED",
-      JoinedMethod = "INVITED"|"CREATED",
-      JoinedTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the accounts in an organization that are contained by the
-specified target root or organizational unit (OU). If you specify the
-root, you get a list of all the accounts that aren't in any OU. If you
-specify an OU, you get a list of all the accounts in only that OU and
-not in any child OUs. To get a list of all accounts in the organization,
-use the \code{\link[=organizations_list_accounts]{list_accounts}} operation.
+Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU). If you specify the root, you get a list of all the accounts that aren't in any OU. If you specify an OU, you get a list of all the accounts in only that OU and not in any child OUs. To get a list of all accounts in the organization, use the \code{\link[=organizations_list_accounts]{list_accounts}} operation.
 
-Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \verb{List*} operation. These operations can occasionally return an
-empty set of results even when there are more results available. The
-\code{NextToken} response parameter value is \code{null} \emph{only} when there are no
-more results to display.
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$list_accounts_for_parent(
-  ParentId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to request a list of the accounts in an
-# OU:/n/n
-svc$list_accounts_for_parent(
-  ParentId = "ou-examplerootid111-exampleouid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/list_accounts_for_parent.html} for full documentation.
 }
 \keyword{internal}

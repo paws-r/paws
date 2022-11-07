@@ -10,26 +10,9 @@ route53domains_disable_domain_transfer_lock(DomainName)
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to remove the transfer lock for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
-}
 \description{
-This operation removes the transfer lock on the domain (specifically the
-\code{clientTransferProhibited} status) to allow domain transfers. We
-recommend you refrain from performing this action unless you intend to
-transfer the domain to a different registrar. Successful submission
-returns an operation ID that you can use to track the progress and
-completion of the action. If the request is not completed successfully,
-the domain registrant will be notified by email.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_domain_transfer_lock(
-  DomainName = "string"
-)
-}
-}
+This operation removes the transfer lock on the domain (specifically the \code{clientTransferProhibited} status) to allow domain transfers. We recommend you refrain from performing this action unless you intend to transfer the domain to a different registrar. Successful submission returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
 
+See \url{https://paws-r.github.io/docs/route53domains/disable_domain_transfer_lock.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,15 @@
 \title{Updates the specified provisioning artifact (also known as a version)
 for the specified product}
 \usage{
-servicecatalog_update_provisioning_artifact(AcceptLanguage, ProductId,
-  ProvisioningArtifactId, Name, Description, Active, Guidance)
+servicecatalog_update_provisioning_artifact(
+  AcceptLanguage = NULL,
+  ProductId,
+  ProvisioningArtifactId,
+  Name = NULL,
+  Description = NULL,
+  Active = NULL,
+  Guidance = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -40,44 +47,9 @@ that the product version is deprecated. Users are able to make updates
 to a provisioned product of a deprecated version but cannot launch new
 provisioned products using a deprecated version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisioningArtifactDetail = list(
-    Id = "string",
-    Name = "string",
-    Description = "string",
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Active = TRUE|FALSE,
-    Guidance = "DEFAULT"|"DEPRECATED"
-  ),
-  Info = list(
-    "string"
-  ),
-  Status = "AVAILABLE"|"CREATING"|"FAILED"
-)
-}
-}
 \description{
-Updates the specified provisioning artifact (also known as a version)
-for the specified product.
+Updates the specified provisioning artifact (also known as a version) for the specified product.
 
-You cannot update a provisioning artifact for a product that was shared
-with you.
+See \url{https://paws-r.github.io/docs/servicecatalog/update_provisioning_artifact.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_provisioning_artifact(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  Name = "string",
-  Description = "string",
-  Active = TRUE|FALSE,
-  Guidance = "DEFAULT"|"DEPRECATED"
-)
-}
-}
-
 \keyword{internal}

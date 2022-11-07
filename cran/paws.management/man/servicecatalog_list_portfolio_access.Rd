@@ -4,8 +4,13 @@
 \alias{servicecatalog_list_portfolio_access}
 \title{Lists the account IDs that have access to the specified portfolio}
 \usage{
-servicecatalog_list_portfolio_access(AcceptLanguage, PortfolioId,
-  OrganizationParentId, PageToken, PageSize)
+servicecatalog_list_portfolio_access(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  OrganizationParentId = NULL,
+  PageToken = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -26,31 +31,9 @@ results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountIds = list(
-    "string"
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
 Lists the account IDs that have access to the specified portfolio.
 
-A delegated admin can list the accounts that have access to the shared
-portfolio. Note that if a delegated admin is de-registered, they can no
-longer perform this operation.
+See \url{https://paws-r.github.io/docs/servicecatalog/list_portfolio_access.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_portfolio_access(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  OrganizationParentId = "string",
-  PageToken = "string",
-  PageSize = 123
-)
-}
-}
-
 \keyword{internal}

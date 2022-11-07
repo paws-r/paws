@@ -9,17 +9,9 @@ serverlessapplicationrepository_delete_application(ApplicationId)
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified application.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application(
-  ApplicationId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/delete_application.html} for full documentation.
+}
 \keyword{internal}

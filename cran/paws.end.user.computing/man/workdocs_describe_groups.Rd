@@ -4,8 +4,13 @@
 \alias{workdocs_describe_groups}
 \title{Describes the groups specified by the query}
 \usage{
-workdocs_describe_groups(AuthenticationToken, SearchQuery,
-  OrganizationId, Marker, Limit)
+workdocs_describe_groups(
+  AuthenticationToken = NULL,
+  SearchQuery,
+  OrganizationId = NULL,
+  Marker = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -20,31 +25,9 @@ previous call.)}
 
 \item{Limit}{The maximum number of items to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Groups = list(
-    list(
-      Id = "string",
-      Name = "string"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Describes the groups specified by the query. Groups are defined by the
-underlying Active Directory.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_groups(
-  AuthenticationToken = "string",
-  SearchQuery = "string",
-  OrganizationId = "string",
-  Marker = "string",
-  Limit = 123
-)
-}
-}
+Describes the groups specified by the query. Groups are defined by the underlying Active Directory.
 
+See \url{https://paws-r.github.io/docs/workdocs/describe_groups.html} for full documentation.
+}
 \keyword{internal}

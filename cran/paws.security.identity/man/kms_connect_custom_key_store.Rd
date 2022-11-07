@@ -2,7 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_connect_custom_key_store}
 \alias{kms_connect_custom_key_store}
-\title{Connects or reconnects a custom key store to its associated AWS CloudHSM
+\title{Connects or reconnects a custom key store to its associated CloudHSM
 cluster}
 \usage{
 kms_connect_custom_key_store(CustomKeyStoreId)
@@ -13,79 +13,9 @@ To find the ID of a custom key store, use the
 \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
 operation.}
 }
-\value{
-An empty list.
-}
 \description{
-Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
-to its associated AWS CloudHSM cluster.
+Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} to its associated CloudHSM cluster.
 
-The custom key store must be connected before you can create customer
-master keys (CMKs) in the key store or use the CMKs it contains. You can
-disconnect and reconnect a custom key store at any time.
-
-To connect a custom key store, its associated AWS CloudHSM cluster must
-have at least one active HSM. To get the number of active HSMs in a
-cluster, use the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
-operation. To add HSMs to the cluster, use the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html}{CreateHsm}
-operation. Also, the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{\code{kmsuser} crypto user}
-(CU) must not be logged into the cluster. This prevents AWS KMS from
-using this account to log in.
-
-The connection process can take an extended amount of time to complete;
-up to 20 minutes. This operation starts the connection process, but it
-does not wait for it to complete. When it succeeds, this operation
-quickly returns an HTTP 200 response and a JSON object with no
-properties. However, this response does not indicate that the custom key
-store is connected. To get the connection state of the custom key store,
-use the \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-operation.
-
-During the connection process, AWS KMS finds the AWS CloudHSM cluster
-that is associated with the custom key store, creates the connection
-infrastructure, connects to the cluster, logs into the AWS CloudHSM
-client as the \code{kmsuser} CU, and rotates its password.
-
-The \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} operation
-might fail for various reasons. To find the reason, use the
-\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}} operation
-and see the \code{ConnectionErrorCode} in the response. For help interpreting
-the \code{ConnectionErrorCode}, see CustomKeyStoresListEntry.
-
-To fix the failure, use the
-\code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
-operation to disconnect the custom key store, correct the error, use the
-\code{\link[=kms_update_custom_key_store]{update_custom_key_store}} operation if
-necessary, and then use
-\code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} again.
-
-If you are having trouble connecting or disconnecting a custom key
-store, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting a Custom Key Store}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a custom
-key store in a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ConnectCustomKeyStore}
-(IAM policy)
-
-\strong{Related operations}
-\itemize{
-\item \code{\link[=kms_create_custom_key_store]{create_custom_key_store}}
-\item \code{\link[=kms_delete_custom_key_store]{delete_custom_key_store}}
-\item \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-\item \code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
-\item \code{\link[=kms_update_custom_key_store]{update_custom_key_store}}
+See \url{https://paws-r.github.io/docs/kms/connect_custom_key_store.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$connect_custom_key_store(
-  CustomKeyStoreId = "string"
-)
-}
-}
-
 \keyword{internal}

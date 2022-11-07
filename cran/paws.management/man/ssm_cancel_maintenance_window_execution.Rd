@@ -3,29 +3,16 @@
 \name{ssm_cancel_maintenance_window_execution}
 \alias{ssm_cancel_maintenance_window_execution}
 \title{Stops a maintenance window execution that is already in progress and
-cancels any tasks in the window that have not already starting running}
+cancels any tasks in the window that haven't already starting running}
 \usage{
 ssm_cancel_maintenance_window_execution(WindowExecutionId)
 }
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the maintenance window execution to stop.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowExecutionId = "string"
-)
-}
-}
 \description{
-Stops a maintenance window execution that is already in progress and
-cancels any tasks in the window that have not already starting running.
-(Tasks already in progress will continue to completion.)
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_maintenance_window_execution(
-  WindowExecutionId = "string"
-)
-}
-}
+Stops a maintenance window execution that is already in progress and cancels any tasks in the window that haven't already starting running. Tasks already in progress will continue to completion.
 
+See \url{https://paws-r.github.io/docs/ssm/cancel_maintenance_window_execution.html} for full documentation.
+}
 \keyword{internal}

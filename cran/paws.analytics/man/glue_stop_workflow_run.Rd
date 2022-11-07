@@ -11,18 +11,9 @@ glue_stop_workflow_run(Name, RunId)
 
 \item{RunId}{[required] The ID of the workflow run to stop.}
 }
-\value{
-An empty list.
-}
 \description{
 Stops the execution of the specified workflow run.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_workflow_run(
-  Name = "string",
-  RunId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/stop_workflow_run.html} for full documentation.
+}
 \keyword{internal}

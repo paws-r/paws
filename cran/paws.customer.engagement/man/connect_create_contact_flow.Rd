@@ -4,8 +4,14 @@
 \alias{connect_create_contact_flow}
 \title{Creates a contact flow for the specified Amazon Connect instance}
 \usage{
-connect_create_contact_flow(InstanceId, Name, Type, Description,
-  Content, Tags)
+connect_create_contact_flow(
+  InstanceId,
+  Name,
+  Type,
+  Description = NULL,
+  Content,
+  Tags = NULL
+)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
@@ -22,30 +28,9 @@ in the \emph{Amazon Connect Administrator Guide}.}
 
 \item{Tags}{One or more tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContactFlowId = "string",
-  ContactFlowArn = "string"
-)
-}
-}
 \description{
 Creates a contact flow for the specified Amazon Connect instance.
 
-You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
+See \url{https://paws-r.github.io/docs/connect/create_contact_flow.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_contact_flow(
-  InstanceId = "string",
-  Name = "string",
-  Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER",
-  Description = "string",
-  Content = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

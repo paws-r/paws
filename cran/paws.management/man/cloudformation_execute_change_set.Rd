@@ -5,52 +5,37 @@
 \title{Updates a stack using the input information that was provided when the
 specified change set was created}
 \usage{
-cloudformation_execute_change_set(ChangeSetName, StackName,
-  ClientRequestToken)
+cloudformation_execute_change_set(
+  ChangeSetName,
+  StackName = NULL,
+  ClientRequestToken = NULL,
+  DisableRollback = NULL
+)
 }
 \arguments{
-\item{ChangeSetName}{[required] The name or ARN of the change set that you want use to update the
-specified stack.}
+\item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want
+use to update the specified stack.}
 
-\item{StackName}{If you specified the name of a change set, specify the stack name or ID
-(ARN) that is associated with the change set you want to execute.}
+\item{StackName}{If you specified the name of a change set, specify the stack name or
+Amazon Resource Name (ARN) that's associated with the change set you
+want to execute.}
 
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_execute_change_set]{execute_change_set}} request.
-Specify this token if you plan to retry requests so that AWS
-CloudFormation knows that you're not attempting to execute a change set
-to update a stack with the same name. You might retry
+Specify this token if you plan to retry requests so that CloudFormation
+knows that you're not attempting to execute a change set to update a
+stack with the same name. You might retry
 \code{\link[=cloudformation_execute_change_set]{execute_change_set}} requests to
-ensure that AWS CloudFormation successfully received them.}
-}
-\value{
-An empty list.
+ensure that CloudFormation successfully received them.}
+
+\item{DisableRollback}{Preserves the state of previously provisioned resources when an
+operation fails.
+
+Default: \code{True}}
 }
 \description{
-Updates a stack using the input information that was provided when the
-specified change set was created. After the call successfully completes,
-AWS CloudFormation starts updating the stack. Use the
-\code{\link[=cloudformation_describe_stacks]{describe_stacks}} action to view the
-status of the update.
+Updates a stack using the input information that was provided when the specified change set was created. After the call successfully completes, CloudFormation starts updating the stack. Use the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} action to view the status of the update.
 
-When you execute a change set, AWS CloudFormation deletes all other
-change sets associated with the stack because they aren't valid for the
-updated stack.
-
-If a stack policy is associated with the stack, AWS CloudFormation
-enforces the policy during the update. You can't specify a temporary
-stack policy that overrides the current policy.
-
-To create a change set for the entire stack hierachy,
-\code{IncludeNestedStacks} must have been set to \code{True}.
+See \url{https://paws-r.github.io/docs/cloudformation/execute_change_set.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$execute_change_set(
-  ChangeSetName = "string",
-  StackName = "string",
-  ClientRequestToken = "string"
-)
-}
-}
-
 \keyword{internal}

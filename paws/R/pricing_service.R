@@ -5,18 +5,18 @@ NULL
 #' AWS Price List Service
 #'
 #' @description
-#' AWS Price List Service API (AWS Price List Service) is a centralized and
-#' convenient way to programmatically query Amazon Web Services for
-#' services, products, and pricing information. The AWS Price List Service
-#' uses standardized product attributes such as `Location`,
-#' `Storage Class`, and `Operating System`, and provides prices at the SKU
-#' level. You can use the AWS Price List Service to build cost control and
-#' scenario planning tools, reconcile billing data, forecast future spend
-#' for budgeting purposes, and provide cost benefit analysis that compare
-#' your internal workloads with AWS.
+#' Amazon Web Services Price List API is a centralized and convenient way
+#' to programmatically query Amazon Web Services for services, products,
+#' and pricing information. The Amazon Web Services Price List uses
+#' standardized product attributes such as `Location`, `Storage Class`, and
+#' `Operating System`, and provides prices at the SKU level. You can use
+#' the Amazon Web Services Price List to build cost control and scenario
+#' planning tools, reconcile billing data, forecast future spend for
+#' budgeting purposes, and provide cost benefit analysis that compare your
+#' internal workloads with Amazon Web Services.
 #' 
 #' Use `GetServices` without a service code to retrieve the service codes
-#' for all AWS services, then `GetServices` with a service code to retreive
+#' for all AWS services, then `GetServices` with a service code to retrieve
 #' the attribute names for that service. After you have the service code
 #' and attribute names, you can use
 #' [`get_attribute_values`][pricing_get_attribute_values] to see what
@@ -28,7 +28,8 @@ NULL
 #' 
 #' Service Endpoint
 #' 
-#' AWS Price List Service API provides the following two endpoints:
+#' Amazon Web Services Price List service API provides the following two
+#' endpoints:
 #' 
 #' -   https://api.pricing.us-east-1.amazonaws.com
 #' 
@@ -37,6 +38,18 @@ NULL
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -48,10 +61,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -59,6 +76,7 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- pricing()
+#' # Retrieves the service for the given Service Code.
 #' svc$describe_services(
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L,

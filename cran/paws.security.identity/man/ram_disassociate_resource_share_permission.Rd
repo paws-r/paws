@@ -2,36 +2,35 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_disassociate_resource_share_permission}
 \alias{ram_disassociate_resource_share_permission}
-\title{Disassociates an AWS RAM permission from a resource share}
+\title{Disassociates an RAM permission from a resource share}
 \usage{
-ram_disassociate_resource_share_permission(resourceShareArn,
-  permissionArn, clientToken)
+ram_disassociate_resource_share_permission(
+  resourceShareArn,
+  permissionArn,
+  clientToken = NULL
+)
 }
 \arguments{
-\item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
+\item{resourceShareArn}{[required] The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the resource share from which you want to disassociate a permission.}
 
-\item{permissionArn}{[required] The ARN of the permission to disassociate from the resource share.}
+\item{permissionArn}{[required] The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the permission to disassociate from the resource share. Changes to
+permissions take effect immediately.}
 
-\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  returnValue = TRUE|FALSE,
-  clientToken = "string"
-)
-}
+\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
+the idempotency of the request. This lets you safely retry the request
+without accidentally performing the same operation a second time.
+Passing the same value to a later call to an operation requires that you
+also pass the same value for all other parameters. We recommend that you
+use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
+
+If you don't provide this value, then Amazon Web Services generates a
+random one for you.}
 }
 \description{
-Disassociates an AWS RAM permission from a resource share.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_resource_share_permission(
-  resourceShareArn = "string",
-  permissionArn = "string",
-  clientToken = "string"
-)
-}
-}
+Disassociates an RAM permission from a resource share. Permission changes take effect immediately. You can remove a RAM permission from a resource share only if there are currently no resources of the relevant resource type currently attached to the resource share.
 
+See \url{https://paws-r.github.io/docs/ram/disassociate_resource_share_permission.html} for full documentation.
+}
 \keyword{internal}

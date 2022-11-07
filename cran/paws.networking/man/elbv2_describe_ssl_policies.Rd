@@ -5,7 +5,12 @@
 \title{Describes the specified policies or all policies used for SSL
 negotiation}
 \usage{
-elbv2_describe_ssl_policies(Names, Marker, PageSize)
+elbv2_describe_ssl_policies(
+  Names = NULL,
+  Marker = NULL,
+  PageSize = NULL,
+  LoadBalancerType = NULL
+)
 }
 \arguments{
 \item{Names}{The names of the policies.}
@@ -14,55 +19,13 @@ elbv2_describe_ssl_policies(Names, Marker, PageSize)
 previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SslPolicies = list(
-    list(
-      SslProtocols = list(
-        "string"
-      ),
-      Ciphers = list(
-        list(
-          Name = "string",
-          Priority = 123
-        )
-      ),
-      Name = "string"
-    )
-  ),
-  NextMarker = "string"
-)
-}
+
+\item{LoadBalancerType}{The type of load balancer. The default lists the SSL policies for all
+load balancers.}
 }
 \description{
-Describes the specified policies or all policies used for SSL
-negotiation.
+Describes the specified policies or all policies used for SSL negotiation.
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security policies}
-in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies}{Security policies}
-in the \emph{Network Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_ssl_policies(
-  Names = list(
-    "string"
-  ),
-  Marker = "string",
-  PageSize = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the specified policy used for SSL negotiation.
-svc$describe_ssl_policies(
-  Names = list(
-    "ELBSecurityPolicy-2015-05"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/describe_ssl_policies.html} for full documentation.
 }
 \keyword{internal}

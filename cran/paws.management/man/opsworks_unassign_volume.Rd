@@ -9,23 +9,9 @@ opsworks_unassign_volume(VolumeId)
 \arguments{
 \item{VolumeId}{[required] The volume ID.}
 }
-\value{
-An empty list.
-}
 \description{
-Unassigns an assigned Amazon EBS volume. The volume remains registered
-with the stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
+Unassigns an assigned Amazon EBS volume. The volume remains registered with the stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/unassign_volume.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$unassign_volume(
-  VolumeId = "string"
-)
-}
-}
-
 \keyword{internal}

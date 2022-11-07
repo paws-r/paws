@@ -16,52 +16,9 @@ Resource Name (ARN).}
 \item a range, 5-8 : deletes versions 5, 6, 7, 8
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaVersionErrors = list(
-    list(
-      VersionNumber = 123,
-      ErrorDetails = list(
-        ErrorCode = "string",
-        ErrorMessage = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Remove versions from the specified schema. A version number or range may
-be supplied. If the compatibility mode forbids deleting of a version
-that is necessary, such as BACKWARDS_FULL, an error is returned.
-Calling the \code{GetSchemaVersions} API after this call will list the status
-of the deleted versions.
+Remove versions from the specified schema. A version number or range may be supplied. If the compatibility mode forbids deleting of a version that is necessary, such as BACKWARDS_FULL, an error is returned. Calling the \code{GetSchemaVersions} API after this call will list the status of the deleted versions.
 
-When the range of version numbers contain check pointed version, the API
-will return a 409 conflict and will not proceed with the deletion. You
-have to remove the checkpoint first using the \code{DeleteSchemaCheckpoint}
-API before using this API.
-
-You cannot use the
-\code{\link[=glue_delete_schema_versions]{delete_schema_versions}} API to delete
-the first schema version in the schema set. The first schema version can
-only be deleted by the \code{\link[=glue_delete_schema]{delete_schema}} API. This
-operation will also delete the attached \code{SchemaVersionMetadata} under
-the schema versions. Hard deletes will be enforced on the database.
-
-If the compatibility mode forbids deleting of a version that is
-necessary, such as BACKWARDS_FULL, an error is returned.
+See \url{https://paws-r.github.io/docs/glue/delete_schema_versions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_schema_versions(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  ),
-  Versions = "string"
-)
-}
-}
-
 \keyword{internal}

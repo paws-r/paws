@@ -5,58 +5,32 @@
 \title{Returns detailed information about command execution for an invocation
 or plugin}
 \usage{
-ssm_get_command_invocation(CommandId, InstanceId, PluginName)
+ssm_get_command_invocation(CommandId, InstanceId, PluginName = NULL)
 }
 \arguments{
 \item{CommandId}{[required] (Required) The parent command ID of the invocation plugin.}
 
-\item{InstanceId}{[required] (Required) The ID of the managed instance targeted by the command. A
-managed instance can be an EC2 instance or an instance in your hybrid
-environment that is configured for Systems Manager.}
+\item{InstanceId}{[required] (Required) The ID of the managed node targeted by the command. A
+\emph{managed node} can be an Amazon Elastic Compute Cloud (Amazon EC2)
+instance, edge device, and on-premises server or VM in your hybrid
+environment that is configured for Amazon Web Services Systems Manager.}
 
-\item{PluginName}{(Optional) The name of the plugin for which you want detailed results.
-If the document contains only one plugin, the name can be omitted and
-the details will be returned.
+\item{PluginName}{The name of the step for which you want detailed results. If the
+document contains only one step, you can omit the name and details for
+that step. If the document contains more than one step, you must specify
+the name of the step for which you want to view details. Be sure to
+specify the name of the step, not the name of a plugin like
+\code{aws:RunShellScript}.
 
-Plugin names are also referred to as step names in Systems Manager
-documents.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CommandId = "string",
-  InstanceId = "string",
-  Comment = "string",
-  DocumentName = "string",
-  DocumentVersion = "string",
-  PluginName = "string",
-  ResponseCode = 123,
-  ExecutionStartDateTime = "string",
-  ExecutionElapsedTime = "string",
-  ExecutionEndDateTime = "string",
-  Status = "Pending"|"InProgress"|"Delayed"|"Success"|"Cancelled"|"TimedOut"|"Failed"|"Cancelling",
-  StatusDetails = "string",
-  StandardOutputContent = "string",
-  StandardOutputUrl = "string",
-  StandardErrorContent = "string",
-  StandardErrorUrl = "string",
-  CloudWatchOutputConfig = list(
-    CloudWatchLogGroupName = "string",
-    CloudWatchOutputEnabled = TRUE|FALSE
-  )
-)
-}
+To find the \code{PluginName}, check the document content and find the name
+of the step you want details for. Alternatively, use
+\code{\link[=ssm_list_command_invocations]{list_command_invocations}} with the
+\code{CommandId} and \code{Details} parameters. The \code{PluginName} is the \code{Name}
+attribute of the \code{CommandPlugin} object in the \code{CommandPlugins} list.}
 }
 \description{
-Returns detailed information about command execution for an invocation
-or plugin.
-}
-\section{Request syntax}{
-\preformatted{svc$get_command_invocation(
-  CommandId = "string",
-  InstanceId = "string",
-  PluginName = "string"
-)
-}
-}
+Returns detailed information about command execution for an invocation or plugin.
 
+See \url{https://paws-r.github.io/docs/ssm/get_command_invocation.html} for full documentation.
+}
 \keyword{internal}

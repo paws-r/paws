@@ -2,48 +2,22 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_reset_user_password}
 \alias{directoryservice_reset_user_password}
-\title{Resets the password for any user in your AWS Managed Microsoft AD or
-Simple AD directory}
+\title{Resets the password for any user in your Managed Microsoft AD or Simple
+AD directory}
 \usage{
 directoryservice_reset_user_password(DirectoryId, UserName, NewPassword)
 }
 \arguments{
-\item{DirectoryId}{[required] Identifier of the AWS Managed Microsoft AD or Simple AD directory in
-which the user resides.}
+\item{DirectoryId}{[required] Identifier of the Managed Microsoft AD or Simple AD directory in which
+the user resides.}
 
 \item{UserName}{[required] The user name of the user whose password will be reset.}
 
 \item{NewPassword}{[required] The new password that will be reset.}
 }
-\value{
-An empty list.
-}
 \description{
-Resets the password for any user in your AWS Managed Microsoft AD or
-Simple AD directory.
+Resets the password for any user in your Managed Microsoft AD or Simple AD directory.
 
-You can reset the password for any user in your directory with the
-following exceptions:
-\itemize{
-\item For Simple AD, you cannot reset the password for any user that is a
-member of either the \strong{Domain Admins} or \strong{Enterprise Admins}
-group except for the administrator user.
-\item For AWS Managed Microsoft AD, you can only reset the password for a
-user that is in an OU based off of the NetBIOS name that you typed
-when you created your directory. For example, you cannot reset the
-password for a user in the \strong{AWS Reserved} OU. For more information
-about the OU structure for an AWS Managed Microsoft AD directory,
-see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html}{What Gets Created}
-in the \emph{AWS Directory Service Administration Guide}.
+See \url{https://paws-r.github.io/docs/directoryservice/reset_user_password.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$reset_user_password(
-  DirectoryId = "string",
-  UserName = "string",
-  NewPassword = "string"
-)
-}
-}
-
 \keyword{internal}

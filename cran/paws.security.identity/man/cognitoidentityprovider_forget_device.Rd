@@ -4,25 +4,17 @@
 \alias{cognitoidentityprovider_forget_device}
 \title{Forgets the specified device}
 \usage{
-cognitoidentityprovider_forget_device(AccessToken, DeviceKey)
+cognitoidentityprovider_forget_device(AccessToken = NULL, DeviceKey)
 }
 \arguments{
-\item{AccessToken}{The access token for the forgotten device request.}
+\item{AccessToken}{A valid access token that Amazon Cognito issued to the user whose
+registered device you want to forget.}
 
 \item{DeviceKey}{[required] The device key.}
 }
-\value{
-An empty list.
-}
 \description{
 Forgets the specified device.
-}
-\section{Request syntax}{
-\preformatted{svc$forget_device(
-  AccessToken = "string",
-  DeviceKey = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/forget_device.html} for full documentation.
+}
 \keyword{internal}

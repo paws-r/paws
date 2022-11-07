@@ -4,24 +4,31 @@
 \alias{cognitoidentityprovider_admin_initiate_auth}
 \title{Initiates the authentication flow, as an administrator}
 \usage{
-cognitoidentityprovider_admin_initiate_auth(UserPoolId, ClientId,
-  AuthFlow, AuthParameters, ClientMetadata, AnalyticsMetadata,
-  ContextData)
+cognitoidentityprovider_admin_initiate_auth(
+  UserPoolId,
+  ClientId,
+  AuthFlow,
+  AuthParameters = NULL,
+  ClientMetadata = NULL,
+  AnalyticsMetadata = NULL,
+  ContextData = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The ID of the Amazon Cognito user pool.}
 
 \item{ClientId}{[required] The app client ID.}
 
-\item{AuthFlow}{[required] The authentication flow for this call to execute. The API action will
-depend on this value. For example:
+\item{AuthFlow}{[required] The authentication flow for this call to run. The API action will depend
+on this value. For example:
 \itemize{
 \item \code{REFRESH_TOKEN_AUTH} will take in a valid refresh token and return
 new tokens.
 \item \code{USER_SRP_AUTH} will take in \code{USERNAME} and \code{SRP_A} and return the
-SRP variables to be used for next challenge execution.
-\item \code{USER_PASSWORD_AUTH} will take in \code{USERNAME} and \code{PASSWORD} and
-return the next challenge or tokens.
+Secure Remote Password (SRP) protocol variables to be used for next
+challenge execution.
+\item \code{ADMIN_USER_PASSWORD_AUTH} will take in \code{USERNAME} and \code{PASSWORD}
+and return the next challenge or tokens.
 }
 
 Valid values include:
@@ -35,19 +42,15 @@ refresh token.
 \item \code{ADMIN_NO_SRP_AUTH}: Non-SRP authentication flow; you can pass in
 the USERNAME and PASSWORD directly if the flow is enabled for
 calling the app client.
-\item \code{USER_PASSWORD_AUTH}: Non-SRP authentication flow; USERNAME and
-PASSWORD are passed directly. If a user migration Lambda trigger is
-set, this flow will invoke the user migration Lambda if the USERNAME
-is not found in the user pool.
 \item \code{ADMIN_USER_PASSWORD_AUTH}: Admin-based user password
 authentication. This replaces the \code{ADMIN_NO_SRP_AUTH} authentication
-flow. In this flow, Cognito receives the password in the request
-instead of using the SRP process to verify passwords.
+flow. In this flow, Amazon Cognito receives the password in the
+request instead of using the SRP process to verify passwords.
 }}
 
 \item{AuthParameters}{The authentication parameters. These are inputs corresponding to the
-\code{AuthFlow} that you are invoking. The required values depend on the
-value of \code{AuthFlow}:
+\code{AuthFlow} that you're invoking. The required values depend on the value
+of \code{AuthFlow}:
 \itemize{
 \item For \code{USER_SRP_AUTH}: \code{USERNAME} (required), \code{SRP_A} (required),
 \code{SECRET_HASH} (required if the app client is configured with a
@@ -67,11 +70,11 @@ authentication flow with password verification, include
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for
 certain custom workflows that this action triggers.
 
-You create custom workflows by assigning AWS Lambda functions to user
-pool triggers. When you use the AdminInitiateAuth API action, Amazon
-Cognito invokes the AWS Lambda functions that are specified for various
-triggers. The ClientMetadata value is passed as input to the functions
-for only the following triggers:
+You create custom workflows by assigning Lambda functions to user pool
+triggers. When you use the AdminInitiateAuth API action, Amazon Cognito
+invokes the Lambda functions that are specified for various triggers.
+The ClientMetadata value is passed as input to the functions for only
+the following triggers:
 \itemize{
 \item Pre signup
 \item Pre authentication
@@ -82,12 +85,12 @@ When Amazon Cognito invokes the functions for these triggers, it passes
 a JSON payload, which the function receives as input. This payload
 contains a \code{validationData} attribute, which provides the data that you
 assigned to the ClientMetadata parameter in your AdminInitiateAuth
-request. In your function code in AWS Lambda, you can process the
+request. In your function code in Lambda, you can process the
 \code{validationData} value to enhance your workflow for your specific needs.
 
 When you use the AdminInitiateAuth API action, Amazon Cognito also
-invokes the functions for the following triggers, but it does not
-provide the ClientMetadata value as input:
+invokes the functions for the following triggers, but it doesn't provide
+the ClientMetadata value as input:
 \itemize{
 \item Post authentication
 \item Custom message
@@ -97,84 +100,33 @@ provide the ClientMetadata value as input:
 \item Verify auth challenge
 }
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-Take the following limitations into consideration when you use the
-ClientMetadata parameter:
+When you use the ClientMetadata parameter, remember that Amazon Cognito
+won't do the following:
 \itemize{
-\item Amazon Cognito does not store the ClientMetadata value. This data is
-available only to AWS Lambda triggers that are assigned to a user
-pool to support custom workflows. If your user pool configuration
-does not include triggers, the ClientMetadata parameter serves no
-purpose.
-\item Amazon Cognito does not validate the ClientMetadata value.
-\item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don't use it to provide sensitive information.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
+\item Validate the ClientMetadata value.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
 
 \item{AnalyticsMetadata}{The analytics metadata for collecting Amazon Pinpoint metrics for
 \code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}
 calls.}
 
-\item{ContextData}{Contextual data such as the user's device fingerprint, IP address, or
-location used for evaluating the risk of an unexpected event by Amazon
-Cognito advanced security.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
-  Session = "string",
-  ChallengeParameters = list(
-    "string"
-  ),
-  AuthenticationResult = list(
-    AccessToken = "string",
-    ExpiresIn = 123,
-    TokenType = "string",
-    RefreshToken = "string",
-    IdToken = "string",
-    NewDeviceMetadata = list(
-      DeviceKey = "string",
-      DeviceGroupKey = "string"
-    )
-  )
-)
-}
+\item{ContextData}{Contextual data about your user session, such as the device fingerprint,
+IP address, or location. Amazon Cognito advanced security evaluates the
+risk of an authentication event based on the context that your app
+generates and passes to Amazon Cognito when it makes API requests.}
 }
 \description{
 Initiates the authentication flow, as an administrator.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_initiate_auth.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_initiate_auth(
-  UserPoolId = "string",
-  ClientId = "string",
-  AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH"|"ADMIN_USER_PASSWORD_AUTH",
-  AuthParameters = list(
-    "string"
-  ),
-  ClientMetadata = list(
-    "string"
-  ),
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  ),
-  ContextData = list(
-    IpAddress = "string",
-    ServerName = "string",
-    ServerPath = "string",
-    HttpHeaders = list(
-      list(
-        headerName = "string",
-        headerValue = "string"
-      )
-    ),
-    EncodedData = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

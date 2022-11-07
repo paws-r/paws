@@ -5,8 +5,15 @@
 \title{You can modify several parameters of an existing EBS volume, including
 volume size, volume type, and IOPS capacity}
 \usage{
-ec2_modify_volume(DryRun, VolumeId, Size, VolumeType, Iops, Throughput,
-  MultiAttachEnabled)
+ec2_modify_volume(
+  DryRun = NULL,
+  VolumeId,
+  Size = NULL,
+  VolumeType = NULL,
+  Iops = NULL,
+  Throughput = NULL,
+  MultiAttachEnabled = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -27,13 +34,13 @@ The following are the supported volumes sizes for each volume type:
 \item \code{standard}: 1-1,024
 }
 
-Default: If no size is specified, the existing size is retained.}
+Default: The existing size is retained.}
 
 \item{VolumeType}{The target EBS volume type of the volume. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html}{Amazon EBS volume types}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-Default: If no type is specified, the existing type is retained.}
+Default: The existing type is retained.}
 
 \item{Iops}{The target IOPS rate of the volume. This parameter is valid only for
 \code{gp3}, \code{io1}, and \code{io2} volumes.
@@ -45,13 +52,15 @@ The following are the supported values for each volume type:
 \item \code{io2}: 100-64,000 IOPS
 }
 
-Default: If no IOPS value is specified, the existing value is retained.}
+Default: The existing value is retained if you keep the same volume
+type. If you change the volume type to \code{io1}, \code{io2}, or \code{gp3}, the
+default is 3,000.}
 
 \item{Throughput}{The target throughput of the volume, in MiB/s. This parameter is valid
 only for \code{gp3} volumes. The maximum value is 1,000.
 
-Default: If no throughput value is specified, the existing value is
-retained.
+Default: The existing value is retained if the source and target volume
+type is \code{gp3}. Otherwise, the default value is 125.
 
 Valid Range: Minimum value of 125. Maximum value of 1000.}
 
@@ -61,77 +70,9 @@ in the same Availability Zone. This parameter is supported with \code{io1}
 and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VolumeModification = list(
-    VolumeId = "string",
-    ModificationState = "modifying"|"optimizing"|"completed"|"failed",
-    StatusMessage = "string",
-    TargetSize = 123,
-    TargetIops = 123,
-    TargetVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-    TargetThroughput = 123,
-    TargetMultiAttachEnabled = TRUE|FALSE,
-    OriginalSize = 123,
-    OriginalIops = 123,
-    OriginalVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-    OriginalThroughput = 123,
-    OriginalMultiAttachEnabled = TRUE|FALSE,
-    Progress = 123,
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-You can modify several parameters of an existing EBS volume, including
-volume size, volume type, and IOPS capacity. If your EBS volume is
-attached to a current-generation EC2 instance type, you might be able to
-apply these changes without stopping the instance or detaching the
-volume from it. For more information about modifying an EBS volume
-running Linux, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Modifying the size, IOPS, or type of an EBS volume on Linux}.
-For more information about modifying an EBS volume running Windows, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html}{Modifying the size, IOPS, or type of an EBS volume on Windows}.
+You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you might be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes} (Linux instances) or \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes} (Windows instances).
 
-When you complete a resize operation on your volume, you need to extend
-the volume's file-system size to take advantage of the new storage
-capacity. For information about extending a Linux file system, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html#recognize-expanded-volume-linux}{Extending a Linux file system}.
-For information about extending a Windows file system, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html#recognize-expanded-volume-windows}{Extending a Windows file system}.
-
-You can use CloudWatch Events to check the status of a modification to
-an EBS volume. For information about CloudWatch Events, see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/}{Amazon CloudWatch Events User Guide}. You
-can also track the status of a modification using
-\code{\link[=ec2_describe_volumes_modifications]{describe_volumes_modifications}}.
-For information about tracking status changes using either method, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html#monitoring_mods}{Monitoring volume modifications}.
-
-With previous-generation instance types, resizing an EBS volume might
-require detaching and reattaching the volume or stopping and restarting
-the instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes}
-(Linux) or \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes}
-(Windows).
-
-If you reach the maximum volume modification rate per volume limit, you
-will need to wait at least six hours before applying further
-modifications to the affected EBS volume.
+See \url{https://paws-r.github.io/docs/ec2/modify_volume.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_volume(
-  DryRun = TRUE|FALSE,
-  VolumeId = "string",
-  Size = 123,
-  VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-  Iops = 123,
-  Throughput = 123,
-  MultiAttachEnabled = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

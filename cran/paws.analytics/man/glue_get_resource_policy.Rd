@@ -4,34 +4,17 @@
 \alias{glue_get_resource_policy}
 \title{Retrieves a specified resource policy}
 \usage{
-glue_get_resource_policy(ResourceArn)
+glue_get_resource_policy(ResourceArn = NULL)
 }
 \arguments{
-\item{ResourceArn}{The ARN of the AWS Glue resource for the resource policy to be
-retrieved. For more information about AWS Glue resource ARNs, see the
-\href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id}{AWS Glue ARN string pattern}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyInJson = "string",
-  PolicyHash = "string",
-  CreateTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  UpdateTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+\item{ResourceArn}{The ARN of the Glue resource for which to retrieve the resource policy.
+If not supplied, the Data Catalog resource policy is returned. Use
+\code{\link[=glue_get_resource_policies]{get_resource_policies}} to view all
+existing resource policies. For more information see \href{https://docs.aws.amazon.com/glue/latest/dg/glue-specifying-resource-arns.html}{Specifying Glue Resource ARNs}.}
 }
 \description{
 Retrieves a specified resource policy.
-}
-\section{Request syntax}{
-\preformatted{svc$get_resource_policy(
-  ResourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_resource_policy.html} for full documentation.
+}
 \keyword{internal}

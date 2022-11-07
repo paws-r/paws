@@ -4,28 +4,19 @@
 \alias{connect_update_user_hierarchy}
 \title{Assigns the specified hierarchy group to the specified user}
 \usage{
-connect_update_user_hierarchy(HierarchyGroupId, UserId, InstanceId)
+connect_update_user_hierarchy(HierarchyGroupId = NULL, UserId, InstanceId)
 }
 \arguments{
 \item{HierarchyGroupId}{The identifier of the hierarchy group.}
 
 \item{UserId}{[required] The identifier of the user account.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-An empty list.
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
 Assigns the specified hierarchy group to the specified user.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user_hierarchy(
-  HierarchyGroupId = "string",
-  UserId = "string",
-  InstanceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/update_user_hierarchy.html} for full documentation.
+}
 \keyword{internal}

@@ -26,74 +26,9 @@ You can only insert \code{REGULAR} rules into a rule group.
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Inserts or deletes ActivatedRule objects in a \code{RuleGroup}.
-
-You can only insert \code{REGULAR} rules into a rule group.
-
-You can have a maximum of ten rules per rule group.
-
-To create and configure a \code{RuleGroup}, perform the following steps:
-\enumerate{
-\item Create and update the \code{Rules} that you want to include in the
-\code{RuleGroup}. See \code{\link[=wafregional_create_rule]{create_rule}}.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=wafregional_update_rule_group]{update_rule_group}} request.
-\item Submit an \code{\link[=wafregional_update_rule_group]{update_rule_group}}
-request to add \code{Rules} to the \code{RuleGroup}.
-\item Create and update a \code{WebACL} that contains the \code{RuleGroup}. See
-\code{\link[=wafregional_create_web_acl]{create_web_acl}}.
+See \url{https://paws-r.github.io/docs/wafregional/update_rule_group.html} for full documentation.
 }
-
-If you want to replace one \code{Rule} with another, you delete the existing
-one and add the new one.
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_rule_group(
-  RuleGroupId = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      ActivatedRule = list(
-        Priority = 123,
-        RuleId = "string",
-        Action = list(
-          Type = "BLOCK"|"ALLOW"|"COUNT"
-        ),
-        OverrideAction = list(
-          Type = "NONE"|"COUNT"
-        ),
-        Type = "REGULAR"|"RATE_BASED"|"GROUP",
-        ExcludedRules = list(
-          list(
-            RuleId = "string"
-          )
-        )
-      )
-    )
-  ),
-  ChangeToken = "string"
-)
-}
-}
-
 \keyword{internal}

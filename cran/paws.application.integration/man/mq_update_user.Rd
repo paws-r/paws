@@ -4,7 +4,13 @@
 \alias{mq_update_user}
 \title{Updates the information for an ActiveMQ user}
 \usage{
-mq_update_user(BrokerId, ConsoleAccess, Groups, Password, Username)
+mq_update_user(
+  BrokerId,
+  ConsoleAccess = NULL,
+  Groups = NULL,
+  Password = NULL,
+  Username
+)
 }
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
@@ -18,29 +24,15 @@ long.}
 
 \item{Password}{The password of the user. This value must be at least 12 characters
 long, must contain at least 4 unique characters, and must not contain
-commas.}
+commas, colons, or equal signs (,:=).}
 
-\item{Username}{[required] Required. The username of the ActiveMQ user. This value can contain only
+\item{Username}{[required] The username of the ActiveMQ user. This value can contain only
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 2-100 characters long.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the information for an ActiveMQ user.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user(
-  BrokerId = "string",
-  ConsoleAccess = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  Password = "string",
-  Username = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/update_user.html} for full documentation.
+}
 \keyword{internal}

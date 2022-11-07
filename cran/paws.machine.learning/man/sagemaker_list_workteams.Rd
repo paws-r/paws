@@ -4,8 +4,13 @@
 \alias{sagemaker_list_workteams}
 \title{Gets a list of private work teams that you have defined in a region}
 \usage{
-sagemaker_list_workteams(SortBy, SortOrder, NameContains, NextToken,
-  MaxResults)
+sagemaker_list_workteams(
+  SortBy = NULL,
+  SortOrder = NULL,
+  NameContains = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SortBy}{The field to sort results by. The default is \code{CreationTime}.}
@@ -22,61 +27,9 @@ jobs, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of work teams to return in each page of the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Workteams = list(
-    list(
-      WorkteamName = "string",
-      MemberDefinitions = list(
-        list(
-          CognitoMemberDefinition = list(
-            UserPool = "string",
-            UserGroup = "string",
-            ClientId = "string"
-          ),
-          OidcMemberDefinition = list(
-            Groups = list(
-              "string"
-            )
-          )
-        )
-      ),
-      WorkteamArn = "string",
-      WorkforceArn = "string",
-      ProductListingIds = list(
-        "string"
-      ),
-      Description = "string",
-      SubDomain = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      NotificationConfiguration = list(
-        NotificationTopicArn = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets a list of private work teams that you have defined in a region. The
-list may be empty if no work team satisfies the filter specified in the
-\code{NameContains} parameter.
-}
-\section{Request syntax}{
-\preformatted{svc$list_workteams(
-  SortBy = "Name"|"CreateDate",
-  SortOrder = "Ascending"|"Descending",
-  NameContains = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Gets a list of private work teams that you have defined in a region. The list may be empty if no work team satisfies the filter specified in the \code{NameContains} parameter.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_workteams.html} for full documentation.
+}
 \keyword{internal}

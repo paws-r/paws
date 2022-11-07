@@ -10,14 +10,17 @@ NULL
 #'
 #' @usage
 #' healthlake_create_fhir_datastore(DatastoreName, DatastoreTypeVersion,
-#'   PreloadDataConfig, ClientToken)
+#'   SseConfiguration, PreloadDataConfig, ClientToken, Tags)
 #'
 #' @param DatastoreName The user generated name for the Data Store.
 #' @param DatastoreTypeVersion &#91;required&#93; The FHIR version of the Data Store. The only supported version is R4.
+#' @param SseConfiguration The server-side encryption key configuration for a customer provided
+#' encryption key specified for creating a Data Store.
 #' @param PreloadDataConfig Optional parameter to preload data upon creation of the Data Store.
 #' Currently, the only supported preloaded data is synthetic data generated
 #' from Synthea.
 #' @param ClientToken Optional user provided token used for ensuring idempotency.
+#' @param Tags Resource tags that are applied to a Data Store when it is created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -35,24 +38,36 @@ NULL
 #' svc$create_fhir_datastore(
 #'   DatastoreName = "string",
 #'   DatastoreTypeVersion = "R4",
+#'   SseConfiguration = list(
+#'     KmsEncryptionConfig = list(
+#'       CmkType = "CUSTOMER_MANAGED_KMS_KEY"|"AWS_OWNED_KMS_KEY",
+#'       KmsKeyId = "string"
+#'     )
+#'   ),
 #'   PreloadDataConfig = list(
 #'     PreloadDataType = "SYNTHEA"
 #'   ),
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname healthlake_create_fhir_datastore
-healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, PreloadDataConfig = NULL, ClientToken = NULL) {
+healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFHIRDatastore",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken)
+  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags)
   output <- .healthlake$create_fhir_datastore_output()
   config <- get_config()
   svc <- .healthlake$service(config)
@@ -139,6 +154,12 @@ healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
 #'     ),
 #'     DatastoreTypeVersion = "R4",
 #'     DatastoreEndpoint = "string",
+#'     SseConfiguration = list(
+#'       KmsEncryptionConfig = list(
+#'         CmkType = "CUSTOMER_MANAGED_KMS_KEY"|"AWS_OWNED_KMS_KEY",
+#'         KmsKeyId = "string"
+#'       )
+#'     ),
 #'     PreloadDataConfig = list(
 #'       PreloadDataType = "SYNTHEA"
 #'     )
@@ -194,7 +215,7 @@ healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
 #'   ExportJobProperties = list(
 #'     JobId = "string",
 #'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
 #'     SubmitTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -203,7 +224,10 @@ healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
 #'     ),
 #'     DatastoreId = "string",
 #'     OutputDataConfig = list(
-#'       S3Uri = "string"
+#'       S3Configuration = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       )
 #'     ),
 #'     DataAccessRoleArn = "string",
 #'     Message = "string"
@@ -259,7 +283,7 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #'   ImportJobProperties = list(
 #'     JobId = "string",
 #'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
 #'     SubmitTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -269,6 +293,12 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #'     DatastoreId = "string",
 #'     InputDataConfig = list(
 #'       S3Uri = "string"
+#'     ),
+#'     JobOutputDataConfig = list(
+#'       S3Configuration = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       )
 #'     ),
 #'     DataAccessRoleArn = "string",
 #'     Message = "string"
@@ -334,6 +364,12 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #'       ),
 #'       DatastoreTypeVersion = "R4",
 #'       DatastoreEndpoint = "string",
+#'       SseConfiguration = list(
+#'         KmsEncryptionConfig = list(
+#'           CmkType = "CUSTOMER_MANAGED_KMS_KEY"|"AWS_OWNED_KMS_KEY",
+#'           KmsKeyId = "string"
+#'         )
+#'       ),
 #'       PreloadDataConfig = list(
 #'         PreloadDataType = "SYNTHEA"
 #'       )
@@ -381,6 +417,244 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 }
 .healthlake$operations$list_fhir_datastores <- healthlake_list_fhir_datastores
 
+#' Lists all FHIR export jobs associated with an account and their statuses
+#'
+#' @description
+#' Lists all FHIR export jobs associated with an account and their
+#' statuses.
+#'
+#' @usage
+#' healthlake_list_fhir_export_jobs(DatastoreId, NextToken, MaxResults,
+#'   JobName, JobStatus, SubmittedBefore, SubmittedAfter)
+#'
+#' @param DatastoreId &#91;required&#93; This parameter limits the response to the export job with the specified
+#' Data Store ID.
+#' @param NextToken A pagination token used to identify the next page of results to return
+#' for a ListFHIRExportJobs query.
+#' @param MaxResults This parameter limits the number of results returned for a
+#' ListFHIRExportJobs to a maximum quantity specified by the user.
+#' @param JobName This parameter limits the response to the export job with the specified
+#' job name.
+#' @param JobStatus This parameter limits the response to the export jobs with the specified
+#' job status.
+#' @param SubmittedBefore This parameter limits the response to FHIR export jobs submitted before
+#' a user specified date.
+#' @param SubmittedAfter This parameter limits the response to FHIR export jobs submitted after a
+#' user specified date.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DatastoreId = "string",
+#'       OutputDataConfig = list(
+#'         S3Configuration = list(
+#'           S3Uri = "string",
+#'           KmsKeyId = "string"
+#'         )
+#'       ),
+#'       DataAccessRoleArn = "string",
+#'       Message = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_fhir_export_jobs(
+#'   DatastoreId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   JobName = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'   SubmittedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SubmittedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_list_fhir_export_jobs
+healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxResults = NULL, JobName = NULL, JobStatus = NULL, SubmittedBefore = NULL, SubmittedAfter = NULL) {
+  op <- new_operation(
+    name = "ListFHIRExportJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .healthlake$list_fhir_export_jobs_input(DatastoreId = DatastoreId, NextToken = NextToken, MaxResults = MaxResults, JobName = JobName, JobStatus = JobStatus, SubmittedBefore = SubmittedBefore, SubmittedAfter = SubmittedAfter)
+  output <- .healthlake$list_fhir_export_jobs_output()
+  config <- get_config()
+  svc <- .healthlake$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$list_fhir_export_jobs <- healthlake_list_fhir_export_jobs
+
+#' Lists all FHIR import jobs associated with an account and their statuses
+#'
+#' @description
+#' Lists all FHIR import jobs associated with an account and their
+#' statuses.
+#'
+#' @usage
+#' healthlake_list_fhir_import_jobs(DatastoreId, NextToken, MaxResults,
+#'   JobName, JobStatus, SubmittedBefore, SubmittedAfter)
+#'
+#' @param DatastoreId &#91;required&#93; This parameter limits the response to the import job with the specified
+#' Data Store ID.
+#' @param NextToken A pagination token used to identify the next page of results to return
+#' for a ListFHIRImportJobs query.
+#' @param MaxResults This parameter limits the number of results returned for a
+#' ListFHIRImportJobs to a maximum quantity specified by the user.
+#' @param JobName This parameter limits the response to the import job with the specified
+#' job name.
+#' @param JobStatus This parameter limits the response to the import job with the specified
+#' job status.
+#' @param SubmittedBefore This parameter limits the response to FHIR import jobs submitted before
+#' a user specified date.
+#' @param SubmittedAfter This parameter limits the response to FHIR import jobs submitted after a
+#' user specified date.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImportJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DatastoreId = "string",
+#'       InputDataConfig = list(
+#'         S3Uri = "string"
+#'       ),
+#'       JobOutputDataConfig = list(
+#'         S3Configuration = list(
+#'           S3Uri = "string",
+#'           KmsKeyId = "string"
+#'         )
+#'       ),
+#'       DataAccessRoleArn = "string",
+#'       Message = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_fhir_import_jobs(
+#'   DatastoreId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   JobName = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'   SubmittedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SubmittedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_list_fhir_import_jobs
+healthlake_list_fhir_import_jobs <- function(DatastoreId, NextToken = NULL, MaxResults = NULL, JobName = NULL, JobStatus = NULL, SubmittedBefore = NULL, SubmittedAfter = NULL) {
+  op <- new_operation(
+    name = "ListFHIRImportJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .healthlake$list_fhir_import_jobs_input(DatastoreId = DatastoreId, NextToken = NextToken, MaxResults = MaxResults, JobName = JobName, JobStatus = JobStatus, SubmittedBefore = SubmittedBefore, SubmittedAfter = SubmittedAfter)
+  output <- .healthlake$list_fhir_import_jobs_output()
+  config <- get_config()
+  svc <- .healthlake$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$list_fhir_import_jobs <- healthlake_list_fhir_import_jobs
+
+#' Returns a list of all existing tags associated with a Data Store
+#'
+#' @description
+#' Returns a list of all existing tags associated with a Data Store.
+#'
+#' @usage
+#' healthlake_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name(ARN) of the Data Store for which tags are being
+#' added.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_list_tags_for_resource
+healthlake_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .healthlake$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .healthlake$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .healthlake$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$list_tags_for_resource <- healthlake_list_tags_for_resource
+
 #' Begins a FHIR export job
 #'
 #' @description
@@ -403,7 +677,7 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 #' ```
 #' list(
 #'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
 #'   DatastoreId = "string"
 #' )
 #' ```
@@ -413,7 +687,10 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 #' svc$start_fhir_export_job(
 #'   JobName = "string",
 #'   OutputDataConfig = list(
-#'     S3Uri = "string"
+#'     S3Configuration = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     )
 #'   ),
 #'   DatastoreId = "string",
 #'   DataAccessRoleArn = "string",
@@ -447,12 +724,13 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' Begins a FHIR Import job.
 #'
 #' @usage
-#' healthlake_start_fhir_import_job(JobName, InputDataConfig, DatastoreId,
-#'   DataAccessRoleArn, ClientToken)
+#' healthlake_start_fhir_import_job(JobName, InputDataConfig,
+#'   JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken)
 #'
 #' @param JobName The name of the FHIR Import job in the StartFHIRImport job request.
 #' @param InputDataConfig &#91;required&#93; The input properties of the FHIR Import job in the StartFHIRImport job
 #' request.
+#' @param JobOutputDataConfig &#91;required&#93; 
 #' @param DatastoreId &#91;required&#93; The AWS-generated Data Store ID.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) that gives Amazon HealthLake access
 #' permission.
@@ -463,7 +741,7 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' ```
 #' list(
 #'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
 #'   DatastoreId = "string"
 #' )
 #' ```
@@ -475,6 +753,12 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #'   InputDataConfig = list(
 #'     S3Uri = "string"
 #'   ),
+#'   JobOutputDataConfig = list(
+#'     S3Configuration = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     )
+#'   ),
 #'   DatastoreId = "string",
 #'   DataAccessRoleArn = "string",
 #'   ClientToken = "string"
@@ -484,14 +768,14 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @keywords internal
 #'
 #' @rdname healthlake_start_fhir_import_job
-healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken) {
+healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken) {
   op <- new_operation(
     name = "StartFHIRImportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .healthlake$start_fhir_import_job_input(JobName = JobName, InputDataConfig = InputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken)
+  input <- .healthlake$start_fhir_import_job_input(JobName = JobName, InputDataConfig = InputDataConfig, JobOutputDataConfig = JobOutputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken)
   output <- .healthlake$start_fhir_import_job_output()
   config <- get_config()
   svc <- .healthlake$service(config)
@@ -500,3 +784,96 @@ healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, Da
   return(response)
 }
 .healthlake$operations$start_fhir_import_job <- healthlake_start_fhir_import_job
+
+#' Adds a user specifed key and value tag to a Data Store
+#'
+#' @description
+#' Adds a user specifed key and value tag to a Data Store.
+#'
+#' @usage
+#' healthlake_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name(ARN)that gives Amazon HealthLake access to the
+#' Data Store which tags are being added to.
+#' @param Tags &#91;required&#93; The user specified key and value pair tags being added to a Data Store.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_tag_resource
+healthlake_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .healthlake$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .healthlake$tag_resource_output()
+  config <- get_config()
+  svc <- .healthlake$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$tag_resource <- healthlake_tag_resource
+
+#' Removes tags from a Data Store
+#'
+#' @description
+#' Removes tags from a Data Store.
+#'
+#' @usage
+#' healthlake_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; "The Amazon Resource Name(ARN) of the Data Store for which tags are
+#' being removed
+#' @param TagKeys &#91;required&#93; The keys for the tags to be removed from the Healthlake Data Store.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname healthlake_untag_resource
+healthlake_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .healthlake$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .healthlake$untag_resource_output()
+  config <- get_config()
+  svc <- .healthlake$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.healthlake$operations$untag_resource <- healthlake_untag_resource

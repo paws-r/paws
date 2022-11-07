@@ -14,27 +14,9 @@ that response, the value of the \verb{@ptr} field for a log event is the
 value to use as \code{logRecordPointer} to retrieve that complete log event
 record.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  logRecord = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Retrieves all of the fields and values of a single log event. All fields
-are retrieved, even if the original query that produced the
-\code{logRecordPointer} retrieved only a subset of fields. Fields are
-returned as field name/field value pairs.
+Retrieves all of the fields and values of a single log event. All fields are retrieved, even if the original query that produced the \code{logRecordPointer} retrieved only a subset of fields. Fields are returned as field name/field value pairs.
 
-The full unparsed log event is returned within \verb{@message}.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/get_log_record.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_log_record(
-  logRecordPointer = "string"
-)
-}
-}
-
 \keyword{internal}

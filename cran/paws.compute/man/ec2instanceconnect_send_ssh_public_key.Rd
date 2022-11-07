@@ -2,55 +2,30 @@
 % Please edit documentation in R/ec2instanceconnect_operations.R
 \name{ec2instanceconnect_send_ssh_public_key}
 \alias{ec2instanceconnect_send_ssh_public_key}
-\title{Pushes an SSH public key to a particular OS user on a given EC2 instance
-for 60 seconds}
+\title{Pushes an SSH public key to the specified EC2 instance for use by the
+specified user}
 \usage{
-ec2instanceconnect_send_ssh_public_key(InstanceId, InstanceOSUser,
-  SSHPublicKey, AvailabilityZone)
+ec2instanceconnect_send_ssh_public_key(
+  InstanceId,
+  InstanceOSUser,
+  SSHPublicKey,
+  AvailabilityZone = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The EC2 instance you wish to publish the SSH key to.}
+\item{InstanceId}{[required] The ID of the EC2 instance.}
 
-\item{InstanceOSUser}{[required] The OS user on the EC2 instance whom the key may be used to authenticate
-as.}
+\item{InstanceOSUser}{[required] The OS user on the EC2 instance for whom the key can be used to
+authenticate.}
 
-\item{SSHPublicKey}{[required] The public key to be published to the instance. To use it after
-publication you must have the matching private key.}
+\item{SSHPublicKey}{[required] The public key material. To use the public key, you must have the
+matching private key.}
 
-\item{AvailabilityZone}{[required] The availability zone the EC2 instance was launched in.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestId = "string",
-  Success = TRUE|FALSE
-)
-}
+\item{AvailabilityZone}{The Availability Zone in which the EC2 instance was launched.}
 }
 \description{
-Pushes an SSH public key to a particular OS user on a given EC2 instance
-for 60 seconds.
-}
-\section{Request syntax}{
-\preformatted{svc$send_ssh_public_key(
-  InstanceId = "string",
-  InstanceOSUser = "string",
-  SSHPublicKey = "string",
-  AvailabilityZone = "string"
-)
-}
-}
+Pushes an SSH public key to the specified EC2 instance for use by the specified user. The key remains for 60 seconds. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html}{Connect to your Linux instance using EC2 Instance Connect} in the \emph{Amazon EC2 User Guide}.
 
-\examples{
-\dontrun{
-# The following example pushes a sample SSH public key to the EC2 instance
-# i-abcd1234 in AZ us-west-2b for use by the instance OS user ec2-user.
-svc$send_ssh_public_key(
-  AvailabilityZone = "us-west-2a",
-  InstanceId = "i-abcd1234",
-  InstanceOSUser = "ec2-user",
-  SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6d..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2instanceconnect/send_ssh_public_key.html} for full documentation.
 }
 \keyword{internal}

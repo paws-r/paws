@@ -13,35 +13,9 @@ cloudsearch_update_service_access_policies(DomainName, AccessPolicies)
 \item{AccessPolicies}{[required] The access rules you want to configure. These rules replace any existing
 rules.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccessPolicies = list(
-    Options = "string",
-    Status = list(
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateVersion = 123,
-      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-      PendingDeletion = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Configures the access rules that control access to the domain's document
-and search endpoints. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html}{Configuring Access for an Amazon CloudSearch Domain}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_service_access_policies(
-  DomainName = "string",
-  AccessPolicies = "string"
-)
-}
-}
+Configures the access rules that control access to the domain's document and search endpoints. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for an Amazon CloudSearch Domain</a>.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/update_service_access_policies.html} for full documentation.
+}
 \keyword{internal}

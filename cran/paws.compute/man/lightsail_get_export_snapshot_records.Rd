@@ -2,10 +2,10 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_get_export_snapshot_records}
 \alias{lightsail_get_export_snapshot_records}
-\title{Returns the export snapshot record created as a result of the export
+\title{Returns all export snapshot records created as a result of the export
 snapshot operation}
 \usage{
-lightsail_get_export_snapshot_records(pageToken)
+lightsail_get_export_snapshot_records(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{The token to advance to the next page of results from your request.
@@ -16,69 +16,9 @@ request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  exportSnapshotRecords = list(
-    list(
-      name = "string",
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      state = "Started"|"Succeeded"|"Failed",
-      sourceInfo = list(
-        resourceType = "InstanceSnapshot"|"DiskSnapshot",
-        createdAt = as.POSIXct(
-          "2015-01-01"
-        ),
-        name = "string",
-        arn = "string",
-        fromResourceName = "string",
-        fromResourceArn = "string",
-        instanceSnapshotInfo = list(
-          fromBundleId = "string",
-          fromBlueprintId = "string",
-          fromDiskInfo = list(
-            list(
-              name = "string",
-              path = "string",
-              sizeInGb = 123,
-              isSystemDisk = TRUE|FALSE
-            )
-          )
-        ),
-        diskSnapshotInfo = list(
-          sizeInGb = 123
-        )
-      ),
-      destinationInfo = list(
-        id = "string",
-        service = "string"
-      )
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
-Returns the export snapshot record created as a result of the
-\verb{export snapshot} operation.
+Returns all export snapshot records created as a result of the \verb{export snapshot} operation.
 
-An export snapshot record can be used to create a new Amazon EC2
-instance and its related resources with the
-\verb{create cloud formation stack} operation.
+See \url{https://paws-r.github.io/docs/lightsail/get_export_snapshot_records.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_export_snapshot_records(
-  pageToken = "string"
-)
-}
-}
-
 \keyword{internal}

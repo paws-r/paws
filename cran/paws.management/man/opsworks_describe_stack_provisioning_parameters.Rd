@@ -9,28 +9,9 @@ opsworks_describe_stack_provisioning_parameters(StackId)
 \arguments{
 \item{StackId}{[required] The stack ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AgentInstallerUrl = "string",
-  Parameters = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Requests a description of a stack's provisioning parameters.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_stack_provisioning_parameters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_stack_provisioning_parameters(
-  StackId = "string"
-)
-}
-}
-
 \keyword{internal}

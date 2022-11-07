@@ -5,8 +5,11 @@
 \title{Lists all your Direct Connect gateways or only the specified Direct
 Connect gateway}
 \usage{
-directconnect_describe_direct_connect_gateways(directConnectGatewayId,
-  maxResults, nextToken)
+directconnect_describe_direct_connect_gateways(
+  directConnectGatewayId = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
@@ -20,33 +23,9 @@ returned.}
 
 \item{nextToken}{The token provided in the previous call to retrieve the next page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  directConnectGateways = list(
-    list(
-      directConnectGatewayId = "string",
-      directConnectGatewayName = "string",
-      amazonSideAsn = 123,
-      ownerAccount = "string",
-      directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
-      stateChangeError = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists all your Direct Connect gateways or only the specified Direct
-Connect gateway. Deleted Direct Connect gateways are not returned.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_direct_connect_gateways(
-  directConnectGatewayId = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
+Lists all your Direct Connect gateways or only the specified Direct Connect gateway. Deleted Direct Connect gateways are not returned.
 
+See \url{https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateways.html} for full documentation.
+}
 \keyword{internal}

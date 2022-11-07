@@ -4,7 +4,7 @@
 \alias{ec2_cancel_spot_instance_requests}
 \title{Cancels one or more Spot Instance requests}
 \usage{
-ec2_cancel_spot_instance_requests(DryRun, SpotInstanceRequestIds)
+ec2_cancel_spot_instance_requests(DryRun = NULL, SpotInstanceRequestIds)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,42 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{SpotInstanceRequestIds}{[required] One or more Spot Instance request IDs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CancelledSpotInstanceRequests = list(
-    list(
-      SpotInstanceRequestId = "string",
-      State = "active"|"open"|"closed"|"cancelled"|"completed"
-    )
-  )
-)
-}
-}
 \description{
 Cancels one or more Spot Instance requests.
 
-Canceling a Spot Instance request does not terminate running Spot
-Instances associated with the request.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_spot_instance_requests(
-  DryRun = TRUE|FALSE,
-  SpotInstanceRequestIds = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example cancels a Spot Instance request.
-svc$cancel_spot_instance_requests(
-  SpotInstanceRequestIds = list(
-    "sir-08b93456"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/cancel_spot_instance_requests.html} for full documentation.
 }
 \keyword{internal}

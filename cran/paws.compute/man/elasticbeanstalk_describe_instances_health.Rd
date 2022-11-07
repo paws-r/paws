@@ -5,8 +5,12 @@
 \title{Retrieves detailed information about the health of instances in your AWS
 Elastic Beanstalk}
 \usage{
-elasticbeanstalk_describe_instances_health(EnvironmentName,
-  EnvironmentId, AttributeNames, NextToken)
+elasticbeanstalk_describe_instances_health(
+  EnvironmentName = NULL,
+  EnvironmentId = NULL,
+  AttributeNames = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{EnvironmentName}{Specify the AWS Elastic Beanstalk environment by name.}
@@ -19,100 +23,9 @@ list of instances.}
 
 \item{NextToken}{Specify the pagination token returned by a previous call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceHealthList = list(
-    list(
-      InstanceId = "string",
-      HealthStatus = "string",
-      Color = "string",
-      Causes = list(
-        "string"
-      ),
-      LaunchedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      ApplicationMetrics = list(
-        Duration = 123,
-        RequestCount = 123,
-        StatusCodes = list(
-          Status2xx = 123,
-          Status3xx = 123,
-          Status4xx = 123,
-          Status5xx = 123
-        ),
-        Latency = list(
-          P999 = 123.0,
-          P99 = 123.0,
-          P95 = 123.0,
-          P90 = 123.0,
-          P85 = 123.0,
-          P75 = 123.0,
-          P50 = 123.0,
-          P10 = 123.0
-        )
-      ),
-      System = list(
-        CPUUtilization = list(
-          User = 123.0,
-          Nice = 123.0,
-          System = 123.0,
-          Idle = 123.0,
-          IOWait = 123.0,
-          IRQ = 123.0,
-          SoftIRQ = 123.0,
-          Privileged = 123.0
-        ),
-        LoadAverage = list(
-          123.0
-        )
-      ),
-      Deployment = list(
-        VersionLabel = "string",
-        DeploymentId = 123,
-        Status = "string",
-        DeploymentTime = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      AvailabilityZone = "string",
-      InstanceType = "string"
-    )
-  ),
-  RefreshedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves detailed information about the health of instances in your AWS
-Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_instances_health(
-  EnvironmentName = "string",
-  EnvironmentId = "string",
-  AttributeNames = list(
-    "HealthStatus"|"Color"|"Causes"|"ApplicationMetrics"|"RefreshedAt"|"LaunchedAt"|"System"|"Deployment"|"AvailabilityZone"|"InstanceType"|"All"
-  ),
-  NextToken = "string"
-)
-}
-}
+Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
 
-\examples{
-\dontrun{
-# The following operation retrieves health information for instances in an
-# environment named my-env:
-svc$describe_instances_health(
-  AttributeNames = list(
-    "All"
-  ),
-  EnvironmentName = "my-env"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_instances_health.html} for full documentation.
 }
 \keyword{internal}

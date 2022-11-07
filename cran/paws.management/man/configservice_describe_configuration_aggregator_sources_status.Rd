@@ -5,7 +5,11 @@
 \title{Returns status information for sources within an aggregator}
 \usage{
 configservice_describe_configuration_aggregator_sources_status(
-  ConfigurationAggregatorName, UpdateStatus, NextToken, Limit)
+  ConfigurationAggregatorName,
+  UpdateStatus = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
@@ -21,44 +25,11 @@ configservice_describe_configuration_aggregator_sources_status(
 the next page of results in a paginated response.}
 
 \item{Limit}{The maximum number of AggregatorSourceStatus returned on each page. The
-default is maximum. If you specify 0, AWS Config uses the default.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AggregatedSourceStatusList = list(
-    list(
-      SourceId = "string",
-      SourceType = "ACCOUNT"|"ORGANIZATION",
-      AwsRegion = "string",
-      LastUpdateStatus = "FAILED"|"SUCCEEDED"|"OUTDATED",
-      LastUpdateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastErrorCode = "string",
-      LastErrorMessage = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+default is maximum. If you specify 0, Config uses the default.}
 }
 \description{
-Returns status information for sources within an aggregator. The status
-includes information about the last time AWS Config verified
-authorization between the source account and an aggregator account. In
-case of a failure, the status contains the related error code or
-message.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_configuration_aggregator_sources_status(
-  ConfigurationAggregatorName = "string",
-  UpdateStatus = list(
-    "FAILED"|"SUCCEEDED"|"OUTDATED"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Returns status information for sources within an aggregator. The status includes information about the last time Config verified authorization between the source account and an aggregator account. In case of a failure, the status contains the related error code or message.
 
+See \url{https://paws-r.github.io/docs/configservice/describe_configuration_aggregator_sources_status.html} for full documentation.
+}
 \keyword{internal}

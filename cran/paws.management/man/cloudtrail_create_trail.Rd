@@ -5,10 +5,20 @@
 \title{Creates a trail that specifies the settings for delivery of log data to
 an Amazon S3 bucket}
 \usage{
-cloudtrail_create_trail(Name, S3BucketName, S3KeyPrefix, SnsTopicName,
-  IncludeGlobalServiceEvents, IsMultiRegionTrail, EnableLogFileValidation,
-  CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn, KmsKeyId,
-  IsOrganizationTrail, TagsList)
+cloudtrail_create_trail(
+  Name,
+  S3BucketName,
+  S3KeyPrefix = NULL,
+  SnsTopicName = NULL,
+  IncludeGlobalServiceEvents = NULL,
+  IsMultiRegionTrail = NULL,
+  EnableLogFileValidation = NULL,
+  CloudWatchLogsLogGroupArn = NULL,
+  CloudWatchLogsRoleArn = NULL,
+  KmsKeyId = NULL,
+  IsOrganizationTrail = NULL,
+  TagsList = NULL
+)
 }
 \arguments{
 \item{Name}{[required] Specifies the name of the trail. The name must meet the following
@@ -19,7 +29,7 @@ underscores (_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
-\verb{my-_namespace} and \code{my--namespace} are invalid.
+\verb{my-_namespace} and \code{my--namespace} are not valid.
 \item Not be in IP address format (for example, 192.168.5.4)
 }}
 
@@ -46,7 +56,7 @@ that log events in all regions.}
 is false.
 
 When you disable log file integrity validation, the chain of digest
-files is broken after one hour. CloudTrail will not create digest files
+files is broken after one hour. CloudTrail does not create digest files
 for log files that were delivered during a period in which log file
 integrity validation was disabled. For example, if you enable log file
 integrity validation at noon on January 1, disable it at noon on January
@@ -57,7 +67,7 @@ delete a trail.}
 
 \item{CloudWatchLogsLogGroupArn}{Specifies a log group name using an Amazon Resource Name (ARN), a unique
 identifier that represents the log group to which CloudTrail logs will
-be delivered. Not required unless you specify CloudWatchLogsRoleArn.}
+be delivered. Not required unless you specify \code{CloudWatchLogsRoleArn}.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
 to a user's log group.}
@@ -66,6 +76,10 @@ to a user's log group.}
 CloudTrail. The value can be an alias name prefixed by "alias/", a fully
 specified ARN to an alias, a fully specified ARN to a key, or a globally
 unique identifier.
+
+CloudTrail also supports KMS multi-Region keys. For more information
+about multi-Region keys, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html}{Using multi-Region keys}
+in the \emph{Key Management Service Developer Guide}.
 
 Examples:
 \itemize{
@@ -76,56 +90,16 @@ Examples:
 }}
 
 \item{IsOrganizationTrail}{Specifies whether the trail is created for all accounts in an
-organization in AWS Organizations, or only for the current AWS account.
-The default is false, and cannot be true unless the call is made on
-behalf of an AWS account that is the master account for an organization
-in AWS Organizations.}
+organization in Organizations, or only for the current Amazon Web
+Services account. The default is false, and cannot be true unless the
+call is made on behalf of an Amazon Web Services account that is the
+management account for an organization in Organizations.}
 
 \item{TagsList}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  S3BucketName = "string",
-  S3KeyPrefix = "string",
-  SnsTopicName = "string",
-  SnsTopicARN = "string",
-  IncludeGlobalServiceEvents = TRUE|FALSE,
-  IsMultiRegionTrail = TRUE|FALSE,
-  TrailARN = "string",
-  LogFileValidationEnabled = TRUE|FALSE,
-  CloudWatchLogsLogGroupArn = "string",
-  CloudWatchLogsRoleArn = "string",
-  KmsKeyId = "string",
-  IsOrganizationTrail = TRUE|FALSE
-)
-}
-}
 \description{
-Creates a trail that specifies the settings for delivery of log data to
-an Amazon S3 bucket.
-}
-\section{Request syntax}{
-\preformatted{svc$create_trail(
-  Name = "string",
-  S3BucketName = "string",
-  S3KeyPrefix = "string",
-  SnsTopicName = "string",
-  IncludeGlobalServiceEvents = TRUE|FALSE,
-  IsMultiRegionTrail = TRUE|FALSE,
-  EnableLogFileValidation = TRUE|FALSE,
-  CloudWatchLogsLogGroupArn = "string",
-  CloudWatchLogsRoleArn = "string",
-  KmsKeyId = "string",
-  IsOrganizationTrail = TRUE|FALSE,
-  TagsList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket.
 
+See \url{https://paws-r.github.io/docs/cloudtrail/create_trail.html} for full documentation.
+}
 \keyword{internal}

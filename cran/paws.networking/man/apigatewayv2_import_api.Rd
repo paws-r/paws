@@ -4,7 +4,7 @@
 \alias{apigatewayv2_import_api}
 \title{Imports an API}
 \usage{
-apigatewayv2_import_api(Basepath, Body, FailOnWarnings)
+apigatewayv2_import_api(Basepath = NULL, Body, FailOnWarnings = NULL)
 }
 \arguments{
 \item{Basepath}{Specifies how to interpret the base path of the API during import. Valid
@@ -18,60 +18,9 @@ Supported only for HTTP APIs.}
 encountered. By default, API creation continues if a warning is
 encountered.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApiEndpoint = "string",
-  ApiGatewayManaged = TRUE|FALSE,
-  ApiId = "string",
-  ApiKeySelectionExpression = "string",
-  CorsConfiguration = list(
-    AllowCredentials = TRUE|FALSE,
-    AllowHeaders = list(
-      "string"
-    ),
-    AllowMethods = list(
-      "string"
-    ),
-    AllowOrigins = list(
-      "string"
-    ),
-    ExposeHeaders = list(
-      "string"
-    ),
-    MaxAge = 123
-  ),
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  Description = "string",
-  DisableSchemaValidation = TRUE|FALSE,
-  DisableExecuteApiEndpoint = TRUE|FALSE,
-  ImportInfo = list(
-    "string"
-  ),
-  Name = "string",
-  ProtocolType = "WEBSOCKET"|"HTTP",
-  RouteSelectionExpression = "string",
-  Tags = list(
-    "string"
-  ),
-  Version = "string",
-  Warnings = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Imports an API.
-}
-\section{Request syntax}{
-\preformatted{svc$import_api(
-  Basepath = "string",
-  Body = "string",
-  FailOnWarnings = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/import_api.html} for full documentation.
+}
 \keyword{internal}

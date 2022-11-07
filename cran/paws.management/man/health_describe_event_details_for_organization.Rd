@@ -3,10 +3,12 @@
 \name{health_describe_event_details_for_organization}
 \alias{health_describe_event_details_for_organization}
 \title{Returns detailed information about one or more specified events for one
-or more accounts in your organization}
+or more Amazon Web Services accounts in your organization}
 \usage{
 health_describe_event_details_for_organization(
-  organizationEventDetailFilters, locale)
+  organizationEventDetailFilters,
+  locale = NULL
+)
 }
 \arguments{
 \item{organizationEventDetailFilters}{[required] A set of JSON elements that includes the \code{awsAccountId} and the
@@ -15,95 +17,9 @@ health_describe_event_details_for_organization(
 \item{locale}{The locale (language) to return information in. English (en) is the
 default and the only supported value at this time.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  successfulSet = list(
-    list(
-      awsAccountId = "string",
-      event = list(
-        arn = "string",
-        service = "string",
-        eventTypeCode = "string",
-        eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
-        region = "string",
-        availabilityZone = "string",
-        startTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        endTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        lastUpdatedTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        statusCode = "open"|"closed"|"upcoming",
-        eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
-      ),
-      eventDescription = list(
-        latestDescription = "string"
-      ),
-      eventMetadata = list(
-        "string"
-      )
-    )
-  ),
-  failedSet = list(
-    list(
-      awsAccountId = "string",
-      eventArn = "string",
-      errorName = "string",
-      errorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns detailed information about one or more specified events for one
-or more accounts in your organization. Information includes standard
-event data (Region, service, and so on, as returned by
-\code{\link[=health_describe_events_for_organization]{describe_events_for_organization}}),
-a detailed event description, and possible additional metadata that
-depends upon the nature of the event. Affected entities are not
-included; to retrieve those, use the
-\code{\link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization}}
-operation.
+Returns detailed information about one or more specified events for one or more Amazon Web Services accounts in your organization. This information includes standard event data (such as the Amazon Web Services Region and service), an event description, and (depending on the event) possible metadata. This operation doesn't return affected entities, such as the resources related to the event. To return affected entities, use the \code{\link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization}} operation.
 
-Before you can call this operation, you must first enable AWS Health to
-work with AWS Organizations. To do this, call the
-\code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
-operation from your organization's master account.
-
-When you call the
-\code{\link[=health_describe_event_details_for_organization]{describe_event_details_for_organization}}
-operation, you specify the \code{organizationEventDetailFilters} object in
-the request. Depending on the AWS Health event type, note the following
-differences:
-\itemize{
-\item If the event is public, the \code{awsAccountId} parameter must be empty.
-If you specify an account ID for a public event, then an error
-message is returned. That's because the event might apply to all AWS
-accounts and isn't specific to an account in your organization.
-\item If the event is specific to an account, then you must specify the
-\code{awsAccountId} parameter in the request. If you don't specify an
-account ID, an error message returns because the event is specific
-to an AWS account in your organization.
+See \url{https://paws-r.github.io/docs/health/describe_event_details_for_organization.html} for full documentation.
 }
-
-For more information, see
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_event_details_for_organization(
-  organizationEventDetailFilters = list(
-    list(
-      eventArn = "string",
-      awsAccountId = "string"
-    )
-  ),
-  locale = "string"
-)
-}
-}
-
 \keyword{internal}

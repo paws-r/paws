@@ -9,17 +9,9 @@ mq_reboot_broker(BrokerId)
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 }
-\value{
-An empty list.
-}
 \description{
 Reboots a broker. Note: This API is asynchronous.
-}
-\section{Request syntax}{
-\preformatted{svc$reboot_broker(
-  BrokerId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/reboot_broker.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{guardduty_update_threat_intel_set}
 \title{Updates the ThreatIntelSet specified by the ThreatIntelSet ID}
 \usage{
-guardduty_update_threat_intel_set(DetectorId, ThreatIntelSetId, Name,
-  Location, Activate)
+guardduty_update_threat_intel_set(
+  DetectorId,
+  ThreatIntelSetId,
+  Name = NULL,
+  Location = NULL,
+  Activate = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSet
@@ -20,21 +25,9 @@ you want to update.}
 \item{Activate}{The updated Boolean value that specifies whether the ThreateIntelSet is
 active or not.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
-}
-\section{Request syntax}{
-\preformatted{svc$update_threat_intel_set(
-  DetectorId = "string",
-  ThreatIntelSetId = "string",
-  Name = "string",
-  Location = "string",
-  Activate = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/update_threat_intel_set.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{cloudfront_list_key_groups}
 \title{Gets a list of key groups}
 \usage{
-cloudfront_list_key_groups(Marker, MaxItems)
+cloudfront_list_key_groups(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{Use this field when paginating results to indicate where to begin in
@@ -15,49 +15,9 @@ response.}
 
 \item{MaxItems}{The maximum number of key groups that you want in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KeyGroupList = list(
-    NextMarker = "string",
-    MaxItems = 123,
-    Quantity = 123,
-    Items = list(
-      list(
-        KeyGroup = list(
-          Id = "string",
-          LastModifiedTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          KeyGroupConfig = list(
-            Name = "string",
-            Items = list(
-              "string"
-            ),
-            Comment = "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets a list of key groups.
 
-You can optionally specify the maximum number of items to receive in the
-response. If the total number of items in the list exceeds the maximum
-that you specify, or the default maximum, the response is paginated. To
-get the next page of items, send a subsequent request that specifies the
-\code{NextMarker} value from the current response as the \code{Marker} value in
-the subsequent request.
+See \url{https://paws-r.github.io/docs/cloudfront/list_key_groups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_key_groups(
-  Marker = "string",
-  MaxItems = "string"
-)
-}
-}
-
 \keyword{internal}

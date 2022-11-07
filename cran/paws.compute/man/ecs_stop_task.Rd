@@ -4,7 +4,7 @@
 \alias{ecs_stop_task}
 \title{Stops a running task}
 \usage{
-ecs_stop_task(cluster, task, reason)
+ecs_stop_task(cluster = NULL, task, reason = NULL)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -14,192 +14,14 @@ cluster is assumed.}
 \item{task}{[required] The task ID or full Amazon Resource Name (ARN) of the task to stop.}
 
 \item{reason}{An optional message specified when a task is stopped. For example, if
-you are using a custom scheduler, you can use this parameter to specify
+you're using a custom scheduler, you can use this parameter to specify
 the reason for stopping the task here, and the message appears in
 subsequent \code{\link[=ecs_describe_tasks]{describe_tasks}} API operations on this
 task. Up to 255 characters are allowed in this message.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  task = list(
-    attachments = list(
-      list(
-        id = "string",
-        type = "string",
-        status = "string",
-        details = list(
-          list(
-            name = "string",
-            value = "string"
-          )
-        )
-      )
-    ),
-    attributes = list(
-      list(
-        name = "string",
-        value = "string",
-        targetType = "container-instance",
-        targetId = "string"
-      )
-    ),
-    availabilityZone = "string",
-    capacityProviderName = "string",
-    clusterArn = "string",
-    connectivity = "CONNECTED"|"DISCONNECTED",
-    connectivityAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    containerInstanceArn = "string",
-    containers = list(
-      list(
-        containerArn = "string",
-        taskArn = "string",
-        name = "string",
-        image = "string",
-        imageDigest = "string",
-        runtimeId = "string",
-        lastStatus = "string",
-        exitCode = 123,
-        reason = "string",
-        networkBindings = list(
-          list(
-            bindIP = "string",
-            containerPort = 123,
-            hostPort = 123,
-            protocol = "tcp"|"udp"
-          )
-        ),
-        networkInterfaces = list(
-          list(
-            attachmentId = "string",
-            privateIpv4Address = "string",
-            ipv6Address = "string"
-          )
-        ),
-        healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-        cpu = "string",
-        memory = "string",
-        memoryReservation = "string",
-        gpuIds = list(
-          "string"
-        )
-      )
-    ),
-    cpu = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    desiredStatus = "string",
-    executionStoppedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    group = "string",
-    healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-    inferenceAccelerators = list(
-      list(
-        deviceName = "string",
-        deviceType = "string"
-      )
-    ),
-    lastStatus = "string",
-    launchType = "EC2"|"FARGATE",
-    memory = "string",
-    overrides = list(
-      containerOverrides = list(
-        list(
-          name = "string",
-          command = list(
-            "string"
-          ),
-          environment = list(
-            list(
-              name = "string",
-              value = "string"
-            )
-          ),
-          environmentFiles = list(
-            list(
-              value = "string",
-              type = "s3"
-            )
-          ),
-          cpu = 123,
-          memory = 123,
-          memoryReservation = 123,
-          resourceRequirements = list(
-            list(
-              value = "string",
-              type = "GPU"|"InferenceAccelerator"
-            )
-          )
-        )
-      ),
-      cpu = "string",
-      inferenceAcceleratorOverrides = list(
-        list(
-          deviceName = "string",
-          deviceType = "string"
-        )
-      ),
-      executionRoleArn = "string",
-      memory = "string",
-      taskRoleArn = "string"
-    ),
-    platformVersion = "string",
-    pullStartedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    pullStoppedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    startedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    startedBy = "string",
-    stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
-    stoppedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    stoppedReason = "string",
-    stoppingAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    taskArn = "string",
-    taskDefinitionArn = "string",
-    version = 123
-  )
-)
-}
-}
 \description{
 Stops a running task. Any tags associated with the task will be deleted.
 
-When \code{\link[=ecs_stop_task]{stop_task}} is called on a task, the equivalent of
-\verb{docker stop} is issued to the containers running in the task. This
-results in a \code{SIGTERM} value and a default 30-second timeout, after
-which the \code{SIGKILL} value is sent and the containers are forcibly
-stopped. If the container handles the \code{SIGTERM} value gracefully and
-exits within 30 seconds from receiving it, no \code{SIGKILL} value is sent.
-
-The default 30-second timeout can be configured on the Amazon ECS
-container agent with the \code{ECS_CONTAINER_STOP_TIMEOUT} variable. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html}{Amazon ECS Container Agent Configuration}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
+See \url{https://paws-r.github.io/docs/ecs/stop_task.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_task(
-  cluster = "string",
-  task = "string",
-  reason = "string"
-)
-}
-}
-
 \keyword{internal}

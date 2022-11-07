@@ -4,7 +4,12 @@
 \alias{ec2_describe_hosts}
 \title{Describes the specified Dedicated Hosts or all your Dedicated Hosts}
 \usage{
-ec2_describe_hosts(Filter, HostIds, MaxResults, NextToken)
+ec2_describe_hosts(
+  Filter = NULL,
+  HostIds = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filter}{The filters.
@@ -39,88 +44,9 @@ request.}
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Hosts = list(
-    list(
-      AutoPlacement = "on"|"off",
-      AvailabilityZone = "string",
-      AvailableCapacity = list(
-        AvailableInstanceCapacity = list(
-          list(
-            AvailableCapacity = 123,
-            InstanceType = "string",
-            TotalCapacity = 123
-          )
-        ),
-        AvailableVCpus = 123
-      ),
-      ClientToken = "string",
-      HostId = "string",
-      HostProperties = list(
-        Cores = 123,
-        InstanceType = "string",
-        InstanceFamily = "string",
-        Sockets = 123,
-        TotalVCpus = 123
-      ),
-      HostReservationId = "string",
-      Instances = list(
-        list(
-          InstanceId = "string",
-          InstanceType = "string",
-          OwnerId = "string"
-        )
-      ),
-      State = "available"|"under-assessment"|"permanent-failure"|"released"|"released-permanent-failure"|"pending",
-      AllocationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ReleaseTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      HostRecovery = "on"|"off",
-      AllowsMultipleInstanceTypes = "on"|"off",
-      OwnerId = "string",
-      AvailabilityZoneId = "string",
-      MemberOfServiceLinkedResourceGroup = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the specified Dedicated Hosts or all your Dedicated Hosts.
 
-The results describe only the Dedicated Hosts in the Region you're
-currently using. All listed instances consume capacity on your Dedicated
-Host. Dedicated Hosts that have recently been released are listed with
-the state \code{released}.
+See \url{https://paws-r.github.io/docs/ec2/describe_hosts.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_hosts(
-  Filter = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  HostIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

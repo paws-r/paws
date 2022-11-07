@@ -5,8 +5,11 @@
 \title{Create or update a group of environments that each run a separate
 component of a single application}
 \usage{
-elasticbeanstalk_compose_environments(ApplicationName, GroupName,
-  VersionLabels)
+elasticbeanstalk_compose_environments(
+  ApplicationName = NULL,
+  GroupName = NULL,
+  VersionLabels = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{The name of the application to which the specified source bundles
@@ -23,79 +26,9 @@ include an environment manifest that specifies the name of the
 environment and the name of the solution stack to use, and optionally
 can specify environment links to create.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Environments = list(
-    list(
-      EnvironmentName = "string",
-      EnvironmentId = "string",
-      ApplicationName = "string",
-      VersionLabel = "string",
-      SolutionStackName = "string",
-      PlatformArn = "string",
-      TemplateName = "string",
-      Description = "string",
-      EndpointURL = "string",
-      CNAME = "string",
-      DateCreated = as.POSIXct(
-        "2015-01-01"
-      ),
-      DateUpdated = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "Aborting"|"Launching"|"Updating"|"LinkingFrom"|"LinkingTo"|"Ready"|"Terminating"|"Terminated",
-      AbortableOperationInProgress = TRUE|FALSE,
-      Health = "Green"|"Yellow"|"Red"|"Grey",
-      HealthStatus = "NoData"|"Unknown"|"Pending"|"Ok"|"Info"|"Warning"|"Degraded"|"Severe"|"Suspended",
-      Resources = list(
-        LoadBalancer = list(
-          LoadBalancerName = "string",
-          Domain = "string",
-          Listeners = list(
-            list(
-              Protocol = "string",
-              Port = 123
-            )
-          )
-        )
-      ),
-      Tier = list(
-        Name = "string",
-        Type = "string",
-        Version = "string"
-      ),
-      EnvironmentLinks = list(
-        list(
-          LinkName = "string",
-          EnvironmentName = "string"
-        )
-      ),
-      EnvironmentArn = "string",
-      OperationsRole = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Create or update a group of environments that each run a separate
-component of a single application. Takes a list of version labels that
-specify application source bundles for each of the environments to
-create or update. The name of each environment and other required
-information must be included in the source bundles in an environment
-manifest named \code{env.yaml}. See \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html}{Compose Environments}
-for details.
-}
-\section{Request syntax}{
-\preformatted{svc$compose_environments(
-  ApplicationName = "string",
-  GroupName = "string",
-  VersionLabels = list(
-    "string"
-  )
-)
-}
-}
+Create or update a group of environments that each run a separate component of a single application. Takes a list of version labels that specify application source bundles for each of the environments to create or update. The name of each environment and other required information must be included in the source bundles in an environment manifest named \code{env.yaml}. See \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html}{Compose Environments} for details.
 
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/compose_environments.html} for full documentation.
+}
 \keyword{internal}

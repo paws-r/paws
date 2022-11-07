@@ -3,105 +3,28 @@
 #' @include dynamodb_service.R
 NULL
 
-#' This operation allows you to perform batch reads and writes on data
+#' This operation allows you to perform batch reads or writes on data
 #' stored in DynamoDB, using PartiQL
 #'
 #' @description
-#' This operation allows you to perform batch reads and writes on data
-#' stored in DynamoDB, using PartiQL.
+#' This operation allows you to perform batch reads or writes on data stored in DynamoDB, using PartiQL. Each read statement in a [`batch_execute_statement`][dynamodb_batch_execute_statement] must specify an equality condition on all key attributes. This enforces that each `SELECT` statement in a batch returns at most a single item.
 #'
-#' @usage
-#' dynamodb_batch_execute_statement(Statements)
+#' See [https://paws-r.github.io/docs/dynamodb/batch_execute_statement.html](https://paws-r.github.io/docs/dynamodb/batch_execute_statement.html) for full documentation.
 #'
 #' @param Statements &#91;required&#93; The list of PartiQL statements representing the batch to run.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Responses = list(
-#'     list(
-#'       Error = list(
-#'         Code = "ConditionalCheckFailed"|"ItemCollectionSizeLimitExceeded"|"RequestLimitExceeded"|"ValidationError"|"ProvisionedThroughputExceeded"|"TransactionConflict"|"ThrottlingError"|"InternalServerError"|"ResourceNotFound"|"AccessDenied"|"DuplicateItem",
-#'         Message = "string"
-#'       ),
-#'       TableName = "string",
-#'       Item = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_execute_statement(
-#'   Statements = list(
-#'     list(
-#'       Statement = "string",
-#'       Parameters = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       ),
-#'       ConsistentRead = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
+#' @param ReturnConsumedCapacity 
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_batch_execute_statement
-dynamodb_batch_execute_statement <- function(Statements) {
+dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$batch_execute_statement_input(Statements = Statements)
+  input <- .dynamodb$batch_execute_statement_input(Statements = Statements, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$batch_execute_statement_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -115,70 +38,9 @@ dynamodb_batch_execute_statement <- function(Statements) {
 #' from one or more tables
 #'
 #' @description
-#' The [`batch_get_item`][dynamodb_batch_get_item] operation returns the
-#' attributes of one or more items from one or more tables. You identify
-#' requested items by primary key.
-#' 
-#' A single operation can retrieve up to 16 MB of data, which can contain
-#' as many as 100 items. [`batch_get_item`][dynamodb_batch_get_item]
-#' returns a partial result if the response size limit is exceeded, the
-#' table's provisioned throughput is exceeded, or an internal processing
-#' failure occurs. If a partial result is returned, the operation returns a
-#' value for `UnprocessedKeys`. You can use this value to retry the
-#' operation starting with the next item to get.
-#' 
-#' If you request more than 100 items,
-#' [`batch_get_item`][dynamodb_batch_get_item] returns a
-#' `ValidationException` with the message "Too many items requested for the
-#' BatchGetItem call."
-#' 
-#' For example, if you ask to retrieve 100 items, but each individual item
-#' is 300 KB in size, the system returns 52 items (so as not to exceed the
-#' 16 MB limit). It also returns an appropriate `UnprocessedKeys` value so
-#' you can get the next page of results. If desired, your application can
-#' include its own logic to assemble the pages of results into one dataset.
-#' 
-#' If *none* of the items can be processed due to insufficient provisioned
-#' throughput on all of the tables in the request, then
-#' [`batch_get_item`][dynamodb_batch_get_item] returns a
-#' `ProvisionedThroughputExceededException`. If *at least one* of the items
-#' is successfully processed, then
-#' [`batch_get_item`][dynamodb_batch_get_item] completes successfully,
-#' while returning the keys of the unread items in `UnprocessedKeys`.
-#' 
-#' If DynamoDB returns any unprocessed items, you should retry the batch
-#' operation on those items. However, *we strongly recommend that you use
-#' an exponential backoff algorithm*. If you retry the batch operation
-#' immediately, the underlying read or write requests can still fail due to
-#' throttling on the individual tables. If you delay the batch operation
-#' using exponential backoff, the individual requests in the batch are much
-#' more likely to succeed.
-#' 
-#' For more information, see [Batch Operations and Error
-#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#BatchOperations)
-#' in the *Amazon DynamoDB Developer Guide*.
-#' 
-#' By default, [`batch_get_item`][dynamodb_batch_get_item] performs
-#' eventually consistent reads on every table in the request. If you want
-#' strongly consistent reads instead, you can set `ConsistentRead` to
-#' `true` for any or all tables.
-#' 
-#' In order to minimize response latency,
-#' [`batch_get_item`][dynamodb_batch_get_item] retrieves items in parallel.
-#' 
-#' When designing your application, keep in mind that DynamoDB does not
-#' return items in any particular order. To help parse the response by
-#' item, include the primary key values for the items in your request in
-#' the `ProjectionExpression` parameter.
-#' 
-#' If a requested item does not exist, it is not returned in the result.
-#' Requests for nonexistent items consume the minimum read capacity units
-#' according to the type of read. For more information, see [Working with
-#' Tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
-#' in the *Amazon DynamoDB Developer Guide*.
+#' The [`batch_get_item`][dynamodb_batch_get_item] operation returns the attributes of one or more items from one or more tables. You identify requested items by primary key.
 #'
-#' @usage
-#' dynamodb_batch_get_item(RequestItems, ReturnConsumedCapacity)
+#' See [https://paws-r.github.io/docs/dynamodb/batch_get_item.html](https://paws-r.github.io/docs/dynamodb/batch_get_item.html) for full documentation.
 #'
 #' @param RequestItems &#91;required&#93; A map of one or more table names and, for each table, a map that
 #' describes one or more items to retrieve from that table. Each table name
@@ -203,7 +65,7 @@ dynamodb_batch_execute_statement <- function(Statements) {
 #'     -   To prevent special characters in an attribute name from being
 #'         misinterpreted in an expression.
 #' 
-#'     Use the **#** character in an expression to dereference an
+#'     Use the **\#** character in an expression to dereference an
 #'     attribute name. For example, consider the following attribute name:
 #' 
 #'     -   `Percentile`
@@ -256,190 +118,6 @@ dynamodb_batch_execute_statement <- function(Statements) {
 #'     in the *Amazon DynamoDB Developer Guide*.
 #' @param ReturnConsumedCapacity 
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Responses = list(
-#'     list(
-#'       list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   UnprocessedKeys = list(
-#'     list(
-#'       Keys = list(
-#'         list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         )
-#'       ),
-#'       AttributesToGet = list(
-#'         "string"
-#'       ),
-#'       ConsistentRead = TRUE|FALSE,
-#'       ProjectionExpression = "string",
-#'       ExpressionAttributeNames = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ConsumedCapacity = list(
-#'     list(
-#'       TableName = "string",
-#'       CapacityUnits = 123.0,
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       Table = list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       ),
-#'       LocalSecondaryIndexes = list(
-#'         list(
-#'           ReadCapacityUnits = 123.0,
-#'           WriteCapacityUnits = 123.0,
-#'           CapacityUnits = 123.0
-#'         )
-#'       ),
-#'       GlobalSecondaryIndexes = list(
-#'         list(
-#'           ReadCapacityUnits = 123.0,
-#'           WriteCapacityUnits = 123.0,
-#'           CapacityUnits = 123.0
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_item(
-#'   RequestItems = list(
-#'     list(
-#'       Keys = list(
-#'         list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         )
-#'       ),
-#'       AttributesToGet = list(
-#'         "string"
-#'       ),
-#'       ConsistentRead = TRUE|FALSE,
-#'       ProjectionExpression = "string",
-#'       ExpressionAttributeNames = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example reads multiple items from the Music table using a batch of
-#' # three GetItem requests.  Only the AlbumTitle attribute is returned.
-#' svc$batch_get_item(
-#'   RequestItems = list(
-#'     Music = list(
-#'       Keys = list(
-#'         list(
-#'           Artist = list(
-#'             S = "No One You Know"
-#'           ),
-#'           SongTitle = list(
-#'             S = "Call Me Today"
-#'           )
-#'         ),
-#'         list(
-#'           Artist = list(
-#'             S = "Acme Band"
-#'           ),
-#'           SongTitle = list(
-#'             S = "Happy Day"
-#'           )
-#'         ),
-#'         list(
-#'           Artist = list(
-#'             S = "No One You Know"
-#'           ),
-#'           SongTitle = list(
-#'             S = "Scared of My Shadow"
-#'           )
-#'         )
-#'       ),
-#'       ProjectionExpression = "AlbumTitle"
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname dynamodb_batch_get_item
@@ -464,97 +142,9 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' more tables
 #'
 #' @description
-#' The [`batch_write_item`][dynamodb_batch_write_item] operation puts or
-#' deletes multiple items in one or more tables. A single call to
-#' [`batch_write_item`][dynamodb_batch_write_item] can write up to 16 MB of
-#' data, which can comprise as many as 25 put or delete requests.
-#' Individual items to be written can be as large as 400 KB.
-#' 
-#' [`batch_write_item`][dynamodb_batch_write_item] cannot update items. To
-#' update items, use the [`update_item`][dynamodb_update_item] action.
-#' 
-#' The individual [`put_item`][dynamodb_put_item] and
-#' [`delete_item`][dynamodb_delete_item] operations specified in
-#' [`batch_write_item`][dynamodb_batch_write_item] are atomic; however
-#' [`batch_write_item`][dynamodb_batch_write_item] as a whole is not. If
-#' any requested operations fail because the table's provisioned throughput
-#' is exceeded or an internal processing failure occurs, the failed
-#' operations are returned in the `UnprocessedItems` response parameter.
-#' You can investigate and optionally resend the requests. Typically, you
-#' would call [`batch_write_item`][dynamodb_batch_write_item] in a loop.
-#' Each iteration would check for unprocessed items and submit a new
-#' [`batch_write_item`][dynamodb_batch_write_item] request with those
-#' unprocessed items until all items have been processed.
-#' 
-#' If *none* of the items can be processed due to insufficient provisioned
-#' throughput on all of the tables in the request, then
-#' [`batch_write_item`][dynamodb_batch_write_item] returns a
-#' `ProvisionedThroughputExceededException`.
-#' 
-#' If DynamoDB returns any unprocessed items, you should retry the batch
-#' operation on those items. However, *we strongly recommend that you use
-#' an exponential backoff algorithm*. If you retry the batch operation
-#' immediately, the underlying read or write requests can still fail due to
-#' throttling on the individual tables. If you delay the batch operation
-#' using exponential backoff, the individual requests in the batch are much
-#' more likely to succeed.
-#' 
-#' For more information, see [Batch Operations and Error
-#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.BatchOperations)
-#' in the *Amazon DynamoDB Developer Guide*.
-#' 
-#' With [`batch_write_item`][dynamodb_batch_write_item], you can
-#' efficiently write or delete large amounts of data, such as from Amazon
-#' EMR, or copy data from another database into DynamoDB. In order to
-#' improve performance with these large-scale operations,
-#' [`batch_write_item`][dynamodb_batch_write_item] does not behave in the
-#' same way as individual [`put_item`][dynamodb_put_item] and
-#' [`delete_item`][dynamodb_delete_item] calls would. For example, you
-#' cannot specify conditions on individual put and delete requests, and
-#' [`batch_write_item`][dynamodb_batch_write_item] does not return deleted
-#' items in the response.
-#' 
-#' If you use a programming language that supports concurrency, you can use
-#' threads to write items in parallel. Your application must include the
-#' necessary logic to manage the threads. With languages that don't support
-#' threading, you must update or delete the specified items one at a time.
-#' In both situations, [`batch_write_item`][dynamodb_batch_write_item]
-#' performs the specified put and delete operations in parallel, giving you
-#' the power of the thread pool approach without having to introduce
-#' complexity into your application.
-#' 
-#' Parallel processing reduces latency, but each specified put and delete
-#' request consumes the same number of write capacity units whether it is
-#' processed in parallel or not. Delete operations on nonexistent items
-#' consume one write capacity unit.
-#' 
-#' If one or more of the following is true, DynamoDB rejects the entire
-#' batch write operation:
-#' 
-#' -   One or more tables specified in the
-#'     [`batch_write_item`][dynamodb_batch_write_item] request does not
-#'     exist.
-#' 
-#' -   Primary key attributes specified on an item in the request do not
-#'     match those in the corresponding table's primary key schema.
-#' 
-#' -   You try to perform multiple operations on the same item in the same
-#'     [`batch_write_item`][dynamodb_batch_write_item] request. For
-#'     example, you cannot put and delete the same item in the same
-#'     [`batch_write_item`][dynamodb_batch_write_item] request.
-#' 
-#' -   Your request contains at least two items with identical hash and
-#'     range keys (which essentially is two put operations).
-#' 
-#' -   There are more than 25 requests in the batch.
-#' 
-#' -   Any individual item in a batch exceeds 400 KB.
-#' 
-#' -   The total request size exceeds 16 MB.
+#' The [`batch_write_item`][dynamodb_batch_write_item] operation puts or deletes multiple items in one or more tables. A single call to [`batch_write_item`][dynamodb_batch_write_item] can transmit up to 16MB of data over the network, consisting of up to 25 item put or delete operations. While individual items can be up to 400 KB once stored, it's important to note that an item's representation might be greater than 400KB while being sent in DynamoDB's JSON format for the API call. For more details on this distinction, see [Naming Rules and Data Types](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html).
 #'
-#' @usage
-#' dynamodb_batch_write_item(RequestItems, ReturnConsumedCapacity,
-#'   ReturnItemCollectionMetrics)
+#' See [https://paws-r.github.io/docs/dynamodb/batch_write_item.html](https://paws-r.github.io/docs/dynamodb/batch_write_item.html) for full documentation.
 #'
 #' @param RequestItems &#91;required&#93; A map of one or more table names and, for each table, a list of
 #' operations to be performed (`DeleteRequest` or `PutRequest`). Each
@@ -592,254 +182,6 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' that were modified during the operation are returned in the response. If
 #' set to `NONE` (the default), no statistics are returned.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedItems = list(
-#'     list(
-#'       list(
-#'         PutRequest = list(
-#'           Item = list(
-#'             list(
-#'               S = "string",
-#'               N = "string",
-#'               B = raw,
-#'               SS = list(
-#'                 "string"
-#'               ),
-#'               NS = list(
-#'                 "string"
-#'               ),
-#'               BS = list(
-#'                 raw
-#'               ),
-#'               M = list(
-#'                 list()
-#'               ),
-#'               L = list(
-#'                 list()
-#'               ),
-#'               NULL = TRUE|FALSE,
-#'               BOOL = TRUE|FALSE
-#'             )
-#'           )
-#'         ),
-#'         DeleteRequest = list(
-#'           Key = list(
-#'             list(
-#'               S = "string",
-#'               N = "string",
-#'               B = raw,
-#'               SS = list(
-#'                 "string"
-#'               ),
-#'               NS = list(
-#'                 "string"
-#'               ),
-#'               BS = list(
-#'                 raw
-#'               ),
-#'               M = list(
-#'                 list()
-#'               ),
-#'               L = list(
-#'                 list()
-#'               ),
-#'               NULL = TRUE|FALSE,
-#'               BOOL = TRUE|FALSE
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ItemCollectionMetrics = list(
-#'     list(
-#'       list(
-#'         ItemCollectionKey = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         SizeEstimateRangeGB = list(
-#'           123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ConsumedCapacity = list(
-#'     list(
-#'       TableName = "string",
-#'       CapacityUnits = 123.0,
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       Table = list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       ),
-#'       LocalSecondaryIndexes = list(
-#'         list(
-#'           ReadCapacityUnits = 123.0,
-#'           WriteCapacityUnits = 123.0,
-#'           CapacityUnits = 123.0
-#'         )
-#'       ),
-#'       GlobalSecondaryIndexes = list(
-#'         list(
-#'           ReadCapacityUnits = 123.0,
-#'           WriteCapacityUnits = 123.0,
-#'           CapacityUnits = 123.0
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_write_item(
-#'   RequestItems = list(
-#'     list(
-#'       list(
-#'         PutRequest = list(
-#'           Item = list(
-#'             list(
-#'               S = "string",
-#'               N = "string",
-#'               B = raw,
-#'               SS = list(
-#'                 "string"
-#'               ),
-#'               NS = list(
-#'                 "string"
-#'               ),
-#'               BS = list(
-#'                 raw
-#'               ),
-#'               M = list(
-#'                 list()
-#'               ),
-#'               L = list(
-#'                 list()
-#'               ),
-#'               NULL = TRUE|FALSE,
-#'               BOOL = TRUE|FALSE
-#'             )
-#'           )
-#'         ),
-#'         DeleteRequest = list(
-#'           Key = list(
-#'             list(
-#'               S = "string",
-#'               N = "string",
-#'               B = raw,
-#'               SS = list(
-#'                 "string"
-#'               ),
-#'               NS = list(
-#'                 "string"
-#'               ),
-#'               BS = list(
-#'                 raw
-#'               ),
-#'               M = list(
-#'                 list()
-#'               ),
-#'               L = list(
-#'                 list()
-#'               ),
-#'               NULL = TRUE|FALSE,
-#'               BOOL = TRUE|FALSE
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-#'   ReturnItemCollectionMetrics = "SIZE"|"NONE"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example adds three new items to the Music table using a batch of
-#' # three PutItem requests.
-#' svc$batch_write_item(
-#'   RequestItems = list(
-#'     Music = list(
-#'       list(
-#'         PutRequest = list(
-#'           Item = list(
-#'             AlbumTitle = list(
-#'               S = "Somewhat Famous"
-#'             ),
-#'             Artist = list(
-#'               S = "No One You Know"
-#'             ),
-#'             SongTitle = list(
-#'               S = "Call Me Today"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       list(
-#'         PutRequest = list(
-#'           Item = list(
-#'             AlbumTitle = list(
-#'               S = "Songs About Life"
-#'             ),
-#'             Artist = list(
-#'               S = "Acme Band"
-#'             ),
-#'             SongTitle = list(
-#'               S = "Happy Day"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       list(
-#'         PutRequest = list(
-#'           Item = list(
-#'             AlbumTitle = list(
-#'               S = "Blue Sky Blues"
-#'             ),
-#'             Artist = list(
-#'               S = "No One You Know"
-#'             ),
-#'             SongTitle = list(
-#'               S = "Scared of My Shadow"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname dynamodb_batch_write_item
@@ -864,72 +206,11 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
 #'
 #' @description
 #' Creates a backup for an existing table.
-#' 
-#' Each time you create an on-demand backup, the entire table data is
-#' backed up. There is no limit to the number of on-demand backups that can
-#' be taken.
-#' 
-#' When you create an on-demand backup, a time marker of the request is
-#' cataloged, and the backup is created asynchronously, by applying all
-#' changes until the time of the request to the last full table snapshot.
-#' Backup requests are processed instantaneously and become available for
-#' restore within minutes.
-#' 
-#' You can call [`create_backup`][dynamodb_create_backup] at a maximum rate
-#' of 50 times per second.
-#' 
-#' All backups in DynamoDB work without consuming any provisioned
-#' throughput on the table.
-#' 
-#' If you submit a backup request on 2018-12-14 at 14:25:00, the backup is
-#' guaranteed to contain all data committed to the table up to 14:24:00,
-#' and data committed after 14:26:00 will not be. The backup might contain
-#' data modifications made between 14:24:00 and 14:26:00. On-demand backup
-#' does not support causal consistency.
-#' 
-#' Along with data, the following are also included on the backups:
-#' 
-#' -   Global secondary indexes (GSIs)
-#' 
-#' -   Local secondary indexes (LSIs)
-#' 
-#' -   Streams
-#' 
-#' -   Provisioned read and write capacity
 #'
-#' @usage
-#' dynamodb_create_backup(TableName, BackupName)
+#' See [https://paws-r.github.io/docs/dynamodb/create_backup.html](https://paws-r.github.io/docs/dynamodb/create_backup.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table.
 #' @param BackupName &#91;required&#93; Specified name for the backup.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BackupDetails = list(
-#'     BackupArn = "string",
-#'     BackupName = "string",
-#'     BackupSizeBytes = 123,
-#'     BackupStatus = "CREATING"|"DELETED"|"AVAILABLE",
-#'     BackupType = "USER"|"SYSTEM"|"AWS_BACKUP",
-#'     BackupCreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BackupExpiryDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_backup(
-#'   TableName = "string",
-#'   BackupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -954,108 +235,12 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' Creates a global table from an existing table
 #'
 #' @description
-#' Creates a global table from an existing table. A global table creates a
-#' replication relationship between two or more DynamoDB tables with the
-#' same table name in the provided Regions.
-#' 
-#' This operation only applies to [Version
-#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables.
-#' 
-#' If you want to add a new replica table to a global table, each of the
-#' following conditions must be true:
-#' 
-#' -   The table must have the same primary key as all of the other
-#'     replicas.
-#' 
-#' -   The table must have the same name as all of the other replicas.
-#' 
-#' -   The table must have DynamoDB Streams enabled, with the stream
-#'     containing both the new and the old images of the item.
-#' 
-#' -   None of the replica tables in the global table can contain any data.
-#' 
-#' If global secondary indexes are specified, then the following conditions
-#' must also be met:
-#' 
-#' -   The global secondary indexes must have the same name.
-#' 
-#' -   The global secondary indexes must have the same hash key and sort
-#'     key (if present).
-#' 
-#' If local secondary indexes are specified, then the following conditions
-#' must also be met:
-#' 
-#' -   The local secondary indexes must have the same name.
-#' 
-#' -   The local secondary indexes must have the same hash key and sort key
-#'     (if present).
-#' 
-#' Write capacity settings should be set consistently across your replica
-#' tables and secondary indexes. DynamoDB strongly recommends enabling auto
-#' scaling to manage the write capacity settings for all of your global
-#' tables replicas and indexes.
-#' 
-#' If you prefer to manage write capacity settings manually, you should
-#' provision equal replicated write capacity units to your replica tables.
-#' You should also provision equal replicated write capacity units to
-#' matching secondary indexes across your global table.
+#' Creates a global table from an existing table. A global table creates a replication relationship between two or more DynamoDB tables with the same table name in the provided Regions.
 #'
-#' @usage
-#' dynamodb_create_global_table(GlobalTableName, ReplicationGroup)
+#' See [https://paws-r.github.io/docs/dynamodb/create_global_table.html](https://paws-r.github.io/docs/dynamodb/create_global_table.html) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The global table name.
 #' @param ReplicationGroup &#91;required&#93; The Regions where the global table needs to be created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalTableDescription = list(
-#'     ReplicationGroup = list(
-#'       list(
-#'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'         ReplicaStatusDescription = "string",
-#'         ReplicaStatusPercentProgress = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         ),
-#'         ReplicaInaccessibleDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     GlobalTableArn = "string",
-#'     CreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     GlobalTableStatus = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING",
-#'     GlobalTableName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_global_table(
-#'   GlobalTableName = "string",
-#'   ReplicationGroup = list(
-#'     list(
-#'       RegionName = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1080,31 +265,9 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' The CreateTable operation adds a new table to your account
 #'
 #' @description
-#' The [`create_table`][dynamodb_create_table] operation adds a new table
-#' to your account. In an AWS account, table names must be unique within
-#' each Region. That is, you can have two tables with same name if you
-#' create the tables in different Regions.
-#' 
-#' [`create_table`][dynamodb_create_table] is an asynchronous operation.
-#' Upon receiving a [`create_table`][dynamodb_create_table] request,
-#' DynamoDB immediately returns a response with a `TableStatus` of
-#' `CREATING`. After the table is created, DynamoDB sets the `TableStatus`
-#' to `ACTIVE`. You can perform read and write operations only on an
-#' `ACTIVE` table.
-#' 
-#' You can optionally define secondary indexes on the new table, as part of
-#' the [`create_table`][dynamodb_create_table] operation. If you want to
-#' create multiple tables with secondary indexes on them, you must create
-#' the tables sequentially. Only one table with secondary indexes can be in
-#' the `CREATING` state at any given time.
-#' 
-#' You can use the [`describe_table`][dynamodb_describe_table] action to
-#' check the table status.
+#' The [`create_table`][dynamodb_create_table] operation adds a new table to your account. In an Amazon Web Services account, table names must be unique within each Region. That is, you can have two tables with same name if you create the tables in different Regions.
 #'
-#' @usage
-#' dynamodb_create_table(AttributeDefinitions, TableName, KeySchema,
-#'   LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
-#'   ProvisionedThroughput, StreamSpecification, SSESpecification, Tags)
+#' See [https://paws-r.github.io/docs/dynamodb/create_table.html](https://paws-r.github.io/docs/dynamodb/create_table.html) for full documentation.
 #'
 #' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
 #' indexes.
@@ -1241,7 +404,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' 
 #' For current minimum and maximum provisioned throughput values, see
 #' [Service, Account, and Table
-#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param StreamSpecification The settings for DynamoDB Streams on the table. These settings consist
 #' of:
@@ -1268,280 +431,20 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param Tags A list of key-value pairs to label the table. For more information, see
 #' [Tagging for
 #' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableDescription = list(
-#'     AttributeDefinitions = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeType = "S"|"N"|"B"
-#'       )
-#'     ),
-#'     TableName = "string",
-#'     KeySchema = list(
-#'       list(
-#'         AttributeName = "string",
-#'         KeyType = "HASH"|"RANGE"
-#'       )
-#'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-#'     CreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedThroughput = list(
-#'       LastIncreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastDecreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       NumberOfDecreasesToday = 123,
-#'       ReadCapacityUnits = 123,
-#'       WriteCapacityUnits = 123
-#'     ),
-#'     TableSizeBytes = 123,
-#'     ItemCount = 123,
-#'     TableArn = "string",
-#'     TableId = "string",
-#'     BillingModeSummary = list(
-#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'       LastUpdateToPayPerRequestDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'         Backfilling = TRUE|FALSE,
-#'         ProvisionedThroughput = list(
-#'           LastIncreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           LastDecreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfDecreasesToday = 123,
-#'           ReadCapacityUnits = 123,
-#'           WriteCapacityUnits = 123
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     StreamSpecification = list(
-#'       StreamEnabled = TRUE|FALSE,
-#'       StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'     ),
-#'     LatestStreamLabel = "string",
-#'     LatestStreamArn = "string",
-#'     GlobalTableVersion = "string",
-#'     Replicas = list(
-#'       list(
-#'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'         ReplicaStatusDescription = "string",
-#'         ReplicaStatusPercentProgress = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         ),
-#'         ReplicaInaccessibleDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     RestoreSummary = list(
-#'       SourceBackupArn = "string",
-#'       SourceTableArn = "string",
-#'       RestoreDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RestoreInProgress = TRUE|FALSE
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-#'       SSEType = "AES256"|"KMS",
-#'       KMSMasterKeyArn = "string",
-#'       InaccessibleEncryptionDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     ArchivalSummary = list(
-#'       ArchivalDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ArchivalReason = "string",
-#'       ArchivalBackupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_table(
-#'   AttributeDefinitions = list(
-#'     list(
-#'       AttributeName = "string",
-#'       AttributeType = "S"|"N"|"B"
-#'     )
-#'   ),
-#'   TableName = "string",
-#'   KeySchema = list(
-#'     list(
-#'       AttributeName = "string",
-#'       KeyType = "HASH"|"RANGE"
-#'     )
-#'   ),
-#'   LocalSecondaryIndexes = list(
-#'     list(
-#'       IndexName = "string",
-#'       KeySchema = list(
-#'         list(
-#'           AttributeName = "string",
-#'           KeyType = "HASH"|"RANGE"
-#'         )
-#'       ),
-#'       Projection = list(
-#'         ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'         NonKeyAttributes = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   GlobalSecondaryIndexes = list(
-#'     list(
-#'       IndexName = "string",
-#'       KeySchema = list(
-#'         list(
-#'           AttributeName = "string",
-#'           KeyType = "HASH"|"RANGE"
-#'         )
-#'       ),
-#'       Projection = list(
-#'         ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'         NonKeyAttributes = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProvisionedThroughput = list(
-#'         ReadCapacityUnits = 123,
-#'         WriteCapacityUnits = 123
-#'       )
-#'     )
-#'   ),
-#'   BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'   ProvisionedThroughput = list(
-#'     ReadCapacityUnits = 123,
-#'     WriteCapacityUnits = 123
-#'   ),
-#'   StreamSpecification = list(
-#'     StreamEnabled = TRUE|FALSE,
-#'     StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'   ),
-#'   SSESpecification = list(
-#'     Enabled = TRUE|FALSE,
-#'     SSEType = "AES256"|"KMS",
-#'     KMSMasterKeyId = "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates a table named Music.
-#' svc$create_table(
-#'   AttributeDefinitions = list(
-#'     list(
-#'       AttributeName = "Artist",
-#'       AttributeType = "S"
-#'     ),
-#'     list(
-#'       AttributeName = "SongTitle",
-#'       AttributeType = "S"
-#'     )
-#'   ),
-#'   KeySchema = list(
-#'     list(
-#'       AttributeName = "Artist",
-#'       KeyType = "HASH"
-#'     ),
-#'     list(
-#'       AttributeName = "SongTitle",
-#'       KeyType = "RANGE"
-#'     )
-#'   ),
-#'   ProvisionedThroughput = list(
-#'     ReadCapacityUnits = 5L,
-#'     WriteCapacityUnits = 5L
-#'   ),
-#'   TableName = "Music"
-#' )
-#' }
+#' @param TableClass The table class of the new table. Valid values are `STANDARD` and
+#' `STANDARD_INFREQUENT_ACCESS`.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass)
   output <- .dynamodb$create_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -1555,120 +458,10 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
 #'
 #' @description
 #' Deletes an existing backup of a table.
-#' 
-#' You can call [`delete_backup`][dynamodb_delete_backup] at a maximum rate
-#' of 10 times per second.
 #'
-#' @usage
-#' dynamodb_delete_backup(BackupArn)
+#' See [https://paws-r.github.io/docs/dynamodb/delete_backup.html](https://paws-r.github.io/docs/dynamodb/delete_backup.html) for full documentation.
 #'
 #' @param BackupArn &#91;required&#93; The ARN associated with the backup.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BackupDescription = list(
-#'     BackupDetails = list(
-#'       BackupArn = "string",
-#'       BackupName = "string",
-#'       BackupSizeBytes = 123,
-#'       BackupStatus = "CREATING"|"DELETED"|"AVAILABLE",
-#'       BackupType = "USER"|"SYSTEM"|"AWS_BACKUP",
-#'       BackupCreationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       BackupExpiryDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     SourceTableDetails = list(
-#'       TableName = "string",
-#'       TableId = "string",
-#'       TableArn = "string",
-#'       TableSizeBytes = 123,
-#'       KeySchema = list(
-#'         list(
-#'           AttributeName = "string",
-#'           KeyType = "HASH"|"RANGE"
-#'         )
-#'       ),
-#'       TableCreationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ProvisionedThroughput = list(
-#'         ReadCapacityUnits = 123,
-#'         WriteCapacityUnits = 123
-#'       ),
-#'       ItemCount = 123,
-#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST"
-#'     ),
-#'     SourceTableFeatureDetails = list(
-#'       LocalSecondaryIndexes = list(
-#'         list(
-#'           IndexName = "string",
-#'           KeySchema = list(
-#'             list(
-#'               AttributeName = "string",
-#'               KeyType = "HASH"|"RANGE"
-#'             )
-#'           ),
-#'           Projection = list(
-#'             ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'             NonKeyAttributes = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       GlobalSecondaryIndexes = list(
-#'         list(
-#'           IndexName = "string",
-#'           KeySchema = list(
-#'             list(
-#'               AttributeName = "string",
-#'               KeyType = "HASH"|"RANGE"
-#'             )
-#'           ),
-#'           Projection = list(
-#'             ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'             NonKeyAttributes = list(
-#'               "string"
-#'             )
-#'           ),
-#'           ProvisionedThroughput = list(
-#'             ReadCapacityUnits = 123,
-#'             WriteCapacityUnits = 123
-#'           )
-#'         )
-#'       ),
-#'       StreamDescription = list(
-#'         StreamEnabled = TRUE|FALSE,
-#'         StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'       ),
-#'       TimeToLiveDescription = list(
-#'         TimeToLiveStatus = "ENABLING"|"DISABLING"|"ENABLED"|"DISABLED",
-#'         AttributeName = "string"
-#'       ),
-#'       SSEDescription = list(
-#'         Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-#'         SSEType = "AES256"|"KMS",
-#'         KMSMasterKeyArn = "string",
-#'         InaccessibleEncryptionDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_backup(
-#'   BackupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1693,27 +486,9 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' Deletes a single item in a table by primary key
 #'
 #' @description
-#' Deletes a single item in a table by primary key. You can perform a
-#' conditional delete operation that deletes the item if it exists, or if
-#' it has an expected attribute value.
-#' 
-#' In addition to deleting an item, you can also return the item's
-#' attribute values in the same operation, using the `ReturnValues`
-#' parameter.
-#' 
-#' Unless you specify conditions, the [`delete_item`][dynamodb_delete_item]
-#' is an idempotent operation; running it multiple times on the same item
-#' or attribute does *not* result in an error response.
-#' 
-#' Conditional deletes are useful for deleting items only if specific
-#' conditions are met. If those conditions are met, DynamoDB performs the
-#' delete. Otherwise, the item is not deleted.
+#' Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the item if it exists, or if it has an expected attribute value.
 #'
-#' @usage
-#' dynamodb_delete_item(TableName, Key, Expected, ConditionalOperator,
-#'   ReturnValues, ReturnConsumedCapacity, ReturnItemCollectionMetrics,
-#'   ConditionExpression, ExpressionAttributeNames,
-#'   ExpressionAttributeValues)
+#' See [https://paws-r.github.io/docs/dynamodb/delete_item.html](https://paws-r.github.io/docs/dynamodb/delete_item.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table from which to delete the item.
 #' @param Key &#91;required&#93; A map of attribute names to `AttributeValue` objects, representing the
@@ -1740,6 +515,10 @@ dynamodb_delete_backup <- function(BackupArn) {
 #'     `ReturnValues`.)
 #' 
 #' -   `ALL_OLD` - The content of the old item is returned.
+#' 
+#' There is no additional cost associated with requesting a return value
+#' aside from the small network and processing overhead of receiving a
+#' larger response. No read capacity units are consumed.
 #' 
 #' The `ReturnValues` parameter is used by several DynamoDB operations;
 #' however, [`delete_item`][dynamodb_delete_item] does not recognize any
@@ -1778,7 +557,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **#** character in an expression to dereference an attribute
+#' Use the **\#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -1823,222 +602,6 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Attributes = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ConsumedCapacity = list(
-#'     TableName = "string",
-#'     CapacityUnits = 123.0,
-#'     ReadCapacityUnits = 123.0,
-#'     WriteCapacityUnits = 123.0,
-#'     Table = list(
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       CapacityUnits = 123.0
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     )
-#'   ),
-#'   ItemCollectionMetrics = list(
-#'     ItemCollectionKey = list(
-#'       list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       )
-#'     ),
-#'     SizeEstimateRangeGB = list(
-#'       123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_item(
-#'   TableName = "string",
-#'   Key = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   Expected = list(
-#'     list(
-#'       Value = list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       ),
-#'       Exists = TRUE|FALSE,
-#'       ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH",
-#'       AttributeValueList = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ConditionalOperator = "AND"|"OR",
-#'   ReturnValues = "NONE"|"ALL_OLD"|"UPDATED_OLD"|"ALL_NEW"|"UPDATED_NEW",
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-#'   ReturnItemCollectionMetrics = "SIZE"|"NONE",
-#'   ConditionExpression = "string",
-#'   ExpressionAttributeNames = list(
-#'     "string"
-#'   ),
-#'   ExpressionAttributeValues = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes an item from the Music table.
-#' svc$delete_item(
-#'   Key = list(
-#'     Artist = list(
-#'       S = "No One You Know"
-#'     ),
-#'     SongTitle = list(
-#'       S = "Scared of My Shadow"
-#'     )
-#'   ),
-#'   TableName = "Music"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname dynamodb_delete_item
@@ -2062,200 +625,11 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #' The DeleteTable operation deletes a table and all of its items
 #'
 #' @description
-#' The [`delete_table`][dynamodb_delete_table] operation deletes a table
-#' and all of its items. After a [`delete_table`][dynamodb_delete_table]
-#' request, the specified table is in the `DELETING` state until DynamoDB
-#' completes the deletion. If the table is in the `ACTIVE` state, you can
-#' delete it. If a table is in `CREATING` or `UPDATING` states, then
-#' DynamoDB returns a `ResourceInUseException`. If the specified table does
-#' not exist, DynamoDB returns a `ResourceNotFoundException`. If table is
-#' already in the `DELETING` state, no error is returned.
-#' 
-#' DynamoDB might continue to accept data read and write operations, such
-#' as [`get_item`][dynamodb_get_item] and [`put_item`][dynamodb_put_item],
-#' on a table in the `DELETING` state until the table deletion is complete.
-#' 
-#' When you delete a table, any indexes on that table are also deleted.
-#' 
-#' If you have DynamoDB Streams enabled on the table, then the
-#' corresponding stream on that table goes into the `DISABLED` state, and
-#' the stream is automatically deleted after 24 hours.
-#' 
-#' Use the [`describe_table`][dynamodb_describe_table] action to check the
-#' status of the table.
+#' The [`delete_table`][dynamodb_delete_table] operation deletes a table and all of its items. After a [`delete_table`][dynamodb_delete_table] request, the specified table is in the `DELETING` state until DynamoDB completes the deletion. If the table is in the `ACTIVE` state, you can delete it. If a table is in `CREATING` or `UPDATING` states, then DynamoDB returns a `ResourceInUseException`. If the specified table does not exist, DynamoDB returns a `ResourceNotFoundException`. If table is already in the `DELETING` state, no error is returned.
 #'
-#' @usage
-#' dynamodb_delete_table(TableName)
+#' See [https://paws-r.github.io/docs/dynamodb/delete_table.html](https://paws-r.github.io/docs/dynamodb/delete_table.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableDescription = list(
-#'     AttributeDefinitions = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeType = "S"|"N"|"B"
-#'       )
-#'     ),
-#'     TableName = "string",
-#'     KeySchema = list(
-#'       list(
-#'         AttributeName = "string",
-#'         KeyType = "HASH"|"RANGE"
-#'       )
-#'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-#'     CreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedThroughput = list(
-#'       LastIncreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastDecreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       NumberOfDecreasesToday = 123,
-#'       ReadCapacityUnits = 123,
-#'       WriteCapacityUnits = 123
-#'     ),
-#'     TableSizeBytes = 123,
-#'     ItemCount = 123,
-#'     TableArn = "string",
-#'     TableId = "string",
-#'     BillingModeSummary = list(
-#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'       LastUpdateToPayPerRequestDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'         Backfilling = TRUE|FALSE,
-#'         ProvisionedThroughput = list(
-#'           LastIncreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           LastDecreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfDecreasesToday = 123,
-#'           ReadCapacityUnits = 123,
-#'           WriteCapacityUnits = 123
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     StreamSpecification = list(
-#'       StreamEnabled = TRUE|FALSE,
-#'       StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'     ),
-#'     LatestStreamLabel = "string",
-#'     LatestStreamArn = "string",
-#'     GlobalTableVersion = "string",
-#'     Replicas = list(
-#'       list(
-#'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'         ReplicaStatusDescription = "string",
-#'         ReplicaStatusPercentProgress = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         ),
-#'         ReplicaInaccessibleDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     RestoreSummary = list(
-#'       SourceBackupArn = "string",
-#'       SourceTableArn = "string",
-#'       RestoreDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RestoreInProgress = TRUE|FALSE
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-#'       SSEType = "AES256"|"KMS",
-#'       KMSMasterKeyArn = "string",
-#'       InaccessibleEncryptionDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     ArchivalSummary = list(
-#'       ArchivalDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ArchivalReason = "string",
-#'       ArchivalBackupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_table(
-#'   TableName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the Music table.
-#' svc$delete_table(
-#'   TableName = "Music"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2281,120 +655,10 @@ dynamodb_delete_table <- function(TableName) {
 #'
 #' @description
 #' Describes an existing backup of a table.
-#' 
-#' You can call [`describe_backup`][dynamodb_describe_backup] at a maximum
-#' rate of 10 times per second.
 #'
-#' @usage
-#' dynamodb_describe_backup(BackupArn)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_backup.html](https://paws-r.github.io/docs/dynamodb/describe_backup.html) for full documentation.
 #'
 #' @param BackupArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the backup.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BackupDescription = list(
-#'     BackupDetails = list(
-#'       BackupArn = "string",
-#'       BackupName = "string",
-#'       BackupSizeBytes = 123,
-#'       BackupStatus = "CREATING"|"DELETED"|"AVAILABLE",
-#'       BackupType = "USER"|"SYSTEM"|"AWS_BACKUP",
-#'       BackupCreationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       BackupExpiryDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     SourceTableDetails = list(
-#'       TableName = "string",
-#'       TableId = "string",
-#'       TableArn = "string",
-#'       TableSizeBytes = 123,
-#'       KeySchema = list(
-#'         list(
-#'           AttributeName = "string",
-#'           KeyType = "HASH"|"RANGE"
-#'         )
-#'       ),
-#'       TableCreationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ProvisionedThroughput = list(
-#'         ReadCapacityUnits = 123,
-#'         WriteCapacityUnits = 123
-#'       ),
-#'       ItemCount = 123,
-#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST"
-#'     ),
-#'     SourceTableFeatureDetails = list(
-#'       LocalSecondaryIndexes = list(
-#'         list(
-#'           IndexName = "string",
-#'           KeySchema = list(
-#'             list(
-#'               AttributeName = "string",
-#'               KeyType = "HASH"|"RANGE"
-#'             )
-#'           ),
-#'           Projection = list(
-#'             ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'             NonKeyAttributes = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       GlobalSecondaryIndexes = list(
-#'         list(
-#'           IndexName = "string",
-#'           KeySchema = list(
-#'             list(
-#'               AttributeName = "string",
-#'               KeyType = "HASH"|"RANGE"
-#'             )
-#'           ),
-#'           Projection = list(
-#'             ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'             NonKeyAttributes = list(
-#'               "string"
-#'             )
-#'           ),
-#'           ProvisionedThroughput = list(
-#'             ReadCapacityUnits = 123,
-#'             WriteCapacityUnits = 123
-#'           )
-#'         )
-#'       ),
-#'       StreamDescription = list(
-#'         StreamEnabled = TRUE|FALSE,
-#'         StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'       ),
-#'       TimeToLiveDescription = list(
-#'         TimeToLiveStatus = "ENABLING"|"DISABLING"|"ENABLED"|"DISABLED",
-#'         AttributeName = "string"
-#'       ),
-#'       SSEDescription = list(
-#'         Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-#'         SSEType = "AES256"|"KMS",
-#'         KMSMasterKeyArn = "string",
-#'         InaccessibleEncryptionDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_backup(
-#'   BackupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2420,54 +684,12 @@ dynamodb_describe_backup <- function(BackupArn) {
 #' the specified table
 #'
 #' @description
-#' Checks the status of continuous backups and point in time recovery on
-#' the specified table. Continuous backups are `ENABLED` on all tables at
-#' table creation. If point in time recovery is enabled,
-#' `PointInTimeRecoveryStatus` will be set to ENABLED.
-#' 
-#' After continuous backups and point in time recovery are enabled, you can
-#' restore to any point in time within `EarliestRestorableDateTime` and
-#' `LatestRestorableDateTime`.
-#' 
-#' `LatestRestorableDateTime` is typically 5 minutes before the current
-#' time. You can restore your table to any point in time during the last 35
-#' days.
-#' 
-#' You can call
-#' [`describe_continuous_backups`][dynamodb_describe_continuous_backups] at
-#' a maximum rate of 10 times per second.
+#' Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are `ENABLED` on all tables at table creation. If point in time recovery is enabled, `PointInTimeRecoveryStatus` will be set to ENABLED.
 #'
-#' @usage
-#' dynamodb_describe_continuous_backups(TableName)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_continuous_backups.html](https://paws-r.github.io/docs/dynamodb/describe_continuous_backups.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; Name of the table for which the customer wants to check the continuous
 #' backups and point in time recovery settings.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ContinuousBackupsDescription = list(
-#'     ContinuousBackupsStatus = "ENABLED"|"DISABLED",
-#'     PointInTimeRecoveryDescription = list(
-#'       PointInTimeRecoveryStatus = "ENABLED"|"DISABLED",
-#'       EarliestRestorableDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LatestRestorableDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_continuous_backups(
-#'   TableName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2493,42 +715,12 @@ dynamodb_describe_continuous_backups <- function(TableName) {
 #' global secondary index
 #'
 #' @description
-#' Returns information about contributor insights, for a given table or
-#' global secondary index.
+#' Returns information about contributor insights, for a given table or global secondary index.
 #'
-#' @usage
-#' dynamodb_describe_contributor_insights(TableName, IndexName)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_contributor_insights.html](https://paws-r.github.io/docs/dynamodb/describe_contributor_insights.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to describe.
 #' @param IndexName The name of the global secondary index to describe, if applicable.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableName = "string",
-#'   IndexName = "string",
-#'   ContributorInsightsRuleList = list(
-#'     "string"
-#'   ),
-#'   ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED",
-#'   LastUpdateDateTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   FailureException = list(
-#'     ExceptionName = "string",
-#'     ExceptionDescription = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_contributor_insights(
-#'   TableName = "string",
-#'   IndexName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2555,26 +747,7 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
 #' @description
 #' Returns the regional endpoint information.
 #'
-#' @usage
-#' dynamodb_describe_endpoints()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Endpoints = list(
-#'     list(
-#'       Address = "string",
-#'       CachePeriodInMinutes = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_endpoints()
-#' ```
+#' See [https://paws-r.github.io/docs/dynamodb/describe_endpoints.html](https://paws-r.github.io/docs/dynamodb/describe_endpoints.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -2601,51 +774,9 @@ dynamodb_describe_endpoints <- function() {
 #' @description
 #' Describes an existing table export.
 #'
-#' @usage
-#' dynamodb_describe_export(ExportArn)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_export.html](https://paws-r.github.io/docs/dynamodb/describe_export.html) for full documentation.
 #'
 #' @param ExportArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the export.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ExportDescription = list(
-#'     ExportArn = "string",
-#'     ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExportManifest = "string",
-#'     TableArn = "string",
-#'     TableId = "string",
-#'     ExportTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ClientToken = "string",
-#'     S3Bucket = "string",
-#'     S3BucketOwner = "string",
-#'     S3Prefix = "string",
-#'     S3SseAlgorithm = "AES256"|"KMS",
-#'     S3SseKmsKeyId = "string",
-#'     FailureCode = "string",
-#'     FailureMessage = "string",
-#'     ExportFormat = "DYNAMODB_JSON"|"ION",
-#'     BilledSizeBytes = 123,
-#'     ItemCount = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_export(
-#'   ExportArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2671,62 +802,10 @@ dynamodb_describe_export <- function(ExportArn) {
 #'
 #' @description
 #' Returns information about the specified global table.
-#' 
-#' This operation only applies to [Version
-#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables. If you are using global tables [Version
-#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
-#' you can use [`describe_table`][dynamodb_describe_table] instead.
 #'
-#' @usage
-#' dynamodb_describe_global_table(GlobalTableName)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_global_table.html](https://paws-r.github.io/docs/dynamodb/describe_global_table.html) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The name of the global table.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalTableDescription = list(
-#'     ReplicationGroup = list(
-#'       list(
-#'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'         ReplicaStatusDescription = "string",
-#'         ReplicaStatusPercentProgress = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         ),
-#'         ReplicaInaccessibleDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     GlobalTableArn = "string",
-#'     CreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     GlobalTableStatus = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING",
-#'     GlobalTableName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_global_table(
-#'   GlobalTableName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2752,120 +831,10 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #'
 #' @description
 #' Describes Region-specific settings for a global table.
-#' 
-#' This operation only applies to [Version
-#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables.
 #'
-#' @usage
-#' dynamodb_describe_global_table_settings(GlobalTableName)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_global_table_settings.html](https://paws-r.github.io/docs/dynamodb/describe_global_table_settings.html) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The name of the global table to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalTableName = "string",
-#'   ReplicaSettings = list(
-#'     list(
-#'       RegionName = "string",
-#'       ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'       ReplicaBillingModeSummary = list(
-#'         BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'         LastUpdateToPayPerRequestDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       ReplicaProvisionedReadCapacityUnits = 123,
-#'       ReplicaProvisionedReadCapacityAutoScalingSettings = list(
-#'         MinimumUnits = 123,
-#'         MaximumUnits = 123,
-#'         AutoScalingDisabled = TRUE|FALSE,
-#'         AutoScalingRoleArn = "string",
-#'         ScalingPolicies = list(
-#'           list(
-#'             PolicyName = "string",
-#'             TargetTrackingScalingPolicyConfiguration = list(
-#'               DisableScaleIn = TRUE|FALSE,
-#'               ScaleInCooldown = 123,
-#'               ScaleOutCooldown = 123,
-#'               TargetValue = 123.0
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       ReplicaProvisionedWriteCapacityUnits = 123,
-#'       ReplicaProvisionedWriteCapacityAutoScalingSettings = list(
-#'         MinimumUnits = 123,
-#'         MaximumUnits = 123,
-#'         AutoScalingDisabled = TRUE|FALSE,
-#'         AutoScalingRoleArn = "string",
-#'         ScalingPolicies = list(
-#'           list(
-#'             PolicyName = "string",
-#'             TargetTrackingScalingPolicyConfiguration = list(
-#'               DisableScaleIn = TRUE|FALSE,
-#'               ScaleInCooldown = 123,
-#'               ScaleOutCooldown = 123,
-#'               TargetValue = 123.0
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       ReplicaGlobalSecondaryIndexSettings = list(
-#'         list(
-#'           IndexName = "string",
-#'           IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'           ProvisionedReadCapacityUnits = 123,
-#'           ProvisionedReadCapacityAutoScalingSettings = list(
-#'             MinimumUnits = 123,
-#'             MaximumUnits = 123,
-#'             AutoScalingDisabled = TRUE|FALSE,
-#'             AutoScalingRoleArn = "string",
-#'             ScalingPolicies = list(
-#'               list(
-#'                 PolicyName = "string",
-#'                 TargetTrackingScalingPolicyConfiguration = list(
-#'                   DisableScaleIn = TRUE|FALSE,
-#'                   ScaleInCooldown = 123,
-#'                   ScaleOutCooldown = 123,
-#'                   TargetValue = 123.0
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           ProvisionedWriteCapacityUnits = 123,
-#'           ProvisionedWriteCapacityAutoScalingSettings = list(
-#'             MinimumUnits = 123,
-#'             MaximumUnits = 123,
-#'             AutoScalingDisabled = TRUE|FALSE,
-#'             AutoScalingRoleArn = "string",
-#'             ScalingPolicies = list(
-#'               list(
-#'                 PolicyName = "string",
-#'                 TargetTrackingScalingPolicyConfiguration = list(
-#'                   DisableScaleIn = TRUE|FALSE,
-#'                   ScaleInCooldown = 123,
-#'                   ScaleOutCooldown = 123,
-#'                   TargetValue = 123.0
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_global_table_settings(
-#'   GlobalTableName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2892,32 +861,9 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #' @description
 #' Returns information about the status of Kinesis streaming.
 #'
-#' @usage
-#' dynamodb_describe_kinesis_streaming_destination(TableName)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_kinesis_streaming_destination.html](https://paws-r.github.io/docs/dynamodb/describe_kinesis_streaming_destination.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table being described.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableName = "string",
-#'   KinesisDataStreamDestinations = list(
-#'     list(
-#'       StreamArn = "string",
-#'       DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED",
-#'       DestinationStatusDescription = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_kinesis_streaming_destination(
-#'   TableName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2939,106 +885,14 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
 }
 .dynamodb$operations$describe_kinesis_streaming_destination <- dynamodb_describe_kinesis_streaming_destination
 
-#' Returns the current provisioned-capacity quotas for your AWS account in
-#' a Region, both for the Region as a whole and for any one DynamoDB table
-#' that you create there
+#' Returns the current provisioned-capacity quotas for your Amazon Web
+#' Services account in a Region, both for the Region as a whole and for any
+#' one DynamoDB table that you create there
 #'
 #' @description
-#' Returns the current provisioned-capacity quotas for your AWS account in
-#' a Region, both for the Region as a whole and for any one DynamoDB table
-#' that you create there.
-#' 
-#' When you establish an AWS account, the account has initial quotas on the
-#' maximum read capacity units and write capacity units that you can
-#' provision across all of your DynamoDB tables in a given Region. Also,
-#' there are per-table quotas that apply when you create a table there. For
-#' more information, see [Service, Account, and Table
-#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
-#' page in the *Amazon DynamoDB Developer Guide*.
-#' 
-#' Although you can increase these quotas by filing a case at AWS Support
-#' Center, obtaining the increase is not instantaneous. The
-#' [`describe_limits`][dynamodb_describe_limits] action lets you write code
-#' to compare the capacity you are currently using to those quotas imposed
-#' by your account so that you have enough time to apply for an increase
-#' before you hit a quota.
-#' 
-#' For example, you could use one of the AWS SDKs to do the following:
-#' 
-#' 1.  Call [`describe_limits`][dynamodb_describe_limits] for a particular
-#'     Region to obtain your current account quotas on provisioned capacity
-#'     there.
-#' 
-#' 2.  Create a variable to hold the aggregate read capacity units
-#'     provisioned for all your tables in that Region, and one to hold the
-#'     aggregate write capacity units. Zero them both.
-#' 
-#' 3.  Call [`list_tables`][dynamodb_list_tables] to obtain a list of all
-#'     your DynamoDB tables.
-#' 
-#' 4.  For each table name listed by [`list_tables`][dynamodb_list_tables],
-#'     do the following:
-#' 
-#'     -   Call [`describe_table`][dynamodb_describe_table] with the table
-#'         name.
-#' 
-#'     -   Use the data returned by
-#'         [`describe_table`][dynamodb_describe_table] to add the read
-#'         capacity units and write capacity units provisioned for the
-#'         table itself to your variables.
-#' 
-#'     -   If the table has one or more global secondary indexes (GSIs),
-#'         loop over these GSIs and add their provisioned capacity values
-#'         to your variables as well.
-#' 
-#' 5.  Report the account quotas for that Region returned by
-#'     [`describe_limits`][dynamodb_describe_limits], along with the total
-#'     current provisioned capacity levels you have calculated.
-#' 
-#' This will let you see whether you are getting close to your
-#' account-level quotas.
-#' 
-#' The per-table quotas apply only when you are creating a new table. They
-#' restrict the sum of the provisioned capacity of the new table itself and
-#' all its global secondary indexes.
-#' 
-#' For existing tables and their GSIs, DynamoDB doesn't let you increase
-#' provisioned capacity extremely rapidly, but the only quota that applies
-#' is that the aggregate provisioned capacity over all your tables and GSIs
-#' cannot exceed either of the per-account quotas.
-#' 
-#' [`describe_limits`][dynamodb_describe_limits] should only be called
-#' periodically. You can expect throttling errors if you call it more than
-#' once in a minute.
-#' 
-#' The [`describe_limits`][dynamodb_describe_limits] Request element has no
-#' content.
+#' Returns the current provisioned-capacity quotas for your Amazon Web Services account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there.
 #'
-#' @usage
-#' dynamodb_describe_limits()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountMaxReadCapacityUnits = 123,
-#'   AccountMaxWriteCapacityUnits = 123,
-#'   TableMaxReadCapacityUnits = 123,
-#'   TableMaxWriteCapacityUnits = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_limits()
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the maximum read and write capacity units
-#' # per table, and for the AWS account, in the current AWS region.
-#' svc$describe_limits()
-#' }
+#' See [https://paws-r.github.io/docs/dynamodb/describe_limits.html](https://paws-r.github.io/docs/dynamodb/describe_limits.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3065,190 +919,11 @@ dynamodb_describe_limits <- function() {
 #' the table
 #'
 #' @description
-#' Returns information about the table, including the current status of the
-#' table, when it was created, the primary key schema, and any indexes on
-#' the table.
-#' 
-#' If you issue a [`describe_table`][dynamodb_describe_table] request
-#' immediately after a [`create_table`][dynamodb_create_table] request,
-#' DynamoDB might return a `ResourceNotFoundException`. This is because
-#' [`describe_table`][dynamodb_describe_table] uses an eventually
-#' consistent query, and the metadata for your table might not be available
-#' at that moment. Wait for a few seconds, and then try the
-#' [`describe_table`][dynamodb_describe_table] request again.
+#' Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table.
 #'
-#' @usage
-#' dynamodb_describe_table(TableName)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_table.html](https://paws-r.github.io/docs/dynamodb/describe_table.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Table = list(
-#'     AttributeDefinitions = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeType = "S"|"N"|"B"
-#'       )
-#'     ),
-#'     TableName = "string",
-#'     KeySchema = list(
-#'       list(
-#'         AttributeName = "string",
-#'         KeyType = "HASH"|"RANGE"
-#'       )
-#'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-#'     CreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedThroughput = list(
-#'       LastIncreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastDecreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       NumberOfDecreasesToday = 123,
-#'       ReadCapacityUnits = 123,
-#'       WriteCapacityUnits = 123
-#'     ),
-#'     TableSizeBytes = 123,
-#'     ItemCount = 123,
-#'     TableArn = "string",
-#'     TableId = "string",
-#'     BillingModeSummary = list(
-#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'       LastUpdateToPayPerRequestDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'         Backfilling = TRUE|FALSE,
-#'         ProvisionedThroughput = list(
-#'           LastIncreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           LastDecreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfDecreasesToday = 123,
-#'           ReadCapacityUnits = 123,
-#'           WriteCapacityUnits = 123
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     StreamSpecification = list(
-#'       StreamEnabled = TRUE|FALSE,
-#'       StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'     ),
-#'     LatestStreamLabel = "string",
-#'     LatestStreamArn = "string",
-#'     GlobalTableVersion = "string",
-#'     Replicas = list(
-#'       list(
-#'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'         ReplicaStatusDescription = "string",
-#'         ReplicaStatusPercentProgress = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         ),
-#'         ReplicaInaccessibleDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     RestoreSummary = list(
-#'       SourceBackupArn = "string",
-#'       SourceTableArn = "string",
-#'       RestoreDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RestoreInProgress = TRUE|FALSE
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-#'       SSEType = "AES256"|"KMS",
-#'       KMSMasterKeyArn = "string",
-#'       InaccessibleEncryptionDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     ArchivalSummary = list(
-#'       ArchivalDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ArchivalReason = "string",
-#'       ArchivalBackupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_table(
-#'   TableName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the Music table.
-#' svc$describe_table(
-#'   TableName = "Music"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3274,115 +949,11 @@ dynamodb_describe_table <- function(TableName) {
 #' once
 #'
 #' @description
-#' Describes auto scaling settings across replicas of the global table at
-#' once.
-#' 
-#' This operation only applies to [Version
-#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
-#' of global tables.
+#' Describes auto scaling settings across replicas of the global table at once.
 #'
-#' @usage
-#' dynamodb_describe_table_replica_auto_scaling(TableName)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_table_replica_auto_scaling.html](https://paws-r.github.io/docs/dynamodb/describe_table_replica_auto_scaling.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableAutoScalingDescription = list(
-#'     TableName = "string",
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-#'     Replicas = list(
-#'       list(
-#'         RegionName = "string",
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'             ProvisionedReadCapacityAutoScalingSettings = list(
-#'               MinimumUnits = 123,
-#'               MaximumUnits = 123,
-#'               AutoScalingDisabled = TRUE|FALSE,
-#'               AutoScalingRoleArn = "string",
-#'               ScalingPolicies = list(
-#'                 list(
-#'                   PolicyName = "string",
-#'                   TargetTrackingScalingPolicyConfiguration = list(
-#'                     DisableScaleIn = TRUE|FALSE,
-#'                     ScaleInCooldown = 123,
-#'                     ScaleOutCooldown = 123,
-#'                     TargetValue = 123.0
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             ProvisionedWriteCapacityAutoScalingSettings = list(
-#'               MinimumUnits = 123,
-#'               MaximumUnits = 123,
-#'               AutoScalingDisabled = TRUE|FALSE,
-#'               AutoScalingRoleArn = "string",
-#'               ScalingPolicies = list(
-#'                 list(
-#'                   PolicyName = "string",
-#'                   TargetTrackingScalingPolicyConfiguration = list(
-#'                     DisableScaleIn = TRUE|FALSE,
-#'                     ScaleInCooldown = 123,
-#'                     ScaleOutCooldown = 123,
-#'                     TargetValue = 123.0
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ReplicaProvisionedReadCapacityAutoScalingSettings = list(
-#'           MinimumUnits = 123,
-#'           MaximumUnits = 123,
-#'           AutoScalingDisabled = TRUE|FALSE,
-#'           AutoScalingRoleArn = "string",
-#'           ScalingPolicies = list(
-#'             list(
-#'               PolicyName = "string",
-#'               TargetTrackingScalingPolicyConfiguration = list(
-#'                 DisableScaleIn = TRUE|FALSE,
-#'                 ScaleInCooldown = 123,
-#'                 ScaleOutCooldown = 123,
-#'                 TargetValue = 123.0
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ReplicaProvisionedWriteCapacityAutoScalingSettings = list(
-#'           MinimumUnits = 123,
-#'           MaximumUnits = 123,
-#'           AutoScalingDisabled = TRUE|FALSE,
-#'           AutoScalingRoleArn = "string",
-#'           ScalingPolicies = list(
-#'             list(
-#'               PolicyName = "string",
-#'               TargetTrackingScalingPolicyConfiguration = list(
-#'                 DisableScaleIn = TRUE|FALSE,
-#'                 ScaleInCooldown = 123,
-#'                 ScaleOutCooldown = 123,
-#'                 TargetValue = 123.0
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_table_replica_auto_scaling(
-#'   TableName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3408,31 +979,11 @@ dynamodb_describe_table_replica_auto_scaling <- function(TableName) {
 #' table
 #'
 #' @description
-#' Gives a description of the Time to Live (TTL) status on the specified
-#' table.
+#' Gives a description of the Time to Live (TTL) status on the specified table.
 #'
-#' @usage
-#' dynamodb_describe_time_to_live(TableName)
+#' See [https://paws-r.github.io/docs/dynamodb/describe_time_to_live.html](https://paws-r.github.io/docs/dynamodb/describe_time_to_live.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to be described.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TimeToLiveDescription = list(
-#'     TimeToLiveStatus = "ENABLING"|"DISABLING"|"ENABLED"|"DISABLED",
-#'     AttributeName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_time_to_live(
-#'   TableName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3457,32 +1008,12 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' Stops replication from the DynamoDB table to the Kinesis data stream
 #'
 #' @description
-#' Stops replication from the DynamoDB table to the Kinesis data stream.
-#' This is done without deleting either of the resources.
+#' Stops replication from the DynamoDB table to the Kinesis data stream. This is done without deleting either of the resources.
 #'
-#' @usage
-#' dynamodb_disable_kinesis_streaming_destination(TableName, StreamArn)
+#' See [https://paws-r.github.io/docs/dynamodb/disable_kinesis_streaming_destination.html](https://paws-r.github.io/docs/dynamodb/disable_kinesis_streaming_destination.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the DynamoDB table.
 #' @param StreamArn &#91;required&#93; The ARN for a Kinesis data stream.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableName = "string",
-#'   StreamArn = "string",
-#'   DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_kinesis_streaming_destination(
-#'   TableName = "string",
-#'   StreamArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3508,34 +1039,12 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn)
 #' timestamp chosen during the enable workflow
 #'
 #' @description
-#' Starts table data replication to the specified Kinesis data stream at a
-#' timestamp chosen during the enable workflow. If this operation doesn't
-#' return results immediately, use DescribeKinesisStreamingDestination to
-#' check if streaming to the Kinesis data stream is ACTIVE.
+#' Starts table data replication to the specified Kinesis data stream at a timestamp chosen during the enable workflow. If this operation doesn't return results immediately, use DescribeKinesisStreamingDestination to check if streaming to the Kinesis data stream is ACTIVE.
 #'
-#' @usage
-#' dynamodb_enable_kinesis_streaming_destination(TableName, StreamArn)
+#' See [https://paws-r.github.io/docs/dynamodb/enable_kinesis_streaming_destination.html](https://paws-r.github.io/docs/dynamodb/enable_kinesis_streaming_destination.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the DynamoDB table.
 #' @param StreamArn &#91;required&#93; The ARN for a Kinesis data stream.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableName = "string",
-#'   StreamArn = "string",
-#'   DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_kinesis_streaming_destination(
-#'   TableName = "string",
-#'   StreamArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3561,12 +1070,9 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #' stored in DynamoDB, using PartiQL
 #'
 #' @description
-#' This operation allows you to perform reads and singleton writes on data
-#' stored in DynamoDB, using PartiQL.
+#' This operation allows you to perform reads and singleton writes on data stored in DynamoDB, using PartiQL.
 #'
-#' @usage
-#' dynamodb_execute_statement(Statement, Parameters, ConsistentRead,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/dynamodb/execute_statement.html](https://paws-r.github.io/docs/dynamodb/execute_statement.html) for full documentation.
 #'
 #' @param Statement &#91;required&#93; The PartiQL statement representing the operation to run.
 #' @param Parameters The parameters for the PartiQL statement, if any.
@@ -3575,85 +1081,28 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #' used.
 #' @param NextToken Set this value to get remaining results, if `NextToken` was returned in
 #' the statement response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$execute_statement(
-#'   Statement = "string",
-#'   Parameters = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ConsistentRead = TRUE|FALSE,
-#'   NextToken = "string"
-#' )
-#' ```
+#' @param ReturnConsumedCapacity 
+#' @param Limit The maximum number of items to evaluate (not necessarily the number of
+#' matching items). If DynamoDB processes the number of items up to the
+#' limit while processing the results, it stops the operation and returns
+#' the matching values up to that point, along with a key in
+#' `LastEvaluatedKey` to apply in a subsequent operation so you can pick up
+#' where you left off. Also, if the processed dataset size exceeds 1 MB
+#' before DynamoDB reaches this limit, it stops the operation and returns
+#' the matching values up to the limit, and a key in `LastEvaluatedKey` to
+#' apply in a subsequent operation to continue the operation.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_execute_statement
-dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentRead = NULL, NextToken = NULL) {
+dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentRead = NULL, NextToken = NULL, ReturnConsumedCapacity = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken)
+  input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken, ReturnConsumedCapacity = ReturnConsumedCapacity, Limit = Limit)
   output <- .dynamodb$execute_statement_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -3667,98 +1116,29 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
 #' data stored in DynamoDB, using PartiQL
 #'
 #' @description
-#' This operation allows you to perform transactional reads or writes on
-#' data stored in DynamoDB, using PartiQL.
+#' This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL.
 #'
-#' @usage
-#' dynamodb_execute_transaction(TransactStatements, ClientRequestToken)
+#' See [https://paws-r.github.io/docs/dynamodb/execute_transaction.html](https://paws-r.github.io/docs/dynamodb/execute_transaction.html) for full documentation.
 #'
 #' @param TransactStatements &#91;required&#93; The list of PartiQL statements representing the transaction to run.
 #' @param ClientRequestToken Set this value to get remaining results, if `NextToken` was returned in
 #' the statement response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Responses = list(
-#'     list(
-#'       Item = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$execute_transaction(
-#'   TransactStatements = list(
-#'     list(
-#'       Statement = "string",
-#'       Parameters = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ClientRequestToken = "string"
-#' )
-#' ```
+#' @param ReturnConsumedCapacity Determines the level of detail about either provisioned or on-demand
+#' throughput consumption that is returned in the response. For more
+#' information, see [`transact_get_items`][dynamodb_transact_get_items] and
+#' [`transact_write_items`][dynamodb_transact_write_items].
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_execute_transaction
-dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken = NULL) {
+dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken = NULL, ReturnConsumedCapacity = NULL) {
   op <- new_operation(
     name = "ExecuteTransaction",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$execute_transaction_input(TransactStatements = TransactStatements, ClientRequestToken = ClientRequestToken)
+  input <- .dynamodb$execute_transaction_input(TransactStatements = TransactStatements, ClientRequestToken = ClientRequestToken, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$execute_transaction_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -3771,18 +1151,14 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' Exports table data to an S3 bucket
 #'
 #' @description
-#' Exports table data to an S3 bucket. The table must have point in time
-#' recovery enabled, and you can export data from any time within the point
-#' in time recovery window.
+#' Exports table data to an S3 bucket. The table must have point in time recovery enabled, and you can export data from any time within the point in time recovery window.
 #'
-#' @usage
-#' dynamodb_export_table_to_point_in_time(TableArn, ExportTime,
-#'   ClientToken, S3Bucket, S3BucketOwner, S3Prefix, S3SseAlgorithm,
-#'   S3SseKmsKeyId, ExportFormat)
+#' See [https://paws-r.github.io/docs/dynamodb/export_table_to_point_in_time.html](https://paws-r.github.io/docs/dynamodb/export_table_to_point_in_time.html) for full documentation.
 #'
 #' @param TableArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the table to export.
-#' @param ExportTime Time in the past from which to export table data. The table export will
-#' be a snapshot of the table's state at this point in time.
+#' @param ExportTime Time in the past from which to export table data, counted in seconds
+#' from the start of the Unix epoch. The table export will be a snapshot of
+#' the table's state at this point in time.
 #' @param ClientToken Providing a `ClientToken` makes the call to
 #' `ExportTableToPointInTimeInput` idempotent, meaning that multiple
 #' identical calls have the same effect as one single call.
@@ -3797,8 +1173,8 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' parameters within the 8-hour idempotency window, DynamoDB returns an
 #' `IdempotentParameterMismatch` exception.
 #' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket to export the snapshot to.
-#' @param S3BucketOwner The ID of the AWS account that owns the bucket the export will be stored
-#' in.
+#' @param S3BucketOwner The ID of the Amazon Web Services account that owns the bucket the
+#' export will be stored in.
 #' @param S3Prefix The Amazon S3 bucket prefix to use as the file name and path of the
 #' exported snapshot.
 #' @param S3SseAlgorithm Type of encryption used on the bucket where export data will be stored.
@@ -3806,62 +1182,11 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' 
 #' -   `AES256` - server-side encryption with Amazon S3 managed keys
 #' 
-#' -   `KMS` - server-side encryption with AWS KMS managed keys
-#' @param S3SseKmsKeyId The ID of the AWS KMS managed key used to encrypt the S3 bucket where
-#' export data will be stored (if applicable).
+#' -   `KMS` - server-side encryption with KMS managed keys
+#' @param S3SseKmsKeyId The ID of the KMS managed key used to encrypt the S3 bucket where export
+#' data will be stored (if applicable).
 #' @param ExportFormat The format for the exported data. Valid values for `ExportFormat` are
 #' `DYNAMODB_JSON` or `ION`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ExportDescription = list(
-#'     ExportArn = "string",
-#'     ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExportManifest = "string",
-#'     TableArn = "string",
-#'     TableId = "string",
-#'     ExportTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ClientToken = "string",
-#'     S3Bucket = "string",
-#'     S3BucketOwner = "string",
-#'     S3Prefix = "string",
-#'     S3SseAlgorithm = "AES256"|"KMS",
-#'     S3SseKmsKeyId = "string",
-#'     FailureCode = "string",
-#'     FailureMessage = "string",
-#'     ExportFormat = "DYNAMODB_JSON"|"ION",
-#'     BilledSizeBytes = 123,
-#'     ItemCount = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$export_table_to_point_in_time(
-#'   TableArn = "string",
-#'   ExportTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ClientToken = "string",
-#'   S3Bucket = "string",
-#'   S3BucketOwner = "string",
-#'   S3Prefix = "string",
-#'   S3SseAlgorithm = "AES256"|"KMS",
-#'   S3SseKmsKeyId = "string",
-#'   ExportFormat = "DYNAMODB_JSON"|"ION"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3887,20 +1212,9 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' given primary key
 #'
 #' @description
-#' The [`get_item`][dynamodb_get_item] operation returns a set of
-#' attributes for the item with the given primary key. If there is no
-#' matching item, [`get_item`][dynamodb_get_item] does not return any data
-#' and there will be no `Item` element in the response.
-#' 
-#' [`get_item`][dynamodb_get_item] provides an eventually consistent read
-#' by default. If your application requires a strongly consistent read, set
-#' `ConsistentRead` to `true`. Although a strongly consistent read might
-#' take more time than an eventually consistent read, it always returns the
-#' last updated value.
+#' The [`get_item`][dynamodb_get_item] operation returns a set of attributes for the item with the given primary key. If there is no matching item, [`get_item`][dynamodb_get_item] does not return any data and there will be no `Item` element in the response.
 #'
-#' @usage
-#' dynamodb_get_item(TableName, Key, AttributesToGet, ConsistentRead,
-#'   ReturnConsumedCapacity, ProjectionExpression, ExpressionAttributeNames)
+#' See [https://paws-r.github.io/docs/dynamodb/get_item.html](https://paws-r.github.io/docs/dynamodb/get_item.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table containing the requested item.
 #' @param Key &#91;required&#93; A map of attribute names to `AttributeValue` objects, representing the
@@ -3941,7 +1255,7 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **#** character in an expression to dereference an attribute
+#' Use the **\#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -3967,120 +1281,6 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Item = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ConsumedCapacity = list(
-#'     TableName = "string",
-#'     CapacityUnits = 123.0,
-#'     ReadCapacityUnits = 123.0,
-#'     WriteCapacityUnits = 123.0,
-#'     Table = list(
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       CapacityUnits = 123.0
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_item(
-#'   TableName = "string",
-#'   Key = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   AttributesToGet = list(
-#'     "string"
-#'   ),
-#'   ConsistentRead = TRUE|FALSE,
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-#'   ProjectionExpression = "string",
-#'   ExpressionAttributeNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example retrieves an item from the Music table. The table has a
-#' # partition key and a sort key (Artist and SongTitle), so you must specify
-#' # both of these attributes.
-#' svc$get_item(
-#'   Key = list(
-#'     Artist = list(
-#'       S = "Acme Band"
-#'     ),
-#'     SongTitle = list(
-#'       S = "Happy Day"
-#'     )
-#'   ),
-#'   TableName = "Music"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname dynamodb_get_item
@@ -4101,25 +1301,12 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 }
 .dynamodb$operations$get_item <- dynamodb_get_item
 
-#' List backups associated with an AWS account
+#' List backups associated with an Amazon Web Services account
 #'
 #' @description
-#' List backups associated with an AWS account. To list backups for a given
-#' table, specify `TableName`. [`list_backups`][dynamodb_list_backups]
-#' returns a paginated list of results with at most 1 MB worth of items in
-#' a page. You can also specify a maximum number of entries to be returned
-#' in a page.
-#' 
-#' In the request, start time is inclusive, but end time is exclusive. Note
-#' that these boundaries are for the time at which the original backup was
-#' requested.
-#' 
-#' You can call [`list_backups`][dynamodb_list_backups] a maximum of five
-#' times per second.
+#' List backups associated with an Amazon Web Services account. To list backups for a given table, specify `TableName`. [`list_backups`][dynamodb_list_backups] returns a paginated list of results with at most 1 MB worth of items in a page. You can also specify a maximum number of entries to be returned in a page.
 #'
-#' @usage
-#' dynamodb_list_backups(TableName, Limit, TimeRangeLowerBound,
-#'   TimeRangeUpperBound, ExclusiveStartBackupArn, BackupType)
+#' See [https://paws-r.github.io/docs/dynamodb/list_backups.html](https://paws-r.github.io/docs/dynamodb/list_backups.html) for full documentation.
 #'
 #' @param TableName The backups from the table specified by `TableName` are listed.
 #' @param Limit Maximum number of backups to return at once.
@@ -4137,53 +1324,12 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #' 
 #' Where `BackupType` can be:
 #' 
-#' -   `USER` - On-demand backup created by you.
+#' -   `USER` - On-demand backup created by you. (The default setting if no
+#'     other backup types are specified.)
 #' 
 #' -   `SYSTEM` - On-demand backup automatically created by DynamoDB.
 #' 
 #' -   `ALL` - All types of on-demand backups (USER and SYSTEM).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BackupSummaries = list(
-#'     list(
-#'       TableName = "string",
-#'       TableId = "string",
-#'       TableArn = "string",
-#'       BackupArn = "string",
-#'       BackupName = "string",
-#'       BackupCreationDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       BackupExpiryDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       BackupStatus = "CREATING"|"DELETED"|"AVAILABLE",
-#'       BackupType = "USER"|"SYSTEM"|"AWS_BACKUP",
-#'       BackupSizeBytes = 123
-#'     )
-#'   ),
-#'   LastEvaluatedBackupArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_backups(
-#'   TableName = "string",
-#'   Limit = 123,
-#'   TimeRangeLowerBound = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   TimeRangeUpperBound = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ExclusiveStartBackupArn = "string",
-#'   BackupType = "USER"|"SYSTEM"|"AWS_BACKUP"|"ALL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4209,39 +1355,13 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
 #' global secondary indexes
 #'
 #' @description
-#' Returns a list of ContributorInsightsSummary for a table and all its
-#' global secondary indexes.
+#' Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes.
 #'
-#' @usage
-#' dynamodb_list_contributor_insights(TableName, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/dynamodb/list_contributor_insights.html](https://paws-r.github.io/docs/dynamodb/list_contributor_insights.html) for full documentation.
 #'
 #' @param TableName The name of the table.
 #' @param NextToken A token to for the desired page, if there is one.
 #' @param MaxResults Maximum number of results to return per page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ContributorInsightsSummaries = list(
-#'     list(
-#'       TableName = "string",
-#'       IndexName = "string",
-#'       ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_contributor_insights(
-#'   TableName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4268,37 +1388,13 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
 #' @description
 #' Lists completed exports within the past 90 days.
 #'
-#' @usage
-#' dynamodb_list_exports(TableArn, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/dynamodb/list_exports.html](https://paws-r.github.io/docs/dynamodb/list_exports.html) for full documentation.
 #'
 #' @param TableArn The Amazon Resource Name (ARN) associated with the exported table.
 #' @param MaxResults Maximum number of results to return per page.
 #' @param NextToken An optional string that, if supplied, must be copied from the output of
 #' a previous call to [`list_exports`][dynamodb_list_exports]. When
 #' provided in this manner, the API fetches the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ExportSummaries = list(
-#'     list(
-#'       ExportArn = "string",
-#'       ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_exports(
-#'   TableArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4324,14 +1420,8 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 #'
 #' @description
 #' Lists all global tables that have a replica in the specified Region.
-#' 
-#' This operation only applies to [Version
-#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables.
 #'
-#' @usage
-#' dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
-#'   RegionName)
+#' See [https://paws-r.github.io/docs/dynamodb/list_global_tables.html](https://paws-r.github.io/docs/dynamodb/list_global_tables.html) for full documentation.
 #'
 #' @param ExclusiveStartGlobalTableName The first global table name that this operation will evaluate.
 #' @param Limit The maximum number of table names to return, if the parameter is not
@@ -4343,33 +1433,6 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 #' in a subsequent operation to the `ExclusiveStartGlobalTableName`
 #' parameter.
 #' @param RegionName Lists the global tables in a specific Region.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalTables = list(
-#'     list(
-#'       GlobalTableName = "string",
-#'       ReplicationGroup = list(
-#'         list(
-#'           RegionName = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   LastEvaluatedGlobalTableName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_global_tables(
-#'   ExclusiveStartGlobalTableName = "string",
-#'   Limit = 123,
-#'   RegionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4395,44 +1458,15 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
 #' endpoint
 #'
 #' @description
-#' Returns an array of table names associated with the current account and
-#' endpoint. The output from [`list_tables`][dynamodb_list_tables] is
-#' paginated, with each page returning a maximum of 100 table names.
+#' Returns an array of table names associated with the current account and endpoint. The output from [`list_tables`][dynamodb_list_tables] is paginated, with each page returning a maximum of 100 table names.
 #'
-#' @usage
-#' dynamodb_list_tables(ExclusiveStartTableName, Limit)
+#' See [https://paws-r.github.io/docs/dynamodb/list_tables.html](https://paws-r.github.io/docs/dynamodb/list_tables.html) for full documentation.
 #'
 #' @param ExclusiveStartTableName The first table name that this operation will evaluate. Use the value
 #' that was returned for `LastEvaluatedTableName` in a previous operation,
 #' so that you can obtain the next page of results.
 #' @param Limit A maximum number of table names to return. If this parameter is not
 #' specified, the limit is 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableNames = list(
-#'     "string"
-#'   ),
-#'   LastEvaluatedTableName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tables(
-#'   ExclusiveStartTableName = "string",
-#'   Limit = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists all of the tables associated with the current AWS
-#' # account and endpoint.
-#' svc$list_tables()
-#' }
 #'
 #' @keywords internal
 #'
@@ -4457,43 +1491,15 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
 #' List all tags on an Amazon DynamoDB resource
 #'
 #' @description
-#' List all tags on an Amazon DynamoDB resource. You can call
-#' ListTagsOfResource up to 10 times per second, per account.
-#' 
-#' For an overview on tagging DynamoDB resources, see [Tagging for
-#' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
-#' in the *Amazon DynamoDB Developer Guide*.
+#' List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource up to 10 times per second, per account.
 #'
-#' @usage
-#' dynamodb_list_tags_of_resource(ResourceArn, NextToken)
+#' See [https://paws-r.github.io/docs/dynamodb/list_tags_of_resource.html](https://paws-r.github.io/docs/dynamodb/list_tags_of_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon DynamoDB resource with tags to be listed. This value is an
 #' Amazon Resource Name (ARN).
 #' @param NextToken An optional string that, if supplied, must be copied from the output of
 #' a previous call to ListTagOfResource. When provided in this manner, this
 #' API fetches the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_of_resource(
-#'   ResourceArn = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4518,75 +1524,9 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' Creates a new item, or replaces an old item with a new item
 #'
 #' @description
-#' Creates a new item, or replaces an old item with a new item. If an item
-#' that has the same primary key as the new item already exists in the
-#' specified table, the new item completely replaces the existing item. You
-#' can perform a conditional put operation (add a new item if one with the
-#' specified primary key doesn't exist), or replace an existing item if it
-#' has certain attribute values. You can return the item's attribute values
-#' in the same operation, using the `ReturnValues` parameter.
-#' 
-#' This topic provides general information about the
-#' [`put_item`][dynamodb_put_item] API.
-#' 
-#' For information on how to call the [`put_item`][dynamodb_put_item] API
-#' using the AWS SDK in specific languages, see the following:
-#' 
-#' -   [PutItem in the AWS Command Line
-#'     Interface](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2/MDynamoDBPutItemPutItemRequest.html)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     C++](https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=dynamodb-2012-08-10&type=PutItem)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     Go](https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/#DynamoDB.PutItem)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html#putItem-com.amazonaws.services.dynamodbv2.model.PutItemRequest-)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#putItem-property)
-#' 
-#' -   [PutItem in the AWS SDK for PHP
-#'     V3](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-dynamodb-2012-08-10.html#putitem)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     Python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html)
-#' 
-#' -   [PutItem in the AWS SDK for Ruby
-#'     V2](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/DynamoDB/Client.html#put_item-instance_method)
-#' 
-#' When you add an item, the primary key attributes are the only required
-#' attributes. Attribute values cannot be null.
-#' 
-#' Empty String and Binary attribute values are allowed. Attribute values
-#' of type String and Binary must have a length greater than zero if the
-#' attribute is used as a key attribute for a table or index. Set type
-#' attributes cannot be empty.
-#' 
-#' Invalid Requests with empty values will be rejected with a
-#' `ValidationException` exception.
-#' 
-#' To prevent a new item from replacing an existing item, use a conditional
-#' expression that contains the `attribute_not_exists` function with the
-#' name of the attribute being used as the partition key for the table.
-#' Since every record must contain that attribute, the
-#' `attribute_not_exists` function will only succeed if no matching item
-#' exists.
-#' 
-#' For more information about [`put_item`][dynamodb_put_item], see [Working
-#' with
-#' Items](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html)
-#' in the *Amazon DynamoDB Developer Guide*.
+#' Creates a new item, or replaces an old item with a new item. If an item that has the same primary key as the new item already exists in the specified table, the new item completely replaces the existing item. You can perform a conditional put operation (add a new item if one with the specified primary key doesn't exist), or replace an existing item if it has certain attribute values. You can return the item's attribute values in the same operation, using the `ReturnValues` parameter.
 #'
-#' @usage
-#' dynamodb_put_item(TableName, Item, Expected, ReturnValues,
-#'   ReturnConsumedCapacity, ReturnItemCollectionMetrics,
-#'   ConditionalOperator, ConditionExpression, ExpressionAttributeNames,
-#'   ExpressionAttributeValues)
+#' See [https://paws-r.github.io/docs/dynamodb/put_item.html](https://paws-r.github.io/docs/dynamodb/put_item.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to contain the item.
 #' @param Item &#91;required&#93; A map of attribute name/value pairs, one for each attribute. Only the
@@ -4627,6 +1567,12 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' -   `ALL_OLD` - If [`put_item`][dynamodb_put_item] overwrote an
 #'     attribute name-value pair, then the content of the old item is
 #'     returned.
+#' 
+#' The values returned are strongly consistent.
+#' 
+#' There is no additional cost associated with requesting a return value
+#' aside from the small network and processing overhead of receiving a
+#' larger response. No read capacity units are consumed.
 #' 
 #' The `ReturnValues` parameter is used by several DynamoDB operations;
 #' however, [`put_item`][dynamodb_put_item] does not recognize any values
@@ -4669,7 +1615,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **#** character in an expression to dereference an attribute
+#' Use the **\#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -4714,226 +1660,6 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Attributes = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ConsumedCapacity = list(
-#'     TableName = "string",
-#'     CapacityUnits = 123.0,
-#'     ReadCapacityUnits = 123.0,
-#'     WriteCapacityUnits = 123.0,
-#'     Table = list(
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       CapacityUnits = 123.0
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     )
-#'   ),
-#'   ItemCollectionMetrics = list(
-#'     ItemCollectionKey = list(
-#'       list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       )
-#'     ),
-#'     SizeEstimateRangeGB = list(
-#'       123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_item(
-#'   TableName = "string",
-#'   Item = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   Expected = list(
-#'     list(
-#'       Value = list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       ),
-#'       Exists = TRUE|FALSE,
-#'       ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH",
-#'       AttributeValueList = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ReturnValues = "NONE"|"ALL_OLD"|"UPDATED_OLD"|"ALL_NEW"|"UPDATED_NEW",
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-#'   ReturnItemCollectionMetrics = "SIZE"|"NONE",
-#'   ConditionalOperator = "AND"|"OR",
-#'   ConditionExpression = "string",
-#'   ExpressionAttributeNames = list(
-#'     "string"
-#'   ),
-#'   ExpressionAttributeValues = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example adds a new item to the Music table.
-#' svc$put_item(
-#'   Item = list(
-#'     AlbumTitle = list(
-#'       S = "Somewhat Famous"
-#'     ),
-#'     Artist = list(
-#'       S = "No One You Know"
-#'     ),
-#'     SongTitle = list(
-#'       S = "Call Me Today"
-#'     )
-#'   ),
-#'   ReturnConsumedCapacity = "TOTAL",
-#'   TableName = "Music"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname dynamodb_put_item
@@ -4954,73 +1680,13 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 }
 .dynamodb$operations$put_item <- dynamodb_put_item
 
-#' The Query operation finds items based on primary key values
+#' You must provide the name of the partition key attribute and a single
+#' value for that attribute
 #'
 #' @description
-#' The [`query`][dynamodb_query] operation finds items based on primary key
-#' values. You can query any table or secondary index that has a composite
-#' primary key (a partition key and a sort key).
-#' 
-#' Use the `KeyConditionExpression` parameter to provide a specific value
-#' for the partition key. The [`query`][dynamodb_query] operation will
-#' return all of the items from the table or index with that partition key
-#' value. You can optionally narrow the scope of the
-#' [`query`][dynamodb_query] operation by specifying a sort key value and a
-#' comparison operator in `KeyConditionExpression`. To further refine the
-#' [`query`][dynamodb_query] results, you can optionally provide a
-#' `FilterExpression`. A `FilterExpression` determines which items within
-#' the results should be returned to you. All of the other results are
-#' discarded.
-#' 
-#' A [`query`][dynamodb_query] operation always returns a result set. If no
-#' matching items are found, the result set will be empty. Queries that do
-#' not return results consume the minimum number of read capacity units for
-#' that type of read operation.
-#' 
-#' DynamoDB calculates the number of read capacity units consumed based on
-#' item size, not on the amount of data that is returned to an application.
-#' The number of capacity units consumed will be the same whether you
-#' request all of the attributes (the default behavior) or just some of
-#' them (using a projection expression). The number will also be the same
-#' whether or not you use a `FilterExpression`.
-#' 
-#' [`query`][dynamodb_query] results are always sorted by the sort key
-#' value. If the data type of the sort key is Number, the results are
-#' returned in numeric order; otherwise, the results are returned in order
-#' of UTF-8 bytes. By default, the sort order is ascending. To reverse the
-#' order, set the `ScanIndexForward` parameter to false.
-#' 
-#' A single [`query`][dynamodb_query] operation will read up to the maximum
-#' number of items set (if using the `Limit` parameter) or a maximum of 1
-#' MB of data and then apply any filtering to the results using
-#' `FilterExpression`. If `LastEvaluatedKey` is present in the response,
-#' you will need to paginate the result set. For more information, see
-#' [Paginating the
-#' Results](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination)
-#' in the *Amazon DynamoDB Developer Guide*.
-#' 
-#' `FilterExpression` is applied after a [`query`][dynamodb_query]
-#' finishes, but before the results are returned. A `FilterExpression`
-#' cannot contain partition key or sort key attributes. You need to specify
-#' those attributes in the `KeyConditionExpression`.
-#' 
-#' A [`query`][dynamodb_query] operation can return an empty result set and
-#' a `LastEvaluatedKey` if all the items read for the page of results are
-#' filtered out.
-#' 
-#' You can query a table, a local secondary index, or a global secondary
-#' index. For a query on a table or on a local secondary index, you can set
-#' the `ConsistentRead` parameter to `true` and obtain a strongly
-#' consistent result. Global secondary indexes support eventually
-#' consistent reads only, so do not specify `ConsistentRead` when querying
-#' a global secondary index.
+#' You must provide the name of the partition key attribute and a single value for that attribute. [`query`][dynamodb_query] returns all items with that partition key value. Optionally, you can provide a sort key attribute and use a comparison operator to refine the search results.
 #'
-#' @usage
-#' dynamodb_query(TableName, IndexName, Select, AttributesToGet, Limit,
-#'   ConsistentRead, KeyConditions, QueryFilter, ConditionalOperator,
-#'   ScanIndexForward, ExclusiveStartKey, ReturnConsumedCapacity,
-#'   ProjectionExpression, FilterExpression, KeyConditionExpression,
-#'   ExpressionAttributeNames, ExpressionAttributeValues)
+#' See [https://paws-r.github.io/docs/dynamodb/query.html](https://paws-r.github.io/docs/dynamodb/query.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table containing the requested items.
 #' @param IndexName The name of an index to query. This index can be any local secondary
@@ -5047,8 +1713,9 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #'     matching items themselves.
 #' 
 #' -   `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
-#'     `AttributesToGet`. This return value is equivalent to specifying
-#'     `AttributesToGet` without specifying any value for `Select`.
+#'     `ProjectionExpression`. This return value is equivalent to
+#'     specifying `ProjectionExpression` without specifying any value for
+#'     `Select`.
 #' 
 #'     If you query or scan a local secondary index and request only
 #'     attributes that are projected into that index, the operation will
@@ -5061,12 +1728,13 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #'     attributes that are projected into the index. Global secondary index
 #'     queries cannot fetch attributes from the parent table.
 #' 
-#' If neither `Select` nor `AttributesToGet` are specified, DynamoDB
+#' If neither `Select` nor `ProjectionExpression` are specified, DynamoDB
 #' defaults to `ALL_ATTRIBUTES` when accessing a table, and
 #' `ALL_PROJECTED_ATTRIBUTES` when accessing an index. You cannot use both
-#' `Select` and `AttributesToGet` together in a single request, unless the
-#' value for `Select` is `SPECIFIC_ATTRIBUTES`. (This usage is equivalent
-#' to specifying `AttributesToGet` without any value for `Select`.)
+#' `Select` and `ProjectionExpression` together in a single request, unless
+#' the value for `Select` is `SPECIFIC_ATTRIBUTES`. (This usage is
+#' equivalent to specifying `ProjectionExpression` without any value for
+#' `Select`.)
 #' 
 #' If you use the `ProjectionExpression` parameter, then the value for
 #' `Select` can only be `SPECIFIC_ATTRIBUTES`. Any other value for `Select`
@@ -5152,7 +1820,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param KeyConditionExpression The condition that specifies the key values for items to be retrieved by
 #' the [`query`][dynamodb_query] action.
@@ -5242,7 +1910,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **#** character in an expression to dereference an attribute
+#' Use the **\#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -5287,237 +1955,6 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   Count = 123,
-#'   ScannedCount = 123,
-#'   LastEvaluatedKey = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ConsumedCapacity = list(
-#'     TableName = "string",
-#'     CapacityUnits = 123.0,
-#'     ReadCapacityUnits = 123.0,
-#'     WriteCapacityUnits = 123.0,
-#'     Table = list(
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       CapacityUnits = 123.0
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$query(
-#'   TableName = "string",
-#'   IndexName = "string",
-#'   Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
-#'   AttributesToGet = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   ConsistentRead = TRUE|FALSE,
-#'   KeyConditions = list(
-#'     list(
-#'       AttributeValueList = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       ),
-#'       ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
-#'     )
-#'   ),
-#'   QueryFilter = list(
-#'     list(
-#'       AttributeValueList = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       ),
-#'       ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
-#'     )
-#'   ),
-#'   ConditionalOperator = "AND"|"OR",
-#'   ScanIndexForward = TRUE|FALSE,
-#'   ExclusiveStartKey = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-#'   ProjectionExpression = "string",
-#'   FilterExpression = "string",
-#'   KeyConditionExpression = "string",
-#'   ExpressionAttributeNames = list(
-#'     "string"
-#'   ),
-#'   ExpressionAttributeValues = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example queries items in the Music table. The table has a partition
-#' # key and sort key (Artist and SongTitle), but this query only specifies
-#' # the partition key value. It returns song titles by the artist named "No
-#' # One You Know".
-#' svc$query(
-#'   ExpressionAttributeValues = list(
-#'     `:v1` = list(
-#'       S = "No One You Know"
-#'     )
-#'   ),
-#'   KeyConditionExpression = "Artist = :v1",
-#'   ProjectionExpression = "SongTitle",
-#'   TableName = "Music"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname dynamodb_query
@@ -5541,33 +1978,9 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' Creates a new table from an existing backup
 #'
 #' @description
-#' Creates a new table from an existing backup. Any number of users can
-#' execute up to 4 concurrent restores (any type of restore) in a given
-#' account.
-#' 
-#' You can call
-#' [`restore_table_from_backup`][dynamodb_restore_table_from_backup] at a
-#' maximum rate of 10 times per second.
-#' 
-#' You must manually set up the following on the restored table:
-#' 
-#' -   Auto scaling policies
-#' 
-#' -   IAM policies
-#' 
-#' -   Amazon CloudWatch metrics and alarms
-#' 
-#' -   Tags
-#' 
-#' -   Stream settings
-#' 
-#' -   Time to Live (TTL) settings
+#' Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
 #'
-#' @usage
-#' dynamodb_restore_table_from_backup(TargetTableName, BackupArn,
-#'   BillingModeOverride, GlobalSecondaryIndexOverride,
-#'   LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
-#'   SSESpecificationOverride)
+#' See [https://paws-r.github.io/docs/dynamodb/restore_table_from_backup.html](https://paws-r.github.io/docs/dynamodb/restore_table_from_backup.html) for full documentation.
 #'
 #' @param TargetTableName &#91;required&#93; The name of the new table to which the backup must be restored.
 #' @param BackupArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the backup.
@@ -5580,215 +1993,6 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' exclude some or all of the indexes at the time of restore.
 #' @param ProvisionedThroughputOverride Provisioned throughput settings for the restored table.
 #' @param SSESpecificationOverride The new server-side encryption settings for the restored table.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableDescription = list(
-#'     AttributeDefinitions = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeType = "S"|"N"|"B"
-#'       )
-#'     ),
-#'     TableName = "string",
-#'     KeySchema = list(
-#'       list(
-#'         AttributeName = "string",
-#'         KeyType = "HASH"|"RANGE"
-#'       )
-#'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-#'     CreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedThroughput = list(
-#'       LastIncreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastDecreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       NumberOfDecreasesToday = 123,
-#'       ReadCapacityUnits = 123,
-#'       WriteCapacityUnits = 123
-#'     ),
-#'     TableSizeBytes = 123,
-#'     ItemCount = 123,
-#'     TableArn = "string",
-#'     TableId = "string",
-#'     BillingModeSummary = list(
-#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'       LastUpdateToPayPerRequestDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'         Backfilling = TRUE|FALSE,
-#'         ProvisionedThroughput = list(
-#'           LastIncreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           LastDecreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfDecreasesToday = 123,
-#'           ReadCapacityUnits = 123,
-#'           WriteCapacityUnits = 123
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     StreamSpecification = list(
-#'       StreamEnabled = TRUE|FALSE,
-#'       StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'     ),
-#'     LatestStreamLabel = "string",
-#'     LatestStreamArn = "string",
-#'     GlobalTableVersion = "string",
-#'     Replicas = list(
-#'       list(
-#'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'         ReplicaStatusDescription = "string",
-#'         ReplicaStatusPercentProgress = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         ),
-#'         ReplicaInaccessibleDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     RestoreSummary = list(
-#'       SourceBackupArn = "string",
-#'       SourceTableArn = "string",
-#'       RestoreDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RestoreInProgress = TRUE|FALSE
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-#'       SSEType = "AES256"|"KMS",
-#'       KMSMasterKeyArn = "string",
-#'       InaccessibleEncryptionDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     ArchivalSummary = list(
-#'       ArchivalDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ArchivalReason = "string",
-#'       ArchivalBackupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_table_from_backup(
-#'   TargetTableName = "string",
-#'   BackupArn = "string",
-#'   BillingModeOverride = "PROVISIONED"|"PAY_PER_REQUEST",
-#'   GlobalSecondaryIndexOverride = list(
-#'     list(
-#'       IndexName = "string",
-#'       KeySchema = list(
-#'         list(
-#'           AttributeName = "string",
-#'           KeyType = "HASH"|"RANGE"
-#'         )
-#'       ),
-#'       Projection = list(
-#'         ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'         NonKeyAttributes = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProvisionedThroughput = list(
-#'         ReadCapacityUnits = 123,
-#'         WriteCapacityUnits = 123
-#'       )
-#'     )
-#'   ),
-#'   LocalSecondaryIndexOverride = list(
-#'     list(
-#'       IndexName = "string",
-#'       KeySchema = list(
-#'         list(
-#'           AttributeName = "string",
-#'           KeyType = "HASH"|"RANGE"
-#'         )
-#'       ),
-#'       Projection = list(
-#'         ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'         NonKeyAttributes = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ProvisionedThroughputOverride = list(
-#'     ReadCapacityUnits = 123,
-#'     WriteCapacityUnits = 123
-#'   ),
-#'   SSESpecificationOverride = list(
-#'     Enabled = TRUE|FALSE,
-#'     SSEType = "AES256"|"KMS",
-#'     KMSMasterKeyId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5814,52 +2018,9 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' EarliestRestorableDateTime and LatestRestorableDateTime
 #'
 #' @description
-#' Restores the specified table to the specified point in time within
-#' `EarliestRestorableDateTime` and `LatestRestorableDateTime`. You can
-#' restore your table to any point in time during the last 35 days. Any
-#' number of users can execute up to 4 concurrent restores (any type of
-#' restore) in a given account.
-#' 
-#' When you restore using point in time recovery, DynamoDB restores your
-#' table data to the state based on the selected date and time
-#' (day:hour:minute:second) to a new table.
-#' 
-#' Along with data, the following are also included on the new restored
-#' table using point in time recovery:
-#' 
-#' -   Global secondary indexes (GSIs)
-#' 
-#' -   Local secondary indexes (LSIs)
-#' 
-#' -   Provisioned read and write capacity
-#' 
-#' -   Encryption settings
-#' 
-#'     All these settings come from the current settings of the source
-#'     table at the time of restore.
-#' 
-#' You must manually set up the following on the restored table:
-#' 
-#' -   Auto scaling policies
-#' 
-#' -   IAM policies
-#' 
-#' -   Amazon CloudWatch metrics and alarms
-#' 
-#' -   Tags
-#' 
-#' -   Stream settings
-#' 
-#' -   Time to Live (TTL) settings
-#' 
-#' -   Point in time recovery settings
+#' Restores the specified table to the specified point in time within `EarliestRestorableDateTime` and `LatestRestorableDateTime`. You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
 #'
-#' @usage
-#' dynamodb_restore_table_to_point_in_time(SourceTableArn, SourceTableName,
-#'   TargetTableName, UseLatestRestorableTime, RestoreDateTime,
-#'   BillingModeOverride, GlobalSecondaryIndexOverride,
-#'   LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
-#'   SSESpecificationOverride)
+#' See [https://paws-r.github.io/docs/dynamodb/restore_table_to_point_in_time.html](https://paws-r.github.io/docs/dynamodb/restore_table_to_point_in_time.html) for full documentation.
 #'
 #' @param SourceTableArn The DynamoDB table that will be restored. This value is an Amazon
 #' Resource Name (ARN).
@@ -5878,220 +2039,6 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' exclude some or all of the indexes at the time of restore.
 #' @param ProvisionedThroughputOverride Provisioned throughput settings for the restored table.
 #' @param SSESpecificationOverride The new server-side encryption settings for the restored table.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableDescription = list(
-#'     AttributeDefinitions = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeType = "S"|"N"|"B"
-#'       )
-#'     ),
-#'     TableName = "string",
-#'     KeySchema = list(
-#'       list(
-#'         AttributeName = "string",
-#'         KeyType = "HASH"|"RANGE"
-#'       )
-#'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-#'     CreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedThroughput = list(
-#'       LastIncreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastDecreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       NumberOfDecreasesToday = 123,
-#'       ReadCapacityUnits = 123,
-#'       WriteCapacityUnits = 123
-#'     ),
-#'     TableSizeBytes = 123,
-#'     ItemCount = 123,
-#'     TableArn = "string",
-#'     TableId = "string",
-#'     BillingModeSummary = list(
-#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'       LastUpdateToPayPerRequestDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'         Backfilling = TRUE|FALSE,
-#'         ProvisionedThroughput = list(
-#'           LastIncreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           LastDecreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfDecreasesToday = 123,
-#'           ReadCapacityUnits = 123,
-#'           WriteCapacityUnits = 123
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     StreamSpecification = list(
-#'       StreamEnabled = TRUE|FALSE,
-#'       StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'     ),
-#'     LatestStreamLabel = "string",
-#'     LatestStreamArn = "string",
-#'     GlobalTableVersion = "string",
-#'     Replicas = list(
-#'       list(
-#'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'         ReplicaStatusDescription = "string",
-#'         ReplicaStatusPercentProgress = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         ),
-#'         ReplicaInaccessibleDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     RestoreSummary = list(
-#'       SourceBackupArn = "string",
-#'       SourceTableArn = "string",
-#'       RestoreDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RestoreInProgress = TRUE|FALSE
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-#'       SSEType = "AES256"|"KMS",
-#'       KMSMasterKeyArn = "string",
-#'       InaccessibleEncryptionDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     ArchivalSummary = list(
-#'       ArchivalDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ArchivalReason = "string",
-#'       ArchivalBackupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_table_to_point_in_time(
-#'   SourceTableArn = "string",
-#'   SourceTableName = "string",
-#'   TargetTableName = "string",
-#'   UseLatestRestorableTime = TRUE|FALSE,
-#'   RestoreDateTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   BillingModeOverride = "PROVISIONED"|"PAY_PER_REQUEST",
-#'   GlobalSecondaryIndexOverride = list(
-#'     list(
-#'       IndexName = "string",
-#'       KeySchema = list(
-#'         list(
-#'           AttributeName = "string",
-#'           KeyType = "HASH"|"RANGE"
-#'         )
-#'       ),
-#'       Projection = list(
-#'         ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'         NonKeyAttributes = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProvisionedThroughput = list(
-#'         ReadCapacityUnits = 123,
-#'         WriteCapacityUnits = 123
-#'       )
-#'     )
-#'   ),
-#'   LocalSecondaryIndexOverride = list(
-#'     list(
-#'       IndexName = "string",
-#'       KeySchema = list(
-#'         list(
-#'           AttributeName = "string",
-#'           KeyType = "HASH"|"RANGE"
-#'         )
-#'       ),
-#'       Projection = list(
-#'         ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'         NonKeyAttributes = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ProvisionedThroughputOverride = list(
-#'     ReadCapacityUnits = 123,
-#'     WriteCapacityUnits = 123
-#'   ),
-#'   SSESpecificationOverride = list(
-#'     Enabled = TRUE|FALSE,
-#'     SSEType = "AES256"|"KMS",
-#'     KMSMasterKeyId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6117,47 +2064,9 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' accessing every item in a table or a secondary index
 #'
 #' @description
-#' The [`scan`][dynamodb_scan] operation returns one or more items and item
-#' attributes by accessing every item in a table or a secondary index. To
-#' have DynamoDB return fewer items, you can provide a `FilterExpression`
-#' operation.
-#' 
-#' If the total number of scanned items exceeds the maximum dataset size
-#' limit of 1 MB, the scan stops and results are returned to the user as a
-#' `LastEvaluatedKey` value to continue the scan in a subsequent operation.
-#' The results also include the number of items exceeding the limit. A scan
-#' can result in no table data meeting the filter criteria.
-#' 
-#' A single [`scan`][dynamodb_scan] operation reads up to the maximum
-#' number of items set (if using the `Limit` parameter) or a maximum of 1
-#' MB of data and then apply any filtering to the results using
-#' `FilterExpression`. If `LastEvaluatedKey` is present in the response,
-#' you need to paginate the result set. For more information, see
-#' [Paginating the
-#' Results](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
-#' in the *Amazon DynamoDB Developer Guide*.
-#' 
-#' [`scan`][dynamodb_scan] operations proceed sequentially; however, for
-#' faster performance on a large table or secondary index, applications can
-#' request a parallel [`scan`][dynamodb_scan] operation by providing the
-#' `Segment` and `TotalSegments` parameters. For more information, see
-#' [Parallel
-#' Scan](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan)
-#' in the *Amazon DynamoDB Developer Guide*.
-#' 
-#' [`scan`][dynamodb_scan] uses eventually consistent reads when accessing
-#' the data in a table; therefore, the result set might not include the
-#' changes to data in the table immediately before the operation began. If
-#' you need a consistent copy of the data, as of the time that the
-#' [`scan`][dynamodb_scan] begins, you can set the `ConsistentRead`
-#' parameter to `true`.
+#' The [`scan`][dynamodb_scan] operation returns one or more items and item attributes by accessing every item in a table or a secondary index. To have DynamoDB return fewer items, you can provide a `FilterExpression` operation.
 #'
-#' @usage
-#' dynamodb_scan(TableName, IndexName, AttributesToGet, Limit, Select,
-#'   ScanFilter, ConditionalOperator, ExclusiveStartKey,
-#'   ReturnConsumedCapacity, TotalSegments, Segment, ProjectionExpression,
-#'   FilterExpression, ExpressionAttributeNames, ExpressionAttributeValues,
-#'   ConsistentRead)
+#' See [https://paws-r.github.io/docs/dynamodb/scan.html](https://paws-r.github.io/docs/dynamodb/scan.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table containing the requested items; or, if you provide
 #' `IndexName`, the name of the table to which that index belongs.
@@ -6201,8 +2110,9 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #'     matching items themselves.
 #' 
 #' -   `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
-#'     `AttributesToGet`. This return value is equivalent to specifying
-#'     `AttributesToGet` without specifying any value for `Select`.
+#'     `ProjectionExpression`. This return value is equivalent to
+#'     specifying `ProjectionExpression` without specifying any value for
+#'     `Select`.
 #' 
 #'     If you query or scan a local secondary index and request only
 #'     attributes that are projected into that index, the operation reads
@@ -6215,12 +2125,13 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #'     attributes that are projected into the index. Global secondary index
 #'     queries cannot fetch attributes from the parent table.
 #' 
-#' If neither `Select` nor `AttributesToGet` are specified, DynamoDB
+#' If neither `Select` nor `ProjectionExpression` are specified, DynamoDB
 #' defaults to `ALL_ATTRIBUTES` when accessing a table, and
 #' `ALL_PROJECTED_ATTRIBUTES` when accessing an index. You cannot use both
-#' `Select` and `AttributesToGet` together in a single request, unless the
-#' value for `Select` is `SPECIFIC_ATTRIBUTES`. (This usage is equivalent
-#' to specifying `AttributesToGet` without any value for `Select`.)
+#' `Select` and `ProjectionExpression` together in a single request, unless
+#' the value for `Select` is `SPECIFIC_ATTRIBUTES`. (This usage is
+#' equivalent to specifying `ProjectionExpression` without any value for
+#' `Select`.)
 #' 
 #' If you use the `ProjectionExpression` parameter, then the value for
 #' `Select` can only be `SPECIFIC_ATTRIBUTES`. Any other value for `Select`
@@ -6297,7 +2208,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -6311,7 +2222,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **#** character in an expression to dereference an attribute
+#' Use the **\#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -6375,211 +2286,6 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' indexes. If you scan a global secondary index with `ConsistentRead` set
 #' to true, you will receive a `ValidationException`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   Count = 123,
-#'   ScannedCount = 123,
-#'   LastEvaluatedKey = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ConsumedCapacity = list(
-#'     TableName = "string",
-#'     CapacityUnits = 123.0,
-#'     ReadCapacityUnits = 123.0,
-#'     WriteCapacityUnits = 123.0,
-#'     Table = list(
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       CapacityUnits = 123.0
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$scan(
-#'   TableName = "string",
-#'   IndexName = "string",
-#'   AttributesToGet = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
-#'   ScanFilter = list(
-#'     list(
-#'       AttributeValueList = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       ),
-#'       ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
-#'     )
-#'   ),
-#'   ConditionalOperator = "AND"|"OR",
-#'   ExclusiveStartKey = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-#'   TotalSegments = 123,
-#'   Segment = 123,
-#'   ProjectionExpression = "string",
-#'   FilterExpression = "string",
-#'   ExpressionAttributeNames = list(
-#'     "string"
-#'   ),
-#'   ExpressionAttributeValues = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ConsistentRead = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example scans the entire Music table, and then narrows the results
-#' # to songs by the artist "No One You Know". For each item, only the album
-#' # title and song title are returned.
-#' svc$scan(
-#'   ExpressionAttributeNames = list(
-#'     `#AT` = "AlbumTitle",
-#'     `#ST` = "SongTitle"
-#'   ),
-#'   ExpressionAttributeValues = list(
-#'     `:a` = list(
-#'       S = "No One You Know"
-#'     )
-#'   ),
-#'   FilterExpression = "Artist = :a",
-#'   ProjectionExpression = "#ST, #AT",
-#'   TableName = "Music"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname dynamodb_scan
@@ -6603,37 +2309,13 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
 #' Associate a set of tags with an Amazon DynamoDB resource
 #'
 #' @description
-#' Associate a set of tags with an Amazon DynamoDB resource. You can then
-#' activate these user-defined tags so that they appear on the Billing and
-#' Cost Management console for cost allocation tracking. You can call
-#' TagResource up to five times per second, per account.
-#' 
-#' For an overview on tagging DynamoDB resources, see [Tagging for
-#' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
-#' in the *Amazon DynamoDB Developer Guide*.
+#' Associate a set of tags with an Amazon DynamoDB resource. You can then activate these user-defined tags so that they appear on the Billing and Cost Management console for cost allocation tracking. You can call TagResource up to five times per second, per account.
 #'
-#' @usage
-#' dynamodb_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/dynamodb/tag_resource.html](https://paws-r.github.io/docs/dynamodb/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Identifies the Amazon DynamoDB resource to which tags should be added.
 #' This value is an Amazon Resource Name (ARN).
 #' @param Tags &#91;required&#93; The tags to be assigned to the Amazon DynamoDB resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6660,144 +2342,15 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #' single account and Region
 #'
 #' @description
-#' [`transact_get_items`][dynamodb_transact_get_items] is a synchronous
-#' operation that atomically retrieves multiple items from one or more
-#' tables (but not from indexes) in a single account and Region. A
-#' [`transact_get_items`][dynamodb_transact_get_items] call can contain up
-#' to 25 `TransactGetItem` objects, each of which contains a `Get`
-#' structure that specifies an item to retrieve from a table in the account
-#' and Region. A call to
-#' [`transact_get_items`][dynamodb_transact_get_items] cannot retrieve
-#' items from tables in more than one AWS account or Region. The aggregate
-#' size of the items in the transaction cannot exceed 4 MB.
-#' 
-#' DynamoDB rejects the entire
-#' [`transact_get_items`][dynamodb_transact_get_items] request if any of
-#' the following is true:
-#' 
-#' -   A conflicting operation is in the process of updating an item to be
-#'     read.
-#' 
-#' -   There is insufficient provisioned capacity for the transaction to be
-#'     completed.
-#' 
-#' -   There is a user error, such as an invalid data format.
-#' 
-#' -   The aggregate size of the items in the transaction cannot exceed 4
-#'     MB.
+#' [`transact_get_items`][dynamodb_transact_get_items] is a synchronous operation that atomically retrieves multiple items from one or more tables (but not from indexes) in a single account and Region. A [`transact_get_items`][dynamodb_transact_get_items] call can contain up to 25 `TransactGetItem` objects, each of which contains a `Get` structure that specifies an item to retrieve from a table in the account and Region. A call to [`transact_get_items`][dynamodb_transact_get_items] cannot retrieve items from tables in more than one Amazon Web Services account or Region. The aggregate size of the items in the transaction cannot exceed 4 MB.
 #'
-#' @usage
-#' dynamodb_transact_get_items(TransactItems, ReturnConsumedCapacity)
+#' See [https://paws-r.github.io/docs/dynamodb/transact_get_items.html](https://paws-r.github.io/docs/dynamodb/transact_get_items.html) for full documentation.
 #'
 #' @param TransactItems &#91;required&#93; An ordered array of up to 25 `TransactGetItem` objects, each of which
 #' contains a `Get` structure.
 #' @param ReturnConsumedCapacity A value of `TOTAL` causes consumed capacity information to be returned,
 #' and a value of `NONE` prevents that information from being returned. No
 #' other value is valid.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConsumedCapacity = list(
-#'     list(
-#'       TableName = "string",
-#'       CapacityUnits = 123.0,
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       Table = list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       ),
-#'       LocalSecondaryIndexes = list(
-#'         list(
-#'           ReadCapacityUnits = 123.0,
-#'           WriteCapacityUnits = 123.0,
-#'           CapacityUnits = 123.0
-#'         )
-#'       ),
-#'       GlobalSecondaryIndexes = list(
-#'         list(
-#'           ReadCapacityUnits = 123.0,
-#'           WriteCapacityUnits = 123.0,
-#'           CapacityUnits = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Responses = list(
-#'     list(
-#'       Item = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$transact_get_items(
-#'   TransactItems = list(
-#'     list(
-#'       Get = list(
-#'         Key = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         TableName = "string",
-#'         ProjectionExpression = "string",
-#'         ExpressionAttributeNames = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6823,74 +2376,15 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' action requests
 #'
 #' @description
-#' [`transact_write_items`][dynamodb_transact_write_items] is a synchronous
-#' write operation that groups up to 25 action requests. These actions can
-#' target items in different tables, but not in different AWS accounts or
-#' Regions, and no two actions can target the same item. For example, you
-#' cannot both `ConditionCheck` and `Update` the same item. The aggregate
-#' size of the items in the transaction cannot exceed 4 MB.
-#' 
-#' The actions are completed atomically so that either all of them succeed,
-#' or all of them fail. They are defined by the following objects:
-#' 
-#' -   `Put`  —   Initiates a [`put_item`][dynamodb_put_item] operation to
-#'     write a new item. This structure specifies the primary key of the
-#'     item to be written, the name of the table to write it in, an
-#'     optional condition expression that must be satisfied for the write
-#'     to succeed, a list of the item's attributes, and a field indicating
-#'     whether to retrieve the item's attributes if the condition is not
-#'     met.
-#' 
-#' -   `Update`  —   Initiates an [`update_item`][dynamodb_update_item]
-#'     operation to update an existing item. This structure specifies the
-#'     primary key of the item to be updated, the name of the table where
-#'     it resides, an optional condition expression that must be satisfied
-#'     for the update to succeed, an expression that defines one or more
-#'     attributes to be updated, and a field indicating whether to retrieve
-#'     the item's attributes if the condition is not met.
-#' 
-#' -   `Delete`  —   Initiates a [`delete_item`][dynamodb_delete_item]
-#'     operation to delete an existing item. This structure specifies the
-#'     primary key of the item to be deleted, the name of the table where
-#'     it resides, an optional condition expression that must be satisfied
-#'     for the deletion to succeed, and a field indicating whether to
-#'     retrieve the item's attributes if the condition is not met.
-#' 
-#' -   `ConditionCheck`  —   Applies a condition to an item that is not
-#'     being modified by the transaction. This structure specifies the
-#'     primary key of the item to be checked, the name of the table where
-#'     it resides, a condition expression that must be satisfied for the
-#'     transaction to succeed, and a field indicating whether to retrieve
-#'     the item's attributes if the condition is not met.
-#' 
-#' DynamoDB rejects the entire
-#' [`transact_write_items`][dynamodb_transact_write_items] request if any
-#' of the following is true:
-#' 
-#' -   A condition in one of the condition expressions is not met.
-#' 
-#' -   An ongoing operation is in the process of updating the same item.
-#' 
-#' -   There is insufficient provisioned capacity for the transaction to be
-#'     completed.
-#' 
-#' -   An item size becomes too large (bigger than 400 KB), a local
-#'     secondary index (LSI) becomes too large, or a similar validation
-#'     error occurs because of changes made by the transaction.
-#' 
-#' -   The aggregate size of the items in the transaction exceeds 4 MB.
-#' 
-#' -   There is a user error, such as an invalid data format.
+#' [`transact_write_items`][dynamodb_transact_write_items] is a synchronous write operation that groups up to 25 action requests. These actions can target items in different tables, but not in different Amazon Web Services accounts or Regions, and no two actions can target the same item. For example, you cannot both `ConditionCheck` and `Update` the same item. The aggregate size of the items in the transaction cannot exceed 4 MB.
 #'
-#' @usage
-#' dynamodb_transact_write_items(TransactItems, ReturnConsumedCapacity,
-#'   ReturnItemCollectionMetrics, ClientRequestToken)
+#' See [https://paws-r.github.io/docs/dynamodb/transact_write_items.html](https://paws-r.github.io/docs/dynamodb/transact_write_items.html) for full documentation.
 #'
 #' @param TransactItems &#91;required&#93; An ordered array of up to 25 `TransactWriteItem` objects, each of which
 #' contains a `ConditionCheck`, `Put`, `Update`, or `Delete` object. These
 #' can operate on items in different tables, but the tables must reside in
-#' the same AWS account and Region, and no two of them can operate on the
-#' same item.
+#' the same Amazon Web Services account and Region, and no two of them can
+#' operate on the same item.
 #' @param ReturnConsumedCapacity 
 #' @param ReturnItemCollectionMetrics Determines whether item collection metrics are returned. If set to
 #' `SIZE`, the response includes statistics about item collections (if
@@ -6921,311 +2415,6 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' parameters within the 10-minute idempotency window, DynamoDB returns an
 #' `IdempotentParameterMismatch` exception.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConsumedCapacity = list(
-#'     list(
-#'       TableName = "string",
-#'       CapacityUnits = 123.0,
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       Table = list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       ),
-#'       LocalSecondaryIndexes = list(
-#'         list(
-#'           ReadCapacityUnits = 123.0,
-#'           WriteCapacityUnits = 123.0,
-#'           CapacityUnits = 123.0
-#'         )
-#'       ),
-#'       GlobalSecondaryIndexes = list(
-#'         list(
-#'           ReadCapacityUnits = 123.0,
-#'           WriteCapacityUnits = 123.0,
-#'           CapacityUnits = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ItemCollectionMetrics = list(
-#'     list(
-#'       list(
-#'         ItemCollectionKey = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         SizeEstimateRangeGB = list(
-#'           123.0
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$transact_write_items(
-#'   TransactItems = list(
-#'     list(
-#'       ConditionCheck = list(
-#'         Key = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         TableName = "string",
-#'         ConditionExpression = "string",
-#'         ExpressionAttributeNames = list(
-#'           "string"
-#'         ),
-#'         ExpressionAttributeValues = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         ReturnValuesOnConditionCheckFailure = "ALL_OLD"|"NONE"
-#'       ),
-#'       Put = list(
-#'         Item = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         TableName = "string",
-#'         ConditionExpression = "string",
-#'         ExpressionAttributeNames = list(
-#'           "string"
-#'         ),
-#'         ExpressionAttributeValues = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         ReturnValuesOnConditionCheckFailure = "ALL_OLD"|"NONE"
-#'       ),
-#'       Delete = list(
-#'         Key = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         TableName = "string",
-#'         ConditionExpression = "string",
-#'         ExpressionAttributeNames = list(
-#'           "string"
-#'         ),
-#'         ExpressionAttributeValues = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         ReturnValuesOnConditionCheckFailure = "ALL_OLD"|"NONE"
-#'       ),
-#'       Update = list(
-#'         Key = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         UpdateExpression = "string",
-#'         TableName = "string",
-#'         ConditionExpression = "string",
-#'         ExpressionAttributeNames = list(
-#'           "string"
-#'         ),
-#'         ExpressionAttributeValues = list(
-#'           list(
-#'             S = "string",
-#'             N = "string",
-#'             B = raw,
-#'             SS = list(
-#'               "string"
-#'             ),
-#'             NS = list(
-#'               "string"
-#'             ),
-#'             BS = list(
-#'               raw
-#'             ),
-#'             M = list(
-#'               list()
-#'             ),
-#'             L = list(
-#'               list()
-#'             ),
-#'             NULL = TRUE|FALSE,
-#'             BOOL = TRUE|FALSE
-#'           )
-#'         ),
-#'         ReturnValuesOnConditionCheckFailure = "ALL_OLD"|"NONE"
-#'       )
-#'     )
-#'   ),
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-#'   ReturnItemCollectionMetrics = "SIZE"|"NONE",
-#'   ClientRequestToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname dynamodb_transact_write_items
@@ -7249,34 +2438,14 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
 #' Removes the association of tags from an Amazon DynamoDB resource
 #'
 #' @description
-#' Removes the association of tags from an Amazon DynamoDB resource. You
-#' can call [`untag_resource`][dynamodb_untag_resource] up to five times
-#' per second, per account.
-#' 
-#' For an overview on tagging DynamoDB resources, see [Tagging for
-#' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
-#' in the *Amazon DynamoDB Developer Guide*.
+#' Removes the association of tags from an Amazon DynamoDB resource. You can call [`untag_resource`][dynamodb_untag_resource] up to five times per second, per account.
 #'
-#' @usage
-#' dynamodb_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/dynamodb/untag_resource.html](https://paws-r.github.io/docs/dynamodb/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The DynamoDB resource that the tags will be removed from. This value is
 #' an Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; A list of tag keys. Existing tags of the resource whose keys are members
 #' of this list will be removed from the DynamoDB resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7302,57 +2471,12 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #' the specified table
 #'
 #' @description
-#' [`update_continuous_backups`][dynamodb_update_continuous_backups]
-#' enables or disables point in time recovery for the specified table. A
-#' successful
-#' [`update_continuous_backups`][dynamodb_update_continuous_backups] call
-#' returns the current `ContinuousBackupsDescription`. Continuous backups
-#' are `ENABLED` on all tables at table creation. If point in time recovery
-#' is enabled, `PointInTimeRecoveryStatus` will be set to ENABLED.
-#' 
-#' Once continuous backups and point in time recovery are enabled, you can
-#' restore to any point in time within `EarliestRestorableDateTime` and
-#' `LatestRestorableDateTime`.
-#' 
-#' `LatestRestorableDateTime` is typically 5 minutes before the current
-#' time. You can restore your table to any point in time during the last 35
-#' days.
+#' [`update_continuous_backups`][dynamodb_update_continuous_backups] enables or disables point in time recovery for the specified table. A successful [`update_continuous_backups`][dynamodb_update_continuous_backups] call returns the current `ContinuousBackupsDescription`. Continuous backups are `ENABLED` on all tables at table creation. If point in time recovery is enabled, `PointInTimeRecoveryStatus` will be set to ENABLED.
 #'
-#' @usage
-#' dynamodb_update_continuous_backups(TableName,
-#'   PointInTimeRecoverySpecification)
+#' See [https://paws-r.github.io/docs/dynamodb/update_continuous_backups.html](https://paws-r.github.io/docs/dynamodb/update_continuous_backups.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table.
 #' @param PointInTimeRecoverySpecification &#91;required&#93; Represents the settings used to enable point in time recovery.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ContinuousBackupsDescription = list(
-#'     ContinuousBackupsStatus = "ENABLED"|"DISABLED",
-#'     PointInTimeRecoveryDescription = list(
-#'       PointInTimeRecoveryStatus = "ENABLED"|"DISABLED",
-#'       EarliestRestorableDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LatestRestorableDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_continuous_backups(
-#'   TableName = "string",
-#'   PointInTimeRecoverySpecification = list(
-#'     PointInTimeRecoveryEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7378,35 +2502,13 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' index
 #'
 #' @description
-#' Updates the status for contributor insights for a specific table or
-#' index.
+#' Updates the status for contributor insights for a specific table or index. CloudWatch Contributor Insights for DynamoDB graphs display the partition key and (if applicable) sort key of frequently accessed items and frequently throttled items in plaintext. If you require the use of Amazon Web Services Key Management Service (KMS) to encrypt this table’s partition key and sort key data with an Amazon Web Services managed key or customer managed key, you should not enable CloudWatch Contributor Insights for DynamoDB for this table.
 #'
-#' @usage
-#' dynamodb_update_contributor_insights(TableName, IndexName,
-#'   ContributorInsightsAction)
+#' See [https://paws-r.github.io/docs/dynamodb/update_contributor_insights.html](https://paws-r.github.io/docs/dynamodb/update_contributor_insights.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table.
 #' @param IndexName The global secondary index name, if applicable.
 #' @param ContributorInsightsAction &#91;required&#93; Represents the contributor insights action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableName = "string",
-#'   IndexName = "string",
-#'   ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_contributor_insights(
-#'   TableName = "string",
-#'   IndexName = "string",
-#'   ContributorInsightsAction = "ENABLE"|"DISABLE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7431,88 +2533,12 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' Adds or removes replicas in the specified global table
 #'
 #' @description
-#' Adds or removes replicas in the specified global table. The global table
-#' must already exist to be able to use this operation. Any replica to be
-#' added must be empty, have the same name as the global table, have the
-#' same key schema, have DynamoDB Streams enabled, and have the same
-#' provisioned and maximum write capacity units.
-#' 
-#' Although you can use
-#' [`update_global_table`][dynamodb_update_global_table] to add replicas
-#' and remove replicas in a single request, for simplicity we recommend
-#' that you issue separate requests for adding or removing replicas.
-#' 
-#' If global secondary indexes are specified, then the following conditions
-#' must also be met:
-#' 
-#' -   The global secondary indexes must have the same name.
-#' 
-#' -   The global secondary indexes must have the same hash key and sort
-#'     key (if present).
-#' 
-#' -   The global secondary indexes must have the same provisioned and
-#'     maximum write capacity units.
+#' Adds or removes replicas in the specified global table. The global table must already exist to be able to use this operation. Any replica to be added must be empty, have the same name as the global table, have the same key schema, have DynamoDB Streams enabled, and have the same provisioned and maximum write capacity units.
 #'
-#' @usage
-#' dynamodb_update_global_table(GlobalTableName, ReplicaUpdates)
+#' See [https://paws-r.github.io/docs/dynamodb/update_global_table.html](https://paws-r.github.io/docs/dynamodb/update_global_table.html) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The global table name.
 #' @param ReplicaUpdates &#91;required&#93; A list of Regions that should be added or removed from the global table.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalTableDescription = list(
-#'     ReplicationGroup = list(
-#'       list(
-#'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'         ReplicaStatusDescription = "string",
-#'         ReplicaStatusPercentProgress = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         ),
-#'         ReplicaInaccessibleDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     GlobalTableArn = "string",
-#'     CreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     GlobalTableStatus = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING",
-#'     GlobalTableName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_global_table(
-#'   GlobalTableName = "string",
-#'   ReplicaUpdates = list(
-#'     list(
-#'       Create = list(
-#'         RegionName = "string"
-#'       ),
-#'       Delete = list(
-#'         RegionName = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7539,11 +2565,7 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' @description
 #' Updates settings for a global table.
 #'
-#' @usage
-#' dynamodb_update_global_table_settings(GlobalTableName,
-#'   GlobalTableBillingMode, GlobalTableProvisionedWriteCapacityUnits,
-#'   GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate,
-#'   GlobalTableGlobalSecondaryIndexSettingsUpdate, ReplicaSettingsUpdate)
+#' See [https://paws-r.github.io/docs/dynamodb/update_global_table_settings.html](https://paws-r.github.io/docs/dynamodb/update_global_table_settings.html) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The name of the global table
 #' @param GlobalTableBillingMode The billing mode of the global table. If `GlobalTableBillingMode` is not
@@ -7566,191 +2588,6 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' that will be modified.
 #' @param ReplicaSettingsUpdate Represents the settings for a global table in a Region that will be
 #' modified.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalTableName = "string",
-#'   ReplicaSettings = list(
-#'     list(
-#'       RegionName = "string",
-#'       ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'       ReplicaBillingModeSummary = list(
-#'         BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'         LastUpdateToPayPerRequestDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       ReplicaProvisionedReadCapacityUnits = 123,
-#'       ReplicaProvisionedReadCapacityAutoScalingSettings = list(
-#'         MinimumUnits = 123,
-#'         MaximumUnits = 123,
-#'         AutoScalingDisabled = TRUE|FALSE,
-#'         AutoScalingRoleArn = "string",
-#'         ScalingPolicies = list(
-#'           list(
-#'             PolicyName = "string",
-#'             TargetTrackingScalingPolicyConfiguration = list(
-#'               DisableScaleIn = TRUE|FALSE,
-#'               ScaleInCooldown = 123,
-#'               ScaleOutCooldown = 123,
-#'               TargetValue = 123.0
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       ReplicaProvisionedWriteCapacityUnits = 123,
-#'       ReplicaProvisionedWriteCapacityAutoScalingSettings = list(
-#'         MinimumUnits = 123,
-#'         MaximumUnits = 123,
-#'         AutoScalingDisabled = TRUE|FALSE,
-#'         AutoScalingRoleArn = "string",
-#'         ScalingPolicies = list(
-#'           list(
-#'             PolicyName = "string",
-#'             TargetTrackingScalingPolicyConfiguration = list(
-#'               DisableScaleIn = TRUE|FALSE,
-#'               ScaleInCooldown = 123,
-#'               ScaleOutCooldown = 123,
-#'               TargetValue = 123.0
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       ReplicaGlobalSecondaryIndexSettings = list(
-#'         list(
-#'           IndexName = "string",
-#'           IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'           ProvisionedReadCapacityUnits = 123,
-#'           ProvisionedReadCapacityAutoScalingSettings = list(
-#'             MinimumUnits = 123,
-#'             MaximumUnits = 123,
-#'             AutoScalingDisabled = TRUE|FALSE,
-#'             AutoScalingRoleArn = "string",
-#'             ScalingPolicies = list(
-#'               list(
-#'                 PolicyName = "string",
-#'                 TargetTrackingScalingPolicyConfiguration = list(
-#'                   DisableScaleIn = TRUE|FALSE,
-#'                   ScaleInCooldown = 123,
-#'                   ScaleOutCooldown = 123,
-#'                   TargetValue = 123.0
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           ProvisionedWriteCapacityUnits = 123,
-#'           ProvisionedWriteCapacityAutoScalingSettings = list(
-#'             MinimumUnits = 123,
-#'             MaximumUnits = 123,
-#'             AutoScalingDisabled = TRUE|FALSE,
-#'             AutoScalingRoleArn = "string",
-#'             ScalingPolicies = list(
-#'               list(
-#'                 PolicyName = "string",
-#'                 TargetTrackingScalingPolicyConfiguration = list(
-#'                   DisableScaleIn = TRUE|FALSE,
-#'                   ScaleInCooldown = 123,
-#'                   ScaleOutCooldown = 123,
-#'                   TargetValue = 123.0
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_global_table_settings(
-#'   GlobalTableName = "string",
-#'   GlobalTableBillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'   GlobalTableProvisionedWriteCapacityUnits = 123,
-#'   GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = list(
-#'     MinimumUnits = 123,
-#'     MaximumUnits = 123,
-#'     AutoScalingDisabled = TRUE|FALSE,
-#'     AutoScalingRoleArn = "string",
-#'     ScalingPolicyUpdate = list(
-#'       PolicyName = "string",
-#'       TargetTrackingScalingPolicyConfiguration = list(
-#'         DisableScaleIn = TRUE|FALSE,
-#'         ScaleInCooldown = 123,
-#'         ScaleOutCooldown = 123,
-#'         TargetValue = 123.0
-#'       )
-#'     )
-#'   ),
-#'   GlobalTableGlobalSecondaryIndexSettingsUpdate = list(
-#'     list(
-#'       IndexName = "string",
-#'       ProvisionedWriteCapacityUnits = 123,
-#'       ProvisionedWriteCapacityAutoScalingSettingsUpdate = list(
-#'         MinimumUnits = 123,
-#'         MaximumUnits = 123,
-#'         AutoScalingDisabled = TRUE|FALSE,
-#'         AutoScalingRoleArn = "string",
-#'         ScalingPolicyUpdate = list(
-#'           PolicyName = "string",
-#'           TargetTrackingScalingPolicyConfiguration = list(
-#'             DisableScaleIn = TRUE|FALSE,
-#'             ScaleInCooldown = 123,
-#'             ScaleOutCooldown = 123,
-#'             TargetValue = 123.0
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ReplicaSettingsUpdate = list(
-#'     list(
-#'       RegionName = "string",
-#'       ReplicaProvisionedReadCapacityUnits = 123,
-#'       ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate = list(
-#'         MinimumUnits = 123,
-#'         MaximumUnits = 123,
-#'         AutoScalingDisabled = TRUE|FALSE,
-#'         AutoScalingRoleArn = "string",
-#'         ScalingPolicyUpdate = list(
-#'           PolicyName = "string",
-#'           TargetTrackingScalingPolicyConfiguration = list(
-#'             DisableScaleIn = TRUE|FALSE,
-#'             ScaleInCooldown = 123,
-#'             ScaleOutCooldown = 123,
-#'             TargetValue = 123.0
-#'           )
-#'         )
-#'       ),
-#'       ReplicaGlobalSecondaryIndexSettingsUpdate = list(
-#'         list(
-#'           IndexName = "string",
-#'           ProvisionedReadCapacityUnits = 123,
-#'           ProvisionedReadCapacityAutoScalingSettingsUpdate = list(
-#'             MinimumUnits = 123,
-#'             MaximumUnits = 123,
-#'             AutoScalingDisabled = TRUE|FALSE,
-#'             AutoScalingRoleArn = "string",
-#'             ScalingPolicyUpdate = list(
-#'               PolicyName = "string",
-#'               TargetTrackingScalingPolicyConfiguration = list(
-#'                 DisableScaleIn = TRUE|FALSE,
-#'                 ScaleInCooldown = 123,
-#'                 ScaleOutCooldown = 123,
-#'                 TargetValue = 123.0
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7776,21 +2613,9 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' it does not already exist
 #'
 #' @description
-#' Edits an existing item's attributes, or adds a new item to the table if
-#' it does not already exist. You can put, delete, or add attribute values.
-#' You can also perform a conditional update on an existing item (insert a
-#' new attribute name-value pair if it doesn't exist, or replace an
-#' existing name-value pair if it has certain expected attribute values).
-#' 
-#' You can also return the item's attribute values in the same
-#' [`update_item`][dynamodb_update_item] operation using the `ReturnValues`
-#' parameter.
+#' Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).
 #'
-#' @usage
-#' dynamodb_update_item(TableName, Key, AttributeUpdates, Expected,
-#'   ConditionalOperator, ReturnValues, ReturnConsumedCapacity,
-#'   ReturnItemCollectionMetrics, UpdateExpression, ConditionExpression,
-#'   ExpressionAttributeNames, ExpressionAttributeValues)
+#' See [https://paws-r.github.io/docs/dynamodb/update_item.html](https://paws-r.github.io/docs/dynamodb/update_item.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table containing the item to update.
 #' @param Key &#91;required&#93; The primary key of the item to be updated. Each element consists of an
@@ -7954,7 +2779,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **#** character in an expression to dereference an attribute
+#' Use the **\#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -8000,266 +2825,6 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Attributes = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   ConsumedCapacity = list(
-#'     TableName = "string",
-#'     CapacityUnits = 123.0,
-#'     ReadCapacityUnits = 123.0,
-#'     WriteCapacityUnits = 123.0,
-#'     Table = list(
-#'       ReadCapacityUnits = 123.0,
-#'       WriteCapacityUnits = 123.0,
-#'       CapacityUnits = 123.0
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         ReadCapacityUnits = 123.0,
-#'         WriteCapacityUnits = 123.0,
-#'         CapacityUnits = 123.0
-#'       )
-#'     )
-#'   ),
-#'   ItemCollectionMetrics = list(
-#'     ItemCollectionKey = list(
-#'       list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       )
-#'     ),
-#'     SizeEstimateRangeGB = list(
-#'       123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_item(
-#'   TableName = "string",
-#'   Key = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   ),
-#'   AttributeUpdates = list(
-#'     list(
-#'       Value = list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       ),
-#'       Action = "ADD"|"PUT"|"DELETE"
-#'     )
-#'   ),
-#'   Expected = list(
-#'     list(
-#'       Value = list(
-#'         S = "string",
-#'         N = "string",
-#'         B = raw,
-#'         SS = list(
-#'           "string"
-#'         ),
-#'         NS = list(
-#'           "string"
-#'         ),
-#'         BS = list(
-#'           raw
-#'         ),
-#'         M = list(
-#'           list()
-#'         ),
-#'         L = list(
-#'           list()
-#'         ),
-#'         NULL = TRUE|FALSE,
-#'         BOOL = TRUE|FALSE
-#'       ),
-#'       Exists = TRUE|FALSE,
-#'       ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH",
-#'       AttributeValueList = list(
-#'         list(
-#'           S = "string",
-#'           N = "string",
-#'           B = raw,
-#'           SS = list(
-#'             "string"
-#'           ),
-#'           NS = list(
-#'             "string"
-#'           ),
-#'           BS = list(
-#'             raw
-#'           ),
-#'           M = list(
-#'             list()
-#'           ),
-#'           L = list(
-#'             list()
-#'           ),
-#'           NULL = TRUE|FALSE,
-#'           BOOL = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ConditionalOperator = "AND"|"OR",
-#'   ReturnValues = "NONE"|"ALL_OLD"|"UPDATED_OLD"|"ALL_NEW"|"UPDATED_NEW",
-#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-#'   ReturnItemCollectionMetrics = "SIZE"|"NONE",
-#'   UpdateExpression = "string",
-#'   ConditionExpression = "string",
-#'   ExpressionAttributeNames = list(
-#'     "string"
-#'   ),
-#'   ExpressionAttributeValues = list(
-#'     list(
-#'       S = "string",
-#'       N = "string",
-#'       B = raw,
-#'       SS = list(
-#'         "string"
-#'       ),
-#'       NS = list(
-#'         "string"
-#'       ),
-#'       BS = list(
-#'         raw
-#'       ),
-#'       M = list(
-#'         list()
-#'       ),
-#'       L = list(
-#'         list()
-#'       ),
-#'       NULL = TRUE|FALSE,
-#'       BOOL = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example updates an item in the Music table. It adds a new attribute
-#' # (Year) and modifies the AlbumTitle attribute.  All of the attributes in
-#' # the item, as they appear after the update, are returned in the response.
-#' svc$update_item(
-#'   ExpressionAttributeNames = list(
-#'     `#AT` = "AlbumTitle",
-#'     `#Y` = "Year"
-#'   ),
-#'   ExpressionAttributeValues = list(
-#'     `:t` = list(
-#'       S = "Louder Than Ever"
-#'     ),
-#'     `:y` = list(
-#'       N = "2015"
-#'     )
-#'   ),
-#'   Key = list(
-#'     Artist = list(
-#'       S = "Acme Band"
-#'     ),
-#'     SongTitle = list(
-#'       S = "Happy Day"
-#'     )
-#'   ),
-#'   ReturnValues = "ALL_NEW",
-#'   TableName = "Music",
-#'   UpdateExpression = "SET #Y = :y, #AT = :t"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_item
@@ -8284,32 +2849,9 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' or DynamoDB Streams settings for a given table
 #'
 #' @description
-#' Modifies the provisioned throughput settings, global secondary indexes,
-#' or DynamoDB Streams settings for a given table.
-#' 
-#' You can only perform one of the following operations at once:
-#' 
-#' -   Modify the provisioned throughput settings of the table.
-#' 
-#' -   Enable or disable DynamoDB Streams on the table.
-#' 
-#' -   Remove a global secondary index from the table.
-#' 
-#' -   Create a new global secondary index on the table. After the index
-#'     begins backfilling, you can use
-#'     [`update_table`][dynamodb_update_table] to perform other operations.
-#' 
-#' [`update_table`][dynamodb_update_table] is an asynchronous operation;
-#' while it is executing, the table status changes from `ACTIVE` to
-#' `UPDATING`. While it is `UPDATING`, you cannot issue another
-#' [`update_table`][dynamodb_update_table] request. When the table returns
-#' to the `ACTIVE` state, the [`update_table`][dynamodb_update_table]
-#' operation is complete.
+#' Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table.
 #'
-#' @usage
-#' dynamodb_update_table(AttributeDefinitions, TableName, BillingMode,
-#'   ProvisionedThroughput, GlobalSecondaryIndexUpdates, StreamSpecification,
-#'   SSESpecification, ReplicaUpdates)
+#' See [https://paws-r.github.io/docs/dynamodb/update_table.html](https://paws-r.github.io/docs/dynamodb/update_table.html) for full documentation.
 #'
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes. If you are adding a new global secondary index to the table,
@@ -8360,281 +2902,20 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' This property only applies to [Version
 #' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
 #' of global tables.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableDescription = list(
-#'     AttributeDefinitions = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeType = "S"|"N"|"B"
-#'       )
-#'     ),
-#'     TableName = "string",
-#'     KeySchema = list(
-#'       list(
-#'         AttributeName = "string",
-#'         KeyType = "HASH"|"RANGE"
-#'       )
-#'     ),
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-#'     CreationDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedThroughput = list(
-#'       LastIncreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastDecreaseDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       NumberOfDecreasesToday = 123,
-#'       ReadCapacityUnits = 123,
-#'       WriteCapacityUnits = 123
-#'     ),
-#'     TableSizeBytes = 123,
-#'     ItemCount = 123,
-#'     TableArn = "string",
-#'     TableId = "string",
-#'     BillingModeSummary = list(
-#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'       LastUpdateToPayPerRequestDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     LocalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     GlobalSecondaryIndexes = list(
-#'       list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'         Backfilling = TRUE|FALSE,
-#'         ProvisionedThroughput = list(
-#'           LastIncreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           LastDecreaseDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfDecreasesToday = 123,
-#'           ReadCapacityUnits = 123,
-#'           WriteCapacityUnits = 123
-#'         ),
-#'         IndexSizeBytes = 123,
-#'         ItemCount = 123,
-#'         IndexArn = "string"
-#'       )
-#'     ),
-#'     StreamSpecification = list(
-#'       StreamEnabled = TRUE|FALSE,
-#'       StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'     ),
-#'     LatestStreamLabel = "string",
-#'     LatestStreamArn = "string",
-#'     GlobalTableVersion = "string",
-#'     Replicas = list(
-#'       list(
-#'         RegionName = "string",
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-#'         ReplicaStatusDescription = "string",
-#'         ReplicaStatusPercentProgress = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         ),
-#'         ReplicaInaccessibleDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     RestoreSummary = list(
-#'       SourceBackupArn = "string",
-#'       SourceTableArn = "string",
-#'       RestoreDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RestoreInProgress = TRUE|FALSE
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-#'       SSEType = "AES256"|"KMS",
-#'       KMSMasterKeyArn = "string",
-#'       InaccessibleEncryptionDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     ArchivalSummary = list(
-#'       ArchivalDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ArchivalReason = "string",
-#'       ArchivalBackupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_table(
-#'   AttributeDefinitions = list(
-#'     list(
-#'       AttributeName = "string",
-#'       AttributeType = "S"|"N"|"B"
-#'     )
-#'   ),
-#'   TableName = "string",
-#'   BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-#'   ProvisionedThroughput = list(
-#'     ReadCapacityUnits = 123,
-#'     WriteCapacityUnits = 123
-#'   ),
-#'   GlobalSecondaryIndexUpdates = list(
-#'     list(
-#'       Update = list(
-#'         IndexName = "string",
-#'         ProvisionedThroughput = list(
-#'           ReadCapacityUnits = 123,
-#'           WriteCapacityUnits = 123
-#'         )
-#'       ),
-#'       Create = list(
-#'         IndexName = "string",
-#'         KeySchema = list(
-#'           list(
-#'             AttributeName = "string",
-#'             KeyType = "HASH"|"RANGE"
-#'           )
-#'         ),
-#'         Projection = list(
-#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-#'           NonKeyAttributes = list(
-#'             "string"
-#'           )
-#'         ),
-#'         ProvisionedThroughput = list(
-#'           ReadCapacityUnits = 123,
-#'           WriteCapacityUnits = 123
-#'         )
-#'       ),
-#'       Delete = list(
-#'         IndexName = "string"
-#'       )
-#'     )
-#'   ),
-#'   StreamSpecification = list(
-#'     StreamEnabled = TRUE|FALSE,
-#'     StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-#'   ),
-#'   SSESpecification = list(
-#'     Enabled = TRUE|FALSE,
-#'     SSEType = "AES256"|"KMS",
-#'     KMSMasterKeyId = "string"
-#'   ),
-#'   ReplicaUpdates = list(
-#'     list(
-#'       Create = list(
-#'         RegionName = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Update = list(
-#'         RegionName = "string",
-#'         KMSMasterKeyId = "string",
-#'         ProvisionedThroughputOverride = list(
-#'           ReadCapacityUnits = 123
-#'         ),
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             ProvisionedThroughputOverride = list(
-#'               ReadCapacityUnits = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Delete = list(
-#'         RegionName = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example increases the provisioned read and write capacity on the
-#' # Music table.
-#' svc$update_table(
-#'   ProvisionedThroughput = list(
-#'     ReadCapacityUnits = 10L,
-#'     WriteCapacityUnits = 10L
-#'   ),
-#'   TableName = "MusicCollection"
-#' )
-#' }
+#' @param TableClass The table class of the table to be updated. Valid values are `STANDARD`
+#' and `STANDARD_INFREQUENT_ACCESS`.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass)
   output <- .dynamodb$update_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -8648,14 +2929,8 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #'
 #' @description
 #' Updates auto scaling settings on your global tables at once.
-#' 
-#' This operation only applies to [Version
-#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
-#' of global tables.
 #'
-#' @usage
-#' dynamodb_update_table_replica_auto_scaling(GlobalSecondaryIndexUpdates,
-#'   TableName, ProvisionedWriteCapacityAutoScalingUpdate, ReplicaUpdates)
+#' See [https://paws-r.github.io/docs/dynamodb/update_table_replica_auto_scaling.html](https://paws-r.github.io/docs/dynamodb/update_table_replica_auto_scaling.html) for full documentation.
 #'
 #' @param GlobalSecondaryIndexUpdates Represents the auto scaling settings of the global secondary indexes of
 #' the replica to be updated.
@@ -8663,179 +2938,6 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' @param ProvisionedWriteCapacityAutoScalingUpdate 
 #' @param ReplicaUpdates Represents the auto scaling settings of replicas of the table that will
 #' be modified.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableAutoScalingDescription = list(
-#'     TableName = "string",
-#'     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-#'     Replicas = list(
-#'       list(
-#'         RegionName = "string",
-#'         GlobalSecondaryIndexes = list(
-#'           list(
-#'             IndexName = "string",
-#'             IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-#'             ProvisionedReadCapacityAutoScalingSettings = list(
-#'               MinimumUnits = 123,
-#'               MaximumUnits = 123,
-#'               AutoScalingDisabled = TRUE|FALSE,
-#'               AutoScalingRoleArn = "string",
-#'               ScalingPolicies = list(
-#'                 list(
-#'                   PolicyName = "string",
-#'                   TargetTrackingScalingPolicyConfiguration = list(
-#'                     DisableScaleIn = TRUE|FALSE,
-#'                     ScaleInCooldown = 123,
-#'                     ScaleOutCooldown = 123,
-#'                     TargetValue = 123.0
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             ProvisionedWriteCapacityAutoScalingSettings = list(
-#'               MinimumUnits = 123,
-#'               MaximumUnits = 123,
-#'               AutoScalingDisabled = TRUE|FALSE,
-#'               AutoScalingRoleArn = "string",
-#'               ScalingPolicies = list(
-#'                 list(
-#'                   PolicyName = "string",
-#'                   TargetTrackingScalingPolicyConfiguration = list(
-#'                     DisableScaleIn = TRUE|FALSE,
-#'                     ScaleInCooldown = 123,
-#'                     ScaleOutCooldown = 123,
-#'                     TargetValue = 123.0
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ReplicaProvisionedReadCapacityAutoScalingSettings = list(
-#'           MinimumUnits = 123,
-#'           MaximumUnits = 123,
-#'           AutoScalingDisabled = TRUE|FALSE,
-#'           AutoScalingRoleArn = "string",
-#'           ScalingPolicies = list(
-#'             list(
-#'               PolicyName = "string",
-#'               TargetTrackingScalingPolicyConfiguration = list(
-#'                 DisableScaleIn = TRUE|FALSE,
-#'                 ScaleInCooldown = 123,
-#'                 ScaleOutCooldown = 123,
-#'                 TargetValue = 123.0
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ReplicaProvisionedWriteCapacityAutoScalingSettings = list(
-#'           MinimumUnits = 123,
-#'           MaximumUnits = 123,
-#'           AutoScalingDisabled = TRUE|FALSE,
-#'           AutoScalingRoleArn = "string",
-#'           ScalingPolicies = list(
-#'             list(
-#'               PolicyName = "string",
-#'               TargetTrackingScalingPolicyConfiguration = list(
-#'                 DisableScaleIn = TRUE|FALSE,
-#'                 ScaleInCooldown = 123,
-#'                 ScaleOutCooldown = 123,
-#'                 TargetValue = 123.0
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_table_replica_auto_scaling(
-#'   GlobalSecondaryIndexUpdates = list(
-#'     list(
-#'       IndexName = "string",
-#'       ProvisionedWriteCapacityAutoScalingUpdate = list(
-#'         MinimumUnits = 123,
-#'         MaximumUnits = 123,
-#'         AutoScalingDisabled = TRUE|FALSE,
-#'         AutoScalingRoleArn = "string",
-#'         ScalingPolicyUpdate = list(
-#'           PolicyName = "string",
-#'           TargetTrackingScalingPolicyConfiguration = list(
-#'             DisableScaleIn = TRUE|FALSE,
-#'             ScaleInCooldown = 123,
-#'             ScaleOutCooldown = 123,
-#'             TargetValue = 123.0
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   TableName = "string",
-#'   ProvisionedWriteCapacityAutoScalingUpdate = list(
-#'     MinimumUnits = 123,
-#'     MaximumUnits = 123,
-#'     AutoScalingDisabled = TRUE|FALSE,
-#'     AutoScalingRoleArn = "string",
-#'     ScalingPolicyUpdate = list(
-#'       PolicyName = "string",
-#'       TargetTrackingScalingPolicyConfiguration = list(
-#'         DisableScaleIn = TRUE|FALSE,
-#'         ScaleInCooldown = 123,
-#'         ScaleOutCooldown = 123,
-#'         TargetValue = 123.0
-#'       )
-#'     )
-#'   ),
-#'   ReplicaUpdates = list(
-#'     list(
-#'       RegionName = "string",
-#'       ReplicaGlobalSecondaryIndexUpdates = list(
-#'         list(
-#'           IndexName = "string",
-#'           ProvisionedReadCapacityAutoScalingUpdate = list(
-#'             MinimumUnits = 123,
-#'             MaximumUnits = 123,
-#'             AutoScalingDisabled = TRUE|FALSE,
-#'             AutoScalingRoleArn = "string",
-#'             ScalingPolicyUpdate = list(
-#'               PolicyName = "string",
-#'               TargetTrackingScalingPolicyConfiguration = list(
-#'                 DisableScaleIn = TRUE|FALSE,
-#'                 ScaleInCooldown = 123,
-#'                 ScaleOutCooldown = 123,
-#'                 TargetValue = 123.0
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       ReplicaProvisionedReadCapacityAutoScalingUpdate = list(
-#'         MinimumUnits = 123,
-#'         MaximumUnits = 123,
-#'         AutoScalingDisabled = TRUE|FALSE,
-#'         AutoScalingRoleArn = "string",
-#'         ScalingPolicyUpdate = list(
-#'           PolicyName = "string",
-#'           TargetTrackingScalingPolicyConfiguration = list(
-#'             DisableScaleIn = TRUE|FALSE,
-#'             ScaleInCooldown = 123,
-#'             ScaleOutCooldown = 123,
-#'             TargetValue = 123.0
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8861,66 +2963,13 @@ dynamodb_update_table_replica_auto_scaling <- function(GlobalSecondaryIndexUpdat
 #' the specified table
 #'
 #' @description
-#' The [`update_time_to_live`][dynamodb_update_time_to_live] method enables
-#' or disables Time to Live (TTL) for the specified table. A successful
-#' [`update_time_to_live`][dynamodb_update_time_to_live] call returns the
-#' current `TimeToLiveSpecification`. It can take up to one hour for the
-#' change to fully process. Any additional
-#' [`update_time_to_live`][dynamodb_update_time_to_live] calls for the same
-#' table during this one hour duration result in a `ValidationException`.
-#' 
-#' TTL compares the current time in epoch time format to the time stored in
-#' the TTL attribute of an item. If the epoch time value stored in the
-#' attribute is less than the current time, the item is marked as expired
-#' and subsequently deleted.
-#' 
-#' The epoch time format is the number of seconds elapsed since 12:00:00 AM
-#' January 1, 1970 UTC.
-#' 
-#' DynamoDB deletes expired items on a best-effort basis to ensure
-#' availability of throughput for other data operations.
-#' 
-#' DynamoDB typically deletes expired items within two days of expiration.
-#' The exact duration within which an item gets deleted after expiration is
-#' specific to the nature of the workload. Items that have expired and not
-#' been deleted will still show up in reads, queries, and scans.
-#' 
-#' As items are deleted, they are removed from any local secondary index
-#' and global secondary index immediately in the same eventually consistent
-#' way as a standard delete operation.
-#' 
-#' For more information, see [Time To
-#' Live](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html)
-#' in the Amazon DynamoDB Developer Guide.
+#' The [`update_time_to_live`][dynamodb_update_time_to_live] method enables or disables Time to Live (TTL) for the specified table. A successful [`update_time_to_live`][dynamodb_update_time_to_live] call returns the current `TimeToLiveSpecification`. It can take up to one hour for the change to fully process. Any additional [`update_time_to_live`][dynamodb_update_time_to_live] calls for the same table during this one hour duration result in a `ValidationException`.
 #'
-#' @usage
-#' dynamodb_update_time_to_live(TableName, TimeToLiveSpecification)
+#' See [https://paws-r.github.io/docs/dynamodb/update_time_to_live.html](https://paws-r.github.io/docs/dynamodb/update_time_to_live.html) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to be configured.
 #' @param TimeToLiveSpecification &#91;required&#93; Represents the settings used to enable or disable Time to Live for the
 #' specified table.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TimeToLiveSpecification = list(
-#'     Enabled = TRUE|FALSE,
-#'     AttributeName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_time_to_live(
-#'   TableName = "string",
-#'   TimeToLiveSpecification = list(
-#'     Enabled = TRUE|FALSE,
-#'     AttributeName = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

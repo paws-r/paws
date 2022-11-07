@@ -4,7 +4,11 @@
 \alias{clouddirectory_list_directories}
 \title{Lists directories created within an account}
 \usage{
-clouddirectory_list_directories(NextToken, MaxResults, state)
+clouddirectory_list_directories(
+  NextToken = NULL,
+  MaxResults = NULL,
+  state = NULL
+)
 }
 \arguments{
 \item{NextToken}{The pagination token.}
@@ -14,32 +18,9 @@ clouddirectory_list_directories(NextToken, MaxResults, state)
 \item{state}{The state of the directories in the list. Can be either Enabled,
 Disabled, or Deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Directories = list(
-    list(
-      Name = "string",
-      DirectoryArn = "string",
-      State = "ENABLED"|"DISABLED"|"DELETED",
-      CreationDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists directories created within an account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_directories(
-  NextToken = "string",
-  MaxResults = 123,
-  state = "ENABLED"|"DISABLED"|"DELETED"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_directories.html} for full documentation.
+}
 \keyword{internal}

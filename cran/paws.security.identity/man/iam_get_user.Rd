@@ -5,7 +5,7 @@
 \title{Retrieves information about the specified IAM user, including the user's
 creation date, path, unique ID, and ARN}
 \usage{
-iam_get_user(UserName)
+iam_get_user(UserName = NULL)
 }
 \arguments{
 \item{UserName}{The name of the user to get information about.
@@ -15,55 +15,9 @@ user making the request. This parameter allows (through its \href{https://en.wik
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  User = list(
-    Path = "string",
-    UserName = "string",
-    UserId = "string",
-    Arn = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    PasswordLastUsed = as.POSIXct(
-      "2015-01-01"
-    ),
-    PermissionsBoundary = list(
-      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-      PermissionsBoundaryArn = "string"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves information about the specified IAM user, including the user's
-creation date, path, unique ID, and ARN.
+Retrieves information about the specified IAM user, including the user's creation date, path, unique ID, and ARN.
 
-If you do not specify a user name, IAM determines the user name
-implicitly based on the AWS access key ID used to sign the request to
-this API.
-}
-\section{Request syntax}{
-\preformatted{svc$get_user(
-  UserName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command gets information about the IAM user named Bob.
-svc$get_user(
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/get_user.html} for full documentation.
 }
 \keyword{internal}

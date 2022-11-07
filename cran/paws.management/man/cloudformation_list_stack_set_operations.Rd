@@ -4,8 +4,12 @@
 \alias{cloudformation_list_stack_set_operations}
 \title{Returns summary information about operations performed on a stack set}
 \usage{
-cloudformation_list_stack_set_operations(StackSetName, NextToken,
-  MaxResults)
+cloudformation_list_stack_set_operations(
+  StackSetName,
+  NextToken = NULL,
+  MaxResults = NULL,
+  CallAs = NULL
+)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to get operation
@@ -23,36 +27,27 @@ object's \code{NextToken} parameter is set to \code{null}.}
 number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Summaries = list(
-    list(
-      OperationId = "string",
-      Action = "CREATE"|"UPDATE"|"DELETE"|"DETECT_DRIFT",
-      Status = "RUNNING"|"SUCCEEDED"|"FAILED"|"STOPPING"|"STOPPED"|"QUEUED",
-      CreationTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
 Returns summary information about operations performed on a stack set.
-}
-\section{Request syntax}{
-\preformatted{svc$list_stack_set_operations(
-  StackSetName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudformation/list_stack_set_operations.html} for full documentation.
+}
 \keyword{internal}

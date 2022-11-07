@@ -4,8 +4,11 @@
 \alias{clouddirectory_list_tags_for_resource}
 \title{Returns tags for a resource}
 \usage{
-clouddirectory_list_tags_for_resource(ResourceArn, NextToken,
-  MaxResults)
+clouddirectory_list_tags_for_resource(
+  ResourceArn,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. Tagging is only
@@ -17,30 +20,9 @@ not supported for tagging.}
 \item{MaxResults}{The \code{MaxResults} parameter sets the maximum number of results returned
 in a single page. This is for future use and is not supported currently.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns tags for a resource. Tagging is currently supported only for
-directories with a limit of 50 tags per directory. All 50 tags are
-returned for a given directory with this API call.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns tags for a resource. Tagging is currently supported only for directories with a limit of 50 tags per directory. All 50 tags are returned for a given directory with this API call.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

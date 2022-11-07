@@ -4,110 +4,19 @@
 \alias{directconnect_create_transit_virtual_interface}
 \title{Creates a transit virtual interface}
 \usage{
-directconnect_create_transit_virtual_interface(connectionId,
-  newTransitVirtualInterface)
+directconnect_create_transit_virtual_interface(
+  connectionId,
+  newTransitVirtualInterface
+)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection.}
 
 \item{newTransitVirtualInterface}{[required] Information about the transit virtual interface.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualInterface = list(
-    ownerAccount = "string",
-    virtualInterfaceId = "string",
-    location = "string",
-    connectionId = "string",
-    virtualInterfaceType = "string",
-    virtualInterfaceName = "string",
-    vlan = 123,
-    asn = 123,
-    amazonSideAsn = 123,
-    authKey = "string",
-    amazonAddress = "string",
-    customerAddress = "string",
-    addressFamily = "ipv4"|"ipv6",
-    virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-    customerRouterConfig = "string",
-    mtu = 123,
-    jumboFrameCapable = TRUE|FALSE,
-    virtualGatewayId = "string",
-    directConnectGatewayId = "string",
-    routeFilterPrefixes = list(
-      list(
-        cidr = "string"
-      )
-    ),
-    bgpPeers = list(
-      list(
-        bgpPeerId = "string",
-        asn = 123,
-        authKey = "string",
-        addressFamily = "ipv4"|"ipv6",
-        amazonAddress = "string",
-        customerAddress = "string",
-        bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
-        bgpStatus = "up"|"down"|"unknown",
-        awsDeviceV2 = "string"
-      )
-    ),
-    region = "string",
-    awsDeviceV2 = "string",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a transit virtual interface. A transit virtual interface should
-be used to access one or more transit gateways associated with Direct
-Connect gateways. A transit virtual interface enables the connection of
-multiple VPCs attached to a transit gateway to a Direct Connect gateway.
+Creates a transit virtual interface. A transit virtual interface should be used to access one or more transit gateways associated with Direct Connect gateways. A transit virtual interface enables the connection of multiple VPCs attached to a transit gateway to a Direct Connect gateway.
 
-If you associate your transit gateway with one or more Direct Connect
-gateways, the Autonomous System Number (ASN) used by the transit gateway
-and the Direct Connect gateway must be different. For example, if you
-use the default ASN 64512 for both your the transit gateway and Direct
-Connect gateway, the association request fails.
-
-Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause
-an update to the underlying physical connection if it wasn't updated to
-support jumbo frames. Updating the connection disrupts network
-connectivity for all virtual interfaces associated with the connection
-for up to 30 seconds. To check whether your connection supports jumbo
-frames, call
-\code{\link[=directconnect_describe_connections]{describe_connections}}. To check
-whether your virtual interface supports jumbo frames, call
-\code{\link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces}}.
+See \url{https://paws-r.github.io/docs/directconnect/create_transit_virtual_interface.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_transit_virtual_interface(
-  connectionId = "string",
-  newTransitVirtualInterface = list(
-    virtualInterfaceName = "string",
-    vlan = 123,
-    asn = 123,
-    mtu = 123,
-    authKey = "string",
-    amazonAddress = "string",
-    customerAddress = "string",
-    addressFamily = "ipv4"|"ipv6",
-    directConnectGatewayId = "string",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

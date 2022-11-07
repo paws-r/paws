@@ -3,11 +3,15 @@
 \name{health_describe_affected_entities_for_organization}
 \alias{health_describe_affected_entities_for_organization}
 \title{Returns a list of entities that have been affected by one or more events
-for one or more accounts in your organization in AWS Organizations,
-based on the filter criteria}
+for one or more accounts in your organization in Organizations, based on
+the filter criteria}
 \usage{
 health_describe_affected_entities_for_organization(
-  organizationEntityFilters, locale, nextToken, maxResults)
+  organizationEntityFilters,
+  locale = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{organizationEntityFilters}{[required] A JSON set of elements including the \code{awsAccountId} and the \code{eventArn}.}
@@ -24,68 +28,9 @@ returned, the response does not contain a pagination token value.}
 \item{maxResults}{The maximum number of items to return in one batch, between 10 and 100,
 inclusive.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  entities = list(
-    list(
-      entityArn = "string",
-      eventArn = "string",
-      entityValue = "string",
-      entityUrl = "string",
-      awsAccountId = "string",
-      lastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      statusCode = "IMPAIRED"|"UNIMPAIRED"|"UNKNOWN",
-      tags = list(
-        "string"
-      )
-    )
-  ),
-  failedSet = list(
-    list(
-      awsAccountId = "string",
-      eventArn = "string",
-      errorName = "string",
-      errorMessage = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of entities that have been affected by one or more events
-for one or more accounts in your organization in AWS Organizations,
-based on the filter criteria. Entities can refer to individual customer
-resources, groups of customer resources, or any other construct,
-depending on the AWS service.
+Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in Organizations, based on the filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Services service.
 
-At least one event Amazon Resource Name (ARN) and account ID are
-required. Results are sorted by the \code{lastUpdatedTime} of the entity,
-starting with the most recent.
-
-Before you can call this operation, you must first enable AWS Health to
-work with AWS Organizations. To do this, call the
-\code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
-operation from your organization's master account.
-
-This API operation uses pagination. Specify the \code{nextToken} parameter in
-the next request to return more results.
+See \url{https://paws-r.github.io/docs/health/describe_affected_entities_for_organization.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_affected_entities_for_organization(
-  organizationEntityFilters = list(
-    list(
-      eventArn = "string",
-      awsAccountId = "string"
-    )
-  ),
-  locale = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
 \keyword{internal}

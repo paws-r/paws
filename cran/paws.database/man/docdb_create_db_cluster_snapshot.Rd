@@ -4,8 +4,11 @@
 \alias{docdb_create_db_cluster_snapshot}
 \title{Creates a snapshot of a cluster}
 \usage{
-docdb_create_db_cluster_snapshot(DBClusterSnapshotIdentifier,
-  DBClusterIdentifier, Tags)
+docdb_create_db_cluster_snapshot(
+  DBClusterSnapshotIdentifier,
+  DBClusterIdentifier,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBClusterSnapshotIdentifier}{[required] The identifier of the cluster snapshot. This parameter is stored as a
@@ -32,51 +35,9 @@ Example: \code{my-cluster}}
 
 \item{Tags}{The tags to be assigned to the cluster snapshot.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterSnapshot = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    DBClusterSnapshotIdentifier = "string",
-    DBClusterIdentifier = "string",
-    SnapshotCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Engine = "string",
-    Status = "string",
-    Port = 123,
-    VpcId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    EngineVersion = "string",
-    SnapshotType = "string",
-    PercentProgress = 123,
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DBClusterSnapshotArn = "string",
-    SourceDBClusterSnapshotArn = "string"
-  )
-)
-}
-}
 \description{
 Creates a snapshot of a cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$create_db_cluster_snapshot(
-  DBClusterSnapshotIdentifier = "string",
-  DBClusterIdentifier = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/docdb/create_db_cluster_snapshot.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Streams the results of a single query execution specified by
 QueryExecutionId from the Athena query results location in Amazon S3}
 \usage{
-athena_get_query_results(QueryExecutionId, NextToken, MaxResults)
+athena_get_query_results(QueryExecutionId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{QueryExecutionId}{[required] The unique ID of the query execution.}
@@ -17,67 +17,9 @@ previous page call.}
 
 \item{MaxResults}{The maximum number of results (rows) to return in this request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UpdateCount = 123,
-  ResultSet = list(
-    Rows = list(
-      list(
-        Data = list(
-          list(
-            VarCharValue = "string"
-          )
-        )
-      )
-    ),
-    ResultSetMetadata = list(
-      ColumnInfo = list(
-        list(
-          CatalogName = "string",
-          SchemaName = "string",
-          TableName = "string",
-          Name = "string",
-          Label = "string",
-          Type = "string",
-          Precision = 123,
-          Scale = 123,
-          Nullable = "NOT_NULL"|"NULLABLE"|"UNKNOWN",
-          CaseSensitive = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Streams the results of a single query execution specified by
-\code{QueryExecutionId} from the Athena query results location in Amazon S3.
-For more information, see \href{https://docs.aws.amazon.com/athena/latest/ug/querying.html}{Query Results} in
-the \emph{Amazon Athena User Guide}. This request does not execute the query
-but returns results. Use
-\code{\link[=athena_start_query_execution]{start_query_execution}} to run a query.
+Streams the results of a single query execution specified by \code{QueryExecutionId} from the Athena query results location in Amazon S3. For more information, see \href{https://docs.aws.amazon.com/athena/latest/ug/querying.html}{Query Results} in the \emph{Amazon Athena User Guide}. This request does not execute the query but returns results. Use \code{\link[=athena_start_query_execution]{start_query_execution}} to run a query.
 
-To stream query results successfully, the IAM principal with permission
-to call \code{\link[=athena_get_query_results]{get_query_results}} also must have
-permissions to the Amazon S3 \code{GetObject} action for the Athena query
-results location.
-
-IAM principals with permission to the Amazon S3 \code{GetObject} action for
-the query results location are able to retrieve query results from
-Amazon S3 even if permission to the
-\code{\link[=athena_get_query_results]{get_query_results}} action is denied. To
-restrict user or role access, ensure that Amazon S3 permissions to the
-Athena query location are denied.
+See \url{https://paws-r.github.io/docs/athena/get_query_results.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_query_results(
-  QueryExecutionId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

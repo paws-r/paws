@@ -4,8 +4,11 @@
 \alias{codecommit_create_pull_request_approval_rule}
 \title{Creates an approval rule for a pull request}
 \usage{
-codecommit_create_pull_request_approval_rule(pullRequestId,
-  approvalRuleName, approvalRuleContent)
+codecommit_create_pull_request_approval_rule(
+  pullRequestId,
+  approvalRuleName,
+  approvalRuleContent
+)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request for which you want to create
@@ -47,38 +50,9 @@ qualified Amazon Resource Name (ARN) of the IAM user or role.
 For more information about IAM ARNs, wildcards, and formats, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvalRule = list(
-    approvalRuleId = "string",
-    approvalRuleName = "string",
-    approvalRuleContent = "string",
-    ruleContentSha256 = "string",
-    lastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastModifiedUser = "string",
-    originApprovalRuleTemplate = list(
-      approvalRuleTemplateId = "string",
-      approvalRuleTemplateName = "string"
-    )
-  )
-)
-}
-}
 \description{
 Creates an approval rule for a pull request.
-}
-\section{Request syntax}{
-\preformatted{svc$create_pull_request_approval_rule(
-  pullRequestId = "string",
-  approvalRuleName = "string",
-  approvalRuleContent = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/create_pull_request_approval_rule.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{workdocs_get_folder}
 \title{Retrieves the metadata of the specified folder}
 \usage{
-workdocs_get_folder(AuthenticationToken, FolderId,
-  IncludeCustomMetadata)
+workdocs_get_folder(
+  AuthenticationToken = NULL,
+  FolderId,
+  IncludeCustomMetadata = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -15,43 +18,9 @@ administrator credentials to access the API.}
 
 \item{IncludeCustomMetadata}{Set to TRUE to include custom metadata in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Metadata = list(
-    Id = "string",
-    Name = "string",
-    CreatorId = "string",
-    ParentFolderId = "string",
-    CreatedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ModifiedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-    Signature = "string",
-    Labels = list(
-      "string"
-    ),
-    Size = 123,
-    LatestVersionSize = 123
-  ),
-  CustomMetadata = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Retrieves the metadata of the specified folder.
-}
-\section{Request syntax}{
-\preformatted{svc$get_folder(
-  AuthenticationToken = "string",
-  FolderId = "string",
-  IncludeCustomMetadata = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/get_folder.html} for full documentation.
+}
 \keyword{internal}

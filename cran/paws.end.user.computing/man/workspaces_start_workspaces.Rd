@@ -9,33 +9,9 @@ workspaces_start_workspaces(StartWorkspaceRequests)
 \arguments{
 \item{StartWorkspaceRequests}{[required] The WorkSpaces to start. You can specify up to 25 WorkSpaces.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedRequests = list(
-    list(
-      WorkspaceId = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Starts the specified WorkSpaces.
 
-You cannot start a WorkSpace unless it has a running mode of \code{AutoStop}
-and a state of \code{STOPPED}.
+See \url{https://paws-r.github.io/docs/workspaces/start_workspaces.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_workspaces(
-  StartWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

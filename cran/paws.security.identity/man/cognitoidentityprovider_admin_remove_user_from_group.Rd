@@ -4,8 +4,11 @@
 \alias{cognitoidentityprovider_admin_remove_user_from_group}
 \title{Removes the specified user from the specified group}
 \usage{
-cognitoidentityprovider_admin_remove_user_from_group(UserPoolId,
-  Username, GroupName)
+cognitoidentityprovider_admin_remove_user_from_group(
+  UserPoolId,
+  Username,
+  GroupName
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -14,21 +17,9 @@ cognitoidentityprovider_admin_remove_user_from_group(UserPoolId,
 
 \item{GroupName}{[required] The group name.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the specified user from the specified group.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_remove_user_from_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_remove_user_from_group(
-  UserPoolId = "string",
-  Username = "string",
-  GroupName = "string"
-)
-}
-}
-
 \keyword{internal}

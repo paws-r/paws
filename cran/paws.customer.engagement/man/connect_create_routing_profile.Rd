@@ -4,11 +4,19 @@
 \alias{connect_create_routing_profile}
 \title{Creates a new routing profile}
 \usage{
-connect_create_routing_profile(InstanceId, Name, Description,
-  DefaultOutboundQueueId, QueueConfigs, MediaConcurrencies, Tags)
+connect_create_routing_profile(
+  InstanceId,
+  Name,
+  Description,
+  DefaultOutboundQueueId,
+  QueueConfigs = NULL,
+  MediaConcurrencies,
+  Tags = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{Name}{[required] The name of the routing profile. Must not be more than 127 characters.}
 
@@ -18,50 +26,16 @@ characters.}
 \item{DefaultOutboundQueueId}{[required] The default outbound queue for the routing profile.}
 
 \item{QueueConfigs}{The inbound queues associated with the routing profile. If no queue is
-added, the agent can only make outbound calls.}
+added, the agent can make only outbound calls.}
 
-\item{MediaConcurrencies}{[required] The channels agents can handle in the Contact Control Panel (CCP) for
-this routing profile.}
+\item{MediaConcurrencies}{[required] The channels that agents can handle in the Contact Control Panel (CCP)
+for this routing profile.}
 
 \item{Tags}{One or more tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RoutingProfileArn = "string",
-  RoutingProfileId = "string"
-)
-}
-}
 \description{
 Creates a new routing profile.
-}
-\section{Request syntax}{
-\preformatted{svc$create_routing_profile(
-  InstanceId = "string",
-  Name = "string",
-  Description = "string",
-  DefaultOutboundQueueId = "string",
-  QueueConfigs = list(
-    list(
-      QueueReference = list(
-        QueueId = "string",
-        Channel = "VOICE"|"CHAT"|"TASK"
-      ),
-      Priority = 123,
-      Delay = 123
-    )
-  ),
-  MediaConcurrencies = list(
-    list(
-      Channel = "VOICE"|"CHAT"|"TASK",
-      Concurrency = 123
-    )
-  ),
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/create_routing_profile.html} for full documentation.
+}
 \keyword{internal}

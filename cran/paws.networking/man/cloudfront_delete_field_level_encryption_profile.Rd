@@ -4,7 +4,7 @@
 \alias{cloudfront_delete_field_level_encryption_profile}
 \title{Remove a field-level encryption profile}
 \usage{
-cloudfront_delete_field_level_encryption_profile(Id, IfMatch)
+cloudfront_delete_field_level_encryption_profile(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] Request the ID of the profile you want to delete from CloudFront.}
@@ -12,18 +12,9 @@ cloudfront_delete_field_level_encryption_profile(Id, IfMatch)
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
 profile to delete. For example: \code{E2QWRUHAPOMQZL}.}
 }
-\value{
-An empty list.
-}
 \description{
 Remove a field-level encryption profile.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_field_level_encryption_profile(
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/delete_field_level_encryption_profile.html} for full documentation.
+}
 \keyword{internal}

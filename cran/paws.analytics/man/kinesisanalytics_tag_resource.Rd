@@ -11,26 +11,9 @@ kinesisanalytics_tag_resource(ResourceARN, Tags)
 
 \item{Tags}{[required] The key-value tags to assign to the application.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds one or more key-value tags to a Kinesis Analytics application. Note
-that the maximum number of application tags includes system tags. The
-maximum number of user-defined application tags is 50. For more
-information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html}{Using Tagging}.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds one or more key-value tags to a Kinesis Analytics application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html}{Using Tagging}.
 
+See \url{https://paws-r.github.io/docs/kinesisanalytics/tag_resource.html} for full documentation.
+}
 \keyword{internal}

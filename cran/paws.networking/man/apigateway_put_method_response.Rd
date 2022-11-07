@@ -4,17 +4,23 @@
 \alias{apigateway_put_method_response}
 \title{Adds a MethodResponse to an existing Method resource}
 \usage{
-apigateway_put_method_response(restApiId, resourceId, httpMethod,
-  statusCode, responseParameters, responseModels)
+apigateway_put_method_response(
+  restApiId,
+  resourceId,
+  httpMethod,
+  statusCode,
+  responseParameters = NULL,
+  responseModels = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] The Resource identifier for the Method resource.}
+\item{resourceId}{[required] The Resource identifier for the Method resource.}
 
-\item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
+\item{httpMethod}{[required] The HTTP verb of the Method resource.}
 
-\item{statusCode}{[required] [Required] The method response's status code.}
+\item{statusCode}{[required] The method response's status code.}
 
 \item{responseParameters}{A key-value map specifying required or optional response parameters that
 API Gateway can send back to the caller. A key defines a method response
@@ -34,35 +40,9 @@ is a valid JSON expression without the \code{$} prefix.)}
 Response models are represented as a key/value map, with a content type
 as the key and a Model name as the value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  statusCode = "string",
-  responseParameters = list(
-    TRUE|FALSE
-  ),
-  responseModels = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Adds a MethodResponse to an existing Method resource.
-}
-\section{Request syntax}{
-\preformatted{svc$put_method_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string",
-  responseParameters = list(
-    TRUE|FALSE
-  ),
-  responseModels = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/put_method_response.html} for full documentation.
+}
 \keyword{internal}

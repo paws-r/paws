@@ -12,66 +12,9 @@ comprehendmedical_infer_icd10cm(Text)
 \item{Text}{[required] The input text used for analysis. The input for InferICD10CM is a string
 from 1 to 10000 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Entities = list(
-    list(
-      Id = 123,
-      Text = "string",
-      Category = "MEDICAL_CONDITION",
-      Type = "DX_NAME",
-      Score = 123.0,
-      BeginOffset = 123,
-      EndOffset = 123,
-      Attributes = list(
-        list(
-          Type = "ACUITY"|"DIRECTION"|"SYSTEM_ORGAN_SITE"|"QUALITY"|"QUANTITY",
-          Score = 123.0,
-          RelationshipScore = 123.0,
-          Id = 123,
-          BeginOffset = 123,
-          EndOffset = 123,
-          Text = "string",
-          Traits = list(
-            list(
-              Name = "NEGATION"|"DIAGNOSIS"|"SIGN"|"SYMPTOM",
-              Score = 123.0
-            )
-          )
-        )
-      ),
-      Traits = list(
-        list(
-          Name = "NEGATION"|"DIAGNOSIS"|"SIGN"|"SYMPTOM",
-          Score = 123.0
-        )
-      ),
-      ICD10CMConcepts = list(
-        list(
-          Description = "string",
-          Code = "string",
-          Score = 123.0
-        )
-      )
-    )
-  ),
-  PaginationToken = "string",
-  ModelVersion = "string"
-)
-}
-}
 \description{
-InferICD10CM detects medical conditions as entities listed in a patient
-record and links those entities to normalized concept identifiers in the
-ICD-10-CM knowledge base from the Centers for Disease Control. Amazon
-Comprehend Medical only detects medical entities in English language
-texts.
-}
-\section{Request syntax}{
-\preformatted{svc$infer_icd10cm(
-  Text = "string"
-)
-}
-}
+InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control. Amazon Comprehend Medical only detects medical entities in English language texts.
 
+See \url{https://paws-r.github.io/docs/comprehendmedical/infer_icd10cm.html} for full documentation.
+}
 \keyword{internal}

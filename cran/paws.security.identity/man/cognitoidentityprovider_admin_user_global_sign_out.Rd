@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_user_global_sign_out}
 \alias{cognitoidentityprovider_admin_user_global_sign_out}
-\title{Signs out users from all devices, as an administrator}
+\title{Signs out a user from all devices}
 \usage{
 cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
 }
@@ -11,23 +11,9 @@ cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
 
 \item{Username}{[required] The user name.}
 }
-\value{
-An empty list.
-}
 \description{
-Signs out users from all devices, as an administrator. It also
-invalidates all refresh tokens issued to a user. The user's current
-access and Id tokens remain valid until their expiry. Access and Id
-tokens expire one hour after they are issued.
+Signs out a user from all devices. You must sign \code{\link[=cognitoidentityprovider_admin_user_global_sign_out]{admin_user_global_sign_out}} requests with Amazon Web Services credentials. It also invalidates all refresh tokens that Amazon Cognito has issued to a user. The user's current access and ID tokens remain valid until they expire. By default, access and ID tokens expire one hour after they're issued. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the cookie validity period of 1 hour.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_user_global_sign_out.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_user_global_sign_out(
-  UserPoolId = "string",
-  Username = "string"
-)
-}
-}
-
 \keyword{internal}

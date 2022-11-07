@@ -9,29 +9,9 @@ machinelearning_delete_ml_model(MLModelId)
 \arguments{
 \item{MLModelId}{[required] A user-supplied ID that uniquely identifies the \code{MLModel}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MLModelId = "string"
-)
-}
-}
 \description{
 Assigns the \code{DELETED} status to an \code{MLModel}, rendering it unusable.
 
-After using the \code{\link[=machinelearning_delete_ml_model]{delete_ml_model}}
-operation, you can use the
-\code{\link[=machinelearning_get_ml_model]{get_ml_model}} operation to verify that
-the status of the \code{MLModel} changed to DELETED.
-
-\strong{Caution:} The result of the
-\code{\link[=machinelearning_delete_ml_model]{delete_ml_model}} operation is
-irreversible.
+See \url{https://paws-r.github.io/docs/machinelearning/delete_ml_model.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_ml_model(
-  MLModelId = "string"
-)
-}
-}
-
 \keyword{internal}

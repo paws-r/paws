@@ -2,19 +2,30 @@
 % Please edit documentation in R/batch_operations.R
 \name{batch_register_job_definition}
 \alias{batch_register_job_definition}
-\title{Registers an AWS Batch job definition}
+\title{Registers an Batch job definition}
 \usage{
-batch_register_job_definition(jobDefinitionName, type, parameters,
-  containerProperties, nodeProperties, retryStrategy, propagateTags,
-  timeout, tags, platformCapabilities)
+batch_register_job_definition(
+  jobDefinitionName,
+  type,
+  parameters = NULL,
+  schedulingPriority = NULL,
+  containerProperties = NULL,
+  nodeProperties = NULL,
+  retryStrategy = NULL,
+  propagateTags = NULL,
+  timeout = NULL,
+  tags = NULL,
+  platformCapabilities = NULL
+)
 }
 \arguments{
-\item{jobDefinitionName}{[required] The name of the job definition to register. Up to 128 letters (uppercase
-and lowercase), numbers, hyphens, and underscores are allowed.}
+\item{jobDefinitionName}{[required] The name of the job definition to register. It can be up to 128 letters
+long. It can contain uppercase and lowercase letters, numbers, hyphens
+(-), and underscores (_).}
 
 \item{type}{[required] The type of job definition. For more information about multi-node
 parallel jobs, see \href{https://docs.aws.amazon.com/batch/latest/userguide/multi-node-job-def.html}{Creating a multi-node parallel job definition}
-in the \emph{AWS Batch User Guide}.
+in the \emph{Batch User Guide}.
 
 If the job is run on Fargate resources, then \code{multinode} isn't
 supported.}
@@ -23,6 +34,14 @@ supported.}
 definition. Parameters are specified as a key-value pair mapping.
 Parameters in a \code{\link[=batch_submit_job]{submit_job}} request override any
 corresponding parameter defaults from the job definition.}
+
+\item{schedulingPriority}{The scheduling priority for jobs that are submitted with this job
+definition. This will only affect jobs in job queues with a fair share
+policy. Jobs with a higher scheduling priority will be scheduled before
+jobs with a lower scheduling priority.
+
+The minimum supported value is 0 and the maximum supported value is
+9999.}
 
 \item{containerProperties}{An object with various properties specific to single-node
 container-based jobs. If the job definition's \code{type} parameter is
@@ -35,8 +54,8 @@ If the job runs on Fargate resources, then you must not specify
 \item{nodeProperties}{An object with various properties specific to multi-node parallel jobs.
 If you specify node properties for a job, it becomes a multi-node
 parallel job. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html}{Multi-node Parallel Jobs}
-in the \emph{AWS Batch User Guide}. If the job definition's \code{type} parameter
-is \code{container}, then you must specify either \code{containerProperties} or
+in the \emph{Batch User Guide}. If the job definition's \code{type} parameter is
+\code{container}, then you must specify either \code{containerProperties} or
 \code{nodeProperties}.
 
 If the job runs on Fargate resources, then you must not specify
@@ -55,304 +74,26 @@ job definitions tags. If the total number of combined tags from the job
 and job definition is over 50, the job is moved to the \code{FAILED} state.}
 
 \item{timeout}{The timeout configuration for jobs that are submitted with this job
-definition, after which AWS Batch terminates your jobs if they have not
+definition, after which Batch terminates your jobs if they have not
 finished. If a job is terminated due to a timeout, it isn't retried. The
 minimum value for the timeout is 60 seconds. Any timeout configuration
 that's specified during a \code{\link[=batch_submit_job]{submit_job}} operation
 overrides the timeout configuration defined here. For more information,
 see \href{https://docs.aws.amazon.com/batch/latest/userguide/job_timeouts.html}{Job Timeouts}
-in the \emph{AWS Batch User Guide}.}
+in the \emph{Batch User Guide}.}
 
 \item{tags}{The tags that you apply to the job definition to help you categorize and
 organize your resources. Each tag consists of a key and an optional
-value. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html}{Tagging AWS Resources}
-in \emph{AWS Batch User Guide}.}
+value. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html}{Tagging Amazon Web Services Resources}
+in \emph{Batch User Guide}.}
 
 \item{platformCapabilities}{The platform capabilities required by the job definition. If no value is
 specified, it defaults to \code{EC2}. To run the job on Fargate resources,
 specify \code{FARGATE}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  jobDefinitionName = "string",
-  jobDefinitionArn = "string",
-  revision = 123
-)
-}
-}
 \description{
-Registers an AWS Batch job definition.
-}
-\section{Request syntax}{
-\preformatted{svc$register_job_definition(
-  jobDefinitionName = "string",
-  type = "container"|"multinode",
-  parameters = list(
-    "string"
-  ),
-  containerProperties = list(
-    image = "string",
-    vcpus = 123,
-    memory = 123,
-    command = list(
-      "string"
-    ),
-    jobRoleArn = "string",
-    executionRoleArn = "string",
-    volumes = list(
-      list(
-        host = list(
-          sourcePath = "string"
-        ),
-        name = "string"
-      )
-    ),
-    environment = list(
-      list(
-        name = "string",
-        value = "string"
-      )
-    ),
-    mountPoints = list(
-      list(
-        containerPath = "string",
-        readOnly = TRUE|FALSE,
-        sourceVolume = "string"
-      )
-    ),
-    readonlyRootFilesystem = TRUE|FALSE,
-    privileged = TRUE|FALSE,
-    ulimits = list(
-      list(
-        hardLimit = 123,
-        name = "string",
-        softLimit = 123
-      )
-    ),
-    user = "string",
-    instanceType = "string",
-    resourceRequirements = list(
-      list(
-        value = "string",
-        type = "GPU"|"VCPU"|"MEMORY"
-      )
-    ),
-    linuxParameters = list(
-      devices = list(
-        list(
-          hostPath = "string",
-          containerPath = "string",
-          permissions = list(
-            "READ"|"WRITE"|"MKNOD"
-          )
-        )
-      ),
-      initProcessEnabled = TRUE|FALSE,
-      sharedMemorySize = 123,
-      tmpfs = list(
-        list(
-          containerPath = "string",
-          size = 123,
-          mountOptions = list(
-            "string"
-          )
-        )
-      ),
-      maxSwap = 123,
-      swappiness = 123
-    ),
-    logConfiguration = list(
-      logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-      options = list(
-        "string"
-      ),
-      secretOptions = list(
-        list(
-          name = "string",
-          valueFrom = "string"
-        )
-      )
-    ),
-    secrets = list(
-      list(
-        name = "string",
-        valueFrom = "string"
-      )
-    ),
-    networkConfiguration = list(
-      assignPublicIp = "ENABLED"|"DISABLED"
-    ),
-    fargatePlatformConfiguration = list(
-      platformVersion = "string"
-    )
-  ),
-  nodeProperties = list(
-    numNodes = 123,
-    mainNode = 123,
-    nodeRangeProperties = list(
-      list(
-        targetNodes = "string",
-        container = list(
-          image = "string",
-          vcpus = 123,
-          memory = 123,
-          command = list(
-            "string"
-          ),
-          jobRoleArn = "string",
-          executionRoleArn = "string",
-          volumes = list(
-            list(
-              host = list(
-                sourcePath = "string"
-              ),
-              name = "string"
-            )
-          ),
-          environment = list(
-            list(
-              name = "string",
-              value = "string"
-            )
-          ),
-          mountPoints = list(
-            list(
-              containerPath = "string",
-              readOnly = TRUE|FALSE,
-              sourceVolume = "string"
-            )
-          ),
-          readonlyRootFilesystem = TRUE|FALSE,
-          privileged = TRUE|FALSE,
-          ulimits = list(
-            list(
-              hardLimit = 123,
-              name = "string",
-              softLimit = 123
-            )
-          ),
-          user = "string",
-          instanceType = "string",
-          resourceRequirements = list(
-            list(
-              value = "string",
-              type = "GPU"|"VCPU"|"MEMORY"
-            )
-          ),
-          linuxParameters = list(
-            devices = list(
-              list(
-                hostPath = "string",
-                containerPath = "string",
-                permissions = list(
-                  "READ"|"WRITE"|"MKNOD"
-                )
-              )
-            ),
-            initProcessEnabled = TRUE|FALSE,
-            sharedMemorySize = 123,
-            tmpfs = list(
-              list(
-                containerPath = "string",
-                size = 123,
-                mountOptions = list(
-                  "string"
-                )
-              )
-            ),
-            maxSwap = 123,
-            swappiness = 123
-          ),
-          logConfiguration = list(
-            logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-            options = list(
-              "string"
-            ),
-            secretOptions = list(
-              list(
-                name = "string",
-                valueFrom = "string"
-              )
-            )
-          ),
-          secrets = list(
-            list(
-              name = "string",
-              valueFrom = "string"
-            )
-          ),
-          networkConfiguration = list(
-            assignPublicIp = "ENABLED"|"DISABLED"
-          ),
-          fargatePlatformConfiguration = list(
-            platformVersion = "string"
-          )
-        )
-      )
-    )
-  ),
-  retryStrategy = list(
-    attempts = 123,
-    evaluateOnExit = list(
-      list(
-        onStatusReason = "string",
-        onReason = "string",
-        onExitCode = "string",
-        action = "RETRY"|"EXIT"
-      )
-    )
-  ),
-  propagateTags = TRUE|FALSE,
-  timeout = list(
-    attemptDurationSeconds = 123
-  ),
-  tags = list(
-    "string"
-  ),
-  platformCapabilities = list(
-    "EC2"|"FARGATE"
-  )
-)
-}
-}
+Registers an Batch job definition.
 
-\examples{
-\dontrun{
-# This example registers a job definition for a simple container job.
-svc$register_job_definition(
-  type = "container",
-  containerProperties = list(
-    command = list(
-      "sleep",
-      "10"
-    ),
-    image = "busybox",
-    memory = 128L,
-    vcpus = 1L
-  ),
-  jobDefinitionName = "sleep10"
-)
-
-# This demonstrates calling the RegisterJobDefinition action, including
-# tags.
-svc$register_job_definition(
-  type = "container",
-  containerProperties = list(
-    command = list(
-      "sleep",
-      "30"
-    ),
-    image = "busybox",
-    memory = 128L,
-    vcpus = 1L
-  ),
-  jobDefinitionName = "sleep30",
-  tags = list(
-    Department = "Engineering",
-    User = "JaneDoe"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/register_job_definition.html} for full documentation.
 }
 \keyword{internal}

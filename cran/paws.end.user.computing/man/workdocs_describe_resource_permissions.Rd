@@ -4,8 +4,13 @@
 \alias{workdocs_describe_resource_permissions}
 \title{Describes the permissions of a specified resource}
 \usage{
-workdocs_describe_resource_permissions(AuthenticationToken, ResourceId,
-  PrincipalId, Limit, Marker)
+workdocs_describe_resource_permissions(
+  AuthenticationToken = NULL,
+  ResourceId,
+  PrincipalId = NULL,
+  Limit = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -20,36 +25,9 @@ administrator credentials to access the API.}
 \item{Marker}{The marker for the next set of results. (You received this marker from a
 previous call)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Principals = list(
-    list(
-      Id = "string",
-      Type = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION",
-      Roles = list(
-        list(
-          Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER",
-          Type = "DIRECT"|"INHERITED"
-        )
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Describes the permissions of a specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_resource_permissions(
-  AuthenticationToken = "string",
-  ResourceId = "string",
-  PrincipalId = "string",
-  Limit = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/describe_resource_permissions.html} for full documentation.
+}
 \keyword{internal}

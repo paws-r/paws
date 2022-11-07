@@ -4,12 +4,12 @@
 \alias{ecr_batch_delete_image}
 \title{Deletes a list of specified images within a repository}
 \usage{
-ecr_batch_delete_image(registryId, repositoryName, imageIds)
+ecr_batch_delete_image(registryId = NULL, repositoryName, imageIds)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the image
-to delete. If you do not specify a registry, the default registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the image to delete. If you do not specify a registry, the
+default registry is assumed.}
 
 \item{repositoryName}{[required] The repository that contains the image to delete.}
 
@@ -17,65 +17,9 @@ assumed.}
 format of the \code{imageIds} reference is \code{imageTag=tag} or
 \code{imageDigest=digest}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  imageIds = list(
-    list(
-      imageDigest = "string",
-      imageTag = "string"
-    )
-  ),
-  failures = list(
-    list(
-      imageId = list(
-        imageDigest = "string",
-        imageTag = "string"
-      ),
-      failureCode = "InvalidImageDigest"|"InvalidImageTag"|"ImageTagDoesNotMatchDigest"|"ImageNotFound"|"MissingDigestAndTag"|"ImageReferencedByManifestList"|"KmsError",
-      failureReason = "string"
-    )
-  )
-)
-}
-}
 \description{
-Deletes a list of specified images within a repository. Images are
-specified with either an \code{imageTag} or \code{imageDigest}.
+Deletes a list of specified images within a repository. Images are specified with either an \code{imageTag} or \code{imageDigest}.
 
-You can remove a tag from an image by specifying the image's tag in your
-request. When you remove the last tag from an image, the image is
-deleted from your repository.
-
-You can completely delete an image (and all of its tags) by specifying
-the image's digest in your request.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_delete_image(
-  registryId = "string",
-  repositoryName = "string",
-  imageIds = list(
-    list(
-      imageDigest = "string",
-      imageTag = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes images with the tags precise and trusty in a
-# repository called ubuntu in the default registry for an account.
-svc$batch_delete_image(
-  imageIds = list(
-    list(
-      imageTag = "precise"
-    )
-  ),
-  repositoryName = "ubuntu"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecr/batch_delete_image.html} for full documentation.
 }
 \keyword{internal}

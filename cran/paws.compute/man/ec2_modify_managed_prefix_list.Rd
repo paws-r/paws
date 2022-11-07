@@ -4,8 +4,15 @@
 \alias{ec2_modify_managed_prefix_list}
 \title{Modifies the specified managed prefix list}
 \usage{
-ec2_modify_managed_prefix_list(DryRun, PrefixListId, CurrentVersion,
-  PrefixListName, AddEntries, RemoveEntries)
+ec2_modify_managed_prefix_list(
+  DryRun = NULL,
+  PrefixListId,
+  CurrentVersion = NULL,
+  PrefixListName = NULL,
+  AddEntries = NULL,
+  RemoveEntries = NULL,
+  MaxEntries = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -22,58 +29,19 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{AddEntries}{One or more entries to add to the prefix list.}
 
 \item{RemoveEntries}{One or more entries to remove from the prefix list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PrefixList = list(
-    PrefixListId = "string",
-    AddressFamily = "string",
-    State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
-    StateMessage = "string",
-    PrefixListArn = "string",
-    PrefixListName = "string",
-    MaxEntries = 123,
-    Version = 123,
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    OwnerId = "string"
-  )
-)
-}
+
+\item{MaxEntries}{The maximum number of entries for the prefix list. You cannot modify the
+entries of a prefix list and modify the size of a prefix list at the
+same time.
+
+If any of the resources that reference the prefix list cannot support
+the new maximum size, the modify operation fails. Check the state
+message for the IDs of the first ten resources that do not support the
+new maximum size.}
 }
 \description{
 Modifies the specified managed prefix list.
 
-Adding or removing entries in a prefix list creates a new version of the
-prefix list. Changing the name of the prefix list does not affect the
-version.
-
-If you specify a current version number that does not match the true
-current version number, the request fails.
+See \url{https://paws-r.github.io/docs/ec2/modify_managed_prefix_list.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_managed_prefix_list(
-  DryRun = TRUE|FALSE,
-  PrefixListId = "string",
-  CurrentVersion = 123,
-  PrefixListName = "string",
-  AddEntries = list(
-    list(
-      Cidr = "string",
-      Description = "string"
-    )
-  ),
-  RemoveEntries = list(
-    list(
-      Cidr = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

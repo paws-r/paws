@@ -2,53 +2,20 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_get_protocols_list}
 \alias{fms_get_protocols_list}
-\title{Returns information about the specified AWS Firewall Manager protocols
-list}
+\title{Returns information about the specified Firewall Manager protocols list}
 \usage{
-fms_get_protocols_list(ListId, DefaultList)
+fms_get_protocols_list(ListId, DefaultList = NULL)
 }
 \arguments{
-\item{ListId}{[required] The ID of the AWS Firewall Manager protocols list that you want the
-details for.}
+\item{ListId}{[required] The ID of the Firewall Manager protocols list that you want the details
+for.}
 
-\item{DefaultList}{Specifies whether the list to retrieve is a default list owned by AWS
+\item{DefaultList}{Specifies whether the list to retrieve is a default list owned by
 Firewall Manager.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProtocolsList = list(
-    ListId = "string",
-    ListName = "string",
-    ListUpdateToken = "string",
-    CreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProtocolsList = list(
-      "string"
-    ),
-    PreviousProtocolsList = list(
-      list(
-        "string"
-      )
-    )
-  ),
-  ProtocolsListArn = "string"
-)
-}
-}
 \description{
-Returns information about the specified AWS Firewall Manager protocols
-list.
-}
-\section{Request syntax}{
-\preformatted{svc$get_protocols_list(
-  ListId = "string",
-  DefaultList = TRUE|FALSE
-)
-}
-}
+Returns information about the specified Firewall Manager protocols list.
 
+See \url{https://paws-r.github.io/docs/fms/get_protocols_list.html} for full documentation.
+}
 \keyword{internal}

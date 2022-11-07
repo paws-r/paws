@@ -4,8 +4,15 @@
 \alias{rdsdataservice_batch_execute_statement}
 \title{Runs a batch SQL statement over an array of data}
 \usage{
-rdsdataservice_batch_execute_statement(database, parameterSets,
-  resourceArn, schema, secretArn, sql, transactionId)
+rdsdataservice_batch_execute_statement(
+  database = NULL,
+  parameterSets = NULL,
+  resourceArn,
+  schema = NULL,
+  secretArn,
+  sql,
+  transactionId = NULL
+)
 }
 \arguments{
 \item{database}{The name of the database.}
@@ -29,9 +36,13 @@ Array parameters are not supported.}
 
 \item{schema}{The name of the database schema.}
 
-\item{secretArn}{[required] The name or ARN of the secret that enables access to the DB cluster.}
+\item{secretArn}{[required] The ARN of the secret that enables access to the DB cluster. Enter the
+database user name and password for the credentials in the secret.
 
-\item{sql}{[required] The SQL statement to run.}
+For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
+
+\item{sql}{[required] The SQL statement to run. Don't include a semicolon (;) at the end of
+the SQL statement.}
 
 \item{transactionId}{The identifier of a transaction that was started by using the
 \code{\link[=rdsdataservice_begin_transaction]{begin_transaction}} operation.
@@ -41,97 +52,9 @@ the SQL statement in.
 If the SQL statement is not part of a transaction, don't set this
 parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  updateResults = list(
-    list(
-      generatedFields = list(
-        list(
-          arrayValue = list(
-            arrayValues = list(
-              list()
-            ),
-            booleanValues = list(
-              TRUE|FALSE
-            ),
-            doubleValues = list(
-              123.0
-            ),
-            longValues = list(
-              123
-            ),
-            stringValues = list(
-              "string"
-            )
-          ),
-          blobValue = raw,
-          booleanValue = TRUE|FALSE,
-          doubleValue = 123.0,
-          isNull = TRUE|FALSE,
-          longValue = 123,
-          stringValue = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Runs a batch SQL statement over an array of data.
 
-You can run bulk update and insert operations for multiple records using
-a DML statement with different parameter sets. Bulk operations can
-provide a significant performance improvement over individual insert and
-update operations.
-
-If a call isn't part of a transaction because it doesn't include the
-\code{transactionID} parameter, changes that result from the call are
-committed automatically.
+See \url{https://paws-r.github.io/docs/rdsdataservice/batch_execute_statement.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$batch_execute_statement(
-  database = "string",
-  parameterSets = list(
-    list(
-      list(
-        name = "string",
-        typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
-        value = list(
-          arrayValue = list(
-            arrayValues = list(
-              list()
-            ),
-            booleanValues = list(
-              TRUE|FALSE
-            ),
-            doubleValues = list(
-              123.0
-            ),
-            longValues = list(
-              123
-            ),
-            stringValues = list(
-              "string"
-            )
-          ),
-          blobValue = raw,
-          booleanValue = TRUE|FALSE,
-          doubleValue = 123.0,
-          isNull = TRUE|FALSE,
-          longValue = 123,
-          stringValue = "string"
-        )
-      )
-    )
-  ),
-  resourceArn = "string",
-  schema = "string",
-  secretArn = "string",
-  sql = "string",
-  transactionId = "string"
-)
-}
-}
-
 \keyword{internal}

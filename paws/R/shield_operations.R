@@ -3,15 +3,17 @@
 #' @include shield_service.R
 NULL
 
-#' Authorizes the DDoS Response Team (DRT) to access the specified Amazon
-#' S3 bucket containing your AWS WAF logs
+#' Authorizes the Shield Response Team (SRT) to access the specified Amazon
+#' S3 bucket containing log data such as Application Load Balancer access
+#' logs, CloudFront logs, or logs from third party sources
 #'
 #' @description
-#' Authorizes the DDoS Response Team (DRT) to access the specified Amazon
-#' S3 bucket containing your AWS WAF logs. You can associate up to 10
-#' Amazon S3 buckets with your subscription.
+#' Authorizes the Shield Response Team (SRT) to access the specified Amazon
+#' S3 bucket containing log data such as Application Load Balancer access
+#' logs, CloudFront logs, or logs from third party sources. You can
+#' associate up to 10 Amazon S3 buckets with your subscription.
 #' 
-#' To use the services of the DRT and make an
+#' To use the services of the SRT and make an
 #' [`associate_drt_log_bucket`][shield_associate_drt_log_bucket] request,
 #' you must be subscribed to the [Business Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
@@ -21,7 +23,7 @@ NULL
 #' @usage
 #' shield_associate_drt_log_bucket(LogBucket)
 #'
-#' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains your AWS WAF logs.
+#' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains the logs that you want to share.
 #'
 #' @return
 #' An empty list.
@@ -53,15 +55,15 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 }
 .shield$operations$associate_drt_log_bucket <- shield_associate_drt_log_bucket
 
-#' Authorizes the DDoS Response Team (DRT), using the specified role, to
-#' access your AWS account to assist with DDoS attack mitigation during
-#' potential attacks
+#' Authorizes the Shield Response Team (SRT) using the specified role, to
+#' access your Amazon Web Services account to assist with DDoS attack
+#' mitigation during potential attacks
 #'
 #' @description
-#' Authorizes the DDoS Response Team (DRT), using the specified role, to
-#' access your AWS account to assist with DDoS attack mitigation during
-#' potential attacks. This enables the DRT to inspect your AWS WAF
-#' configuration and create or update AWS WAF rules and web ACLs.
+#' Authorizes the Shield Response Team (SRT) using the specified role, to
+#' access your Amazon Web Services account to assist with DDoS attack
+#' mitigation during potential attacks. This enables the SRT to inspect
+#' your WAF configuration and create or update WAF rules and web ACLs.
 #' 
 #' You can associate only one `RoleArn` with your subscription. If you
 #' submit an [`associate_drt_role`][shield_associate_drt_role] request for
@@ -69,25 +71,29 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' replace the existing `RoleArn`.
 #' 
 #' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
-#' request, you must attach the AWSShieldDRTAccessPolicy managed policy to
-#' the role you will specify in the request. For more information see
-#' Attaching and Detaching IAM Policies. The role must also trust the
-#' service principal ` drt.shield.amazonaws.com`. For more information, see
-#' [IAM JSON Policy Elements:
+#' request, you must attach the `AWSShieldDRTAccessPolicy` managed policy
+#' to the role that you'll specify in the request. You can access this
+#' policy in the IAM console at AWSShieldDRTAccessPolicy. For more
+#' information see [Adding and removing IAM identity
+#' permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html).
+#' The role must also trust the service principal
+#' `drt.shield.amazonaws.com`. For more information, see [IAM JSON policy
+#' elements:
 #' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html).
 #' 
-#' The DRT will have access only to your AWS WAF and Shield resources. By
-#' submitting this request, you authorize the DRT to inspect your AWS WAF
-#' and Shield configuration and create and update AWS WAF rules and web
-#' ACLs on your behalf. The DRT takes these actions only if explicitly
-#' authorized by you.
+#' The SRT will have access only to your WAF and Shield resources. By
+#' submitting this request, you authorize the SRT to inspect your WAF and
+#' Shield configuration and create and update WAF rules and web ACLs on
+#' your behalf. The SRT takes these actions only if explicitly authorized
+#' by you.
 #' 
 #' You must have the `iam:PassRole` permission to make an
 #' [`associate_drt_role`][shield_associate_drt_role] request. For more
-#' information, see [Granting a User Permissions to Pass a Role to an AWS
-#' Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html).
+#' information, see [Granting a user permissions to pass a role to an
+#' Amazon Web Services
+#' service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html).
 #' 
-#' To use the services of the DRT and make an
+#' To use the services of the SRT and make an
 #' [`associate_drt_role`][shield_associate_drt_role] request, you must be
 #' subscribed to the [Business Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
@@ -97,8 +103,8 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' @usage
 #' shield_associate_drt_role(RoleArn)
 #'
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role the DRT will use to access
-#' your AWS account.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role the SRT will use to access
+#' your Amazon Web Services account.
 #' 
 #' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
 #' request, you must attach the AWSShieldDRTAccessPolicy managed policy to
@@ -141,15 +147,14 @@ shield_associate_drt_role <- function(RoleArn) {
 #' @description
 #' Adds health-based detection to the Shield Advanced protection for a
 #' resource. Shield Advanced health-based detection uses the health of your
-#' AWS resource to improve responsiveness and accuracy in attack detection
-#' and mitigation.
+#' Amazon Web Services resource to improve responsiveness and accuracy in
+#' attack detection and response.
 #' 
-#' You define the health check in Route 53 and then associate it with your
+#' You define the health check in Route 53 and then associate it with your
 #' Shield Advanced protection. For more information, see [Shield Advanced
 #' Health-Based
 #' Detection](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option)
-#' in the [AWS WAF and AWS Shield Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' in the *WAF Developer Guide*.
 #'
 #' @usage
 #' shield_associate_health_check(ProtectionId, HealthCheckArn)
@@ -191,11 +196,11 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 .shield$operations$associate_health_check <- shield_associate_health_check
 
 #' Initializes proactive engagement and sets the list of contacts for the
-#' DDoS Response Team (DRT) to use
+#' Shield Response Team (SRT) to use
 #'
 #' @description
 #' Initializes proactive engagement and sets the list of contacts for the
-#' DDoS Response Team (DRT) to use. You must provide at least one phone
+#' Shield Response Team (SRT) to use. You must provide at least one phone
 #' number in the emergency contact list.
 #' 
 #' After you have initialized proactive engagement using this call, to
@@ -204,8 +209,8 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' and [`enable_proactive_engagement`][shield_enable_proactive_engagement].
 #' 
 #' This call defines the list of email addresses and phone numbers that the
-#' DDoS Response Team (DRT) can use to contact you for escalations to the
-#' DRT and to initiate proactive customer support.
+#' SRT can use to contact you for escalations to the SRT and to initiate
+#' proactive customer support.
 #' 
 #' The contacts that you provide in the request replace any contacts that
 #' were already defined. If you already have contacts defined and want to
@@ -216,9 +221,9 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' @usage
 #' shield_associate_proactive_engagement_details(EmergencyContactList)
 #'
-#' @param EmergencyContactList &#91;required&#93; A list of email addresses and phone numbers that the DDoS Response Team
-#' (DRT) can use to contact you for escalations to the DRT and to initiate
-#' proactive customer support.
+#' @param EmergencyContactList &#91;required&#93; A list of email addresses and phone numbers that the Shield Response
+#' Team (SRT) can use to contact you for escalations to the SRT and to
+#' initiate proactive customer support.
 #' 
 #' To enable proactive engagement, the contact list must include at least
 #' one phone number.
@@ -265,24 +270,27 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 }
 .shield$operations$associate_proactive_engagement_details <- shield_associate_proactive_engagement_details
 
-#' Enables AWS Shield Advanced for a specific AWS resource
+#' Enables Shield Advanced for a specific Amazon Web Services resource
 #'
 #' @description
-#' Enables AWS Shield Advanced for a specific AWS resource. The resource
-#' can be an Amazon CloudFront distribution, Elastic Load Balancing load
-#' balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an
-#' Amazon Route 53 hosted zone.
+#' Enables Shield Advanced for a specific Amazon Web Services resource. The
+#' resource can be an Amazon CloudFront distribution, Amazon Route 53
+#' hosted zone, Global Accelerator standard accelerator, Elastic IP
+#' Address, Application Load Balancer, or a Classic Load Balancer. You can
+#' protect Amazon EC2 instances and Network Load Balancers by association
+#' with protected Amazon EC2 Elastic IP addresses.
 #' 
 #' You can add protection to only a single resource with each
-#' CreateProtection request. If you want to add protection to multiple
-#' resources at once, use the AWS WAF console. For more information see
-#' [Getting Started with AWS Shield
+#' [`create_protection`][shield_create_protection] request. You can add
+#' protection to multiple resources at once through the Shield Advanced
+#' console at <https://console.aws.amazon.com/wafv2/shieldv2#/>. For more
+#' information see [Getting Started with Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html)
-#' and [Add AWS Shield Advanced Protection to more AWS
-#' Resources](https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html).
+#' and [Adding Shield Advanced protection to Amazon Web Services
+#' resources](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
-#' shield_create_protection(Name, ResourceArn)
+#' shield_create_protection(Name, ResourceArn, Tags)
 #'
 #' @param Name &#91;required&#93; Friendly name for the `Protection` you are creating.
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource to be protected.
@@ -295,16 +303,18 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' -   For an Elastic Load Balancer (Classic Load Balancer):
 #'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name `
 #' 
-#' -   For an AWS CloudFront distribution:
+#' -   For an Amazon CloudFront distribution:
 #'     `arn:aws:cloudfront::account-id:distribution/distribution-id `
 #' 
-#' -   For an AWS Global Accelerator accelerator:
+#' -   For an Global Accelerator standard accelerator:
 #'     `arn:aws:globalaccelerator::account-id:accelerator/accelerator-id `
 #' 
-#' -   For Amazon Route 53: `arn:aws:route53:::hostedzone/hosted-zone-id `
+#' -   For Amazon Route 53: `arn:aws:route53:::hostedzone/hosted-zone-id `
 #' 
 #' -   For an Elastic IP address:
 #'     `arn:aws:ec2:region:account-id:eip-allocation/allocation-id `
+#' @param Tags One or more tag key-value pairs for the Protection object that is
+#' created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -318,21 +328,27 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' ```
 #' svc$create_protection(
 #'   Name = "string",
-#'   ResourceArn = "string"
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname shield_create_protection
-shield_create_protection <- function(Name, ResourceArn) {
+shield_create_protection <- function(Name, ResourceArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateProtection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .shield$create_protection_input(Name = Name, ResourceArn = ResourceArn)
+  input <- .shield$create_protection_input(Name = Name, ResourceArn = ResourceArn, Tags = Tags)
   output <- .shield$create_protection_output()
   config <- get_config()
   svc <- .shield$service(config)
@@ -352,12 +368,12 @@ shield_create_protection <- function(Name, ResourceArn) {
 #'
 #' @usage
 #' shield_create_protection_group(ProtectionGroupId, Aggregation, Pattern,
-#'   ResourceType, Members)
+#'   ResourceType, Members, Tags)
 #'
 #' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
 #' protection group in lists and to manage the protection group, for
 #' example to update, delete, or describe it.
-#' @param Aggregation &#91;required&#93; Defines how AWS Shield combines resource data for the group in order to
+#' @param Aggregation &#91;required&#93; Defines how Shield combines resource data for the group in order to
 #' detect, mitigate, and report events.
 #' 
 #' -   Sum - Use the total traffic across the group. This is a good choice
@@ -370,8 +386,8 @@ shield_create_protection <- function(Name, ResourceArn) {
 #' 
 #' -   Max - Use the highest traffic from each resource. This is useful for
 #'     resources that don't share traffic and for resources that share that
-#'     traffic in a non-uniform way. Examples include CloudFront
-#'     distributions and origin resources for CloudFront distributions.
+#'     traffic in a non-uniform way. Examples include Amazon CloudFront and
+#'     origin resources for CloudFront distributions.
 #' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in
 #' the group. You can include all resources that have protections, provide
 #' a list of resource Amazon Resource Names (ARNs), or include all
@@ -384,6 +400,7 @@ shield_create_protection <- function(Name, ResourceArn) {
 #' @param Members The Amazon Resource Names (ARNs) of the resources to include in the
 #' protection group. You must set this when you set `Pattern` to
 #' `ARBITRARY` and you must not set it for any other `Pattern` setting.
+#' @param Tags One or more tag key-value pairs for the protection group.
 #'
 #' @return
 #' An empty list.
@@ -397,6 +414,12 @@ shield_create_protection <- function(Name, ResourceArn) {
 #'   ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
 #'   Members = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -404,14 +427,14 @@ shield_create_protection <- function(Name, ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname shield_create_protection_group
-shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Pattern, ResourceType = NULL, Members = NULL) {
+shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Pattern, ResourceType = NULL, Members = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateProtectionGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .shield$create_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members)
+  input <- .shield$create_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members, Tags = Tags)
   output <- .shield$create_protection_group_output()
   config <- get_config()
   svc <- .shield$service(config)
@@ -421,12 +444,16 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 }
 .shield$operations$create_protection_group <- shield_create_protection_group
 
-#' Activates AWS Shield Advanced for an account
+#' Activates Shield Advanced for an account
 #'
 #' @description
-#' Activates AWS Shield Advanced for an account.
+#' Activates Shield Advanced for an account.
 #' 
-#' When you initally create a subscription, your subscription is set to be
+#' For accounts that are members of an Organizations organization, Shield
+#' Advanced subscriptions are billed against the organization's payer
+#' account, regardless of whether the payer account itself is subscribed.
+#' 
+#' When you initially create a subscription, your subscription is set to be
 #' automatically renewed at the end of the existing subscription period.
 #' You can change this by submitting an
 #' [`update_subscription`][shield_update_subscription] request.
@@ -462,10 +489,10 @@ shield_create_subscription <- function() {
 }
 .shield$operations$create_subscription <- shield_create_subscription
 
-#' Deletes an AWS Shield Advanced Protection
+#' Deletes an Shield Advanced Protection
 #'
 #' @description
-#' Deletes an AWS Shield Advanced Protection.
+#' Deletes an Shield Advanced Protection.
 #'
 #' @usage
 #' shield_delete_protection(ProtectionId)
@@ -544,12 +571,12 @@ shield_delete_protection_group <- function(ProtectionGroupId) {
 }
 .shield$operations$delete_protection_group <- shield_delete_protection_group
 
-#' Removes AWS Shield Advanced from an account
+#' Removes Shield Advanced from an account
 #'
 #' @description
-#' Removes AWS Shield Advanced from an account. AWS Shield Advanced
-#' requires a 1-year subscription commitment. You cannot delete a
-#' subscription prior to the completion of that commitment.
+#' Removes Shield Advanced from an account. Shield Advanced requires a
+#' 1-year subscription commitment. You cannot delete a subscription prior
+#' to the completion of that commitment.
 #'
 #' @usage
 #' shield_delete_subscription()
@@ -590,7 +617,7 @@ shield_delete_subscription <- function() {
 #' @usage
 #' shield_describe_attack(AttackId)
 #'
-#' @param AttackId &#91;required&#93; The unique identifier (ID) for the attack that to be described.
+#' @param AttackId &#91;required&#93; The unique identifier (ID) for the attack.
 #'
 #' @return
 #' A list with the following syntax:
@@ -696,12 +723,12 @@ shield_describe_attack <- function(AttackId) {
 }
 .shield$operations$describe_attack <- shield_describe_attack
 
-#' Provides information about the number and type of attacks AWS Shield has
+#' Provides information about the number and type of attacks Shield has
 #' detected in the last year for all resources that belong to your account,
 #' regardless of whether you've defined Shield protections for them
 #'
 #' @description
-#' Provides information about the number and type of attacks AWS Shield has
+#' Provides information about the number and type of attacks Shield has
 #' detected in the last year for all resources that belong to your account,
 #' regardless of whether you've defined Shield protections for them. This
 #' operation is available to Shield customers as well as to Shield Advanced
@@ -776,13 +803,13 @@ shield_describe_attack_statistics <- function() {
 .shield$operations$describe_attack_statistics <- shield_describe_attack_statistics
 
 #' Returns the current role and list of Amazon S3 log buckets used by the
-#' DDoS Response Team (DRT) to access your AWS account while assisting with
-#' attack mitigation
+#' Shield Response Team (SRT) to access your Amazon Web Services account
+#' while assisting with attack mitigation
 #'
 #' @description
 #' Returns the current role and list of Amazon S3 log buckets used by the
-#' DDoS Response Team (DRT) to access your AWS account while assisting with
-#' attack mitigation.
+#' Shield Response Team (SRT) to access your Amazon Web Services account
+#' while assisting with attack mitigation.
 #'
 #' @usage
 #' shield_describe_drt_access()
@@ -823,14 +850,16 @@ shield_describe_drt_access <- function() {
 }
 .shield$operations$describe_drt_access <- shield_describe_drt_access
 
-#' A list of email addresses and phone numbers that the DDoS Response Team
-#' (DRT) can use to contact you if you have proactive engagement enabled,
-#' for escalations to the DRT and to initiate proactive customer support
+#' A list of email addresses and phone numbers that the Shield Response
+#' Team (SRT) can use to contact you if you have proactive engagement
+#' enabled, for escalations to the SRT and to initiate proactive customer
+#' support
 #'
 #' @description
-#' A list of email addresses and phone numbers that the DDoS Response Team
-#' (DRT) can use to contact you if you have proactive engagement enabled,
-#' for escalations to the DRT and to initiate proactive customer support.
+#' A list of email addresses and phone numbers that the Shield Response
+#' Team (SRT) can use to contact you if you have proactive engagement
+#' enabled, for escalations to the SRT and to initiate proactive customer
+#' support.
 #'
 #' @usage
 #' shield_describe_emergency_contact_settings()
@@ -882,14 +911,12 @@ shield_describe_emergency_contact_settings <- function() {
 #' @usage
 #' shield_describe_protection(ProtectionId, ResourceArn)
 #'
-#' @param ProtectionId The unique identifier (ID) for the Protection object that is described.
-#' When submitting the [`describe_protection`][shield_describe_protection]
-#' request you must provide either the `ResourceArn` or the `ProtectionID`,
-#' but not both.
-#' @param ResourceArn The ARN (Amazon Resource Name) of the AWS resource for the Protection
-#' object that is described. When submitting the
-#' [`describe_protection`][shield_describe_protection] request you must
-#' provide either the `ResourceArn` or the `ProtectionID`, but not both.
+#' @param ProtectionId The unique identifier (ID) for the Protection object to describe. You
+#' must provide either the `ResourceArn` of the protected resource or the
+#' `ProtectionID` of the protection, but not both.
+#' @param ResourceArn The ARN (Amazon Resource Name) of the protected Amazon Web Services
+#' resource. You must provide either the `ResourceArn` of the protected
+#' resource or the `ProtectionID` of the protection, but not both.
 #'
 #' @return
 #' A list with the following syntax:
@@ -901,6 +928,14 @@ shield_describe_emergency_contact_settings <- function() {
 #'     ResourceArn = "string",
 #'     HealthCheckIds = list(
 #'       "string"
+#'     ),
+#'     ProtectionArn = "string",
+#'     ApplicationLayerAutomaticResponseConfiguration = list(
+#'       Status = "ENABLED"|"DISABLED",
+#'       Action = list(
+#'         Block = list(),
+#'         Count = list()
+#'       )
 #'     )
 #'   )
 #' )
@@ -957,7 +992,8 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
 #'     ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
 #'     Members = list(
 #'       "string"
-#'     )
+#'     ),
+#'     ProtectionGroupArn = "string"
 #'   )
 #' )
 #' ```
@@ -989,12 +1025,10 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
 }
 .shield$operations$describe_protection_group <- shield_describe_protection_group
 
-#' Provides details about the AWS Shield Advanced subscription for an
-#' account
+#' Provides details about the Shield Advanced subscription for an account
 #'
 #' @description
-#' Provides details about the AWS Shield Advanced subscription for an
-#' account.
+#' Provides details about the Shield Advanced subscription for an account.
 #'
 #' @usage
 #' shield_describe_subscription()
@@ -1036,7 +1070,8 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     SubscriptionArn = "string"
 #'   )
 #' )
 #' ```
@@ -1066,13 +1101,57 @@ shield_describe_subscription <- function() {
 }
 .shield$operations$describe_subscription <- shield_describe_subscription
 
-#' Removes authorization from the DDoS Response Team (DRT) to notify
-#' contacts about escalations to the DRT and to initiate proactive customer
+#' Disable the Shield Advanced automatic application layer DDoS mitigation
+#' feature for the protected resource
+#'
+#' @description
+#' Disable the Shield Advanced automatic application layer DDoS mitigation
+#' feature for the protected resource. This stops Shield Advanced from
+#' creating, verifying, and applying WAF rules for attacks that it detects
+#' for the resource.
+#'
+#' @usage
+#' shield_disable_application_layer_automatic_response(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the protected resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_application_layer_automatic_response(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_disable_application_layer_automatic_response
+shield_disable_application_layer_automatic_response <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DisableApplicationLayerAutomaticResponse",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$disable_application_layer_automatic_response_input(ResourceArn = ResourceArn)
+  output <- .shield$disable_application_layer_automatic_response_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$disable_application_layer_automatic_response <- shield_disable_application_layer_automatic_response
+
+#' Removes authorization from the Shield Response Team (SRT) to notify
+#' contacts about escalations to the SRT and to initiate proactive customer
 #' support
 #'
 #' @description
-#' Removes authorization from the DDoS Response Team (DRT) to notify
-#' contacts about escalations to the DRT and to initiate proactive customer
+#' Removes authorization from the Shield Response Team (SRT) to notify
+#' contacts about escalations to the SRT and to initiate proactive customer
 #' support.
 #'
 #' @usage
@@ -1106,29 +1185,17 @@ shield_disable_proactive_engagement <- function() {
 }
 .shield$operations$disable_proactive_engagement <- shield_disable_proactive_engagement
 
-#' Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
-#' bucket containing your AWS WAF logs
+#' Removes the Shield Response Team's (SRT) access to the specified Amazon
+#' S3 bucket containing the logs that you shared previously
 #'
 #' @description
-#' Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
-#' bucket containing your AWS WAF logs.
-#' 
-#' To make a
-#' [`disassociate_drt_log_bucket`][shield_disassociate_drt_log_bucket]
-#' request, you must be subscribed to the [Business Support
-#' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
-#' [Enterprise Support
-#' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/). However,
-#' if you are not subscribed to one of these support plans, but had been
-#' previously and had granted the DRT access to your account, you can
-#' submit a
-#' [`disassociate_drt_log_bucket`][shield_disassociate_drt_log_bucket]
-#' request to remove this access.
+#' Removes the Shield Response Team's (SRT) access to the specified Amazon
+#' S3 bucket containing the logs that you shared previously.
 #'
 #' @usage
 #' shield_disassociate_drt_log_bucket(LogBucket)
 #'
-#' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains your AWS WAF logs.
+#' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains the logs that you want to share.
 #'
 #' @return
 #' An empty list.
@@ -1160,20 +1227,12 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 }
 .shield$operations$disassociate_drt_log_bucket <- shield_disassociate_drt_log_bucket
 
-#' Removes the DDoS Response Team's (DRT) access to your AWS account
+#' Removes the Shield Response Team's (SRT) access to your Amazon Web
+#' Services account
 #'
 #' @description
-#' Removes the DDoS Response Team's (DRT) access to your AWS account.
-#' 
-#' To make a [`disassociate_drt_role`][shield_disassociate_drt_role]
-#' request, you must be subscribed to the [Business Support
-#' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
-#' [Enterprise Support
-#' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/). However,
-#' if you are not subscribed to one of these support plans, but had been
-#' previously and had granted the DRT access to your account, you can
-#' submit a [`disassociate_drt_role`][shield_disassociate_drt_role] request
-#' to remove this access.
+#' Removes the Shield Response Team's (SRT) access to your Amazon Web
+#' Services account.
 #'
 #' @usage
 #' shield_disassociate_drt_role()
@@ -1212,15 +1271,14 @@ shield_disassociate_drt_role <- function() {
 #' @description
 #' Removes health-based detection from the Shield Advanced protection for a
 #' resource. Shield Advanced health-based detection uses the health of your
-#' AWS resource to improve responsiveness and accuracy in attack detection
-#' and mitigation.
+#' Amazon Web Services resource to improve responsiveness and accuracy in
+#' attack detection and response.
 #' 
-#' You define the health check in Route 53 and then associate or
+#' You define the health check in Route 53 and then associate or
 #' disassociate it with your Shield Advanced protection. For more
 #' information, see [Shield Advanced Health-Based
 #' Detection](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option)
-#' in the [AWS WAF and AWS Shield Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' in the *WAF Developer Guide*.
 #'
 #' @usage
 #' shield_disassociate_health_check(ProtectionId, HealthCheckArn)
@@ -1261,14 +1319,94 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
 }
 .shield$operations$disassociate_health_check <- shield_disassociate_health_check
 
-#' Authorizes the DDoS Response Team (DRT) to use email and phone to notify
-#' contacts about escalations to the DRT and to initiate proactive customer
-#' support
+#' Enable the Shield Advanced automatic application layer DDoS mitigation
+#' for the protected resource
 #'
 #' @description
-#' Authorizes the DDoS Response Team (DRT) to use email and phone to notify
-#' contacts about escalations to the DRT and to initiate proactive customer
-#' support.
+#' Enable the Shield Advanced automatic application layer DDoS mitigation
+#' for the protected resource.
+#' 
+#' This feature is available for Amazon CloudFront distributions and
+#' Application Load Balancers only.
+#' 
+#' This causes Shield Advanced to create, verify, and apply WAF rules for
+#' DDoS attacks that it detects for the resource. Shield Advanced applies
+#' the rules in a Shield rule group inside the web ACL that you've
+#' associated with the resource. For information about how automatic
+#' mitigation works and the requirements for using it, see [Shield Advanced
+#' automatic application layer DDoS
+#' mitigation](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-automatic-app-layer-response.html).
+#' 
+#' Don't use this action to make changes to automatic mitigation settings
+#' when it's already enabled for a resource. Instead, use
+#' [`update_application_layer_automatic_response`][shield_update_application_layer_automatic_response].
+#' 
+#' To use this feature, you must associate a web ACL with the protected
+#' resource. The web ACL must be created using the latest version of WAF
+#' (v2). You can associate the web ACL through the Shield Advanced console
+#' at <https://console.aws.amazon.com/wafv2/shieldv2#/>. For more
+#' information, see [Getting Started with Shield
+#' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html).
+#' You can also associate the web ACL to the resource through the WAF
+#' console or the WAF API, but you must manage Shield Advanced automatic
+#' mitigation through Shield Advanced. For information about WAF, see [WAF
+#' Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#'
+#' @usage
+#' shield_enable_application_layer_automatic_response(ResourceArn, Action)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the protected resource.
+#' @param Action &#91;required&#93; Specifies the action setting that Shield Advanced should use in the WAF
+#' rules that it creates on behalf of the protected resource in response to
+#' DDoS attacks. You specify this as part of the configuration for the
+#' automatic application layer DDoS mitigation feature, when you enable or
+#' update automatic mitigation. Shield Advanced creates the WAF rules in a
+#' Shield Advanced-managed rule group, inside the web ACL that you have
+#' associated with the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_application_layer_automatic_response(
+#'   ResourceArn = "string",
+#'   Action = list(
+#'     Block = list(),
+#'     Count = list()
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_enable_application_layer_automatic_response
+shield_enable_application_layer_automatic_response <- function(ResourceArn, Action) {
+  op <- new_operation(
+    name = "EnableApplicationLayerAutomaticResponse",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$enable_application_layer_automatic_response_input(ResourceArn = ResourceArn, Action = Action)
+  output <- .shield$enable_application_layer_automatic_response_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$enable_application_layer_automatic_response <- shield_enable_application_layer_automatic_response
+
+#' Authorizes the Shield Response Team (SRT) to use email and phone to
+#' notify contacts about escalations to the SRT and to initiate proactive
+#' customer support
+#'
+#' @description
+#' Authorizes the Shield Response Team (SRT) to use email and phone to
+#' notify contacts about escalations to the SRT and to initiate proactive
+#' customer support.
 #'
 #' @usage
 #' shield_enable_proactive_engagement()
@@ -1353,31 +1491,41 @@ shield_get_subscription_state <- function() {
 #' shield_list_attacks(ResourceArns, StartTime, EndTime, NextToken,
 #'   MaxResults)
 #'
-#' @param ResourceArns The ARN (Amazon Resource Name) of the resource that was attacked. If
-#' this is left blank, all applicable resources for this account will be
+#' @param ResourceArns The ARNs (Amazon Resource Names) of the resources that were attacked. If
+#' you leave this blank, all applicable resources for this account will be
 #' included.
 #' @param StartTime The start of the time period for the attacks. This is a `timestamp`
-#' type. The sample request above indicates a `number` type because the
-#' default used by WAF is Unix time in seconds. However any valid
-#' [timestamp
-#' format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#parameter-types)
-#' is allowed.
+#' type. The request syntax listing for this call indicates a `number`
+#' type, but you can provide the time in any valid [timestamp
+#' format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp)
+#' setting.
 #' @param EndTime The end of the time period for the attacks. This is a `timestamp` type.
-#' The sample request above indicates a `number` type because the default
-#' used by WAF is Unix time in seconds. However any valid [timestamp
-#' format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#parameter-types)
-#' is allowed.
-#' @param NextToken The `ListAttacksRequest.NextMarker` value from a previous call to
-#' `ListAttacksRequest`. Pass null if this is the first call.
-#' @param MaxResults The maximum number of AttackSummary objects to return. If you leave this
-#' blank, Shield Advanced returns the first 20 results.
+#' The request syntax listing for this call indicates a `number` type, but
+#' you can provide the time in any valid [timestamp
+#' format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp)
+#' setting.
+#' @param NextToken When you request a list of objects from Shield Advanced, if the response
+#' does not include all of the remaining available objects, Shield Advanced
+#' includes a `NextToken` value in the response. You can retrieve the next
+#' batch of objects by requesting the list again and providing the token
+#' that was returned by the prior call in your request.
 #' 
-#' This is a maximum value. Shield Advanced might return the results in
-#' smaller batches. That is, the number of objects returned could be less
-#' than `MaxResults`, even if there are still more objects yet to return.
-#' If there are more objects to return, Shield Advanced returns a value in
-#' `NextToken` that you can use in your next request, to get the next batch
-#' of objects.
+#' You can indicate the maximum number of objects that you want Shield
+#' Advanced to return for a single call with the `MaxResults` setting.
+#' Shield Advanced will not return more than `MaxResults` objects, but may
+#' return fewer, even if more objects are still available.
+#' 
+#' Whenever more objects remain that Shield Advanced has not yet returned
+#' to you, the response will include a `NextToken` value.
+#' 
+#' On your first call to a list operation, leave this setting empty.
+#' @param MaxResults The greatest number of objects that you want Shield Advanced to return
+#' to the list request. Shield Advanced might return fewer objects than you
+#' indicate in this setting, even if more objects are available. If there
+#' are more objects remaining, Shield Advanced will always also return a
+#' `NextToken` value in the response.
+#' 
+#' The default setting is 20.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1451,26 +1599,44 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 }
 .shield$operations$list_attacks <- shield_list_attacks
 
-#' Retrieves the ProtectionGroup objects for the account
+#' Retrieves ProtectionGroup objects for the account
 #'
 #' @description
-#' Retrieves the ProtectionGroup objects for the account.
+#' Retrieves ProtectionGroup objects for the account. You can retrieve all
+#' protection groups or you can provide filtering criteria and retrieve
+#' just the subset of protection groups that match the criteria.
 #'
 #' @usage
-#' shield_list_protection_groups(NextToken, MaxResults)
+#' shield_list_protection_groups(NextToken, MaxResults, InclusionFilters)
 #'
-#' @param NextToken The next token value from a previous call to
-#' [`list_protection_groups`][shield_list_protection_groups]. Pass null if
-#' this is the first call.
-#' @param MaxResults The maximum number of ProtectionGroup objects to return. If you leave
-#' this blank, Shield Advanced returns the first 20 results.
+#' @param NextToken When you request a list of objects from Shield Advanced, if the response
+#' does not include all of the remaining available objects, Shield Advanced
+#' includes a `NextToken` value in the response. You can retrieve the next
+#' batch of objects by requesting the list again and providing the token
+#' that was returned by the prior call in your request.
 #' 
-#' This is a maximum value. Shield Advanced might return the results in
-#' smaller batches. That is, the number of objects returned could be less
-#' than `MaxResults`, even if there are still more objects yet to return.
-#' If there are more objects to return, Shield Advanced returns a value in
-#' `NextToken` that you can use in your next request, to get the next batch
-#' of objects.
+#' You can indicate the maximum number of objects that you want Shield
+#' Advanced to return for a single call with the `MaxResults` setting.
+#' Shield Advanced will not return more than `MaxResults` objects, but may
+#' return fewer, even if more objects are still available.
+#' 
+#' Whenever more objects remain that Shield Advanced has not yet returned
+#' to you, the response will include a `NextToken` value.
+#' 
+#' On your first call to a list operation, leave this setting empty.
+#' @param MaxResults The greatest number of objects that you want Shield Advanced to return
+#' to the list request. Shield Advanced might return fewer objects than you
+#' indicate in this setting, even if more objects are available. If there
+#' are more objects remaining, Shield Advanced will always also return a
+#' `NextToken` value in the response.
+#' 
+#' The default setting is 20.
+#' @param InclusionFilters Narrows the set of protection groups that the call retrieves. You can
+#' retrieve a single protection group by its name and you can retrieve all
+#' protection groups that are configured with specific pattern or
+#' aggregation settings. You can provide up to one criteria per filter
+#' type. Shield Advanced returns the protection groups that exactly match
+#' all of the search criteria that you provide.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1484,7 +1650,8 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #'       ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
 #'       Members = list(
 #'         "string"
-#'       )
+#'       ),
+#'       ProtectionGroupArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1495,21 +1662,35 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #' ```
 #' svc$list_protection_groups(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   InclusionFilters = list(
+#'     ProtectionGroupIds = list(
+#'       "string"
+#'     ),
+#'     Patterns = list(
+#'       "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE"
+#'     ),
+#'     ResourceTypes = list(
+#'       "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR"
+#'     ),
+#'     Aggregations = list(
+#'       "SUM"|"MEAN"|"MAX"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname shield_list_protection_groups
-shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL) {
+shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL, InclusionFilters = NULL) {
   op <- new_operation(
     name = "ListProtectionGroups",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .shield$list_protection_groups_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .shield$list_protection_groups_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
   output <- .shield$list_protection_groups_output()
   config <- get_config()
   svc <- .shield$service(config)
@@ -1519,26 +1700,44 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .shield$operations$list_protection_groups <- shield_list_protection_groups
 
-#' Lists all Protection objects for the account
+#' Retrieves Protection objects for the account
 #'
 #' @description
-#' Lists all Protection objects for the account.
+#' Retrieves Protection objects for the account. You can retrieve all
+#' protections or you can provide filtering criteria and retrieve just the
+#' subset of protections that match the criteria.
 #'
 #' @usage
-#' shield_list_protections(NextToken, MaxResults)
+#' shield_list_protections(NextToken, MaxResults, InclusionFilters)
 #'
-#' @param NextToken The `ListProtectionsRequest.NextToken` value from a previous call to
-#' [`list_protections`][shield_list_protections]. Pass null if this is the
-#' first call.
-#' @param MaxResults The maximum number of Protection objects to return. If you leave this
-#' blank, Shield Advanced returns the first 20 results.
+#' @param NextToken When you request a list of objects from Shield Advanced, if the response
+#' does not include all of the remaining available objects, Shield Advanced
+#' includes a `NextToken` value in the response. You can retrieve the next
+#' batch of objects by requesting the list again and providing the token
+#' that was returned by the prior call in your request.
 #' 
-#' This is a maximum value. Shield Advanced might return the results in
-#' smaller batches. That is, the number of objects returned could be less
-#' than `MaxResults`, even if there are still more objects yet to return.
-#' If there are more objects to return, Shield Advanced returns a value in
-#' `NextToken` that you can use in your next request, to get the next batch
-#' of objects.
+#' You can indicate the maximum number of objects that you want Shield
+#' Advanced to return for a single call with the `MaxResults` setting.
+#' Shield Advanced will not return more than `MaxResults` objects, but may
+#' return fewer, even if more objects are still available.
+#' 
+#' Whenever more objects remain that Shield Advanced has not yet returned
+#' to you, the response will include a `NextToken` value.
+#' 
+#' On your first call to a list operation, leave this setting empty.
+#' @param MaxResults The greatest number of objects that you want Shield Advanced to return
+#' to the list request. Shield Advanced might return fewer objects than you
+#' indicate in this setting, even if more objects are available. If there
+#' are more objects remaining, Shield Advanced will always also return a
+#' `NextToken` value in the response.
+#' 
+#' The default setting is 20.
+#' @param InclusionFilters Narrows the set of protections that the call retrieves. You can retrieve
+#' a single protection by providing its name or the ARN (Amazon Resource
+#' Name) of its protected resource. You can also retrieve all protections
+#' for a specific resource type. You can provide up to one criteria per
+#' filter type. Shield Advanced returns protections that exactly match all
+#' of the filter criteria that you provide.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1551,6 +1750,14 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #'       ResourceArn = "string",
 #'       HealthCheckIds = list(
 #'         "string"
+#'       ),
+#'       ProtectionArn = "string",
+#'       ApplicationLayerAutomaticResponseConfiguration = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         Action = list(
+#'           Block = list(),
+#'           Count = list()
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1562,21 +1769,32 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' ```
 #' svc$list_protections(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   InclusionFilters = list(
+#'     ResourceArns = list(
+#'       "string"
+#'     ),
+#'     ProtectionNames = list(
+#'       "string"
+#'     ),
+#'     ResourceTypes = list(
+#'       "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname shield_list_protections
-shield_list_protections <- function(NextToken = NULL, MaxResults = NULL) {
+shield_list_protections <- function(NextToken = NULL, MaxResults = NULL, InclusionFilters = NULL) {
   op <- new_operation(
     name = "ListProtections",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .shield$list_protections_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .shield$list_protections_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
   output <- .shield$list_protections_output()
   config <- get_config()
   svc <- .shield$service(config)
@@ -1598,18 +1816,28 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
 #' protection group in lists and to manage the protection group, for
 #' example to update, delete, or describe it.
-#' @param NextToken The next token value from a previous call to
-#' [`list_resources_in_protection_group`][shield_list_resources_in_protection_group].
-#' Pass null if this is the first call.
-#' @param MaxResults The maximum number of resource ARN objects to return. If you leave this
-#' blank, Shield Advanced returns the first 20 results.
+#' @param NextToken When you request a list of objects from Shield Advanced, if the response
+#' does not include all of the remaining available objects, Shield Advanced
+#' includes a `NextToken` value in the response. You can retrieve the next
+#' batch of objects by requesting the list again and providing the token
+#' that was returned by the prior call in your request.
 #' 
-#' This is a maximum value. Shield Advanced might return the results in
-#' smaller batches. That is, the number of objects returned could be less
-#' than `MaxResults`, even if there are still more objects yet to return.
-#' If there are more objects to return, Shield Advanced returns a value in
-#' `NextToken` that you can use in your next request, to get the next batch
-#' of objects.
+#' You can indicate the maximum number of objects that you want Shield
+#' Advanced to return for a single call with the `MaxResults` setting.
+#' Shield Advanced will not return more than `MaxResults` objects, but may
+#' return fewer, even if more objects are still available.
+#' 
+#' Whenever more objects remain that Shield Advanced has not yet returned
+#' to you, the response will include a `NextToken` value.
+#' 
+#' On your first call to a list operation, leave this setting empty.
+#' @param MaxResults The greatest number of objects that you want Shield Advanced to return
+#' to the list request. Shield Advanced might return fewer objects than you
+#' indicate in this setting, even if more objects are available. If there
+#' are more objects remaining, Shield Advanced will always also return a
+#' `NextToken` value in the response.
+#' 
+#' The default setting is 20.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1651,23 +1879,222 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
 }
 .shield$operations$list_resources_in_protection_group <- shield_list_resources_in_protection_group
 
+#' Gets information about Amazon Web Services tags for a specified Amazon
+#' Resource Name (ARN) in Shield
+#'
+#' @description
+#' Gets information about Amazon Web Services tags for a specified Amazon
+#' Resource Name (ARN) in Shield.
+#'
+#' @usage
+#' shield_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_list_tags_for_resource
+shield_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .shield$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$list_tags_for_resource <- shield_list_tags_for_resource
+
+#' Adds or updates tags for a resource in Shield
+#'
+#' @description
+#' Adds or updates tags for a resource in Shield.
+#'
+#' @usage
+#' shield_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add or
+#' update tags for.
+#' @param Tags &#91;required&#93; The tags that you want to modify or add to the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_tag_resource
+shield_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .shield$tag_resource_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$tag_resource <- shield_tag_resource
+
+#' Removes tags from a resource in Shield
+#'
+#' @description
+#' Removes tags from a resource in Shield.
+#'
+#' @usage
+#' shield_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
+#' tags from.
+#' @param TagKeys &#91;required&#93; The tag key for each tag that you want to remove from the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_untag_resource
+shield_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .shield$untag_resource_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$untag_resource <- shield_untag_resource
+
+#' Updates an existing Shield Advanced automatic application layer DDoS
+#' mitigation configuration for the specified resource
+#'
+#' @description
+#' Updates an existing Shield Advanced automatic application layer DDoS
+#' mitigation configuration for the specified resource.
+#'
+#' @usage
+#' shield_update_application_layer_automatic_response(ResourceArn, Action)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource.
+#' @param Action &#91;required&#93; Specifies the action setting that Shield Advanced should use in the WAF
+#' rules that it creates on behalf of the protected resource in response to
+#' DDoS attacks. You specify this as part of the configuration for the
+#' automatic application layer DDoS mitigation feature, when you enable or
+#' update automatic mitigation. Shield Advanced creates the WAF rules in a
+#' Shield Advanced-managed rule group, inside the web ACL that you have
+#' associated with the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_application_layer_automatic_response(
+#'   ResourceArn = "string",
+#'   Action = list(
+#'     Block = list(),
+#'     Count = list()
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_update_application_layer_automatic_response
+shield_update_application_layer_automatic_response <- function(ResourceArn, Action) {
+  op <- new_operation(
+    name = "UpdateApplicationLayerAutomaticResponse",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$update_application_layer_automatic_response_input(ResourceArn = ResourceArn, Action = Action)
+  output <- .shield$update_application_layer_automatic_response_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$update_application_layer_automatic_response <- shield_update_application_layer_automatic_response
+
 #' Updates the details of the list of email addresses and phone numbers
-#' that the DDoS Response Team (DRT) can use to contact you if you have
-#' proactive engagement enabled, for escalations to the DRT and to initiate
+#' that the Shield Response Team (SRT) can use to contact you if you have
+#' proactive engagement enabled, for escalations to the SRT and to initiate
 #' proactive customer support
 #'
 #' @description
 #' Updates the details of the list of email addresses and phone numbers
-#' that the DDoS Response Team (DRT) can use to contact you if you have
-#' proactive engagement enabled, for escalations to the DRT and to initiate
+#' that the Shield Response Team (SRT) can use to contact you if you have
+#' proactive engagement enabled, for escalations to the SRT and to initiate
 #' proactive customer support.
 #'
 #' @usage
 #' shield_update_emergency_contact_settings(EmergencyContactList)
 #'
-#' @param EmergencyContactList A list of email addresses and phone numbers that the DDoS Response Team
-#' (DRT) can use to contact you if you have proactive engagement enabled,
-#' for escalations to the DRT and to initiate proactive customer support.
+#' @param EmergencyContactList A list of email addresses and phone numbers that the Shield Response
+#' Team (SRT) can use to contact you if you have proactive engagement
+#' enabled, for escalations to the SRT and to initiate proactive customer
+#' support.
 #' 
 #' If you have proactive engagement enabled, the contact list must include
 #' at least one phone number.
@@ -1723,7 +2150,7 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
 #' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
 #' protection group in lists and to manage the protection group, for
 #' example to update, delete, or describe it.
-#' @param Aggregation &#91;required&#93; Defines how AWS Shield combines resource data for the group in order to
+#' @param Aggregation &#91;required&#93; Defines how Shield combines resource data for the group in order to
 #' detect, mitigate, and report events.
 #' 
 #' -   Sum - Use the total traffic across the group. This is a good choice
@@ -1736,7 +2163,7 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
 #' 
 #' -   Max - Use the highest traffic from each resource. This is useful for
 #'     resources that don't share traffic and for resources that share that
-#'     traffic in a non-uniform way. Examples include CloudFront
+#'     traffic in a non-uniform way. Examples include Amazon CloudFront
 #'     distributions and origin resources for CloudFront distributions.
 #' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in
 #' the group. You can include all resources that have protections, provide
@@ -1791,6 +2218,10 @@ shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' @description
 #' Updates the details of an existing subscription. Only enter values for
 #' parameters you want to change. Empty parameters are not updated.
+#' 
+#' For accounts that are members of an Organizations organization, Shield
+#' Advanced subscriptions are billed against the organization's payer
+#' account, regardless of whether the payer account itself is subscribed.
 #'
 #' @usage
 #' shield_update_subscription(AutoRenew)

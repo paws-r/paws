@@ -2,10 +2,17 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_list_projects}
 \alias{sagemaker_list_projects}
-\title{Gets a list of the projects in an AWS account}
+\title{Gets a list of the projects in an Amazon Web Services account}
 \usage{
-sagemaker_list_projects(CreationTimeAfter, CreationTimeBefore,
-  MaxResults, NameContains, NextToken, SortBy, SortOrder)
+sagemaker_list_projects(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  NextToken = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns the projects that were created after a specified
@@ -27,42 +34,9 @@ the next set of projects, use the token in the next request.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProjectSummaryList = list(
-    list(
-      ProjectName = "string",
-      ProjectDescription = "string",
-      ProjectArn = "string",
-      ProjectId = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ProjectStatus = "Pending"|"CreateInProgress"|"CreateCompleted"|"CreateFailed"|"DeleteInProgress"|"DeleteFailed"|"DeleteCompleted"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets a list of the projects in an AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_projects(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NameContains = "string",
-  NextToken = "string",
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
+Gets a list of the projects in an Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_projects.html} for full documentation.
+}
 \keyword{internal}

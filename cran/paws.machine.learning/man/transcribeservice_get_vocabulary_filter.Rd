@@ -2,32 +2,17 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_get_vocabulary_filter}
 \alias{transcribeservice_get_vocabulary_filter}
-\title{Returns information about a vocabulary filter}
+\title{Provides information about the specified custom vocabulary filter}
 \usage{
 transcribeservice_get_vocabulary_filter(VocabularyFilterName)
 }
 \arguments{
-\item{VocabularyFilterName}{[required] The name of the vocabulary filter for which to return information.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VocabularyFilterName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  DownloadUri = "string"
-)
-}
+\item{VocabularyFilterName}{[required] The name of the custom vocabulary filter you want information about.
+Vocabulary filter names are case sensitive.}
 }
 \description{
-Returns information about a vocabulary filter.
-}
-\section{Request syntax}{
-\preformatted{svc$get_vocabulary_filter(
-  VocabularyFilterName = "string"
-)
-}
-}
+Provides information about the specified custom vocabulary filter.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/get_vocabulary_filter.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,10 @@
 \title{Modifies the configuration of Bring Your Own License (BYOL) for the
 specified account}
 \usage{
-workspaces_modify_account(DedicatedTenancySupport,
-  DedicatedTenancyManagementCidrRange)
+workspaces_modify_account(
+  DedicatedTenancySupport = NULL,
+  DedicatedTenancyManagementCidrRange = NULL
+)
 }
 \arguments{
 \item{DedicatedTenancySupport}{The status of BYOL.}
@@ -19,19 +21,9 @@ example, 203.0.113.25/16). It must also be specified as available by the
 \code{\link[=workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges}}
 operation.}
 }
-\value{
-An empty list.
-}
 \description{
-Modifies the configuration of Bring Your Own License (BYOL) for the
-specified account.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_account(
-  DedicatedTenancySupport = "ENABLED",
-  DedicatedTenancyManagementCidrRange = "string"
-)
-}
-}
+Modifies the configuration of Bring Your Own License (BYOL) for the specified account.
 
+See \url{https://paws-r.github.io/docs/workspaces/modify_account.html} for full documentation.
+}
 \keyword{internal}

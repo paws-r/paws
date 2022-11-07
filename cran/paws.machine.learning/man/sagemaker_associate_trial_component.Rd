@@ -11,26 +11,9 @@ sagemaker_associate_trial_component(TrialComponentName, TrialName)
 
 \item{TrialName}{[required] The name of the trial to associate with.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrialComponentArn = "string",
-  TrialArn = "string"
-)
-}
-}
 \description{
-Associates a trial component with a trial. A trial component can be
-associated with multiple trials. To disassociate a trial component from
-a trial, call the
-\code{\link[=sagemaker_disassociate_trial_component]{disassociate_trial_component}}
-API.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_trial_component(
-  TrialComponentName = "string",
-  TrialName = "string"
-)
-}
-}
+Associates a trial component with a trial. A trial component can be associated with multiple trials. To disassociate a trial component from a trial, call the \code{\link[=sagemaker_disassociate_trial_component]{disassociate_trial_component}} API.
 
+See \url{https://paws-r.github.io/docs/sagemaker/associate_trial_component.html} for full documentation.
+}
 \keyword{internal}

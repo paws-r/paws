@@ -7,19 +7,12 @@
 cognitoidentityprovider_delete_user(AccessToken)
 }
 \arguments{
-\item{AccessToken}{[required] The access token from a request to delete a user.}
-}
-\value{
-An empty list.
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose user
+profile you want to delete.}
 }
 \description{
 Allows a user to delete himself or herself.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user(
-  AccessToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_user.html} for full documentation.
+}
 \keyword{internal}

@@ -13,72 +13,9 @@ after you create the \code{IPSet}.}
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IPSet = list(
-    IPSetId = "string",
-    Name = "string",
-    IPSetDescriptors = list(
-      list(
-        Type = "IPV4"|"IPV6",
-        Value = "string"
-      )
-    )
-  ),
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Creates an IPSet, which you use to specify which web requests that you
-want to allow or block based on the IP addresses that the requests
-originate from. For example, if you're receiving a lot of requests from
-one or more individual IP addresses or one or more ranges of IP
-addresses and you want to block the requests, you can create an \code{IPSet}
-that contains those IP addresses and then configure AWS WAF to block the
-requests.
-
-To create and configure an \code{IPSet}, perform the following steps:
-\enumerate{
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of a
-\code{\link[=wafregional_create_ip_set]{create_ip_set}} request.
-\item Submit a \code{\link[=wafregional_create_ip_set]{create_ip_set}} request.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=wafregional_update_ip_set]{update_ip_set}} request.
-\item Submit an \code{\link[=wafregional_update_ip_set]{update_ip_set}} request to
-specify the IP addresses that you want AWS WAF to watch for.
-}
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_ip_set(
-  Name = "string",
-  ChangeToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example creates an IP match set named MyIPSetFriendlyName.
-svc$create_ip_set(
-  ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-  Name = "MyIPSetFriendlyName"
-)
-}
-
+See \url{https://paws-r.github.io/docs/wafregional/create_ip_set.html} for full documentation.
 }
 \keyword{internal}

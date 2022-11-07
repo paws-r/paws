@@ -4,7 +4,7 @@
 \alias{ec2_disassociate_route_table}
 \title{Disassociates a subnet or gateway from a route table}
 \usage{
-ec2_disassociate_route_table(AssociationId, DryRun)
+ec2_disassociate_route_table(AssociationId, DryRun = NULL)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID representing the current association between the
@@ -15,33 +15,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
 Disassociates a subnet or gateway from a route table.
 
-After you perform this action, the subnet no longer uses the routes in
-the route table. Instead, it uses the routes in the VPC's main route
-table. For more information about route tables, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_route_table(
-  AssociationId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example disassociates the specified route table from its associated
-# subnet.
-svc$disassociate_route_table(
-  AssociationId = "rtbassoc-781d0d1a"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/disassociate_route_table.html} for full documentation.
 }
 \keyword{internal}

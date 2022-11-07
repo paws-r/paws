@@ -2,54 +2,69 @@
 % Please edit documentation in R/servicediscovery_operations.R
 \name{servicediscovery_create_service}
 \alias{servicediscovery_create_service}
-\title{Creates a service, which defines the configuration for the following
-entities:}
+\title{Creates a service}
 \usage{
-servicediscovery_create_service(Name, NamespaceId, CreatorRequestId,
-  Description, DnsConfig, HealthCheckConfig, HealthCheckCustomConfig,
-  Tags)
+servicediscovery_create_service(
+  Name,
+  NamespaceId = NULL,
+  CreatorRequestId = NULL,
+  Description = NULL,
+  DnsConfig = NULL,
+  HealthCheckConfig = NULL,
+  HealthCheckCustomConfig = NULL,
+  Tags = NULL,
+  Type = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name that you want to assign to the service.
 
-If you want AWS Cloud Map to create an \code{SRV} record when you register an
-instance, and if you're using a system that requires a specific \code{SRV}
+If you want Cloud Map to create an \code{SRV} record when you register an
+instance and you're using a system that requires a specific \code{SRV}
 format, such as \href{http://www.haproxy.org/}{HAProxy}, specify the
 following for \code{Name}:
 \itemize{
-\item Start the name with an underscore (_), such as \verb{_exampleservice}
-\item End the name with \emph{._protocol}, such as \code{._tcp}
+\item Start the name with an underscore (_), such as \verb{_exampleservice}.
+\item End the name with \emph{._protocol}, such as \code{._tcp}.
 }
 
-When you register an instance, AWS Cloud Map creates an \code{SRV} record and
+When you register an instance, Cloud Map creates an \code{SRV} record and
 assigns a name to the record by concatenating the service name and the
-namespace name, for example:
+namespace name (for example,
 
-\verb{_exampleservice._tcp.example.com}}
+\verb{_exampleservice._tcp.example.com}).
 
-\item{NamespaceId}{The ID of the namespace that you want to use to create the service.}
+For services that are accessible by DNS queries, you can't create
+multiple services with names that differ only by case (such as EXAMPLE
+and example). Otherwise, these services have the same DNS name and can't
+be distinguished. However, if you use a namespace that's only accessible
+by API calls, then you can create services that with names that differ
+only by case.}
+
+\item{NamespaceId}{The ID of the namespace that you want to use to create the service. The
+namespace ID must be specified, but it can be specified either here or
+in the \code{DnsConfig} object.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed
 \code{\link[=servicediscovery_create_service]{create_service}} requests to be
-retried without the risk of executing the operation twice.
-\code{CreatorRequestId} can be any unique string, for example, a date/time
-stamp.}
+retried without the risk of running the operation twice.
+\code{CreatorRequestId} can be any unique string (for example, a
+date/timestamp).}
 
 \item{Description}{A description for the service.}
 
-\item{DnsConfig}{A complex type that contains information about the Amazon Route 53
-records that you want AWS Cloud Map to create when you register an
-instance.}
+\item{DnsConfig}{A complex type that contains information about the Amazon Route 53
+records that you want Cloud Map to create when you register an instance.}
 
 \item{HealthCheckConfig}{\emph{Public DNS and HTTP namespaces only.} A complex type that contains
-settings for an optional Route 53 health check. If you specify settings
-for a health check, AWS Cloud Map associates the health check with all
-the Route 53 DNS records that you specify in \code{DnsConfig}.
+settings for an optional Route 53 health check. If you specify settings
+for a health check, Cloud Map associates the health check with all the
+Route 53 DNS records that you specify in \code{DnsConfig}.
 
 If you specify a health check configuration, you can specify either
 \code{HealthCheckCustomConfig} or \code{HealthCheckConfig} but not both.
 
-For information about the charges for health checks, see \href{https://aws.amazon.com/cloud-map/pricing/}{AWS Cloud Map Pricing}.}
+For information about the charges for health checks, see \href{https://aws.amazon.com/cloud-map/pricing/}{Cloud Map Pricing}.}
 
 \item{HealthCheckCustomConfig}{A complex type that contains information about an optional custom health
 check.
@@ -61,123 +76,17 @@ You can't add, update, or delete a \code{HealthCheckCustomConfig}
 configuration from an existing service.}
 
 \item{Tags}{The tags to add to the service. Each tag consists of a key and an
-optional value, both of which you define. Tag keys can have a maximum
-character length of 128 characters, and tag values can have a maximum
-length of 256 characters.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Service = list(
-    Id = "string",
-    Arn = "string",
-    Name = "string",
-    NamespaceId = "string",
-    Description = "string",
-    InstanceCount = 123,
-    DnsConfig = list(
-      NamespaceId = "string",
-      RoutingPolicy = "MULTIVALUE"|"WEIGHTED",
-      DnsRecords = list(
-        list(
-          Type = "SRV"|"A"|"AAAA"|"CNAME",
-          TTL = 123
-        )
-      )
-    ),
-    HealthCheckConfig = list(
-      Type = "HTTP"|"HTTPS"|"TCP",
-      ResourcePath = "string",
-      FailureThreshold = 123
-    ),
-    HealthCheckCustomConfig = list(
-      FailureThreshold = 123
-    ),
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreatorRequestId = "string"
-  )
-)
-}
+optional value that you define. Tags keys can be up to 128 characters in
+length, and tag values can be up to 256 characters in length.}
+
+\item{Type}{If present, specifies that the service instances are only discoverable
+using the \code{\link[=servicediscovery_discover_instances]{discover_instances}}
+API operation. No DNS records is registered for the service instances.
+The only valid value is \code{HTTP}.}
 }
 \description{
-Creates a service, which defines the configuration for the following
-entities:
-\itemize{
-\item For public and private DNS namespaces, one of the following
-combinations of DNS records in Amazon Route 53:
-\itemize{
-\item \code{A}
-\item \code{AAAA}
-\item \code{A} and \code{AAAA}
-\item \code{SRV}
-\item \code{CNAME}
-}
-\item Optionally, a health check
-}
+Creates a service. This action defines the configuration for the following entities:
 
-After you create the service, you can submit a
-\code{\link[=servicediscovery_register_instance]{register_instance}} request, and
-AWS Cloud Map uses the values in the configuration to create the
-specified entities.
-
-For the current quota on the number of instances that you can register
-using the same namespace and using the same service, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
-in the \emph{AWS Cloud Map Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_service(
-  Name = "string",
-  NamespaceId = "string",
-  CreatorRequestId = "string",
-  Description = "string",
-  DnsConfig = list(
-    NamespaceId = "string",
-    RoutingPolicy = "MULTIVALUE"|"WEIGHTED",
-    DnsRecords = list(
-      list(
-        Type = "SRV"|"A"|"AAAA"|"CNAME",
-        TTL = 123
-      )
-    )
-  ),
-  HealthCheckConfig = list(
-    Type = "HTTP"|"HTTPS"|"TCP",
-    ResourcePath = "string",
-    FailureThreshold = 123
-  ),
-  HealthCheckCustomConfig = list(
-    FailureThreshold = 123
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# Example: Create service
-svc$create_service(
-  CreatorRequestId = "567c1193-6b00-4308-bd57-ad38a8822d25",
-  DnsConfig = list(
-    DnsRecords = list(
-      list(
-        TTL = 60L,
-        Type = "A"
-      )
-    ),
-    NamespaceId = "ns-ylexjili4cdxy3xm",
-    RoutingPolicy = "MULTIVALUE"
-  ),
-  Name = "myservice",
-  NamespaceId = "ns-ylexjili4cdxy3xm"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/create_service.html} for full documentation.
 }
 \keyword{internal}

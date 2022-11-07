@@ -7,93 +7,8 @@ NULL
 #'
 #' @description
 #' Creates a Kinesis Data Firehose delivery stream.
-#' 
-#' By default, you can create up to 50 delivery streams per AWS Region.
-#' 
-#' This is an asynchronous operation that immediately returns. The initial
-#' status of the delivery stream is `CREATING`. After the delivery stream
-#' is created, its status is `ACTIVE` and it now accepts data. If the
-#' delivery stream creation fails, the status transitions to
-#' `CREATING_FAILED`. Attempts to send data to a delivery stream that is
-#' not in the `ACTIVE` state cause an exception. To check the state of a
-#' delivery stream, use
-#' [`describe_delivery_stream`][firehose_describe_delivery_stream].
-#' 
-#' If the status of a delivery stream is `CREATING_FAILED`, this status
-#' doesn't change, and you can't invoke
-#' [`create_delivery_stream`][firehose_create_delivery_stream] again on it.
-#' However, you can invoke the
-#' [`delete_delivery_stream`][firehose_delete_delivery_stream] operation to
-#' delete it.
-#' 
-#' A Kinesis Data Firehose delivery stream can be configured to receive
-#' records directly from providers using
-#' [`put_record`][firehose_put_record] or
-#' [`put_record_batch`][firehose_put_record_batch], or it can be configured
-#' to use an existing Kinesis stream as its source. To specify a Kinesis
-#' data stream as input, set the `DeliveryStreamType` parameter to
-#' `KinesisStreamAsSource`, and provide the Kinesis stream Amazon Resource
-#' Name (ARN) and role ARN in the `KinesisStreamSourceConfiguration`
-#' parameter.
-#' 
-#' To create a delivery stream with server-side encryption (SSE) enabled,
-#' include DeliveryStreamEncryptionConfigurationInput in your request. This
-#' is optional. You can also invoke
-#' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
-#' to turn on SSE for an existing delivery stream that doesn't have SSE
-#' enabled.
-#' 
-#' A delivery stream is configured with a single destination: Amazon S3,
-#' Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the
-#' following destination configuration parameters:
-#' `ExtendedS3DestinationConfiguration`, `S3DestinationConfiguration`,
-#' `ElasticsearchDestinationConfiguration`,
-#' `RedshiftDestinationConfiguration`, or `SplunkDestinationConfiguration`.
-#' 
-#' When you specify `S3DestinationConfiguration`, you can also provide the
-#' following optional values: BufferingHints, `EncryptionConfiguration`,
-#' and `CompressionFormat`. By default, if no `BufferingHints` value is
-#' provided, Kinesis Data Firehose buffers data up to 5 MB or for 5
-#' minutes, whichever condition is satisfied first. `BufferingHints` is a
-#' hint, so there are some cases where the service cannot adhere to these
-#' conditions strictly. For example, record boundaries might be such that
-#' the size is a little over or under the configured buffering size. By
-#' default, no encryption is performed. We strongly recommend that you
-#' enable encryption to ensure secure data storage in Amazon S3.
-#' 
-#' A few notes about Amazon Redshift as a destination:
-#' 
-#' -   An Amazon Redshift destination requires an S3 bucket as intermediate
-#'     location. Kinesis Data Firehose first delivers data to Amazon S3 and
-#'     then uses `COPY` syntax to load data into an Amazon Redshift table.
-#'     This is specified in the
-#'     `RedshiftDestinationConfiguration.S3Configuration` parameter.
-#' 
-#' -   The compression formats `SNAPPY` or `ZIP` cannot be specified in
-#'     `RedshiftDestinationConfiguration.S3Configuration` because the
-#'     Amazon Redshift `COPY` operation that reads from the S3 bucket
-#'     doesn't support these compression formats.
-#' 
-#' -   We strongly recommend that you use the user name and password you
-#'     provide exclusively with Kinesis Data Firehose, and that the
-#'     permissions for the account are restricted for Amazon Redshift
-#'     `INSERT` permissions.
-#' 
-#' Kinesis Data Firehose assumes the IAM role that is configured as part of
-#' the destination. The role should allow the Kinesis Data Firehose
-#' principal to assume the role, and the role should have permissions that
-#' allow the service to deliver the data. For more information, see [Grant
-#' Kinesis Data Firehose Access to an Amazon S3
-#' Destination](https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
-#' in the *Amazon Kinesis Data Firehose Developer Guide*.
 #'
-#' @usage
-#' firehose_create_delivery_stream(DeliveryStreamName, DeliveryStreamType,
-#'   KinesisStreamSourceConfiguration,
-#'   DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration,
-#'   ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration,
-#'   ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration,
-#'   HttpEndpointDestinationConfiguration, Tags)
+#' See [https://paws-r.github.io/docs/firehose/create_delivery_stream.html](https://paws-r.github.io/docs/firehose/create_delivery_stream.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream. This name must be unique per AWS
 #' account in the same AWS Region. If the delivery streams are in different
@@ -119,6 +34,7 @@ NULL
 #' @param RedshiftDestinationConfiguration The destination in Amazon Redshift. You can specify only one
 #' destination.
 #' @param ElasticsearchDestinationConfiguration The destination in Amazon ES. You can specify only one destination.
+#' @param AmazonopensearchserviceDestinationConfiguration 
 #' @param SplunkDestinationConfiguration The destination in Splunk. You can specify only one destination.
 #' @param HttpEndpointDestinationConfiguration Enables configuring Kinesis Firehose to deliver data to any HTTP
 #' endpoint destination. You can specify only one destination.
@@ -132,442 +48,17 @@ NULL
 #' 
 #' You can specify up to 50 tags when creating a delivery stream.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeliveryStreamARN = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_delivery_stream(
-#'   DeliveryStreamName = "string",
-#'   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
-#'   KinesisStreamSourceConfiguration = list(
-#'     KinesisStreamARN = "string",
-#'     RoleARN = "string"
-#'   ),
-#'   DeliveryStreamEncryptionConfigurationInput = list(
-#'     KeyARN = "string",
-#'     KeyType = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
-#'   ),
-#'   S3DestinationConfiguration = list(
-#'     RoleARN = "string",
-#'     BucketARN = "string",
-#'     Prefix = "string",
-#'     ErrorOutputPrefix = "string",
-#'     BufferingHints = list(
-#'       SizeInMBs = 123,
-#'       IntervalInSeconds = 123
-#'     ),
-#'     CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'     EncryptionConfiguration = list(
-#'       NoEncryptionConfig = "NoEncryption",
-#'       KMSEncryptionConfig = list(
-#'         AWSKMSKeyARN = "string"
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     )
-#'   ),
-#'   ExtendedS3DestinationConfiguration = list(
-#'     RoleARN = "string",
-#'     BucketARN = "string",
-#'     Prefix = "string",
-#'     ErrorOutputPrefix = "string",
-#'     BufferingHints = list(
-#'       SizeInMBs = 123,
-#'       IntervalInSeconds = 123
-#'     ),
-#'     CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'     EncryptionConfiguration = list(
-#'       NoEncryptionConfig = "NoEncryption",
-#'       KMSEncryptionConfig = list(
-#'         AWSKMSKeyARN = "string"
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     S3BackupMode = "Disabled"|"Enabled",
-#'     S3BackupConfiguration = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     DataFormatConversionConfiguration = list(
-#'       SchemaConfiguration = list(
-#'         RoleARN = "string",
-#'         CatalogId = "string",
-#'         DatabaseName = "string",
-#'         TableName = "string",
-#'         Region = "string",
-#'         VersionId = "string"
-#'       ),
-#'       InputFormatConfiguration = list(
-#'         Deserializer = list(
-#'           OpenXJsonSerDe = list(
-#'             ConvertDotsInJsonKeysToUnderscores = TRUE|FALSE,
-#'             CaseInsensitive = TRUE|FALSE,
-#'             ColumnToJsonKeyMappings = list(
-#'               "string"
-#'             )
-#'           ),
-#'           HiveJsonSerDe = list(
-#'             TimestampFormats = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       OutputFormatConfiguration = list(
-#'         Serializer = list(
-#'           ParquetSerDe = list(
-#'             BlockSizeBytes = 123,
-#'             PageSizeBytes = 123,
-#'             Compression = "UNCOMPRESSED"|"GZIP"|"SNAPPY",
-#'             EnableDictionaryCompression = TRUE|FALSE,
-#'             MaxPaddingBytes = 123,
-#'             WriterVersion = "V1"|"V2"
-#'           ),
-#'           OrcSerDe = list(
-#'             StripeSizeBytes = 123,
-#'             BlockSizeBytes = 123,
-#'             RowIndexStride = 123,
-#'             EnablePadding = TRUE|FALSE,
-#'             PaddingTolerance = 123.0,
-#'             Compression = "NONE"|"ZLIB"|"SNAPPY",
-#'             BloomFilterColumns = list(
-#'               "string"
-#'             ),
-#'             BloomFilterFalsePositiveProbability = 123.0,
-#'             DictionaryKeyThreshold = 123.0,
-#'             FormatVersion = "V0_11"|"V0_12"
-#'           )
-#'         )
-#'       ),
-#'       Enabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   RedshiftDestinationConfiguration = list(
-#'     RoleARN = "string",
-#'     ClusterJDBCURL = "string",
-#'     CopyCommand = list(
-#'       DataTableName = "string",
-#'       DataTableColumns = "string",
-#'       CopyOptions = "string"
-#'     ),
-#'     Username = "string",
-#'     Password = "string",
-#'     RetryOptions = list(
-#'       DurationInSeconds = 123
-#'     ),
-#'     S3Configuration = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     S3BackupMode = "Disabled"|"Enabled",
-#'     S3BackupConfiguration = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     )
-#'   ),
-#'   ElasticsearchDestinationConfiguration = list(
-#'     RoleARN = "string",
-#'     DomainARN = "string",
-#'     ClusterEndpoint = "string",
-#'     IndexName = "string",
-#'     TypeName = "string",
-#'     IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",
-#'     BufferingHints = list(
-#'       IntervalInSeconds = 123,
-#'       SizeInMBs = 123
-#'     ),
-#'     RetryOptions = list(
-#'       DurationInSeconds = 123
-#'     ),
-#'     S3BackupMode = "FailedDocumentsOnly"|"AllDocuments",
-#'     S3Configuration = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     ),
-#'     VpcConfiguration = list(
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       RoleARN = "string",
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   SplunkDestinationConfiguration = list(
-#'     HECEndpoint = "string",
-#'     HECEndpointType = "Raw"|"Event",
-#'     HECToken = "string",
-#'     HECAcknowledgmentTimeoutInSeconds = 123,
-#'     RetryOptions = list(
-#'       DurationInSeconds = 123
-#'     ),
-#'     S3BackupMode = "FailedEventsOnly"|"AllEvents",
-#'     S3Configuration = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     )
-#'   ),
-#'   HttpEndpointDestinationConfiguration = list(
-#'     EndpointConfiguration = list(
-#'       Url = "string",
-#'       Name = "string",
-#'       AccessKey = "string"
-#'     ),
-#'     BufferingHints = list(
-#'       SizeInMBs = 123,
-#'       IntervalInSeconds = 123
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     ),
-#'     RequestConfiguration = list(
-#'       ContentEncoding = "NONE"|"GZIP",
-#'       CommonAttributes = list(
-#'         list(
-#'           AttributeName = "string",
-#'           AttributeValue = "string"
-#'         )
-#'       )
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     RoleARN = "string",
-#'     RetryOptions = list(
-#'       DurationInSeconds = 123
-#'     ),
-#'     S3BackupMode = "FailedDataOnly"|"AllData",
-#'     S3Configuration = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config)
@@ -581,23 +72,8 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #'
 #' @description
 #' Deletes a delivery stream and its data.
-#' 
-#' To check the state of a delivery stream, use
-#' [`describe_delivery_stream`][firehose_describe_delivery_stream]. You can
-#' delete a delivery stream only if it is in one of the following states:
-#' `ACTIVE`, `DELETING`, `CREATING_FAILED`, or `DELETING_FAILED`. You can't
-#' delete a delivery stream that is in the `CREATING` state. While the
-#' deletion request is in process, the delivery stream is in the `DELETING`
-#' state.
-#' 
-#' While the delivery stream is in the `DELETING` state, the service might
-#' continue to accept records, but it doesn't make any guarantees with
-#' respect to delivering the data. Therefore, as a best practice, first
-#' stop any applications that are sending records before you delete a
-#' delivery stream.
 #'
-#' @usage
-#' firehose_delete_delivery_stream(DeliveryStreamName, AllowForceDelete)
+#' See [https://paws-r.github.io/docs/firehose/delete_delivery_stream.html](https://paws-r.github.io/docs/firehose/delete_delivery_stream.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param AllowForceDelete Set this to true if you want to delete the delivery stream even if
@@ -611,17 +87,6 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #' Data Firehose keeps retrying the delete operation.
 #' 
 #' The default value is false.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_delivery_stream(
-#'   DeliveryStreamName = "string",
-#'   AllowForceDelete = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -646,24 +111,9 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #' Describes the specified delivery stream and its status
 #'
 #' @description
-#' Describes the specified delivery stream and its status. For example,
-#' after your delivery stream is created, call
-#' [`describe_delivery_stream`][firehose_describe_delivery_stream] to see
-#' whether the delivery stream is `ACTIVE` and therefore ready for data to
-#' be sent to it.
-#' 
-#' If the status of a delivery stream is `CREATING_FAILED`, this status
-#' doesn't change, and you can't invoke
-#' [`create_delivery_stream`][firehose_create_delivery_stream] again on it.
-#' However, you can invoke the
-#' [`delete_delivery_stream`][firehose_delete_delivery_stream] operation to
-#' delete it. If the status is `DELETING_FAILED`, you can force deletion by
-#' invoking [`delete_delivery_stream`][firehose_delete_delivery_stream]
-#' again but with DeleteDeliveryStreamInput$AllowForceDelete set to true.
+#' Describes the specified delivery stream and its status. For example, after your delivery stream is created, call [`describe_delivery_stream`][firehose_describe_delivery_stream] to see whether the delivery stream is `ACTIVE` and therefore ready for data to be sent to it.
 #'
-#' @usage
-#' firehose_describe_delivery_stream(DeliveryStreamName, Limit,
-#'   ExclusiveStartDestinationId)
+#' See [https://paws-r.github.io/docs/firehose/describe_delivery_stream.html](https://paws-r.github.io/docs/firehose/describe_delivery_stream.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param Limit The limit on the number of destinations to return. You can have one
@@ -671,457 +121,6 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #' @param ExclusiveStartDestinationId The ID of the destination to start returning the destination
 #' information. Kinesis Data Firehose supports one destination per delivery
 #' stream.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeliveryStreamDescription = list(
-#'     DeliveryStreamName = "string",
-#'     DeliveryStreamARN = "string",
-#'     DeliveryStreamStatus = "CREATING"|"CREATING_FAILED"|"DELETING"|"DELETING_FAILED"|"ACTIVE",
-#'     FailureDescription = list(
-#'       Type = "RETIRE_KMS_GRANT_FAILED"|"CREATE_KMS_GRANT_FAILED"|"KMS_ACCESS_DENIED"|"DISABLED_KMS_KEY"|"INVALID_KMS_KEY"|"KMS_KEY_NOT_FOUND"|"KMS_OPT_IN_REQUIRED"|"CREATE_ENI_FAILED"|"DELETE_ENI_FAILED"|"SUBNET_NOT_FOUND"|"SECURITY_GROUP_NOT_FOUND"|"ENI_ACCESS_DENIED"|"SUBNET_ACCESS_DENIED"|"SECURITY_GROUP_ACCESS_DENIED"|"UNKNOWN_ERROR",
-#'       Details = "string"
-#'     ),
-#'     DeliveryStreamEncryptionConfiguration = list(
-#'       KeyARN = "string",
-#'       KeyType = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK",
-#'       Status = "ENABLED"|"ENABLING"|"ENABLING_FAILED"|"DISABLED"|"DISABLING"|"DISABLING_FAILED",
-#'       FailureDescription = list(
-#'         Type = "RETIRE_KMS_GRANT_FAILED"|"CREATE_KMS_GRANT_FAILED"|"KMS_ACCESS_DENIED"|"DISABLED_KMS_KEY"|"INVALID_KMS_KEY"|"KMS_KEY_NOT_FOUND"|"KMS_OPT_IN_REQUIRED"|"CREATE_ENI_FAILED"|"DELETE_ENI_FAILED"|"SUBNET_NOT_FOUND"|"SECURITY_GROUP_NOT_FOUND"|"ENI_ACCESS_DENIED"|"SUBNET_ACCESS_DENIED"|"SECURITY_GROUP_ACCESS_DENIED"|"UNKNOWN_ERROR",
-#'         Details = "string"
-#'       )
-#'     ),
-#'     DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
-#'     VersionId = "string",
-#'     CreateTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Source = list(
-#'       KinesisStreamSourceDescription = list(
-#'         KinesisStreamARN = "string",
-#'         RoleARN = "string",
-#'         DeliveryStartTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     Destinations = list(
-#'       list(
-#'         DestinationId = "string",
-#'         S3DestinationDescription = list(
-#'           RoleARN = "string",
-#'           BucketARN = "string",
-#'           Prefix = "string",
-#'           ErrorOutputPrefix = "string",
-#'           BufferingHints = list(
-#'             SizeInMBs = 123,
-#'             IntervalInSeconds = 123
-#'           ),
-#'           CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'           EncryptionConfiguration = list(
-#'             NoEncryptionConfig = "NoEncryption",
-#'             KMSEncryptionConfig = list(
-#'               AWSKMSKeyARN = "string"
-#'             )
-#'           ),
-#'           CloudWatchLoggingOptions = list(
-#'             Enabled = TRUE|FALSE,
-#'             LogGroupName = "string",
-#'             LogStreamName = "string"
-#'           )
-#'         ),
-#'         ExtendedS3DestinationDescription = list(
-#'           RoleARN = "string",
-#'           BucketARN = "string",
-#'           Prefix = "string",
-#'           ErrorOutputPrefix = "string",
-#'           BufferingHints = list(
-#'             SizeInMBs = 123,
-#'             IntervalInSeconds = 123
-#'           ),
-#'           CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'           EncryptionConfiguration = list(
-#'             NoEncryptionConfig = "NoEncryption",
-#'             KMSEncryptionConfig = list(
-#'               AWSKMSKeyARN = "string"
-#'             )
-#'           ),
-#'           CloudWatchLoggingOptions = list(
-#'             Enabled = TRUE|FALSE,
-#'             LogGroupName = "string",
-#'             LogStreamName = "string"
-#'           ),
-#'           ProcessingConfiguration = list(
-#'             Enabled = TRUE|FALSE,
-#'             Processors = list(
-#'               list(
-#'                 Type = "Lambda",
-#'                 Parameters = list(
-#'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'                     ParameterValue = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           S3BackupMode = "Disabled"|"Enabled",
-#'           S3BackupDescription = list(
-#'             RoleARN = "string",
-#'             BucketARN = "string",
-#'             Prefix = "string",
-#'             ErrorOutputPrefix = "string",
-#'             BufferingHints = list(
-#'               SizeInMBs = 123,
-#'               IntervalInSeconds = 123
-#'             ),
-#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'             EncryptionConfiguration = list(
-#'               NoEncryptionConfig = "NoEncryption",
-#'               KMSEncryptionConfig = list(
-#'                 AWSKMSKeyARN = "string"
-#'               )
-#'             ),
-#'             CloudWatchLoggingOptions = list(
-#'               Enabled = TRUE|FALSE,
-#'               LogGroupName = "string",
-#'               LogStreamName = "string"
-#'             )
-#'           ),
-#'           DataFormatConversionConfiguration = list(
-#'             SchemaConfiguration = list(
-#'               RoleARN = "string",
-#'               CatalogId = "string",
-#'               DatabaseName = "string",
-#'               TableName = "string",
-#'               Region = "string",
-#'               VersionId = "string"
-#'             ),
-#'             InputFormatConfiguration = list(
-#'               Deserializer = list(
-#'                 OpenXJsonSerDe = list(
-#'                   ConvertDotsInJsonKeysToUnderscores = TRUE|FALSE,
-#'                   CaseInsensitive = TRUE|FALSE,
-#'                   ColumnToJsonKeyMappings = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 HiveJsonSerDe = list(
-#'                   TimestampFormats = list(
-#'                     "string"
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             OutputFormatConfiguration = list(
-#'               Serializer = list(
-#'                 ParquetSerDe = list(
-#'                   BlockSizeBytes = 123,
-#'                   PageSizeBytes = 123,
-#'                   Compression = "UNCOMPRESSED"|"GZIP"|"SNAPPY",
-#'                   EnableDictionaryCompression = TRUE|FALSE,
-#'                   MaxPaddingBytes = 123,
-#'                   WriterVersion = "V1"|"V2"
-#'                 ),
-#'                 OrcSerDe = list(
-#'                   StripeSizeBytes = 123,
-#'                   BlockSizeBytes = 123,
-#'                   RowIndexStride = 123,
-#'                   EnablePadding = TRUE|FALSE,
-#'                   PaddingTolerance = 123.0,
-#'                   Compression = "NONE"|"ZLIB"|"SNAPPY",
-#'                   BloomFilterColumns = list(
-#'                     "string"
-#'                   ),
-#'                   BloomFilterFalsePositiveProbability = 123.0,
-#'                   DictionaryKeyThreshold = 123.0,
-#'                   FormatVersion = "V0_11"|"V0_12"
-#'                 )
-#'               )
-#'             ),
-#'             Enabled = TRUE|FALSE
-#'           )
-#'         ),
-#'         RedshiftDestinationDescription = list(
-#'           RoleARN = "string",
-#'           ClusterJDBCURL = "string",
-#'           CopyCommand = list(
-#'             DataTableName = "string",
-#'             DataTableColumns = "string",
-#'             CopyOptions = "string"
-#'           ),
-#'           Username = "string",
-#'           RetryOptions = list(
-#'             DurationInSeconds = 123
-#'           ),
-#'           S3DestinationDescription = list(
-#'             RoleARN = "string",
-#'             BucketARN = "string",
-#'             Prefix = "string",
-#'             ErrorOutputPrefix = "string",
-#'             BufferingHints = list(
-#'               SizeInMBs = 123,
-#'               IntervalInSeconds = 123
-#'             ),
-#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'             EncryptionConfiguration = list(
-#'               NoEncryptionConfig = "NoEncryption",
-#'               KMSEncryptionConfig = list(
-#'                 AWSKMSKeyARN = "string"
-#'               )
-#'             ),
-#'             CloudWatchLoggingOptions = list(
-#'               Enabled = TRUE|FALSE,
-#'               LogGroupName = "string",
-#'               LogStreamName = "string"
-#'             )
-#'           ),
-#'           ProcessingConfiguration = list(
-#'             Enabled = TRUE|FALSE,
-#'             Processors = list(
-#'               list(
-#'                 Type = "Lambda",
-#'                 Parameters = list(
-#'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'                     ParameterValue = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           S3BackupMode = "Disabled"|"Enabled",
-#'           S3BackupDescription = list(
-#'             RoleARN = "string",
-#'             BucketARN = "string",
-#'             Prefix = "string",
-#'             ErrorOutputPrefix = "string",
-#'             BufferingHints = list(
-#'               SizeInMBs = 123,
-#'               IntervalInSeconds = 123
-#'             ),
-#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'             EncryptionConfiguration = list(
-#'               NoEncryptionConfig = "NoEncryption",
-#'               KMSEncryptionConfig = list(
-#'                 AWSKMSKeyARN = "string"
-#'               )
-#'             ),
-#'             CloudWatchLoggingOptions = list(
-#'               Enabled = TRUE|FALSE,
-#'               LogGroupName = "string",
-#'               LogStreamName = "string"
-#'             )
-#'           ),
-#'           CloudWatchLoggingOptions = list(
-#'             Enabled = TRUE|FALSE,
-#'             LogGroupName = "string",
-#'             LogStreamName = "string"
-#'           )
-#'         ),
-#'         ElasticsearchDestinationDescription = list(
-#'           RoleARN = "string",
-#'           DomainARN = "string",
-#'           ClusterEndpoint = "string",
-#'           IndexName = "string",
-#'           TypeName = "string",
-#'           IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",
-#'           BufferingHints = list(
-#'             IntervalInSeconds = 123,
-#'             SizeInMBs = 123
-#'           ),
-#'           RetryOptions = list(
-#'             DurationInSeconds = 123
-#'           ),
-#'           S3BackupMode = "FailedDocumentsOnly"|"AllDocuments",
-#'           S3DestinationDescription = list(
-#'             RoleARN = "string",
-#'             BucketARN = "string",
-#'             Prefix = "string",
-#'             ErrorOutputPrefix = "string",
-#'             BufferingHints = list(
-#'               SizeInMBs = 123,
-#'               IntervalInSeconds = 123
-#'             ),
-#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'             EncryptionConfiguration = list(
-#'               NoEncryptionConfig = "NoEncryption",
-#'               KMSEncryptionConfig = list(
-#'                 AWSKMSKeyARN = "string"
-#'               )
-#'             ),
-#'             CloudWatchLoggingOptions = list(
-#'               Enabled = TRUE|FALSE,
-#'               LogGroupName = "string",
-#'               LogStreamName = "string"
-#'             )
-#'           ),
-#'           ProcessingConfiguration = list(
-#'             Enabled = TRUE|FALSE,
-#'             Processors = list(
-#'               list(
-#'                 Type = "Lambda",
-#'                 Parameters = list(
-#'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'                     ParameterValue = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           CloudWatchLoggingOptions = list(
-#'             Enabled = TRUE|FALSE,
-#'             LogGroupName = "string",
-#'             LogStreamName = "string"
-#'           ),
-#'           VpcConfigurationDescription = list(
-#'             SubnetIds = list(
-#'               "string"
-#'             ),
-#'             RoleARN = "string",
-#'             SecurityGroupIds = list(
-#'               "string"
-#'             ),
-#'             VpcId = "string"
-#'           )
-#'         ),
-#'         SplunkDestinationDescription = list(
-#'           HECEndpoint = "string",
-#'           HECEndpointType = "Raw"|"Event",
-#'           HECToken = "string",
-#'           HECAcknowledgmentTimeoutInSeconds = 123,
-#'           RetryOptions = list(
-#'             DurationInSeconds = 123
-#'           ),
-#'           S3BackupMode = "FailedEventsOnly"|"AllEvents",
-#'           S3DestinationDescription = list(
-#'             RoleARN = "string",
-#'             BucketARN = "string",
-#'             Prefix = "string",
-#'             ErrorOutputPrefix = "string",
-#'             BufferingHints = list(
-#'               SizeInMBs = 123,
-#'               IntervalInSeconds = 123
-#'             ),
-#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'             EncryptionConfiguration = list(
-#'               NoEncryptionConfig = "NoEncryption",
-#'               KMSEncryptionConfig = list(
-#'                 AWSKMSKeyARN = "string"
-#'               )
-#'             ),
-#'             CloudWatchLoggingOptions = list(
-#'               Enabled = TRUE|FALSE,
-#'               LogGroupName = "string",
-#'               LogStreamName = "string"
-#'             )
-#'           ),
-#'           ProcessingConfiguration = list(
-#'             Enabled = TRUE|FALSE,
-#'             Processors = list(
-#'               list(
-#'                 Type = "Lambda",
-#'                 Parameters = list(
-#'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'                     ParameterValue = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           CloudWatchLoggingOptions = list(
-#'             Enabled = TRUE|FALSE,
-#'             LogGroupName = "string",
-#'             LogStreamName = "string"
-#'           )
-#'         ),
-#'         HttpEndpointDestinationDescription = list(
-#'           EndpointConfiguration = list(
-#'             Url = "string",
-#'             Name = "string"
-#'           ),
-#'           BufferingHints = list(
-#'             SizeInMBs = 123,
-#'             IntervalInSeconds = 123
-#'           ),
-#'           CloudWatchLoggingOptions = list(
-#'             Enabled = TRUE|FALSE,
-#'             LogGroupName = "string",
-#'             LogStreamName = "string"
-#'           ),
-#'           RequestConfiguration = list(
-#'             ContentEncoding = "NONE"|"GZIP",
-#'             CommonAttributes = list(
-#'               list(
-#'                 AttributeName = "string",
-#'                 AttributeValue = "string"
-#'               )
-#'             )
-#'           ),
-#'           ProcessingConfiguration = list(
-#'             Enabled = TRUE|FALSE,
-#'             Processors = list(
-#'               list(
-#'                 Type = "Lambda",
-#'                 Parameters = list(
-#'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'                     ParameterValue = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           RoleARN = "string",
-#'           RetryOptions = list(
-#'             DurationInSeconds = 123
-#'           ),
-#'           S3BackupMode = "FailedDataOnly"|"AllData",
-#'           S3DestinationDescription = list(
-#'             RoleARN = "string",
-#'             BucketARN = "string",
-#'             Prefix = "string",
-#'             ErrorOutputPrefix = "string",
-#'             BufferingHints = list(
-#'               SizeInMBs = 123,
-#'               IntervalInSeconds = 123
-#'             ),
-#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'             EncryptionConfiguration = list(
-#'               NoEncryptionConfig = "NoEncryption",
-#'               KMSEncryptionConfig = list(
-#'                 AWSKMSKeyARN = "string"
-#'               )
-#'             ),
-#'             CloudWatchLoggingOptions = list(
-#'               Enabled = TRUE|FALSE,
-#'               LogGroupName = "string",
-#'               LogStreamName = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     HasMoreDestinations = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_delivery_stream(
-#'   DeliveryStreamName = "string",
-#'   Limit = 123,
-#'   ExclusiveStartDestinationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1147,20 +146,8 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 #'
 #' @description
 #' Lists your delivery streams in alphabetical order of their names.
-#' 
-#' The number of delivery streams might be too large to return using a
-#' single call to
-#' [`list_delivery_streams`][firehose_list_delivery_streams]. You can limit
-#' the number of delivery streams returned, using the `Limit` parameter. To
-#' determine whether there are more delivery streams to list, check the
-#' value of `HasMoreDeliveryStreams` in the output. If there are more
-#' delivery streams to list, you can request them by calling this operation
-#' again and setting the `ExclusiveStartDeliveryStreamName` parameter to
-#' the name of the last delivery stream returned in the last call.
 #'
-#' @usage
-#' firehose_list_delivery_streams(Limit, DeliveryStreamType,
-#'   ExclusiveStartDeliveryStreamName)
+#' See [https://paws-r.github.io/docs/firehose/list_delivery_streams.html](https://paws-r.github.io/docs/firehose/list_delivery_streams.html) for full documentation.
 #'
 #' @param Limit The maximum number of delivery streams to list. The default value is 10.
 #' @param DeliveryStreamType The delivery stream type. This can be one of the following values:
@@ -1177,26 +164,6 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 #' [`list_delivery_streams`][firehose_list_delivery_streams] will start
 #' with the delivery stream whose name comes alphabetically immediately
 #' after the name you specify in `ExclusiveStartDeliveryStreamName`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeliveryStreamNames = list(
-#'     "string"
-#'   ),
-#'   HasMoreDeliveryStreams = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_delivery_streams(
-#'   Limit = 123,
-#'   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
-#'   ExclusiveStartDeliveryStreamName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1221,12 +188,9 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
 #' Lists the tags for the specified delivery stream
 #'
 #' @description
-#' Lists the tags for the specified delivery stream. This operation has a
-#' limit of five transactions per second per account.
+#' Lists the tags for the specified delivery stream. This operation has a limit of five transactions per second per account.
 #'
-#' @usage
-#' firehose_list_tags_for_delivery_stream(DeliveryStreamName,
-#'   ExclusiveStartTagKey, Limit)
+#' See [https://paws-r.github.io/docs/firehose/list_tags_for_delivery_stream.html](https://paws-r.github.io/docs/firehose/list_tags_for_delivery_stream.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream whose tags you want to list.
 #' @param ExclusiveStartTagKey The key to use as the starting point for the list of tags. If you set
@@ -1237,29 +201,6 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
 #' number of tags associated with the delivery stream, `HasMoreTags` is set
 #' to `true` in the response. To list additional tags, set
 #' `ExclusiveStartTagKey` to the last key in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   HasMoreTags = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_delivery_stream(
-#'   DeliveryStreamName = "string",
-#'   ExclusiveStartTagKey = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1285,75 +226,12 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' delivery stream
 #'
 #' @description
-#' Writes a single data record into an Amazon Kinesis Data Firehose
-#' delivery stream. To write multiple data records into a delivery stream,
-#' use [`put_record_batch`][firehose_put_record_batch]. Applications using
-#' these operations are referred to as producers.
-#' 
-#' By default, each delivery stream can take in up to 2,000 transactions
-#' per second, 5,000 records per second, or 5 MB per second. If you use
-#' [`put_record`][firehose_put_record] and
-#' [`put_record_batch`][firehose_put_record_batch], the limits are an
-#' aggregate across these two operations for each delivery stream. For more
-#' information about limits and how to request an increase, see [Amazon
-#' Kinesis Data Firehose
-#' Limits](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
-#' 
-#' You must specify the name of the delivery stream and the data record
-#' when using [`put_record`][firehose_put_record]. The data record consists
-#' of a data blob that can be up to 1,000 KB in size, and any kind of data.
-#' For example, it can be a segment from a log file, geographic location
-#' data, website clickstream data, and so on.
-#' 
-#' Kinesis Data Firehose buffers records before delivering them to the
-#' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (`\n`) or
-#' some other character unique within the data. This allows the consumer
-#' application to parse individual data items when reading the data from
-#' the destination.
-#' 
-#' The [`put_record`][firehose_put_record] operation returns a `RecordId`,
-#' which is a unique string assigned to each record. Producer applications
-#' can use this ID for purposes such as auditability and investigation.
-#' 
-#' If the [`put_record`][firehose_put_record] operation throws a
-#' `ServiceUnavailableException`, back off and retry. If the exception
-#' persists, it is possible that the throughput limits have been exceeded
-#' for the delivery stream.
-#' 
-#' Data records sent to Kinesis Data Firehose are stored for 24 hours from
-#' the time they are added to a delivery stream as it tries to send the
-#' records to the destination. If the destination is unreachable for more
-#' than 24 hours, the data is no longer available.
-#' 
-#' Don't concatenate two or more base64 strings to form the data fields of
-#' your records. Instead, concatenate the raw data, then perform base64
-#' encoding.
+#' Writes a single data record into an Amazon Kinesis Data Firehose delivery stream. To write multiple data records into a delivery stream, use [`put_record_batch`][firehose_put_record_batch]. Applications using these operations are referred to as producers.
 #'
-#' @usage
-#' firehose_put_record(DeliveryStreamName, Record)
+#' See [https://paws-r.github.io/docs/firehose/put_record.html](https://paws-r.github.io/docs/firehose/put_record.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param Record &#91;required&#93; The record.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecordId = "string",
-#'   Encrypted = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_record(
-#'   DeliveryStreamName = "string",
-#'   Record = list(
-#'     Data = raw
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1380,109 +258,12 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' single records
 #'
 #' @description
-#' Writes multiple data records into a delivery stream in a single call,
-#' which can achieve higher throughput per producer than when writing
-#' single records. To write single data records into a delivery stream, use
-#' [`put_record`][firehose_put_record]. Applications using these operations
-#' are referred to as producers.
-#' 
-#' For information about service quota, see [Amazon Kinesis Data Firehose
-#' Quota](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
-#' 
-#' Each [`put_record_batch`][firehose_put_record_batch] request supports up
-#' to 500 records. Each record in the request can be as large as 1,000 KB
-#' (before 64-bit encoding), up to a limit of 4 MB for the entire request.
-#' These limits cannot be changed.
-#' 
-#' You must specify the name of the delivery stream and the data record
-#' when using [`put_record`][firehose_put_record]. The data record consists
-#' of a data blob that can be up to 1,000 KB in size, and any kind of data.
-#' For example, it could be a segment from a log file, geographic location
-#' data, website clickstream data, and so on.
-#' 
-#' Kinesis Data Firehose buffers records before delivering them to the
-#' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (`\n`) or
-#' some other character unique within the data. This allows the consumer
-#' application to parse individual data items when reading the data from
-#' the destination.
-#' 
-#' The [`put_record_batch`][firehose_put_record_batch] response includes a
-#' count of failed records, `FailedPutCount`, and an array of responses,
-#' `RequestResponses`. Even if the
-#' [`put_record_batch`][firehose_put_record_batch] call succeeds, the value
-#' of `FailedPutCount` may be greater than 0, indicating that there are
-#' records for which the operation didn't succeed. Each entry in the
-#' `RequestResponses` array provides additional information about the
-#' processed record. It directly correlates with a record in the request
-#' array using the same ordering, from the top to the bottom. The response
-#' array always includes the same number of records as the request array.
-#' `RequestResponses` includes both successfully and unsuccessfully
-#' processed records. Kinesis Data Firehose tries to process all records in
-#' each [`put_record_batch`][firehose_put_record_batch] request. A single
-#' record failure does not stop the processing of subsequent records.
-#' 
-#' A successfully processed record includes a `RecordId` value, which is
-#' unique for the record. An unsuccessfully processed record includes
-#' `ErrorCode` and `ErrorMessage` values. `ErrorCode` reflects the type of
-#' error, and is one of the following values: `ServiceUnavailableException`
-#' or `InternalFailure`. `ErrorMessage` provides more detailed information
-#' about the error.
-#' 
-#' If there is an internal server error or a timeout, the write might have
-#' completed or it might have failed. If `FailedPutCount` is greater than
-#' 0, retry the request, resending only those records that might have
-#' failed processing. This minimizes the possible duplicate records and
-#' also reduces the total bytes sent (and corresponding charges). We
-#' recommend that you handle any duplicates at the destination.
-#' 
-#' If [`put_record_batch`][firehose_put_record_batch] throws
-#' `ServiceUnavailableException`, back off and retry. If the exception
-#' persists, it is possible that the throughput limits have been exceeded
-#' for the delivery stream.
-#' 
-#' Data records sent to Kinesis Data Firehose are stored for 24 hours from
-#' the time they are added to a delivery stream as it attempts to send the
-#' records to the destination. If the destination is unreachable for more
-#' than 24 hours, the data is no longer available.
-#' 
-#' Don't concatenate two or more base64 strings to form the data fields of
-#' your records. Instead, concatenate the raw data, then perform base64
-#' encoding.
+#' Writes multiple data records into a delivery stream in a single call, which can achieve higher throughput per producer than when writing single records. To write single data records into a delivery stream, use [`put_record`][firehose_put_record]. Applications using these operations are referred to as producers.
 #'
-#' @usage
-#' firehose_put_record_batch(DeliveryStreamName, Records)
+#' See [https://paws-r.github.io/docs/firehose/put_record_batch.html](https://paws-r.github.io/docs/firehose/put_record_batch.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param Records &#91;required&#93; One or more records.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedPutCount = 123,
-#'   Encrypted = TRUE|FALSE,
-#'   RequestResponses = list(
-#'     list(
-#'       RecordId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_record_batch(
-#'   DeliveryStreamName = "string",
-#'   Records = list(
-#'     list(
-#'       Data = raw
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1508,80 +289,13 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #'
 #' @description
 #' Enables server-side encryption (SSE) for the delivery stream.
-#' 
-#' This operation is asynchronous. It returns immediately. When you invoke
-#' it, Kinesis Data Firehose first sets the encryption status of the stream
-#' to `ENABLING`, and then to `ENABLED`. The encryption status of a
-#' delivery stream is the `Status` property in
-#' DeliveryStreamEncryptionConfiguration. If the operation fails, the
-#' encryption status changes to `ENABLING_FAILED`. You can continue to read
-#' and write data to your delivery stream while the encryption status is
-#' `ENABLING`, but the data is not encrypted. It can take up to 5 seconds
-#' after the encryption status changes to `ENABLED` before all records
-#' written to the delivery stream are encrypted. To find out whether a
-#' record or a batch of records was encrypted, check the response elements
-#' PutRecordOutput$Encrypted and PutRecordBatchOutput$Encrypted,
-#' respectively.
-#' 
-#' To check the encryption status of a delivery stream, use
-#' [`describe_delivery_stream`][firehose_describe_delivery_stream].
-#' 
-#' Even if encryption is currently enabled for a delivery stream, you can
-#' still invoke this operation on it to change the ARN of the CMK or both
-#' its type and ARN. If you invoke this method to change the CMK, and the
-#' old CMK is of type `CUSTOMER_MANAGED_CMK`, Kinesis Data Firehose
-#' schedules the grant it had on the old CMK for retirement. If the new CMK
-#' is of type `CUSTOMER_MANAGED_CMK`, Kinesis Data Firehose creates a grant
-#' that enables it to use the new CMK to encrypt and decrypt data and to
-#' manage the grant.
-#' 
-#' If a delivery stream already has encryption enabled and then you invoke
-#' this operation to change the ARN of the CMK or both its type and ARN and
-#' you get `ENABLING_FAILED`, this only means that the attempt to change
-#' the CMK failed. In this case, encryption remains enabled with the old
-#' CMK.
-#' 
-#' If the encryption status of your delivery stream is `ENABLING_FAILED`,
-#' you can invoke this operation again with a valid CMK. The CMK must be
-#' enabled and the key policy mustn't explicitly deny the permission for
-#' Kinesis Data Firehose to invoke KMS encrypt and decrypt operations.
-#' 
-#' You can enable SSE for a delivery stream only if it's a delivery stream
-#' that uses `DirectPut` as its source.
-#' 
-#' The
-#' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
-#' and
-#' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption]
-#' operations have a combined limit of 25 calls per delivery stream per 24
-#' hours. For example, you reach the limit if you call
-#' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
-#' 13 times and
-#' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption]
-#' 12 times for the same delivery stream in a 24-hour period.
 #'
-#' @usage
-#' firehose_start_delivery_stream_encryption(DeliveryStreamName,
-#'   DeliveryStreamEncryptionConfigurationInput)
+#' See [https://paws-r.github.io/docs/firehose/start_delivery_stream_encryption.html](https://paws-r.github.io/docs/firehose/start_delivery_stream_encryption.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to enable server-side
 #' encryption (SSE).
 #' @param DeliveryStreamEncryptionConfigurationInput Used to specify the type and Amazon Resource Name (ARN) of the KMS key
 #' needed for Server-Side Encryption (SSE).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_delivery_stream_encryption(
-#'   DeliveryStreamName = "string",
-#'   DeliveryStreamEncryptionConfigurationInput = list(
-#'     KeyARN = "string",
-#'     KeyType = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1607,52 +321,11 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 #'
 #' @description
 #' Disables server-side encryption (SSE) for the delivery stream.
-#' 
-#' This operation is asynchronous. It returns immediately. When you invoke
-#' it, Kinesis Data Firehose first sets the encryption status of the stream
-#' to `DISABLING`, and then to `DISABLED`. You can continue to read and
-#' write data to your stream while its status is `DISABLING`. It can take
-#' up to 5 seconds after the encryption status changes to `DISABLED` before
-#' all records written to the delivery stream are no longer subject to
-#' encryption. To find out whether a record or a batch of records was
-#' encrypted, check the response elements PutRecordOutput$Encrypted and
-#' PutRecordBatchOutput$Encrypted, respectively.
-#' 
-#' To check the encryption state of a delivery stream, use
-#' [`describe_delivery_stream`][firehose_describe_delivery_stream].
-#' 
-#' If SSE is enabled using a customer managed CMK and then you invoke
-#' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption],
-#' Kinesis Data Firehose schedules the related KMS grant for retirement and
-#' then retires it after it ensures that it is finished delivering records
-#' to the destination.
-#' 
-#' The
-#' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
-#' and
-#' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption]
-#' operations have a combined limit of 25 calls per delivery stream per 24
-#' hours. For example, you reach the limit if you call
-#' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
-#' 13 times and
-#' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption]
-#' 12 times for the same delivery stream in a 24-hour period.
 #'
-#' @usage
-#' firehose_stop_delivery_stream_encryption(DeliveryStreamName)
+#' See [https://paws-r.github.io/docs/firehose/stop_delivery_stream_encryption.html](https://paws-r.github.io/docs/firehose/stop_delivery_stream_encryption.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to disable
 #' server-side encryption (SSE).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_delivery_stream_encryption(
-#'   DeliveryStreamName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1677,41 +350,12 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
 #' Adds or updates tags for the specified delivery stream
 #'
 #' @description
-#' Adds or updates tags for the specified delivery stream. A tag is a
-#' key-value pair that you can define and assign to AWS resources. If you
-#' specify a tag that already exists, the tag value is replaced with the
-#' value that you specify in the request. Tags are metadata. For example,
-#' you can add friendly names and descriptions or other types of
-#' information that can help you distinguish the delivery stream. For more
-#' information about tags, see [Using Cost Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*.
-#' 
-#' Each delivery stream can have up to 50 tags.
-#' 
-#' This operation has a limit of five transactions per second per account.
+#' Adds or updates tags for the specified delivery stream. A tag is a key-value pair that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing and Cost Management User Guide*.
 #'
-#' @usage
-#' firehose_tag_delivery_stream(DeliveryStreamName, Tags)
+#' See [https://paws-r.github.io/docs/firehose/tag_delivery_stream.html](https://paws-r.github.io/docs/firehose/tag_delivery_stream.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream to which you want to add the tags.
 #' @param Tags &#91;required&#93; A set of key-value pairs to use to create the tags.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_delivery_stream(
-#'   DeliveryStreamName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1736,33 +380,13 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
 #' Removes tags from the specified delivery stream
 #'
 #' @description
-#' Removes tags from the specified delivery stream. Removed tags are
-#' deleted, and you can't recover them after this operation successfully
-#' completes.
-#' 
-#' If you specify a tag that doesn't exist, the operation ignores it.
-#' 
-#' This operation has a limit of five transactions per second per account.
+#' Removes tags from the specified delivery stream. Removed tags are deleted, and you can't recover them after this operation successfully completes.
 #'
-#' @usage
-#' firehose_untag_delivery_stream(DeliveryStreamName, TagKeys)
+#' See [https://paws-r.github.io/docs/firehose/untag_delivery_stream.html](https://paws-r.github.io/docs/firehose/untag_delivery_stream.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param TagKeys &#91;required&#93; A list of tag keys. Each corresponding tag is removed from the delivery
 #' stream.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_delivery_stream(
-#'   DeliveryStreamName = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1788,47 +412,8 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'
 #' @description
 #' Updates the specified destination of the specified delivery stream.
-#' 
-#' Use this operation to change the destination type (for example, to
-#' replace the Amazon S3 destination with Amazon Redshift) or change the
-#' parameters associated with a destination (for example, to change the
-#' bucket name of the Amazon S3 destination). The update might not occur
-#' immediately. The target delivery stream remains active while the
-#' configurations are updated, so data writes to the delivery stream can
-#' continue during this process. The updated configurations are usually
-#' effective within a few minutes.
-#' 
-#' Switching between Amazon ES and other services is not supported. For an
-#' Amazon ES destination, you can only update to another Amazon ES
-#' destination.
-#' 
-#' If the destination type is the same, Kinesis Data Firehose merges the
-#' configuration parameters specified with the destination configuration
-#' that already exists on the delivery stream. If any of the parameters are
-#' not specified in the call, the existing values are retained. For
-#' example, in the Amazon S3 destination, if EncryptionConfiguration is not
-#' specified, then the existing `EncryptionConfiguration` is maintained on
-#' the destination.
-#' 
-#' If the destination type is not the same, for example, changing the
-#' destination from Amazon S3 to Amazon Redshift, Kinesis Data Firehose
-#' does not merge any parameters. In this case, all parameters must be
-#' specified.
-#' 
-#' Kinesis Data Firehose uses `CurrentDeliveryStreamVersionId` to avoid
-#' race conditions and conflicting merges. This is a required field, and
-#' the service updates the configuration only if the existing configuration
-#' has a version ID that matches. After the update is applied successfully,
-#' the version ID is updated, and can be retrieved using
-#' [`describe_delivery_stream`][firehose_describe_delivery_stream]. Use the
-#' new version ID to set `CurrentDeliveryStreamVersionId` in the next call.
 #'
-#' @usage
-#' firehose_update_destination(DeliveryStreamName,
-#'   CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate,
-#'   ExtendedS3DestinationUpdate, RedshiftDestinationUpdate,
-#'   ElasticsearchDestinationUpdate, SplunkDestinationUpdate,
-#'   HttpEndpointDestinationUpdate)
+#' See [https://paws-r.github.io/docs/firehose/update_destination.html](https://paws-r.github.io/docs/firehose/update_destination.html) for full documentation.
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param CurrentDeliveryStreamVersionId &#91;required&#93; Obtain this value from the `VersionId` result of
@@ -1843,417 +428,21 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @param ExtendedS3DestinationUpdate Describes an update for a destination in Amazon S3.
 #' @param RedshiftDestinationUpdate Describes an update for a destination in Amazon Redshift.
 #' @param ElasticsearchDestinationUpdate Describes an update for a destination in Amazon ES.
+#' @param AmazonopensearchserviceDestinationUpdate 
 #' @param SplunkDestinationUpdate Describes an update for a destination in Splunk.
 #' @param HttpEndpointDestinationUpdate Describes an update to the specified HTTP endpoint destination.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_destination(
-#'   DeliveryStreamName = "string",
-#'   CurrentDeliveryStreamVersionId = "string",
-#'   DestinationId = "string",
-#'   S3DestinationUpdate = list(
-#'     RoleARN = "string",
-#'     BucketARN = "string",
-#'     Prefix = "string",
-#'     ErrorOutputPrefix = "string",
-#'     BufferingHints = list(
-#'       SizeInMBs = 123,
-#'       IntervalInSeconds = 123
-#'     ),
-#'     CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'     EncryptionConfiguration = list(
-#'       NoEncryptionConfig = "NoEncryption",
-#'       KMSEncryptionConfig = list(
-#'         AWSKMSKeyARN = "string"
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     )
-#'   ),
-#'   ExtendedS3DestinationUpdate = list(
-#'     RoleARN = "string",
-#'     BucketARN = "string",
-#'     Prefix = "string",
-#'     ErrorOutputPrefix = "string",
-#'     BufferingHints = list(
-#'       SizeInMBs = 123,
-#'       IntervalInSeconds = 123
-#'     ),
-#'     CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'     EncryptionConfiguration = list(
-#'       NoEncryptionConfig = "NoEncryption",
-#'       KMSEncryptionConfig = list(
-#'         AWSKMSKeyARN = "string"
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     S3BackupMode = "Disabled"|"Enabled",
-#'     S3BackupUpdate = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     DataFormatConversionConfiguration = list(
-#'       SchemaConfiguration = list(
-#'         RoleARN = "string",
-#'         CatalogId = "string",
-#'         DatabaseName = "string",
-#'         TableName = "string",
-#'         Region = "string",
-#'         VersionId = "string"
-#'       ),
-#'       InputFormatConfiguration = list(
-#'         Deserializer = list(
-#'           OpenXJsonSerDe = list(
-#'             ConvertDotsInJsonKeysToUnderscores = TRUE|FALSE,
-#'             CaseInsensitive = TRUE|FALSE,
-#'             ColumnToJsonKeyMappings = list(
-#'               "string"
-#'             )
-#'           ),
-#'           HiveJsonSerDe = list(
-#'             TimestampFormats = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       OutputFormatConfiguration = list(
-#'         Serializer = list(
-#'           ParquetSerDe = list(
-#'             BlockSizeBytes = 123,
-#'             PageSizeBytes = 123,
-#'             Compression = "UNCOMPRESSED"|"GZIP"|"SNAPPY",
-#'             EnableDictionaryCompression = TRUE|FALSE,
-#'             MaxPaddingBytes = 123,
-#'             WriterVersion = "V1"|"V2"
-#'           ),
-#'           OrcSerDe = list(
-#'             StripeSizeBytes = 123,
-#'             BlockSizeBytes = 123,
-#'             RowIndexStride = 123,
-#'             EnablePadding = TRUE|FALSE,
-#'             PaddingTolerance = 123.0,
-#'             Compression = "NONE"|"ZLIB"|"SNAPPY",
-#'             BloomFilterColumns = list(
-#'               "string"
-#'             ),
-#'             BloomFilterFalsePositiveProbability = 123.0,
-#'             DictionaryKeyThreshold = 123.0,
-#'             FormatVersion = "V0_11"|"V0_12"
-#'           )
-#'         )
-#'       ),
-#'       Enabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   RedshiftDestinationUpdate = list(
-#'     RoleARN = "string",
-#'     ClusterJDBCURL = "string",
-#'     CopyCommand = list(
-#'       DataTableName = "string",
-#'       DataTableColumns = "string",
-#'       CopyOptions = "string"
-#'     ),
-#'     Username = "string",
-#'     Password = "string",
-#'     RetryOptions = list(
-#'       DurationInSeconds = 123
-#'     ),
-#'     S3Update = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     S3BackupMode = "Disabled"|"Enabled",
-#'     S3BackupUpdate = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     )
-#'   ),
-#'   ElasticsearchDestinationUpdate = list(
-#'     RoleARN = "string",
-#'     DomainARN = "string",
-#'     ClusterEndpoint = "string",
-#'     IndexName = "string",
-#'     TypeName = "string",
-#'     IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",
-#'     BufferingHints = list(
-#'       IntervalInSeconds = 123,
-#'       SizeInMBs = 123
-#'     ),
-#'     RetryOptions = list(
-#'       DurationInSeconds = 123
-#'     ),
-#'     S3Update = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     )
-#'   ),
-#'   SplunkDestinationUpdate = list(
-#'     HECEndpoint = "string",
-#'     HECEndpointType = "Raw"|"Event",
-#'     HECToken = "string",
-#'     HECAcknowledgmentTimeoutInSeconds = 123,
-#'     RetryOptions = list(
-#'       DurationInSeconds = 123
-#'     ),
-#'     S3BackupMode = "FailedEventsOnly"|"AllEvents",
-#'     S3Update = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     )
-#'   ),
-#'   HttpEndpointDestinationUpdate = list(
-#'     EndpointConfiguration = list(
-#'       Url = "string",
-#'       Name = "string",
-#'       AccessKey = "string"
-#'     ),
-#'     BufferingHints = list(
-#'       SizeInMBs = 123,
-#'       IntervalInSeconds = 123
-#'     ),
-#'     CloudWatchLoggingOptions = list(
-#'       Enabled = TRUE|FALSE,
-#'       LogGroupName = "string",
-#'       LogStreamName = "string"
-#'     ),
-#'     RequestConfiguration = list(
-#'       ContentEncoding = "NONE"|"GZIP",
-#'       CommonAttributes = list(
-#'         list(
-#'           AttributeName = "string",
-#'           AttributeValue = "string"
-#'         )
-#'       )
-#'     ),
-#'     ProcessingConfiguration = list(
-#'       Enabled = TRUE|FALSE,
-#'       Processors = list(
-#'         list(
-#'           Type = "Lambda",
-#'           Parameters = list(
-#'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
-#'               ParameterValue = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     RoleARN = "string",
-#'     RetryOptions = list(
-#'       DurationInSeconds = 123
-#'     ),
-#'     S3BackupMode = "FailedDataOnly"|"AllData",
-#'     S3Update = list(
-#'       RoleARN = "string",
-#'       BucketARN = "string",
-#'       Prefix = "string",
-#'       ErrorOutputPrefix = "string",
-#'       BufferingHints = list(
-#'         SizeInMBs = 123,
-#'         IntervalInSeconds = 123
-#'       ),
-#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
-#'       EncryptionConfiguration = list(
-#'         NoEncryptionConfig = "NoEncryption",
-#'         KMSEncryptionConfig = list(
-#'           AWSKMSKeyARN = "string"
-#'         )
-#'       ),
-#'       CloudWatchLoggingOptions = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogGroupName = "string",
-#'         LogStreamName = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
 #' @rdname firehose_update_destination
-firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL) {
+firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, AmazonopensearchserviceDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL) {
   op <- new_operation(
     name = "UpdateDestination",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate)
+  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate)
   output <- .firehose$update_destination_output()
   config <- get_config()
   svc <- .firehose$service(config)

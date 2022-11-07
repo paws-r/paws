@@ -10,40 +10,9 @@ eventbridge_put_partner_events(Entries)
 \arguments{
 \item{Entries}{[required] The list of events to write to the event bus.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedEntryCount = 123,
-  Entries = list(
-    list(
-      EventId = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-This is used by SaaS partners to write events to a customer's partner
-event bus. AWS customers do not use this operation.
-}
-\section{Request syntax}{
-\preformatted{svc$put_partner_events(
-  Entries = list(
-    list(
-      Time = as.POSIXct(
-        "2015-01-01"
-      ),
-      Source = "string",
-      Resources = list(
-        "string"
-      ),
-      DetailType = "string",
-      Detail = "string"
-    )
-  )
-)
-}
-}
+This is used by SaaS partners to write events to a customer's partner event bus. Amazon Web Services customers do not use this operation.
 
+See \url{https://paws-r.github.io/docs/eventbridge/put_partner_events.html} for full documentation.
+}
 \keyword{internal}

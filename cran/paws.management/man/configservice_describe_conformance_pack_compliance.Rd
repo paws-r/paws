@@ -4,51 +4,27 @@
 \alias{configservice_describe_conformance_pack_compliance}
 \title{Returns compliance details for each rule in that conformance pack}
 \usage{
-configservice_describe_conformance_pack_compliance(ConformancePackName,
-  Filters, Limit, NextToken)
+configservice_describe_conformance_pack_compliance(
+  ConformancePackName,
+  Filters = NULL,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ConformancePackName}{[required] Name of the conformance pack.}
 
 \item{Filters}{A \code{ConformancePackComplianceFilters} object.}
 
-\item{Limit}{The maximum number of AWS Config rules within a conformance pack are
+\item{Limit}{The maximum number of Config rules within a conformance pack are
 returned on each page.}
 
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConformancePackName = "string",
-  ConformancePackRuleComplianceList = list(
-    list(
-      ConfigRuleName = "string",
-      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns compliance details for each rule in that conformance pack.
 
-You must provide exact rule names.
+See \url{https://paws-r.github.io/docs/configservice/describe_conformance_pack_compliance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_conformance_pack_compliance(
-  ConformancePackName = "string",
-  Filters = list(
-    ConfigRuleNames = list(
-      "string"
-    ),
-    ComplianceType = "COMPLIANT"|"NON_COMPLIANT"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

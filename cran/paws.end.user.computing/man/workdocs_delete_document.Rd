@@ -4,7 +4,7 @@
 \alias{workdocs_delete_document}
 \title{Permanently deletes the specified document and its associated metadata}
 \usage{
-workdocs_delete_document(AuthenticationToken, DocumentId)
+workdocs_delete_document(AuthenticationToken = NULL, DocumentId)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -12,18 +12,9 @@ administrator credentials to access the API.}
 
 \item{DocumentId}{[required] The ID of the document.}
 }
-\value{
-An empty list.
-}
 \description{
 Permanently deletes the specified document and its associated metadata.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_document(
-  AuthenticationToken = "string",
-  DocumentId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/delete_document.html} for full documentation.
+}
 \keyword{internal}

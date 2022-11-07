@@ -9,30 +9,9 @@ servicediscovery_delete_namespace(Id)
 \arguments{
 \item{Id}{[required] The ID of the namespace that you want to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
-}
 \description{
-Deletes a namespace from the current account. If the namespace still
-contains one or more services, the request fails.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_namespace(
-  Id = "string"
-)
-}
-}
+Deletes a namespace from the current account. If the namespace still contains one or more services, the request fails.
 
-\examples{
-\dontrun{
-# Example: Delete namespace
-svc$delete_namespace(
-  Id = "ns-ylexjili4cdxy3xm"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/delete_namespace.html} for full documentation.
 }
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{iam_update_group}
 \title{Updates the name and/or the path of the specified IAM group}
 \usage{
-iam_update_group(GroupName, NewPath, NewGroupName)
+iam_update_group(GroupName, NewPath = NULL, NewGroupName = NULL)
 }
 \arguments{
 \item{GroupName}{[required] Name of the IAM group to update. If you're changing the name of the
@@ -31,41 +31,9 @@ IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
 create resources named both "MyResource" and "myresource".}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the name and/or the path of the specified IAM group.
 
-You should understand the implications of changing a group's path or
-name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html}{Renaming Users and Groups} in the
-\emph{IAM User Guide}.
-
-The person making the request (the principal), must have permission to
-change the role group with the old name and the new name. For example,
-to change the group named \code{Managers} to \code{MGRs}, the principal must have
-a policy that allows them to update both groups. If the principal has
-permission to update the \code{Managers} group, but not the \code{MGRs} group,
-then the update fails. For more information about permissions, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_group(
-  GroupName = "string",
-  NewPath = "string",
-  NewGroupName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command changes the name of the IAM group Test to Test-1.
-svc$update_group(
-  GroupName = "Test",
-  NewGroupName = "Test-1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/update_group.html} for full documentation.
 }
 \keyword{internal}

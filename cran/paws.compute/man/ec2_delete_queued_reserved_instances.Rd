@@ -4,7 +4,7 @@
 \alias{ec2_delete_queued_reserved_instances}
 \title{Deletes the queued purchases for the specified Reserved Instances}
 \usage{
-ec2_delete_queued_reserved_instances(DryRun, ReservedInstancesIds)
+ec2_delete_queued_reserved_instances(DryRun = NULL, ReservedInstancesIds)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,36 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ReservedInstancesIds}{[required] The IDs of the Reserved Instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SuccessfulQueuedPurchaseDeletions = list(
-    list(
-      ReservedInstancesId = "string"
-    )
-  ),
-  FailedQueuedPurchaseDeletions = list(
-    list(
-      Error = list(
-        Code = "reserved-instances-id-invalid"|"reserved-instances-not-in-queued-state"|"unexpected-error",
-        Message = "string"
-      ),
-      ReservedInstancesId = "string"
-    )
-  )
-)
-}
-}
 \description{
 Deletes the queued purchases for the specified Reserved Instances.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_queued_reserved_instances(
-  DryRun = TRUE|FALSE,
-  ReservedInstancesIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_queued_reserved_instances.html} for full documentation.
+}
 \keyword{internal}

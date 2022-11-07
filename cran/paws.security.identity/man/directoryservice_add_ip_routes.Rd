@@ -2,23 +2,27 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_add_ip_routes}
 \alias{directoryservice_add_ip_routes}
-\title{If the DNS server for your on-premises domain uses a publicly
+\title{If the DNS server for your self-managed domain uses a publicly
 addressable IP address, you must add a CIDR address block to correctly
 route traffic to and from your Microsoft AD on Amazon Web Services}
 \usage{
-directoryservice_add_ip_routes(DirectoryId, IpRoutes,
-  UpdateSecurityGroupForDirectoryControllers)
+directoryservice_add_ip_routes(
+  DirectoryId,
+  IpRoutes,
+  UpdateSecurityGroupForDirectoryControllers = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{[required] Identifier (ID) of the directory to which to add the address block.}
 
 \item{IpRoutes}{[required] IP address blocks, using CIDR format, of the traffic to route. This is
-often the IP address block of the DNS server used for your on-premises
+often the IP address block of the DNS server used for your self-managed
 domain.}
 
 \item{UpdateSecurityGroupForDirectoryControllers}{If set to true, updates the inbound and outbound rules of the security
-group that has the description: "AWS created security group for
-\emph{directory ID} directory controllers." Following are the new rules:
+group that has the description: "Amazon Web Services created security
+group for \emph{directory ID} directory controllers." Following are the new
+rules:
 
 Inbound:
 \itemize{
@@ -51,34 +55,9 @@ Outbound:
 These security rules impact an internal network interface that is not
 exposed publicly.}
 }
-\value{
-An empty list.
-}
 \description{
-If the DNS server for your on-premises domain uses a publicly
-addressable IP address, you must add a CIDR address block to correctly
-route traffic to and from your Microsoft AD on Amazon Web Services.
-\emph{AddIpRoutes} adds this address block. You can also use \emph{AddIpRoutes} to
-facilitate routing traffic that uses public IP ranges from your
-Microsoft AD on AWS to a peer VPC.
+If the DNS server for your self-managed domain uses a publicly addressable IP address, you must add a CIDR address block to correctly route traffic to and from your Microsoft AD on Amazon Web Services. \emph{AddIpRoutes} adds this address block. You can also use \emph{AddIpRoutes} to facilitate routing traffic that uses public IP ranges from your Microsoft AD on Amazon Web Services to a peer VPC.
 
-Before you call \emph{AddIpRoutes}, ensure that all of the required
-permissions have been explicitly granted through a policy. For details
-about what permissions are required to run the \emph{AddIpRoutes} operation,
-see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
+See \url{https://paws-r.github.io/docs/directoryservice/add_ip_routes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_ip_routes(
-  DirectoryId = "string",
-  IpRoutes = list(
-    list(
-      CidrIp = "string",
-      Description = "string"
-    )
-  ),
-  UpdateSecurityGroupForDirectoryControllers = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

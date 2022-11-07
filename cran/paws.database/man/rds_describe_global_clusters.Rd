@@ -4,8 +4,12 @@
 \alias{rds_describe_global_clusters}
 \title{Returns information about Aurora global database clusters}
 \usage{
-rds_describe_global_clusters(GlobalClusterIdentifier, Filters,
-  MaxRecords, Marker)
+rds_describe_global_clusters(
+  GlobalClusterIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{The user-supplied DB cluster identifier. If this parameter is specified,
@@ -17,14 +21,7 @@ Constraints:
 \item If supplied, must match an existing DBClusterIdentifier.
 }}
 
-\item{Filters}{A filter that specifies one or more global DB clusters to describe.
-
-Supported filters:
-\itemize{
-\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
-Amazon Resource Names (ARNs). The results list will only include
-information about the DB clusters identified by these ARNs.
-}}
+\item{Filters}{This parameter isn't currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
@@ -40,59 +37,9 @@ Constraints: Minimum 20, maximum 100.}
 this parameter is specified, the response includes only records beyond
 the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  GlobalClusters = list(
-    list(
-      GlobalClusterIdentifier = "string",
-      GlobalClusterResourceId = "string",
-      GlobalClusterArn = "string",
-      Status = "string",
-      Engine = "string",
-      EngineVersion = "string",
-      DatabaseName = "string",
-      StorageEncrypted = TRUE|FALSE,
-      DeletionProtection = TRUE|FALSE,
-      GlobalClusterMembers = list(
-        list(
-          DBClusterArn = "string",
-          Readers = list(
-            "string"
-          ),
-          IsWriter = TRUE|FALSE,
-          GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns information about Aurora global database clusters. This API
-supports pagination.
+Returns information about Aurora global database clusters. This API supports pagination.
 
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/describe_global_clusters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_global_clusters(
-  GlobalClusterIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

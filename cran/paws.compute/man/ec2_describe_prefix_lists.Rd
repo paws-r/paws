@@ -2,12 +2,17 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_prefix_lists}
 \alias{ec2_describe_prefix_lists}
-\title{Describes available AWS services in a prefix list format, which includes
-the prefix list name and prefix list ID of the service and the IP
-address range for the service}
+\title{Describes available Amazon Web Services services in a prefix list
+format, which includes the prefix list name and prefix list ID of the
+service and the IP address range for the service}
 \usage{
-ec2_describe_prefix_lists(DryRun, Filters, MaxResults, NextToken,
-  PrefixListIds)
+ec2_describe_prefix_lists(
+  DryRun = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  PrefixListIds = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -29,48 +34,9 @@ value.}
 
 \item{PrefixListIds}{One or more prefix list IDs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  PrefixLists = list(
-    list(
-      Cidrs = list(
-        "string"
-      ),
-      PrefixListId = "string",
-      PrefixListName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Describes available AWS services in a prefix list format, which includes
-the prefix list name and prefix list ID of the service and the IP
-address range for the service.
+Describes available Amazon Web Services services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service.
 
-We recommend that you use
-\code{\link[=ec2_describe_managed_prefix_lists]{describe_managed_prefix_lists}}
-instead.
+See \url{https://paws-r.github.io/docs/ec2/describe_prefix_lists.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_prefix_lists(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  PrefixListIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

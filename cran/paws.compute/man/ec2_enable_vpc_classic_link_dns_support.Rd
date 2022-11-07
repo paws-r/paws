@@ -2,36 +2,16 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_enable_vpc_classic_link_dns_support}
 \alias{ec2_enable_vpc_classic_link_dns_support}
-\title{Enables a VPC to support DNS hostname resolution for ClassicLink}
+\title{We are retiring EC2-Classic on August 15, 2022}
 \usage{
-ec2_enable_vpc_classic_link_dns_support(VpcId)
+ec2_enable_vpc_classic_link_dns_support(VpcId = NULL)
 }
 \arguments{
 \item{VpcId}{The ID of the VPC.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Enables a VPC to support DNS hostname resolution for ClassicLink. If
-enabled, the DNS hostname of a linked EC2-Classic instance resolves to
-its private IP address when addressed from an instance in the VPC to
-which it's linked. Similarly, the DNS hostname of an instance in a VPC
-resolves to its private IP address when addressed from a linked
-EC2-Classic instance. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+We are retiring EC2-Classic on August 15, 2022. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-You must specify a VPC ID in the request.
+See \url{https://paws-r.github.io/docs/ec2/enable_vpc_classic_link_dns_support.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$enable_vpc_classic_link_dns_support(
-  VpcId = "string"
-)
-}
-}
-
 \keyword{internal}

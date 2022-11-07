@@ -11,46 +11,9 @@ dynamodb_describe_continuous_backups(TableName)
 \item{TableName}{[required] Name of the table for which the customer wants to check the continuous
 backups and point in time recovery settings.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContinuousBackupsDescription = list(
-    ContinuousBackupsStatus = "ENABLED"|"DISABLED",
-    PointInTimeRecoveryDescription = list(
-      PointInTimeRecoveryStatus = "ENABLED"|"DISABLED",
-      EarliestRestorableDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LatestRestorableDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Checks the status of continuous backups and point in time recovery on
-the specified table. Continuous backups are \code{ENABLED} on all tables at
-table creation. If point in time recovery is enabled,
-\code{PointInTimeRecoveryStatus} will be set to ENABLED.
+Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are \code{ENABLED} on all tables at table creation. If point in time recovery is enabled, \code{PointInTimeRecoveryStatus} will be set to ENABLED.
 
-After continuous backups and point in time recovery are enabled, you can
-restore to any point in time within \code{EarliestRestorableDateTime} and
-\code{LatestRestorableDateTime}.
-
-\code{LatestRestorableDateTime} is typically 5 minutes before the current
-time. You can restore your table to any point in time during the last 35
-days.
-
-You can call
-\code{\link[=dynamodb_describe_continuous_backups]{describe_continuous_backups}} at
-a maximum rate of 10 times per second.
+See \url{https://paws-r.github.io/docs/dynamodb/describe_continuous_backups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_continuous_backups(
-  TableName = "string"
-)
-}
-}
-
 \keyword{internal}

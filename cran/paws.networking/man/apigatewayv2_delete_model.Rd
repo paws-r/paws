@@ -11,18 +11,9 @@ apigatewayv2_delete_model(ApiId, ModelId)
 
 \item{ModelId}{[required] The model ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a Model.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_model(
-  ApiId = "string",
-  ModelId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_model.html} for full documentation.
+}
 \keyword{internal}

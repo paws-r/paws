@@ -13,25 +13,9 @@ an Amazon Resource Name (ARN).}
 \item{TagKeys}{[required] A list of tag keys. Existing tags of the resource whose keys are members
 of this list will be removed from the DynamoDB resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the association of tags from an Amazon DynamoDB resource. You
-can call \code{\link[=dynamodb_untag_resource]{untag_resource}} up to five times
-per second, per account.
+Removes the association of tags from an Amazon DynamoDB resource. You can call \code{\link[=dynamodb_untag_resource]{untag_resource}} up to five times per second, per account.
 
-For an overview on tagging DynamoDB resources, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}
-in the \emph{Amazon DynamoDB Developer Guide}.
+See \url{https://paws-r.github.io/docs/dynamodb/untag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

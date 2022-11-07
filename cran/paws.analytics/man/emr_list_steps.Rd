@@ -3,9 +3,9 @@
 \name{emr_list_steps}
 \alias{emr_list_steps}
 \title{Provides a list of steps for the cluster in reverse order unless you
-specify stepIds with the request of filter by StepStates}
+specify stepIds with the request or filter by StepStates}
 \usage{
-emr_list_steps(ClusterId, StepStates, StepIds, Marker)
+emr_list_steps(ClusterId, StepStates = NULL, StepIds = NULL, Marker = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier of the cluster for which to list the steps.}
@@ -16,71 +16,15 @@ emr_list_steps(ClusterId, StepStates, StepIds, Marker)
 You can specify a maximum of ten Step IDs. The character constraint
 applies to the overall length of the array.}
 
-\item{Marker}{The pagination token that indicates the next set of results to retrieve.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Steps = list(
-    list(
-      Id = "string",
-      Name = "string",
-      Config = list(
-        Jar = "string",
-        Properties = list(
-          "string"
-        ),
-        MainClass = "string",
-        Args = list(
-          "string"
-        )
-      ),
-      ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
-      Status = list(
-        State = "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED",
-        StateChangeReason = list(
-          Code = "NONE",
-          Message = "string"
-        ),
-        FailureDetails = list(
-          Reason = "string",
-          Message = "string",
-          LogFile = "string"
-        ),
-        Timeline = list(
-          CreationDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          StartDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          EndDateTime = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
+\item{Marker}{The maximum number of steps that a single \code{\link[=emr_list_steps]{list_steps}}
+action returns is 50. To return a longer list of steps, use multiple
+\code{\link[=emr_list_steps]{list_steps}} actions along with the \code{Marker}
+parameter, which is a pagination token that indicates the next set of
+results to retrieve.}
 }
 \description{
-Provides a list of steps for the cluster in reverse order unless you
-specify \code{stepIds} with the request of filter by \code{StepStates}. You can
-specify a maximum of ten \code{stepIDs}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_steps(
-  ClusterId = "string",
-  StepStates = list(
-    "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED"
-  ),
-  StepIds = list(
-    "string"
-  ),
-  Marker = "string"
-)
-}
-}
+Provides a list of steps for the cluster in reverse order unless you specify \code{stepIds} with the request or filter by \code{StepStates}. You can specify a maximum of 10 \code{stepIDs}. The CLI automatically paginates results to return a list greater than 50 steps. To return more than 50 steps using the CLI, specify a \code{Marker}, which is a pagination token that indicates the next set of steps to retrieve.
 
+See \url{https://paws-r.github.io/docs/emr/list_steps.html} for full documentation.
+}
 \keyword{internal}

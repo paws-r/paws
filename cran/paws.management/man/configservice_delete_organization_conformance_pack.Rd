@@ -3,37 +3,19 @@
 \name{configservice_delete_organization_conformance_pack}
 \alias{configservice_delete_organization_conformance_pack}
 \title{Deletes the specified organization conformance pack and all of the
-config rules and remediation actions from all member accounts in that
+Config rules and remediation actions from all member accounts in that
 organization}
 \usage{
 configservice_delete_organization_conformance_pack(
-  OrganizationConformancePackName)
+  OrganizationConformancePackName
+)
 }
 \arguments{
 \item{OrganizationConformancePackName}{[required] The name of organization conformance pack that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified organization conformance pack and all of the
-config rules and remediation actions from all member accounts in that
-organization.
+Deletes the specified organization conformance pack and all of the Config rules and remediation actions from all member accounts in that organization.
 
-Only a master account or a delegated administrator account can delete an
-organization conformance pack. When calling this API with a delegated
-administrator, you must ensure AWS Organizations
-\code{ListDelegatedAdministrator} permissions are added.
-
-AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS
-until the deletion is complete. You cannot update a conformance pack
-while it is in this state.
+See \url{https://paws-r.github.io/docs/configservice/delete_organization_conformance_pack.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_organization_conformance_pack(
-  OrganizationConformancePackName = "string"
-)
-}
-}
-
 \keyword{internal}

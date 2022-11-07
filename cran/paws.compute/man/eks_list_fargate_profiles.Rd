@@ -2,13 +2,13 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_list_fargate_profiles}
 \alias{eks_list_fargate_profiles}
-\title{Lists the AWS Fargate profiles associated with the specified cluster in
-your AWS account in the specified Region}
+\title{Lists the Fargate profiles associated with the specified cluster in your
+Amazon Web Services account in the specified Region}
 \usage{
-eks_list_fargate_profiles(clusterName, maxResults, nextToken)
+eks_list_fargate_profiles(clusterName, maxResults = NULL, nextToken = NULL)
 }
 \arguments{
-\item{clusterName}{[required] The name of the Amazon EKS cluster that you would like to listFargate
+\item{clusterName}{[required] The name of the Amazon EKS cluster that you would like to list Fargate
 profiles in.}
 
 \item{maxResults}{The maximum number of Fargate profile results returned by
@@ -29,26 +29,9 @@ results and a \code{nextToken} value if applicable.}
 parameter. Pagination continues from the end of the previous results
 that returned the \code{nextToken} value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  fargateProfileNames = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the AWS Fargate profiles associated with the specified cluster in
-your AWS account in the specified Region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_fargate_profiles(
-  clusterName = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
+Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Region.
 
+See \url{https://paws-r.github.io/docs/eks/list_fargate_profiles.html} for full documentation.
+}
 \keyword{internal}

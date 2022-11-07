@@ -2,37 +2,13 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_get_account_password_policy}
 \alias{iam_get_account_password_policy}
-\title{Retrieves the password policy for the AWS account}
+\title{Retrieves the password policy for the Amazon Web Services account}
 \usage{
 iam_get_account_password_policy()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PasswordPolicy = list(
-    MinimumPasswordLength = 123,
-    RequireSymbols = TRUE|FALSE,
-    RequireNumbers = TRUE|FALSE,
-    RequireUppercaseCharacters = TRUE|FALSE,
-    RequireLowercaseCharacters = TRUE|FALSE,
-    AllowUsersToChangePassword = TRUE|FALSE,
-    ExpirePasswords = TRUE|FALSE,
-    MaxPasswordAge = 123,
-    PasswordReusePrevention = 123,
-    HardExpiry = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Retrieves the password policy for the AWS account. For more information
-about using a password policy, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html}{Managing an IAM Password Policy}.
-}
-\examples{
-\dontrun{
-# The following command displays details about the password policy for the
-# current AWS account.
-svc$get_account_password_policy()
-}
+Retrieves the password policy for the Amazon Web Services account. This tells you the complexity requirements and mandatory rotation periods for the IAM user passwords in your account. For more information about using a password policy, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html}{Managing an IAM password policy}.
 
+See \url{https://paws-r.github.io/docs/iam/get_account_password_policy.html} for full documentation.
 }
 \keyword{internal}

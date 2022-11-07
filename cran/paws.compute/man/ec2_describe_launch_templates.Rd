@@ -4,8 +4,14 @@
 \alias{ec2_describe_launch_templates}
 \title{Describes one or more launch templates}
 \usage{
-ec2_describe_launch_templates(DryRun, LaunchTemplateIds,
-  LaunchTemplateNames, Filters, NextToken, MaxResults)
+ec2_describe_launch_templates(
+  DryRun = NULL,
+  LaunchTemplateIds = NULL,
+  LaunchTemplateNames = NULL,
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -21,11 +27,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \itemize{
 \item \code{create-time} - The time the launch template was created.
 \item \code{launch-template-name} - The name of the launch template.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -37,65 +43,9 @@ regardless of the tag value.
 the remaining results, make another call with the returned \code{NextToken}
 value. This value can be between 1 and 200.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LaunchTemplates = list(
-    list(
-      LaunchTemplateId = "string",
-      LaunchTemplateName = "string",
-      CreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatedBy = "string",
-      DefaultVersionNumber = 123,
-      LatestVersionNumber = 123,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more launch templates.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_launch_templates(
-  DryRun = TRUE|FALSE,
-  LaunchTemplateIds = list(
-    "string"
-  ),
-  LaunchTemplateNames = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example describes the specified launch template.
-svc$describe_launch_templates(
-  LaunchTemplateIds = list(
-    "lt-01238c059e3466abc"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_launch_templates.html} for full documentation.
 }
 \keyword{internal}

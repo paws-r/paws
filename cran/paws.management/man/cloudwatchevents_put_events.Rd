@@ -12,41 +12,9 @@ cloudwatchevents_put_events(Entries)
 parameters for the entry such as the source and type of the event,
 resources associated with the event, and so on.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedEntryCount = 123,
-  Entries = list(
-    list(
-      EventId = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Sends custom events to Amazon EventBridge so that they can be matched to
-rules.
-}
-\section{Request syntax}{
-\preformatted{svc$put_events(
-  Entries = list(
-    list(
-      Time = as.POSIXct(
-        "2015-01-01"
-      ),
-      Source = "string",
-      Resources = list(
-        "string"
-      ),
-      DetailType = "string",
-      Detail = "string",
-      EventBusName = "string"
-    )
-  )
-)
-}
-}
+Sends custom events to Amazon EventBridge so that they can be matched to rules.
 
+See \url{https://paws-r.github.io/docs/cloudwatchevents/put_events.html} for full documentation.
+}
 \keyword{internal}

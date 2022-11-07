@@ -12,53 +12,9 @@ waf_get_size_constraint_set(SizeConstraintSetId)
 \code{\link[=waf_create_size_constraint_set]{create_size_constraint_set}} and by
 \code{\link[=waf_list_size_constraint_sets]{list_size_constraint_sets}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SizeConstraintSet = list(
-    SizeConstraintSetId = "string",
-    Name = "string",
-    SizeConstraints = list(
-      list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-        ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
-        Size = 123
-      )
-    )
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns the SizeConstraintSet specified by \code{SizeConstraintSetId}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_size_constraint_set(
-  SizeConstraintSetId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns the details of a size constraint match set
-# with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-svc$get_size_constraint_set(
-  SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
-}
-
+See \url{https://paws-r.github.io/docs/waf/get_size_constraint_set.html} for full documentation.
 }
 \keyword{internal}

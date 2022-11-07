@@ -10,32 +10,9 @@ ses_verify_email_identity(EmailAddress)
 \arguments{
 \item{EmailAddress}{[required] The email address to be verified.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds an email address to the list of identities for your Amazon SES
-account in the current AWS region and attempts to verify it. As a result
-of executing this operation, a verification email is sent to the
-specified address.
+Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it. As a result of executing this operation, a verification email is sent to the specified address.
 
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$verify_email_identity(
-  EmailAddress = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example starts the email address verification process with
-# Amazon SES:
-svc$verify_email_identity(
-  EmailAddress = "user@example.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/verify_email_identity.html} for full documentation.
 }
 \keyword{internal}

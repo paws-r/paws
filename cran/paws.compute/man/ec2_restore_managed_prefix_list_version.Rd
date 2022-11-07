@@ -5,8 +5,12 @@
 \title{Restores the entries from a previous version of a managed prefix list to
 a new version of the prefix list}
 \usage{
-ec2_restore_managed_prefix_list_version(DryRun, PrefixListId,
-  PreviousVersion, CurrentVersion)
+ec2_restore_managed_prefix_list_version(
+  DryRun = NULL,
+  PrefixListId,
+  PreviousVersion,
+  CurrentVersion
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -20,40 +24,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{CurrentVersion}{[required] The current version number for the prefix list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PrefixList = list(
-    PrefixListId = "string",
-    AddressFamily = "string",
-    State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
-    StateMessage = "string",
-    PrefixListArn = "string",
-    PrefixListName = "string",
-    MaxEntries = 123,
-    Version = 123,
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    OwnerId = "string"
-  )
-)
-}
-}
 \description{
-Restores the entries from a previous version of a managed prefix list to
-a new version of the prefix list.
-}
-\section{Request syntax}{
-\preformatted{svc$restore_managed_prefix_list_version(
-  DryRun = TRUE|FALSE,
-  PrefixListId = "string",
-  PreviousVersion = 123,
-  CurrentVersion = 123
-)
-}
-}
+Restores the entries from a previous version of a managed prefix list to a new version of the prefix list.
 
+See \url{https://paws-r.github.io/docs/ec2/restore_managed_prefix_list_version.html} for full documentation.
+}
 \keyword{internal}

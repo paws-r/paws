@@ -13,33 +13,9 @@ keys.}
 
 \item{Keys}{[required] The keys of the tags to be removed.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  Keys = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Deletes tags from a specified resource group.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:Untag}
+See \url{https://paws-r.github.io/docs/resourcegroups/untag.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$untag(
-  Arn = "string",
-  Keys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

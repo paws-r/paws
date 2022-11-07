@@ -4,14 +4,14 @@
 \alias{organizations_list_tags_for_resource}
 \title{Lists tags that are attached to the specified resource}
 \usage{
-organizations_list_tags_for_resource(ResourceId, NextToken)
+organizations_list_tags_for_resource(ResourceId, NextToken = NULL)
 }
 \arguments{
 \item{ResourceId}{[required] The ID of the resource with the tags to list.
 
 You can specify any of the following taggable resources.
 \itemize{
-\item AWS account – specify the account ID number.
+\item Amazon Web Services account – specify the account ID number.
 \item Organizational unit – specify the OU ID that begins with \verb{ou-} and
 looks similar to: \verb{ou-1a2b-34uvwxyz }
 \item Root – specify the root ID that begins with \verb{r-} and looks similar
@@ -26,39 +26,9 @@ indicates that more output is available. Set this parameter to the value
 of the previous call's \code{NextToken} response to indicate where the output
 should continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists tags that are attached to the specified resource.
 
-You can attach tags to the following resources in AWS Organizations.
-\itemize{
-\item AWS account
-\item Organization root
-\item Organizational unit (OU)
-\item Policy (any type)
+See \url{https://paws-r.github.io/docs/organizations/list_tags_for_resource.html} for full documentation.
 }
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceId = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

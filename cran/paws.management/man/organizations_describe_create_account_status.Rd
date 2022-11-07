@@ -19,51 +19,9 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a create
 account request ID string requires "car-" followed by from 8 to 32
 lowercase letters or digits.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CreateAccountStatus = list(
-    Id = "string",
-    AccountName = "string",
-    State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
-    RequestedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    CompletedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    AccountId = "string",
-    GovCloudAccountId = "string",
-    FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
-  )
-)
-}
-}
 \description{
-Retrieves the current status of an asynchronous request to create an
-account.
+Retrieves the current status of an asynchronous request to create an account.
 
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_create_account_status(
-  CreateAccountRequestId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to request the status about a previous
-# request to create an account in an organization. This operation can be
-# called only by a principal from the organization's master account. In
-# the example, the specified "createAccountRequestId" comes from the
-# response of the original call to "CreateAccount":
-svc$describe_create_account_status(
-  CreateAccountRequestId = "car-exampleaccountcreationrequestid"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/describe_create_account_status.html} for full documentation.
 }
 \keyword{internal}

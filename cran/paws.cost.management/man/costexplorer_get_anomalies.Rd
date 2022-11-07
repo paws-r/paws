@@ -2,11 +2,17 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_get_anomalies}
 \alias{costexplorer_get_anomalies}
-\title{Retrieves all of the cost anomalies detected on your account, during the
-time period specified by the DateInterval object}
+\title{Retrieves all of the cost anomalies detected on your account during the
+time period that's specified by the DateInterval object}
 \usage{
-costexplorer_get_anomalies(MonitorArn, DateInterval, Feedback,
-  TotalImpact, NextPageToken, MaxResults)
+costexplorer_get_anomalies(
+  MonitorArn = NULL,
+  DateInterval,
+  Feedback = NULL,
+  TotalImpact = NULL,
+  NextPageToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{MonitorArn}{Retrieves all of the cost anomalies detected for a specific cost anomaly
@@ -22,65 +28,15 @@ time range.}
 For example, you can filter anomalies \verb{GREATER_THAN 200.00} to retrieve
 anomalies, with an estimated dollar impact greater than 200.}
 
-\item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
-when the response from a previous call has more results than the maximum
-page size.}
+\item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
+provides the token when the response from a previous call has more
+results than the maximum page size.}
 
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Anomalies = list(
-    list(
-      AnomalyId = "string",
-      AnomalyStartDate = "string",
-      AnomalyEndDate = "string",
-      DimensionValue = "string",
-      RootCauses = list(
-        list(
-          Service = "string",
-          Region = "string",
-          LinkedAccount = "string",
-          UsageType = "string"
-        )
-      ),
-      AnomalyScore = list(
-        MaxScore = 123.0,
-        CurrentScore = 123.0
-      ),
-      Impact = list(
-        MaxImpact = 123.0,
-        TotalImpact = 123.0
-      ),
-      MonitorArn = "string",
-      Feedback = "YES"|"NO"|"PLANNED_ACTIVITY"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Retrieves all of the cost anomalies detected on your account, during the
-time period specified by the \code{DateInterval} object.
-}
-\section{Request syntax}{
-\preformatted{svc$get_anomalies(
-  MonitorArn = "string",
-  DateInterval = list(
-    StartDate = "string",
-    EndDate = "string"
-  ),
-  Feedback = "YES"|"NO"|"PLANNED_ACTIVITY",
-  TotalImpact = list(
-    NumericOperator = "EQUAL"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"GREATER_THAN"|"LESS_THAN"|"BETWEEN",
-    StartValue = 123.0,
-    EndValue = 123.0
-  ),
-  NextPageToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves all of the cost anomalies detected on your account during the time period that's specified by the \code{DateInterval} object.
 
+See \url{https://paws-r.github.io/docs/costexplorer/get_anomalies.html} for full documentation.
+}
 \keyword{internal}

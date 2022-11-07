@@ -4,14 +4,21 @@
 \alias{eks_create_addon}
 \title{Creates an Amazon EKS add-on}
 \usage{
-eks_create_addon(clusterName, addonName, addonVersion,
-  serviceAccountRoleArn, resolveConflicts, clientRequestToken, tags)
+eks_create_addon(
+  clusterName,
+  addonName,
+  addonVersion = NULL,
+  serviceAccountRoleArn = NULL,
+  resolveConflicts = NULL,
+  clientRequestToken = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{clusterName}{[required] The name of the cluster to create the add-on for.}
 
 \item{addonName}{[required] The name of the add-on. The name must match one of the names returned by
-\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
+\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html}{\code{describe_addon_versions}}
 .}
 
 \item{addonVersion}{The version of the add-on. The version must match one of the versions
@@ -38,65 +45,12 @@ add-on to an Amazon EKS add-on.}
 idempotency of the request.}
 
 \item{tags}{The metadata to apply to the cluster to assist with categorization and
-organization. Each tag consists of a key and an optional value, both of
-which you define.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  addon = list(
-    addonName = "string",
-    clusterName = "string",
-    status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETE_FAILED"|"DEGRADED",
-    addonVersion = "string",
-    health = list(
-      issues = list(
-        list(
-          code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-          message = "string",
-          resourceIds = list(
-            "string"
-          )
-        )
-      )
-    ),
-    addonArn = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    modifiedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    serviceAccountRoleArn = "string",
-    tags = list(
-      "string"
-    )
-  )
-)
-}
+organization. Each tag consists of a key and an optional value. You
+define both.}
 }
 \description{
 Creates an Amazon EKS add-on.
 
-Amazon EKS add-ons help to automate the provisioning and lifecycle
-management of common operational software for Amazon EKS clusters.
-Amazon EKS add-ons can only be used with Amazon EKS clusters running
-version 1.18 with platform version \code{eks.3} or later because add-ons rely
-on the Server-side Apply Kubernetes feature, which is only available in
-Kubernetes 1.18 and later.
+See \url{https://paws-r.github.io/docs/eks/create_addon.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_addon(
-  clusterName = "string",
-  addonName = "string",
-  addonVersion = "string",
-  serviceAccountRoleArn = "string",
-  resolveConflicts = "OVERWRITE"|"NONE",
-  clientRequestToken = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

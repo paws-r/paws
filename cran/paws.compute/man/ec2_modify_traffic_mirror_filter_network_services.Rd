@@ -4,8 +4,12 @@
 \alias{ec2_modify_traffic_mirror_filter_network_services}
 \title{Allows or restricts mirroring network services}
 \usage{
-ec2_modify_traffic_mirror_filter_network_services(TrafficMirrorFilterId,
-  AddNetworkServices, RemoveNetworkServices, DryRun)
+ec2_modify_traffic_mirror_filter_network_services(
+  TrafficMirrorFilterId,
+  AddNetworkServices = NULL,
+  RemoveNetworkServices = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TrafficMirrorFilterId}{[required] The ID of the Traffic Mirror filter.}
@@ -20,92 +24,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorFilter = list(
-    TrafficMirrorFilterId = "string",
-    IngressFilterRules = list(
-      list(
-        TrafficMirrorFilterRuleId = "string",
-        TrafficMirrorFilterId = "string",
-        TrafficDirection = "ingress"|"egress",
-        RuleNumber = 123,
-        RuleAction = "accept"|"reject",
-        Protocol = 123,
-        DestinationPortRange = list(
-          FromPort = 123,
-          ToPort = 123
-        ),
-        SourcePortRange = list(
-          FromPort = 123,
-          ToPort = 123
-        ),
-        DestinationCidrBlock = "string",
-        SourceCidrBlock = "string",
-        Description = "string"
-      )
-    ),
-    EgressFilterRules = list(
-      list(
-        TrafficMirrorFilterRuleId = "string",
-        TrafficMirrorFilterId = "string",
-        TrafficDirection = "ingress"|"egress",
-        RuleNumber = 123,
-        RuleAction = "accept"|"reject",
-        Protocol = 123,
-        DestinationPortRange = list(
-          FromPort = 123,
-          ToPort = 123
-        ),
-        SourcePortRange = list(
-          FromPort = 123,
-          ToPort = 123
-        ),
-        DestinationCidrBlock = "string",
-        SourceCidrBlock = "string",
-        Description = "string"
-      )
-    ),
-    NetworkServices = list(
-      "amazon-dns"
-    ),
-    Description = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Allows or restricts mirroring network services.
 
-By default, Amazon DNS network services are not eligible for Traffic
-Mirror. Use \code{AddNetworkServices} to add network services to a Traffic
-Mirror filter. When a network service is added to the Traffic Mirror
-filter, all traffic related to that network service will be mirrored.
-When you no longer want to mirror network services, use
-\code{RemoveNetworkServices} to remove the network services from the Traffic
-Mirror filter.
-
-For information about filter rule properties, see \href{https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html}{Network Services}
-in the \emph{Traffic Mirroring User Guide} .
+See \url{https://paws-r.github.io/docs/ec2/modify_traffic_mirror_filter_network_services.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_traffic_mirror_filter_network_services(
-  TrafficMirrorFilterId = "string",
-  AddNetworkServices = list(
-    "amazon-dns"
-  ),
-  RemoveNetworkServices = list(
-    "amazon-dns"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

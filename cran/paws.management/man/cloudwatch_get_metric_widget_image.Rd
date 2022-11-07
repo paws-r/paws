@@ -5,7 +5,7 @@
 \title{You can use the GetMetricWidgetImage API to retrieve a snapshot graph of
 one or more Amazon CloudWatch metrics as a bitmap image}
 \usage{
-cloudwatch_get_metric_widget_image(MetricWidget, OutputFormat)
+cloudwatch_get_metric_widget_image(MetricWidget, OutputFormat = NULL)
 }
 \arguments{
 \item{MetricWidget}{[required] A JSON string that defines the bitmap graph to be retrieved. The string
@@ -48,42 +48,14 @@ response with the content-type set to \code{text/xml}. The image data is in a
 \verb{</GetMetricWidgetImageResponse>}
 
 The \code{image/png} setting is intended only for custom HTTP requests. For
-most use cases, and all actions using an AWS SDK, you should use \code{png}.
-If you specify \code{image/png}, the HTTP response has a content-type set to
-\code{image/png}, and the body of the response is a PNG image.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  MetricWidgetImage = raw
-)
-}
+most use cases, and all actions using an Amazon Web Services SDK, you
+should use \code{png}. If you specify \code{image/png}, the HTTP response has a
+content-type set to \code{image/png}, and the body of the response is a PNG
+image.}
 }
 \description{
-You can use the
-\code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} API to
-retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a
-bitmap image. You can then embed this image into your services and
-products, such as wiki pages, reports, and documents. You could also
-retrieve images regularly, such as every minute, and create your own
-custom live dashboard.
+You can use the \code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image. You can then embed this image into your services and products, such as wiki pages, reports, and documents. You could also retrieve images regularly, such as every minute, and create your own custom live dashboard.
 
-The graph you retrieve can include all CloudWatch metric graph features,
-including metric math and horizontal and vertical annotations.
-
-There is a limit of 20 transactions per second for this API. Each
-\code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} action
-has the following limits:
-\itemize{
-\item As many as 100 metrics in the graph.
-\item Up to 100 KB uncompressed payload.
+See \url{https://paws-r.github.io/docs/cloudwatch/get_metric_widget_image.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_metric_widget_image(
-  MetricWidget = "string",
-  OutputFormat = "string"
-)
-}
-}
-
 \keyword{internal}

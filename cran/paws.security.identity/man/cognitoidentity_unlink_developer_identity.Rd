@@ -4,8 +4,12 @@
 \alias{cognitoidentity_unlink_developer_identity}
 \title{Unlinks a DeveloperUserIdentifier from an existing identity}
 \usage{
-cognitoidentity_unlink_developer_identity(IdentityId, IdentityPoolId,
-  DeveloperProviderName, DeveloperUserIdentifier)
+cognitoidentity_unlink_developer_identity(
+  IdentityId,
+  IdentityPoolId,
+  DeveloperProviderName,
+  DeveloperUserIdentifier
+)
 }
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
@@ -17,26 +21,9 @@ cognitoidentity_unlink_developer_identity(IdentityId, IdentityPoolId,
 \item{DeveloperUserIdentifier}{[required] A unique ID used by your backend authentication process to identify a
 user.}
 }
-\value{
-An empty list.
-}
 \description{
-Unlinks a \code{DeveloperUserIdentifier} from an existing identity. Unlinked
-developer users will be considered new identities next time they are
-seen. If, for a given Cognito identity, you remove all federated
-identities as well as the developer user identifier, the Cognito
-identity becomes inaccessible.
+Unlinks a \code{DeveloperUserIdentifier} from an existing identity. Unlinked developer users will be considered new identities next time they are seen. If, for a given Cognito identity, you remove all federated identities as well as the developer user identifier, the Cognito identity becomes inaccessible.
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/unlink_developer_identity.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$unlink_developer_identity(
-  IdentityId = "string",
-  IdentityPoolId = "string",
-  DeveloperProviderName = "string",
-  DeveloperUserIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

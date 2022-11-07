@@ -4,8 +4,14 @@
 \alias{servicecatalog_search_products}
 \title{Gets information about the products to which the caller has access}
 \usage{
-servicecatalog_search_products(AcceptLanguage, Filters, PageSize,
-  SortBy, SortOrder, PageToken)
+servicecatalog_search_products(
+  AcceptLanguage = NULL,
+  Filters = NULL,
+  PageSize = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  PageToken = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -27,52 +33,9 @@ includes all products to which the caller has access.}
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProductViewSummaries = list(
-    list(
-      Id = "string",
-      ProductId = "string",
-      Name = "string",
-      Owner = "string",
-      ShortDescription = "string",
-      Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-      Distributor = "string",
-      HasDefaultPath = TRUE|FALSE,
-      SupportEmail = "string",
-      SupportDescription = "string",
-      SupportUrl = "string"
-    )
-  ),
-  ProductViewAggregations = list(
-    list(
-      list(
-        Value = "string",
-        ApproximateCount = 123
-      )
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
 Gets information about the products to which the caller has access.
-}
-\section{Request syntax}{
-\preformatted{svc$search_products(
-  AcceptLanguage = "string",
-  Filters = list(
-    list(
-      "string"
-    )
-  ),
-  PageSize = 123,
-  SortBy = "Title"|"VersionCount"|"CreationDate",
-  SortOrder = "ASCENDING"|"DESCENDING",
-  PageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/search_products.html} for full documentation.
+}
 \keyword{internal}

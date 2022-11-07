@@ -12,38 +12,9 @@ configservice_put_delivery_channel(DeliveryChannel)
 configuration information to an Amazon S3 bucket and to an Amazon SNS
 topic.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a delivery channel object to deliver configuration information
-to an Amazon S3 bucket and Amazon SNS topic.
+Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic.
 
-Before you can create a delivery channel, you must create a
-configuration recorder.
-
-You can use this action to change the Amazon S3 bucket or an Amazon SNS
-topic of the existing delivery channel. To change the Amazon S3 bucket
-or an Amazon SNS topic, call this action and specify the changed values
-for the S3 bucket and the SNS topic. If you specify a different value
-for either the S3 bucket or the SNS topic, this action will keep the
-existing value for the parameter that is not changed.
-
-You can have only one delivery channel per region in your account.
+See \url{https://paws-r.github.io/docs/configservice/put_delivery_channel.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_delivery_channel(
-  DeliveryChannel = list(
-    name = "string",
-    s3BucketName = "string",
-    s3KeyPrefix = "string",
-    snsTopicARN = "string",
-    configSnapshotDeliveryProperties = list(
-      deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

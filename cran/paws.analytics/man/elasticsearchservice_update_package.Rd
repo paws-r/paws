@@ -4,8 +4,12 @@
 \alias{elasticsearchservice_update_package}
 \title{Updates a package for use with Amazon ES domains}
 \usage{
-elasticsearchservice_update_package(PackageID, PackageSource,
-  PackageDescription, CommitMessage)
+elasticsearchservice_update_package(
+  PackageID,
+  PackageSource,
+  PackageDescription = NULL,
+  CommitMessage = NULL
+)
 }
 \arguments{
 \item{PackageID}{[required] Unique identifier for the package.}
@@ -17,43 +21,9 @@ elasticsearchservice_update_package(PackageID, PackageSource,
 \item{CommitMessage}{An info message for the new version which will be shown as part of
 \code{GetPackageVersionHistoryResponse}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PackageDetails = list(
-    PackageID = "string",
-    PackageName = "string",
-    PackageType = "TXT-DICTIONARY",
-    PackageDescription = "string",
-    PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    AvailablePackageVersion = "string",
-    ErrorDetails = list(
-      ErrorType = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Updates a package for use with Amazon ES domains.
-}
-\section{Request syntax}{
-\preformatted{svc$update_package(
-  PackageID = "string",
-  PackageSource = list(
-    S3BucketName = "string",
-    S3Key = "string"
-  ),
-  PackageDescription = "string",
-  CommitMessage = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/update_package.html} for full documentation.
+}
 \keyword{internal}

@@ -3,17 +3,22 @@
 \name{securityhub_list_members}
 \alias{securityhub_list_members}
 \title{Lists details about all member accounts for the current Security Hub
-master account}
+administrator account}
 \usage{
-securityhub_list_members(OnlyAssociated, MaxResults, NextToken)
+securityhub_list_members(
+  OnlyAssociated = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{OnlyAssociated}{Specifies which member accounts to include in the response based on
-their relationship status with the master account. The default value is
-\code{TRUE}.
+their relationship status with the administrator account. The default
+value is \code{TRUE}.
 
 If \code{OnlyAssociated} is set to \code{TRUE}, the response includes member
-accounts whose relationship status with the master is set to \code{ENABLED}.
+accounts whose relationship status with the administrator account is set
+to \code{ENABLED}.
 
 If \code{OnlyAssociated} is set to \code{FALSE}, the response includes all
 existing member accounts.}
@@ -28,40 +33,9 @@ For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous
 response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Members = list(
-    list(
-      AccountId = "string",
-      Email = "string",
-      MasterId = "string",
-      MemberStatus = "string",
-      InvitedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdatedAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists details about all member accounts for the current Security Hub
-master account.
+Lists details about all member accounts for the current Security Hub administrator account.
 
-The results include both member accounts that belong to an organization
-and member accounts that were invited manually.
+See \url{https://paws-r.github.io/docs/securityhub/list_members.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_members(
-  OnlyAssociated = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

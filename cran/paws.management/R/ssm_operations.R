@@ -6,75 +6,44 @@ NULL
 #' Adds or overwrites one or more tags for the specified resource
 #'
 #' @description
-#' Adds or overwrites one or more tags for the specified resource. Tags are
-#' metadata that you can assign to your documents, managed instances,
-#' maintenance windows, Parameter Store parameters, and patch baselines.
-#' Tags enable you to categorize your resources in different ways, for
-#' example, by purpose, owner, or environment. Each tag consists of a key
-#' and an optional value, both of which you define. For example, you could
-#' define a set of tags for your account's managed instances that helps you
-#' track each instance's owner and stack level. For example: Key=Owner and
-#' Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production,
-#' Pre-Production, or Test.
-#' 
-#' Each resource can have a maximum of 50 tags.
-#' 
-#' We recommend that you devise a set of tag keys that meets your needs for
-#' each resource type. Using a consistent set of tag keys makes it easier
-#' for you to manage your resources. You can search and filter the
-#' resources based on the tags you add. Tags don't have any semantic
-#' meaning to and are interpreted strictly as a string of characters.
-#' 
-#' For more information about using tags with EC2 instances, see [Tagging
-#' your Amazon EC2
-#' resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
-#' in the *Amazon EC2 User Guide*.
+#' Adds or overwrites one or more tags for the specified resource. *Tags* are metadata that you can assign to your automations, documents, managed nodes, maintenance windows, Parameter Store parameters, and patch baselines. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag consists of a key and an optional value, both of which you define. For example, you could define a set of tags for your account's managed nodes that helps you track each node's owner and stack level. For example:
 #'
-#' @usage
-#' ssm_add_tags_to_resource(ResourceType, ResourceId, Tags)
+#' See [https://paws-r.github.io/docs/ssm/add_tags_to_resource.html](https://paws-r.github.io/docs/ssm/add_tags_to_resource.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; Specifies the type of resource you are tagging.
 #' 
-#' The ManagedInstance type for this API action is for on-premises managed
-#' instances. You must specify the name of the managed instance in the
-#' following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+#' The `ManagedInstance` type for this API operation is for on-premises
+#' managed nodes. You must specify the name of the managed node in the
+#' following format: `mi-ID_number `. For example, `mi-1a2b3c4d5e6f`.
 #' @param ResourceId &#91;required&#93; The resource ID you want to tag.
 #' 
 #' Use the ID of the resource. Here are some examples:
 #' 
-#' ManagedInstance: mi-012345abcde
+#' `MaintenanceWindow`: `mw-012345abcde`
 #' 
-#' MaintenanceWindow: mw-012345abcde
+#' `PatchBaseline`: `pb-012345abcde`
 #' 
-#' PatchBaseline: pb-012345abcde
+#' `Automation`: `example-c160-4567-8519-012345abcde`
 #' 
-#' For the Document and Parameter values, use the name of the resource.
+#' `OpsMetadata` object: `ResourceID` for tagging is created from the
+#' Amazon Resource Name (ARN) for the object. Specifically, `ResourceID` is
+#' created from the strings that come after the word `opsmetadata` in the
+#' ARN. For example, an OpsMetadata object with an ARN of
+#' `arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager`
+#' has a `ResourceID` of either `aws/ssm/MyGroup/appmanager` or
+#' `/aws/ssm/MyGroup/appmanager`.
 #' 
-#' The ManagedInstance type for this API action is only for on-premises
-#' managed instances. You must specify the name of the managed instance in
-#' the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
-#' @param Tags &#91;required&#93; One or more tags. The value parameter is required, but if you don't want
-#' the tag to have a value, specify the parameter with no value, and we set
-#' the value to an empty string.
+#' For the `Document` and `Parameter` values, use the name of the resource.
 #' 
-#' Do not enter personally identifiable information in this field.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_tags_to_resource(
-#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
-#'   ResourceId = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' `ManagedInstance`: `mi-012345abcde`
+#' 
+#' The `ManagedInstance` type for this API operation is only for
+#' on-premises managed nodes. You must specify the name of the managed node
+#' in the following format: `mi-ID_number `. For example,
+#' `mi-1a2b3c4d5e6f`.
+#' @param Tags &#91;required&#93; One or more tags. The value parameter is required.
+#' 
+#' Don't enter personally identifiable information in this field.
 #'
 #' @keywords internal
 #'
@@ -96,33 +65,58 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
 }
 .ssm$operations$add_tags_to_resource <- ssm_add_tags_to_resource
 
+#' Associates a related item to a Systems Manager OpsCenter OpsItem
+#'
+#' @description
+#' Associates a related item to a Systems Manager OpsCenter OpsItem. For example, you can associate an Incident Manager incident or analysis with an OpsItem. Incident Manager and OpsCenter are capabilities of Amazon Web Services Systems Manager.
+#'
+#' See [https://paws-r.github.io/docs/ssm/associate_ops_item_related_item.html](https://paws-r.github.io/docs/ssm/associate_ops_item_related_item.html) for full documentation.
+#'
+#' @param OpsItemId &#91;required&#93; The ID of the OpsItem to which you want to associate a resource as a
+#' related item.
+#' @param AssociationType &#91;required&#93; The type of association that you want to create between an OpsItem and a
+#' resource. OpsCenter supports `IsParentOf` and `RelatesTo` association
+#' types.
+#' @param ResourceType &#91;required&#93; The type of resource that you want to associate with an OpsItem.
+#' OpsCenter supports the following types:
+#' 
+#' `AWS::SSMIncidents::IncidentRecord`: an Incident Manager incident.
+#' 
+#' `AWS::SSM::Document`: a Systems Manager (SSM) document.
+#' @param ResourceUri &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource that
+#' you want to associate with the OpsItem.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_associate_ops_item_related_item
+ssm_associate_ops_item_related_item <- function(OpsItemId, AssociationType, ResourceType, ResourceUri) {
+  op <- new_operation(
+    name = "AssociateOpsItemRelatedItem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$associate_ops_item_related_item_input(OpsItemId = OpsItemId, AssociationType = AssociationType, ResourceType = ResourceType, ResourceUri = ResourceUri)
+  output <- .ssm$associate_ops_item_related_item_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$associate_ops_item_related_item <- ssm_associate_ops_item_related_item
+
 #' Attempts to cancel the command specified by the Command ID
 #'
 #' @description
-#' Attempts to cancel the command specified by the Command ID. There is no
-#' guarantee that the command will be terminated and the underlying process
-#' stopped.
+#' Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.
 #'
-#' @usage
-#' ssm_cancel_command(CommandId, InstanceIds)
+#' See [https://paws-r.github.io/docs/ssm/cancel_command.html](https://paws-r.github.io/docs/ssm/cancel_command.html) for full documentation.
 #'
 #' @param CommandId &#91;required&#93; The ID of the command you want to cancel.
-#' @param InstanceIds (Optional) A list of instance IDs on which you want to cancel the
-#' command. If not provided, the command is canceled on every instance on
-#' which it was requested.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_command(
-#'   CommandId = "string",
-#'   InstanceIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param InstanceIds (Optional) A list of managed node IDs on which you want to cancel the
+#' command. If not provided, the command is canceled on every node on which
+#' it was requested.
 #'
 #' @keywords internal
 #'
@@ -145,32 +139,14 @@ ssm_cancel_command <- function(CommandId, InstanceIds = NULL) {
 .ssm$operations$cancel_command <- ssm_cancel_command
 
 #' Stops a maintenance window execution that is already in progress and
-#' cancels any tasks in the window that have not already starting running
+#' cancels any tasks in the window that haven't already starting running
 #'
 #' @description
-#' Stops a maintenance window execution that is already in progress and
-#' cancels any tasks in the window that have not already starting running.
-#' (Tasks already in progress will continue to completion.)
+#' Stops a maintenance window execution that is already in progress and cancels any tasks in the window that haven't already starting running. Tasks already in progress will continue to completion.
 #'
-#' @usage
-#' ssm_cancel_maintenance_window_execution(WindowExecutionId)
+#' See [https://paws-r.github.io/docs/ssm/cancel_maintenance_window_execution.html](https://paws-r.github.io/docs/ssm/cancel_maintenance_window_execution.html) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowExecutionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_maintenance_window_execution(
-#'   WindowExecutionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -193,54 +169,42 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 .ssm$operations$cancel_maintenance_window_execution <- ssm_cancel_maintenance_window_execution
 
 #' Generates an activation code and activation ID you can use to register
-#' your on-premises server or virtual machine (VM) with Systems Manager
+#' your on-premises servers, edge devices, or virtual machine (VM) with
+#' Amazon Web Services Systems Manager
 #'
 #' @description
-#' Generates an activation code and activation ID you can use to register
-#' your on-premises server or virtual machine (VM) with Systems Manager.
-#' Registering these machines with Systems Manager makes it possible to
-#' manage them using Systems Manager capabilities. You use the activation
-#' code and ID when installing SSM Agent on machines in your hybrid
-#' environment. For more information about requirements for managing
-#' on-premises instances and VMs using Systems Manager, see [Setting up AWS
-#' Systems Manager for hybrid
-#' environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html)
-#' in the *AWS Systems Manager User Guide*.
-#' 
-#' On-premises servers or VMs that are registered with Systems Manager and
-#' EC2 instances that you manage with Systems Manager are all called
-#' *managed instances*.
+#' Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager. Registering these machines with Systems Manager makes it possible to manage them using Systems Manager capabilities. You use the activation code and ID when installing SSM Agent on machines in your hybrid environment. For more information about requirements for managing on-premises machines using Systems Manager, see [Setting up Amazon Web Services Systems Manager for hybrid environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' @usage
-#' ssm_create_activation(Description, DefaultInstanceName, IamRole,
-#'   RegistrationLimit, ExpirationDate, Tags)
+#' See [https://paws-r.github.io/docs/ssm/create_activation.html](https://paws-r.github.io/docs/ssm/create_activation.html) for full documentation.
 #'
 #' @param Description A user-defined description of the resource that you want to register
 #' with Systems Manager.
 #' 
-#' Do not enter personally identifiable information in this field.
-#' @param DefaultInstanceName The name of the registered, managed instance as it will appear in the
-#' Systems Manager console or when you use the AWS command line tools to
-#' list Systems Manager resources.
+#' Don't enter personally identifiable information in this field.
+#' @param DefaultInstanceName The name of the registered, managed node as it will appear in the Amazon
+#' Web Services Systems Manager console or when you use the Amazon Web
+#' Services command line tools to list Systems Manager resources.
 #' 
-#' Do not enter personally identifiable information in this field.
-#' @param IamRole &#91;required&#93; The Amazon Identity and Access Management (IAM) role that you want to
-#' assign to the managed instance. This IAM role must provide AssumeRole
-#' permissions for the Systems Manager service principal
-#' `ssm.amazonaws.com`. For more information, see [Create an IAM service
-#' role for a hybrid
+#' Don't enter personally identifiable information in this field.
+#' @param IamRole &#91;required&#93; The name of the Identity and Access Management (IAM) role that you want
+#' to assign to the managed node. This IAM role must provide AssumeRole
+#' permissions for the Amazon Web Services Systems Manager service
+#' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
+#' service role for a hybrid
 #' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
-#' in the *AWS Systems Manager User Guide*.
-#' @param RegistrationLimit Specify the maximum number of managed instances you want to register.
-#' The default value is 1 instance.
-#' @param ExpirationDate The date by which this activation request should expire. The default
-#' value is 24 hours.
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param RegistrationLimit Specify the maximum number of managed nodes you want to register. The
+#' default value is `1`.
+#' @param ExpirationDate The date by which this activation request should expire, in timestamp
+#' format, such as "2021-07-07T00:00:00". You can specify a date up to 30
+#' days in advance. If you don't provide an expiration date, the activation
+#' code expires in 24 hours.
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
 #' environment. For example, you might want to tag an activation to
 #' identify which servers or virtual machines (VMs) in your on-premises
 #' environment you intend to activate. In this case, you could specify the
-#' following key name/value pairs:
+#' following key-value pairs:
 #' 
 #' -   `Key=OS,Value=Windows`
 #' 
@@ -252,54 +216,27 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' the on-premises servers or VMs.
 #' 
 #' You can't add tags to or delete tags from an existing activation. You
-#' can tag your on-premises servers and VMs after they connect to Systems
-#' Manager for the first time and are assigned a managed instance ID. This
-#' means they are listed in the AWS Systems Manager console with an ID that
-#' is prefixed with "mi-". For information about how to add tags to your
-#' managed instances, see
+#' can tag your on-premises servers, edge devices, and VMs after they
+#' connect to Systems Manager for the first time and are assigned a managed
+#' node ID. This means they are listed in the Amazon Web Services Systems
+#' Manager console with an ID that is prefixed with "mi-". For information
+#' about how to add tags to your managed nodes, see
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource]. For information
-#' about how to remove tags from your managed instances, see
+#' about how to remove tags from your managed nodes, see
 #' [`remove_tags_from_resource`][ssm_remove_tags_from_resource].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ActivationId = "string",
-#'   ActivationCode = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_activation(
-#'   Description = "string",
-#'   DefaultInstanceName = "string",
-#'   IamRole = "string",
-#'   RegistrationLimit = 123,
-#'   ExpirationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param RegistrationMetadata Reserved for internal use.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_create_activation
-ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL, IamRole, RegistrationLimit = NULL, ExpirationDate = NULL, Tags = NULL) {
+ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL, IamRole, RegistrationLimit = NULL, ExpirationDate = NULL, Tags = NULL, RegistrationMetadata = NULL) {
   op <- new_operation(
     name = "CreateActivation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_activation_input(Description = Description, DefaultInstanceName = DefaultInstanceName, IamRole = IamRole, RegistrationLimit = RegistrationLimit, ExpirationDate = ExpirationDate, Tags = Tags)
+  input <- .ssm$create_activation_input(Description = Description, DefaultInstanceName = DefaultInstanceName, IamRole = IamRole, RegistrationLimit = RegistrationLimit, ExpirationDate = ExpirationDate, Tags = Tags, RegistrationMetadata = RegistrationMetadata)
   output <- .ssm$create_activation_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -310,38 +247,22 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 .ssm$operations$create_activation <- ssm_create_activation
 
 #' A State Manager association defines the state that you want to maintain
-#' on your instances
+#' on your managed nodes
 #'
 #' @description
-#' A State Manager association defines the state that you want to maintain
-#' on your instances. For example, an association can specify that
-#' anti-virus software must be installed and running on your instances, or
-#' that certain ports must be closed. For static targets, the association
-#' specifies a schedule for when the configuration is reapplied. For
-#' dynamic targets, such as an AWS Resource Group or an AWS Autoscaling
-#' Group, State Manager applies the configuration when new instances are
-#' added to the group. The association also specifies actions to take when
-#' applying the configuration. For example, an association for anti-virus
-#' software might run once a day. If the software is not installed, then
-#' State Manager installs it. If the software is installed, but the service
-#' is not running, then the association might instruct State Manager to
-#' start the service.
+#' A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a capability of Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.
 #'
-#' @usage
-#' ssm_create_association(Name, DocumentVersion, InstanceId, Parameters,
-#'   Targets, ScheduleExpression, OutputLocation, AssociationName,
-#'   AutomationTargetParameterName, MaxErrors, MaxConcurrency,
-#'   ComplianceSeverity, SyncCompliance, ApplyOnlyAtCronInterval,
-#'   TargetLocations)
+#' See [https://paws-r.github.io/docs/ssm/create_association.html](https://paws-r.github.io/docs/ssm/create_association.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the SSM document that contains the configuration information
-#' for the instance. You can specify Command or Automation documents.
+#' @param Name &#91;required&#93; The name of the SSM Command document or Automation runbook that contains
+#' the configuration information for the managed node.
 #' 
-#' You can specify AWS-predefined documents, documents you created, or a
-#' document that is shared with you from another account.
+#' You can specify Amazon Web Services-predefined documents, documents you
+#' created, or a document that is shared with you from another account.
 #' 
-#' For SSM documents that are shared with you from other AWS accounts, you
-#' must specify the complete SSM document ARN, in the following format:
+#' For Systems Manager documents (SSM documents) that are shared with you
+#' from other Amazon Web Services accounts, you must specify the complete
+#' SSM document ARN, in the following format:
 #' 
 #' `arn:partition:ssm:region:account-id:document/document-name `
 #' 
@@ -349,59 +270,72 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' 
 #' `arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document`
 #' 
-#' For AWS-predefined documents and SSM documents you created in your
-#' account, you only need to specify the document name. For example,
-#' `AWS-ApplyPatchBaseline` or `My-Document`.
+#' For Amazon Web Services-predefined documents and SSM documents you
+#' created in your account, you only need to specify the document name. For
+#' example, `AWS-ApplyPatchBaseline` or `My-Document`.
 #' @param DocumentVersion The document version you want to associate with the target(s). Can be a
 #' specific version or the default version.
-#' @param InstanceId The instance ID.
 #' 
-#' `InstanceId` has been deprecated. To specify an instance ID for an
+#' State Manager doesn't support running associations that use a new
+#' version of a document if that document is shared from another account.
+#' State Manager always runs the `default` version of a document if shared
+#' from another account, even though the Systems Manager console shows that
+#' a new version was processed. If you want to run an association using a
+#' new version of a document shared form another account, you must set the
+#' document version to `default`.
+#' @param InstanceId The managed node ID.
+#' 
+#' `InstanceId` has been deprecated. To specify a managed node ID for an
 #' association, use the `Targets` parameter. Requests that include the
-#' parameter `InstanceID` with SSM documents that use schema version 2.0 or
-#' later will fail. In addition, if you use the parameter `InstanceId`, you
-#' cannot use the parameters `AssociationName`, `DocumentVersion`,
-#' `MaxErrors`, `MaxConcurrency`, `OutputLocation`, or
-#' `ScheduleExpression`. To use these parameters, you must use the
-#' `Targets` parameter.
+#' parameter `InstanceID` with Systems Manager documents (SSM documents)
+#' that use schema version 2.0 or later will fail. In addition, if you use
+#' the parameter `InstanceId`, you can't use the parameters
+#' `AssociationName`, `DocumentVersion`, `MaxErrors`, `MaxConcurrency`,
+#' `OutputLocation`, or `ScheduleExpression`. To use these parameters, you
+#' must use the `Targets` parameter.
 #' @param Parameters The parameters for the runtime configuration of the document.
-#' @param Targets The targets for the association. You can target instances by using tags,
-#' AWS Resource Groups, all instances in an AWS account, or individual
-#' instance IDs. For more information about choosing targets for an
-#' association, see [Using targets and rate controls with State Manager
+#' @param Targets The targets for the association. You can target managed nodes by using
+#' tags, Amazon Web Services resource groups, all managed nodes in an
+#' Amazon Web Services account, or individual managed node IDs. You can
+#' target all managed nodes in an Amazon Web Services account by specifying
+#' the `InstanceIds` key with a value of `*`. For more information about
+#' choosing targets for an association, see [Using targets and rate
+#' controls with State Manager
 #' associations](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param ScheduleExpression A cron expression when the association will be applied to the target(s).
-#' @param OutputLocation An S3 bucket where you want to store the output details of the request.
+#' @param OutputLocation An Amazon Simple Storage Service (Amazon S3) bucket where you want to
+#' store the output details of the request.
 #' @param AssociationName Specify a descriptive name for the association.
-#' @param AutomationTargetParameterName Specify the target for the association. This target is required for
-#' associations that use an Automation document and target resources by
-#' using rate controls.
+#' @param AutomationTargetParameterName Choose the parameter that will define how your automation will branch
+#' out. This target is required for associations that use an Automation
+#' runbook and target resources by using rate controls. Automation is a
+#' capability of Amazon Web Services Systems Manager.
 #' @param MaxErrors The number of errors that are allowed before the system stops sending
 #' requests to run the association on additional targets. You can specify
 #' either an absolute number of errors, for example 10, or a percentage of
 #' the target set, for example 10%. If you specify 3, for example, the
 #' system stops sending requests when the fourth error is received. If you
 #' specify 0, then the system stops sending requests after the first error
-#' is returned. If you run an association on 50 instances and set MaxError
-#' to 10%, then the system stops sending the request when the sixth error
-#' is received.
+#' is returned. If you run an association on 50 managed nodes and set
+#' `MaxError` to 10%, then the system stops sending the request when the
+#' sixth error is received.
 #' 
-#' Executions that are already running an association when MaxErrors is
+#' Executions that are already running an association when `MaxErrors` is
 #' reached are allowed to complete, but some of these executions may fail
 #' as well. If you need to ensure that there won't be more than max-errors
-#' failed executions, set MaxConcurrency to 1 so that executions proceed
+#' failed executions, set `MaxConcurrency` to 1 so that executions proceed
 #' one at a time.
 #' @param MaxConcurrency The maximum number of targets allowed to run the association at the same
 #' time. You can specify a number, for example 10, or a percentage of the
 #' target set, for example 10%. The default value is 100%, which means all
 #' targets run the association at the same time.
 #' 
-#' If a new instance starts and attempts to run an association while
-#' Systems Manager is running MaxConcurrency associations, the association
-#' is allowed to run. During the next association interval, the new
-#' instance will process its association within the limit specified for
-#' MaxConcurrency.
+#' If a new managed node starts and attempts to run an association while
+#' Systems Manager is running `MaxConcurrency` associations, the
+#' association is allowed to run. During the next association interval, the
+#' new managed node will process its association within the limit specified
+#' for `MaxConcurrency`.
 #' @param ComplianceSeverity The severity level to assign to the association.
 #' @param SyncCompliance The mode for generating association compliance. You can specify `AUTO`
 #' or `MANUAL`. In `AUTO` mode, the system uses the status of the
@@ -411,164 +345,52 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' association is `NON-COMPLIANT`.
 #' 
 #' In `MANUAL` mode, you must specify the `AssociationId` as a parameter
-#' for the [`put_compliance_items`][ssm_put_compliance_items] API action.
-#' In this case, compliance data is not managed by State Manager. It is
-#' managed by your direct call to the
-#' [`put_compliance_items`][ssm_put_compliance_items] API action.
+#' for the [`put_compliance_items`][ssm_put_compliance_items] API
+#' operation. In this case, compliance data isn't managed by State Manager.
+#' It is managed by your direct call to the
+#' [`put_compliance_items`][ssm_put_compliance_items] API operation.
 #' 
 #' By default, all associations use `AUTO` mode.
-#' @param ApplyOnlyAtCronInterval By default, when you create a new associations, the system runs it
+#' @param ApplyOnlyAtCronInterval By default, when you create a new association, the system runs it
 #' immediately after it is created and then according to the schedule you
 #' specified. Specify this option if you don't want an association to run
-#' immediately after you create it. This parameter is not supported for
-#' rate expressions.
-#' @param TargetLocations A location is a combination of AWS Regions and AWS accounts where you
-#' want to run the association. Use this action to create an association in
-#' multiple Regions and multiple accounts.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssociationDescription = list(
-#'     Name = "string",
-#'     InstanceId = "string",
-#'     AssociationVersion = "string",
-#'     Date = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateAssociationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = list(
-#'       Date = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "Pending"|"Success"|"Failed",
-#'       Message = "string",
-#'       AdditionalInfo = "string"
-#'     ),
-#'     Overview = list(
-#'       Status = "string",
-#'       DetailedStatus = "string",
-#'       AssociationStatusAggregatedCount = list(
-#'         123
-#'       )
-#'     ),
-#'     DocumentVersion = "string",
-#'     AutomationTargetParameterName = "string",
-#'     Parameters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     AssociationId = "string",
-#'     Targets = list(
-#'       list(
-#'         Key = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ScheduleExpression = "string",
-#'     OutputLocation = list(
-#'       S3Location = list(
-#'         OutputS3Region = "string",
-#'         OutputS3BucketName = "string",
-#'         OutputS3KeyPrefix = "string"
-#'       )
-#'     ),
-#'     LastExecutionDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastSuccessfulExecutionDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AssociationName = "string",
-#'     MaxErrors = "string",
-#'     MaxConcurrency = "string",
-#'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'     SyncCompliance = "AUTO"|"MANUAL",
-#'     ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'     TargetLocations = list(
-#'       list(
-#'         Accounts = list(
-#'           "string"
-#'         ),
-#'         Regions = list(
-#'           "string"
-#'         ),
-#'         TargetLocationMaxConcurrency = "string",
-#'         TargetLocationMaxErrors = "string",
-#'         ExecutionRoleName = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_association(
-#'   Name = "string",
-#'   DocumentVersion = "string",
-#'   InstanceId = "string",
-#'   Parameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ScheduleExpression = "string",
-#'   OutputLocation = list(
-#'     S3Location = list(
-#'       OutputS3Region = "string",
-#'       OutputS3BucketName = "string",
-#'       OutputS3KeyPrefix = "string"
-#'     )
-#'   ),
-#'   AssociationName = "string",
-#'   AutomationTargetParameterName = "string",
-#'   MaxErrors = "string",
-#'   MaxConcurrency = "string",
-#'   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'   SyncCompliance = "AUTO"|"MANUAL",
-#'   ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'   TargetLocations = list(
-#'     list(
-#'       Accounts = list(
-#'         "string"
-#'       ),
-#'       Regions = list(
-#'         "string"
-#'       ),
-#'       TargetLocationMaxConcurrency = "string",
-#'       TargetLocationMaxErrors = "string",
-#'       ExecutionRoleName = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' immediately after you create it. This parameter isn't supported for rate
+#' expressions.
+#' @param CalendarNames The names or Amazon Resource Names (ARNs) of the Change Calendar type
+#' documents you want to gate your associations under. The associations
+#' only run when that change calendar is open. For more information, see
+#' [Amazon Web Services Systems Manager Change
+#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html).
+#' @param TargetLocations A location is a combination of Amazon Web Services Regions and Amazon
+#' Web Services accounts where you want to run the association. Use this
+#' action to create an association in multiple Regions and multiple
+#' accounts.
+#' @param ScheduleOffset Number of days to wait after the scheduled day to run an association.
+#' For example, if you specified a cron schedule of
+#' `cron(0 0 ? * THU#2 *)`, you could specify an offset of 3 to run the
+#' association each Sunday after the second Thursday of the month. For more
+#' information about cron schedules for associations, see [Reference: Cron
+#' and rate expressions for Systems
+#' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' 
+#' To use offsets, you must specify the `ApplyOnlyAtCronInterval`
+#' parameter. This option tells the system not to run an association
+#' immediately after you create it.
+#' @param TargetMaps A key-value mapping of document parameters to target resources. Both
+#' Targets and TargetMaps can't be specified together.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_create_association
-ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, TargetLocations = NULL) {
+ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, TargetMaps = NULL) {
   op <- new_operation(
     name = "CreateAssociation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_association_input(Name = Name, DocumentVersion = DocumentVersion, InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, TargetLocations = TargetLocations)
+  input <- .ssm$create_association_input(Name = Name, DocumentVersion = DocumentVersion, InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, TargetMaps = TargetMaps)
   output <- .ssm$create_association_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -578,215 +400,15 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 }
 .ssm$operations$create_association <- ssm_create_association
 
-#' Associates the specified Systems Manager document with the specified
-#' instances or targets
+#' Associates the specified Amazon Web Services Systems Manager document
+#' (SSM document) with the specified managed nodes or targets
 #'
 #' @description
-#' Associates the specified Systems Manager document with the specified
-#' instances or targets.
-#' 
-#' When you associate a document with one or more instances using instance
-#' IDs or tags, SSM Agent running on the instance processes the document
-#' and configures the instance as specified.
-#' 
-#' If you associate a document with an instance that already has an
-#' associated document, the system returns the AssociationAlreadyExists
-#' exception.
+#' Associates the specified Amazon Web Services Systems Manager document (SSM document) with the specified managed nodes or targets.
 #'
-#' @usage
-#' ssm_create_association_batch(Entries)
+#' See [https://paws-r.github.io/docs/ssm/create_association_batch.html](https://paws-r.github.io/docs/ssm/create_association_batch.html) for full documentation.
 #'
 #' @param Entries &#91;required&#93; One or more associations.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Successful = list(
-#'     list(
-#'       Name = "string",
-#'       InstanceId = "string",
-#'       AssociationVersion = "string",
-#'       Date = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdateAssociationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = list(
-#'         Date = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Name = "Pending"|"Success"|"Failed",
-#'         Message = "string",
-#'         AdditionalInfo = "string"
-#'       ),
-#'       Overview = list(
-#'         Status = "string",
-#'         DetailedStatus = "string",
-#'         AssociationStatusAggregatedCount = list(
-#'           123
-#'         )
-#'       ),
-#'       DocumentVersion = "string",
-#'       AutomationTargetParameterName = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       AssociationId = "string",
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       ScheduleExpression = "string",
-#'       OutputLocation = list(
-#'         S3Location = list(
-#'           OutputS3Region = "string",
-#'           OutputS3BucketName = "string",
-#'           OutputS3KeyPrefix = "string"
-#'         )
-#'       ),
-#'       LastExecutionDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastSuccessfulExecutionDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       AssociationName = "string",
-#'       MaxErrors = "string",
-#'       MaxConcurrency = "string",
-#'       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'       SyncCompliance = "AUTO"|"MANUAL",
-#'       ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'       TargetLocations = list(
-#'         list(
-#'           Accounts = list(
-#'             "string"
-#'           ),
-#'           Regions = list(
-#'             "string"
-#'           ),
-#'           TargetLocationMaxConcurrency = "string",
-#'           TargetLocationMaxErrors = "string",
-#'           ExecutionRoleName = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Failed = list(
-#'     list(
-#'       Entry = list(
-#'         Name = "string",
-#'         InstanceId = "string",
-#'         Parameters = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         AutomationTargetParameterName = "string",
-#'         DocumentVersion = "string",
-#'         Targets = list(
-#'           list(
-#'             Key = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         ScheduleExpression = "string",
-#'         OutputLocation = list(
-#'           S3Location = list(
-#'             OutputS3Region = "string",
-#'             OutputS3BucketName = "string",
-#'             OutputS3KeyPrefix = "string"
-#'           )
-#'         ),
-#'         AssociationName = "string",
-#'         MaxErrors = "string",
-#'         MaxConcurrency = "string",
-#'         ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'         SyncCompliance = "AUTO"|"MANUAL",
-#'         ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'         TargetLocations = list(
-#'           list(
-#'             Accounts = list(
-#'               "string"
-#'             ),
-#'             Regions = list(
-#'               "string"
-#'             ),
-#'             TargetLocationMaxConcurrency = "string",
-#'             TargetLocationMaxErrors = "string",
-#'             ExecutionRoleName = "string"
-#'           )
-#'         )
-#'       ),
-#'       Message = "string",
-#'       Fault = "Client"|"Server"|"Unknown"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_association_batch(
-#'   Entries = list(
-#'     list(
-#'       Name = "string",
-#'       InstanceId = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       AutomationTargetParameterName = "string",
-#'       DocumentVersion = "string",
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       ScheduleExpression = "string",
-#'       OutputLocation = list(
-#'         S3Location = list(
-#'           OutputS3Region = "string",
-#'           OutputS3BucketName = "string",
-#'           OutputS3KeyPrefix = "string"
-#'         )
-#'       ),
-#'       AssociationName = "string",
-#'       MaxErrors = "string",
-#'       MaxConcurrency = "string",
-#'       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'       SyncCompliance = "AUTO"|"MANUAL",
-#'       ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'       TargetLocations = list(
-#'         list(
-#'           Accounts = list(
-#'             "string"
-#'           ),
-#'           Regions = list(
-#'             "string"
-#'           ),
-#'           TargetLocationMaxConcurrency = "string",
-#'           TargetLocationMaxErrors = "string",
-#'           ExecutionRoleName = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -808,197 +430,93 @@ ssm_create_association_batch <- function(Entries) {
 }
 .ssm$operations$create_association_batch <- ssm_create_association_batch
 
-#' Creates a Systems Manager (SSM) document
+#' Creates a Amazon Web Services Systems Manager (SSM document)
 #'
 #' @description
-#' Creates a Systems Manager (SSM) document. An SSM document defines the
-#' actions that Systems Manager performs on your managed instances. For
-#' more information about SSM documents, including information about
-#' supported schemas, features, and syntax, see [AWS Systems Manager
-#' Documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html)
-#' in the *AWS Systems Manager User Guide*.
+#' Creates a Amazon Web Services Systems Manager (SSM document). An SSM document defines the actions that Systems Manager performs on your managed nodes. For more information about SSM documents, including information about supported schemas, features, and syntax, see [Amazon Web Services Systems Manager Documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' @usage
-#' ssm_create_document(Content, Requires, Attachments, Name, VersionName,
-#'   DocumentType, DocumentFormat, TargetType, Tags)
+#' See [https://paws-r.github.io/docs/ssm/create_document.html](https://paws-r.github.io/docs/ssm/create_document.html) for full documentation.
 #'
 #' @param Content &#91;required&#93; The content for the new SSM document in JSON or YAML format. We
 #' recommend storing the contents for your new document in an external JSON
 #' or YAML file and referencing the file in a command.
 #' 
-#' For examples, see the following topics in the *AWS Systems Manager User
-#' Guide*.
+#' For examples, see the following topics in the *Amazon Web Services
+#' Systems Manager User Guide*.
 #' 
-#' -   [Create an SSM document (AWS
+#' -   [Create an SSM document (Amazon Web Services
 #'     API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
 #' 
-#' -   [Create an SSM document
-#'     (AWS CLI)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-cli.html)
+#' -   [Create an SSM document (Amazon Web Services
+#'     CLI)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-cli.html)
 #' 
 #' -   [Create an SSM document
 #'     (API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
 #' @param Requires A list of SSM documents required by a document. This parameter is used
-#' exclusively by AWS AppConfig. When a user creates an AppConfig
-#' configuration in an SSM document, the user must also specify a required
-#' document for validation purposes. In this case, an
-#' `ApplicationConfiguration` document requires an
-#' `ApplicationConfigurationSchema` document for validation purposes. For
-#' more information, see [AWS
-#' AppConfig](https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html)
-#' in the *AWS Systems Manager User Guide*.
-#' @param Attachments A list of key and value pairs that describe attachments to a version of
-#' a document.
-#' @param Name &#91;required&#93; A name for the Systems Manager document.
+#' exclusively by AppConfig. When a user creates an AppConfig configuration
+#' in an SSM document, the user must also specify a required document for
+#' validation purposes. In this case, an `ApplicationConfiguration`
+#' document requires an `ApplicationConfigurationSchema` document for
+#' validation purposes. For more information, see [What is
+#' AppConfig?](https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html)
+#' in the *AppConfig User Guide*.
+#' @param Attachments A list of key-value pairs that describe attachments to a version of a
+#' document.
+#' @param Name &#91;required&#93; A name for the SSM document.
 #' 
 #' You can't use the following strings as document name prefixes. These are
-#' reserved by AWS for use as document name prefixes:
+#' reserved by Amazon Web Services for use as document name prefixes:
 #' 
 #' -   `aws-`
 #' 
 #' -   `amazon`
 #' 
 #' -   `amzn`
+#' @param DisplayName An optional field where you can specify a friendly name for the SSM
+#' document. This value can differ for each version of the document. You
+#' can update this value at a later time using the
+#' [`update_document`][ssm_update_document] operation.
 #' @param VersionName An optional field specifying the version of the artifact you are
-#' creating with the document. For example, "Release 12, Update 6". This
-#' value is unique across all versions of a document, and cannot be
-#' changed.
+#' creating with the document. For example, `Release12.1`. This value is
+#' unique across all versions of a document, and can't be changed.
 #' @param DocumentType The type of document to create.
+#' 
+#' The `DeploymentStrategy` document type is an internal-use-only document
+#' type reserved for AppConfig.
 #' @param DocumentFormat Specify the document format for the request. The document format can be
 #' JSON, YAML, or TEXT. JSON is the default format.
 #' @param TargetType Specify a target type to define the kinds of resources the document can
 #' run on. For example, to run a document on EC2 instances, specify the
-#' following value: /AWS::EC2::Instance. If you specify a value of '/' the
-#' document can run on all types of resources. If you don't specify a
+#' following value: `/AWS::EC2::Instance`. If you specify a value of '/'
+#' the document can run on all types of resources. If you don't specify a
 #' value, the document can't run on any resources. For a list of valid
-#' resource types, see [AWS resource and property types
+#' resource types, see [Amazon Web Services resource and property types
 #' reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
-#' in the *AWS CloudFormation User Guide*.
+#' in the *CloudFormation User Guide*.
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
 #' environment. For example, you might want to tag an SSM document to
 #' identify the types of targets or the environment where it will run. In
-#' this case, you could specify the following key name/value pairs:
+#' this case, you could specify the following key-value pairs:
 #' 
 #' -   `Key=OS,Value=Windows`
 #' 
 #' -   `Key=Environment,Value=Production`
 #' 
 #' To add tags to an existing SSM document, use the
-#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentDescription = list(
-#'     Sha1 = "string",
-#'     Hash = "string",
-#'     HashType = "Sha256"|"Sha1",
-#'     Name = "string",
-#'     VersionName = "string",
-#'     Owner = "string",
-#'     CreatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
-#'     StatusInformation = "string",
-#'     DocumentVersion = "string",
-#'     Description = "string",
-#'     Parameters = list(
-#'       list(
-#'         Name = "string",
-#'         Type = "String"|"StringList",
-#'         Description = "string",
-#'         DefaultValue = "string"
-#'       )
-#'     ),
-#'     PlatformTypes = list(
-#'       "Windows"|"Linux"
-#'     ),
-#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
-#'     SchemaVersion = "string",
-#'     LatestVersion = "string",
-#'     DefaultVersion = "string",
-#'     DocumentFormat = "YAML"|"JSON"|"TEXT",
-#'     TargetType = "string",
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     AttachmentsInformation = list(
-#'       list(
-#'         Name = "string"
-#'       )
-#'     ),
-#'     Requires = list(
-#'       list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     Author = "string",
-#'     ReviewInformation = list(
-#'       list(
-#'         ReviewedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Status = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
-#'         Reviewer = "string"
-#'       )
-#'     ),
-#'     ApprovedVersion = "string",
-#'     PendingReviewVersion = "string",
-#'     ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_document(
-#'   Content = "string",
-#'   Requires = list(
-#'     list(
-#'       Name = "string",
-#'       Version = "string"
-#'     )
-#'   ),
-#'   Attachments = list(
-#'     list(
-#'       Key = "SourceUrl"|"S3FileUrl"|"AttachmentReference",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Name = "string"
-#'     )
-#'   ),
-#'   Name = "string",
-#'   VersionName = "string",
-#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
-#'   DocumentFormat = "YAML"|"JSON"|"TEXT",
-#'   TargetType = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_create_document
-ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Name, VersionName = NULL, DocumentType = NULL, DocumentFormat = NULL, TargetType = NULL, Tags = NULL) {
+ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Name, DisplayName = NULL, VersionName = NULL, DocumentType = NULL, DocumentFormat = NULL, TargetType = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_document_input(Content = Content, Requires = Requires, Attachments = Attachments, Name = Name, VersionName = VersionName, DocumentType = DocumentType, DocumentFormat = DocumentFormat, TargetType = TargetType, Tags = Tags)
+  input <- .ssm$create_document_input(Content = Content, Requires = Requires, Attachments = Attachments, Name = Name, DisplayName = DisplayName, VersionName = VersionName, DocumentType = DocumentType, DocumentFormat = DocumentFormat, TargetType = TargetType, Tags = Tags)
   output <- .ssm$create_document_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -1012,37 +530,27 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #'
 #' @description
 #' Creates a new maintenance window.
-#' 
-#' The value you specify for `Duration` determines the specific end time
-#' for the maintenance window based on the time it begins. No maintenance
-#' window tasks are permitted to start after the resulting endtime minus
-#' the number of hours you specify for `Cutoff`. For example, if the
-#' maintenance window starts at 3 PM, the duration is three hours, and the
-#' value you specify for `Cutoff` is one hour, no maintenance window tasks
-#' can start after 5 PM.
 #'
-#' @usage
-#' ssm_create_maintenance_window(Name, Description, StartDate, EndDate,
-#'   Schedule, ScheduleTimezone, ScheduleOffset, Duration, Cutoff,
-#'   AllowUnassociatedTargets, ClientToken, Tags)
+#' See [https://paws-r.github.io/docs/ssm/create_maintenance_window.html](https://paws-r.github.io/docs/ssm/create_maintenance_window.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the maintenance window.
 #' @param Description An optional description for the maintenance window. We recommend
 #' specifying a description to help you organize your maintenance windows.
 #' @param StartDate The date and time, in ISO-8601 Extended format, for when you want the
-#' maintenance window to become active. StartDate allows you to delay
+#' maintenance window to become active. `StartDate` allows you to delay
 #' activation of the maintenance window until the specified future date.
 #' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the
-#' maintenance window to become inactive. EndDate allows you to set a date
-#' and time in the future when the maintenance window will no longer run.
+#' maintenance window to become inactive. `EndDate` allows you to set a
+#' date and time in the future when the maintenance window will no longer
+#' run.
 #' @param Schedule &#91;required&#93; The schedule of the maintenance window in the form of a cron or rate
 #' expression.
 #' @param ScheduleTimezone The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
-#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-#' see the [Time Zone Database](https://www.iana.org/time-zones) on the
-#' IANA website.
-#' @param ScheduleOffset The number of days to wait after the date and time specified by a CRON
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+#' the [Time Zone Database](https://www.iana.org/time-zones) on the IANA
+#' website.
+#' @param ScheduleOffset The number of days to wait after the date and time specified by a cron
 #' expression before running the maintenance window.
 #' 
 #' For example, the following cron expression schedules a maintenance
@@ -1053,12 +561,12 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' If the schedule offset is `2`, the maintenance window won't run until
 #' two days later.
 #' @param Duration &#91;required&#93; The duration of the maintenance window in hours.
-#' @param Cutoff &#91;required&#93; The number of hours before the end of the maintenance window that
-#' Systems Manager stops scheduling new tasks for execution.
-#' @param AllowUnassociatedTargets &#91;required&#93; Enables a maintenance window task to run on managed instances, even if
-#' you have not registered those instances as targets. If enabled, then you
-#' must specify the unregistered instances (by instance ID) when you
-#' register a task with the maintenance window.
+#' @param Cutoff &#91;required&#93; The number of hours before the end of the maintenance window that Amazon
+#' Web Services Systems Manager stops scheduling new tasks for execution.
+#' @param AllowUnassociatedTargets &#91;required&#93; Enables a maintenance window task to run on managed nodes, even if you
+#' haven't registered those nodes as targets. If enabled, then you must
+#' specify the unregistered managed nodes (by node ID) when you register a
+#' task with the maintenance window.
 #' 
 #' If you don't enable this option, then you must specify
 #' previously-registered targets when you register a task with the
@@ -1069,7 +577,7 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' environment. For example, you might want to tag a maintenance window to
 #' identify the type of tasks it will run, the types of targets, and the
 #' environment it will run in. In this case, you could specify the
-#' following key name/value pairs:
+#' following key-value pairs:
 #' 
 #' -   `Key=TaskType,Value=AgentUpdate`
 #' 
@@ -1078,38 +586,7 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' -   `Key=Environment,Value=Production`
 #' 
 #' To add tags to an existing maintenance window, use the
-#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_maintenance_window(
-#'   Name = "string",
-#'   Description = "string",
-#'   StartDate = "string",
-#'   EndDate = "string",
-#'   Schedule = "string",
-#'   ScheduleTimezone = "string",
-#'   ScheduleOffset = 123,
-#'   Duration = 123,
-#'   Cutoff = 123,
-#'   AllowUnassociatedTargets = TRUE|FALSE,
-#'   ClientToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #'
 #' @keywords internal
 #'
@@ -1134,24 +611,9 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' Creates a new OpsItem
 #'
 #' @description
-#' Creates a new OpsItem. You must have permission in AWS Identity and
-#' Access Management (IAM) to create a new OpsItem. For more information,
-#' see [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
-#' in the *AWS Systems Manager User Guide*.
-#' 
-#' Operations engineers and IT professionals use OpsCenter to view,
-#' investigate, and remediate operational issues impacting the performance
-#' and health of their AWS resources. For more information, see [AWS
-#' Systems Manager
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
-#' in the *AWS Systems Manager User Guide*.
+#' Creates a new OpsItem. You must have permission in Identity and Access Management (IAM) to create a new OpsItem. For more information, see [Getting started with OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' @usage
-#' ssm_create_ops_item(Description, OpsItemType, OperationalData,
-#'   Notifications, Priority, RelatedOpsItems, Source, Title, Tags, Category,
-#'   Severity, ActualStartTime, ActualEndTime, PlannedStartTime,
-#'   PlannedEndTime)
+#' See [https://paws-r.github.io/docs/ssm/create_ops_item.html](https://paws-r.github.io/docs/ssm/create_ops_item.html) for full documentation.
 #'
 #' @param Description &#91;required&#93; Information about the OpsItem.
 #' @param OpsItemType The type of OpsItem to create. Currently, the only valid values are
@@ -1162,24 +624,24 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' enter operational data as key-value pairs. The key has a maximum length
 #' of 128 characters. The value has a maximum size of 20 KB.
 #' 
-#' Operational data keys *can't* begin with the following: amazon, aws,
-#' amzn, ssm, /amazon, /aws, /amzn, /ssm.
+#' Operational data keys *can't* begin with the following: `amazon`, `aws`,
+#' `amzn`, `ssm`, `/amazon`, `/aws`, `/amzn`, `/ssm`.
 #' 
 #' You can choose to make the data searchable by other users in the account
 #' or you can restrict search access. Searchable data means that all users
 #' with access to the OpsItem Overview page (as provided by the
-#' [`describe_ops_items`][ssm_describe_ops_items] API action) can view and
-#' search on the specified data. Operational data that is not searchable is
-#' only viewable by users who have access to the OpsItem (as provided by
-#' the [`get_ops_item`][ssm_get_ops_item] API action).
+#' [`describe_ops_items`][ssm_describe_ops_items] API operation) can view
+#' and search on the specified data. Operational data that isn't searchable
+#' is only viewable by users who have access to the OpsItem (as provided by
+#' the [`get_ops_item`][ssm_get_ops_item] API operation).
 #' 
 #' Use the `/aws/resources` key in OperationalData to specify a related
 #' resource in the request. Use the `/aws/automations` key in
 #' OperationalData to associate an Automation runbook with the OpsItem. To
-#' view AWS CLI example commands that use these keys, see [Creating
-#' OpsItems
+#' view Amazon Web Services CLI example commands that use these keys, see
+#' [Creating OpsItems
 #' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
 #' sent when this OpsItem is edited or changed.
 #' @param Priority The importance of this OpsItem in relation to other OpsItems in the
@@ -1190,22 +652,24 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' resource.
 #' @param Source &#91;required&#93; The origin of the OpsItem, such as Amazon EC2 or Systems Manager.
 #' 
-#' The source name can't contain the following strings: aws, amazon, and
-#' amzn.
+#' The source name can't contain the following strings: `aws`, `amazon`,
+#' and `amzn`.
 #' @param Title &#91;required&#93; A short heading that describes the nature of the OpsItem and the
 #' impacted resource.
 #' @param Tags Optional metadata that you assign to a resource. You can restrict access
 #' to OpsItems by using an inline IAM policy that specifies tags. For more
 #' information, see [Getting started with
 #' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Tags use a key-value pair. For example:
 #' 
 #' `Key=Department,Value=Finance`
 #' 
-#' To add tags to an existing OpsItem, use the
-#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
+#' To add tags to a new OpsItem, a user must have IAM permissions for both
+#' the `ssm:CreateOpsItems` operation and the `ssm:AddTagsToResource`
+#' operation. To add tags to an existing OpsItem, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #' @param Category Specify a category to assign to an OpsItem.
 #' @param Severity Specify a severity to assign to an OpsItem.
 #' @param ActualStartTime The time a runbook workflow started. Currently reported only for the
@@ -1216,61 +680,6 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
 #' @param PlannedEndTime The time specified in a change request for a runbook workflow to end.
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OpsItemId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_ops_item(
-#'   Description = "string",
-#'   OpsItemType = "string",
-#'   OperationalData = list(
-#'     list(
-#'       Value = "string",
-#'       Type = "SearchableString"|"String"
-#'     )
-#'   ),
-#'   Notifications = list(
-#'     list(
-#'       Arn = "string"
-#'     )
-#'   ),
-#'   Priority = 123,
-#'   RelatedOpsItems = list(
-#'     list(
-#'       OpsItemId = "string"
-#'     )
-#'   ),
-#'   Source = "string",
-#'   Title = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   Category = "string",
-#'   Severity = "string",
-#'   ActualStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ActualEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   PlannedStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   PlannedEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1292,52 +701,39 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 }
 .ssm$operations$create_ops_item <- ssm_create_ops_item
 
-#' If you create a new application in Application Manager, Systems Manager
-#' calls this API action to specify information about the new application,
-#' including the application type
+#' If you create a new application in Application Manager, Amazon Web
+#' Services Systems Manager calls this API operation to specify information
+#' about the new application, including the application type
 #'
 #' @description
-#' If you create a new application in Application Manager, Systems Manager
-#' calls this API action to specify information about the new application,
-#' including the application type.
+#' If you create a new application in Application Manager, Amazon Web Services Systems Manager calls this API operation to specify information about the new application, including the application type.
 #'
-#' @usage
-#' ssm_create_ops_metadata(ResourceId, Metadata)
+#' See [https://paws-r.github.io/docs/ssm/create_ops_metadata.html](https://paws-r.github.io/docs/ssm/create_ops_metadata.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; A resource ID for a new Application Manager application.
 #' @param Metadata Metadata for a new Application Manager application.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OpsMetadataArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_ops_metadata(
-#'   ResourceId = "string",
-#'   Metadata = list(
-#'     list(
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags Optional metadata that you assign to a resource. You can specify a
+#' maximum of five tags for an OpsMetadata object. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For example, you might want to tag an OpsMetadata object to
+#' identify an environment or target Amazon Web Services Region. In this
+#' case, you could specify the following key-value pairs:
+#' 
+#' -   `Key=Environment,Value=Production`
+#' 
+#' -   `Key=Region,Value=us-east-2`
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_create_ops_metadata
-ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL) {
+ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateOpsMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_ops_metadata_input(ResourceId = ResourceId, Metadata = Metadata)
+  input <- .ssm$create_ops_metadata_input(ResourceId = ResourceId, Metadata = Metadata, Tags = Tags)
   output <- .ssm$create_ops_metadata_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -1351,19 +747,11 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL) {
 #'
 #' @description
 #' Creates a patch baseline.
-#' 
-#' For information about valid key and value pairs in `PatchFilters` for
-#' each supported operating system type, see
-#' [PatchFilter](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
 #'
-#' @usage
-#' ssm_create_patch_baseline(OperatingSystem, Name, GlobalFilters,
-#'   ApprovalRules, ApprovedPatches, ApprovedPatchesComplianceLevel,
-#'   ApprovedPatchesEnableNonSecurity, RejectedPatches,
-#'   RejectedPatchesAction, Description, Sources, ClientToken, Tags)
+#' See [https://paws-r.github.io/docs/ssm/create_patch_baseline.html](https://paws-r.github.io/docs/ssm/create_patch_baseline.html) for full documentation.
 #'
-#' @param OperatingSystem Defines the operating system the patch baseline applies to. The Default
-#' value is WINDOWS.
+#' @param OperatingSystem Defines the operating system the patch baseline applies to. The default
+#' value is `WINDOWS`.
 #' @param Name &#91;required&#93; The name of the patch baseline.
 #' @param GlobalFilters A set of global filters used to include patches in the baseline.
 #' @param ApprovalRules A set of rules used to include patches in the baseline.
@@ -1373,124 +761,52 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL) {
 #' rejected patches, see [About package name formats for approved and
 #' rejected patch
 #' lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
-#' in the *AWS Systems Manager User Guide*.
-#' @param ApprovedPatchesComplianceLevel Defines the compliance level for approved patches. This means that if an
-#' approved patch is reported as missing, this is the severity of the
-#' compliance violation. The default value is UNSPECIFIED.
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param ApprovedPatchesComplianceLevel Defines the compliance level for approved patches. When an approved
+#' patch is reported as missing, this value describes the severity of the
+#' compliance violation. The default value is `UNSPECIFIED`.
 #' @param ApprovedPatchesEnableNonSecurity Indicates whether the list of approved patches includes non-security
-#' updates that should be applied to the instances. The default value is
-#' 'false'. Applies to Linux instances only.
+#' updates that should be applied to the managed nodes. The default value
+#' is `false`. Applies to Linux managed nodes only.
 #' @param RejectedPatches A list of explicitly rejected patches for the baseline.
 #' 
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [About package name formats for approved and
 #' rejected patch
 #' lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
-#' RejectedPackages list.
+#' `RejectedPackages` list.
 #' 
-#' -   **ALLOW_AS_DEPENDENCY**: A package in the Rejected patches list is
-#'     installed only if it is a dependency of another package. It is
+#' -   **`ALLOW_AS_DEPENDENCY`** : A package in the `Rejected` patches list
+#'     is installed only if it is a dependency of another package. It is
 #'     considered compliant with the patch baseline, and its status is
-#'     reported as *InstalledOther*. This is the default action if no
+#'     reported as `InstalledOther`. This is the default action if no
 #'     option is specified.
 #' 
-#' -   **BLOCK**: Packages in the RejectedPatches list, and packages that
-#'     include them as dependencies, are not installed under any
+#' -   **`BLOCK`** : Packages in the `RejectedPatches` list, and packages
+#'     that include them as dependencies, aren't installed under any
 #'     circumstances. If a package was installed before it was added to the
 #'     Rejected patches list, it is considered non-compliant with the patch
-#'     baseline, and its status is reported as *InstalledRejected*.
+#'     baseline, and its status is reported as `InstalledRejected`.
 #' @param Description A description of the patch baseline.
-#' @param Sources Information about the patches to use to update the instances, including
-#' target operating systems and source repositories. Applies to Linux
-#' instances only.
+#' @param Sources Information about the patches to use to update the managed nodes,
+#' including target operating systems and source repositories. Applies to
+#' Linux managed nodes only.
 #' @param ClientToken User-provided idempotency token.
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
 #' environment. For example, you might want to tag a patch baseline to
 #' identify the severity level of patches it specifies and the operating
 #' system family it applies to. In this case, you could specify the
-#' following key name/value pairs:
+#' following key-value pairs:
 #' 
 #' -   `Key=PatchSeverity,Value=Critical`
 #' 
 #' -   `Key=OS,Value=Windows`
 #' 
 #' To add tags to an existing patch baseline, use the
-#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_patch_baseline(
-#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-#'   Name = "string",
-#'   GlobalFilters = list(
-#'     PatchFilters = list(
-#'       list(
-#'         Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ApprovalRules = list(
-#'     PatchRules = list(
-#'       list(
-#'         PatchFilterGroup = list(
-#'           PatchFilters = list(
-#'             list(
-#'               Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'         ApproveAfterDays = 123,
-#'         ApproveUntilDate = "string",
-#'         EnableNonSecurity = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   ApprovedPatches = list(
-#'     "string"
-#'   ),
-#'   ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'   ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
-#'   RejectedPatches = list(
-#'     "string"
-#'   ),
-#'   RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
-#'   Description = "string",
-#'   Sources = list(
-#'     list(
-#'       Name = "string",
-#'       Products = list(
-#'         "string"
-#'       ),
-#'       Configuration = "string"
-#'     )
-#'   ),
-#'   ClientToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #'
 #' @keywords internal
 #'
@@ -1516,40 +832,9 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' single location
 #'
 #' @description
-#' A resource data sync helps you view data from multiple sources in a
-#' single location. Systems Manager offers two types of resource data sync:
-#' `SyncToDestination` and `SyncFromSource`.
-#' 
-#' You can configure Systems Manager Inventory to use the
-#' `SyncToDestination` type to synchronize Inventory data from multiple AWS
-#' Regions to a single S3 bucket. For more information, see [Configuring
-#' Resource Data Sync for
-#' Inventory](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
-#' in the *AWS Systems Manager User Guide*.
-#' 
-#' You can configure Systems Manager Explorer to use the `SyncFromSource`
-#' type to synchronize operational work items (OpsItems) and operational
-#' data (OpsData) from multiple AWS Regions to a single S3 bucket. This
-#' type can synchronize OpsItems and OpsData from multiple AWS accounts and
-#' Regions or `EntireOrganization` by using AWS Organizations. For more
-#' information, see [Setting up Systems Manager Explorer to display data
-#' from multiple accounts and
-#' Regions](https://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html)
-#' in the *AWS Systems Manager User Guide*.
-#' 
-#' A resource data sync is an asynchronous operation that returns
-#' immediately. After a successful initial sync is completed, the system
-#' continuously syncs data. To check the status of a sync, use the
-#' [`list_resource_data_sync`][ssm_list_resource_data_sync].
-#' 
-#' By default, data is not encrypted in Amazon S3. We strongly recommend
-#' that you enable encryption in Amazon S3 to ensure secure data storage.
-#' We also recommend that you secure access to the Amazon S3 bucket by
-#' creating a restrictive bucket policy.
+#' A resource data sync helps you view data from multiple sources in a single location. Amazon Web Services Systems Manager offers two types of resource data sync: `SyncToDestination` and `SyncFromSource`.
 #'
-#' @usage
-#' ssm_create_resource_data_sync(SyncName, S3Destination, SyncType,
-#'   SyncSource)
+#' See [https://paws-r.github.io/docs/ssm/create_resource_data_sync.html](https://paws-r.github.io/docs/ssm/create_resource_data_sync.html) for full documentation.
 #'
 #' @param SyncName &#91;required&#93; A name for the configuration.
 #' @param S3Destination Amazon S3 configuration details for the sync. This parameter is required
@@ -1558,48 +843,12 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' synchronizes data to an S3 bucket for Inventory. If you specify
 #' `SyncToDestination`, you must provide a value for `S3Destination`.
 #' Specify `SyncFromSource` to synchronize data from a single account and
-#' multiple Regions, or multiple AWS accounts and Regions, as listed in AWS
-#' Organizations for Explorer. If you specify `SyncFromSource`, you must
-#' provide a value for `SyncSource`. The default value is
-#' `SyncToDestination`.
+#' multiple Regions, or multiple Amazon Web Services accounts and Amazon
+#' Web Services Regions, as listed in Organizations for Explorer. If you
+#' specify `SyncFromSource`, you must provide a value for `SyncSource`. The
+#' default value is `SyncToDestination`.
 #' @param SyncSource Specify information about the data sources to synchronize. This
 #' parameter is required if the `SyncType` value is SyncFromSource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_resource_data_sync(
-#'   SyncName = "string",
-#'   S3Destination = list(
-#'     BucketName = "string",
-#'     Prefix = "string",
-#'     SyncFormat = "JsonSerDe",
-#'     Region = "string",
-#'     AWSKMSKeyARN = "string",
-#'     DestinationDataSharing = list(
-#'       DestinationDataSharingType = "string"
-#'     )
-#'   ),
-#'   SyncType = "string",
-#'   SyncSource = list(
-#'     SourceType = "string",
-#'     AwsOrganizationsSource = list(
-#'       OrganizationSourceType = "string",
-#'       OrganizationalUnits = list(
-#'         list(
-#'           OrganizationalUnitId = "string"
-#'         )
-#'       )
-#'     ),
-#'     SourceRegions = list(
-#'       "string"
-#'     ),
-#'     IncludeFutureRegions = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1624,26 +873,11 @@ ssm_create_resource_data_sync <- function(SyncName, S3Destination = NULL, SyncTy
 #' Deletes an activation
 #'
 #' @description
-#' Deletes an activation. You are not required to delete an activation. If
-#' you delete an activation, you can no longer use it to register
-#' additional managed instances. Deleting an activation does not
-#' de-register managed instances. You must manually de-register managed
-#' instances.
+#' Deletes an activation. You aren't required to delete an activation. If you delete an activation, you can no longer use it to register additional managed nodes. Deleting an activation doesn't de-register managed nodes. You must manually de-register managed nodes.
 #'
-#' @usage
-#' ssm_delete_activation(ActivationId)
+#' See [https://paws-r.github.io/docs/ssm/delete_activation.html](https://paws-r.github.io/docs/ssm/delete_activation.html) for full documentation.
 #'
 #' @param ActivationId &#91;required&#93; The ID of the activation that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_activation(
-#'   ActivationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1665,37 +899,26 @@ ssm_delete_activation <- function(ActivationId) {
 }
 .ssm$operations$delete_activation <- ssm_delete_activation
 
-#' Disassociates the specified Systems Manager document from the specified
-#' instance
+#' Disassociates the specified Amazon Web Services Systems Manager document
+#' (SSM document) from the specified managed node
 #'
 #' @description
-#' Disassociates the specified Systems Manager document from the specified
-#' instance.
+#' Disassociates the specified Amazon Web Services Systems Manager document (SSM document) from the specified managed node. If you created the association by using the `Targets` parameter, then you must delete the association by using the association ID.
+#'
+#' See [https://paws-r.github.io/docs/ssm/delete_association.html](https://paws-r.github.io/docs/ssm/delete_association.html) for full documentation.
+#'
+#' @param Name The name of the SSM document.
+#' @param InstanceId The managed node ID.
 #' 
-#' When you disassociate a document from an instance, it does not change
-#' the configuration of the instance. To change the configuration state of
-#' an instance after you disassociate a document, you must create a new
-#' document with the desired configuration and associate it with the
-#' instance.
-#'
-#' @usage
-#' ssm_delete_association(Name, InstanceId, AssociationId)
-#'
-#' @param Name The name of the Systems Manager document.
-#' @param InstanceId The ID of the instance.
+#' `InstanceId` has been deprecated. To specify a managed node ID for an
+#' association, use the `Targets` parameter. Requests that include the
+#' parameter `InstanceID` with Systems Manager documents (SSM documents)
+#' that use schema version 2.0 or later will fail. In addition, if you use
+#' the parameter `InstanceId`, you can't use the parameters
+#' `AssociationName`, `DocumentVersion`, `MaxErrors`, `MaxConcurrency`,
+#' `OutputLocation`, or `ScheduleExpression`. To use these parameters, you
+#' must use the `Targets` parameter.
 #' @param AssociationId The association ID that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_association(
-#'   Name = "string",
-#'   InstanceId = "string",
-#'   AssociationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1717,19 +940,13 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 }
 .ssm$operations$delete_association <- ssm_delete_association
 
-#' Deletes the Systems Manager document and all instance associations to
-#' the document
+#' Deletes the Amazon Web Services Systems Manager document (SSM document)
+#' and all managed node associations to the document
 #'
 #' @description
-#' Deletes the Systems Manager document and all instance associations to
-#' the document.
-#' 
-#' Before you delete the document, we recommend that you use
-#' [`delete_association`][ssm_delete_association] to disassociate all
-#' instances that are associated with the document.
+#' Deletes the Amazon Web Services Systems Manager document (SSM document) and all managed node associations to the document.
 #'
-#' @usage
-#' ssm_delete_document(Name, DocumentVersion, VersionName, Force)
+#' See [https://paws-r.github.io/docs/ssm/delete_document.html](https://paws-r.github.io/docs/ssm/delete_document.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the document.
 #' @param DocumentVersion The version of the document that you want to delete. If not provided,
@@ -1739,21 +956,8 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 #' @param Force Some SSM document types require that you specify a `Force` flag before
 #' you can delete the document. For example, you must specify a `Force`
 #' flag to delete a document of type `ApplicationConfigurationSchema`. You
-#' can restrict access to the `Force` flag in an AWS Identity and Access
+#' can restrict access to the `Force` flag in an Identity and Access
 #' Management (IAM) policy.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_document(
-#'   Name = "string",
-#'   DocumentVersion = "string",
-#'   VersionName = "string",
-#'   Force = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1779,12 +983,9 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' Inventory type
 #'
 #' @description
-#' Delete a custom inventory type or the data associated with a custom
-#' Inventory type. Deleting a custom inventory type is also referred to as
-#' deleting a custom inventory schema.
+#' Delete a custom inventory type or the data associated with a custom Inventory type. Deleting a custom inventory type is also referred to as deleting a custom inventory schema.
 #'
-#' @usage
-#' ssm_delete_inventory(TypeName, SchemaDeleteOption, DryRun, ClientToken)
+#' See [https://paws-r.github.io/docs/ssm/delete_inventory.html](https://paws-r.github.io/docs/ssm/delete_inventory.html) for full documentation.
 #'
 #' @param TypeName &#91;required&#93; The name of the custom inventory type for which you want to delete
 #' either all previously collected data or the inventory type itself.
@@ -1796,8 +997,8 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' DisableSchema: If you choose this option, the system ignores all
 #' inventory data for the specified version, and any earlier versions. To
 #' enable this schema again, you must call the
-#' [`put_inventory`][ssm_put_inventory] action for a version greater than
-#' the disabled version.
+#' [`put_inventory`][ssm_put_inventory] operation for a version greater
+#' than the disabled version.
 #' 
 #' DeleteSchema: This option deletes the specified custom type from the
 #' Inventory service. You can recreate the schema later, if you want.
@@ -1807,36 +1008,6 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' to be deleted is what you intend to delete, you can run the same command
 #' without specifying the `DryRun` option.
 #' @param ClientToken User-provided idempotency token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeletionId = "string",
-#'   TypeName = "string",
-#'   DeletionSummary = list(
-#'     TotalCount = 123,
-#'     RemainingCount = 123,
-#'     SummaryItems = list(
-#'       list(
-#'         Version = "string",
-#'         Count = 123,
-#'         RemainingCount = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_inventory(
-#'   TypeName = "string",
-#'   SchemaDeleteOption = "DisableSchema"|"DeleteSchema",
-#'   DryRun = TRUE|FALSE,
-#'   ClientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1863,25 +1034,9 @@ ssm_delete_inventory <- function(TypeName, SchemaDeleteOption = NULL, DryRun = N
 #' @description
 #' Deletes a maintenance window.
 #'
-#' @usage
-#' ssm_delete_maintenance_window(WindowId)
+#' See [https://paws-r.github.io/docs/ssm/delete_maintenance_window.html](https://paws-r.github.io/docs/ssm/delete_maintenance_window.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_maintenance_window(
-#'   WindowId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1908,20 +1063,9 @@ ssm_delete_maintenance_window <- function(WindowId) {
 #' @description
 #' Delete OpsMetadata related to an application.
 #'
-#' @usage
-#' ssm_delete_ops_metadata(OpsMetadataArn)
+#' See [https://paws-r.github.io/docs/ssm/delete_ops_metadata.html](https://paws-r.github.io/docs/ssm/delete_ops_metadata.html) for full documentation.
 #'
 #' @param OpsMetadataArn &#91;required&#93; The Amazon Resource Name (ARN) of an OpsMetadata Object to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_ops_metadata(
-#'   OpsMetadataArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1946,22 +1090,11 @@ ssm_delete_ops_metadata <- function(OpsMetadataArn) {
 #' Delete a parameter from the system
 #'
 #' @description
-#' Delete a parameter from the system.
+#' Delete a parameter from the system. After deleting a parameter, wait for at least 30 seconds to create a parameter with the same name.
 #'
-#' @usage
-#' ssm_delete_parameter(Name)
+#' See [https://paws-r.github.io/docs/ssm/delete_parameter.html](https://paws-r.github.io/docs/ssm/delete_parameter.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parameter to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_parameter(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1986,34 +1119,12 @@ ssm_delete_parameter <- function(Name) {
 #' Delete a list of parameters
 #'
 #' @description
-#' Delete a list of parameters.
+#' Delete a list of parameters. After deleting a parameter, wait for at least 30 seconds to create a parameter with the same name.
 #'
-#' @usage
-#' ssm_delete_parameters(Names)
+#' See [https://paws-r.github.io/docs/ssm/delete_parameters.html](https://paws-r.github.io/docs/ssm/delete_parameters.html) for full documentation.
 #'
-#' @param Names &#91;required&#93; The names of the parameters to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeletedParameters = list(
-#'     "string"
-#'   ),
-#'   InvalidParameters = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_parameters(
-#'   Names = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param Names &#91;required&#93; The names of the parameters to delete. After deleting a parameter, wait
+#' for at least 30 seconds to create a parameter with the same name.
 #'
 #' @keywords internal
 #'
@@ -2040,25 +1151,9 @@ ssm_delete_parameters <- function(Names) {
 #' @description
 #' Deletes a patch baseline.
 #'
-#' @usage
-#' ssm_delete_patch_baseline(BaselineId)
+#' See [https://paws-r.github.io/docs/ssm/delete_patch_baseline.html](https://paws-r.github.io/docs/ssm/delete_patch_baseline.html) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_patch_baseline(
-#'   BaselineId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2080,29 +1175,15 @@ ssm_delete_patch_baseline <- function(BaselineId) {
 }
 .ssm$operations$delete_patch_baseline <- ssm_delete_patch_baseline
 
-#' Deletes a Resource Data Sync configuration
+#' Deletes a resource data sync configuration
 #'
 #' @description
-#' Deletes a Resource Data Sync configuration. After the configuration is
-#' deleted, changes to data on managed instances are no longer synced to or
-#' from the target. Deleting a sync configuration does not delete data.
+#' Deletes a resource data sync configuration. After the configuration is deleted, changes to data on managed nodes are no longer synced to or from the target. Deleting a sync configuration doesn't delete data.
 #'
-#' @usage
-#' ssm_delete_resource_data_sync(SyncName, SyncType)
+#' See [https://paws-r.github.io/docs/ssm/delete_resource_data_sync.html](https://paws-r.github.io/docs/ssm/delete_resource_data_sync.html) for full documentation.
 #'
 #' @param SyncName &#91;required&#93; The name of the configuration to delete.
 #' @param SyncType Specify the type of resource data sync to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_resource_data_sync(
-#'   SyncName = "string",
-#'   SyncType = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2128,26 +1209,12 @@ ssm_delete_resource_data_sync <- function(SyncName, SyncType = NULL) {
 #' servers
 #'
 #' @description
-#' Removes the server or virtual machine from the list of registered
-#' servers. You can reregister the instance again at any time. If you don't
-#' plan to use Run Command on the server, we suggest uninstalling SSM Agent
-#' first.
+#' Removes the server or virtual machine from the list of registered servers. You can reregister the node again at any time. If you don't plan to use Run Command on the server, we suggest uninstalling SSM Agent first.
 #'
-#' @usage
-#' ssm_deregister_managed_instance(InstanceId)
+#' See [https://paws-r.github.io/docs/ssm/deregister_managed_instance.html](https://paws-r.github.io/docs/ssm/deregister_managed_instance.html) for full documentation.
 #'
-#' @param InstanceId &#91;required&#93; The ID assigned to the managed instance when you registered it using the
+#' @param InstanceId &#91;required&#93; The ID assigned to the managed node when you registered it using the
 #' activation process.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_managed_instance(
-#'   InstanceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2174,29 +1241,11 @@ ssm_deregister_managed_instance <- function(InstanceId) {
 #' @description
 #' Removes a patch group from a patch baseline.
 #'
-#' @usage
-#' ssm_deregister_patch_baseline_for_patch_group(BaselineId, PatchGroup)
+#' See [https://paws-r.github.io/docs/ssm/deregister_patch_baseline_for_patch_group.html](https://paws-r.github.io/docs/ssm/deregister_patch_baseline_for_patch_group.html) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to deregister the patch group from.
 #' @param PatchGroup &#91;required&#93; The name of the patch group that should be deregistered from the patch
 #' baseline.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineId = "string",
-#'   PatchGroup = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_patch_baseline_for_patch_group(
-#'   BaselineId = "string",
-#'   PatchGroup = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2223,33 +1272,13 @@ ssm_deregister_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup
 #' @description
 #' Removes a target from a maintenance window.
 #'
-#' @usage
-#' ssm_deregister_target_from_maintenance_window(WindowId, WindowTargetId,
-#'   Safe)
+#' See [https://paws-r.github.io/docs/ssm/deregister_target_from_maintenance_window.html](https://paws-r.github.io/docs/ssm/deregister_target_from_maintenance_window.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the target should be removed from.
 #' @param WindowTargetId &#91;required&#93; The ID of the target definition to remove.
 #' @param Safe The system checks if the target is being referenced by a task. If the
-#' target is being referenced, the system returns an error and does not
+#' target is being referenced, the system returns an error and doesn't
 #' deregister the target from the maintenance window.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowId = "string",
-#'   WindowTargetId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_target_from_maintenance_window(
-#'   WindowId = "string",
-#'   WindowTargetId = "string",
-#'   Safe = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2276,28 +1305,10 @@ ssm_deregister_target_from_maintenance_window <- function(WindowId, WindowTarget
 #' @description
 #' Removes a task from a maintenance window.
 #'
-#' @usage
-#' ssm_deregister_task_from_maintenance_window(WindowId, WindowTaskId)
+#' See [https://paws-r.github.io/docs/ssm/deregister_task_from_maintenance_window.html](https://paws-r.github.io/docs/ssm/deregister_task_from_maintenance_window.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the task should be removed from.
 #' @param WindowTaskId &#91;required&#93; The ID of the task to remove from the maintenance window.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowId = "string",
-#'   WindowTaskId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_task_from_maintenance_window(
-#'   WindowId = "string",
-#'   WindowTaskId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2320,18 +1331,14 @@ ssm_deregister_task_from_maintenance_window <- function(WindowId, WindowTaskId) 
 .ssm$operations$deregister_task_from_maintenance_window <- ssm_deregister_task_from_maintenance_window
 
 #' Describes details about the activation, such as the date and time the
-#' activation was created, its expiration date, the IAM role assigned to
-#' the instances in the activation, and the number of instances registered
-#' by using this activation
+#' activation was created, its expiration date, the Identity and Access
+#' Management (IAM) role assigned to the managed nodes in the activation,
+#' and the number of nodes registered by using this activation
 #'
 #' @description
-#' Describes details about the activation, such as the date and time the
-#' activation was created, its expiration date, the IAM role assigned to
-#' the instances in the activation, and the number of instances registered
-#' by using this activation.
+#' Describes details about the activation, such as the date and time the activation was created, its expiration date, the Identity and Access Management (IAM) role assigned to the managed nodes in the activation, and the number of nodes registered by using this activation.
 #'
-#' @usage
-#' ssm_describe_activations(Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_activations.html](https://paws-r.github.io/docs/ssm/describe_activations.html) for full documentation.
 #'
 #' @param Filters A filter to view information about your activations.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -2339,53 +1346,6 @@ ssm_deregister_task_from_maintenance_window <- function(WindowId, WindowTaskId) 
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ActivationList = list(
-#'     list(
-#'       ActivationId = "string",
-#'       Description = "string",
-#'       DefaultInstanceName = "string",
-#'       IamRole = "string",
-#'       RegistrationLimit = 123,
-#'       RegistrationsCount = 123,
-#'       ExpirationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Expired = TRUE|FALSE,
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_activations(
-#'   Filters = list(
-#'     list(
-#'       FilterKey = "ActivationIds"|"DefaultInstanceName"|"IamRole",
-#'       FilterValues = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2407,121 +1367,22 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 }
 .ssm$operations$describe_activations <- ssm_describe_activations
 
-#' Describes the association for the specified target or instance
+#' Describes the association for the specified target or managed node
 #'
 #' @description
-#' Describes the association for the specified target or instance. If you
-#' created the association by using the `Targets` parameter, then you must
-#' retrieve the association by using the association ID. If you created the
-#' association by specifying an instance ID and a Systems Manager document,
-#' then you retrieve the association by specifying the document name and
-#' the instance ID.
+#' Describes the association for the specified target or managed node. If you created the association by using the `Targets` parameter, then you must retrieve the association by using the association ID.
 #'
-#' @usage
-#' ssm_describe_association(Name, InstanceId, AssociationId,
-#'   AssociationVersion)
+#' See [https://paws-r.github.io/docs/ssm/describe_association.html](https://paws-r.github.io/docs/ssm/describe_association.html) for full documentation.
 #'
-#' @param Name The name of the Systems Manager document.
-#' @param InstanceId The instance ID.
+#' @param Name The name of the SSM document.
+#' @param InstanceId The managed node ID.
 #' @param AssociationId The association ID for which you want information.
 #' @param AssociationVersion Specify the association version to retrieve. To view the latest version,
 #' either specify `$LATEST` for this parameter, or omit this parameter. To
-#' view a list of all associations for an instance, use
+#' view a list of all associations for a managed node, use
 #' [`list_associations`][ssm_list_associations]. To get a list of versions
 #' for a specific association, use
 #' [`list_association_versions`][ssm_list_association_versions].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssociationDescription = list(
-#'     Name = "string",
-#'     InstanceId = "string",
-#'     AssociationVersion = "string",
-#'     Date = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateAssociationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = list(
-#'       Date = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "Pending"|"Success"|"Failed",
-#'       Message = "string",
-#'       AdditionalInfo = "string"
-#'     ),
-#'     Overview = list(
-#'       Status = "string",
-#'       DetailedStatus = "string",
-#'       AssociationStatusAggregatedCount = list(
-#'         123
-#'       )
-#'     ),
-#'     DocumentVersion = "string",
-#'     AutomationTargetParameterName = "string",
-#'     Parameters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     AssociationId = "string",
-#'     Targets = list(
-#'       list(
-#'         Key = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ScheduleExpression = "string",
-#'     OutputLocation = list(
-#'       S3Location = list(
-#'         OutputS3Region = "string",
-#'         OutputS3BucketName = "string",
-#'         OutputS3KeyPrefix = "string"
-#'       )
-#'     ),
-#'     LastExecutionDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastSuccessfulExecutionDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AssociationName = "string",
-#'     MaxErrors = "string",
-#'     MaxConcurrency = "string",
-#'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'     SyncCompliance = "AUTO"|"MANUAL",
-#'     ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'     TargetLocations = list(
-#'       list(
-#'         Accounts = list(
-#'           "string"
-#'         ),
-#'         Regions = list(
-#'           "string"
-#'         ),
-#'         TargetLocationMaxConcurrency = "string",
-#'         TargetLocationMaxErrors = "string",
-#'         ExecutionRoleName = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_association(
-#'   Name = "string",
-#'   InstanceId = "string",
-#'   AssociationId = "string",
-#'   AssociationVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2543,16 +1404,12 @@ ssm_describe_association <- function(Name = NULL, InstanceId = NULL, Association
 }
 .ssm$operations$describe_association <- ssm_describe_association
 
-#' Use this API action to view information about a specific execution of a
-#' specific association
+#' Views information about a specific execution of a specific association
 #'
 #' @description
-#' Use this API action to view information about a specific execution of a
-#' specific association.
+#' Views information about a specific execution of a specific association.
 #'
-#' @usage
-#' ssm_describe_association_execution_targets(AssociationId, ExecutionId,
-#'   Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_association_execution_targets.html](https://paws-r.github.io/docs/ssm/describe_association_execution_targets.html) for full documentation.
 #'
 #' @param AssociationId &#91;required&#93; The association ID that includes the execution for which you want to
 #' view details.
@@ -2570,48 +1427,6 @@ ssm_describe_association <- function(Name = NULL, InstanceId = NULL, Association
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssociationExecutionTargets = list(
-#'     list(
-#'       AssociationId = "string",
-#'       AssociationVersion = "string",
-#'       ExecutionId = "string",
-#'       ResourceId = "string",
-#'       ResourceType = "string",
-#'       Status = "string",
-#'       DetailedStatus = "string",
-#'       LastExecutionDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OutputSource = list(
-#'         OutputSourceId = "string",
-#'         OutputSourceType = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_association_execution_targets(
-#'   AssociationId = "string",
-#'   ExecutionId = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "Status"|"ResourceId"|"ResourceType",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2633,15 +1448,12 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
 }
 .ssm$operations$describe_association_execution_targets <- ssm_describe_association_execution_targets
 
-#' Use this API action to view all executions for a specific association ID
+#' Views all executions for a specific association ID
 #'
 #' @description
-#' Use this API action to view all executions for a specific association
-#' ID.
+#' Views all executions for a specific association ID.
 #'
-#' @usage
-#' ssm_describe_association_executions(AssociationId, Filters, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_association_executions.html](https://paws-r.github.io/docs/ssm/describe_association_executions.html) for full documentation.
 #'
 #' @param AssociationId &#91;required&#93; The association ID for which you want to view execution history details.
 #' @param Filters Filters for the request. You can specify the following filters and
@@ -2657,46 +1469,6 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssociationExecutions = list(
-#'     list(
-#'       AssociationId = "string",
-#'       AssociationVersion = "string",
-#'       ExecutionId = "string",
-#'       Status = "string",
-#'       DetailedStatus = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastExecutionDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ResourceCountByStatus = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_association_executions(
-#'   AssociationId = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "ExecutionId"|"Status"|"CreatedTime",
-#'       Value = "string",
-#'       Type = "EQUAL"|"LESS_THAN"|"GREATER_THAN"
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2723,8 +1495,7 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 #' @description
 #' Provides details about all active and terminated Automation executions.
 #'
-#' @usage
-#' ssm_describe_automation_executions(Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_automation_executions.html](https://paws-r.github.io/docs/ssm/describe_automation_executions.html) for full documentation.
 #'
 #' @param Filters Filters used to limit the scope of executions that are requested.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -2732,124 +1503,6 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AutomationExecutionMetadataList = list(
-#'     list(
-#'       AutomationExecutionId = "string",
-#'       DocumentName = "string",
-#'       DocumentVersion = "string",
-#'       AutomationExecutionStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
-#'       ExecutionStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExecutionEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExecutedBy = "string",
-#'       LogFile = "string",
-#'       Outputs = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       Mode = "Auto"|"Interactive",
-#'       ParentAutomationExecutionId = "string",
-#'       CurrentStepName = "string",
-#'       CurrentAction = "string",
-#'       FailureMessage = "string",
-#'       TargetParameterName = "string",
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       TargetMaps = list(
-#'         list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       ResolvedTargets = list(
-#'         ParameterValues = list(
-#'           "string"
-#'         ),
-#'         Truncated = TRUE|FALSE
-#'       ),
-#'       MaxConcurrency = "string",
-#'       MaxErrors = "string",
-#'       Target = "string",
-#'       AutomationType = "CrossAccount"|"Local",
-#'       AutomationSubtype = "ChangeRequest",
-#'       ScheduledTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Runbooks = list(
-#'         list(
-#'           DocumentName = "string",
-#'           DocumentVersion = "string",
-#'           Parameters = list(
-#'             list(
-#'               "string"
-#'             )
-#'           ),
-#'           TargetParameterName = "string",
-#'           Targets = list(
-#'             list(
-#'               Key = "string",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           MaxConcurrency = "string",
-#'           MaxErrors = "string",
-#'           TargetLocations = list(
-#'             list(
-#'               Accounts = list(
-#'                 "string"
-#'               ),
-#'               Regions = list(
-#'                 "string"
-#'               ),
-#'               TargetLocationMaxConcurrency = "string",
-#'               TargetLocationMaxErrors = "string",
-#'               ExecutionRoleName = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       OpsItemId = "string",
-#'       AssociationId = "string",
-#'       ChangeRequestName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_automation_executions(
-#'   Filters = list(
-#'     list(
-#'       Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType"|"TagKey"|"TargetResourceGroup"|"AutomationSubtype"|"OpsItemId",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2875,12 +1528,9 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
 #' Automation workflow
 #'
 #' @description
-#' Information about all active and terminated step executions in an
-#' Automation workflow.
+#' Information about all active and terminated step executions in an Automation workflow.
 #'
-#' @usage
-#' ssm_describe_automation_step_executions(AutomationExecutionId, Filters,
-#'   NextToken, MaxResults, ReverseOrder)
+#' See [https://paws-r.github.io/docs/ssm/describe_automation_step_executions.html](https://paws-r.github.io/docs/ssm/describe_automation_step_executions.html) for full documentation.
 #'
 #' @param AutomationExecutionId &#91;required&#93; The Automation execution ID for which you want step execution
 #' descriptions.
@@ -2891,101 +1541,8 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#' @param ReverseOrder A boolean that indicates whether to list step executions in reverse
-#' order by start time. The default value is false.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StepExecutions = list(
-#'     list(
-#'       StepName = "string",
-#'       Action = "string",
-#'       TimeoutSeconds = 123,
-#'       OnFailure = "string",
-#'       MaxAttempts = 123,
-#'       ExecutionStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExecutionEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StepStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
-#'       ResponseCode = "string",
-#'       Inputs = list(
-#'         "string"
-#'       ),
-#'       Outputs = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       Response = "string",
-#'       FailureMessage = "string",
-#'       FailureDetails = list(
-#'         FailureStage = "string",
-#'         FailureType = "string",
-#'         Details = list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       StepExecutionId = "string",
-#'       OverriddenParameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       IsEnd = TRUE|FALSE,
-#'       NextStep = "string",
-#'       IsCritical = TRUE|FALSE,
-#'       ValidNextSteps = list(
-#'         "string"
-#'       ),
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       TargetLocation = list(
-#'         Accounts = list(
-#'           "string"
-#'         ),
-#'         Regions = list(
-#'           "string"
-#'         ),
-#'         TargetLocationMaxConcurrency = "string",
-#'         TargetLocationMaxErrors = "string",
-#'         ExecutionRoleName = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_automation_step_executions(
-#'   AutomationExecutionId = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "StartTimeBefore"|"StartTimeAfter"|"StepExecutionStatus"|"StepExecutionId"|"StepName"|"Action",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   ReverseOrder = TRUE|FALSE
-#' )
-#' ```
+#' @param ReverseOrder Indicates whether to list step executions in reverse order by start
+#' time. The default value is 'false'.
 #'
 #' @keywords internal
 #'
@@ -3012,72 +1569,101 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 #' @description
 #' Lists all patches eligible to be included in a patch baseline.
 #'
-#' @usage
-#' ssm_describe_available_patches(Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_available_patches.html](https://paws-r.github.io/docs/ssm/describe_available_patches.html) for full documentation.
 #'
-#' @param Filters Filters used to scope down the returned patches.
+#' @param Filters Each element in the array is a structure containing a key-value pair.
+#' 
+#' **Windows Server**
+#' 
+#' Supported keys for Windows Server managed node patches include the
+#' following:
+#' 
+#' -   **`PATCH_SET`**
+#' 
+#'     Sample values: `OS` | `APPLICATION`
+#' 
+#' -   **`PRODUCT`**
+#' 
+#'     Sample values: `WindowsServer2012` | `Office 2010` |
+#'     `MicrosoftDefenderAntivirus`
+#' 
+#' -   **`PRODUCT_FAMILY`**
+#' 
+#'     Sample values: `Windows` | `Office`
+#' 
+#' -   **`MSRC_SEVERITY`**
+#' 
+#'     Sample values: `ServicePacks` | `Important` | `Moderate`
+#' 
+#' -   **`CLASSIFICATION`**
+#' 
+#'     Sample values: `ServicePacks` | `SecurityUpdates` |
+#'     `DefinitionUpdates`
+#' 
+#' -   **`PATCH_ID`**
+#' 
+#'     Sample values: `KB123456` | `KB4516046`
+#' 
+#' **Linux**
+#' 
+#' When specifying filters for Linux patches, you must specify a key-pair
+#' for `PRODUCT`. For example, using the Command Line Interface (CLI), the
+#' following command fails:
+#' 
+#' `aws ssm describe-available-patches --filters Key=CVE_ID,Values=CVE-2018-3615`
+#' 
+#' However, the following command succeeds:
+#' 
+#' `aws ssm describe-available-patches --filters Key=PRODUCT,Values=AmazonLinux2018.03 Key=CVE_ID,Values=CVE-2018-3615`
+#' 
+#' Supported keys for Linux managed node patches include the following:
+#' 
+#' -   **`PRODUCT`**
+#' 
+#'     Sample values: `AmazonLinux2018.03` | `AmazonLinux2.0`
+#' 
+#' -   **`NAME`**
+#' 
+#'     Sample values: `kernel-headers` | `samba-python` | `php`
+#' 
+#' -   **`SEVERITY`**
+#' 
+#'     Sample values: `Critical` | `Important` | `Medium` | `Low`
+#' 
+#' -   **`EPOCH`**
+#' 
+#'     Sample values: `0` | `1`
+#' 
+#' -   **`VERSION`**
+#' 
+#'     Sample values: `78.6.1` | `4.10.16`
+#' 
+#' -   **`RELEASE`**
+#' 
+#'     Sample values: `9.56.amzn1` | `1.amzn2`
+#' 
+#' -   **`ARCH`**
+#' 
+#'     Sample values: `i686` | `x86_64`
+#' 
+#' -   **`REPOSITORY`**
+#' 
+#'     Sample values: `Core` | `Updates`
+#' 
+#' -   **`ADVISORY_ID`**
+#' 
+#'     Sample values: `ALAS-2018-1058` | `ALAS2-2021-1594`
+#' 
+#' -   **`CVE_ID`**
+#' 
+#'     Sample values: `CVE-2018-3615` | `CVE-2020-1472`
+#' 
+#' -   **`BUGZILLA_ID`**
+#' 
+#'     Sample values: `1463241`
 #' @param MaxResults The maximum number of patches to return (per page).
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Patches = list(
-#'     list(
-#'       Id = "string",
-#'       ReleaseDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Title = "string",
-#'       Description = "string",
-#'       ContentUrl = "string",
-#'       Vendor = "string",
-#'       ProductFamily = "string",
-#'       Product = "string",
-#'       Classification = "string",
-#'       MsrcSeverity = "string",
-#'       KbNumber = "string",
-#'       MsrcNumber = "string",
-#'       Language = "string",
-#'       AdvisoryIds = list(
-#'         "string"
-#'       ),
-#'       BugzillaIds = list(
-#'         "string"
-#'       ),
-#'       CVEIds = list(
-#'         "string"
-#'       ),
-#'       Name = "string",
-#'       Epoch = 123,
-#'       Version = "string",
-#'       Release = "string",
-#'       Arch = "string",
-#'       Severity = "string",
-#'       Repository = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_available_patches(
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3099,98 +1685,20 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 }
 .ssm$operations$describe_available_patches <- ssm_describe_available_patches
 
-#' Describes the specified Systems Manager document
+#' Describes the specified Amazon Web Services Systems Manager document
+#' (SSM document)
 #'
 #' @description
-#' Describes the specified Systems Manager document.
+#' Describes the specified Amazon Web Services Systems Manager document (SSM document).
 #'
-#' @usage
-#' ssm_describe_document(Name, DocumentVersion, VersionName)
+#' See [https://paws-r.github.io/docs/ssm/describe_document.html](https://paws-r.github.io/docs/ssm/describe_document.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the Systems Manager document.
+#' @param Name &#91;required&#93; The name of the SSM document.
 #' @param DocumentVersion The document version for which you want information. Can be a specific
 #' version or the default version.
 #' @param VersionName An optional field specifying the version of the artifact associated with
 #' the document. For example, "Release 12, Update 6". This value is unique
-#' across all versions of a document, and cannot be changed.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Document = list(
-#'     Sha1 = "string",
-#'     Hash = "string",
-#'     HashType = "Sha256"|"Sha1",
-#'     Name = "string",
-#'     VersionName = "string",
-#'     Owner = "string",
-#'     CreatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
-#'     StatusInformation = "string",
-#'     DocumentVersion = "string",
-#'     Description = "string",
-#'     Parameters = list(
-#'       list(
-#'         Name = "string",
-#'         Type = "String"|"StringList",
-#'         Description = "string",
-#'         DefaultValue = "string"
-#'       )
-#'     ),
-#'     PlatformTypes = list(
-#'       "Windows"|"Linux"
-#'     ),
-#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
-#'     SchemaVersion = "string",
-#'     LatestVersion = "string",
-#'     DefaultVersion = "string",
-#'     DocumentFormat = "YAML"|"JSON"|"TEXT",
-#'     TargetType = "string",
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     AttachmentsInformation = list(
-#'       list(
-#'         Name = "string"
-#'       )
-#'     ),
-#'     Requires = list(
-#'       list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     Author = "string",
-#'     ReviewInformation = list(
-#'       list(
-#'         ReviewedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Status = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
-#'         Reviewer = "string"
-#'       )
-#'     ),
-#'     ApprovedVersion = "string",
-#'     PendingReviewVersion = "string",
-#'     ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_document(
-#'   Name = "string",
-#'   DocumentVersion = "string",
-#'   VersionName = "string"
-#' )
-#' ```
+#' across all versions of a document, and can't be changed.
 #'
 #' @keywords internal
 #'
@@ -3212,56 +1720,34 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
 }
 .ssm$operations$describe_document <- ssm_describe_document
 
-#' Describes the permissions for a Systems Manager document
+#' Describes the permissions for a Amazon Web Services Systems Manager
+#' document (SSM document)
 #'
 #' @description
-#' Describes the permissions for a Systems Manager document. If you created
-#' the document, you are the owner. If a document is shared, it can either
-#' be shared privately (by specifying a user's AWS account ID) or publicly
-#' (*All*).
+#' Describes the permissions for a Amazon Web Services Systems Manager document (SSM document). If you created the document, you are the owner. If a document is shared, it can either be shared privately (by specifying a user's Amazon Web Services account ID) or publicly (*All*).
 #'
-#' @usage
-#' ssm_describe_document_permission(Name, PermissionType)
+#' See [https://paws-r.github.io/docs/ssm/describe_document_permission.html](https://paws-r.github.io/docs/ssm/describe_document_permission.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the document for which you are the owner.
 #' @param PermissionType &#91;required&#93; The permission type for the document. The permission type can be
 #' *Share*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountIds = list(
-#'     "string"
-#'   ),
-#'   AccountSharingInfoList = list(
-#'     list(
-#'       AccountId = "string",
-#'       SharedDocumentVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_document_permission(
-#'   Name = "string",
-#'   PermissionType = "Share"
-#' )
-#' ```
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_describe_document_permission
-ssm_describe_document_permission <- function(Name, PermissionType) {
+ssm_describe_document_permission <- function(Name, PermissionType, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDocumentPermission",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$describe_document_permission_input(Name = Name, PermissionType = PermissionType)
+  input <- .ssm$describe_document_permission_input(Name = Name, PermissionType = PermissionType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_document_permission_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -3271,46 +1757,19 @@ ssm_describe_document_permission <- function(Name, PermissionType) {
 }
 .ssm$operations$describe_document_permission <- ssm_describe_document_permission
 
-#' All associations for the instance(s)
+#' All associations for the managed node(s)
 #'
 #' @description
-#' All associations for the instance(s).
+#' All associations for the managed node(s).
 #'
-#' @usage
-#' ssm_describe_effective_instance_associations(InstanceId, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_effective_instance_associations.html](https://paws-r.github.io/docs/ssm/describe_effective_instance_associations.html) for full documentation.
 #'
-#' @param InstanceId &#91;required&#93; The instance ID for which you want to view all associations.
+#' @param InstanceId &#91;required&#93; The managed node ID for which you want to view all associations.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Associations = list(
-#'     list(
-#'       AssociationId = "string",
-#'       InstanceId = "string",
-#'       Content = "string",
-#'       AssociationVersion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_effective_instance_associations(
-#'   InstanceId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3336,79 +1795,14 @@ ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults 
 #' state) for the specified patch baseline
 #'
 #' @description
-#' Retrieves the current effective patches (the patch and the approval
-#' state) for the specified patch baseline. Note that this API applies only
-#' to Windows patch baselines.
+#' Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline. Applies to patch baselines for Windows only.
 #'
-#' @usage
-#' ssm_describe_effective_patches_for_patch_baseline(BaselineId,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_effective_patches_for_patch_baseline.html](https://paws-r.github.io/docs/ssm/describe_effective_patches_for_patch_baseline.html) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to retrieve the effective patches for.
 #' @param MaxResults The maximum number of patches to return (per page).
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EffectivePatches = list(
-#'     list(
-#'       Patch = list(
-#'         Id = "string",
-#'         ReleaseDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Title = "string",
-#'         Description = "string",
-#'         ContentUrl = "string",
-#'         Vendor = "string",
-#'         ProductFamily = "string",
-#'         Product = "string",
-#'         Classification = "string",
-#'         MsrcSeverity = "string",
-#'         KbNumber = "string",
-#'         MsrcNumber = "string",
-#'         Language = "string",
-#'         AdvisoryIds = list(
-#'           "string"
-#'         ),
-#'         BugzillaIds = list(
-#'           "string"
-#'         ),
-#'         CVEIds = list(
-#'           "string"
-#'         ),
-#'         Name = "string",
-#'         Epoch = 123,
-#'         Version = "string",
-#'         Release = "string",
-#'         Arch = "string",
-#'         Severity = "string",
-#'         Repository = "string"
-#'       ),
-#'       PatchStatus = list(
-#'         DeploymentStatus = "APPROVED"|"PENDING_APPROVAL"|"EXPLICIT_APPROVED"|"EXPLICIT_REJECTED",
-#'         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'         ApprovalDate = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_effective_patches_for_patch_baseline(
-#'   BaselineId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3430,60 +1824,19 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
 }
 .ssm$operations$describe_effective_patches_for_patch_baseline <- ssm_describe_effective_patches_for_patch_baseline
 
-#' The status of the associations for the instance(s)
+#' The status of the associations for the managed node(s)
 #'
 #' @description
-#' The status of the associations for the instance(s).
+#' The status of the associations for the managed node(s).
 #'
-#' @usage
-#' ssm_describe_instance_associations_status(InstanceId, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_instance_associations_status.html](https://paws-r.github.io/docs/ssm/describe_instance_associations_status.html) for full documentation.
 #'
-#' @param InstanceId &#91;required&#93; The instance IDs for which you want association status information.
+#' @param InstanceId &#91;required&#93; The managed node IDs for which you want association status information.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstanceAssociationStatusInfos = list(
-#'     list(
-#'       AssociationId = "string",
-#'       Name = "string",
-#'       DocumentVersion = "string",
-#'       AssociationVersion = "string",
-#'       InstanceId = "string",
-#'       ExecutionDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "string",
-#'       DetailedStatus = "string",
-#'       ExecutionSummary = "string",
-#'       ErrorCode = "string",
-#'       OutputUrl = list(
-#'         S3OutputUrl = list(
-#'           OutputUrl = "string"
-#'         )
-#'       ),
-#'       AssociationName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_instance_associations_status(
-#'   InstanceId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3505,112 +1858,30 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 }
 .ssm$operations$describe_instance_associations_status <- ssm_describe_instance_associations_status
 
-#' Describes one or more of your instances, including information about the
-#' operating system platform, the version of SSM Agent installed on the
-#' instance, instance status, and so on
+#' Describes one or more of your managed nodes, including information about
+#' the operating system platform, the version of SSM Agent installed on the
+#' managed node, node status, and so on
 #'
 #' @description
-#' Describes one or more of your instances, including information about the
-#' operating system platform, the version of SSM Agent installed on the
-#' instance, instance status, and so on.
-#' 
-#' If you specify one or more instance IDs, it returns information for
-#' those instances. If you do not specify instance IDs, it returns
-#' information for all your instances. If you specify an instance ID that
-#' is not valid or an instance that you do not own, you receive an error.
-#' 
-#' The IamRole field for this API action is the Amazon Identity and Access
-#' Management (IAM) role assigned to on-premises instances. This call does
-#' not return the IAM role for EC2 instances.
+#' Describes one or more of your managed nodes, including information about the operating system platform, the version of SSM Agent installed on the managed node, node status, and so on.
 #'
-#' @usage
-#' ssm_describe_instance_information(InstanceInformationFilterList,
-#'   Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_instance_information.html](https://paws-r.github.io/docs/ssm/describe_instance_information.html) for full documentation.
 #'
 #' @param InstanceInformationFilterList This is a legacy method. We recommend that you don't use this method.
 #' Instead, use the `Filters` data type. `Filters` enables you to return
-#' instance information by filtering based on tags applied to managed
-#' instances.
+#' node information by filtering based on tags applied to managed nodes.
 #' 
 #' Attempting to use `InstanceInformationFilterList` and `Filters` leads to
 #' an exception error.
 #' @param Filters One or more filters. Use a filter to return a more specific list of
-#' instances. You can filter based on tags applied to EC2 instances. Use
-#' this `Filters` data type instead of `InstanceInformationFilterList`,
+#' managed nodes. You can filter based on tags applied to EC2 instances.
+#' Use this `Filters` data type instead of `InstanceInformationFilterList`,
 #' which is deprecated.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstanceInformationList = list(
-#'     list(
-#'       InstanceId = "string",
-#'       PingStatus = "Online"|"ConnectionLost"|"Inactive",
-#'       LastPingDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       AgentVersion = "string",
-#'       IsLatestVersion = TRUE|FALSE,
-#'       PlatformType = "Windows"|"Linux",
-#'       PlatformName = "string",
-#'       PlatformVersion = "string",
-#'       ActivationId = "string",
-#'       IamRole = "string",
-#'       RegistrationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ResourceType = "ManagedInstance"|"Document"|"EC2Instance",
-#'       Name = "string",
-#'       IPAddress = "string",
-#'       ComputerName = "string",
-#'       AssociationStatus = "string",
-#'       LastAssociationExecutionDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastSuccessfulAssociationExecutionDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       AssociationOverview = list(
-#'         DetailedStatus = "string",
-#'         InstanceAssociationStatusAggregatedCount = list(
-#'           123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_instance_information(
-#'   InstanceInformationFilterList = list(
-#'     list(
-#'       key = "InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus",
-#'       valueSet = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3632,67 +1903,18 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
 }
 .ssm$operations$describe_instance_information <- ssm_describe_instance_information
 
-#' Retrieves the high-level patch state of one or more instances
+#' Retrieves the high-level patch state of one or more managed nodes
 #'
 #' @description
-#' Retrieves the high-level patch state of one or more instances.
+#' Retrieves the high-level patch state of one or more managed nodes.
 #'
-#' @usage
-#' ssm_describe_instance_patch_states(InstanceIds, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/describe_instance_patch_states.html](https://paws-r.github.io/docs/ssm/describe_instance_patch_states.html) for full documentation.
 #'
-#' @param InstanceIds &#91;required&#93; The ID of the instance whose patch state information should be
+#' @param InstanceIds &#91;required&#93; The ID of the managed node for which patch state information should be
 #' retrieved.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#' @param MaxResults The maximum number of instances to return (per page).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstancePatchStates = list(
-#'     list(
-#'       InstanceId = "string",
-#'       PatchGroup = "string",
-#'       BaselineId = "string",
-#'       SnapshotId = "string",
-#'       InstallOverrideList = "string",
-#'       OwnerInformation = "string",
-#'       InstalledCount = 123,
-#'       InstalledOtherCount = 123,
-#'       InstalledPendingRebootCount = 123,
-#'       InstalledRejectedCount = 123,
-#'       MissingCount = 123,
-#'       FailedCount = 123,
-#'       UnreportedNotApplicableCount = 123,
-#'       NotApplicableCount = 123,
-#'       OperationStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OperationEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Operation = "Scan"|"Install",
-#'       LastNoRebootInstallOperationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RebootOption = "RebootIfNeeded"|"NoReboot"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_instance_patch_states(
-#'   InstanceIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
+#' @param MaxResults The maximum number of managed nodes to return (per page).
 #'
 #' @keywords internal
 #'
@@ -3714,84 +1936,26 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
 }
 .ssm$operations$describe_instance_patch_states <- ssm_describe_instance_patch_states
 
-#' Retrieves the high-level patch state for the instances in the specified
-#' patch group
+#' Retrieves the high-level patch state for the managed nodes in the
+#' specified patch group
 #'
 #' @description
-#' Retrieves the high-level patch state for the instances in the specified
-#' patch group.
+#' Retrieves the high-level patch state for the managed nodes in the specified patch group.
 #'
-#' @usage
-#' ssm_describe_instance_patch_states_for_patch_group(PatchGroup, Filters,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/describe_instance_patch_states_for_patch_group.html](https://paws-r.github.io/docs/ssm/describe_instance_patch_states_for_patch_group.html) for full documentation.
 #'
 #' @param PatchGroup &#91;required&#93; The name of the patch group for which the patch state information should
 #' be retrieved.
 #' @param Filters Each entry in the array is a structure containing:
 #' 
-#' Key (string between 1 and 200 characters)
+#' -   Key (string between 1 and 200 characters)
 #' 
-#' Values (array containing a single string)
+#' -   Values (array containing a single string)
 #' 
-#' Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")
+#' -   Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxResults The maximum number of patches to return (per page).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstancePatchStates = list(
-#'     list(
-#'       InstanceId = "string",
-#'       PatchGroup = "string",
-#'       BaselineId = "string",
-#'       SnapshotId = "string",
-#'       InstallOverrideList = "string",
-#'       OwnerInformation = "string",
-#'       InstalledCount = 123,
-#'       InstalledOtherCount = 123,
-#'       InstalledPendingRebootCount = 123,
-#'       InstalledRejectedCount = 123,
-#'       MissingCount = 123,
-#'       FailedCount = 123,
-#'       UnreportedNotApplicableCount = 123,
-#'       NotApplicableCount = 123,
-#'       OperationStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OperationEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Operation = "Scan"|"Install",
-#'       LastNoRebootInstallOperationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RebootOption = "RebootIfNeeded"|"NoReboot"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_instance_patch_states_for_patch_group(
-#'   PatchGroup = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Type = "Equal"|"NotEqual"|"LessThan"|"GreaterThan"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3813,63 +1977,41 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 }
 .ssm$operations$describe_instance_patch_states_for_patch_group <- ssm_describe_instance_patch_states_for_patch_group
 
-#' Retrieves information about the patches on the specified instance and
-#' their state relative to the patch baseline being used for the instance
+#' Retrieves information about the patches on the specified managed node
+#' and their state relative to the patch baseline being used for the node
 #'
 #' @description
-#' Retrieves information about the patches on the specified instance and
-#' their state relative to the patch baseline being used for the instance.
+#' Retrieves information about the patches on the specified managed node and their state relative to the patch baseline being used for the node.
 #'
-#' @usage
-#' ssm_describe_instance_patches(InstanceId, Filters, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/describe_instance_patches.html](https://paws-r.github.io/docs/ssm/describe_instance_patches.html) for full documentation.
 #'
-#' @param InstanceId &#91;required&#93; The ID of the instance whose patch state information should be
+#' @param InstanceId &#91;required&#93; The ID of the managed node whose patch state information should be
 #' retrieved.
-#' @param Filters An array of structures. Each entry in the array is a structure
-#' containing a Key, Value combination. Valid values for Key are
-#' `Classification` | `KBId` | `Severity` | `State`.
+#' @param Filters Each element in the array is a structure containing a key-value pair.
+#' 
+#' Supported keys for
+#' [`describe_instance_patches`][ssm_describe_instance_patches]include the
+#' following:
+#' 
+#' -   **`Classification`**
+#' 
+#'     Sample values: `Security` | `SecurityUpdates`
+#' 
+#' -   **`KBId`**
+#' 
+#'     Sample values: `KB4480056` | `java-1.7.0-openjdk.x86_64`
+#' 
+#' -   **`Severity`**
+#' 
+#'     Sample values: `Important` | `Medium` | `Low`
+#' 
+#' -   **`State`**
+#' 
+#'     Sample values: `Installed` | `InstalledOther` |
+#'     `InstalledPendingReboot`
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxResults The maximum number of patches to return (per page).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Patches = list(
-#'     list(
-#'       Title = "string",
-#'       KBId = "string",
-#'       Classification = "string",
-#'       Severity = "string",
-#'       State = "INSTALLED"|"INSTALLED_OTHER"|"INSTALLED_PENDING_REBOOT"|"INSTALLED_REJECTED"|"MISSING"|"NOT_APPLICABLE"|"FAILED",
-#'       InstalledTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CVEIds = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_instance_patches(
-#'   InstanceId = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3896,58 +2038,16 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
 #' @description
 #' Describes a specific delete inventory operation.
 #'
-#' @usage
-#' ssm_describe_inventory_deletions(DeletionId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/describe_inventory_deletions.html](https://paws-r.github.io/docs/ssm/describe_inventory_deletions.html) for full documentation.
 #'
 #' @param DeletionId Specify the delete inventory ID for which you want information. This ID
-#' was returned by the [`delete_inventory`][ssm_delete_inventory] action.
+#' was returned by the [`delete_inventory`][ssm_delete_inventory]
+#' operation.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InventoryDeletions = list(
-#'     list(
-#'       DeletionId = "string",
-#'       TypeName = "string",
-#'       DeletionStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastStatus = "InProgress"|"Complete",
-#'       LastStatusMessage = "string",
-#'       DeletionSummary = list(
-#'         TotalCount = 123,
-#'         RemainingCount = 123,
-#'         SummaryItems = list(
-#'           list(
-#'             Version = "string",
-#'             Count = 123,
-#'             RemainingCount = 123
-#'           )
-#'         )
-#'       ),
-#'       LastStatusUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_inventory_deletions(
-#'   DeletionId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3973,70 +2073,22 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
 #' particular task run as part of a maintenance window execution
 #'
 #' @description
-#' Retrieves the individual task executions (one per target) for a
-#' particular task run as part of a maintenance window execution.
+#' Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance window execution.
 #'
-#' @usage
-#' ssm_describe_maintenance_window_execution_task_invocations(
-#'   WindowExecutionId, TaskId, Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_task_invocations.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_task_invocations.html) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution the task is part of.
 #' @param TaskId &#91;required&#93; The ID of the specific task in the maintenance window task that should
 #' be retrieved.
 #' @param Filters Optional filters used to scope down the returned task invocations. The
-#' supported filter key is STATUS with the corresponding values PENDING,
-#' IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.
+#' supported filter key is `STATUS` with the corresponding values
+#' `PENDING`, `IN_PROGRESS`, `SUCCESS`, `FAILED`, `TIMED_OUT`,
+#' `CANCELLING`, and `CANCELLED`.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowExecutionTaskInvocationIdentities = list(
-#'     list(
-#'       WindowExecutionId = "string",
-#'       TaskExecutionId = "string",
-#'       InvocationId = "string",
-#'       ExecutionId = "string",
-#'       TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-#'       Parameters = "string",
-#'       Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-#'       StatusDetails = "string",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OwnerInformation = "string",
-#'       WindowTargetId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_maintenance_window_execution_task_invocations(
-#'   WindowExecutionId = "string",
-#'   TaskId = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4063,61 +2115,19 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
 #' @description
 #' For a given maintenance window execution, lists the tasks that were run.
 #'
-#' @usage
-#' ssm_describe_maintenance_window_execution_tasks(WindowExecutionId,
-#'   Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_tasks.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_tasks.html) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution whose task executions should
 #' be retrieved.
 #' @param Filters Optional filters used to scope down the returned tasks. The supported
-#' filter key is STATUS with the corresponding values PENDING,
-#' IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.
+#' filter key is `STATUS` with the corresponding values `PENDING`,
+#' `IN_PROGRESS`, `SUCCESS`, `FAILED`, `TIMED_OUT`, `CANCELLING`, and
+#' `CANCELLED`.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowExecutionTaskIdentities = list(
-#'     list(
-#'       WindowExecutionId = "string",
-#'       TaskExecutionId = "string",
-#'       Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-#'       StatusDetails = "string",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TaskArn = "string",
-#'       TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_maintenance_window_execution_tasks(
-#'   WindowExecutionId = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4142,67 +2152,24 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 #' Lists the executions of a maintenance window
 #'
 #' @description
-#' Lists the executions of a maintenance window. This includes information
-#' about when the maintenance window was scheduled to be active, and
-#' information about tasks registered and run with the maintenance window.
+#' Lists the executions of a maintenance window. This includes information about when the maintenance window was scheduled to be active, and information about tasks registered and run with the maintenance window.
 #'
-#' @usage
-#' ssm_describe_maintenance_window_executions(WindowId, Filters,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_executions.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_executions.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window whose executions should be retrieved.
 #' @param Filters Each entry in the array is a structure containing:
 #' 
-#' Key (string, between 1 and 128 characters)
+#' -   Key. A string between 1 and 128 characters. Supported keys include
+#'     `ExecutedBefore` and `ExecutedAfter`.
 #' 
-#' Values (array of strings, each string is between 1 and 256 characters)
-#' 
-#' The supported Keys are ExecutedBefore and ExecutedAfter with the value
-#' being a date/time string such as 2016-11-04T05:00:00Z.
+#' -   Values. An array of strings, each between 1 and 256 characters.
+#'     Supported values are date/time strings in a valid ISO 8601 date/time
+#'     format, such as `2021-11-04T05:00:00Z`.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowExecutions = list(
-#'     list(
-#'       WindowId = "string",
-#'       WindowExecutionId = "string",
-#'       Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-#'       StatusDetails = "string",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_maintenance_window_executions(
-#'   WindowId = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4229,14 +2196,12 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
 #' @description
 #' Retrieves information about upcoming executions of a maintenance window.
 #'
-#' @usage
-#' ssm_describe_maintenance_window_schedule(WindowId, Targets,
-#'   ResourceType, Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_schedule.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_schedule.html) for full documentation.
 #'
 #' @param WindowId The ID of the maintenance window to retrieve information about.
-#' @param Targets The instance ID or key/value pair to retrieve information about.
+#' @param Targets The managed node ID or key-value pair to retrieve information about.
 #' @param ResourceType The type of resource you want to retrieve information about. For
-#' example, "INSTANCE".
+#' example, `INSTANCE`.
 #' @param Filters Filters used to limit the range of results. For example, you can limit
 #' maintenance window executions to only those scheduled before or after a
 #' certain date and time.
@@ -4245,47 +2210,6 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ScheduledWindowExecutions = list(
-#'     list(
-#'       WindowId = "string",
-#'       Name = "string",
-#'       ExecutionTime = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_maintenance_window_schedule(
-#'   WindowId = "string",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ResourceType = "INSTANCE"|"RESOURCE_GROUP",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4312,62 +2236,17 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
 #' @description
 #' Lists the targets registered with the maintenance window.
 #'
-#' @usage
-#' ssm_describe_maintenance_window_targets(WindowId, Filters, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_targets.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_targets.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window whose targets should be retrieved.
 #' @param Filters Optional filters that can be used to narrow down the scope of the
-#' returned window targets. The supported filter keys are Type,
-#' WindowTargetId and OwnerInformation.
+#' returned window targets. The supported filter keys are `Type`,
+#' `WindowTargetId`, and `OwnerInformation`.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Targets = list(
-#'     list(
-#'       WindowId = "string",
-#'       WindowTargetId = "string",
-#'       ResourceType = "INSTANCE"|"RESOURCE_GROUP",
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       OwnerInformation = "string",
-#'       Name = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_maintenance_window_targets(
-#'   WindowId = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4393,85 +2272,18 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
 #'
 #' @description
 #' Lists the tasks in a maintenance window.
-#' 
-#' For maintenance window tasks without a specified target, you cannot
-#' supply values for `--max-errors` and `--max-concurrency`. Instead, the
-#' system inserts a placeholder value of `1`, which may be reported in the
-#' response to this command. These values do not affect the running of your
-#' task and can be ignored.
 #'
-#' @usage
-#' ssm_describe_maintenance_window_tasks(WindowId, Filters, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_tasks.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_tasks.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window whose tasks should be retrieved.
 #' @param Filters Optional filters used to narrow down the scope of the returned tasks.
-#' The supported filter keys are WindowTaskId, TaskArn, Priority, and
-#' TaskType.
+#' The supported filter keys are `WindowTaskId`, `TaskArn`, `Priority`, and
+#' `TaskType`.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tasks = list(
-#'     list(
-#'       WindowId = "string",
-#'       WindowTaskId = "string",
-#'       TaskArn = "string",
-#'       Type = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       TaskParameters = list(
-#'         list(
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Priority = 123,
-#'       LoggingInfo = list(
-#'         S3BucketName = "string",
-#'         S3KeyPrefix = "string",
-#'         S3Region = "string"
-#'       ),
-#'       ServiceRoleArn = "string",
-#'       MaxConcurrency = "string",
-#'       MaxErrors = "string",
-#'       Name = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_maintenance_window_tasks(
-#'   WindowId = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4493,61 +2305,21 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
 }
 .ssm$operations$describe_maintenance_window_tasks <- ssm_describe_maintenance_window_tasks
 
-#' Retrieves the maintenance windows in an AWS account
+#' Retrieves the maintenance windows in an Amazon Web Services account
 #'
 #' @description
-#' Retrieves the maintenance windows in an AWS account.
+#' Retrieves the maintenance windows in an Amazon Web Services account.
 #'
-#' @usage
-#' ssm_describe_maintenance_windows(Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_windows.html](https://paws-r.github.io/docs/ssm/describe_maintenance_windows.html) for full documentation.
 #'
 #' @param Filters Optional filters used to narrow down the scope of the returned
-#' maintenance windows. Supported filter keys are **Name** and **Enabled**.
+#' maintenance windows. Supported filter keys are `Name` and `Enabled`. For
+#' example, `Name=MyMaintenanceWindow` and `Enabled=True`.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowIdentities = list(
-#'     list(
-#'       WindowId = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       Enabled = TRUE|FALSE,
-#'       Duration = 123,
-#'       Cutoff = 123,
-#'       Schedule = "string",
-#'       ScheduleTimezone = "string",
-#'       ScheduleOffset = 123,
-#'       EndDate = "string",
-#'       StartDate = "string",
-#'       NextExecutionTime = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_maintenance_windows(
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4570,55 +2342,21 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
 .ssm$operations$describe_maintenance_windows <- ssm_describe_maintenance_windows
 
 #' Retrieves information about the maintenance window targets or tasks that
-#' an instance is associated with
+#' a managed node is associated with
 #'
 #' @description
-#' Retrieves information about the maintenance window targets or tasks that
-#' an instance is associated with.
+#' Retrieves information about the maintenance window targets or tasks that a managed node is associated with.
 #'
-#' @usage
-#' ssm_describe_maintenance_windows_for_target(Targets, ResourceType,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_windows_for_target.html](https://paws-r.github.io/docs/ssm/describe_maintenance_windows_for_target.html) for full documentation.
 #'
-#' @param Targets &#91;required&#93; The instance ID or key/value pair to retrieve information about.
+#' @param Targets &#91;required&#93; The managed node ID or key-value pair to retrieve information about.
 #' @param ResourceType &#91;required&#93; The type of resource you want to retrieve information about. For
-#' example, "INSTANCE".
+#' example, `INSTANCE`.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowIdentities = list(
-#'     list(
-#'       WindowId = "string",
-#'       Name = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_maintenance_windows_for_target(
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ResourceType = "INSTANCE"|"RESOURCE_GROUP",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4643,21 +2381,9 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' Query a set of OpsItems
 #'
 #' @description
-#' Query a set of OpsItems. You must have permission in AWS Identity and
-#' Access Management (IAM) to query a list of OpsItems. For more
-#' information, see [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
-#' in the *AWS Systems Manager User Guide*.
-#' 
-#' Operations engineers and IT professionals use OpsCenter to view,
-#' investigate, and remediate operational issues impacting the performance
-#' and health of their AWS resources. For more information, see [AWS
-#' Systems Manager
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
-#' in the *AWS Systems Manager User Guide*.
+#' Query a set of OpsItems. You must have permission in Identity and Access Management (IAM) to query a list of OpsItems. For more information, see [Getting started with OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' @usage
-#' ssm_describe_ops_items(OpsItemFilters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_ops_items.html](https://paws-r.github.io/docs/ssm/describe_ops_items.html) for full documentation.
 #'
 #' @param OpsItemFilters One or more filters to limit the response.
 #' 
@@ -4685,11 +2411,11 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' 
 #'     Operations: Equals
 #' 
-#' -   Key: Title
+#' -   Key: Title*
 #' 
-#'     Operations: Contains
+#'     Operations: Equals,Contains
 #' 
-#' -   Key: OperationalData*
+#' -   Key: OperationalData**
 #' 
 #'     Operations: Equals
 #' 
@@ -4713,7 +2439,11 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' 
 #'     Operations: Equals
 #' 
-#' *If you filter the response by using the OperationalData operator,
+#' *The Equals operator for Title matches the first 100 characters. If you
+#' specify more than 100 characters, they system returns an error that the
+#' filter value exceeds the length limit.
+#' 
+#' **If you filter the response by using the OperationalData operator,
 #' specify a key-value pair by using the following JSON format:
 #' \{"key":"key_name","value":"a_value"\}
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -4721,69 +2451,6 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   OpsItemSummaries = list(
-#'     list(
-#'       CreatedBy = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedBy = "string",
-#'       LastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Priority = 123,
-#'       Source = "string",
-#'       Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
-#'       OpsItemId = "string",
-#'       Title = "string",
-#'       OperationalData = list(
-#'         list(
-#'           Value = "string",
-#'           Type = "SearchableString"|"String"
-#'         )
-#'       ),
-#'       Category = "string",
-#'       Severity = "string",
-#'       OpsItemType = "string",
-#'       ActualStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ActualEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PlannedStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PlannedEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_ops_items(
-#'   OpsItemFilters = list(
-#'     list(
-#'       Key = "Status"|"CreatedBy"|"Source"|"Priority"|"Title"|"OpsItemId"|"CreatedTime"|"LastModifiedTime"|"ActualStartTime"|"ActualEndTime"|"PlannedStartTime"|"PlannedEndTime"|"OperationalData"|"OperationalDataKey"|"OperationalDataValue"|"ResourceId"|"AutomationId"|"Category"|"Severity"|"OpsItemType"|"ChangeRequestByRequesterArn"|"ChangeRequestByRequesterName"|"ChangeRequestByApproverArn"|"ChangeRequestByApproverName"|"ChangeRequestByTemplate"|"ChangeRequestByTargetsResourceGroup",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Operator = "Equal"|"Contains"|"GreaterThan"|"LessThan"
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4809,18 +2476,8 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #'
 #' @description
 #' Get information about a parameter.
-#' 
-#' Request results are returned on a best-effort basis. If you specify
-#' `MaxResults` in the request, the response includes information up to the
-#' limit specified. The number of items returned, however, can be between
-#' zero and the value of `MaxResults`. If the service reaches an internal
-#' limit while processing the results, it stops the operation and returns
-#' the matching values up to that point and a `NextToken`. You can specify
-#' the `NextToken` in a subsequent call to get the next set of results.
 #'
-#' @usage
-#' ssm_describe_parameters(Filters, ParameterFilters, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_parameters.html](https://paws-r.github.io/docs/ssm/describe_parameters.html) for full documentation.
 #'
 #' @param Filters This data type is deprecated. Instead, use `ParameterFilters`.
 #' @param ParameterFilters Filters to limit the request results.
@@ -4829,62 +2486,6 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameters = list(
-#'     list(
-#'       Name = "string",
-#'       Type = "String"|"StringList"|"SecureString",
-#'       KeyId = "string",
-#'       LastModifiedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedUser = "string",
-#'       Description = "string",
-#'       AllowedPattern = "string",
-#'       Version = 123,
-#'       Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
-#'       Policies = list(
-#'         list(
-#'           PolicyText = "string",
-#'           PolicyType = "string",
-#'           PolicyStatus = "string"
-#'         )
-#'       ),
-#'       DataType = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_parameters(
-#'   Filters = list(
-#'     list(
-#'       Key = "Name"|"Type"|"KeyId",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ParameterFilters = list(
-#'     list(
-#'       Key = "string",
-#'       Option = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4906,55 +2507,33 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
 }
 .ssm$operations$describe_parameters <- ssm_describe_parameters
 
-#' Lists the patch baselines in your AWS account
+#' Lists the patch baselines in your Amazon Web Services account
 #'
 #' @description
-#' Lists the patch baselines in your AWS account.
+#' Lists the patch baselines in your Amazon Web Services account.
 #'
-#' @usage
-#' ssm_describe_patch_baselines(Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_patch_baselines.html](https://paws-r.github.io/docs/ssm/describe_patch_baselines.html) for full documentation.
 #'
-#' @param Filters Each element in the array is a structure containing:
+#' @param Filters Each element in the array is a structure containing a key-value pair.
 #' 
-#' Key: (string, "NAME_PREFIX" or "OWNER")
+#' Supported keys for
+#' [`describe_patch_baselines`][ssm_describe_patch_baselines] include the
+#' following:
 #' 
-#' Value: (array of strings, exactly 1 entry, between 1 and 255 characters)
+#' -   **`NAME_PREFIX`**
+#' 
+#'     Sample values: `AWS-` | `My-`
+#' 
+#' -   **`OWNER`**
+#' 
+#'     Sample values: `AWS` | `Self`
+#' 
+#' -   **`OPERATING_SYSTEM`**
+#' 
+#'     Sample values: `AMAZON_LINUX` | `SUSE` | `WINDOWS`
 #' @param MaxResults The maximum number of patch baselines to return (per page).
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineIdentities = list(
-#'     list(
-#'       BaselineId = "string",
-#'       BaselineName = "string",
-#'       OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-#'       BaselineDescription = "string",
-#'       DefaultBaseline = TRUE|FALSE
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_patch_baselines(
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4976,38 +2555,15 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
 }
 .ssm$operations$describe_patch_baselines <- ssm_describe_patch_baselines
 
-#' Returns high-level aggregated patch compliance state for a patch group
+#' Returns high-level aggregated patch compliance state information for a
+#' patch group
 #'
 #' @description
-#' Returns high-level aggregated patch compliance state for a patch group.
+#' Returns high-level aggregated patch compliance state information for a patch group.
 #'
-#' @usage
-#' ssm_describe_patch_group_state(PatchGroup)
+#' See [https://paws-r.github.io/docs/ssm/describe_patch_group_state.html](https://paws-r.github.io/docs/ssm/describe_patch_group_state.html) for full documentation.
 #'
 #' @param PatchGroup &#91;required&#93; The name of the patch group whose patch snapshot should be retrieved.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Instances = 123,
-#'   InstancesWithInstalledPatches = 123,
-#'   InstancesWithInstalledOtherPatches = 123,
-#'   InstancesWithInstalledPendingRebootPatches = 123,
-#'   InstancesWithInstalledRejectedPatches = 123,
-#'   InstancesWithMissingPatches = 123,
-#'   InstancesWithFailedPatches = 123,
-#'   InstancesWithNotApplicablePatches = 123,
-#'   InstancesWithUnreportedNotApplicablePatches = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_patch_group_state(
-#'   PatchGroup = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5034,67 +2590,23 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #' @description
 #' Lists all patch groups that have been registered with patch baselines.
 #'
-#' @usage
-#' ssm_describe_patch_groups(MaxResults, Filters, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_patch_groups.html](https://paws-r.github.io/docs/ssm/describe_patch_groups.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of patch groups to return (per page).
-#' @param Filters One or more filters. Use a filter to return a more specific list of
-#' results.
+#' @param Filters Each element in the array is a structure containing a key-value pair.
 #' 
-#' For [`describe_patch_groups`][ssm_describe_patch_groups],valid filter
-#' keys include the following:
+#' Supported keys for [`describe_patch_groups`][ssm_describe_patch_groups]
+#' include the following:
 #' 
-#' -   `NAME_PREFIX`: The name of the patch group. Wildcards (*) are
-#'     accepted.
+#' -   **`NAME_PREFIX`**
 #' 
-#' -   `OPERATING_SYSTEM`: The supported operating system type to return
-#'     results for. For valid operating system values, see
-#'     GetDefaultPatchBaselineRequest$OperatingSystem in
-#'     [`create_patch_baseline`][ssm_create_patch_baseline].
+#'     Sample values: `AWS-` | `My-`.
 #' 
-#'     Examples:
+#' -   **`OPERATING_SYSTEM`**
 #' 
-#'     -   `--filters Key=NAME_PREFIX,Values=MyPatchGroup*`
-#' 
-#'     -   `--filters Key=OPERATING_SYSTEM,Values=AMAZON_LINUX_2`
+#'     Sample values: `AMAZON_LINUX` | `SUSE` | `WINDOWS`
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Mappings = list(
-#'     list(
-#'       PatchGroup = "string",
-#'       BaselineIdentity = list(
-#'         BaselineId = "string",
-#'         BaselineName = "string",
-#'         OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-#'         BaselineDescription = "string",
-#'         DefaultBaseline = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_patch_groups(
-#'   MaxResults = 123,
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5121,97 +2633,20 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' patches
 #'
 #' @description
-#' Lists the properties of available patches organized by product, product
-#' family, classification, severity, and other properties of available
-#' patches. You can use the reported properties in the filters you specify
-#' in requests for actions such as
-#' [`create_patch_baseline`][ssm_create_patch_baseline],
-#' [`update_patch_baseline`][ssm_update_patch_baseline],
-#' [`describe_available_patches`][ssm_describe_available_patches], and
-#' [`describe_patch_baselines`][ssm_describe_patch_baselines].
-#' 
-#' The following section lists the properties that can be used in filters
-#' for each major operating system type:
-#' 
-#' ### AMAZON_LINUX
-#' 
-#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-#' 
-#' ### AMAZON_LINUX_2
-#' 
-#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-#' 
-#' ### CENTOS
-#' 
-#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-#' 
-#' ### DEBIAN
-#' 
-#' Valid properties: PRODUCT, PRIORITY
-#' 
-#' ### MACOS
-#' 
-#' Valid properties: PRODUCT, CLASSIFICATION
-#' 
-#' ### ORACLE_LINUX
-#' 
-#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-#' 
-#' ### REDHAT_ENTERPRISE_LINUX
-#' 
-#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-#' 
-#' ### SUSE
-#' 
-#' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-#' 
-#' ### UBUNTU
-#' 
-#' Valid properties: PRODUCT, PRIORITY
-#' 
-#' ### WINDOWS
-#' 
-#' Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION,
-#' MSRC_SEVERITY
+#' Lists the properties of available patches organized by product, product family, classification, severity, and other properties of available patches. You can use the reported properties in the filters you specify in requests for operations such as [`create_patch_baseline`][ssm_create_patch_baseline], [`update_patch_baseline`][ssm_update_patch_baseline], [`describe_available_patches`][ssm_describe_available_patches], and [`describe_patch_baselines`][ssm_describe_patch_baselines].
 #'
-#' @usage
-#' ssm_describe_patch_properties(OperatingSystem, Property, PatchSet,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/describe_patch_properties.html](https://paws-r.github.io/docs/ssm/describe_patch_properties.html) for full documentation.
 #'
 #' @param OperatingSystem &#91;required&#93; The operating system type for which to list patches.
 #' @param Property &#91;required&#93; The patch property for which you want to view patch details.
 #' @param PatchSet Indicates whether to list patches for the Windows operating system or
-#' for Microsoft applications. Not applicable for the Linux or macOS
-#' operating systems.
+#' for applications released by Microsoft. Not applicable for the Linux or
+#' macOS operating systems.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Properties = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_patch_properties(
-#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-#'   Property = "PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PRIORITY"|"SEVERITY",
-#'   PatchSet = "OS"|"APPLICATION",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5237,11 +2672,9 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
 #' disconnected) or terminated sessions from the past 30 days
 #'
 #' @description
-#' Retrieves a list of all active sessions (both connected and
-#' disconnected) or terminated sessions from the past 30 days.
+#' Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days.
 #'
-#' @usage
-#' ssm_describe_sessions(State, MaxResults, NextToken, Filters)
+#' See [https://paws-r.github.io/docs/ssm/describe_sessions.html](https://paws-r.github.io/docs/ssm/describe_sessions.html) for full documentation.
 #'
 #' @param State &#91;required&#93; The session status to retrieve a list of sessions for. For example,
 #' "Active".
@@ -5252,49 +2685,6 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
 #' from a previous call.)
 #' @param Filters One or more filters to limit the type of sessions returned by the
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Sessions = list(
-#'     list(
-#'       SessionId = "string",
-#'       Target = "string",
-#'       Status = "Connected"|"Connecting"|"Disconnected"|"Terminated"|"Terminating"|"Failed",
-#'       StartDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DocumentName = "string",
-#'       Owner = "string",
-#'       Details = "string",
-#'       OutputUrl = list(
-#'         S3OutputUrl = "string",
-#'         CloudWatchOutputUrl = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_sessions(
-#'   State = "Active"|"History",
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status"|"SessionId",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5316,214 +2706,48 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
 }
 .ssm$operations$describe_sessions <- ssm_describe_sessions
 
+#' Deletes the association between an OpsItem and a related item
+#'
+#' @description
+#' Deletes the association between an OpsItem and a related item. For example, this API operation can delete an Incident Manager incident from an OpsItem. Incident Manager is a capability of Amazon Web Services Systems Manager.
+#'
+#' See [https://paws-r.github.io/docs/ssm/disassociate_ops_item_related_item.html](https://paws-r.github.io/docs/ssm/disassociate_ops_item_related_item.html) for full documentation.
+#'
+#' @param OpsItemId &#91;required&#93; The ID of the OpsItem for which you want to delete an association
+#' between the OpsItem and a related item.
+#' @param AssociationId &#91;required&#93; The ID of the association for which you want to delete an association
+#' between the OpsItem and a related item.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_disassociate_ops_item_related_item
+ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
+  op <- new_operation(
+    name = "DisassociateOpsItemRelatedItem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$disassociate_ops_item_related_item_input(OpsItemId = OpsItemId, AssociationId = AssociationId)
+  output <- .ssm$disassociate_ops_item_related_item_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$disassociate_ops_item_related_item <- ssm_disassociate_ops_item_related_item
+
 #' Get detailed information about a particular Automation execution
 #'
 #' @description
 #' Get detailed information about a particular Automation execution.
 #'
-#' @usage
-#' ssm_get_automation_execution(AutomationExecutionId)
+#' See [https://paws-r.github.io/docs/ssm/get_automation_execution.html](https://paws-r.github.io/docs/ssm/get_automation_execution.html) for full documentation.
 #'
 #' @param AutomationExecutionId &#91;required&#93; The unique identifier for an existing automation execution to examine.
 #' The execution ID is returned by StartAutomationExecution when the
-#' execution of an Automation document is initiated.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AutomationExecution = list(
-#'     AutomationExecutionId = "string",
-#'     DocumentName = "string",
-#'     DocumentVersion = "string",
-#'     ExecutionStartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExecutionEndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AutomationExecutionStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
-#'     StepExecutions = list(
-#'       list(
-#'         StepName = "string",
-#'         Action = "string",
-#'         TimeoutSeconds = 123,
-#'         OnFailure = "string",
-#'         MaxAttempts = 123,
-#'         ExecutionStartTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ExecutionEndTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         StepStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
-#'         ResponseCode = "string",
-#'         Inputs = list(
-#'           "string"
-#'         ),
-#'         Outputs = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         Response = "string",
-#'         FailureMessage = "string",
-#'         FailureDetails = list(
-#'           FailureStage = "string",
-#'           FailureType = "string",
-#'           Details = list(
-#'             list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         StepExecutionId = "string",
-#'         OverriddenParameters = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         IsEnd = TRUE|FALSE,
-#'         NextStep = "string",
-#'         IsCritical = TRUE|FALSE,
-#'         ValidNextSteps = list(
-#'           "string"
-#'         ),
-#'         Targets = list(
-#'           list(
-#'             Key = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         TargetLocation = list(
-#'           Accounts = list(
-#'             "string"
-#'           ),
-#'           Regions = list(
-#'             "string"
-#'           ),
-#'           TargetLocationMaxConcurrency = "string",
-#'           TargetLocationMaxErrors = "string",
-#'           ExecutionRoleName = "string"
-#'         )
-#'       )
-#'     ),
-#'     StepExecutionsTruncated = TRUE|FALSE,
-#'     Parameters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     Outputs = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     FailureMessage = "string",
-#'     Mode = "Auto"|"Interactive",
-#'     ParentAutomationExecutionId = "string",
-#'     ExecutedBy = "string",
-#'     CurrentStepName = "string",
-#'     CurrentAction = "string",
-#'     TargetParameterName = "string",
-#'     Targets = list(
-#'       list(
-#'         Key = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     TargetMaps = list(
-#'       list(
-#'         list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ResolvedTargets = list(
-#'       ParameterValues = list(
-#'         "string"
-#'       ),
-#'       Truncated = TRUE|FALSE
-#'     ),
-#'     MaxConcurrency = "string",
-#'     MaxErrors = "string",
-#'     Target = "string",
-#'     TargetLocations = list(
-#'       list(
-#'         Accounts = list(
-#'           "string"
-#'         ),
-#'         Regions = list(
-#'           "string"
-#'         ),
-#'         TargetLocationMaxConcurrency = "string",
-#'         TargetLocationMaxErrors = "string",
-#'         ExecutionRoleName = "string"
-#'       )
-#'     ),
-#'     ProgressCounters = list(
-#'       TotalSteps = 123,
-#'       SuccessSteps = 123,
-#'       FailedSteps = 123,
-#'       CancelledSteps = 123,
-#'       TimedOutSteps = 123
-#'     ),
-#'     AutomationSubtype = "ChangeRequest",
-#'     ScheduledTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Runbooks = list(
-#'       list(
-#'         DocumentName = "string",
-#'         DocumentVersion = "string",
-#'         Parameters = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         TargetParameterName = "string",
-#'         Targets = list(
-#'           list(
-#'             Key = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         MaxConcurrency = "string",
-#'         MaxErrors = "string",
-#'         TargetLocations = list(
-#'           list(
-#'             Accounts = list(
-#'               "string"
-#'             ),
-#'             Regions = list(
-#'               "string"
-#'             ),
-#'             TargetLocationMaxConcurrency = "string",
-#'             TargetLocationMaxErrors = "string",
-#'             ExecutionRoleName = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     OpsItemId = "string",
-#'     AssociationId = "string",
-#'     ChangeRequestName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_automation_execution(
-#'   AutomationExecutionId = "string"
-#' )
-#' ```
+#' execution of an Automation runbook is initiated.
 #'
 #' @keywords internal
 #'
@@ -5545,57 +2769,21 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 }
 .ssm$operations$get_automation_execution <- ssm_get_automation_execution
 
-#' Gets the state of the AWS Systems Manager Change Calendar at an
-#' optional, specified time
+#' Gets the state of a Amazon Web Services Systems Manager change calendar
+#' at the current time or a specified time
 #'
 #' @description
-#' Gets the state of the AWS Systems Manager Change Calendar at an
-#' optional, specified time. If you specify a time,
-#' [`get_calendar_state`][ssm_get_calendar_state] returns the state of the
-#' calendar at a specific time, and returns the next time that the Change
-#' Calendar state will transition. If you do not specify a time,
-#' [`get_calendar_state`][ssm_get_calendar_state] assumes the current time.
-#' Change Calendar entries have two possible states: `OPEN` or `CLOSED`.
-#' 
-#' If you specify more than one calendar in a request, the command returns
-#' the status of `OPEN` only if all calendars in the request are open. If
-#' one or more calendars in the request are closed, the status returned is
-#' `CLOSED`.
-#' 
-#' For more information about Systems Manager Change Calendar, see [AWS
-#' Systems Manager Change
-#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html)
-#' in the *AWS Systems Manager User Guide*.
+#' Gets the state of a Amazon Web Services Systems Manager change calendar at the current time or a specified time. If you specify a time, [`get_calendar_state`][ssm_get_calendar_state] returns the state of the calendar at that specific time, and returns the next time that the change calendar state will transition. If you don't specify a time, [`get_calendar_state`][ssm_get_calendar_state] uses the current time. Change Calendar entries have two possible states: `OPEN` or `CLOSED`.
 #'
-#' @usage
-#' ssm_get_calendar_state(CalendarNames, AtTime)
+#' See [https://paws-r.github.io/docs/ssm/get_calendar_state.html](https://paws-r.github.io/docs/ssm/get_calendar_state.html) for full documentation.
 #'
 #' @param CalendarNames &#91;required&#93; The names or Amazon Resource Names (ARNs) of the Systems Manager
-#' documents that represent the calendar entries for which you want to get
-#' the state.
+#' documents (SSM documents) that represent the calendar entries for which
+#' you want to get the state.
 #' @param AtTime (Optional) The specific time for which you want to get calendar state
 #' information, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-#' format. If you do not add `AtTime`, the current time is assumed.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   State = "OPEN"|"CLOSED",
-#'   AtTime = "string",
-#'   NextTransitionTime = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_calendar_state(
-#'   CalendarNames = list(
-#'     "string"
-#'   ),
-#'   AtTime = "string"
-#' )
-#' ```
+#' format. If you don't specify a value or `AtTime`, the current time is
+#' used.
 #'
 #' @keywords internal
 #'
@@ -5621,58 +2809,27 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
 #' or plugin
 #'
 #' @description
-#' Returns detailed information about command execution for an invocation
-#' or plugin.
+#' Returns detailed information about command execution for an invocation or plugin.
 #'
-#' @usage
-#' ssm_get_command_invocation(CommandId, InstanceId, PluginName)
+#' See [https://paws-r.github.io/docs/ssm/get_command_invocation.html](https://paws-r.github.io/docs/ssm/get_command_invocation.html) for full documentation.
 #'
 #' @param CommandId &#91;required&#93; (Required) The parent command ID of the invocation plugin.
-#' @param InstanceId &#91;required&#93; (Required) The ID of the managed instance targeted by the command. A
-#' managed instance can be an EC2 instance or an instance in your hybrid
-#' environment that is configured for Systems Manager.
-#' @param PluginName (Optional) The name of the plugin for which you want detailed results.
-#' If the document contains only one plugin, the name can be omitted and
-#' the details will be returned.
+#' @param InstanceId &#91;required&#93; (Required) The ID of the managed node targeted by the command. A
+#' *managed node* can be an Amazon Elastic Compute Cloud (Amazon EC2)
+#' instance, edge device, and on-premises server or VM in your hybrid
+#' environment that is configured for Amazon Web Services Systems Manager.
+#' @param PluginName The name of the step for which you want detailed results. If the
+#' document contains only one step, you can omit the name and details for
+#' that step. If the document contains more than one step, you must specify
+#' the name of the step for which you want to view details. Be sure to
+#' specify the name of the step, not the name of a plugin like
+#' `aws:RunShellScript`.
 #' 
-#' Plugin names are also referred to as step names in Systems Manager
-#' documents.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CommandId = "string",
-#'   InstanceId = "string",
-#'   Comment = "string",
-#'   DocumentName = "string",
-#'   DocumentVersion = "string",
-#'   PluginName = "string",
-#'   ResponseCode = 123,
-#'   ExecutionStartDateTime = "string",
-#'   ExecutionElapsedTime = "string",
-#'   ExecutionEndDateTime = "string",
-#'   Status = "Pending"|"InProgress"|"Delayed"|"Success"|"Cancelled"|"TimedOut"|"Failed"|"Cancelling",
-#'   StatusDetails = "string",
-#'   StandardOutputContent = "string",
-#'   StandardOutputUrl = "string",
-#'   StandardErrorContent = "string",
-#'   StandardErrorUrl = "string",
-#'   CloudWatchOutputConfig = list(
-#'     CloudWatchLogGroupName = "string",
-#'     CloudWatchOutputEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_command_invocation(
-#'   CommandId = "string",
-#'   InstanceId = "string",
-#'   PluginName = "string"
-#' )
-#' ```
+#' To find the `PluginName`, check the document content and find the name
+#' of the step you want details for. Alternatively, use
+#' [`list_command_invocations`][ssm_list_command_invocations] with the
+#' `CommandId` and `Details` parameters. The `PluginName` is the `Name`
+#' attribute of the `CommandPlugin` object in the `CommandPlugins` list.
 #'
 #' @keywords internal
 #'
@@ -5694,35 +2851,16 @@ ssm_get_command_invocation <- function(CommandId, InstanceId, PluginName = NULL)
 }
 .ssm$operations$get_command_invocation <- ssm_get_command_invocation
 
-#' Retrieves the Session Manager connection status for an instance to
+#' Retrieves the Session Manager connection status for a managed node to
 #' determine whether it is running and ready to receive Session Manager
 #' connections
 #'
 #' @description
-#' Retrieves the Session Manager connection status for an instance to
-#' determine whether it is running and ready to receive Session Manager
-#' connections.
+#' Retrieves the Session Manager connection status for a managed node to determine whether it is running and ready to receive Session Manager connections.
 #'
-#' @usage
-#' ssm_get_connection_status(Target)
+#' See [https://paws-r.github.io/docs/ssm/get_connection_status.html](https://paws-r.github.io/docs/ssm/get_connection_status.html) for full documentation.
 #'
-#' @param Target &#91;required&#93; The ID of the instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Target = "string",
-#'   Status = "Connected"|"NotConnected"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_connection_status(
-#'   Target = "string"
-#' )
-#' ```
+#' @param Target &#91;required&#93; The managed node ID.
 #'
 #' @keywords internal
 #'
@@ -5747,33 +2885,11 @@ ssm_get_connection_status <- function(Target) {
 #' Retrieves the default patch baseline
 #'
 #' @description
-#' Retrieves the default patch baseline. Note that Systems Manager supports
-#' creating multiple default patch baselines. For example, you can create a
-#' default patch baseline for each operating system.
-#' 
-#' If you do not specify an operating system value, the default patch
-#' baseline for Windows is returned.
+#' Retrieves the default patch baseline. Amazon Web Services Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.
 #'
-#' @usage
-#' ssm_get_default_patch_baseline(OperatingSystem)
+#' See [https://paws-r.github.io/docs/ssm/get_default_patch_baseline.html](https://paws-r.github.io/docs/ssm/get_default_patch_baseline.html) for full documentation.
 #'
 #' @param OperatingSystem Returns the default patch baseline for the specified operating system.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineId = "string",
-#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_default_patch_baseline(
-#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5795,50 +2911,31 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 }
 .ssm$operations$get_default_patch_baseline <- ssm_get_default_patch_baseline
 
-#' Retrieves the current snapshot for the patch baseline the instance uses
+#' Retrieves the current snapshot for the patch baseline the managed node
+#' uses
 #'
 #' @description
-#' Retrieves the current snapshot for the patch baseline the instance uses.
-#' This API is primarily used by the AWS-RunPatchBaseline Systems Manager
-#' document.
+#' Retrieves the current snapshot for the patch baseline the managed node uses. This API is primarily used by the `AWS-RunPatchBaseline` Systems Manager document (SSM document).
 #'
-#' @usage
-#' ssm_get_deployable_patch_snapshot_for_instance(InstanceId, SnapshotId)
+#' See [https://paws-r.github.io/docs/ssm/get_deployable_patch_snapshot_for_instance.html](https://paws-r.github.io/docs/ssm/get_deployable_patch_snapshot_for_instance.html) for full documentation.
 #'
-#' @param InstanceId &#91;required&#93; The ID of the instance for which the appropriate patch snapshot should
-#' be retrieved.
-#' @param SnapshotId &#91;required&#93; The user-defined snapshot ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstanceId = "string",
-#'   SnapshotId = "string",
-#'   SnapshotDownloadUrl = "string",
-#'   Product = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployable_patch_snapshot_for_instance(
-#'   InstanceId = "string",
-#'   SnapshotId = "string"
-#' )
-#' ```
+#' @param InstanceId &#91;required&#93; The ID of the managed node for which the appropriate patch snapshot
+#' should be retrieved.
+#' @param SnapshotId &#91;required&#93; The snapshot ID provided by the user when running
+#' `AWS-RunPatchBaseline`.
+#' @param BaselineOverride Defines the basic information about a patch baseline override.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_get_deployable_patch_snapshot_for_instance
-ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotId) {
+ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotId, BaselineOverride = NULL) {
   op <- new_operation(
     name = "GetDeployablePatchSnapshotForInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$get_deployable_patch_snapshot_for_instance_input(InstanceId = InstanceId, SnapshotId = SnapshotId)
+  input <- .ssm$get_deployable_patch_snapshot_for_instance_input(InstanceId = InstanceId, SnapshotId = SnapshotId, BaselineOverride = BaselineOverride)
   output <- .ssm$get_deployable_patch_snapshot_for_instance_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -5848,62 +2945,21 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
 }
 .ssm$operations$get_deployable_patch_snapshot_for_instance <- ssm_get_deployable_patch_snapshot_for_instance
 
-#' Gets the contents of the specified Systems Manager document
+#' Gets the contents of the specified Amazon Web Services Systems Manager
+#' document (SSM document)
 #'
 #' @description
-#' Gets the contents of the specified Systems Manager document.
+#' Gets the contents of the specified Amazon Web Services Systems Manager document (SSM document).
 #'
-#' @usage
-#' ssm_get_document(Name, VersionName, DocumentVersion, DocumentFormat)
+#' See [https://paws-r.github.io/docs/ssm/get_document.html](https://paws-r.github.io/docs/ssm/get_document.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the Systems Manager document.
+#' @param Name &#91;required&#93; The name of the SSM document.
 #' @param VersionName An optional field specifying the version of the artifact associated with
 #' the document. For example, "Release 12, Update 6". This value is unique
 #' across all versions of a document and can't be changed.
 #' @param DocumentVersion The document version for which you want information.
 #' @param DocumentFormat Returns the document in the specified format. The document format can be
 #' either JSON or YAML. JSON is the default format.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   VersionName = "string",
-#'   DocumentVersion = "string",
-#'   Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
-#'   StatusInformation = "string",
-#'   Content = "string",
-#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
-#'   DocumentFormat = "YAML"|"JSON"|"TEXT",
-#'   Requires = list(
-#'     list(
-#'       Name = "string",
-#'       Version = "string"
-#'     )
-#'   ),
-#'   AttachmentsContent = list(
-#'     list(
-#'       Name = "string",
-#'       Size = 123,
-#'       Hash = "string",
-#'       HashType = "Sha256",
-#'       Url = "string"
-#'     )
-#'   ),
-#'   ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_document(
-#'   Name = "string",
-#'   VersionName = "string",
-#'   DocumentVersion = "string",
-#'   DocumentFormat = "YAML"|"JSON"|"TEXT"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5928,92 +2984,22 @@ ssm_get_document <- function(Name, VersionName = NULL, DocumentVersion = NULL, D
 #' Query inventory information
 #'
 #' @description
-#' Query inventory information.
+#' Query inventory information. This includes managed node status, such as `Stopped` or `Terminated`.
 #'
-#' @usage
-#' ssm_get_inventory(Filters, Aggregators, ResultAttributes, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/get_inventory.html](https://paws-r.github.io/docs/ssm/get_inventory.html) for full documentation.
 #'
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' results.
 #' @param Aggregators Returns counts of inventory types based on one or more expressions. For
 #' example, if you aggregate by using an expression that uses the
 #' `AWS:InstanceInformation.PlatformType` type, you can see a count of how
-#' many Windows and Linux instances exist in your inventoried fleet.
+#' many Windows and Linux managed nodes exist in your inventoried fleet.
 #' @param ResultAttributes The list of inventory item types to return.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entities = list(
-#'     list(
-#'       Id = "string",
-#'       Data = list(
-#'         list(
-#'           TypeName = "string",
-#'           SchemaVersion = "string",
-#'           CaptureTime = "string",
-#'           ContentHash = "string",
-#'           Content = list(
-#'             list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_inventory(
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-#'     )
-#'   ),
-#'   Aggregators = list(
-#'     list(
-#'       Expression = "string",
-#'       Aggregators = list(),
-#'       Groups = list(
-#'         list(
-#'           Name = "string",
-#'           Filters = list(
-#'             list(
-#'               Key = "string",
-#'               Values = list(
-#'                 "string"
-#'               ),
-#'               Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ResultAttributes = list(
-#'     list(
-#'       TypeName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6039,12 +3025,9 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
 #' of attribute names for a specific Inventory item type
 #'
 #' @description
-#' Return a list of inventory type names for the account, or return a list
-#' of attribute names for a specific Inventory item type.
+#' Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type.
 #'
-#' @usage
-#' ssm_get_inventory_schema(TypeName, NextToken, MaxResults, Aggregator,
-#'   SubType)
+#' See [https://paws-r.github.io/docs/ssm/get_inventory_schema.html](https://paws-r.github.io/docs/ssm/get_inventory_schema.html) for full documentation.
 #'
 #' @param TypeName The type of inventory item to return.
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -6057,38 +3040,6 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
 #' aggregation based on the `PlatformName`, `PlatformType`, and
 #' `PlatformVersion` attributes.
 #' @param SubType Returns the sub-type schema for a specified inventory type.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Schemas = list(
-#'     list(
-#'       TypeName = "string",
-#'       Version = "string",
-#'       Attributes = list(
-#'         list(
-#'           Name = "string",
-#'           DataType = "string"|"number"
-#'         )
-#'       ),
-#'       DisplayName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_inventory_schema(
-#'   TypeName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Aggregator = TRUE|FALSE,
-#'   SubType = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6115,44 +3066,10 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
 #' @description
 #' Retrieves a maintenance window.
 #'
-#' @usage
-#' ssm_get_maintenance_window(WindowId)
+#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window.html](https://paws-r.github.io/docs/ssm/get_maintenance_window.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window for which you want to retrieve
 #' information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowId = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   StartDate = "string",
-#'   EndDate = "string",
-#'   Schedule = "string",
-#'   ScheduleTimezone = "string",
-#'   ScheduleOffset = 123,
-#'   NextExecutionTime = "string",
-#'   Duration = 123,
-#'   Cutoff = 123,
-#'   AllowUnassociatedTargets = TRUE|FALSE,
-#'   Enabled = TRUE|FALSE,
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ModifiedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_maintenance_window(
-#'   WindowId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6179,36 +3096,9 @@ ssm_get_maintenance_window <- function(WindowId) {
 #' @description
 #' Retrieves details about a specific a maintenance window execution.
 #'
-#' @usage
-#' ssm_get_maintenance_window_execution(WindowExecutionId)
+#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window_execution.html](https://paws-r.github.io/docs/ssm/get_maintenance_window_execution.html) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution that includes the task.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowExecutionId = "string",
-#'   TaskIds = list(
-#'     "string"
-#'   ),
-#'   Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-#'   StatusDetails = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_maintenance_window_execution(
-#'   WindowExecutionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6234,55 +3124,13 @@ ssm_get_maintenance_window_execution <- function(WindowExecutionId) {
 #' window execution
 #'
 #' @description
-#' Retrieves the details about a specific task run as part of a maintenance
-#' window execution.
+#' Retrieves the details about a specific task run as part of a maintenance window execution.
 #'
-#' @usage
-#' ssm_get_maintenance_window_execution_task(WindowExecutionId, TaskId)
+#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task.html](https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task.html) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution that includes the task.
 #' @param TaskId &#91;required&#93; The ID of the specific task execution in the maintenance window task
 #' that should be retrieved.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowExecutionId = "string",
-#'   TaskExecutionId = "string",
-#'   TaskArn = "string",
-#'   ServiceRole = "string",
-#'   Type = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-#'   TaskParameters = list(
-#'     list(
-#'       list(
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Priority = 123,
-#'   MaxConcurrency = "string",
-#'   MaxErrors = "string",
-#'   Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-#'   StatusDetails = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_maintenance_window_execution_task(
-#'   WindowExecutionId = "string",
-#'   TaskId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6307,49 +3155,14 @@ ssm_get_maintenance_window_execution_task <- function(WindowExecutionId, TaskId)
 #' Retrieves information about a specific task running on a specific target
 #'
 #' @description
-#' Retrieves information about a specific task running on a specific
-#' target.
+#' Retrieves information about a specific task running on a specific target.
 #'
-#' @usage
-#' ssm_get_maintenance_window_execution_task_invocation(WindowExecutionId,
-#'   TaskId, InvocationId)
+#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task_invocation.html](https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task_invocation.html) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution for which the task is a part.
 #' @param TaskId &#91;required&#93; The ID of the specific task in the maintenance window task that should
 #' be retrieved.
 #' @param InvocationId &#91;required&#93; The invocation ID to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowExecutionId = "string",
-#'   TaskExecutionId = "string",
-#'   InvocationId = "string",
-#'   ExecutionId = "string",
-#'   TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-#'   Parameters = "string",
-#'   Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-#'   StatusDetails = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   OwnerInformation = "string",
-#'   WindowTargetId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_maintenance_window_execution_task_invocation(
-#'   WindowExecutionId = "string",
-#'   TaskId = "string",
-#'   InvocationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6371,112 +3184,15 @@ ssm_get_maintenance_window_execution_task_invocation <- function(WindowExecution
 }
 .ssm$operations$get_maintenance_window_execution_task_invocation <- ssm_get_maintenance_window_execution_task_invocation
 
-#' Lists the tasks in a maintenance window
+#' Retrieves the details of a maintenance window task
 #'
 #' @description
-#' Lists the tasks in a maintenance window.
-#' 
-#' For maintenance window tasks without a specified target, you cannot
-#' supply values for `--max-errors` and `--max-concurrency`. Instead, the
-#' system inserts a placeholder value of `1`, which may be reported in the
-#' response to this command. These values do not affect the running of your
-#' task and can be ignored.
+#' Retrieves the details of a maintenance window task.
 #'
-#' @usage
-#' ssm_get_maintenance_window_task(WindowId, WindowTaskId)
+#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window_task.html](https://paws-r.github.io/docs/ssm/get_maintenance_window_task.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The maintenance window ID that includes the task to retrieve.
 #' @param WindowTaskId &#91;required&#93; The maintenance window task ID to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowId = "string",
-#'   WindowTaskId = "string",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TaskArn = "string",
-#'   ServiceRoleArn = "string",
-#'   TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-#'   TaskParameters = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TaskInvocationParameters = list(
-#'     RunCommand = list(
-#'       Comment = "string",
-#'       CloudWatchOutputConfig = list(
-#'         CloudWatchLogGroupName = "string",
-#'         CloudWatchOutputEnabled = TRUE|FALSE
-#'       ),
-#'       DocumentHash = "string",
-#'       DocumentHashType = "Sha256"|"Sha1",
-#'       DocumentVersion = "string",
-#'       NotificationConfig = list(
-#'         NotificationArn = "string",
-#'         NotificationEvents = list(
-#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-#'         ),
-#'         NotificationType = "Command"|"Invocation"
-#'       ),
-#'       OutputS3BucketName = "string",
-#'       OutputS3KeyPrefix = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       ServiceRoleArn = "string",
-#'       TimeoutSeconds = 123
-#'     ),
-#'     Automation = list(
-#'       DocumentVersion = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     StepFunctions = list(
-#'       Input = "string",
-#'       Name = "string"
-#'     ),
-#'     Lambda = list(
-#'       ClientContext = "string",
-#'       Qualifier = "string",
-#'       Payload = raw
-#'     )
-#'   ),
-#'   Priority = 123,
-#'   MaxConcurrency = "string",
-#'   MaxErrors = "string",
-#'   LoggingInfo = list(
-#'     S3BucketName = "string",
-#'     S3KeyPrefix = "string",
-#'     S3Region = "string"
-#'   ),
-#'   Name = "string",
-#'   Description = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_maintenance_window_task(
-#'   WindowId = "string",
-#'   WindowTaskId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6501,86 +3217,11 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 #' Get information about an OpsItem by using the ID
 #'
 #' @description
-#' Get information about an OpsItem by using the ID. You must have
-#' permission in AWS Identity and Access Management (IAM) to view
-#' information about an OpsItem. For more information, see [Getting started
-#' with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
-#' in the *AWS Systems Manager User Guide*.
-#' 
-#' Operations engineers and IT professionals use OpsCenter to view,
-#' investigate, and remediate operational issues impacting the performance
-#' and health of their AWS resources. For more information, see [AWS
-#' Systems Manager
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
-#' in the *AWS Systems Manager User Guide*.
+#' Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see [Getting started with OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' @usage
-#' ssm_get_ops_item(OpsItemId)
+#' See [https://paws-r.github.io/docs/ssm/get_ops_item.html](https://paws-r.github.io/docs/ssm/get_ops_item.html) for full documentation.
 #'
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem that you want to get.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OpsItem = list(
-#'     CreatedBy = "string",
-#'     OpsItemType = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Description = "string",
-#'     LastModifiedBy = "string",
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Notifications = list(
-#'       list(
-#'         Arn = "string"
-#'       )
-#'     ),
-#'     Priority = 123,
-#'     RelatedOpsItems = list(
-#'       list(
-#'         OpsItemId = "string"
-#'       )
-#'     ),
-#'     Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
-#'     OpsItemId = "string",
-#'     Version = "string",
-#'     Title = "string",
-#'     Source = "string",
-#'     OperationalData = list(
-#'       list(
-#'         Value = "string",
-#'         Type = "SearchableString"|"String"
-#'       )
-#'     ),
-#'     Category = "string",
-#'     Severity = "string",
-#'     ActualStartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ActualEndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PlannedStartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PlannedEndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ops_item(
-#'   OpsItemId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6606,11 +3247,9 @@ ssm_get_ops_item <- function(OpsItemId) {
 #' Manager
 #'
 #' @description
-#' View operational metadata related to an application in Application
-#' Manager.
+#' View operational metadata related to an application in Application Manager.
 #'
-#' @usage
-#' ssm_get_ops_metadata(OpsMetadataArn, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/get_ops_metadata.html](https://paws-r.github.io/docs/ssm/get_ops_metadata.html) for full documentation.
 #'
 #' @param OpsMetadataArn &#91;required&#93; The Amazon Resource Name (ARN) of an OpsMetadata Object to view.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -6618,29 +3257,6 @@ ssm_get_ops_item <- function(OpsItemId) {
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceId = "string",
-#'   Metadata = list(
-#'     list(
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ops_metadata(
-#'   OpsMetadataArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6662,91 +3278,24 @@ ssm_get_ops_metadata <- function(OpsMetadataArn, MaxResults = NULL, NextToken = 
 }
 .ssm$operations$get_ops_metadata <- ssm_get_ops_metadata
 
-#' View a summary of OpsItems based on specified filters and aggregators
+#' View a summary of operations metadata (OpsData) based on specified
+#' filters and aggregators
 #'
 #' @description
-#' View a summary of OpsItems based on specified filters and aggregators.
+#' View a summary of operations metadata (OpsData) based on specified filters and aggregators. OpsData can include information about Amazon Web Services Systems Manager OpsCenter operational workitems (OpsItems) as well as information about any Amazon Web Services resource or service configured to report OpsData to Amazon Web Services Systems Manager Explorer.
 #'
-#' @usage
-#' ssm_get_ops_summary(SyncName, Filters, Aggregators, ResultAttributes,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/get_ops_summary.html](https://paws-r.github.io/docs/ssm/get_ops_summary.html) for full documentation.
 #'
 #' @param SyncName Specify the name of a resource data sync to get.
-#' @param Filters Optional filters used to scope down the returned OpsItems.
-#' @param Aggregators Optional aggregators that return counts of OpsItems based on one or more
+#' @param Filters Optional filters used to scope down the returned OpsData.
+#' @param Aggregators Optional aggregators that return counts of OpsData based on one or more
 #' expressions.
-#' @param ResultAttributes The OpsItem data type to return.
+#' @param ResultAttributes The OpsData data type to return.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entities = list(
-#'     list(
-#'       Id = "string",
-#'       Data = list(
-#'         list(
-#'           CaptureTime = "string",
-#'           Content = list(
-#'             list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ops_summary(
-#'   SyncName = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-#'     )
-#'   ),
-#'   Aggregators = list(
-#'     list(
-#'       AggregatorType = "string",
-#'       TypeName = "string",
-#'       AttributeName = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Filters = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           ),
-#'           Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-#'         )
-#'       ),
-#'       Aggregators = list()
-#'     )
-#'   ),
-#'   ResultAttributes = list(
-#'     list(
-#'       TypeName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6768,47 +3317,20 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 }
 .ssm$operations$get_ops_summary <- ssm_get_ops_summary
 
-#' Get information about a parameter by using the parameter name
+#' Get information about a single parameter by specifying the parameter
+#' name
 #'
 #' @description
-#' Get information about a parameter by using the parameter name. Don't
-#' confuse this API action with the [`get_parameters`][ssm_get_parameters]
-#' API action.
+#' Get information about a single parameter by specifying the parameter name.
 #'
-#' @usage
-#' ssm_get_parameter(Name, WithDecryption)
+#' See [https://paws-r.github.io/docs/ssm/get_parameter.html](https://paws-r.github.io/docs/ssm/get_parameter.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parameter you want to query.
+#' 
+#' To query by parameter label, use `"Name": "name:label"`. To query by
+#' parameter version, use `"Name": "name:version"`.
 #' @param WithDecryption Return decrypted values for secure string parameters. This flag is
-#' ignored for String and StringList parameter types.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameter = list(
-#'     Name = "string",
-#'     Type = "String"|"StringList"|"SecureString",
-#'     Value = "string",
-#'     Version = 123,
-#'     Selector = "string",
-#'     SourceResult = "string",
-#'     LastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ARN = "string",
-#'     DataType = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_parameter(
-#'   Name = "string",
-#'   WithDecryption = TRUE|FALSE
-#' )
-#' ```
+#' ignored for `String` and `StringList` parameter types.
 #'
 #' @keywords internal
 #'
@@ -6835,62 +3357,16 @@ ssm_get_parameter <- function(Name, WithDecryption = NULL) {
 #' @description
 #' Retrieves the history of all changes to a parameter.
 #'
-#' @usage
-#' ssm_get_parameter_history(Name, WithDecryption, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/get_parameter_history.html](https://paws-r.github.io/docs/ssm/get_parameter_history.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parameter for which you want to review history.
 #' @param WithDecryption Return decrypted values for secure string parameters. This flag is
-#' ignored for String and StringList parameter types.
+#' ignored for `String` and `StringList` parameter types.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameters = list(
-#'     list(
-#'       Name = "string",
-#'       Type = "String"|"StringList"|"SecureString",
-#'       KeyId = "string",
-#'       LastModifiedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedUser = "string",
-#'       Description = "string",
-#'       Value = "string",
-#'       AllowedPattern = "string",
-#'       Version = 123,
-#'       Labels = list(
-#'         "string"
-#'       ),
-#'       Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
-#'       Policies = list(
-#'         list(
-#'           PolicyText = "string",
-#'           PolicyType = "string",
-#'           PolicyStatus = "string"
-#'         )
-#'       ),
-#'       DataType = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_parameter_history(
-#'   Name = "string",
-#'   WithDecryption = TRUE|FALSE,
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6912,54 +3388,21 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 }
 .ssm$operations$get_parameter_history <- ssm_get_parameter_history
 
-#' Get details of a parameter
+#' Get information about one or more parameters by specifying multiple
+#' parameter names
 #'
 #' @description
-#' Get details of a parameter. Don't confuse this API action with the
-#' [`get_parameter`][ssm_get_parameter] API action.
+#' Get information about one or more parameters by specifying multiple parameter names.
 #'
-#' @usage
-#' ssm_get_parameters(Names, WithDecryption)
+#' See [https://paws-r.github.io/docs/ssm/get_parameters.html](https://paws-r.github.io/docs/ssm/get_parameters.html) for full documentation.
 #'
 #' @param Names &#91;required&#93; Names of the parameters for which you want to query information.
+#' 
+#' To query by parameter label, use `"Name": "name:label"`. To query by
+#' parameter version, use `"Name": "name:version"`.
 #' @param WithDecryption Return decrypted secure string value. Return decrypted values for secure
-#' string parameters. This flag is ignored for String and StringList
+#' string parameters. This flag is ignored for `String` and `StringList`
 #' parameter types.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameters = list(
-#'     list(
-#'       Name = "string",
-#'       Type = "String"|"StringList"|"SecureString",
-#'       Value = "string",
-#'       Version = 123,
-#'       Selector = "string",
-#'       SourceResult = "string",
-#'       LastModifiedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ARN = "string",
-#'       DataType = "string"
-#'     )
-#'   ),
-#'   InvalidParameters = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_parameters(
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   WithDecryption = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6985,90 +3428,38 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #' hierarchy
 #'
 #' @description
-#' Retrieve information about one or more parameters in a specific
-#' hierarchy.
-#' 
-#' Request results are returned on a best-effort basis. If you specify
-#' `MaxResults` in the request, the response includes information up to the
-#' limit specified. The number of items returned, however, can be between
-#' zero and the value of `MaxResults`. If the service reaches an internal
-#' limit while processing the results, it stops the operation and returns
-#' the matching values up to that point and a `NextToken`. You can specify
-#' the `NextToken` in a subsequent call to get the next set of results.
+#' Retrieve information about one or more parameters in a specific hierarchy.
 #'
-#' @usage
-#' ssm_get_parameters_by_path(Path, Recursive, ParameterFilters,
-#'   WithDecryption, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/get_parameters_by_path.html](https://paws-r.github.io/docs/ssm/get_parameters_by_path.html) for full documentation.
 #'
 #' @param Path &#91;required&#93; The hierarchy for the parameter. Hierarchies start with a forward slash
-#' (/) and end with the parameter name. A parameter name hierarchy can have
-#' a maximum of 15 levels. Here is an example of a hierarchy:
-#' `/Finance/Prod/IAD/WinServ2016/license33`
+#' (/). The hierarchy is the parameter name except the last part of the
+#' parameter. For the API call to succeed, the last part of the parameter
+#' name can't be in the path. A parameter name hierarchy can have a maximum
+#' of 15 levels. Here is an example of a hierarchy:
+#' `/Finance/Prod/IAD/WinServ2016/license33 `
 #' @param Recursive Retrieve all parameters within a hierarchy.
 #' 
 #' If a user has access to a path, then the user can access all levels of
 #' that path. For example, if a user has permission to access path `/a`,
 #' then the user can also access `/a/b`. Even if a user has explicitly been
 #' denied access in IAM for parameter `/a/b`, they can still call the
-#' GetParametersByPath API action recursively for `/a` and view `/a/b`.
+#' GetParametersByPath API operation recursively for `/a` and view `/a/b`.
 #' @param ParameterFilters Filters to limit the request results.
 #' 
-#' For [`get_parameters_by_path`][ssm_get_parameters_by_path], the
-#' following filter `Key` names are supported: `Type`, `KeyId`, `Label`,
-#' and `DataType`.
+#' The following `Key` values are supported for
+#' [`get_parameters_by_path`][ssm_get_parameters_by_path]: `Type`, `KeyId`,
+#' and `Label`.
 #' 
-#' The following `Key` values are not supported for
-#' [`get_parameters_by_path`][ssm_get_parameters_by_path]: `tag`, `Name`,
-#' `Path`, and `Tier`.
+#' The following `Key` values aren't supported for
+#' [`get_parameters_by_path`][ssm_get_parameters_by_path]: `tag`,
+#' `DataType`, `Name`, `Path`, and `Tier`.
 #' @param WithDecryption Retrieve all parameters in a hierarchy with their value decrypted.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameters = list(
-#'     list(
-#'       Name = "string",
-#'       Type = "String"|"StringList"|"SecureString",
-#'       Value = "string",
-#'       Version = 123,
-#'       Selector = "string",
-#'       SourceResult = "string",
-#'       LastModifiedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ARN = "string",
-#'       DataType = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_parameters_by_path(
-#'   Path = "string",
-#'   Recursive = TRUE|FALSE,
-#'   ParameterFilters = list(
-#'     list(
-#'       Key = "string",
-#'       Option = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   WithDecryption = TRUE|FALSE,
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7095,85 +3486,16 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
 #' @description
 #' Retrieves information about a patch baseline.
 #'
-#' @usage
-#' ssm_get_patch_baseline(BaselineId)
+#' See [https://paws-r.github.io/docs/ssm/get_patch_baseline.html](https://paws-r.github.io/docs/ssm/get_patch_baseline.html) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineId = "string",
-#'   Name = "string",
-#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-#'   GlobalFilters = list(
-#'     PatchFilters = list(
-#'       list(
-#'         Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ApprovalRules = list(
-#'     PatchRules = list(
-#'       list(
-#'         PatchFilterGroup = list(
-#'           PatchFilters = list(
-#'             list(
-#'               Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'         ApproveAfterDays = 123,
-#'         ApproveUntilDate = "string",
-#'         EnableNonSecurity = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   ApprovedPatches = list(
-#'     "string"
-#'   ),
-#'   ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'   ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
-#'   RejectedPatches = list(
-#'     "string"
-#'   ),
-#'   RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
-#'   PatchGroups = list(
-#'     "string"
-#'   ),
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ModifiedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Description = "string",
-#'   Sources = list(
-#'     list(
-#'       Name = "string",
-#'       Products = list(
-#'         "string"
-#'       ),
-#'       Configuration = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_patch_baseline(
-#'   BaselineId = "string"
-#' )
-#' ```
+#' 
+#' To retrieve information about an Amazon Web Services managed patch
+#' baseline, specify the full Amazon Resource Name (ARN) of the baseline.
+#' For example, for the baseline `AWS-AmazonLinuxDefaultPatchBaseline`,
+#' specify
+#' `arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0e392de35e7c563b7`
+#' instead of `pb-0e392de35e7c563b7`.
 #'
 #' @keywords internal
 #'
@@ -7199,33 +3521,13 @@ ssm_get_patch_baseline <- function(BaselineId) {
 #' group
 #'
 #' @description
-#' Retrieves the patch baseline that should be used for the specified patch
-#' group.
+#' Retrieves the patch baseline that should be used for the specified patch group.
 #'
-#' @usage
-#' ssm_get_patch_baseline_for_patch_group(PatchGroup, OperatingSystem)
+#' See [https://paws-r.github.io/docs/ssm/get_patch_baseline_for_patch_group.html](https://paws-r.github.io/docs/ssm/get_patch_baseline_for_patch_group.html) for full documentation.
 #'
 #' @param PatchGroup &#91;required&#93; The name of the patch group whose patch baseline should be retrieved.
-#' @param OperatingSystem Returns he operating system rule specified for patch groups using the
+#' @param OperatingSystem Returns the operating system rule specified for patch groups using the
 #' patch baseline.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineId = "string",
-#'   PatchGroup = "string",
-#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_patch_baseline_for_patch_group(
-#'   PatchGroup = "string",
-#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7247,59 +3549,30 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 }
 .ssm$operations$get_patch_baseline_for_patch_group <- ssm_get_patch_baseline_for_patch_group
 
-#' ServiceSetting is an account-level setting for an AWS service
+#' ServiceSetting is an account-level setting for an Amazon Web Services
+#' service
 #'
 #' @description
-#' `ServiceSetting` is an account-level setting for an AWS service. This
-#' setting defines how a user interacts with or uses a service or a feature
-#' of a service. For example, if an AWS service charges money to the
-#' account based on feature or service usage, then the AWS service team
-#' might create a default setting of "false". This means the user can't use
-#' this feature unless they change the setting to "true" and intentionally
-#' opt in for a paid feature.
+#' `ServiceSetting` is an account-level setting for an Amazon Web Services service. This setting defines how a user interacts with or uses a service or a feature of a service. For example, if an Amazon Web Services service charges money to the account based on feature or service usage, then the Amazon Web Services service team might create a default setting of `false`. This means the user can't use this feature unless they change the setting to `true` and intentionally opt in for a paid feature.
+#'
+#' See [https://paws-r.github.io/docs/ssm/get_service_setting.html](https://paws-r.github.io/docs/ssm/get_service_setting.html) for full documentation.
+#'
+#' @param SettingId &#91;required&#93; The ID of the service setting to get. The setting ID can be one of the
+#' following.
 #' 
-#' Services map a `SettingId` object to a setting value. AWS services teams
-#' define the default value for a `SettingId`. You can't create a new
-#' `SettingId`, but you can overwrite the default value if you have the
-#' `ssm:UpdateServiceSetting` permission for the setting. Use the
-#' [`update_service_setting`][ssm_update_service_setting] API action to
-#' change the default setting. Or use the
-#' [`reset_service_setting`][ssm_reset_service_setting] to change the value
-#' back to the original value defined by the AWS service team.
+#' -   `/ssm/automation/customer-script-log-destination`
 #' 
-#' Query the current service setting for the account.
-#'
-#' @usage
-#' ssm_get_service_setting(SettingId)
-#'
-#' @param SettingId &#91;required&#93; The ID of the service setting to get. The setting ID can be
-#' `/ssm/parameter-store/default-parameter-tier`,
-#' `/ssm/parameter-store/high-throughput-enabled`, or
-#' `/ssm/managed-instance/activation-tier`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceSetting = list(
-#'     SettingId = "string",
-#'     SettingValue = "string",
-#'     LastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedUser = "string",
-#'     ARN = "string",
-#'     Status = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_service_setting(
-#'   SettingId = "string"
-#' )
-#' ```
+#' -   `/ssm/automation/customer-script-log-group-name`
+#' 
+#' -   `/ssm/documents/console/public-sharing-permission`
+#' 
+#' -   `/ssm/managed-instance/activation-tier`
+#' 
+#' -   `/ssm/opsinsights/opscenter`
+#' 
+#' -   `/ssm/parameter-store/default-parameter-tier`
+#' 
+#' -   `/ssm/parameter-store/high-throughput-enabled`
 #'
 #' @keywords internal
 #'
@@ -7325,69 +3598,15 @@ ssm_get_service_setting <- function(SettingId) {
 #' versions of a parameter
 #'
 #' @description
-#' A parameter label is a user-defined alias to help you manage different
-#' versions of a parameter. When you modify a parameter, Systems Manager
-#' automatically saves a new version and increments the version number by
-#' one. A label can help you remember the purpose of a parameter when there
-#' are multiple versions.
-#' 
-#' Parameter labels have the following requirements and restrictions.
-#' 
-#' -   A version of a parameter can have a maximum of 10 labels.
-#' 
-#' -   You can't attach the same label to different versions of the same
-#'     parameter. For example, if version 1 has the label Production, then
-#'     you can't attach Production to version 2.
-#' 
-#' -   You can move a label from one version of a parameter to another.
-#' 
-#' -   You can't create a label when you create a new parameter. You must
-#'     attach a label to a specific version of a parameter.
-#' 
-#' -   You can't delete a parameter label. If you no longer want to use a
-#'     parameter label, then you must move it to a different version of a
-#'     parameter.
-#' 
-#' -   A label can have a maximum of 100 characters.
-#' 
-#' -   Labels can contain letters (case sensitive), numbers, periods (.),
-#'     hyphens (-), or underscores (_).
-#' 
-#' -   Labels can't begin with a number, "aws," or "ssm" (not case
-#'     sensitive). If a label fails to meet these requirements, then the
-#'     label is not associated with a parameter and the system displays it
-#'     in the list of InvalidLabels.
+#' A parameter label is a user-defined alias to help you manage different versions of a parameter. When you modify a parameter, Amazon Web Services Systems Manager automatically saves a new version and increments the version number by one. A label can help you remember the purpose of a parameter when there are multiple versions.
 #'
-#' @usage
-#' ssm_label_parameter_version(Name, ParameterVersion, Labels)
+#' See [https://paws-r.github.io/docs/ssm/label_parameter_version.html](https://paws-r.github.io/docs/ssm/label_parameter_version.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The parameter name on which you want to attach one or more labels.
 #' @param ParameterVersion The specific version of the parameter on which you want to attach one or
 #' more labels. If no version is specified, the system attaches the label
 #' to the latest version.
 #' @param Labels &#91;required&#93; One or more labels to attach to the specified parameter version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InvalidLabels = list(
-#'     "string"
-#'   ),
-#'   ParameterVersion = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$label_parameter_version(
-#'   Name = "string",
-#'   ParameterVersion = 123,
-#'   Labels = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7414,8 +3633,7 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 #' @description
 #' Retrieves all versions of an association for a specific association ID.
 #'
-#' @usage
-#' ssm_list_association_versions(AssociationId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/list_association_versions.html](https://paws-r.github.io/docs/ssm/list_association_versions.html) for full documentation.
 #'
 #' @param AssociationId &#91;required&#93; The association ID for which you want to view all versions.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -7423,74 +3641,6 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssociationVersions = list(
-#'     list(
-#'       AssociationId = "string",
-#'       AssociationVersion = "string",
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "string",
-#'       DocumentVersion = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       ScheduleExpression = "string",
-#'       OutputLocation = list(
-#'         S3Location = list(
-#'           OutputS3Region = "string",
-#'           OutputS3BucketName = "string",
-#'           OutputS3KeyPrefix = "string"
-#'         )
-#'       ),
-#'       AssociationName = "string",
-#'       MaxErrors = "string",
-#'       MaxConcurrency = "string",
-#'       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'       SyncCompliance = "AUTO"|"MANUAL",
-#'       ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'       TargetLocations = list(
-#'         list(
-#'           Accounts = list(
-#'             "string"
-#'           ),
-#'           Regions = list(
-#'             "string"
-#'           ),
-#'           TargetLocationMaxConcurrency = "string",
-#'           TargetLocationMaxErrors = "string",
-#'           ExecutionRoleName = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_association_versions(
-#'   AssociationId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7512,80 +3662,26 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
 }
 .ssm$operations$list_association_versions <- ssm_list_association_versions
 
-#' Returns all State Manager associations in the current AWS account and
-#' Region
+#' Returns all State Manager associations in the current Amazon Web
+#' Services account and Amazon Web Services Region
 #'
 #' @description
-#' Returns all State Manager associations in the current AWS account and
-#' Region. You can limit the results to a specific State Manager
-#' association document or instance by specifying a filter.
+#' Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a capability of Amazon Web Services Systems Manager.
 #'
-#' @usage
-#' ssm_list_associations(AssociationFilterList, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/list_associations.html](https://paws-r.github.io/docs/ssm/list_associations.html) for full documentation.
 #'
 #' @param AssociationFilterList One or more filters. Use a filter to return a more specific list of
 #' results.
 #' 
 #' Filtering associations using the `InstanceID` attribute only returns
 #' legacy associations created using the `InstanceID` attribute.
-#' Associations targeting the instance that are part of the Target
-#' Attributes `ResourceGroup` or `Tags` are not returned.
+#' Associations targeting the managed node that are part of the Target
+#' Attributes `ResourceGroup` or `Tags` aren't returned.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Associations = list(
-#'     list(
-#'       Name = "string",
-#'       InstanceId = "string",
-#'       AssociationId = "string",
-#'       AssociationVersion = "string",
-#'       DocumentVersion = "string",
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       LastExecutionDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Overview = list(
-#'         Status = "string",
-#'         DetailedStatus = "string",
-#'         AssociationStatusAggregatedCount = list(
-#'           123
-#'         )
-#'       ),
-#'       ScheduleExpression = "string",
-#'       AssociationName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_associations(
-#'   AssociationFilterList = list(
-#'     list(
-#'       key = "InstanceId"|"Name"|"AssociationId"|"AssociationStatusName"|"LastExecutedBefore"|"LastExecutedAfter"|"AssociationName"|"ResourceGroupName",
-#'       value = "string"
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7607,22 +3703,15 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
 }
 .ssm$operations$list_associations <- ssm_list_associations
 
-#' An invocation is copy of a command sent to a specific instance
+#' An invocation is copy of a command sent to a specific managed node
 #'
 #' @description
-#' An invocation is copy of a command sent to a specific instance. A
-#' command can apply to one or more instances. A command invocation applies
-#' to one instance. For example, if a user runs SendCommand against three
-#' instances, then a command invocation is created for each requested
-#' instance ID. ListCommandInvocations provide status about command
-#' execution.
+#' An invocation is copy of a command sent to a specific managed node. A command can apply to one or more managed nodes. A command invocation applies to one managed node. For example, if a user runs [`send_command`][ssm_send_command] against three managed nodes, then a command invocation is created for each requested managed node ID. [`list_command_invocations`][ssm_list_command_invocations] provide status about command execution.
 #'
-#' @usage
-#' ssm_list_command_invocations(CommandId, InstanceId, MaxResults,
-#'   NextToken, Filters, Details)
+#' See [https://paws-r.github.io/docs/ssm/list_command_invocations.html](https://paws-r.github.io/docs/ssm/list_command_invocations.html) for full documentation.
 #'
 #' @param CommandId (Optional) The invocations for a specific command ID.
-#' @param InstanceId (Optional) The command execution details for a specific instance ID.
+#' @param InstanceId (Optional) The command execution details for a specific managed node ID.
 #' @param MaxResults (Optional) The maximum number of items to return for this call. The call
 #' also returns a token that you can specify in a subsequent call to get
 #' the next set of results.
@@ -7631,82 +3720,7 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
 #' @param Filters (Optional) One or more filters. Use a filter to return a more specific
 #' list of results.
 #' @param Details (Optional) If set this returns the response of the command executions
-#' and any command output. By default this is set to False.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CommandInvocations = list(
-#'     list(
-#'       CommandId = "string",
-#'       InstanceId = "string",
-#'       InstanceName = "string",
-#'       Comment = "string",
-#'       DocumentName = "string",
-#'       DocumentVersion = "string",
-#'       RequestedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "Pending"|"InProgress"|"Delayed"|"Success"|"Cancelled"|"TimedOut"|"Failed"|"Cancelling",
-#'       StatusDetails = "string",
-#'       TraceOutput = "string",
-#'       StandardOutputUrl = "string",
-#'       StandardErrorUrl = "string",
-#'       CommandPlugins = list(
-#'         list(
-#'           Name = "string",
-#'           Status = "Pending"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed",
-#'           StatusDetails = "string",
-#'           ResponseCode = 123,
-#'           ResponseStartDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           ResponseFinishDateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           Output = "string",
-#'           StandardOutputUrl = "string",
-#'           StandardErrorUrl = "string",
-#'           OutputS3Region = "string",
-#'           OutputS3BucketName = "string",
-#'           OutputS3KeyPrefix = "string"
-#'         )
-#'       ),
-#'       ServiceRole = "string",
-#'       NotificationConfig = list(
-#'         NotificationArn = "string",
-#'         NotificationEvents = list(
-#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-#'         ),
-#'         NotificationType = "Command"|"Invocation"
-#'       ),
-#'       CloudWatchOutputConfig = list(
-#'         CloudWatchLogGroupName = "string",
-#'         CloudWatchOutputEnabled = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_command_invocations(
-#'   CommandId = "string",
-#'   InstanceId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       key = "InvokedAfter"|"InvokedBefore"|"Status"|"ExecutionStage"|"DocumentName",
-#'       value = "string"
-#'     )
-#'   ),
-#'   Details = TRUE|FALSE
-#' )
-#' ```
+#' and any command output. The default value is `false`.
 #'
 #' @keywords internal
 #'
@@ -7728,20 +3742,19 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
 }
 .ssm$operations$list_command_invocations <- ssm_list_command_invocations
 
-#' Lists the commands requested by users of the AWS account
+#' Lists the commands requested by users of the Amazon Web Services account
 #'
 #' @description
-#' Lists the commands requested by users of the AWS account.
+#' Lists the commands requested by users of the Amazon Web Services account.
 #'
-#' @usage
-#' ssm_list_commands(CommandId, InstanceId, MaxResults, NextToken, Filters)
+#' See [https://paws-r.github.io/docs/ssm/list_commands.html](https://paws-r.github.io/docs/ssm/list_commands.html) for full documentation.
 #'
 #' @param CommandId (Optional) If provided, lists only the specified command.
-#' @param InstanceId (Optional) Lists commands issued against this instance ID.
+#' @param InstanceId (Optional) Lists commands issued against this managed node ID.
 #' 
-#' You can't specify an instance ID in the same command that you specify
-#' `Status` = `Pending`. This is because the command has not reached the
-#' instance yet.
+#' You can't specify a managed node ID in the same command that you specify
+#' `Status` = `Pending`. This is because the command hasn't reached the
+#' managed node yet.
 #' @param MaxResults (Optional) The maximum number of items to return for this call. The call
 #' also returns a token that you can specify in a subsequent call to get
 #' the next set of results.
@@ -7749,84 +3762,6 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
 #' this token from a previous call.)
 #' @param Filters (Optional) One or more filters. Use a filter to return a more specific
 #' list of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Commands = list(
-#'     list(
-#'       CommandId = "string",
-#'       DocumentName = "string",
-#'       DocumentVersion = "string",
-#'       Comment = "string",
-#'       ExpiresAfter = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       InstanceIds = list(
-#'         "string"
-#'       ),
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       RequestedDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "Pending"|"InProgress"|"Success"|"Cancelled"|"Failed"|"TimedOut"|"Cancelling",
-#'       StatusDetails = "string",
-#'       OutputS3Region = "string",
-#'       OutputS3BucketName = "string",
-#'       OutputS3KeyPrefix = "string",
-#'       MaxConcurrency = "string",
-#'       MaxErrors = "string",
-#'       TargetCount = 123,
-#'       CompletedCount = 123,
-#'       ErrorCount = 123,
-#'       DeliveryTimedOutCount = 123,
-#'       ServiceRole = "string",
-#'       NotificationConfig = list(
-#'         NotificationArn = "string",
-#'         NotificationEvents = list(
-#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-#'         ),
-#'         NotificationType = "Command"|"Invocation"
-#'       ),
-#'       CloudWatchOutputConfig = list(
-#'         CloudWatchLogGroupName = "string",
-#'         CloudWatchOutputEnabled = TRUE|FALSE
-#'       ),
-#'       TimeoutSeconds = 123
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_commands(
-#'   CommandId = "string",
-#'   InstanceId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       key = "InvokedAfter"|"InvokedBefore"|"Status"|"ExecutionStage"|"DocumentName",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7848,18 +3783,13 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
 }
 .ssm$operations$list_commands <- ssm_list_commands
 
-#' For a specified resource ID, this API action returns a list of
+#' For a specified resource ID, this API operation returns a list of
 #' compliance statuses for different resource types
 #'
 #' @description
-#' For a specified resource ID, this API action returns a list of
-#' compliance statuses for different resource types. Currently, you can
-#' only specify one resource ID per call. List results depend on the
-#' criteria specified in the filter.
+#' For a specified resource ID, this API operation returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
 #'
-#' @usage
-#' ssm_list_compliance_items(Filters, ResourceIds, ResourceTypes,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/list_compliance_items.html](https://paws-r.github.io/docs/ssm/list_compliance_items.html) for full documentation.
 #'
 #' @param Filters One or more compliance filters. Use a filter to return a more specific
 #' list of results.
@@ -7872,58 +3802,6 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComplianceItems = list(
-#'     list(
-#'       ComplianceType = "string",
-#'       ResourceType = "string",
-#'       ResourceId = "string",
-#'       Id = "string",
-#'       Title = "string",
-#'       Status = "COMPLIANT"|"NON_COMPLIANT",
-#'       Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'       ExecutionSummary = list(
-#'         ExecutionTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ExecutionId = "string",
-#'         ExecutionType = "string"
-#'       ),
-#'       Details = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_compliance_items(
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Type = "EQUAL"|"NOT_EQUAL"|"BEGIN_WITH"|"LESS_THAN"|"GREATER_THAN"
-#'     )
-#'   ),
-#'   ResourceIds = list(
-#'     "string"
-#'   ),
-#'   ResourceTypes = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7949,13 +3827,9 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
 #' compliance type
 #'
 #' @description
-#' Returns a summary count of compliant and non-compliant resources for a
-#' compliance type. For example, this call can return State Manager
-#' associations, patches, or custom compliance types according to the
-#' filter criteria that you specify.
+#' Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify.
 #'
-#' @usage
-#' ssm_list_compliance_summaries(Filters, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/list_compliance_summaries.html](https://paws-r.github.io/docs/ssm/list_compliance_summaries.html) for full documentation.
 #'
 #' @param Filters One or more compliance or inventory filters. Use a filter to return a
 #' more specific list of results.
@@ -7964,58 +3838,6 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
 #' @param MaxResults The maximum number of items to return for this call. Currently, you can
 #' specify null or 50. The call also returns a token that you can specify
 #' in a subsequent call to get the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComplianceSummaryItems = list(
-#'     list(
-#'       ComplianceType = "string",
-#'       CompliantSummary = list(
-#'         CompliantCount = 123,
-#'         SeveritySummary = list(
-#'           CriticalCount = 123,
-#'           HighCount = 123,
-#'           MediumCount = 123,
-#'           LowCount = 123,
-#'           InformationalCount = 123,
-#'           UnspecifiedCount = 123
-#'         )
-#'       ),
-#'       NonCompliantSummary = list(
-#'         NonCompliantCount = 123,
-#'         SeveritySummary = list(
-#'           CriticalCount = 123,
-#'           HighCount = 123,
-#'           MediumCount = 123,
-#'           LowCount = 123,
-#'           InformationalCount = 123,
-#'           UnspecifiedCount = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_compliance_summaries(
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Type = "EQUAL"|"NOT_EQUAL"|"BEGIN_WITH"|"LESS_THAN"|"GREATER_THAN"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8037,17 +3859,16 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
 }
 .ssm$operations$list_compliance_summaries <- ssm_list_compliance_summaries
 
-#' Information about approval reviews for a version of an SSM document
+#' Information about approval reviews for a version of a change template in
+#' Change Manager
 #'
 #' @description
-#' Information about approval reviews for a version of an SSM document.
+#' Information about approval reviews for a version of a change template in Change Manager.
 #'
-#' @usage
-#' ssm_list_document_metadata_history(Name, DocumentVersion, Metadata,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/list_document_metadata_history.html](https://paws-r.github.io/docs/ssm/list_document_metadata_history.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the document.
-#' @param DocumentVersion The version of the document.
+#' @param Name &#91;required&#93; The name of the change template.
+#' @param DocumentVersion The version of the change template.
 #' @param Metadata &#91;required&#93; The type of data for which details are being requested. Currently, the
 #' only supported value is `DocumentReviews`.
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -8055,48 +3876,6 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   DocumentVersion = "string",
-#'   Author = "string",
-#'   Metadata = list(
-#'     ReviewerResponse = list(
-#'       list(
-#'         CreateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdatedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
-#'         Comment = list(
-#'           list(
-#'             Type = "Comment",
-#'             Content = "string"
-#'           )
-#'         ),
-#'         Reviewer = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_document_metadata_history(
-#'   Name = "string",
-#'   DocumentVersion = "string",
-#'   Metadata = "DocumentReviews",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8123,8 +3902,7 @@ ssm_list_document_metadata_history <- function(Name, DocumentVersion = NULL, Met
 #' @description
 #' List all versions for a document.
 #'
-#' @usage
-#' ssm_list_document_versions(Name, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/list_document_versions.html](https://paws-r.github.io/docs/ssm/list_document_versions.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the document. You can specify an Amazon Resource Name (ARN).
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -8132,38 +3910,6 @@ ssm_list_document_metadata_history <- function(Name, DocumentVersion = NULL, Met
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentVersions = list(
-#'     list(
-#'       Name = "string",
-#'       DocumentVersion = "string",
-#'       VersionName = "string",
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       IsDefaultVersion = TRUE|FALSE,
-#'       DocumentFormat = "YAML"|"JSON"|"TEXT",
-#'       Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
-#'       StatusInformation = "string",
-#'       ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_document_versions(
-#'   Name = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8185,88 +3931,31 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
 }
 .ssm$operations$list_document_versions <- ssm_list_document_versions
 
-#' Returns all Systems Manager (SSM) documents in the current AWS account
-#' and Region
+#' Returns all Systems Manager (SSM) documents in the current Amazon Web
+#' Services account and Amazon Web Services Region
 #'
 #' @description
-#' Returns all Systems Manager (SSM) documents in the current AWS account
-#' and Region. You can limit the results of this request by using a filter.
+#' Returns all Systems Manager (SSM) documents in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results of this request by using a filter.
 #'
-#' @usage
-#' ssm_list_documents(DocumentFilterList, Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/list_documents.html](https://paws-r.github.io/docs/ssm/list_documents.html) for full documentation.
 #'
 #' @param DocumentFilterList This data type is deprecated. Instead, use `Filters`.
-#' @param Filters One or more DocumentKeyValuesFilter objects. Use a filter to return a
+#' @param Filters One or more `DocumentKeyValuesFilter` objects. Use a filter to return a
 #' more specific list of results. For keys, you can specify one or more
 #' key-value pair tags that have been applied to a document. Other valid
 #' keys include `Owner`, `Name`, `PlatformTypes`, `DocumentType`, and
 #' `TargetType`. For example, to return documents you own use
 #' `Key=Owner,Values=Self`. To specify a custom key-value pair, use the
 #' format `Key=tag:tagName,Values=valueName`.
+#' 
+#' This API operation only supports filtering documents by using a single
+#' tag key and one or more tag values. For example:
+#' `Key=tag:tagName,Values=valueName1,valueName2`
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentIdentifiers = list(
-#'     list(
-#'       Name = "string",
-#'       Owner = "string",
-#'       VersionName = "string",
-#'       PlatformTypes = list(
-#'         "Windows"|"Linux"
-#'       ),
-#'       DocumentVersion = "string",
-#'       DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
-#'       SchemaVersion = "string",
-#'       DocumentFormat = "YAML"|"JSON"|"TEXT",
-#'       TargetType = "string",
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       Requires = list(
-#'         list(
-#'           Name = "string",
-#'           Version = "string"
-#'         )
-#'       ),
-#'       ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
-#'       Author = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_documents(
-#'   DocumentFilterList = list(
-#'     list(
-#'       key = "Name"|"Owner"|"PlatformTypes"|"DocumentType",
-#'       value = "string"
-#'     )
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8293,11 +3982,9 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
 #' @description
 #' A list of inventory items returned by the request.
 #'
-#' @usage
-#' ssm_list_inventory_entries(InstanceId, TypeName, Filters, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/list_inventory_entries.html](https://paws-r.github.io/docs/ssm/list_inventory_entries.html) for full documentation.
 #'
-#' @param InstanceId &#91;required&#93; The instance ID for which you want inventory information.
+#' @param InstanceId &#91;required&#93; The managed node ID for which you want inventory information.
 #' @param TypeName &#91;required&#93; The type of inventory item for which you want information.
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' results.
@@ -8306,42 +3993,6 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TypeName = "string",
-#'   InstanceId = "string",
-#'   SchemaVersion = "string",
-#'   CaptureTime = "string",
-#'   Entries = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_inventory_entries(
-#'   InstanceId = "string",
-#'   TypeName = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8363,16 +4014,13 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
 }
 .ssm$operations$list_inventory_entries <- ssm_list_inventory_entries
 
-#' Returns a list of all OpsItem events in the current AWS account and
-#' Region
+#' Returns a list of all OpsItem events in the current Amazon Web Services
+#' Region and Amazon Web Services account
 #'
 #' @description
-#' Returns a list of all OpsItem events in the current AWS account and
-#' Region. You can limit the results to events associated with specific
-#' OpsItems by specifying a filter.
+#' Returns a list of all OpsItem events in the current Amazon Web Services Region and Amazon Web Services account. You can limit the results to events associated with specific OpsItems by specifying a filter.
 #'
-#' @usage
-#' ssm_list_ops_item_events(Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/list_ops_item_events.html](https://paws-r.github.io/docs/ssm/list_ops_item_events.html) for full documentation.
 #'
 #' @param Filters One or more OpsItem filters. Use a filter to return a more specific list
 #' of results.
@@ -8381,46 +4029,6 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   Summaries = list(
-#'     list(
-#'       OpsItemId = "string",
-#'       EventId = "string",
-#'       Source = "string",
-#'       DetailType = "string",
-#'       Detail = "string",
-#'       CreatedBy = list(
-#'         Arn = "string"
-#'       ),
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_ops_item_events(
-#'   Filters = list(
-#'     list(
-#'       Key = "OpsItemId",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Operator = "Equal"
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8442,15 +4050,51 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
 }
 .ssm$operations$list_ops_item_events <- ssm_list_ops_item_events
 
-#' Systems Manager calls this API action when displaying all Application
-#' Manager OpsMetadata objects or blobs
+#' Lists all related-item resources associated with a Systems Manager
+#' OpsCenter OpsItem
 #'
 #' @description
-#' Systems Manager calls this API action when displaying all Application
-#' Manager OpsMetadata objects or blobs.
+#' Lists all related-item resources associated with a Systems Manager OpsCenter OpsItem. OpsCenter is a capability of Amazon Web Services Systems Manager.
 #'
-#' @usage
-#' ssm_list_ops_metadata(Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/ssm/list_ops_item_related_items.html](https://paws-r.github.io/docs/ssm/list_ops_item_related_items.html) for full documentation.
+#'
+#' @param OpsItemId The ID of the OpsItem for which you want to list all related-item
+#' resources.
+#' @param Filters One or more OpsItem filters. Use a filter to return a more specific list
+#' of results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_list_ops_item_related_items
+ssm_list_ops_item_related_items <- function(OpsItemId = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListOpsItemRelatedItems",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$list_ops_item_related_items_input(OpsItemId = OpsItemId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssm$list_ops_item_related_items_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$list_ops_item_related_items <- ssm_list_ops_item_related_items
+
+#' Amazon Web Services Systems Manager calls this API operation when
+#' displaying all Application Manager OpsMetadata objects or blobs
+#'
+#' @description
+#' Amazon Web Services Systems Manager calls this API operation when displaying all Application Manager OpsMetadata objects or blobs.
+#'
+#' See [https://paws-r.github.io/docs/ssm/list_ops_metadata.html](https://paws-r.github.io/docs/ssm/list_ops_metadata.html) for full documentation.
 #'
 #' @param Filters One or more filters to limit the number of OpsMetadata objects returned
 #' by the call.
@@ -8459,43 +4103,6 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OpsMetadataList = list(
-#'     list(
-#'       ResourceId = "string",
-#'       OpsMetadataArn = "string",
-#'       LastModifiedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedUser = "string",
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_ops_metadata(
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8520,12 +4127,9 @@ ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken =
 #' Returns a resource-level summary count
 #'
 #' @description
-#' Returns a resource-level summary count. The summary includes information
-#' about compliant and non-compliant statuses and detailed compliance-item
-#' severity counts, according to the filter criteria you specify.
+#' Returns a resource-level summary count. The summary includes information about compliant and non-compliant statuses and detailed compliance-item severity counts, according to the filter criteria you specify.
 #'
-#' @usage
-#' ssm_list_resource_compliance_summaries(Filters, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/list_resource_compliance_summaries.html](https://paws-r.github.io/docs/ssm/list_resource_compliance_summaries.html) for full documentation.
 #'
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' results.
@@ -8534,69 +4138,6 @@ ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken =
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceComplianceSummaryItems = list(
-#'     list(
-#'       ComplianceType = "string",
-#'       ResourceType = "string",
-#'       ResourceId = "string",
-#'       Status = "COMPLIANT"|"NON_COMPLIANT",
-#'       OverallSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'       ExecutionSummary = list(
-#'         ExecutionTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ExecutionId = "string",
-#'         ExecutionType = "string"
-#'       ),
-#'       CompliantSummary = list(
-#'         CompliantCount = 123,
-#'         SeveritySummary = list(
-#'           CriticalCount = 123,
-#'           HighCount = 123,
-#'           MediumCount = 123,
-#'           LowCount = 123,
-#'           InformationalCount = 123,
-#'           UnspecifiedCount = 123
-#'         )
-#'       ),
-#'       NonCompliantSummary = list(
-#'         NonCompliantCount = 123,
-#'         SeveritySummary = list(
-#'           CriticalCount = 123,
-#'           HighCount = 123,
-#'           MediumCount = 123,
-#'           LowCount = 123,
-#'           InformationalCount = 123,
-#'           UnspecifiedCount = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resource_compliance_summaries(
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Type = "EQUAL"|"NOT_EQUAL"|"BEGIN_WITH"|"LESS_THAN"|"GREATER_THAN"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8621,94 +4162,19 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
 #' Lists your resource data sync configurations
 #'
 #' @description
-#' Lists your resource data sync configurations. Includes information about
-#' the last time a sync attempted to start, the last sync status, and the
-#' last time a sync successfully completed.
-#' 
-#' The number of sync configurations might be too large to return using a
-#' single call to [`list_resource_data_sync`][ssm_list_resource_data_sync].
-#' You can limit the number of sync configurations returned by using the
-#' `MaxResults` parameter. To determine whether there are more sync
-#' configurations to list, check the value of `NextToken` in the output. If
-#' there are more sync configurations to list, you can request them by
-#' specifying the `NextToken` returned in the call to the parameter of a
-#' subsequent call.
+#' Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed.
 #'
-#' @usage
-#' ssm_list_resource_data_sync(SyncType, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ssm/list_resource_data_sync.html](https://paws-r.github.io/docs/ssm/list_resource_data_sync.html) for full documentation.
 #'
 #' @param SyncType View a list of resource data syncs according to the sync type. Specify
 #' `SyncToDestination` to view resource data syncs that synchronize data to
 #' an Amazon S3 bucket. Specify `SyncFromSource` to view resource data
-#' syncs from AWS Organizations or from multiple AWS Regions.
+#' syncs from Organizations or from multiple Amazon Web Services Regions.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceDataSyncItems = list(
-#'     list(
-#'       SyncName = "string",
-#'       SyncType = "string",
-#'       SyncSource = list(
-#'         SourceType = "string",
-#'         AwsOrganizationsSource = list(
-#'           OrganizationSourceType = "string",
-#'           OrganizationalUnits = list(
-#'             list(
-#'               OrganizationalUnitId = "string"
-#'             )
-#'           )
-#'         ),
-#'         SourceRegions = list(
-#'           "string"
-#'         ),
-#'         IncludeFutureRegions = TRUE|FALSE,
-#'         State = "string"
-#'       ),
-#'       S3Destination = list(
-#'         BucketName = "string",
-#'         Prefix = "string",
-#'         SyncFormat = "JsonSerDe",
-#'         Region = "string",
-#'         AWSKMSKeyARN = "string",
-#'         DestinationDataSharing = list(
-#'           DestinationDataSharingType = "string"
-#'         )
-#'       ),
-#'       LastSyncTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastSuccessfulSyncTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       SyncLastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastStatus = "Successful"|"Failed"|"InProgress",
-#'       SyncCreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastSyncStatusMessage = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resource_data_sync(
-#'   SyncType = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8735,32 +4201,10 @@ ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxRe
 #' @description
 #' Returns a list of the tags assigned to the specified resource.
 #'
-#' @usage
-#' ssm_list_tags_for_resource(ResourceType, ResourceId)
+#' See [https://paws-r.github.io/docs/ssm/list_tags_for_resource.html](https://paws-r.github.io/docs/ssm/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; Returns a list of tags for a specific resource type.
 #' @param ResourceId &#91;required&#93; The resource ID for which you want to see a list of tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8782,48 +4226,26 @@ ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
 }
 .ssm$operations$list_tags_for_resource <- ssm_list_tags_for_resource
 
-#' Shares a Systems Manager document publicly or privately
+#' Shares a Amazon Web Services Systems Manager document (SSM
+#' document)publicly or privately
 #'
 #' @description
-#' Shares a Systems Manager document publicly or privately. If you share a
-#' document privately, you must specify the AWS user account IDs for those
-#' people who can use the document. If you share a document publicly, you
-#' must specify *All* as the account ID.
+#' Shares a Amazon Web Services Systems Manager document (SSM document)publicly or privately. If you share a document privately, you must specify the Amazon Web Services user account IDs for those people who can use the document. If you share a document publicly, you must specify *All* as the account ID.
 #'
-#' @usage
-#' ssm_modify_document_permission(Name, PermissionType, AccountIdsToAdd,
-#'   AccountIdsToRemove, SharedDocumentVersion)
+#' See [https://paws-r.github.io/docs/ssm/modify_document_permission.html](https://paws-r.github.io/docs/ssm/modify_document_permission.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the document that you want to share.
 #' @param PermissionType &#91;required&#93; The permission type for the document. The permission type can be
 #' *Share*.
-#' @param AccountIdsToAdd The AWS user accounts that should have access to the document. The
-#' account IDs can either be a group of account IDs or *All*.
-#' @param AccountIdsToRemove The AWS user accounts that should no longer have access to the document.
-#' The AWS user account can either be a group of account IDs or *All*. This
-#' action has a higher priority than *AccountIdsToAdd*. If you specify an
-#' account ID to add and the same ID to remove, the system removes access
-#' to the document.
-#' @param SharedDocumentVersion (Optional) The version of the document to share. If it's not specified,
+#' @param AccountIdsToAdd The Amazon Web Services user accounts that should have access to the
+#' document. The account IDs can either be a group of account IDs or *All*.
+#' @param AccountIdsToRemove The Amazon Web Services user accounts that should no longer have access
+#' to the document. The Amazon Web Services user account can either be a
+#' group of account IDs or *All*. This action has a higher priority than
+#' *AccountIdsToAdd*. If you specify an account ID to add and the same ID
+#' to remove, the system removes access to the document.
+#' @param SharedDocumentVersion (Optional) The version of the document to share. If it isn't specified,
 #' the system choose the `Default` version to share.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_document_permission(
-#'   Name = "string",
-#'   PermissionType = "Share",
-#'   AccountIdsToAdd = list(
-#'     "string"
-#'   ),
-#'   AccountIdsToRemove = list(
-#'     "string"
-#'   ),
-#'   SharedDocumentVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8849,58 +4271,12 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' resource
 #'
 #' @description
-#' Registers a compliance type and other compliance details on a designated
-#' resource. This action lets you register custom compliance details with a
-#' resource. This call overwrites existing compliance information on the
-#' resource, so you must provide a full list of compliance items each time
-#' that you send the request.
-#' 
-#' ComplianceType can be one of the following:
-#' 
-#' -   ExecutionId: The execution ID when the patch, association, or custom
-#'     compliance item was applied.
-#' 
-#' -   ExecutionType: Specify patch, association, or Custom:`string`.
-#' 
-#' -   ExecutionTime. The time the patch, association, or custom compliance
-#'     item was applied to the instance.
-#' 
-#' -   Id: The patch, association, or custom compliance ID.
-#' 
-#' -   Title: A title.
-#' 
-#' -   Status: The status of the compliance item. For example, `approved`
-#'     for patches, or `Failed` for associations.
-#' 
-#' -   Severity: A patch severity. For example, `critical`.
-#' 
-#' -   DocumentName: A SSM document name. For example,
-#'     AWS-RunPatchBaseline.
-#' 
-#' -   DocumentVersion: An SSM document version number. For example, 4.
-#' 
-#' -   Classification: A patch classification. For example,
-#'     `security updates`.
-#' 
-#' -   PatchBaselineId: A patch baseline ID.
-#' 
-#' -   PatchSeverity: A patch severity. For example, `Critical`.
-#' 
-#' -   PatchState: A patch state. For example,
-#'     `InstancesWithFailedPatches`.
-#' 
-#' -   PatchGroup: The name of a patch group.
-#' 
-#' -   InstalledTime: The time the association, patch, or custom compliance
-#'     item was applied to the resource. Specify the time by using the
-#'     following format: yyyy-MM-dd'T'HH:mm:ss'Z'
+#' Registers a compliance type and other compliance details on a designated resource. This operation lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time that you send the request.
 #'
-#' @usage
-#' ssm_put_compliance_items(ResourceId, ResourceType, ComplianceType,
-#'   ExecutionSummary, Items, ItemContentHash, UploadType)
+#' See [https://paws-r.github.io/docs/ssm/put_compliance_items.html](https://paws-r.github.io/docs/ssm/put_compliance_items.html) for full documentation.
 #'
-#' @param ResourceId &#91;required&#93; Specify an ID for this resource. For a managed instance, this is the
-#' instance ID.
+#' @param ResourceId &#91;required&#93; Specify an ID for this resource. For a managed node, this is the node
+#' ID.
 #' @param ResourceType &#91;required&#93; Specify the type of resource. `ManagedInstance` is currently the only
 #' supported resource type.
 #' @param ComplianceType &#91;required&#93; Specify the compliance type. For example, specify Association (for a
@@ -8927,38 +4303,6 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' 
 #' This attribute is only valid for association compliance.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_compliance_items(
-#'   ResourceId = "string",
-#'   ResourceType = "string",
-#'   ComplianceType = "string",
-#'   ExecutionSummary = list(
-#'     ExecutionTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExecutionId = "string",
-#'     ExecutionType = "string"
-#'   ),
-#'   Items = list(
-#'     list(
-#'       Id = "string",
-#'       Title = "string",
-#'       Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'       Status = "COMPLIANT"|"NON_COMPLIANT",
-#'       Details = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ItemContentHash = "string",
-#'   UploadType = "COMPLETE"|"PARTIAL"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname ssm_put_compliance_items
@@ -8979,49 +4323,15 @@ ssm_put_compliance_items <- function(ResourceId, ResourceType, ComplianceType, E
 }
 .ssm$operations$put_compliance_items <- ssm_put_compliance_items
 
-#' Bulk update custom inventory items on one more instance
+#' Bulk update custom inventory items on one or more managed nodes
 #'
 #' @description
-#' Bulk update custom inventory items on one more instance. The request
-#' adds an inventory item, if it doesn't already exist, or updates an
-#' inventory item, if it does exist.
+#' Bulk update custom inventory items on one or more managed nodes. The request adds an inventory item, if it doesn't already exist, or updates an inventory item, if it does exist.
 #'
-#' @usage
-#' ssm_put_inventory(InstanceId, Items)
+#' See [https://paws-r.github.io/docs/ssm/put_inventory.html](https://paws-r.github.io/docs/ssm/put_inventory.html) for full documentation.
 #'
-#' @param InstanceId &#91;required&#93; An instance ID where you want to add or update inventory items.
-#' @param Items &#91;required&#93; The inventory items that you want to add or update on instances.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Message = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_inventory(
-#'   InstanceId = "string",
-#'   Items = list(
-#'     list(
-#'       TypeName = "string",
-#'       SchemaVersion = "string",
-#'       CaptureTime = "string",
-#'       ContentHash = "string",
-#'       Content = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       Context = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' @param InstanceId &#91;required&#93; An managed node ID where you want to add or update inventory items.
+#' @param Items &#91;required&#93; The inventory items that you want to add or update on managed nodes.
 #'
 #' @keywords internal
 #'
@@ -9048,9 +4358,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' @description
 #' Add a parameter to the system.
 #'
-#' @usage
-#' ssm_put_parameter(Name, Description, Value, Type, KeyId, Overwrite,
-#'   AllowedPattern, Tags, Tier, Policies, DataType)
+#' See [https://paws-r.github.io/docs/ssm/put_parameter.html](https://paws-r.github.io/docs/ssm/put_parameter.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The fully qualified name of the parameter that you want to add to the
 #' system. The fully qualified name includes the complete hierarchy of the
@@ -9062,13 +4370,17 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' -   Parameter names are case sensitive.
 #' 
-#' -   A parameter name must be unique within an AWS Region
+#' -   A parameter name must be unique within an Amazon Web Services Region
 #' 
-#' -   A parameter name can't be prefixed with "aws" or "ssm"
+#' -   A parameter name can't be prefixed with "`aws`" or "`ssm`"
 #'     (case-insensitive).
 #' 
 #' -   Parameter names can include only the following symbols and letters:
-#'     `a-zA-Z0-9_.-/`
+#'     `a-zA-Z0-9_.-`
+#' 
+#'     In addition, the slash character ( / ) is used to delineate
+#'     hierarchies in parameter names. For example:
+#'     `/Dev/Production/East/Project-ABC/MyParameter`
 #' 
 #' -   A parameter name can't include spaces.
 #' 
@@ -9076,21 +4388,19 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'     levels.
 #' 
 #' For additional information about valid values for parameter names, see
-#' [About requirements and constraints for parameter
-#' names](https://docs.aws.amazon.com/systems-manager/latest/userguide/) in
-#' the *AWS Systems Manager User Guide*.
+#' [Creating Systems Manager
+#' parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
-#' The maximum length constraint listed below includes capacity for
-#' additional system attributes that are not part of the name. The maximum
-#' length for a parameter name, including the full length of the parameter
-#' ARN, is 1011 characters. For example, the length of the following
-#' parameter name is 65 characters, not 20 characters:
-#' 
-#' `arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName`
+#' The maximum length constraint of 2048 characters listed below includes
+#' 1037 characters reserved for internal use by Systems Manager. The
+#' maximum length for a parameter name that you create is 1011 characters.
+#' This includes the characters in the ARN that precede the name you
+#' specify, such as `arn:aws:ssm:us-east-2:111122223333:parameter/`.
 #' @param Description Information about the parameter that you want to add to the system.
 #' Optional but recommended.
 #' 
-#' Do not enter personally identifiable information in this field.
+#' Don't enter personally identifiable information in this field.
 #' @param Value &#91;required&#93; The parameter value that you want to add to the system. Standard
 #' parameters have a value limit of 4 KB. Advanced parameters have a value
 #' limit of 8 KB.
@@ -9100,42 +4410,39 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' parameter value.
 #' @param Type The type of parameter that you want to add to the system.
 #' 
-#' `SecureString` is not currently supported for AWS CloudFormation
-#' templates.
+#' `SecureString` isn't currently supported for CloudFormation templates.
 #' 
 #' Items in a `StringList` must be separated by a comma (,). You can't use
 #' other punctuation or special character to escape items in the list. If
 #' you have a parameter value that requires a comma, then use the `String`
 #' data type.
 #' 
-#' Specifying a parameter type is not required when updating a parameter.
+#' Specifying a parameter type isn't required when updating a parameter.
 #' You must specify a parameter type when creating a parameter.
-#' @param KeyId The KMS Key ID that you want to use to encrypt a parameter. Either the
-#' default AWS Key Management Service (AWS KMS) key automatically assigned
-#' to your AWS account or a custom key. Required for parameters that use
-#' the `SecureString` data type.
+#' @param KeyId The Key Management Service (KMS) ID that you want to use to encrypt a
+#' parameter. Either the default KMS key automatically assigned to your
+#' Amazon Web Services account or a custom key. Required for parameters
+#' that use the `SecureString` data type.
 #' 
 #' If you don't specify a key ID, the system uses the default key
-#' associated with your AWS account.
+#' associated with your Amazon Web Services account.
 #' 
-#' -   To use your default AWS KMS key, choose the `SecureString` data
-#'     type, and do *not* specify the `Key ID` when you create the
-#'     parameter. The system automatically populates `Key ID` with your
-#'     default KMS key.
+#' -   To use your default KMS key, choose the `SecureString` data type,
+#'     and do *not* specify the `Key ID` when you create the parameter. The
+#'     system automatically populates `Key ID` with your default KMS key.
 #' 
 #' -   To use a custom KMS key, choose the `SecureString` data type with
 #'     the `Key ID` parameter.
-#' @param Overwrite Overwrite an existing parameter. If not specified, will default to
-#' "false".
+#' @param Overwrite Overwrite an existing parameter. The default value is `false`.
 #' @param AllowedPattern A regular expression used to validate the parameter value. For example,
 #' for String types with values restricted to numbers, you can specify the
-#' following: AllowedPattern=^\\d+$
+#' following: AllowedPattern=^\d+$
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
 #' environment. For example, you might want to tag a Systems Manager
 #' parameter to identify the type of resource to which it applies, the
 #' environment, or the type of configuration data referenced by the
-#' parameter. In this case, you could specify the following key name/value
+#' parameter. In this case, you could specify the following key-value
 #' pairs:
 #' 
 #' -   `Key=Resource,Value=S3bucket`
@@ -9145,22 +4452,22 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' -   `Key=ParameterType,Value=LicenseKey`
 #' 
 #' To add tags to an existing Systems Manager parameter, use the
-#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #' @param Tier The parameter tier to assign to a parameter.
 #' 
 #' Parameter Store offers a standard tier and an advanced tier for
 #' parameters. Standard parameters have a content size limit of 4 KB and
 #' can't be configured to use parameter policies. You can create a maximum
-#' of 10,000 standard parameters for each Region in an AWS account.
-#' Standard parameters are offered at no additional cost.
+#' of 10,000 standard parameters for each Region in an Amazon Web Services
+#' account. Standard parameters are offered at no additional cost.
 #' 
 #' Advanced parameters have a content size limit of 8 KB and can be
 #' configured to use parameter policies. You can create a maximum of
-#' 100,000 advanced parameters for each Region in an AWS account. Advanced
-#' parameters incur a charge. For more information, see [Standard and
-#' advanced parameter
+#' 100,000 advanced parameters for each Region in an Amazon Web Services
+#' account. Advanced parameters incur a charge. For more information, see
+#' [Standard and advanced parameter
 #' tiers](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can change a standard parameter to an advanced parameter any time.
 #' But you can't revert an advanced parameter to a standard parameter.
@@ -9179,7 +4486,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' In [`put_parameter`][ssm_put_parameter] requests, you can specify the
 #' tier to create the parameter in. Whenever you specify a tier in the
 #' request, Parameter Store creates or updates the parameter according to
-#' that request. However, if you do not specify a tier in a request,
+#' that request. However, if you don't specify a tier in a request,
 #' Parameter Store assigns the tier based on the current Parameter Store
 #' default tier configuration.
 #' 
@@ -9209,38 +4516,39 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' -   The parameter uses a parameter policy.
 #' 
-#' -   More than 10,000 parameters already exist in your AWS account in the
-#'     current Region.
+#' -   More than 10,000 parameters already exist in your Amazon Web
+#'     Services account in the current Amazon Web Services Region.
 #' 
 #' For more information about configuring the default tier option, see
 #' [Specifying a default parameter
 #' tier](https://docs.aws.amazon.com/systems-manager/latest/userguide/) in
-#' the *AWS Systems Manager User Guide*.
-#' @param Policies One or more policies to apply to a parameter. This action takes a JSON
-#' array. Parameter Store supports the following policy types:
+#' the *Amazon Web Services Systems Manager User Guide*.
+#' @param Policies One or more policies to apply to a parameter. This operation takes a
+#' JSON array. Parameter Store, a capability of Amazon Web Services Systems
+#' Manager supports the following policy types:
 #' 
 #' Expiration: This policy deletes the parameter after it expires. When you
 #' create the policy, you specify the expiration date. You can update the
 #' expiration date and time by updating the policy. Updating the
-#' *parameter* does not affect the expiration date and time. When the
+#' *parameter* doesn't affect the expiration date and time. When the
 #' expiration time is reached, Parameter Store deletes the parameter.
 #' 
-#' ExpirationNotification: This policy triggers an event in Amazon
+#' ExpirationNotification: This policy initiates an event in Amazon
 #' CloudWatch Events that notifies you about the expiration. By using this
 #' policy, you can receive notification before or after the expiration time
 #' is reached, in units of days or hours.
 #' 
-#' NoChangeNotification: This policy triggers a CloudWatch event if a
-#' parameter has not been modified for a specified period of time. This
+#' NoChangeNotification: This policy initiates a CloudWatch Events event if
+#' a parameter hasn't been modified for a specified period of time. This
 #' policy type is useful when, for example, a secret needs to be changed
-#' within a period of time, but it has not been changed.
+#' within a period of time, but it hasn't been changed.
 #' 
 #' All existing policies are preserved until you send new policies or an
 #' empty policy. For more information about parameter policies, see
 #' [Assigning parameter
 #' policies](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html).
 #' @param DataType The data type for a `String` parameter. Supported data types include
-#' plain text and Amazon Machine Image IDs.
+#' plain text and Amazon Machine Image (AMI) IDs.
 #' 
 #' **The following data type values are supported.**
 #' 
@@ -9248,44 +4556,16 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' -   `aws:ec2:image`
 #' 
-#' When you create a `String` parameter and specify `aws:ec2:image`,
-#' Systems Manager validates the parameter value is in the required format,
-#' such as `ami-12345abcdeEXAMPLE`, and that the specified AMI is available
-#' in your AWS account. For more information, see [Native parameter support
-#' for Amazon Machine Image
+#' -   `aws:ssm:integration`
+#' 
+#' When you create a `String` parameter and specify `aws:ec2:image`, Amazon
+#' Web Services Systems Manager validates the parameter value is in the
+#' required format, such as `ami-12345abcdeEXAMPLE`, and that the specified
+#' AMI is available in your Amazon Web Services account. For more
+#' information, see [Native parameter support for Amazon Machine Image
+#' (AMI)
 #' IDs](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html)
-#' in the *AWS Systems Manager User Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Version = 123,
-#'   Tier = "Standard"|"Advanced"|"Intelligent-Tiering"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_parameter(
-#'   Name = "string",
-#'   Description = "string",
-#'   Value = "string",
-#'   Type = "String"|"StringList"|"SecureString",
-#'   KeyId = "string",
-#'   Overwrite = TRUE|FALSE,
-#'   AllowedPattern = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
-#'   Policies = "string",
-#'   DataType = "string"
-#' )
-#' ```
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' @keywords internal
 #'
@@ -9311,32 +4591,10 @@ ssm_put_parameter <- function(Name, Description = NULL, Value, Type = NULL, KeyI
 #'
 #' @description
 #' Defines the default patch baseline for the relevant operating system.
-#' 
-#' To reset the AWS predefined patch baseline as the default, specify the
-#' full patch baseline ARN as the baseline ID value. For example, for
-#' CentOS, specify
-#' `arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed`
-#' instead of `pb-0574b43a65ea646ed`.
 #'
-#' @usage
-#' ssm_register_default_patch_baseline(BaselineId)
+#' See [https://paws-r.github.io/docs/ssm/register_default_patch_baseline.html](https://paws-r.github.io/docs/ssm/register_default_patch_baseline.html) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline that should be the default patch baseline.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_default_patch_baseline(
-#'   BaselineId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9363,29 +4621,10 @@ ssm_register_default_patch_baseline <- function(BaselineId) {
 #' @description
 #' Registers a patch baseline for a patch group.
 #'
-#' @usage
-#' ssm_register_patch_baseline_for_patch_group(BaselineId, PatchGroup)
+#' See [https://paws-r.github.io/docs/ssm/register_patch_baseline_for_patch_group.html](https://paws-r.github.io/docs/ssm/register_patch_baseline_for_patch_group.html) for full documentation.
 #'
-#' @param BaselineId &#91;required&#93; The ID of the patch baseline to register the patch group with.
-#' @param PatchGroup &#91;required&#93; The name of the patch group that should be registered with the patch
-#' baseline.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineId = "string",
-#'   PatchGroup = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_patch_baseline_for_patch_group(
-#'   BaselineId = "string",
-#'   PatchGroup = "string"
-#' )
-#' ```
+#' @param BaselineId &#91;required&#93; The ID of the patch baseline to register with the patch group.
+#' @param PatchGroup &#91;required&#93; The name of the patch group to be registered with the patch baseline.
 #'
 #' @keywords internal
 #'
@@ -9412,81 +4651,57 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 #' @description
 #' Registers a target with a maintenance window.
 #'
-#' @usage
-#' ssm_register_target_with_maintenance_window(WindowId, ResourceType,
-#'   Targets, OwnerInformation, Name, Description, ClientToken)
+#' See [https://paws-r.github.io/docs/ssm/register_target_with_maintenance_window.html](https://paws-r.github.io/docs/ssm/register_target_with_maintenance_window.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the target should be registered with.
 #' @param ResourceType &#91;required&#93; The type of target being registered with the maintenance window.
 #' @param Targets &#91;required&#93; The targets to register with the maintenance window. In other words, the
-#' instances to run commands on when the maintenance window runs.
+#' managed nodes to run commands on when the maintenance window runs.
 #' 
-#' You can specify targets using instance IDs, resource group names, or
-#' tags that have been applied to instances.
+#' If a single maintenance window task is registered with multiple targets,
+#' its task invocations occur sequentially and not in parallel. If your
+#' task must run on multiple targets at the same time, register a task for
+#' each target individually and assign each task the same priority level.
 #' 
-#' **Example 1**: Specify instance IDs
+#' You can specify targets using managed node IDs, resource group names, or
+#' tags that have been applied to managed nodes.
 #' 
-#' `Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3 `
+#' **Example 1**: Specify managed node IDs
 #' 
-#' **Example 2**: Use tag key-pairs applied to instances
+#' `Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>,<instance-id-3>`
 #' 
-#' `Key=tag:my-tag-key,Values=my-tag-value-1,my-tag-value-2 `
+#' **Example 2**: Use tag key-pairs applied to managed nodes
 #' 
-#' **Example 3**: Use tag-keys applied to instances
+#' `Key=tag:<my-tag-key>,Values=<my-tag-value-1>,<my-tag-value-2>`
 #' 
-#' `Key=tag-key,Values=my-tag-key-1,my-tag-key-2 `
+#' **Example 3**: Use tag-keys applied to managed nodes
+#' 
+#' `Key=tag-key,Values=<my-tag-key-1>,<my-tag-key-2>`
 #' 
 #' **Example 4**: Use resource group names
 #' 
-#' `Key=resource-groups:Name,Values=resource-group-name `
+#' `Key=resource-groups:Name,Values=<resource-group-name>`
 #' 
 #' **Example 5**: Use filters for resource group types
 #' 
-#' `Key=resource-groups:ResourceTypeFilters,Values=resource-type-1,resource-type-2 `
+#' `Key=resource-groups:ResourceTypeFilters,Values=<resource-type-1>,<resource-type-2>`
 #' 
 #' For `Key=resource-groups:ResourceTypeFilters`, specify resource types in
 #' the following format
 #' 
-#' `Key=resource-groups:ResourceTypeFilters,Values=AWS::EC2::INSTANCE,AWS::EC2::VPC `
+#' `Key=resource-groups:ResourceTypeFilters,Values=AWS::EC2::INSTANCE,AWS::EC2::VPC`
 #' 
 #' For more information about these examples formats, including the best
 #' use case for each one, see [Examples: Register targets with a
 #' maintenance
 #' window](https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html)
-#' in the *AWS Systems Manager User Guide*.
-#' @param OwnerInformation User-provided value that will be included in any CloudWatch events
-#' raised while running tasks for these targets in this maintenance window.
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param OwnerInformation User-provided value that will be included in any Amazon CloudWatch
+#' Events events raised while running tasks for these targets in this
+#' maintenance window.
 #' @param Name An optional name for the target.
 #' @param Description An optional description for the target.
 #' @param ClientToken User-provided idempotency token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowTargetId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_target_with_maintenance_window(
-#'   WindowId = "string",
-#'   ResourceType = "INSTANCE"|"RESOURCE_GROUP",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   OwnerInformation = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   ClientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9513,24 +4728,20 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' @description
 #' Adds a new task to a maintenance window.
 #'
-#' @usage
-#' ssm_register_task_with_maintenance_window(WindowId, Targets, TaskArn,
-#'   ServiceRoleArn, TaskType, TaskParameters, TaskInvocationParameters,
-#'   Priority, MaxConcurrency, MaxErrors, LoggingInfo, Name, Description,
-#'   ClientToken)
+#' See [https://paws-r.github.io/docs/ssm/register_task_with_maintenance_window.html](https://paws-r.github.io/docs/ssm/register_task_with_maintenance_window.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the task should be added to.
-#' @param Targets The targets (either instances or maintenance window targets).
+#' @param Targets The targets (either managed nodes or maintenance window targets).
 #' 
 #' One or more targets must be specified for maintenance window Run
 #' Command-type tasks. Depending on the task, targets are optional for
-#' other maintenance window task types (Automation, AWS Lambda, and AWS
-#' Step Functions). For more information about running tasks that do not
-#' specify targets, see see [Registering maintenance window tasks without
+#' other maintenance window task types (Automation, Lambda, and Step
+#' Functions). For more information about running tasks that don't specify
+#' targets, see [Registering maintenance window tasks without
 #' targets](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
-#' Specify instances using the following format:
+#' Specify managed nodes using the following format:
 #' 
 #' `Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>`
 #' 
@@ -9538,15 +4749,15 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' 
 #' `Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2>`
 #' @param TaskArn &#91;required&#93; The ARN of the task to run.
-#' @param ServiceRoleArn The ARN of the IAM service role for Systems Manager to assume when
-#' running a maintenance window task. If you do not specify a service role
-#' ARN, Systems Manager uses your account's service-linked role. If no
-#' service-linked role for Systems Manager exists in your account, it is
-#' created when you run
+#' @param ServiceRoleArn The Amazon Resource Name (ARN) of the IAM service role for Amazon Web
+#' Services Systems Manager to assume when running a maintenance window
+#' task. If you do not specify a service role ARN, Systems Manager uses
+#' your account's service-linked role. If no service-linked role for
+#' Systems Manager exists in your account, it is created when you run
 #' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
 #' 
-#' For more information, see the following topics in the in the *AWS
-#' Systems Manager User Guide*:
+#' For more information, see the following topics in the in the *Amazon Web
+#' Services Systems Manager User Guide*:
 #' 
 #' -   [Using service-linked roles for Systems
 #'     Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
@@ -9568,132 +4779,73 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' the higher the priority. Tasks in a maintenance window are scheduled in
 #' priority order with tasks that have the same priority scheduled in
 #' parallel.
-#' @param MaxConcurrency The maximum number of targets this task can be run for in parallel.
+#' @param MaxConcurrency The maximum number of targets this task can be run for, in parallel.
 #' 
-#' For maintenance window tasks without a target specified, you cannot
+#' Although this element is listed as "Required: No", a value can be
+#' omitted only when you are registering or updating a [targetless
+#' task](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
+#' You must provide a value in all other cases.
+#' 
+#' For maintenance window tasks without a target specified, you can't
 #' supply a value for this option. Instead, the system inserts a
-#' placeholder value of `1`. This value does not affect the running of your
+#' placeholder value of `1`. This value doesn't affect the running of your
 #' task.
 #' @param MaxErrors The maximum number of errors allowed before this task stops being
 #' scheduled.
 #' 
-#' For maintenance window tasks without a target specified, you cannot
-#' supply a value for this option. Instead, the system inserts a
-#' placeholder value of `1`. This value does not affect the running of your
-#' task.
-#' @param LoggingInfo A structure containing information about an S3 bucket to write
-#' instance-level logs to.
+#' Although this element is listed as "Required: No", a value can be
+#' omitted only when you are registering or updating a [targetless
+#' task](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
+#' You must provide a value in all other cases.
 #' 
-#' `LoggingInfo` has been deprecated. To specify an S3 bucket to contain
-#' logs, instead use the `OutputS3BucketName` and `OutputS3KeyPrefix`
-#' options in the `TaskInvocationParameters` structure. For information
-#' about how Systems Manager handles these options for the supported
+#' For maintenance window tasks without a target specified, you can't
+#' supply a value for this option. Instead, the system inserts a
+#' placeholder value of `1`. This value doesn't affect the running of your
+#' task.
+#' @param LoggingInfo A structure containing information about an Amazon Simple Storage
+#' Service (Amazon S3) bucket to write managed node-level logs to.
+#' 
+#' `LoggingInfo` has been deprecated. To specify an Amazon Simple Storage
+#' Service (Amazon S3) bucket to contain logs, instead use the
+#' `OutputS3BucketName` and `OutputS3KeyPrefix` options in the
+#' `TaskInvocationParameters` structure. For information about how Amazon
+#' Web Services Systems Manager handles these options for the supported
 #' maintenance window task types, see
 #' MaintenanceWindowTaskInvocationParameters.
 #' @param Name An optional name for the task.
 #' @param Description An optional description for the task.
 #' @param ClientToken User-provided idempotency token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowTaskId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_task_with_maintenance_window(
-#'   WindowId = "string",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TaskArn = "string",
-#'   ServiceRoleArn = "string",
-#'   TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-#'   TaskParameters = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TaskInvocationParameters = list(
-#'     RunCommand = list(
-#'       Comment = "string",
-#'       CloudWatchOutputConfig = list(
-#'         CloudWatchLogGroupName = "string",
-#'         CloudWatchOutputEnabled = TRUE|FALSE
-#'       ),
-#'       DocumentHash = "string",
-#'       DocumentHashType = "Sha256"|"Sha1",
-#'       DocumentVersion = "string",
-#'       NotificationConfig = list(
-#'         NotificationArn = "string",
-#'         NotificationEvents = list(
-#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-#'         ),
-#'         NotificationType = "Command"|"Invocation"
-#'       ),
-#'       OutputS3BucketName = "string",
-#'       OutputS3KeyPrefix = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       ServiceRoleArn = "string",
-#'       TimeoutSeconds = 123
-#'     ),
-#'     Automation = list(
-#'       DocumentVersion = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     StepFunctions = list(
-#'       Input = "string",
-#'       Name = "string"
-#'     ),
-#'     Lambda = list(
-#'       ClientContext = "string",
-#'       Qualifier = "string",
-#'       Payload = raw
-#'     )
-#'   ),
-#'   Priority = 123,
-#'   MaxConcurrency = "string",
-#'   MaxErrors = "string",
-#'   LoggingInfo = list(
-#'     S3BucketName = "string",
-#'     S3KeyPrefix = "string",
-#'     S3Region = "string"
-#'   ),
-#'   Name = "string",
-#'   Description = "string",
-#'   ClientToken = "string"
-#' )
-#' ```
+#' @param CutoffBehavior Indicates whether tasks should continue to run after the cutoff time
+#' specified in the maintenance windows is reached.
+#' 
+#' -   `CONTINUE_TASK`: When the cutoff time is reached, any tasks that are
+#'     running continue. The default value.
+#' 
+#' -   `CANCEL_TASK`:
+#' 
+#'     -   For Automation, Lambda, Step Functions tasks: When the cutoff
+#'         time is reached, any task invocations that are already running
+#'         continue, but no new task invocations are started.
+#' 
+#'     -   For Run Command tasks: When the cutoff time is reached, the
+#'         system sends a [`cancel_command`][ssm_cancel_command] operation
+#'         that attempts to cancel the command associated with the task.
+#'         However, there is no guarantee that the command will be
+#'         terminated and the underlying process stopped.
+#' 
+#'     The status for tasks that are not completed is `TIMED_OUT`.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_register_task_with_maintenance_window
-ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, TaskArn, ServiceRoleArn = NULL, TaskType, TaskParameters = NULL, TaskInvocationParameters = NULL, Priority = NULL, MaxConcurrency = NULL, MaxErrors = NULL, LoggingInfo = NULL, Name = NULL, Description = NULL, ClientToken = NULL) {
+ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, TaskArn, ServiceRoleArn = NULL, TaskType, TaskParameters = NULL, TaskInvocationParameters = NULL, Priority = NULL, MaxConcurrency = NULL, MaxErrors = NULL, LoggingInfo = NULL, Name = NULL, Description = NULL, ClientToken = NULL, CutoffBehavior = NULL) {
   op <- new_operation(
     name = "RegisterTaskWithMaintenanceWindow",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$register_task_with_maintenance_window_input(WindowId = WindowId, Targets = Targets, TaskArn = TaskArn, ServiceRoleArn = ServiceRoleArn, TaskType = TaskType, TaskParameters = TaskParameters, TaskInvocationParameters = TaskInvocationParameters, Priority = Priority, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, LoggingInfo = LoggingInfo, Name = Name, Description = Description, ClientToken = ClientToken)
+  input <- .ssm$register_task_with_maintenance_window_input(WindowId = WindowId, Targets = Targets, TaskArn = TaskArn, ServiceRoleArn = ServiceRoleArn, TaskType = TaskType, TaskParameters = TaskParameters, TaskInvocationParameters = TaskInvocationParameters, Priority = Priority, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, LoggingInfo = LoggingInfo, Name = Name, Description = Description, ClientToken = ClientToken, CutoffBehavior = CutoffBehavior)
   output <- .ssm$register_task_with_maintenance_window_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -9708,42 +4860,37 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 #' @description
 #' Removes tag keys from the specified resource.
 #'
-#' @usage
-#' ssm_remove_tags_from_resource(ResourceType, ResourceId, TagKeys)
+#' See [https://paws-r.github.io/docs/ssm/remove_tags_from_resource.html](https://paws-r.github.io/docs/ssm/remove_tags_from_resource.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of resource from which you want to remove a tag.
 #' 
-#' The ManagedInstance type for this API action is only for on-premises
-#' managed instances. Specify the name of the managed instance in the
-#' following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+#' The `ManagedInstance` type for this API operation is only for
+#' on-premises managed nodes. Specify the name of the managed node in the
+#' following format: `mi-ID_number `. For example, `mi-1a2b3c4d5e6f`.
 #' @param ResourceId &#91;required&#93; The ID of the resource from which you want to remove tags. For example:
 #' 
 #' ManagedInstance: mi-012345abcde
 #' 
 #' MaintenanceWindow: mw-012345abcde
 #' 
+#' `Automation`: `example-c160-4567-8519-012345abcde`
+#' 
 #' PatchBaseline: pb-012345abcde
+#' 
+#' OpsMetadata object: `ResourceID` for tagging is created from the Amazon
+#' Resource Name (ARN) for the object. Specifically, `ResourceID` is
+#' created from the strings that come after the word `opsmetadata` in the
+#' ARN. For example, an OpsMetadata object with an ARN of
+#' `arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager`
+#' has a `ResourceID` of either `aws/ssm/MyGroup/appmanager` or
+#' `/aws/ssm/MyGroup/appmanager`.
 #' 
 #' For the Document and Parameter values, use the name of the resource.
 #' 
-#' The ManagedInstance type for this API action is only for on-premises
-#' managed instances. Specify the name of the managed instance in the
+#' The `ManagedInstance` type for this API operation is only for
+#' on-premises managed nodes. Specify the name of the managed node in the
 #' following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 #' @param TagKeys &#91;required&#93; Tag keys that you want to remove from the specified resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_tags_from_resource(
-#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
-#'   ResourceId = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9765,61 +4912,30 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 }
 .ssm$operations$remove_tags_from_resource <- ssm_remove_tags_from_resource
 
-#' ServiceSetting is an account-level setting for an AWS service
+#' ServiceSetting is an account-level setting for an Amazon Web Services
+#' service
 #'
 #' @description
-#' `ServiceSetting` is an account-level setting for an AWS service. This
-#' setting defines how a user interacts with or uses a service or a feature
-#' of a service. For example, if an AWS service charges money to the
-#' account based on feature or service usage, then the AWS service team
-#' might create a default setting of "false". This means the user can't use
-#' this feature unless they change the setting to "true" and intentionally
-#' opt in for a paid feature.
-#' 
-#' Services map a `SettingId` object to a setting value. AWS services teams
-#' define the default value for a `SettingId`. You can't create a new
-#' `SettingId`, but you can overwrite the default value if you have the
-#' `ssm:UpdateServiceSetting` permission for the setting. Use the
-#' [`get_service_setting`][ssm_get_service_setting] API action to view the
-#' current value. Use the
-#' [`update_service_setting`][ssm_update_service_setting] API action to
-#' change the default setting.
-#' 
-#' Reset the service setting for the account to the default value as
-#' provisioned by the AWS service team.
+#' `ServiceSetting` is an account-level setting for an Amazon Web Services service. This setting defines how a user interacts with or uses a service or a feature of a service. For example, if an Amazon Web Services service charges money to the account based on feature or service usage, then the Amazon Web Services service team might create a default setting of "false". This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for a paid feature.
 #'
-#' @usage
-#' ssm_reset_service_setting(SettingId)
+#' See [https://paws-r.github.io/docs/ssm/reset_service_setting.html](https://paws-r.github.io/docs/ssm/reset_service_setting.html) for full documentation.
 #'
 #' @param SettingId &#91;required&#93; The Amazon Resource Name (ARN) of the service setting to reset. The
-#' setting ID can be `/ssm/parameter-store/default-parameter-tier`,
-#' `/ssm/parameter-store/high-throughput-enabled`, or
-#' `/ssm/managed-instance/activation-tier`. For example,
-#' `arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceSetting = list(
-#'     SettingId = "string",
-#'     SettingValue = "string",
-#'     LastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedUser = "string",
-#'     ARN = "string",
-#'     Status = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reset_service_setting(
-#'   SettingId = "string"
-#' )
-#' ```
+#' setting ID can be one of the following.
+#' 
+#' -   `/ssm/automation/customer-script-log-destination`
+#' 
+#' -   `/ssm/automation/customer-script-log-group-name`
+#' 
+#' -   `/ssm/documents/console/public-sharing-permission`
+#' 
+#' -   `/ssm/managed-instance/activation-tier`
+#' 
+#' -   `/ssm/opsinsights/opscenter`
+#' 
+#' -   `/ssm/parameter-store/default-parameter-tier`
+#' 
+#' -   `/ssm/parameter-store/high-throughput-enabled`
 #'
 #' @keywords internal
 #'
@@ -9841,38 +4957,14 @@ ssm_reset_service_setting <- function(SettingId) {
 }
 .ssm$operations$reset_service_setting <- ssm_reset_service_setting
 
-#' Reconnects a session to an instance after it has been disconnected
+#' Reconnects a session to a managed node after it has been disconnected
 #'
 #' @description
-#' Reconnects a session to an instance after it has been disconnected.
-#' Connections can be resumed for disconnected sessions, but not terminated
-#' sessions.
-#' 
-#' This command is primarily for use by client machines to automatically
-#' reconnect during intermittent network issues. It is not intended for any
-#' other use.
+#' Reconnects a session to a managed node after it has been disconnected. Connections can be resumed for disconnected sessions, but not terminated sessions.
 #'
-#' @usage
-#' ssm_resume_session(SessionId)
+#' See [https://paws-r.github.io/docs/ssm/resume_session.html](https://paws-r.github.io/docs/ssm/resume_session.html) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The ID of the disconnected session to resume.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SessionId = "string",
-#'   TokenValue = "string",
-#'   StreamUrl = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$resume_session(
-#'   SessionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9898,11 +4990,9 @@ ssm_resume_session <- function(SessionId) {
 #' or status of the execution
 #'
 #' @description
-#' Sends a signal to an Automation execution to change the current behavior
-#' or status of the execution.
+#' Sends a signal to an Automation execution to change the current behavior or status of the execution.
 #'
-#' @usage
-#' ssm_send_automation_signal(AutomationExecutionId, SignalType, Payload)
+#' See [https://paws-r.github.io/docs/ssm/send_automation_signal.html](https://paws-r.github.io/docs/ssm/send_automation_signal.html) for full documentation.
 #'
 #' @param AutomationExecutionId &#91;required&#93; The unique identifier for an existing Automation execution that you want
 #' to send the signal to.
@@ -9925,22 +5015,6 @@ ssm_resume_session <- function(SessionId) {
 #' 
 #' `StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab"`
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_automation_signal(
-#'   AutomationExecutionId = "string",
-#'   SignalType = "Approve"|"Reject"|"StartStep"|"StopStep"|"Resume",
-#'   Payload = list(
-#'     list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname ssm_send_automation_signal
@@ -9961,51 +5035,56 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 }
 .ssm$operations$send_automation_signal <- ssm_send_automation_signal
 
-#' Runs commands on one or more managed instances
+#' Runs commands on one or more managed nodes
 #'
 #' @description
-#' Runs commands on one or more managed instances.
+#' Runs commands on one or more managed nodes.
 #'
-#' @usage
-#' ssm_send_command(InstanceIds, Targets, DocumentName, DocumentVersion,
-#'   DocumentHash, DocumentHashType, TimeoutSeconds, Comment, Parameters,
-#'   OutputS3Region, OutputS3BucketName, OutputS3KeyPrefix, MaxConcurrency,
-#'   MaxErrors, ServiceRoleArn, NotificationConfig, CloudWatchOutputConfig)
+#' See [https://paws-r.github.io/docs/ssm/send_command.html](https://paws-r.github.io/docs/ssm/send_command.html) for full documentation.
 #'
-#' @param InstanceIds The IDs of the instances where the command should run. Specifying
-#' instance IDs is most useful when you are targeting a limited number of
-#' instances, though you can specify up to 50 IDs.
+#' @param InstanceIds The IDs of the managed nodes where the command should run. Specifying
+#' managed node IDs is most useful when you are targeting a limited number
+#' of managed nodes, though you can specify up to 50 IDs.
 #' 
-#' To target a larger number of instances, or if you prefer not to list
-#' individual instance IDs, we recommend using the `Targets` option
-#' instead. Using `Targets`, which accepts tag key-value pairs to identify
-#' the instances to send commands to, you can a send command to tens,
-#' hundreds, or thousands of instances at once.
+#' To target a larger number of managed nodes, or if you prefer not to list
+#' individual node IDs, we recommend using the `Targets` option instead.
+#' Using `Targets`, which accepts tag key-value pairs to identify the
+#' managed nodes to send commands to, you can a send command to tens,
+#' hundreds, or thousands of nodes at once.
 #' 
 #' For more information about how to use targets, see [Using targets and
 #' rate controls to send commands to a
 #' fleet](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
-#' in the *AWS Systems Manager User Guide*.
-#' @param Targets An array of search criteria that targets instances using a `Key,Value`
-#' combination that you specify. Specifying targets is most useful when you
-#' want to send a command to a large number of instances at once. Using
-#' `Targets`, which accepts tag key-value pairs to identify instances, you
-#' can send a command to tens, hundreds, or thousands of instances at once.
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param Targets An array of search criteria that targets managed nodes using a
+#' `Key,Value` combination that you specify. Specifying targets is most
+#' useful when you want to send a command to a large number of managed
+#' nodes at once. Using `Targets`, which accepts tag key-value pairs to
+#' identify managed nodes, you can send a command to tens, hundreds, or
+#' thousands of nodes at once.
 #' 
-#' To send a command to a smaller number of instances, you can use the
+#' To send a command to a smaller number of managed nodes, you can use the
 #' `InstanceIds` option instead.
 #' 
 #' For more information about how to use targets, see [Sending commands to
 #' a
 #' fleet](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
-#' in the *AWS Systems Manager User Guide*.
-#' @param DocumentName &#91;required&#93; Required. The name of the Systems Manager document to run. This can be a
-#' public document or a custom document.
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param DocumentName &#91;required&#93; The name of the Amazon Web Services Systems Manager document (SSM
+#' document) to run. This can be a public document or a custom document. To
+#' run a shared document belonging to another account, specify the document
+#' Amazon Resource Name (ARN). For more information about how to use shared
+#' documents, see [Using shared SSM
+#' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' 
+#' If you specify a document name or ARN that hasn't been shared with your
+#' account, you receive an `InvalidDocument` error.
 #' @param DocumentVersion The SSM document version to use in the request. You can specify
 #' $DEFAULT, $LATEST, or a specific version number. If you run commands by
-#' using the AWS CLI, then you must escape the first two options by using a
-#' backslash. If you specify a version number, then you don't need to use
-#' the backslash. For example:
+#' using the Command Line Interface (Amazon Web Services CLI), then you
+#' must escape the first two options by using a backslash. If you specify a
+#' version number, then you don't need to use the backslash. For example:
 #' 
 #' --document-version "\\$DEFAULT"
 #' 
@@ -10019,142 +5098,39 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' @param DocumentHashType Sha256 or Sha1.
 #' 
 #' Sha1 hashes have been deprecated.
-#' @param TimeoutSeconds If this time is reached and the command has not already started running,
-#' it will not run.
+#' @param TimeoutSeconds If this time is reached and the command hasn't already started running,
+#' it won't run.
 #' @param Comment User-specified information about the command, such as a brief
 #' description of what the command should do.
 #' @param Parameters The required and optional parameters specified in the document being
 #' run.
 #' @param OutputS3Region (Deprecated) You can no longer specify this parameter. The system
-#' ignores it. Instead, Systems Manager automatically determines the Region
-#' of the S3 bucket.
+#' ignores it. Instead, Systems Manager automatically determines the Amazon
+#' Web Services Region of the S3 bucket.
 #' @param OutputS3BucketName The name of the S3 bucket where command execution responses should be
 #' stored.
 #' @param OutputS3KeyPrefix The directory structure within the S3 bucket where the responses should
 #' be stored.
-#' @param MaxConcurrency (Optional) The maximum number of instances that are allowed to run the
-#' command at the same time. You can specify a number such as 10 or a
-#' percentage such as 10%. The default value is 50. For more information
-#' about how to use MaxConcurrency, see [Using concurrency
+#' @param MaxConcurrency (Optional) The maximum number of managed nodes that are allowed to run
+#' the command at the same time. You can specify a number such as 10 or a
+#' percentage such as 10%. The default value is `50`. For more information
+#' about how to use `MaxConcurrency`, see [Using concurrency
 #' controls](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param MaxErrors The maximum number of errors allowed without the command failing. When
-#' the command fails one more time beyond the value of MaxErrors, the
+#' the command fails one more time beyond the value of `MaxErrors`, the
 #' systems stops sending the command to additional targets. You can specify
-#' a number like 10 or a percentage like 10%. The default value is 0. For
-#' more information about how to use MaxErrors, see [Using error
+#' a number like 10 or a percentage like 10%. The default value is `0`. For
+#' more information about how to use `MaxErrors`, see [Using error
 #' controls](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors)
-#' in the *AWS Systems Manager User Guide*.
-#' @param ServiceRoleArn The ARN of the IAM service role to use to publish Amazon Simple
-#' Notification Service (Amazon SNS) notifications for Run Command
-#' commands.
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param ServiceRoleArn The ARN of the Identity and Access Management (IAM) service role to use
+#' to publish Amazon Simple Notification Service (Amazon SNS) notifications
+#' for Run Command commands.
 #' @param NotificationConfig Configurations for sending notifications.
-#' @param CloudWatchOutputConfig Enables Systems Manager to send Run Command output to Amazon CloudWatch
-#' Logs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Command = list(
-#'     CommandId = "string",
-#'     DocumentName = "string",
-#'     DocumentVersion = "string",
-#'     Comment = "string",
-#'     ExpiresAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Parameters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     InstanceIds = list(
-#'       "string"
-#'     ),
-#'     Targets = list(
-#'       list(
-#'         Key = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     RequestedDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = "Pending"|"InProgress"|"Success"|"Cancelled"|"Failed"|"TimedOut"|"Cancelling",
-#'     StatusDetails = "string",
-#'     OutputS3Region = "string",
-#'     OutputS3BucketName = "string",
-#'     OutputS3KeyPrefix = "string",
-#'     MaxConcurrency = "string",
-#'     MaxErrors = "string",
-#'     TargetCount = 123,
-#'     CompletedCount = 123,
-#'     ErrorCount = 123,
-#'     DeliveryTimedOutCount = 123,
-#'     ServiceRole = "string",
-#'     NotificationConfig = list(
-#'       NotificationArn = "string",
-#'       NotificationEvents = list(
-#'         "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-#'       ),
-#'       NotificationType = "Command"|"Invocation"
-#'     ),
-#'     CloudWatchOutputConfig = list(
-#'       CloudWatchLogGroupName = "string",
-#'       CloudWatchOutputEnabled = TRUE|FALSE
-#'     ),
-#'     TimeoutSeconds = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_command(
-#'   InstanceIds = list(
-#'     "string"
-#'   ),
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   DocumentName = "string",
-#'   DocumentVersion = "string",
-#'   DocumentHash = "string",
-#'   DocumentHashType = "Sha256"|"Sha1",
-#'   TimeoutSeconds = 123,
-#'   Comment = "string",
-#'   Parameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   OutputS3Region = "string",
-#'   OutputS3BucketName = "string",
-#'   OutputS3KeyPrefix = "string",
-#'   MaxConcurrency = "string",
-#'   MaxErrors = "string",
-#'   ServiceRoleArn = "string",
-#'   NotificationConfig = list(
-#'     NotificationArn = "string",
-#'     NotificationEvents = list(
-#'       "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-#'     ),
-#'     NotificationType = "Command"|"Invocation"
-#'   ),
-#'   CloudWatchOutputConfig = list(
-#'     CloudWatchLogGroupName = "string",
-#'     CloudWatchOutputEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
+#' @param CloudWatchOutputConfig Enables Amazon Web Services Systems Manager to send Run Command output
+#' to Amazon CloudWatch Logs. Run Command is a capability of Amazon Web
+#' Services Systems Manager.
 #'
 #' @keywords internal
 #'
@@ -10176,28 +5152,14 @@ ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, D
 }
 .ssm$operations$send_command <- ssm_send_command
 
-#' Use this API action to run an association immediately and only one time
+#' Runs an association immediately and only one time
 #'
 #' @description
-#' Use this API action to run an association immediately and only one time.
-#' This action can be helpful when troubleshooting associations.
+#' Runs an association immediately and only one time. This operation can be helpful when troubleshooting associations.
 #'
-#' @usage
-#' ssm_start_associations_once(AssociationIds)
+#' See [https://paws-r.github.io/docs/ssm/start_associations_once.html](https://paws-r.github.io/docs/ssm/start_associations_once.html) for full documentation.
 #'
 #' @param AssociationIds &#91;required&#93; The association IDs that you want to run immediately and only one time.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_associations_once(
-#'   AssociationIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10219,20 +5181,22 @@ ssm_start_associations_once <- function(AssociationIds) {
 }
 .ssm$operations$start_associations_once <- ssm_start_associations_once
 
-#' Initiates execution of an Automation document
+#' Initiates execution of an Automation runbook
 #'
 #' @description
-#' Initiates execution of an Automation document.
+#' Initiates execution of an Automation runbook.
 #'
-#' @usage
-#' ssm_start_automation_execution(DocumentName, DocumentVersion,
-#'   Parameters, ClientToken, Mode, TargetParameterName, Targets, TargetMaps,
-#'   MaxConcurrency, MaxErrors, TargetLocations, Tags)
+#' See [https://paws-r.github.io/docs/ssm/start_automation_execution.html](https://paws-r.github.io/docs/ssm/start_automation_execution.html) for full documentation.
 #'
-#' @param DocumentName &#91;required&#93; The name of the Automation document to use for this execution.
-#' @param DocumentVersion The version of the Automation document to use for this execution.
+#' @param DocumentName &#91;required&#93; The name of the SSM document to run. This can be a public document or a
+#' custom document. To run a shared document belonging to another account,
+#' specify the document ARN. For more information about how to use shared
+#' documents, see [Using shared SSM
+#' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param DocumentVersion The version of the Automation runbook to use for this execution.
 #' @param Parameters A key-value map of execution parameters, which match the declared
-#' parameters in the Automation document.
+#' parameters in the Automation runbook.
 #' @param ClientToken User-provided idempotency token. The token must be unique, is case
 #' insensitive, enforces the UUID format, and can't be reused.
 #' @param Mode The execution mode of the automation. Valid modes include the following:
@@ -10242,10 +5206,10 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @param Targets A key-value mapping to target resources. Required if you specify
 #' TargetParameterName.
 #' @param TargetMaps A key-value mapping of document parameters to target resources. Both
-#' Targets and TargetMaps cannot be specified together.
+#' Targets and TargetMaps can't be specified together.
 #' @param MaxConcurrency The maximum number of targets allowed to run this task in parallel. You
 #' can specify a number, such as 10, or a percentage, such as 10%. The
-#' default value is 10.
+#' default value is `10`.
 #' @param MaxErrors The number of errors that are allowed before the system stops running
 #' the automation on additional targets. You can specify either an absolute
 #' number of errors, for example 10, or a percentage of the target set, for
@@ -10261,85 +5225,27 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' as well. If you need to ensure that there won't be more than max-errors
 #' failed executions, set max-concurrency to 1 so the executions proceed
 #' one at a time.
-#' @param TargetLocations A location is a combination of AWS Regions and/or AWS accounts where you
-#' want to run the Automation. Use this action to start an Automation in
-#' multiple Regions and multiple accounts. For more information, see
-#' [Running Automation workflows in multiple AWS Regions and
+#' @param TargetLocations A location is a combination of Amazon Web Services Regions and/or Amazon
+#' Web Services accounts where you want to run the automation. Use this
+#' operation to start an automation in multiple Amazon Web Services Regions
+#' and multiple Amazon Web Services accounts. For more information, see
+#' [Running Automation workflows in multiple Amazon Web Services Regions
+#' and Amazon Web Services
 #' accounts](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Tags Optional metadata that you assign to a resource. You can specify a
 #' maximum of five tags for an automation. Tags enable you to categorize a
 #' resource in different ways, such as by purpose, owner, or environment.
 #' For example, you might want to tag an automation to identify an
 #' environment or operating system. In this case, you could specify the
-#' following key name/value pairs:
+#' following key-value pairs:
 #' 
 #' -   `Key=environment,Value=test`
 #' 
 #' -   `Key=OS,Value=Windows`
 #' 
-#' To add tags to an existing patch baseline, use the
-#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AutomationExecutionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_automation_execution(
-#'   DocumentName = "string",
-#'   DocumentVersion = "string",
-#'   Parameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   ClientToken = "string",
-#'   Mode = "Auto"|"Interactive",
-#'   TargetParameterName = "string",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TargetMaps = list(
-#'     list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxConcurrency = "string",
-#'   MaxErrors = "string",
-#'   TargetLocations = list(
-#'     list(
-#'       Accounts = list(
-#'         "string"
-#'       ),
-#'       Regions = list(
-#'         "string"
-#'       ),
-#'       TargetLocationMaxConcurrency = "string",
-#'       TargetLocationMaxErrors = "string",
-#'       ExecutionRoleName = "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' To add tags to an existing automation, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #'
 #' @keywords internal
 #'
@@ -10364,14 +5270,9 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' Creates a change request for Change Manager
 #'
 #' @description
-#' Creates a change request for Change Manager. The runbooks (Automation
-#' documents) specified in the change request run only after all required
-#' approvals for the change request have been received.
+#' Creates a change request for Change Manager. The Automation runbooks specified in the change request run only after all required approvals for the change request have been received.
 #'
-#' @usage
-#' ssm_start_change_request_execution(ScheduledTime, DocumentName,
-#'   DocumentVersion, Parameters, ChangeRequestName, ClientToken, Runbooks,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/ssm/start_change_request_execution.html](https://paws-r.github.io/docs/ssm/start_change_request_execution.html) for full documentation.
 #'
 #' @param ScheduledTime The date and time specified in the change request to run the Automation
 #' runbooks.
@@ -10388,8 +5289,21 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' be run.
 #' @param ClientToken The user-provided idempotency token. The token must be unique, is case
 #' insensitive, enforces the UUID format, and can't be reused.
-#' @param Runbooks &#91;required&#93; Information about the Automation runbooks (Automation documents) that
-#' are run during the runbook workflow.
+#' @param AutoApprove Indicates whether the change request can be approved automatically
+#' without the need for manual approvals.
+#' 
+#' If `AutoApprovable` is enabled in a change template, then setting
+#' `AutoApprove` to `true` in
+#' [`start_change_request_execution`][ssm_start_change_request_execution]
+#' creates a change request that bypasses approver review.
+#' 
+#' Change Calendar restrictions are not bypassed in this scenario. If the
+#' state of an associated calendar is `CLOSED`, change freeze approvers
+#' must still grant permission for this change request to run. If they
+#' don't, the change won't be processed until the calendar state is again
+#' `OPEN`.
+#' @param Runbooks &#91;required&#93; Information about the Automation runbooks that are run during the
+#' runbook workflow.
 #' 
 #' The Automation runbooks specified for the runbook workflow can't run
 #' until all required approvals for the change request have been received.
@@ -10397,91 +5311,30 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' maximum of five tags for a change request. Tags enable you to categorize
 #' a resource in different ways, such as by purpose, owner, or environment.
 #' For example, you might want to tag a change request to identify an
-#' environment or target AWS Region. In this case, you could specify the
-#' following key-value pairs:
+#' environment or target Amazon Web Services Region. In this case, you
+#' could specify the following key-value pairs:
 #' 
 #' -   `Key=Environment,Value=Production`
 #' 
 #' -   `Key=Region,Value=us-east-2`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AutomationExecutionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_change_request_execution(
-#'   ScheduledTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DocumentName = "string",
-#'   DocumentVersion = "string",
-#'   Parameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   ChangeRequestName = "string",
-#'   ClientToken = "string",
-#'   Runbooks = list(
-#'     list(
-#'       DocumentName = "string",
-#'       DocumentVersion = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       TargetParameterName = "string",
-#'       Targets = list(
-#'         list(
-#'           Key = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       MaxConcurrency = "string",
-#'       MaxErrors = "string",
-#'       TargetLocations = list(
-#'         list(
-#'           Accounts = list(
-#'             "string"
-#'           ),
-#'           Regions = list(
-#'             "string"
-#'           ),
-#'           TargetLocationMaxConcurrency = "string",
-#'           TargetLocationMaxErrors = "string",
-#'           ExecutionRoleName = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param ScheduledEndTime The time that the requester expects the runbook workflow related to the
+#' change request to complete. The time is an estimate only that the
+#' requester provides for reviewers.
+#' @param ChangeDetails User-provided details about the change. If no details are provided,
+#' content specified in the **Template information** section of the
+#' associated change template is added.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_start_change_request_execution
-ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentName, DocumentVersion = NULL, Parameters = NULL, ChangeRequestName = NULL, ClientToken = NULL, Runbooks, Tags = NULL) {
+ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentName, DocumentVersion = NULL, Parameters = NULL, ChangeRequestName = NULL, ClientToken = NULL, AutoApprove = NULL, Runbooks, Tags = NULL, ScheduledEndTime = NULL, ChangeDetails = NULL) {
   op <- new_operation(
     name = "StartChangeRequestExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$start_change_request_execution_input(ScheduledTime = ScheduledTime, DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ChangeRequestName = ChangeRequestName, ClientToken = ClientToken, Runbooks = Runbooks, Tags = Tags)
+  input <- .ssm$start_change_request_execution_input(ScheduledTime = ScheduledTime, DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ChangeRequestName = ChangeRequestName, ClientToken = ClientToken, AutoApprove = AutoApprove, Runbooks = Runbooks, Tags = Tags, ScheduledEndTime = ScheduledEndTime, ChangeDetails = ChangeDetails)
   output <- .ssm$start_change_request_execution_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -10491,69 +5344,41 @@ ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentNam
 }
 .ssm$operations$start_change_request_execution <- ssm_start_change_request_execution
 
-#' Initiates a connection to a target (for example, an instance) for a
+#' Initiates a connection to a target (for example, a managed node) for a
 #' Session Manager session
 #'
 #' @description
-#' Initiates a connection to a target (for example, an instance) for a
-#' Session Manager session. Returns a URL and token that can be used to
-#' open a WebSocket connection for sending input and receiving outputs.
-#' 
-#' AWS CLI usage: `start-session` is an interactive command that requires
-#' the Session Manager plugin to be installed on the client machine making
-#' the call. For information, see [Install the Session Manager plugin for
-#' the AWS
-#' CLI](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
-#' in the *AWS Systems Manager User Guide*.
-#' 
-#' AWS Tools for PowerShell usage: Start-SSMSession is not currently
-#' supported by AWS Tools for PowerShell on Windows local machines.
+#' Initiates a connection to a target (for example, a managed node) for a Session Manager session. Returns a URL and token that can be used to open a WebSocket connection for sending input and receiving outputs.
 #'
-#' @usage
-#' ssm_start_session(Target, DocumentName, Parameters)
+#' See [https://paws-r.github.io/docs/ssm/start_session.html](https://paws-r.github.io/docs/ssm/start_session.html) for full documentation.
 #'
-#' @param Target &#91;required&#93; The instance to connect to for the session.
-#' @param DocumentName The name of the SSM document to define the parameters and plugin
-#' settings for the session. For example, `SSM-SessionManagerRunShell`. You
-#' can call the [`get_document`][ssm_get_document] API to verify the
-#' document exists before attempting to start a session. If no document
-#' name is provided, a shell to the instance is launched by default.
-#' @param Parameters Reserved for future use.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SessionId = "string",
-#'   TokenValue = "string",
-#'   StreamUrl = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_session(
-#'   Target = "string",
-#'   DocumentName = "string",
-#'   Parameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Target &#91;required&#93; The managed node to connect to for the session.
+#' @param DocumentName The name of the SSM document you want to use to define the type of
+#' session, input parameters, or preferences for the session. For example,
+#' `SSM-SessionManagerRunShell`. You can call the
+#' [`get_document`][ssm_get_document] API to verify the document exists
+#' before attempting to start a session. If no document name is provided, a
+#' shell to the managed node is launched by default. For more information,
+#' see [Start a
+#' session](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param Reason The reason for connecting to the instance. This value is included in the
+#' details for the Amazon CloudWatch Events event created when you start
+#' the session.
+#' @param Parameters The values you want to specify for the parameters defined in the Session
+#' document.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_start_session
-ssm_start_session <- function(Target, DocumentName = NULL, Parameters = NULL) {
+ssm_start_session <- function(Target, DocumentName = NULL, Reason = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "StartSession",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$start_session_input(Target = Target, DocumentName = DocumentName, Parameters = Parameters)
+  input <- .ssm$start_session_input(Target = Target, DocumentName = DocumentName, Reason = Reason, Parameters = Parameters)
   output <- .ssm$start_session_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -10568,23 +5393,11 @@ ssm_start_session <- function(Target, DocumentName = NULL, Parameters = NULL) {
 #' @description
 #' Stop an Automation that is currently running.
 #'
-#' @usage
-#' ssm_stop_automation_execution(AutomationExecutionId, Type)
+#' See [https://paws-r.github.io/docs/ssm/stop_automation_execution.html](https://paws-r.github.io/docs/ssm/stop_automation_execution.html) for full documentation.
 #'
 #' @param AutomationExecutionId &#91;required&#93; The execution ID of the Automation to stop.
 #' @param Type The stop request type. Valid types include the following: Cancel and
 #' Complete. The default type is Cancel.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_automation_execution(
-#'   AutomationExecutionId = "string",
-#'   Type = "Complete"|"Cancel"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10607,32 +5420,14 @@ ssm_stop_automation_execution <- function(AutomationExecutionId, Type = NULL) {
 .ssm$operations$stop_automation_execution <- ssm_stop_automation_execution
 
 #' Permanently ends a session and closes the data connection between the
-#' Session Manager client and SSM Agent on the instance
+#' Session Manager client and SSM Agent on the managed node
 #'
 #' @description
-#' Permanently ends a session and closes the data connection between the
-#' Session Manager client and SSM Agent on the instance. A terminated
-#' session cannot be resumed.
+#' Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the managed node. A terminated session can't be resumed.
 #'
-#' @usage
-#' ssm_terminate_session(SessionId)
+#' See [https://paws-r.github.io/docs/ssm/terminate_session.html](https://paws-r.github.io/docs/ssm/terminate_session.html) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The ID of the session to terminate.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SessionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$terminate_session(
-#'   SessionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10654,45 +5449,72 @@ ssm_terminate_session <- function(SessionId) {
 }
 .ssm$operations$terminate_session <- ssm_terminate_session
 
+#' Remove a label or labels from a parameter
+#'
+#' @description
+#' Remove a label or labels from a parameter.
+#'
+#' See [https://paws-r.github.io/docs/ssm/unlabel_parameter_version.html](https://paws-r.github.io/docs/ssm/unlabel_parameter_version.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the parameter from which you want to delete one or more
+#' labels.
+#' @param ParameterVersion &#91;required&#93; The specific version of the parameter which you want to delete one or
+#' more labels from. If it isn't present, the call will fail.
+#' @param Labels &#91;required&#93; One or more labels to delete from the specified parameter version.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_unlabel_parameter_version
+ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
+  op <- new_operation(
+    name = "UnlabelParameterVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$unlabel_parameter_version_input(Name = Name, ParameterVersion = ParameterVersion, Labels = Labels)
+  output <- .ssm$unlabel_parameter_version_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$unlabel_parameter_version <- ssm_unlabel_parameter_version
+
 #' Updates an association
 #'
 #' @description
-#' Updates an association. You can update the association name and version,
-#' the document version, schedule, parameters, and Amazon S3 output.
-#' 
-#' In order to call this API action, your IAM user account, group, or role
-#' must be configured with permission to call the
-#' [`describe_association`][ssm_describe_association] API action. If you
-#' don't have permission to call DescribeAssociation, then you receive the
-#' following error:
-#' `An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: <user_arn> is not authorized to perform: ssm:DescribeAssociation on resource: <resource_arn>`
-#' 
-#' When you update an association, the association immediately runs against
-#' the specified targets.
+#' Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon Simple Storage Service (Amazon S3) output. When you call [`update_association`][ssm_update_association], the system removes all optional parameters from the request and overwrites the association with null values for those parameters. This is by design. You must specify all optional parameters in the call, even if you are not changing the parameters. This includes the `Name` parameter. Before calling this API action, we recommend that you call the [`describe_association`][ssm_describe_association] API operation and make a note of all optional parameters required for your [`update_association`][ssm_update_association] call.
 #'
-#' @usage
-#' ssm_update_association(AssociationId, Parameters, DocumentVersion,
-#'   ScheduleExpression, OutputLocation, Name, Targets, AssociationName,
-#'   AssociationVersion, AutomationTargetParameterName, MaxErrors,
-#'   MaxConcurrency, ComplianceSeverity, SyncCompliance,
-#'   ApplyOnlyAtCronInterval, TargetLocations)
+#' See [https://paws-r.github.io/docs/ssm/update_association.html](https://paws-r.github.io/docs/ssm/update_association.html) for full documentation.
 #'
 #' @param AssociationId &#91;required&#93; The ID of the association you want to update.
 #' @param Parameters The parameters you want to update for the association. If you create a
-#' parameter using Parameter Store, you can reference the parameter using
-#' \{\{ssm:parameter-name\}\}
+#' parameter using Parameter Store, a capability of Amazon Web Services
+#' Systems Manager, you can reference the parameter using
+#' `{{ssm:parameter-name}}`.
 #' @param DocumentVersion The document version you want update for the association.
+#' 
+#' State Manager doesn't support running associations that use a new
+#' version of a document if that document is shared from another account.
+#' State Manager always runs the `default` version of a document if shared
+#' from another account, even though the Systems Manager console shows that
+#' a new version was processed. If you want to run an association using a
+#' new version of a document shared form another account, you must set the
+#' document version to `default`.
 #' @param ScheduleExpression The cron expression used to schedule the association that you want to
 #' update.
 #' @param OutputLocation An S3 bucket where you want to store the results of this request.
-#' @param Name The name of the SSM document that contains the configuration information
-#' for the instance. You can specify Command or Automation documents.
+#' @param Name The name of the SSM Command document or Automation runbook that contains
+#' the configuration information for the managed node.
 #' 
-#' You can specify AWS-predefined documents, documents you created, or a
-#' document that is shared with you from another account.
+#' You can specify Amazon Web Services-predefined documents, documents you
+#' created, or a document that is shared with you from another account.
 #' 
-#' For SSM documents that are shared with you from other AWS accounts, you
-#' must specify the complete SSM document ARN, in the following format:
+#' For Systems Manager document (SSM document) that are shared with you
+#' from other Amazon Web Services accounts, you must specify the complete
+#' SSM document ARN, in the following format:
 #' 
 #' `arn:aws:ssm:region:account-id:document/document-name `
 #' 
@@ -10700,43 +5522,44 @@ ssm_terminate_session <- function(SessionId) {
 #' 
 #' `arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document`
 #' 
-#' For AWS-predefined documents and SSM documents you created in your
-#' account, you only need to specify the document name. For example,
-#' `AWS-ApplyPatchBaseline` or `My-Document`.
+#' For Amazon Web Services-predefined documents and SSM documents you
+#' created in your account, you only need to specify the document name. For
+#' example, `AWS-ApplyPatchBaseline` or `My-Document`.
 #' @param Targets The targets of the association.
 #' @param AssociationName The name of the association that you want to update.
 #' @param AssociationVersion This parameter is provided for concurrency control purposes. You must
 #' specify the latest association version in the service. If you want to
 #' ensure that this request succeeds, either specify `$LATEST`, or omit
 #' this parameter.
-#' @param AutomationTargetParameterName Specify the target for the association. This target is required for
-#' associations that use an Automation document and target resources by
-#' using rate controls.
+#' @param AutomationTargetParameterName Choose the parameter that will define how your automation will branch
+#' out. This target is required for associations that use an Automation
+#' runbook and target resources by using rate controls. Automation is a
+#' capability of Amazon Web Services Systems Manager.
 #' @param MaxErrors The number of errors that are allowed before the system stops sending
 #' requests to run the association on additional targets. You can specify
 #' either an absolute number of errors, for example 10, or a percentage of
 #' the target set, for example 10%. If you specify 3, for example, the
 #' system stops sending requests when the fourth error is received. If you
 #' specify 0, then the system stops sending requests after the first error
-#' is returned. If you run an association on 50 instances and set MaxError
-#' to 10%, then the system stops sending the request when the sixth error
-#' is received.
+#' is returned. If you run an association on 50 managed nodes and set
+#' `MaxError` to 10%, then the system stops sending the request when the
+#' sixth error is received.
 #' 
-#' Executions that are already running an association when MaxErrors is
+#' Executions that are already running an association when `MaxErrors` is
 #' reached are allowed to complete, but some of these executions may fail
 #' as well. If you need to ensure that there won't be more than max-errors
-#' failed executions, set MaxConcurrency to 1 so that executions proceed
+#' failed executions, set `MaxConcurrency` to 1 so that executions proceed
 #' one at a time.
 #' @param MaxConcurrency The maximum number of targets allowed to run the association at the same
 #' time. You can specify a number, for example 10, or a percentage of the
 #' target set, for example 10%. The default value is 100%, which means all
 #' targets run the association at the same time.
 #' 
-#' If a new instance starts and attempts to run an association while
-#' Systems Manager is running MaxConcurrency associations, the association
-#' is allowed to run. During the next association interval, the new
-#' instance will process its association within the limit specified for
-#' MaxConcurrency.
+#' If a new managed node starts and attempts to run an association while
+#' Systems Manager is running `MaxConcurrency` associations, the
+#' association is allowed to run. During the next association interval, the
+#' new managed node will process its association within the limit specified
+#' for `MaxConcurrency`.
 #' @param ComplianceSeverity The severity level to assign to the association.
 #' @param SyncCompliance The mode for generating association compliance. You can specify `AUTO`
 #' or `MANUAL`. In `AUTO` mode, the system uses the status of the
@@ -10746,171 +5569,70 @@ ssm_terminate_session <- function(SessionId) {
 #' association is `NON-COMPLIANT`.
 #' 
 #' In `MANUAL` mode, you must specify the `AssociationId` as a parameter
-#' for the [`put_compliance_items`][ssm_put_compliance_items] API action.
-#' In this case, compliance data is not managed by State Manager. It is
-#' managed by your direct call to the
-#' [`put_compliance_items`][ssm_put_compliance_items] API action.
+#' for the [`put_compliance_items`][ssm_put_compliance_items] API
+#' operation. In this case, compliance data isn't managed by State Manager,
+#' a capability of Amazon Web Services Systems Manager. It is managed by
+#' your direct call to the
+#' [`put_compliance_items`][ssm_put_compliance_items] API operation.
 #' 
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you update an association, the system runs it
 #' immediately after it is updated and then according to the schedule you
 #' specified. Specify this option if you don't want an association to run
-#' immediately after you update it. This parameter is not supported for
-#' rate expressions.
+#' immediately after you update it. This parameter isn't supported for rate
+#' expressions.
 #' 
-#' Also, if you specified this option when you created the association, you
-#' can reset it. To do so, specify the `no-apply-only-at-cron-interval`
-#' parameter when you update the association from the command line. This
-#' parameter forces the association to run immediately after updating it
-#' and according to the interval specified.
-#' @param TargetLocations A location is a combination of AWS Regions and AWS accounts where you
-#' want to run the association. Use this action to update an association in
-#' multiple Regions and multiple accounts.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssociationDescription = list(
-#'     Name = "string",
-#'     InstanceId = "string",
-#'     AssociationVersion = "string",
-#'     Date = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateAssociationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = list(
-#'       Date = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "Pending"|"Success"|"Failed",
-#'       Message = "string",
-#'       AdditionalInfo = "string"
-#'     ),
-#'     Overview = list(
-#'       Status = "string",
-#'       DetailedStatus = "string",
-#'       AssociationStatusAggregatedCount = list(
-#'         123
-#'       )
-#'     ),
-#'     DocumentVersion = "string",
-#'     AutomationTargetParameterName = "string",
-#'     Parameters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     AssociationId = "string",
-#'     Targets = list(
-#'       list(
-#'         Key = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ScheduleExpression = "string",
-#'     OutputLocation = list(
-#'       S3Location = list(
-#'         OutputS3Region = "string",
-#'         OutputS3BucketName = "string",
-#'         OutputS3KeyPrefix = "string"
-#'       )
-#'     ),
-#'     LastExecutionDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastSuccessfulExecutionDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AssociationName = "string",
-#'     MaxErrors = "string",
-#'     MaxConcurrency = "string",
-#'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'     SyncCompliance = "AUTO"|"MANUAL",
-#'     ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'     TargetLocations = list(
-#'       list(
-#'         Accounts = list(
-#'           "string"
-#'         ),
-#'         Regions = list(
-#'           "string"
-#'         ),
-#'         TargetLocationMaxConcurrency = "string",
-#'         TargetLocationMaxErrors = "string",
-#'         ExecutionRoleName = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_association(
-#'   AssociationId = "string",
-#'   Parameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   DocumentVersion = "string",
-#'   ScheduleExpression = "string",
-#'   OutputLocation = list(
-#'     S3Location = list(
-#'       OutputS3Region = "string",
-#'       OutputS3BucketName = "string",
-#'       OutputS3KeyPrefix = "string"
-#'     )
-#'   ),
-#'   Name = "string",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   AssociationName = "string",
-#'   AssociationVersion = "string",
-#'   AutomationTargetParameterName = "string",
-#'   MaxErrors = "string",
-#'   MaxConcurrency = "string",
-#'   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'   SyncCompliance = "AUTO"|"MANUAL",
-#'   ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'   TargetLocations = list(
-#'     list(
-#'       Accounts = list(
-#'         "string"
-#'       ),
-#'       Regions = list(
-#'         "string"
-#'       ),
-#'       TargetLocationMaxConcurrency = "string",
-#'       TargetLocationMaxErrors = "string",
-#'       ExecutionRoleName = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' If you chose this option when you created an association and later you
+#' edit that association or you make changes to the SSM document on which
+#' that association is based (by using the Documents page in the console),
+#' State Manager applies the association at the next specified cron
+#' interval. For example, if you chose the `Latest` version of an SSM
+#' document when you created an association and you edit the association by
+#' choosing a different document version on the Documents page, State
+#' Manager applies the association at the next specified cron interval if
+#' you previously selected this option. If this option wasn't selected,
+#' State Manager immediately runs the association.
+#' 
+#' You can reset this option. To do so, specify the
+#' `no-apply-only-at-cron-interval` parameter when you update the
+#' association from the command line. This parameter forces the association
+#' to run immediately after updating it and according to the interval
+#' specified.
+#' @param CalendarNames The names or Amazon Resource Names (ARNs) of the Change Calendar type
+#' documents you want to gate your associations under. The associations
+#' only run when that change calendar is open. For more information, see
+#' [Amazon Web Services Systems Manager Change
+#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html).
+#' @param TargetLocations A location is a combination of Amazon Web Services Regions and Amazon
+#' Web Services accounts where you want to run the association. Use this
+#' action to update an association in multiple Regions and multiple
+#' accounts.
+#' @param ScheduleOffset Number of days to wait after the scheduled day to run an association.
+#' For example, if you specified a cron schedule of
+#' `cron(0 0 ? * THU#2 *)`, you could specify an offset of 3 to run the
+#' association each Sunday after the second Thursday of the month. For more
+#' information about cron schedules for associations, see [Reference: Cron
+#' and rate expressions for Systems
+#' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' 
+#' To use offsets, you must specify the `ApplyOnlyAtCronInterval`
+#' parameter. This option tells the system not to run an association
+#' immediately after you create it.
+#' @param TargetMaps A key-value mapping of document parameters to target resources. Both
+#' Targets and TargetMaps can't be specified together.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_update_association
-ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, TargetLocations = NULL) {
+ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, TargetMaps = NULL) {
   op <- new_operation(
     name = "UpdateAssociation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$update_association_input(AssociationId = AssociationId, Parameters = Parameters, DocumentVersion = DocumentVersion, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, Name = Name, Targets = Targets, AssociationName = AssociationName, AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, TargetLocations = TargetLocations)
+  input <- .ssm$update_association_input(AssociationId = AssociationId, Parameters = Parameters, DocumentVersion = DocumentVersion, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, Name = Name, Targets = Targets, AssociationName = AssociationName, AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, TargetMaps = TargetMaps)
   output <- .ssm$update_association_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -10920,117 +5642,17 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
 }
 .ssm$operations$update_association <- ssm_update_association
 
-#' Updates the status of the Systems Manager document associated with the
-#' specified instance
+#' Updates the status of the Amazon Web Services Systems Manager document
+#' (SSM document) associated with the specified managed node
 #'
 #' @description
-#' Updates the status of the Systems Manager document associated with the
-#' specified instance.
+#' Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node.
 #'
-#' @usage
-#' ssm_update_association_status(Name, InstanceId, AssociationStatus)
+#' See [https://paws-r.github.io/docs/ssm/update_association_status.html](https://paws-r.github.io/docs/ssm/update_association_status.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the Systems Manager document.
-#' @param InstanceId &#91;required&#93; The ID of the instance.
+#' @param Name &#91;required&#93; The name of the SSM document.
+#' @param InstanceId &#91;required&#93; The managed node ID.
 #' @param AssociationStatus &#91;required&#93; The association status.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssociationDescription = list(
-#'     Name = "string",
-#'     InstanceId = "string",
-#'     AssociationVersion = "string",
-#'     Date = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdateAssociationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = list(
-#'       Date = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "Pending"|"Success"|"Failed",
-#'       Message = "string",
-#'       AdditionalInfo = "string"
-#'     ),
-#'     Overview = list(
-#'       Status = "string",
-#'       DetailedStatus = "string",
-#'       AssociationStatusAggregatedCount = list(
-#'         123
-#'       )
-#'     ),
-#'     DocumentVersion = "string",
-#'     AutomationTargetParameterName = "string",
-#'     Parameters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     AssociationId = "string",
-#'     Targets = list(
-#'       list(
-#'         Key = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ScheduleExpression = "string",
-#'     OutputLocation = list(
-#'       S3Location = list(
-#'         OutputS3Region = "string",
-#'         OutputS3BucketName = "string",
-#'         OutputS3KeyPrefix = "string"
-#'       )
-#'     ),
-#'     LastExecutionDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastSuccessfulExecutionDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AssociationName = "string",
-#'     MaxErrors = "string",
-#'     MaxConcurrency = "string",
-#'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-#'     SyncCompliance = "AUTO"|"MANUAL",
-#'     ApplyOnlyAtCronInterval = TRUE|FALSE,
-#'     TargetLocations = list(
-#'       list(
-#'         Accounts = list(
-#'           "string"
-#'         ),
-#'         Regions = list(
-#'           "string"
-#'         ),
-#'         TargetLocationMaxConcurrency = "string",
-#'         TargetLocationMaxErrors = "string",
-#'         ExecutionRoleName = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_association_status(
-#'   Name = "string",
-#'   InstanceId = "string",
-#'   AssociationStatus = list(
-#'     Date = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Name = "Pending"|"Success"|"Failed",
-#'     Message = "string",
-#'     AdditionalInfo = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11057,127 +5679,42 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #' @description
 #' Updates one or more values for an SSM document.
 #'
-#' @usage
-#' ssm_update_document(Content, Attachments, Name, VersionName,
-#'   DocumentVersion, DocumentFormat, TargetType)
+#' See [https://paws-r.github.io/docs/ssm/update_document.html](https://paws-r.github.io/docs/ssm/update_document.html) for full documentation.
 #'
 #' @param Content &#91;required&#93; A valid JSON or YAML string.
-#' @param Attachments A list of key and value pairs that describe attachments to a version of
-#' a document.
-#' @param Name &#91;required&#93; The name of the document that you want to update.
+#' @param Attachments A list of key-value pairs that describe attachments to a version of a
+#' document.
+#' @param Name &#91;required&#93; The name of the SSM document that you want to update.
+#' @param DisplayName The friendly name of the SSM document that you want to update. This
+#' value can differ for each version of the document. If you don't specify
+#' a value for this parameter in your request, the existing value is
+#' applied to the new document version.
 #' @param VersionName An optional field specifying the version of the artifact you are
 #' updating with the document. For example, "Release 12, Update 6". This
-#' value is unique across all versions of a document, and cannot be
-#' changed.
-#' @param DocumentVersion (Required) The latest version of the document that you want to update.
-#' The latest document version can be specified using the $LATEST variable
-#' or by the version number. Updating a previous version of a document is
-#' not supported.
+#' value is unique across all versions of a document, and can't be changed.
+#' @param DocumentVersion The version of the document that you want to update. Currently, Systems
+#' Manager supports updating only the latest version of the document. You
+#' can specify the version number of the latest version or use the
+#' `$LATEST` variable.
+#' 
+#' If you change a document version for a State Manager association,
+#' Systems Manager immediately runs the association unless you previously
+#' specifed the `apply-only-at-cron-interval` parameter.
 #' @param DocumentFormat Specify the document format for the new document version. Systems
 #' Manager supports JSON and YAML documents. JSON is the default format.
 #' @param TargetType Specify a new target type for the document.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentDescription = list(
-#'     Sha1 = "string",
-#'     Hash = "string",
-#'     HashType = "Sha256"|"Sha1",
-#'     Name = "string",
-#'     VersionName = "string",
-#'     Owner = "string",
-#'     CreatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
-#'     StatusInformation = "string",
-#'     DocumentVersion = "string",
-#'     Description = "string",
-#'     Parameters = list(
-#'       list(
-#'         Name = "string",
-#'         Type = "String"|"StringList",
-#'         Description = "string",
-#'         DefaultValue = "string"
-#'       )
-#'     ),
-#'     PlatformTypes = list(
-#'       "Windows"|"Linux"
-#'     ),
-#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
-#'     SchemaVersion = "string",
-#'     LatestVersion = "string",
-#'     DefaultVersion = "string",
-#'     DocumentFormat = "YAML"|"JSON"|"TEXT",
-#'     TargetType = "string",
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     AttachmentsInformation = list(
-#'       list(
-#'         Name = "string"
-#'       )
-#'     ),
-#'     Requires = list(
-#'       list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     Author = "string",
-#'     ReviewInformation = list(
-#'       list(
-#'         ReviewedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Status = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
-#'         Reviewer = "string"
-#'       )
-#'     ),
-#'     ApprovedVersion = "string",
-#'     PendingReviewVersion = "string",
-#'     ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_document(
-#'   Content = "string",
-#'   Attachments = list(
-#'     list(
-#'       Key = "SourceUrl"|"S3FileUrl"|"AttachmentReference",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       Name = "string"
-#'     )
-#'   ),
-#'   Name = "string",
-#'   VersionName = "string",
-#'   DocumentVersion = "string",
-#'   DocumentFormat = "YAML"|"JSON"|"TEXT",
-#'   TargetType = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname ssm_update_document
-ssm_update_document <- function(Content, Attachments = NULL, Name, VersionName = NULL, DocumentVersion = NULL, DocumentFormat = NULL, TargetType = NULL) {
+ssm_update_document <- function(Content, Attachments = NULL, Name, DisplayName = NULL, VersionName = NULL, DocumentVersion = NULL, DocumentFormat = NULL, TargetType = NULL) {
   op <- new_operation(
     name = "UpdateDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$update_document_input(Content = Content, Attachments = Attachments, Name = Name, VersionName = VersionName, DocumentVersion = DocumentVersion, DocumentFormat = DocumentFormat, TargetType = TargetType)
+  input <- .ssm$update_document_input(Content = Content, Attachments = Attachments, Name = Name, DisplayName = DisplayName, VersionName = VersionName, DocumentVersion = DocumentVersion, DocumentFormat = DocumentFormat, TargetType = TargetType)
   output <- .ssm$update_document_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -11192,33 +5729,12 @@ ssm_update_document <- function(Content, Attachments = NULL, Name, VersionName =
 #' @description
 #' Set the default version of a document.
 #'
-#' @usage
-#' ssm_update_document_default_version(Name, DocumentVersion)
+#' See [https://paws-r.github.io/docs/ssm/update_document_default_version.html](https://paws-r.github.io/docs/ssm/update_document_default_version.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of a custom document that you want to set as the default
 #' version.
 #' @param DocumentVersion &#91;required&#93; The version of a custom document that you want to set as the default
 #' version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Description = list(
-#'     Name = "string",
-#'     DefaultVersion = "string",
-#'     DefaultVersionName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_document_default_version(
-#'   Name = "string",
-#'   DocumentVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11241,38 +5757,17 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 .ssm$operations$update_document_default_version <- ssm_update_document_default_version
 
 #' Updates information related to approval reviews for a specific version
-#' of a document
+#' of a change template in Change Manager
 #'
 #' @description
-#' Updates information related to approval reviews for a specific version
-#' of a document.
+#' Updates information related to approval reviews for a specific version of a change template in Change Manager.
 #'
-#' @usage
-#' ssm_update_document_metadata(Name, DocumentVersion, DocumentReviews)
+#' See [https://paws-r.github.io/docs/ssm/update_document_metadata.html](https://paws-r.github.io/docs/ssm/update_document_metadata.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the document for which a version is to be updated.
-#' @param DocumentVersion The version of a document to update.
-#' @param DocumentReviews &#91;required&#93; The document review details to update.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_document_metadata(
-#'   Name = "string",
-#'   DocumentVersion = "string",
-#'   DocumentReviews = list(
-#'     Action = "SendForReview"|"UpdateReview"|"Approve"|"Reject",
-#'     Comment = list(
-#'       list(
-#'         Type = "Comment",
-#'         Content = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Name &#91;required&#93; The name of the change template for which a version's metadata is to be
+#' updated.
+#' @param DocumentVersion The version of a change template in which to update approval metadata.
+#' @param DocumentReviews &#91;required&#93; The change template review details to update.
 #'
 #' @keywords internal
 #'
@@ -11297,41 +5792,28 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' Updates an existing maintenance window
 #'
 #' @description
-#' Updates an existing maintenance window. Only specified parameters are
-#' modified.
-#' 
-#' The value you specify for `Duration` determines the specific end time
-#' for the maintenance window based on the time it begins. No maintenance
-#' window tasks are permitted to start after the resulting endtime minus
-#' the number of hours you specify for `Cutoff`. For example, if the
-#' maintenance window starts at 3 PM, the duration is three hours, and the
-#' value you specify for `Cutoff` is one hour, no maintenance window tasks
-#' can start after 5 PM.
+#' Updates an existing maintenance window. Only specified parameters are modified.
 #'
-#' @usage
-#' ssm_update_maintenance_window(WindowId, Name, Description, StartDate,
-#'   EndDate, Schedule, ScheduleTimezone, ScheduleOffset, Duration, Cutoff,
-#'   AllowUnassociatedTargets, Enabled, Replace)
+#' See [https://paws-r.github.io/docs/ssm/update_maintenance_window.html](https://paws-r.github.io/docs/ssm/update_maintenance_window.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window to update.
 #' @param Name The name of the maintenance window.
 #' @param Description An optional description for the update request.
-#' @param StartDate The time zone that the scheduled maintenance window executions are based
-#' on, in Internet Assigned Numbers Authority (IANA) format. For example:
-#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-#' see the [Time Zone Database](https://www.iana.org/time-zones) on the
-#' IANA website.
+#' @param StartDate The date and time, in ISO-8601 Extended format, for when you want the
+#' maintenance window to become active. `StartDate` allows you to delay
+#' activation of the maintenance window until the specified future date.
 #' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the
-#' maintenance window to become inactive. EndDate allows you to set a date
-#' and time in the future when the maintenance window will no longer run.
+#' maintenance window to become inactive. `EndDate` allows you to set a
+#' date and time in the future when the maintenance window will no longer
+#' run.
 #' @param Schedule The schedule of the maintenance window in the form of a cron or rate
 #' expression.
 #' @param ScheduleTimezone The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
-#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-#' see the [Time Zone Database](https://www.iana.org/time-zones) on the
-#' IANA website.
-#' @param ScheduleOffset The number of days to wait after the date and time specified by a CRON
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+#' the [Time Zone Database](https://www.iana.org/time-zones) on the IANA
+#' website.
+#' @param ScheduleOffset The number of days to wait after the date and time specified by a cron
 #' expression before running the maintenance window.
 #' 
 #' For example, the following cron expression schedules a maintenance
@@ -11342,52 +5824,15 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' If the schedule offset is `2`, the maintenance window won't run until
 #' two days later.
 #' @param Duration The duration of the maintenance window in hours.
-#' @param Cutoff The number of hours before the end of the maintenance window that
-#' Systems Manager stops scheduling new tasks for execution.
+#' @param Cutoff The number of hours before the end of the maintenance window that Amazon
+#' Web Services Systems Manager stops scheduling new tasks for execution.
 #' @param AllowUnassociatedTargets Whether targets must be registered with the maintenance window before
 #' tasks can be defined for those targets.
 #' @param Enabled Whether the maintenance window is enabled.
-#' @param Replace If True, then all fields that are required by the
-#' CreateMaintenanceWindow action are also required for this API request.
-#' Optional fields that are not specified are set to null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowId = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   StartDate = "string",
-#'   EndDate = "string",
-#'   Schedule = "string",
-#'   ScheduleTimezone = "string",
-#'   ScheduleOffset = 123,
-#'   Duration = 123,
-#'   Cutoff = 123,
-#'   AllowUnassociatedTargets = TRUE|FALSE,
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_maintenance_window(
-#'   WindowId = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   StartDate = "string",
-#'   EndDate = "string",
-#'   Schedule = "string",
-#'   ScheduleTimezone = "string",
-#'   ScheduleOffset = 123,
-#'   Duration = 123,
-#'   Cutoff = 123,
-#'   AllowUnassociatedTargets = TRUE|FALSE,
-#'   Enabled = TRUE|FALSE,
-#'   Replace = TRUE|FALSE
-#' )
-#' ```
+#' @param Replace If `True`, then all fields that are required by the
+#' [`create_maintenance_window`][ssm_create_maintenance_window] operation
+#' are also required for this API request. Optional fields that aren't
+#' specified are set to null.
 #'
 #' @keywords internal
 #'
@@ -11412,79 +5857,22 @@ ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = N
 #' Modifies the target of an existing maintenance window
 #'
 #' @description
-#' Modifies the target of an existing maintenance window. You can change
-#' the following:
-#' 
-#' -   Name
-#' 
-#' -   Description
-#' 
-#' -   Owner
-#' 
-#' -   IDs for an ID target
-#' 
-#' -   Tags for a Tag target
-#' 
-#' -   From any supported tag type to another. The three supported tag
-#'     types are ID target, Tag target, and resource group. For more
-#'     information, see Target.
-#' 
-#' If a parameter is null, then the corresponding field is not modified.
+#' Modifies the target of an existing maintenance window. You can change the following:
 #'
-#' @usage
-#' ssm_update_maintenance_window_target(WindowId, WindowTargetId, Targets,
-#'   OwnerInformation, Name, Description, Replace)
+#' See [https://paws-r.github.io/docs/ssm/update_maintenance_window_target.html](https://paws-r.github.io/docs/ssm/update_maintenance_window_target.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The maintenance window ID with which to modify the target.
 #' @param WindowTargetId &#91;required&#93; The target ID to modify.
 #' @param Targets The targets to add or replace.
-#' @param OwnerInformation User-provided value that will be included in any CloudWatch events
-#' raised while running tasks for these targets in this maintenance window.
+#' @param OwnerInformation User-provided value that will be included in any Amazon CloudWatch
+#' Events events raised while running tasks for these targets in this
+#' maintenance window.
 #' @param Name A name for the update.
 #' @param Description An optional description for the update.
-#' @param Replace If True, then all fields that are required by the
-#' RegisterTargetWithMaintenanceWindow action are also required for this
-#' API request. Optional fields that are not specified are set to null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowId = "string",
-#'   WindowTargetId = "string",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   OwnerInformation = "string",
-#'   Name = "string",
-#'   Description = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_maintenance_window_target(
-#'   WindowId = "string",
-#'   WindowTargetId = "string",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   OwnerInformation = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   Replace = TRUE|FALSE
-#' )
-#' ```
+#' @param Replace If `True`, then all fields that are required by the
+#' [`register_target_with_maintenance_window`][ssm_register_target_with_maintenance_window]
+#' operation are also required for this API request. Optional fields that
+#' aren't specified are set to null.
 #'
 #' @keywords internal
 #'
@@ -11509,77 +5897,34 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' Modifies a task assigned to a maintenance window
 #'
 #' @description
-#' Modifies a task assigned to a maintenance window. You can't change the
-#' task type, but you can change the following values:
-#' 
-#' -   TaskARN. For example, you can change a RUN_COMMAND task from
-#'     AWS-RunPowerShellScript to AWS-RunShellScript.
-#' 
-#' -   ServiceRoleArn
-#' 
-#' -   TaskInvocationParameters
-#' 
-#' -   Priority
-#' 
-#' -   MaxConcurrency
-#' 
-#' -   MaxErrors
-#' 
-#' One or more targets must be specified for maintenance window Run
-#' Command-type tasks. Depending on the task, targets are optional for
-#' other maintenance window task types (Automation, AWS Lambda, and AWS
-#' Step Functions). For more information about running tasks that do not
-#' specify targets, see see [Registering maintenance window tasks without
-#' targets](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
-#' in the *AWS Systems Manager User Guide*.
-#' 
-#' If the value for a parameter in
-#' [`update_maintenance_window_task`][ssm_update_maintenance_window_task]
-#' is null, then the corresponding field is not modified. If you set
-#' `Replace` to true, then all fields required by the
-#' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window]
-#' action are required for this request. Optional fields that aren't
-#' specified are set to null.
-#' 
-#' When you update a maintenance window task that has options specified in
-#' `TaskInvocationParameters`, you must provide again all the
-#' `TaskInvocationParameters` values that you want to retain. The values
-#' you do not specify again are removed. For example, suppose that when you
-#' registered a Run Command task, you specified `TaskInvocationParameters`
-#' values for `Comment`, `NotificationConfig`, and `OutputS3BucketName`. If
-#' you update the maintenance window task and specify only a different
-#' `OutputS3BucketName` value, the values for `Comment` and
-#' `NotificationConfig` are removed.
+#' Modifies a task assigned to a maintenance window. You can't change the task type, but you can change the following values:
 #'
-#' @usage
-#' ssm_update_maintenance_window_task(WindowId, WindowTaskId, Targets,
-#'   TaskArn, ServiceRoleArn, TaskParameters, TaskInvocationParameters,
-#'   Priority, MaxConcurrency, MaxErrors, LoggingInfo, Name, Description,
-#'   Replace)
+#' See [https://paws-r.github.io/docs/ssm/update_maintenance_window_task.html](https://paws-r.github.io/docs/ssm/update_maintenance_window_task.html) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The maintenance window ID that contains the task to modify.
 #' @param WindowTaskId &#91;required&#93; The task ID to modify.
-#' @param Targets The targets (either instances or tags) to modify. Instances are
-#' specified using Key=instanceids,Values=instanceID_1,instanceID_2. Tags
-#' are specified using Key=tag_name,Values=tag_value.
+#' @param Targets The targets (either managed nodes or tags) to modify. Managed nodes are
+#' specified using the format
+#' `Key=instanceids,Values=instanceID_1,instanceID_2`. Tags are specified
+#' using the format ` Key=tag_name,Values=tag_value`.
 #' 
 #' One or more targets must be specified for maintenance window Run
 #' Command-type tasks. Depending on the task, targets are optional for
-#' other maintenance window task types (Automation, AWS Lambda, and AWS
-#' Step Functions). For more information about running tasks that do not
-#' specify targets, see see [Registering maintenance window tasks without
+#' other maintenance window task types (Automation, Lambda, and Step
+#' Functions). For more information about running tasks that don't specify
+#' targets, see [Registering maintenance window tasks without
 #' targets](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskArn The task ARN to modify.
-#' @param ServiceRoleArn The ARN of the IAM service role for Systems Manager to assume when
-#' running a maintenance window task. If you do not specify a service role
-#' ARN, Systems Manager uses your account's service-linked role. If no
-#' service-linked role for Systems Manager exists in your account, it is
-#' created when you run
+#' @param ServiceRoleArn The Amazon Resource Name (ARN) of the IAM service role for Amazon Web
+#' Services Systems Manager to assume when running a maintenance window
+#' task. If you do not specify a service role ARN, Systems Manager uses
+#' your account's service-linked role. If no service-linked role for
+#' Systems Manager exists in your account, it is created when you run
 #' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
 #' 
-#' For more information, see the following topics in the in the *AWS
-#' Systems Manager User Guide*:
+#' For more information, see the following topics in the in the *Amazon Web
+#' Services Systems Manager User Guide*:
 #' 
 #' -   [Using service-linked roles for Systems
 #'     Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
@@ -11606,7 +5951,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' When you update a maintenance window task that has options specified in
 #' `TaskInvocationParameters`, you must provide again all the
 #' `TaskInvocationParameters` values that you want to retain. The values
-#' you do not specify again are removed. For example, suppose that when you
+#' you don't specify again are removed. For example, suppose that when you
 #' registered a Run Command task, you specified `TaskInvocationParameters`
 #' values for `Comment`, `NotificationConfig`, and `OutputS3BucketName`. If
 #' you update the maintenance window task and specify only a different
@@ -11615,208 +5960,75 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' @param Priority The new task priority to specify. The lower the number, the higher the
 #' priority. Tasks that have the same priority are scheduled in parallel.
 #' @param MaxConcurrency The new `MaxConcurrency` value you want to specify. `MaxConcurrency` is
-#' the number of targets that are allowed to run this task in parallel.
+#' the number of targets that are allowed to run this task, in parallel.
 #' 
-#' For maintenance window tasks without a target specified, you cannot
+#' Although this element is listed as "Required: No", a value can be
+#' omitted only when you are registering or updating a [targetless
+#' task](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
+#' You must provide a value in all other cases.
+#' 
+#' For maintenance window tasks without a target specified, you can't
 #' supply a value for this option. Instead, the system inserts a
-#' placeholder value of `1`, which may be reported in the response to this
-#' command. This value does not affect the running of your task and can be
-#' ignored.
+#' placeholder value of `1`. This value doesn't affect the running of your
+#' task.
 #' @param MaxErrors The new `MaxErrors` value to specify. `MaxErrors` is the maximum number
 #' of errors that are allowed before the task stops being scheduled.
 #' 
-#' For maintenance window tasks without a target specified, you cannot
+#' Although this element is listed as "Required: No", a value can be
+#' omitted only when you are registering or updating a [targetless
+#' task](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
+#' You must provide a value in all other cases.
+#' 
+#' For maintenance window tasks without a target specified, you can't
 #' supply a value for this option. Instead, the system inserts a
-#' placeholder value of `1`, which may be reported in the response to this
-#' command. This value does not affect the running of your task and can be
-#' ignored.
+#' placeholder value of `1`. This value doesn't affect the running of your
+#' task.
 #' @param LoggingInfo The new logging location in Amazon S3 to specify.
 #' 
-#' `LoggingInfo` has been deprecated. To specify an S3 bucket to contain
-#' logs, instead use the `OutputS3BucketName` and `OutputS3KeyPrefix`
-#' options in the `TaskInvocationParameters` structure. For information
-#' about how Systems Manager handles these options for the supported
+#' `LoggingInfo` has been deprecated. To specify an Amazon Simple Storage
+#' Service (Amazon S3) bucket to contain logs, instead use the
+#' `OutputS3BucketName` and `OutputS3KeyPrefix` options in the
+#' `TaskInvocationParameters` structure. For information about how Amazon
+#' Web Services Systems Manager handles these options for the supported
 #' maintenance window task types, see
 #' MaintenanceWindowTaskInvocationParameters.
 #' @param Name The new task name to specify.
 #' @param Description The new task description to specify.
 #' @param Replace If True, then all fields that are required by the
-#' RegisterTaskWithMaintenanceWindow action are also required for this API
-#' request. Optional fields that are not specified are set to null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WindowId = "string",
-#'   WindowTaskId = "string",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TaskArn = "string",
-#'   ServiceRoleArn = "string",
-#'   TaskParameters = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TaskInvocationParameters = list(
-#'     RunCommand = list(
-#'       Comment = "string",
-#'       CloudWatchOutputConfig = list(
-#'         CloudWatchLogGroupName = "string",
-#'         CloudWatchOutputEnabled = TRUE|FALSE
-#'       ),
-#'       DocumentHash = "string",
-#'       DocumentHashType = "Sha256"|"Sha1",
-#'       DocumentVersion = "string",
-#'       NotificationConfig = list(
-#'         NotificationArn = "string",
-#'         NotificationEvents = list(
-#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-#'         ),
-#'         NotificationType = "Command"|"Invocation"
-#'       ),
-#'       OutputS3BucketName = "string",
-#'       OutputS3KeyPrefix = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       ServiceRoleArn = "string",
-#'       TimeoutSeconds = 123
-#'     ),
-#'     Automation = list(
-#'       DocumentVersion = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     StepFunctions = list(
-#'       Input = "string",
-#'       Name = "string"
-#'     ),
-#'     Lambda = list(
-#'       ClientContext = "string",
-#'       Qualifier = "string",
-#'       Payload = raw
-#'     )
-#'   ),
-#'   Priority = 123,
-#'   MaxConcurrency = "string",
-#'   MaxErrors = "string",
-#'   LoggingInfo = list(
-#'     S3BucketName = "string",
-#'     S3KeyPrefix = "string",
-#'     S3Region = "string"
-#'   ),
-#'   Name = "string",
-#'   Description = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_maintenance_window_task(
-#'   WindowId = "string",
-#'   WindowTaskId = "string",
-#'   Targets = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TaskArn = "string",
-#'   ServiceRoleArn = "string",
-#'   TaskParameters = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   TaskInvocationParameters = list(
-#'     RunCommand = list(
-#'       Comment = "string",
-#'       CloudWatchOutputConfig = list(
-#'         CloudWatchLogGroupName = "string",
-#'         CloudWatchOutputEnabled = TRUE|FALSE
-#'       ),
-#'       DocumentHash = "string",
-#'       DocumentHashType = "Sha256"|"Sha1",
-#'       DocumentVersion = "string",
-#'       NotificationConfig = list(
-#'         NotificationArn = "string",
-#'         NotificationEvents = list(
-#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-#'         ),
-#'         NotificationType = "Command"|"Invocation"
-#'       ),
-#'       OutputS3BucketName = "string",
-#'       OutputS3KeyPrefix = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       ServiceRoleArn = "string",
-#'       TimeoutSeconds = 123
-#'     ),
-#'     Automation = list(
-#'       DocumentVersion = "string",
-#'       Parameters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     StepFunctions = list(
-#'       Input = "string",
-#'       Name = "string"
-#'     ),
-#'     Lambda = list(
-#'       ClientContext = "string",
-#'       Qualifier = "string",
-#'       Payload = raw
-#'     )
-#'   ),
-#'   Priority = 123,
-#'   MaxConcurrency = "string",
-#'   MaxErrors = "string",
-#'   LoggingInfo = list(
-#'     S3BucketName = "string",
-#'     S3KeyPrefix = "string",
-#'     S3Region = "string"
-#'   ),
-#'   Name = "string",
-#'   Description = "string",
-#'   Replace = TRUE|FALSE
-#' )
-#' ```
+#' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window]
+#' operation are also required for this API request. Optional fields that
+#' aren't specified are set to null.
+#' @param CutoffBehavior Indicates whether tasks should continue to run after the cutoff time
+#' specified in the maintenance windows is reached.
+#' 
+#' -   `CONTINUE_TASK`: When the cutoff time is reached, any tasks that are
+#'     running continue. The default value.
+#' 
+#' -   `CANCEL_TASK`:
+#' 
+#'     -   For Automation, Lambda, Step Functions tasks: When the cutoff
+#'         time is reached, any task invocations that are already running
+#'         continue, but no new task invocations are started.
+#' 
+#'     -   For Run Command tasks: When the cutoff time is reached, the
+#'         system sends a [`cancel_command`][ssm_cancel_command] operation
+#'         that attempts to cancel the command associated with the task.
+#'         However, there is no guarantee that the command will be
+#'         terminated and the underlying process stopped.
+#' 
+#'     The status for tasks that are not completed is `TIMED_OUT`.
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_update_maintenance_window_task
-ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets = NULL, TaskArn = NULL, ServiceRoleArn = NULL, TaskParameters = NULL, TaskInvocationParameters = NULL, Priority = NULL, MaxConcurrency = NULL, MaxErrors = NULL, LoggingInfo = NULL, Name = NULL, Description = NULL, Replace = NULL) {
+ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets = NULL, TaskArn = NULL, ServiceRoleArn = NULL, TaskParameters = NULL, TaskInvocationParameters = NULL, Priority = NULL, MaxConcurrency = NULL, MaxErrors = NULL, LoggingInfo = NULL, Name = NULL, Description = NULL, Replace = NULL, CutoffBehavior = NULL) {
   op <- new_operation(
     name = "UpdateMaintenanceWindowTask",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$update_maintenance_window_task_input(WindowId = WindowId, WindowTaskId = WindowTaskId, Targets = Targets, TaskArn = TaskArn, ServiceRoleArn = ServiceRoleArn, TaskParameters = TaskParameters, TaskInvocationParameters = TaskInvocationParameters, Priority = Priority, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, LoggingInfo = LoggingInfo, Name = Name, Description = Description, Replace = Replace)
+  input <- .ssm$update_maintenance_window_task_input(WindowId = WindowId, WindowTaskId = WindowTaskId, Targets = Targets, TaskArn = TaskArn, ServiceRoleArn = ServiceRoleArn, TaskParameters = TaskParameters, TaskInvocationParameters = TaskInvocationParameters, Priority = Priority, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, LoggingInfo = LoggingInfo, Name = Name, Description = Description, Replace = Replace, CutoffBehavior = CutoffBehavior)
   output <- .ssm$update_maintenance_window_task_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -11826,32 +6038,16 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 }
 .ssm$operations$update_maintenance_window_task <- ssm_update_maintenance_window_task
 
-#' Changes the Amazon Identity and Access Management (IAM) role that is
-#' assigned to the on-premises instance or virtual machines (VM)
+#' Changes the Identity and Access Management (IAM) role that is assigned
+#' to the on-premises server, edge device, or virtual machines (VM)
 #'
 #' @description
-#' Changes the Amazon Identity and Access Management (IAM) role that is
-#' assigned to the on-premises instance or virtual machines (VM). IAM roles
-#' are first assigned to these hybrid instances during the activation
-#' process. For more information, see
-#' [`create_activation`][ssm_create_activation].
+#' Changes the Identity and Access Management (IAM) role that is assigned to the on-premises server, edge device, or virtual machines (VM). IAM roles are first assigned to these hybrid nodes during the activation process. For more information, see [`create_activation`][ssm_create_activation].
 #'
-#' @usage
-#' ssm_update_managed_instance_role(InstanceId, IamRole)
+#' See [https://paws-r.github.io/docs/ssm/update_managed_instance_role.html](https://paws-r.github.io/docs/ssm/update_managed_instance_role.html) for full documentation.
 #'
-#' @param InstanceId &#91;required&#93; The ID of the managed instance where you want to update the role.
+#' @param InstanceId &#91;required&#93; The ID of the managed node where you want to update the role.
 #' @param IamRole &#91;required&#93; The IAM role you want to assign or change.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_managed_instance_role(
-#'   InstanceId = "string",
-#'   IamRole = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11876,24 +6072,9 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' Edit or change an OpsItem
 #'
 #' @description
-#' Edit or change an OpsItem. You must have permission in AWS Identity and
-#' Access Management (IAM) to update an OpsItem. For more information, see
-#' [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
-#' in the *AWS Systems Manager User Guide*.
-#' 
-#' Operations engineers and IT professionals use OpsCenter to view,
-#' investigate, and remediate operational issues impacting the performance
-#' and health of their AWS resources. For more information, see [AWS
-#' Systems Manager
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
-#' in the *AWS Systems Manager User Guide*.
+#' Edit or change an OpsItem. You must have permission in Identity and Access Management (IAM) to update an OpsItem. For more information, see [Getting started with OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' @usage
-#' ssm_update_ops_item(Description, OperationalData,
-#'   OperationalDataToDelete, Notifications, Priority, RelatedOpsItems,
-#'   Status, OpsItemId, Title, Category, Severity, ActualStartTime,
-#'   ActualEndTime, PlannedStartTime, PlannedEndTime)
+#' See [https://paws-r.github.io/docs/ssm/update_ops_item.html](https://paws-r.github.io/docs/ssm/update_ops_item.html) for full documentation.
 #'
 #' @param Description Update the information about the OpsItem. Provide enough information so
 #' that users reading this OpsItem for the first time understand the issue.
@@ -11906,24 +6087,24 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' enter operational data as key-value pairs. The key has a maximum length
 #' of 128 characters. The value has a maximum size of 20 KB.
 #' 
-#' Operational data keys *can't* begin with the following: amazon, aws,
-#' amzn, ssm, /amazon, /aws, /amzn, /ssm.
+#' Operational data keys *can't* begin with the following: `amazon`, `aws`,
+#' `amzn`, `ssm`, `/amazon`, `/aws`, `/amzn`, `/ssm`.
 #' 
 #' You can choose to make the data searchable by other users in the account
 #' or you can restrict search access. Searchable data means that all users
 #' with access to the OpsItem Overview page (as provided by the
-#' [`describe_ops_items`][ssm_describe_ops_items] API action) can view and
-#' search on the specified data. Operational data that is not searchable is
-#' only viewable by users who have access to the OpsItem (as provided by
-#' the [`get_ops_item`][ssm_get_ops_item] API action).
+#' [`describe_ops_items`][ssm_describe_ops_items] API operation) can view
+#' and search on the specified data. Operational data that isn't searchable
+#' is only viewable by users who have access to the OpsItem (as provided by
+#' the [`get_ops_item`][ssm_get_ops_item] API operation).
 #' 
 #' Use the `/aws/resources` key in OperationalData to specify a related
 #' resource in the request. Use the `/aws/automations` key in
 #' OperationalData to associate an Automation runbook with the OpsItem. To
-#' view AWS CLI example commands that use these keys, see [Creating
-#' OpsItems
+#' view Amazon Web Services CLI example commands that use these keys, see
+#' [Creating OpsItems
 #' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param OperationalDataToDelete Keys that you want to remove from the OperationalData map.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
 #' sent when this OpsItem is edited or changed.
@@ -11936,7 +6117,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' @param Status The OpsItem status. Status can be `Open`, `In Progress`, or `Resolved`.
 #' For more information, see [Editing OpsItem
 #' details](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems.html#OpsCenter-working-with-OpsItems-editing-details)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem.
 #' @param Title A short heading that describes the nature of the OpsItem and the
 #' impacted resource.
@@ -11950,53 +6131,6 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
 #' @param PlannedEndTime The time specified in a change request for a runbook workflow to end.
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_ops_item(
-#'   Description = "string",
-#'   OperationalData = list(
-#'     list(
-#'       Value = "string",
-#'       Type = "SearchableString"|"String"
-#'     )
-#'   ),
-#'   OperationalDataToDelete = list(
-#'     "string"
-#'   ),
-#'   Notifications = list(
-#'     list(
-#'       Arn = "string"
-#'     )
-#'   ),
-#'   Priority = 123,
-#'   RelatedOpsItems = list(
-#'     list(
-#'       OpsItemId = "string"
-#'     )
-#'   ),
-#'   Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
-#'   OpsItemId = "string",
-#'   Title = "string",
-#'   Category = "string",
-#'   Severity = "string",
-#'   ActualStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ActualEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   PlannedStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   PlannedEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12018,42 +6152,17 @@ ssm_update_ops_item <- function(Description = NULL, OperationalData = NULL, Oper
 }
 .ssm$operations$update_ops_item <- ssm_update_ops_item
 
-#' Systems Manager calls this API action when you edit OpsMetadata in
-#' Application Manager
+#' Amazon Web Services Systems Manager calls this API operation when you
+#' edit OpsMetadata in Application Manager
 #'
 #' @description
-#' Systems Manager calls this API action when you edit OpsMetadata in
-#' Application Manager.
+#' Amazon Web Services Systems Manager calls this API operation when you edit OpsMetadata in Application Manager.
 #'
-#' @usage
-#' ssm_update_ops_metadata(OpsMetadataArn, MetadataToUpdate, KeysToDelete)
+#' See [https://paws-r.github.io/docs/ssm/update_ops_metadata.html](https://paws-r.github.io/docs/ssm/update_ops_metadata.html) for full documentation.
 #'
-#' @param OpsMetadataArn &#91;required&#93; The Amazon Resoure Name (ARN) of the OpsMetadata Object to update.
+#' @param OpsMetadataArn &#91;required&#93; The Amazon Resource Name (ARN) of the OpsMetadata Object to update.
 #' @param MetadataToUpdate Metadata to add to an OpsMetadata object.
 #' @param KeysToDelete The metadata keys to delete from the OpsMetadata object.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OpsMetadataArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_ops_metadata(
-#'   OpsMetadataArn = "string",
-#'   MetadataToUpdate = list(
-#'     list(
-#'       Value = "string"
-#'     )
-#'   ),
-#'   KeysToDelete = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12078,18 +6187,9 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' Modifies an existing patch baseline
 #'
 #' @description
-#' Modifies an existing patch baseline. Fields not specified in the request
-#' are left unchanged.
-#' 
-#' For information about valid key and value pairs in `PatchFilters` for
-#' each supported operating system type, see
-#' [PatchFilter](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
+#' Modifies an existing patch baseline. Fields not specified in the request are left unchanged.
 #'
-#' @usage
-#' ssm_update_patch_baseline(BaselineId, Name, GlobalFilters,
-#'   ApprovalRules, ApprovedPatches, ApprovedPatchesComplianceLevel,
-#'   ApprovedPatchesEnableNonSecurity, RejectedPatches,
-#'   RejectedPatchesAction, Description, Sources, Replace)
+#' See [https://paws-r.github.io/docs/ssm/update_patch_baseline.html](https://paws-r.github.io/docs/ssm/update_patch_baseline.html) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to update.
 #' @param Name The name of the patch baseline.
@@ -12101,162 +6201,40 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' rejected patches, see [About package name formats for approved and
 #' rejected patch
 #' lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param ApprovedPatchesComplianceLevel Assigns a new compliance severity level to an existing patch baseline.
 #' @param ApprovedPatchesEnableNonSecurity Indicates whether the list of approved patches includes non-security
-#' updates that should be applied to the instances. The default value is
-#' 'false'. Applies to Linux instances only.
+#' updates that should be applied to the managed nodes. The default value
+#' is `false`. Applies to Linux managed nodes only.
 #' @param RejectedPatches A list of explicitly rejected patches for the baseline.
 #' 
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [About package name formats for approved and
 #' rejected patch
 #' lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
-#' in the *AWS Systems Manager User Guide*.
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
-#' RejectedPackages list.
+#' `RejectedPackages` list.
 #' 
-#' -   **ALLOW_AS_DEPENDENCY**: A package in the Rejected patches list is
-#'     installed only if it is a dependency of another package. It is
+#' -   **`ALLOW_AS_DEPENDENCY`** : A package in the `Rejected` patches list
+#'     is installed only if it is a dependency of another package. It is
 #'     considered compliant with the patch baseline, and its status is
-#'     reported as *InstalledOther*. This is the default action if no
+#'     reported as `InstalledOther`. This is the default action if no
 #'     option is specified.
 #' 
-#' -   **BLOCK**: Packages in the RejectedPatches list, and packages that
-#'     include them as dependencies, are not installed under any
+#' -   **`BLOCK`** : Packages in the `RejectedPatches` list, and packages
+#'     that include them as dependencies, aren't installed under any
 #'     circumstances. If a package was installed before it was added to the
-#'     Rejected patches list, it is considered non-compliant with the patch
-#'     baseline, and its status is reported as *InstalledRejected*.
+#'     `Rejected` patches list, it is considered non-compliant with the
+#'     patch baseline, and its status is reported as `InstalledRejected`.
 #' @param Description A description of the patch baseline.
-#' @param Sources Information about the patches to use to update the instances, including
-#' target operating systems and source repositories. Applies to Linux
-#' instances only.
-#' @param Replace If True, then all fields that are required by the CreatePatchBaseline
-#' action are also required for this API request. Optional fields that are
-#' not specified are set to null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaselineId = "string",
-#'   Name = "string",
-#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-#'   GlobalFilters = list(
-#'     PatchFilters = list(
-#'       list(
-#'         Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ApprovalRules = list(
-#'     PatchRules = list(
-#'       list(
-#'         PatchFilterGroup = list(
-#'           PatchFilters = list(
-#'             list(
-#'               Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'         ApproveAfterDays = 123,
-#'         ApproveUntilDate = "string",
-#'         EnableNonSecurity = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   ApprovedPatches = list(
-#'     "string"
-#'   ),
-#'   ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'   ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
-#'   RejectedPatches = list(
-#'     "string"
-#'   ),
-#'   RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
-#'   CreatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ModifiedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Description = "string",
-#'   Sources = list(
-#'     list(
-#'       Name = "string",
-#'       Products = list(
-#'         "string"
-#'       ),
-#'       Configuration = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_patch_baseline(
-#'   BaselineId = "string",
-#'   Name = "string",
-#'   GlobalFilters = list(
-#'     PatchFilters = list(
-#'       list(
-#'         Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ApprovalRules = list(
-#'     PatchRules = list(
-#'       list(
-#'         PatchFilterGroup = list(
-#'           PatchFilters = list(
-#'             list(
-#'               Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'         ApproveAfterDays = 123,
-#'         ApproveUntilDate = "string",
-#'         EnableNonSecurity = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   ApprovedPatches = list(
-#'     "string"
-#'   ),
-#'   ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-#'   ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
-#'   RejectedPatches = list(
-#'     "string"
-#'   ),
-#'   RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
-#'   Description = "string",
-#'   Sources = list(
-#'     list(
-#'       Name = "string",
-#'       Products = list(
-#'         "string"
-#'       ),
-#'       Configuration = "string"
-#'     )
-#'   ),
-#'   Replace = TRUE|FALSE
-#' )
-#' ```
+#' @param Sources Information about the patches to use to update the managed nodes,
+#' including target operating systems and source repositories. Applies to
+#' Linux managed nodes only.
+#' @param Replace If True, then all fields that are required by the
+#' [`create_patch_baseline`][ssm_create_patch_baseline] operation are also
+#' required for this API request. Optional fields that aren't specified are
+#' set to null.
 #'
 #' @keywords internal
 #'
@@ -12281,50 +6259,14 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
 #' Update a resource data sync
 #'
 #' @description
-#' Update a resource data sync. After you create a resource data sync for a
-#' Region, you can't change the account options for that sync. For example,
-#' if you create a sync in the us-east-2 (Ohio) Region and you choose the
-#' Include only the current account option, you can't edit that sync later
-#' and choose the Include all accounts from my AWS Organizations
-#' configuration option. Instead, you must delete the first resource data
-#' sync, and create a new one.
-#' 
-#' This API action only supports a resource data sync that was created with
-#' a SyncFromSource `SyncType`.
+#' Update a resource data sync. After you create a resource data sync for a Region, you can't change the account options for that sync. For example, if you create a sync in the us-east-2 (Ohio) Region and you choose the `Include only the current account` option, you can't edit that sync later and choose the `Include all accounts from my Organizations configuration` option. Instead, you must delete the first resource data sync, and create a new one.
 #'
-#' @usage
-#' ssm_update_resource_data_sync(SyncName, SyncType, SyncSource)
+#' See [https://paws-r.github.io/docs/ssm/update_resource_data_sync.html](https://paws-r.github.io/docs/ssm/update_resource_data_sync.html) for full documentation.
 #'
 #' @param SyncName &#91;required&#93; The name of the resource data sync you want to update.
 #' @param SyncType &#91;required&#93; The type of resource data sync. The supported `SyncType` is
 #' SyncFromSource.
 #' @param SyncSource &#91;required&#93; Specify information about the data sources to synchronize.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_resource_data_sync(
-#'   SyncName = "string",
-#'   SyncType = "string",
-#'   SyncSource = list(
-#'     SourceType = "string",
-#'     AwsOrganizationsSource = list(
-#'       OrganizationSourceType = "string",
-#'       OrganizationalUnits = list(
-#'         list(
-#'           OrganizationalUnitId = "string"
-#'         )
-#'       )
-#'     ),
-#'     SourceRegions = list(
-#'       "string"
-#'     ),
-#'     IncludeFutureRegions = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12346,65 +6288,51 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 }
 .ssm$operations$update_resource_data_sync <- ssm_update_resource_data_sync
 
-#' ServiceSetting is an account-level setting for an AWS service
+#' ServiceSetting is an account-level setting for an Amazon Web Services
+#' service
 #'
 #' @description
-#' `ServiceSetting` is an account-level setting for an AWS service. This
-#' setting defines how a user interacts with or uses a service or a feature
-#' of a service. For example, if an AWS service charges money to the
-#' account based on feature or service usage, then the AWS service team
-#' might create a default setting of "false". This means the user can't use
-#' this feature unless they change the setting to "true" and intentionally
-#' opt in for a paid feature.
-#' 
-#' Services map a `SettingId` object to a setting value. AWS services teams
-#' define the default value for a `SettingId`. You can't create a new
-#' `SettingId`, but you can overwrite the default value if you have the
-#' `ssm:UpdateServiceSetting` permission for the setting. Use the
-#' [`get_service_setting`][ssm_get_service_setting] API action to view the
-#' current value. Or, use the
-#' [`reset_service_setting`][ssm_reset_service_setting] to change the value
-#' back to the original value defined by the AWS service team.
-#' 
-#' Update the service setting for the account.
+#' `ServiceSetting` is an account-level setting for an Amazon Web Services service. This setting defines how a user interacts with or uses a service or a feature of a service. For example, if an Amazon Web Services service charges money to the account based on feature or service usage, then the Amazon Web Services service team might create a default setting of "false". This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for a paid feature.
 #'
-#' @usage
-#' ssm_update_service_setting(SettingId, SettingValue)
+#' See [https://paws-r.github.io/docs/ssm/update_service_setting.html](https://paws-r.github.io/docs/ssm/update_service_setting.html) for full documentation.
 #'
 #' @param SettingId &#91;required&#93; The Amazon Resource Name (ARN) of the service setting to reset. For
 #' example,
 #' `arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled`.
 #' The setting ID can be one of the following.
 #' 
+#' -   `/ssm/automation/customer-script-log-destination`
+#' 
+#' -   `/ssm/automation/customer-script-log-group-name`
+#' 
+#' -   `/ssm/documents/console/public-sharing-permission`
+#' 
+#' -   `/ssm/managed-instance/activation-tier`
+#' 
+#' -   `/ssm/opsinsights/opscenter`
+#' 
 #' -   `/ssm/parameter-store/default-parameter-tier`
 #' 
 #' -   `/ssm/parameter-store/high-throughput-enabled`
+#' @param SettingValue &#91;required&#93; The new value to specify for the service setting. The following list
+#' specifies the available values for each setting.
 #' 
-#' -   `/ssm/managed-instance/activation-tier`
-#' @param SettingValue &#91;required&#93; The new value to specify for the service setting. For the
-#' `/ssm/parameter-store/default-parameter-tier` setting ID, the setting
-#' value can be one of the following.
+#' -   `/ssm/automation/customer-script-log-destination`: `CloudWatch`
 #' 
-#' -   Standard
+#' -   `/ssm/automation/customer-script-log-group-name`: the name of an
+#'     Amazon CloudWatch Logs log group
 #' 
-#' -   Advanced
+#' -   `/ssm/documents/console/public-sharing-permission`: `Enable` or
+#'     `Disable`
 #' 
-#' -   Intelligent-Tiering
+#' -   `/ssm/managed-instance/activation-tier`: `standard` or `advanced`
 #' 
-#' For the `/ssm/parameter-store/high-throughput-enabled`, and
-#' `/ssm/managed-instance/activation-tier` setting IDs, the setting value
-#' can be true or false.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_service_setting(
-#'   SettingId = "string",
-#'   SettingValue = "string"
-#' )
-#' ```
+#' -   `/ssm/opsinsights/opscenter`: `Enabled` or `Disabled`
+#' 
+#' -   `/ssm/parameter-store/default-parameter-tier`: `Standard`,
+#'     `Advanced`, `Intelligent-Tiering`
+#' 
+#' -   `/ssm/parameter-store/high-throughput-enabled`: `true` or `false`
 #'
 #' @keywords internal
 #'

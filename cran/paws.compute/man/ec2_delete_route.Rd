@@ -4,8 +4,13 @@
 \alias{ec2_delete_route}
 \title{Deletes the specified route from the specified route table}
 \usage{
-ec2_delete_route(DestinationCidrBlock, DestinationIpv6CidrBlock,
-  DestinationPrefixListId, DryRun, RouteTableId)
+ec2_delete_route(
+  DestinationCidrBlock = NULL,
+  DestinationIpv6CidrBlock = NULL,
+  DestinationPrefixListId = NULL,
+  DryRun = NULL,
+  RouteTableId
+)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR range for the route. The value you specify must match the
@@ -23,31 +28,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RouteTableId}{[required] The ID of the route table.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified route from the specified route table.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_route(
-  DestinationCidrBlock = "string",
-  DestinationIpv6CidrBlock = "string",
-  DestinationPrefixListId = "string",
-  DryRun = TRUE|FALSE,
-  RouteTableId = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example deletes the specified route from the specified route table.
-svc$delete_route(
-  DestinationCidrBlock = "0.0.0.0/0",
-  RouteTableId = "rtb-22574640"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_route.html} for full documentation.
 }
 \keyword{internal}

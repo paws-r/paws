@@ -4,8 +4,14 @@
 \alias{workdocs_describe_document_versions}
 \title{Retrieves the document versions for the specified document}
 \usage{
-workdocs_describe_document_versions(AuthenticationToken, DocumentId,
-  Marker, Limit, Include, Fields)
+workdocs_describe_document_versions(
+  AuthenticationToken = NULL,
+  DocumentId,
+  Marker = NULL,
+  Limit = NULL,
+  Include = NULL,
+  Fields = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -24,56 +30,9 @@ incomplete versions.}
 \item{Fields}{Specify "SOURCE" to include initialized versions and a URL for the
 source document.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DocumentVersions = list(
-    list(
-      Id = "string",
-      Name = "string",
-      ContentType = "string",
-      Size = 123,
-      Signature = "string",
-      Status = "INITIALIZED"|"ACTIVE",
-      CreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModifiedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ContentCreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ContentModifiedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatorId = "string",
-      Thumbnail = list(
-        "string"
-      ),
-      Source = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Retrieves the document versions for the specified document.
 
-By default, only active versions are returned.
+See \url{https://paws-r.github.io/docs/workdocs/describe_document_versions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_document_versions(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  Marker = "string",
-  Limit = 123,
-  Include = "string",
-  Fields = "string"
-)
-}
-}
-
 \keyword{internal}

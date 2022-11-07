@@ -4,8 +4,13 @@
 \alias{storagegateway_create_tape_pool}
 \title{Creates a new custom tape pool}
 \usage{
-storagegateway_create_tape_pool(PoolName, StorageClass,
-  RetentionLockType, RetentionLockTimeInDays, Tags)
+storagegateway_create_tape_pool(
+  PoolName,
+  StorageClass,
+  RetentionLockType = NULL,
+  RetentionLockTimeInDays = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{PoolName}{[required] The name of the new custom tape pool.}
@@ -16,10 +21,11 @@ directly into the storage class (S3 Glacier or S3 Glacier Deep Archive)
 that corresponds to the pool.}
 
 \item{RetentionLockType}{Tape retention lock can be configured in two modes. When configured in
-governance mode, AWS accounts with specific IAM permissions are
-authorized to remove the tape retention lock from archived virtual
-tapes. When configured in compliance mode, the tape retention lock
-cannot be removed by any user, including the root AWS account.}
+governance mode, Amazon Web Services accounts with specific IAM
+permissions are authorized to remove the tape retention lock from
+archived virtual tapes. When configured in compliance mode, the tape
+retention lock cannot be removed by any user, including the root Amazon
+Web Services account.}
 
 \item{RetentionLockTimeInDays}{Tape retention lock time is set in days. Tape retention lock can be
 enabled for up to 100 years (36,500 days).}
@@ -32,30 +38,9 @@ representable in UTF-8 format, and the following special characters: + -
 = . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PoolARN = "string"
-)
-}
-}
 \description{
-Creates a new custom tape pool. You can use custom tape pool to enable
-tape retention lock on tapes that are archived in the custom pool.
-}
-\section{Request syntax}{
-\preformatted{svc$create_tape_pool(
-  PoolName = "string",
-  StorageClass = "DEEP_ARCHIVE"|"GLACIER",
-  RetentionLockType = "COMPLIANCE"|"GOVERNANCE"|"NONE",
-  RetentionLockTimeInDays = 123,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a new custom tape pool. You can use custom tape pool to enable tape retention lock on tapes that are archived in the custom pool.
 
+See \url{https://paws-r.github.io/docs/storagegateway/create_tape_pool.html} for full documentation.
+}
 \keyword{internal}

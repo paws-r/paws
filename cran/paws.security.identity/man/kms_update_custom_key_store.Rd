@@ -4,8 +4,12 @@
 \alias{kms_update_custom_key_store}
 \title{Changes the properties of a custom key store}
 \usage{
-kms_update_custom_key_store(CustomKeyStoreId, NewCustomKeyStoreName,
-  KeyStorePassword, CloudHsmClusterId)
+kms_update_custom_key_store(
+  CustomKeyStoreId,
+  NewCustomKeyStoreName = NULL,
+  KeyStorePassword = NULL,
+  CloudHsmClusterId = NULL
+)
 }
 \arguments{
 \item{CustomKeyStoreId}{[required] Identifies the custom key store that you want to update. Enter the ID of
@@ -14,16 +18,17 @@ the custom key store. To find the ID of a custom key store, use the
 operation.}
 
 \item{NewCustomKeyStoreName}{Changes the friendly name of the custom key store to the value that you
-specify. The custom key store name must be unique in the AWS account.}
+specify. The custom key store name must be unique in the Amazon Web
+Services account.}
 
-\item{KeyStorePassword}{Enter the current password of the \code{kmsuser} crypto user (CU) in the AWS
+\item{KeyStorePassword}{Enter the current password of the \code{kmsuser} crypto user (CU) in the
 CloudHSM cluster that is associated with the custom key store.
 
-This parameter tells AWS KMS the current password of the \code{kmsuser}
-crypto user (CU). It does not set or change the password of any users in
-the AWS CloudHSM cluster.}
+This parameter tells KMS the current password of the \code{kmsuser} crypto
+user (CU). It does not set or change the password of any users in the
+CloudHSM cluster.}
 
-\item{CloudHsmClusterId}{Associates the custom key store with a related AWS CloudHSM cluster.
+\item{CloudHsmClusterId}{Associates the custom key store with a related CloudHSM cluster.
 
 Enter the cluster ID of the cluster that you used to create the custom
 key store or a cluster that shares a backup history and has the same
@@ -35,74 +40,9 @@ certificate of a cluster, use the
 \href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
 operation.}
 }
-\value{
-An empty list.
-}
 \description{
-Changes the properties of a custom key store. Use the \code{CustomKeyStoreId}
-parameter to identify the custom key store you want to edit. Use the
-remaining parameters to change the properties of the custom key store.
+Changes the properties of a custom key store. Use the \code{CustomKeyStoreId} parameter to identify the custom key store you want to edit. Use the remaining parameters to change the properties of the custom key store.
 
-You can only update a custom key store that is disconnected. To
-disconnect the custom key store, use
-\code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}. To
-reconnect the custom key store after the update completes, use
-\code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}. To find the
-connection state of a custom key store, use the
-\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-operation.
-
-Use the parameters of
-\code{\link[=kms_update_custom_key_store]{update_custom_key_store}} to edit your
-keystore settings.
-\itemize{
-\item Use the \strong{NewCustomKeyStoreName} parameter to change the friendly
-name of the custom key store to the value that you specify.
-\item Use the \strong{KeyStorePassword} parameter tell AWS KMS the current
-password of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{\code{kmsuser} crypto user (CU)}
-in the associated AWS CloudHSM cluster. You can use this parameter
-to \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-password}{fix connection failures}
-that occur when AWS KMS cannot log into the associated cluster
-because the \code{kmsuser} password has changed. This value does not
-change the password in the AWS CloudHSM cluster.
-\item Use the \strong{CloudHsmClusterId} parameter to associate the custom key
-store with a different, but related, AWS CloudHSM cluster. You can
-use this parameter to repair a custom key store if its AWS CloudHSM
-cluster becomes corrupted or is deleted, or when you need to create
-or restore a cluster from a backup.
+See \url{https://paws-r.github.io/docs/kms/update_custom_key_store.html} for full documentation.
 }
-
-If the operation succeeds, it returns a JSON object with no properties.
-
-This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
-feature in AWS KMS, which combines the convenience and extensive
-integration of AWS KMS with the isolation and control of a single-tenant
-key store.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a custom
-key store in a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:UpdateCustomKeyStore}
-(IAM policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}
-\item \code{\link[=kms_create_custom_key_store]{create_custom_key_store}}
-\item \code{\link[=kms_delete_custom_key_store]{delete_custom_key_store}}
-\item \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-\item \code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$update_custom_key_store(
-  CustomKeyStoreId = "string",
-  NewCustomKeyStoreName = "string",
-  KeyStorePassword = "string",
-  CloudHsmClusterId = "string"
-)
-}
-}
-
 \keyword{internal}

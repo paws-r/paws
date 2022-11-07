@@ -4,7 +4,7 @@
 \alias{codestar_list_tags_for_project}
 \title{Gets the tags for a project}
 \usage{
-codestar_list_tags_for_project(id, nextToken, maxResults)
+codestar_list_tags_for_project(id, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{id}{[required] The ID of the project to get tags for.}
@@ -13,25 +13,9 @@ codestar_list_tags_for_project(id, nextToken, maxResults)
 
 \item{maxResults}{Reserved for future use.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Gets the tags for a project.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_project(
-  id = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codestar/list_tags_for_project.html} for full documentation.
+}
 \keyword{internal}

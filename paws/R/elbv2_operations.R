@@ -148,11 +148,11 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 .elbv2$operations$add_tags <- elbv2_add_tags
 
 #' Creates a listener for the specified Application Load Balancer, Network
-#' Load Balancer
+#' Load Balancer, or Gateway Load Balancer
 #'
 #' @description
 #' Creates a listener for the specified Application Load Balancer, Network
-#' Load Balancer. or Gateway Load Balancer.
+#' Load Balancer, or Gateway Load Balancer.
 #' 
 #' For more information, see the following:
 #' 
@@ -177,9 +177,9 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' @param Protocol The protocol for connections from clients to the load balancer. For
 #' Application Load Balancers, the supported protocols are HTTP and HTTPS.
 #' For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-#' and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if
-#' dual-stack mode is enabled. You cannot specify a protocol for a Gateway
-#' Load Balancer.
+#' and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if dual-stack
+#' mode is enabled. You cannot specify a protocol for a Gateway Load
+#' Balancer.
 #' @param Port The port on which the load balancer is listening. You cannot specify a
 #' port for a Gateway Load Balancer.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
@@ -479,7 +479,9 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' must not begin or end with a hyphen, and must not begin with
 #' "internal-".
 #' @param Subnets The IDs of the public subnets. You can specify only one subnet per
-#' Availability Zone. You must specify either subnets or subnet mappings.
+#' Availability Zone. You must specify either subnets or subnet mappings,
+#' but not both. To specify an Elastic IP address, specify subnet mappings
+#' instead of subnets.
 #' 
 #' \[Application Load Balancers\] You must specify subnets from at least
 #' two Availability Zones.
@@ -496,7 +498,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' \[Gateway Load Balancers\] You can specify subnets from one or more
 #' Availability Zones.
 #' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
-#' Availability Zone. You must specify either subnets or subnet mappings.
+#' Availability Zone. You must specify either subnets or subnet mappings,
+#' but not both.
 #' 
 #' \[Application Load Balancers\] You must specify subnets from at least
 #' two Availability Zones. You cannot specify Elastic IP addresses for your
@@ -538,7 +541,7 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' @param Type The type of load balancer. The default is `application`.
 #' @param IpAddressType The type of IP addresses used by the subnets for your load balancer. The
 #' possible values are `ipv4` (for IPv4 addresses) and `dualstack` (for
-#' IPv4 and IPv6 addresses). Internal load balancers must use `ipv4`.
+#' IPv4 and IPv6 addresses).
 #' @param CustomerOwnedIpv4Pool \[Application Load Balancers on Outposts\] The ID of the customer-owned
 #' address pool (CoIP pool).
 #'
@@ -990,7 +993,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'   HealthCheckProtocol, HealthCheckPort, HealthCheckEnabled,
 #'   HealthCheckPath, HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds,
 #'   HealthyThresholdCount, UnhealthyThresholdCount, Matcher, TargetType,
-#'   Tags)
+#'   Tags, IpAddressType)
 #'
 #' @param Name &#91;required&#93; The name of the target group.
 #' 
@@ -1027,18 +1030,20 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' default is port 80.
 #' @param HealthCheckEnabled Indicates whether health checks are enabled. If the target type is
 #' `lambda`, health checks are disabled by default but can be enabled. If
-#' the target type is `instance` or `ip`, health checks are always enabled
-#' and cannot be disabled.
+#' the target type is `instance`, `ip`, or `alb`, health checks are always
+#' enabled and cannot be disabled.
 #' @param HealthCheckPath \[HTTP/HTTPS health checks\] The destination for health checks on the
 #' targets.
 #' 
 #' \[HTTP1 or HTTP2 protocol version\] The ping path. The default is /.
 #' 
 #' \[GRPC protocol version\] The path of a custom health check method with
-#' the format /package.service/method. The default is /AWS.ALB/healthcheck.
+#' the format /package.service/method. The default is /Amazon Web
+#' Services.ALB/healthcheck.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
-#' individual target. For TCP health checks, the supported values are 10
-#' and 30 seconds. If the target type is `instance` or `ip`, the default is
+#' individual target. If the target group protocol is HTTP or HTTPS, the
+#' default is 30 seconds. If the target group protocol is TCP, TLS, UDP, or
+#' TCP_UDP, the supported values are 10 and 30 seconds and the default is
 #' 30 seconds. If the target group protocol is GENEVE, the default is 10
 #' seconds. If the target type is `lambda`, the default is 35 seconds.
 #' @param HealthCheckTimeoutSeconds The amount of time, in seconds, during which no response from a target
@@ -1074,7 +1079,12 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'     specify publicly routable IP addresses.
 #' 
 #' -   `lambda` - Register a single Lambda function as a target.
+#' 
+#' -   `alb` - Register a single Application Load Balancer as a target.
 #' @param Tags The tags to assign to the target group.
+#' @param IpAddressType The type of IP address used for this target group. The possible values
+#' are `ipv4` and `ipv6`. This is an optional parameter. If not specified,
+#' the IP address type defaults to `ipv4`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1102,8 +1112,9 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'       LoadBalancerArns = list(
 #'         "string"
 #'       ),
-#'       TargetType = "instance"|"ip"|"lambda",
-#'       ProtocolVersion = "string"
+#'       TargetType = "instance"|"ip"|"lambda"|"alb",
+#'       ProtocolVersion = "string",
+#'       IpAddressType = "ipv4"|"ipv6"
 #'     )
 #'   )
 #' )
@@ -1129,13 +1140,14 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'     HttpCode = "string",
 #'     GrpcCode = "string"
 #'   ),
-#'   TargetType = "instance"|"ip"|"lambda",
+#'   TargetType = "instance"|"ip"|"lambda"|"alb",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   IpAddressType = "ipv4"|"ipv6"
 #' )
 #' ```
 #'
@@ -1155,14 +1167,14 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' @keywords internal
 #'
 #' @rdname elbv2_create_target_group
-elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = NULL, Port = NULL, VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL, Tags = NULL) {
+elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = NULL, Port = NULL, VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL, Tags = NULL, IpAddressType = NULL) {
   op <- new_operation(
     name = "CreateTargetGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$create_target_group_input(Name = Name, Protocol = Protocol, ProtocolVersion = ProtocolVersion, Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher, TargetType = TargetType, Tags = Tags)
+  input <- .elbv2$create_target_group_input(Name = Name, Protocol = Protocol, ProtocolVersion = ProtocolVersion, Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher, TargetType = TargetType, Tags = Tags, IpAddressType = IpAddressType)
   output <- .elbv2$create_target_group_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -1454,11 +1466,11 @@ elbv2_deregister_targets <- function(TargetGroupArn, Targets) {
 .elbv2$operations$deregister_targets <- elbv2_deregister_targets
 
 #' Describes the current Elastic Load Balancing resource limits for your
-#' AWS account
+#' Amazon Web Services account
 #'
 #' @description
 #' Describes the current Elastic Load Balancing resource limits for your
-#' AWS account.
+#' Amazon Web Services account.
 #' 
 #' For more information, see the following:
 #' 
@@ -2103,12 +2115,14 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' in the *Network Load Balancers Guide*.
 #'
 #' @usage
-#' elbv2_describe_ssl_policies(Names, Marker, PageSize)
+#' elbv2_describe_ssl_policies(Names, Marker, PageSize, LoadBalancerType)
 #'
 #' @param Names The names of the policies.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param PageSize The maximum number of results to return with this call.
+#' @param LoadBalancerType The type of load balancer. The default lists the SSL policies for all
+#' load balancers.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2125,7 +2139,10 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #'           Priority = 123
 #'         )
 #'       ),
-#'       Name = "string"
+#'       Name = "string",
+#'       SupportedLoadBalancerTypes = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -2139,7 +2156,8 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #'     "string"
 #'   ),
 #'   Marker = "string",
-#'   PageSize = 123
+#'   PageSize = 123,
+#'   LoadBalancerType = "application"|"network"|"gateway"
 #' )
 #' ```
 #'
@@ -2156,14 +2174,14 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_ssl_policies
-elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = NULL) {
+elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = NULL, LoadBalancerType = NULL) {
   op <- new_operation(
     name = "DescribeSSLPolicies",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$describe_ssl_policies_input(Names = Names, Marker = Marker, PageSize = PageSize)
+  input <- .elbv2$describe_ssl_policies_input(Names = Names, Marker = Marker, PageSize = PageSize, LoadBalancerType = LoadBalancerType)
   output <- .elbv2$describe_ssl_policies_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -2362,8 +2380,9 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #'       LoadBalancerArns = list(
 #'         "string"
 #'       ),
-#'       TargetType = "instance"|"ip"|"lambda",
-#'       ProtocolVersion = "string"
+#'       TargetType = "instance"|"ip"|"lambda"|"alb",
+#'       ProtocolVersion = "string",
+#'       IpAddressType = "ipv4"|"ipv6"
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -3166,6 +3185,10 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' @description
 #' Modifies the health checks used when evaluating the health state of the
 #' targets in the specified target group.
+#' 
+#' If the protocol of the target group is TCP, TLS, UDP, or TCP_UDP, you
+#' can't modify the health check protocol, interval, timeout, or success
+#' codes.
 #'
 #' @usage
 #' elbv2_modify_target_group(TargetGroupArn, HealthCheckProtocol,
@@ -3175,11 +3198,13 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on
-#' targets. The TCP protocol is supported for health checks only if the
-#' protocol of the target group is TCP, TLS, UDP, or TCP_UDP. The GENEVE,
-#' TLS, UDP, and TCP_UDP protocols are not supported for health checks.
-#' 
-#' With Network Load Balancers, you can't modify this setting.
+#' targets. For Application Load Balancers, the default is HTTP. For
+#' Network Load Balancers and Gateway Load Balancers, the default is TCP.
+#' The TCP protocol is not supported for health checks if the protocol of
+#' the target group is HTTP or HTTPS. It is supported for health checks
+#' only if the protocol of the target group is TCP, TLS, UDP, or TCP_UDP.
+#' The GENEVE, TLS, UDP, and TCP_UDP protocols are not supported for health
+#' checks.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on
 #' targets.
 #' @param HealthCheckPath \[HTTP/HTTPS health checks\] The destination for health checks on the
@@ -3188,17 +3213,14 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' \[HTTP1 or HTTP2 protocol version\] The ping path. The default is /.
 #' 
 #' \[GRPC protocol version\] The path of a custom health check method with
-#' the format /package.service/method. The default is /AWS.ALB/healthcheck.
+#' the format /package.service/method. The default is /Amazon Web
+#' Services.ALB/healthcheck.
 #' @param HealthCheckEnabled Indicates whether health checks are enabled.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
 #' individual target. For TCP health checks, the supported values are 10 or
 #' 30 seconds.
-#' 
-#' With Network Load Balancers, you can't modify this setting.
 #' @param HealthCheckTimeoutSeconds \[HTTP/HTTPS health checks\] The amount of time, in seconds, during
 #' which no response means a failed health check.
-#' 
-#' With Network Load Balancers, you can't modify this setting.
 #' @param HealthyThresholdCount The number of consecutive health checks successes required before
 #' considering an unhealthy target healthy.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before
@@ -3206,8 +3228,6 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' TCP or TLS, this value must be the same as the healthy threshold count.
 #' @param Matcher \[HTTP/HTTPS health checks\] The HTTP or gRPC codes to use when checking
 #' for a successful response from a target.
-#' 
-#' With Network Load Balancers, you can't modify this setting.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3235,8 +3255,9 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #'       LoadBalancerArns = list(
 #'         "string"
 #'       ),
-#'       TargetType = "instance"|"ip"|"lambda",
-#'       ProtocolVersion = "string"
+#'       TargetType = "instance"|"ip"|"lambda"|"alb",
+#'       ProtocolVersion = "string",
+#'       IpAddressType = "ipv4"|"ipv6"
 #'     )
 #'   )
 #' )
@@ -3587,9 +3608,8 @@ elbv2_remove_tags <- function(ResourceArns, TagKeys) {
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param IpAddressType &#91;required&#93; The IP address type. The possible values are `ipv4` (for IPv4 addresses)
-#' and `dualstack` (for IPv4 and IPv6 addresses). Internal load balancers
-#' must use `ipv4`. You can’t specify `dualstack` for a load balancer with
-#' a UDP or TCP_UDP listener.
+#' and `dualstack` (for IPv4 and IPv6 addresses). You can’t specify
+#' `dualstack` for a load balancer with a UDP or TCP_UDP listener.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3925,7 +3945,7 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' for your load balancer. The possible values are `ipv4` (for IPv4
 #' addresses) and `dualstack` (for IPv4 and IPv6 addresses). You can’t
 #' specify `dualstack` for a load balancer with a UDP or TCP_UDP listener.
-#' Internal load balancers must use `ipv4`.
+#' .
 #'
 #' @return
 #' A list with the following syntax:

@@ -5,7 +5,7 @@
 \title{Returns all public keys whose private keys were used to sign the digest
 files within the specified time range}
 \usage{
-cloudtrail_list_public_keys(StartTime, EndTime, NextToken)
+cloudtrail_list_public_keys(StartTime = NULL, EndTime = NULL, NextToken = NULL)
 }
 \arguments{
 \item{StartTime}{Optionally specifies, in UTC, the start of the time range to look up
@@ -18,46 +18,9 @@ time is used.}
 
 \item{NextToken}{Reserved for future use.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PublicKeyList = list(
-    list(
-      Value = raw,
-      ValidityStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ValidityEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Fingerprint = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns all public keys whose private keys were used to sign the digest
-files within the specified time range. The public key is needed to
-validate digest files that were signed with its corresponding private
-key.
+Returns all public keys whose private keys were used to sign the digest files within the specified time range. The public key is needed to validate digest files that were signed with its corresponding private key.
 
-CloudTrail uses different private/public key pairs per region. Each
-digest file is signed with a private key unique to its region.
-Therefore, when you validate a digest file from a particular region, you
-must look in the same region for its corresponding public key.
+See \url{https://paws-r.github.io/docs/cloudtrail/list_public_keys.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_public_keys(
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

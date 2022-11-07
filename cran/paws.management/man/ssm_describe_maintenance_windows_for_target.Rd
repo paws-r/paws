@@ -3,16 +3,20 @@
 \name{ssm_describe_maintenance_windows_for_target}
 \alias{ssm_describe_maintenance_windows_for_target}
 \title{Retrieves information about the maintenance window targets or tasks that
-an instance is associated with}
+a managed node is associated with}
 \usage{
-ssm_describe_maintenance_windows_for_target(Targets, ResourceType,
-  MaxResults, NextToken)
+ssm_describe_maintenance_windows_for_target(
+  Targets,
+  ResourceType,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{Targets}{[required] The instance ID or key/value pair to retrieve information about.}
+\item{Targets}{[required] The managed node ID or key-value pair to retrieve information about.}
 
 \item{ResourceType}{[required] The type of resource you want to retrieve information about. For
-example, "INSTANCE".}
+example, \code{INSTANCE}.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -21,37 +25,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowIdentities = list(
-    list(
-      WindowId = "string",
-      Name = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves information about the maintenance window targets or tasks that
-an instance is associated with.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_maintenance_windows_for_target(
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ResourceType = "INSTANCE"|"RESOURCE_GROUP",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Retrieves information about the maintenance window targets or tasks that a managed node is associated with.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_windows_for_target.html} for full documentation.
+}
 \keyword{internal}

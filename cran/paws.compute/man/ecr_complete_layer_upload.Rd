@@ -5,13 +5,17 @@
 \title{Informs Amazon ECR that the image layer upload has completed for a
 specified registry, repository name, and upload ID}
 \usage{
-ecr_complete_layer_upload(registryId, repositoryName, uploadId,
-  layerDigests)
+ecr_complete_layer_upload(
+  registryId = NULL,
+  repositoryName,
+  uploadId,
+  layerDigests
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry to which to upload
-layers. If you do not specify a registry, the default registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry to which
+to upload layers. If you do not specify a registry, the default registry
+is assumed.}
 
 \item{repositoryName}{[required] The name of the repository to associate with the image layer.}
 
@@ -21,38 +25,9 @@ associate with the image layer.}
 
 \item{layerDigests}{[required] The \code{sha256} digest of the image layer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  repositoryName = "string",
-  uploadId = "string",
-  layerDigest = "string"
-)
-}
-}
 \description{
-Informs Amazon ECR that the image layer upload has completed for a
-specified registry, repository name, and upload ID. You can optionally
-provide a \code{sha256} digest of the image layer for data validation
-purposes.
+Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID. You can optionally provide a \code{sha256} digest of the image layer for data validation purposes.
 
-When an image is pushed, the CompleteLayerUpload API is called once per
-each new image layer to verify that the upload has completed.
-
-This operation is used by the Amazon ECR proxy and is not generally used
-by customers for pulling and pushing images. In most cases, you should
-use the \code{docker} CLI to pull, tag, and push images.
+See \url{https://paws-r.github.io/docs/ecr/complete_layer_upload.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$complete_layer_upload(
-  registryId = "string",
-  repositoryName = "string",
-  uploadId = "string",
-  layerDigests = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

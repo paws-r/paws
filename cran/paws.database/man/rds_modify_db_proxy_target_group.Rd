@@ -4,13 +4,17 @@
 \alias{rds_modify_db_proxy_target_group}
 \title{Modifies the properties of a DBProxyTargetGroup}
 \usage{
-rds_modify_db_proxy_target_group(TargetGroupName, DBProxyName,
-  ConnectionPoolConfig, NewName)
+rds_modify_db_proxy_target_group(
+  TargetGroupName,
+  DBProxyName,
+  ConnectionPoolConfig = NULL,
+  NewName = NULL
+)
 }
 \arguments{
-\item{TargetGroupName}{[required] The name of the new target group to assign to the proxy.}
+\item{TargetGroupName}{[required] The name of the target group to modify.}
 
-\item{DBProxyName}{[required] The name of the new proxy to which to assign the target group.}
+\item{DBProxyName}{[required] The name of the proxy.}
 
 \item{ConnectionPoolConfig}{The settings that determine the size and behavior of the connection pool
 for the target group.}
@@ -19,52 +23,9 @@ for the target group.}
 with a letter and must contain only ASCII letters, digits, and hyphens;
 it can't end with a hyphen or contain two consecutive hyphens.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBProxyTargetGroup = list(
-    DBProxyName = "string",
-    TargetGroupName = "string",
-    TargetGroupArn = "string",
-    IsDefault = TRUE|FALSE,
-    Status = "string",
-    ConnectionPoolConfig = list(
-      MaxConnectionsPercent = 123,
-      MaxIdleConnectionsPercent = 123,
-      ConnectionBorrowTimeout = 123,
-      SessionPinningFilters = list(
-        "string"
-      ),
-      InitQuery = "string"
-    ),
-    CreatedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    UpdatedDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Modifies the properties of a \code{DBProxyTargetGroup}.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_db_proxy_target_group(
-  TargetGroupName = "string",
-  DBProxyName = "string",
-  ConnectionPoolConfig = list(
-    MaxConnectionsPercent = 123,
-    MaxIdleConnectionsPercent = 123,
-    ConnectionBorrowTimeout = 123,
-    SessionPinningFilters = list(
-      "string"
-    ),
-    InitQuery = "string"
-  ),
-  NewName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/modify_db_proxy_target_group.html} for full documentation.
+}
 \keyword{internal}

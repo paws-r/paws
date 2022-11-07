@@ -5,8 +5,13 @@
 \title{Retrieves the exclusions preview (a list of ExclusionPreview objects)
 specified by the preview token}
 \usage{
-inspector_get_exclusions_preview(assessmentTemplateArn, previewToken,
-  nextToken, maxResults, locale)
+inspector_get_exclusions_preview(
+  assessmentTemplateArn,
+  previewToken,
+  nextToken = NULL,
+  maxResults = NULL,
+  locale = NULL
+)
 }
 \arguments{
 \item{assessmentTemplateArn}{[required] The ARN that specifies the assessment template for which the exclusions
@@ -27,46 +32,9 @@ want in the response. The default value is 100. The maximum value is
 \item{locale}{The locale into which you want to translate the exclusion's title,
 description, and recommendation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  previewStatus = "WORK_IN_PROGRESS"|"COMPLETED",
-  exclusionPreviews = list(
-    list(
-      title = "string",
-      description = "string",
-      recommendation = "string",
-      scopes = list(
-        list(
-          key = "INSTANCE_ID"|"RULES_PACKAGE_ARN",
-          value = "string"
-        )
-      ),
-      attributes = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Retrieves the exclusions preview (a list of ExclusionPreview objects)
-specified by the preview token. You can obtain the preview token by
-running the CreateExclusionsPreview API.
-}
-\section{Request syntax}{
-\preformatted{svc$get_exclusions_preview(
-  assessmentTemplateArn = "string",
-  previewToken = "string",
-  nextToken = "string",
-  maxResults = 123,
-  locale = "EN_US"
-)
-}
-}
+Retrieves the exclusions preview (a list of ExclusionPreview objects) specified by the preview token. You can obtain the preview token by running the CreateExclusionsPreview API.
 
+See \url{https://paws-r.github.io/docs/inspector/get_exclusions_preview.html} for full documentation.
+}
 \keyword{internal}

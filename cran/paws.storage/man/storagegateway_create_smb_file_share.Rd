@@ -2,24 +2,46 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_create_smb_file_share}
 \alias{storagegateway_create_smb_file_share}
-\title{Creates a Server Message Block (SMB) file share on an existing file
-gateway}
+\title{Creates a Server Message Block (SMB) file share on an existing S3 File
+Gateway}
 \usage{
-storagegateway_create_smb_file_share(ClientToken, GatewayARN,
-  KMSEncrypted, KMSKey, Role, LocationARN, DefaultStorageClass, ObjectACL,
-  ReadOnly, GuessMIMETypeEnabled, RequesterPays, SMBACLEnabled,
-  AccessBasedEnumeration, AdminUserList, ValidUserList, InvalidUserList,
-  AuditDestinationARN, Authentication, CaseSensitivity, Tags,
-  FileShareName, CacheAttributes, NotificationPolicy)
+storagegateway_create_smb_file_share(
+  ClientToken,
+  GatewayARN,
+  KMSEncrypted = NULL,
+  KMSKey = NULL,
+  Role,
+  LocationARN,
+  DefaultStorageClass = NULL,
+  ObjectACL = NULL,
+  ReadOnly = NULL,
+  GuessMIMETypeEnabled = NULL,
+  RequesterPays = NULL,
+  SMBACLEnabled = NULL,
+  AccessBasedEnumeration = NULL,
+  AdminUserList = NULL,
+  ValidUserList = NULL,
+  InvalidUserList = NULL,
+  AuditDestinationARN = NULL,
+  Authentication = NULL,
+  CaseSensitivity = NULL,
+  Tags = NULL,
+  FileShareName = NULL,
+  CacheAttributes = NULL,
+  NotificationPolicy = NULL,
+  VPCEndpointDNSName = NULL,
+  BucketRegion = NULL,
+  OplocksEnabled = NULL
+)
 }
 \arguments{
-\item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to
+\item{ClientToken}{[required] A unique string value that you supply that is used by S3 File Gateway to
 ensure idempotent file share creation.}
 
-\item{GatewayARN}{[required] The ARN of the file gateway on which you want to create a file share.}
+\item{GatewayARN}{[required] The ARN of the S3 File Gateway on which you want to create a file share.}
 
-\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
-KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own KMS
+key, or \code{false} to use a key managed by Amazon S3. Optional.
 
 Valid Values: \code{true} | \code{false}}
 
@@ -28,21 +50,41 @@ used for Amazon S3 server-side encryption. Storage Gateway does not
 support asymmetric CMKs. This value can only be set when \code{KMSEncrypted}
 is \code{true}. Optional.}
 
-\item{Role}{[required] The ARN of the AWS Identity and Access Management (IAM) role that a file
-gateway assumes when it accesses the underlying storage.}
+\item{Role}{[required] The ARN of the Identity and Access Management (IAM) role that an S3 File
+Gateway assumes when it accesses the underlying storage.}
 
-\item{LocationARN}{[required] The ARN of the backend storage used for storing file data. A prefix name
-can be added to the S3 bucket name. It must end with a "/".}
+\item{LocationARN}{[required] A custom ARN for the backend storage used for storing data for file
+shares. It includes a resource ARN with an optional prefix
+concatenation. The prefix must end with a forward slash (/).
+
+You can specify LocationARN as a bucket ARN, access point ARN or access
+point alias, as shown in the following examples.
+
+Bucket ARN:
+
+\verb{arn:aws:s3:::my-bucket/prefix/}
+
+Access point ARN:
+
+\verb{arn:aws:s3:region:account-id:accesspoint/access-point-name/prefix/}
+
+If you specify an access point, the bucket policy must be configured to
+delegate access control to the access point. For information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-policies.html#access-points-delegating-control}{Delegating access control to access points}
+in the \emph{Amazon S3 User Guide}.
+
+Access point alias:
+
+\code{test-ap-ab123cdef4gehijklmn5opqrstuvuse1a-s3alias}}
 
 \item{DefaultStorageClass}{The default storage class for objects put into an Amazon S3 bucket by
-the file gateway. The default value is \code{S3_INTELLIGENT_TIERING}.
-Optional.
+the S3 File Gateway. The default value is \code{S3_STANDARD}. Optional.
 
 Valid Values: \code{S3_STANDARD} | \code{S3_INTELLIGENT_TIERING} |
 \code{S3_STANDARD_IA} | \code{S3_ONEZONE_IA}}
 
 \item{ObjectACL}{A value that sets the access control list (ACL) permission for objects
-in the S3 bucket that a file gateway puts objects into. The default
+in the S3 bucket that a S3 File Gateway puts objects into. The default
 value is \code{private}.}
 
 \item{ReadOnly}{A value that sets the write status of a file share. Set this value to
@@ -71,8 +113,8 @@ Valid Values: \code{true} | \code{false}}
 file share. Set it to \code{false} to map file and directory permissions to
 the POSIX permissions.
 
-For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html}{Using Microsoft Windows ACLs to control access to an SMB file share}
-in the \emph{AWS Storage Gateway User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html}{Using Microsoft Windows ACLs to control access to an SMB file share} in the
+\emph{Storage Gateway User Guide}.
 
 Valid Values: \code{true} | \code{false}}
 
@@ -99,7 +141,7 @@ Acceptable formats include: \verb{DOMAIN\\User1}, \code{user1}, \verb{@group1}, 
 \verb{@DOMAIN\\group1}. Can only be set if Authentication is set to
 \code{ActiveDirectory}.}
 
-\item{AuditDestinationARN}{The Amazon Resource Name (ARN) of the storage used for the audit logs.}
+\item{AuditDestinationARN}{The Amazon Resource Name (ARN) of the storage used for audit logs.}
 
 \item{Authentication}{The authentication method that users use to access the file share. The
 default is \code{ActiveDirectory}.
@@ -122,75 +164,55 @@ the maximum length for a tag's value is 256.}
 \item{FileShareName}{The name of the file share. Optional.
 
 \code{FileShareName} must be set if an S3 prefix name is set in
-\code{LocationARN}.}
+\code{LocationARN}, or if an access point or access point alias is used.}
 
-\item{CacheAttributes}{Refresh cache information.}
+\item{CacheAttributes}{Specifies refresh cache information for the file share.}
 
-\item{NotificationPolicy}{The notification policy of the file share.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  FileShareARN = "string"
-)
-}
+\item{NotificationPolicy}{The notification policy of the file share. \code{SettlingTimeInSeconds}
+controls the number of seconds to wait after the last point in time a
+client wrote to a file before generating an \code{ObjectUploaded}
+notification. Because clients can make many small writes to files, it's
+best to set this parameter for as long as possible to avoid generating
+multiple notifications for the same file in a small time period.
+
+\code{SettlingTimeInSeconds} has no effect on the timing of the object
+uploading to Amazon S3, only the timing of the notification.
+
+The following example sets \code{NotificationPolicy} on with
+\code{SettlingTimeInSeconds} set to 60.
+
+\verb{\{\\"Upload\\": \{\\"SettlingTimeInSeconds\\": 60\}\}}
+
+The following example sets \code{NotificationPolicy} off.
+
+\code{{}}}
+
+\item{VPCEndpointDNSName}{Specifies the DNS name for the VPC endpoint that the SMB file share uses
+to connect to Amazon S3.
+
+This parameter is required for SMB file shares that connect to Amazon S3
+through a VPC endpoint, a VPC access point, or an access point alias
+that points to a VPC access point.}
+
+\item{BucketRegion}{Specifies the Region of the S3 bucket where the SMB file share stores
+files.
+
+This parameter is required for SMB file shares that connect to Amazon S3
+through a VPC endpoint, a VPC access point, or an access point alias
+that points to a VPC access point.}
+
+\item{OplocksEnabled}{Specifies whether opportunistic locking is enabled for the SMB file
+share.
+
+Enabling opportunistic locking on case-sensitive shares is not
+recommended for workloads that involve access to files with the same
+name in different case.
+
+Valid Values: \code{true} | \code{false}}
 }
 \description{
-Creates a Server Message Block (SMB) file share on an existing file
-gateway. In Storage Gateway, a file share is a file system mount point
-backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
-using an SMB interface. This operation is only supported for file
-gateways.
+Creates a Server Message Block (SMB) file share on an existing S3 File Gateway. In Storage Gateway, a file share is a file system mount point backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using an SMB interface. This operation is only supported for S3 File Gateways.
 
-File gateways require AWS Security Token Service (AWS STS) to be
-activated to enable you to create a file share. Make sure that AWS STS
-is activated in the AWS Region you are creating your file gateway in. If
-AWS STS is not activated in this AWS Region, activate it. For
-information about how to activate AWS STS, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and deactivating AWS STS in an AWS Region}
-in the \emph{AWS Identity and Access Management User Guide}.
-
-File gateways don't support creating hard or symbolic links on a file
-share.
+See \url{https://paws-r.github.io/docs/storagegateway/create_smb_file_share.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_smb_file_share(
-  ClientToken = "string",
-  GatewayARN = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string",
-  Role = "string",
-  LocationARN = "string",
-  DefaultStorageClass = "string",
-  ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
-  ReadOnly = TRUE|FALSE,
-  GuessMIMETypeEnabled = TRUE|FALSE,
-  RequesterPays = TRUE|FALSE,
-  SMBACLEnabled = TRUE|FALSE,
-  AccessBasedEnumeration = TRUE|FALSE,
-  AdminUserList = list(
-    "string"
-  ),
-  ValidUserList = list(
-    "string"
-  ),
-  InvalidUserList = list(
-    "string"
-  ),
-  AuditDestinationARN = "string",
-  Authentication = "string",
-  CaseSensitivity = "ClientSpecified"|"CaseSensitive",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  FileShareName = "string",
-  CacheAttributes = list(
-    CacheStaleTimeoutInSeconds = 123
-  ),
-  NotificationPolicy = "string"
-)
-}
-}
-
 \keyword{internal}

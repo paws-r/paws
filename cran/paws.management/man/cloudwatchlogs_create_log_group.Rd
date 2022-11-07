@@ -4,59 +4,24 @@
 \alias{cloudwatchlogs_create_log_group}
 \title{Creates a log group with the specified name}
 \usage{
-cloudwatchlogs_create_log_group(logGroupName, kmsKeyId, tags)
+cloudwatchlogs_create_log_group(logGroupName, kmsKeyId = NULL, tags = NULL)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 
 \item{kmsKeyId}{The Amazon Resource Name (ARN) of the CMK to use when encrypting log
-data. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - AWS Key Management Service (AWS KMS)}.}
+data. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - Key Management Service}.}
 
-\item{tags}{The key-value pairs to use for the tags.}
-}
-\value{
-An empty list.
+\item{tags}{The key-value pairs to use for the tags.
+
+CloudWatch Logs doesn’t support IAM policies that prevent users from
+assigning specified tags to log groups using the
+\code{aws:Resource/key-name } or \code{aws:TagKeys} condition keys. For more
+information about using tags to control access, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
 }
 \description{
-Creates a log group with the specified name. You can create up to 20,000
-log groups per account.
+Creates a log group with the specified name. You can create up to 20,000 log groups per account.
 
-You must use the following guidelines when naming a log group:
-\itemize{
-\item Log group names must be unique within a region for an AWS account.
-\item Log group names can be between 1 and 512 characters long.
-\item Log group names consist of the following characters: a-z, A-Z, 0-9,
-'_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
-and '#' (number sign)
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/create_log_group.html} for full documentation.
 }
-
-When you create a log group, by default the log events in the log group
-never expire. To set a retention policy so that events expire and are
-deleted after a specified time, use
-\code{\link[=cloudwatchlogs_put_retention_policy]{put_retention_policy}}.
-
-If you associate a AWS Key Management Service (AWS KMS) customer master
-key (CMK) with the log group, ingested data is encrypted using the CMK.
-This association is stored as long as the data encrypted with the CMK is
-still within Amazon CloudWatch Logs. This enables Amazon CloudWatch Logs
-to decrypt this data whenever it is requested.
-
-If you attempt to associate a CMK with the log group but the CMK does
-not exist or the CMK is disabled, you receive an
-\code{InvalidParameterException} error.
-
-CloudWatch Logs supports only symmetric CMKs. Do not associate an
-asymmetric CMK with your log group. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_log_group(
-  logGroupName = "string",
-  kmsKeyId = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

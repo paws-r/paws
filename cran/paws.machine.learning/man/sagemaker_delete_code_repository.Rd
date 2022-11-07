@@ -9,17 +9,9 @@ sagemaker_delete_code_repository(CodeRepositoryName)
 \arguments{
 \item{CodeRepositoryName}{[required] The name of the Git repository to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified Git repository from your account.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_code_repository(
-  CodeRepositoryName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_code_repository.html} for full documentation.
+}
 \keyword{internal}

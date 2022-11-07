@@ -5,11 +5,16 @@
 \title{This API is in preview release for Amazon Connect and is subject to
 change}
 \usage{
-connect_update_instance_storage_config(InstanceId, AssociationId,
-  ResourceType, StorageConfig)
+connect_update_instance_storage_config(
+  InstanceId,
+  AssociationId,
+  ResourceType,
+  StorageConfig
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{AssociationId}{[required] The existing association identifier that uniquely identifies the
 resource type and storage config for the given instance ID.}
@@ -18,49 +23,9 @@ resource type and storage config for the given instance ID.}
 
 \item{StorageConfig}{[required]}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Updates an existing configuration for a resource type. This API is
-idempotent.
+See \url{https://paws-r.github.io/docs/connect/update_instance_storage_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_instance_storage_config(
-  InstanceId = "string",
-  AssociationId = "string",
-  ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS",
-  StorageConfig = list(
-    AssociationId = "string",
-    StorageType = "S3"|"KINESIS_VIDEO_STREAM"|"KINESIS_STREAM"|"KINESIS_FIREHOSE",
-    S3Config = list(
-      BucketName = "string",
-      BucketPrefix = "string",
-      EncryptionConfig = list(
-        EncryptionType = "KMS",
-        KeyId = "string"
-      )
-    ),
-    KinesisVideoStreamConfig = list(
-      Prefix = "string",
-      RetentionPeriodHours = 123,
-      EncryptionConfig = list(
-        EncryptionType = "KMS",
-        KeyId = "string"
-      )
-    ),
-    KinesisStreamConfig = list(
-      StreamArn = "string"
-    ),
-    KinesisFirehoseConfig = list(
-      FirehoseArn = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

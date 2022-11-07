@@ -79,7 +79,7 @@ NULL
 #'   voiceId = "string",
 #'   checksum = "string",
 #'   version = "string",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR",
 #'   childDirected = TRUE|FALSE,
 #'   enableModelImprovements = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE
@@ -128,8 +128,8 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
 #' [`create_intent_version`][lexmodelbuildingservice_create_intent_version]
 #' operation.
 #' 
-#' When you create a version of an intent, Amazon Lex sets the version to
-#' 1. Subsequent versions increment by 1. For more information, see
+#' When you create a version of an intent, Amazon Lex sets the version
+#' to 1. Subsequent versions increment by 1. For more information, see
 #' versioning-intro.
 #' 
 #' This operation requires permissions to perform the
@@ -325,8 +325,8 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
 #' [`create_slot_type_version`][lexmodelbuildingservice_create_slot_type_version]
 #' operation.
 #' 
-#' When you create a version of a slot type, Amazon Lex sets the version to
-#' 1. Subsequent versions increment by 1. For more information, see
+#' When you create a version of a slot type, Amazon Lex sets the version
+#' to 1. Subsequent versions increment by 1. For more information, see
 #' versioning-intro.
 #' 
 #' This operation requires permissions for the `lex:CreateSlotTypeVersion`
@@ -958,7 +958,7 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #'   voiceId = "string",
 #'   checksum = "string",
 #'   version = "string",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR",
 #'   childDirected = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE
 #' )
@@ -1491,9 +1491,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' lexmodelbuildingservice_get_builtin_intent(signature)
 #'
 #' @param signature &#91;required&#93; The unique identifier for a built-in intent. To find the signature for
-#' an intent, see [Standard Built-in
-#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
-#' in the *Alexa Skills Kit*.
+#' an intent, see Standard Built-in Intents in the *Alexa Skills Kit*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1501,7 +1499,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' list(
 #'   signature = "string",
 #'   supportedLocales = list(
-#'     "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+#'     "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR"
 #'   ),
 #'   slots = list(
 #'     list(
@@ -1572,7 +1570,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #'     list(
 #'       signature = "string",
 #'       supportedLocales = list(
-#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+#'         "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR"
 #'       )
 #'     )
 #'   ),
@@ -1583,7 +1581,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' @section Request syntax:
 #' ```
 #' svc$get_builtin_intents(
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR",
 #'   signatureContains = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -1615,9 +1613,8 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' @description
 #' Gets a list of built-in slot types that meet the specified criteria.
 #' 
-#' For a list of built-in slot types, see [Slot Type
-#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
-#' in the *Alexa Skills Kit*.
+#' For a list of built-in slot types, see Slot Type Reference in the *Alexa
+#' Skills Kit*.
 #' 
 #' This operation requires permission for the `lex:GetBuiltInSlotTypes`
 #' action.
@@ -1645,7 +1642,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #'     list(
 #'       signature = "string",
 #'       supportedLocales = list(
-#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+#'         "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR"
 #'       )
 #'     )
 #'   ),
@@ -1656,7 +1653,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' @section Request syntax:
 #' ```
 #' svc$get_builtin_slot_types(
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR",
 #'   signatureContains = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -2151,6 +2148,154 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 }
 .lexmodelbuildingservice$operations$get_intents <- lexmodelbuildingservice_get_intents
 
+#' Provides details about an ongoing or complete migration from an Amazon
+#' Lex V1 bot to an Amazon Lex V2 bot
+#'
+#' @description
+#' Provides details about an ongoing or complete migration from an Amazon
+#' Lex V1 bot to an Amazon Lex V2 bot. Use this operation to view the
+#' migration alerts and warnings related to the migration.
+#'
+#' @usage
+#' lexmodelbuildingservice_get_migration(migrationId)
+#'
+#' @param migrationId &#91;required&#93; The unique identifier of the migration to view. The `migrationID` is
+#' returned by the operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   migrationId = "string",
+#'   v1BotName = "string",
+#'   v1BotVersion = "string",
+#'   v1BotLocale = "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR",
+#'   v2BotId = "string",
+#'   v2BotRole = "string",
+#'   migrationStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   migrationStrategy = "CREATE_NEW"|"UPDATE_EXISTING",
+#'   migrationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   alerts = list(
+#'     list(
+#'       type = "ERROR"|"WARN",
+#'       message = "string",
+#'       details = list(
+#'         "string"
+#'       ),
+#'       referenceURLs = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_migration(
+#'   migrationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelbuildingservice_get_migration
+lexmodelbuildingservice_get_migration <- function(migrationId) {
+  op <- new_operation(
+    name = "GetMigration",
+    http_method = "GET",
+    http_path = "/migrations/{migrationId}",
+    paginator = list()
+  )
+  input <- .lexmodelbuildingservice$get_migration_input(migrationId = migrationId)
+  output <- .lexmodelbuildingservice$get_migration_output()
+  config <- get_config()
+  svc <- .lexmodelbuildingservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelbuildingservice$operations$get_migration <- lexmodelbuildingservice_get_migration
+
+#' Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2
+#'
+#' @description
+#' Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2.
+#'
+#' @usage
+#' lexmodelbuildingservice_get_migrations(sortByAttribute, sortByOrder,
+#'   v1BotNameContains, migrationStatusEquals, maxResults, nextToken)
+#'
+#' @param sortByAttribute The field to sort the list of migrations by. You can sort by the Amazon
+#' Lex V1 bot name or the date and time that the migration was started.
+#' @param sortByOrder The order so sort the list.
+#' @param v1BotNameContains Filters the list to contain only bots whose name contains the specified
+#' string. The string is matched anywhere in bot name.
+#' @param migrationStatusEquals Filters the list to contain only migrations in the specified state.
+#' @param maxResults The maximum number of migrations to return in the response. The default
+#' is 10.
+#' @param nextToken A pagination token that fetches the next page of migrations. If the
+#' response to this operation is truncated, Amazon Lex returns a pagination
+#' token in the response. To fetch the next page of migrations, specify the
+#' pagination token in the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   migrationSummaries = list(
+#'     list(
+#'       migrationId = "string",
+#'       v1BotName = "string",
+#'       v1BotVersion = "string",
+#'       v1BotLocale = "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR",
+#'       v2BotId = "string",
+#'       v2BotRole = "string",
+#'       migrationStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'       migrationStrategy = "CREATE_NEW"|"UPDATE_EXISTING",
+#'       migrationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_migrations(
+#'   sortByAttribute = "V1_BOT_NAME"|"MIGRATION_DATE_TIME",
+#'   sortByOrder = "ASCENDING"|"DESCENDING",
+#'   v1BotNameContains = "string",
+#'   migrationStatusEquals = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelbuildingservice_get_migrations
+lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortByOrder = NULL, v1BotNameContains = NULL, migrationStatusEquals = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetMigrations",
+    http_method = "GET",
+    http_path = "/migrations",
+    paginator = list()
+  )
+  input <- .lexmodelbuildingservice$get_migrations_input(sortByAttribute = sortByAttribute, sortByOrder = sortByOrder, v1BotNameContains = v1BotNameContains, migrationStatusEquals = migrationStatusEquals, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelbuildingservice$get_migrations_output()
+  config <- get_config()
+  svc <- .lexmodelbuildingservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelbuildingservice$operations$get_migrations <- lexmodelbuildingservice_get_migrations
+
 #' Returns information about a specific version of a slot type
 #'
 #' @description
@@ -2434,9 +2579,10 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #' received by the bot in the last 15 days. The response contains
 #' information about a maximum of 100 utterances for each version.
 #' 
-#' If you set `childDirected` field to true when you created your bot, or
-#' if you opted out of participating in improving Amazon Lex, utterances
-#' are not available.
+#' If you set `childDirected` field to true when you created your bot, if
+#' you are using slot obfuscation with one or more slots, or if you opted
+#' out of participating in improving Amazon Lex, utterances are not
+#' available.
 #' 
 #' This operation requires permissions for the `lex:GetUtterancesView`
 #' action.
@@ -2836,7 +2982,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #'   voiceId = "string",
 #'   checksum = "string",
 #'   version = "string",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR",
 #'   childDirected = TRUE|FALSE,
 #'   createVersion = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE,
@@ -2887,7 +3033,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #'   voiceId = "string",
 #'   checksum = "string",
 #'   processBehavior = "SAVE"|"BUILD",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR",
 #'   childDirected = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE,
 #'   createVersion = TRUE|FALSE,
@@ -3950,6 +4096,92 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
   return(response)
 }
 .lexmodelbuildingservice$operations$start_import <- lexmodelbuildingservice_start_import
+
+#' Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2
+#'
+#' @description
+#' Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2. Migrate your
+#' bot when you want to take advantage of the new features of Amazon Lex
+#' V2.
+#' 
+#' For more information, see [Migrating a
+#' bot](https://docs.aws.amazon.com/lex/latest/dg/migrate.html) in the
+#' *Amazon Lex developer guide*.
+#'
+#' @usage
+#' lexmodelbuildingservice_start_migration(v1BotName, v1BotVersion,
+#'   v2BotName, v2BotRole, migrationStrategy)
+#'
+#' @param v1BotName &#91;required&#93; The name of the Amazon Lex V1 bot that you are migrating to Amazon Lex
+#' V2.
+#' @param v1BotVersion &#91;required&#93; The version of the bot to migrate to Amazon Lex V2. You can migrate the
+#' `$LATEST` version as well as any numbered version.
+#' @param v2BotName &#91;required&#93; The name of the Amazon Lex V2 bot that you are migrating the Amazon Lex
+#' V1 bot to.
+#' 
+#' -   If the Amazon Lex V2 bot doesn't exist, you must use the
+#'     `CREATE_NEW` migration strategy.
+#' 
+#' -   If the Amazon Lex V2 bot exists, you must use the `UPDATE_EXISTING`
+#'     migration strategy to change the contents of the Amazon Lex V2 bot.
+#' @param v2BotRole &#91;required&#93; The IAM role that Amazon Lex uses to run the Amazon Lex V2 bot.
+#' @param migrationStrategy &#91;required&#93; The strategy used to conduct the migration.
+#' 
+#' -   `CREATE_NEW` - Creates a new Amazon Lex V2 bot and migrates the
+#'     Amazon Lex V1 bot to the new bot.
+#' 
+#' -   `UPDATE_EXISTING` - Overwrites the existing Amazon Lex V2 bot
+#'     metadata and the locale being migrated. It doesn't change any other
+#'     locales in the Amazon Lex V2 bot. If the locale doesn't exist, a new
+#'     locale is created in the Amazon Lex V2 bot.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   v1BotName = "string",
+#'   v1BotVersion = "string",
+#'   v1BotLocale = "de-DE"|"en-AU"|"en-GB"|"en-IN"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"|"ja-JP"|"ko-KR",
+#'   v2BotId = "string",
+#'   v2BotRole = "string",
+#'   migrationId = "string",
+#'   migrationStrategy = "CREATE_NEW"|"UPDATE_EXISTING",
+#'   migrationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_migration(
+#'   v1BotName = "string",
+#'   v1BotVersion = "string",
+#'   v2BotName = "string",
+#'   v2BotRole = "string",
+#'   migrationStrategy = "CREATE_NEW"|"UPDATE_EXISTING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelbuildingservice_start_migration
+lexmodelbuildingservice_start_migration <- function(v1BotName, v1BotVersion, v2BotName, v2BotRole, migrationStrategy) {
+  op <- new_operation(
+    name = "StartMigration",
+    http_method = "POST",
+    http_path = "/migrations",
+    paginator = list()
+  )
+  input <- .lexmodelbuildingservice$start_migration_input(v1BotName = v1BotName, v1BotVersion = v1BotVersion, v2BotName = v2BotName, v2BotRole = v2BotRole, migrationStrategy = migrationStrategy)
+  output <- .lexmodelbuildingservice$start_migration_output()
+  config <- get_config()
+  svc <- .lexmodelbuildingservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelbuildingservice$operations$start_migration <- lexmodelbuildingservice_start_migration
 
 #' Adds the specified tags to the specified resource
 #'

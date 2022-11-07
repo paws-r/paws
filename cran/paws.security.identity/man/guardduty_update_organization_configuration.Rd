@@ -4,8 +4,11 @@
 \alias{guardduty_update_organization_configuration}
 \title{Updates the delegated administrator account with the values provided}
 \usage{
-guardduty_update_organization_configuration(DetectorId, AutoEnable,
-  DataSources)
+guardduty_update_organization_configuration(
+  DetectorId,
+  AutoEnable,
+  DataSources = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector to update the delegated administrator for.}
@@ -15,23 +18,9 @@ organization.}
 
 \item{DataSources}{Describes which data sources will be updated.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the delegated administrator account with the values provided.
-}
-\section{Request syntax}{
-\preformatted{svc$update_organization_configuration(
-  DetectorId = "string",
-  AutoEnable = TRUE|FALSE,
-  DataSources = list(
-    S3Logs = list(
-      AutoEnable = TRUE|FALSE
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/update_organization_configuration.html} for full documentation.
+}
 \keyword{internal}

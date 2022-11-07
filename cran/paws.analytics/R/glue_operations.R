@@ -8,117 +8,15 @@ NULL
 #' @description
 #' Creates one or more partitions in a batch operation.
 #'
-#' @usage
-#' glue_batch_create_partition(CatalogId, DatabaseName, TableName,
-#'   PartitionInputList)
+#' See [https://paws-r.github.io/docs/glue/batch_create_partition.html](https://paws-r.github.io/docs/glue/batch_create_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the catalog in which the partition is to be created.
-#' Currently, this should be the AWS account ID.
+#' Currently, this should be the Amazon Web Services account ID.
 #' @param DatabaseName &#91;required&#93; The name of the metadata database in which the partition is to be
 #' created.
 #' @param TableName &#91;required&#93; The name of the metadata table in which the partition is to be created.
 #' @param PartitionInputList &#91;required&#93; A list of `PartitionInput` structures that define the partitions to be
 #' created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Errors = list(
-#'     list(
-#'       PartitionValues = list(
-#'         "string"
-#'       ),
-#'       ErrorDetail = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_create_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionInputList = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       LastAccessTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StorageDescriptor = list(
-#'         Columns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "string",
-#'             Comment = "string",
-#'             Parameters = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         Location = "string",
-#'         InputFormat = "string",
-#'         OutputFormat = "string",
-#'         Compressed = TRUE|FALSE,
-#'         NumberOfBuckets = 123,
-#'         SerdeInfo = list(
-#'           Name = "string",
-#'           SerializationLibrary = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         ),
-#'         BucketColumns = list(
-#'           "string"
-#'         ),
-#'         SortColumns = list(
-#'           list(
-#'             Column = "string",
-#'             SortOrder = 123
-#'           )
-#'         ),
-#'         Parameters = list(
-#'           "string"
-#'         ),
-#'         SkewedInfo = list(
-#'           SkewedColumnNames = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValues = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValueLocationMaps = list(
-#'             "string"
-#'           )
-#'         ),
-#'         StoredAsSubDirectories = TRUE|FALSE,
-#'         SchemaReference = list(
-#'           SchemaId = list(
-#'             SchemaArn = "string",
-#'             SchemaName = "string",
-#'             RegistryName = "string"
-#'           ),
-#'           SchemaVersionId = "string",
-#'           SchemaVersionNumber = 123
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       LastAnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -145,38 +43,11 @@ glue_batch_create_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @description
 #' Deletes a list of connection definitions from the Data Catalog.
 #'
-#' @usage
-#' glue_batch_delete_connection(CatalogId, ConnectionNameList)
+#' See [https://paws-r.github.io/docs/glue/batch_delete_connection.html](https://paws-r.github.io/docs/glue/batch_delete_connection.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connections reside. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param ConnectionNameList &#91;required&#93; A list of names of the connections to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Succeeded = list(
-#'     "string"
-#'   ),
-#'   Errors = list(
-#'     list(
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_delete_connection(
-#'   CatalogId = "string",
-#'   ConnectionNameList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -203,50 +74,14 @@ glue_batch_delete_connection <- function(CatalogId = NULL, ConnectionNameList) {
 #' @description
 #' Deletes one or more partitions in a batch operation.
 #'
-#' @usage
-#' glue_batch_delete_partition(CatalogId, DatabaseName, TableName,
-#'   PartitionsToDelete)
+#' See [https://paws-r.github.io/docs/glue/batch_delete_partition.html](https://paws-r.github.io/docs/glue/batch_delete_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partition to be deleted resides. If
-#' none is provided, the AWS account ID is used by default.
+#' none is provided, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which the table in question resides.
 #' @param TableName &#91;required&#93; The name of the table that contains the partitions to be deleted.
 #' @param PartitionsToDelete &#91;required&#93; A list of `PartitionInput` structures that define the partitions to be
 #' deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Errors = list(
-#'     list(
-#'       PartitionValues = list(
-#'         "string"
-#'       ),
-#'       ErrorDetail = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_delete_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionsToDelete = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -272,67 +107,27 @@ glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #'
 #' @description
 #' Deletes multiple tables at once.
-#' 
-#' After completing this operation, you no longer have access to the table
-#' versions and partitions that belong to the deleted table. AWS Glue
-#' deletes these "orphaned" resources asynchronously in a timely manner, at
-#' the discretion of the service.
-#' 
-#' To ensure the immediate deletion of all related resources, before
-#' calling [`batch_delete_table`][glue_batch_delete_table], use
-#' [`delete_table_version`][glue_delete_table_version] or
-#' [`batch_delete_table_version`][glue_batch_delete_table_version], and
-#' [`delete_partition`][glue_delete_partition] or
-#' [`batch_delete_partition`][glue_batch_delete_partition], to delete any
-#' resources that belong to the table.
 #'
-#' @usage
-#' glue_batch_delete_table(CatalogId, DatabaseName, TablesToDelete)
+#' See [https://paws-r.github.io/docs/glue/batch_delete_table.html](https://paws-r.github.io/docs/glue/batch_delete_table.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
-#' the AWS account ID is used by default.
+#' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which the tables to delete reside.
 #' For Hive compatibility, this name is entirely lowercase.
 #' @param TablesToDelete &#91;required&#93; A list of the table to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Errors = list(
-#'     list(
-#'       TableName = "string",
-#'       ErrorDetail = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_delete_table(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TablesToDelete = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param TransactionId The transaction ID at which to delete the table contents.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_batch_delete_table
-glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDelete) {
+glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDelete, TransactionId = NULL) {
   op <- new_operation(
     name = "BatchDeleteTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$batch_delete_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TablesToDelete = TablesToDelete)
+  input <- .glue$batch_delete_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TablesToDelete = TablesToDelete, TransactionId = TransactionId)
   output <- .glue$batch_delete_table_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -347,47 +142,16 @@ glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDele
 #' @description
 #' Deletes a specified batch of versions of a table.
 #'
-#' @usage
-#' glue_batch_delete_table_version(CatalogId, DatabaseName, TableName,
-#'   VersionIds)
+#' See [https://paws-r.github.io/docs/glue/batch_delete_table_version.html](https://paws-r.github.io/docs/glue/batch_delete_table_version.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
-#' the AWS account ID is used by default.
+#' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The database in the catalog in which the table resides. For Hive
 #' compatibility, this name is entirely lowercase.
 #' @param TableName &#91;required&#93; The name of the table. For Hive compatibility, this name is entirely
 #' lowercase.
 #' @param VersionIds &#91;required&#93; A list of the IDs of versions to be deleted. A `VersionId` is a string
 #' representation of an integer. Each version is incremented by 1.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Errors = list(
-#'     list(
-#'       TableName = "string",
-#'       VersionId = "string",
-#'       ErrorDetail = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_delete_table_version(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   VersionIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -409,128 +173,47 @@ glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, Tabl
 }
 .glue$operations$batch_delete_table_version <- glue_batch_delete_table_version
 
+#' Retrieves information about a list of blueprints
+#'
+#' @description
+#' Retrieves information about a list of blueprints.
+#'
+#' See [https://paws-r.github.io/docs/glue/batch_get_blueprints.html](https://paws-r.github.io/docs/glue/batch_get_blueprints.html) for full documentation.
+#'
+#' @param Names &#91;required&#93; A list of blueprint names.
+#' @param IncludeBlueprint Specifies whether or not to include the blueprint in the response.
+#' @param IncludeParameterSpec Specifies whether or not to include the parameters, as a JSON string,
+#' for the blueprint in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_blueprints
+glue_batch_get_blueprints <- function(Names, IncludeBlueprint = NULL, IncludeParameterSpec = NULL) {
+  op <- new_operation(
+    name = "BatchGetBlueprints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$batch_get_blueprints_input(Names = Names, IncludeBlueprint = IncludeBlueprint, IncludeParameterSpec = IncludeParameterSpec)
+  output <- .glue$batch_get_blueprints_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_blueprints <- glue_batch_get_blueprints
+
 #' Returns a list of resource metadata for a given list of crawler names
 #'
 #' @description
-#' Returns a list of resource metadata for a given list of crawler names.
-#' After calling the [`list_crawlers`][glue_list_crawlers] operation, you
-#' can call this operation to access the data to which you have been
-#' granted permissions. This operation supports all IAM permissions,
-#' including permission conditions that uses tags.
+#' Returns a list of resource metadata for a given list of crawler names. After calling the [`list_crawlers`][glue_list_crawlers] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' @usage
-#' glue_batch_get_crawlers(CrawlerNames)
+#' See [https://paws-r.github.io/docs/glue/batch_get_crawlers.html](https://paws-r.github.io/docs/glue/batch_get_crawlers.html) for full documentation.
 #'
 #' @param CrawlerNames &#91;required&#93; A list of crawler names, which might be the names returned from the
 #' [`list_crawlers`][glue_list_crawlers] operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Crawlers = list(
-#'     list(
-#'       Name = "string",
-#'       Role = "string",
-#'       Targets = list(
-#'         S3Targets = list(
-#'           list(
-#'             Path = "string",
-#'             Exclusions = list(
-#'               "string"
-#'             ),
-#'             ConnectionName = "string"
-#'           )
-#'         ),
-#'         JdbcTargets = list(
-#'           list(
-#'             ConnectionName = "string",
-#'             Path = "string",
-#'             Exclusions = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         MongoDBTargets = list(
-#'           list(
-#'             ConnectionName = "string",
-#'             Path = "string",
-#'             ScanAll = TRUE|FALSE
-#'           )
-#'         ),
-#'         DynamoDBTargets = list(
-#'           list(
-#'             Path = "string",
-#'             scanAll = TRUE|FALSE,
-#'             scanRate = 123.0
-#'           )
-#'         ),
-#'         CatalogTargets = list(
-#'           list(
-#'             DatabaseName = "string",
-#'             Tables = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       DatabaseName = "string",
-#'       Description = "string",
-#'       Classifiers = list(
-#'         "string"
-#'       ),
-#'       RecrawlPolicy = list(
-#'         RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
-#'       ),
-#'       SchemaChangePolicy = list(
-#'         UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
-#'         DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
-#'       ),
-#'       LineageConfiguration = list(
-#'         CrawlerLineageSettings = "ENABLE"|"DISABLE"
-#'       ),
-#'       State = "READY"|"RUNNING"|"STOPPING",
-#'       TablePrefix = "string",
-#'       Schedule = list(
-#'         ScheduleExpression = "string",
-#'         State = "SCHEDULED"|"NOT_SCHEDULED"|"TRANSITIONING"
-#'       ),
-#'       CrawlElapsedTime = 123,
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastCrawl = list(
-#'         Status = "SUCCEEDED"|"CANCELLED"|"FAILED",
-#'         ErrorMessage = "string",
-#'         LogGroup = "string",
-#'         LogStream = "string",
-#'         MessagePrefix = "string",
-#'         StartTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       Version = 123,
-#'       Configuration = "string",
-#'       CrawlerSecurityConfiguration = "string"
-#'     )
-#'   ),
-#'   CrawlersNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_crawlers(
-#'   CrawlerNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -552,80 +235,46 @@ glue_batch_get_crawlers <- function(CrawlerNames) {
 }
 .glue$operations$batch_get_crawlers <- glue_batch_get_crawlers
 
+#' Retrieves the details for the custom patterns specified by a list of
+#' names
+#'
+#' @description
+#' Retrieves the details for the custom patterns specified by a list of names.
+#'
+#' See [https://paws-r.github.io/docs/glue/batch_get_custom_entity_types.html](https://paws-r.github.io/docs/glue/batch_get_custom_entity_types.html) for full documentation.
+#'
+#' @param Names &#91;required&#93; A list of names of the custom patterns that you want to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_custom_entity_types
+glue_batch_get_custom_entity_types <- function(Names) {
+  op <- new_operation(
+    name = "BatchGetCustomEntityTypes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$batch_get_custom_entity_types_input(Names = Names)
+  output <- .glue$batch_get_custom_entity_types_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_custom_entity_types <- glue_batch_get_custom_entity_types
+
 #' Returns a list of resource metadata for a given list of development
 #' endpoint names
 #'
 #' @description
-#' Returns a list of resource metadata for a given list of development
-#' endpoint names. After calling the
-#' [`list_dev_endpoints`][glue_list_dev_endpoints] operation, you can call
-#' this operation to access the data to which you have been granted
-#' permissions. This operation supports all IAM permissions, including
-#' permission conditions that uses tags.
+#' Returns a list of resource metadata for a given list of development endpoint names. After calling the [`list_dev_endpoints`][glue_list_dev_endpoints] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' @usage
-#' glue_batch_get_dev_endpoints(DevEndpointNames)
+#' See [https://paws-r.github.io/docs/glue/batch_get_dev_endpoints.html](https://paws-r.github.io/docs/glue/batch_get_dev_endpoints.html) for full documentation.
 #'
 #' @param DevEndpointNames &#91;required&#93; The list of `DevEndpoint` names, which might be the names returned from
 #' the `ListDevEndpoint` operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DevEndpoints = list(
-#'     list(
-#'       EndpointName = "string",
-#'       RoleArn = "string",
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       SubnetId = "string",
-#'       YarnEndpointAddress = "string",
-#'       PrivateAddress = "string",
-#'       ZeppelinRemoteSparkInterpreterPort = 123,
-#'       PublicAddress = "string",
-#'       Status = "string",
-#'       WorkerType = "Standard"|"G.1X"|"G.2X",
-#'       GlueVersion = "string",
-#'       NumberOfWorkers = 123,
-#'       NumberOfNodes = 123,
-#'       AvailabilityZone = "string",
-#'       VpcId = "string",
-#'       ExtraPythonLibsS3Path = "string",
-#'       ExtraJarsS3Path = "string",
-#'       FailureReason = "string",
-#'       LastUpdateStatus = "string",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PublicKey = "string",
-#'       PublicKeys = list(
-#'         "string"
-#'       ),
-#'       SecurityConfiguration = "string",
-#'       Arguments = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   DevEndpointsNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_dev_endpoints(
-#'   DevEndpointNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -650,80 +299,12 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #' Returns a list of resource metadata for a given list of job names
 #'
 #' @description
-#' Returns a list of resource metadata for a given list of job names. After
-#' calling the [`list_jobs`][glue_list_jobs] operation, you can call this
-#' operation to access the data to which you have been granted permissions.
-#' This operation supports all IAM permissions, including permission
-#' conditions that uses tags.
+#' Returns a list of resource metadata for a given list of job names. After calling the [`list_jobs`][glue_list_jobs] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' @usage
-#' glue_batch_get_jobs(JobNames)
+#' See [https://paws-r.github.io/docs/glue/batch_get_jobs.html](https://paws-r.github.io/docs/glue/batch_get_jobs.html) for full documentation.
 #'
 #' @param JobNames &#91;required&#93; A list of job names, which might be the names returned from the
 #' [`list_jobs`][glue_list_jobs] operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Jobs = list(
-#'     list(
-#'       Name = "string",
-#'       Description = "string",
-#'       LogUri = "string",
-#'       Role = "string",
-#'       CreatedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExecutionProperty = list(
-#'         MaxConcurrentRuns = 123
-#'       ),
-#'       Command = list(
-#'         Name = "string",
-#'         ScriptLocation = "string",
-#'         PythonVersion = "string"
-#'       ),
-#'       DefaultArguments = list(
-#'         "string"
-#'       ),
-#'       NonOverridableArguments = list(
-#'         "string"
-#'       ),
-#'       Connections = list(
-#'         Connections = list(
-#'           "string"
-#'         )
-#'       ),
-#'       MaxRetries = 123,
-#'       AllocatedCapacity = 123,
-#'       Timeout = 123,
-#'       MaxCapacity = 123.0,
-#'       WorkerType = "Standard"|"G.1X"|"G.2X",
-#'       NumberOfWorkers = 123,
-#'       SecurityConfiguration = "string",
-#'       NotificationProperty = list(
-#'         NotifyDelayAfter = 123
-#'       ),
-#'       GlueVersion = "string"
-#'     )
-#'   ),
-#'   JobsNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_jobs(
-#'   JobNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -750,124 +331,13 @@ glue_batch_get_jobs <- function(JobNames) {
 #' @description
 #' Retrieves partitions in a batch request.
 #'
-#' @usage
-#' glue_batch_get_partition(CatalogId, DatabaseName, TableName,
-#'   PartitionsToGet)
+#' See [https://paws-r.github.io/docs/glue/batch_get_partition.html](https://paws-r.github.io/docs/glue/batch_get_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
-#' none is supplied, the AWS account ID is used by default.
+#' none is supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionsToGet &#91;required&#93; A list of partition values identifying the partitions to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Partitions = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       DatabaseName = "string",
-#'       TableName = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastAccessTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StorageDescriptor = list(
-#'         Columns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "string",
-#'             Comment = "string",
-#'             Parameters = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         Location = "string",
-#'         InputFormat = "string",
-#'         OutputFormat = "string",
-#'         Compressed = TRUE|FALSE,
-#'         NumberOfBuckets = 123,
-#'         SerdeInfo = list(
-#'           Name = "string",
-#'           SerializationLibrary = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         ),
-#'         BucketColumns = list(
-#'           "string"
-#'         ),
-#'         SortColumns = list(
-#'           list(
-#'             Column = "string",
-#'             SortOrder = 123
-#'           )
-#'         ),
-#'         Parameters = list(
-#'           "string"
-#'         ),
-#'         SkewedInfo = list(
-#'           SkewedColumnNames = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValues = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValueLocationMaps = list(
-#'             "string"
-#'           )
-#'         ),
-#'         StoredAsSubDirectories = TRUE|FALSE,
-#'         SchemaReference = list(
-#'           SchemaId = list(
-#'             SchemaArn = "string",
-#'             SchemaName = "string",
-#'             RegistryName = "string"
-#'           ),
-#'           SchemaVersionId = "string",
-#'           SchemaVersionNumber = 123
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       LastAnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CatalogId = "string"
-#'     )
-#'   ),
-#'   UnprocessedKeys = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionsToGet = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -892,73 +362,12 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #' Returns a list of resource metadata for a given list of trigger names
 #'
 #' @description
-#' Returns a list of resource metadata for a given list of trigger names.
-#' After calling the [`list_triggers`][glue_list_triggers] operation, you
-#' can call this operation to access the data to which you have been
-#' granted permissions. This operation supports all IAM permissions,
-#' including permission conditions that uses tags.
+#' Returns a list of resource metadata for a given list of trigger names. After calling the [`list_triggers`][glue_list_triggers] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' @usage
-#' glue_batch_get_triggers(TriggerNames)
+#' See [https://paws-r.github.io/docs/glue/batch_get_triggers.html](https://paws-r.github.io/docs/glue/batch_get_triggers.html) for full documentation.
 #'
 #' @param TriggerNames &#91;required&#93; A list of trigger names, which may be the names returned from the
 #' [`list_triggers`][glue_list_triggers] operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Triggers = list(
-#'     list(
-#'       Name = "string",
-#'       WorkflowName = "string",
-#'       Id = "string",
-#'       Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'       State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'       Description = "string",
-#'       Schedule = "string",
-#'       Actions = list(
-#'         list(
-#'           JobName = "string",
-#'           Arguments = list(
-#'             "string"
-#'           ),
-#'           Timeout = 123,
-#'           SecurityConfiguration = "string",
-#'           NotificationProperty = list(
-#'             NotifyDelayAfter = 123
-#'           ),
-#'           CrawlerName = "string"
-#'         )
-#'       ),
-#'       Predicate = list(
-#'         Logical = "AND"|"ANY",
-#'         Conditions = list(
-#'           list(
-#'             LogicalOperator = "EQUALS",
-#'             JobName = "string",
-#'             State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'             CrawlerName = "string",
-#'             CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   TriggersNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_triggers(
-#'   TriggerNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -983,301 +392,14 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #' Returns a list of resource metadata for a given list of workflow names
 #'
 #' @description
-#' Returns a list of resource metadata for a given list of workflow names.
-#' After calling the [`list_workflows`][glue_list_workflows] operation, you
-#' can call this operation to access the data to which you have been
-#' granted permissions. This operation supports all IAM permissions,
-#' including permission conditions that uses tags.
+#' Returns a list of resource metadata for a given list of workflow names. After calling the [`list_workflows`][glue_list_workflows] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' @usage
-#' glue_batch_get_workflows(Names, IncludeGraph)
+#' See [https://paws-r.github.io/docs/glue/batch_get_workflows.html](https://paws-r.github.io/docs/glue/batch_get_workflows.html) for full documentation.
 #'
 #' @param Names &#91;required&#93; A list of workflow names, which may be the names returned from the
 #' [`list_workflows`][glue_list_workflows] operation.
 #' @param IncludeGraph Specifies whether to include a graph when returning the workflow
 #' resource metadata.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Workflows = list(
-#'     list(
-#'       Name = "string",
-#'       Description = "string",
-#'       DefaultRunProperties = list(
-#'         "string"
-#'       ),
-#'       CreatedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastRun = list(
-#'         Name = "string",
-#'         WorkflowRunId = "string",
-#'         PreviousRunId = "string",
-#'         WorkflowRunProperties = list(
-#'           "string"
-#'         ),
-#'         StartedOn = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         CompletedOn = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Status = "RUNNING"|"COMPLETED"|"STOPPING"|"STOPPED"|"ERROR",
-#'         ErrorMessage = "string",
-#'         Statistics = list(
-#'           TotalActions = 123,
-#'           TimeoutActions = 123,
-#'           FailedActions = 123,
-#'           StoppedActions = 123,
-#'           SucceededActions = 123,
-#'           RunningActions = 123
-#'         ),
-#'         Graph = list(
-#'           Nodes = list(
-#'             list(
-#'               Type = "CRAWLER"|"JOB"|"TRIGGER",
-#'               Name = "string",
-#'               UniqueId = "string",
-#'               TriggerDetails = list(
-#'                 Trigger = list(
-#'                   Name = "string",
-#'                   WorkflowName = "string",
-#'                   Id = "string",
-#'                   Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'                   State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'                   Description = "string",
-#'                   Schedule = "string",
-#'                   Actions = list(
-#'                     list(
-#'                       JobName = "string",
-#'                       Arguments = list(
-#'                         "string"
-#'                       ),
-#'                       Timeout = 123,
-#'                       SecurityConfiguration = "string",
-#'                       NotificationProperty = list(
-#'                         NotifyDelayAfter = 123
-#'                       ),
-#'                       CrawlerName = "string"
-#'                     )
-#'                   ),
-#'                   Predicate = list(
-#'                     Logical = "AND"|"ANY",
-#'                     Conditions = list(
-#'                       list(
-#'                         LogicalOperator = "EQUALS",
-#'                         JobName = "string",
-#'                         State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                         CrawlerName = "string",
-#'                         CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'                       )
-#'                     )
-#'                   )
-#'                 )
-#'               ),
-#'               JobDetails = list(
-#'                 JobRuns = list(
-#'                   list(
-#'                     Id = "string",
-#'                     Attempt = 123,
-#'                     PreviousRunId = "string",
-#'                     TriggerName = "string",
-#'                     JobName = "string",
-#'                     StartedOn = as.POSIXct(
-#'                       "2015-01-01"
-#'                     ),
-#'                     LastModifiedOn = as.POSIXct(
-#'                       "2015-01-01"
-#'                     ),
-#'                     CompletedOn = as.POSIXct(
-#'                       "2015-01-01"
-#'                     ),
-#'                     JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                     Arguments = list(
-#'                       "string"
-#'                     ),
-#'                     ErrorMessage = "string",
-#'                     PredecessorRuns = list(
-#'                       list(
-#'                         JobName = "string",
-#'                         RunId = "string"
-#'                       )
-#'                     ),
-#'                     AllocatedCapacity = 123,
-#'                     ExecutionTime = 123,
-#'                     Timeout = 123,
-#'                     MaxCapacity = 123.0,
-#'                     WorkerType = "Standard"|"G.1X"|"G.2X",
-#'                     NumberOfWorkers = 123,
-#'                     SecurityConfiguration = "string",
-#'                     LogGroupName = "string",
-#'                     NotificationProperty = list(
-#'                       NotifyDelayAfter = 123
-#'                     ),
-#'                     GlueVersion = "string"
-#'                   )
-#'                 )
-#'               ),
-#'               CrawlerDetails = list(
-#'                 Crawls = list(
-#'                   list(
-#'                     State = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED",
-#'                     StartedOn = as.POSIXct(
-#'                       "2015-01-01"
-#'                     ),
-#'                     CompletedOn = as.POSIXct(
-#'                       "2015-01-01"
-#'                     ),
-#'                     ErrorMessage = "string",
-#'                     LogGroup = "string",
-#'                     LogStream = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           Edges = list(
-#'             list(
-#'               SourceId = "string",
-#'               DestinationId = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Graph = list(
-#'         Nodes = list(
-#'           list(
-#'             Type = "CRAWLER"|"JOB"|"TRIGGER",
-#'             Name = "string",
-#'             UniqueId = "string",
-#'             TriggerDetails = list(
-#'               Trigger = list(
-#'                 Name = "string",
-#'                 WorkflowName = "string",
-#'                 Id = "string",
-#'                 Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'                 State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'                 Description = "string",
-#'                 Schedule = "string",
-#'                 Actions = list(
-#'                   list(
-#'                     JobName = "string",
-#'                     Arguments = list(
-#'                       "string"
-#'                     ),
-#'                     Timeout = 123,
-#'                     SecurityConfiguration = "string",
-#'                     NotificationProperty = list(
-#'                       NotifyDelayAfter = 123
-#'                     ),
-#'                     CrawlerName = "string"
-#'                   )
-#'                 ),
-#'                 Predicate = list(
-#'                   Logical = "AND"|"ANY",
-#'                   Conditions = list(
-#'                     list(
-#'                       LogicalOperator = "EQUALS",
-#'                       JobName = "string",
-#'                       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                       CrawlerName = "string",
-#'                       CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             JobDetails = list(
-#'               JobRuns = list(
-#'                 list(
-#'                   Id = "string",
-#'                   Attempt = 123,
-#'                   PreviousRunId = "string",
-#'                   TriggerName = "string",
-#'                   JobName = "string",
-#'                   StartedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   LastModifiedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   CompletedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                   Arguments = list(
-#'                     "string"
-#'                   ),
-#'                   ErrorMessage = "string",
-#'                   PredecessorRuns = list(
-#'                     list(
-#'                       JobName = "string",
-#'                       RunId = "string"
-#'                     )
-#'                   ),
-#'                   AllocatedCapacity = 123,
-#'                   ExecutionTime = 123,
-#'                   Timeout = 123,
-#'                   MaxCapacity = 123.0,
-#'                   WorkerType = "Standard"|"G.1X"|"G.2X",
-#'                   NumberOfWorkers = 123,
-#'                   SecurityConfiguration = "string",
-#'                   LogGroupName = "string",
-#'                   NotificationProperty = list(
-#'                     NotifyDelayAfter = 123
-#'                   ),
-#'                   GlueVersion = "string"
-#'                 )
-#'               )
-#'             ),
-#'             CrawlerDetails = list(
-#'               Crawls = list(
-#'                 list(
-#'                   State = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED",
-#'                   StartedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   CompletedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   ErrorMessage = "string",
-#'                   LogGroup = "string",
-#'                   LogStream = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         Edges = list(
-#'           list(
-#'             SourceId = "string",
-#'             DestinationId = "string"
-#'           )
-#'         )
-#'       ),
-#'       MaxConcurrentRuns = 123
-#'     )
-#'   ),
-#'   MissingWorkflows = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_workflows(
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   IncludeGraph = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1304,45 +426,11 @@ glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
 #' @description
 #' Stops one or more job runs for a specified job definition.
 #'
-#' @usage
-#' glue_batch_stop_job_run(JobName, JobRunIds)
+#' See [https://paws-r.github.io/docs/glue/batch_stop_job_run.html](https://paws-r.github.io/docs/glue/batch_stop_job_run.html) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition for which to stop job runs.
 #' @param JobRunIds &#91;required&#93; A list of the `JobRunIds` that should be stopped for that job
 #' definition.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SuccessfulSubmissions = list(
-#'     list(
-#'       JobName = "string",
-#'       JobRunId = "string"
-#'     )
-#'   ),
-#'   Errors = list(
-#'     list(
-#'       JobName = "string",
-#'       JobRunId = "string",
-#'       ErrorDetail = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_stop_job_run(
-#'   JobName = "string",
-#'   JobRunIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1369,121 +457,15 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 #' @description
 #' Updates one or more partitions in a batch operation.
 #'
-#' @usage
-#' glue_batch_update_partition(CatalogId, DatabaseName, TableName, Entries)
+#' See [https://paws-r.github.io/docs/glue/batch_update_partition.html](https://paws-r.github.io/docs/glue/batch_update_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the catalog in which the partition is to be updated.
-#' Currently, this should be the AWS account ID.
+#' Currently, this should be the Amazon Web Services account ID.
 #' @param DatabaseName &#91;required&#93; The name of the metadata database in which the partition is to be
 #' updated.
 #' @param TableName &#91;required&#93; The name of the metadata table in which the partition is to be updated.
 #' @param Entries &#91;required&#93; A list of up to 100 `BatchUpdatePartitionRequestEntry` objects to
 #' update.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Errors = list(
-#'     list(
-#'       PartitionValueList = list(
-#'         "string"
-#'       ),
-#'       ErrorDetail = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_update_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   Entries = list(
-#'     list(
-#'       PartitionValueList = list(
-#'         "string"
-#'       ),
-#'       PartitionInput = list(
-#'         Values = list(
-#'           "string"
-#'         ),
-#'         LastAccessTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         StorageDescriptor = list(
-#'           Columns = list(
-#'             list(
-#'               Name = "string",
-#'               Type = "string",
-#'               Comment = "string",
-#'               Parameters = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           Location = "string",
-#'           InputFormat = "string",
-#'           OutputFormat = "string",
-#'           Compressed = TRUE|FALSE,
-#'           NumberOfBuckets = 123,
-#'           SerdeInfo = list(
-#'             Name = "string",
-#'             SerializationLibrary = "string",
-#'             Parameters = list(
-#'               "string"
-#'             )
-#'           ),
-#'           BucketColumns = list(
-#'             "string"
-#'           ),
-#'           SortColumns = list(
-#'             list(
-#'               Column = "string",
-#'               SortOrder = 123
-#'             )
-#'           ),
-#'           Parameters = list(
-#'             "string"
-#'           ),
-#'           SkewedInfo = list(
-#'             SkewedColumnNames = list(
-#'               "string"
-#'             ),
-#'             SkewedColumnValues = list(
-#'               "string"
-#'             ),
-#'             SkewedColumnValueLocationMaps = list(
-#'               "string"
-#'             )
-#'           ),
-#'           StoredAsSubDirectories = TRUE|FALSE,
-#'           SchemaReference = list(
-#'             SchemaId = list(
-#'               SchemaArn = "string",
-#'               SchemaName = "string",
-#'               RegistryName = "string"
-#'             ),
-#'             SchemaVersionId = "string",
-#'             SchemaVersionNumber = 123
-#'           )
-#'         ),
-#'         Parameters = list(
-#'           "string"
-#'         ),
-#'         LastAnalyzedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1508,36 +490,12 @@ glue_batch_update_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' Cancels (stops) a task run
 #'
 #' @description
-#' Cancels (stops) a task run. Machine learning task runs are asynchronous
-#' tasks that AWS Glue runs on your behalf as part of various machine
-#' learning workflows. You can cancel a machine learning task run at any
-#' time by calling [`cancel_ml_task_run`][glue_cancel_ml_task_run] with a
-#' task run's parent transform's `TransformID` and the task run's
-#' `TaskRunId`.
+#' Cancels (stops) a task run. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can cancel a machine learning task run at any time by calling [`cancel_ml_task_run`][glue_cancel_ml_task_run] with a task run's parent transform's `TransformID` and the task run's `TaskRunId`.
 #'
-#' @usage
-#' glue_cancel_ml_task_run(TransformId, TaskRunId)
+#' See [https://paws-r.github.io/docs/glue/cancel_ml_task_run.html](https://paws-r.github.io/docs/glue/cancel_ml_task_run.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param TaskRunId &#91;required&#93; A unique identifier for the task run.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TransformId = "string",
-#'   TaskRunId = "string",
-#'   Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_ml_task_run(
-#'   TransformId = "string",
-#'   TaskRunId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1559,37 +517,47 @@ glue_cancel_ml_task_run <- function(TransformId, TaskRunId) {
 }
 .glue$operations$cancel_ml_task_run <- glue_cancel_ml_task_run
 
+#' Cancels the statement
+#'
+#' @description
+#' Cancels the statement.
+#'
+#' See [https://paws-r.github.io/docs/glue/cancel_statement.html](https://paws-r.github.io/docs/glue/cancel_statement.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The Session ID of the statement to be cancelled.
+#' @param Id &#91;required&#93; The ID of the statement to be cancelled.
+#' @param RequestOrigin The origin of the request to cancel the statement.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_cancel_statement
+glue_cancel_statement <- function(SessionId, Id, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "CancelStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$cancel_statement_input(SessionId = SessionId, Id = Id, RequestOrigin = RequestOrigin)
+  output <- .glue$cancel_statement_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$cancel_statement <- glue_cancel_statement
+
 #' Validates the supplied schema
 #'
 #' @description
-#' Validates the supplied schema. This call has no side effects, it simply
-#' validates using the supplied schema using `DataFormat` as the format.
-#' Since it does not take a schema set name, no compatibility checks are
-#' performed.
+#' Validates the supplied schema. This call has no side effects, it simply validates using the supplied schema using `DataFormat` as the format. Since it does not take a schema set name, no compatibility checks are performed.
 #'
-#' @usage
-#' glue_check_schema_version_validity(DataFormat, SchemaDefinition)
+#' See [https://paws-r.github.io/docs/glue/check_schema_version_validity.html](https://paws-r.github.io/docs/glue/check_schema_version_validity.html) for full documentation.
 #'
-#' @param DataFormat &#91;required&#93; The data format of the schema definition. Currently only `AVRO` is
-#' supported.
+#' @param DataFormat &#91;required&#93; The data format of the schema definition. Currently `AVRO`, `JSON` and
+#' `PROTOBUF` are supported.
 #' @param SchemaDefinition &#91;required&#93; The definition of the schema that has to be validated.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Valid = TRUE|FALSE,
-#'   Error = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$check_schema_version_validity(
-#'   DataFormat = "AVRO",
-#'   SchemaDefinition = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1611,56 +579,49 @@ glue_check_schema_version_validity <- function(DataFormat, SchemaDefinition) {
 }
 .glue$operations$check_schema_version_validity <- glue_check_schema_version_validity
 
+#' Registers a blueprint with Glue
+#'
+#' @description
+#' Registers a blueprint with Glue.
+#'
+#' See [https://paws-r.github.io/docs/glue/create_blueprint.html](https://paws-r.github.io/docs/glue/create_blueprint.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the blueprint.
+#' @param Description A description of the blueprint.
+#' @param BlueprintLocation &#91;required&#93; Specifies a path in Amazon S3 where the blueprint is published.
+#' @param Tags The tags to be applied to this blueprint.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_blueprint
+glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateBlueprint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$create_blueprint_input(Name = Name, Description = Description, BlueprintLocation = BlueprintLocation, Tags = Tags)
+  output <- .glue$create_blueprint_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_blueprint <- glue_create_blueprint
+
 #' Creates a classifier in the user's account
 #'
 #' @description
-#' Creates a classifier in the user's account. This can be a
-#' `GrokClassifier`, an `XMLClassifier`, a `JsonClassifier`, or a
-#' `CsvClassifier`, depending on which field of the request is present.
+#' Creates a classifier in the user's account. This can be a `GrokClassifier`, an `XMLClassifier`, a `JsonClassifier`, or a `CsvClassifier`, depending on which field of the request is present.
 #'
-#' @usage
-#' glue_create_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
-#'   CsvClassifier)
+#' See [https://paws-r.github.io/docs/glue/create_classifier.html](https://paws-r.github.io/docs/glue/create_classifier.html) for full documentation.
 #'
 #' @param GrokClassifier A `GrokClassifier` object specifying the classifier to create.
 #' @param XMLClassifier An `XMLClassifier` object specifying the classifier to create.
 #' @param JsonClassifier A `JsonClassifier` object specifying the classifier to create.
 #' @param CsvClassifier A `CsvClassifier` object specifying the classifier to create.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_classifier(
-#'   GrokClassifier = list(
-#'     Classification = "string",
-#'     Name = "string",
-#'     GrokPattern = "string",
-#'     CustomPatterns = "string"
-#'   ),
-#'   XMLClassifier = list(
-#'     Classification = "string",
-#'     Name = "string",
-#'     RowTag = "string"
-#'   ),
-#'   JsonClassifier = list(
-#'     Name = "string",
-#'     JsonPath = "string"
-#'   ),
-#'   CsvClassifier = list(
-#'     Name = "string",
-#'     Delimiter = "string",
-#'     QuoteSymbol = "string",
-#'     ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
-#'     Header = list(
-#'       "string"
-#'     ),
-#'     DisableValueTrimming = TRUE|FALSE,
-#'     AllowSingleColumn = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1687,52 +648,24 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' @description
 #' Creates a connection definition in the Data Catalog.
 #'
-#' @usage
-#' glue_create_connection(CatalogId, ConnectionInput)
+#' See [https://paws-r.github.io/docs/glue/create_connection.html](https://paws-r.github.io/docs/glue/create_connection.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the connection. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param ConnectionInput &#91;required&#93; A `ConnectionInput` object defining the connection to create.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_connection(
-#'   CatalogId = "string",
-#'   ConnectionInput = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
-#'     MatchCriteria = list(
-#'       "string"
-#'     ),
-#'     ConnectionProperties = list(
-#'       "string"
-#'     ),
-#'     PhysicalConnectionRequirements = list(
-#'       SubnetId = "string",
-#'       SecurityGroupIdList = list(
-#'         "string"
-#'       ),
-#'       AvailabilityZone = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags The tags you assign to the connection.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_connection
-glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
+glue_create_connection <- function(CatalogId = NULL, ConnectionInput, Tags = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_connection_input(CatalogId = CatalogId, ConnectionInput = ConnectionInput)
+  input <- .glue$create_connection_input(CatalogId = CatalogId, ConnectionInput = ConnectionInput, Tags = Tags)
   output <- .glue$create_connection_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -1746,20 +679,14 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' optional schedule
 #'
 #' @description
-#' Creates a new crawler with specified targets, role, configuration, and
-#' optional schedule. At least one crawl target must be specified, in the
-#' `s3Targets` field, the `jdbcTargets` field, or the `DynamoDBTargets`
-#' field.
+#' Creates a new crawler with specified targets, role, configuration, and optional schedule. At least one crawl target must be specified, in the `s3Targets` field, the `jdbcTargets` field, or the `DynamoDBTargets` field.
 #'
-#' @usage
-#' glue_create_crawler(Name, Role, DatabaseName, Description, Targets,
-#'   Schedule, Classifiers, TablePrefix, SchemaChangePolicy, RecrawlPolicy,
-#'   LineageConfiguration, Configuration, CrawlerSecurityConfiguration, Tags)
+#' See [https://paws-r.github.io/docs/glue/create_crawler.html](https://paws-r.github.io/docs/glue/create_crawler.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the new crawler.
 #' @param Role &#91;required&#93; The IAM role or Amazon Resource Name (ARN) of an IAM role used by the
 #' new crawler to access customer resources.
-#' @param DatabaseName The AWS Glue database where results are written, such as:
+#' @param DatabaseName The Glue database where results are written, such as:
 #' `arn:aws:daylight:us-east-1::database/sometable/*`.
 #' @param Description A description of the new crawler.
 #' @param Targets &#91;required&#93; A list of collection of targets to crawl.
@@ -1777,6 +704,7 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' @param RecrawlPolicy A policy that specifies whether to crawl the entire dataset again, or to
 #' crawl only folders that were added since the last crawler run.
 #' @param LineageConfiguration Specifies data lineage configuration settings for the crawler.
+#' @param LakeFormationConfiguration Specifies Lake Formation configuration settings for the crawler.
 #' @param Configuration Crawler configuration information. This versioned JSON string allows
 #' users to specify aspects of a crawler's behavior. For more information,
 #' see [Configuring a
@@ -1784,97 +712,22 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' @param CrawlerSecurityConfiguration The name of the `SecurityConfiguration` structure to be used by this
 #' crawler.
 #' @param Tags The tags to use with this crawler request. You may use tags to limit
-#' access to the crawler. For more information about tags in AWS Glue, see
-#' [AWS Tags in AWS
+#' access to the crawler. For more information about tags in Glue, see
+#' [Amazon Web Services Tags in
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
 #' the developer guide.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_crawler(
-#'   Name = "string",
-#'   Role = "string",
-#'   DatabaseName = "string",
-#'   Description = "string",
-#'   Targets = list(
-#'     S3Targets = list(
-#'       list(
-#'         Path = "string",
-#'         Exclusions = list(
-#'           "string"
-#'         ),
-#'         ConnectionName = "string"
-#'       )
-#'     ),
-#'     JdbcTargets = list(
-#'       list(
-#'         ConnectionName = "string",
-#'         Path = "string",
-#'         Exclusions = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     MongoDBTargets = list(
-#'       list(
-#'         ConnectionName = "string",
-#'         Path = "string",
-#'         ScanAll = TRUE|FALSE
-#'       )
-#'     ),
-#'     DynamoDBTargets = list(
-#'       list(
-#'         Path = "string",
-#'         scanAll = TRUE|FALSE,
-#'         scanRate = 123.0
-#'       )
-#'     ),
-#'     CatalogTargets = list(
-#'       list(
-#'         DatabaseName = "string",
-#'         Tables = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Schedule = "string",
-#'   Classifiers = list(
-#'     "string"
-#'   ),
-#'   TablePrefix = "string",
-#'   SchemaChangePolicy = list(
-#'     UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
-#'     DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
-#'   ),
-#'   RecrawlPolicy = list(
-#'     RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
-#'   ),
-#'   LineageConfiguration = list(
-#'     CrawlerLineageSettings = "ENABLE"|"DISABLE"
-#'   ),
-#'   Configuration = "string",
-#'   CrawlerSecurityConfiguration = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_crawler
-glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = NULL, Targets, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, RecrawlPolicy = NULL, LineageConfiguration = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL, Tags = NULL) {
+glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = NULL, Targets, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, RecrawlPolicy = NULL, LineageConfiguration = NULL, LakeFormationConfiguration = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCrawler",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration, Tags = Tags)
+  input <- .glue$create_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, LakeFormationConfiguration = LakeFormationConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration, Tags = Tags)
   output <- .glue$create_crawler_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -1884,61 +737,67 @@ glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = N
 }
 .glue$operations$create_crawler <- glue_create_crawler
 
+#' Creates a custom pattern that is used to detect sensitive data across
+#' the columns and rows of your structured data
+#'
+#' @description
+#' Creates a custom pattern that is used to detect sensitive data across the columns and rows of your structured data.
+#'
+#' See [https://paws-r.github.io/docs/glue/create_custom_entity_type.html](https://paws-r.github.io/docs/glue/create_custom_entity_type.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; A name for the custom pattern that allows it to be retrieved or deleted
+#' later. This name must be unique per Amazon Web Services account.
+#' @param RegexString &#91;required&#93; A regular expression string that is used for detecting sensitive data in
+#' a custom pattern.
+#' @param ContextWords A list of context words. If none of these context words are found within
+#' the vicinity of the regular expression the data will not be detected as
+#' sensitive data.
+#' 
+#' If no context words are passed only a regular expression is checked.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_custom_entity_type
+glue_create_custom_entity_type <- function(Name, RegexString, ContextWords = NULL) {
+  op <- new_operation(
+    name = "CreateCustomEntityType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$create_custom_entity_type_input(Name = Name, RegexString = RegexString, ContextWords = ContextWords)
+  output <- .glue$create_custom_entity_type_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_custom_entity_type <- glue_create_custom_entity_type
+
 #' Creates a new database in a Data Catalog
 #'
 #' @description
 #' Creates a new database in a Data Catalog.
 #'
-#' @usage
-#' glue_create_database(CatalogId, DatabaseInput)
+#' See [https://paws-r.github.io/docs/glue/create_database.html](https://paws-r.github.io/docs/glue/create_database.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the database. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param DatabaseInput &#91;required&#93; The metadata for the database.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_database(
-#'   CatalogId = "string",
-#'   DatabaseInput = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     LocationUri = "string",
-#'     Parameters = list(
-#'       "string"
-#'     ),
-#'     CreateTableDefaultPermissions = list(
-#'       list(
-#'         Principal = list(
-#'           DataLakePrincipalIdentifier = "string"
-#'         ),
-#'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
-#'         )
-#'       )
-#'     ),
-#'     TargetDatabase = list(
-#'       CatalogId = "string",
-#'       DatabaseName = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags The tags you assign to the database.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_database
-glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
+glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
   op <- new_operation(
     name = "CreateDatabase",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_database_input(CatalogId = CatalogId, DatabaseInput = DatabaseInput)
+  input <- .glue$create_database_input(CatalogId = CatalogId, DatabaseInput = DatabaseInput, Tags = Tags)
   output <- .glue$create_database_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -1953,11 +812,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #' @description
 #' Creates a new development endpoint.
 #'
-#' @usage
-#' glue_create_dev_endpoint(EndpointName, RoleArn, SecurityGroupIds,
-#'   SubnetId, PublicKey, PublicKeys, NumberOfNodes, WorkerType, GlueVersion,
-#'   NumberOfWorkers, ExtraPythonLibsS3Path, ExtraJarsS3Path,
-#'   SecurityConfiguration, Tags, Arguments)
+#' See [https://paws-r.github.io/docs/glue/create_dev_endpoint.html](https://paws-r.github.io/docs/glue/create_dev_endpoint.html) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name to be assigned to the new `DevEndpoint`.
 #' @param RoleArn &#91;required&#93; The IAM role for the `DevEndpoint`.
@@ -1977,7 +832,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #' [`update_dev_endpoint`][glue_update_dev_endpoint] API with the public
 #' key content in the `deletePublicKeys` attribute, and the list of new
 #' keys in the `addPublicKeys` attribute.
-#' @param NumberOfNodes The number of AWS Glue Data Processing Units (DPUs) to allocate to this
+#' @param NumberOfNodes The number of Glue Data Processing Units (DPUs) to allocate to this
 #' `DevEndpoint`.
 #' @param WorkerType The type of predefined worker that is allocated to the development
 #' endpoint. Accepts a value of Standard, G.1X, or G.2X.
@@ -1996,12 +851,12 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #' Known issue: when a development endpoint is created with the `G.2X`
 #' `WorkerType` configuration, the Spark drivers for the development
 #' endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB disk.
-#' @param GlueVersion Glue version determines the versions of Apache Spark and Python that AWS
+#' @param GlueVersion Glue version determines the versions of Apache Spark and Python that
 #' Glue supports. The Python version indicates the version supported for
 #' running your ETL scripts on development endpoints.
 #' 
-#' For more information about the available AWS Glue versions and
-#' corresponding Spark and Python versions, see [Glue
+#' For more information about the available Glue versions and corresponding
+#' Spark and Python versions, see [Glue
 #' version](https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
 #' developer guide.
 #' 
@@ -2031,72 +886,11 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' `DevEndpoint`.
 #' @param Tags The tags to use with this DevEndpoint. You may use tags to limit access
-#' to the DevEndpoint. For more information about tags in AWS Glue, see
-#' [AWS Tags in AWS
+#' to the DevEndpoint. For more information about tags in Glue, see [Amazon
+#' Web Services Tags in
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
 #' the developer guide.
 #' @param Arguments A map of arguments used to configure the `DevEndpoint`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointName = "string",
-#'   Status = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   SubnetId = "string",
-#'   RoleArn = "string",
-#'   YarnEndpointAddress = "string",
-#'   ZeppelinRemoteSparkInterpreterPort = 123,
-#'   NumberOfNodes = 123,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X",
-#'   GlueVersion = "string",
-#'   NumberOfWorkers = 123,
-#'   AvailabilityZone = "string",
-#'   VpcId = "string",
-#'   ExtraPythonLibsS3Path = "string",
-#'   ExtraJarsS3Path = "string",
-#'   FailureReason = "string",
-#'   SecurityConfiguration = "string",
-#'   CreatedTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Arguments = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_dev_endpoint(
-#'   EndpointName = "string",
-#'   RoleArn = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   SubnetId = "string",
-#'   PublicKey = "string",
-#'   PublicKeys = list(
-#'     "string"
-#'   ),
-#'   NumberOfNodes = 123,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X",
-#'   GlueVersion = "string",
-#'   NumberOfWorkers = 123,
-#'   ExtraPythonLibsS3Path = "string",
-#'   ExtraJarsS3Path = "string",
-#'   SecurityConfiguration = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Arguments = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2123,12 +917,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @description
 #' Creates a new job definition.
 #'
-#' @usage
-#' glue_create_job(Name, Description, LogUri, Role, ExecutionProperty,
-#'   Command, DefaultArguments, NonOverridableArguments, Connections,
-#'   MaxRetries, AllocatedCapacity, Timeout, MaxCapacity,
-#'   SecurityConfiguration, Tags, NotificationProperty, GlueVersion,
-#'   NumberOfWorkers, WorkerType)
+#' See [https://paws-r.github.io/docs/glue/create_job.html](https://paws-r.github.io/docs/glue/create_job.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name you assign to this job definition. It must be unique in your
 #' account.
@@ -2138,19 +927,23 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' this job.
 #' @param ExecutionProperty An `ExecutionProperty` specifying the maximum number of concurrent runs
 #' allowed for this job.
-#' @param Command &#91;required&#93; The `JobCommand` that executes this job.
+#' @param Command &#91;required&#93; The `JobCommand` that runs this job.
 #' @param DefaultArguments The default arguments for this job.
 #' 
 #' You can specify arguments here that your own job-execution script
-#' consumes, as well as arguments that AWS Glue itself consumes.
+#' consumes, as well as arguments that Glue itself consumes.
+#' 
+#' Job arguments may be logged. Do not pass plaintext secrets as arguments.
+#' Retrieve secrets from a Glue Connection, Secrets Manager or other secret
+#' management mechanism if you intend to keep them within the Job.
 #' 
 #' For information about how to specify and consume your own Job arguments,
-#' see the [Calling AWS Glue APIs in
+#' see the [Calling Glue APIs in
 #' Python](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 #' topic in the developer guide.
 #' 
-#' For information about the key-value pairs that AWS Glue consumes to set
-#' up your job, see the [Special Parameters Used by AWS
+#' For information about the key-value pairs that Glue consumes to set up
+#' your job, see the [Special Parameters Used by
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 #' topic in the developer guide.
 #' @param NonOverridableArguments Non-overridable arguments for this job, specified as name-value pairs.
@@ -2158,18 +951,19 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @param MaxRetries The maximum number of times to retry this job if it fails.
 #' @param AllocatedCapacity This parameter is deprecated. Use `MaxCapacity` instead.
 #' 
-#' The number of AWS Glue data processing units (DPUs) to allocate to this
-#' Job. You can allocate from 2 to 100 DPUs; the default is 10. A DPU is a
+#' The number of Glue data processing units (DPUs) to allocate to this Job.
+#' You can allocate a minimum of 2 DPUs; the default is 10. A DPU is a
 #' relative measure of processing power that consists of 4 vCPUs of compute
-#' capacity and 16 GB of memory. For more information, see the [AWS Glue
+#' capacity and 16 GB of memory. For more information, see the [Glue
 #' pricing page](https://aws.amazon.com/glue/pricing/).
 #' @param Timeout The job timeout in minutes. This is the maximum time that a job run can
 #' consume resources before it is terminated and enters `TIMEOUT` status.
 #' The default is 2,880 minutes (48 hours).
-#' @param MaxCapacity The number of AWS Glue data processing units (DPUs) that can be
-#' allocated when this job runs. A DPU is a relative measure of processing
-#' power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
-#' For more information, see the [AWS Glue pricing
+#' @param MaxCapacity For Glue version 1.0 or earlier jobs, using the standard worker type,
+#' the number of Glue data processing units (DPUs) that can be allocated
+#' when this job runs. A DPU is a relative measure of processing power that
+#' consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
+#' information, see the [Glue pricing
 #' page](https://aws.amazon.com/glue/pricing/).
 #' 
 #' Do not set `Max Capacity` if using `WorkerType` and `NumberOfWorkers`.
@@ -2183,22 +977,27 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' 
 #' -   When you specify an Apache Spark ETL job
 #'     (`JobCommand.Name`="glueetl") or Apache Spark streaming ETL job
-#'     (`JobCommand.Name`="gluestreaming"), you can allocate from 2 to 100
+#'     (`JobCommand.Name`="gluestreaming"), you can allocate a minimum of 2
 #'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
 #'     DPU allocation.
+#' 
+#' For Glue version 2.0 jobs, you cannot instead specify a
+#' `Maximum capacity`. Instead, you should specify a `Worker type` and the
+#' `Number of workers`.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job.
 #' @param Tags The tags to use with this job. You may use tags to limit access to the
-#' job. For more information about tags in AWS Glue, see [AWS Tags in AWS
+#' job. For more information about tags in Glue, see [Amazon Web Services
+#' Tags in
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
 #' the developer guide.
 #' @param NotificationProperty Specifies configuration properties of a job notification.
-#' @param GlueVersion Glue version determines the versions of Apache Spark and Python that AWS
+#' @param GlueVersion Glue version determines the versions of Apache Spark and Python that
 #' Glue supports. The Python version indicates the version supported for
 #' jobs of type Spark.
 #' 
-#' For more information about the available AWS Glue versions and
-#' corresponding Spark and Python versions, see [Glue
+#' For more information about the available Glue versions and corresponding
+#' Spark and Python versions, see [Glue
 #' version](https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
 #' developer guide.
 #' 
@@ -2206,11 +1005,8 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' 0.9.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
-#' 
-#' The maximum number of workers you can define are 299 for `G.1X`, and 149
-#' for `G.2X`.
 #' @param WorkerType The type of predefined worker that is allocated when a job runs. Accepts
-#' a value of Standard, G.1X, or G.2X.
+#' a value of Standard, G.1X, G.2X, or G.025X.
 #' 
 #' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
 #'     of memory and a 50GB disk, and 2 executors per worker.
@@ -2222,69 +1018,35 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
 #'     of memory, 128 GB disk), and provides 1 executor per worker. We
 #'     recommend this worker type for memory-intensive jobs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_job(
-#'   Name = "string",
-#'   Description = "string",
-#'   LogUri = "string",
-#'   Role = "string",
-#'   ExecutionProperty = list(
-#'     MaxConcurrentRuns = 123
-#'   ),
-#'   Command = list(
-#'     Name = "string",
-#'     ScriptLocation = "string",
-#'     PythonVersion = "string"
-#'   ),
-#'   DefaultArguments = list(
-#'     "string"
-#'   ),
-#'   NonOverridableArguments = list(
-#'     "string"
-#'   ),
-#'   Connections = list(
-#'     Connections = list(
-#'       "string"
-#'     )
-#'   ),
-#'   MaxRetries = 123,
-#'   AllocatedCapacity = 123,
-#'   Timeout = 123,
-#'   MaxCapacity = 123.0,
-#'   SecurityConfiguration = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   NotificationProperty = list(
-#'     NotifyDelayAfter = 123
-#'   ),
-#'   GlueVersion = "string",
-#'   NumberOfWorkers = 123,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X"
-#' )
-#' ```
+#' 
+#' -   For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPU,
+#'     4 GB of memory, 64 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for low volume streaming jobs. This
+#'     worker type is only available for Glue version 3.0 streaming jobs.
+#' @param CodeGenConfigurationNodes The representation of a directed acyclic graph on which both the Glue
+#' Studio visual component and Glue Studio code generation is based.
+#' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
+#' class. The standard execution-class is ideal for time-sensitive
+#' workloads that require fast job startup and dedicated resources.
+#' 
+#' The flexible execution class is appropriate for time-insensitive jobs
+#' whose start and completion times may vary.
+#' 
+#' Only jobs with Glue version 3.0 and above and command type `glueetl`
+#' will be allowed to set `ExecutionClass` to `FLEX`. The flexible
+#' execution class is available for Spark jobs.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_job
-glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, NonOverridableArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, Tags = NULL, NotificationProperty = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, WorkerType = NULL) {
+glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, NonOverridableArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, Tags = NULL, NotificationProperty = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, WorkerType = NULL, CodeGenConfigurationNodes = NULL, ExecutionClass = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_job_input(Name = Name, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, NonOverridableArguments = NonOverridableArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, Tags = Tags, NotificationProperty = NotificationProperty, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType)
+  input <- .glue$create_job_input(Name = Name, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, NonOverridableArguments = NonOverridableArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, Tags = Tags, NotificationProperty = NotificationProperty, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, CodeGenConfigurationNodes = CodeGenConfigurationNodes, ExecutionClass = ExecutionClass)
   output <- .glue$create_job_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -2294,59 +1056,42 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 }
 .glue$operations$create_job <- glue_create_job
 
-#' Creates an AWS Glue machine learning transform
+#' Creates an Glue machine learning transform
 #'
 #' @description
-#' Creates an AWS Glue machine learning transform. This operation creates
-#' the transform and all the necessary parameters to train it.
-#' 
-#' Call this operation as the first step in the process of using a machine
-#' learning transform (such as the `FindMatches` transform) for
-#' deduplicating data. You can provide an optional `Description`, in
-#' addition to the parameters that you want to use for your algorithm.
-#' 
-#' You must also specify certain parameters for the tasks that AWS Glue
-#' runs on your behalf as part of learning from your data and creating a
-#' high-quality machine learning transform. These parameters include
-#' `Role`, and optionally, `AllocatedCapacity`, `Timeout`, and
-#' `MaxRetries`. For more information, see
-#' [Jobs](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html).
+#' Creates an Glue machine learning transform. This operation creates the transform and all the necessary parameters to train it.
 #'
-#' @usage
-#' glue_create_ml_transform(Name, Description, InputRecordTables,
-#'   Parameters, Role, GlueVersion, MaxCapacity, WorkerType, NumberOfWorkers,
-#'   Timeout, MaxRetries, Tags, TransformEncryption)
+#' See [https://paws-r.github.io/docs/glue/create_ml_transform.html](https://paws-r.github.io/docs/glue/create_ml_transform.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The unique name that you give the transform when you create it.
 #' @param Description A description of the machine learning transform that is being defined.
 #' The default is an empty string.
-#' @param InputRecordTables &#91;required&#93; A list of AWS Glue table definitions used by the transform.
+#' @param InputRecordTables &#91;required&#93; A list of Glue table definitions used by the transform.
 #' @param Parameters &#91;required&#93; The algorithmic parameters that are specific to the transform type used.
 #' Conditionally dependent on the transform type.
 #' @param Role &#91;required&#93; The name or Amazon Resource Name (ARN) of the IAM role with the required
-#' permissions. The required permissions include both AWS Glue service role
-#' permissions to AWS Glue resources, and Amazon S3 permissions required by
-#' the transform.
+#' permissions. The required permissions include both Glue service role
+#' permissions to Glue resources, and Amazon S3 permissions required by the
+#' transform.
 #' 
-#' -   This role needs AWS Glue service role permissions to allow access to
-#'     resources in AWS Glue. See [Attach a Policy to IAM Users That Access
-#'     AWS
+#' -   This role needs Glue service role permissions to allow access to
+#'     resources in Glue. See [Attach a Policy to IAM Users That Access
 #'     Glue](https://docs.aws.amazon.com/glue/latest/dg/attach-policy-iam-user.html).
 #' 
 #' -   This role needs permission to your Amazon Simple Storage Service
 #'     (Amazon S3) sources, targets, temporary directory, scripts, and any
 #'     libraries used by the task run for this transform.
-#' @param GlueVersion This value determines which version of AWS Glue this machine learning
+#' @param GlueVersion This value determines which version of Glue this machine learning
 #' transform is compatible with. Glue 1.0 is recommended for most
 #' customers. If the value is not set, the Glue compatibility defaults to
-#' Glue 0.9. For more information, see [AWS Glue
+#' Glue 0.9. For more information, see [Glue
 #' Versions](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions)
 #' in the developer guide.
-#' @param MaxCapacity The number of AWS Glue data processing units (DPUs) that are allocated
-#' to task runs for this transform. You can allocate from 2 to 100 DPUs;
-#' the default is 10. A DPU is a relative measure of processing power that
+#' @param MaxCapacity The number of Glue data processing units (DPUs) that are allocated to
+#' task runs for this transform. You can allocate from 2 to 100 DPUs; the
+#' default is 10. A DPU is a relative measure of processing power that
 #' consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
-#' information, see the [AWS Glue pricing
+#' information, see the [Glue pricing
 #' page](https://aws.amazon.com/glue/pricing/).
 #' 
 #' `MaxCapacity` is a mutually exclusive option with `NumberOfWorkers` and
@@ -2406,62 +1151,12 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #' task run fails.
 #' @param Tags The tags to use with this machine learning transform. You may use tags
 #' to limit access to the machine learning transform. For more information
-#' about tags in AWS Glue, see [AWS Tags in AWS
+#' about tags in Glue, see [Amazon Web Services Tags in
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
 #' the developer guide.
 #' @param TransformEncryption The encryption-at-rest settings of the transform that apply to accessing
 #' user data. Machine learning transforms can access user data encrypted in
 #' Amazon S3 using KMS.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TransformId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_ml_transform(
-#'   Name = "string",
-#'   Description = "string",
-#'   InputRecordTables = list(
-#'     list(
-#'       DatabaseName = "string",
-#'       TableName = "string",
-#'       CatalogId = "string",
-#'       ConnectionName = "string"
-#'     )
-#'   ),
-#'   Parameters = list(
-#'     TransformType = "FIND_MATCHES",
-#'     FindMatchesParameters = list(
-#'       PrimaryKeyColumnName = "string",
-#'       PrecisionRecallTradeoff = 123.0,
-#'       AccuracyCostTradeoff = 123.0,
-#'       EnforceProvidedLabels = TRUE|FALSE
-#'     )
-#'   ),
-#'   Role = "string",
-#'   GlueVersion = "string",
-#'   MaxCapacity = 123.0,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X",
-#'   NumberOfWorkers = 123,
-#'   Timeout = 123,
-#'   MaxRetries = 123,
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   TransformEncryption = list(
-#'     MlUserDataEncryption = list(
-#'       MlUserDataEncryptionMode = "DISABLED"|"SSE-KMS",
-#'       KmsKeyId = "string"
-#'     ),
-#'     TaskRunSecurityConfigurationName = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2488,99 +1183,14 @@ glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables
 #' @description
 #' Creates a new partition.
 #'
-#' @usage
-#' glue_create_partition(CatalogId, DatabaseName, TableName,
-#'   PartitionInput)
+#' See [https://paws-r.github.io/docs/glue/create_partition.html](https://paws-r.github.io/docs/glue/create_partition.html) for full documentation.
 #'
-#' @param CatalogId The AWS account ID of the catalog in which the partition is to be
-#' created.
+#' @param CatalogId The Amazon Web Services account ID of the catalog in which the partition
+#' is to be created.
 #' @param DatabaseName &#91;required&#93; The name of the metadata database in which the partition is to be
 #' created.
 #' @param TableName &#91;required&#93; The name of the metadata table in which the partition is to be created.
 #' @param PartitionInput &#91;required&#93; A `PartitionInput` structure defining the partition to be created.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionInput = list(
-#'     Values = list(
-#'       "string"
-#'     ),
-#'     LastAccessTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     StorageDescriptor = list(
-#'       Columns = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = "string",
-#'       InputFormat = "string",
-#'       OutputFormat = "string",
-#'       Compressed = TRUE|FALSE,
-#'       NumberOfBuckets = 123,
-#'       SerdeInfo = list(
-#'         Name = "string",
-#'         SerializationLibrary = "string",
-#'         Parameters = list(
-#'           "string"
-#'         )
-#'       ),
-#'       BucketColumns = list(
-#'         "string"
-#'       ),
-#'       SortColumns = list(
-#'         list(
-#'           Column = "string",
-#'           SortOrder = 123
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       SkewedInfo = list(
-#'         SkewedColumnNames = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValues = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValueLocationMaps = list(
-#'           "string"
-#'         )
-#'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE,
-#'       SchemaReference = list(
-#'         SchemaId = list(
-#'           SchemaArn = "string",
-#'           SchemaName = "string",
-#'           RegistryName = "string"
-#'         ),
-#'         SchemaVersionId = "string",
-#'         SchemaVersionNumber = 123
-#'       )
-#'     ),
-#'     Parameters = list(
-#'       "string"
-#'     ),
-#'     LastAnalyzedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2607,9 +1217,7 @@ glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' @description
 #' Creates a specified partition index in an existing table.
 #'
-#' @usage
-#' glue_create_partition_index(CatalogId, DatabaseName, TableName,
-#'   PartitionIndex)
+#' See [https://paws-r.github.io/docs/glue/create_partition_index.html](https://paws-r.github.io/docs/glue/create_partition_index.html) for full documentation.
 #'
 #' @param CatalogId The catalog ID where the table resides.
 #' @param DatabaseName &#91;required&#93; Specifies the name of a database in which you want to create a partition
@@ -2618,24 +1226,6 @@ glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' index.
 #' @param PartitionIndex &#91;required&#93; Specifies a `PartitionIndex` structure to create a partition index in an
 #' existing table.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_partition_index(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionIndex = list(
-#'     Keys = list(
-#'       "string"
-#'     ),
-#'     IndexName = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2660,43 +1250,17 @@ glue_create_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
 #' Creates a new registry which may be used to hold a collection of schemas
 #'
 #' @description
-#' Creates a new registry which may be used to hold a collection of
-#' schemas.
+#' Creates a new registry which may be used to hold a collection of schemas.
 #'
-#' @usage
-#' glue_create_registry(RegistryName, Description, Tags)
+#' See [https://paws-r.github.io/docs/glue/create_registry.html](https://paws-r.github.io/docs/glue/create_registry.html) for full documentation.
 #'
 #' @param RegistryName &#91;required&#93; Name of the registry to be created of max length of 255, and may only
 #' contain letters, numbers, hyphen, underscore, dollar sign, or hash mark.
 #' No whitespace.
 #' @param Description A description of the registry. If description is not provided, there
 #' will not be any default value for this.
-#' @param Tags AWS tags that contain a key value pair and may be searched by console,
-#' command line, or API.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegistryArn = "string",
-#'   RegistryName = "string",
-#'   Description = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_registry(
-#'   RegistryName = "string",
-#'   Description = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param Tags Amazon Web Services tags that contain a key value pair and may be
+#' searched by console, command line, or API.
 #'
 #' @keywords internal
 #'
@@ -2721,24 +1285,9 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
 #' Creates a new schema set and registers the schema definition
 #'
 #' @description
-#' Creates a new schema set and registers the schema definition. Returns an
-#' error if the schema set already exists without actually registering the
-#' version.
-#' 
-#' When the schema set is created, a version checkpoint will be set to the
-#' first version. Compatibility mode "DISABLED" restricts any additional
-#' schema versions from being added after the first schema version. For all
-#' other compatibility modes, validation of compatibility settings will be
-#' applied only from the second version onwards when the
-#' [`register_schema_version`][glue_register_schema_version] API is used.
-#' 
-#' When this API is called without a `RegistryId`, this will create an
-#' entry for a "default-registry" in the registry database tables, if it is
-#' not already present.
+#' Creates a new schema set and registers the schema definition. Returns an error if the schema set already exists without actually registering the version.
 #'
-#' @usage
-#' glue_create_schema(RegistryId, SchemaName, DataFormat, Compatibility,
-#'   Description, Tags, SchemaDefinition)
+#' See [https://paws-r.github.io/docs/glue/create_schema.html](https://paws-r.github.io/docs/glue/create_schema.html) for full documentation.
 #'
 #' @param RegistryId This is a wrapper shape to contain the registry identity fields. If this
 #' is not provided, the default registry will be used. The ARN format for
@@ -2747,8 +1296,8 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
 #' @param SchemaName &#91;required&#93; Name of the schema to be created of max length of 255, and may only
 #' contain letters, numbers, hyphen, underscore, dollar sign, or hash mark.
 #' No whitespace.
-#' @param DataFormat &#91;required&#93; The data format of the schema definition. Currently only `AVRO` is
-#' supported.
+#' @param DataFormat &#91;required&#93; The data format of the schema definition. Currently `AVRO`, `JSON` and
+#' `PROTOBUF` are supported.
 #' @param Compatibility The compatibility mode of the schema. The possible values are:
 #' 
 #' -   *NONE*: No compatibility mode applies. You can use this choice in
@@ -2794,51 +1343,10 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
 #'     and check compatibility against all previous schema versions.
 #' @param Description An optional description of the schema. If description is not provided,
 #' there will not be any automatic default value for this.
-#' @param Tags AWS tags that contain a key value pair and may be searched by console,
-#' command line, or API. If specified, follows the AWS tags-on-create
-#' pattern.
+#' @param Tags Amazon Web Services tags that contain a key value pair and may be
+#' searched by console, command line, or API. If specified, follows the
+#' Amazon Web Services tags-on-create pattern.
 #' @param SchemaDefinition The schema definition using the `DataFormat` setting for `SchemaName`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegistryName = "string",
-#'   RegistryArn = "string",
-#'   SchemaName = "string",
-#'   SchemaArn = "string",
-#'   Description = "string",
-#'   DataFormat = "AVRO",
-#'   Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
-#'   SchemaCheckpoint = 123,
-#'   LatestSchemaVersion = 123,
-#'   NextSchemaVersion = 123,
-#'   SchemaStatus = "AVAILABLE"|"PENDING"|"DELETING",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   SchemaVersionId = "string",
-#'   SchemaVersionStatus = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_schema(
-#'   RegistryId = list(
-#'     RegistryName = "string",
-#'     RegistryArn = "string"
-#'   ),
-#'   SchemaName = "string",
-#'   DataFormat = "AVRO",
-#'   Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
-#'   Description = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   SchemaDefinition = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2865,49 +1373,11 @@ glue_create_schema <- function(RegistryId = NULL, SchemaName, DataFormat, Compat
 #' @description
 #' Transforms a directed acyclic graph (DAG) into code.
 #'
-#' @usage
-#' glue_create_script(DagNodes, DagEdges, Language)
+#' See [https://paws-r.github.io/docs/glue/create_script.html](https://paws-r.github.io/docs/glue/create_script.html) for full documentation.
 #'
 #' @param DagNodes A list of the nodes in the DAG.
 #' @param DagEdges A list of the edges in the DAG.
 #' @param Language The programming language of the resulting code from the DAG.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PythonScript = "string",
-#'   ScalaCode = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_script(
-#'   DagNodes = list(
-#'     list(
-#'       Id = "string",
-#'       NodeType = "string",
-#'       Args = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string",
-#'           Param = TRUE|FALSE
-#'         )
-#'       ),
-#'       LineNumber = 123
-#'     )
-#'   ),
-#'   DagEdges = list(
-#'     list(
-#'       Source = "string",
-#'       Target = "string",
-#'       TargetParameter = "string"
-#'     )
-#'   ),
-#'   Language = "PYTHON"|"SCALA"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2932,52 +1402,12 @@ glue_create_script <- function(DagNodes = NULL, DagEdges = NULL, Language = NULL
 #' Creates a new security configuration
 #'
 #' @description
-#' Creates a new security configuration. A security configuration is a set
-#' of security properties that can be used by AWS Glue. You can use a
-#' security configuration to encrypt data at rest. For information about
-#' using security configurations in AWS Glue, see [Encrypting Data Written
-#' by Crawlers, Jobs, and Development
-#' Endpoints](https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html).
+#' Creates a new security configuration. A security configuration is a set of security properties that can be used by Glue. You can use a security configuration to encrypt data at rest. For information about using security configurations in Glue, see [Encrypting Data Written by Crawlers, Jobs, and Development Endpoints](https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html).
 #'
-#' @usage
-#' glue_create_security_configuration(Name, EncryptionConfiguration)
+#' See [https://paws-r.github.io/docs/glue/create_security_configuration.html](https://paws-r.github.io/docs/glue/create_security_configuration.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name for the new security configuration.
 #' @param EncryptionConfiguration &#91;required&#93; The encryption configuration for the new security configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   CreatedTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_security_configuration(
-#'   Name = "string",
-#'   EncryptionConfiguration = list(
-#'     S3Encryption = list(
-#'       list(
-#'         S3EncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-S3",
-#'         KmsKeyArn = "string"
-#'       )
-#'     ),
-#'     CloudWatchEncryption = list(
-#'       CloudWatchEncryptionMode = "DISABLED"|"SSE-KMS",
-#'       KmsKeyArn = "string"
-#'     ),
-#'     JobBookmarksEncryption = list(
-#'       JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
-#'       KmsKeyArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2999,143 +1429,98 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 }
 .glue$operations$create_security_configuration <- glue_create_security_configuration
 
+#' Creates a new session
+#'
+#' @description
+#' Creates a new session.
+#'
+#' See [https://paws-r.github.io/docs/glue/create_session.html](https://paws-r.github.io/docs/glue/create_session.html) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the session request.
+#' @param Description The description of the session.
+#' @param Role &#91;required&#93; The IAM Role ARN
+#' @param Command &#91;required&#93; The `SessionCommand` that runs the job.
+#' @param Timeout The number of seconds before request times out.
+#' @param IdleTimeout The number of seconds when idle before request times out.
+#' @param DefaultArguments A map array of key-value pairs. Max is 75 pairs.
+#' @param Connections The number of connections to use for the session.
+#' @param MaxCapacity The number of Glue data processing units (DPUs) that can be allocated
+#' when the job runs. A DPU is a relative measure of processing power that
+#' consists of 4 vCPUs of compute capacity and 16 GB memory.
+#' @param NumberOfWorkers The number of workers of a defined `WorkerType` to use for the session.
+#' @param WorkerType The type of predefined worker that is allocated to use for the session.
+#' Accepts a value of Standard, G.1X, G.2X, or G.025X.
+#' 
+#' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
+#'     of memory and a 50GB disk, and 2 executors per worker.
+#' 
+#' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
+#'     of memory, 64 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for memory-intensive jobs.
+#' 
+#' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
+#'     of memory, 128 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for memory-intensive jobs.
+#' 
+#' -   For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPU,
+#'     4 GB of memory, 64 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for low volume streaming jobs. This
+#'     worker type is only available for Glue version 3.0 streaming jobs.
+#' @param SecurityConfiguration The name of the SecurityConfiguration structure to be used with the
+#' session
+#' @param GlueVersion The Glue version determines the versions of Apache Spark and Python that
+#' Glue supports. The GlueVersion must be greater than 2.0.
+#' @param Tags The map of key value pairs (tags) belonging to the session.
+#' @param RequestOrigin The origin of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_session
+glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout = NULL, IdleTimeout = NULL, DefaultArguments = NULL, Connections = NULL, MaxCapacity = NULL, NumberOfWorkers = NULL, WorkerType = NULL, SecurityConfiguration = NULL, GlueVersion = NULL, Tags = NULL, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "CreateSession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$create_session_input(Id = Id, Description = Description, Role = Role, Command = Command, Timeout = Timeout, IdleTimeout = IdleTimeout, DefaultArguments = DefaultArguments, Connections = Connections, MaxCapacity = MaxCapacity, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, SecurityConfiguration = SecurityConfiguration, GlueVersion = GlueVersion, Tags = Tags, RequestOrigin = RequestOrigin)
+  output <- .glue$create_session_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_session <- glue_create_session
+
 #' Creates a new table definition in the Data Catalog
 #'
 #' @description
 #' Creates a new table definition in the Data Catalog.
 #'
-#' @usage
-#' glue_create_table(CatalogId, DatabaseName, TableInput, PartitionIndexes)
+#' See [https://paws-r.github.io/docs/glue/create_table.html](https://paws-r.github.io/docs/glue/create_table.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the `Table`. If none is
-#' supplied, the AWS account ID is used by default.
+#' supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The catalog database in which to create the new table. For Hive
 #' compatibility, this name is entirely lowercase.
 #' @param TableInput &#91;required&#93; The `TableInput` object that defines the metadata table to create in the
 #' catalog.
 #' @param PartitionIndexes A list of partition indexes, `PartitionIndex` structures, to create in
 #' the table.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_table(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableInput = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Owner = "string",
-#'     LastAccessTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastAnalyzedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Retention = 123,
-#'     StorageDescriptor = list(
-#'       Columns = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = "string",
-#'       InputFormat = "string",
-#'       OutputFormat = "string",
-#'       Compressed = TRUE|FALSE,
-#'       NumberOfBuckets = 123,
-#'       SerdeInfo = list(
-#'         Name = "string",
-#'         SerializationLibrary = "string",
-#'         Parameters = list(
-#'           "string"
-#'         )
-#'       ),
-#'       BucketColumns = list(
-#'         "string"
-#'       ),
-#'       SortColumns = list(
-#'         list(
-#'           Column = "string",
-#'           SortOrder = 123
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       SkewedInfo = list(
-#'         SkewedColumnNames = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValues = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValueLocationMaps = list(
-#'           "string"
-#'         )
-#'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE,
-#'       SchemaReference = list(
-#'         SchemaId = list(
-#'           SchemaArn = "string",
-#'           SchemaName = "string",
-#'           RegistryName = "string"
-#'         ),
-#'         SchemaVersionId = "string",
-#'         SchemaVersionNumber = 123
-#'       )
-#'     ),
-#'     PartitionKeys = list(
-#'       list(
-#'         Name = "string",
-#'         Type = "string",
-#'         Comment = "string",
-#'         Parameters = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ViewOriginalText = "string",
-#'     ViewExpandedText = "string",
-#'     TableType = "string",
-#'     Parameters = list(
-#'       "string"
-#'     ),
-#'     TargetTable = list(
-#'       CatalogId = "string",
-#'       DatabaseName = "string",
-#'       Name = "string"
-#'     )
-#'   ),
-#'   PartitionIndexes = list(
-#'     list(
-#'       Keys = list(
-#'         "string"
-#'       ),
-#'       IndexName = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param TransactionId The ID of the transaction.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_table
-glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, PartitionIndexes = NULL) {
+glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, PartitionIndexes = NULL, TransactionId = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, PartitionIndexes = PartitionIndexes)
+  input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, PartitionIndexes = PartitionIndexes, TransactionId = TransactionId)
   output <- .glue$create_table_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -3150,9 +1535,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 #' @description
 #' Creates a new trigger.
 #'
-#' @usage
-#' glue_create_trigger(Name, WorkflowName, Type, Schedule, Predicate,
-#'   Actions, Description, StartOnCreation, Tags)
+#' See [https://paws-r.github.io/docs/glue/create_trigger.html](https://paws-r.github.io/docs/glue/create_trigger.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger.
 #' @param WorkflowName The name of the workflow associated with the trigger.
@@ -3172,71 +1555,24 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 #' @param StartOnCreation Set to `true` to start `SCHEDULED` and `CONDITIONAL` triggers when
 #' created. True is not supported for `ON_DEMAND` triggers.
 #' @param Tags The tags to use with this trigger. You may use tags to limit access to
-#' the trigger. For more information about tags in AWS Glue, see [AWS Tags
-#' in AWS
+#' the trigger. For more information about tags in Glue, see [Amazon Web
+#' Services Tags in
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
 #' the developer guide.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_trigger(
-#'   Name = "string",
-#'   WorkflowName = "string",
-#'   Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'   Schedule = "string",
-#'   Predicate = list(
-#'     Logical = "AND"|"ANY",
-#'     Conditions = list(
-#'       list(
-#'         LogicalOperator = "EQUALS",
-#'         JobName = "string",
-#'         State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'         CrawlerName = "string",
-#'         CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'       )
-#'     )
-#'   ),
-#'   Actions = list(
-#'     list(
-#'       JobName = "string",
-#'       Arguments = list(
-#'         "string"
-#'       ),
-#'       Timeout = 123,
-#'       SecurityConfiguration = "string",
-#'       NotificationProperty = list(
-#'         NotifyDelayAfter = 123
-#'       ),
-#'       CrawlerName = "string"
-#'     )
-#'   ),
-#'   Description = "string",
-#'   StartOnCreation = TRUE|FALSE,
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param EventBatchingCondition Batch condition that must be met (specified number of events received or
+#' batch time window expired) before EventBridge event trigger fires.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_trigger
-glue_create_trigger <- function(Name, WorkflowName = NULL, Type, Schedule = NULL, Predicate = NULL, Actions, Description = NULL, StartOnCreation = NULL, Tags = NULL) {
+glue_create_trigger <- function(Name, WorkflowName = NULL, Type, Schedule = NULL, Predicate = NULL, Actions, Description = NULL, StartOnCreation = NULL, Tags = NULL, EventBatchingCondition = NULL) {
   op <- new_operation(
     name = "CreateTrigger",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_trigger_input(Name = Name, WorkflowName = WorkflowName, Type = Type, Schedule = Schedule, Predicate = Predicate, Actions = Actions, Description = Description, StartOnCreation = StartOnCreation, Tags = Tags)
+  input <- .glue$create_trigger_input(Name = Name, WorkflowName = WorkflowName, Type = Type, Schedule = Schedule, Predicate = Predicate, Actions = Actions, Description = Description, StartOnCreation = StartOnCreation, Tags = Tags, EventBatchingCondition = EventBatchingCondition)
   output <- .glue$create_trigger_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -3251,38 +1587,13 @@ glue_create_trigger <- function(Name, WorkflowName = NULL, Type, Schedule = NULL
 #' @description
 #' Creates a new function definition in the Data Catalog.
 #'
-#' @usage
-#' glue_create_user_defined_function(CatalogId, DatabaseName,
-#'   FunctionInput)
+#' See [https://paws-r.github.io/docs/glue/create_user_defined_function.html](https://paws-r.github.io/docs/glue/create_user_defined_function.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the function. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which to create the function.
 #' @param FunctionInput &#91;required&#93; A `FunctionInput` object that defines the function to create in the Data
 #' Catalog.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_user_defined_function(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   FunctionInput = list(
-#'     FunctionName = "string",
-#'     ClassName = "string",
-#'     OwnerName = "string",
-#'     OwnerType = "USER"|"ROLE"|"GROUP",
-#'     ResourceUris = list(
-#'       list(
-#'         ResourceType = "JAR"|"FILE"|"ARCHIVE",
-#'         Uri = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3309,9 +1620,7 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @description
 #' Creates a new workflow.
 #'
-#' @usage
-#' glue_create_workflow(Name, Description, DefaultRunProperties, Tags,
-#'   MaxConcurrentRuns)
+#' See [https://paws-r.github.io/docs/glue/create_workflow.html](https://paws-r.github.io/docs/glue/create_workflow.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name to be assigned to the workflow. It should be unique within your
 #' account.
@@ -3324,29 +1633,6 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' number of concurrent runs of any of the component jobs. If you leave
 #' this parameter blank, there is no limit to the number of concurrent
 #' workflow runs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_workflow(
-#'   Name = "string",
-#'   Description = "string",
-#'   DefaultRunProperties = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   MaxConcurrentRuns = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3368,25 +1654,43 @@ glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties 
 }
 .glue$operations$create_workflow <- glue_create_workflow
 
+#' Deletes an existing blueprint
+#'
+#' @description
+#' Deletes an existing blueprint.
+#'
+#' See [https://paws-r.github.io/docs/glue/delete_blueprint.html](https://paws-r.github.io/docs/glue/delete_blueprint.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the blueprint to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_blueprint
+glue_delete_blueprint <- function(Name) {
+  op <- new_operation(
+    name = "DeleteBlueprint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_blueprint_input(Name = Name)
+  output <- .glue$delete_blueprint_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_blueprint <- glue_delete_blueprint
+
 #' Removes a classifier from the Data Catalog
 #'
 #' @description
 #' Removes a classifier from the Data Catalog.
 #'
-#' @usage
-#' glue_delete_classifier(Name)
+#' See [https://paws-r.github.io/docs/glue/delete_classifier.html](https://paws-r.github.io/docs/glue/delete_classifier.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the classifier to remove.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_classifier(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3412,36 +1716,15 @@ glue_delete_classifier <- function(Name) {
 #'
 #' @description
 #' Delete the partition column statistics of a column.
-#' 
-#' The Identity and Access Management (IAM) permission required for this
-#' operation is [`delete_partition`][glue_delete_partition].
 #'
-#' @usage
-#' glue_delete_column_statistics_for_partition(CatalogId, DatabaseName,
-#'   TableName, PartitionValues, ColumnName)
+#' See [https://paws-r.github.io/docs/glue/delete_column_statistics_for_partition.html](https://paws-r.github.io/docs/glue/delete_column_statistics_for_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
-#' none is supplied, the AWS account ID is used by default.
+#' none is supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionValues &#91;required&#93; A list of partition values identifying the partition.
 #' @param ColumnName &#91;required&#93; Name of the column.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_column_statistics_for_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionValues = list(
-#'     "string"
-#'   ),
-#'   ColumnName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3467,32 +1750,14 @@ glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #'
 #' @description
 #' Retrieves table statistics of columns.
-#' 
-#' The Identity and Access Management (IAM) permission required for this
-#' operation is [`delete_table`][glue_delete_table].
 #'
-#' @usage
-#' glue_delete_column_statistics_for_table(CatalogId, DatabaseName,
-#'   TableName, ColumnName)
+#' See [https://paws-r.github.io/docs/glue/delete_column_statistics_for_table.html](https://paws-r.github.io/docs/glue/delete_column_statistics_for_table.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
-#' none is supplied, the AWS account ID is used by default.
+#' none is supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param ColumnName &#91;required&#93; The name of the column.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_column_statistics_for_table(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   ColumnName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3519,23 +1784,11 @@ glue_delete_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #' @description
 #' Deletes a connection from the Data Catalog.
 #'
-#' @usage
-#' glue_delete_connection(CatalogId, ConnectionName)
+#' See [https://paws-r.github.io/docs/glue/delete_connection.html](https://paws-r.github.io/docs/glue/delete_connection.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param ConnectionName &#91;required&#93; The name of the connection to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_connection(
-#'   CatalogId = "string",
-#'   ConnectionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3557,27 +1810,15 @@ glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
 }
 .glue$operations$delete_connection <- glue_delete_connection
 
-#' Removes a specified crawler from the AWS Glue Data Catalog, unless the
+#' Removes a specified crawler from the Glue Data Catalog, unless the
 #' crawler state is RUNNING
 #'
 #' @description
-#' Removes a specified crawler from the AWS Glue Data Catalog, unless the
-#' crawler state is `RUNNING`.
+#' Removes a specified crawler from the Glue Data Catalog, unless the crawler state is `RUNNING`.
 #'
-#' @usage
-#' glue_delete_crawler(Name)
+#' See [https://paws-r.github.io/docs/glue/delete_crawler.html](https://paws-r.github.io/docs/glue/delete_crawler.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the crawler to remove.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_crawler(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3599,46 +1840,46 @@ glue_delete_crawler <- function(Name) {
 }
 .glue$operations$delete_crawler <- glue_delete_crawler
 
+#' Deletes a custom pattern by specifying its name
+#'
+#' @description
+#' Deletes a custom pattern by specifying its name.
+#'
+#' See [https://paws-r.github.io/docs/glue/delete_custom_entity_type.html](https://paws-r.github.io/docs/glue/delete_custom_entity_type.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the custom pattern that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_custom_entity_type
+glue_delete_custom_entity_type <- function(Name) {
+  op <- new_operation(
+    name = "DeleteCustomEntityType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_custom_entity_type_input(Name = Name)
+  output <- .glue$delete_custom_entity_type_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_custom_entity_type <- glue_delete_custom_entity_type
+
 #' Removes a specified database from a Data Catalog
 #'
 #' @description
 #' Removes a specified database from a Data Catalog.
-#' 
-#' After completing this operation, you no longer have access to the tables
-#' (and all table versions and partitions that might belong to the tables)
-#' and the user-defined functions in the deleted database. AWS Glue deletes
-#' these "orphaned" resources asynchronously in a timely manner, at the
-#' discretion of the service.
-#' 
-#' To ensure the immediate deletion of all related resources, before
-#' calling [`delete_database`][glue_delete_database], use
-#' [`delete_table_version`][glue_delete_table_version] or
-#' [`batch_delete_table_version`][glue_batch_delete_table_version],
-#' [`delete_partition`][glue_delete_partition] or
-#' [`batch_delete_partition`][glue_batch_delete_partition],
-#' [`delete_user_defined_function`][glue_delete_user_defined_function], and
-#' [`delete_table`][glue_delete_table] or
-#' [`batch_delete_table`][glue_batch_delete_table], to delete any resources
-#' that belong to the database.
 #'
-#' @usage
-#' glue_delete_database(CatalogId, Name)
+#' See [https://paws-r.github.io/docs/glue/delete_database.html](https://paws-r.github.io/docs/glue/delete_database.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the database resides. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param Name &#91;required&#93; The name of the database to delete. For Hive compatibility, this must be
 #' all lowercase.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_database(
-#'   CatalogId = "string",
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3665,20 +1906,9 @@ glue_delete_database <- function(CatalogId = NULL, Name) {
 #' @description
 #' Deletes a specified development endpoint.
 #'
-#' @usage
-#' glue_delete_dev_endpoint(EndpointName)
+#' See [https://paws-r.github.io/docs/glue/delete_dev_endpoint.html](https://paws-r.github.io/docs/glue/delete_dev_endpoint.html) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the `DevEndpoint`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_dev_endpoint(
-#'   EndpointName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3703,28 +1933,11 @@ glue_delete_dev_endpoint <- function(EndpointName) {
 #' Deletes a specified job definition
 #'
 #' @description
-#' Deletes a specified job definition. If the job definition is not found,
-#' no exception is thrown.
+#' Deletes a specified job definition. If the job definition is not found, no exception is thrown.
 #'
-#' @usage
-#' glue_delete_job(JobName)
+#' See [https://paws-r.github.io/docs/glue/delete_job.html](https://paws-r.github.io/docs/glue/delete_job.html) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_job(
-#'   JobName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3746,36 +1959,14 @@ glue_delete_job <- function(JobName) {
 }
 .glue$operations$delete_job <- glue_delete_job
 
-#' Deletes an AWS Glue machine learning transform
+#' Deletes an Glue machine learning transform
 #'
 #' @description
-#' Deletes an AWS Glue machine learning transform. Machine learning
-#' transforms are a special type of transform that use machine learning to
-#' learn the details of the transformation to be performed by learning from
-#' examples provided by humans. These transformations are then saved by AWS
-#' Glue. If you no longer need a transform, you can delete it by calling
-#' `DeleteMLTransforms`. However, any AWS Glue jobs that still reference
-#' the deleted transform will no longer succeed.
+#' Deletes an Glue machine learning transform. Machine learning transforms are a special type of transform that use machine learning to learn the details of the transformation to be performed by learning from examples provided by humans. These transformations are then saved by Glue. If you no longer need a transform, you can delete it by calling `DeleteMLTransforms`. However, any Glue jobs that still reference the deleted transform will no longer succeed.
 #'
-#' @usage
-#' glue_delete_ml_transform(TransformId)
+#' See [https://paws-r.github.io/docs/glue/delete_ml_transform.html](https://paws-r.github.io/docs/glue/delete_ml_transform.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the transform to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TransformId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_ml_transform(
-#'   TransformId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3802,30 +1993,13 @@ glue_delete_ml_transform <- function(TransformId) {
 #' @description
 #' Deletes a specified partition.
 #'
-#' @usage
-#' glue_delete_partition(CatalogId, DatabaseName, TableName,
-#'   PartitionValues)
+#' See [https://paws-r.github.io/docs/glue/delete_partition.html](https://paws-r.github.io/docs/glue/delete_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partition to be deleted resides. If
-#' none is provided, the AWS account ID is used by default.
+#' none is provided, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which the table in question resides.
 #' @param TableName &#91;required&#93; The name of the table that contains the partition to be deleted.
 #' @param PartitionValues &#91;required&#93; The values that define the partition.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionValues = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3852,9 +2026,7 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' @description
 #' Deletes a specified partition index from an existing table.
 #'
-#' @usage
-#' glue_delete_partition_index(CatalogId, DatabaseName, TableName,
-#'   IndexName)
+#' See [https://paws-r.github.io/docs/glue/delete_partition_index.html](https://paws-r.github.io/docs/glue/delete_partition_index.html) for full documentation.
 #'
 #' @param CatalogId The catalog ID where the table resides.
 #' @param DatabaseName &#91;required&#93; Specifies the name of a database from which you want to delete a
@@ -3862,19 +2034,6 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' @param TableName &#91;required&#93; Specifies the name of a table from which you want to delete a partition
 #' index.
 #' @param IndexName &#91;required&#93; The name of the partition index to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_partition_index(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   IndexName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3899,40 +2058,12 @@ glue_delete_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
 #' Delete the entire registry including schema and all of its versions
 #'
 #' @description
-#' Delete the entire registry including schema and all of its versions. To
-#' get the status of the delete operation, you can call the
-#' [`get_registry`][glue_get_registry] API after the asynchronous call.
-#' Deleting a registry will disable all online operations for the registry
-#' such as the [`update_registry`][glue_update_registry],
-#' [`create_schema`][glue_create_schema],
-#' [`update_schema`][glue_update_schema], and
-#' [`register_schema_version`][glue_register_schema_version] APIs.
+#' Delete the entire registry including schema and all of its versions. To get the status of the delete operation, you can call the [`get_registry`][glue_get_registry] API after the asynchronous call. Deleting a registry will deactivate all online operations for the registry such as the [`update_registry`][glue_update_registry], [`create_schema`][glue_create_schema], [`update_schema`][glue_update_schema], and [`register_schema_version`][glue_register_schema_version] APIs.
 #'
-#' @usage
-#' glue_delete_registry(RegistryId)
+#' See [https://paws-r.github.io/docs/glue/delete_registry.html](https://paws-r.github.io/docs/glue/delete_registry.html) for full documentation.
 #'
 #' @param RegistryId &#91;required&#93; This is a wrapper structure that may contain the registry name and
 #' Amazon Resource Name (ARN).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegistryName = "string",
-#'   RegistryArn = "string",
-#'   Status = "AVAILABLE"|"DELETING"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_registry(
-#'   RegistryId = list(
-#'     RegistryName = "string",
-#'     RegistryArn = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3959,22 +2090,10 @@ glue_delete_registry <- function(RegistryId) {
 #' @description
 #' Deletes a specified policy.
 #'
-#' @usage
-#' glue_delete_resource_policy(PolicyHashCondition, ResourceArn)
+#' See [https://paws-r.github.io/docs/glue/delete_resource_policy.html](https://paws-r.github.io/docs/glue/delete_resource_policy.html) for full documentation.
 #'
 #' @param PolicyHashCondition The hash value returned when this policy was set.
-#' @param ResourceArn The ARN of the AWS Glue resource for the resource policy to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_resource_policy(
-#'   PolicyHashCondition = "string",
-#'   ResourceArn = "string"
-#' )
-#' ```
+#' @param ResourceArn The ARN of the Glue resource for the resource policy to be deleted.
 #'
 #' @keywords internal
 #'
@@ -4000,39 +2119,12 @@ glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn 
 #' versions
 #'
 #' @description
-#' Deletes the entire schema set, including the schema set and all of its
-#' versions. To get the status of the delete operation, you can call
-#' [`get_schema`][glue_get_schema] API after the asynchronous call.
-#' Deleting a registry will disable all online operations for the schema,
-#' such as the [`get_schema_by_definition`][glue_get_schema_by_definition],
-#' and [`register_schema_version`][glue_register_schema_version] APIs.
+#' Deletes the entire schema set, including the schema set and all of its versions. To get the status of the delete operation, you can call [`get_schema`][glue_get_schema] API after the asynchronous call. Deleting a registry will deactivate all online operations for the schema, such as the [`get_schema_by_definition`][glue_get_schema_by_definition], and [`register_schema_version`][glue_register_schema_version] APIs.
 #'
-#' @usage
-#' glue_delete_schema(SchemaId)
+#' See [https://paws-r.github.io/docs/glue/delete_schema.html](https://paws-r.github.io/docs/glue/delete_schema.html) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure that may contain the schema name and Amazon
 #' Resource Name (ARN).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SchemaArn = "string",
-#'   SchemaName = "string",
-#'   Status = "AVAILABLE"|"PENDING"|"DELETING"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_schema(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4057,29 +2149,9 @@ glue_delete_schema <- function(SchemaId) {
 #' Remove versions from the specified schema
 #'
 #' @description
-#' Remove versions from the specified schema. A version number or range may
-#' be supplied. If the compatibility mode forbids deleting of a version
-#' that is necessary, such as BACKWARDS_FULL, an error is returned.
-#' Calling the `GetSchemaVersions` API after this call will list the status
-#' of the deleted versions.
-#' 
-#' When the range of version numbers contain check pointed version, the API
-#' will return a 409 conflict and will not proceed with the deletion. You
-#' have to remove the checkpoint first using the `DeleteSchemaCheckpoint`
-#' API before using this API.
-#' 
-#' You cannot use the
-#' [`delete_schema_versions`][glue_delete_schema_versions] API to delete
-#' the first schema version in the schema set. The first schema version can
-#' only be deleted by the [`delete_schema`][glue_delete_schema] API. This
-#' operation will also delete the attached `SchemaVersionMetadata` under
-#' the schema versions. Hard deletes will be enforced on the database.
-#' 
-#' If the compatibility mode forbids deleting of a version that is
-#' necessary, such as BACKWARDS_FULL, an error is returned.
+#' Remove versions from the specified schema. A version number or range may be supplied. If the compatibility mode forbids deleting of a version that is necessary, such as BACKWARDS_FULL, an error is returned. Calling the `GetSchemaVersions` API after this call will list the status of the deleted versions.
 #'
-#' @usage
-#' glue_delete_schema_versions(SchemaId, Versions)
+#' See [https://paws-r.github.io/docs/glue/delete_schema_versions.html](https://paws-r.github.io/docs/glue/delete_schema_versions.html) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure that may contain the schema name and Amazon
 #' Resource Name (ARN).
@@ -4088,34 +2160,6 @@ glue_delete_schema <- function(SchemaId) {
 #' -   a single version number, 5
 #' 
 #' -   a range, 5-8 : deletes versions 5, 6, 7, 8
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SchemaVersionErrors = list(
-#'     list(
-#'       VersionNumber = 123,
-#'       ErrorDetails = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_schema_versions(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   Versions = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4142,20 +2186,9 @@ glue_delete_schema_versions <- function(SchemaId, Versions) {
 #' @description
 #' Deletes a specified security configuration.
 #'
-#' @usage
-#' glue_delete_security_configuration(Name)
+#' See [https://paws-r.github.io/docs/glue/delete_security_configuration.html](https://paws-r.github.io/docs/glue/delete_security_configuration.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the security configuration to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_security_configuration(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4177,57 +2210,62 @@ glue_delete_security_configuration <- function(Name) {
 }
 .glue$operations$delete_security_configuration <- glue_delete_security_configuration
 
+#' Deletes the session
+#'
+#' @description
+#' Deletes the session.
+#'
+#' See [https://paws-r.github.io/docs/glue/delete_session.html](https://paws-r.github.io/docs/glue/delete_session.html) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the session to be deleted.
+#' @param RequestOrigin The name of the origin of the delete session request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_session
+glue_delete_session <- function(Id, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "DeleteSession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_session_input(Id = Id, RequestOrigin = RequestOrigin)
+  output <- .glue$delete_session_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_session <- glue_delete_session
+
 #' Removes a table definition from the Data Catalog
 #'
 #' @description
 #' Removes a table definition from the Data Catalog.
-#' 
-#' After completing this operation, you no longer have access to the table
-#' versions and partitions that belong to the deleted table. AWS Glue
-#' deletes these "orphaned" resources asynchronously in a timely manner, at
-#' the discretion of the service.
-#' 
-#' To ensure the immediate deletion of all related resources, before
-#' calling [`delete_table`][glue_delete_table], use
-#' [`delete_table_version`][glue_delete_table_version] or
-#' [`batch_delete_table_version`][glue_batch_delete_table_version], and
-#' [`delete_partition`][glue_delete_partition] or
-#' [`batch_delete_partition`][glue_batch_delete_partition], to delete any
-#' resources that belong to the table.
 #'
-#' @usage
-#' glue_delete_table(CatalogId, DatabaseName, Name)
+#' See [https://paws-r.github.io/docs/glue/delete_table.html](https://paws-r.github.io/docs/glue/delete_table.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
-#' the AWS account ID is used by default.
+#' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which the table resides. For Hive
 #' compatibility, this name is entirely lowercase.
 #' @param Name &#91;required&#93; The name of the table to be deleted. For Hive compatibility, this name
 #' is entirely lowercase.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_table(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   Name = "string"
-#' )
-#' ```
+#' @param TransactionId The transaction ID at which to delete the table contents.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_delete_table
-glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name) {
+glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL) {
   op <- new_operation(
     name = "DeleteTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$delete_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name)
+  input <- .glue$delete_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId)
   output <- .glue$delete_table_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -4242,30 +2280,16 @@ glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name) {
 #' @description
 #' Deletes a specified version of a table.
 #'
-#' @usage
-#' glue_delete_table_version(CatalogId, DatabaseName, TableName, VersionId)
+#' See [https://paws-r.github.io/docs/glue/delete_table_version.html](https://paws-r.github.io/docs/glue/delete_table_version.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
-#' the AWS account ID is used by default.
+#' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The database in the catalog in which the table resides. For Hive
 #' compatibility, this name is entirely lowercase.
 #' @param TableName &#91;required&#93; The name of the table. For Hive compatibility, this name is entirely
 #' lowercase.
 #' @param VersionId &#91;required&#93; The ID of the table version to be deleted. A `VersionID` is a string
 #' representation of an integer. Each version is incremented by 1.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_table_version(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   VersionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4290,28 +2314,11 @@ glue_delete_table_version <- function(CatalogId = NULL, DatabaseName, TableName,
 #' Deletes a specified trigger
 #'
 #' @description
-#' Deletes a specified trigger. If the trigger is not found, no exception
-#' is thrown.
+#' Deletes a specified trigger. If the trigger is not found, no exception is thrown.
 #'
-#' @usage
-#' glue_delete_trigger(Name)
+#' See [https://paws-r.github.io/docs/glue/delete_trigger.html](https://paws-r.github.io/docs/glue/delete_trigger.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_trigger(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4338,25 +2345,13 @@ glue_delete_trigger <- function(Name) {
 #' @description
 #' Deletes an existing function definition from the Data Catalog.
 #'
-#' @usage
-#' glue_delete_user_defined_function(CatalogId, DatabaseName, FunctionName)
+#' See [https://paws-r.github.io/docs/glue/delete_user_defined_function.html](https://paws-r.github.io/docs/glue/delete_user_defined_function.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the function to be deleted is located.
-#' If none is supplied, the AWS account ID is used by default.
+#' If none is supplied, the Amazon Web Services account ID is used by
+#' default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the function is located.
 #' @param FunctionName &#91;required&#93; The name of the function definition to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_user_defined_function(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   FunctionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4383,25 +2378,9 @@ glue_delete_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @description
 #' Deletes a workflow.
 #'
-#' @usage
-#' glue_delete_workflow(Name)
+#' See [https://paws-r.github.io/docs/glue/delete_workflow.html](https://paws-r.github.io/docs/glue/delete_workflow.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow to be deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_workflow(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4423,37 +2402,107 @@ glue_delete_workflow <- function(Name) {
 }
 .glue$operations$delete_workflow <- glue_delete_workflow
 
+#' Retrieves the details of a blueprint
+#'
+#' @description
+#' Retrieves the details of a blueprint.
+#'
+#' See [https://paws-r.github.io/docs/glue/get_blueprint.html](https://paws-r.github.io/docs/glue/get_blueprint.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the blueprint.
+#' @param IncludeBlueprint Specifies whether or not to include the blueprint in the response.
+#' @param IncludeParameterSpec Specifies whether or not to include the parameter specification.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_blueprint
+glue_get_blueprint <- function(Name, IncludeBlueprint = NULL, IncludeParameterSpec = NULL) {
+  op <- new_operation(
+    name = "GetBlueprint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_blueprint_input(Name = Name, IncludeBlueprint = IncludeBlueprint, IncludeParameterSpec = IncludeParameterSpec)
+  output <- .glue$get_blueprint_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_blueprint <- glue_get_blueprint
+
+#' Retrieves the details of a blueprint run
+#'
+#' @description
+#' Retrieves the details of a blueprint run.
+#'
+#' See [https://paws-r.github.io/docs/glue/get_blueprint_run.html](https://paws-r.github.io/docs/glue/get_blueprint_run.html) for full documentation.
+#'
+#' @param BlueprintName &#91;required&#93; The name of the blueprint.
+#' @param RunId &#91;required&#93; The run ID for the blueprint run you want to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_blueprint_run
+glue_get_blueprint_run <- function(BlueprintName, RunId) {
+  op <- new_operation(
+    name = "GetBlueprintRun",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_blueprint_run_input(BlueprintName = BlueprintName, RunId = RunId)
+  output <- .glue$get_blueprint_run_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_blueprint_run <- glue_get_blueprint_run
+
+#' Retrieves the details of blueprint runs for a specified blueprint
+#'
+#' @description
+#' Retrieves the details of blueprint runs for a specified blueprint.
+#'
+#' See [https://paws-r.github.io/docs/glue/get_blueprint_runs.html](https://paws-r.github.io/docs/glue/get_blueprint_runs.html) for full documentation.
+#'
+#' @param BlueprintName &#91;required&#93; The name of the blueprint.
+#' @param NextToken A continuation token, if this is a continuation request.
+#' @param MaxResults The maximum size of a list to return.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_blueprint_runs
+glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetBlueprintRuns",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_blueprint_runs_input(BlueprintName = BlueprintName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .glue$get_blueprint_runs_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_blueprint_runs <- glue_get_blueprint_runs
+
 #' Retrieves the status of a migration operation
 #'
 #' @description
 #' Retrieves the status of a migration operation.
 #'
-#' @usage
-#' glue_get_catalog_import_status(CatalogId)
+#' See [https://paws-r.github.io/docs/glue/get_catalog_import_status.html](https://paws-r.github.io/docs/glue/get_catalog_import_status.html) for full documentation.
 #'
-#' @param CatalogId The ID of the catalog to migrate. Currently, this should be the AWS
-#' account ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImportStatus = list(
-#'     ImportCompleted = TRUE|FALSE,
-#'     ImportTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ImportedBy = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_catalog_import_status(
-#'   CatalogId = "string"
-#' )
-#' ```
+#' @param CatalogId The ID of the catalog to migrate. Currently, this should be the Amazon
+#' Web Services account ID.
 #'
 #' @keywords internal
 #'
@@ -4480,80 +2529,9 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #' @description
 #' Retrieve a classifier by name.
 #'
-#' @usage
-#' glue_get_classifier(Name)
+#' See [https://paws-r.github.io/docs/glue/get_classifier.html](https://paws-r.github.io/docs/glue/get_classifier.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the classifier to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Classifier = list(
-#'     GrokClassifier = list(
-#'       Name = "string",
-#'       Classification = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Version = 123,
-#'       GrokPattern = "string",
-#'       CustomPatterns = "string"
-#'     ),
-#'     XMLClassifier = list(
-#'       Name = "string",
-#'       Classification = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Version = 123,
-#'       RowTag = "string"
-#'     ),
-#'     JsonClassifier = list(
-#'       Name = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Version = 123,
-#'       JsonPath = "string"
-#'     ),
-#'     CsvClassifier = list(
-#'       Name = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Version = 123,
-#'       Delimiter = "string",
-#'       QuoteSymbol = "string",
-#'       ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
-#'       Header = list(
-#'         "string"
-#'       ),
-#'       DisableValueTrimming = TRUE|FALSE,
-#'       AllowSingleColumn = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_classifier(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4580,85 +2558,10 @@ glue_get_classifier <- function(Name) {
 #' @description
 #' Lists all classifier objects in the Data Catalog.
 #'
-#' @usage
-#' glue_get_classifiers(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/glue/get_classifiers.html](https://paws-r.github.io/docs/glue/get_classifiers.html) for full documentation.
 #'
 #' @param MaxResults The size of the list to return (optional).
 #' @param NextToken An optional continuation token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Classifiers = list(
-#'     list(
-#'       GrokClassifier = list(
-#'         Name = "string",
-#'         Classification = "string",
-#'         CreationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         LastUpdated = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Version = 123,
-#'         GrokPattern = "string",
-#'         CustomPatterns = "string"
-#'       ),
-#'       XMLClassifier = list(
-#'         Name = "string",
-#'         Classification = "string",
-#'         CreationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         LastUpdated = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Version = 123,
-#'         RowTag = "string"
-#'       ),
-#'       JsonClassifier = list(
-#'         Name = "string",
-#'         CreationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         LastUpdated = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Version = 123,
-#'         JsonPath = "string"
-#'       ),
-#'       CsvClassifier = list(
-#'         Name = "string",
-#'         CreationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         LastUpdated = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Version = 123,
-#'         Delimiter = "string",
-#'         QuoteSymbol = "string",
-#'         ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
-#'         Header = list(
-#'           "string"
-#'         ),
-#'         DisableValueTrimming = TRUE|FALSE,
-#'         AllowSingleColumn = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_classifiers(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4684,113 +2587,15 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @description
 #' Retrieves partition statistics of columns.
-#' 
-#' The Identity and Access Management (IAM) permission required for this
-#' operation is [`get_partition`][glue_get_partition].
 #'
-#' @usage
-#' glue_get_column_statistics_for_partition(CatalogId, DatabaseName,
-#'   TableName, PartitionValues, ColumnNames)
+#' See [https://paws-r.github.io/docs/glue/get_column_statistics_for_partition.html](https://paws-r.github.io/docs/glue/get_column_statistics_for_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
-#' none is supplied, the AWS account ID is used by default.
+#' none is supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionValues &#91;required&#93; A list of partition values identifying the partition.
 #' @param ColumnNames &#91;required&#93; A list of the column names.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ColumnStatisticsList = list(
-#'     list(
-#'       ColumnName = "string",
-#'       ColumnType = "string",
-#'       AnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StatisticsData = list(
-#'         Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
-#'         BooleanColumnStatisticsData = list(
-#'           NumberOfTrues = 123,
-#'           NumberOfFalses = 123,
-#'           NumberOfNulls = 123
-#'         ),
-#'         DateColumnStatisticsData = list(
-#'           MinimumValue = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           MaximumValue = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         DecimalColumnStatisticsData = list(
-#'           MinimumValue = list(
-#'             UnscaledValue = raw,
-#'             Scale = 123
-#'           ),
-#'           MaximumValue = list(
-#'             UnscaledValue = raw,
-#'             Scale = 123
-#'           ),
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         DoubleColumnStatisticsData = list(
-#'           MinimumValue = 123.0,
-#'           MaximumValue = 123.0,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         LongColumnStatisticsData = list(
-#'           MinimumValue = 123,
-#'           MaximumValue = 123,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         StringColumnStatisticsData = list(
-#'           MaximumLength = 123,
-#'           AverageLength = 123.0,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         BinaryColumnStatisticsData = list(
-#'           MaximumLength = 123,
-#'           AverageLength = 123.0,
-#'           NumberOfNulls = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Errors = list(
-#'     list(
-#'       ColumnName = "string",
-#'       Error = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_column_statistics_for_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionValues = list(
-#'     "string"
-#'   ),
-#'   ColumnNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4816,109 +2621,14 @@ glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseN
 #'
 #' @description
 #' Retrieves table statistics of columns.
-#' 
-#' The Identity and Access Management (IAM) permission required for this
-#' operation is [`get_table`][glue_get_table].
 #'
-#' @usage
-#' glue_get_column_statistics_for_table(CatalogId, DatabaseName, TableName,
-#'   ColumnNames)
+#' See [https://paws-r.github.io/docs/glue/get_column_statistics_for_table.html](https://paws-r.github.io/docs/glue/get_column_statistics_for_table.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
-#' none is supplied, the AWS account ID is used by default.
+#' none is supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param ColumnNames &#91;required&#93; A list of the column names.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ColumnStatisticsList = list(
-#'     list(
-#'       ColumnName = "string",
-#'       ColumnType = "string",
-#'       AnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StatisticsData = list(
-#'         Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
-#'         BooleanColumnStatisticsData = list(
-#'           NumberOfTrues = 123,
-#'           NumberOfFalses = 123,
-#'           NumberOfNulls = 123
-#'         ),
-#'         DateColumnStatisticsData = list(
-#'           MinimumValue = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           MaximumValue = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         DecimalColumnStatisticsData = list(
-#'           MinimumValue = list(
-#'             UnscaledValue = raw,
-#'             Scale = 123
-#'           ),
-#'           MaximumValue = list(
-#'             UnscaledValue = raw,
-#'             Scale = 123
-#'           ),
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         DoubleColumnStatisticsData = list(
-#'           MinimumValue = 123.0,
-#'           MaximumValue = 123.0,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         LongColumnStatisticsData = list(
-#'           MinimumValue = 123,
-#'           MaximumValue = 123,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         StringColumnStatisticsData = list(
-#'           MaximumLength = 123,
-#'           AverageLength = 123.0,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         BinaryColumnStatisticsData = list(
-#'           MaximumLength = 123,
-#'           AverageLength = 123.0,
-#'           NumberOfNulls = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Errors = list(
-#'     list(
-#'       ColumnName = "string",
-#'       Error = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_column_statistics_for_table(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   ColumnNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4945,59 +2655,17 @@ glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName,
 #' @description
 #' Retrieves a connection definition from the Data Catalog.
 #'
-#' @usage
-#' glue_get_connection(CatalogId, Name, HidePassword)
+#' See [https://paws-r.github.io/docs/glue/get_connection.html](https://paws-r.github.io/docs/glue/get_connection.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param Name &#91;required&#93; The name of the connection definition to retrieve.
 #' @param HidePassword Allows you to retrieve the connection metadata without returning the
-#' password. For instance, the AWS Glue console uses this flag to retrieve
-#' the connection, and does not display the password. Set this parameter
-#' when the caller might not have permission to use the AWS KMS key to
-#' decrypt the password, but it does have permission to access the rest of
-#' the connection properties.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Connection = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
-#'     MatchCriteria = list(
-#'       "string"
-#'     ),
-#'     ConnectionProperties = list(
-#'       "string"
-#'     ),
-#'     PhysicalConnectionRequirements = list(
-#'       SubnetId = "string",
-#'       SecurityGroupIdList = list(
-#'         "string"
-#'       ),
-#'       AvailabilityZone = "string"
-#'     ),
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedBy = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_connection(
-#'   CatalogId = "string",
-#'   Name = "string",
-#'   HidePassword = TRUE|FALSE
-#' )
-#' ```
+#' password. For instance, the Glue console uses this flag to retrieve the
+#' connection, and does not display the password. Set this parameter when
+#' the caller might not have permission to use the KMS key to decrypt the
+#' password, but it does have permission to access the rest of the
+#' connection properties.
 #'
 #' @keywords internal
 #'
@@ -5024,72 +2692,19 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #' @description
 #' Retrieves a list of connection definitions from the Data Catalog.
 #'
-#' @usage
-#' glue_get_connections(CatalogId, Filter, HidePassword, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_connections.html](https://paws-r.github.io/docs/glue/get_connections.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connections reside. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param Filter A filter that controls which connections are returned.
 #' @param HidePassword Allows you to retrieve the connection metadata without returning the
-#' password. For instance, the AWS Glue console uses this flag to retrieve
-#' the connection, and does not display the password. Set this parameter
-#' when the caller might not have permission to use the AWS KMS key to
-#' decrypt the password, but it does have permission to access the rest of
-#' the connection properties.
+#' password. For instance, the Glue console uses this flag to retrieve the
+#' connection, and does not display the password. Set this parameter when
+#' the caller might not have permission to use the KMS key to decrypt the
+#' password, but it does have permission to access the rest of the
+#' connection properties.
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum number of connections to return in one response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConnectionList = list(
-#'     list(
-#'       Name = "string",
-#'       Description = "string",
-#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
-#'       MatchCriteria = list(
-#'         "string"
-#'       ),
-#'       ConnectionProperties = list(
-#'         "string"
-#'       ),
-#'       PhysicalConnectionRequirements = list(
-#'         SubnetId = "string",
-#'         SecurityGroupIdList = list(
-#'           "string"
-#'         ),
-#'         AvailabilityZone = "string"
-#'       ),
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedBy = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_connections(
-#'   CatalogId = "string",
-#'   Filter = list(
-#'     MatchCriteria = list(
-#'       "string"
-#'     ),
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"
-#'   ),
-#'   HidePassword = TRUE|FALSE,
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5116,111 +2731,9 @@ glue_get_connections <- function(CatalogId = NULL, Filter = NULL, HidePassword =
 #' @description
 #' Retrieves metadata for a specified crawler.
 #'
-#' @usage
-#' glue_get_crawler(Name)
+#' See [https://paws-r.github.io/docs/glue/get_crawler.html](https://paws-r.github.io/docs/glue/get_crawler.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the crawler to retrieve metadata for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Crawler = list(
-#'     Name = "string",
-#'     Role = "string",
-#'     Targets = list(
-#'       S3Targets = list(
-#'         list(
-#'           Path = "string",
-#'           Exclusions = list(
-#'             "string"
-#'           ),
-#'           ConnectionName = "string"
-#'         )
-#'       ),
-#'       JdbcTargets = list(
-#'         list(
-#'           ConnectionName = "string",
-#'           Path = "string",
-#'           Exclusions = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       MongoDBTargets = list(
-#'         list(
-#'           ConnectionName = "string",
-#'           Path = "string",
-#'           ScanAll = TRUE|FALSE
-#'         )
-#'       ),
-#'       DynamoDBTargets = list(
-#'         list(
-#'           Path = "string",
-#'           scanAll = TRUE|FALSE,
-#'           scanRate = 123.0
-#'         )
-#'       ),
-#'       CatalogTargets = list(
-#'         list(
-#'           DatabaseName = "string",
-#'           Tables = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     DatabaseName = "string",
-#'     Description = "string",
-#'     Classifiers = list(
-#'       "string"
-#'     ),
-#'     RecrawlPolicy = list(
-#'       RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
-#'     ),
-#'     SchemaChangePolicy = list(
-#'       UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
-#'       DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
-#'     ),
-#'     LineageConfiguration = list(
-#'       CrawlerLineageSettings = "ENABLE"|"DISABLE"
-#'     ),
-#'     State = "READY"|"RUNNING"|"STOPPING",
-#'     TablePrefix = "string",
-#'     Schedule = list(
-#'       ScheduleExpression = "string",
-#'       State = "SCHEDULED"|"NOT_SCHEDULED"|"TRANSITIONING"
-#'     ),
-#'     CrawlElapsedTime = 123,
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastCrawl = list(
-#'       Status = "SUCCEEDED"|"CANCELLED"|"FAILED",
-#'       ErrorMessage = "string",
-#'       LogGroup = "string",
-#'       LogStream = "string",
-#'       MessagePrefix = "string",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     Version = 123,
-#'     Configuration = "string",
-#'     CrawlerSecurityConfiguration = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_crawler(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5247,43 +2760,11 @@ glue_get_crawler <- function(Name) {
 #' @description
 #' Retrieves metrics about specified crawlers.
 #'
-#' @usage
-#' glue_get_crawler_metrics(CrawlerNameList, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/glue/get_crawler_metrics.html](https://paws-r.github.io/docs/glue/get_crawler_metrics.html) for full documentation.
 #'
 #' @param CrawlerNameList A list of the names of crawlers about which to retrieve metrics.
 #' @param MaxResults The maximum size of a list to return.
 #' @param NextToken A continuation token, if this is a continuation call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CrawlerMetricsList = list(
-#'     list(
-#'       CrawlerName = "string",
-#'       TimeLeftSeconds = 123.0,
-#'       StillEstimating = TRUE|FALSE,
-#'       LastRuntimeSeconds = 123.0,
-#'       MedianRuntimeSeconds = 123.0,
-#'       TablesCreated = 123,
-#'       TablesUpdated = 123,
-#'       TablesDeleted = 123
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_crawler_metrics(
-#'   CrawlerNameList = list(
-#'     "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5310,116 +2791,10 @@ glue_get_crawler_metrics <- function(CrawlerNameList = NULL, MaxResults = NULL, 
 #' @description
 #' Retrieves metadata for all crawlers defined in the customer account.
 #'
-#' @usage
-#' glue_get_crawlers(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/glue/get_crawlers.html](https://paws-r.github.io/docs/glue/get_crawlers.html) for full documentation.
 #'
 #' @param MaxResults The number of crawlers to return on each call.
 #' @param NextToken A continuation token, if this is a continuation request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Crawlers = list(
-#'     list(
-#'       Name = "string",
-#'       Role = "string",
-#'       Targets = list(
-#'         S3Targets = list(
-#'           list(
-#'             Path = "string",
-#'             Exclusions = list(
-#'               "string"
-#'             ),
-#'             ConnectionName = "string"
-#'           )
-#'         ),
-#'         JdbcTargets = list(
-#'           list(
-#'             ConnectionName = "string",
-#'             Path = "string",
-#'             Exclusions = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         MongoDBTargets = list(
-#'           list(
-#'             ConnectionName = "string",
-#'             Path = "string",
-#'             ScanAll = TRUE|FALSE
-#'           )
-#'         ),
-#'         DynamoDBTargets = list(
-#'           list(
-#'             Path = "string",
-#'             scanAll = TRUE|FALSE,
-#'             scanRate = 123.0
-#'           )
-#'         ),
-#'         CatalogTargets = list(
-#'           list(
-#'             DatabaseName = "string",
-#'             Tables = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       DatabaseName = "string",
-#'       Description = "string",
-#'       Classifiers = list(
-#'         "string"
-#'       ),
-#'       RecrawlPolicy = list(
-#'         RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
-#'       ),
-#'       SchemaChangePolicy = list(
-#'         UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
-#'         DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
-#'       ),
-#'       LineageConfiguration = list(
-#'         CrawlerLineageSettings = "ENABLE"|"DISABLE"
-#'       ),
-#'       State = "READY"|"RUNNING"|"STOPPING",
-#'       TablePrefix = "string",
-#'       Schedule = list(
-#'         ScheduleExpression = "string",
-#'         State = "SCHEDULED"|"NOT_SCHEDULED"|"TRANSITIONING"
-#'       ),
-#'       CrawlElapsedTime = 123,
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastCrawl = list(
-#'         Status = "SUCCEEDED"|"CANCELLED"|"FAILED",
-#'         ErrorMessage = "string",
-#'         LogGroup = "string",
-#'         LogStream = "string",
-#'         MessagePrefix = "string",
-#'         StartTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       Version = 123,
-#'       Configuration = "string",
-#'       CrawlerSecurityConfiguration = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_crawlers(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5441,40 +2816,45 @@ glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .glue$operations$get_crawlers <- glue_get_crawlers
 
+#' Retrieves the details of a custom pattern by specifying its name
+#'
+#' @description
+#' Retrieves the details of a custom pattern by specifying its name.
+#'
+#' See [https://paws-r.github.io/docs/glue/get_custom_entity_type.html](https://paws-r.github.io/docs/glue/get_custom_entity_type.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the custom pattern that you want to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_custom_entity_type
+glue_get_custom_entity_type <- function(Name) {
+  op <- new_operation(
+    name = "GetCustomEntityType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_custom_entity_type_input(Name = Name)
+  output <- .glue$get_custom_entity_type_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_custom_entity_type <- glue_get_custom_entity_type
+
 #' Retrieves the security configuration for a specified catalog
 #'
 #' @description
 #' Retrieves the security configuration for a specified catalog.
 #'
-#' @usage
-#' glue_get_data_catalog_encryption_settings(CatalogId)
+#' See [https://paws-r.github.io/docs/glue/get_data_catalog_encryption_settings.html](https://paws-r.github.io/docs/glue/get_data_catalog_encryption_settings.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog to retrieve the security configuration for.
-#' If none is provided, the AWS account ID is used by default.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataCatalogEncryptionSettings = list(
-#'     EncryptionAtRest = list(
-#'       CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
-#'       SseAwsKmsKeyId = "string"
-#'     ),
-#'     ConnectionPasswordEncryption = list(
-#'       ReturnConnectionPasswordEncrypted = TRUE|FALSE,
-#'       AwsKmsKeyId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_data_catalog_encryption_settings(
-#'   CatalogId = "string"
-#' )
-#' ```
+#' If none is provided, the Amazon Web Services account ID is used by
+#' default.
 #'
 #' @keywords internal
 #'
@@ -5501,54 +2881,12 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
 #' @description
 #' Retrieves the definition of a specified database.
 #'
-#' @usage
-#' glue_get_database(CatalogId, Name)
+#' See [https://paws-r.github.io/docs/glue/get_database.html](https://paws-r.github.io/docs/glue/get_database.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the database resides. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param Name &#91;required&#93; The name of the database to retrieve. For Hive compatibility, this
 #' should be all lowercase.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Database = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     LocationUri = "string",
-#'     Parameters = list(
-#'       "string"
-#'     ),
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreateTableDefaultPermissions = list(
-#'       list(
-#'         Principal = list(
-#'           DataLakePrincipalIdentifier = "string"
-#'         ),
-#'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
-#'         )
-#'       )
-#'     ),
-#'     TargetDatabase = list(
-#'       CatalogId = "string",
-#'       DatabaseName = "string"
-#'     ),
-#'     CatalogId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_database(
-#'   CatalogId = "string",
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5575,11 +2913,10 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #' @description
 #' Retrieves all databases defined in a given Data Catalog.
 #'
-#' @usage
-#' glue_get_databases(CatalogId, NextToken, MaxResults, ResourceShareType)
+#' See [https://paws-r.github.io/docs/glue/get_databases.html](https://paws-r.github.io/docs/glue/get_databases.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog from which to retrieve `Databases`. If none
-#' is provided, the AWS account ID is used by default.
+#' is provided, the Amazon Web Services account ID is used by default.
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum number of databases to return in one response.
 #' @param ResourceShareType Allows you to specify that you want to list the databases shared with
@@ -5590,52 +2927,6 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #' 
 #' -   If set to `ALL`, will list the databases shared with your account,
 #'     as well as the databases in yor local account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DatabaseList = list(
-#'     list(
-#'       Name = "string",
-#'       Description = "string",
-#'       LocationUri = "string",
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       CreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CreateTableDefaultPermissions = list(
-#'         list(
-#'           Principal = list(
-#'             DataLakePrincipalIdentifier = "string"
-#'           ),
-#'           Permissions = list(
-#'             "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
-#'           )
-#'         )
-#'       ),
-#'       TargetDatabase = list(
-#'         CatalogId = "string",
-#'         DatabaseName = "string"
-#'       ),
-#'       CatalogId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_databases(
-#'   CatalogId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   ResourceShareType = "FOREIGN"|"ALL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5662,45 +2953,9 @@ glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = 
 #' @description
 #' Transforms a Python script into a directed acyclic graph (DAG).
 #'
-#' @usage
-#' glue_get_dataflow_graph(PythonScript)
+#' See [https://paws-r.github.io/docs/glue/get_dataflow_graph.html](https://paws-r.github.io/docs/glue/get_dataflow_graph.html) for full documentation.
 #'
 #' @param PythonScript The Python script to transform.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DagNodes = list(
-#'     list(
-#'       Id = "string",
-#'       NodeType = "string",
-#'       Args = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string",
-#'           Param = TRUE|FALSE
-#'         )
-#'       ),
-#'       LineNumber = 123
-#'     )
-#'   ),
-#'   DagEdges = list(
-#'     list(
-#'       Source = "string",
-#'       Target = "string",
-#'       TargetParameter = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_dataflow_graph(
-#'   PythonScript = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5726,67 +2981,10 @@ glue_get_dataflow_graph <- function(PythonScript = NULL) {
 #'
 #' @description
 #' Retrieves information about a specified development endpoint.
-#' 
-#' When you create a development endpoint in a virtual private cloud (VPC),
-#' AWS Glue returns only a private IP address, and the public IP address
-#' field is not populated. When you create a non-VPC development endpoint,
-#' AWS Glue returns only a public IP address.
 #'
-#' @usage
-#' glue_get_dev_endpoint(EndpointName)
+#' See [https://paws-r.github.io/docs/glue/get_dev_endpoint.html](https://paws-r.github.io/docs/glue/get_dev_endpoint.html) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; Name of the `DevEndpoint` to retrieve information for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DevEndpoint = list(
-#'     EndpointName = "string",
-#'     RoleArn = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     SubnetId = "string",
-#'     YarnEndpointAddress = "string",
-#'     PrivateAddress = "string",
-#'     ZeppelinRemoteSparkInterpreterPort = 123,
-#'     PublicAddress = "string",
-#'     Status = "string",
-#'     WorkerType = "Standard"|"G.1X"|"G.2X",
-#'     GlueVersion = "string",
-#'     NumberOfWorkers = 123,
-#'     NumberOfNodes = 123,
-#'     AvailabilityZone = "string",
-#'     VpcId = "string",
-#'     ExtraPythonLibsS3Path = "string",
-#'     ExtraJarsS3Path = "string",
-#'     FailureReason = "string",
-#'     LastUpdateStatus = "string",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PublicKey = "string",
-#'     PublicKeys = list(
-#'       "string"
-#'     ),
-#'     SecurityConfiguration = "string",
-#'     Arguments = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_dev_endpoint(
-#'   EndpointName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5812,72 +3010,11 @@ glue_get_dev_endpoint <- function(EndpointName) {
 #'
 #' @description
 #' Retrieves all the development endpoints in this AWS account.
-#' 
-#' When you create a development endpoint in a virtual private cloud (VPC),
-#' AWS Glue returns only a private IP address and the public IP address
-#' field is not populated. When you create a non-VPC development endpoint,
-#' AWS Glue returns only a public IP address.
 #'
-#' @usage
-#' glue_get_dev_endpoints(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/glue/get_dev_endpoints.html](https://paws-r.github.io/docs/glue/get_dev_endpoints.html) for full documentation.
 #'
 #' @param MaxResults The maximum size of information to return.
 #' @param NextToken A continuation token, if this is a continuation call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DevEndpoints = list(
-#'     list(
-#'       EndpointName = "string",
-#'       RoleArn = "string",
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       SubnetId = "string",
-#'       YarnEndpointAddress = "string",
-#'       PrivateAddress = "string",
-#'       ZeppelinRemoteSparkInterpreterPort = 123,
-#'       PublicAddress = "string",
-#'       Status = "string",
-#'       WorkerType = "Standard"|"G.1X"|"G.2X",
-#'       GlueVersion = "string",
-#'       NumberOfWorkers = 123,
-#'       NumberOfNodes = 123,
-#'       AvailabilityZone = "string",
-#'       VpcId = "string",
-#'       ExtraPythonLibsS3Path = "string",
-#'       ExtraJarsS3Path = "string",
-#'       FailureReason = "string",
-#'       LastUpdateStatus = "string",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PublicKey = "string",
-#'       PublicKeys = list(
-#'         "string"
-#'       ),
-#'       SecurityConfiguration = "string",
-#'       Arguments = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_dev_endpoints(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5904,66 +3041,9 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Retrieves an existing job definition.
 #'
-#' @usage
-#' glue_get_job(JobName)
+#' See [https://paws-r.github.io/docs/glue/get_job.html](https://paws-r.github.io/docs/glue/get_job.html) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Job = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     LogUri = "string",
-#'     Role = "string",
-#'     CreatedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExecutionProperty = list(
-#'       MaxConcurrentRuns = 123
-#'     ),
-#'     Command = list(
-#'       Name = "string",
-#'       ScriptLocation = "string",
-#'       PythonVersion = "string"
-#'     ),
-#'     DefaultArguments = list(
-#'       "string"
-#'     ),
-#'     NonOverridableArguments = list(
-#'       "string"
-#'     ),
-#'     Connections = list(
-#'       Connections = list(
-#'         "string"
-#'       )
-#'     ),
-#'     MaxRetries = 123,
-#'     AllocatedCapacity = 123,
-#'     Timeout = 123,
-#'     MaxCapacity = 123.0,
-#'     WorkerType = "Standard"|"G.1X"|"G.2X",
-#'     NumberOfWorkers = 123,
-#'     SecurityConfiguration = "string",
-#'     NotificationProperty = list(
-#'       NotifyDelayAfter = 123
-#'     ),
-#'     GlueVersion = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_job(
-#'   JobName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5990,35 +3070,10 @@ glue_get_job <- function(JobName) {
 #' @description
 #' Returns information on a job bookmark entry.
 #'
-#' @usage
-#' glue_get_job_bookmark(JobName, RunId)
+#' See [https://paws-r.github.io/docs/glue/get_job_bookmark.html](https://paws-r.github.io/docs/glue/get_job_bookmark.html) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job in question.
 #' @param RunId The unique run identifier associated with this job run.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobBookmarkEntry = list(
-#'     JobName = "string",
-#'     Version = 123,
-#'     Run = 123,
-#'     Attempt = 123,
-#'     PreviousRunId = "string",
-#'     RunId = "string",
-#'     JobBookmark = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_job_bookmark(
-#'   JobName = "string",
-#'   RunId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6045,67 +3100,11 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #' @description
 #' Retrieves the metadata for a given job run.
 #'
-#' @usage
-#' glue_get_job_run(JobName, RunId, PredecessorsIncluded)
+#' See [https://paws-r.github.io/docs/glue/get_job_run.html](https://paws-r.github.io/docs/glue/get_job_run.html) for full documentation.
 #'
 #' @param JobName &#91;required&#93; Name of the job definition being run.
 #' @param RunId &#91;required&#93; The ID of the job run.
 #' @param PredecessorsIncluded True if a list of predecessor runs should be returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobRun = list(
-#'     Id = "string",
-#'     Attempt = 123,
-#'     PreviousRunId = "string",
-#'     TriggerName = "string",
-#'     JobName = "string",
-#'     StartedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CompletedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'     Arguments = list(
-#'       "string"
-#'     ),
-#'     ErrorMessage = "string",
-#'     PredecessorRuns = list(
-#'       list(
-#'         JobName = "string",
-#'         RunId = "string"
-#'       )
-#'     ),
-#'     AllocatedCapacity = 123,
-#'     ExecutionTime = 123,
-#'     Timeout = 123,
-#'     MaxCapacity = 123.0,
-#'     WorkerType = "Standard"|"G.1X"|"G.2X",
-#'     NumberOfWorkers = 123,
-#'     SecurityConfiguration = "string",
-#'     LogGroupName = "string",
-#'     NotificationProperty = list(
-#'       NotifyDelayAfter = 123
-#'     ),
-#'     GlueVersion = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_job_run(
-#'   JobName = "string",
-#'   RunId = "string",
-#'   PredecessorsIncluded = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6132,70 +3131,11 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #' @description
 #' Retrieves metadata for all runs of a given job definition.
 #'
-#' @usage
-#' glue_get_job_runs(JobName, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_job_runs.html](https://paws-r.github.io/docs/glue/get_job_runs.html) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition for which to retrieve all job runs.
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum size of the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobRuns = list(
-#'     list(
-#'       Id = "string",
-#'       Attempt = 123,
-#'       PreviousRunId = "string",
-#'       TriggerName = "string",
-#'       JobName = "string",
-#'       StartedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CompletedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'       Arguments = list(
-#'         "string"
-#'       ),
-#'       ErrorMessage = "string",
-#'       PredecessorRuns = list(
-#'         list(
-#'           JobName = "string",
-#'           RunId = "string"
-#'         )
-#'       ),
-#'       AllocatedCapacity = 123,
-#'       ExecutionTime = 123,
-#'       Timeout = 123,
-#'       MaxCapacity = 123.0,
-#'       WorkerType = "Standard"|"G.1X"|"G.2X",
-#'       NumberOfWorkers = 123,
-#'       SecurityConfiguration = "string",
-#'       LogGroupName = "string",
-#'       NotificationProperty = list(
-#'         NotifyDelayAfter = 123
-#'       ),
-#'       GlueVersion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_job_runs(
-#'   JobName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6222,71 +3162,10 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Retrieves all current job definitions.
 #'
-#' @usage
-#' glue_get_jobs(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_jobs.html](https://paws-r.github.io/docs/glue/get_jobs.html) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum size of the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Jobs = list(
-#'     list(
-#'       Name = "string",
-#'       Description = "string",
-#'       LogUri = "string",
-#'       Role = "string",
-#'       CreatedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExecutionProperty = list(
-#'         MaxConcurrentRuns = 123
-#'       ),
-#'       Command = list(
-#'         Name = "string",
-#'         ScriptLocation = "string",
-#'         PythonVersion = "string"
-#'       ),
-#'       DefaultArguments = list(
-#'         "string"
-#'       ),
-#'       NonOverridableArguments = list(
-#'         "string"
-#'       ),
-#'       Connections = list(
-#'         Connections = list(
-#'           "string"
-#'         )
-#'       ),
-#'       MaxRetries = 123,
-#'       AllocatedCapacity = 123,
-#'       Timeout = 123,
-#'       MaxCapacity = 123.0,
-#'       WorkerType = "Standard"|"G.1X"|"G.2X",
-#'       NumberOfWorkers = 123,
-#'       SecurityConfiguration = "string",
-#'       NotificationProperty = list(
-#'         NotifyDelayAfter = 123
-#'       ),
-#'       GlueVersion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_jobs(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6311,66 +3190,12 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
 #' Gets details for a specific task run on a machine learning transform
 #'
 #' @description
-#' Gets details for a specific task run on a machine learning transform.
-#' Machine learning task runs are asynchronous tasks that AWS Glue runs on
-#' your behalf as part of various machine learning workflows. You can check
-#' the stats of any task run by calling
-#' [`get_ml_task_run`][glue_get_ml_task_run] with the `TaskRunID` and its
-#' parent transform's `TransformID`.
+#' Gets details for a specific task run on a machine learning transform. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can check the stats of any task run by calling [`get_ml_task_run`][glue_get_ml_task_run] with the `TaskRunID` and its parent transform's `TransformID`.
 #'
-#' @usage
-#' glue_get_ml_task_run(TransformId, TaskRunId)
+#' See [https://paws-r.github.io/docs/glue/get_ml_task_run.html](https://paws-r.github.io/docs/glue/get_ml_task_run.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param TaskRunId &#91;required&#93; The unique identifier of the task run.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TransformId = "string",
-#'   TaskRunId = "string",
-#'   Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'   LogGroupName = "string",
-#'   Properties = list(
-#'     TaskType = "EVALUATION"|"LABELING_SET_GENERATION"|"IMPORT_LABELS"|"EXPORT_LABELS"|"FIND_MATCHES",
-#'     ImportLabelsTaskRunProperties = list(
-#'       InputS3Path = "string",
-#'       Replace = TRUE|FALSE
-#'     ),
-#'     ExportLabelsTaskRunProperties = list(
-#'       OutputS3Path = "string"
-#'     ),
-#'     LabelingSetGenerationTaskRunProperties = list(
-#'       OutputS3Path = "string"
-#'     ),
-#'     FindMatchesTaskRunProperties = list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobRunId = "string"
-#'     )
-#'   ),
-#'   ErrorString = "string",
-#'   StartedOn = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastModifiedOn = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   CompletedOn = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ExecutionTime = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ml_task_run(
-#'   TransformId = "string",
-#'   TaskRunId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6395,18 +3220,9 @@ glue_get_ml_task_run <- function(TransformId, TaskRunId) {
 #' Gets a list of runs for a machine learning transform
 #'
 #' @description
-#' Gets a list of runs for a machine learning transform. Machine learning
-#' task runs are asynchronous tasks that AWS Glue runs on your behalf as
-#' part of various machine learning workflows. You can get a sortable,
-#' filterable list of machine learning task runs by calling
-#' [`get_ml_task_runs`][glue_get_ml_task_runs] with their parent
-#' transform's `TransformID` and other optional parameters as documented in
-#' this section.
-#' 
-#' This operation returns a list of historic runs and must be paginated.
+#' Gets a list of runs for a machine learning transform. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can get a sortable, filterable list of machine learning task runs by calling [`get_ml_task_runs`][glue_get_ml_task_runs] with their parent transform's `TransformID` and other optional parameters as documented in this section.
 #'
-#' @usage
-#' glue_get_ml_task_runs(TransformId, NextToken, MaxResults, Filter, Sort)
+#' See [https://paws-r.github.io/docs/glue/get_ml_task_runs.html](https://paws-r.github.io/docs/glue/get_ml_task_runs.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param NextToken A token for pagination of the results. The default is empty.
@@ -6415,74 +3231,6 @@ glue_get_ml_task_run <- function(TransformId, TaskRunId) {
 #' task run.
 #' @param Sort The sorting criteria, in the `TaskRunSortCriteria` structure, for the
 #' task run.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TaskRuns = list(
-#'     list(
-#'       TransformId = "string",
-#'       TaskRunId = "string",
-#'       Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'       LogGroupName = "string",
-#'       Properties = list(
-#'         TaskType = "EVALUATION"|"LABELING_SET_GENERATION"|"IMPORT_LABELS"|"EXPORT_LABELS"|"FIND_MATCHES",
-#'         ImportLabelsTaskRunProperties = list(
-#'           InputS3Path = "string",
-#'           Replace = TRUE|FALSE
-#'         ),
-#'         ExportLabelsTaskRunProperties = list(
-#'           OutputS3Path = "string"
-#'         ),
-#'         LabelingSetGenerationTaskRunProperties = list(
-#'           OutputS3Path = "string"
-#'         ),
-#'         FindMatchesTaskRunProperties = list(
-#'           JobId = "string",
-#'           JobName = "string",
-#'           JobRunId = "string"
-#'         )
-#'       ),
-#'       ErrorString = "string",
-#'       StartedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CompletedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExecutionTime = 123
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ml_task_runs(
-#'   TransformId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Filter = list(
-#'     TaskRunType = "EVALUATION"|"LABELING_SET_GENERATION"|"IMPORT_LABELS"|"EXPORT_LABELS"|"FIND_MATCHES",
-#'     Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'     StartedBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     StartedAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   Sort = list(
-#'     Column = "TASK_RUN_TYPE"|"STATUS"|"STARTED",
-#'     SortDirection = "DESCENDING"|"ASCENDING"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6504,106 +3252,16 @@ glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NU
 }
 .glue$operations$get_ml_task_runs <- glue_get_ml_task_runs
 
-#' Gets an AWS Glue machine learning transform artifact and all its
+#' Gets an Glue machine learning transform artifact and all its
 #' corresponding metadata
 #'
 #' @description
-#' Gets an AWS Glue machine learning transform artifact and all its
-#' corresponding metadata. Machine learning transforms are a special type
-#' of transform that use machine learning to learn the details of the
-#' transformation to be performed by learning from examples provided by
-#' humans. These transformations are then saved by AWS Glue. You can
-#' retrieve their metadata by calling
-#' [`get_ml_transform`][glue_get_ml_transform].
+#' Gets an Glue machine learning transform artifact and all its corresponding metadata. Machine learning transforms are a special type of transform that use machine learning to learn the details of the transformation to be performed by learning from examples provided by humans. These transformations are then saved by Glue. You can retrieve their metadata by calling [`get_ml_transform`][glue_get_ml_transform].
 #'
-#' @usage
-#' glue_get_ml_transform(TransformId)
+#' See [https://paws-r.github.io/docs/glue/get_ml_transform.html](https://paws-r.github.io/docs/glue/get_ml_transform.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the transform, generated at the time that the
 #' transform was created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TransformId = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   Status = "NOT_READY"|"READY"|"DELETING",
-#'   CreatedOn = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LastModifiedOn = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   InputRecordTables = list(
-#'     list(
-#'       DatabaseName = "string",
-#'       TableName = "string",
-#'       CatalogId = "string",
-#'       ConnectionName = "string"
-#'     )
-#'   ),
-#'   Parameters = list(
-#'     TransformType = "FIND_MATCHES",
-#'     FindMatchesParameters = list(
-#'       PrimaryKeyColumnName = "string",
-#'       PrecisionRecallTradeoff = 123.0,
-#'       AccuracyCostTradeoff = 123.0,
-#'       EnforceProvidedLabels = TRUE|FALSE
-#'     )
-#'   ),
-#'   EvaluationMetrics = list(
-#'     TransformType = "FIND_MATCHES",
-#'     FindMatchesMetrics = list(
-#'       AreaUnderPRCurve = 123.0,
-#'       Precision = 123.0,
-#'       Recall = 123.0,
-#'       F1 = 123.0,
-#'       ConfusionMatrix = list(
-#'         NumTruePositives = 123,
-#'         NumFalsePositives = 123,
-#'         NumTrueNegatives = 123,
-#'         NumFalseNegatives = 123
-#'       ),
-#'       ColumnImportances = list(
-#'         list(
-#'           ColumnName = "string",
-#'           Importance = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   LabelCount = 123,
-#'   Schema = list(
-#'     list(
-#'       Name = "string",
-#'       DataType = "string"
-#'     )
-#'   ),
-#'   Role = "string",
-#'   GlueVersion = "string",
-#'   MaxCapacity = 123.0,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X",
-#'   NumberOfWorkers = 123,
-#'   Timeout = 123,
-#'   MaxRetries = 123,
-#'   TransformEncryption = list(
-#'     MlUserDataEncryption = list(
-#'       MlUserDataEncryptionMode = "DISABLED"|"SSE-KMS",
-#'       KmsKeyId = "string"
-#'     ),
-#'     TaskRunSecurityConfigurationName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ml_transform(
-#'   TransformId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6625,141 +3283,18 @@ glue_get_ml_transform <- function(TransformId) {
 }
 .glue$operations$get_ml_transform <- glue_get_ml_transform
 
-#' Gets a sortable, filterable list of existing AWS Glue machine learning
+#' Gets a sortable, filterable list of existing Glue machine learning
 #' transforms
 #'
 #' @description
-#' Gets a sortable, filterable list of existing AWS Glue machine learning
-#' transforms. Machine learning transforms are a special type of transform
-#' that use machine learning to learn the details of the transformation to
-#' be performed by learning from examples provided by humans. These
-#' transformations are then saved by AWS Glue, and you can retrieve their
-#' metadata by calling [`get_ml_transforms`][glue_get_ml_transforms].
+#' Gets a sortable, filterable list of existing Glue machine learning transforms. Machine learning transforms are a special type of transform that use machine learning to learn the details of the transformation to be performed by learning from examples provided by humans. These transformations are then saved by Glue, and you can retrieve their metadata by calling [`get_ml_transforms`][glue_get_ml_transforms].
 #'
-#' @usage
-#' glue_get_ml_transforms(NextToken, MaxResults, Filter, Sort)
+#' See [https://paws-r.github.io/docs/glue/get_ml_transforms.html](https://paws-r.github.io/docs/glue/get_ml_transforms.html) for full documentation.
 #'
 #' @param NextToken A paginated token to offset the results.
 #' @param MaxResults The maximum number of results to return.
 #' @param Filter The filter transformation criteria.
 #' @param Sort The sorting criteria.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Transforms = list(
-#'     list(
-#'       TransformId = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       Status = "NOT_READY"|"READY"|"DELETING",
-#'       CreatedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputRecordTables = list(
-#'         list(
-#'           DatabaseName = "string",
-#'           TableName = "string",
-#'           CatalogId = "string",
-#'           ConnectionName = "string"
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         TransformType = "FIND_MATCHES",
-#'         FindMatchesParameters = list(
-#'           PrimaryKeyColumnName = "string",
-#'           PrecisionRecallTradeoff = 123.0,
-#'           AccuracyCostTradeoff = 123.0,
-#'           EnforceProvidedLabels = TRUE|FALSE
-#'         )
-#'       ),
-#'       EvaluationMetrics = list(
-#'         TransformType = "FIND_MATCHES",
-#'         FindMatchesMetrics = list(
-#'           AreaUnderPRCurve = 123.0,
-#'           Precision = 123.0,
-#'           Recall = 123.0,
-#'           F1 = 123.0,
-#'           ConfusionMatrix = list(
-#'             NumTruePositives = 123,
-#'             NumFalsePositives = 123,
-#'             NumTrueNegatives = 123,
-#'             NumFalseNegatives = 123
-#'           ),
-#'           ColumnImportances = list(
-#'             list(
-#'               ColumnName = "string",
-#'               Importance = 123.0
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       LabelCount = 123,
-#'       Schema = list(
-#'         list(
-#'           Name = "string",
-#'           DataType = "string"
-#'         )
-#'       ),
-#'       Role = "string",
-#'       GlueVersion = "string",
-#'       MaxCapacity = 123.0,
-#'       WorkerType = "Standard"|"G.1X"|"G.2X",
-#'       NumberOfWorkers = 123,
-#'       Timeout = 123,
-#'       MaxRetries = 123,
-#'       TransformEncryption = list(
-#'         MlUserDataEncryption = list(
-#'           MlUserDataEncryptionMode = "DISABLED"|"SSE-KMS",
-#'           KmsKeyId = "string"
-#'         ),
-#'         TaskRunSecurityConfigurationName = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ml_transforms(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Filter = list(
-#'     Name = "string",
-#'     TransformType = "FIND_MATCHES",
-#'     Status = "NOT_READY"|"READY"|"DELETING",
-#'     GlueVersion = "string",
-#'     CreatedBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreatedAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Schema = list(
-#'       list(
-#'         Name = "string",
-#'         DataType = "string"
-#'       )
-#'     )
-#'   ),
-#'   Sort = list(
-#'     Column = "NAME"|"TRANSFORM_TYPE"|"STATUS"|"CREATED"|"LAST_MODIFIED",
-#'     SortDirection = "DESCENDING"|"ASCENDING"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6786,68 +3321,11 @@ glue_get_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter =
 #' @description
 #' Creates mappings.
 #'
-#' @usage
-#' glue_get_mapping(Source, Sinks, Location)
+#' See [https://paws-r.github.io/docs/glue/get_mapping.html](https://paws-r.github.io/docs/glue/get_mapping.html) for full documentation.
 #'
 #' @param Source &#91;required&#93; Specifies the source table.
 #' @param Sinks A list of target tables.
 #' @param Location Parameters for the mapping.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Mapping = list(
-#'     list(
-#'       SourceTable = "string",
-#'       SourcePath = "string",
-#'       SourceType = "string",
-#'       TargetTable = "string",
-#'       TargetPath = "string",
-#'       TargetType = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_mapping(
-#'   Source = list(
-#'     DatabaseName = "string",
-#'     TableName = "string"
-#'   ),
-#'   Sinks = list(
-#'     list(
-#'       DatabaseName = "string",
-#'       TableName = "string"
-#'     )
-#'   ),
-#'   Location = list(
-#'     Jdbc = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string",
-#'         Param = TRUE|FALSE
-#'       )
-#'     ),
-#'     S3 = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string",
-#'         Param = TRUE|FALSE
-#'       )
-#'     ),
-#'     DynamoDB = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string",
-#'         Param = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6874,110 +3352,13 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 #' @description
 #' Retrieves information about a specified partition.
 #'
-#' @usage
-#' glue_get_partition(CatalogId, DatabaseName, TableName, PartitionValues)
+#' See [https://paws-r.github.io/docs/glue/get_partition.html](https://paws-r.github.io/docs/glue/get_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partition in question resides. If
-#' none is provided, the AWS account ID is used by default.
+#' none is provided, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partition resides.
 #' @param TableName &#91;required&#93; The name of the partition's table.
 #' @param PartitionValues &#91;required&#93; The values that define the partition.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Partition = list(
-#'     Values = list(
-#'       "string"
-#'     ),
-#'     DatabaseName = "string",
-#'     TableName = "string",
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastAccessTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     StorageDescriptor = list(
-#'       Columns = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = "string",
-#'       InputFormat = "string",
-#'       OutputFormat = "string",
-#'       Compressed = TRUE|FALSE,
-#'       NumberOfBuckets = 123,
-#'       SerdeInfo = list(
-#'         Name = "string",
-#'         SerializationLibrary = "string",
-#'         Parameters = list(
-#'           "string"
-#'         )
-#'       ),
-#'       BucketColumns = list(
-#'         "string"
-#'       ),
-#'       SortColumns = list(
-#'         list(
-#'           Column = "string",
-#'           SortOrder = 123
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       SkewedInfo = list(
-#'         SkewedColumnNames = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValues = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValueLocationMaps = list(
-#'           "string"
-#'         )
-#'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE,
-#'       SchemaReference = list(
-#'         SchemaId = list(
-#'           SchemaArn = "string",
-#'           SchemaName = "string",
-#'           RegistryName = "string"
-#'         ),
-#'         SchemaVersionId = "string",
-#'         SchemaVersionNumber = 123
-#'       )
-#'     ),
-#'     Parameters = list(
-#'       "string"
-#'     ),
-#'     LastAnalyzedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CatalogId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionValues = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7004,9 +3385,7 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #' @description
 #' Retrieves the partition indexes associated with a table.
 #'
-#' @usage
-#' glue_get_partition_indexes(CatalogId, DatabaseName, TableName,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/glue/get_partition_indexes.html](https://paws-r.github.io/docs/glue/get_partition_indexes.html) for full documentation.
 #'
 #' @param CatalogId The catalog ID where the table resides.
 #' @param DatabaseName &#91;required&#93; Specifies the name of a database from which you want to retrieve
@@ -7014,48 +3393,6 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #' @param TableName &#91;required&#93; Specifies the name of a table for which you want to retrieve the
 #' partition indexes.
 #' @param NextToken A continuation token, included if this is a continuation call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PartitionIndexDescriptorList = list(
-#'     list(
-#'       IndexName = "string",
-#'       Keys = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string"
-#'         )
-#'       ),
-#'       IndexStatus = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'       BackfillErrors = list(
-#'         list(
-#'           Code = "ENCRYPTED_PARTITION_ERROR"|"INTERNAL_ERROR"|"INVALID_PARTITION_TYPE_DATA_ERROR"|"MISSING_PARTITION_VALUE_ERROR"|"UNSUPPORTED_PARTITION_CHARACTER_ERROR",
-#'           Partitions = list(
-#'             list(
-#'               Values = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_partition_indexes(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7082,19 +3419,17 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @description
 #' Retrieves information about the partitions in a table.
 #'
-#' @usage
-#' glue_get_partitions(CatalogId, DatabaseName, TableName, Expression,
-#'   NextToken, Segment, MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_partitions.html](https://paws-r.github.io/docs/glue/get_partitions.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
-#' none is provided, the AWS account ID is used by default.
+#' none is provided, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param Expression An expression that filters the partitions to be returned.
 #' 
 #' The expression uses SQL syntax similar to the SQL `WHERE` filter clause.
 #' The SQL statement parser
-#' [JSQLParser](http://jsqlparser.sourceforge.net/home.php) parses the
+#' [JSQLParser](https://jsqlparser.sourceforge.net/home.php) parses the
 #' expression.
 #' 
 #' *Operators*: The following are the operators that you can use in the
@@ -7109,40 +3444,40 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' 
 #' (a = b) is not true.
 #' 
-#' ### &lt; &gt;
+#' ### \< \>
 #' 
 #' Checks whether the values of two operands are equal; if the values are
 #' not equal, then the condition becomes true.
 #' 
-#' Example: (a &lt; &gt; b) is true.
+#' Example: (a \< \> b) is true.
 #' 
-#' ### &gt;
+#' ### \>
 #' 
 #' Checks whether the value of the left operand is greater than the value
 #' of the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a &gt; b) is not true.
+#' Example: (a \> b) is not true.
 #' 
-#' ### &lt;
+#' ### \<
 #' 
 #' Checks whether the value of the left operand is less than the value of
 #' the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a &lt; b) is true.
+#' Example: (a \< b) is true.
 #' 
-#' ### &gt;=
+#' ### \>=
 #' 
 #' Checks whether the value of the left operand is greater than or equal to
 #' the value of the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a &gt;= b) is not true.
+#' Example: (a \>= b) is not true.
 #' 
-#' ### &lt;=
+#' ### \<=
 #' 
 #' Checks whether the value of the left operand is less than or equal to
 #' the value of the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a &lt;= b) is true.
+#' Example: (a \<= b) is true.
 #' 
 #' ### AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL
 #' 
@@ -7169,7 +3504,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' 
 #' -   `decimal`
 #' 
-#' If an invalid type is encountered, an exception is thrown.
+#' If an type is encountered that is not valid, an exception is thrown.
 #' 
 #' The following list shows the valid operators on each type. When you
 #' define a crawler, the `partitionKey` type is created as a `STRING`, to
@@ -7180,121 +3515,26 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' partitions.
 #' @param Segment The segment of the table's partitions to scan in this request.
 #' @param MaxResults The maximum number of partitions to return in a single response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Partitions = list(
-#'     list(
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       DatabaseName = "string",
-#'       TableName = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastAccessTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StorageDescriptor = list(
-#'         Columns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "string",
-#'             Comment = "string",
-#'             Parameters = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         Location = "string",
-#'         InputFormat = "string",
-#'         OutputFormat = "string",
-#'         Compressed = TRUE|FALSE,
-#'         NumberOfBuckets = 123,
-#'         SerdeInfo = list(
-#'           Name = "string",
-#'           SerializationLibrary = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         ),
-#'         BucketColumns = list(
-#'           "string"
-#'         ),
-#'         SortColumns = list(
-#'           list(
-#'             Column = "string",
-#'             SortOrder = 123
-#'           )
-#'         ),
-#'         Parameters = list(
-#'           "string"
-#'         ),
-#'         SkewedInfo = list(
-#'           SkewedColumnNames = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValues = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValueLocationMaps = list(
-#'             "string"
-#'           )
-#'         ),
-#'         StoredAsSubDirectories = TRUE|FALSE,
-#'         SchemaReference = list(
-#'           SchemaId = list(
-#'             SchemaArn = "string",
-#'             SchemaName = "string",
-#'             RegistryName = "string"
-#'           ),
-#'           SchemaVersionId = "string",
-#'           SchemaVersionNumber = 123
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       LastAnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CatalogId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_partitions(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   Expression = "string",
-#'   NextToken = "string",
-#'   Segment = list(
-#'     SegmentNumber = 123,
-#'     TotalSegments = 123
-#'   ),
-#'   MaxResults = 123
-#' )
-#' ```
+#' @param ExcludeColumnSchema When true, specifies not returning the partition column schema. Useful
+#' when you are interested only in other partition attributes such as
+#' partition values or location. This approach avoids the problem of a
+#' large response by not returning duplicate data.
+#' @param TransactionId The transaction ID at which to read the partition contents.
+#' @param QueryAsOfTime The time as of when to read the partition contents. If not set, the most
+#' recent transaction commit time will be used. Cannot be specified along
+#' with `TransactionId`.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_partitions
-glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expression = NULL, NextToken = NULL, Segment = NULL, MaxResults = NULL) {
+glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expression = NULL, NextToken = NULL, Segment = NULL, MaxResults = NULL, ExcludeColumnSchema = NULL, TransactionId = NULL, QueryAsOfTime = NULL) {
   op <- new_operation(
     name = "GetPartitions",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults)
+  input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, ExcludeColumnSchema = ExcludeColumnSchema, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
   output <- .glue$get_partitions_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -7309,9 +3549,7 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
 #' @description
 #' Gets code to perform a specified mapping.
 #'
-#' @usage
-#' glue_get_plan(Mapping, Source, Sinks, Location, Language,
-#'   AdditionalPlanOptionsMap)
+#' See [https://paws-r.github.io/docs/glue/get_plan.html](https://paws-r.github.io/docs/glue/get_plan.html) for full documentation.
 #'
 #' @param Mapping &#91;required&#93; The list of mappings from a source table to target tables.
 #' @param Source &#91;required&#93; The source table.
@@ -7323,73 +3561,10 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
 #' Currently, these key-value pairs are supported:
 #' 
 #' -   `inferSchema`  —  Specifies whether to set `inferSchema` to true or
-#'     false for the default script generated by an AWS Glue job. For
-#'     example, to set `inferSchema` to true, pass the following key value
-#'     pair:
+#'     false for the default script generated by an Glue job. For example,
+#'     to set `inferSchema` to true, pass the following key value pair:
 #' 
 #'     `--additional-plan-options-map '{"inferSchema":"true"}'`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PythonScript = "string",
-#'   ScalaCode = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_plan(
-#'   Mapping = list(
-#'     list(
-#'       SourceTable = "string",
-#'       SourcePath = "string",
-#'       SourceType = "string",
-#'       TargetTable = "string",
-#'       TargetPath = "string",
-#'       TargetType = "string"
-#'     )
-#'   ),
-#'   Source = list(
-#'     DatabaseName = "string",
-#'     TableName = "string"
-#'   ),
-#'   Sinks = list(
-#'     list(
-#'       DatabaseName = "string",
-#'       TableName = "string"
-#'     )
-#'   ),
-#'   Location = list(
-#'     Jdbc = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string",
-#'         Param = TRUE|FALSE
-#'       )
-#'     ),
-#'     S3 = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string",
-#'         Param = TRUE|FALSE
-#'       )
-#'     ),
-#'     DynamoDB = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string",
-#'         Param = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   Language = "PYTHON"|"SCALA",
-#'   AdditionalPlanOptionsMap = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7416,34 +3591,10 @@ glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Langua
 #' @description
 #' Describes the specified registry in detail.
 #'
-#' @usage
-#' glue_get_registry(RegistryId)
+#' See [https://paws-r.github.io/docs/glue/get_registry.html](https://paws-r.github.io/docs/glue/get_registry.html) for full documentation.
 #'
 #' @param RegistryId &#91;required&#93; This is a wrapper structure that may contain the registry name and
 #' Amazon Resource Name (ARN).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegistryName = "string",
-#'   RegistryArn = "string",
-#'   Description = "string",
-#'   Status = "AVAILABLE"|"DELETING",
-#'   CreatedTime = "string",
-#'   UpdatedTime = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_registry(
-#'   RegistryId = list(
-#'     RegistryName = "string",
-#'     RegistryArn = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7465,51 +3616,16 @@ glue_get_registry <- function(RegistryId) {
 }
 .glue$operations$get_registry <- glue_get_registry
 
-#' Retrieves the security configurations for the resource policies set on
-#' individual resources, and also the account-level policy
+#' Retrieves the resource policies set on individual resources by Resource
+#' Access Manager during cross-account permission grants
 #'
 #' @description
-#' Retrieves the security configurations for the resource policies set on
-#' individual resources, and also the account-level policy.
-#' 
-#' This operation also returns the Data Catalog resource policy. However,
-#' if you enabled metadata encryption in Data Catalog settings, and you do
-#' not have permission on the AWS KMS key, the operation can't return the
-#' Data Catalog resource policy.
+#' Retrieves the resource policies set on individual resources by Resource Access Manager during cross-account permission grants. Also retrieves the Data Catalog resource policy.
 #'
-#' @usage
-#' glue_get_resource_policies(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_resource_policies.html](https://paws-r.github.io/docs/glue/get_resource_policies.html) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GetResourcePoliciesResponseList = list(
-#'     list(
-#'       PolicyInJson = "string",
-#'       PolicyHash = "string",
-#'       CreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resource_policies(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7536,35 +3652,14 @@ glue_get_resource_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Retrieves a specified resource policy.
 #'
-#' @usage
-#' glue_get_resource_policy(ResourceArn)
+#' See [https://paws-r.github.io/docs/glue/get_resource_policy.html](https://paws-r.github.io/docs/glue/get_resource_policy.html) for full documentation.
 #'
-#' @param ResourceArn The ARN of the AWS Glue resource for the resource policy to be
-#' retrieved. For more information about AWS Glue resource ARNs, see the
-#' [AWS Glue ARN string
-#' pattern](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PolicyInJson = "string",
-#'   PolicyHash = "string",
-#'   CreateTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   UpdateTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resource_policy(
-#'   ResourceArn = "string"
-#' )
-#' ```
+#' @param ResourceArn The ARN of the Glue resource for which to retrieve the resource policy.
+#' If not supplied, the Data Catalog resource policy is returned. Use
+#' [`get_resource_policies`][glue_get_resource_policies] to view all
+#' existing resource policies. For more information see [Specifying Glue
+#' Resource
+#' ARNs](https://docs.aws.amazon.com/glue/latest/dg/glue-specifying-resource-arns.html).
 #'
 #' @keywords internal
 #'
@@ -7591,8 +3686,7 @@ glue_get_resource_policy <- function(ResourceArn = NULL) {
 #' @description
 #' Describes the specified schema in detail.
 #'
-#' @usage
-#' glue_get_schema(SchemaId)
+#' See [https://paws-r.github.io/docs/glue/get_schema.html](https://paws-r.github.io/docs/glue/get_schema.html) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -7603,37 +3697,6 @@ glue_get_resource_policy <- function(ResourceArn = NULL) {
 #' 
 #' -   SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
 #'     `SchemaName` and `RegistryName` has to be provided.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegistryName = "string",
-#'   RegistryArn = "string",
-#'   SchemaName = "string",
-#'   SchemaArn = "string",
-#'   Description = "string",
-#'   DataFormat = "AVRO",
-#'   Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
-#'   SchemaCheckpoint = 123,
-#'   LatestSchemaVersion = 123,
-#'   NextSchemaVersion = 123,
-#'   SchemaStatus = "AVAILABLE"|"PENDING"|"DELETING",
-#'   CreatedTime = "string",
-#'   UpdatedTime = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_schema(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7658,15 +3721,9 @@ glue_get_schema <- function(SchemaId) {
 #' Retrieves a schema by the SchemaDefinition
 #'
 #' @description
-#' Retrieves a schema by the `SchemaDefinition`. The schema definition is
-#' sent to the Schema Registry, canonicalized, and hashed. If the hash is
-#' matched within the scope of the `SchemaName` or ARN (or the default
-#' registry, if none is supplied), that schema’s metadata is returned.
-#' Otherwise, a 404 or NotFound error is returned. Schema versions in
-#' `Deleted` statuses will not be included in the results.
+#' Retrieves a schema by the `SchemaDefinition`. The schema definition is sent to the Schema Registry, canonicalized, and hashed. If the hash is matched within the scope of the `SchemaName` or ARN (or the default registry, if none is supplied), that schema’s metadata is returned. Otherwise, a 404 or NotFound error is returned. Schema versions in `Deleted` statuses will not be included in the results.
 #'
-#' @usage
-#' glue_get_schema_by_definition(SchemaId, SchemaDefinition)
+#' See [https://paws-r.github.io/docs/glue/get_schema_by_definition.html](https://paws-r.github.io/docs/glue/get_schema_by_definition.html) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -7677,30 +3734,6 @@ glue_get_schema <- function(SchemaId) {
 #' -   SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
 #'     `SchemaName` has to be provided.
 #' @param SchemaDefinition &#91;required&#93; The definition of the schema for which schema details are required.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SchemaVersionId = "string",
-#'   SchemaArn = "string",
-#'   DataFormat = "AVRO",
-#'   Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
-#'   CreatedTime = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_schema_by_definition(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   SchemaDefinition = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7726,12 +3759,9 @@ glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
 #' schema is created or registered
 #'
 #' @description
-#' Get the specified schema by its unique ID assigned when a version of the
-#' schema is created or registered. Schema versions in Deleted status will
-#' not be included in the results.
+#' Get the specified schema by its unique ID assigned when a version of the schema is created or registered. Schema versions in Deleted status will not be included in the results.
 #'
-#' @usage
-#' glue_get_schema_version(SchemaId, SchemaVersionId, SchemaVersionNumber)
+#' See [https://paws-r.github.io/docs/glue/get_schema_version.html](https://paws-r.github.io/docs/glue/get_schema_version.html) for full documentation.
 #'
 #' @param SchemaId This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -7746,36 +3776,6 @@ glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
 #' fetching by schema ID. Either this or the `SchemaId` wrapper has to be
 #' provided.
 #' @param SchemaVersionNumber The version number of the schema.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SchemaVersionId = "string",
-#'   SchemaDefinition = "string",
-#'   DataFormat = "AVRO",
-#'   SchemaArn = "string",
-#'   VersionNumber = 123,
-#'   Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
-#'   CreatedTime = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_schema_version(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   SchemaVersionId = "string",
-#'   SchemaVersionNumber = list(
-#'     LatestVersion = TRUE|FALSE,
-#'     VersionNumber = 123
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7801,15 +3801,9 @@ glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, Sch
 #' between two stored schema versions in the Schema Registry
 #'
 #' @description
-#' Fetches the schema version difference in the specified difference type
-#' between two stored schema versions in the Schema Registry.
-#' 
-#' This API allows you to compare two schema versions between two schema
-#' definitions under the same schema.
+#' Fetches the schema version difference in the specified difference type between two stored schema versions in the Schema Registry.
 #'
-#' @usage
-#' glue_get_schema_versions_diff(SchemaId, FirstSchemaVersionNumber,
-#'   SecondSchemaVersionNumber, SchemaDiffType)
+#' See [https://paws-r.github.io/docs/glue/get_schema_versions_diff.html](https://paws-r.github.io/docs/glue/get_schema_versions_diff.html) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -7822,34 +3816,6 @@ glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, Sch
 #' @param FirstSchemaVersionNumber &#91;required&#93; The first of the two schema versions to be compared.
 #' @param SecondSchemaVersionNumber &#91;required&#93; The second of the two schema versions to be compared.
 #' @param SchemaDiffType &#91;required&#93; Refers to `SYNTAX_DIFF`, which is the currently supported diff type.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Diff = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_schema_versions_diff(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   FirstSchemaVersionNumber = list(
-#'     LatestVersion = TRUE|FALSE,
-#'     VersionNumber = 123
-#'   ),
-#'   SecondSchemaVersionNumber = list(
-#'     LatestVersion = TRUE|FALSE,
-#'     VersionNumber = 123
-#'   ),
-#'   SchemaDiffType = "SYNTAX_DIFF"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7876,46 +3842,9 @@ glue_get_schema_versions_diff <- function(SchemaId, FirstSchemaVersionNumber, Se
 #' @description
 #' Retrieves a specified security configuration.
 #'
-#' @usage
-#' glue_get_security_configuration(Name)
+#' See [https://paws-r.github.io/docs/glue/get_security_configuration.html](https://paws-r.github.io/docs/glue/get_security_configuration.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the security configuration to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SecurityConfiguration = list(
-#'     Name = "string",
-#'     CreatedTimeStamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EncryptionConfiguration = list(
-#'       S3Encryption = list(
-#'         list(
-#'           S3EncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-S3",
-#'           KmsKeyArn = "string"
-#'         )
-#'       ),
-#'       CloudWatchEncryption = list(
-#'         CloudWatchEncryptionMode = "DISABLED"|"SSE-KMS",
-#'         KmsKeyArn = "string"
-#'       ),
-#'       JobBookmarksEncryption = list(
-#'         JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
-#'         KmsKeyArn = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_security_configuration(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7942,51 +3871,10 @@ glue_get_security_configuration <- function(Name) {
 #' @description
 #' Retrieves a list of all security configurations.
 #'
-#' @usage
-#' glue_get_security_configurations(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/glue/get_security_configurations.html](https://paws-r.github.io/docs/glue/get_security_configurations.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken A continuation token, if this is a continuation call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SecurityConfigurations = list(
-#'     list(
-#'       Name = "string",
-#'       CreatedTimeStamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EncryptionConfiguration = list(
-#'         S3Encryption = list(
-#'           list(
-#'             S3EncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-S3",
-#'             KmsKeyArn = "string"
-#'           )
-#'         ),
-#'         CloudWatchEncryption = list(
-#'           CloudWatchEncryptionMode = "DISABLED"|"SSE-KMS",
-#'           KmsKeyArn = "string"
-#'         ),
-#'         JobBookmarksEncryption = list(
-#'           JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
-#'           KmsKeyArn = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_security_configurations(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8008,149 +3896,96 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
 }
 .glue$operations$get_security_configurations <- glue_get_security_configurations
 
+#' Retrieves the session
+#'
+#' @description
+#' Retrieves the session.
+#'
+#' See [https://paws-r.github.io/docs/glue/get_session.html](https://paws-r.github.io/docs/glue/get_session.html) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the session.
+#' @param RequestOrigin The origin of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_session
+glue_get_session <- function(Id, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "GetSession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_session_input(Id = Id, RequestOrigin = RequestOrigin)
+  output <- .glue$get_session_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_session <- glue_get_session
+
+#' Retrieves the statement
+#'
+#' @description
+#' Retrieves the statement.
+#'
+#' See [https://paws-r.github.io/docs/glue/get_statement.html](https://paws-r.github.io/docs/glue/get_statement.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The Session ID of the statement.
+#' @param Id &#91;required&#93; The Id of the statement.
+#' @param RequestOrigin The origin of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_statement
+glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "GetStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_statement_input(SessionId = SessionId, Id = Id, RequestOrigin = RequestOrigin)
+  output <- .glue$get_statement_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_statement <- glue_get_statement
+
 #' Retrieves the Table definition in a Data Catalog for a specified table
 #'
 #' @description
-#' Retrieves the `Table` definition in a Data Catalog for a specified
-#' table.
+#' Retrieves the `Table` definition in a Data Catalog for a specified table.
 #'
-#' @usage
-#' glue_get_table(CatalogId, DatabaseName, Name)
+#' See [https://paws-r.github.io/docs/glue/get_table.html](https://paws-r.github.io/docs/glue/get_table.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
-#' the AWS account ID is used by default.
+#' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides. For
 #' Hive compatibility, this name is entirely lowercase.
 #' @param Name &#91;required&#93; The name of the table for which to retrieve the definition. For Hive
 #' compatibility, this name is entirely lowercase.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Table = list(
-#'     Name = "string",
-#'     DatabaseName = "string",
-#'     Description = "string",
-#'     Owner = "string",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastAccessTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastAnalyzedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Retention = 123,
-#'     StorageDescriptor = list(
-#'       Columns = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = "string",
-#'       InputFormat = "string",
-#'       OutputFormat = "string",
-#'       Compressed = TRUE|FALSE,
-#'       NumberOfBuckets = 123,
-#'       SerdeInfo = list(
-#'         Name = "string",
-#'         SerializationLibrary = "string",
-#'         Parameters = list(
-#'           "string"
-#'         )
-#'       ),
-#'       BucketColumns = list(
-#'         "string"
-#'       ),
-#'       SortColumns = list(
-#'         list(
-#'           Column = "string",
-#'           SortOrder = 123
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       SkewedInfo = list(
-#'         SkewedColumnNames = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValues = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValueLocationMaps = list(
-#'           "string"
-#'         )
-#'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE,
-#'       SchemaReference = list(
-#'         SchemaId = list(
-#'           SchemaArn = "string",
-#'           SchemaName = "string",
-#'           RegistryName = "string"
-#'         ),
-#'         SchemaVersionId = "string",
-#'         SchemaVersionNumber = 123
-#'       )
-#'     ),
-#'     PartitionKeys = list(
-#'       list(
-#'         Name = "string",
-#'         Type = "string",
-#'         Comment = "string",
-#'         Parameters = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ViewOriginalText = "string",
-#'     ViewExpandedText = "string",
-#'     TableType = "string",
-#'     Parameters = list(
-#'       "string"
-#'     ),
-#'     CreatedBy = "string",
-#'     IsRegisteredWithLakeFormation = TRUE|FALSE,
-#'     TargetTable = list(
-#'       CatalogId = "string",
-#'       DatabaseName = "string",
-#'       Name = "string"
-#'     ),
-#'     CatalogId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_table(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   Name = "string"
-#' )
-#' ```
+#' @param TransactionId The transaction ID at which to read the table contents.
+#' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most
+#' recent transaction commit time will be used. Cannot be specified along
+#' with `TransactionId`.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_table
-glue_get_table <- function(CatalogId = NULL, DatabaseName, Name) {
+glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL) {
   op <- new_operation(
     name = "GetTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name)
+  input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
   output <- .glue$get_table_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -8165,137 +4000,16 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name) {
 #' @description
 #' Retrieves a specified version of a table.
 #'
-#' @usage
-#' glue_get_table_version(CatalogId, DatabaseName, TableName, VersionId)
+#' See [https://paws-r.github.io/docs/glue/get_table_version.html](https://paws-r.github.io/docs/glue/get_table_version.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
-#' the AWS account ID is used by default.
+#' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The database in the catalog in which the table resides. For Hive
 #' compatibility, this name is entirely lowercase.
 #' @param TableName &#91;required&#93; The name of the table. For Hive compatibility, this name is entirely
 #' lowercase.
 #' @param VersionId The ID value of the table version to be retrieved. A `VersionID` is a
 #' string representation of an integer. Each version is incremented by 1.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableVersion = list(
-#'     Table = list(
-#'       Name = "string",
-#'       DatabaseName = "string",
-#'       Description = "string",
-#'       Owner = "string",
-#'       CreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastAccessTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastAnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Retention = 123,
-#'       StorageDescriptor = list(
-#'         Columns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "string",
-#'             Comment = "string",
-#'             Parameters = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         Location = "string",
-#'         InputFormat = "string",
-#'         OutputFormat = "string",
-#'         Compressed = TRUE|FALSE,
-#'         NumberOfBuckets = 123,
-#'         SerdeInfo = list(
-#'           Name = "string",
-#'           SerializationLibrary = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         ),
-#'         BucketColumns = list(
-#'           "string"
-#'         ),
-#'         SortColumns = list(
-#'           list(
-#'             Column = "string",
-#'             SortOrder = 123
-#'           )
-#'         ),
-#'         Parameters = list(
-#'           "string"
-#'         ),
-#'         SkewedInfo = list(
-#'           SkewedColumnNames = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValues = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValueLocationMaps = list(
-#'             "string"
-#'           )
-#'         ),
-#'         StoredAsSubDirectories = TRUE|FALSE,
-#'         SchemaReference = list(
-#'           SchemaId = list(
-#'             SchemaArn = "string",
-#'             SchemaName = "string",
-#'             RegistryName = "string"
-#'           ),
-#'           SchemaVersionId = "string",
-#'           SchemaVersionNumber = 123
-#'         )
-#'       ),
-#'       PartitionKeys = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       ViewOriginalText = "string",
-#'       ViewExpandedText = "string",
-#'       TableType = "string",
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       CreatedBy = "string",
-#'       IsRegisteredWithLakeFormation = TRUE|FALSE,
-#'       TargetTable = list(
-#'         CatalogId = "string",
-#'         DatabaseName = "string",
-#'         Name = "string"
-#'       ),
-#'       CatalogId = "string"
-#'     ),
-#'     VersionId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_table_version(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   VersionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8321,145 +4035,18 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #' specified table
 #'
 #' @description
-#' Retrieves a list of strings that identify available versions of a
-#' specified table.
+#' Retrieves a list of strings that identify available versions of a specified table.
 #'
-#' @usage
-#' glue_get_table_versions(CatalogId, DatabaseName, TableName, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_table_versions.html](https://paws-r.github.io/docs/glue/get_table_versions.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
-#' the AWS account ID is used by default.
+#' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The database in the catalog in which the table resides. For Hive
 #' compatibility, this name is entirely lowercase.
 #' @param TableName &#91;required&#93; The name of the table. For Hive compatibility, this name is entirely
 #' lowercase.
 #' @param NextToken A continuation token, if this is not the first call.
 #' @param MaxResults The maximum number of table versions to return in one response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableVersions = list(
-#'     list(
-#'       Table = list(
-#'         Name = "string",
-#'         DatabaseName = "string",
-#'         Description = "string",
-#'         Owner = "string",
-#'         CreateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         LastAccessTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         LastAnalyzedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Retention = 123,
-#'         StorageDescriptor = list(
-#'           Columns = list(
-#'             list(
-#'               Name = "string",
-#'               Type = "string",
-#'               Comment = "string",
-#'               Parameters = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           Location = "string",
-#'           InputFormat = "string",
-#'           OutputFormat = "string",
-#'           Compressed = TRUE|FALSE,
-#'           NumberOfBuckets = 123,
-#'           SerdeInfo = list(
-#'             Name = "string",
-#'             SerializationLibrary = "string",
-#'             Parameters = list(
-#'               "string"
-#'             )
-#'           ),
-#'           BucketColumns = list(
-#'             "string"
-#'           ),
-#'           SortColumns = list(
-#'             list(
-#'               Column = "string",
-#'               SortOrder = 123
-#'             )
-#'           ),
-#'           Parameters = list(
-#'             "string"
-#'           ),
-#'           SkewedInfo = list(
-#'             SkewedColumnNames = list(
-#'               "string"
-#'             ),
-#'             SkewedColumnValues = list(
-#'               "string"
-#'             ),
-#'             SkewedColumnValueLocationMaps = list(
-#'               "string"
-#'             )
-#'           ),
-#'           StoredAsSubDirectories = TRUE|FALSE,
-#'           SchemaReference = list(
-#'             SchemaId = list(
-#'               SchemaArn = "string",
-#'               SchemaName = "string",
-#'               RegistryName = "string"
-#'             ),
-#'             SchemaVersionId = "string",
-#'             SchemaVersionNumber = 123
-#'           )
-#'         ),
-#'         PartitionKeys = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "string",
-#'             Comment = "string",
-#'             Parameters = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         ViewOriginalText = "string",
-#'         ViewExpandedText = "string",
-#'         TableType = "string",
-#'         Parameters = list(
-#'           "string"
-#'         ),
-#'         CreatedBy = "string",
-#'         IsRegisteredWithLakeFormation = TRUE|FALSE,
-#'         TargetTable = list(
-#'           CatalogId = "string",
-#'           DatabaseName = "string",
-#'           Name = "string"
-#'         ),
-#'         CatalogId = "string"
-#'       ),
-#'       VersionId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_table_versions(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8485,154 +4072,34 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' Database
 #'
 #' @description
-#' Retrieves the definitions of some or all of the tables in a given
-#' `Database`.
+#' Retrieves the definitions of some or all of the tables in a given `Database`.
 #'
-#' @usage
-#' glue_get_tables(CatalogId, DatabaseName, Expression, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_tables.html](https://paws-r.github.io/docs/glue/get_tables.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
-#' the AWS account ID is used by default.
+#' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The database in the catalog whose tables to list. For Hive
 #' compatibility, this name is entirely lowercase.
 #' @param Expression A regular expression pattern. If present, only those tables whose names
 #' match the pattern are returned.
 #' @param NextToken A continuation token, included if this is a continuation call.
 #' @param MaxResults The maximum number of tables to return in a single response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableList = list(
-#'     list(
-#'       Name = "string",
-#'       DatabaseName = "string",
-#'       Description = "string",
-#'       Owner = "string",
-#'       CreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastAccessTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastAnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Retention = 123,
-#'       StorageDescriptor = list(
-#'         Columns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "string",
-#'             Comment = "string",
-#'             Parameters = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         Location = "string",
-#'         InputFormat = "string",
-#'         OutputFormat = "string",
-#'         Compressed = TRUE|FALSE,
-#'         NumberOfBuckets = 123,
-#'         SerdeInfo = list(
-#'           Name = "string",
-#'           SerializationLibrary = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         ),
-#'         BucketColumns = list(
-#'           "string"
-#'         ),
-#'         SortColumns = list(
-#'           list(
-#'             Column = "string",
-#'             SortOrder = 123
-#'           )
-#'         ),
-#'         Parameters = list(
-#'           "string"
-#'         ),
-#'         SkewedInfo = list(
-#'           SkewedColumnNames = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValues = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValueLocationMaps = list(
-#'             "string"
-#'           )
-#'         ),
-#'         StoredAsSubDirectories = TRUE|FALSE,
-#'         SchemaReference = list(
-#'           SchemaId = list(
-#'             SchemaArn = "string",
-#'             SchemaName = "string",
-#'             RegistryName = "string"
-#'           ),
-#'           SchemaVersionId = "string",
-#'           SchemaVersionNumber = 123
-#'         )
-#'       ),
-#'       PartitionKeys = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       ViewOriginalText = "string",
-#'       ViewExpandedText = "string",
-#'       TableType = "string",
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       CreatedBy = "string",
-#'       IsRegisteredWithLakeFormation = TRUE|FALSE,
-#'       TargetTable = list(
-#'         CatalogId = "string",
-#'         DatabaseName = "string",
-#'         Name = "string"
-#'       ),
-#'       CatalogId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_tables(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   Expression = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
+#' @param TransactionId The transaction ID at which to read the table contents.
+#' @param QueryAsOfTime The time as of when to read the table contents. If not set, the most
+#' recent transaction commit time will be used. Cannot be specified along
+#' with `TransactionId`.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_tables
-glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL) {
+glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, TransactionId = NULL, QueryAsOfTime = NULL) {
   op <- new_operation(
     name = "GetTables",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
   output <- .glue$get_tables_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -8647,28 +4114,10 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
 #' @description
 #' Retrieves a list of tags associated with a resource.
 #'
-#' @usage
-#' glue_get_tags(ResourceArn)
+#' See [https://paws-r.github.io/docs/glue/get_tags.html](https://paws-r.github.io/docs/glue/get_tags.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to retrieve
 #' tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_tags(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8695,59 +4144,9 @@ glue_get_tags <- function(ResourceArn) {
 #' @description
 #' Retrieves the definition of a trigger.
 #'
-#' @usage
-#' glue_get_trigger(Name)
+#' See [https://paws-r.github.io/docs/glue/get_trigger.html](https://paws-r.github.io/docs/glue/get_trigger.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Trigger = list(
-#'     Name = "string",
-#'     WorkflowName = "string",
-#'     Id = "string",
-#'     Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'     State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'     Description = "string",
-#'     Schedule = "string",
-#'     Actions = list(
-#'       list(
-#'         JobName = "string",
-#'         Arguments = list(
-#'           "string"
-#'         ),
-#'         Timeout = 123,
-#'         SecurityConfiguration = "string",
-#'         NotificationProperty = list(
-#'           NotifyDelayAfter = 123
-#'         ),
-#'         CrawlerName = "string"
-#'       )
-#'     ),
-#'     Predicate = list(
-#'       Logical = "AND"|"ANY",
-#'       Conditions = list(
-#'         list(
-#'           LogicalOperator = "EQUALS",
-#'           JobName = "string",
-#'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'           CrawlerName = "string",
-#'           CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_trigger(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8774,68 +4173,13 @@ glue_get_trigger <- function(Name) {
 #' @description
 #' Gets all the triggers associated with a job.
 #'
-#' @usage
-#' glue_get_triggers(NextToken, DependentJobName, MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_triggers.html](https://paws-r.github.io/docs/glue/get_triggers.html) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param DependentJobName The name of the job to retrieve triggers for. The trigger that can start
 #' this job is returned, and if there is no such trigger, all triggers are
 #' returned.
 #' @param MaxResults The maximum size of the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Triggers = list(
-#'     list(
-#'       Name = "string",
-#'       WorkflowName = "string",
-#'       Id = "string",
-#'       Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'       State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'       Description = "string",
-#'       Schedule = "string",
-#'       Actions = list(
-#'         list(
-#'           JobName = "string",
-#'           Arguments = list(
-#'             "string"
-#'           ),
-#'           Timeout = 123,
-#'           SecurityConfiguration = "string",
-#'           NotificationProperty = list(
-#'             NotifyDelayAfter = 123
-#'           ),
-#'           CrawlerName = "string"
-#'         )
-#'       ),
-#'       Predicate = list(
-#'         Logical = "AND"|"ANY",
-#'         Conditions = list(
-#'           list(
-#'             LogicalOperator = "EQUALS",
-#'             JobName = "string",
-#'             State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'             CrawlerName = "string",
-#'             CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_triggers(
-#'   NextToken = "string",
-#'   DependentJobName = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8857,51 +4201,122 @@ glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResu
 }
 .glue$operations$get_triggers <- glue_get_triggers
 
+#' Get unfiltered partition metadata
+#'
+#' @description
+#' Get unfiltered partition metadata
+#'
+#' See [https://paws-r.github.io/docs/glue/get_unfiltered_partition_metadata.html](https://paws-r.github.io/docs/glue/get_unfiltered_partition_metadata.html) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; 
+#' @param DatabaseName &#91;required&#93; 
+#' @param TableName &#91;required&#93; 
+#' @param PartitionValues &#91;required&#93; 
+#' @param AuditContext 
+#' @param SupportedPermissionTypes &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_unfiltered_partition_metadata
+glue_get_unfiltered_partition_metadata <- function(CatalogId, DatabaseName, TableName, PartitionValues, AuditContext = NULL, SupportedPermissionTypes) {
+  op <- new_operation(
+    name = "GetUnfilteredPartitionMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_unfiltered_partition_metadata_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes)
+  output <- .glue$get_unfiltered_partition_metadata_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_unfiltered_partition_metadata <- glue_get_unfiltered_partition_metadata
+
+#' Get unfiltered partitions metadata
+#'
+#' @description
+#' Get unfiltered partitions metadata
+#'
+#' See [https://paws-r.github.io/docs/glue/get_unfiltered_partitions_metadata.html](https://paws-r.github.io/docs/glue/get_unfiltered_partitions_metadata.html) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; 
+#' @param DatabaseName &#91;required&#93; 
+#' @param TableName &#91;required&#93; 
+#' @param Expression 
+#' @param AuditContext 
+#' @param SupportedPermissionTypes &#91;required&#93; 
+#' @param NextToken 
+#' @param Segment 
+#' @param MaxResults 
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_unfiltered_partitions_metadata
+glue_get_unfiltered_partitions_metadata <- function(CatalogId, DatabaseName, TableName, Expression = NULL, AuditContext = NULL, SupportedPermissionTypes, NextToken = NULL, Segment = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetUnfilteredPartitionsMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_unfiltered_partitions_metadata_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults)
+  output <- .glue$get_unfiltered_partitions_metadata_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_unfiltered_partitions_metadata <- glue_get_unfiltered_partitions_metadata
+
+#' Get unfiltered table metadata
+#'
+#' @description
+#' Get unfiltered table metadata
+#'
+#' See [https://paws-r.github.io/docs/glue/get_unfiltered_table_metadata.html](https://paws-r.github.io/docs/glue/get_unfiltered_table_metadata.html) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; 
+#' @param DatabaseName &#91;required&#93; 
+#' @param Name &#91;required&#93; 
+#' @param AuditContext 
+#' @param SupportedPermissionTypes &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_unfiltered_table_metadata
+glue_get_unfiltered_table_metadata <- function(CatalogId, DatabaseName, Name, AuditContext = NULL, SupportedPermissionTypes) {
+  op <- new_operation(
+    name = "GetUnfilteredTableMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_unfiltered_table_metadata_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes)
+  output <- .glue$get_unfiltered_table_metadata_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_unfiltered_table_metadata <- glue_get_unfiltered_table_metadata
+
 #' Retrieves a specified function definition from the Data Catalog
 #'
 #' @description
 #' Retrieves a specified function definition from the Data Catalog.
 #'
-#' @usage
-#' glue_get_user_defined_function(CatalogId, DatabaseName, FunctionName)
+#' See [https://paws-r.github.io/docs/glue/get_user_defined_function.html](https://paws-r.github.io/docs/glue/get_user_defined_function.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the function to be retrieved is
-#' located. If none is provided, the AWS account ID is used by default.
+#' located. If none is provided, the Amazon Web Services account ID is used
+#' by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the function is located.
 #' @param FunctionName &#91;required&#93; The name of the function.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UserDefinedFunction = list(
-#'     FunctionName = "string",
-#'     DatabaseName = "string",
-#'     ClassName = "string",
-#'     OwnerName = "string",
-#'     OwnerType = "USER"|"ROLE"|"GROUP",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ResourceUris = list(
-#'       list(
-#'         ResourceType = "JAR"|"FILE"|"ARCHIVE",
-#'         Uri = "string"
-#'       )
-#'     ),
-#'     CatalogId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_user_defined_function(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   FunctionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8928,12 +4343,11 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #' @description
 #' Retrieves multiple function definitions from the Data Catalog.
 #'
-#' @usage
-#' glue_get_user_defined_functions(CatalogId, DatabaseName, Pattern,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_user_defined_functions.html](https://paws-r.github.io/docs/glue/get_user_defined_functions.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the functions to be retrieved are
-#' located. If none is provided, the AWS account ID is used by default.
+#' located. If none is provided, the Amazon Web Services account ID is used
+#' by default.
 #' @param DatabaseName The name of the catalog database where the functions are located. If
 #' none is provided, functions from all the databases across the catalog
 #' will be returned.
@@ -8941,44 +4355,6 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #' definitions returned.
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum number of functions to return in one response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UserDefinedFunctions = list(
-#'     list(
-#'       FunctionName = "string",
-#'       DatabaseName = "string",
-#'       ClassName = "string",
-#'       OwnerName = "string",
-#'       OwnerType = "USER"|"ROLE"|"GROUP",
-#'       CreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ResourceUris = list(
-#'         list(
-#'           ResourceType = "JAR"|"FILE"|"ARCHIVE",
-#'           Uri = "string"
-#'         )
-#'       ),
-#'       CatalogId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_user_defined_functions(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   Pattern = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9005,287 +4381,11 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #' @description
 #' Retrieves resource metadata for a workflow.
 #'
-#' @usage
-#' glue_get_workflow(Name, IncludeGraph)
+#' See [https://paws-r.github.io/docs/glue/get_workflow.html](https://paws-r.github.io/docs/glue/get_workflow.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the workflow to retrieve.
 #' @param IncludeGraph Specifies whether to include a graph when returning the workflow
 #' resource metadata.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Workflow = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     DefaultRunProperties = list(
-#'       "string"
-#'     ),
-#'     CreatedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastRun = list(
-#'       Name = "string",
-#'       WorkflowRunId = "string",
-#'       PreviousRunId = "string",
-#'       WorkflowRunProperties = list(
-#'         "string"
-#'       ),
-#'       StartedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CompletedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "RUNNING"|"COMPLETED"|"STOPPING"|"STOPPED"|"ERROR",
-#'       ErrorMessage = "string",
-#'       Statistics = list(
-#'         TotalActions = 123,
-#'         TimeoutActions = 123,
-#'         FailedActions = 123,
-#'         StoppedActions = 123,
-#'         SucceededActions = 123,
-#'         RunningActions = 123
-#'       ),
-#'       Graph = list(
-#'         Nodes = list(
-#'           list(
-#'             Type = "CRAWLER"|"JOB"|"TRIGGER",
-#'             Name = "string",
-#'             UniqueId = "string",
-#'             TriggerDetails = list(
-#'               Trigger = list(
-#'                 Name = "string",
-#'                 WorkflowName = "string",
-#'                 Id = "string",
-#'                 Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'                 State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'                 Description = "string",
-#'                 Schedule = "string",
-#'                 Actions = list(
-#'                   list(
-#'                     JobName = "string",
-#'                     Arguments = list(
-#'                       "string"
-#'                     ),
-#'                     Timeout = 123,
-#'                     SecurityConfiguration = "string",
-#'                     NotificationProperty = list(
-#'                       NotifyDelayAfter = 123
-#'                     ),
-#'                     CrawlerName = "string"
-#'                   )
-#'                 ),
-#'                 Predicate = list(
-#'                   Logical = "AND"|"ANY",
-#'                   Conditions = list(
-#'                     list(
-#'                       LogicalOperator = "EQUALS",
-#'                       JobName = "string",
-#'                       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                       CrawlerName = "string",
-#'                       CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             JobDetails = list(
-#'               JobRuns = list(
-#'                 list(
-#'                   Id = "string",
-#'                   Attempt = 123,
-#'                   PreviousRunId = "string",
-#'                   TriggerName = "string",
-#'                   JobName = "string",
-#'                   StartedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   LastModifiedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   CompletedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                   Arguments = list(
-#'                     "string"
-#'                   ),
-#'                   ErrorMessage = "string",
-#'                   PredecessorRuns = list(
-#'                     list(
-#'                       JobName = "string",
-#'                       RunId = "string"
-#'                     )
-#'                   ),
-#'                   AllocatedCapacity = 123,
-#'                   ExecutionTime = 123,
-#'                   Timeout = 123,
-#'                   MaxCapacity = 123.0,
-#'                   WorkerType = "Standard"|"G.1X"|"G.2X",
-#'                   NumberOfWorkers = 123,
-#'                   SecurityConfiguration = "string",
-#'                   LogGroupName = "string",
-#'                   NotificationProperty = list(
-#'                     NotifyDelayAfter = 123
-#'                   ),
-#'                   GlueVersion = "string"
-#'                 )
-#'               )
-#'             ),
-#'             CrawlerDetails = list(
-#'               Crawls = list(
-#'                 list(
-#'                   State = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED",
-#'                   StartedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   CompletedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   ErrorMessage = "string",
-#'                   LogGroup = "string",
-#'                   LogStream = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         Edges = list(
-#'           list(
-#'             SourceId = "string",
-#'             DestinationId = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Graph = list(
-#'       Nodes = list(
-#'         list(
-#'           Type = "CRAWLER"|"JOB"|"TRIGGER",
-#'           Name = "string",
-#'           UniqueId = "string",
-#'           TriggerDetails = list(
-#'             Trigger = list(
-#'               Name = "string",
-#'               WorkflowName = "string",
-#'               Id = "string",
-#'               Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'               State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'               Description = "string",
-#'               Schedule = "string",
-#'               Actions = list(
-#'                 list(
-#'                   JobName = "string",
-#'                   Arguments = list(
-#'                     "string"
-#'                   ),
-#'                   Timeout = 123,
-#'                   SecurityConfiguration = "string",
-#'                   NotificationProperty = list(
-#'                     NotifyDelayAfter = 123
-#'                   ),
-#'                   CrawlerName = "string"
-#'                 )
-#'               ),
-#'               Predicate = list(
-#'                 Logical = "AND"|"ANY",
-#'                 Conditions = list(
-#'                   list(
-#'                     LogicalOperator = "EQUALS",
-#'                     JobName = "string",
-#'                     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                     CrawlerName = "string",
-#'                     CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           JobDetails = list(
-#'             JobRuns = list(
-#'               list(
-#'                 Id = "string",
-#'                 Attempt = 123,
-#'                 PreviousRunId = "string",
-#'                 TriggerName = "string",
-#'                 JobName = "string",
-#'                 StartedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 LastModifiedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 CompletedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                 Arguments = list(
-#'                   "string"
-#'                 ),
-#'                 ErrorMessage = "string",
-#'                 PredecessorRuns = list(
-#'                   list(
-#'                     JobName = "string",
-#'                     RunId = "string"
-#'                   )
-#'                 ),
-#'                 AllocatedCapacity = 123,
-#'                 ExecutionTime = 123,
-#'                 Timeout = 123,
-#'                 MaxCapacity = 123.0,
-#'                 WorkerType = "Standard"|"G.1X"|"G.2X",
-#'                 NumberOfWorkers = 123,
-#'                 SecurityConfiguration = "string",
-#'                 LogGroupName = "string",
-#'                 NotificationProperty = list(
-#'                   NotifyDelayAfter = 123
-#'                 ),
-#'                 GlueVersion = "string"
-#'               )
-#'             )
-#'           ),
-#'           CrawlerDetails = list(
-#'             Crawls = list(
-#'               list(
-#'                 State = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED",
-#'                 StartedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 CompletedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 ErrorMessage = "string",
-#'                 LogGroup = "string",
-#'                 LogStream = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Edges = list(
-#'         list(
-#'           SourceId = "string",
-#'           DestinationId = "string"
-#'         )
-#'       )
-#'     ),
-#'     MaxConcurrentRuns = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_workflow(
-#'   Name = "string",
-#'   IncludeGraph = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9312,163 +4412,11 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #' @description
 #' Retrieves the metadata for a given workflow run.
 #'
-#' @usage
-#' glue_get_workflow_run(Name, RunId, IncludeGraph)
+#' See [https://paws-r.github.io/docs/glue/get_workflow_run.html](https://paws-r.github.io/docs/glue/get_workflow_run.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow being run.
 #' @param RunId &#91;required&#93; The ID of the workflow run.
 #' @param IncludeGraph Specifies whether to include the workflow graph in response or not.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Run = list(
-#'     Name = "string",
-#'     WorkflowRunId = "string",
-#'     PreviousRunId = "string",
-#'     WorkflowRunProperties = list(
-#'       "string"
-#'     ),
-#'     StartedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CompletedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = "RUNNING"|"COMPLETED"|"STOPPING"|"STOPPED"|"ERROR",
-#'     ErrorMessage = "string",
-#'     Statistics = list(
-#'       TotalActions = 123,
-#'       TimeoutActions = 123,
-#'       FailedActions = 123,
-#'       StoppedActions = 123,
-#'       SucceededActions = 123,
-#'       RunningActions = 123
-#'     ),
-#'     Graph = list(
-#'       Nodes = list(
-#'         list(
-#'           Type = "CRAWLER"|"JOB"|"TRIGGER",
-#'           Name = "string",
-#'           UniqueId = "string",
-#'           TriggerDetails = list(
-#'             Trigger = list(
-#'               Name = "string",
-#'               WorkflowName = "string",
-#'               Id = "string",
-#'               Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'               State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'               Description = "string",
-#'               Schedule = "string",
-#'               Actions = list(
-#'                 list(
-#'                   JobName = "string",
-#'                   Arguments = list(
-#'                     "string"
-#'                   ),
-#'                   Timeout = 123,
-#'                   SecurityConfiguration = "string",
-#'                   NotificationProperty = list(
-#'                     NotifyDelayAfter = 123
-#'                   ),
-#'                   CrawlerName = "string"
-#'                 )
-#'               ),
-#'               Predicate = list(
-#'                 Logical = "AND"|"ANY",
-#'                 Conditions = list(
-#'                   list(
-#'                     LogicalOperator = "EQUALS",
-#'                     JobName = "string",
-#'                     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                     CrawlerName = "string",
-#'                     CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           JobDetails = list(
-#'             JobRuns = list(
-#'               list(
-#'                 Id = "string",
-#'                 Attempt = 123,
-#'                 PreviousRunId = "string",
-#'                 TriggerName = "string",
-#'                 JobName = "string",
-#'                 StartedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 LastModifiedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 CompletedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                 Arguments = list(
-#'                   "string"
-#'                 ),
-#'                 ErrorMessage = "string",
-#'                 PredecessorRuns = list(
-#'                   list(
-#'                     JobName = "string",
-#'                     RunId = "string"
-#'                   )
-#'                 ),
-#'                 AllocatedCapacity = 123,
-#'                 ExecutionTime = 123,
-#'                 Timeout = 123,
-#'                 MaxCapacity = 123.0,
-#'                 WorkerType = "Standard"|"G.1X"|"G.2X",
-#'                 NumberOfWorkers = 123,
-#'                 SecurityConfiguration = "string",
-#'                 LogGroupName = "string",
-#'                 NotificationProperty = list(
-#'                   NotifyDelayAfter = 123
-#'                 ),
-#'                 GlueVersion = "string"
-#'               )
-#'             )
-#'           ),
-#'           CrawlerDetails = list(
-#'             Crawls = list(
-#'               list(
-#'                 State = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED",
-#'                 StartedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 CompletedOn = as.POSIXct(
-#'                   "2015-01-01"
-#'                 ),
-#'                 ErrorMessage = "string",
-#'                 LogGroup = "string",
-#'                 LogStream = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Edges = list(
-#'         list(
-#'           SourceId = "string",
-#'           DestinationId = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_workflow_run(
-#'   Name = "string",
-#'   RunId = "string",
-#'   IncludeGraph = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9495,29 +4443,10 @@ glue_get_workflow_run <- function(Name, RunId, IncludeGraph = NULL) {
 #' @description
 #' Retrieves the workflow run properties which were set during the run.
 #'
-#' @usage
-#' glue_get_workflow_run_properties(Name, RunId)
+#' See [https://paws-r.github.io/docs/glue/get_workflow_run_properties.html](https://paws-r.github.io/docs/glue/get_workflow_run_properties.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow which was run.
 #' @param RunId &#91;required&#93; The ID of the workflow run whose run properties should be returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RunProperties = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_workflow_run_properties(
-#'   Name = "string",
-#'   RunId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9544,168 +4473,12 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 #' @description
 #' Retrieves metadata for all runs of a given workflow.
 #'
-#' @usage
-#' glue_get_workflow_runs(Name, IncludeGraph, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/glue/get_workflow_runs.html](https://paws-r.github.io/docs/glue/get_workflow_runs.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow whose metadata of runs should be returned.
 #' @param IncludeGraph Specifies whether to include the workflow graph in response or not.
 #' @param NextToken The maximum size of the response.
 #' @param MaxResults The maximum number of workflow runs to be included in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Runs = list(
-#'     list(
-#'       Name = "string",
-#'       WorkflowRunId = "string",
-#'       PreviousRunId = "string",
-#'       WorkflowRunProperties = list(
-#'         "string"
-#'       ),
-#'       StartedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CompletedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "RUNNING"|"COMPLETED"|"STOPPING"|"STOPPED"|"ERROR",
-#'       ErrorMessage = "string",
-#'       Statistics = list(
-#'         TotalActions = 123,
-#'         TimeoutActions = 123,
-#'         FailedActions = 123,
-#'         StoppedActions = 123,
-#'         SucceededActions = 123,
-#'         RunningActions = 123
-#'       ),
-#'       Graph = list(
-#'         Nodes = list(
-#'           list(
-#'             Type = "CRAWLER"|"JOB"|"TRIGGER",
-#'             Name = "string",
-#'             UniqueId = "string",
-#'             TriggerDetails = list(
-#'               Trigger = list(
-#'                 Name = "string",
-#'                 WorkflowName = "string",
-#'                 Id = "string",
-#'                 Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'                 State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'                 Description = "string",
-#'                 Schedule = "string",
-#'                 Actions = list(
-#'                   list(
-#'                     JobName = "string",
-#'                     Arguments = list(
-#'                       "string"
-#'                     ),
-#'                     Timeout = 123,
-#'                     SecurityConfiguration = "string",
-#'                     NotificationProperty = list(
-#'                       NotifyDelayAfter = 123
-#'                     ),
-#'                     CrawlerName = "string"
-#'                   )
-#'                 ),
-#'                 Predicate = list(
-#'                   Logical = "AND"|"ANY",
-#'                   Conditions = list(
-#'                     list(
-#'                       LogicalOperator = "EQUALS",
-#'                       JobName = "string",
-#'                       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                       CrawlerName = "string",
-#'                       CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             JobDetails = list(
-#'               JobRuns = list(
-#'                 list(
-#'                   Id = "string",
-#'                   Attempt = 123,
-#'                   PreviousRunId = "string",
-#'                   TriggerName = "string",
-#'                   JobName = "string",
-#'                   StartedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   LastModifiedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   CompletedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'                   Arguments = list(
-#'                     "string"
-#'                   ),
-#'                   ErrorMessage = "string",
-#'                   PredecessorRuns = list(
-#'                     list(
-#'                       JobName = "string",
-#'                       RunId = "string"
-#'                     )
-#'                   ),
-#'                   AllocatedCapacity = 123,
-#'                   ExecutionTime = 123,
-#'                   Timeout = 123,
-#'                   MaxCapacity = 123.0,
-#'                   WorkerType = "Standard"|"G.1X"|"G.2X",
-#'                   NumberOfWorkers = 123,
-#'                   SecurityConfiguration = "string",
-#'                   LogGroupName = "string",
-#'                   NotificationProperty = list(
-#'                     NotifyDelayAfter = 123
-#'                   ),
-#'                   GlueVersion = "string"
-#'                 )
-#'               )
-#'             ),
-#'             CrawlerDetails = list(
-#'               Crawls = list(
-#'                 list(
-#'                   State = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED",
-#'                   StartedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   CompletedOn = as.POSIXct(
-#'                     "2015-01-01"
-#'                   ),
-#'                   ErrorMessage = "string",
-#'                   LogGroup = "string",
-#'                   LogStream = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         Edges = list(
-#'           list(
-#'             SourceId = "string",
-#'             DestinationId = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_workflow_runs(
-#'   Name = "string",
-#'   IncludeGraph = TRUE|FALSE,
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9727,26 +4500,15 @@ glue_get_workflow_runs <- function(Name, IncludeGraph = NULL, NextToken = NULL, 
 }
 .glue$operations$get_workflow_runs <- glue_get_workflow_runs
 
-#' Imports an existing Amazon Athena Data Catalog to AWS Glue
+#' Imports an existing Amazon Athena Data Catalog to Glue
 #'
 #' @description
-#' Imports an existing Amazon Athena Data Catalog to AWS Glue
+#' Imports an existing Amazon Athena Data Catalog to Glue.
 #'
-#' @usage
-#' glue_import_catalog_to_glue(CatalogId)
+#' See [https://paws-r.github.io/docs/glue/import_catalog_to_glue.html](https://paws-r.github.io/docs/glue/import_catalog_to_glue.html) for full documentation.
 #'
-#' @param CatalogId The ID of the catalog to import. Currently, this should be the AWS
-#' account ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_catalog_to_glue(
-#'   CatalogId = "string"
-#' )
-#' ```
+#' @param CatalogId The ID of the catalog to import. Currently, this should be the Amazon
+#' Web Services account ID.
 #'
 #' @keywords internal
 #'
@@ -9768,47 +4530,48 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
 }
 .glue$operations$import_catalog_to_glue <- glue_import_catalog_to_glue
 
-#' Retrieves the names of all crawler resources in this AWS account, or the
-#' resources with the specified tag
+#' Lists all the blueprint names in an account
 #'
 #' @description
-#' Retrieves the names of all crawler resources in this AWS account, or the
-#' resources with the specified tag. This operation allows you to see which
-#' resources are available in your account, and their names.
-#' 
-#' This operation takes the optional `Tags` field, which you can use as a
-#' filter on the response so that tagged resources can be retrieved as a
-#' group. If you choose to use tags filtering, only resources with the tag
-#' are retrieved.
+#' Lists all the blueprint names in an account.
 #'
-#' @usage
-#' glue_list_crawlers(MaxResults, NextToken, Tags)
+#' See [https://paws-r.github.io/docs/glue/list_blueprints.html](https://paws-r.github.io/docs/glue/list_blueprints.html) for full documentation.
+#'
+#' @param NextToken A continuation token, if this is a continuation request.
+#' @param MaxResults The maximum size of a list to return.
+#' @param Tags Filters the list by an Amazon Web Services resource tag.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_blueprints
+glue_list_blueprints <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ListBlueprints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_blueprints_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
+  output <- .glue$list_blueprints_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_blueprints <- glue_list_blueprints
+
+#' Retrieves the names of all crawler resources in this Amazon Web Services
+#' account, or the resources with the specified tag
+#'
+#' @description
+#' Retrieves the names of all crawler resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
+#'
+#' See [https://paws-r.github.io/docs/glue/list_crawlers.html](https://paws-r.github.io/docs/glue/list_crawlers.html) for full documentation.
 #'
 #' @param MaxResults The maximum size of a list to return.
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param Tags Specifies to return only these tagged resources.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CrawlerNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_crawlers(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9830,47 +4593,81 @@ glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL)
 }
 .glue$operations$list_crawlers <- glue_list_crawlers
 
-#' Retrieves the names of all DevEndpoint resources in this AWS account, or
-#' the resources with the specified tag
+#' Returns all the crawls of a specified crawler
 #'
 #' @description
-#' Retrieves the names of all `DevEndpoint` resources in this AWS account,
-#' or the resources with the specified tag. This operation allows you to
-#' see which resources are available in your account, and their names.
-#' 
-#' This operation takes the optional `Tags` field, which you can use as a
-#' filter on the response so that tagged resources can be retrieved as a
-#' group. If you choose to use tags filtering, only resources with the tag
-#' are retrieved.
+#' Returns all the crawls of a specified crawler. Returns only the crawls that have occurred since the launch date of the crawler history feature, and only retains up to 12 months of crawls. Older crawls will not be returned.
 #'
-#' @usage
-#' glue_list_dev_endpoints(NextToken, MaxResults, Tags)
+#' See [https://paws-r.github.io/docs/glue/list_crawls.html](https://paws-r.github.io/docs/glue/list_crawls.html) for full documentation.
+#'
+#' @param CrawlerName &#91;required&#93; The name of the crawler whose runs you want to retrieve.
+#' @param MaxResults The maximum number of results to return. The default is 20, and maximum
+#' is 100.
+#' @param Filters Filters the crawls by the criteria you specify in a list of
+#' `CrawlsFilter` objects.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_crawls
+glue_list_crawls <- function(CrawlerName, MaxResults = NULL, Filters = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCrawls",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_crawls_input(CrawlerName = CrawlerName, MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
+  output <- .glue$list_crawls_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_crawls <- glue_list_crawls
+
+#' Lists all the custom patterns that have been created
+#'
+#' @description
+#' Lists all the custom patterns that have been created.
+#'
+#' See [https://paws-r.github.io/docs/glue/list_custom_entity_types.html](https://paws-r.github.io/docs/glue/list_custom_entity_types.html) for full documentation.
+#'
+#' @param NextToken A paginated token to offset the results.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_custom_entity_types
+glue_list_custom_entity_types <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCustomEntityTypes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_custom_entity_types_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .glue$list_custom_entity_types_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_custom_entity_types <- glue_list_custom_entity_types
+
+#' Retrieves the names of all DevEndpoint resources in this Amazon Web
+#' Services account, or the resources with the specified tag
+#'
+#' @description
+#' Retrieves the names of all `DevEndpoint` resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
+#'
+#' See [https://paws-r.github.io/docs/glue/list_dev_endpoints.html](https://paws-r.github.io/docs/glue/list_dev_endpoints.html) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
 #' @param Tags Specifies to return only these tagged resources.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DevEndpointNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_dev_endpoints(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9892,47 +4689,17 @@ glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = 
 }
 .glue$operations$list_dev_endpoints <- glue_list_dev_endpoints
 
-#' Retrieves the names of all job resources in this AWS account, or the
-#' resources with the specified tag
+#' Retrieves the names of all job resources in this Amazon Web Services
+#' account, or the resources with the specified tag
 #'
 #' @description
-#' Retrieves the names of all job resources in this AWS account, or the
-#' resources with the specified tag. This operation allows you to see which
-#' resources are available in your account, and their names.
-#' 
-#' This operation takes the optional `Tags` field, which you can use as a
-#' filter on the response so that tagged resources can be retrieved as a
-#' group. If you choose to use tags filtering, only resources with the tag
-#' are retrieved.
+#' Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
 #'
-#' @usage
-#' glue_list_jobs(NextToken, MaxResults, Tags)
+#' See [https://paws-r.github.io/docs/glue/list_jobs.html](https://paws-r.github.io/docs/glue/list_jobs.html) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
 #' @param Tags Specifies to return only these tagged resources.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_jobs(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9954,20 +4721,14 @@ glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
 }
 .glue$operations$list_jobs <- glue_list_jobs
 
-#' Retrieves a sortable, filterable list of existing AWS Glue machine
-#' learning transforms in this AWS account, or the resources with the
-#' specified tag
+#' Retrieves a sortable, filterable list of existing Glue machine learning
+#' transforms in this Amazon Web Services account, or the resources with
+#' the specified tag
 #'
 #' @description
-#' Retrieves a sortable, filterable list of existing AWS Glue machine
-#' learning transforms in this AWS account, or the resources with the
-#' specified tag. This operation takes the optional `Tags` field, which you
-#' can use as a filter of the responses so that tagged resources can be
-#' retrieved as a group. If you choose to use tag filtering, only resources
-#' with the tags are retrieved.
+#' Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag. This operation takes the optional `Tags` field, which you can use as a filter of the responses so that tagged resources can be retrieved as a group. If you choose to use tag filtering, only resources with the tags are retrieved.
 #'
-#' @usage
-#' glue_list_ml_transforms(NextToken, MaxResults, Filter, Sort, Tags)
+#' See [https://paws-r.github.io/docs/glue/list_ml_transforms.html](https://paws-r.github.io/docs/glue/list_ml_transforms.html) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
@@ -9975,56 +4736,6 @@ glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
 #' transforms.
 #' @param Sort A `TransformSortCriteria` used to sort the machine learning transforms.
 #' @param Tags Specifies to return only these tagged resources.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TransformIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_ml_transforms(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Filter = list(
-#'     Name = "string",
-#'     TransformType = "FIND_MATCHES",
-#'     Status = "NOT_READY"|"READY"|"DELETING",
-#'     GlueVersion = "string",
-#'     CreatedBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreatedAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Schema = list(
-#'       list(
-#'         Name = "string",
-#'         DataType = "string"
-#'       )
-#'     )
-#'   ),
-#'   Sort = list(
-#'     Column = "NAME"|"TRANSFORM_TYPE"|"STATUS"|"CREATED"|"LAST_MODIFIED",
-#'     SortDirection = "DESCENDING"|"ASCENDING"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10050,43 +4761,13 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
 #' registry information
 #'
 #' @description
-#' Returns a list of registries that you have created, with minimal
-#' registry information. Registries in the `Deleting` status will not be
-#' included in the results. Empty results will be returned if there are no
-#' registries available.
+#' Returns a list of registries that you have created, with minimal registry information. Registries in the `Deleting` status will not be included in the results. Empty results will be returned if there are no registries available.
 #'
-#' @usage
-#' glue_list_registries(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/glue/list_registries.html](https://paws-r.github.io/docs/glue/list_registries.html) for full documentation.
 #'
 #' @param MaxResults Maximum number of results required per page. If the value is not
 #' supplied, this will be defaulted to 25 per page.
 #' @param NextToken A continuation token, if this is a continuation call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Registries = list(
-#'     list(
-#'       RegistryName = "string",
-#'       RegistryArn = "string",
-#'       Description = "string",
-#'       Status = "AVAILABLE"|"DELETING",
-#'       CreatedTime = "string",
-#'       UpdatedTime = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_registries(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10112,13 +4793,9 @@ glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
 #' information
 #'
 #' @description
-#' Returns a list of schema versions that you have created, with minimal
-#' information. Schema versions in Deleted status will not be included in
-#' the results. Empty results will be returned if there are no schema
-#' versions available.
+#' Returns a list of schema versions that you have created, with minimal information. Schema versions in Deleted status will not be included in the results. Empty results will be returned if there are no schema versions available.
 #'
-#' @usage
-#' glue_list_schema_versions(SchemaId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/glue/list_schema_versions.html](https://paws-r.github.io/docs/glue/list_schema_versions.html) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -10132,36 +4809,6 @@ glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param MaxResults Maximum number of results required per page. If the value is not
 #' supplied, this will be defaulted to 25 per page.
 #' @param NextToken A continuation token, if this is a continuation call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Schemas = list(
-#'     list(
-#'       SchemaArn = "string",
-#'       SchemaVersionId = "string",
-#'       VersionNumber = 123,
-#'       Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
-#'       CreatedTime = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_schema_versions(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10186,52 +4833,15 @@ glue_list_schema_versions <- function(SchemaId, MaxResults = NULL, NextToken = N
 #' Returns a list of schemas with minimal details
 #'
 #' @description
-#' Returns a list of schemas with minimal details. Schemas in Deleting
-#' status will not be included in the results. Empty results will be
-#' returned if there are no schemas available.
-#' 
-#' When the `RegistryId` is not provided, all the schemas across registries
-#' will be part of the API response.
+#' Returns a list of schemas with minimal details. Schemas in Deleting status will not be included in the results. Empty results will be returned if there are no schemas available.
 #'
-#' @usage
-#' glue_list_schemas(RegistryId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/glue/list_schemas.html](https://paws-r.github.io/docs/glue/list_schemas.html) for full documentation.
 #'
 #' @param RegistryId A wrapper structure that may contain the registry name and Amazon
 #' Resource Name (ARN).
 #' @param MaxResults Maximum number of results required per page. If the value is not
 #' supplied, this will be defaulted to 25 per page.
 #' @param NextToken A continuation token, if this is a continuation call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Schemas = list(
-#'     list(
-#'       RegistryName = "string",
-#'       SchemaName = "string",
-#'       SchemaArn = "string",
-#'       Description = "string",
-#'       SchemaStatus = "AVAILABLE"|"PENDING"|"DELETING",
-#'       CreatedTime = "string",
-#'       UpdatedTime = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_schemas(
-#'   RegistryId = list(
-#'     RegistryName = "string",
-#'     RegistryArn = "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10253,21 +4863,77 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
 }
 .glue$operations$list_schemas <- glue_list_schemas
 
-#' Retrieves the names of all trigger resources in this AWS account, or the
-#' resources with the specified tag
+#' Retrieve a list of sessions
 #'
 #' @description
-#' Retrieves the names of all trigger resources in this AWS account, or the
-#' resources with the specified tag. This operation allows you to see which
-#' resources are available in your account, and their names.
-#' 
-#' This operation takes the optional `Tags` field, which you can use as a
-#' filter on the response so that tagged resources can be retrieved as a
-#' group. If you choose to use tags filtering, only resources with the tag
-#' are retrieved.
+#' Retrieve a list of sessions.
 #'
-#' @usage
-#' glue_list_triggers(NextToken, DependentJobName, MaxResults, Tags)
+#' See [https://paws-r.github.io/docs/glue/list_sessions.html](https://paws-r.github.io/docs/glue/list_sessions.html) for full documentation.
+#'
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' result.
+#' @param MaxResults The maximum number of results.
+#' @param Tags Tags belonging to the session.
+#' @param RequestOrigin The origin of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_sessions
+glue_list_sessions <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "ListSessions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_sessions_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags, RequestOrigin = RequestOrigin)
+  output <- .glue$list_sessions_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_sessions <- glue_list_sessions
+
+#' Lists statements for the session
+#'
+#' @description
+#' Lists statements for the session.
+#'
+#' See [https://paws-r.github.io/docs/glue/list_statements.html](https://paws-r.github.io/docs/glue/list_statements.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The Session ID of the statements.
+#' @param RequestOrigin The origin of the request to list statements.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_statements
+glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListStatements",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_statements_input(SessionId = SessionId, RequestOrigin = RequestOrigin, NextToken = NextToken)
+  output <- .glue$list_statements_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_statements <- glue_list_statements
+
+#' Retrieves the names of all trigger resources in this Amazon Web Services
+#' account, or the resources with the specified tag
+#'
+#' @description
+#' Retrieves the names of all trigger resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
+#'
+#' See [https://paws-r.github.io/docs/glue/list_triggers.html](https://paws-r.github.io/docs/glue/list_triggers.html) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param DependentJobName The name of the job for which to retrieve triggers. The trigger that can
@@ -10275,29 +4941,6 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
 #' are returned.
 #' @param MaxResults The maximum size of a list to return.
 #' @param Tags Specifies to return only these tagged resources.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TriggerNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_triggers(
-#'   NextToken = "string",
-#'   DependentJobName = "string",
-#'   MaxResults = 123,
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10324,30 +4967,10 @@ glue_list_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxRes
 #' @description
 #' Lists names of workflows created in the account.
 #'
-#' @usage
-#' glue_list_workflows(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/glue/list_workflows.html](https://paws-r.github.io/docs/glue/list_workflows.html) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Workflows = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_workflows(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10372,37 +4995,13 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 #' Sets the security configuration for a specified catalog
 #'
 #' @description
-#' Sets the security configuration for a specified catalog. After the
-#' configuration has been set, the specified encryption is applied to every
-#' catalog write thereafter.
+#' Sets the security configuration for a specified catalog. After the configuration has been set, the specified encryption is applied to every catalog write thereafter.
 #'
-#' @usage
-#' glue_put_data_catalog_encryption_settings(CatalogId,
-#'   DataCatalogEncryptionSettings)
+#' See [https://paws-r.github.io/docs/glue/put_data_catalog_encryption_settings.html](https://paws-r.github.io/docs/glue/put_data_catalog_encryption_settings.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog to set the security configuration for. If
-#' none is provided, the AWS account ID is used by default.
+#' none is provided, the Amazon Web Services account ID is used by default.
 #' @param DataCatalogEncryptionSettings &#91;required&#93; The security configuration to set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_data_catalog_encryption_settings(
-#'   CatalogId = "string",
-#'   DataCatalogEncryptionSettings = list(
-#'     EncryptionAtRest = list(
-#'       CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
-#'       SseAwsKmsKeyId = "string"
-#'     ),
-#'     ConnectionPasswordEncryption = list(
-#'       ReturnConnectionPasswordEncrypted = TRUE|FALSE,
-#'       AwsKmsKeyId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10429,50 +5028,29 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 #' @description
 #' Sets the Data Catalog resource policy for access control.
 #'
-#' @usage
-#' glue_put_resource_policy(PolicyInJson, ResourceArn, PolicyHashCondition,
-#'   PolicyExistsCondition, EnableHybrid)
+#' See [https://paws-r.github.io/docs/glue/put_resource_policy.html](https://paws-r.github.io/docs/glue/put_resource_policy.html) for full documentation.
 #'
 #' @param PolicyInJson &#91;required&#93; Contains the policy document to set, in JSON format.
-#' @param ResourceArn The ARN of the AWS Glue resource for the resource policy to be set. For
-#' more information about AWS Glue resource ARNs, see the [AWS Glue ARN
-#' string
-#' pattern](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id)
+#' @param ResourceArn Do not use. For internal use only.
 #' @param PolicyHashCondition The hash value returned when the previous policy was set using
 #' [`put_resource_policy`][glue_put_resource_policy]. Its purpose is to
 #' prevent concurrent modifications of a policy. Do not use this parameter
 #' if no previous policy has been set.
 #' @param PolicyExistsCondition A value of `MUST_EXIST` is used to update a policy. A value of
 #' `NOT_EXIST` is used to create a new policy. If a value of `NONE` or a
-#' null value is used, the call will not depend on the existence of a
+#' null value is used, the call does not depend on the existence of a
 #' policy.
-#' @param EnableHybrid Allows you to specify if you want to use both resource-level and
-#' account/catalog-level resource policies. A resource-level policy is a
-#' policy attached to an individual resource such as a database or a table.
+#' @param EnableHybrid If `'TRUE'`, indicates that you are using both methods to grant
+#' cross-account access to Data Catalog resources:
 #' 
-#' The default value of `NO` indicates that resource-level policies cannot
-#' co-exist with an account-level policy. A value of `YES` means the use of
-#' both resource-level and account/catalog-level resource policies is
-#' allowed.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PolicyHash = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_resource_policy(
-#'   PolicyInJson = "string",
-#'   ResourceArn = "string",
-#'   PolicyHashCondition = "string",
-#'   PolicyExistsCondition = "MUST_EXIST"|"NOT_EXIST"|"NONE",
-#'   EnableHybrid = "TRUE"|"FALSE"
-#' )
-#' ```
+#' -   By directly updating the resource policy with `PutResourePolicy`
+#' 
+#' -   By using the **Grant permissions** command on the Amazon Web
+#'     Services Management Console.
+#' 
+#' Must be set to `'TRUE'` if you have already used the Management Console
+#' to grant cross-account access, otherwise the call fails. Default is
+#' 'FALSE'.
 #'
 #' @keywords internal
 #'
@@ -10497,53 +5075,14 @@ glue_put_resource_policy <- function(PolicyInJson, ResourceArn = NULL, PolicyHas
 #' Puts the metadata key value pair for a specified schema version ID
 #'
 #' @description
-#' Puts the metadata key value pair for a specified schema version ID. A
-#' maximum of 10 key value pairs will be allowed per schema version. They
-#' can be added over one or more calls.
+#' Puts the metadata key value pair for a specified schema version ID. A maximum of 10 key value pairs will be allowed per schema version. They can be added over one or more calls.
 #'
-#' @usage
-#' glue_put_schema_version_metadata(SchemaId, SchemaVersionNumber,
-#'   SchemaVersionId, MetadataKeyValue)
+#' See [https://paws-r.github.io/docs/glue/put_schema_version_metadata.html](https://paws-r.github.io/docs/glue/put_schema_version_metadata.html) for full documentation.
 #'
 #' @param SchemaId The unique ID for the schema.
 #' @param SchemaVersionNumber The version number of the schema.
 #' @param SchemaVersionId The unique version ID of the schema version.
 #' @param MetadataKeyValue &#91;required&#93; The metadata key's corresponding value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SchemaArn = "string",
-#'   SchemaName = "string",
-#'   RegistryName = "string",
-#'   LatestVersion = TRUE|FALSE,
-#'   VersionNumber = 123,
-#'   SchemaVersionId = "string",
-#'   MetadataKey = "string",
-#'   MetadataValue = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_schema_version_metadata(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   SchemaVersionNumber = list(
-#'     LatestVersion = TRUE|FALSE,
-#'     VersionNumber = 123
-#'   ),
-#'   SchemaVersionId = "string",
-#'   MetadataKeyValue = list(
-#'     MetadataKey = "string",
-#'     MetadataValue = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10568,31 +5107,14 @@ glue_put_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumbe
 #' Puts the specified workflow run properties for the given workflow run
 #'
 #' @description
-#' Puts the specified workflow run properties for the given workflow run.
-#' If a property already exists for the specified run, then it overrides
-#' the value otherwise adds the property to existing properties.
+#' Puts the specified workflow run properties for the given workflow run. If a property already exists for the specified run, then it overrides the value otherwise adds the property to existing properties.
 #'
-#' @usage
-#' glue_put_workflow_run_properties(Name, RunId, RunProperties)
+#' See [https://paws-r.github.io/docs/glue/put_workflow_run_properties.html](https://paws-r.github.io/docs/glue/put_workflow_run_properties.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow which was run.
 #' @param RunId &#91;required&#93; The ID of the workflow run for which the run properties should be
 #' updated.
 #' @param RunProperties &#91;required&#93; The properties to put for the specified run.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_workflow_run_properties(
-#'   Name = "string",
-#'   RunId = "string",
-#'   RunProperties = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10619,9 +5141,7 @@ glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
 #' @description
 #' Queries for the schema version metadata information.
 #'
-#' @usage
-#' glue_query_schema_version_metadata(SchemaId, SchemaVersionNumber,
-#'   SchemaVersionId, MetadataList, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/glue/query_schema_version_metadata.html](https://paws-r.github.io/docs/glue/query_schema_version_metadata.html) for full documentation.
 #'
 #' @param SchemaId A wrapper structure that may contain the schema name and Amazon Resource
 #' Name (ARN).
@@ -10632,45 +5152,6 @@ glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
 #' @param MaxResults Maximum number of results required per page. If the value is not
 #' supplied, this will be defaulted to 25 per page.
 #' @param NextToken A continuation token, if this is a continuation call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MetadataInfoMap = list(
-#'     list(
-#'       MetadataValue = "string",
-#'       CreatedTime = "string"
-#'     )
-#'   ),
-#'   SchemaVersionId = "string",
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$query_schema_version_metadata(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   SchemaVersionNumber = list(
-#'     LatestVersion = TRUE|FALSE,
-#'     VersionNumber = 123
-#'   ),
-#'   SchemaVersionId = "string",
-#'   MetadataList = list(
-#'     list(
-#'       MetadataKey = "string",
-#'       MetadataValue = "string"
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10695,24 +5176,9 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #' Adds a new version to the existing schema
 #'
 #' @description
-#' Adds a new version to the existing schema. Returns an error if new
-#' version of schema does not meet the compatibility requirements of the
-#' schema set. This API will not create a new schema set and will return a
-#' 404 error if the schema set is not already present in the Schema
-#' Registry.
-#' 
-#' If this is the first schema definition to be registered in the Schema
-#' Registry, this API will store the schema version and return immediately.
-#' Otherwise, this call has the potential to run longer than other
-#' operations due to compatibility modes. You can call the
-#' [`get_schema_version`][glue_get_schema_version] API with the
-#' `SchemaVersionId` to check compatibility modes.
-#' 
-#' If the same schema definition is already stored in Schema Registry as a
-#' version, the schema ID of the existing schema is returned to the caller.
+#' Adds a new version to the existing schema. Returns an error if new version of schema does not meet the compatibility requirements of the schema set. This API will not create a new schema set and will return a 404 error if the schema set is not already present in the Schema Registry.
 #'
-#' @usage
-#' glue_register_schema_version(SchemaId, SchemaDefinition)
+#' See [https://paws-r.github.io/docs/glue/register_schema_version.html](https://paws-r.github.io/docs/glue/register_schema_version.html) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -10725,28 +5191,6 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #'     `SchemaName` and `RegistryName` has to be provided.
 #' @param SchemaDefinition &#91;required&#93; The schema definition using the `DataFormat` setting for the
 #' `SchemaName`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SchemaVersionId = "string",
-#'   VersionNumber = 123,
-#'   Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_schema_version(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   SchemaDefinition = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10772,53 +5216,15 @@ glue_register_schema_version <- function(SchemaId, SchemaDefinition) {
 #' specified schema version ID
 #'
 #' @description
-#' Removes a key value pair from the schema version metadata for the
-#' specified schema version ID.
+#' Removes a key value pair from the schema version metadata for the specified schema version ID.
 #'
-#' @usage
-#' glue_remove_schema_version_metadata(SchemaId, SchemaVersionNumber,
-#'   SchemaVersionId, MetadataKeyValue)
+#' See [https://paws-r.github.io/docs/glue/remove_schema_version_metadata.html](https://paws-r.github.io/docs/glue/remove_schema_version_metadata.html) for full documentation.
 #'
 #' @param SchemaId A wrapper structure that may contain the schema name and Amazon Resource
 #' Name (ARN).
 #' @param SchemaVersionNumber The version number of the schema.
 #' @param SchemaVersionId The unique version ID of the schema version.
 #' @param MetadataKeyValue &#91;required&#93; The value of the metadata key.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SchemaArn = "string",
-#'   SchemaName = "string",
-#'   RegistryName = "string",
-#'   LatestVersion = TRUE|FALSE,
-#'   VersionNumber = 123,
-#'   SchemaVersionId = "string",
-#'   MetadataKey = "string",
-#'   MetadataValue = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_schema_version_metadata(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   SchemaVersionNumber = list(
-#'     LatestVersion = TRUE|FALSE,
-#'     VersionNumber = 123
-#'   ),
-#'   SchemaVersionId = "string",
-#'   MetadataKeyValue = list(
-#'     MetadataKey = "string",
-#'     MetadataValue = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10845,35 +5251,10 @@ glue_remove_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNu
 #' @description
 #' Resets a bookmark entry.
 #'
-#' @usage
-#' glue_reset_job_bookmark(JobName, RunId)
+#' See [https://paws-r.github.io/docs/glue/reset_job_bookmark.html](https://paws-r.github.io/docs/glue/reset_job_bookmark.html) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job in question.
 #' @param RunId The unique run identifier associated with this job run.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobBookmarkEntry = list(
-#'     JobName = "string",
-#'     Version = 123,
-#'     Run = 123,
-#'     Attempt = 123,
-#'     PreviousRunId = "string",
-#'     RunId = "string",
-#'     JobBookmark = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reset_job_bookmark(
-#'   JobName = "string",
-#'   RunId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10899,39 +5280,14 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
 #' and resumes the workflow run
 #'
 #' @description
-#' Restarts selected nodes of a previous partially completed workflow run
-#' and resumes the workflow run. The selected nodes and all nodes that are
-#' downstream from the selected nodes are run.
+#' Restarts selected nodes of a previous partially completed workflow run and resumes the workflow run. The selected nodes and all nodes that are downstream from the selected nodes are run.
 #'
-#' @usage
-#' glue_resume_workflow_run(Name, RunId, NodeIds)
+#' See [https://paws-r.github.io/docs/glue/resume_workflow_run.html](https://paws-r.github.io/docs/glue/resume_workflow_run.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the workflow to resume.
 #' @param RunId &#91;required&#93; The ID of the workflow run to resume.
 #' @param NodeIds &#91;required&#93; A list of the node IDs for the nodes you want to restart. The nodes that
 #' are to be restarted must have a run attempt in the original run.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RunId = "string",
-#'   NodeIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$resume_workflow_run(
-#'   Name = "string",
-#'   RunId = "string",
-#'   NodeIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10953,25 +5309,44 @@ glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
 }
 .glue$operations$resume_workflow_run <- glue_resume_workflow_run
 
+#' Executes the statement
+#'
+#' @description
+#' Executes the statement.
+#'
+#' See [https://paws-r.github.io/docs/glue/run_statement.html](https://paws-r.github.io/docs/glue/run_statement.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The Session Id of the statement to be run.
+#' @param Code &#91;required&#93; The statement code to be run.
+#' @param RequestOrigin The origin of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_run_statement
+glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "RunStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$run_statement_input(SessionId = SessionId, Code = Code, RequestOrigin = RequestOrigin)
+  output <- .glue$run_statement_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$run_statement <- glue_run_statement
+
 #' Searches a set of tables based on properties in the table metadata as
 #' well as on the parent database
 #'
 #' @description
-#' Searches a set of tables based on properties in the table metadata as
-#' well as on the parent database. You can search against text or filter
-#' conditions.
-#' 
-#' You can only get tables that you have access to based on the security
-#' policies defined in Lake Formation. You need at least a read-only access
-#' to the table for it to be returned. If you do not have access to all the
-#' columns in the table, these columns will not be searched against when
-#' returning the list of tables back to you. If you have access to the
-#' columns but not the data in the columns, those columns and the
-#' associated metadata for those columns will be included in the search.
+#' Searches a set of tables based on properties in the table metadata as well as on the parent database. You can search against text or filter conditions.
 #'
-#' @usage
-#' glue_search_tables(CatalogId, NextToken, Filters, SearchText,
-#'   SortCriteria, MaxResults, ResourceShareType)
+#' See [https://paws-r.github.io/docs/glue/search_tables.html](https://paws-r.github.io/docs/glue/search_tables.html) for full documentation.
 #'
 #' @param CatalogId A unique identifier, consisting of ` account_id `.
 #' @param NextToken A continuation token, included if this is a continuation call.
@@ -10983,7 +5358,7 @@ glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
 #' comparing string values, such as when `Key=Name`, a fuzzy match
 #' algorithm is used. The `Key` field (for example, the value of the `Name`
 #' field) is split on certain punctuation characters, for example, -, :,
-#' #, etc. into tokens. Then each token is exact-match compared with the
+#' \#, etc. into tokens. Then each token is exact-match compared with the
 #' `Value` member of `PropertyPredicate`. For example, if `Key=Name` and
 #' `Value=link`, tables named `customer-link` and `xx-link-yy` are
 #' returned, but `xxlinkyy` is not returned.
@@ -11002,140 +5377,6 @@ glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
 #' 
 #' -   If set to `ALL`, will search the tables shared with your account, as
 #'     well as the tables in yor local account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   TableList = list(
-#'     list(
-#'       Name = "string",
-#'       DatabaseName = "string",
-#'       Description = "string",
-#'       Owner = "string",
-#'       CreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastAccessTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastAnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Retention = 123,
-#'       StorageDescriptor = list(
-#'         Columns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "string",
-#'             Comment = "string",
-#'             Parameters = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         Location = "string",
-#'         InputFormat = "string",
-#'         OutputFormat = "string",
-#'         Compressed = TRUE|FALSE,
-#'         NumberOfBuckets = 123,
-#'         SerdeInfo = list(
-#'           Name = "string",
-#'           SerializationLibrary = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         ),
-#'         BucketColumns = list(
-#'           "string"
-#'         ),
-#'         SortColumns = list(
-#'           list(
-#'             Column = "string",
-#'             SortOrder = 123
-#'           )
-#'         ),
-#'         Parameters = list(
-#'           "string"
-#'         ),
-#'         SkewedInfo = list(
-#'           SkewedColumnNames = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValues = list(
-#'             "string"
-#'           ),
-#'           SkewedColumnValueLocationMaps = list(
-#'             "string"
-#'           )
-#'         ),
-#'         StoredAsSubDirectories = TRUE|FALSE,
-#'         SchemaReference = list(
-#'           SchemaId = list(
-#'             SchemaArn = "string",
-#'             SchemaName = "string",
-#'             RegistryName = "string"
-#'           ),
-#'           SchemaVersionId = "string",
-#'           SchemaVersionNumber = 123
-#'         )
-#'       ),
-#'       PartitionKeys = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       ViewOriginalText = "string",
-#'       ViewExpandedText = "string",
-#'       TableType = "string",
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       CreatedBy = "string",
-#'       IsRegisteredWithLakeFormation = TRUE|FALSE,
-#'       TargetTable = list(
-#'         CatalogId = "string",
-#'         DatabaseName = "string",
-#'         Name = "string"
-#'       ),
-#'       CatalogId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$search_tables(
-#'   CatalogId = "string",
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Comparator = "EQUALS"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_EQUALS"|"LESS_THAN_EQUALS"
-#'     )
-#'   ),
-#'   SearchText = "string",
-#'   SortCriteria = list(
-#'     list(
-#'       FieldName = "string",
-#'       Sort = "ASC"|"DESC"
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   ResourceShareType = "FOREIGN"|"ALL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11157,28 +5398,46 @@ glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NUL
 }
 .glue$operations$search_tables <- glue_search_tables
 
+#' Starts a new run of the specified blueprint
+#'
+#' @description
+#' Starts a new run of the specified blueprint.
+#'
+#' See [https://paws-r.github.io/docs/glue/start_blueprint_run.html](https://paws-r.github.io/docs/glue/start_blueprint_run.html) for full documentation.
+#'
+#' @param BlueprintName &#91;required&#93; The name of the blueprint.
+#' @param Parameters Specifies the parameters as a `BlueprintParameters` object.
+#' @param RoleArn &#91;required&#93; Specifies the IAM role used to create the workflow.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_start_blueprint_run
+glue_start_blueprint_run <- function(BlueprintName, Parameters = NULL, RoleArn) {
+  op <- new_operation(
+    name = "StartBlueprintRun",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$start_blueprint_run_input(BlueprintName = BlueprintName, Parameters = Parameters, RoleArn = RoleArn)
+  output <- .glue$start_blueprint_run_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$start_blueprint_run <- glue_start_blueprint_run
+
 #' Starts a crawl using the specified crawler, regardless of what is
 #' scheduled
 #'
 #' @description
-#' Starts a crawl using the specified crawler, regardless of what is
-#' scheduled. If the crawler is already running, returns a
-#' [CrawlerRunningException](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException).
+#' Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is already running, returns a [CrawlerRunningException](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException).
 #'
-#' @usage
-#' glue_start_crawler(Name)
+#' See [https://paws-r.github.io/docs/glue/start_crawler.html](https://paws-r.github.io/docs/glue/start_crawler.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the crawler to start.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_crawler(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11205,24 +5464,11 @@ glue_start_crawler <- function(Name) {
 #' SCHEDULED
 #'
 #' @description
-#' Changes the schedule state of the specified crawler to `SCHEDULED`,
-#' unless the crawler is already running or the schedule state is already
-#' `SCHEDULED`.
+#' Changes the schedule state of the specified crawler to `SCHEDULED`, unless the crawler is already running or the schedule state is already `SCHEDULED`.
 #'
-#' @usage
-#' glue_start_crawler_schedule(CrawlerName)
+#' See [https://paws-r.github.io/docs/glue/start_crawler_schedule.html](https://paws-r.github.io/docs/glue/start_crawler_schedule.html) for full documentation.
 #'
 #' @param CrawlerName &#91;required&#93; Name of the crawler to schedule.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_crawler_schedule(
-#'   CrawlerName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11248,39 +5494,12 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' transform
 #'
 #' @description
-#' Begins an asynchronous task to export all labeled data for a particular
-#' transform. This task is the only label-related API call that is not part
-#' of the typical active learning workflow. You typically use
-#' [`start_export_labels_task_run`][glue_start_export_labels_task_run] when
-#' you want to work with all of your existing labels at the same time, such
-#' as when you want to remove or change labels that were previously
-#' submitted as truth. This API operation accepts the `TransformId` whose
-#' labels you want to export and an Amazon Simple Storage Service (Amazon
-#' S3) path to export the labels to. The operation returns a `TaskRunId`.
-#' You can check on the status of your task run by calling the
-#' [`get_ml_task_run`][glue_get_ml_task_run] API.
+#' Begins an asynchronous task to export all labeled data for a particular transform. This task is the only label-related API call that is not part of the typical active learning workflow. You typically use [`start_export_labels_task_run`][glue_start_export_labels_task_run] when you want to work with all of your existing labels at the same time, such as when you want to remove or change labels that were previously submitted as truth. This API operation accepts the `TransformId` whose labels you want to export and an Amazon Simple Storage Service (Amazon S3) path to export the labels to. The operation returns a `TaskRunId`. You can check on the status of your task run by calling the [`get_ml_task_run`][glue_get_ml_task_run] API.
 #'
-#' @usage
-#' glue_start_export_labels_task_run(TransformId, OutputS3Path)
+#' See [https://paws-r.github.io/docs/glue/start_export_labels_task_run.html](https://paws-r.github.io/docs/glue/start_export_labels_task_run.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param OutputS3Path &#91;required&#93; The Amazon S3 path where you export the labels.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TaskRunId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_export_labels_task_run(
-#'   TransformId = "string",
-#'   OutputS3Path = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11306,67 +5525,14 @@ glue_start_export_labels_task_run <- function(TransformId, OutputS3Path) {
 #' to teach the machine learning transform and improve its quality
 #'
 #' @description
-#' Enables you to provide additional labels (examples of truth) to be used
-#' to teach the machine learning transform and improve its quality. This
-#' API operation is generally used as part of the active learning workflow
-#' that starts with the
-#' [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run]
-#' call and that ultimately results in improving the quality of your
-#' machine learning transform.
-#' 
-#' After the
-#' [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run]
-#' finishes, AWS Glue machine learning will have generated a series of
-#' questions for humans to answer. (Answering these questions is often
-#' called 'labeling' in the machine learning workflows). In the case of the
-#' `FindMatches` transform, these questions are of the form, “What is the
-#' correct way to group these rows together into groups composed entirely
-#' of matching records?” After the labeling process is finished, users
-#' upload their answers/labels with a call to
-#' [`start_import_labels_task_run`][glue_start_import_labels_task_run].
-#' After
-#' [`start_import_labels_task_run`][glue_start_import_labels_task_run]
-#' finishes, all future runs of the machine learning transform use the new
-#' and improved labels and perform a higher-quality transformation.
-#' 
-#' By default,
-#' [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run]
-#' continually learns from and combines all labels that you upload unless
-#' you set `Replace` to true. If you set `Replace` to true,
-#' [`start_import_labels_task_run`][glue_start_import_labels_task_run]
-#' deletes and forgets all previously uploaded labels and learns only from
-#' the exact set that you upload. Replacing labels can be helpful if you
-#' realize that you previously uploaded incorrect labels, and you believe
-#' that they are having a negative effect on your transform quality.
-#' 
-#' You can check on the status of your task run by calling the
-#' [`get_ml_task_run`][glue_get_ml_task_run] operation.
+#' Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality. This API operation is generally used as part of the active learning workflow that starts with the [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run] call and that ultimately results in improving the quality of your machine learning transform.
 #'
-#' @usage
-#' glue_start_import_labels_task_run(TransformId, InputS3Path,
-#'   ReplaceAllLabels)
+#' See [https://paws-r.github.io/docs/glue/start_import_labels_task_run.html](https://paws-r.github.io/docs/glue/start_import_labels_task_run.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param InputS3Path &#91;required&#93; The Amazon Simple Storage Service (Amazon S3) path from where you import
 #' the labels.
 #' @param ReplaceAllLabels Indicates whether to overwrite your existing labels.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TaskRunId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_import_labels_task_run(
-#'   TransformId = "string",
-#'   InputS3Path = "string",
-#'   ReplaceAllLabels = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11393,10 +5559,7 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' @description
 #' Starts a job run using a job definition.
 #'
-#' @usage
-#' glue_start_job_run(JobName, JobRunId, Arguments, AllocatedCapacity,
-#'   Timeout, MaxCapacity, SecurityConfiguration, NotificationProperty,
-#'   WorkerType, NumberOfWorkers)
+#' See [https://paws-r.github.io/docs/glue/start_job_run.html](https://paws-r.github.io/docs/glue/start_job_run.html) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to use.
 #' @param JobRunId The ID of a previous `JobRun` to retry.
@@ -11404,32 +5567,39 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' replace the default arguments set in the job definition itself.
 #' 
 #' You can specify arguments here that your own job-execution script
-#' consumes, as well as arguments that AWS Glue itself consumes.
+#' consumes, as well as arguments that Glue itself consumes.
+#' 
+#' Job arguments may be logged. Do not pass plaintext secrets as arguments.
+#' Retrieve secrets from a Glue Connection, Secrets Manager or other secret
+#' management mechanism if you intend to keep them within the Job.
 #' 
 #' For information about how to specify and consume your own Job arguments,
-#' see the [Calling AWS Glue APIs in
+#' see the [Calling Glue APIs in
 #' Python](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 #' topic in the developer guide.
 #' 
-#' For information about the key-value pairs that AWS Glue consumes to set
-#' up your job, see the [Special Parameters Used by AWS
+#' For information about the key-value pairs that Glue consumes to set up
+#' your job, see the [Special Parameters Used by
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 #' topic in the developer guide.
 #' @param AllocatedCapacity This field is deprecated. Use `MaxCapacity` instead.
 #' 
-#' The number of AWS Glue data processing units (DPUs) to allocate to this
-#' JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is
-#' a relative measure of processing power that consists of 4 vCPUs of
-#' compute capacity and 16 GB of memory. For more information, see the AWS
-#' Glue pricing page.
+#' The number of Glue data processing units (DPUs) to allocate to this
+#' JobRun. You can allocate a minimum of 2 DPUs; the default is 10. A DPU
+#' is a relative measure of processing power that consists of 4 vCPUs of
+#' compute capacity and 16 GB of memory. For more information, see the
+#' [Glue pricing page](https://aws.amazon.com/glue/pricing/).
 #' @param Timeout The `JobRun` timeout in minutes. This is the maximum time that a job run
 #' can consume resources before it is terminated and enters `TIMEOUT`
-#' status. The default is 2,880 minutes (48 hours). This overrides the
-#' timeout value set in the parent job.
-#' @param MaxCapacity The number of AWS Glue data processing units (DPUs) that can be
-#' allocated when this job runs. A DPU is a relative measure of processing
-#' power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
-#' For more information, see the AWS Glue pricing page.
+#' status. This value overrides the timeout value set in the parent job.
+#' 
+#' Streaming jobs do not have a timeout. The default for non-streaming jobs
+#' is 2,880 minutes (48 hours).
+#' @param MaxCapacity The number of Glue data processing units (DPUs) that can be allocated
+#' when this job runs. A DPU is a relative measure of processing power that
+#' consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
+#' information, see the [Glue pricing
+#' page](https://aws.amazon.com/glue/pricing/).
 #' 
 #' Do not set `Max Capacity` if using `WorkerType` and `NumberOfWorkers`.
 #' 
@@ -11441,14 +5611,14 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #'     1 DPU. The default is 0.0625 DPU.
 #' 
 #' -   When you specify an Apache Spark ETL job
-#'     (`JobCommand.Name`="glueetl"), you can allocate from 2 to 100 DPUs.
+#'     (`JobCommand.Name`="glueetl"), you can allocate a minimum of 2 DPUs.
 #'     The default is 10 DPUs. This job type cannot have a fractional DPU
 #'     allocation.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job run.
 #' @param NotificationProperty Specifies configuration properties of a job run notification.
 #' @param WorkerType The type of predefined worker that is allocated when a job runs. Accepts
-#' a value of Standard, G.1X, or G.2X.
+#' a value of Standard, G.1X, G.2X, or G.025X.
 #' 
 #' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
 #'     of memory and a 50GB disk, and 2 executors per worker.
@@ -11458,51 +5628,35 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' 
 #' -   For the `G.2X` worker type, each worker provides 8 vCPU, 32 GB of
 #'     memory and a 128GB disk, and 1 executor per worker.
+#' 
+#' -   For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPU,
+#'     4 GB of memory, 64 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for low volume streaming jobs. This
+#'     worker type is only available for Glue version 3.0 streaming jobs.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
+#' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
+#' class. The standard execution-class is ideal for time-sensitive
+#' workloads that require fast job startup and dedicated resources.
 #' 
-#' The maximum number of workers you can define are 299 for `G.1X`, and 149
-#' for `G.2X`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobRunId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_job_run(
-#'   JobName = "string",
-#'   JobRunId = "string",
-#'   Arguments = list(
-#'     "string"
-#'   ),
-#'   AllocatedCapacity = 123,
-#'   Timeout = 123,
-#'   MaxCapacity = 123.0,
-#'   SecurityConfiguration = "string",
-#'   NotificationProperty = list(
-#'     NotifyDelayAfter = 123
-#'   ),
-#'   WorkerType = "Standard"|"G.1X"|"G.2X",
-#'   NumberOfWorkers = 123
-#' )
-#' ```
+#' The flexible execution class is appropriate for time-insensitive jobs
+#' whose start and completion times may vary.
+#' 
+#' Only jobs with Glue version 3.0 and above and command type `glueetl`
+#' will be allowed to set `ExecutionClass` to `FLEX`. The flexible
+#' execution class is available for Spark jobs.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_start_job_run
-glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, NotificationProperty = NULL, WorkerType = NULL, NumberOfWorkers = NULL) {
+glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, NotificationProperty = NULL, WorkerType = NULL, NumberOfWorkers = NULL, ExecutionClass = NULL) {
   op <- new_operation(
     name = "StartJobRun",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$start_job_run_input(JobName = JobName, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers)
+  input <- .glue$start_job_run_input(JobName = JobName, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, ExecutionClass = ExecutionClass)
   output <- .glue$start_job_run_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -11516,34 +5670,10 @@ glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, Alloc
 #'
 #' @description
 #' Starts a task to estimate the quality of the transform.
-#' 
-#' When you provide label sets as examples of truth, AWS Glue machine
-#' learning uses some of those examples to learn from them. The rest of the
-#' labels are used as a test to estimate quality.
-#' 
-#' Returns a unique identifier for the run. You can call
-#' [`get_ml_task_run`][glue_get_ml_task_run] to get more information about
-#' the stats of the `EvaluationTaskRun`.
 #'
-#' @usage
-#' glue_start_ml_evaluation_task_run(TransformId)
+#' See [https://paws-r.github.io/docs/glue/start_ml_evaluation_task_run.html](https://paws-r.github.io/docs/glue/start_ml_evaluation_task_run.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TaskRunId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_ml_evaluation_task_run(
-#'   TransformId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11570,50 +5700,13 @@ glue_start_ml_evaluation_task_run <- function(TransformId) {
 #' labels
 #'
 #' @description
-#' Starts the active learning workflow for your machine learning transform
-#' to improve the transform's quality by generating label sets and adding
-#' labels.
-#' 
-#' When the
-#' [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run]
-#' finishes, AWS Glue will have generated a "labeling set" or a set of
-#' questions for humans to answer.
-#' 
-#' In the case of the `FindMatches` transform, these questions are of the
-#' form, “What is the correct way to group these rows together into groups
-#' composed entirely of matching records?”
-#' 
-#' After the labeling process is finished, you can upload your labels with
-#' a call to
-#' [`start_import_labels_task_run`][glue_start_import_labels_task_run].
-#' After
-#' [`start_import_labels_task_run`][glue_start_import_labels_task_run]
-#' finishes, all future runs of the machine learning transform will use the
-#' new and improved labels and perform a higher-quality transformation.
+#' Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels.
 #'
-#' @usage
-#' glue_start_ml_labeling_set_generation_task_run(TransformId,
-#'   OutputS3Path)
+#' See [https://paws-r.github.io/docs/glue/start_ml_labeling_set_generation_task_run.html](https://paws-r.github.io/docs/glue/start_ml_labeling_set_generation_task_run.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param OutputS3Path &#91;required&#93; The Amazon Simple Storage Service (Amazon S3) path where you generate
 #' the labeling set.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TaskRunId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_ml_labeling_set_generation_task_run(
-#'   TransformId = "string",
-#'   OutputS3Path = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11638,29 +5731,11 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
 #' Starts an existing trigger
 #'
 #' @description
-#' Starts an existing trigger. See [Triggering
-#' Jobs](https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) for
-#' information about how different types of trigger are started.
+#' Starts an existing trigger. See [Triggering Jobs](https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) for information about how different types of trigger are started.
 #'
-#' @usage
-#' glue_start_trigger(Name)
+#' See [https://paws-r.github.io/docs/glue/start_trigger.html](https://paws-r.github.io/docs/glue/start_trigger.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to start.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_trigger(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11687,37 +5762,22 @@ glue_start_trigger <- function(Name) {
 #' @description
 #' Starts a new run of the specified workflow.
 #'
-#' @usage
-#' glue_start_workflow_run(Name)
+#' See [https://paws-r.github.io/docs/glue/start_workflow_run.html](https://paws-r.github.io/docs/glue/start_workflow_run.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the workflow to start.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RunId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_workflow_run(
-#'   Name = "string"
-#' )
-#' ```
+#' @param RunProperties The workflow run properties for the new workflow run.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_start_workflow_run
-glue_start_workflow_run <- function(Name) {
+glue_start_workflow_run <- function(Name, RunProperties = NULL) {
   op <- new_operation(
     name = "StartWorkflowRun",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$start_workflow_run_input(Name = Name)
+  input <- .glue$start_workflow_run_input(Name = Name, RunProperties = RunProperties)
   output <- .glue$start_workflow_run_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -11732,20 +5792,9 @@ glue_start_workflow_run <- function(Name) {
 #' @description
 #' If the specified crawler is running, stops the crawl.
 #'
-#' @usage
-#' glue_stop_crawler(Name)
+#' See [https://paws-r.github.io/docs/glue/stop_crawler.html](https://paws-r.github.io/docs/glue/stop_crawler.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the crawler to stop.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_crawler(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11771,23 +5820,11 @@ glue_stop_crawler <- function(Name) {
 #' does not stop the crawler if it is already running
 #'
 #' @description
-#' Sets the schedule state of the specified crawler to `NOT_SCHEDULED`, but
-#' does not stop the crawler if it is already running.
+#' Sets the schedule state of the specified crawler to `NOT_SCHEDULED`, but does not stop the crawler if it is already running.
 #'
-#' @usage
-#' glue_stop_crawler_schedule(CrawlerName)
+#' See [https://paws-r.github.io/docs/glue/stop_crawler_schedule.html](https://paws-r.github.io/docs/glue/stop_crawler_schedule.html) for full documentation.
 #'
 #' @param CrawlerName &#91;required&#93; Name of the crawler whose schedule state to set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_crawler_schedule(
-#'   CrawlerName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11809,30 +5846,44 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
 }
 .glue$operations$stop_crawler_schedule <- glue_stop_crawler_schedule
 
+#' Stops the session
+#'
+#' @description
+#' Stops the session.
+#'
+#' See [https://paws-r.github.io/docs/glue/stop_session.html](https://paws-r.github.io/docs/glue/stop_session.html) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the session to be stopped.
+#' @param RequestOrigin The origin of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_stop_session
+glue_stop_session <- function(Id, RequestOrigin = NULL) {
+  op <- new_operation(
+    name = "StopSession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$stop_session_input(Id = Id, RequestOrigin = RequestOrigin)
+  output <- .glue$stop_session_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$stop_session <- glue_stop_session
+
 #' Stops a specified trigger
 #'
 #' @description
 #' Stops a specified trigger.
 #'
-#' @usage
-#' glue_stop_trigger(Name)
+#' See [https://paws-r.github.io/docs/glue/stop_trigger.html](https://paws-r.github.io/docs/glue/stop_trigger.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_trigger(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11859,22 +5910,10 @@ glue_stop_trigger <- function(Name) {
 #' @description
 #' Stops the execution of the specified workflow run.
 #'
-#' @usage
-#' glue_stop_workflow_run(Name, RunId)
+#' See [https://paws-r.github.io/docs/glue/stop_workflow_run.html](https://paws-r.github.io/docs/glue/stop_workflow_run.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the workflow to stop.
 #' @param RunId &#91;required&#93; The ID of the workflow run to stop.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_workflow_run(
-#'   Name = "string",
-#'   RunId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11899,31 +5938,14 @@ glue_stop_workflow_run <- function(Name, RunId) {
 #' Adds tags to a resource
 #'
 #' @description
-#' Adds tags to a resource. A tag is a label you can assign to an AWS
-#' resource. In AWS Glue, you can tag only certain resources. For
-#' information about what resources you can tag, see [AWS Tags in AWS
-#' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
+#' Adds tags to a resource. A tag is a label you can assign to an Amazon Web Services resource. In Glue, you can tag only certain resources. For information about what resources you can tag, see [Amazon Web Services Tags in Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
 #'
-#' @usage
-#' glue_tag_resource(ResourceArn, TagsToAdd)
+#' See [https://paws-r.github.io/docs/glue/tag_resource.html](https://paws-r.github.io/docs/glue/tag_resource.html) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The ARN of the AWS Glue resource to which to add the tags. For more
-#' information about AWS Glue resource ARNs, see the [AWS Glue ARN string
+#' @param ResourceArn &#91;required&#93; The ARN of the Glue resource to which to add the tags. For more
+#' information about Glue resource ARNs, see the [Glue ARN string
 #' pattern](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id).
 #' @param TagsToAdd &#91;required&#93; Tags to add to this resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   TagsToAdd = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11950,25 +5972,11 @@ glue_tag_resource <- function(ResourceArn, TagsToAdd) {
 #' @description
 #' Removes tags from a resource.
 #'
-#' @usage
-#' glue_untag_resource(ResourceArn, TagsToRemove)
+#' See [https://paws-r.github.io/docs/glue/untag_resource.html](https://paws-r.github.io/docs/glue/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to remove the
 #' tags.
 #' @param TagsToRemove &#91;required&#93; Tags to remove from this resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagsToRemove = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11990,57 +5998,49 @@ glue_untag_resource <- function(ResourceArn, TagsToRemove) {
 }
 .glue$operations$untag_resource <- glue_untag_resource
 
+#' Updates a registered blueprint
+#'
+#' @description
+#' Updates a registered blueprint.
+#'
+#' See [https://paws-r.github.io/docs/glue/update_blueprint.html](https://paws-r.github.io/docs/glue/update_blueprint.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the blueprint.
+#' @param Description A description of the blueprint.
+#' @param BlueprintLocation &#91;required&#93; Specifies a path in Amazon S3 where the blueprint is published.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_blueprint
+glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
+  op <- new_operation(
+    name = "UpdateBlueprint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$update_blueprint_input(Name = Name, Description = Description, BlueprintLocation = BlueprintLocation)
+  output <- .glue$update_blueprint_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_blueprint <- glue_update_blueprint
+
 #' Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a
 #' JsonClassifier, or a CsvClassifier, depending on which field is present)
 #'
 #' @description
-#' Modifies an existing classifier (a `GrokClassifier`, an `XMLClassifier`,
-#' a `JsonClassifier`, or a `CsvClassifier`, depending on which field is
-#' present).
+#' Modifies an existing classifier (a `GrokClassifier`, an `XMLClassifier`, a `JsonClassifier`, or a `CsvClassifier`, depending on which field is present).
 #'
-#' @usage
-#' glue_update_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
-#'   CsvClassifier)
+#' See [https://paws-r.github.io/docs/glue/update_classifier.html](https://paws-r.github.io/docs/glue/update_classifier.html) for full documentation.
 #'
 #' @param GrokClassifier A `GrokClassifier` object with updated fields.
 #' @param XMLClassifier An `XMLClassifier` object with updated fields.
 #' @param JsonClassifier A `JsonClassifier` object with updated fields.
 #' @param CsvClassifier A `CsvClassifier` object with updated fields.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_classifier(
-#'   GrokClassifier = list(
-#'     Name = "string",
-#'     Classification = "string",
-#'     GrokPattern = "string",
-#'     CustomPatterns = "string"
-#'   ),
-#'   XMLClassifier = list(
-#'     Name = "string",
-#'     Classification = "string",
-#'     RowTag = "string"
-#'   ),
-#'   JsonClassifier = list(
-#'     Name = "string",
-#'     JsonPath = "string"
-#'   ),
-#'   CsvClassifier = list(
-#'     Name = "string",
-#'     Delimiter = "string",
-#'     QuoteSymbol = "string",
-#'     ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
-#'     Header = list(
-#'       "string"
-#'     ),
-#'     DisableValueTrimming = TRUE|FALSE,
-#'     AllowSingleColumn = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12066,169 +6066,15 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'
 #' @description
 #' Creates or updates partition statistics of columns.
-#' 
-#' The Identity and Access Management (IAM) permission required for this
-#' operation is [`update_partition`][glue_update_partition].
 #'
-#' @usage
-#' glue_update_column_statistics_for_partition(CatalogId, DatabaseName,
-#'   TableName, PartitionValues, ColumnStatisticsList)
+#' See [https://paws-r.github.io/docs/glue/update_column_statistics_for_partition.html](https://paws-r.github.io/docs/glue/update_column_statistics_for_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
-#' none is supplied, the AWS account ID is used by default.
+#' none is supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionValues &#91;required&#93; A list of partition values identifying the partition.
 #' @param ColumnStatisticsList &#91;required&#93; A list of the column statistics.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Errors = list(
-#'     list(
-#'       ColumnStatistics = list(
-#'         ColumnName = "string",
-#'         ColumnType = "string",
-#'         AnalyzedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         StatisticsData = list(
-#'           Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
-#'           BooleanColumnStatisticsData = list(
-#'             NumberOfTrues = 123,
-#'             NumberOfFalses = 123,
-#'             NumberOfNulls = 123
-#'           ),
-#'           DateColumnStatisticsData = list(
-#'             MinimumValue = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             MaximumValue = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           DecimalColumnStatisticsData = list(
-#'             MinimumValue = list(
-#'               UnscaledValue = raw,
-#'               Scale = 123
-#'             ),
-#'             MaximumValue = list(
-#'               UnscaledValue = raw,
-#'               Scale = 123
-#'             ),
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           DoubleColumnStatisticsData = list(
-#'             MinimumValue = 123.0,
-#'             MaximumValue = 123.0,
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           LongColumnStatisticsData = list(
-#'             MinimumValue = 123,
-#'             MaximumValue = 123,
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           StringColumnStatisticsData = list(
-#'             MaximumLength = 123,
-#'             AverageLength = 123.0,
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           BinaryColumnStatisticsData = list(
-#'             MaximumLength = 123,
-#'             AverageLength = 123.0,
-#'             NumberOfNulls = 123
-#'           )
-#'         )
-#'       ),
-#'       Error = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_column_statistics_for_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionValues = list(
-#'     "string"
-#'   ),
-#'   ColumnStatisticsList = list(
-#'     list(
-#'       ColumnName = "string",
-#'       ColumnType = "string",
-#'       AnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StatisticsData = list(
-#'         Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
-#'         BooleanColumnStatisticsData = list(
-#'           NumberOfTrues = 123,
-#'           NumberOfFalses = 123,
-#'           NumberOfNulls = 123
-#'         ),
-#'         DateColumnStatisticsData = list(
-#'           MinimumValue = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           MaximumValue = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         DecimalColumnStatisticsData = list(
-#'           MinimumValue = list(
-#'             UnscaledValue = raw,
-#'             Scale = 123
-#'           ),
-#'           MaximumValue = list(
-#'             UnscaledValue = raw,
-#'             Scale = 123
-#'           ),
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         DoubleColumnStatisticsData = list(
-#'           MinimumValue = 123.0,
-#'           MaximumValue = 123.0,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         LongColumnStatisticsData = list(
-#'           MinimumValue = 123,
-#'           MaximumValue = 123,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         StringColumnStatisticsData = list(
-#'           MaximumLength = 123,
-#'           AverageLength = 123.0,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         BinaryColumnStatisticsData = list(
-#'           MaximumLength = 123,
-#'           AverageLength = 123.0,
-#'           NumberOfNulls = 123
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12254,165 +6100,14 @@ glue_update_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #'
 #' @description
 #' Creates or updates table statistics of columns.
-#' 
-#' The Identity and Access Management (IAM) permission required for this
-#' operation is [`update_table`][glue_update_table].
 #'
-#' @usage
-#' glue_update_column_statistics_for_table(CatalogId, DatabaseName,
-#'   TableName, ColumnStatisticsList)
+#' See [https://paws-r.github.io/docs/glue/update_column_statistics_for_table.html](https://paws-r.github.io/docs/glue/update_column_statistics_for_table.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
-#' none is supplied, the AWS account ID is used by default.
+#' none is supplied, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
 #' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param ColumnStatisticsList &#91;required&#93; A list of the column statistics.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Errors = list(
-#'     list(
-#'       ColumnStatistics = list(
-#'         ColumnName = "string",
-#'         ColumnType = "string",
-#'         AnalyzedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         StatisticsData = list(
-#'           Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
-#'           BooleanColumnStatisticsData = list(
-#'             NumberOfTrues = 123,
-#'             NumberOfFalses = 123,
-#'             NumberOfNulls = 123
-#'           ),
-#'           DateColumnStatisticsData = list(
-#'             MinimumValue = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             MaximumValue = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           DecimalColumnStatisticsData = list(
-#'             MinimumValue = list(
-#'               UnscaledValue = raw,
-#'               Scale = 123
-#'             ),
-#'             MaximumValue = list(
-#'               UnscaledValue = raw,
-#'               Scale = 123
-#'             ),
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           DoubleColumnStatisticsData = list(
-#'             MinimumValue = 123.0,
-#'             MaximumValue = 123.0,
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           LongColumnStatisticsData = list(
-#'             MinimumValue = 123,
-#'             MaximumValue = 123,
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           StringColumnStatisticsData = list(
-#'             MaximumLength = 123,
-#'             AverageLength = 123.0,
-#'             NumberOfNulls = 123,
-#'             NumberOfDistinctValues = 123
-#'           ),
-#'           BinaryColumnStatisticsData = list(
-#'             MaximumLength = 123,
-#'             AverageLength = 123.0,
-#'             NumberOfNulls = 123
-#'           )
-#'         )
-#'       ),
-#'       Error = list(
-#'         ErrorCode = "string",
-#'         ErrorMessage = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_column_statistics_for_table(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   ColumnStatisticsList = list(
-#'     list(
-#'       ColumnName = "string",
-#'       ColumnType = "string",
-#'       AnalyzedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StatisticsData = list(
-#'         Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
-#'         BooleanColumnStatisticsData = list(
-#'           NumberOfTrues = 123,
-#'           NumberOfFalses = 123,
-#'           NumberOfNulls = 123
-#'         ),
-#'         DateColumnStatisticsData = list(
-#'           MinimumValue = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           MaximumValue = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         DecimalColumnStatisticsData = list(
-#'           MinimumValue = list(
-#'             UnscaledValue = raw,
-#'             Scale = 123
-#'           ),
-#'           MaximumValue = list(
-#'             UnscaledValue = raw,
-#'             Scale = 123
-#'           ),
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         DoubleColumnStatisticsData = list(
-#'           MinimumValue = 123.0,
-#'           MaximumValue = 123.0,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         LongColumnStatisticsData = list(
-#'           MinimumValue = 123,
-#'           MaximumValue = 123,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         StringColumnStatisticsData = list(
-#'           MaximumLength = 123,
-#'           AverageLength = 123.0,
-#'           NumberOfNulls = 123,
-#'           NumberOfDistinctValues = 123
-#'         ),
-#'         BinaryColumnStatisticsData = list(
-#'           MaximumLength = 123,
-#'           AverageLength = 123.0,
-#'           NumberOfNulls = 123
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12439,42 +6134,12 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #' @description
 #' Updates a connection definition in the Data Catalog.
 #'
-#' @usage
-#' glue_update_connection(CatalogId, Name, ConnectionInput)
+#' See [https://paws-r.github.io/docs/glue/update_connection.html](https://paws-r.github.io/docs/glue/update_connection.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
-#' provided, the AWS account ID is used by default.
+#' provided, the Amazon Web Services account ID is used by default.
 #' @param Name &#91;required&#93; The name of the connection definition to update.
 #' @param ConnectionInput &#91;required&#93; A `ConnectionInput` object that redefines the connection in question.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_connection(
-#'   CatalogId = "string",
-#'   Name = "string",
-#'   ConnectionInput = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
-#'     MatchCriteria = list(
-#'       "string"
-#'     ),
-#'     ConnectionProperties = list(
-#'       "string"
-#'     ),
-#'     PhysicalConnectionRequirements = list(
-#'       SubnetId = "string",
-#'       SecurityGroupIdList = list(
-#'         "string"
-#'       ),
-#'       AvailabilityZone = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12499,18 +6164,14 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' Updates a crawler
 #'
 #' @description
-#' Updates a crawler. If a crawler is running, you must stop it using
-#' [`stop_crawler`][glue_stop_crawler] before updating it.
+#' Updates a crawler. If a crawler is running, you must stop it using [`stop_crawler`][glue_stop_crawler] before updating it.
 #'
-#' @usage
-#' glue_update_crawler(Name, Role, DatabaseName, Description, Targets,
-#'   Schedule, Classifiers, TablePrefix, SchemaChangePolicy, RecrawlPolicy,
-#'   LineageConfiguration, Configuration, CrawlerSecurityConfiguration)
+#' See [https://paws-r.github.io/docs/glue/update_crawler.html](https://paws-r.github.io/docs/glue/update_crawler.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the new crawler.
 #' @param Role The IAM role or Amazon Resource Name (ARN) of an IAM role that is used
 #' by the new crawler to access customer resources.
-#' @param DatabaseName The AWS Glue database where results are stored, such as:
+#' @param DatabaseName The Glue database where results are stored, such as:
 #' `arn:aws:daylight:us-east-1::database/sometable/*`.
 #' @param Description A description of the new crawler.
 #' @param Targets A list of targets to crawl.
@@ -12528,6 +6189,7 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' @param RecrawlPolicy A policy that specifies whether to crawl the entire dataset again, or to
 #' crawl only folders that were added since the last crawler run.
 #' @param LineageConfiguration Specifies data lineage configuration settings for the crawler.
+#' @param LakeFormationConfiguration Specifies Lake Formation configuration settings for the crawler.
 #' @param Configuration Crawler configuration information. This versioned JSON string allows
 #' users to specify aspects of a crawler's behavior. For more information,
 #' see [Configuring a
@@ -12535,89 +6197,17 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' @param CrawlerSecurityConfiguration The name of the `SecurityConfiguration` structure to be used by this
 #' crawler.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_crawler(
-#'   Name = "string",
-#'   Role = "string",
-#'   DatabaseName = "string",
-#'   Description = "string",
-#'   Targets = list(
-#'     S3Targets = list(
-#'       list(
-#'         Path = "string",
-#'         Exclusions = list(
-#'           "string"
-#'         ),
-#'         ConnectionName = "string"
-#'       )
-#'     ),
-#'     JdbcTargets = list(
-#'       list(
-#'         ConnectionName = "string",
-#'         Path = "string",
-#'         Exclusions = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     MongoDBTargets = list(
-#'       list(
-#'         ConnectionName = "string",
-#'         Path = "string",
-#'         ScanAll = TRUE|FALSE
-#'       )
-#'     ),
-#'     DynamoDBTargets = list(
-#'       list(
-#'         Path = "string",
-#'         scanAll = TRUE|FALSE,
-#'         scanRate = 123.0
-#'       )
-#'     ),
-#'     CatalogTargets = list(
-#'       list(
-#'         DatabaseName = "string",
-#'         Tables = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Schedule = "string",
-#'   Classifiers = list(
-#'     "string"
-#'   ),
-#'   TablePrefix = "string",
-#'   SchemaChangePolicy = list(
-#'     UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
-#'     DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
-#'   ),
-#'   RecrawlPolicy = list(
-#'     RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
-#'   ),
-#'   LineageConfiguration = list(
-#'     CrawlerLineageSettings = "ENABLE"|"DISABLE"
-#'   ),
-#'   Configuration = "string",
-#'   CrawlerSecurityConfiguration = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname glue_update_crawler
-glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Description = NULL, Targets = NULL, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, RecrawlPolicy = NULL, LineageConfiguration = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL) {
+glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Description = NULL, Targets = NULL, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, RecrawlPolicy = NULL, LineageConfiguration = NULL, LakeFormationConfiguration = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateCrawler",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$update_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration)
+  input <- .glue$update_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, LakeFormationConfiguration = LakeFormationConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration)
   output <- .glue$update_crawler_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -12632,8 +6222,7 @@ glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Descript
 #' @description
 #' Updates the schedule of a crawler using a `cron` expression.
 #'
-#' @usage
-#' glue_update_crawler_schedule(CrawlerName, Schedule)
+#' See [https://paws-r.github.io/docs/glue/update_crawler_schedule.html](https://paws-r.github.io/docs/glue/update_crawler_schedule.html) for full documentation.
 #'
 #' @param CrawlerName &#91;required&#93; The name of the crawler whose schedule to update.
 #' @param Schedule The updated `cron` expression used to specify the schedule (see
@@ -12641,17 +6230,6 @@ glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Descript
 #' Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
 #' For example, to run something every day at 12:15 UTC, you would specify:
 #' `cron(15 12 * * ? *)`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_crawler_schedule(
-#'   CrawlerName = "string",
-#'   Schedule = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12678,48 +6256,14 @@ glue_update_crawler_schedule <- function(CrawlerName, Schedule = NULL) {
 #' @description
 #' Updates an existing database definition in a Data Catalog.
 #'
-#' @usage
-#' glue_update_database(CatalogId, Name, DatabaseInput)
+#' See [https://paws-r.github.io/docs/glue/update_database.html](https://paws-r.github.io/docs/glue/update_database.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the metadata database resides. If
-#' none is provided, the AWS account ID is used by default.
+#' none is provided, the Amazon Web Services account ID is used by default.
 #' @param Name &#91;required&#93; The name of the database to update in the catalog. For Hive
 #' compatibility, this is folded to lowercase.
 #' @param DatabaseInput &#91;required&#93; A `DatabaseInput` object specifying the new definition of the metadata
 #' database in the catalog.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_database(
-#'   CatalogId = "string",
-#'   Name = "string",
-#'   DatabaseInput = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     LocationUri = "string",
-#'     Parameters = list(
-#'       "string"
-#'     ),
-#'     CreateTableDefaultPermissions = list(
-#'       list(
-#'         Principal = list(
-#'           DataLakePrincipalIdentifier = "string"
-#'         ),
-#'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
-#'         )
-#'       )
-#'     ),
-#'     TargetDatabase = list(
-#'       CatalogId = "string",
-#'       DatabaseName = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12746,10 +6290,7 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #' @description
 #' Updates a specified development endpoint.
 #'
-#' @usage
-#' glue_update_dev_endpoint(EndpointName, PublicKey, AddPublicKeys,
-#'   DeletePublicKeys, CustomLibraries, UpdateEtlLibraries, DeleteArguments,
-#'   AddArguments)
+#' See [https://paws-r.github.io/docs/glue/update_dev_endpoint.html](https://paws-r.github.io/docs/glue/update_dev_endpoint.html) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the `DevEndpoint` to be updated.
 #' @param PublicKey The public key for the `DevEndpoint` to use.
@@ -12767,43 +6308,11 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #' 
 #' -   `"--enable-glue-datacatalog": ""`
 #' 
-#' -   `"GLUE_PYTHON_VERSION": "3"`
-#' 
-#' -   `"GLUE_PYTHON_VERSION": "2"`
-#' 
 #' You can specify a version of Python support for development endpoints by
 #' using the `Arguments` parameter in the
 #' [`create_dev_endpoint`][glue_create_dev_endpoint] or
 #' [`update_dev_endpoint`][glue_update_dev_endpoint] APIs. If no arguments
 #' are provided, the version defaults to Python 2.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_dev_endpoint(
-#'   EndpointName = "string",
-#'   PublicKey = "string",
-#'   AddPublicKeys = list(
-#'     "string"
-#'   ),
-#'   DeletePublicKeys = list(
-#'     "string"
-#'   ),
-#'   CustomLibraries = list(
-#'     ExtraPythonLibsS3Path = "string",
-#'     ExtraJarsS3Path = "string"
-#'   ),
-#'   UpdateEtlLibraries = TRUE|FALSE,
-#'   DeleteArguments = list(
-#'     "string"
-#'   ),
-#'   AddArguments = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12828,63 +6337,13 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #' Updates an existing job definition
 #'
 #' @description
-#' Updates an existing job definition.
+#' Updates an existing job definition. The previous job definition is completely overwritten by this information.
 #'
-#' @usage
-#' glue_update_job(JobName, JobUpdate)
+#' See [https://paws-r.github.io/docs/glue/update_job.html](https://paws-r.github.io/docs/glue/update_job.html) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to update.
 #' @param JobUpdate &#91;required&#93; Specifies the values with which to update the job definition.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_job(
-#'   JobName = "string",
-#'   JobUpdate = list(
-#'     Description = "string",
-#'     LogUri = "string",
-#'     Role = "string",
-#'     ExecutionProperty = list(
-#'       MaxConcurrentRuns = 123
-#'     ),
-#'     Command = list(
-#'       Name = "string",
-#'       ScriptLocation = "string",
-#'       PythonVersion = "string"
-#'     ),
-#'     DefaultArguments = list(
-#'       "string"
-#'     ),
-#'     NonOverridableArguments = list(
-#'       "string"
-#'     ),
-#'     Connections = list(
-#'       Connections = list(
-#'         "string"
-#'       )
-#'     ),
-#'     MaxRetries = 123,
-#'     AllocatedCapacity = 123,
-#'     Timeout = 123,
-#'     MaxCapacity = 123.0,
-#'     WorkerType = "Standard"|"G.1X"|"G.2X",
-#'     NumberOfWorkers = 123,
-#'     SecurityConfiguration = "string",
-#'     NotificationProperty = list(
-#'       NotifyDelayAfter = 123
-#'     ),
-#'     GlueVersion = "string"
-#'   )
-#' )
-#' ```
+#' Unspecified configuration is removed or reset to default values.
 #'
 #' @keywords internal
 #'
@@ -12909,19 +6368,9 @@ glue_update_job <- function(JobName, JobUpdate) {
 #' Updates an existing machine learning transform
 #'
 #' @description
-#' Updates an existing machine learning transform. Call this operation to
-#' tune the algorithm parameters to achieve better results.
-#' 
-#' After calling this operation, you can call the
-#' [`start_ml_evaluation_task_run`][glue_start_ml_evaluation_task_run]
-#' operation to assess how well your new parameters achieved your goals
-#' (such as improving the quality of your machine learning transform, or
-#' making it more cost-effective).
+#' Updates an existing machine learning transform. Call this operation to tune the algorithm parameters to achieve better results.
 #'
-#' @usage
-#' glue_update_ml_transform(TransformId, Name, Description, Parameters,
-#'   Role, GlueVersion, MaxCapacity, WorkerType, NumberOfWorkers, Timeout,
-#'   MaxRetries)
+#' See [https://paws-r.github.io/docs/glue/update_ml_transform.html](https://paws-r.github.io/docs/glue/update_ml_transform.html) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; A unique identifier that was generated when the transform was created.
 #' @param Name The unique name that you gave the transform when you created it.
@@ -12930,17 +6379,17 @@ glue_update_job <- function(JobName, JobUpdate) {
 #' (algorithm) used. Conditionally dependent on the transform type.
 #' @param Role The name or Amazon Resource Name (ARN) of the IAM role with the required
 #' permissions.
-#' @param GlueVersion This value determines which version of AWS Glue this machine learning
+#' @param GlueVersion This value determines which version of Glue this machine learning
 #' transform is compatible with. Glue 1.0 is recommended for most
 #' customers. If the value is not set, the Glue compatibility defaults to
-#' Glue 0.9. For more information, see [AWS Glue
+#' Glue 0.9. For more information, see [Glue
 #' Versions](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions)
 #' in the developer guide.
-#' @param MaxCapacity The number of AWS Glue data processing units (DPUs) that are allocated
-#' to task runs for this transform. You can allocate from 2 to 100 DPUs;
-#' the default is 10. A DPU is a relative measure of processing power that
+#' @param MaxCapacity The number of Glue data processing units (DPUs) that are allocated to
+#' task runs for this transform. You can allocate from 2 to 100 DPUs; the
+#' default is 10. A DPU is a relative measure of processing power that
 #' consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
-#' information, see the [AWS Glue pricing
+#' information, see the [Glue pricing
 #' page](https://aws.amazon.com/glue/pricing/).
 #' 
 #' When the `WorkerType` field is set to a value other than `Standard`, the
@@ -12964,39 +6413,6 @@ glue_update_job <- function(JobName, JobUpdate) {
 #' 2,880 minutes (48 hours).
 #' @param MaxRetries The maximum number of times to retry a task for this transform after a
 #' task run fails.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TransformId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_ml_transform(
-#'   TransformId = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   Parameters = list(
-#'     TransformType = "FIND_MATCHES",
-#'     FindMatchesParameters = list(
-#'       PrimaryKeyColumnName = "string",
-#'       PrecisionRecallTradeoff = 123.0,
-#'       AccuracyCostTradeoff = 123.0,
-#'       EnforceProvidedLabels = TRUE|FALSE
-#'     )
-#'   ),
-#'   Role = "string",
-#'   GlueVersion = "string",
-#'   MaxCapacity = 123.0,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X",
-#'   NumberOfWorkers = 123,
-#'   Timeout = 123,
-#'   MaxRetries = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13023,12 +6439,10 @@ glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NUL
 #' @description
 #' Updates a partition.
 #'
-#' @usage
-#' glue_update_partition(CatalogId, DatabaseName, TableName,
-#'   PartitionValueList, PartitionInput)
+#' See [https://paws-r.github.io/docs/glue/update_partition.html](https://paws-r.github.io/docs/glue/update_partition.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partition to be updated resides. If
-#' none is provided, the AWS account ID is used by default.
+#' none is provided, the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which the table in question resides.
 #' @param TableName &#91;required&#93; The name of the table in which the partition to be updated is located.
 #' @param PartitionValueList &#91;required&#93; List of partition key values that define the partition to update.
@@ -13036,92 +6450,6 @@ glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NUL
 #' 
 #' The `Values` property can't be changed. If you want to change the
 #' partition key values for a partition, delete and recreate the partition.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_partition(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string",
-#'   PartitionValueList = list(
-#'     "string"
-#'   ),
-#'   PartitionInput = list(
-#'     Values = list(
-#'       "string"
-#'     ),
-#'     LastAccessTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     StorageDescriptor = list(
-#'       Columns = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = "string",
-#'       InputFormat = "string",
-#'       OutputFormat = "string",
-#'       Compressed = TRUE|FALSE,
-#'       NumberOfBuckets = 123,
-#'       SerdeInfo = list(
-#'         Name = "string",
-#'         SerializationLibrary = "string",
-#'         Parameters = list(
-#'           "string"
-#'         )
-#'       ),
-#'       BucketColumns = list(
-#'         "string"
-#'       ),
-#'       SortColumns = list(
-#'         list(
-#'           Column = "string",
-#'           SortOrder = 123
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       SkewedInfo = list(
-#'         SkewedColumnNames = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValues = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValueLocationMaps = list(
-#'           "string"
-#'         )
-#'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE,
-#'       SchemaReference = list(
-#'         SchemaId = list(
-#'           SchemaArn = "string",
-#'           SchemaName = "string",
-#'           RegistryName = "string"
-#'         ),
-#'         SchemaVersionId = "string",
-#'         SchemaVersionNumber = 123
-#'       )
-#'     ),
-#'     Parameters = list(
-#'       "string"
-#'     ),
-#'     LastAnalyzedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13147,37 +6475,14 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' schemas
 #'
 #' @description
-#' Updates an existing registry which is used to hold a collection of
-#' schemas. The updated properties relate to the registry, and do not
-#' modify any of the schemas within the registry.
+#' Updates an existing registry which is used to hold a collection of schemas. The updated properties relate to the registry, and do not modify any of the schemas within the registry.
 #'
-#' @usage
-#' glue_update_registry(RegistryId, Description)
+#' See [https://paws-r.github.io/docs/glue/update_registry.html](https://paws-r.github.io/docs/glue/update_registry.html) for full documentation.
 #'
 #' @param RegistryId &#91;required&#93; This is a wrapper structure that may contain the registry name and
 #' Amazon Resource Name (ARN).
 #' @param Description &#91;required&#93; A description of the registry. If description is not provided, this
 #' field will not be updated.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegistryName = "string",
-#'   RegistryArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_registry(
-#'   RegistryId = list(
-#'     RegistryName = "string",
-#'     RegistryArn = "string"
-#'   ),
-#'   Description = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13203,24 +6508,9 @@ glue_update_registry <- function(RegistryId, Description) {
 #' for a schema set
 #'
 #' @description
-#' Updates the description, compatibility setting, or version checkpoint
-#' for a schema set.
-#' 
-#' For updating the compatibility setting, the call will not validate
-#' compatibility for the entire set of schema versions with the new
-#' compatibility setting. If the value for `Compatibility` is provided, the
-#' `VersionNumber` (a checkpoint) is also required. The API will validate
-#' the checkpoint version number for consistency.
-#' 
-#' If the value for the `VersionNumber` (checkpoint) is provided,
-#' `Compatibility` is optional and this can be used to set/reset a
-#' checkpoint for the schema.
-#' 
-#' This update will happen only if the schema is in the AVAILABLE state.
+#' Updates the description, compatibility setting, or version checkpoint for a schema set.
 #'
-#' @usage
-#' glue_update_schema(SchemaId, SchemaVersionNumber, Compatibility,
-#'   Description)
+#' See [https://paws-r.github.io/docs/glue/update_schema.html](https://paws-r.github.io/docs/glue/update_schema.html) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -13234,33 +6524,6 @@ glue_update_registry <- function(RegistryId, Description) {
 #' `Compatibility` has to be provided.
 #' @param Compatibility The new compatibility setting for the schema.
 #' @param Description The new description for the schema.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SchemaArn = "string",
-#'   SchemaName = "string",
-#'   RegistryName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_schema(
-#'   SchemaId = list(
-#'     SchemaArn = "string",
-#'     SchemaName = "string",
-#'     RegistryName = "string"
-#'   ),
-#'   SchemaVersionNumber = list(
-#'     LatestVersion = TRUE|FALSE,
-#'     VersionNumber = 123
-#'   ),
-#'   Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
-#'   Description = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13287,11 +6550,10 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
 #' @description
 #' Updates a metadata table in the Data Catalog.
 #'
-#' @usage
-#' glue_update_table(CatalogId, DatabaseName, TableInput, SkipArchive)
+#' See [https://paws-r.github.io/docs/glue/update_table.html](https://paws-r.github.io/docs/glue/update_table.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
-#' the AWS account ID is used by default.
+#' the Amazon Web Services account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which the table resides. For Hive
 #' compatibility, this name is entirely lowercase.
 #' @param TableInput &#91;required&#93; An updated `TableInput` object to define the metadata table in the
@@ -13300,120 +6562,20 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
 #' archived version of the table before updating it. However, if
 #' `skipArchive` is set to true, [`update_table`][glue_update_table] does
 #' not create the archived version.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_table(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   TableInput = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Owner = "string",
-#'     LastAccessTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastAnalyzedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Retention = 123,
-#'     StorageDescriptor = list(
-#'       Columns = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string",
-#'           Parameters = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Location = "string",
-#'       InputFormat = "string",
-#'       OutputFormat = "string",
-#'       Compressed = TRUE|FALSE,
-#'       NumberOfBuckets = 123,
-#'       SerdeInfo = list(
-#'         Name = "string",
-#'         SerializationLibrary = "string",
-#'         Parameters = list(
-#'           "string"
-#'         )
-#'       ),
-#'       BucketColumns = list(
-#'         "string"
-#'       ),
-#'       SortColumns = list(
-#'         list(
-#'           Column = "string",
-#'           SortOrder = 123
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       ),
-#'       SkewedInfo = list(
-#'         SkewedColumnNames = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValues = list(
-#'           "string"
-#'         ),
-#'         SkewedColumnValueLocationMaps = list(
-#'           "string"
-#'         )
-#'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE,
-#'       SchemaReference = list(
-#'         SchemaId = list(
-#'           SchemaArn = "string",
-#'           SchemaName = "string",
-#'           RegistryName = "string"
-#'         ),
-#'         SchemaVersionId = "string",
-#'         SchemaVersionNumber = 123
-#'       )
-#'     ),
-#'     PartitionKeys = list(
-#'       list(
-#'         Name = "string",
-#'         Type = "string",
-#'         Comment = "string",
-#'         Parameters = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ViewOriginalText = "string",
-#'     ViewExpandedText = "string",
-#'     TableType = "string",
-#'     Parameters = list(
-#'       "string"
-#'     ),
-#'     TargetTable = list(
-#'       CatalogId = "string",
-#'       DatabaseName = "string",
-#'       Name = "string"
-#'     )
-#'   ),
-#'   SkipArchive = TRUE|FALSE
-#' )
-#' ```
+#' @param TransactionId The transaction ID at which to update the table contents.
+#' @param VersionId The version ID at which to update the table contents.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_update_table
-glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipArchive = NULL) {
+glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipArchive = NULL, TransactionId = NULL, VersionId = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$update_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, SkipArchive = SkipArchive)
+  input <- .glue$update_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, SkipArchive = SkipArchive, TransactionId = TransactionId, VersionId = VersionId)
   output <- .glue$update_table_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -13428,91 +6590,10 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
 #' @description
 #' Updates a trigger definition.
 #'
-#' @usage
-#' glue_update_trigger(Name, TriggerUpdate)
+#' See [https://paws-r.github.io/docs/glue/update_trigger.html](https://paws-r.github.io/docs/glue/update_trigger.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to update.
 #' @param TriggerUpdate &#91;required&#93; The new values with which to update the trigger.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Trigger = list(
-#'     Name = "string",
-#'     WorkflowName = "string",
-#'     Id = "string",
-#'     Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-#'     State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-#'     Description = "string",
-#'     Schedule = "string",
-#'     Actions = list(
-#'       list(
-#'         JobName = "string",
-#'         Arguments = list(
-#'           "string"
-#'         ),
-#'         Timeout = 123,
-#'         SecurityConfiguration = "string",
-#'         NotificationProperty = list(
-#'           NotifyDelayAfter = 123
-#'         ),
-#'         CrawlerName = "string"
-#'       )
-#'     ),
-#'     Predicate = list(
-#'       Logical = "AND"|"ANY",
-#'       Conditions = list(
-#'         list(
-#'           LogicalOperator = "EQUALS",
-#'           JobName = "string",
-#'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'           CrawlerName = "string",
-#'           CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_trigger(
-#'   Name = "string",
-#'   TriggerUpdate = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Schedule = "string",
-#'     Actions = list(
-#'       list(
-#'         JobName = "string",
-#'         Arguments = list(
-#'           "string"
-#'         ),
-#'         Timeout = 123,
-#'         SecurityConfiguration = "string",
-#'         NotificationProperty = list(
-#'           NotifyDelayAfter = 123
-#'         ),
-#'         CrawlerName = "string"
-#'       )
-#'     ),
-#'     Predicate = list(
-#'       Logical = "AND"|"ANY",
-#'       Conditions = list(
-#'         list(
-#'           LogicalOperator = "EQUALS",
-#'           JobName = "string",
-#'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-#'           CrawlerName = "string",
-#'           CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13539,41 +6620,16 @@ glue_update_trigger <- function(Name, TriggerUpdate) {
 #' @description
 #' Updates an existing function definition in the Data Catalog.
 #'
-#' @usage
-#' glue_update_user_defined_function(CatalogId, DatabaseName, FunctionName,
-#'   FunctionInput)
+#' See [https://paws-r.github.io/docs/glue/update_user_defined_function.html](https://paws-r.github.io/docs/glue/update_user_defined_function.html) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the function to be updated is located.
-#' If none is provided, the AWS account ID is used by default.
+#' If none is provided, the Amazon Web Services account ID is used by
+#' default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the function to be updated is
 #' located.
 #' @param FunctionName &#91;required&#93; The name of the function.
 #' @param FunctionInput &#91;required&#93; A `FunctionInput` object that redefines the function in the Data
 #' Catalog.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_user_defined_function(
-#'   CatalogId = "string",
-#'   DatabaseName = "string",
-#'   FunctionName = "string",
-#'   FunctionInput = list(
-#'     FunctionName = "string",
-#'     ClassName = "string",
-#'     OwnerName = "string",
-#'     OwnerType = "USER"|"ROLE"|"GROUP",
-#'     ResourceUris = list(
-#'       list(
-#'         ResourceType = "JAR"|"FILE"|"ARCHIVE",
-#'         Uri = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13600,9 +6656,7 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @description
 #' Updates an existing workflow.
 #'
-#' @usage
-#' glue_update_workflow(Name, Description, DefaultRunProperties,
-#'   MaxConcurrentRuns)
+#' See [https://paws-r.github.io/docs/glue/update_workflow.html](https://paws-r.github.io/docs/glue/update_workflow.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow to be updated.
 #' @param Description The description of the workflow.
@@ -13613,26 +6667,6 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' number of concurrent runs of any of the component jobs. If you leave
 #' this parameter blank, there is no limit to the number of concurrent
 #' workflow runs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_workflow(
-#'   Name = "string",
-#'   Description = "string",
-#'   DefaultRunProperties = list(
-#'     "string"
-#'   ),
-#'   MaxConcurrentRuns = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

@@ -4,8 +4,13 @@
 \alias{lambda_create_alias}
 \title{Creates an alias for a Lambda function version}
 \usage{
-lambda_create_alias(FunctionName, Name, FunctionVersion, Description,
-  RoutingConfig)
+lambda_create_alias(
+  FunctionName,
+  Name,
+  FunctionVersion,
+  Description = NULL,
+  RoutingConfig = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -30,57 +35,9 @@ the function name, it is limited to 64 characters in length.}
 \item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing}{routing configuration}
 of the alias.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AliasArn = "string",
-  Name = "string",
-  FunctionVersion = "string",
-  Description = "string",
-  RoutingConfig = list(
-    AdditionalVersionWeights = list(
-      123.0
-    )
-  ),
-  RevisionId = "string"
-)
-}
-}
 \description{
-Creates an
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}
-for a Lambda function version. Use aliases to provide clients with a
-function identifier that you can update to invoke a different version.
+Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias} for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
 
-You can also map an alias to split invocation requests between two
-versions. Use the \code{RoutingConfig} parameter to specify a second version
-and the percentage of invocation requests that it receives.
-}
-\section{Request syntax}{
-\preformatted{svc$create_alias(
-  FunctionName = "string",
-  Name = "string",
-  FunctionVersion = "string",
-  Description = "string",
-  RoutingConfig = list(
-    AdditionalVersionWeights = list(
-      123.0
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example creates an alias named LIVE that points to version
-# 1 of the my-function Lambda function.
-svc$create_alias(
-  Description = "alias for live version of function",
-  FunctionName = "my-function",
-  FunctionVersion = "1",
-  Name = "LIVE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/create_alias.html} for full documentation.
 }
 \keyword{internal}

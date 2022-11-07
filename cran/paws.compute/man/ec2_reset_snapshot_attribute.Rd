@@ -4,7 +4,7 @@
 \alias{ec2_reset_snapshot_attribute}
 \title{Resets permission settings for the specified snapshot}
 \usage{
-ec2_reset_snapshot_attribute(Attribute, SnapshotId, DryRun)
+ec2_reset_snapshot_attribute(Attribute, SnapshotId, DryRun = NULL)
 }
 \arguments{
 \item{Attribute}{[required] The attribute to reset. Currently, only the attribute for permission to
@@ -17,34 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
 Resets permission settings for the specified snapshot.
 
-For more information about modifying snapshot permissions, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html}{Sharing snapshots}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$reset_snapshot_attribute(
-  Attribute = "productCodes"|"createVolumePermission",
-  SnapshotId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example resets the create volume permissions for snapshot
-# `snap-1234567890abcdef0`. If the command succeeds, no output is
-# returned.
-svc$reset_snapshot_attribute(
-  Attribute = "createVolumePermission",
-  SnapshotId = "snap-1234567890abcdef0"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/reset_snapshot_attribute.html} for full documentation.
 }
 \keyword{internal}

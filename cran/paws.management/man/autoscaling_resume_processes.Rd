@@ -5,7 +5,7 @@
 \title{Resumes the specified suspended auto scaling processes, or all suspended
 process, for the specified Auto Scaling group}
 \usage{
-autoscaling_resume_processes(AutoScalingGroupName, ScalingProcesses)
+autoscaling_resume_processes(AutoScalingGroupName, ScalingProcesses = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -23,39 +23,11 @@ autoscaling_resume_processes(AutoScalingGroupName, ScalingProcesses)
 \item \code{ScheduledActions}
 }
 
-If you omit this parameter, all processes are specified.}
-}
-\value{
-An empty list.
+If you omit this property, all processes are specified.}
 }
 \description{
-Resumes the specified suspended auto scaling processes, or all suspended
-process, for the specified Auto Scaling group.
+Resumes the specified suspended auto scaling processes, or all suspended process, for the specified Auto Scaling group.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and resuming scaling processes}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$resume_processes(
-  AutoScalingGroupName = "string",
-  ScalingProcesses = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example resumes the specified suspended scaling process for the
-# specified Auto Scaling group.
-svc$resume_processes(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  ScalingProcesses = list(
-    "AlarmNotification"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/resume_processes.html} for full documentation.
 }
 \keyword{internal}

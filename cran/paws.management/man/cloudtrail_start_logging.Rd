@@ -2,31 +2,21 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_start_logging}
 \alias{cloudtrail_start_logging}
-\title{Starts the recording of AWS API calls and log file delivery for a trail}
+\title{Starts the recording of Amazon Web Services API calls and log file
+delivery for a trail}
 \usage{
 cloudtrail_start_logging(Name)
 }
 \arguments{
 \item{Name}{[required] Specifies the name or the CloudTrail ARN of the trail for which
-CloudTrail logs AWS API calls. The format of a trail ARN is:
+CloudTrail logs Amazon Web Services API calls. The following is the
+format of a trail ARN.
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
-\value{
-An empty list.
-}
 \description{
-Starts the recording of AWS API calls and log file delivery for a trail.
-For a trail that is enabled in all regions, this operation must be
-called from the region in which the trail was created. This operation
-cannot be called on the shadow trails (replicated trails in other
-regions) of a trail that is enabled in all regions.
-}
-\section{Request syntax}{
-\preformatted{svc$start_logging(
-  Name = "string"
-)
-}
-}
+Starts the recording of Amazon Web Services API calls and log file delivery for a trail. For a trail that is enabled in all regions, this operation must be called from the region in which the trail was created. This operation cannot be called on the shadow trails (replicated trails in other regions) of a trail that is enabled in all regions.
 
+See \url{https://paws-r.github.io/docs/cloudtrail/start_logging.html} for full documentation.
+}
 \keyword{internal}

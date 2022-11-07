@@ -12,20 +12,9 @@ lexmodelbuildingservice_untag_resource(resourceArn, tagKeys)
 \item{tagKeys}{[required] A list of tag keys to remove from the resource. If a tag key does not
 exist on the resource, it is ignored.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes tags from a bot, bot alias or bot channel.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/untag_resource.html} for full documentation.
+}
 \keyword{internal}

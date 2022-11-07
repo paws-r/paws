@@ -2,14 +2,14 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_list_resource_tags}
 \alias{kms_list_resource_tags}
-\title{Returns all tags on the specified customer master key (CMK)}
+\title{Returns all tags on the specified KMS key}
 \usage{
-kms_list_resource_tags(KeyId, Limit, Marker)
+kms_list_resource_tags(KeyId, Limit = NULL, Marker = NULL)
 }
 \arguments{
-\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] Gets tags on the specified KMS key.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
@@ -18,12 +18,12 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
-When this value is present, AWS KMS does not return more than the
-specified number of items, but it might return fewer.
+When this value is present, KMS does not return more than the specified
+number of items, but it might return fewer.
 
 This value is optional. If you include a value, it must be between 1 and
 50, inclusive. If you do not include a value, it defaults to 50.}
@@ -35,56 +35,9 @@ truncated response you just received.
 Do not attempt to construct this value. Use only the value of
 \code{NextMarker} from the truncated response you just received.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      TagKey = "string",
-      TagValue = "string"
-    )
-  ),
-  NextMarker = "string",
-  Truncated = TRUE|FALSE
-)
-}
-}
 \description{
-Returns all tags on the specified customer master key (CMK).
+Returns all tags on the specified KMS key.
 
-For general information about tags, including the format and syntax, see
-\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
-in the \emph{Amazon Web Services General Reference}. For information about
-using tags in AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tagging keys}.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
-a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListResourceTags}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_tag_resource]{tag_resource}}
-\item \code{\link[=kms_untag_resource]{untag_resource}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_resource_tags(
-  KeyId = "string",
-  Limit = 123,
-  Marker = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists tags for a CMK.
-svc$list_resource_tags(
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/list_resource_tags.html} for full documentation.
 }
 \keyword{internal}

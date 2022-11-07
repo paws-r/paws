@@ -5,8 +5,13 @@
 \title{Describes the most recent volume modification request for the specified
 EBS volumes}
 \usage{
-ec2_describe_volumes_modifications(DryRun, VolumeIds, Filters,
-  NextToken, MaxResults)
+ec2_describe_volumes_modifications(
+  DryRun = NULL,
+  VolumeIds = NULL,
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -41,68 +46,9 @@ is to be enabled (true | false).
 \item{MaxResults}{The maximum number of results (up to a limit of 500) to be returned in a
 paginated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VolumesModifications = list(
-    list(
-      VolumeId = "string",
-      ModificationState = "modifying"|"optimizing"|"completed"|"failed",
-      StatusMessage = "string",
-      TargetSize = 123,
-      TargetIops = 123,
-      TargetVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-      TargetThroughput = 123,
-      TargetMultiAttachEnabled = TRUE|FALSE,
-      OriginalSize = 123,
-      OriginalIops = 123,
-      OriginalVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-      OriginalThroughput = 123,
-      OriginalMultiAttachEnabled = TRUE|FALSE,
-      Progress = 123,
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the most recent volume modification request for the specified
-EBS volumes.
+Describes the most recent volume modification request for the specified EBS volumes.
 
-If a volume has never been modified, some information in the output will
-be null. If a volume has been modified more than once, the output
-includes only the most recent modification request.
-
-You can also use CloudWatch Events to check the status of a modification
-to an EBS volume. For information about CloudWatch Events, see the
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/}{Amazon CloudWatch Events User Guide}. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html#monitoring_mods}{Monitoring volume modifications}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/describe_volumes_modifications.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_volumes_modifications(
-  DryRun = TRUE|FALSE,
-  VolumeIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

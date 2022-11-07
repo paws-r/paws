@@ -4,8 +4,13 @@
 \alias{budgets_update_subscriber}
 \title{Updates a subscriber}
 \usage{
-budgets_update_subscriber(AccountId, BudgetName, Notification,
-  OldSubscriber, NewSubscriber)
+budgets_update_subscriber(
+  AccountId,
+  BudgetName,
+  Notification,
+  OldSubscriber,
+  NewSubscriber
+)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget whose subscriber you
@@ -19,33 +24,9 @@ want to update.}
 
 \item{NewSubscriber}{[required] The updated subscriber that is associated with a budget notification.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a subscriber.
-}
-\section{Request syntax}{
-\preformatted{svc$update_subscriber(
-  AccountId = "string",
-  BudgetName = "string",
-  Notification = list(
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-    Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-    NotificationState = "OK"|"ALARM"
-  ),
-  OldSubscriber = list(
-    SubscriptionType = "SNS"|"EMAIL",
-    Address = "string"
-  ),
-  NewSubscriber = list(
-    SubscriptionType = "SNS"|"EMAIL",
-    Address = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/budgets/update_subscriber.html} for full documentation.
+}
 \keyword{internal}

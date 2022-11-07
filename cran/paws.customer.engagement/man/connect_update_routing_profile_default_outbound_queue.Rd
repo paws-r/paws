@@ -4,29 +4,23 @@
 \alias{connect_update_routing_profile_default_outbound_queue}
 \title{Updates the default outbound queue of a routing profile}
 \usage{
-connect_update_routing_profile_default_outbound_queue(InstanceId,
-  RoutingProfileId, DefaultOutboundQueueId)
+connect_update_routing_profile_default_outbound_queue(
+  InstanceId,
+  RoutingProfileId,
+  DefaultOutboundQueueId
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 
 \item{DefaultOutboundQueueId}{[required] The identifier for the default outbound queue.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the default outbound queue of a routing profile.
-}
-\section{Request syntax}{
-\preformatted{svc$update_routing_profile_default_outbound_queue(
-  InstanceId = "string",
-  RoutingProfileId = "string",
-  DefaultOutboundQueueId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/update_routing_profile_default_outbound_queue.html} for full documentation.
+}
 \keyword{internal}

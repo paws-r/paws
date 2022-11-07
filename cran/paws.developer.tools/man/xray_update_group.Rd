@@ -4,8 +4,12 @@
 \alias{xray_update_group}
 \title{Updates a group resource}
 \usage{
-xray_update_group(GroupName, GroupARN, FilterExpression,
-  InsightsConfiguration)
+xray_update_group(
+  GroupName = NULL,
+  GroupARN = NULL,
+  FilterExpression = NULL,
+  InsightsConfiguration = NULL
+)
 }
 \arguments{
 \item{GroupName}{The case-sensitive name of the group.}
@@ -24,34 +28,9 @@ insights notifications for the group. Notifications can only be
 enabled on a group with InsightsEnabled set to true.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    GroupName = "string",
-    GroupARN = "string",
-    FilterExpression = "string",
-    InsightsConfiguration = list(
-      InsightsEnabled = TRUE|FALSE,
-      NotificationsEnabled = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
 Updates a group resource.
-}
-\section{Request syntax}{
-\preformatted{svc$update_group(
-  GroupName = "string",
-  GroupARN = "string",
-  FilterExpression = "string",
-  InsightsConfiguration = list(
-    InsightsEnabled = TRUE|FALSE,
-    NotificationsEnabled = TRUE|FALSE
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/update_group.html} for full documentation.
+}
 \keyword{internal}

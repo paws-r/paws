@@ -9,22 +9,9 @@ worklink_describe_identity_provider_configuration(FleetArn)
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityProviderType = "SAML",
-  ServiceProviderSamlMetadata = "string",
-  IdentityProviderSamlMetadata = "string"
-)
-}
-}
 \description{
 Describes the identity provider configuration of the specified fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_identity_provider_configuration(
-  FleetArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/describe_identity_provider_configuration.html} for full documentation.
+}
 \keyword{internal}

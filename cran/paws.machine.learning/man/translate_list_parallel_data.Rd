@@ -4,7 +4,7 @@
 \alias{translate_list_parallel_data}
 \title{Provides a list of your parallel data resources in Amazon Translate}
 \usage{
-translate_list_parallel_data(NextToken, MaxResults)
+translate_list_parallel_data(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{A string that specifies the next page of results to return in a
@@ -12,56 +12,9 @@ paginated response.}
 
 \item{MaxResults}{The maximum number of parallel data resources returned for each request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ParallelDataPropertiesList = list(
-    list(
-      Name = "string",
-      Arn = "string",
-      Description = "string",
-      Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-      SourceLanguageCode = "string",
-      TargetLanguageCodes = list(
-        "string"
-      ),
-      ParallelDataConfig = list(
-        S3Uri = "string",
-        Format = "TSV"|"CSV"|"TMX"
-      ),
-      Message = "string",
-      ImportedDataSize = 123,
-      ImportedRecordCount = 123,
-      FailedRecordCount = 123,
-      SkippedRecordCount = 123,
-      EncryptionKey = list(
-        Type = "KMS",
-        Id = "string"
-      ),
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      LatestUpdateAttemptStatus = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-      LatestUpdateAttemptAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Provides a list of your parallel data resources in Amazon Translate.
-}
-\section{Request syntax}{
-\preformatted{svc$list_parallel_data(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/translate/list_parallel_data.html} for full documentation.
+}
 \keyword{internal}

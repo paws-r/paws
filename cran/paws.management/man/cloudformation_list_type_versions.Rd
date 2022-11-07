@@ -2,24 +2,30 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_type_versions}
 \alias{cloudformation_list_type_versions}
-\title{Returns summary information about the versions of a type}
+\title{Returns summary information about the versions of an extension}
 \usage{
-cloudformation_list_type_versions(Type, TypeName, Arn, MaxResults,
-  NextToken, DeprecatedStatus)
+cloudformation_list_type_versions(
+  Type = NULL,
+  TypeName = NULL,
+  Arn = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DeprecatedStatus = NULL,
+  PublisherId = NULL
+)
 }
 \arguments{
-\item{Type}{The kind of the type.
-
-Currently the only valid value is \code{RESOURCE}.
+\item{Type}{The kind of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{TypeName}{The name of the type for which you want version summary information.
+\item{TypeName}{The name of the extension for which you want version summary
+information.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{Arn}{The Amazon Resource Name (ARN) of the type for which you want version
-summary information.
+\item{Arn}{The Amazon Resource Name (ARN) of the extension for which you want
+version summary information.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
@@ -35,52 +41,27 @@ assign that token to the request object's \code{NextToken} parameter. If
 there are no remaining results, the previous response object's
 \code{NextToken} parameter is set to \code{null}.}
 
-\item{DeprecatedStatus}{The deprecation status of the type versions that you want to get summary
-information about.
+\item{DeprecatedStatus}{The deprecation status of the extension versions that you want to get
+summary information about.
 
 Valid values include:
 \itemize{
-\item \code{LIVE}: The type version is registered and can be used in
+\item \code{LIVE}: The extension version is registered and can be used in
 CloudFormation operations, dependent on its provisioning behavior
 and visibility scope.
-\item \code{DEPRECATED}: The type version has been deregistered and can no
+\item \code{DEPRECATED}: The extension version has been deregistered and can no
 longer be used in CloudFormation operations.
 }
 
 The default is \code{LIVE}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TypeVersionSummaries = list(
-    list(
-      Type = "RESOURCE"|"MODULE",
-      TypeName = "string",
-      VersionId = "string",
-      IsDefaultVersion = TRUE|FALSE,
-      Arn = "string",
-      TimeCreated = as.POSIXct(
-        "2015-01-01"
-      ),
-      Description = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{PublisherId}{The publisher ID of the extension publisher.
+
+Extensions published by Amazon aren't assigned a publisher ID.}
 }
 \description{
-Returns summary information about the versions of a type.
-}
-\section{Request syntax}{
-\preformatted{svc$list_type_versions(
-  Type = "RESOURCE"|"MODULE",
-  TypeName = "string",
-  Arn = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  DeprecatedStatus = "LIVE"|"DEPRECATED"
-)
-}
-}
+Returns summary information about the versions of an extension.
 
+See \url{https://paws-r.github.io/docs/cloudformation/list_type_versions.html} for full documentation.
+}
 \keyword{internal}

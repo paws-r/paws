@@ -4,7 +4,7 @@
 \alias{ec2_delete_fpga_image}
 \title{Deletes the specified Amazon FPGA Image (AFI)}
 \usage{
-ec2_delete_fpga_image(DryRun, FpgaImageId)
+ec2_delete_fpga_image(DryRun = NULL, FpgaImageId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,21 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{FpgaImageId}{[required] The ID of the AFI.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
 Deletes the specified Amazon FPGA Image (AFI).
-}
-\section{Request syntax}{
-\preformatted{svc$delete_fpga_image(
-  DryRun = TRUE|FALSE,
-  FpgaImageId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_fpga_image.html} for full documentation.
+}
 \keyword{internal}

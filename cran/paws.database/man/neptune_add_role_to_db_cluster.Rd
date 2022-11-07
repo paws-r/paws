@@ -2,11 +2,14 @@
 % Please edit documentation in R/neptune_operations.R
 \name{neptune_add_role_to_db_cluster}
 \alias{neptune_add_role_to_db_cluster}
-\title{Associates an Identity and Access Management (IAM) role from an Neptune
+\title{Associates an Identity and Access Management (IAM) role with an Neptune
 DB cluster}
 \usage{
-neptune_add_role_to_db_cluster(DBClusterIdentifier, RoleArn,
-  FeatureName)
+neptune_add_role_to_db_cluster(
+  DBClusterIdentifier,
+  RoleArn,
+  FeatureName = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to associate the IAM role with.}
@@ -17,22 +20,11 @@ Neptune DB cluster, for example
 
 \item{FeatureName}{The name of the feature for the Neptune DB cluster that the IAM role is
 to be associated with. For the list of supported feature names, see
-DBEngineVersion.}
-}
-\value{
-An empty list.
+\href{https://docs.aws.amazon.com/neptune/latest/userguide/api-other-apis.html#DBEngineVersion}{DBEngineVersion}.}
 }
 \description{
-Associates an Identity and Access Management (IAM) role from an Neptune
-DB cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$add_role_to_db_cluster(
-  DBClusterIdentifier = "string",
-  RoleArn = "string",
-  FeatureName = "string"
-)
-}
-}
+Associates an Identity and Access Management (IAM) role with an Neptune DB cluster.
 
+See \url{https://paws-r.github.io/docs/neptune/add_role_to_db_cluster.html} for full documentation.
+}
 \keyword{internal}

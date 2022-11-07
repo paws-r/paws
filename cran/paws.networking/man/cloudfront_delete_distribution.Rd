@@ -4,7 +4,7 @@
 \alias{cloudfront_delete_distribution}
 \title{Delete a distribution}
 \usage{
-cloudfront_delete_distribution(Id, IfMatch)
+cloudfront_delete_distribution(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The distribution ID.}
@@ -12,18 +12,9 @@ cloudfront_delete_distribution(Id, IfMatch)
 \item{IfMatch}{The value of the \code{ETag} header that you received when you disabled the
 distribution. For example: \code{E2QWRUHAPOMQZL}.}
 }
-\value{
-An empty list.
-}
 \description{
 Delete a distribution.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_distribution(
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/delete_distribution.html} for full documentation.
+}
 \keyword{internal}

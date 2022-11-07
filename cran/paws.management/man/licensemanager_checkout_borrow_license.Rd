@@ -4,8 +4,14 @@
 \alias{licensemanager_checkout_borrow_license}
 \title{Checks out the specified license for offline use}
 \usage{
-licensemanager_checkout_borrow_license(LicenseArn, Entitlements,
-  DigitalSignatureMethod, NodeId, CheckoutMetadata, ClientToken)
+licensemanager_checkout_borrow_license(
+  LicenseArn,
+  Entitlements,
+  DigitalSignatureMethod,
+  NodeId = NULL,
+  CheckoutMetadata = NULL,
+  ClientToken
+)
 }
 \arguments{
 \item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license. The license must use the
@@ -14,7 +20,7 @@ borrow consumption configuration.}
 \item{Entitlements}{[required] License entitlements. Partial checkouts are not supported.}
 
 \item{DigitalSignatureMethod}{[required] Digital signature method. The possible value is JSON Web Signature (JWS)
-algorithm PS384. For more information, see \href{https://datatracker.ietf.org/doc/html/rfc7518#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
+algorithm PS384. For more information, see \href{https://www.rfc-editor.org/rfc/rfc7518#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
 
 \item{NodeId}{Node ID.}
 
@@ -23,54 +29,9 @@ algorithm PS384. For more information, see \href{https://datatracker.ietf.org/do
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseArn = "string",
-  LicenseConsumptionToken = "string",
-  EntitlementsAllowed = list(
-    list(
-      Name = "string",
-      Value = "string",
-      Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-    )
-  ),
-  NodeId = "string",
-  SignedToken = "string",
-  IssuedAt = "string",
-  Expiration = "string",
-  CheckoutMetadata = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Checks out the specified license for offline use.
-}
-\section{Request syntax}{
-\preformatted{svc$checkout_borrow_license(
-  LicenseArn = "string",
-  Entitlements = list(
-    list(
-      Name = "string",
-      Value = "string",
-      Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-    )
-  ),
-  DigitalSignatureMethod = "JWT_PS384",
-  NodeId = "string",
-  CheckoutMetadata = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ClientToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/checkout_borrow_license.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,14 @@
 \title{Starts the asynchronous search for faces in a collection that match the
 faces of persons detected in a stored video}
 \usage{
-rekognition_start_face_search(Video, ClientRequestToken,
-  FaceMatchThreshold, CollectionId, NotificationChannel, JobTag)
+rekognition_start_face_search(
+  Video,
+  ClientRequestToken = NULL,
+  FaceMatchThreshold = NULL,
+  CollectionId,
+  NotificationChannel = NULL,
+  JobTag = NULL
+)
 }
 \arguments{
 \item{Video}{[required] The video you want to search. The video must be stored in an Amazon S3
@@ -24,56 +30,19 @@ default value is 80\%.}
 \item{CollectionId}{[required] ID of the collection that contains the faces you want to search for.}
 
 \item{NotificationChannel}{The ARN of the Amazon SNS topic to which you want Amazon Rekognition
-Video to publish the completion status of the search.}
+Video to publish the completion status of the search. The Amazon SNS
+topic must have a topic name that begins with \emph{AmazonRekognition} if you
+are using the AmazonRekognitionServiceRole permissions policy to access
+the topic.}
 
 \item{JobTag}{An identifier you specify that's returned in the completion notification
 that's published to your Amazon Simple Notification Service topic. For
 example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
-Starts the asynchronous search for faces in a collection that match the
-faces of persons detected in a stored video.
+Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video.
 
-The video must be stored in an Amazon S3 bucket. Use Video to specify
-the bucket name and the filename of the video.
-\code{\link[=rekognition_start_face_search]{start_face_search}} returns a job
-identifier (\code{JobId}) which you use to get the search results once the
-search has completed. When searching is finished, Amazon Rekognition
-Video publishes a completion status to the Amazon Simple Notification
-Service topic that you specify in \code{NotificationChannel}. To get the
-search results, first check that the status value published to the
-Amazon SNS topic is \code{SUCCEEDED}. If so, call
-\code{\link[=rekognition_get_face_search]{get_face_search}} and pass the job
-identifier (\code{JobId}) from the initial call to
-\code{\link[=rekognition_start_face_search]{start_face_search}}. For more
-information, see procedure-person-search-videos.
+See \url{https://paws-r.github.io/docs/rekognition/start_face_search.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_face_search(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  FaceMatchThreshold = 123.0,
-  CollectionId = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  JobTag = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -9,76 +9,9 @@ applicationinsights_describe_problem_observations(ProblemId)
 \arguments{
 \item{ProblemId}{[required] The ID of the problem.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RelatedObservations = list(
-    ObservationList = list(
-      list(
-        Id = "string",
-        StartTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        EndTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        SourceType = "string",
-        SourceARN = "string",
-        LogGroup = "string",
-        LineTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        LogText = "string",
-        LogFilter = "ERROR"|"WARN"|"INFO",
-        MetricNamespace = "string",
-        MetricName = "string",
-        Unit = "string",
-        Value = 123.0,
-        CloudWatchEventId = "string",
-        CloudWatchEventSource = "EC2"|"CODE_DEPLOY"|"HEALTH"|"RDS",
-        CloudWatchEventDetailType = "string",
-        HealthEventArn = "string",
-        HealthService = "string",
-        HealthEventTypeCode = "string",
-        HealthEventTypeCategory = "string",
-        HealthEventDescription = "string",
-        CodeDeployDeploymentId = "string",
-        CodeDeployDeploymentGroup = "string",
-        CodeDeployState = "string",
-        CodeDeployApplication = "string",
-        CodeDeployInstanceGroupId = "string",
-        Ec2State = "string",
-        RdsEventCategories = "string",
-        RdsEventMessage = "string",
-        S3EventName = "string",
-        StatesExecutionArn = "string",
-        StatesArn = "string",
-        StatesStatus = "string",
-        StatesInput = "string",
-        EbsEvent = "string",
-        EbsResult = "string",
-        EbsCause = "string",
-        EbsRequestId = "string",
-        XRayFaultPercent = 123,
-        XRayThrottlePercent = 123,
-        XRayErrorPercent = 123,
-        XRayRequestCount = 123,
-        XRayRequestAverageLatency = 123,
-        XRayNodeName = "string",
-        XRayNodeType = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes the anomalies or errors associated with the problem.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_problem_observations(
-  ProblemId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/describe_problem_observations.html} for full documentation.
+}
 \keyword{internal}

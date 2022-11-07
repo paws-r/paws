@@ -4,8 +4,11 @@
 \alias{cognitoidentity_set_identity_pool_roles}
 \title{Sets the roles for an identity pool}
 \usage{
-cognitoidentity_set_identity_pool_roles(IdentityPoolId, Roles,
-  RoleMappings)
+cognitoidentity_set_identity_pool_roles(
+  IdentityPoolId,
+  Roles,
+  RoleMappings = NULL
+)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -17,45 +20,13 @@ be the Role ARN.}
 \item{RoleMappings}{How users for a specific identity provider are to mapped to roles. This
 is a string to RoleMapping object map. The string identifies the
 identity provider, for example, "graph.facebook.com" or
-"cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+"cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
 
 Up to 25 rules can be specified per identity provider.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets the roles for an identity pool. These roles are used when making
-calls to
-\code{\link[=cognitoidentity_get_credentials_for_identity]{get_credentials_for_identity}}
-action.
+Sets the roles for an identity pool. These roles are used when making calls to \code{\link[=cognitoidentity_get_credentials_for_identity]{get_credentials_for_identity}} action.
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/set_identity_pool_roles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$set_identity_pool_roles(
-  IdentityPoolId = "string",
-  Roles = list(
-    "string"
-  ),
-  RoleMappings = list(
-    list(
-      Type = "Token"|"Rules",
-      AmbiguousRoleResolution = "AuthenticatedRole"|"Deny",
-      RulesConfiguration = list(
-        Rules = list(
-          list(
-            Claim = "string",
-            MatchType = "Equals"|"Contains"|"StartsWith"|"NotEqual",
-            Value = "string",
-            RoleARN = "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

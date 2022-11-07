@@ -5,7 +5,7 @@
 \title{Lists the names and codes for the services integrated with Service
 Quotas}
 \usage{
-servicequotas_list_services(NextToken, MaxResults)
+servicequotas_list_services(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The token for the next page of results.}
@@ -14,28 +14,9 @@ servicequotas_list_services(NextToken, MaxResults)
 the remaining results, if any, make another call with the token returned
 from this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Services = list(
-    list(
-      ServiceCode = "string",
-      ServiceName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the names and codes for the services integrated with Service
-Quotas.
-}
-\section{Request syntax}{
-\preformatted{svc$list_services(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists the names and codes for the services integrated with Service Quotas.
 
+See \url{https://paws-r.github.io/docs/servicequotas/list_services.html} for full documentation.
+}
 \keyword{internal}

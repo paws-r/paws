@@ -4,7 +4,11 @@
 \alias{ec2_describe_vpn_connections}
 \title{Describes one or more of your VPN connections}
 \usage{
-ec2_describe_vpn_connections(Filters, VpnConnectionIds, DryRun)
+ec2_describe_vpn_connections(
+  Filters = NULL,
+  VpnConnectionIds = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -22,11 +26,11 @@ Gateway Protocol (BGP).
 corresponds to the subnet used in a customer data center.
 \item \code{bgp-asn} - The BGP Autonomous System Number (ASN) associated with a
 BGP device.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -48,130 +52,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpnConnections = list(
-    list(
-      CustomerGatewayConfiguration = "string",
-      CustomerGatewayId = "string",
-      Category = "string",
-      State = "pending"|"available"|"deleting"|"deleted",
-      Type = "ipsec.1",
-      VpnConnectionId = "string",
-      VpnGatewayId = "string",
-      TransitGatewayId = "string",
-      Options = list(
-        EnableAcceleration = TRUE|FALSE,
-        StaticRoutesOnly = TRUE|FALSE,
-        LocalIpv4NetworkCidr = "string",
-        RemoteIpv4NetworkCidr = "string",
-        LocalIpv6NetworkCidr = "string",
-        RemoteIpv6NetworkCidr = "string",
-        TunnelInsideIpVersion = "ipv4"|"ipv6",
-        TunnelOptions = list(
-          list(
-            OutsideIpAddress = "string",
-            TunnelInsideCidr = "string",
-            TunnelInsideIpv6Cidr = "string",
-            PreSharedKey = "string",
-            Phase1LifetimeSeconds = 123,
-            Phase2LifetimeSeconds = 123,
-            RekeyMarginTimeSeconds = 123,
-            RekeyFuzzPercentage = 123,
-            ReplayWindowSize = 123,
-            DpdTimeoutSeconds = 123,
-            DpdTimeoutAction = "string",
-            Phase1EncryptionAlgorithms = list(
-              list(
-                Value = "string"
-              )
-            ),
-            Phase2EncryptionAlgorithms = list(
-              list(
-                Value = "string"
-              )
-            ),
-            Phase1IntegrityAlgorithms = list(
-              list(
-                Value = "string"
-              )
-            ),
-            Phase2IntegrityAlgorithms = list(
-              list(
-                Value = "string"
-              )
-            ),
-            Phase1DHGroupNumbers = list(
-              list(
-                Value = 123
-              )
-            ),
-            Phase2DHGroupNumbers = list(
-              list(
-                Value = 123
-              )
-            ),
-            IkeVersions = list(
-              list(
-                Value = "string"
-              )
-            ),
-            StartupAction = "string"
-          )
-        )
-      ),
-      Routes = list(
-        list(
-          DestinationCidrBlock = "string",
-          Source = "Static",
-          State = "pending"|"available"|"deleting"|"deleted"
-        )
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      VgwTelemetry = list(
-        list(
-          AcceptedRouteCount = 123,
-          LastStatusChange = as.POSIXct(
-            "2015-01-01"
-          ),
-          OutsideIpAddress = "string",
-          Status = "UP"|"DOWN",
-          StatusMessage = "string",
-          CertificateArn = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes one or more of your VPN connections.
 
-For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
-\emph{AWS Site-to-Site VPN User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/describe_vpn_connections.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_vpn_connections(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  VpnConnectionIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

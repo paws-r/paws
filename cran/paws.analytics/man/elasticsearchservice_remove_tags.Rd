@@ -14,21 +14,9 @@ delete the specified tags.}
 \item{TagKeys}{[required] Specifies the \code{TagKey} list which you want to remove from the
 Elasticsearch domain.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the specified set of tags from the specified Elasticsearch
-domain.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_tags(
-  ARN = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes the specified set of tags from the specified Elasticsearch domain.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/remove_tags.html} for full documentation.
+}
 \keyword{internal}

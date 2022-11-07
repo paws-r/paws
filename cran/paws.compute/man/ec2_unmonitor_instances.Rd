@@ -4,7 +4,7 @@
 \alias{ec2_unmonitor_instances}
 \title{Disables detailed monitoring for a running instance}
 \usage{
-ec2_unmonitor_instances(InstanceIds, DryRun)
+ec2_unmonitor_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] The IDs of the instances.}
@@ -14,32 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceMonitorings = list(
-    list(
-      InstanceId = "string",
-      Monitoring = list(
-        State = "disabled"|"disabling"|"enabled"|"pending"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Disables detailed monitoring for a running instance. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring your instances and volumes}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$unmonitor_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Disables detailed monitoring for a running instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring your instances and volumes} in the \emph{Amazon EC2 User Guide}.
 
+See \url{https://paws-r.github.io/docs/ec2/unmonitor_instances.html} for full documentation.
+}
 \keyword{internal}

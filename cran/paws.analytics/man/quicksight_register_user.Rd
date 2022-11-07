@@ -3,11 +3,23 @@
 \name{quicksight_register_user}
 \alias{quicksight_register_user}
 \title{Creates an Amazon QuickSight user, whose identity is associated with the
-AWS Identity and Access Management (IAM) identity or role specified in
-the request}
+Identity and Access Management (IAM) identity or role specified in the
+request}
 \usage{
-quicksight_register_user(IdentityType, Email, UserRole, IamArn,
-  SessionName, AwsAccountId, Namespace, UserName, CustomPermissionsName)
+quicksight_register_user(
+  IdentityType,
+  Email,
+  UserRole,
+  IamArn = NULL,
+  SessionName = NULL,
+  AwsAccountId,
+  Namespace,
+  UserName = NULL,
+  CustomPermissionsName = NULL,
+  ExternalLoginFederationProviderType = NULL,
+  CustomFederationProviderUrl = NULL,
+  ExternalLoginId = NULL
+)
 }
 \arguments{
 \item{IdentityType}{[required] Amazon QuickSight supports several ways of managing the identity of
@@ -42,10 +54,11 @@ an Amazon QuickSight user. You can register multiple users using the
 same IAM role if each user has a different session name. For more
 information on assuming IAM roles, see
 \href{https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html}{\code{assume-role}}
-in the \emph{AWS CLI Reference.}}
+in the \emph{CLI Reference.}}
 
-\item{AwsAccountId}{[required] The ID for the AWS account that the user is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the user is in.
+Currently, you use the ID for the Amazon Web Services account that
+contains your Amazon QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 
@@ -68,55 +81,43 @@ To add custom permissions to an existing user, use
 
 A set of custom permissions includes any combination of these
 restrictions. Currently, you need to create the profile names for custom
-permission sets by using the QuickSight console. Then, you use the
-\code{\link[=quicksight_register_user]{register_user}} API operation to assign the
-named set of permissions to a QuickSight user.
+permission sets by using the Amazon QuickSight console. Then, you use
+the \code{\link[=quicksight_register_user]{register_user}} API operation to assign
+the named set of permissions to a Amazon QuickSight user.
 
-QuickSight custom permissions are applied through IAM policies.
+Amazon QuickSight custom permissions are applied through IAM policies.
 Therefore, they override the permissions typically granted by assigning
-QuickSight users to one of the default security cohorts in QuickSight
-(admin, author, reader).
+Amazon QuickSight users to one of the default security cohorts in Amazon
+QuickSight (admin, author, reader).
 
-This feature is available only to QuickSight Enterprise edition
-subscriptions that use SAML 2.0-Based Federation for Single Sign-On
-(SSO).}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  User = list(
-    Arn = "string",
-    UserName = "string",
-    Email = "string",
-    Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-    IdentityType = "IAM"|"QUICKSIGHT",
-    Active = TRUE|FALSE,
-    PrincipalId = "string",
-    CustomPermissionsName = "string"
-  ),
-  UserInvitationUrl = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
+This feature is available only to Amazon QuickSight Enterprise edition
+subscriptions.}
+
+\item{ExternalLoginFederationProviderType}{The type of supported external login provider that provides identity to
+let a user federate into Amazon QuickSight with an associated Identity
+and Access Management(IAM) role. The type of supported external login
+provider can be one of the following.
+\itemize{
+\item \code{COGNITO}: Amazon Cognito. The provider URL is
+cognito-identity.amazonaws.com. When choosing the \code{COGNITO} provider
+type, don’t use the "CustomFederationProviderUrl" parameter which is
+only needed when the external provider is custom.
+\item \code{CUSTOM_OIDC}: Custom OpenID Connect (OIDC) provider. When choosing
+\code{CUSTOM_OIDC} type, use the \code{CustomFederationProviderUrl} parameter
+to provide the custom OIDC provider URL.
+}}
+
+\item{CustomFederationProviderUrl}{The URL of the custom OpenID Connect (OIDC) provider that provides
+identity to let a user federate into Amazon QuickSight with an
+associated Identity and Access Management(IAM) role. This parameter
+should only be used when \code{ExternalLoginFederationProviderType} parameter
+is set to \code{CUSTOM_OIDC}.}
+
+\item{ExternalLoginId}{The identity ID for a user in the external login provider.}
 }
 \description{
-Creates an Amazon QuickSight user, whose identity is associated with the
-AWS Identity and Access Management (IAM) identity or role specified in
-the request.
-}
-\section{Request syntax}{
-\preformatted{svc$register_user(
-  IdentityType = "IAM"|"QUICKSIGHT",
-  Email = "string",
-  UserRole = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-  IamArn = "string",
-  SessionName = "string",
-  AwsAccountId = "string",
-  Namespace = "string",
-  UserName = "string",
-  CustomPermissionsName = "string"
-)
-}
-}
+Creates an Amazon QuickSight user, whose identity is associated with the Identity and Access Management (IAM) identity or role specified in the request.
 
+See \url{https://paws-r.github.io/docs/quicksight/register_user.html} for full documentation.
+}
 \keyword{internal}

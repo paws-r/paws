@@ -4,7 +4,7 @@
 \alias{opsworkscm_describe_events}
 \title{Describes events for a specified server}
 \usage{
-opsworkscm_describe_events(ServerName, NextToken, MaxResults)
+opsworkscm_describe_events(ServerName, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server for which you want to view events.}
@@ -25,39 +25,9 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServerEvents = list(
-    list(
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      ServerName = "string",
-      Message = "string",
-      LogUrl = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes events for a specified server. Results are ordered by time,
-with newest events first.
+Describes events for a specified server. Results are ordered by time, with newest events first.
 
-This operation is synchronous.
-
-A \code{ResourceNotFoundException} is thrown when the server does not exist.
-A \code{ValidationException} is raised when parameters of the request are not
-valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/describe_events.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_events(
-  ServerName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

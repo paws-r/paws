@@ -4,8 +4,12 @@
 \alias{lambda_update_code_signing_config}
 \title{Update the code signing configuration}
 \usage{
-lambda_update_code_signing_config(CodeSigningConfigArn, Description,
-  AllowedPublishers, CodeSigningPolicies)
+lambda_update_code_signing_config(
+  CodeSigningConfigArn,
+  Description = NULL,
+  AllowedPublishers = NULL,
+  CodeSigningPolicies = NULL
+)
 }
 \arguments{
 \item{CodeSigningConfigArn}{[required] The The Amazon Resource Name (ARN) of the code signing configuration.}
@@ -16,44 +20,9 @@ lambda_update_code_signing_config(CodeSigningConfigArn, Description,
 
 \item{CodeSigningPolicies}{The code signing policy.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CodeSigningConfig = list(
-    CodeSigningConfigId = "string",
-    CodeSigningConfigArn = "string",
-    Description = "string",
-    AllowedPublishers = list(
-      SigningProfileVersionArns = list(
-        "string"
-      )
-    ),
-    CodeSigningPolicies = list(
-      UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-    ),
-    LastModified = "string"
-  )
-)
-}
-}
 \description{
-Update the code signing configuration. Changes to the code signing
-configuration take effect the next time a user tries to deploy a code
-package to the function.
-}
-\section{Request syntax}{
-\preformatted{svc$update_code_signing_config(
-  CodeSigningConfigArn = "string",
-  Description = "string",
-  AllowedPublishers = list(
-    SigningProfileVersionArns = list(
-      "string"
-    )
-  ),
-  CodeSigningPolicies = list(
-    UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-  )
-)
-}
-}
+Update the code signing configuration. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
 
+See \url{https://paws-r.github.io/docs/lambda/update_code_signing_config.html} for full documentation.
+}
 \keyword{internal}

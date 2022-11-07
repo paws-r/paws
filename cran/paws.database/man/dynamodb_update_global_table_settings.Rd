@@ -4,10 +4,14 @@
 \alias{dynamodb_update_global_table_settings}
 \title{Updates settings for a global table}
 \usage{
-dynamodb_update_global_table_settings(GlobalTableName,
-  GlobalTableBillingMode, GlobalTableProvisionedWriteCapacityUnits,
-  GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate,
-  GlobalTableGlobalSecondaryIndexSettingsUpdate, ReplicaSettingsUpdate)
+dynamodb_update_global_table_settings(
+  GlobalTableName,
+  GlobalTableBillingMode = NULL,
+  GlobalTableProvisionedWriteCapacityUnits = NULL,
+  GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = NULL,
+  GlobalTableGlobalSecondaryIndexSettingsUpdate = NULL,
+  ReplicaSettingsUpdate = NULL
+)
 }
 \arguments{
 \item{GlobalTableName}{[required] The name of the global table}
@@ -35,190 +39,9 @@ that will be modified.}
 \item{ReplicaSettingsUpdate}{Represents the settings for a global table in a Region that will be
 modified.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalTableName = "string",
-  ReplicaSettings = list(
-    list(
-      RegionName = "string",
-      ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-      ReplicaBillingModeSummary = list(
-        BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-        LastUpdateToPayPerRequestDateTime = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      ReplicaProvisionedReadCapacityUnits = 123,
-      ReplicaProvisionedReadCapacityAutoScalingSettings = list(
-        MinimumUnits = 123,
-        MaximumUnits = 123,
-        AutoScalingDisabled = TRUE|FALSE,
-        AutoScalingRoleArn = "string",
-        ScalingPolicies = list(
-          list(
-            PolicyName = "string",
-            TargetTrackingScalingPolicyConfiguration = list(
-              DisableScaleIn = TRUE|FALSE,
-              ScaleInCooldown = 123,
-              ScaleOutCooldown = 123,
-              TargetValue = 123.0
-            )
-          )
-        )
-      ),
-      ReplicaProvisionedWriteCapacityUnits = 123,
-      ReplicaProvisionedWriteCapacityAutoScalingSettings = list(
-        MinimumUnits = 123,
-        MaximumUnits = 123,
-        AutoScalingDisabled = TRUE|FALSE,
-        AutoScalingRoleArn = "string",
-        ScalingPolicies = list(
-          list(
-            PolicyName = "string",
-            TargetTrackingScalingPolicyConfiguration = list(
-              DisableScaleIn = TRUE|FALSE,
-              ScaleInCooldown = 123,
-              ScaleOutCooldown = 123,
-              TargetValue = 123.0
-            )
-          )
-        )
-      ),
-      ReplicaGlobalSecondaryIndexSettings = list(
-        list(
-          IndexName = "string",
-          IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-          ProvisionedReadCapacityUnits = 123,
-          ProvisionedReadCapacityAutoScalingSettings = list(
-            MinimumUnits = 123,
-            MaximumUnits = 123,
-            AutoScalingDisabled = TRUE|FALSE,
-            AutoScalingRoleArn = "string",
-            ScalingPolicies = list(
-              list(
-                PolicyName = "string",
-                TargetTrackingScalingPolicyConfiguration = list(
-                  DisableScaleIn = TRUE|FALSE,
-                  ScaleInCooldown = 123,
-                  ScaleOutCooldown = 123,
-                  TargetValue = 123.0
-                )
-              )
-            )
-          ),
-          ProvisionedWriteCapacityUnits = 123,
-          ProvisionedWriteCapacityAutoScalingSettings = list(
-            MinimumUnits = 123,
-            MaximumUnits = 123,
-            AutoScalingDisabled = TRUE|FALSE,
-            AutoScalingRoleArn = "string",
-            ScalingPolicies = list(
-              list(
-                PolicyName = "string",
-                TargetTrackingScalingPolicyConfiguration = list(
-                  DisableScaleIn = TRUE|FALSE,
-                  ScaleInCooldown = 123,
-                  ScaleOutCooldown = 123,
-                  TargetValue = 123.0
-                )
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Updates settings for a global table.
-}
-\section{Request syntax}{
-\preformatted{svc$update_global_table_settings(
-  GlobalTableName = "string",
-  GlobalTableBillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-  GlobalTableProvisionedWriteCapacityUnits = 123,
-  GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = list(
-    MinimumUnits = 123,
-    MaximumUnits = 123,
-    AutoScalingDisabled = TRUE|FALSE,
-    AutoScalingRoleArn = "string",
-    ScalingPolicyUpdate = list(
-      PolicyName = "string",
-      TargetTrackingScalingPolicyConfiguration = list(
-        DisableScaleIn = TRUE|FALSE,
-        ScaleInCooldown = 123,
-        ScaleOutCooldown = 123,
-        TargetValue = 123.0
-      )
-    )
-  ),
-  GlobalTableGlobalSecondaryIndexSettingsUpdate = list(
-    list(
-      IndexName = "string",
-      ProvisionedWriteCapacityUnits = 123,
-      ProvisionedWriteCapacityAutoScalingSettingsUpdate = list(
-        MinimumUnits = 123,
-        MaximumUnits = 123,
-        AutoScalingDisabled = TRUE|FALSE,
-        AutoScalingRoleArn = "string",
-        ScalingPolicyUpdate = list(
-          PolicyName = "string",
-          TargetTrackingScalingPolicyConfiguration = list(
-            DisableScaleIn = TRUE|FALSE,
-            ScaleInCooldown = 123,
-            ScaleOutCooldown = 123,
-            TargetValue = 123.0
-          )
-        )
-      )
-    )
-  ),
-  ReplicaSettingsUpdate = list(
-    list(
-      RegionName = "string",
-      ReplicaProvisionedReadCapacityUnits = 123,
-      ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate = list(
-        MinimumUnits = 123,
-        MaximumUnits = 123,
-        AutoScalingDisabled = TRUE|FALSE,
-        AutoScalingRoleArn = "string",
-        ScalingPolicyUpdate = list(
-          PolicyName = "string",
-          TargetTrackingScalingPolicyConfiguration = list(
-            DisableScaleIn = TRUE|FALSE,
-            ScaleInCooldown = 123,
-            ScaleOutCooldown = 123,
-            TargetValue = 123.0
-          )
-        )
-      ),
-      ReplicaGlobalSecondaryIndexSettingsUpdate = list(
-        list(
-          IndexName = "string",
-          ProvisionedReadCapacityUnits = 123,
-          ProvisionedReadCapacityAutoScalingSettingsUpdate = list(
-            MinimumUnits = 123,
-            MaximumUnits = 123,
-            AutoScalingDisabled = TRUE|FALSE,
-            AutoScalingRoleArn = "string",
-            ScalingPolicyUpdate = list(
-              PolicyName = "string",
-              TargetTrackingScalingPolicyConfiguration = list(
-                DisableScaleIn = TRUE|FALSE,
-                ScaleInCooldown = 123,
-                ScaleOutCooldown = 123,
-                TargetValue = 123.0
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dynamodb/update_global_table_settings.html} for full documentation.
+}
 \keyword{internal}

@@ -12,17 +12,9 @@ are identified by names that are unique to the account used to create
 them and the Region where they are created. They consist of lowercase
 letters, numbers, and hyphens.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes event notifications for the specified backup vault.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_backup_vault_notifications(
-  BackupVaultName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/delete_backup_vault_notifications.html} for full documentation.
+}
 \keyword{internal}

@@ -11,50 +11,9 @@ wafregional_get_change_token_status(ChangeToken)
 was previously returned in the
 \code{\link[=wafregional_get_change_token]{get_change_token}} response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeTokenStatus = "PROVISIONED"|"PENDING"|"INSYNC"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns the status of a \code{ChangeToken} that you got by calling
-\code{\link[=wafregional_get_change_token]{get_change_token}}. \code{ChangeTokenStatus}
-is one of the following values:
-\itemize{
-\item \code{PROVISIONED}: You requested the change token by calling
-\code{\link[=wafregional_get_change_token]{get_change_token}}, but you haven't
-used it yet in a call to create, update, or delete an AWS WAF
-object.
-\item \code{PENDING}: AWS WAF is propagating the create, update, or delete
-request to all AWS WAF servers.
-\item \code{INSYNC}: Propagation is complete.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_change_token_status(
-  ChangeToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns the status of a change token with the ID
-# abcd12f2-46da-4fdb-b8d5-fbd4c466928f.
-svc$get_change_token_status(
-  ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-)
-}
-
+See \url{https://paws-r.github.io/docs/wafregional/get_change_token_status.html} for full documentation.
 }
 \keyword{internal}

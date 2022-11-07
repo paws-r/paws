@@ -9,22 +9,9 @@ codecommit_delete_approval_rule_template(approvalRuleTemplateName)
 \arguments{
 \item{approvalRuleTemplateName}{[required] The name of the approval rule template to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvalRuleTemplateId = "string"
-)
-}
-}
 \description{
-Deletes a specified approval rule template. Deleting a template does not
-remove approval rules on pull requests already created with the
-template.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_approval_rule_template(
-  approvalRuleTemplateName = "string"
-)
-}
-}
+Deletes a specified approval rule template. Deleting a template does not remove approval rules on pull requests already created with the template.
 
+See \url{https://paws-r.github.io/docs/codecommit/delete_approval_rule_template.html} for full documentation.
+}
 \keyword{internal}

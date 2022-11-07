@@ -4,41 +4,19 @@
 \alias{cloudformation_list_imports}
 \title{Lists all stacks that are importing an exported output value}
 \usage{
-cloudformation_list_imports(ExportName, NextToken)
+cloudformation_list_imports(ExportName, NextToken = NULL)
 }
 \arguments{
-\item{ExportName}{[required] The name of the exported output value. AWS CloudFormation returns the
-stack names that are importing this value.}
+\item{ExportName}{[required] The name of the exported output value. CloudFormation returns the stack
+names that are importing this value.}
 
 \item{NextToken}{A string (provided by the \code{\link[=cloudformation_list_imports]{list_imports}}
 response output) that identifies the next page of stacks that are
 importing the specified exported output value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Imports = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all stacks that are importing an exported output value. To modify
-or remove an exported output value, first use this action to see which
-stacks are using it. To see the exported output values in your account,
-see \code{\link[=cloudformation_list_exports]{list_exports}}.
+Lists all stacks that are importing an exported output value. To modify or remove an exported output value, first use this action to see which stacks are using it. To see the exported output values in your account, see \code{\link[=cloudformation_list_exports]{list_exports}}.
 
-For more information about importing an exported output value, see the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{\code{Fn::ImportValue}}
-function.
+See \url{https://paws-r.github.io/docs/cloudformation/list_imports.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_imports(
-  ExportName = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

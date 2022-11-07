@@ -14,25 +14,9 @@ swf_tag_resource(resourceArn, tags)
 Tags may only contain unicode letters, digits, whitespace, or these
 symbols: \verb{_ . : / = + - @}.}
 }
-\value{
-An empty list.
-}
 \description{
 Add a tag to a Amazon SWF domain.
 
-Amazon SWF supports a maximum of 50 tags per resource.
+See \url{https://paws-r.github.io/docs/swf/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

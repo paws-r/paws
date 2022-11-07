@@ -5,8 +5,14 @@
 \title{Describes the events for the specified EC2 Fleet during the specified
 time}
 \usage{
-ec2_describe_fleet_history(DryRun, EventType, MaxResults, NextToken,
-  FleetId, StartTime)
+ec2_describe_fleet_history(
+  DryRun = NULL,
+  EventType = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  FleetId,
+  StartTime
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -28,53 +34,9 @@ value.}
 \item{StartTime}{[required] The start date and time for the events, in UTC format (for example,
 \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HistoryRecords = list(
-    list(
-      EventInformation = list(
-        EventDescription = "string",
-        EventSubType = "string",
-        InstanceId = "string"
-      ),
-      EventType = "instance-change"|"fleet-change"|"service-error",
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  LastEvaluatedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  NextToken = "string",
-  FleetId = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Describes the events for the specified EC2 Fleet during the specified
-time.
+Describes the events for the specified EC2 Fleet during the specified time.
 
-EC2 Fleet events are delayed by up to 30 seconds before they can be
-described. This ensures that you can query by the last evaluated time
-and not miss a recorded event. EC2 Fleet events are available for 48
-hours.
+See \url{https://paws-r.github.io/docs/ec2/describe_fleet_history.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_fleet_history(
-  DryRun = TRUE|FALSE,
-  EventType = "instance-change"|"fleet-change"|"service-error",
-  MaxResults = 123,
-  NextToken = "string",
-  FleetId = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

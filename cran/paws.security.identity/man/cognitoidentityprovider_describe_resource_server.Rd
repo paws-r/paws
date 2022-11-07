@@ -11,31 +11,9 @@ cognitoidentityprovider_describe_resource_server(UserPoolId, Identifier)
 
 \item{Identifier}{[required] The identifier for the resource server}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceServer = list(
-    UserPoolId = "string",
-    Identifier = "string",
-    Name = "string",
-    Scopes = list(
-      list(
-        ScopeName = "string",
-        ScopeDescription = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes a resource server.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_resource_server(
-  UserPoolId = "string",
-  Identifier = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/describe_resource_server.html} for full documentation.
+}
 \keyword{internal}

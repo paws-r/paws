@@ -22,33 +22,9 @@ the function name, it is limited to 64 characters in length.}
 
 \item{InvokeArgs}{[required] The JSON that you want to provide to your Lambda function as input.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = 123
-)
-}
-}
 \description{
 For asynchronous function invocation, use \code{\link[=lambda_invoke]{invoke}}.
 
-Invokes a function asynchronously.
-}
-\section{Request syntax}{
-\preformatted{svc$invoke_async(
-  FunctionName = "string",
-  InvokeArgs = raw
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example invokes a Lambda function asynchronously
-svc$invoke_async(
-  FunctionName = "my-function",
-  InvokeArgs = "{}"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/invoke_async.html} for full documentation.
 }
 \keyword{internal}

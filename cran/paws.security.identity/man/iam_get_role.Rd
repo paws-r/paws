@@ -15,64 +15,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Role = list(
-    Path = "string",
-    RoleName = "string",
-    RoleId = "string",
-    Arn = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    AssumeRolePolicyDocument = "string",
-    Description = "string",
-    MaxSessionDuration = 123,
-    PermissionsBoundary = list(
-      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-      PermissionsBoundaryArn = "string"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    RoleLastUsed = list(
-      LastUsedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Region = "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves information about the specified role, including the role's
-path, GUID, ARN, and the role's trust policy that grants permission to
-assume the role. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
+Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with roles}.
 
-Policies returned by this API are URL-encoded compliant with \href{https://datatracker.ietf.org/doc/html/rfc3986}{RFC 3986}. You can use a URL
-decoding method to convert the policy back to plain JSON text. For
-example, if you use Java, you can use the \code{decode} method of the
-\code{java.net.URLDecoder} utility class in the Java SDK. Other languages and
-SDKs provide similar functionality.
-}
-\section{Request syntax}{
-\preformatted{svc$get_role(
-  RoleName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command gets information about the role named Test-Role.
-svc$get_role(
-  RoleName = "Test-Role"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/get_role.html} for full documentation.
 }
 \keyword{internal}

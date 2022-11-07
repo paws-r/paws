@@ -5,9 +5,14 @@
 \title{Creates a new custom endpoint and associates it with an Amazon Neptune
 DB cluster}
 \usage{
-neptune_create_db_cluster_endpoint(DBClusterIdentifier,
-  DBClusterEndpointIdentifier, EndpointType, StaticMembers,
-  ExcludedMembers, Tags)
+neptune_create_db_cluster_endpoint(
+  DBClusterIdentifier,
+  DBClusterEndpointIdentifier,
+  EndpointType,
+  StaticMembers = NULL,
+  ExcludedMembers = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the DB cluster associated with the
@@ -27,48 +32,9 @@ endpoint. Only relevant if the list of static members is empty.}
 
 \item{Tags}{The tags to be assigned to the Amazon Neptune resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterEndpointIdentifier = "string",
-  DBClusterIdentifier = "string",
-  DBClusterEndpointResourceIdentifier = "string",
-  Endpoint = "string",
-  Status = "string",
-  EndpointType = "string",
-  CustomEndpointType = "string",
-  StaticMembers = list(
-    "string"
-  ),
-  ExcludedMembers = list(
-    "string"
-  ),
-  DBClusterEndpointArn = "string"
-)
-}
-}
 \description{
-Creates a new custom endpoint and associates it with an Amazon Neptune
-DB cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$create_db_cluster_endpoint(
-  DBClusterIdentifier = "string",
-  DBClusterEndpointIdentifier = "string",
-  EndpointType = "string",
-  StaticMembers = list(
-    "string"
-  ),
-  ExcludedMembers = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a new custom endpoint and associates it with an Amazon Neptune DB cluster.
 
+See \url{https://paws-r.github.io/docs/neptune/create_db_cluster_endpoint.html} for full documentation.
+}
 \keyword{internal}

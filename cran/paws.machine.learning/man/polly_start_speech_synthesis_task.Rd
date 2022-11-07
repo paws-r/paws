@@ -5,9 +5,20 @@
 \title{Allows the creation of an asynchronous synthesis task, by starting a new
 SpeechSynthesisTask}
 \usage{
-polly_start_speech_synthesis_task(Engine, LanguageCode, LexiconNames,
-  OutputFormat, OutputS3BucketName, OutputS3KeyPrefix, SampleRate,
-  SnsTopicArn, SpeechMarkTypes, Text, TextType, VoiceId)
+polly_start_speech_synthesis_task(
+  Engine = NULL,
+  LanguageCode = NULL,
+  LexiconNames = NULL,
+  OutputFormat,
+  OutputS3BucketName,
+  OutputS3KeyPrefix = NULL,
+  SampleRate = NULL,
+  SnsTopicArn = NULL,
+  SpeechMarkTypes = NULL,
+  Text,
+  TextType = NULL,
+  VoiceId
+)
 }
 \arguments{
 \item{Engine}{Specifies the engine (\code{standard} or \code{neural}) for Amazon Polly to use
@@ -19,7 +30,7 @@ necessary if using a bilingual voice, such as Aditi, which can be used
 for either Indian English (en-IN) or Hindi (hi-IN).
 
 If a bilingual voice is used and no language code is specified, Amazon
-Polly will use the default language of the bilingual voice. The default
+Polly uses the default language of the bilingual voice. The default
 language for any voice is the one returned by the
 \code{\link[=polly_describe_voices]{describe_voices}} operation for the
 \code{LanguageCode} parameter. For example, if no language code is specified,
@@ -59,64 +70,9 @@ value is plain text.}
 
 \item{VoiceId}{[required] Voice ID to use for the synthesis.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SynthesisTask = list(
-    Engine = "standard"|"neural",
-    TaskId = "string",
-    TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
-    TaskStatusReason = "string",
-    OutputUri = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    RequestCharacters = 123,
-    SnsTopicArn = "string",
-    LexiconNames = list(
-      "string"
-    ),
-    OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-    SampleRate = "string",
-    SpeechMarkTypes = list(
-      "sentence"|"ssml"|"viseme"|"word"
-    ),
-    TextType = "ssml"|"text",
-    VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu",
-    LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
-  )
-)
-}
-}
 \description{
-Allows the creation of an asynchronous synthesis task, by starting a new
-\code{SpeechSynthesisTask}. This operation requires all the standard
-information needed for speech synthesis, plus the name of an Amazon S3
-bucket for the service to store the output of the synthesis task and two
-optional parameters (OutputS3KeyPrefix and SnsTopicArn). Once the
-synthesis task is created, this operation will return a
-SpeechSynthesisTask object, which will include an identifier of this
-task as well as the current status.
-}
-\section{Request syntax}{
-\preformatted{svc$start_speech_synthesis_task(
-  Engine = "standard"|"neural",
-  LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-  LexiconNames = list(
-    "string"
-  ),
-  OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-  OutputS3BucketName = "string",
-  OutputS3KeyPrefix = "string",
-  SampleRate = "string",
-  SnsTopicArn = "string",
-  SpeechMarkTypes = list(
-    "sentence"|"ssml"|"viseme"|"word"
-  ),
-  Text = "string",
-  TextType = "ssml"|"text",
-  VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu"
-)
-}
-}
+Allows the creation of an asynchronous synthesis task, by starting a new \code{SpeechSynthesisTask}. This operation requires all the standard information needed for speech synthesis, plus the name of an Amazon S3 bucket for the service to store the output of the synthesis task and two optional parameters (\code{OutputS3KeyPrefix} and \code{SnsTopicArn}). Once the synthesis task is created, this operation will return a \code{SpeechSynthesisTask} object, which will include an identifier of this task as well as the current status. The \code{SpeechSynthesisTask} object is available for 72 hours after starting the asynchronous synthesis task.
 
+See \url{https://paws-r.github.io/docs/polly/start_speech_synthesis_task.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,19 @@
 \title{Returns a list of BatchPrediction operations that match the search
 criteria in the request}
 \usage{
-machinelearning_describe_batch_predictions(FilterVariable, EQ, GT, LT,
-  GE, LE, NE, Prefix, SortOrder, NextToken, Limit)
+machinelearning_describe_batch_predictions(
+  FilterVariable = NULL,
+  EQ = NULL,
+  GT = NULL,
+  LT = NULL,
+  GE = NULL,
+  LE = NULL,
+  NE = NULL,
+  Prefix = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{FilterVariable}{Use one of the following variables to filter a list of
@@ -78,59 +89,9 @@ Results are sorted by \code{FilterVariable}.}
 \item{Limit}{The number of pages of information to include in the result. The range
 of acceptable values is \code{1} through \code{100}. The default value is \code{100}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Results = list(
-    list(
-      BatchPredictionId = "string",
-      MLModelId = "string",
-      BatchPredictionDataSourceId = "string",
-      InputDataLocationS3 = "string",
-      CreatedByIamUser = "string",
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      Name = "string",
-      Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-      OutputUri = "string",
-      Message = "string",
-      ComputeTime = 123,
-      FinishedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      StartedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      TotalRecordCount = 123,
-      InvalidRecordCount = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of \code{BatchPrediction} operations that match the search
-criteria in the request.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_batch_predictions(
-  FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
-  EQ = "string",
-  GT = "string",
-  LT = "string",
-  GE = "string",
-  LE = "string",
-  NE = "string",
-  Prefix = "string",
-  SortOrder = "asc"|"dsc",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Returns a list of \code{BatchPrediction} operations that match the search criteria in the request.
 
+See \url{https://paws-r.github.io/docs/machinelearning/describe_batch_predictions.html} for full documentation.
+}
 \keyword{internal}

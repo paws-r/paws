@@ -2,16 +2,19 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_create_snapshot_copy_grant}
 \alias{redshift_create_snapshot_copy_grant}
-\title{Creates a snapshot copy grant that permits Amazon Redshift to use a
-customer master key (CMK) from AWS Key Management Service (AWS KMS) to
-encrypt copied snapshots in a destination region}
+\title{Creates a snapshot copy grant that permits Amazon Redshift to use an
+encrypted symmetric key from Key Management Service (KMS) to encrypt
+copied snapshots in a destination region}
 \usage{
-redshift_create_snapshot_copy_grant(SnapshotCopyGrantName, KmsKeyId,
-  Tags)
+redshift_create_snapshot_copy_grant(
+  SnapshotCopyGrantName,
+  KmsKeyId = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{SnapshotCopyGrantName}{[required] The name of the snapshot copy grant. This name must be unique in the
-region for the AWS account.
+region for the Amazon Web Services account.
 
 Constraints:
 \itemize{
@@ -19,50 +22,19 @@ Constraints:
 \item Alphabetic characters must be lowercase.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique for all clusters within an AWS account.
+\item Must be unique for all clusters within an Amazon Web Services
+account.
 }}
 
-\item{KmsKeyId}{The unique identifier of the customer master key (CMK) to which to grant
+\item{KmsKeyId}{The unique identifier of the encrypted symmetric key to which to grant
 Amazon Redshift permission. If no key is specified, the default key is
 used.}
 
 \item{Tags}{A list of tag instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SnapshotCopyGrant = list(
-    SnapshotCopyGrantName = "string",
-    KmsKeyId = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a snapshot copy grant that permits Amazon Redshift to use a
-customer master key (CMK) from AWS Key Management Service (AWS KMS) to
-encrypt copied snapshots in a destination region.
+Creates a snapshot copy grant that permits Amazon Redshift to use an encrypted symmetric key from Key Management Service (KMS) to encrypt copied snapshots in a destination region.
 
-For more information about managing snapshot copy grants, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html}{Amazon Redshift Database Encryption}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/create_snapshot_copy_grant.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_snapshot_copy_grant(
-  SnapshotCopyGrantName = "string",
-  KmsKeyId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

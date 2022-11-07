@@ -2,10 +2,14 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_list_virtual_mfa_devices}
 \alias{iam_list_virtual_mfa_devices}
-\title{Lists the virtual MFA devices defined in the AWS account by assignment
-status}
+\title{Lists the virtual MFA devices defined in the Amazon Web Services account
+by assignment status}
 \usage{
-iam_list_virtual_mfa_devices(AssignmentStatus, Marker, MaxItems)
+iam_list_virtual_mfa_devices(
+  AssignmentStatus = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{AssignmentStatus}{The status (\code{Unassigned} or \code{Assigned}) of the devices to list. If you
@@ -27,69 +31,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VirtualMFADevices = list(
-    list(
-      SerialNumber = "string",
-      Base32StringSeed = raw,
-      QRCodePNG = raw,
-      User = list(
-        Path = "string",
-        UserName = "string",
-        UserId = "string",
-        Arn = "string",
-        CreateDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        PasswordLastUsed = as.POSIXct(
-          "2015-01-01"
-        ),
-        PermissionsBoundary = list(
-          PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-          PermissionsBoundaryArn = "string"
-        ),
-        Tags = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        )
-      ),
-      EnableDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the virtual MFA devices defined in the AWS account by assignment
-status. If you do not specify an assignment status, the operation
-returns a list of all virtual MFA devices. Assignment status can be
-\code{Assigned}, \code{Unassigned}, or \code{Any}.
+Lists the virtual MFA devices defined in the Amazon Web Services account by assignment status. If you do not specify an assignment status, the operation returns a list of all virtual MFA devices. Assignment status can be \code{Assigned}, \code{Unassigned}, or \code{Any}.
 
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
-}
-\section{Request syntax}{
-\preformatted{svc$list_virtual_mfa_devices(
-  AssignmentStatus = "Assigned"|"Unassigned"|"Any",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command lists the virtual MFA devices that have been
-# configured for the current account.
-svc$list_virtual_mfa_devices()
-}
-
+See \url{https://paws-r.github.io/docs/iam/list_virtual_mfa_devices.html} for full documentation.
 }
 \keyword{internal}

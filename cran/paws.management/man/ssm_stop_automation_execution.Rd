@@ -4,7 +4,7 @@
 \alias{ssm_stop_automation_execution}
 \title{Stop an Automation that is currently running}
 \usage{
-ssm_stop_automation_execution(AutomationExecutionId, Type)
+ssm_stop_automation_execution(AutomationExecutionId, Type = NULL)
 }
 \arguments{
 \item{AutomationExecutionId}{[required] The execution ID of the Automation to stop.}
@@ -12,18 +12,9 @@ ssm_stop_automation_execution(AutomationExecutionId, Type)
 \item{Type}{The stop request type. Valid types include the following: Cancel and
 Complete. The default type is Cancel.}
 }
-\value{
-An empty list.
-}
 \description{
 Stop an Automation that is currently running.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_automation_execution(
-  AutomationExecutionId = "string",
-  Type = "Complete"|"Cancel"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/stop_automation_execution.html} for full documentation.
+}
 \keyword{internal}

@@ -2,10 +2,12 @@
 % Please edit documentation in R/globalaccelerator_operations.R
 \name{globalaccelerator_list_custom_routing_accelerators}
 \alias{globalaccelerator_list_custom_routing_accelerators}
-\title{List the custom routing accelerators for an AWS account}
+\title{List the custom routing accelerators for an Amazon Web Services account}
 \usage{
-globalaccelerator_list_custom_routing_accelerators(MaxResults,
-  NextToken)
+globalaccelerator_list_custom_routing_accelerators(
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{MaxResults}{The number of custom routing Global Accelerator objects that you want to
@@ -14,45 +16,9 @@ return with this call. The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Accelerators = list(
-    list(
-      AcceleratorArn = "string",
-      Name = "string",
-      IpAddressType = "IPV4",
-      Enabled = TRUE|FALSE,
-      IpSets = list(
-        list(
-          IpFamily = "string",
-          IpAddresses = list(
-            "string"
-          )
-        )
-      ),
-      DnsName = "string",
-      Status = "DEPLOYED"|"IN_PROGRESS",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List the custom routing accelerators for an AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_custom_routing_accelerators(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+List the custom routing accelerators for an Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_accelerators.html} for full documentation.
+}
 \keyword{internal}

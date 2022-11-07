@@ -2,15 +2,29 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_create_event_source_mapping}
 \alias{lambda_create_event_source_mapping}
-\title{Creates a mapping between an event source and an AWS Lambda function}
+\title{Creates a mapping between an event source and an Lambda function}
 \usage{
-lambda_create_event_source_mapping(EventSourceArn, FunctionName,
-  Enabled, BatchSize, MaximumBatchingWindowInSeconds,
-  ParallelizationFactor, StartingPosition, StartingPositionTimestamp,
-  DestinationConfig, MaximumRecordAgeInSeconds,
-  BisectBatchOnFunctionError, MaximumRetryAttempts,
-  TumblingWindowInSeconds, Topics, Queues, SourceAccessConfigurations,
-  SelfManagedEventSource, FunctionResponseTypes)
+lambda_create_event_source_mapping(
+  EventSourceArn = NULL,
+  FunctionName,
+  Enabled = NULL,
+  BatchSize = NULL,
+  FilterCriteria = NULL,
+  MaximumBatchingWindowInSeconds = NULL,
+  ParallelizationFactor = NULL,
+  StartingPosition = NULL,
+  StartingPositionTimestamp = NULL,
+  DestinationConfig = NULL,
+  MaximumRecordAgeInSeconds = NULL,
+  BisectBatchOnFunctionError = NULL,
+  MaximumRetryAttempts = NULL,
+  TumblingWindowInSeconds = NULL,
+  Topics = NULL,
+  Queues = NULL,
+  SourceAccessConfigurations = NULL,
+  SelfManagedEventSource = NULL,
+  FunctionResponseTypes = NULL
+)
 }
 \arguments{
 \item{EventSourceArn}{The Amazon Resource Name (ARN) of the event source.
@@ -38,24 +52,41 @@ cluster.
 The length constraint applies only to the full ARN. If you specify only
 the function name, it's limited to 64 characters in length.}
 
-\item{Enabled}{If true, the event source mapping is active. Set to false to pause
-polling and invocation.}
+\item{Enabled}{When true, the event source mapping is active. When false, Lambda pauses
+polling and invocation.
 
-\item{BatchSize}{The maximum number of items to retrieve in a single batch.
+Default: True}
+
+\item{BatchSize}{The maximum number of records in each batch that Lambda pulls from your
+stream or queue and sends to your function. Lambda passes all of the
+records in the batch to the function in a single call, up to the payload
+limit for synchronous invocation (6 MB).
 \itemize{
 \item \strong{Amazon Kinesis} - Default 100. Max 10,000.
-\item \strong{Amazon DynamoDB Streams} - Default 100. Max 1,000.
+\item \strong{Amazon DynamoDB Streams} - Default 100. Max 10,000.
 \item \strong{Amazon Simple Queue Service} - Default 10. For standard queues
 the max is 10,000. For FIFO queues the max is 10.
 \item \strong{Amazon Managed Streaming for Apache Kafka} - Default 100. Max
 10,000.
 \item \strong{Self-Managed Apache Kafka} - Default 100. Max 10,000.
+\item \strong{Amazon MQ (ActiveMQ and RabbitMQ)} - Default 100. Max 10,000.
 }}
 
-\item{MaximumBatchingWindowInSeconds}{(Streams and SQS standard queues) The maximum amount of time to gather
-records before invoking the function, in seconds.}
+\item{FilterCriteria}{(Streams and Amazon SQS) An object that defines the filter criteria that
+determine whether Lambda should process an event. For more information,
+see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html}{Lambda event filtering}.}
 
-\item{ParallelizationFactor}{(Streams) The number of batches to process from each shard concurrently.}
+\item{MaximumBatchingWindowInSeconds}{(Streams and Amazon SQS standard queues) The maximum amount of time, in
+seconds, that Lambda spends gathering records before invoking the
+function.
+
+Default: 0
+
+Related setting: When you set \code{BatchSize} to a value greater than 10,
+you must set \code{MaximumBatchingWindowInSeconds} to at least 1.}
+
+\item{ParallelizationFactor}{(Streams only) The number of batches to process from each shard
+concurrently.}
 
 \item{StartingPosition}{The position in a stream from which to start reading. Required for
 Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources.
@@ -64,180 +95,37 @@ Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources.
 \item{StartingPositionTimestamp}{With \code{StartingPosition} set to \code{AT_TIMESTAMP}, the time from which to
 start reading.}
 
-\item{DestinationConfig}{(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+\item{DestinationConfig}{(Streams only) An Amazon SQS queue or Amazon SNS topic destination for
 discarded records.}
 
-\item{MaximumRecordAgeInSeconds}{(Streams) Discard records older than the specified age. The default
+\item{MaximumRecordAgeInSeconds}{(Streams only) Discard records older than the specified age. The default
 value is infinite (-1).}
 
-\item{BisectBatchOnFunctionError}{(Streams) If the function returns an error, split the batch in two and
-retry.}
+\item{BisectBatchOnFunctionError}{(Streams only) If the function returns an error, split the batch in two
+and retry.}
 
-\item{MaximumRetryAttempts}{(Streams) Discard records after the specified number of retries. The
-default value is infinite (-1). When set to infinite (-1), failed
+\item{MaximumRetryAttempts}{(Streams only) Discard records after the specified number of retries.
+The default value is infinite (-1). When set to infinite (-1), failed
 records will be retried until the record expires.}
 
-\item{TumblingWindowInSeconds}{(Streams) The duration of a processing window in seconds. The range is
-between 1 second up to 15 minutes.}
+\item{TumblingWindowInSeconds}{(Streams only) The duration in seconds of a processing window. The range
+is between 1 second up to 900 seconds.}
 
 \item{Topics}{The name of the Kafka topic.}
 
 \item{Queues}{(MQ) The name of the Amazon MQ broker destination queue to consume.}
 
-\item{SourceAccessConfigurations}{An array of the authentication protocol, or the VPC components to secure
-your event source.}
+\item{SourceAccessConfigurations}{An array of authentication protocols or VPC components required to
+secure your event source.}
 
 \item{SelfManagedEventSource}{The Self-Managed Apache Kafka cluster to send records.}
 
-\item{FunctionResponseTypes}{(Streams) A list of current response type enums applied to the event
-source mapping.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UUID = "string",
-  StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-  StartingPositionTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  BatchSize = 123,
-  MaximumBatchingWindowInSeconds = 123,
-  ParallelizationFactor = 123,
-  EventSourceArn = "string",
-  FunctionArn = "string",
-  LastModified = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastProcessingResult = "string",
-  State = "string",
-  StateTransitionReason = "string",
-  DestinationConfig = list(
-    OnSuccess = list(
-      Destination = "string"
-    ),
-    OnFailure = list(
-      Destination = "string"
-    )
-  ),
-  Topics = list(
-    "string"
-  ),
-  Queues = list(
-    "string"
-  ),
-  SourceAccessConfigurations = list(
-    list(
-      Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-      URI = "string"
-    )
-  ),
-  SelfManagedEventSource = list(
-    Endpoints = list(
-      list(
-        "string"
-      )
-    )
-  ),
-  MaximumRecordAgeInSeconds = 123,
-  BisectBatchOnFunctionError = TRUE|FALSE,
-  MaximumRetryAttempts = 123,
-  TumblingWindowInSeconds = 123,
-  FunctionResponseTypes = list(
-    "ReportBatchItemFailures"
-  )
-)
-}
+\item{FunctionResponseTypes}{(Streams and Amazon SQS) A list of current response type enums applied
+to the event source mapping.}
 }
 \description{
-Creates a mapping between an event source and an AWS Lambda function.
-Lambda reads items from the event source and triggers the function.
+Creates a mapping between an event source and an Lambda function. Lambda reads items from the event source and triggers the function.
 
-For details about each event source type, see the following topics.
-\itemize{
-\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html}{Using AWS Lambda with Amazon DynamoDB}
-\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html}{Using AWS Lambda with Amazon Kinesis}
-\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html}{Using AWS Lambda with Amazon SQS}
-\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html}{Using AWS Lambda with Amazon MQ}
-\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html}{Using AWS Lambda with Amazon MSK}
-\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-kafka.html}{Using AWS Lambda with Self-Managed Apache Kafka}
-}
-
-The following error handling options are only available for stream
-sources (DynamoDB and Kinesis):
-\itemize{
-\item \code{BisectBatchOnFunctionError} - If the function returns an error,
-split the batch in two and retry.
-\item \code{DestinationConfig} - Send discarded records to an Amazon SQS queue
-or Amazon SNS topic.
-\item \code{MaximumRecordAgeInSeconds} - Discard records older than the
-specified age. The default value is infinite (-1). When set to
-infinite (-1), failed records are retried until the record expires
-\item \code{MaximumRetryAttempts} - Discard records after the specified number
-of retries. The default value is infinite (-1). When set to infinite
-(-1), failed records are retried until the record expires.
-\item \code{ParallelizationFactor} - Process multiple batches from each shard
-concurrently.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_event_source_mapping(
-  EventSourceArn = "string",
-  FunctionName = "string",
-  Enabled = TRUE|FALSE,
-  BatchSize = 123,
-  MaximumBatchingWindowInSeconds = 123,
-  ParallelizationFactor = 123,
-  StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-  StartingPositionTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  DestinationConfig = list(
-    OnSuccess = list(
-      Destination = "string"
-    ),
-    OnFailure = list(
-      Destination = "string"
-    )
-  ),
-  MaximumRecordAgeInSeconds = 123,
-  BisectBatchOnFunctionError = TRUE|FALSE,
-  MaximumRetryAttempts = 123,
-  TumblingWindowInSeconds = 123,
-  Topics = list(
-    "string"
-  ),
-  Queues = list(
-    "string"
-  ),
-  SourceAccessConfigurations = list(
-    list(
-      Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-      URI = "string"
-    )
-  ),
-  SelfManagedEventSource = list(
-    Endpoints = list(
-      list(
-        "string"
-      )
-    )
-  ),
-  FunctionResponseTypes = list(
-    "ReportBatchItemFailures"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example creates a mapping between an SQS queue and the
-# my-function Lambda function.
-svc$create_event_source_mapping(
-  BatchSize = 5L,
-  EventSourceArn = "arn:aws:sqs:us-west-2:123456789012:my-queue",
-  FunctionName = "my-function"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/create_event_source_mapping.html} for full documentation.
 }
 \keyword{internal}

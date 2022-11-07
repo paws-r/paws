@@ -10,26 +10,9 @@ guardduty_get_master_account(DetectorId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Master = list(
-    AccountId = "string",
-    InvitationId = "string",
-    RelationshipStatus = "string",
-    InvitedAt = "string"
-  )
-)
-}
-}
 \description{
-Provides the details for the GuardDuty administrator account associated
-with the current GuardDuty member account.
-}
-\section{Request syntax}{
-\preformatted{svc$get_master_account(
-  DetectorId = "string"
-)
-}
-}
+Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
 
+See \url{https://paws-r.github.io/docs/guardduty/get_master_account.html} for full documentation.
+}
 \keyword{internal}

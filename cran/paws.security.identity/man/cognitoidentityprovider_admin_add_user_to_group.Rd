@@ -4,8 +4,11 @@
 \alias{cognitoidentityprovider_admin_add_user_to_group}
 \title{Adds the specified user to the specified group}
 \usage{
-cognitoidentityprovider_admin_add_user_to_group(UserPoolId, Username,
-  GroupName)
+cognitoidentityprovider_admin_add_user_to_group(
+  UserPoolId,
+  Username,
+  GroupName
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -14,21 +17,9 @@ cognitoidentityprovider_admin_add_user_to_group(UserPoolId, Username,
 
 \item{GroupName}{[required] The group name.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds the specified user to the specified group.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_add_user_to_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_add_user_to_group(
-  UserPoolId = "string",
-  Username = "string",
-  GroupName = "string"
-)
-}
-}
-
 \keyword{internal}

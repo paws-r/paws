@@ -4,7 +4,13 @@
 \alias{ec2_detach_volume}
 \title{Detaches an EBS volume from an instance}
 \usage{
-ec2_detach_volume(Device, Force, InstanceId, VolumeId, DryRun)
+ec2_detach_volume(
+  Device = NULL,
+  Force = NULL,
+  InstanceId = NULL,
+  VolumeId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Device}{The device name.}
@@ -27,54 +33,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AttachTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Device = "string",
-  InstanceId = "string",
-  State = "attaching"|"attached"|"detaching"|"detached"|"busy",
-  VolumeId = "string",
-  DeleteOnTermination = TRUE|FALSE
-)
-}
-}
 \description{
-Detaches an EBS volume from an instance. Make sure to unmount any file
-systems on the device within your operating system before detaching the
-volume. Failure to do so can result in the volume becoming stuck in the
-\code{busy} state while detaching. If this happens, detachment can be delayed
-indefinitely until you unmount the volume, force detachment, reboot the
-instance, or all three. If an EBS volume is the root device of an
-instance, it can't be detached while the instance is running. To detach
-the root volume, stop the instance first.
+Detaches an EBS volume from an instance. Make sure to unmount any file systems on the device within your operating system before detaching the volume. Failure to do so can result in the volume becoming stuck in the \code{busy} state while detaching. If this happens, detachment can be delayed indefinitely until you unmount the volume, force detachment, reboot the instance, or all three. If an EBS volume is the root device of an instance, it can't be detached while the instance is running. To detach the root volume, stop the instance first.
 
-When a volume with an AWS Marketplace product code is detached from an
-instance, the product code is no longer associated with the instance.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html}{Detaching an Amazon EBS volume}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_volume(
-  Device = "string",
-  Force = TRUE|FALSE,
-  InstanceId = "string",
-  VolumeId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example detaches the volume (`vol-049df61146c4d7901`) from the
-# instance it is attached to.
-svc$detach_volume(
-  VolumeId = "vol-1234567890abcdef0"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/detach_volume.html} for full documentation.
 }
 \keyword{internal}

@@ -2,48 +2,18 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_invite_members}
 \alias{securityhub_invite_members}
-\title{Invites other AWS accounts to become member accounts for the Security
-Hub master account that the invitation is sent from}
+\title{Invites other Amazon Web Services accounts to become member accounts for
+the Security Hub administrator account that the invitation is sent from}
 \usage{
 securityhub_invite_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] The list of account IDs of the AWS accounts to invite to Security Hub as
-members.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UnprocessedAccounts = list(
-    list(
-      AccountId = "string",
-      ProcessingResult = "string"
-    )
-  )
-)
-}
+\item{AccountIds}{[required] The list of account IDs of the Amazon Web Services accounts to invite to
+Security Hub as members.}
 }
 \description{
-Invites other AWS accounts to become member accounts for the Security
-Hub master account that the invitation is sent from.
+Invites other Amazon Web Services accounts to become member accounts for the Security Hub administrator account that the invitation is sent from.
 
-This operation is only used to invite accounts that do not belong to an
-organization. Organization accounts do not receive invitations.
-
-Before you can use this action to invite a member, you must first use
-the \code{\link[=securityhub_create_members]{create_members}} action to create the
-member account in Security Hub.
-
-When the account owner enables Security Hub and accepts the invitation
-to become a member account, the master account can view the findings
-generated from the member account.
+See \url{https://paws-r.github.io/docs/securityhub/invite_members.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$invite_members(
-  AccountIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

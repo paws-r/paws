@@ -5,8 +5,11 @@
 \title{Initiates a request to compile the specified type of information of the
 deployed environment}
 \usage{
-elasticbeanstalk_request_environment_info(EnvironmentId,
-  EnvironmentName, InfoType)
+elasticbeanstalk_request_environment_info(
+  EnvironmentId = NULL,
+  EnvironmentName = NULL,
+  InfoType
+)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the environment of the requested data.
@@ -31,47 +34,9 @@ you do not specify either, AWS Elastic Beanstalk returns
 
 \item{InfoType}{[required] The type of information to request.}
 }
-\value{
-An empty list.
-}
 \description{
-Initiates a request to compile the specified type of information of the
-deployed environment.
+Initiates a request to compile the specified type of information of the deployed environment.
 
-Setting the \code{InfoType} to \code{tail} compiles the last lines from the
-application server log files of every Amazon EC2 instance in your
-environment.
-
-Setting the \code{InfoType} to \code{bundle} compresses the application server log
-files for every Amazon EC2 instance into a \code{.zip} file. Legacy and .NET
-containers do not support bundle logs.
-
-Use
-\code{\link[=elasticbeanstalk_retrieve_environment_info]{retrieve_environment_info}}
-to obtain the set of logs.
-
-Related Topics
-\itemize{
-\item \code{\link[=elasticbeanstalk_retrieve_environment_info]{retrieve_environment_info}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$request_environment_info(
-  EnvironmentId = "string",
-  EnvironmentName = "string",
-  InfoType = "tail"|"bundle"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation requests logs from an environment named my-env:
-svc$request_environment_info(
-  EnvironmentName = "my-env",
-  InfoType = "tail"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/request_environment_info.html} for full documentation.
 }
 \keyword{internal}

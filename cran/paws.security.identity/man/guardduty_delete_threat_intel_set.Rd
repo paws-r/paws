@@ -12,18 +12,9 @@ with.}
 
 \item{ThreatIntelSetId}{[required] The unique ID of the threatIntelSet that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_threat_intel_set(
-  DetectorId = "string",
-  ThreatIntelSetId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/delete_threat_intel_set.html} for full documentation.
+}
 \keyword{internal}

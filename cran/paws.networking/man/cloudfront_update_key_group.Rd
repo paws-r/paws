@@ -4,7 +4,7 @@
 \alias{cloudfront_update_key_group}
 \title{Updates a key group}
 \usage{
-cloudfront_update_key_group(KeyGroupConfig, Id, IfMatch)
+cloudfront_update_key_group(KeyGroupConfig, Id, IfMatch = NULL)
 }
 \arguments{
 \item{KeyGroupConfig}{[required] The key group configuration.}
@@ -14,55 +14,9 @@ cloudfront_update_key_group(KeyGroupConfig, Id, IfMatch)
 \item{IfMatch}{The version of the key group that you are updating. The version is the
 key group’s \code{ETag} value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KeyGroup = list(
-    Id = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    KeyGroupConfig = list(
-      Name = "string",
-      Items = list(
-        "string"
-      ),
-      Comment = "string"
-    )
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Updates a key group.
 
-When you update a key group, all the fields are updated with the values
-provided in the request. You cannot update some fields independent of
-others. To update a key group:
-\enumerate{
-\item Get the current key group with
-\code{\link[=cloudfront_get_key_group]{get_key_group}} or
-\code{\link[=cloudfront_get_key_group_config]{get_key_group_config}}.
-\item Locally modify the fields in the key group that you want to update.
-For example, add or remove public key IDs.
-\item Call \code{\link[=cloudfront_update_key_group]{update_key_group}} with the
-entire key group object, including the fields that you modified and
-those that you didn’t.
+See \url{https://paws-r.github.io/docs/cloudfront/update_key_group.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$update_key_group(
-  KeyGroupConfig = list(
-    Name = "string",
-    Items = list(
-      "string"
-    ),
-    Comment = "string"
-  ),
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
-
 \keyword{internal}

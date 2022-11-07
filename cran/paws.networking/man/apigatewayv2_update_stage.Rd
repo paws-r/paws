@@ -4,9 +4,18 @@
 \alias{apigatewayv2_update_stage}
 \title{Updates a Stage}
 \usage{
-apigatewayv2_update_stage(AccessLogSettings, ApiId, AutoDeploy,
-  ClientCertificateId, DefaultRouteSettings, DeploymentId, Description,
-  RouteSettings, StageName, StageVariables)
+apigatewayv2_update_stage(
+  AccessLogSettings = NULL,
+  ApiId,
+  AutoDeploy = NULL,
+  ClientCertificateId = NULL,
+  DefaultRouteSettings = NULL,
+  DeploymentId = NULL,
+  Description = NULL,
+  RouteSettings = NULL,
+  StageName,
+  StageVariables = NULL
+)
 }
 \arguments{
 \item{AccessLogSettings}{Settings for logging access in this stage.}
@@ -35,86 +44,9 @@ characters.}
 have alphanumeric and underscore characters, and the values must match
 [A-Za-z0-9-._~:/?#&=,]+.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccessLogSettings = list(
-    DestinationArn = "string",
-    Format = "string"
-  ),
-  ApiGatewayManaged = TRUE|FALSE,
-  AutoDeploy = TRUE|FALSE,
-  ClientCertificateId = "string",
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  DefaultRouteSettings = list(
-    DataTraceEnabled = TRUE|FALSE,
-    DetailedMetricsEnabled = TRUE|FALSE,
-    LoggingLevel = "ERROR"|"INFO"|"OFF",
-    ThrottlingBurstLimit = 123,
-    ThrottlingRateLimit = 123.0
-  ),
-  DeploymentId = "string",
-  Description = "string",
-  LastDeploymentStatusMessage = "string",
-  LastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  RouteSettings = list(
-    list(
-      DataTraceEnabled = TRUE|FALSE,
-      DetailedMetricsEnabled = TRUE|FALSE,
-      LoggingLevel = "ERROR"|"INFO"|"OFF",
-      ThrottlingBurstLimit = 123,
-      ThrottlingRateLimit = 123.0
-    )
-  ),
-  StageName = "string",
-  StageVariables = list(
-    "string"
-  ),
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Updates a Stage.
-}
-\section{Request syntax}{
-\preformatted{svc$update_stage(
-  AccessLogSettings = list(
-    DestinationArn = "string",
-    Format = "string"
-  ),
-  ApiId = "string",
-  AutoDeploy = TRUE|FALSE,
-  ClientCertificateId = "string",
-  DefaultRouteSettings = list(
-    DataTraceEnabled = TRUE|FALSE,
-    DetailedMetricsEnabled = TRUE|FALSE,
-    LoggingLevel = "ERROR"|"INFO"|"OFF",
-    ThrottlingBurstLimit = 123,
-    ThrottlingRateLimit = 123.0
-  ),
-  DeploymentId = "string",
-  Description = "string",
-  RouteSettings = list(
-    list(
-      DataTraceEnabled = TRUE|FALSE,
-      DetailedMetricsEnabled = TRUE|FALSE,
-      LoggingLevel = "ERROR"|"INFO"|"OFF",
-      ThrottlingBurstLimit = 123,
-      ThrottlingRateLimit = 123.0
-    )
-  ),
-  StageName = "string",
-  StageVariables = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_stage.html} for full documentation.
+}
 \keyword{internal}

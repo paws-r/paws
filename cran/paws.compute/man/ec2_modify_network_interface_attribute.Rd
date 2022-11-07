@@ -4,8 +4,14 @@
 \alias{ec2_modify_network_interface_attribute}
 \title{Modifies the specified network interface attribute}
 \usage{
-ec2_modify_network_interface_attribute(Attachment, Description, DryRun,
-  Groups, NetworkInterfaceId, SourceDestCheck)
+ec2_modify_network_interface_attribute(
+  Attachment = NULL,
+  Description = NULL,
+  DryRun = NULL,
+  Groups = NULL,
+  NetworkInterfaceId,
+  SourceDestCheck = NULL
+)
 }
 \arguments{
 \item{Attachment}{Information about the interface attachment. If modifying the 'delete on
@@ -26,81 +32,16 @@ must specify the ID of the security group, not the name.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
-\item{SourceDestCheck}{Indicates whether source/destination checking is enabled. A value of
-\code{true} means checking is enabled, and \code{false} means checking is
-disabled. This value must be \code{false} for a NAT instance to perform NAT.
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html}{NAT Instances}
-in the \emph{Amazon Virtual Private Cloud User Guide}.}
-}
-\value{
-An empty list.
+\item{SourceDestCheck}{Enable or disable source/destination checks, which ensure that the
+instance is either the source or the destination of any traffic that it
+receives. If the value is \code{true}, source/destination checks are enabled;
+otherwise, they are disabled. The default value is \code{true}. You must
+disable source/destination checks if the instance runs services such as
+network address translation, routing, or firewalls.}
 }
 \description{
-Modifies the specified network interface attribute. You can specify only
-one attribute at a time. You can use this action to attach and detach
-security groups from an existing EC2 instance.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_network_interface_attribute(
-  Attachment = list(
-    AttachmentId = "string",
-    DeleteOnTermination = TRUE|FALSE
-  ),
-  Description = list(
-    Value = "string"
-  ),
-  DryRun = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  NetworkInterfaceId = "string",
-  SourceDestCheck = list(
-    Value = TRUE|FALSE
-  )
-)
-}
-}
+Modifies the specified network interface attribute. You can specify only one attribute at a time. You can use this action to attach and detach security groups from an existing EC2 instance.
 
-\examples{
-\dontrun{
-# This example modifies the attachment attribute of the specified network
-# interface.
-svc$modify_network_interface_attribute(
-  Attachment = list(
-    AttachmentId = "eni-attach-43348162",
-    DeleteOnTermination = FALSE
-  ),
-  NetworkInterfaceId = "eni-686ea200"
-)
-
-# This example modifies the description attribute of the specified network
-# interface.
-svc$modify_network_interface_attribute(
-  Description = list(
-    Value = "My description"
-  ),
-  NetworkInterfaceId = "eni-686ea200"
-)
-
-# This example command modifies the groupSet attribute of the specified
-# network interface.
-svc$modify_network_interface_attribute(
-  Groups = list(
-    "sg-903004f8",
-    "sg-1a2b3c4d"
-  ),
-  NetworkInterfaceId = "eni-686ea200"
-)
-
-# This example command modifies the sourceDestCheck attribute of the
-# specified network interface.
-svc$modify_network_interface_attribute(
-  NetworkInterfaceId = "eni-686ea200",
-  SourceDestCheck = list(
-    Value = FALSE
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/modify_network_interface_attribute.html} for full documentation.
 }
 \keyword{internal}

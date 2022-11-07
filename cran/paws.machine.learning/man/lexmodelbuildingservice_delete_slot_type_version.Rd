@@ -14,24 +14,9 @@ version of the slot type. To delete the \verb{$LATEST} version, use the
 \code{\link[=lexmodelbuildingservice_delete_slot_type]{delete_slot_type}}
 operation.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a specific version of a slot type. To delete all versions of a
-slot type, use the
-\code{\link[=lexmodelbuildingservice_delete_slot_type]{delete_slot_type}}
-operation.
+Deletes a specific version of a slot type. To delete all versions of a slot type, use the \code{\link[=lexmodelbuildingservice_delete_slot_type]{delete_slot_type}} operation.
 
-This operation requires permissions for the \code{lex:DeleteSlotTypeVersion}
-action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_slot_type_version(
-  name = "string",
-  version = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -11,61 +11,9 @@ directconnect_associate_connection_with_lag(connectionId, lagId)
 
 \item{lagId}{[required] The ID of the LAG with which to associate the connection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ownerAccount = "string",
-  connectionId = "string",
-  connectionName = "string",
-  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-  region = "string",
-  location = "string",
-  bandwidth = "string",
-  vlan = 123,
-  partnerName = "string",
-  loaIssueTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  lagId = "string",
-  awsDevice = "string",
-  jumboFrameCapable = TRUE|FALSE,
-  awsDeviceV2 = "string",
-  hasLogicalRedundancy = "unknown"|"yes"|"no",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
-}
 \description{
-Associates an existing connection with a link aggregation group (LAG).
-The connection is interrupted and re-established as a member of the LAG
-(connectivity to AWS is interrupted). The connection must be hosted on
-the same AWS Direct Connect endpoint as the LAG, and its bandwidth must
-match the bandwidth for the LAG. You can re-associate a connection
-that's currently associated with a different LAG; however, if removing
-the connection would cause the original LAG to fall below its setting
-for minimum number of operational connections, the request fails.
+Associates an existing connection with a link aggregation group (LAG). The connection is interrupted and re-established as a member of the LAG (connectivity to Amazon Web Services is interrupted). The connection must be hosted on the same Direct Connect endpoint as the LAG, and its bandwidth must match the bandwidth for the LAG. You can re-associate a connection that's currently associated with a different LAG; however, if removing the connection would cause the original LAG to fall below its setting for minimum number of operational connections, the request fails.
 
-Any virtual interfaces that are directly associated with the connection
-are automatically re-associated with the LAG. If the connection was
-originally associated with a different LAG, the virtual interfaces
-remain associated with the original LAG.
-
-For interconnects, any hosted connections are automatically
-re-associated with the LAG. If the interconnect was originally
-associated with a different LAG, the hosted connections remain
-associated with the original LAG.
+See \url{https://paws-r.github.io/docs/directconnect/associate_connection_with_lag.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_connection_with_lag(
-  connectionId = "string",
-  lagId = "string"
-)
-}
-}
-
 \keyword{internal}

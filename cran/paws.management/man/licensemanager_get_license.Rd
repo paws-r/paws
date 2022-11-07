@@ -4,73 +4,16 @@
 \alias{licensemanager_get_license}
 \title{Gets detailed information about the specified license}
 \usage{
-licensemanager_get_license(LicenseArn, Version)
+licensemanager_get_license(LicenseArn, Version = NULL)
 }
 \arguments{
 \item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license.}
 
 \item{Version}{License version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  License = list(
-    LicenseArn = "string",
-    LicenseName = "string",
-    ProductName = "string",
-    ProductSKU = "string",
-    Issuer = list(
-      Name = "string",
-      SignKey = "string",
-      KeyFingerprint = "string"
-    ),
-    HomeRegion = "string",
-    Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-    Validity = list(
-      Begin = "string",
-      End = "string"
-    ),
-    Beneficiary = "string",
-    Entitlements = list(
-      list(
-        Name = "string",
-        Value = "string",
-        MaxCount = 123,
-        Overage = TRUE|FALSE,
-        Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-        AllowCheckIn = TRUE|FALSE
-      )
-    ),
-    ConsumptionConfiguration = list(
-      RenewType = "None"|"Weekly"|"Monthly",
-      ProvisionalConfiguration = list(
-        MaxTimeToLiveInMinutes = 123
-      ),
-      BorrowConfiguration = list(
-        AllowEarlyCheckIn = TRUE|FALSE,
-        MaxTimeToLiveInMinutes = 123
-      )
-    ),
-    LicenseMetadata = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    CreateTime = "string",
-    Version = "string"
-  )
-)
-}
-}
 \description{
 Gets detailed information about the specified license.
-}
-\section{Request syntax}{
-\preformatted{svc$get_license(
-  LicenseArn = "string",
-  Version = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/get_license.html} for full documentation.
+}
 \keyword{internal}

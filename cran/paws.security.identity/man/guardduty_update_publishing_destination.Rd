@@ -5,8 +5,11 @@
 \title{Updates information about the publishing destination specified by the
 destinationId}
 \usage{
-guardduty_update_publishing_destination(DetectorId, DestinationId,
-  DestinationProperties)
+guardduty_update_publishing_destination(
+  DetectorId,
+  DestinationId,
+  DestinationProperties = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector associated with the publishing destinations to
@@ -17,23 +20,9 @@ update.}
 \item{DestinationProperties}{A \code{DestinationProperties} object that includes the \code{DestinationArn} and
 \code{KmsKeyArn} of the publishing destination.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates information about the publishing destination specified by the
-\code{destinationId}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_publishing_destination(
-  DetectorId = "string",
-  DestinationId = "string",
-  DestinationProperties = list(
-    DestinationArn = "string",
-    KmsKeyArn = "string"
-  )
-)
-}
-}
+Updates information about the publishing destination specified by the \code{destinationId}.
 
+See \url{https://paws-r.github.io/docs/guardduty/update_publishing_destination.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,11 @@
 \title{Modifies the default credit option for CPU usage of burstable
 performance instances}
 \usage{
-ec2_modify_default_credit_specification(DryRun, InstanceFamily,
-  CpuCredits)
+ec2_modify_default_credit_specification(
+  DryRun = NULL,
+  InstanceFamily,
+  CpuCredits
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -20,42 +23,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Valid Values: \code{standard} | \code{unlimited}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceFamilyCreditSpecification = list(
-    InstanceFamily = "t2"|"t3"|"t3a"|"t4g",
-    CpuCredits = "string"
-  )
-)
-}
-}
 \description{
-Modifies the default credit option for CPU usage of burstable
-performance instances. The default credit option is set at the account
-level per AWS Region, and is specified per instance family. All new
-burstable performance instances in the account launch using the default
-credit option.
+Modifies the default credit option for CPU usage of burstable performance instances. The default credit option is set at the account level per Amazon Web Services Region, and is specified per instance family. All new burstable performance instances in the account launch using the default credit option.
 
-\code{\link[=ec2_modify_default_credit_specification]{modify_default_credit_specification}}
-is an asynchronous operation, which works at an AWS Region level and
-modifies the credit option for each Availability Zone. All zones in a
-Region are updated within five minutes. But if instances are launched
-during this operation, they might not get the new credit option until
-the zone is updated. To verify whether the update has occurred, you can
-call
-\code{\link[=ec2_get_default_credit_specification]{get_default_credit_specification}}
-and check \code{DefaultCreditSpecification} for updates.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable performance instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/modify_default_credit_specification.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_default_credit_specification(
-  DryRun = TRUE|FALSE,
-  InstanceFamily = "t2"|"t3"|"t3a"|"t4g",
-  CpuCredits = "string"
-)
-}
-}
-
 \keyword{internal}

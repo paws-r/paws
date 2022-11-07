@@ -6,8 +6,13 @@
 the list of DeveloperUserIdentifier values associated with an IdentityId
 for an existing identity}
 \usage{
-cognitoidentity_lookup_developer_identity(IdentityPoolId, IdentityId,
-  DeveloperUserIdentifier, MaxResults, NextToken)
+cognitoidentity_lookup_developer_identity(
+  IdentityPoolId,
+  IdentityId = NULL,
+  DeveloperUserIdentifier = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -27,47 +32,9 @@ and there are 20 matches in the database. The service will return a
 pagination token as a part of the response. This token can be used to
 call the API again and get results starting from the 11th match.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityId = "string",
-  DeveloperUserIdentifierList = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier}
-or the list of \code{DeveloperUserIdentifier} values associated with an
-\code{IdentityId} for an existing identity. Either \code{IdentityID} or
-\code{DeveloperUserIdentifier} must not be null. If you supply only one of
-these values, the other value will be searched in the database and
-returned as a part of the response. If you supply both,
-\code{DeveloperUserIdentifier} will be matched against \code{IdentityID}. If the
-values are verified against the database, the response returns both
-values and is the same as the request. Otherwise a
-\code{ResourceConflictException} is thrown.
+Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier} or the list of \code{DeveloperUserIdentifier} values associated with an \code{IdentityId} for an existing identity. Either \code{IdentityID} or \code{DeveloperUserIdentifier} must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, \code{DeveloperUserIdentifier} will be matched against \code{IdentityID}. If the values are verified against the database, the response returns both values and is the same as the request. Otherwise a \code{ResourceConflictException} is thrown.
 
-\code{\link[=cognitoidentity_lookup_developer_identity]{lookup_developer_identity}}
-is intended for low-throughput control plane operations: for example, to
-enable customer service to locate an identity ID by username. If you are
-using it for higher-volume operations such as user authentication, your
-requests are likely to be throttled.
-\code{\link[=cognitoidentity_get_open_id_token_for_developer_identity]{get_open_id_token_for_developer_identity}}
-is a better option for higher-volume operations for user authentication.
-
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/lookup_developer_identity.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$lookup_developer_identity(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DeveloperUserIdentifier = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

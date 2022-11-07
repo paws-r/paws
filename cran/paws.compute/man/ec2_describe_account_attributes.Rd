@@ -2,9 +2,9 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_account_attributes}
 \alias{ec2_describe_account_attributes}
-\title{Describes attributes of your AWS account}
+\title{Describes attributes of your Amazon Web Services account}
 \usage{
-ec2_describe_account_attributes(AttributeNames, DryRun)
+ec2_describe_account_attributes(AttributeNames = NULL, DryRun = NULL)
 }
 \arguments{
 \item{AttributeNames}{The account attribute names.}
@@ -14,64 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountAttributes = list(
-    list(
-      AttributeName = "string",
-      AttributeValues = list(
-        list(
-          AttributeValue = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes attributes of your AWS account. The following are the
-supported account attributes:
-\itemize{
-\item \code{supported-platforms}: Indicates whether your account can launch
-instances into EC2-Classic and EC2-VPC, or only into EC2-VPC.
-\item \code{default-vpc}: The ID of the default VPC for your account, or
-\code{none}.
-\item \code{max-instances}: This attribute is no longer supported. The returned
-value does not reflect your actual vCPU limit for running On-Demand
-Instances. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html#ec2-on-demand-instances-limits}{On-Demand Instance Limits}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-\item \code{vpc-max-security-groups-per-interface}: The maximum number of
-security groups that you can assign to a network interface.
-\item \code{max-elastic-ips}: The maximum number of Elastic IP addresses that
-you can allocate for use with EC2-Classic.
-\item \code{vpc-max-elastic-ips}: The maximum number of Elastic IP addresses
-that you can allocate for use with EC2-VPC.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_account_attributes(
-  AttributeNames = list(
-    "supported-platforms"|"default-vpc"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes attributes of your Amazon Web Services account. The following are the supported account attributes:
 
-\examples{
-\dontrun{
-# This example describes the supported-platforms attribute for your AWS
-# account.
-svc$describe_account_attributes(
-  AttributeNames = list(
-    "supported-platforms"
-  )
-)
-
-# This example describes the attributes for your AWS account.
-svc$describe_account_attributes()
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_account_attributes.html} for full documentation.
 }
 \keyword{internal}

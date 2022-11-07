@@ -4,8 +4,13 @@
 \alias{workdocs_get_document_version}
 \title{Retrieves version metadata for the specified document}
 \usage{
-workdocs_get_document_version(AuthenticationToken, DocumentId,
-  VersionId, Fields, IncludeCustomMetadata)
+workdocs_get_document_version(
+  AuthenticationToken = NULL,
+  DocumentId,
+  VersionId,
+  Fields = NULL,
+  IncludeCustomMetadata = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -20,53 +25,9 @@ the source document.}
 
 \item{IncludeCustomMetadata}{Set this to TRUE to include custom metadata in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Metadata = list(
-    Id = "string",
-    Name = "string",
-    ContentType = "string",
-    Size = 123,
-    Signature = "string",
-    Status = "INITIALIZED"|"ACTIVE",
-    CreatedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ModifiedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ContentCreatedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ContentModifiedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreatorId = "string",
-    Thumbnail = list(
-      "string"
-    ),
-    Source = list(
-      "string"
-    )
-  ),
-  CustomMetadata = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Retrieves version metadata for the specified document.
-}
-\section{Request syntax}{
-\preformatted{svc$get_document_version(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  VersionId = "string",
-  Fields = "string",
-  IncludeCustomMetadata = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/get_document_version.html} for full documentation.
+}
 \keyword{internal}

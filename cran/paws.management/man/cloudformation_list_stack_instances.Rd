@@ -5,14 +5,21 @@
 \title{Returns summary information about stack instances that are associated
 with the specified stack set}
 \usage{
-cloudformation_list_stack_instances(StackSetName, NextToken, MaxResults,
-  Filters, StackInstanceAccount, StackInstanceRegion)
+cloudformation_list_stack_instances(
+  StackSetName,
+  NextToken = NULL,
+  MaxResults = NULL,
+  Filters = NULL,
+  StackInstanceAccount = NULL,
+  StackInstanceRegion = NULL,
+  CallAs = NULL
+)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to list stack
 instances for.}
 
-\item{NextToken}{If the previous request didn't return all of the remaining results, the
+\item{NextToken}{If the previous request didn't return all the remaining results, the
 response's \code{NextToken} parameter value is set to a token. To retrieve
 the next set of results, call
 \code{\link[=cloudformation_list_stack_instances]{list_stack_instances}} again and
@@ -27,55 +34,31 @@ parameter to get the next set of results.}
 
 \item{Filters}{The status that stack instances are filtered by.}
 
-\item{StackInstanceAccount}{The name of the AWS account that you want to list stack instances for.}
+\item{StackInstanceAccount}{The name of the Amazon Web Services account that you want to list stack
+instances for.}
 
 \item{StackInstanceRegion}{The name of the Region where you want to list stack instances.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Summaries = list(
-    list(
-      StackSetId = "string",
-      Region = "string",
-      Account = "string",
-      StackId = "string",
-      Status = "CURRENT"|"OUTDATED"|"INOPERABLE",
-      StatusReason = "string",
-      StackInstanceStatus = list(
-        DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"
-      ),
-      OrganizationalUnitId = "string",
-      DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
-      LastDriftCheckTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
-Returns summary information about stack instances that are associated
-with the specified stack set. You can filter for stack instances that
-are associated with a specific AWS account name or Region, or that have
-a specific status.
-}
-\section{Request syntax}{
-\preformatted{svc$list_stack_instances(
-  StackSetName = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      Name = "DETAILED_STATUS",
-      Values = "string"
-    )
-  ),
-  StackInstanceAccount = "string",
-  StackInstanceRegion = "string"
-)
-}
-}
+Returns summary information about stack instances that are associated with the specified stack set. You can filter for stack instances that are associated with a specific Amazon Web Services account name or Region, or that have a specific status.
 
+See \url{https://paws-r.github.io/docs/cloudformation/list_stack_instances.html} for full documentation.
+}
 \keyword{internal}

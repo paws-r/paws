@@ -5,7 +5,7 @@
 \title{Returns a list of registries that you have created, with minimal
 registry information}
 \usage{
-glue_list_registries(MaxResults, NextToken)
+glue_list_registries(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{Maximum number of results required per page. If the value is not
@@ -13,34 +13,9 @@ supplied, this will be defaulted to 25 per page.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Registries = list(
-    list(
-      RegistryName = "string",
-      RegistryArn = "string",
-      Description = "string",
-      Status = "AVAILABLE"|"DELETING",
-      CreatedTime = "string",
-      UpdatedTime = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of registries that you have created, with minimal
-registry information. Registries in the \code{Deleting} status will not be
-included in the results. Empty results will be returned if there are no
-registries available.
-}
-\section{Request syntax}{
-\preformatted{svc$list_registries(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of registries that you have created, with minimal registry information. Registries in the \code{Deleting} status will not be included in the results. Empty results will be returned if there are no registries available.
 
+See \url{https://paws-r.github.io/docs/glue/list_registries.html} for full documentation.
+}
 \keyword{internal}

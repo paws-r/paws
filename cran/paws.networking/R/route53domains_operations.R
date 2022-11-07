@@ -3,48 +3,21 @@
 #' @include route53domains_service.R
 NULL
 
-#' Accepts the transfer of a domain from another AWS account to the current
-#' AWS account
+#' Accepts the transfer of a domain from another Amazon Web Services
+#' account to the currentAmazon Web Services account
 #'
 #' @description
-#' Accepts the transfer of a domain from another AWS account to the current
-#' AWS account. You initiate a transfer between AWS accounts using
-#' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
-#' 
-#' Use either [`list_operations`][route53domains_list_operations] or
-#' [`get_operation_detail`][route53domains_get_operation_detail] to
-#' determine whether the operation succeeded.
-#' [`get_operation_detail`][route53domains_get_operation_detail] provides
-#' additional information, for example,
-#' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
+#' Accepts the transfer of a domain from another Amazon Web Services account to the currentAmazon Web Services account. You initiate a transfer between Amazon Web Services accounts using [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #'
-#' @usage
-#' route53domains_accept_domain_transfer_from_another_aws_account(
-#'   DomainName, Password)
+#' See [https://paws-r.github.io/docs/route53domains/accept_domain_transfer_from_another_aws_account.html](https://paws-r.github.io/docs/route53domains/accept_domain_transfer_from_another_aws_account.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The name of the domain that was specified when another AWS account
-#' submitted a
+#' @param DomainName &#91;required&#93; The name of the domain that was specified when another Amazon Web
+#' Services account submitted a
 #' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account]
 #' request.
 #' @param Password &#91;required&#93; The password that was returned by the
 #' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account]
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$accept_domain_transfer_from_another_aws_account(
-#'   DomainName = "string",
-#'   Password = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -66,45 +39,16 @@ route53domains_accept_domain_transfer_from_another_aws_account <- function(Domai
 }
 .route53domains$operations$accept_domain_transfer_from_another_aws_account <- route53domains_accept_domain_transfer_from_another_aws_account
 
-#' Cancels the transfer of a domain from the current AWS account to another
-#' AWS account
+#' Cancels the transfer of a domain from the current Amazon Web Services
+#' account to another Amazon Web Services account
 #'
 #' @description
-#' Cancels the transfer of a domain from the current AWS account to another
-#' AWS account. You initiate a transfer between AWS accounts using
-#' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
-#' 
-#' You must cancel the transfer before the other AWS account accepts the
-#' transfer using
-#' [`accept_domain_transfer_from_another_aws_account`][route53domains_accept_domain_transfer_from_another_aws_account].
-#' 
-#' Use either [`list_operations`][route53domains_list_operations] or
-#' [`get_operation_detail`][route53domains_get_operation_detail] to
-#' determine whether the operation succeeded.
-#' [`get_operation_detail`][route53domains_get_operation_detail] provides
-#' additional information, for example,
-#' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
+#' Cancels the transfer of a domain from the current Amazon Web Services account to another Amazon Web Services account. You initiate a transfer betweenAmazon Web Services accounts using [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #'
-#' @usage
-#' route53domains_cancel_domain_transfer_to_another_aws_account(DomainName)
+#' See [https://paws-r.github.io/docs/route53domains/cancel_domain_transfer_to_another_aws_account.html](https://paws-r.github.io/docs/route53domains/cancel_domain_transfer_to_another_aws_account.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which you want to cancel the transfer to
-#' another AWS account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_domain_transfer_to_another_aws_account(
-#'   DomainName = "string"
-#' )
-#' ```
+#' another Amazon Web Services account.
 #'
 #' @keywords internal
 #'
@@ -129,19 +73,14 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #' This operation checks the availability of one domain name
 #'
 #' @description
-#' This operation checks the availability of one domain name. Note that if
-#' the availability status of a domain is pending, you must submit another
-#' request to determine the availability of the domain name.
+#' This operation checks the availability of one domain name. Note that if the availability status of a domain is pending, you must submit another request to determine the availability of the domain name.
 #'
-#' @usage
-#' route53domains_check_domain_availability(DomainName, IdnLangCode)
+#' See [https://paws-r.github.io/docs/route53domains/check_domain_availability.html](https://paws-r.github.io/docs/route53domains/check_domain_availability.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to get availability for. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
-#' supports. For a list of supported TLDs, see [Domains that You Can
-#' Register with Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' supports. For a list of supported TLDs, see Domains that You Can
+#' Register with Amazon Route 53 in the *Amazon Route 53 Developer Guide*.
 #' 
 #' The domain name can contain only the following characters:
 #' 
@@ -157,28 +96,10 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #' 
 #' Internationalized domain names are not supported for some top-level
 #' domains. To determine whether the TLD that you want to use supports
-#' internationalized domain names, see [Domains that You Can Register with
-#' Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
-#' For more information, see [Formatting Internationalized Domain
-#' Names](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns).
+#' internationalized domain names, see Domains that You Can Register with
+#' Amazon Route 53. For more information, see Formatting Internationalized
+#' Domain Names.
 #' @param IdnLangCode Reserved for future use.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Availability = "AVAILABLE"|"AVAILABLE_RESERVED"|"AVAILABLE_PREORDER"|"UNAVAILABLE"|"UNAVAILABLE_PREMIUM"|"UNAVAILABLE_RESTRICTED"|"RESERVED"|"DONT_KNOW"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$check_domain_availability(
-#'   DomainName = "string",
-#'   IdnLangCode = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -205,15 +126,12 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' @description
 #' Checks whether a domain name can be transferred to Amazon Route 53.
 #'
-#' @usage
-#' route53domains_check_domain_transferability(DomainName, AuthCode)
+#' See [https://paws-r.github.io/docs/route53domains/check_domain_transferability.html](https://paws-r.github.io/docs/route53domains/check_domain_transferability.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Route 53. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
-#' supports. For a list of supported TLDs, see [Domains that You Can
-#' Register with Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' supports. For a list of supported TLDs, see Domains that You Can
+#' Register with Amazon Route 53 in the *Amazon Route 53 Developer Guide*.
 #' 
 #' The domain name can contain only the following characters:
 #' 
@@ -229,24 +147,6 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' @param AuthCode If the registrar for the top-level domain (TLD) requires an
 #' authorization code to transfer the domain, the code that you got from
 #' the current registrar for the domain.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Transferability = list(
-#'     Transferable = "TRANSFERABLE"|"UNTRANSFERABLE"|"DONT_KNOW"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$check_domain_transferability(
-#'   DomainName = "string",
-#'   AuthCode = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -268,32 +168,44 @@ route53domains_check_domain_transferability <- function(DomainName, AuthCode = N
 }
 .route53domains$operations$check_domain_transferability <- route53domains_check_domain_transferability
 
+#' This operation deletes the specified domain
+#'
+#' @description
+#' This operation deletes the specified domain. This action is permanent. For more information, see Deleting a domain name registration.
+#'
+#' See [https://paws-r.github.io/docs/route53domains/delete_domain.html](https://paws-r.github.io/docs/route53domains/delete_domain.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; Name of the domain to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_delete_domain
+route53domains_delete_domain <- function(DomainName) {
+  op <- new_operation(
+    name = "DeleteDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$delete_domain_input(DomainName = DomainName)
+  output <- .route53domains$delete_domain_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$delete_domain <- route53domains_delete_domain
+
 #' This operation deletes the specified tags for a domain
 #'
 #' @description
 #' This operation deletes the specified tags for a domain.
-#' 
-#' All tag operations are eventually consistent; subsequent operations
-#' might not immediately represent all issued operations.
 #'
-#' @usage
-#' route53domains_delete_tags_for_domain(DomainName, TagsToDelete)
+#' See [https://paws-r.github.io/docs/route53domains/delete_tags_for_domain.html](https://paws-r.github.io/docs/route53domains/delete_tags_for_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain for which you want to delete one or more tags.
 #' @param TagsToDelete &#91;required&#93; A list of tag keys to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_tags_for_domain(
-#'   DomainName = "string",
-#'   TagsToDelete = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -319,23 +231,11 @@ route53domains_delete_tags_for_domain <- function(DomainName, TagsToDelete) {
 #' specified domain
 #'
 #' @description
-#' This operation disables automatic renewal of domain registration for the
-#' specified domain.
+#' This operation disables automatic renewal of domain registration for the specified domain.
 #'
-#' @usage
-#' route53domains_disable_domain_auto_renew(DomainName)
+#' See [https://paws-r.github.io/docs/route53domains/disable_domain_auto_renew.html](https://paws-r.github.io/docs/route53domains/disable_domain_auto_renew.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to disable automatic renewal for.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_domain_auto_renew(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -361,33 +261,11 @@ route53domains_disable_domain_auto_renew <- function(DomainName) {
 #' clientTransferProhibited status) to allow domain transfers
 #'
 #' @description
-#' This operation removes the transfer lock on the domain (specifically the
-#' `clientTransferProhibited` status) to allow domain transfers. We
-#' recommend you refrain from performing this action unless you intend to
-#' transfer the domain to a different registrar. Successful submission
-#' returns an operation ID that you can use to track the progress and
-#' completion of the action. If the request is not completed successfully,
-#' the domain registrant will be notified by email.
+#' This operation removes the transfer lock on the domain (specifically the `clientTransferProhibited` status) to allow domain transfers. We recommend you refrain from performing this action unless you intend to transfer the domain to a different registrar. Successful submission returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
 #'
-#' @usage
-#' route53domains_disable_domain_transfer_lock(DomainName)
+#' See [https://paws-r.github.io/docs/route53domains/disable_domain_transfer_lock.html](https://paws-r.github.io/docs/route53domains/disable_domain_transfer_lock.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to remove the transfer lock for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_domain_transfer_lock(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -413,32 +291,11 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
 #' specified domain before the domain registration expires
 #'
 #' @description
-#' This operation configures Amazon Route 53 to automatically renew the
-#' specified domain before the domain registration expires. The cost of
-#' renewing your domain registration is billed to your AWS account.
-#' 
-#' The period during which you can renew a domain name varies by TLD. For a
-#' list of TLDs and their renewal policies, see [Domains That You Can
-#' Register with Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
-#' in the *Amazon Route 53 Developer Guide*. Route 53 requires that you
-#' renew before the end of the renewal period so we can complete processing
-#' before the deadline.
+#' This operation configures Amazon Route 53 to automatically renew the specified domain before the domain registration expires. The cost of renewing your domain registration is billed to your Amazon Web Services account.
 #'
-#' @usage
-#' route53domains_enable_domain_auto_renew(DomainName)
+#' See [https://paws-r.github.io/docs/route53domains/enable_domain_auto_renew.html](https://paws-r.github.io/docs/route53domains/enable_domain_auto_renew.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to enable automatic renewal for.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_domain_auto_renew(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -464,31 +321,11 @@ route53domains_enable_domain_auto_renew <- function(DomainName) {
 #' clientTransferProhibited status) to prevent domain transfers
 #'
 #' @description
-#' This operation sets the transfer lock on the domain (specifically the
-#' `clientTransferProhibited` status) to prevent domain transfers.
-#' Successful submission returns an operation ID that you can use to track
-#' the progress and completion of the action. If the request is not
-#' completed successfully, the domain registrant will be notified by email.
+#' This operation sets the transfer lock on the domain (specifically the `clientTransferProhibited` status) to prevent domain transfers. Successful submission returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
 #'
-#' @usage
-#' route53domains_enable_domain_transfer_lock(DomainName)
+#' See [https://paws-r.github.io/docs/route53domains/enable_domain_transfer_lock.html](https://paws-r.github.io/docs/route53domains/enable_domain_transfer_lock.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to set the transfer lock for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_domain_transfer_lock(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -516,36 +353,12 @@ route53domains_enable_domain_transfer_lock <- function(DomainName) {
 #' responded
 #'
 #' @description
-#' For operations that require confirmation that the email address for the
-#' registrant contact is valid, such as registering a new domain, this
-#' operation returns information about whether the registrant contact has
-#' responded.
-#' 
-#' If you want us to resend the email, use the
-#' [`resend_contact_reachability_email`][route53domains_resend_contact_reachability_email]
-#' operation.
+#' For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation returns information about whether the registrant contact has responded.
 #'
-#' @usage
-#' route53domains_get_contact_reachability_status(domainName)
+#' See [https://paws-r.github.io/docs/route53domains/get_contact_reachability_status.html](https://paws-r.github.io/docs/route53domains/get_contact_reachability_status.html) for full documentation.
 #'
 #' @param domainName The name of the domain for which you want to know whether the registrant
 #' contact has confirmed that the email address is valid.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   domainName = "string",
-#'   status = "PENDING"|"DONE"|"EXPIRED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_contact_reachability_status(
-#'   domainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -568,127 +381,14 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 .route53domains$operations$get_contact_reachability_status <- route53domains_get_contact_reachability_status
 
 #' This operation returns detailed information about a specified domain
-#' that is associated with the current AWS account
+#' that is associated with the current Amazon Web Services account
 #'
 #' @description
-#' This operation returns detailed information about a specified domain
-#' that is associated with the current AWS account. Contact information for
-#' the domain is also returned as part of the output.
+#' This operation returns detailed information about a specified domain that is associated with the current Amazon Web Services account. Contact information for the domain is also returned as part of the output.
 #'
-#' @usage
-#' route53domains_get_domain_detail(DomainName)
+#' See [https://paws-r.github.io/docs/route53domains/get_domain_detail.html](https://paws-r.github.io/docs/route53domains/get_domain_detail.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to get detailed information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainName = "string",
-#'   Nameservers = list(
-#'     list(
-#'       Name = "string",
-#'       GlueIps = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   AutoRenew = TRUE|FALSE,
-#'   AdminContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   RegistrantContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   TechContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   AdminPrivacy = TRUE|FALSE,
-#'   RegistrantPrivacy = TRUE|FALSE,
-#'   TechPrivacy = TRUE|FALSE,
-#'   RegistrarName = "string",
-#'   WhoIsServer = "string",
-#'   RegistrarUrl = "string",
-#'   AbuseContactEmail = "string",
-#'   AbuseContactPhone = "string",
-#'   RegistryDomainId = "string",
-#'   CreationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   UpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ExpirationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Reseller = "string",
-#'   DnsSec = "string",
-#'   StatusList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domain_detail(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -714,19 +414,15 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' names
 #'
 #' @description
-#' The GetDomainSuggestions operation returns a list of suggested domain
-#' names.
+#' The GetDomainSuggestions operation returns a list of suggested domain names.
 #'
-#' @usage
-#' route53domains_get_domain_suggestions(DomainName, SuggestionCount,
-#'   OnlyAvailable)
+#' See [https://paws-r.github.io/docs/route53domains/get_domain_suggestions.html](https://paws-r.github.io/docs/route53domains/get_domain_suggestions.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; A domain name that you want to use as the basis for a list of possible
 #' domain names. The top-level domain (TLD), such as .com, must be a TLD
-#' that Route 53 supports. For a list of supported TLDs, see [Domains that
-#' You Can Register with Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' that Route 53 supports. For a list of supported TLDs, see Domains that
+#' You Can Register with Amazon Route 53 in the *Amazon Route 53 Developer
+#' Guide*.
 #' 
 #' The domain name can contain only the following characters:
 #' 
@@ -742,9 +438,8 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' 
 #' Internationalized domain names are not supported for some top-level
 #' domains. To determine whether the TLD that you want to use supports
-#' internationalized domain names, see [Domains that You Can Register with
-#' Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
+#' internationalized domain names, see Domains that You Can Register with
+#' Amazon Route 53.
 #' @param SuggestionCount &#91;required&#93; The number of suggested domain names that you want Route 53 to return.
 #' Specify a value between 1 and 50.
 #' @param OnlyAvailable &#91;required&#93; If `OnlyAvailable` is `true`, Route 53 returns only domain names that
@@ -752,28 +447,6 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' names without checking whether they're available to be registered. To
 #' determine whether the domain is available, you can call
 #' `checkDomainAvailability` for each suggestion.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SuggestionsList = list(
-#'     list(
-#'       DomainName = "string",
-#'       Availability = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domain_suggestions(
-#'   DomainName = "string",
-#'   SuggestionCount = 123,
-#'   OnlyAvailable = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -799,37 +472,13 @@ route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, O
 #' completed
 #'
 #' @description
-#' This operation returns the current status of an operation that is not
-#' completed.
+#' This operation returns the current status of an operation that is not completed.
 #'
-#' @usage
-#' route53domains_get_operation_detail(OperationId)
+#' See [https://paws-r.github.io/docs/route53domains/get_operation_detail.html](https://paws-r.github.io/docs/route53domains/get_operation_detail.html) for full documentation.
 #'
 #' @param OperationId &#91;required&#93; The identifier for the operation for which you want to get the status.
 #' Route 53 returned the identifier in the response to the original
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string",
-#'   Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
-#'   Message = "string",
-#'   DomainName = "string",
-#'   Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
-#'   SubmittedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_operation_detail(
-#'   OperationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -852,21 +501,26 @@ route53domains_get_operation_detail <- function(OperationId) {
 .route53domains$operations$get_operation_detail <- route53domains_get_operation_detail
 
 #' This operation returns all the domain names registered with Amazon Route
-#' 53 for the current AWS account
+#' 53 for the current Amazon Web Services account if no filtering
+#' conditions are used
 #'
 #' @description
-#' This operation returns all the domain names registered with Amazon Route
-#' 53 for the current AWS account.
+#' This operation returns all the domain names registered with Amazon Route 53 for the current Amazon Web Services account if no filtering conditions are used.
 #'
-#' @usage
-#' route53domains_list_domains(Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/route53domains/list_domains.html](https://paws-r.github.io/docs/route53domains/list_domains.html) for full documentation.
 #'
+#' @param FilterConditions A complex type that contains information about the filters applied
+#' during the [`list_domains`][route53domains_list_domains] request. The
+#' filter conditions can include domain name and domain expiration.
+#' @param SortCondition A complex type that contains information about the requested ordering of
+#' domains in the returned list.
 #' @param Marker For an initial request for a list of domains, omit this element. If the
-#' number of domains that are associated with the current AWS account is
-#' greater than the value that you specified for `MaxItems`, you can use
-#' `Marker` to return additional domains. Get the value of `NextPageMarker`
-#' from the previous response, and submit another request that includes the
-#' value of `NextPageMarker` in the `Marker` element.
+#' number of domains that are associated with the current Amazon Web
+#' Services account is greater than the value that you specified for
+#' `MaxItems`, you can use `Marker` to return additional domains. Get the
+#' value of `NextPageMarker` from the previous response, and submit another
+#' request that includes the value of `NextPageMarker` in the `Marker`
+#' element.
 #' 
 #' Constraints: The marker must match the value specified in the previous
 #' request.
@@ -874,43 +528,17 @@ route53domains_get_operation_detail <- function(OperationId) {
 #' 
 #' Default: 20
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Domains = list(
-#'     list(
-#'       DomainName = "string",
-#'       AutoRenew = TRUE|FALSE,
-#'       TransferLock = TRUE|FALSE,
-#'       Expiry = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextPageMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_domains(
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname route53domains_list_domains
-route53domains_list_domains <- function(Marker = NULL, MaxItems = NULL) {
+route53domains_list_domains <- function(FilterConditions = NULL, SortCondition = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListDomains",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$list_domains_input(Marker = Marker, MaxItems = MaxItems)
+  input <- .route53domains$list_domains_input(FilterConditions = FilterConditions, SortCondition = SortCondition, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$list_domains_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -925,12 +553,9 @@ route53domains_list_domains <- function(Marker = NULL, MaxItems = NULL) {
 #' the current account
 #'
 #' @description
-#' Returns information about all of the operations that return an operation
-#' ID and that have ever been performed on domains that were registered by
-#' the current account.
+#' Returns information about all of the operations that return an operation ID and that have ever been performed on domains that were registered by the current account.
 #'
-#' @usage
-#' route53domains_list_operations(SubmittedSince, Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/route53domains/list_operations.html](https://paws-r.github.io/docs/route53domains/list_operations.html) for full documentation.
 #'
 #' @param SubmittedSince An optional parameter that lets you get information about all the
 #' operations that you submitted after a specified date and time. Specify
@@ -945,35 +570,6 @@ route53domains_list_domains <- function(Marker = NULL, MaxItems = NULL) {
 #' @param MaxItems Number of domains to be returned.
 #' 
 #' Default: 20
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Operations = list(
-#'     list(
-#'       OperationId = "string",
-#'       Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
-#'       Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
-#'       SubmittedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextPageMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_operations(
-#'   SubmittedSince = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -995,40 +591,61 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
 }
 .route53domains$operations$list_operations <- route53domains_list_operations
 
+#' Lists the following prices for either all the TLDs supported by
+#' Route 53, or the specified TLD:
+#'
+#' @description
+#' Lists the following prices for either all the TLDs supported by Route 53, or the specified TLD:
+#'
+#' See [https://paws-r.github.io/docs/route53domains/list_prices.html](https://paws-r.github.io/docs/route53domains/list_prices.html) for full documentation.
+#'
+#' @param Tld The TLD for which you want to receive the pricing information. For
+#' example. `.net`.
+#' 
+#' If a `Tld` value is not provided, a list of prices for all TLDs
+#' supported by Route 53 is returned.
+#' @param Marker For an initial request for a list of prices, omit this element. If the
+#' number of prices that are not yet complete is greater than the value
+#' that you specified for `MaxItems`, you can use `Marker` to return
+#' additional prices. Get the value of `NextPageMarker` from the previous
+#' response, and submit another request that includes the value of
+#' `NextPageMarker` in the `Marker` element.
+#' 
+#' Used only for all TLDs. If you specify a TLD, don't specify a `Marker`.
+#' @param MaxItems Number of `Prices` to be returned.
+#' 
+#' Used only for all TLDs. If you specify a TLD, don't specify a
+#' `MaxItems`.
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_list_prices
+route53domains_list_prices <- function(Tld = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListPrices",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$list_prices_input(Tld = Tld, Marker = Marker, MaxItems = MaxItems)
+  output <- .route53domains$list_prices_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$list_prices <- route53domains_list_prices
+
 #' This operation returns all of the tags that are associated with the
 #' specified domain
 #'
 #' @description
-#' This operation returns all of the tags that are associated with the
-#' specified domain.
-#' 
-#' All tag operations are eventually consistent; subsequent operations
-#' might not immediately represent all issued operations.
+#' This operation returns all of the tags that are associated with the specified domain.
 #'
-#' @usage
-#' route53domains_list_tags_for_domain(DomainName)
+#' See [https://paws-r.github.io/docs/route53domains/list_tags_for_domain.html](https://paws-r.github.io/docs/route53domains/list_tags_for_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain for which you want to get a list of tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_domain(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1053,48 +670,13 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' This operation registers a domain
 #'
 #' @description
-#' This operation registers a domain. Domains are registered either by
-#' Amazon Registrar (for .com, .net, and .org domains) or by our registrar
-#' associate, Gandi (for all other domains). For some top-level domains
-#' (TLDs), this operation requires extra parameters.
-#' 
-#' When you register a domain, Amazon Route 53 does the following:
-#' 
-#' -   Creates a Route 53 hosted zone that has the same name as the domain.
-#'     Route 53 assigns four name servers to your hosted zone and
-#'     automatically updates your domain registration with the names of
-#'     these name servers.
-#' 
-#' -   Enables autorenew, so your domain registration will renew
-#'     automatically each year. We'll notify you in advance of the renewal
-#'     date so you can choose whether to renew the registration.
-#' 
-#' -   Optionally enables privacy protection, so WHOIS queries return
-#'     contact information either for Amazon Registrar (for .com, .net, and
-#'     .org domains) or for our registrar associate, Gandi (for all other
-#'     TLDs). If you don't enable privacy protection, WHOIS queries return
-#'     the information that you entered for the registrant, admin, and tech
-#'     contacts.
-#' 
-#' -   If registration is successful, returns an operation ID that you can
-#'     use to track the progress and completion of the action. If the
-#'     request is not completed successfully, the domain registrant is
-#'     notified by email.
-#' 
-#' -   Charges your AWS account an amount based on the top-level domain.
-#'     For more information, see [Amazon Route 53
-#'     Pricing](https://aws.amazon.com/route53/pricing/).
+#' This operation registers a domain. Domains are registered either by Amazon Registrar (for .com, .net, and .org domains) or by our registrar associate, Gandi (for all other domains). For some top-level domains (TLDs), this operation requires extra parameters.
 #'
-#' @usage
-#' route53domains_register_domain(DomainName, IdnLangCode, DurationInYears,
-#'   AutoRenew, AdminContact, RegistrantContact, TechContact,
-#'   PrivacyProtectAdminContact, PrivacyProtectRegistrantContact,
-#'   PrivacyProtectTechContact)
+#' See [https://paws-r.github.io/docs/route53domains/register_domain.html](https://paws-r.github.io/docs/route53domains/register_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name that you want to register. The top-level domain (TLD),
 #' such as .com, must be a TLD that Route 53 supports. For a list of
-#' supported TLDs, see [Domains that You Can Register with Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' supported TLDs, see Domains that You Can Register with Amazon Route 53
 #' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' The domain name can contain only the following characters:
@@ -1111,18 +693,15 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' Internationalized domain names are not supported for some top-level
 #' domains. To determine whether the TLD that you want to use supports
-#' internationalized domain names, see [Domains that You Can Register with
-#' Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
-#' For more information, see [Formatting Internationalized Domain
-#' Names](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns).
+#' internationalized domain names, see Domains that You Can Register with
+#' Amazon Route 53. For more information, see Formatting Internationalized
+#' Domain Names.
 #' @param IdnLangCode Reserved for future use.
 #' @param DurationInYears &#91;required&#93; The number of years that you want to register the domain for. Domains
 #' are registered for a minimum of one year. The maximum period depends on
 #' the top-level domain. For the range of valid values for your domain, see
-#' [Domains that You Can Register with Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' Domains that You Can Register with Amazon Route 53 in the *Amazon Route
+#' 53 Developer Guide*.
 #' 
 #' Default: 1
 #' @param AutoRenew Indicates whether the domain will be automatically renewed (`true`) or
@@ -1131,20 +710,20 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' Default: `true`
 #' @param AdminContact &#91;required&#93; Provides detailed contact information. For information about the values
-#' that you specify for each element, see
-#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
+#' that you specify for each element, see ContactDetail.
 #' @param RegistrantContact &#91;required&#93; Provides detailed contact information. For information about the values
-#' that you specify for each element, see
-#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
+#' that you specify for each element, see ContactDetail.
 #' @param TechContact &#91;required&#93; Provides detailed contact information. For information about the values
-#' that you specify for each element, see
-#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
+#' that you specify for each element, see ContactDetail.
 #' @param PrivacyProtectAdminContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
 #' either for Amazon Registrar (for .com, .net, and .org domains) or for
 #' our registrar associate, Gandi (for all other TLDs). If you specify
 #' `false`, WHOIS queries return the information that you entered for the
 #' admin contact.
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' registrant, and technical contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
@@ -1154,6 +733,9 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' `false`, WHOIS queries return the information that you entered for the
 #' registrant contact (the domain owner).
 #' 
+#' You must specify the same privacy setting for the administrative,
+#' registrant, and technical contacts.
+#' 
 #' Default: `true`
 #' @param PrivacyProtectTechContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
@@ -1162,91 +744,10 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' `false`, WHOIS queries return the information that you entered for the
 #' technical contact.
 #' 
+#' You must specify the same privacy setting for the administrative,
+#' registrant, and technical contacts.
+#' 
 #' Default: `true`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_domain(
-#'   DomainName = "string",
-#'   IdnLangCode = "string",
-#'   DurationInYears = 123,
-#'   AutoRenew = TRUE|FALSE,
-#'   AdminContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   RegistrantContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   TechContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   PrivacyProtectAdminContact = TRUE|FALSE,
-#'   PrivacyProtectRegistrantContact = TRUE|FALSE,
-#'   PrivacyProtectTechContact = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1268,44 +769,18 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 }
 .route53domains$operations$register_domain <- route53domains_register_domain
 
-#' Rejects the transfer of a domain from another AWS account to the current
-#' AWS account
+#' Rejects the transfer of a domain from another Amazon Web Services
+#' account to the current Amazon Web Services account
 #'
 #' @description
-#' Rejects the transfer of a domain from another AWS account to the current
-#' AWS account. You initiate a transfer between AWS accounts using
-#' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
-#' 
-#' Use either [`list_operations`][route53domains_list_operations] or
-#' [`get_operation_detail`][route53domains_get_operation_detail] to
-#' determine whether the operation succeeded.
-#' [`get_operation_detail`][route53domains_get_operation_detail] provides
-#' additional information, for example,
-#' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
+#' Rejects the transfer of a domain from another Amazon Web Services account to the current Amazon Web Services account. You initiate a transfer betweenAmazon Web Services accounts using [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #'
-#' @usage
-#' route53domains_reject_domain_transfer_from_another_aws_account(
-#'   DomainName)
+#' See [https://paws-r.github.io/docs/route53domains/reject_domain_transfer_from_another_aws_account.html](https://paws-r.github.io/docs/route53domains/reject_domain_transfer_from_another_aws_account.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The name of the domain that was specified when another AWS account
-#' submitted a
+#' @param DomainName &#91;required&#93; The name of the domain that was specified when another Amazon Web
+#' Services account submitted a
 #' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account]
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reject_domain_transfer_from_another_aws_account(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1330,49 +805,19 @@ route53domains_reject_domain_transfer_from_another_aws_account <- function(Domai
 #' This operation renews a domain for the specified number of years
 #'
 #' @description
-#' This operation renews a domain for the specified number of years. The
-#' cost of renewing your domain is billed to your AWS account.
-#' 
-#' We recommend that you renew your domain several weeks before the
-#' expiration date. Some TLD registries delete domains before the
-#' expiration date if you haven't renewed far enough in advance. For more
-#' information about renewing domain registration, see [Renewing
-#' Registration for a
-#' Domain](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' This operation renews a domain for the specified number of years. The cost of renewing your domain is billed to your Amazon Web Services account.
 #'
-#' @usage
-#' route53domains_renew_domain(DomainName, DurationInYears,
-#'   CurrentExpiryYear)
+#' See [https://paws-r.github.io/docs/route53domains/renew_domain.html](https://paws-r.github.io/docs/route53domains/renew_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to renew.
 #' @param DurationInYears The number of years that you want to renew the domain for. The maximum
 #' number of years depends on the top-level domain. For the range of valid
-#' values for your domain, see [Domains that You Can Register with Amazon
-#' Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' values for your domain, see Domains that You Can Register with Amazon
+#' Route 53 in the *Amazon Route 53 Developer Guide*.
 #' 
 #' Default: 1
 #' @param CurrentExpiryYear &#91;required&#93; The year when the registration for the domain is set to expire. This
 #' value must match the current expiration date for the domain.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$renew_domain(
-#'   DomainName = "string",
-#'   DurationInYears = 123,
-#'   CurrentExpiryYear = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1400,33 +845,12 @@ route53domains_renew_domain <- function(DomainName, DurationInYears = NULL, Curr
 #' for the registrant contact
 #'
 #' @description
-#' For operations that require confirmation that the email address for the
-#' registrant contact is valid, such as registering a new domain, this
-#' operation resends the confirmation email to the current email address
-#' for the registrant contact.
+#' For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation resends the confirmation email to the current email address for the registrant contact.
 #'
-#' @usage
-#' route53domains_resend_contact_reachability_email(domainName)
+#' See [https://paws-r.github.io/docs/route53domains/resend_contact_reachability_email.html](https://paws-r.github.io/docs/route53domains/resend_contact_reachability_email.html) for full documentation.
 #'
 #' @param domainName The name of the domain for which you want Route 53 to resend a
 #' confirmation email to the registrant contact.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   domainName = "string",
-#'   emailAddress = "string",
-#'   isAlreadyVerified = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$resend_contact_reachability_email(
-#'   domainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1451,28 +875,11 @@ route53domains_resend_contact_reachability_email <- function(domainName = NULL) 
 #' This operation returns the AuthCode for the domain
 #'
 #' @description
-#' This operation returns the AuthCode for the domain. To transfer a domain
-#' to another registrar, you provide this value to the new registrar.
+#' This operation returns the AuthCode for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.
 #'
-#' @usage
-#' route53domains_retrieve_domain_auth_code(DomainName)
+#' See [https://paws-r.github.io/docs/route53domains/retrieve_domain_auth_code.html](https://paws-r.github.io/docs/route53domains/retrieve_domain_auth_code.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to get an authorization code for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AuthCode = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$retrieve_domain_auth_code(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1497,61 +904,14 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' Transfers a domain from another registrar to Amazon Route 53
 #'
 #' @description
-#' Transfers a domain from another registrar to Amazon Route 53. When the
-#' transfer is complete, the domain is registered either with Amazon
-#' Registrar (for .com, .net, and .org domains) or with our registrar
-#' associate, Gandi (for all other TLDs).
-#' 
-#' For more information about transferring domains, see the following
-#' topics:
-#' 
-#' -   For transfer requirements, a detailed procedure, and information
-#'     about viewing the status of a domain that you're transferring to
-#'     Route 53, see [Transferring Registration for a Domain to Amazon
-#'     Route
-#'     53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html)
-#'     in the *Amazon Route 53 Developer Guide*.
-#' 
-#' -   For information about how to transfer a domain from one AWS account
-#'     to another, see
-#'     [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
-#' 
-#' -   For information about how to transfer a domain to another domain
-#'     registrar, see [Transferring a Domain from Amazon Route 53 to
-#'     Another
-#'     Registrar](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html)
-#'     in the *Amazon Route 53 Developer Guide*.
-#' 
-#' If the registrar for your domain is also the DNS service provider for
-#' the domain, we highly recommend that you transfer your DNS service to
-#' Route 53 or to another DNS service provider before you transfer your
-#' registration. Some registrars provide free DNS service when you purchase
-#' a domain registration. When you transfer the registration, the previous
-#' registrar will not renew your domain registration and could end your DNS
-#' service at any time.
-#' 
-#' If the registrar for your domain is also the DNS service provider for
-#' the domain and you don't transfer DNS service to another provider, your
-#' website, email, and the web applications associated with the domain
-#' might become unavailable.
-#' 
-#' If the transfer is successful, this method returns an operation ID that
-#' you can use to track the progress and completion of the action. If the
-#' transfer doesn't complete successfully, the domain registrant will be
-#' notified by email.
+#' Transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered either with Amazon Registrar (for .com, .net, and .org domains) or with our registrar associate, Gandi (for all other TLDs).
 #'
-#' @usage
-#' route53domains_transfer_domain(DomainName, IdnLangCode, DurationInYears,
-#'   Nameservers, AuthCode, AutoRenew, AdminContact, RegistrantContact,
-#'   TechContact, PrivacyProtectAdminContact,
-#'   PrivacyProtectRegistrantContact, PrivacyProtectTechContact)
+#' See [https://paws-r.github.io/docs/route53domains/transfer_domain.html](https://paws-r.github.io/docs/route53domains/transfer_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Route 53. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
-#' supports. For a list of supported TLDs, see [Domains that You Can
-#' Register with Amazon Route
-#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' supports. For a list of supported TLDs, see Domains that You Can
+#' Register with Amazon Route 53 in the *Amazon Route 53 Developer Guide*.
 #' 
 #' The domain name can contain only the following characters:
 #' 
@@ -1587,6 +947,9 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' `false`, WHOIS queries return the information that you entered for the
 #' admin contact.
 #' 
+#' You must specify the same privacy setting for the administrative,
+#' registrant, and technical contacts.
+#' 
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
@@ -1594,6 +957,9 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' our registrar associate, Gandi (for all other TLDs). If you specify
 #' `false`, WHOIS queries return the information that you entered for the
 #' registrant contact (domain owner).
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' registrant, and technical contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectTechContact Whether you want to conceal contact information from WHOIS queries. If
@@ -1603,100 +969,10 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' `false`, WHOIS queries return the information that you entered for the
 #' technical contact.
 #' 
+#' You must specify the same privacy setting for the administrative,
+#' registrant, and technical contacts.
+#' 
 #' Default: `true`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$transfer_domain(
-#'   DomainName = "string",
-#'   IdnLangCode = "string",
-#'   DurationInYears = 123,
-#'   Nameservers = list(
-#'     list(
-#'       Name = "string",
-#'       GlueIps = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   AuthCode = "string",
-#'   AutoRenew = TRUE|FALSE,
-#'   AdminContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   RegistrantContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   TechContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   PrivacyProtectAdminContact = TRUE|FALSE,
-#'   PrivacyProtectRegistrantContact = TRUE|FALSE,
-#'   PrivacyProtectTechContact = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1718,64 +994,18 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 }
 .route53domains$operations$transfer_domain <- route53domains_transfer_domain
 
-#' Transfers a domain from the current AWS account to another AWS account
+#' Transfers a domain from the current Amazon Web Services account to
+#' another Amazon Web Services account
 #'
 #' @description
-#' Transfers a domain from the current AWS account to another AWS account.
-#' Note the following:
-#' 
-#' -   The AWS account that you're transferring the domain to must accept
-#'     the transfer. If the other account doesn't accept the transfer
-#'     within 3 days, we cancel the transfer. See
-#'     [`accept_domain_transfer_from_another_aws_account`][route53domains_accept_domain_transfer_from_another_aws_account].
-#' 
-#' -   You can cancel the transfer before the other account accepts it. See
-#'     [`cancel_domain_transfer_to_another_aws_account`][route53domains_cancel_domain_transfer_to_another_aws_account].
-#' 
-#' -   The other account can reject the transfer. See
-#'     [`reject_domain_transfer_from_another_aws_account`][route53domains_reject_domain_transfer_from_another_aws_account].
-#' 
-#' When you transfer a domain from one AWS account to another, Route 53
-#' doesn't transfer the hosted zone that is associated with the domain. DNS
-#' resolution isn't affected if the domain and the hosted zone are owned by
-#' separate accounts, so transferring the hosted zone is optional. For
-#' information about transferring the hosted zone to another AWS account,
-#' see [Migrating a Hosted Zone to a Different AWS
-#' Account](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html)
-#' in the *Amazon Route 53 Developer Guide*.
-#' 
-#' Use either [`list_operations`][route53domains_list_operations] or
-#' [`get_operation_detail`][route53domains_get_operation_detail] to
-#' determine whether the operation succeeded.
-#' [`get_operation_detail`][route53domains_get_operation_detail] provides
-#' additional information, for example,
-#' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
+#' Transfers a domain from the current Amazon Web Services account to another Amazon Web Services account. Note the following:
 #'
-#' @usage
-#' route53domains_transfer_domain_to_another_aws_account(DomainName,
-#'   AccountId)
+#' See [https://paws-r.github.io/docs/route53domains/transfer_domain_to_another_aws_account.html](https://paws-r.github.io/docs/route53domains/transfer_domain_to_another_aws_account.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The name of the domain that you want to transfer from the current AWS
-#' account to another account.
-#' @param AccountId &#91;required&#93; The account ID of the AWS account that you want to transfer the domain
-#' to, for example, `111122223333`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string",
-#'   Password = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$transfer_domain_to_another_aws_account(
-#'   DomainName = "string",
-#'   AccountId = "string"
-#' )
-#' ```
+#' @param DomainName &#91;required&#93; The name of the domain that you want to transfer from the current Amazon
+#' Web Services account to another account.
+#' @param AccountId &#91;required&#93; The account ID of the Amazon Web Services account that you want to
+#' transfer the domain to, for example, `111122223333`.
 #'
 #' @keywords internal
 #'
@@ -1800,101 +1030,14 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' This operation updates the contact information for a particular domain
 #'
 #' @description
-#' This operation updates the contact information for a particular domain.
-#' You must specify information for at least one contact: registrant,
-#' administrator, or technical.
-#' 
-#' If the update is successful, this method returns an operation ID that
-#' you can use to track the progress and completion of the action. If the
-#' request is not completed successfully, the domain registrant will be
-#' notified by email.
+#' This operation updates the contact information for a particular domain. You must specify information for at least one contact: registrant, administrator, or technical.
 #'
-#' @usage
-#' route53domains_update_domain_contact(DomainName, AdminContact,
-#'   RegistrantContact, TechContact)
+#' See [https://paws-r.github.io/docs/route53domains/update_domain_contact.html](https://paws-r.github.io/docs/route53domains/update_domain_contact.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update contact information for.
 #' @param AdminContact Provides detailed contact information.
 #' @param RegistrantContact Provides detailed contact information.
 #' @param TechContact Provides detailed contact information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_domain_contact(
-#'   DomainName = "string",
-#'   AdminContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   RegistrantContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   TechContact = list(
-#'     FirstName = "string",
-#'     LastName = "string",
-#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-#'     OrganizationName = "string",
-#'     AddressLine1 = "string",
-#'     AddressLine2 = "string",
-#'     City = "string",
-#'     State = "string",
-#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-#'     ZipCode = "string",
-#'     PhoneNumber = "string",
-#'     Email = "string",
-#'     Fax = "string",
-#'     ExtraParams = list(
-#'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1919,33 +1062,9 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' This operation updates the specified domain contact's privacy setting
 #'
 #' @description
-#' This operation updates the specified domain contact's privacy setting.
-#' When privacy protection is enabled, contact information such as email
-#' address is replaced either with contact information for Amazon Registrar
-#' (for .com, .net, and .org domains) or with contact information for our
-#' registrar associate, Gandi.
-#' 
-#' This operation affects only the contact information for the specified
-#' contact type (registrant, administrator, or tech). If the request
-#' succeeds, Amazon Route 53 returns an operation ID that you can use with
-#' [`get_operation_detail`][route53domains_get_operation_detail] to track
-#' the progress and completion of the action. If the request doesn't
-#' complete successfully, the domain registrant will be notified by email.
-#' 
-#' By disabling the privacy service via API, you consent to the publication
-#' of the contact information provided for this domain via the public WHOIS
-#' database. You certify that you are the registrant of this domain name
-#' and have the authority to make this decision. You may withdraw your
-#' consent at any time by enabling privacy protection using either
-#' [`update_domain_contact_privacy`][route53domains_update_domain_contact_privacy]
-#' or the Route 53 console. Enabling privacy protection removes the contact
-#' information provided for this domain from the WHOIS database. For more
-#' information on our privacy practices, see
-#' <https://aws.amazon.com/privacy/>.
+#' This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, contact information such as email address is replaced either with contact information for Amazon Registrar (for .com, .net, and .org domains) or with contact information for our registrar associate, Gandi.
 #'
-#' @usage
-#' route53domains_update_domain_contact_privacy(DomainName, AdminPrivacy,
-#'   RegistrantPrivacy, TechPrivacy)
+#' See [https://paws-r.github.io/docs/route53domains/update_domain_contact_privacy.html](https://paws-r.github.io/docs/route53domains/update_domain_contact_privacy.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update the privacy setting for.
 #' @param AdminPrivacy Whether you want to conceal contact information from WHOIS queries. If
@@ -1954,36 +1073,27 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' our registrar associate, Gandi (for all other TLDs). If you specify
 #' `false`, WHOIS queries return the information that you entered for the
 #' admin contact.
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' registrant, and technical contacts.
 #' @param RegistrantPrivacy Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
 #' either for Amazon Registrar (for .com, .net, and .org domains) or for
 #' our registrar associate, Gandi (for all other TLDs). If you specify
 #' `false`, WHOIS queries return the information that you entered for the
 #' registrant contact (domain owner).
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' registrant, and technical contacts.
 #' @param TechPrivacy Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
 #' either for Amazon Registrar (for .com, .net, and .org domains) or for
 #' our registrar associate, Gandi (for all other TLDs). If you specify
 #' `false`, WHOIS queries return the information that you entered for the
 #' technical contact.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_domain_contact_privacy(
-#'   DomainName = "string",
-#'   AdminPrivacy = TRUE|FALSE,
-#'   RegistrantPrivacy = TRUE|FALSE,
-#'   TechPrivacy = TRUE|FALSE
-#' )
-#' ```
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' registrant, and technical contacts.
 #'
 #' @keywords internal
 #'
@@ -2009,47 +1119,13 @@ route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivac
 #' with the specified set of name servers
 #'
 #' @description
-#' This operation replaces the current set of name servers for the domain
-#' with the specified set of name servers. If you use Amazon Route 53 as
-#' your DNS service, specify the four name servers in the delegation set
-#' for the hosted zone for the domain.
-#' 
-#' If successful, this operation returns an operation ID that you can use
-#' to track the progress and completion of the action. If the request is
-#' not completed successfully, the domain registrant will be notified by
-#' email.
+#' This operation replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.
 #'
-#' @usage
-#' route53domains_update_domain_nameservers(DomainName, FIAuthKey,
-#'   Nameservers)
+#' See [https://paws-r.github.io/docs/route53domains/update_domain_nameservers.html](https://paws-r.github.io/docs/route53domains/update_domain_nameservers.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to change name servers for.
 #' @param FIAuthKey The authorization key for .fi domains
 #' @param Nameservers &#91;required&#93; A list of new name servers for the domain.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_domain_nameservers(
-#'   DomainName = "string",
-#'   FIAuthKey = "string",
-#'   Nameservers = list(
-#'     list(
-#'       Name = "string",
-#'       GlueIps = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2075,33 +1151,13 @@ route53domains_update_domain_nameservers <- function(DomainName, FIAuthKey = NUL
 #'
 #' @description
 #' This operation adds or updates tags for a specified domain.
-#' 
-#' All tag operations are eventually consistent; subsequent operations
-#' might not immediately represent all issued operations.
 #'
-#' @usage
-#' route53domains_update_tags_for_domain(DomainName, TagsToUpdate)
+#' See [https://paws-r.github.io/docs/route53domains/update_tags_for_domain.html](https://paws-r.github.io/docs/route53domains/update_tags_for_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain for which you want to add or update tags.
 #' @param TagsToUpdate A list of the tag keys and values that you want to add or update. If you
 #' specify a key that already exists, the corresponding value will be
 #' replaced.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_tags_for_domain(
-#'   DomainName = "string",
-#'   TagsToUpdate = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2123,15 +1179,13 @@ route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NUL
 }
 .route53domains$operations$update_tags_for_domain <- route53domains_update_tags_for_domain
 
-#' Returns all the domain-related billing records for the current AWS
-#' account for a specified period
+#' Returns all the domain-related billing records for the current Amazon
+#' Web Services account for a specified period
 #'
 #' @description
-#' Returns all the domain-related billing records for the current AWS
-#' account for a specified period
+#' Returns all the domain-related billing records for the current Amazon Web Services account for a specified period
 #'
-#' @usage
-#' route53domains_view_billing(Start, End, Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/route53domains/view_billing.html](https://paws-r.github.io/docs/route53domains/view_billing.html) for full documentation.
 #'
 #' @param Start The beginning date and time for the time period for which you want a
 #' list of billing records. Specify the date and time in Unix time format
@@ -2141,50 +1195,17 @@ route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NUL
 #' Coordinated Universal time (UTC).
 #' @param Marker For an initial request for a list of billing records, omit this element.
 #' If the number of billing records that are associated with the current
-#' AWS account during the specified period is greater than the value that
-#' you specified for `MaxItems`, you can use `Marker` to return additional
-#' billing records. Get the value of `NextPageMarker` from the previous
-#' response, and submit another request that includes the value of
-#' `NextPageMarker` in the `Marker` element.
+#' Amazon Web Services account during the specified period is greater than
+#' the value that you specified for `MaxItems`, you can use `Marker` to
+#' return additional billing records. Get the value of `NextPageMarker`
+#' from the previous response, and submit another request that includes the
+#' value of `NextPageMarker` in the `Marker` element.
 #' 
 #' Constraints: The marker must match the value of `NextPageMarker` that
 #' was returned in the previous response.
 #' @param MaxItems The number of billing records to be returned.
 #' 
 #' Default: 20
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextPageMarker = "string",
-#'   BillingRecords = list(
-#'     list(
-#'       DomainName = "string",
-#'       Operation = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
-#'       InvoiceId = "string",
-#'       BillDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Price = 123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$view_billing(
-#'   Start = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   End = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Marker = "string",
-#'   MaxItems = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

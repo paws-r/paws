@@ -7,38 +7,13 @@
 ecs_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to
-list the tags. Currently, the supported resources are Amazon ECS tasks,
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource to list the
+tags for. Currently, the supported resources are Amazon ECS tasks,
 services, task definitions, clusters, and container instances.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
 }
 \description{
 List the tags for an Amazon ECS resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  resourceArn = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example lists the tags for the 'dev' cluster.
-svc$list_tags_for_resource(
-  resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/list_tags_for_resource.html} for full documentation.
 }
 \keyword{internal}

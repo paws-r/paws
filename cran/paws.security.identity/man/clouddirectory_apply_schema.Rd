@@ -14,24 +14,9 @@ more information, see arns.}
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
 into which the schema is copied. For more information, see arns.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AppliedSchemaArn = "string",
-  DirectoryArn = "string"
-)
-}
-}
 \description{
-Copies the input published schema, at the specified version, into the
-Directory with the same name and version as that of the published
-schema.
-}
-\section{Request syntax}{
-\preformatted{svc$apply_schema(
-  PublishedSchemaArn = "string",
-  DirectoryArn = "string"
-)
-}
-}
+Copies the input published schema, at the specified version, into the Directory with the same name and version as that of the published schema.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/apply_schema.html} for full documentation.
+}
 \keyword{internal}

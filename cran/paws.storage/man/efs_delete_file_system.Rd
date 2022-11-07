@@ -9,45 +9,9 @@ efs_delete_file_system(FileSystemId)
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a file system, permanently severing access to its contents. Upon
-return, the file system no longer exists and you can't access any
-contents of the deleted file system.
+Deletes a file system, permanently severing access to its contents. Upon return, the file system no longer exists and you can't access any contents of the deleted file system.
 
-You can't delete a file system that is in use. That is, if the file
-system has any mount targets, you must first delete them. For more
-information, see \code{\link[=efs_describe_mount_targets]{describe_mount_targets}}
-and \code{\link[=efs_delete_mount_target]{delete_mount_target}}.
-
-The \code{\link[=efs_delete_file_system]{delete_file_system}} call returns while
-the file system state is still \code{deleting}. You can check the file system
-deletion status by calling the
-\code{\link[=efs_describe_file_systems]{describe_file_systems}} operation, which
-returns a list of file systems in your account. If you pass file system
-ID or creation token for the deleted file system, the
-\code{\link[=efs_describe_file_systems]{describe_file_systems}} returns a
-\verb{404 FileSystemNotFound} error.
-
-This operation requires permissions for the
-\code{elasticfilesystem:DeleteFileSystem} action.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_file_system(
-  FileSystemId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation deletes an EFS file system.
-svc$delete_file_system(
-  FileSystemId = "fs-01234567"
-)
-}
-
+See \url{https://paws-r.github.io/docs/efs/delete_file_system.html} for full documentation.
 }
 \keyword{internal}

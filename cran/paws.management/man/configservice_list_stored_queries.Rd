@@ -2,9 +2,10 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_list_stored_queries}
 \alias{configservice_list_stored_queries}
-\title{List the stored queries for an AWS account in an AWS Region}
+\title{Lists the stored queries for a single Amazon Web Services account and a
+single Amazon Web Services Region}
 \usage{
-configservice_list_stored_queries(NextToken, MaxResults)
+configservice_list_stored_queries(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The nextToken string returned in a previous request that you use to
@@ -12,30 +13,9 @@ request the next page of results in a paginated response.}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StoredQueryMetadata = list(
-    list(
-      QueryId = "string",
-      QueryArn = "string",
-      QueryName = "string",
-      Description = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List the stored queries for an AWS account in an AWS Region. The default
-is 100.
-}
-\section{Request syntax}{
-\preformatted{svc$list_stored_queries(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region. The default is 100.
 
+See \url{https://paws-r.github.io/docs/configservice/list_stored_queries.html} for full documentation.
+}
 \keyword{internal}

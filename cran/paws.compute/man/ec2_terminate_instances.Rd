@@ -4,7 +4,7 @@
 \alias{ec2_terminate_instances}
 \title{Shuts down the specified instances}
 \usage{
-ec2_terminate_instances(InstanceIds, DryRun)
+ec2_terminate_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] The IDs of the instances.
@@ -17,71 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TerminatingInstances = list(
-    list(
-      CurrentState = list(
-        Code = 123,
-        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
-      ),
-      InstanceId = "string",
-      PreviousState = list(
-        Code = 123,
-        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Shuts down the specified instances. This operation is idempotent; if you
-terminate an instance more than once, each call succeeds.
+Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
 
-If you specify multiple instances and the request fails (for example,
-because of a single incorrect instance ID), none of the instances are
-terminated.
-
-Terminated instances remain visible after termination (for approximately
-one hour).
-
-By default, Amazon EC2 deletes all EBS volumes that were attached when
-the instance launched. Volumes attached after instance launch continue
-running.
-
-You can stop, start, and terminate EBS-backed instances. You can only
-terminate instance store-backed instances. What happens to an instance
-differs if you stop it or terminate it. For example, when you stop an
-instance, the root device and any other devices attached to the instance
-persist. When you terminate an instance, any attached EBS volumes with
-the \code{DeleteOnTermination} block device mapping parameter set to \code{true}
-are automatically deleted. For more information about the differences
-between stopping and terminating instances, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance lifecycle}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-For more information about troubleshooting, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html}{Troubleshooting terminating your instance}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$terminate_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example terminates the specified EC2 instance.
-svc$terminate_instances(
-  InstanceIds = list(
-    "i-1234567890abcdef0"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/terminate_instances.html} for full documentation.
 }
 \keyword{internal}

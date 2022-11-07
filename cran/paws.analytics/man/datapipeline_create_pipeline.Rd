@@ -4,7 +4,7 @@
 \alias{datapipeline_create_pipeline}
 \title{Creates a new, empty pipeline}
 \usage{
-datapipeline_create_pipeline(name, uniqueId, description, tags)
+datapipeline_create_pipeline(name, uniqueId, description = NULL, tags = NULL)
 }
 \arguments{
 \item{name}{[required] The name for the pipeline. You can use the same name for multiple
@@ -33,30 +33,9 @@ credentials.}
 control access to pipelines. For more information, see \href{https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html}{Controlling User Access to Pipelines}
 in the \emph{AWS Data Pipeline Developer Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineId = "string"
-)
-}
-}
 \description{
-Creates a new, empty pipeline. Use
-\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} to
-populate the pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$create_pipeline(
-  name = "string",
-  uniqueId = "string",
-  description = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Creates a new, empty pipeline. Use \code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} to populate the pipeline.
 
+See \url{https://paws-r.github.io/docs/datapipeline/create_pipeline.html} for full documentation.
+}
 \keyword{internal}

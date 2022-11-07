@@ -8,22 +8,11 @@ enables you to resume sending SMS messages to the number}
 sns_opt_in_phone_number(phoneNumber)
 }
 \arguments{
-\item{phoneNumber}{[required] The phone number to opt in.}
-}
-\value{
-An empty list.
+\item{phoneNumber}{[required] The phone number to opt in. Use E.164 format.}
 }
 \description{
-Use this request to opt in a phone number that is opted out, which
-enables you to resume sending SMS messages to the number.
+Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number.
 
-You can opt in a phone number only once every 30 days.
+See \url{https://paws-r.github.io/docs/sns/opt_in_phone_number.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$opt_in_phone_number(
-  phoneNumber = "string"
-)
-}
-}
-
 \keyword{internal}

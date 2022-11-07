@@ -4,8 +4,12 @@
 \alias{opsworks_update_user_profile}
 \title{Updates a specified user profile}
 \usage{
-opsworks_update_user_profile(IamUserArn, SshUsername, SshPublicKey,
-  AllowSelfManagement)
+opsworks_update_user_profile(
+  IamUserArn,
+  SshUsername = NULL,
+  SshPublicKey = NULL,
+  AllowSelfManagement = NULL
+)
 }
 \arguments{
 \item{IamUserArn}{[required] The user IAM ARN. This can also be a federated user's ARN.}
@@ -21,24 +25,9 @@ OpsWorks Stacks generates one from the IAM user name.}
 \item{AllowSelfManagement}{Whether users can specify their own SSH public key through the My
 Settings page. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html}{Managing User Permissions}.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a specified user profile.
 
-\strong{Required Permissions}: To use this action, an IAM user must have an
-attached policy that explicitly grants permissions. For more information
-about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/update_user_profile.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_user_profile(
-  IamUserArn = "string",
-  SshUsername = "string",
-  SshPublicKey = "string",
-  AllowSelfManagement = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

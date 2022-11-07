@@ -6,7 +6,12 @@
 propagates routes}
 \usage{
 ec2_get_transit_gateway_attachment_propagations(
-  TransitGatewayAttachmentId, Filters, MaxResults, NextToken, DryRun)
+  TransitGatewayAttachmentId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the attachment.}
@@ -28,38 +33,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayAttachmentPropagations = list(
-    list(
-      TransitGatewayRouteTableId = "string",
-      State = "enabling"|"enabled"|"disabling"|"disabled"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the route tables to which the specified resource attachment
-propagates routes.
-}
-\section{Request syntax}{
-\preformatted{svc$get_transit_gateway_attachment_propagations(
-  TransitGatewayAttachmentId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Lists the route tables to which the specified resource attachment propagates routes.
 
+See \url{https://paws-r.github.io/docs/ec2/get_transit_gateway_attachment_propagations.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{cloudhsmv2_delete_hsm}
 \title{Deletes the specified HSM}
 \usage{
-cloudhsmv2_delete_hsm(ClusterId, HsmId, EniId, EniIp)
+cloudhsmv2_delete_hsm(ClusterId, HsmId = NULL, EniId = NULL, EniIp = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier (ID) of the cluster that contains the HSM that you are
@@ -18,27 +18,9 @@ that you are deleting.}
 \item{EniIp}{The IP address of the elastic network interface (ENI) of the HSM that
 you are deleting.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HsmId = "string"
-)
-}
-}
 \description{
-Deletes the specified HSM. To specify an HSM, you can use its identifier
-(ID), the IP address of the HSM's elastic network interface (ENI), or
-the ID of the HSM's ENI. You need to specify only one of these values.
-To find these values, use
-\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_hsm(
-  ClusterId = "string",
-  HsmId = "string",
-  EniId = "string",
-  EniIp = "string"
-)
-}
-}
+Deletes the specified HSM. To specify an HSM, you can use its identifier (ID), the IP address of the HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You need to specify only one of these values. To find these values, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
 
+See \url{https://paws-r.github.io/docs/cloudhsmv2/delete_hsm.html} for full documentation.
+}
 \keyword{internal}

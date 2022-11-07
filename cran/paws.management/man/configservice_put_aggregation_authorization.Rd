@@ -5,8 +5,11 @@
 \title{Authorizes the aggregator account and region to collect data from the
 source account and region}
 \usage{
-configservice_put_aggregation_authorization(AuthorizedAccountId,
-  AuthorizedAwsRegion, Tags)
+configservice_put_aggregation_authorization(
+  AuthorizedAccountId,
+  AuthorizedAwsRegion,
+  Tags = NULL
+)
 }
 \arguments{
 \item{AuthorizedAccountId}{[required] The 12-digit account ID of the account authorized to aggregate data.}
@@ -15,35 +18,9 @@ configservice_put_aggregation_authorization(AuthorizedAccountId,
 
 \item{Tags}{An array of tag object.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AggregationAuthorization = list(
-    AggregationAuthorizationArn = "string",
-    AuthorizedAccountId = "string",
-    AuthorizedAwsRegion = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Authorizes the aggregator account and region to collect data from the
-source account and region.
-}
-\section{Request syntax}{
-\preformatted{svc$put_aggregation_authorization(
-  AuthorizedAccountId = "string",
-  AuthorizedAwsRegion = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Authorizes the aggregator account and region to collect data from the source account and region.
 
+See \url{https://paws-r.github.io/docs/configservice/put_aggregation_authorization.html} for full documentation.
+}
 \keyword{internal}

@@ -13,43 +13,9 @@ elb_attach_load_balancer_to_subnets(LoadBalancerName, Subnets)
 \item{Subnets}{[required] The IDs of the subnets to add. You can add only one subnet per
 Availability Zone.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Subnets = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Adds one or more subnets to the set of configured subnets for the
-specified load balancer.
+Adds one or more subnets to the set of configured subnets for the specified load balancer.
 
-The load balancer evenly distributes requests across all registered
-subnets. For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html}{Add or Remove Subnets for Your Load Balancer in a VPC}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$attach_load_balancer_to_subnets(
-  LoadBalancerName = "string",
-  Subnets = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example adds the specified subnet to the set of configured subnets
-# for the specified load balancer.
-svc$attach_load_balancer_to_subnets(
-  LoadBalancerName = "my-load-balancer",
-  Subnets = list(
-    "subnet-0ecac448"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/attach_load_balancer_to_subnets.html} for full documentation.
 }
 \keyword{internal}

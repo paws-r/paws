@@ -8,6 +8,14 @@ test_that("list_clusters", {
   expect_error(svc$list_clusters(MaxResults = 20), NA)
 })
 
+test_that("list_clusters_v2", {
+  expect_error(svc$list_clusters_v2(), NA)
+})
+
+test_that("list_clusters_v2", {
+  expect_error(svc$list_clusters_v2(MaxResults = 20), NA)
+})
+
 test_that("list_configurations", {
   expect_error(svc$list_configurations(), NA)
 })

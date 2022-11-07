@@ -4,8 +4,13 @@
 \alias{codestar_associate_team_member}
 \title{Adds an IAM user to the team for an AWS CodeStar project}
 \usage{
-codestar_associate_team_member(projectId, clientRequestToken, userArn,
-  projectRole, remoteAccessAllowed)
+codestar_associate_team_member(
+  projectId,
+  clientRequestToken = NULL,
+  userArn,
+  projectRole,
+  remoteAccessAllowed = NULL
+)
 }
 \arguments{
 \item{projectId}{[required] The ID of the project to which you will add the IAM user.}
@@ -23,24 +28,9 @@ determines what actions a user can take in an AWS CodeStar project.}
 \item{remoteAccessAllowed}{Whether the team member is allowed to use an SSH public/private key pair
 to remotely access project resources, for example Amazon EC2 instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  clientRequestToken = "string"
-)
-}
-}
 \description{
 Adds an IAM user to the team for an AWS CodeStar project.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_team_member(
-  projectId = "string",
-  clientRequestToken = "string",
-  userArn = "string",
-  projectRole = "string",
-  remoteAccessAllowed = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codestar/associate_team_member.html} for full documentation.
+}
 \keyword{internal}

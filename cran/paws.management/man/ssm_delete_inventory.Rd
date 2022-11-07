@@ -5,7 +5,12 @@
 \title{Delete a custom inventory type or the data associated with a custom
 Inventory type}
 \usage{
-ssm_delete_inventory(TypeName, SchemaDeleteOption, DryRun, ClientToken)
+ssm_delete_inventory(
+  TypeName,
+  SchemaDeleteOption = NULL,
+  DryRun = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{TypeName}{[required] The name of the custom inventory type for which you want to delete
@@ -19,8 +24,8 @@ the following options:
 DisableSchema: If you choose this option, the system ignores all
 inventory data for the specified version, and any earlier versions. To
 enable this schema again, you must call the
-\code{\link[=ssm_put_inventory]{put_inventory}} action for a version greater than
-the disabled version.
+\code{\link[=ssm_put_inventory]{put_inventory}} operation for a version greater
+than the disabled version.
 
 DeleteSchema: This option deletes the specified custom type from the
 Inventory service. You can recreate the schema later, if you want.}
@@ -33,37 +38,9 @@ without specifying the \code{DryRun} option.}
 
 \item{ClientToken}{User-provided idempotency token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeletionId = "string",
-  TypeName = "string",
-  DeletionSummary = list(
-    TotalCount = 123,
-    RemainingCount = 123,
-    SummaryItems = list(
-      list(
-        Version = "string",
-        Count = 123,
-        RemainingCount = 123
-      )
-    )
-  )
-)
-}
-}
 \description{
-Delete a custom inventory type or the data associated with a custom
-Inventory type. Deleting a custom inventory type is also referred to as
-deleting a custom inventory schema.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_inventory(
-  TypeName = "string",
-  SchemaDeleteOption = "DisableSchema"|"DeleteSchema",
-  DryRun = TRUE|FALSE,
-  ClientToken = "string"
-)
-}
-}
+Delete a custom inventory type or the data associated with a custom Inventory type. Deleting a custom inventory type is also referred to as deleting a custom inventory schema.
 
+See \url{https://paws-r.github.io/docs/ssm/delete_inventory.html} for full documentation.
+}
 \keyword{internal}

@@ -11,35 +11,9 @@ directoryservice_accept_shared_directory(SharedDirectoryId)
 \item{SharedDirectoryId}{[required] Identifier of the shared directory in the directory consumer account.
 This identifier is different for each directory owner account.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SharedDirectory = list(
-    OwnerAccountId = "string",
-    OwnerDirectoryId = "string",
-    ShareMethod = "ORGANIZATIONS"|"HANDSHAKE",
-    SharedAccountId = "string",
-    SharedDirectoryId = "string",
-    ShareStatus = "Shared"|"PendingAcceptance"|"Rejected"|"Rejecting"|"RejectFailed"|"Sharing"|"ShareFailed"|"Deleted"|"Deleting",
-    ShareNotes = "string",
-    CreatedDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedDateTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Accepts a directory sharing request that was sent from the directory
-owner account.
-}
-\section{Request syntax}{
-\preformatted{svc$accept_shared_directory(
-  SharedDirectoryId = "string"
-)
-}
-}
+Accepts a directory sharing request that was sent from the directory owner account.
 
+See \url{https://paws-r.github.io/docs/directoryservice/accept_shared_directory.html} for full documentation.
+}
 \keyword{internal}

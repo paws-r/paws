@@ -4,7 +4,7 @@
 \alias{ec2_describe_spot_datafeed_subscription}
 \title{Describes the data feed for Spot Instances}
 \usage{
-ec2_describe_spot_datafeed_subscription(DryRun)
+ec2_describe_spot_datafeed_subscription(DryRun = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -12,39 +12,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SpotDatafeedSubscription = list(
-    Bucket = "string",
-    Fault = list(
-      Code = "string",
-      Message = "string"
-    ),
-    OwnerId = "string",
-    Prefix = "string",
-    State = "Active"|"Inactive"
-  )
-)
-}
-}
 \description{
-Describes the data feed for Spot Instances. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_spot_datafeed_subscription(
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes the data feed for Spot Instances. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
-\examples{
-\dontrun{
-# This example describes the Spot Instance datafeed subscription for your
-# AWS account.
-svc$describe_spot_datafeed_subscription()
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_spot_datafeed_subscription.html} for full documentation.
 }
 \keyword{internal}

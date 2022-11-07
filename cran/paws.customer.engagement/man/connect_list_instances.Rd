@@ -5,51 +5,18 @@
 \title{This API is in preview release for Amazon Connect and is subject to
 change}
 \usage{
-connect_list_instances(NextToken, MaxResults)
+connect_list_instances(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceSummaryList = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      IdentityManagementType = "SAML"|"CONNECT_MANAGED"|"EXISTING_DIRECTORY",
-      InstanceAlias = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ServiceRole = "string",
-      InstanceStatus = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED",
-      InboundCallsEnabled = TRUE|FALSE,
-      OutboundCallsEnabled = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Return a list of instances which are in active state,
-creation-in-progress state, and failed state. Instances that aren't
-successfully created (they are in a failed state) are returned only for
-24 hours after the CreateInstance API was invoked.
+See \url{https://paws-r.github.io/docs/connect/list_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_instances(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

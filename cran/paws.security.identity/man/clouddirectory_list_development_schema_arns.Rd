@@ -5,32 +5,19 @@
 \title{Retrieves each Amazon Resource Name (ARN) of schemas in the development
 state}
 \usage{
-clouddirectory_list_development_schema_arns(NextToken, MaxResults)
+clouddirectory_list_development_schema_arns(
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{NextToken}{The pagination token.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaArns = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves each Amazon Resource Name (ARN) of schemas in the development
-state.
-}
-\section{Request syntax}{
-\preformatted{svc$list_development_schema_arns(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves each Amazon Resource Name (ARN) of schemas in the development state.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_development_schema_arns.html} for full documentation.
+}
 \keyword{internal}

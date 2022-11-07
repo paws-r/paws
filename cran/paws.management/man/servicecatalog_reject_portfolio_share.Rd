@@ -4,8 +4,11 @@
 \alias{servicecatalog_reject_portfolio_share}
 \title{Rejects an offer to share the specified portfolio}
 \usage{
-servicecatalog_reject_portfolio_share(AcceptLanguage, PortfolioId,
-  PortfolioShareType)
+servicecatalog_reject_portfolio_share(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  PortfolioShareType = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -30,19 +33,9 @@ ResourceNotFoundException.)
 For example,
 \verb{aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS}}
 }
-\value{
-An empty list.
-}
 \description{
 Rejects an offer to share the specified portfolio.
-}
-\section{Request syntax}{
-\preformatted{svc$reject_portfolio_share(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/reject_portfolio_share.html} for full documentation.
+}
 \keyword{internal}

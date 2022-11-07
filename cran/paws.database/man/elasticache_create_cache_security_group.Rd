@@ -4,8 +4,11 @@
 \alias{elasticache_create_cache_security_group}
 \title{Creates a new cache security group}
 \usage{
-elasticache_create_cache_security_group(CacheSecurityGroupName,
-  Description)
+elasticache_create_cache_security_group(
+  CacheSecurityGroupName,
+  Description,
+  Tags = NULL
+)
 }
 \arguments{
 \item{CacheSecurityGroupName}{[required] A name for the cache security group. This value is stored as a lowercase
@@ -17,41 +20,13 @@ Cannot be the word "Default".
 Example: \code{mysecuritygroup}}
 
 \item{Description}{[required] A description for the cache security group.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheSecurityGroup = list(
-    OwnerId = "string",
-    CacheSecurityGroupName = "string",
-    Description = "string",
-    EC2SecurityGroups = list(
-      list(
-        Status = "string",
-        EC2SecurityGroupName = "string",
-        EC2SecurityGroupOwnerId = "string"
-      )
-    ),
-    ARN = "string"
-  )
-)
-}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-Creates a new cache security group. Use a cache security group to
-control access to one or more clusters.
+Creates a new cache security group. Use a cache security group to control access to one or more clusters.
 
-Cache security groups are only used when you are creating a cluster
-outside of an Amazon Virtual Private Cloud (Amazon VPC). If you are
-creating a cluster inside of a VPC, use a cache subnet group instead.
-For more information, see
-\code{\link[=elasticache_create_cache_subnet_group]{create_cache_subnet_group}}.
+See \url{https://paws-r.github.io/docs/elasticache/create_cache_security_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_cache_security_group(
-  CacheSecurityGroupName = "string",
-  Description = "string"
-)
-}
-}
-
 \keyword{internal}

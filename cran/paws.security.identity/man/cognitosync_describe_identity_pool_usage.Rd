@@ -12,32 +12,9 @@ cognitosync_describe_identity_pool_usage(IdentityPoolId)
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityPoolUsage = list(
-    IdentityPoolId = "string",
-    SyncSessionsCount = 123,
-    DataStorage = 123,
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Gets usage details (for example, data storage) about a particular
-identity pool.
+Gets usage details (for example, data storage) about a particular identity pool.
 
-This API can only be called with developer credentials. You cannot call
-this API with the temporary user credentials provided by Cognito
-Identity.
+See \url{https://paws-r.github.io/docs/cognitosync/describe_identity_pool_usage.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_identity_pool_usage(
-  IdentityPoolId = "string"
-)
-}
-}
-
 \keyword{internal}

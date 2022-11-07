@@ -2,15 +2,21 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_document_metadata_history}
 \alias{ssm_list_document_metadata_history}
-\title{Information about approval reviews for a version of an SSM document}
+\title{Information about approval reviews for a version of a change template in
+Change Manager}
 \usage{
-ssm_list_document_metadata_history(Name, DocumentVersion, Metadata,
-  NextToken, MaxResults)
+ssm_list_document_metadata_history(
+  Name,
+  DocumentVersion = NULL,
+  Metadata,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{Name}{[required] The name of the document.}
+\item{Name}{[required] The name of the change template.}
 
-\item{DocumentVersion}{The version of the document.}
+\item{DocumentVersion}{The version of the change template.}
 
 \item{Metadata}{[required] The type of data for which details are being requested. Currently, the
 only supported value is \code{DocumentReviews}.}
@@ -22,47 +28,9 @@ from a previous call.)}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  DocumentVersion = "string",
-  Author = "string",
-  Metadata = list(
-    ReviewerResponse = list(
-      list(
-        CreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        UpdatedTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
-        Comment = list(
-          list(
-            Type = "Comment",
-            Content = "string"
-          )
-        ),
-        Reviewer = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Information about approval reviews for a version of an SSM document.
-}
-\section{Request syntax}{
-\preformatted{svc$list_document_metadata_history(
-  Name = "string",
-  DocumentVersion = "string",
-  Metadata = "DocumentReviews",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Information about approval reviews for a version of a change template in Change Manager.
 
+See \url{https://paws-r.github.io/docs/ssm/list_document_metadata_history.html} for full documentation.
+}
 \keyword{internal}

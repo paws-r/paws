@@ -4,46 +4,17 @@
 \alias{apigateway_get_api_key}
 \title{Gets information about the current ApiKey resource}
 \usage{
-apigateway_get_api_key(apiKey, includeValue)
+apigateway_get_api_key(apiKey, includeValue = NULL)
 }
 \arguments{
-\item{apiKey}{[required] [Required] The identifier of the ApiKey resource.}
+\item{apiKey}{[required] The identifier of the ApiKey resource.}
 
 \item{includeValue}{A boolean flag to specify whether (\code{true}) or not (\code{false}) the result
 contains the key value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  value = "string",
-  name = "string",
-  customerId = "string",
-  description = "string",
-  enabled = TRUE|FALSE,
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  stageKeys = list(
-    "string"
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Gets information about the current ApiKey resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_api_key(
-  apiKey = "string",
-  includeValue = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_api_key.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,10 @@
 \alias{lightsail_get_relational_database_bundles}
 \title{Returns the list of bundles that are available in Amazon Lightsail}
 \usage{
-lightsail_get_relational_database_bundles(pageToken)
+lightsail_get_relational_database_bundles(
+  pageToken = NULL,
+  includeInactive = NULL
+)
 }
 \arguments{
 \item{pageToken}{The token to advance to the next page of results from your request.
@@ -14,38 +17,13 @@ To get a page token, perform an initial
 request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  bundles = list(
-    list(
-      bundleId = "string",
-      name = "string",
-      price = 123.0,
-      ramSizeInGb = 123.0,
-      diskSizeInGb = 123,
-      transferPerMonthInGb = 123,
-      cpuCount = 123,
-      isEncrypted = TRUE|FALSE,
-      isActive = TRUE|FALSE
-    )
-  ),
-  nextPageToken = "string"
-)
-}
+
+\item{includeInactive}{A Boolean value that indicates whether to include inactive (unavailable)
+bundles in the response of your request.}
 }
 \description{
-Returns the list of bundles that are available in Amazon Lightsail. A
-bundle describes the performance specifications for a database.
+Returns the list of bundles that are available in Amazon Lightsail. A bundle describes the performance specifications for a database.
 
-You can use a bundle ID to create a new database with explicit
-performance specifications.
+See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_bundles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_relational_database_bundles(
-  pageToken = "string"
-)
-}
-}
-
 \keyword{internal}

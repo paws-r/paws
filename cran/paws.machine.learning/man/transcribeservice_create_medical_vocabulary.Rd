@@ -2,62 +2,41 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_create_medical_vocabulary}
 \alias{transcribeservice_create_medical_vocabulary}
-\title{Creates a new custom vocabulary that you can use to change how Amazon
-Transcribe Medical transcribes your audio file}
+\title{Creates a new custom medical vocabulary}
 \usage{
-transcribeservice_create_medical_vocabulary(VocabularyName,
-  LanguageCode, VocabularyFileUri)
+transcribeservice_create_medical_vocabulary(
+  VocabularyName,
+  LanguageCode,
+  VocabularyFileUri,
+  Tags = NULL
+)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the custom vocabulary. This case-sensitive name must be
-unique within an AWS account. If you try to create a vocabulary with the
-same name as a previous vocabulary, you get a \code{ConflictException} error.}
+\item{VocabularyName}{[required] A unique name, chosen by you, for your new custom medical vocabulary.
 
-\item{LanguageCode}{[required] The language code for the language used for the entries in your custom
-vocabulary. The language code of your custom vocabulary must match the
-language code of your transcription job. US English (en-US) is the only
-language code available for Amazon Transcribe Medical.}
+This name is case sensitive, cannot contain spaces, and must be unique
+within an Amazon Web Services account. If you try to create a new
+medical vocabulary with the same name as an existing medical vocabulary,
+you get a \code{ConflictException} error.}
 
-\item{VocabularyFileUri}{[required] The location in Amazon S3 of the text file you use to define your custom
-vocabulary. The URI must be in the same AWS Region as the resource that
-you're calling. Enter information about your \code{VocabularyFileUri} in the
-following format:
+\item{LanguageCode}{[required] The language code that represents the language of the entries in your
+custom vocabulary. US English (\code{en-US}) is the only language supported
+with Amazon Transcribe Medical.}
 
-\verb{https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey>}
+\item{VocabularyFileUri}{[required] The Amazon S3 location (URI) of the text file that contains your custom
+medical vocabulary. The URI must be in the same Amazon Web Services
+Region as the resource you're calling.
 
-The following is an example URI for a vocabulary file that is stored in
-Amazon S3:
+Here's an example URI path: \verb{s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt}}
 
-\verb{https://s3.us-east-1.amazonaws.com/AWSDOC-EXAMPLE-BUCKET/vocab.txt}
+\item{Tags}{Adds one or more custom tags, each in the form of a key:value pair, to a
+new medical vocabulary at the time you create this new vocabulary.
 
-For more information about Amazon S3 object names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys}{Object Keys}
-in the \emph{Amazon S3 Developer Guide}.
-
-For more information about custom vocabularies, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary-med}{Medical Custom Vocabularies}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VocabularyName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  VocabularyState = "PENDING"|"READY"|"FAILED",
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  FailureReason = "string"
-)
-}
+To learn more about using tags with Amazon Transcribe, refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html}{Tagging resources}.}
 }
 \description{
-Creates a new custom vocabulary that you can use to change how Amazon
-Transcribe Medical transcribes your audio file.
-}
-\section{Request syntax}{
-\preformatted{svc$create_medical_vocabulary(
-  VocabularyName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  VocabularyFileUri = "string"
-)
-}
-}
+Creates a new custom medical vocabulary.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/create_medical_vocabulary.html} for full documentation.
+}
 \keyword{internal}

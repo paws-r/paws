@@ -4,7 +4,7 @@
 \alias{clouddirectory_list_facet_names}
 \title{Retrieves the names of facets that exist in a schema}
 \usage{
-clouddirectory_list_facet_names(SchemaArn, NextToken, MaxResults)
+clouddirectory_list_facet_names(SchemaArn, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) to retrieve facet names from.}
@@ -13,25 +13,9 @@ clouddirectory_list_facet_names(SchemaArn, NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FacetNames = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves the names of facets that exist in a schema.
-}
-\section{Request syntax}{
-\preformatted{svc$list_facet_names(
-  SchemaArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_facet_names.html} for full documentation.
+}
 \keyword{internal}

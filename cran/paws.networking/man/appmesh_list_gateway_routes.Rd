@@ -5,8 +5,13 @@
 \title{Returns a list of existing gateway routes that are associated to a
 virtual gateway}
 \usage{
-appmesh_list_gateway_routes(limit, meshName, meshOwner, nextToken,
-  virtualGatewayName)
+appmesh_list_gateway_routes(
+  limit = NULL,
+  meshName,
+  meshOwner = NULL,
+  nextToken = NULL,
+  virtualGatewayName
+)
 }
 \arguments{
 \item{limit}{The maximum number of results returned by
@@ -23,9 +28,10 @@ results and a \code{nextToken} value if applicable.}
 
 \item{meshName}{[required] The name of the service mesh to list gateway routes in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then it's the ID of the account that shared the mesh with
-your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then it's the ID of the account that shared
+the mesh with your account. For more information about mesh sharing, see
+\href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{\link[=appmesh_list_gateway_routes]{list_gateway_routes}} request where
@@ -35,42 +41,9 @@ the \code{nextToken} value.}
 
 \item{virtualGatewayName}{[required] The name of the virtual gateway to list gateway routes in.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  gatewayRoutes = list(
-    list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      gatewayRouteName = "string",
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshName = "string",
-      meshOwner = "string",
-      resourceOwner = "string",
-      version = 123,
-      virtualGatewayName = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of existing gateway routes that are associated to a
-virtual gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$list_gateway_routes(
-  limit = 123,
-  meshName = "string",
-  meshOwner = "string",
-  nextToken = "string",
-  virtualGatewayName = "string"
-)
-}
-}
+Returns a list of existing gateway routes that are associated to a virtual gateway.
 
+See \url{https://paws-r.github.io/docs/appmesh/list_gateway_routes.html} for full documentation.
+}
 \keyword{internal}

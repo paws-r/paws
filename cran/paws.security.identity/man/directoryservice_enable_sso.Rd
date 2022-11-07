@@ -4,7 +4,7 @@
 \alias{directoryservice_enable_sso}
 \title{Enables single sign-on for a directory}
 \usage{
-directoryservice_enable_sso(DirectoryId, UserName, Password)
+directoryservice_enable_sso(DirectoryId, UserName = NULL, Password = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which to enable single-sign on.}
@@ -23,21 +23,9 @@ Connector service account is not changed.}
 This is only used for AD Connector directories. For more information,
 see the \emph{UserName} parameter.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables single sign-on for a directory. Single sign-on allows users in
-your directory to access certain AWS services from a computer joined to
-the directory without having to enter their credentials separately.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_sso(
-  DirectoryId = "string",
-  UserName = "string",
-  Password = "string"
-)
-}
-}
+Enables single sign-on for a directory. Single sign-on allows users in your directory to access certain Amazon Web Services services from a computer joined to the directory without having to enter their credentials separately.
 
+See \url{https://paws-r.github.io/docs/directoryservice/enable_sso.html} for full documentation.
+}
 \keyword{internal}

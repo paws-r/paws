@@ -4,7 +4,10 @@
 \alias{cloudfront_list_cloud_front_origin_access_identities}
 \title{Lists origin access identities}
 \usage{
-cloudfront_list_cloud_front_origin_access_identities(Marker, MaxItems)
+cloudfront_list_cloud_front_origin_access_identities(
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{Marker}{Use this when paginating results to indicate where to begin in your list
@@ -16,34 +19,9 @@ response (which is also the ID of the last identity on that page).}
 \item{MaxItems}{The maximum number of origin access identities you want in the response
 body.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CloudFrontOriginAccessIdentityList = list(
-    Marker = "string",
-    NextMarker = "string",
-    MaxItems = 123,
-    IsTruncated = TRUE|FALSE,
-    Quantity = 123,
-    Items = list(
-      list(
-        Id = "string",
-        S3CanonicalUserId = "string",
-        Comment = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Lists origin access identities.
-}
-\section{Request syntax}{
-\preformatted{svc$list_cloud_front_origin_access_identities(
-  Marker = "string",
-  MaxItems = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/list_cloud_front_origin_access_identities.html} for full documentation.
+}
 \keyword{internal}

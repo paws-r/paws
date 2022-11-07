@@ -4,8 +4,13 @@
 \alias{clouddirectory_list_object_policies}
 \title{Returns policies attached to an object in pagination fashion}
 \usage{
-clouddirectory_list_object_policies(DirectoryArn, ObjectReference,
-  NextToken, MaxResults, ConsistencyLevel)
+clouddirectory_list_object_policies(
+  DirectoryArn,
+  ObjectReference,
+  NextToken = NULL,
+  MaxResults = NULL,
+  ConsistencyLevel = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -22,29 +27,9 @@ approximate number.}
 of an object is reflected in a subsequent read operation of that same
 object.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AttachedPolicyIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns policies attached to an object in pagination fashion.
-}
-\section{Request syntax}{
-\preformatted{svc$list_object_policies(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_object_policies.html} for full documentation.
+}
 \keyword{internal}

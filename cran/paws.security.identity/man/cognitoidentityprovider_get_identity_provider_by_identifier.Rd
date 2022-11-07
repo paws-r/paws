@@ -2,50 +2,21 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_identity_provider_by_identifier}
 \alias{cognitoidentityprovider_get_identity_provider_by_identifier}
-\title{Gets the specified identity provider}
+\title{Gets the specified IdP}
 \usage{
-cognitoidentityprovider_get_identity_provider_by_identifier(UserPoolId,
-  IdpIdentifier)
+cognitoidentityprovider_get_identity_provider_by_identifier(
+  UserPoolId,
+  IdpIdentifier
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 
-\item{IdpIdentifier}{[required] The identity provider ID.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityProvider = list(
-    UserPoolId = "string",
-    ProviderName = "string",
-    ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
-    ProviderDetails = list(
-      "string"
-    ),
-    AttributeMapping = list(
-      "string"
-    ),
-    IdpIdentifiers = list(
-      "string"
-    ),
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+\item{IdpIdentifier}{[required] The IdP identifier.}
 }
 \description{
-Gets the specified identity provider.
-}
-\section{Request syntax}{
-\preformatted{svc$get_identity_provider_by_identifier(
-  UserPoolId = "string",
-  IdpIdentifier = "string"
-)
-}
-}
+Gets the specified IdP.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_identity_provider_by_identifier.html} for full documentation.
+}
 \keyword{internal}

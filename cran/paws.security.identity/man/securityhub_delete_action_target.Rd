@@ -9,24 +9,9 @@ securityhub_delete_action_target(ActionTargetArn)
 \arguments{
 \item{ActionTargetArn}{[required] The ARN of the custom action target to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActionTargetArn = "string"
-)
-}
-}
 \description{
 Deletes a custom action target from Security Hub.
 
-Deleting a custom action target does not affect any findings or insights
-that were already sent to Amazon CloudWatch Events using the custom
-action.
+See \url{https://paws-r.github.io/docs/securityhub/delete_action_target.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_action_target(
-  ActionTargetArn = "string"
-)
-}
-}
-
 \keyword{internal}

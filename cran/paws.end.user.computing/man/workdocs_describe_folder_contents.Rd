@@ -5,8 +5,16 @@
 \title{Describes the contents of the specified folder, including its documents
 and subfolders}
 \usage{
-workdocs_describe_folder_contents(AuthenticationToken, FolderId, Sort,
-  Order, Limit, Marker, Type, Include)
+workdocs_describe_folder_contents(
+  AuthenticationToken = NULL,
+  FolderId,
+  Sort = NULL,
+  Order = NULL,
+  Limit = NULL,
+  Marker = NULL,
+  Type = NULL,
+  Include = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -28,98 +36,9 @@ previous call.}
 \item{Include}{The contents to include. Specify "INITIALIZED" to include initialized
 documents.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Folders = list(
-    list(
-      Id = "string",
-      Name = "string",
-      CreatorId = "string",
-      ParentFolderId = "string",
-      CreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModifiedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-      Signature = "string",
-      Labels = list(
-        "string"
-      ),
-      Size = 123,
-      LatestVersionSize = 123
-    )
-  ),
-  Documents = list(
-    list(
-      Id = "string",
-      CreatorId = "string",
-      ParentFolderId = "string",
-      CreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModifiedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      LatestVersionMetadata = list(
-        Id = "string",
-        Name = "string",
-        ContentType = "string",
-        Size = 123,
-        Signature = "string",
-        Status = "INITIALIZED"|"ACTIVE",
-        CreatedTimestamp = as.POSIXct(
-          "2015-01-01"
-        ),
-        ModifiedTimestamp = as.POSIXct(
-          "2015-01-01"
-        ),
-        ContentCreatedTimestamp = as.POSIXct(
-          "2015-01-01"
-        ),
-        ContentModifiedTimestamp = as.POSIXct(
-          "2015-01-01"
-        ),
-        CreatorId = "string",
-        Thumbnail = list(
-          "string"
-        ),
-        Source = list(
-          "string"
-        )
-      ),
-      ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-      Labels = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Describes the contents of the specified folder, including its documents
-and subfolders.
+Describes the contents of the specified folder, including its documents and subfolders.
 
-By default, Amazon WorkDocs returns the first 100 active document and
-folder metadata items. If there are more results, the response includes
-a marker that you can use to request the next set of results. You can
-also request initialized documents.
+See \url{https://paws-r.github.io/docs/workdocs/describe_folder_contents.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_folder_contents(
-  AuthenticationToken = "string",
-  FolderId = "string",
-  Sort = "DATE"|"NAME",
-  Order = "ASCENDING"|"DESCENDING",
-  Limit = 123,
-  Marker = "string",
-  Type = "ALL"|"DOCUMENT"|"FOLDER",
-  Include = "string"
-)
-}
-}
-
 \keyword{internal}

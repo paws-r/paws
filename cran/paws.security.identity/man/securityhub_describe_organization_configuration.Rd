@@ -7,20 +7,9 @@ Hub}
 \usage{
 securityhub_describe_organization_configuration()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoEnable = TRUE|FALSE,
-  MemberAccountLimitReached = TRUE|FALSE
-)
-}
-}
 \description{
-Returns information about the Organizations configuration for Security
-Hub. Can only be called from a Security Hub administrator account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_organization_configuration()
-}
-}
+Returns information about the Organizations configuration for Security Hub. Can only be called from a Security Hub administrator account.
 
+See \url{https://paws-r.github.io/docs/securityhub/describe_organization_configuration.html} for full documentation.
+}
 \keyword{internal}

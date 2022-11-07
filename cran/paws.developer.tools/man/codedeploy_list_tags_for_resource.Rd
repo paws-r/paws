@@ -5,7 +5,7 @@
 \title{Returns a list of tags for the resource identified by a specified Amazon
 Resource Name (ARN)}
 \usage{
-codedeploy_list_tags_for_resource(ResourceArn, NextToken)
+codedeploy_list_tags_for_resource(ResourceArn, NextToken = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The ARN of a CodeDeploy resource.
@@ -17,29 +17,9 @@ all the tags associated with the resource that is identified by the
 \code{\link[=codedeploy_list_tags_for_resource]{list_tags_for_resource}} call. It
 can be used to return the next set of applications in the list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of tags for the resource identified by a specified Amazon
-Resource Name (ARN). Tags are used to organize and categorize your
-CodeDeploy resources.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string",
-  NextToken = "string"
-)
-}
-}
+Returns a list of tags for the resource identified by a specified Amazon Resource Name (ARN). Tags are used to organize and categorize your CodeDeploy resources.
 
+See \url{https://paws-r.github.io/docs/codedeploy/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

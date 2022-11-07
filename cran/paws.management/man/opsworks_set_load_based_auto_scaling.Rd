@@ -4,8 +4,12 @@
 \alias{opsworks_set_load_based_auto_scaling}
 \title{Specify the load-based auto scaling configuration for a specified layer}
 \usage{
-opsworks_set_load_based_auto_scaling(LayerId, Enable, UpScaling,
-  DownScaling)
+opsworks_set_load_based_auto_scaling(
+  LayerId,
+  Enable = NULL,
+  UpScaling = NULL,
+  DownScaling = NULL
+)
 }
 \arguments{
 \item{LayerId}{[required] The layer ID.}
@@ -22,51 +26,9 @@ configuration. If the load falls below these thresholds for a specified
 amount of time, AWS OpsWorks Stacks stops a specified number of
 instances.}
 }
-\value{
-An empty list.
-}
 \description{
-Specify the load-based auto scaling configuration for a specified layer.
-For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
+Specify the load-based auto scaling configuration for a specified layer. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
 
-To use load-based auto scaling, you must create a set of load-based auto
-scaling instances. Load-based auto scaling operates only on the
-instances from that set, so you must ensure that you have created enough
-instances to handle the maximum anticipated load.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/set_load_based_auto_scaling.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$set_load_based_auto_scaling(
-  LayerId = "string",
-  Enable = TRUE|FALSE,
-  UpScaling = list(
-    InstanceCount = 123,
-    ThresholdsWaitTime = 123,
-    IgnoreMetricsTime = 123,
-    CpuThreshold = 123.0,
-    MemoryThreshold = 123.0,
-    LoadThreshold = 123.0,
-    Alarms = list(
-      "string"
-    )
-  ),
-  DownScaling = list(
-    InstanceCount = 123,
-    ThresholdsWaitTime = 123,
-    IgnoreMetricsTime = 123,
-    CpuThreshold = 123.0,
-    MemoryThreshold = 123.0,
-    LoadThreshold = 123.0,
-    Alarms = list(
-      "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

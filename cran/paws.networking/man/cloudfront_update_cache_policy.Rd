@@ -4,7 +4,7 @@
 \alias{cloudfront_update_cache_policy}
 \title{Updates a cache policy configuration}
 \usage{
-cloudfront_update_cache_policy(CachePolicyConfig, Id, IfMatch)
+cloudfront_update_cache_policy(CachePolicyConfig, Id, IfMatch = NULL)
 }
 \arguments{
 \item{CachePolicyConfig}{[required] A cache policy configuration.}
@@ -18,116 +18,9 @@ the response to
 returned in the cache policy’s \code{ETag} field in the response to
 \code{\link[=cloudfront_get_cache_policy_config]{get_cache_policy_config}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CachePolicy = list(
-    Id = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    CachePolicyConfig = list(
-      Comment = "string",
-      Name = "string",
-      DefaultTTL = 123,
-      MaxTTL = 123,
-      MinTTL = 123,
-      ParametersInCacheKeyAndForwardedToOrigin = list(
-        EnableAcceptEncodingGzip = TRUE|FALSE,
-        EnableAcceptEncodingBrotli = TRUE|FALSE,
-        HeadersConfig = list(
-          HeaderBehavior = "none"|"whitelist",
-          Headers = list(
-            Quantity = 123,
-            Items = list(
-              "string"
-            )
-          )
-        ),
-        CookiesConfig = list(
-          CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
-          Cookies = list(
-            Quantity = 123,
-            Items = list(
-              "string"
-            )
-          )
-        ),
-        QueryStringsConfig = list(
-          QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
-          QueryStrings = list(
-            Quantity = 123,
-            Items = list(
-              "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Updates a cache policy configuration.
 
-When you update a cache policy configuration, all the fields are updated
-with the values provided in the request. You cannot update some fields
-independent of others. To update a cache policy configuration:
-\enumerate{
-\item Use \code{\link[=cloudfront_get_cache_policy_config]{get_cache_policy_config}}
-to get the current configuration.
-\item Locally modify the fields in the cache policy configuration that you
-want to update.
-\item Call \code{\link[=cloudfront_update_cache_policy]{update_cache_policy}} by
-providing the entire cache policy configuration, including the
-fields that you modified and those that you didn’t.
+See \url{https://paws-r.github.io/docs/cloudfront/update_cache_policy.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$update_cache_policy(
-  CachePolicyConfig = list(
-    Comment = "string",
-    Name = "string",
-    DefaultTTL = 123,
-    MaxTTL = 123,
-    MinTTL = 123,
-    ParametersInCacheKeyAndForwardedToOrigin = list(
-      EnableAcceptEncodingGzip = TRUE|FALSE,
-      EnableAcceptEncodingBrotli = TRUE|FALSE,
-      HeadersConfig = list(
-        HeaderBehavior = "none"|"whitelist",
-        Headers = list(
-          Quantity = 123,
-          Items = list(
-            "string"
-          )
-        )
-      ),
-      CookiesConfig = list(
-        CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
-        Cookies = list(
-          Quantity = 123,
-          Items = list(
-            "string"
-          )
-        )
-      ),
-      QueryStringsConfig = list(
-        QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
-        QueryStrings = list(
-          Quantity = 123,
-          Items = list(
-            "string"
-          )
-        )
-      )
-    )
-  ),
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
-
 \keyword{internal}

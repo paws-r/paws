@@ -16,38 +16,12 @@ spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
-}
-\value{
-An empty list.
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Attaches the specified managed policy to the specified user.
 
-You use this API to attach a \emph{managed} policy to a user. To embed an
-inline policy in a user, use \code{\link[=iam_put_user_policy]{put_user_policy}}.
-
-For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$attach_user_policy(
-  UserName = "string",
-  PolicyArn = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command attaches the AWS managed policy named
-# AdministratorAccess to the IAM user named Alice.
-svc$attach_user_policy(
-  PolicyArn = "arn:aws:iam::aws:policy/AdministratorAccess",
-  UserName = "Alice"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/attach_user_policy.html} for full documentation.
 }
 \keyword{internal}

@@ -20,9 +20,9 @@ NULL
 #' ecr_batch_check_layer_availability(registryId, repositoryName,
 #'   layerDigests)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the image
-#' layers to check. If you do not specify a registry, the default registry
-#' is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the image layers to check. If you do not specify a registry,
+#' the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository that is associated with the image layers to
 #' check.
 #' @param layerDigests &#91;required&#93; The digests of the image layers to check.
@@ -96,9 +96,9 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 #' @usage
 #' ecr_batch_delete_image(registryId, repositoryName, imageIds)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the image
-#' to delete. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the image to delete. If you do not specify a registry, the
+#' default registry is assumed.
 #' @param repositoryName &#91;required&#93; The repository that contains the image to delete.
 #' @param imageIds &#91;required&#93; A list of image ID references that correspond to images to delete. The
 #' format of the `imageIds` reference is `imageTag=tag` or
@@ -188,9 +188,9 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 #' ecr_batch_get_image(registryId, repositoryName, imageIds,
 #'   acceptedMediaTypes)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the images
-#' to describe. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the images to describe. If you do not specify a registry, the
+#' default registry is assumed.
 #' @param repositoryName &#91;required&#93; The repository that contains the images to describe.
 #' @param imageIds &#91;required&#93; A list of image ID references that correspond to images to describe. The
 #' format of the `imageIds` reference is `imageTag=tag` or
@@ -281,6 +281,73 @@ ecr_batch_get_image <- function(registryId = NULL, repositoryName, imageIds, acc
 }
 .ecr$operations$batch_get_image <- ecr_batch_get_image
 
+#' Gets the scanning configuration for one or more repositories
+#'
+#' @description
+#' Gets the scanning configuration for one or more repositories.
+#'
+#' @usage
+#' ecr_batch_get_repository_scanning_configuration(repositoryNames)
+#'
+#' @param repositoryNames &#91;required&#93; One or more repository names to get the scanning configuration for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scanningConfigurations = list(
+#'     list(
+#'       repositoryArn = "string",
+#'       repositoryName = "string",
+#'       scanOnPush = TRUE|FALSE,
+#'       scanFrequency = "SCAN_ON_PUSH"|"CONTINUOUS_SCAN"|"MANUAL",
+#'       appliedScanFilters = list(
+#'         list(
+#'           filter = "string",
+#'           filterType = "WILDCARD"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       repositoryName = "string",
+#'       failureCode = "REPOSITORY_NOT_FOUND",
+#'       failureReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_repository_scanning_configuration(
+#'   repositoryNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_batch_get_repository_scanning_configuration
+ecr_batch_get_repository_scanning_configuration <- function(repositoryNames) {
+  op <- new_operation(
+    name = "BatchGetRepositoryScanningConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$batch_get_repository_scanning_configuration_input(repositoryNames = repositoryNames)
+  output <- .ecr$batch_get_repository_scanning_configuration_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$batch_get_repository_scanning_configuration <- ecr_batch_get_repository_scanning_configuration
+
 #' Informs Amazon ECR that the image layer upload has completed for a
 #' specified registry, repository name, and upload ID
 #'
@@ -301,9 +368,9 @@ ecr_batch_get_image <- function(registryId = NULL, repositoryName, imageIds, acc
 #' ecr_complete_layer_upload(registryId, repositoryName, uploadId,
 #'   layerDigests)
 #'
-#' @param registryId The AWS account ID associated with the registry to which to upload
-#' layers. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry to which
+#' to upload layers. If you do not specify a registry, the default registry
+#' is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to associate with the image layer.
 #' @param uploadId &#91;required&#93; The upload ID from a previous
 #' [`initiate_layer_upload`][ecr_initiate_layer_upload] operation to
@@ -353,17 +420,81 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 }
 .ecr$operations$complete_layer_upload <- ecr_complete_layer_upload
 
+#' Creates a pull through cache rule
+#'
+#' @description
+#' Creates a pull through cache rule. A pull through cache rule provides a
+#' way to cache images from an external public registry in your Amazon ECR
+#' private registry.
+#'
+#' @usage
+#' ecr_create_pull_through_cache_rule(ecrRepositoryPrefix,
+#'   upstreamRegistryUrl, registryId)
+#'
+#' @param ecrRepositoryPrefix &#91;required&#93; The repository name prefix to use when caching images from the source
+#' registry.
+#' @param upstreamRegistryUrl &#91;required&#93; The registry URL of the upstream public registry to use as the source
+#' for the pull through cache rule.
+#' @param registryId The Amazon Web Services account ID associated with the registry to
+#' create the pull through cache rule for. If you do not specify a
+#' registry, the default registry is assumed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ecrRepositoryPrefix = "string",
+#'   upstreamRegistryUrl = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   registryId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_pull_through_cache_rule(
+#'   ecrRepositoryPrefix = "string",
+#'   upstreamRegistryUrl = "string",
+#'   registryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_create_pull_through_cache_rule
+ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegistryUrl, registryId = NULL) {
+  op <- new_operation(
+    name = "CreatePullThroughCacheRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$create_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, upstreamRegistryUrl = upstreamRegistryUrl, registryId = registryId)
+  output <- .ecr$create_pull_through_cache_rule_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$create_pull_through_cache_rule <- ecr_create_pull_through_cache_rule
+
 #' Creates a repository
 #'
 #' @description
 #' Creates a repository. For more information, see [Amazon ECR
-#' Repositories](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html)
+#' repositories](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
-#' ecr_create_repository(repositoryName, tags, imageTagMutability,
-#'   imageScanningConfiguration, encryptionConfiguration)
+#' ecr_create_repository(registryId, repositoryName, tags,
+#'   imageTagMutability, imageScanningConfiguration, encryptionConfiguration)
 #'
+#' @param registryId The Amazon Web Services account ID associated with the registry to
+#' create the repository. If you do not specify a registry, the default
+#' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name to use for the repository. The repository name may be specified
 #' on its own (such as `nginx-web-app`) or it can be prepended with a
 #' namespace to group the repository into a category (such as
@@ -410,6 +541,7 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @section Request syntax:
 #' ```
 #' svc$create_repository(
+#'   registryId = "string",
 #'   repositoryName = "string",
 #'   tags = list(
 #'     list(
@@ -440,14 +572,14 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @keywords internal
 #'
 #' @rdname ecr_create_repository
-ecr_create_repository <- function(repositoryName, tags = NULL, imageTagMutability = NULL, imageScanningConfiguration = NULL, encryptionConfiguration = NULL) {
+ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL, imageTagMutability = NULL, imageScanningConfiguration = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecr$create_repository_input(repositoryName = repositoryName, tags = tags, imageTagMutability = imageTagMutability, imageScanningConfiguration = imageScanningConfiguration, encryptionConfiguration = encryptionConfiguration)
+  input <- .ecr$create_repository_input(registryId = registryId, repositoryName = repositoryName, tags = tags, imageTagMutability = imageTagMutability, imageScanningConfiguration = imageScanningConfiguration, encryptionConfiguration = encryptionConfiguration)
   output <- .ecr$create_repository_output()
   config <- get_config()
   svc <- .ecr$service(config)
@@ -465,9 +597,9 @@ ecr_create_repository <- function(repositoryName, tags = NULL, imageTagMutabilit
 #' @usage
 #' ecr_delete_lifecycle_policy(registryId, repositoryName)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository. If you do not specify a registry, the default
+#' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository.
 #'
 #' @return
@@ -510,6 +642,61 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
   return(response)
 }
 .ecr$operations$delete_lifecycle_policy <- ecr_delete_lifecycle_policy
+
+#' Deletes a pull through cache rule
+#'
+#' @description
+#' Deletes a pull through cache rule.
+#'
+#' @usage
+#' ecr_delete_pull_through_cache_rule(ecrRepositoryPrefix, registryId)
+#'
+#' @param ecrRepositoryPrefix &#91;required&#93; The Amazon ECR repository prefix associated with the pull through cache
+#' rule to delete.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the pull through cache rule. If you do not specify a registry,
+#' the default registry is assumed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ecrRepositoryPrefix = "string",
+#'   upstreamRegistryUrl = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   registryId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_pull_through_cache_rule(
+#'   ecrRepositoryPrefix = "string",
+#'   registryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_delete_pull_through_cache_rule
+ecr_delete_pull_through_cache_rule <- function(ecrRepositoryPrefix, registryId = NULL) {
+  op <- new_operation(
+    name = "DeletePullThroughCacheRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$delete_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, registryId = registryId)
+  output <- .ecr$delete_pull_through_cache_rule_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$delete_pull_through_cache_rule <- ecr_delete_pull_through_cache_rule
 
 #' Deletes the registry permissions policy
 #'
@@ -563,9 +750,9 @@ ecr_delete_registry_policy <- function() {
 #' @usage
 #' ecr_delete_repository(registryId, repositoryName, force)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository to delete. If you do not specify a registry, the default
-#' registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository to delete. If you do not specify a registry, the
+#' default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to delete.
 #' @param force If a repository contains images, forces the deletion.
 #'
@@ -641,9 +828,9 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #' @usage
 #' ecr_delete_repository_policy(registryId, repositoryName)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository policy to delete. If you do not specify a registry, the
-#' default registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository policy to delete. If you do not specify a
+#' registry, the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository that is associated with the repository policy
 #' to delete.
 #'
@@ -694,6 +881,72 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 }
 .ecr$operations$delete_repository_policy <- ecr_delete_repository_policy
 
+#' Returns the replication status for a specified image
+#'
+#' @description
+#' Returns the replication status for a specified image.
+#'
+#' @usage
+#' ecr_describe_image_replication_status(repositoryName, imageId,
+#'   registryId)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository that the image is in.
+#' @param imageId &#91;required&#93; 
+#' @param registryId The Amazon Web Services account ID associated with the registry. If you
+#' do not specify a registry, the default registry is assumed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryName = "string",
+#'   imageId = list(
+#'     imageDigest = "string",
+#'     imageTag = "string"
+#'   ),
+#'   replicationStatuses = list(
+#'     list(
+#'       region = "string",
+#'       registryId = "string",
+#'       status = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+#'       failureCode = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_image_replication_status(
+#'   repositoryName = "string",
+#'   imageId = list(
+#'     imageDigest = "string",
+#'     imageTag = "string"
+#'   ),
+#'   registryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_describe_image_replication_status
+ecr_describe_image_replication_status <- function(repositoryName, imageId, registryId = NULL) {
+  op <- new_operation(
+    name = "DescribeImageReplicationStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$describe_image_replication_status_input(repositoryName = repositoryName, imageId = imageId, registryId = registryId)
+  output <- .ecr$describe_image_replication_status_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$describe_image_replication_status <- ecr_describe_image_replication_status
+
 #' Returns the scan findings for the specified image
 #'
 #' @description
@@ -703,9 +956,9 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 #' ecr_describe_image_scan_findings(registryId, repositoryName, imageId,
 #'   nextToken, maxResults)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository in which to describe the image scan findings for. If you do
-#' not specify a registry, the default registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository in which to describe the image scan findings
+#' for. If you do not specify a registry, the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The repository for the image for which to describe the scan findings.
 #' @param imageId &#91;required&#93; 
 #' @param nextToken The `nextToken` value returned from a previous paginated
@@ -738,7 +991,7 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 #'     imageTag = "string"
 #'   ),
 #'   imageScanStatus = list(
-#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE",
 #'     description = "string"
 #'   ),
 #'   imageScanFindings = list(
@@ -747,6 +1000,9 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 #'     ),
 #'     vulnerabilitySourceUpdatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     findingSeverityCounts = list(
+#'       123
 #'     ),
 #'     findings = list(
 #'       list(
@@ -762,8 +1018,109 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 #'         )
 #'       )
 #'     ),
-#'     findingSeverityCounts = list(
-#'       123
+#'     enhancedFindings = list(
+#'       list(
+#'         awsAccountId = "string",
+#'         description = "string",
+#'         findingArn = "string",
+#'         firstObservedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastObservedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         packageVulnerabilityDetails = list(
+#'           cvss = list(
+#'             list(
+#'               baseScore = 123.0,
+#'               scoringVector = "string",
+#'               source = "string",
+#'               version = "string"
+#'             )
+#'           ),
+#'           referenceUrls = list(
+#'             "string"
+#'           ),
+#'           relatedVulnerabilities = list(
+#'             "string"
+#'           ),
+#'           source = "string",
+#'           sourceUrl = "string",
+#'           vendorCreatedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           vendorSeverity = "string",
+#'           vendorUpdatedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           vulnerabilityId = "string",
+#'           vulnerablePackages = list(
+#'             list(
+#'               arch = "string",
+#'               epoch = 123,
+#'               filePath = "string",
+#'               name = "string",
+#'               packageManager = "string",
+#'               release = "string",
+#'               sourceLayerHash = "string",
+#'               version = "string"
+#'             )
+#'           )
+#'         ),
+#'         remediation = list(
+#'           recommendation = list(
+#'             url = "string",
+#'             text = "string"
+#'           )
+#'         ),
+#'         resources = list(
+#'           list(
+#'             details = list(
+#'               awsEcrContainerImage = list(
+#'                 architecture = "string",
+#'                 author = "string",
+#'                 imageHash = "string",
+#'                 imageTags = list(
+#'                   "string"
+#'                 ),
+#'                 platform = "string",
+#'                 pushedAt = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 registry = "string",
+#'                 repositoryName = "string"
+#'               )
+#'             ),
+#'             id = "string",
+#'             tags = list(
+#'               "string"
+#'             ),
+#'             type = "string"
+#'           )
+#'         ),
+#'         score = 123.0,
+#'         scoreDetails = list(
+#'           cvss = list(
+#'             adjustments = list(
+#'               list(
+#'                 metric = "string",
+#'                 reason = "string"
+#'               )
+#'             ),
+#'             score = 123.0,
+#'             scoreSource = "string",
+#'             scoringVector = "string",
+#'             version = "string"
+#'           )
+#'         ),
+#'         severity = "string",
+#'         status = "string",
+#'         title = "string",
+#'         type = "string",
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -819,9 +1176,9 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #' ecr_describe_images(registryId, repositoryName, imageIds, nextToken,
 #'   maxResults, filter)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository in which to describe images. If you do not specify a
-#' registry, the default registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository in which to describe images. If you do not
+#' specify a registry, the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The repository that contains the images to describe.
 #' @param imageIds The list of image IDs for the requested repository.
 #' @param nextToken The `nextToken` value returned from a previous paginated
@@ -862,7 +1219,7 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #'         "2015-01-01"
 #'       ),
 #'       imageScanStatus = list(
-#'         status = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+#'         status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE",
 #'         description = "string"
 #'       ),
 #'       imageScanFindingsSummary = list(
@@ -877,7 +1234,10 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #'         )
 #'       ),
 #'       imageManifestMediaType = "string",
-#'       artifactMediaType = "string"
+#'       artifactMediaType = "string",
+#'       lastRecordedPullTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -923,6 +1283,87 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 }
 .ecr$operations$describe_images <- ecr_describe_images
 
+#' Returns the pull through cache rules for a registry
+#'
+#' @description
+#' Returns the pull through cache rules for a registry.
+#'
+#' @usage
+#' ecr_describe_pull_through_cache_rules(registryId, ecrRepositoryPrefixes,
+#'   nextToken, maxResults)
+#'
+#' @param registryId The Amazon Web Services account ID associated with the registry to
+#' return the pull through cache rules for. If you do not specify a
+#' registry, the default registry is assumed.
+#' @param ecrRepositoryPrefixes The Amazon ECR repository prefixes associated with the pull through
+#' cache rules to return. If no repository prefix value is specified, all
+#' pull through cache rules are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `DescribePullThroughCacheRulesRequest` request where `maxResults` was
+#' used and the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous results that returned the
+#' `nextToken` value. This value is null when there are no more results to
+#' return.
+#' @param maxResults The maximum number of pull through cache rules returned by
+#' `DescribePullThroughCacheRulesRequest` in paginated output. When this
+#' parameter is used, `DescribePullThroughCacheRulesRequest` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `DescribePullThroughCacheRulesRequest` request with the
+#' returned `nextToken` value. This value can be between 1 and 1000. If
+#' this parameter is not used, then `DescribePullThroughCacheRulesRequest`
+#' returns up to 100 results and a `nextToken` value, if applicable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullThroughCacheRules = list(
+#'     list(
+#'       ecrRepositoryPrefix = "string",
+#'       upstreamRegistryUrl = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       registryId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_pull_through_cache_rules(
+#'   registryId = "string",
+#'   ecrRepositoryPrefixes = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_describe_pull_through_cache_rules
+ecr_describe_pull_through_cache_rules <- function(registryId = NULL, ecrRepositoryPrefixes = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "DescribePullThroughCacheRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$describe_pull_through_cache_rules_input(registryId = registryId, ecrRepositoryPrefixes = ecrRepositoryPrefixes, nextToken = nextToken, maxResults = maxResults)
+  output <- .ecr$describe_pull_through_cache_rules_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$describe_pull_through_cache_rules <- ecr_describe_pull_through_cache_rules
+
 #' Describes the settings for a registry
 #'
 #' @description
@@ -946,6 +1387,12 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 #'           list(
 #'             region = "string",
 #'             registryId = "string"
+#'           )
+#'         ),
+#'         repositoryFilters = list(
+#'           list(
+#'             filter = "string",
+#'             filterType = "PREFIX_MATCH"
 #'           )
 #'         )
 #'       )
@@ -988,9 +1435,9 @@ ecr_describe_registry <- function() {
 #' ecr_describe_repositories(registryId, repositoryNames, nextToken,
 #'   maxResults)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repositories to be described. If you do not specify a registry, the
-#' default registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repositories to be described. If you do not specify a
+#' registry, the default registry is assumed.
 #' @param repositoryNames A list of repositories to describe. If this parameter is omitted, then
 #' all repositories in a registry are described.
 #' @param nextToken The `nextToken` value returned from a previous paginated
@@ -1093,17 +1540,17 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #' 
 #' The `authorizationToken` returned is a base64 encoded string that can be
 #' decoded and used in a `docker login` command to authenticate to a
-#' registry. The AWS CLI offers an `get-login-password` command that
-#' simplifies the login process. For more information, see [Registry
-#' Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth)
+#' registry. The CLI offers an `get-login-password` command that simplifies
+#' the login process. For more information, see [Registry
+#' authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
 #' ecr_get_authorization_token(registryIds)
 #'
-#' @param registryIds A list of AWS account IDs that are associated with the registries for
-#' which to get AuthorizationData objects. If you do not specify a
-#' registry, the default registry is assumed.
+#' @param registryIds A list of Amazon Web Services account IDs that are associated with the
+#' registries for which to get AuthorizationData objects. If you do not
+#' specify a registry, the default registry is assumed.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1174,9 +1621,9 @@ ecr_get_authorization_token <- function(registryIds = NULL) {
 #' @usage
 #' ecr_get_download_url_for_layer(registryId, repositoryName, layerDigest)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the image
-#' layer to download. If you do not specify a registry, the default
-#' registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the image layer to download. If you do not specify a registry,
+#' the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository that is associated with the image layer to
 #' download.
 #' @param layerDigest &#91;required&#93; The digest of the image layer to download.
@@ -1227,9 +1674,9 @@ ecr_get_download_url_for_layer <- function(registryId = NULL, repositoryName, la
 #' @usage
 #' ecr_get_lifecycle_policy(registryId, repositoryName)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository. If you do not specify a registry, the default
+#' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository.
 #'
 #' @return
@@ -1284,27 +1731,27 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' ecr_get_lifecycle_policy_preview(registryId, repositoryName, imageIds,
 #'   nextToken, maxResults, filter)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository. If you do not specify a registry, the default
+#' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository.
 #' @param imageIds The list of imageIDs to be included.
-#' @param nextToken The `nextToken` value returned from a previous paginated 
+#' @param nextToken The `nextToken` value returned from a previous paginated
 #' `GetLifecyclePolicyPreviewRequest` request where `maxResults` was used
-#' and the  results exceeded the value of that parameter. Pagination
-#' continues from the end of the  previous results that returned the
-#' `nextToken` value. This value is  `null` when there are no more results
+#' and the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous results that returned the
+#' `nextToken` value. This value is `null` when there are no more results
 #' to return. This option cannot be used when you specify images with
 #' `imageIds`.
 #' @param maxResults The maximum number of repository results returned by
-#' `GetLifecyclePolicyPreviewRequest` in  paginated output. When this
-#' parameter is used, `GetLifecyclePolicyPreviewRequest` only returns 
-#' `maxResults` results in a single page along with a `nextToken`  response
+#' `GetLifecyclePolicyPreviewRequest` in paginated output. When this
+#' parameter is used, `GetLifecyclePolicyPreviewRequest` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
-#' sending  another `GetLifecyclePolicyPreviewRequest` request with the
-#' returned `nextToken`  value. This value can be between 1 and 1000. If
-#' this  parameter is not used, then `GetLifecyclePolicyPreviewRequest`
-#' returns up to  100 results and a `nextToken` value, if  applicable. This
+#' sending another `GetLifecyclePolicyPreviewRequest` request with the
+#' returned `nextToken` value. This value can be between 1 and 1000. If
+#' this parameter is not used, then `GetLifecyclePolicyPreviewRequest`
+#' returns up to 100 results and a `nextToken` value, if applicable. This
 #' option cannot be used when you specify images with `imageIds`.
 #' @param filter An optional parameter that filters results based on image tag status and
 #' all tags, if tagged.
@@ -1420,6 +1867,61 @@ ecr_get_registry_policy <- function() {
 }
 .ecr$operations$get_registry_policy <- ecr_get_registry_policy
 
+#' Retrieves the scanning configuration for a registry
+#'
+#' @description
+#' Retrieves the scanning configuration for a registry.
+#'
+#' @usage
+#' ecr_get_registry_scanning_configuration()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryId = "string",
+#'   scanningConfiguration = list(
+#'     scanType = "BASIC"|"ENHANCED",
+#'     rules = list(
+#'       list(
+#'         scanFrequency = "SCAN_ON_PUSH"|"CONTINUOUS_SCAN"|"MANUAL",
+#'         repositoryFilters = list(
+#'           list(
+#'             filter = "string",
+#'             filterType = "WILDCARD"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_registry_scanning_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_get_registry_scanning_configuration
+ecr_get_registry_scanning_configuration <- function() {
+  op <- new_operation(
+    name = "GetRegistryScanningConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$get_registry_scanning_configuration_input()
+  output <- .ecr$get_registry_scanning_configuration_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$get_registry_scanning_configuration <- ecr_get_registry_scanning_configuration
+
 #' Retrieves the repository policy for the specified repository
 #'
 #' @description
@@ -1428,9 +1930,9 @@ ecr_get_registry_policy <- function() {
 #' @usage
 #' ecr_get_repository_policy(registryId, repositoryName)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository. If you do not specify a registry, the default
+#' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository with the policy to retrieve.
 #'
 #' @return
@@ -1497,9 +1999,9 @@ ecr_get_repository_policy <- function(registryId = NULL, repositoryName) {
 #' @usage
 #' ecr_initiate_layer_upload(registryId, repositoryName)
 #'
-#' @param registryId The AWS account ID associated with the registry to which you intend to
-#' upload layers. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry to which
+#' you intend to upload layers. If you do not specify a registry, the
+#' default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to which you intend to upload layers.
 #'
 #' @return
@@ -1556,9 +2058,9 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' ecr_list_images(registryId, repositoryName, nextToken, maxResults,
 #'   filter)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository in which to list images. If you do not specify a registry,
-#' the default registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository in which to list images. If you do not specify a
+#' registry, the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The repository with image IDs to be listed.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_images`][ecr_list_images] request where `maxResults` was used and
@@ -1706,9 +2208,9 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 #' ecr_put_image(registryId, repositoryName, imageManifest,
 #'   imageManifestMediaType, imageTag, imageDigest)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository in which to put the image. If you do not specify a registry,
-#' the default registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository in which to put the image. If you do not specify
+#' a registry, the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository in which to put the image.
 #' @param imageManifest &#91;required&#93; The image manifest corresponding to the image to be uploaded.
 #' @param imageManifestMediaType The media type of the image manifest. If you push an image manifest that
@@ -1768,18 +2270,26 @@ ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imag
 }
 .ecr$operations$put_image <- ecr_put_image
 
-#' Updates the image scanning configuration for the specified repository
+#' The PutImageScanningConfiguration API is being deprecated, in favor of
+#' specifying the image scanning configuration at the registry level
 #'
 #' @description
+#' The
+#' [`put_image_scanning_configuration`][ecr_put_image_scanning_configuration]
+#' API is being deprecated, in favor of specifying the image scanning
+#' configuration at the registry level. For more information, see
+#' [`put_registry_scanning_configuration`][ecr_put_registry_scanning_configuration].
+#' 
 #' Updates the image scanning configuration for the specified repository.
 #'
 #' @usage
 #' ecr_put_image_scanning_configuration(registryId, repositoryName,
 #'   imageScanningConfiguration)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository in which to update the image scanning configuration setting.
-#' If you do not specify a registry, the default registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository in which to update the image scanning
+#' configuration setting. If you do not specify a registry, the default
+#' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository in which to update the image scanning
 #' configuration setting.
 #' @param imageScanningConfiguration &#91;required&#93; The image scanning configuration for the repository. This setting
@@ -1833,17 +2343,18 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
 #'
 #' @description
 #' Updates the image tag mutability settings for the specified repository.
-#' For more information, see [Image Tag
-#' Mutability](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html)
+#' For more information, see [Image tag
+#' mutability](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
 #' ecr_put_image_tag_mutability(registryId, repositoryName,
 #'   imageTagMutability)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository in which to update the image tag mutability settings. If you
-#' do not specify a registry, the default registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository in which to update the image tag mutability
+#' settings. If you do not specify a registry, the default registry is
+#' assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository in which to update the image tag mutability
 #' settings.
 #' @param imageTagMutability &#91;required&#93; The tag mutability setting for the repository. If `MUTABLE` is
@@ -1894,16 +2405,16 @@ ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imag
 #'
 #' @description
 #' Creates or updates the lifecycle policy for the specified repository.
-#' For more information, see [Lifecycle Policy
-#' Template](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
+#' For more information, see [Lifecycle policy
+#' template](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 #'
 #' @usage
 #' ecr_put_lifecycle_policy(registryId, repositoryName,
 #'   lifecyclePolicyText)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository. If you do  not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository. If you do not specify a registry, the default
+#' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to receive the policy.
 #' @param lifecyclePolicyText &#91;required&#93; The JSON repository policy text to apply to the repository.
 #'
@@ -1951,9 +2462,9 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
 #' @description
 #' Creates or updates the permissions policy for your registry.
 #' 
-#' A registry policy is used to specify permissions for another AWS account
-#' and is used when configuring cross-account replication. For more
-#' information, see [Registry
+#' A registry policy is used to specify permissions for another Amazon Web
+#' Services account and is used when configuring cross-account replication.
+#' For more information, see [Registry
 #' permissions](https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
@@ -2001,6 +2512,89 @@ ecr_put_registry_policy <- function(policyText) {
 }
 .ecr$operations$put_registry_policy <- ecr_put_registry_policy
 
+#' Creates or updates the scanning configuration for your private registry
+#'
+#' @description
+#' Creates or updates the scanning configuration for your private registry.
+#'
+#' @usage
+#' ecr_put_registry_scanning_configuration(scanType, rules)
+#'
+#' @param scanType The scanning type to set for the registry.
+#' 
+#' When a registry scanning configuration is not defined, by default the
+#' `BASIC` scan type is used. When basic scanning is used, you may specify
+#' filters to determine which individual repositories, or all repositories,
+#' are scanned when new images are pushed to those repositories.
+#' Alternatively, you can do manual scans of images with basic scanning.
+#' 
+#' When the `ENHANCED` scan type is set, Amazon Inspector provides
+#' automated vulnerability scanning. You may choose between continuous
+#' scanning or scan on push and you may specify filters to determine which
+#' individual repositories, or all repositories, are scanned.
+#' @param rules The scanning rules to use for the registry. A scanning rule is used to
+#' determine which repository filters are used and at what frequency
+#' scanning will occur.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryScanningConfiguration = list(
+#'     scanType = "BASIC"|"ENHANCED",
+#'     rules = list(
+#'       list(
+#'         scanFrequency = "SCAN_ON_PUSH"|"CONTINUOUS_SCAN"|"MANUAL",
+#'         repositoryFilters = list(
+#'           list(
+#'             filter = "string",
+#'             filterType = "WILDCARD"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_registry_scanning_configuration(
+#'   scanType = "BASIC"|"ENHANCED",
+#'   rules = list(
+#'     list(
+#'       scanFrequency = "SCAN_ON_PUSH"|"CONTINUOUS_SCAN"|"MANUAL",
+#'       repositoryFilters = list(
+#'         list(
+#'           filter = "string",
+#'           filterType = "WILDCARD"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_put_registry_scanning_configuration
+ecr_put_registry_scanning_configuration <- function(scanType = NULL, rules = NULL) {
+  op <- new_operation(
+    name = "PutRegistryScanningConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$put_registry_scanning_configuration_input(scanType = scanType, rules = rules)
+  output <- .ecr$put_registry_scanning_configuration_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$put_registry_scanning_configuration <- ecr_put_registry_scanning_configuration
+
 #' Creates or updates the replication configuration for a registry
 #'
 #' @description
@@ -2009,7 +2603,7 @@ ecr_put_registry_policy <- function(policyText) {
 #' with the [`describe_registry`][ecr_describe_registry] API action. The
 #' first time the PutReplicationConfiguration API is called, a
 #' service-linked IAM role is created in your account for the replication
-#' process. For more information, see [Using Service-Linked Roles for
+#' process. For more information, see [Using service-linked roles for
 #' Amazon
 #' ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
@@ -2036,6 +2630,12 @@ ecr_put_registry_policy <- function(policyText) {
 #'             region = "string",
 #'             registryId = "string"
 #'           )
+#'         ),
+#'         repositoryFilters = list(
+#'           list(
+#'             filter = "string",
+#'             filterType = "PREFIX_MATCH"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2053,6 +2653,12 @@ ecr_put_registry_policy <- function(policyText) {
 #'           list(
 #'             region = "string",
 #'             registryId = "string"
+#'           )
+#'         ),
+#'         repositoryFilters = list(
+#'           list(
+#'             filter = "string",
+#'             filterType = "PREFIX_MATCH"
 #'           )
 #'         )
 #'       )
@@ -2087,19 +2693,19 @@ ecr_put_replication_configuration <- function(replicationConfiguration) {
 #' @description
 #' Applies a repository policy to the specified repository to control
 #' access permissions. For more information, see [Amazon ECR Repository
-#' Policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html)
+#' policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
 #' ecr_set_repository_policy(registryId, repositoryName, policyText, force)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository. If you do not specify a registry, the default
+#' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to receive the policy.
 #' @param policyText &#91;required&#93; The JSON repository policy text to apply to the repository. For more
-#' information, see [Amazon ECR Repository
-#' Policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policy-examples.html)
+#' information, see [Amazon ECR repository
+#' policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policy-examples.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #' @param force If the policy you are attempting to set on a repository policy would
 #' prevent you from setting another policy in the future, you must force
@@ -2150,17 +2756,17 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
 #'
 #' @description
 #' Starts an image vulnerability scan. An image scan can only be started
-#' once per day on an individual image. This limit includes if an image was
-#' scanned on initial push. For more information, see [Image
-#' Scanning](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html)
+#' once per 24 hours on an individual image. This limit includes if an
+#' image was scanned on initial push. For more information, see [Image
+#' scanning](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
 #' ecr_start_image_scan(registryId, repositoryName, imageId)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository in which to start an image scan request. If you do not
-#' specify a registry, the default registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository in which to start an image scan request. If you
+#' do not specify a registry, the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the images to scan.
 #' @param imageId &#91;required&#93; 
 #'
@@ -2175,7 +2781,7 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
 #'     imageTag = "string"
 #'   ),
 #'   imageScanStatus = list(
-#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE",
 #'     description = "string"
 #'   )
 #' )
@@ -2224,9 +2830,9 @@ ecr_start_image_scan <- function(registryId = NULL, repositoryName, imageId) {
 #' ecr_start_lifecycle_policy_preview(registryId, repositoryName,
 #'   lifecyclePolicyText)
 #'
-#' @param registryId The AWS account ID associated with the registry that contains the
-#' repository. If you do not specify a registry, the default registry is
-#' assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry that
+#' contains the repository. If you do not specify a registry, the default
+#' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to be evaluated.
 #' @param lifecyclePolicyText The policy to be evaluated against. If you do not specify a policy, the
 #' current policy for the repository is used.
@@ -2387,9 +2993,9 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #' ecr_upload_layer_part(registryId, repositoryName, uploadId,
 #'   partFirstByte, partLastByte, layerPartBlob)
 #'
-#' @param registryId The AWS account ID associated with the registry to which you are
-#' uploading layer parts. If you do not specify a registry, the default
-#' registry is assumed.
+#' @param registryId The Amazon Web Services account ID associated with the registry to which
+#' you are uploading layer parts. If you do not specify a registry, the
+#' default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to which you are uploading layer parts.
 #' @param uploadId &#91;required&#93; The upload ID from a previous
 #' [`initiate_layer_upload`][ecr_initiate_layer_upload] operation to

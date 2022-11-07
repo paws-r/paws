@@ -12,29 +12,9 @@ clouddirectory_create_directory(Name, SchemaArn)
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) of the published schema that will be
 copied into the data Directory. For more information, see arns.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DirectoryArn = "string",
-  Name = "string",
-  ObjectIdentifier = "string",
-  AppliedSchemaArn = "string"
-)
-}
-}
 \description{
-Creates a Directory by copying the published schema into the directory.
-A directory cannot be created without a schema.
+Creates a Directory by copying the published schema into the directory. A directory cannot be created without a schema.
 
-You can also quickly create a directory using a managed schema, called
-the \code{QuickStartSchema}. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html}{Managed Schema}
-in the \emph{Amazon Cloud Directory Developer Guide}.
+See \url{https://paws-r.github.io/docs/clouddirectory/create_directory.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_directory(
-  Name = "string",
-  SchemaArn = "string"
-)
-}
-}
-
 \keyword{internal}

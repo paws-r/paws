@@ -4,7 +4,11 @@
 \alias{inspector_list_assessment_targets}
 \title{Lists the ARNs of the assessment targets within this AWS account}
 \usage{
-inspector_list_assessment_targets(filter, nextToken, maxResults)
+inspector_list_assessment_targets(
+  filter = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{filter}{You can use this parameter to specify a subset of data to be included in
@@ -23,37 +27,9 @@ previous response to continue listing data.}
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  assessmentTargetArns = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the ARNs of the assessment targets within this AWS account. For
-more information about assessment targets, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_assessment_targets(
-  filter = list(
-    assessmentTargetNamePattern = "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists the ARNs of the assessment targets within this AWS account. For more information about assessment targets, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
 
-\examples{
-\dontrun{
-# Lists the ARNs of the assessment targets within this AWS account.
-svc$list_assessment_targets(
-  maxResults = 123L
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/list_assessment_targets.html} for full documentation.
 }
 \keyword{internal}

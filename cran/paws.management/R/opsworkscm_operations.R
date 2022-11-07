@@ -6,31 +6,9 @@ NULL
 #' Associates a new node with the server
 #'
 #' @description
-#' Associates a new node with the server. For more information about how to
-#' disassociate a node, see
-#' [`disassociate_node`][opsworkscm_disassociate_node].
-#' 
-#' On a Chef server: This command is an alternative to `knife bootstrap`.
-#' 
-#' Example (Chef):
-#' `aws opsworks-cm associate-node --server-name MyServer --node-name MyManagedNode --engine-attributes "Name=CHEF_ORGANIZATION,Value=default" "Name=CHEF_NODE_PUBLIC_KEY,Value=public-key-pem"`
-#' 
-#' On a Puppet server, this command is an alternative to the
-#' `puppet cert sign` command that signs a Puppet node CSR.
-#' 
-#' Example (Puppet):
-#' `aws opsworks-cm associate-node --server-name MyServer --node-name MyManagedNode --engine-attributes "Name=PUPPET_NODE_CSR,Value=csr-pem"`
-#' 
-#' A node can can only be associated with servers that are in a `HEALTHY`
-#' state. Otherwise, an `InvalidStateException` is thrown. A
-#' `ResourceNotFoundException` is thrown when the server does not exist. A
-#' `ValidationException` is raised when parameters of the request are not
-#' valid. The AssociateNode API call can be integrated into Auto Scaling
-#' configurations, AWS Cloudformation templates, or the user data of a
-#' server's instance.
+#' Associates a new node with the server. For more information about how to disassociate a node, see [`disassociate_node`][opsworkscm_disassociate_node].
 #'
-#' @usage
-#' opsworkscm_associate_node(ServerName, NodeName, EngineAttributes)
+#' See [https://paws-r.github.io/docs/opsworkscm/associate_node.html](https://paws-r.github.io/docs/opsworkscm/associate_node.html) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server with which to associate the node.
 #' @param NodeName &#91;required&#93; The name of the node.
@@ -49,28 +27,6 @@ NULL
 #' 
 #' -   `PUPPET_NODE_CSR`: A PEM-formatted certificate-signing request (CSR)
 #'     that is created by the node.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NodeAssociationStatusToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_node(
-#'   ServerName = "string",
-#'   NodeName = "string",
-#'   EngineAttributes = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -95,25 +51,9 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 #' Creates an application-level backup of a server
 #'
 #' @description
-#' Creates an application-level backup of a server. While the server is in
-#' the `BACKING_UP` state, the server cannot be changed, and no additional
-#' backup can be created.
-#' 
-#' Backups can be created for servers in `RUNNING`, `HEALTHY`, and
-#' `UNHEALTHY` states. By default, you can create a maximum of 50 manual
-#' backups.
-#' 
-#' This operation is asynchronous.
-#' 
-#' A `LimitExceededException` is thrown when the maximum number of manual
-#' backups is reached. An `InvalidStateException` is thrown when the server
-#' is not in any of the following states: RUNNING, HEALTHY, or UNHEALTHY. A
-#' `ResourceNotFoundException` is thrown when the server is not found. A
-#' `ValidationException` is thrown when parameters of the request are not
-#' valid.
+#' Creates an application-level backup of a server. While the server is in the `BACKING_UP` state, the server cannot be changed, and no additional backup can be created.
 #'
-#' @usage
-#' opsworkscm_create_backup(ServerName, Description, Tags)
+#' See [https://paws-r.github.io/docs/opsworkscm/create_backup.html](https://paws-r.github.io/docs/opsworkscm/create_backup.html) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server that you want to back up.
 #' @param Description A user-defined description of the backup.
@@ -135,59 +75,6 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 #' 
 #' -   A maximum of 50 user-applied tags is allowed for tag-supported AWS
 #'     OpsWorks-CM resources.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Backup = list(
-#'     BackupArn = "string",
-#'     BackupId = "string",
-#'     BackupType = "AUTOMATED"|"MANUAL",
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Description = "string",
-#'     Engine = "string",
-#'     EngineModel = "string",
-#'     EngineVersion = "string",
-#'     InstanceProfileArn = "string",
-#'     InstanceType = "string",
-#'     KeyPair = "string",
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     S3DataSize = 123,
-#'     S3DataUrl = "string",
-#'     S3LogUrl = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     ServerName = "string",
-#'     ServiceRoleArn = "string",
-#'     Status = "IN_PROGRESS"|"OK"|"FAILED"|"DELETING",
-#'     StatusDescription = "string",
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     ToolsVersion = "string",
-#'     UserArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_backup(
-#'   ServerName = "string",
-#'   Description = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -212,47 +99,9 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' Creates and immedately starts a new server
 #'
 #' @description
-#' Creates and immedately starts a new server. The server is ready to use
-#' when it is in the `HEALTHY` state. By default, you can create a maximum
-#' of 10 servers.
-#' 
-#' This operation is asynchronous.
-#' 
-#' A `LimitExceededException` is thrown when you have created the maximum
-#' number of servers (10). A `ResourceAlreadyExistsException` is thrown
-#' when a server with the same name already exists in the account. A
-#' `ResourceNotFoundException` is thrown when you specify a backup ID that
-#' is not valid or is for a backup that does not exist. A
-#' `ValidationException` is thrown when parameters of the request are not
-#' valid.
-#' 
-#' If you do not specify a security group by adding the `SecurityGroupIds`
-#' parameter, AWS OpsWorks creates a new security group.
-#' 
-#' *Chef Automate:* The default security group opens the Chef server to the
-#' world on TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH
-#' access. SSH is also open to the world on TCP port 22.
-#' 
-#' *Puppet Enterprise:* The default security group opens TCP ports 22, 443,
-#' 4433, 8140, 8142, 8143, and 8170. If a KeyName is present, AWS OpsWorks
-#' enables SSH access. SSH is also open to the world on TCP port 22.
-#' 
-#' By default, your server is accessible from any IP address. We recommend
-#' that you update your security group rules to allow access from known IP
-#' addresses and address ranges only. To edit security group rules, open
-#' Security Groups in the navigation pane of the EC2 management console.
-#' 
-#' To specify your own domain for a server, and provide your own
-#' self-signed or CA-signed certificate and private key, specify values for
-#' `CustomDomain`, `CustomCertificate`, and `CustomPrivateKey`.
+#' Creates and immedately starts a new server. The server is ready to use when it is in the `HEALTHY` state. By default, you can create a maximum of 10 servers.
 #'
-#' @usage
-#' opsworkscm_create_server(AssociatePublicIpAddress, CustomDomain,
-#'   CustomCertificate, CustomPrivateKey, DisableAutomatedBackup, Engine,
-#'   EngineModel, EngineVersion, EngineAttributes, BackupRetentionCount,
-#'   ServerName, InstanceProfileArn, InstanceType, KeyPair,
-#'   PreferredMaintenanceWindow, PreferredBackupWindow, SecurityGroupIds,
-#'   ServiceRoleArn, SubnetIds, Tags, BackupId)
+#' See [https://paws-r.github.io/docs/opsworkscm/create_server.html](https://paws-r.github.io/docs/opsworkscm/create_server.html) for full documentation.
 #'
 #' @param AssociatePublicIpAddress Associate a public IP address with a server that you are launching.
 #' Valid values are `true` or `false`. The default value is `true`.
@@ -297,24 +146,24 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' `Monolithic` for Puppet and `Single` for Chef.
 #' @param EngineVersion The major release version of the engine that you want to use. For a Chef
 #' server, the valid value for EngineVersion is currently `2`. For a Puppet
-#' server, the valid value is `2017`.
+#' server, valid values are `2019` or `2017`.
 #' @param EngineAttributes Optional engine attributes on a specified server.
 #' 
 #' **Attributes accepted in a Chef createServer request:**
 #' 
 #' -   `CHEF_AUTOMATE_PIVOTAL_KEY`: A base64-encoded RSA public key. The
 #'     corresponding private key is required to access the Chef API. When
-#'     no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated
-#'     and returned in the response.
+#'     no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+#'     returned in the response.
 #' 
 #' -   `CHEF_AUTOMATE_ADMIN_PASSWORD`: The password for the administrative
 #'     user in the Chef Automate web-based dashboard. The password length
 #'     is a minimum of eight characters, and a maximum of 32. The password
-#'     can contain letters, numbers, and special characters
-#'     (!/@@#$%^&+=_). The password must contain at least one lower case
-#'     letter, one upper case letter, one number, and one special
-#'     character. When no CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is
-#'     generated and returned in the response.
+#'     can contain letters, numbers, and special characters (!/@@#$%^&+=_).
+#'     The password must contain at least one lower case letter, one upper
+#'     case letter, one number, and one special character. When no
+#'     CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned
+#'     in the response.
 #' 
 #' **Attributes accepted in a Puppet createServer request:**
 #' 
@@ -420,91 +269,6 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' @param BackupId If you specify this field, AWS OpsWorks CM creates the server by using
 #' the backup represented by BackupId.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Server = list(
-#'     AssociatePublicIpAddress = TRUE|FALSE,
-#'     BackupRetentionCount = 123,
-#'     ServerName = "string",
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CloudFormationStackArn = "string",
-#'     CustomDomain = "string",
-#'     DisableAutomatedBackup = TRUE|FALSE,
-#'     Endpoint = "string",
-#'     Engine = "string",
-#'     EngineModel = "string",
-#'     EngineAttributes = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     EngineVersion = "string",
-#'     InstanceProfileArn = "string",
-#'     InstanceType = "string",
-#'     KeyPair = "string",
-#'     MaintenanceStatus = "SUCCESS"|"FAILED",
-#'     PreferredMaintenanceWindow = "string",
-#'     PreferredBackupWindow = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     ServiceRoleArn = "string",
-#'     Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-#'     StatusReason = "string",
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     ServerArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_server(
-#'   AssociatePublicIpAddress = TRUE|FALSE,
-#'   CustomDomain = "string",
-#'   CustomCertificate = "string",
-#'   CustomPrivateKey = "string",
-#'   DisableAutomatedBackup = TRUE|FALSE,
-#'   Engine = "string",
-#'   EngineModel = "string",
-#'   EngineVersion = "string",
-#'   EngineAttributes = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   BackupRetentionCount = 123,
-#'   ServerName = "string",
-#'   InstanceProfileArn = "string",
-#'   InstanceType = "string",
-#'   KeyPair = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   PreferredBackupWindow = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   ServiceRoleArn = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   BackupId = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworkscm_create_server
@@ -528,30 +292,13 @@ opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDoma
 #' Deletes a backup
 #'
 #' @description
-#' Deletes a backup. You can delete both manual and automated backups. This
-#' operation is asynchronous.
-#' 
-#' An `InvalidStateException` is thrown when a backup deletion is already
-#' in progress. A `ResourceNotFoundException` is thrown when the backup
-#' does not exist. A `ValidationException` is thrown when parameters of the
-#' request are not valid.
+#' Deletes a backup. You can delete both manual and automated backups. This operation is asynchronous.
 #'
-#' @usage
-#' opsworkscm_delete_backup(BackupId)
+#' See [https://paws-r.github.io/docs/opsworkscm/delete_backup.html](https://paws-r.github.io/docs/opsworkscm/delete_backup.html) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup to delete. Run the DescribeBackups command to get a
 #' list of backup IDs. Backup IDs are in the format
 #' `ServerName-yyyyMMddHHmmssSSS`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_backup(
-#'   BackupId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -577,33 +324,11 @@ opsworkscm_delete_backup <- function(BackupId) {
 #' (including the server's EC2 instance)
 #'
 #' @description
-#' Deletes the server and the underlying AWS CloudFormation stacks
-#' (including the server's EC2 instance). When you run this command, the
-#' server state is updated to `DELETING`. After the server is deleted, it
-#' is no longer returned by `DescribeServer` requests. If the AWS
-#' CloudFormation stack cannot be deleted, the server cannot be deleted.
-#' 
-#' This operation is asynchronous.
-#' 
-#' An `InvalidStateException` is thrown when a server deletion is already
-#' in progress. A `ResourceNotFoundException` is thrown when the server
-#' does not exist. A `ValidationException` is raised when parameters of the
-#' request are not valid.
+#' Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance). When you run this command, the server state is updated to `DELETING`. After the server is deleted, it is no longer returned by `DescribeServer` requests. If the AWS CloudFormation stack cannot be deleted, the server cannot be deleted.
 #'
-#' @usage
-#' opsworkscm_delete_server(ServerName)
+#' See [https://paws-r.github.io/docs/opsworkscm/delete_server.html](https://paws-r.github.io/docs/opsworkscm/delete_server.html) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The ID of the server to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_server(
-#'   ServerName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -629,30 +354,8 @@ opsworkscm_delete_server <- function(ServerName) {
 #'
 #' @description
 #' Describes your OpsWorks-CM account attributes.
-#' 
-#' This operation is synchronous.
 #'
-#' @usage
-#' opsworkscm_describe_account_attributes()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Attributes = list(
-#'     list(
-#'       Name = "string",
-#'       Maximum = 123,
-#'       Used = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_account_attributes()
-#' ```
+#' See [https://paws-r.github.io/docs/opsworkscm/describe_account_attributes.html](https://paws-r.github.io/docs/opsworkscm/describe_account_attributes.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -677,18 +380,9 @@ opsworkscm_describe_account_attributes <- function() {
 #' Describes backups
 #'
 #' @description
-#' Describes backups. The results are ordered by time, with newest backups
-#' first. If you do not specify a BackupId or ServerName, the command
-#' returns all backups.
-#' 
-#' This operation is synchronous.
-#' 
-#' A `ResourceNotFoundException` is thrown when the backup does not exist.
-#' A `ValidationException` is raised when parameters of the request are not
-#' valid.
+#' Describes backups. The results are ordered by time, with newest backups first. If you do not specify a BackupId or ServerName, the command returns all backups.
 #'
-#' @usage
-#' opsworkscm_describe_backups(BackupId, ServerName, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/opsworkscm/describe_backups.html](https://paws-r.github.io/docs/opsworkscm/describe_backups.html) for full documentation.
 #'
 #' @param BackupId Describes a single backup.
 #' @param ServerName Returns backups for the server with the specified ServerName.
@@ -696,58 +390,6 @@ opsworkscm_describe_account_attributes <- function() {
 #' [`describe_backups`][opsworkscm_describe_backups] requests.
 #' @param MaxResults This is not currently implemented for
 #' [`describe_backups`][opsworkscm_describe_backups] requests.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Backups = list(
-#'     list(
-#'       BackupArn = "string",
-#'       BackupId = "string",
-#'       BackupType = "AUTOMATED"|"MANUAL",
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Description = "string",
-#'       Engine = "string",
-#'       EngineModel = "string",
-#'       EngineVersion = "string",
-#'       InstanceProfileArn = "string",
-#'       InstanceType = "string",
-#'       KeyPair = "string",
-#'       PreferredBackupWindow = "string",
-#'       PreferredMaintenanceWindow = "string",
-#'       S3DataSize = 123,
-#'       S3DataUrl = "string",
-#'       S3LogUrl = "string",
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       ServerName = "string",
-#'       ServiceRoleArn = "string",
-#'       Status = "IN_PROGRESS"|"OK"|"FAILED"|"DELETING",
-#'       StatusDescription = "string",
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       ToolsVersion = "string",
-#'       UserArn = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_backups(
-#'   BackupId = "string",
-#'   ServerName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -772,17 +414,9 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 #' Describes events for a specified server
 #'
 #' @description
-#' Describes events for a specified server. Results are ordered by time,
-#' with newest events first.
-#' 
-#' This operation is synchronous.
-#' 
-#' A `ResourceNotFoundException` is thrown when the server does not exist.
-#' A `ValidationException` is raised when parameters of the request are not
-#' valid.
+#' Describes events for a specified server. Results are ordered by time, with newest events first.
 #'
-#' @usage
-#' opsworkscm_describe_events(ServerName, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/opsworkscm/describe_events.html](https://paws-r.github.io/docs/opsworkscm/describe_events.html) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server for which you want to view events.
 #' @param NextToken NextToken is a string that is returned in some command responses. It
@@ -799,33 +433,6 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
 #' parameter to get the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServerEvents = list(
-#'     list(
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ServerName = "string",
-#'       Message = "string",
-#'       LogUrl = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_events(
-#'   ServerName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -851,43 +458,13 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
 #' request
 #'
 #' @description
-#' Returns the current status of an existing association or disassociation
-#' request.
-#' 
-#' A `ResourceNotFoundException` is thrown when no recent association or
-#' disassociation request with the specified token is found, or when the
-#' server does not exist. A `ValidationException` is raised when parameters
-#' of the request are not valid.
+#' Returns the current status of an existing association or disassociation request.
 #'
-#' @usage
-#' opsworkscm_describe_node_association_status(NodeAssociationStatusToken,
-#'   ServerName)
+#' See [https://paws-r.github.io/docs/opsworkscm/describe_node_association_status.html](https://paws-r.github.io/docs/opsworkscm/describe_node_association_status.html) for full documentation.
 #'
 #' @param NodeAssociationStatusToken &#91;required&#93; The token returned in either the AssociateNodeResponse or the
 #' DisassociateNodeResponse.
 #' @param ServerName &#91;required&#93; The name of the server from which to disassociate the node.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NodeAssociationStatus = "SUCCESS"|"FAILED"|"IN_PROGRESS",
-#'   EngineAttributes = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_node_association_status(
-#'   NodeAssociationStatusToken = "string",
-#'   ServerName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -913,80 +490,15 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
 #' account
 #'
 #' @description
-#' Lists all configuration management servers that are identified with your
-#' account. Only the stored results from Amazon DynamoDB are returned. AWS
-#' OpsWorks CM does not query other services.
-#' 
-#' This operation is synchronous.
-#' 
-#' A `ResourceNotFoundException` is thrown when the server does not exist.
-#' A `ValidationException` is raised when parameters of the request are not
-#' valid.
+#' Lists all configuration management servers that are identified with your account. Only the stored results from Amazon DynamoDB are returned. AWS OpsWorks CM does not query other services.
 #'
-#' @usage
-#' opsworkscm_describe_servers(ServerName, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/opsworkscm/describe_servers.html](https://paws-r.github.io/docs/opsworkscm/describe_servers.html) for full documentation.
 #'
 #' @param ServerName Describes the server with the specified ServerName.
 #' @param NextToken This is not currently implemented for
 #' [`describe_servers`][opsworkscm_describe_servers] requests.
 #' @param MaxResults This is not currently implemented for
 #' [`describe_servers`][opsworkscm_describe_servers] requests.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Servers = list(
-#'     list(
-#'       AssociatePublicIpAddress = TRUE|FALSE,
-#'       BackupRetentionCount = 123,
-#'       ServerName = "string",
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CloudFormationStackArn = "string",
-#'       CustomDomain = "string",
-#'       DisableAutomatedBackup = TRUE|FALSE,
-#'       Endpoint = "string",
-#'       Engine = "string",
-#'       EngineModel = "string",
-#'       EngineAttributes = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       EngineVersion = "string",
-#'       InstanceProfileArn = "string",
-#'       InstanceType = "string",
-#'       KeyPair = "string",
-#'       MaintenanceStatus = "SUCCESS"|"FAILED",
-#'       PreferredMaintenanceWindow = "string",
-#'       PreferredBackupWindow = "string",
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       ServiceRoleArn = "string",
-#'       Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-#'       StatusReason = "string",
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       ServerArn = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_servers(
-#'   ServerName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1012,20 +524,9 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #' node from the server's managed nodes
 #'
 #' @description
-#' Disassociates a node from an AWS OpsWorks CM server, and removes the
-#' node from the server's managed nodes. After a node is disassociated, the
-#' node key pair is no longer valid for accessing the configuration
-#' manager's API. For more information about how to associate a node, see
-#' [`associate_node`][opsworkscm_associate_node].
-#' 
-#' A node can can only be disassociated from a server that is in a
-#' `HEALTHY` state. Otherwise, an `InvalidStateException` is thrown. A
-#' `ResourceNotFoundException` is thrown when the server does not exist. A
-#' `ValidationException` is raised when parameters of the request are not
-#' valid.
+#' Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes. After a node is disassociated, the node key pair is no longer valid for accessing the configuration manager's API. For more information about how to associate a node, see [`associate_node`][opsworkscm_associate_node].
 #'
-#' @usage
-#' opsworkscm_disassociate_node(ServerName, NodeName, EngineAttributes)
+#' See [https://paws-r.github.io/docs/opsworkscm/disassociate_node.html](https://paws-r.github.io/docs/opsworkscm/disassociate_node.html) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server from which to disassociate the node.
 #' @param NodeName &#91;required&#93; The name of the client node.
@@ -1037,28 +538,6 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #' -   `CHEF_ORGANIZATION`: The Chef organization with which the node was
 #'     associated. By default only one organization named `default` can
 #'     exist.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NodeAssociationStatusToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_node(
-#'   ServerName = "string",
-#'   NodeName = "string",
-#'   EngineAttributes = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1083,20 +562,9 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
 #' Exports a specified server engine attribute as a base64-encoded string
 #'
 #' @description
-#' Exports a specified server engine attribute as a base64-encoded string.
-#' For example, you can export user data that you can use in EC2 to
-#' associate nodes with a server.
-#' 
-#' This operation is synchronous.
-#' 
-#' A `ValidationException` is raised when parameters of the request are not
-#' valid. A `ResourceNotFoundException` is thrown when the server does not
-#' exist. An `InvalidStateException` is thrown when the server is in any of
-#' the following states: CREATING, TERMINATED, FAILED or DELETING.
+#' Exports a specified server engine attribute as a base64-encoded string. For example, you can export user data that you can use in EC2 to associate nodes with a server.
 #'
-#' @usage
-#' opsworkscm_export_server_engine_attribute(ExportAttributeName,
-#'   ServerName, InputAttributes)
+#' See [https://paws-r.github.io/docs/opsworkscm/export_server_engine_attribute.html](https://paws-r.github.io/docs/opsworkscm/export_server_engine_attribute.html) for full documentation.
 #'
 #' @param ExportAttributeName &#91;required&#93; The name of the export attribute. Currently, the supported export
 #' attribute is `Userdata`. This exports a user data script that includes
@@ -1123,32 +591,6 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
 #'     empty, OpsWorks for Chef Automate uses the most current version. In
 #'     Puppet, this parameter is ignored.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EngineAttribute = list(
-#'     Name = "string",
-#'     Value = "string"
-#'   ),
-#'   ServerName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$export_server_engine_attribute(
-#'   ExportAttributeName = "string",
-#'   ServerName = "string",
-#'   InputAttributes = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworkscm_export_server_engine_attribute
@@ -1174,12 +616,9 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' backups
 #'
 #' @description
-#' Returns a list of tags that are applied to the specified AWS OpsWorks
-#' for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
-#' backups.
+#' Returns a list of tags that are applied to the specified AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or backups.
 #'
-#' @usage
-#' opsworkscm_list_tags_for_resource(ResourceArn, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/opsworkscm/list_tags_for_resource.html](https://paws-r.github.io/docs/opsworkscm/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of an AWS OpsWorks for Chef Automate or
 #' AWS OpsWorks for Puppet Enterprise server for which you want to show
@@ -1200,29 +639,6 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
 #' parameter to get the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1248,28 +664,9 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
 #' RUNNING, UNHEALTHY, or TERMINATED state
 #'
 #' @description
-#' Restores a backup to a server that is in a `CONNECTION_LOST`, `HEALTHY`,
-#' `RUNNING`, `UNHEALTHY`, or `TERMINATED` state. When you run
-#' RestoreServer, the server's EC2 instance is deleted, and a new EC2
-#' instance is configured. RestoreServer maintains the existing server
-#' endpoint, so configuration management of the server's client devices
-#' (nodes) should continue to work.
-#' 
-#' Restoring from a backup is performed by creating a new EC2 instance. If
-#' restoration is successful, and the server is in a `HEALTHY` state, AWS
-#' OpsWorks CM switches traffic over to the new instance. After restoration
-#' is finished, the old EC2 instance is maintained in a `Running` or
-#' `Stopped` state, but is eventually terminated.
-#' 
-#' This operation is asynchronous.
-#' 
-#' An `InvalidStateException` is thrown when the server is not in a valid
-#' state. A `ResourceNotFoundException` is thrown when the server does not
-#' exist. A `ValidationException` is raised when parameters of the request
-#' are not valid.
+#' Restores a backup to a server that is in a `CONNECTION_LOST`, `HEALTHY`, `RUNNING`, `UNHEALTHY`, or `TERMINATED` state. When you run RestoreServer, the server's EC2 instance is deleted, and a new EC2 instance is configured. RestoreServer maintains the existing server endpoint, so configuration management of the server's client devices (nodes) should continue to work.
 #'
-#' @usage
-#' opsworkscm_restore_server(BackupId, ServerName, InstanceType, KeyPair)
+#' See [https://paws-r.github.io/docs/opsworkscm/restore_server.html](https://paws-r.github.io/docs/opsworkscm/restore_server.html) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup that you want to use to restore a server.
 #' @param ServerName &#91;required&#93; The name of the server that you want to restore.
@@ -1280,19 +677,6 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
 #' specified backup.
 #' @param KeyPair The name of the key pair to set on the new EC2 instance. This can be
 #' helpful if the administrator no longer has the SSH key.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_server(
-#'   BackupId = "string",
-#'   ServerName = "string",
-#'   InstanceType = "string",
-#'   KeyPair = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1317,19 +701,9 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 #' Manually starts server maintenance
 #'
 #' @description
-#' Manually starts server maintenance. This command can be useful if an
-#' earlier maintenance attempt failed, and the underlying cause of
-#' maintenance failure has been resolved. The server is in an
-#' `UNDER_MAINTENANCE` state while maintenance is in progress.
-#' 
-#' Maintenance can only be started on servers in `HEALTHY` and `UNHEALTHY`
-#' states. Otherwise, an `InvalidStateException` is thrown. A
-#' `ResourceNotFoundException` is thrown when the server does not exist. A
-#' `ValidationException` is raised when parameters of the request are not
-#' valid.
+#' Manually starts server maintenance. This command can be useful if an earlier maintenance attempt failed, and the underlying cause of maintenance failure has been resolved. The server is in an `UNDER_MAINTENANCE` state while maintenance is in progress.
 #'
-#' @usage
-#' opsworkscm_start_maintenance(ServerName, EngineAttributes)
+#' See [https://paws-r.github.io/docs/opsworkscm/start_maintenance.html](https://paws-r.github.io/docs/opsworkscm/start_maintenance.html) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server on which to run maintenance.
 #' @param EngineAttributes Engine attributes that are specific to the server on which you want to
@@ -1344,63 +718,6 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 #'     more information, see [Upgrade an AWS OpsWorks for Chef Automate
 #'     Server to Chef Automate
 #'     2](https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Server = list(
-#'     AssociatePublicIpAddress = TRUE|FALSE,
-#'     BackupRetentionCount = 123,
-#'     ServerName = "string",
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CloudFormationStackArn = "string",
-#'     CustomDomain = "string",
-#'     DisableAutomatedBackup = TRUE|FALSE,
-#'     Endpoint = "string",
-#'     Engine = "string",
-#'     EngineModel = "string",
-#'     EngineAttributes = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     EngineVersion = "string",
-#'     InstanceProfileArn = "string",
-#'     InstanceType = "string",
-#'     KeyPair = "string",
-#'     MaintenanceStatus = "SUCCESS"|"FAILED",
-#'     PreferredMaintenanceWindow = "string",
-#'     PreferredBackupWindow = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     ServiceRoleArn = "string",
-#'     Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-#'     StatusReason = "string",
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     ServerArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_maintenance(
-#'   ServerName = "string",
-#'   EngineAttributes = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1426,11 +743,9 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
 #' Puppet Enterprise server, or to server backups
 #'
 #' @description
-#' Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
-#' Puppet Enterprise server, or to server backups.
+#' Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise server, or to server backups.
 #'
-#' @usage
-#' opsworkscm_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/opsworkscm/tag_resource.html](https://paws-r.github.io/docs/opsworkscm/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of a resource to which you want to
 #' apply tags. For example,
@@ -1453,22 +768,6 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
 #' 
 #' -   A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
 #'     server or backup.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1495,26 +794,12 @@ opsworkscm_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes specified tags from an AWS OpsWorks-CM server or backup.
 #'
-#' @usage
-#' opsworkscm_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/opsworkscm/untag_resource.html](https://paws-r.github.io/docs/opsworkscm/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of a resource from which you want to
 #' remove tags. For example,
 #' `arn:aws:opsworks-cm:us-west-2:123456789012:server/test-owcm-server/EXAMPLE-66b0-4196-8274-d1a2bEXAMPLE`.
 #' @param TagKeys &#91;required&#93; The keys of tags that you want to remove.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1540,12 +825,8 @@ opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @description
 #' Updates settings for a server.
-#' 
-#' This operation is synchronous.
 #'
-#' @usage
-#' opsworkscm_update_server(DisableAutomatedBackup, BackupRetentionCount,
-#'   ServerName, PreferredMaintenanceWindow, PreferredBackupWindow)
+#' See [https://paws-r.github.io/docs/opsworkscm/update_server.html](https://paws-r.github.io/docs/opsworkscm/update_server.html) for full documentation.
 #'
 #' @param DisableAutomatedBackup Setting DisableAutomatedBackup to `true` disables automated or scheduled
 #' backups. Automated backups are enabled by default.
@@ -1553,61 +834,6 @@ opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param ServerName &#91;required&#93; The name of the server to update.
 #' @param PreferredMaintenanceWindow 
 #' @param PreferredBackupWindow 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Server = list(
-#'     AssociatePublicIpAddress = TRUE|FALSE,
-#'     BackupRetentionCount = 123,
-#'     ServerName = "string",
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CloudFormationStackArn = "string",
-#'     CustomDomain = "string",
-#'     DisableAutomatedBackup = TRUE|FALSE,
-#'     Endpoint = "string",
-#'     Engine = "string",
-#'     EngineModel = "string",
-#'     EngineAttributes = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     EngineVersion = "string",
-#'     InstanceProfileArn = "string",
-#'     InstanceType = "string",
-#'     KeyPair = "string",
-#'     MaintenanceStatus = "SUCCESS"|"FAILED",
-#'     PreferredMaintenanceWindow = "string",
-#'     PreferredBackupWindow = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     ServiceRoleArn = "string",
-#'     Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-#'     StatusReason = "string",
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     ServerArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_server(
-#'   DisableAutomatedBackup = TRUE|FALSE,
-#'   BackupRetentionCount = 123,
-#'   ServerName = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   PreferredBackupWindow = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1632,80 +858,13 @@ opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetent
 #' Updates engine-specific attributes on a specified server
 #'
 #' @description
-#' Updates engine-specific attributes on a specified server. The server
-#' enters the `MODIFYING` state when this operation is in progress. Only
-#' one update can occur at a time. You can use this command to reset a Chef
-#' server's public key (`CHEF_PIVOTAL_KEY`) or a Puppet server's admin
-#' password (`PUPPET_ADMIN_PASSWORD`).
-#' 
-#' This operation is asynchronous.
-#' 
-#' This operation can only be called for servers in `HEALTHY` or
-#' `UNHEALTHY` states. Otherwise, an `InvalidStateException` is raised. A
-#' `ResourceNotFoundException` is thrown when the server does not exist. A
-#' `ValidationException` is raised when parameters of the request are not
-#' valid.
+#' Updates engine-specific attributes on a specified server. The server enters the `MODIFYING` state when this operation is in progress. Only one update can occur at a time. You can use this command to reset a Chef server's public key (`CHEF_PIVOTAL_KEY`) or a Puppet server's admin password (`PUPPET_ADMIN_PASSWORD`).
 #'
-#' @usage
-#' opsworkscm_update_server_engine_attributes(ServerName, AttributeName,
-#'   AttributeValue)
+#' See [https://paws-r.github.io/docs/opsworkscm/update_server_engine_attributes.html](https://paws-r.github.io/docs/opsworkscm/update_server_engine_attributes.html) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server to update.
 #' @param AttributeName &#91;required&#93; The name of the engine attribute to update.
 #' @param AttributeValue The value to set for the attribute.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Server = list(
-#'     AssociatePublicIpAddress = TRUE|FALSE,
-#'     BackupRetentionCount = 123,
-#'     ServerName = "string",
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CloudFormationStackArn = "string",
-#'     CustomDomain = "string",
-#'     DisableAutomatedBackup = TRUE|FALSE,
-#'     Endpoint = "string",
-#'     Engine = "string",
-#'     EngineModel = "string",
-#'     EngineAttributes = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     EngineVersion = "string",
-#'     InstanceProfileArn = "string",
-#'     InstanceType = "string",
-#'     KeyPair = "string",
-#'     MaintenanceStatus = "SUCCESS"|"FAILED",
-#'     PreferredMaintenanceWindow = "string",
-#'     PreferredBackupWindow = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     ServiceRoleArn = "string",
-#'     Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-#'     StatusReason = "string",
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     ServerArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_server_engine_attributes(
-#'   ServerName = "string",
-#'   AttributeName = "string",
-#'   AttributeValue = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

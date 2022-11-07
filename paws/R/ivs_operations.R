@@ -21,15 +21,16 @@ NULL
 #'   channels = list(
 #'     list(
 #'       arn = "string",
-#'       name = "string",
-#'       latencyMode = "NORMAL"|"LOW",
-#'       type = "BASIC"|"STANDARD",
-#'       ingestEndpoint = "string",
-#'       playbackUrl = "string",
 #'       authorized = TRUE|FALSE,
+#'       ingestEndpoint = "string",
+#'       latencyMode = "NORMAL"|"LOW",
+#'       name = "string",
+#'       playbackUrl = "string",
+#'       recordingConfigurationArn = "string",
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       type = "BASIC"|"STANDARD"
 #'     )
 #'   ),
 #'   errors = list(
@@ -86,21 +87,21 @@ ivs_batch_get_channel <- function(arns) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   streamKeys = list(
-#'     list(
-#'       arn = "string",
-#'       value = "string",
-#'       channelArn = "string",
-#'       tags = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
 #'   errors = list(
 #'     list(
 #'       arn = "string",
 #'       code = "string",
 #'       message = "string"
+#'     )
+#'   ),
+#'   streamKeys = list(
+#'     list(
+#'       arn = "string",
+#'       channelArn = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       value = "string"
 #'     )
 #'   )
 #' )
@@ -141,27 +142,32 @@ ivs_batch_get_stream_key <- function(arns) {
 #' Creates a new channel and an associated stream key to start streaming.
 #'
 #' @usage
-#' ivs_create_channel(name, latencyMode, type, authorized, tags)
+#' ivs_create_channel(authorized, latencyMode, name,
+#'   recordingConfigurationArn, tags, type)
 #'
+#' @param authorized Whether the channel is private (enabled for playback authorization).
+#' Default: `false`.
+#' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
+#' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
+#' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
+#' Ultra-low and Standard, respectively.) Default: `LOW`.
 #' @param name Channel name.
-#' @param latencyMode Channel latency mode. Default: `LOW`.
+#' @param recordingConfigurationArn Recording-configuration ARN. Default: "" (empty string, recording is
+#' disabled).
+#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`.
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
 #' you exceed the allowable resolution or bitrate, the stream probably will
-#' disconnect immediately.* Valid values:
+#' disconnect immediately.* Default: `STANDARD`. Valid values:
 #' 
 #' -   `STANDARD`: Multiple qualities are generated from the original
 #'     input, to automatically give viewers the best experience for their
-#'     devices and network conditions. Vertical resolution can be up to
-#'     1080 and bitrate can be up to 8.5 Mbps.
+#'     devices and network conditions. Resolution can be up to 1080p and
+#'     bitrate can be up to 8.5 Mbps. Audio is transcoded only for
+#'     renditions 360p and below; above that, audio is passed through.
 #' 
 #' -   `BASIC`: Amazon IVS delivers the original input to viewers. The
 #'     viewer’s video-quality choice is limited to the original input.
-#'     Vertical resolution can be up to 480 and bitrate can be up to 1.5
-#'     Mbps.
-#' 
-#' Default: `STANDARD`.
-#' @param authorized Whether the channel is authorized. Default: `false`.
-#' @param tags See Channel$tags.
+#'     Resolution can be up to 480p and bitrate can be up to 1.5 Mbps.
 #'
 #' @return
 #' A list with the following syntax:
@@ -169,23 +175,24 @@ ivs_batch_get_stream_key <- function(arns) {
 #' list(
 #'   channel = list(
 #'     arn = "string",
-#'     name = "string",
-#'     latencyMode = "NORMAL"|"LOW",
-#'     type = "BASIC"|"STANDARD",
-#'     ingestEndpoint = "string",
-#'     playbackUrl = "string",
 #'     authorized = TRUE|FALSE,
+#'     ingestEndpoint = "string",
+#'     latencyMode = "NORMAL"|"LOW",
+#'     name = "string",
+#'     playbackUrl = "string",
+#'     recordingConfigurationArn = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     type = "BASIC"|"STANDARD"
 #'   ),
 #'   streamKey = list(
 #'     arn = "string",
-#'     value = "string",
 #'     channelArn = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     value = "string"
 #'   )
 #' )
 #' ```
@@ -193,27 +200,28 @@ ivs_batch_get_stream_key <- function(arns) {
 #' @section Request syntax:
 #' ```
 #' svc$create_channel(
-#'   name = "string",
-#'   latencyMode = "NORMAL"|"LOW",
-#'   type = "BASIC"|"STANDARD",
 #'   authorized = TRUE|FALSE,
+#'   latencyMode = "NORMAL"|"LOW",
+#'   name = "string",
+#'   recordingConfigurationArn = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   type = "BASIC"|"STANDARD"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_create_channel
-ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, authorized = NULL, tags = NULL) {
+ivs_create_channel <- function(authorized = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/CreateChannel",
     paginator = list()
   )
-  input <- .ivs$create_channel_input(name = name, latencyMode = latencyMode, type = type, authorized = authorized, tags = tags)
+  input <- .ivs$create_channel_input(authorized = authorized, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
   output <- .ivs$create_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -222,6 +230,100 @@ ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, aut
   return(response)
 }
 .ivs$operations$create_channel <- ivs_create_channel
+
+#' Creates a new recording configuration, used to enable recording to
+#' Amazon S3
+#'
+#' @description
+#' Creates a new recording configuration, used to enable recording to
+#' Amazon S3.
+#' 
+#' **Known issue:** In the us-east-1 region, if you use the Amazon Web
+#' Services CLI to create a recording configuration, it returns success
+#' even if the S3 bucket is in a different region. In this case, the
+#' `state` of the recording configuration is `CREATE_FAILED` (instead of
+#' `ACTIVE`). (In other regions, the CLI correctly returns failure if the
+#' bucket is in a different region.)
+#' 
+#' **Workaround:** Ensure that your S3 bucket is in the same region as the
+#' recording configuration. If you create a recording configuration in a
+#' different region as your S3 bucket, delete that recording configuration
+#' and create a new one with an S3 bucket from the correct region.
+#'
+#' @usage
+#' ivs_create_recording_configuration(destinationConfiguration, name, tags,
+#'   thumbnailConfiguration)
+#'
+#' @param destinationConfiguration &#91;required&#93; A complex type that contains a destination configuration for where
+#' recorded video will be stored.
+#' @param name Recording-configuration name. The value does not need to be unique.
+#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`.
+#' @param thumbnailConfiguration A complex type that allows you to enable/disable the recording of
+#' thumbnails for a live session and modify the interval at which
+#' thumbnails are generated for the live session.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   recordingConfiguration = list(
+#'     arn = "string",
+#'     destinationConfiguration = list(
+#'       s3 = list(
+#'         bucketName = "string"
+#'       )
+#'     ),
+#'     name = "string",
+#'     state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     thumbnailConfiguration = list(
+#'       recordingMode = "DISABLED"|"INTERVAL",
+#'       targetIntervalSeconds = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_recording_configuration(
+#'   destinationConfiguration = list(
+#'     s3 = list(
+#'       bucketName = "string"
+#'     )
+#'   ),
+#'   name = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   thumbnailConfiguration = list(
+#'     recordingMode = "DISABLED"|"INTERVAL",
+#'     targetIntervalSeconds = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_create_recording_configuration
+ivs_create_recording_configuration <- function(destinationConfiguration, name = NULL, tags = NULL, thumbnailConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateRecordingConfiguration",
+    http_method = "POST",
+    http_path = "/CreateRecordingConfiguration",
+    paginator = list()
+  )
+  input <- .ivs$create_recording_configuration_input(destinationConfiguration = destinationConfiguration, name = name, tags = tags, thumbnailConfiguration = thumbnailConfiguration)
+  output <- .ivs$create_recording_configuration_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$create_recording_configuration <- ivs_create_recording_configuration
 
 #' Creates a stream key, used to initiate a stream, for the specified
 #' channel ARN
@@ -240,7 +342,7 @@ ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, aut
 #' ivs_create_stream_key(channelArn, tags)
 #'
 #' @param channelArn &#91;required&#93; ARN of the channel for which to create the stream key.
-#' @param tags See Channel$tags.
+#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -248,11 +350,11 @@ ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, aut
 #' list(
 #'   streamKey = list(
 #'     arn = "string",
-#'     value = "string",
 #'     channelArn = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     value = "string"
 #'   )
 #' )
 #' ```
@@ -291,6 +393,14 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
 #'
 #' @description
 #' Deletes the specified channel and its associated stream keys.
+#' 
+#' If you try to delete a live channel, you will get an error (409
+#' ConflictException). To delete a channel that is live, call
+#' [`stop_stream`][ivs_stop_stream], wait for the Amazon EventBridge
+#' "Stream End" event (to verify that the stream's state was changed from
+#' Live to Offline), then call DeleteChannel. (See [Using EventBridge with
+#' Amazon
+#' IVS](https://docs.aws.amazon.com/ivs/latest/userguide/eventbridge.html).)
 #'
 #' @usage
 #' ivs_delete_channel(arn)
@@ -331,7 +441,10 @@ ivs_delete_channel <- function(arn) {
 #'
 #' @description
 #' Deletes a specified authorization key pair. This invalidates future
-#' viewer tokens generated using the key pair’s `privateKey`.
+#' viewer tokens generated using the key pair’s `privateKey`. For more
+#' information, see [Setting Up Private
+#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' in the *Amazon IVS User Guide*.
 #'
 #' @usage
 #' ivs_delete_playback_key_pair(arn)
@@ -367,6 +480,53 @@ ivs_delete_playback_key_pair <- function(arn) {
   return(response)
 }
 .ivs$operations$delete_playback_key_pair <- ivs_delete_playback_key_pair
+
+#' Deletes the recording configuration for the specified ARN
+#'
+#' @description
+#' Deletes the recording configuration for the specified ARN.
+#' 
+#' If you try to delete a recording configuration that is associated with a
+#' channel, you will get an error (409 ConflictException). To avoid this,
+#' for all channels that reference the recording configuration, first use
+#' [`update_channel`][ivs_update_channel] to set the
+#' `recordingConfigurationArn` field to an empty string, then use
+#' DeleteRecordingConfiguration.
+#'
+#' @usage
+#' ivs_delete_recording_configuration(arn)
+#'
+#' @param arn &#91;required&#93; ARN of the recording configuration to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_recording_configuration(
+#'   arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_delete_recording_configuration
+ivs_delete_recording_configuration <- function(arn) {
+  op <- new_operation(
+    name = "DeleteRecordingConfiguration",
+    http_method = "POST",
+    http_path = "/DeleteRecordingConfiguration",
+    paginator = list()
+  )
+  input <- .ivs$delete_recording_configuration_input(arn = arn)
+  output <- .ivs$delete_recording_configuration_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$delete_recording_configuration <- ivs_delete_recording_configuration
 
 #' Deletes the stream key for the specified ARN, so it can no longer be
 #' used to stream
@@ -427,15 +587,16 @@ ivs_delete_stream_key <- function(arn) {
 #' list(
 #'   channel = list(
 #'     arn = "string",
-#'     name = "string",
-#'     latencyMode = "NORMAL"|"LOW",
-#'     type = "BASIC"|"STANDARD",
-#'     ingestEndpoint = "string",
-#'     playbackUrl = "string",
 #'     authorized = TRUE|FALSE,
+#'     ingestEndpoint = "string",
+#'     latencyMode = "NORMAL"|"LOW",
+#'     name = "string",
+#'     playbackUrl = "string",
+#'     recordingConfigurationArn = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     type = "BASIC"|"STANDARD"
 #'   )
 #' )
 #' ```
@@ -473,8 +634,10 @@ ivs_get_channel <- function(arn) {
 #' @description
 #' Gets a specified playback authorization key pair and returns the `arn`
 #' and `fingerprint`. The `privateKey` held by the caller can be used to
-#' generate viewer authorization tokens, to grant viewers access to
-#' authorized channels.
+#' generate viewer authorization tokens, to grant viewers access to private
+#' channels. For more information, see [Setting Up Private
+#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' in the *Amazon IVS User Guide*.
 #'
 #' @usage
 #' ivs_get_playback_key_pair(arn)
@@ -487,8 +650,8 @@ ivs_get_channel <- function(arn) {
 #' list(
 #'   keyPair = list(
 #'     arn = "string",
-#'     name = "string",
 #'     fingerprint = "string",
+#'     name = "string",
 #'     tags = list(
 #'       "string"
 #'     )
@@ -523,6 +686,67 @@ ivs_get_playback_key_pair <- function(arn) {
 }
 .ivs$operations$get_playback_key_pair <- ivs_get_playback_key_pair
 
+#' Gets the recording configuration for the specified ARN
+#'
+#' @description
+#' Gets the recording configuration for the specified ARN.
+#'
+#' @usage
+#' ivs_get_recording_configuration(arn)
+#'
+#' @param arn &#91;required&#93; ARN of the recording configuration to be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   recordingConfiguration = list(
+#'     arn = "string",
+#'     destinationConfiguration = list(
+#'       s3 = list(
+#'         bucketName = "string"
+#'       )
+#'     ),
+#'     name = "string",
+#'     state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     thumbnailConfiguration = list(
+#'       recordingMode = "DISABLED"|"INTERVAL",
+#'       targetIntervalSeconds = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_recording_configuration(
+#'   arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_get_recording_configuration
+ivs_get_recording_configuration <- function(arn) {
+  op <- new_operation(
+    name = "GetRecordingConfiguration",
+    http_method = "POST",
+    http_path = "/GetRecordingConfiguration",
+    paginator = list()
+  )
+  input <- .ivs$get_recording_configuration_input(arn = arn)
+  output <- .ivs$get_recording_configuration_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$get_recording_configuration <- ivs_get_recording_configuration
+
 #' Gets information about the active (live) stream on a specified channel
 #'
 #' @description
@@ -539,12 +763,13 @@ ivs_get_playback_key_pair <- function(arn) {
 #' list(
 #'   stream = list(
 #'     channelArn = "string",
+#'     health = "HEALTHY"|"STARVING"|"UNKNOWN",
 #'     playbackUrl = "string",
 #'     startTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     state = "LIVE"|"OFFLINE",
-#'     health = "HEALTHY"|"STARVING"|"UNKNOWN",
+#'     streamId = "string",
 #'     viewerCount = 123
 #'   )
 #' )
@@ -593,11 +818,11 @@ ivs_get_stream <- function(channelArn) {
 #' list(
 #'   streamKey = list(
 #'     arn = "string",
-#'     value = "string",
 #'     channelArn = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     value = "string"
 #'   )
 #' )
 #' ```
@@ -629,21 +854,136 @@ ivs_get_stream_key <- function(arn) {
 }
 .ivs$operations$get_stream_key <- ivs_get_stream_key
 
+#' Gets metadata on a specified stream
+#'
+#' @description
+#' Gets metadata on a specified stream.
+#'
+#' @usage
+#' ivs_get_stream_session(channelArn, streamId)
+#'
+#' @param channelArn &#91;required&#93; ARN of the channel resource
+#' @param streamId Unique identifier for a live or previously live stream in the specified
+#' channel. If no `streamId` is provided, this returns the most recent
+#' stream session for the channel, if it exists.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streamSession = list(
+#'     channel = list(
+#'       arn = "string",
+#'       authorized = TRUE|FALSE,
+#'       ingestEndpoint = "string",
+#'       latencyMode = "NORMAL"|"LOW",
+#'       name = "string",
+#'       playbackUrl = "string",
+#'       recordingConfigurationArn = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       type = "BASIC"|"STANDARD"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ingestConfiguration = list(
+#'       audio = list(
+#'         channels = 123,
+#'         codec = "string",
+#'         sampleRate = 123,
+#'         targetBitrate = 123
+#'       ),
+#'       video = list(
+#'         avcLevel = "string",
+#'         avcProfile = "string",
+#'         codec = "string",
+#'         encoder = "string",
+#'         targetBitrate = 123,
+#'         targetFramerate = 123,
+#'         videoHeight = 123,
+#'         videoWidth = 123
+#'       )
+#'     ),
+#'     recordingConfiguration = list(
+#'       arn = "string",
+#'       destinationConfiguration = list(
+#'         s3 = list(
+#'           bucketName = "string"
+#'         )
+#'       ),
+#'       name = "string",
+#'       state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       thumbnailConfiguration = list(
+#'         recordingMode = "DISABLED"|"INTERVAL",
+#'         targetIntervalSeconds = 123
+#'       )
+#'     ),
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     streamId = "string",
+#'     truncatedEvents = list(
+#'       list(
+#'         eventTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         name = "string",
+#'         type = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_stream_session(
+#'   channelArn = "string",
+#'   streamId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_get_stream_session
+ivs_get_stream_session <- function(channelArn, streamId = NULL) {
+  op <- new_operation(
+    name = "GetStreamSession",
+    http_method = "POST",
+    http_path = "/GetStreamSession",
+    paginator = list()
+  )
+  input <- .ivs$get_stream_session_input(channelArn = channelArn, streamId = streamId)
+  output <- .ivs$get_stream_session_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$get_stream_session <- ivs_get_stream_session
+
 #' Imports the public portion of a new key pair and returns its arn and
 #' fingerprint
 #'
 #' @description
 #' Imports the public portion of a new key pair and returns its `arn` and
 #' `fingerprint`. The `privateKey` can then be used to generate viewer
-#' authorization tokens, to grant viewers access to authorized channels.
+#' authorization tokens, to grant viewers access to private channels. For
+#' more information, see [Setting Up Private
+#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' in the *Amazon IVS User Guide*.
 #'
 #' @usage
-#' ivs_import_playback_key_pair(publicKeyMaterial, name, tags)
+#' ivs_import_playback_key_pair(name, publicKeyMaterial, tags)
 #'
+#' @param name Playback-key-pair name. The value does not need to be unique.
 #' @param publicKeyMaterial &#91;required&#93; The public portion of a customer-generated key pair.
-#' @param name An arbitrary string (a nickname) assigned to a playback key pair that
-#' helps the customer identify that resource. The value does not need to be
-#' unique.
 #' @param tags Any tags provided with the request are added to the playback key pair
 #' tags.
 #'
@@ -653,8 +993,8 @@ ivs_get_stream_key <- function(arn) {
 #' list(
 #'   keyPair = list(
 #'     arn = "string",
-#'     name = "string",
 #'     fingerprint = "string",
+#'     name = "string",
 #'     tags = list(
 #'       "string"
 #'     )
@@ -665,8 +1005,8 @@ ivs_get_stream_key <- function(arn) {
 #' @section Request syntax:
 #' ```
 #' svc$import_playback_key_pair(
-#'   publicKeyMaterial = "string",
 #'   name = "string",
+#'   publicKeyMaterial = "string",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -676,14 +1016,14 @@ ivs_get_stream_key <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ivs_import_playback_key_pair
-ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = NULL) {
+ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = NULL) {
   op <- new_operation(
     name = "ImportPlaybackKeyPair",
     http_method = "POST",
     http_path = "/ImportPlaybackKeyPair",
     paginator = list()
   )
-  input <- .ivs$import_playback_key_pair_input(publicKeyMaterial = publicKeyMaterial, name = name, tags = tags)
+  input <- .ivs$import_playback_key_pair_input(name = name, publicKeyMaterial = publicKeyMaterial, tags = tags)
   output <- .ivs$import_playback_key_pair_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -693,21 +1033,26 @@ ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = 
 }
 .ivs$operations$import_playback_key_pair <- ivs_import_playback_key_pair
 
-#' Gets summary information about all channels in your account, in the AWS
-#' region where the API request is processed
+#' Gets summary information about all channels in your account, in the
+#' Amazon Web Services region where the API request is processed
 #'
 #' @description
-#' Gets summary information about all channels in your account, in the AWS
-#' region where the API request is processed. This list can be filtered to
-#' match a specified string.
+#' Gets summary information about all channels in your account, in the
+#' Amazon Web Services region where the API request is processed. This list
+#' can be filtered to match a specified name or recording-configuration
+#' ARN. Filters are mutually exclusive and cannot be used together. If you
+#' try to use both filters, you will get an error (409 ConflictException).
 #'
 #' @usage
-#' ivs_list_channels(filterByName, nextToken, maxResults)
+#' ivs_list_channels(filterByName, filterByRecordingConfigurationArn,
+#'   maxResults, nextToken)
 #'
 #' @param filterByName Filters the channel list to match the specified name.
+#' @param filterByRecordingConfigurationArn Filters the channel list to match the specified recording-configuration
+#' ARN.
+#' @param maxResults Maximum number of channels to return. Default: 50.
 #' @param nextToken The first channel to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
-#' @param maxResults Maximum number of channels to return.
 #'
 #' @return
 #' A list with the following syntax:
@@ -716,9 +1061,10 @@ ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = 
 #'   channels = list(
 #'     list(
 #'       arn = "string",
-#'       name = "string",
-#'       latencyMode = "NORMAL"|"LOW",
 #'       authorized = TRUE|FALSE,
+#'       latencyMode = "NORMAL"|"LOW",
+#'       name = "string",
+#'       recordingConfigurationArn = "string",
 #'       tags = list(
 #'         "string"
 #'       )
@@ -732,22 +1078,23 @@ ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = 
 #' ```
 #' svc$list_channels(
 #'   filterByName = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
+#'   filterByRecordingConfigurationArn = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_channels
-ivs_list_channels <- function(filterByName = NULL, nextToken = NULL, maxResults = NULL) {
+ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfigurationArn = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListChannels",
     http_method = "POST",
     http_path = "/ListChannels",
     paginator = list()
   )
-  input <- .ivs$list_channels_input(filterByName = filterByName, nextToken = nextToken, maxResults = maxResults)
+  input <- .ivs$list_channels_input(filterByName = filterByName, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_channels_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -760,14 +1107,17 @@ ivs_list_channels <- function(filterByName = NULL, nextToken = NULL, maxResults 
 #' Gets summary information about playback key pairs
 #'
 #' @description
-#' Gets summary information about playback key pairs.
+#' Gets summary information about playback key pairs. For more information,
+#' see [Setting Up Private
+#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' in the *Amazon IVS User Guide*.
 #'
 #' @usage
-#' ivs_list_playback_key_pairs(nextToken, maxResults)
+#' ivs_list_playback_key_pairs(maxResults, nextToken)
 #'
-#' @param nextToken Maximum number of key pairs to return.
 #' @param maxResults The first key pair to retrieve. This is used for pagination; see the
-#' `nextToken` response field.
+#' `nextToken` response field. Default: 50.
+#' @param nextToken Maximum number of key pairs to return.
 #'
 #' @return
 #' A list with the following syntax:
@@ -789,22 +1139,22 @@ ivs_list_channels <- function(filterByName = NULL, nextToken = NULL, maxResults 
 #' @section Request syntax:
 #' ```
 #' svc$list_playback_key_pairs(
-#'   nextToken = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_playback_key_pairs
-ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
+ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPlaybackKeyPairs",
     http_method = "POST",
     http_path = "/ListPlaybackKeyPairs",
     paginator = list()
   )
-  input <- .ivs$list_playback_key_pairs_input(nextToken = nextToken, maxResults = maxResults)
+  input <- .ivs$list_playback_key_pairs_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_playback_key_pairs_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -814,23 +1164,91 @@ ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
 }
 .ivs$operations$list_playback_key_pairs <- ivs_list_playback_key_pairs
 
+#' Gets summary information about all recording configurations in your
+#' account, in the Amazon Web Services region where the API request is
+#' processed
+#'
+#' @description
+#' Gets summary information about all recording configurations in your
+#' account, in the Amazon Web Services region where the API request is
+#' processed.
+#'
+#' @usage
+#' ivs_list_recording_configurations(maxResults, nextToken)
+#'
+#' @param maxResults Maximum number of recording configurations to return. Default: 50.
+#' @param nextToken The first recording configuration to retrieve. This is used for
+#' pagination; see the `nextToken` response field.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   recordingConfigurations = list(
+#'     list(
+#'       arn = "string",
+#'       destinationConfiguration = list(
+#'         s3 = list(
+#'           bucketName = "string"
+#'         )
+#'       ),
+#'       name = "string",
+#'       state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recording_configurations(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_list_recording_configurations
+ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListRecordingConfigurations",
+    http_method = "POST",
+    http_path = "/ListRecordingConfigurations",
+    paginator = list()
+  )
+  input <- .ivs$list_recording_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .ivs$list_recording_configurations_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$list_recording_configurations <- ivs_list_recording_configurations
+
 #' Gets summary information about stream keys for the specified channel
 #'
 #' @description
 #' Gets summary information about stream keys for the specified channel.
 #'
 #' @usage
-#' ivs_list_stream_keys(channelArn, nextToken, maxResults)
+#' ivs_list_stream_keys(channelArn, maxResults, nextToken)
 #'
 #' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
+#' @param maxResults Maximum number of streamKeys to return. Default: 50.
 #' @param nextToken The first stream key to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
-#' @param maxResults Maximum number of streamKeys to return.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   nextToken = "string",
 #'   streamKeys = list(
 #'     list(
 #'       arn = "string",
@@ -839,8 +1257,7 @@ ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
 #'         "string"
 #'       )
 #'     )
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -848,22 +1265,22 @@ ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
 #' ```
 #' svc$list_stream_keys(
 #'   channelArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_stream_keys
-ivs_list_stream_keys <- function(channelArn, nextToken = NULL, maxResults = NULL) {
+ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListStreamKeys",
     http_method = "POST",
     http_path = "/ListStreamKeys",
     paginator = list()
   )
-  input <- .ivs$list_stream_keys_input(channelArn = channelArn, nextToken = nextToken, maxResults = maxResults)
+  input <- .ivs$list_stream_keys_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_stream_keys_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -873,58 +1290,127 @@ ivs_list_stream_keys <- function(channelArn, nextToken = NULL, maxResults = NULL
 }
 .ivs$operations$list_stream_keys <- ivs_list_stream_keys
 
-#' Gets summary information about live streams in your account, in the AWS
-#' region where the API request is processed
+#' Gets a summary of current and previous streams for a specified channel
+#' in your account, in the AWS region where the API request is processed
 #'
 #' @description
-#' Gets summary information about live streams in your account, in the AWS
-#' region where the API request is processed.
+#' Gets a summary of current and previous streams for a specified channel
+#' in your account, in the AWS region where the API request is processed.
 #'
 #' @usage
-#' ivs_list_streams(nextToken, maxResults)
+#' ivs_list_stream_sessions(channelArn, maxResults, nextToken)
 #'
+#' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
+#' @param maxResults Maximum number of streams to return. Default: 50.
 #' @param nextToken The first stream to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
-#' @param maxResults Maximum number of streams to return.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   nextToken = "string",
+#'   streamSessions = list(
+#'     list(
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       hasErrorEvent = TRUE|FALSE,
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       streamId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_stream_sessions(
+#'   channelArn = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_list_stream_sessions
+ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListStreamSessions",
+    http_method = "POST",
+    http_path = "/ListStreamSessions",
+    paginator = list()
+  )
+  input <- .ivs$list_stream_sessions_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .ivs$list_stream_sessions_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$list_stream_sessions <- ivs_list_stream_sessions
+
+#' Gets summary information about live streams in your account, in the
+#' Amazon Web Services region where the API request is processed
+#'
+#' @description
+#' Gets summary information about live streams in your account, in the
+#' Amazon Web Services region where the API request is processed.
+#'
+#' @usage
+#' ivs_list_streams(filterBy, maxResults, nextToken)
+#'
+#' @param filterBy Filters the stream list to match the specified criterion.
+#' @param maxResults Maximum number of streams to return. Default: 50.
+#' @param nextToken The first stream to retrieve. This is used for pagination; see the
+#' `nextToken` response field.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
 #'   streams = list(
 #'     list(
 #'       channelArn = "string",
-#'       state = "LIVE"|"OFFLINE",
 #'       health = "HEALTHY"|"STARVING"|"UNKNOWN",
-#'       viewerCount = 123,
 #'       startTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       state = "LIVE"|"OFFLINE",
+#'       streamId = "string",
+#'       viewerCount = 123
 #'     )
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_streams(
-#'   nextToken = "string",
-#'   maxResults = 123
+#'   filterBy = list(
+#'     health = "HEALTHY"|"STARVING"|"UNKNOWN"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_streams
-ivs_list_streams <- function(nextToken = NULL, maxResults = NULL) {
+ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListStreams",
     http_method = "POST",
     http_path = "/ListStreams",
     paginator = list()
   )
-  input <- .ivs$list_streams_input(nextToken = nextToken, maxResults = maxResults)
+  input <- .ivs$list_streams_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_streams_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -934,18 +1420,15 @@ ivs_list_streams <- function(nextToken = NULL, maxResults = NULL) {
 }
 .ivs$operations$list_streams <- ivs_list_streams
 
-#' Gets information about AWS tags for the specified ARN
+#' Gets information about Amazon Web Services tags for the specified ARN
 #'
 #' @description
-#' Gets information about AWS tags for the specified ARN.
+#' Gets information about Amazon Web Services tags for the specified ARN.
 #'
 #' @usage
-#' ivs_list_tags_for_resource(resourceArn, nextToken, maxResults)
+#' ivs_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be retrieved.
-#' @param nextToken The first tag to retrieve. This is used for pagination; see the
-#' `nextToken` response field.
-#' @param maxResults Maximum number of tags to return.
 #'
 #' @return
 #' A list with the following syntax:
@@ -953,31 +1436,28 @@ ivs_list_streams <- function(nextToken = NULL, maxResults = NULL) {
 #' list(
 #'   tags = list(
 #'     "string"
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
-#'   resourceArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
+#'   resourceArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_list_tags_for_resource
-ivs_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxResults = NULL) {
+ivs_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     paginator = list()
   )
-  input <- .ivs$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
+  input <- .ivs$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ivs$list_tags_for_resource_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -987,12 +1467,17 @@ ivs_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxResults
 }
 .ivs$operations$list_tags_for_resource <- ivs_list_tags_for_resource
 
-#' Inserts metadata into an RTMPS stream for the specified channel
+#' Inserts metadata into the active stream of the specified channel
 #'
 #' @description
-#' Inserts metadata into an RTMPS stream for the specified channel. A
-#' maximum of 5 requests per second per channel is allowed, each with a
-#' maximum 1KB payload.
+#' Inserts metadata into the active stream of the specified channel. At
+#' most 5 requests per second per channel are allowed, each with a maximum
+#' 1 KB payload. (If 5 TPS is not sufficient for your needs, we recommend
+#' batching your data into a single PutMetadata call.) At most 155 requests
+#' per second per account are allowed. Also see [Embedding Metadata within
+#' a Video
+#' Stream](https://docs.aws.amazon.com/ivs/latest/userguide/metadata.html)
+#' in the *Amazon IVS User Guide*.
 #'
 #' @usage
 #' ivs_put_metadata(channelArn, metadata)
@@ -1078,10 +1563,12 @@ ivs_stop_stream <- function(channelArn) {
 }
 .ivs$operations$stop_stream <- ivs_stop_stream
 
-#' Adds or updates tags for the AWS resource with the specified ARN
+#' Adds or updates tags for the Amazon Web Services resource with the
+#' specified ARN
 #'
 #' @description
-#' Adds or updates tags for the AWS resource with the specified ARN.
+#' Adds or updates tags for the Amazon Web Services resource with the
+#' specified ARN.
 #'
 #' @usage
 #' ivs_tag_resource(resourceArn, tags)
@@ -1174,27 +1661,32 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' changes to take effect.
 #'
 #' @usage
-#' ivs_update_channel(arn, name, latencyMode, type, authorized)
+#' ivs_update_channel(arn, authorized, latencyMode, name,
+#'   recordingConfigurationArn, type)
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be updated.
+#' @param authorized Whether the channel is private (enabled for playback authorization).
+#' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
+#' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
+#' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
+#' Ultra-low and Standard, respectively.)
 #' @param name Channel name.
-#' @param latencyMode Channel latency mode. Default: `LOW`.
+#' @param recordingConfigurationArn Recording-configuration ARN. If this is set to an empty string,
+#' recording is disabled. A value other than an empty string indicates that
+#' recording is enabled
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
 #' you exceed the allowable resolution or bitrate, the stream probably will
-#' disconnect immediately.* Valid values:
+#' disconnect immediately*. Valid values:
 #' 
 #' -   `STANDARD`: Multiple qualities are generated from the original
 #'     input, to automatically give viewers the best experience for their
-#'     devices and network conditions. Vertical resolution can be up to
-#'     1080 and bitrate can be up to 8.5 Mbps.
+#'     devices and network conditions. Resolution can be up to 1080p and
+#'     bitrate can be up to 8.5 Mbps. Audio is transcoded only for
+#'     renditions 360p and below; above that, audio is passed through.
 #' 
 #' -   `BASIC`: Amazon IVS delivers the original input to viewers. The
 #'     viewer’s video-quality choice is limited to the original input.
-#'     Vertical resolution can be up to 480 and bitrate can be up to 1.5
-#'     Mbps.
-#' 
-#' Default: `STANDARD`.
-#' @param authorized Whether the channel is authorized. Default: `false`.
+#'     Resolution can be up to 480p and bitrate can be up to 1.5 Mbps.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1202,15 +1694,16 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' list(
 #'   channel = list(
 #'     arn = "string",
-#'     name = "string",
-#'     latencyMode = "NORMAL"|"LOW",
-#'     type = "BASIC"|"STANDARD",
-#'     ingestEndpoint = "string",
-#'     playbackUrl = "string",
 #'     authorized = TRUE|FALSE,
+#'     ingestEndpoint = "string",
+#'     latencyMode = "NORMAL"|"LOW",
+#'     name = "string",
+#'     playbackUrl = "string",
+#'     recordingConfigurationArn = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     type = "BASIC"|"STANDARD"
 #'   )
 #' )
 #' ```
@@ -1219,24 +1712,25 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' ```
 #' svc$update_channel(
 #'   arn = "string",
-#'   name = "string",
+#'   authorized = TRUE|FALSE,
 #'   latencyMode = "NORMAL"|"LOW",
-#'   type = "BASIC"|"STANDARD",
-#'   authorized = TRUE|FALSE
+#'   name = "string",
+#'   recordingConfigurationArn = "string",
+#'   type = "BASIC"|"STANDARD"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_update_channel
-ivs_update_channel <- function(arn, name = NULL, latencyMode = NULL, type = NULL, authorized = NULL) {
+ivs_update_channel <- function(arn, authorized = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, type = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "POST",
     http_path = "/UpdateChannel",
     paginator = list()
   )
-  input <- .ivs$update_channel_input(arn = arn, name = name, latencyMode = latencyMode, type = type, authorized = authorized)
+  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, type = type)
   output <- .ivs$update_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)

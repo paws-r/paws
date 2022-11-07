@@ -4,11 +4,11 @@
 \alias{glue_get_partition}
 \title{Retrieves information about a specified partition}
 \usage{
-glue_get_partition(CatalogId, DatabaseName, TableName, PartitionValues)
+glue_get_partition(CatalogId = NULL, DatabaseName, TableName, PartitionValues)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partition in question resides. If
-none is provided, the AWS account ID is used by default.}
+none is provided, the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the partition resides.}
 
@@ -16,101 +16,9 @@ none is provided, the AWS account ID is used by default.}
 
 \item{PartitionValues}{[required] The values that define the partition.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Partition = list(
-    Values = list(
-      "string"
-    ),
-    DatabaseName = "string",
-    TableName = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastAccessTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    StorageDescriptor = list(
-      Columns = list(
-        list(
-          Name = "string",
-          Type = "string",
-          Comment = "string",
-          Parameters = list(
-            "string"
-          )
-        )
-      ),
-      Location = "string",
-      InputFormat = "string",
-      OutputFormat = "string",
-      Compressed = TRUE|FALSE,
-      NumberOfBuckets = 123,
-      SerdeInfo = list(
-        Name = "string",
-        SerializationLibrary = "string",
-        Parameters = list(
-          "string"
-        )
-      ),
-      BucketColumns = list(
-        "string"
-      ),
-      SortColumns = list(
-        list(
-          Column = "string",
-          SortOrder = 123
-        )
-      ),
-      Parameters = list(
-        "string"
-      ),
-      SkewedInfo = list(
-        SkewedColumnNames = list(
-          "string"
-        ),
-        SkewedColumnValues = list(
-          "string"
-        ),
-        SkewedColumnValueLocationMaps = list(
-          "string"
-        )
-      ),
-      StoredAsSubDirectories = TRUE|FALSE,
-      SchemaReference = list(
-        SchemaId = list(
-          SchemaArn = "string",
-          SchemaName = "string",
-          RegistryName = "string"
-        ),
-        SchemaVersionId = "string",
-        SchemaVersionNumber = 123
-      )
-    ),
-    Parameters = list(
-      "string"
-    ),
-    LastAnalyzedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    CatalogId = "string"
-  )
-)
-}
-}
 \description{
 Retrieves information about a specified partition.
-}
-\section{Request syntax}{
-\preformatted{svc$get_partition(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionValues = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_partition.html} for full documentation.
+}
 \keyword{internal}

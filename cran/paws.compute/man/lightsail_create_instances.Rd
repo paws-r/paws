@@ -4,9 +4,18 @@
 \alias{lightsail_create_instances}
 \title{Creates one or more Amazon Lightsail instances}
 \usage{
-lightsail_create_instances(instanceNames, availabilityZone,
-  customImageName, blueprintId, bundleId, userData, keyPairName, tags,
-  addOns)
+lightsail_create_instances(
+  instanceNames,
+  availabilityZone,
+  customImageName = NULL,
+  blueprintId,
+  bundleId,
+  userData = NULL,
+  keyPairName = NULL,
+  tags = NULL,
+  addOns = NULL,
+  ipAddressType = NULL
+)
 }
 \arguments{
 \item{instanceNames}{[required] The names to use for your new Lightsail instances. Separate multiple
@@ -43,7 +52,7 @@ user data. For example, you might want to run \verb{apt-get -y update}.
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use \code{yum}, Debian and
 Ubuntu use \code{apt-get}, and FreeBSD uses \code{pkg}. For a complete list, see
-the Dev Guide.}
+the Amazon Lightsail Developer Guide.}
 
 \item{keyPairName}{The name of your key pair.}
 
@@ -54,68 +63,17 @@ resource after it's created.}
 
 \item{addOns}{An array of objects representing the add-ons to enable for the new
 instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  operations = list(
-    list(
-      id = "string",
-      resourceName = "string",
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      isTerminal = TRUE|FALSE,
-      operationDetails = "string",
-      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-      status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-      statusChangedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      errorCode = "string",
-      errorDetails = "string"
-    )
-  )
-)
-}
+
+\item{ipAddressType}{The IP address type for the instance.
+
+The possible values are \code{ipv4} for IPv4 only, and \code{dualstack} for IPv4
+and IPv6.
+
+The default value is \code{dualstack}.}
 }
 \description{
 Creates one or more Amazon Lightsail instances.
 
-The \verb{create instances} operation supports tag-based access control via
-request tags. For more information, see the Lightsail Dev Guide.
+See \url{https://paws-r.github.io/docs/lightsail/create_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_instances(
-  instanceNames = list(
-    "string"
-  ),
-  availabilityZone = "string",
-  customImageName = "string",
-  blueprintId = "string",
-  bundleId = "string",
-  userData = "string",
-  keyPairName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  addOns = list(
-    list(
-      addOnType = "AutoSnapshot",
-      autoSnapshotAddOnRequest = list(
-        snapshotTimeOfDay = "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

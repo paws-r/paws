@@ -9,31 +9,9 @@ rekognition_describe_collection(CollectionId)
 \arguments{
 \item{CollectionId}{[required] The ID of the collection to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FaceCount = 123,
-  FaceModelVersion = "string",
-  CollectionARN = "string",
-  CreationTimestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Describes the specified collection. You can use
-\code{\link[=rekognition_describe_collection]{describe_collection}} to get
-information, such as the number of faces indexed into a collection and
-the version of the model used by the collection for face detection.
+Describes the specified collection. You can use \code{\link[=rekognition_describe_collection]{describe_collection}} to get information, such as the number of faces indexed into a collection and the version of the model used by the collection for face detection.
 
-For more information, see Describing a Collection in the Amazon
-Rekognition Developer Guide.
+See \url{https://paws-r.github.io/docs/rekognition/describe_collection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_collection(
-  CollectionId = "string"
-)
-}
-}
-
 \keyword{internal}

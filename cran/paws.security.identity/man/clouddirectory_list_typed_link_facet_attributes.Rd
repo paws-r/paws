@@ -5,8 +5,12 @@
 \title{Returns a paginated list of all attribute definitions for a particular
 TypedLinkFacet}
 \usage{
-clouddirectory_list_typed_link_facet_attributes(SchemaArn, Name,
-  NextToken, MaxResults)
+clouddirectory_list_typed_link_facet_attributes(
+  SchemaArn,
+  Name,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For
@@ -18,49 +22,9 @@ more information, see arns.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      Name = "string",
-      Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
-      DefaultValue = list(
-        StringValue = "string",
-        BinaryValue = raw,
-        BooleanValue = TRUE|FALSE,
-        NumberValue = "string",
-        DatetimeValue = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      IsImmutable = TRUE|FALSE,
-      Rules = list(
-        list(
-          Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
-          Parameters = list(
-            "string"
-          )
-        )
-      ),
-      RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a paginated list of all attribute definitions for a particular
-TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_typed_link_facet_attributes(
-  SchemaArn = "string",
-  Name = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns a paginated list of all attribute definitions for a particular TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_typed_link_facet_attributes.html} for full documentation.
+}
 \keyword{internal}

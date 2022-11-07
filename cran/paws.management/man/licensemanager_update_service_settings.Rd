@@ -4,8 +4,12 @@
 \alias{licensemanager_update_service_settings}
 \title{Updates License Manager settings for the current Region}
 \usage{
-licensemanager_update_service_settings(S3BucketArn, SnsTopicArn,
-  OrganizationConfiguration, EnableCrossAccountsDiscovery)
+licensemanager_update_service_settings(
+  S3BucketArn = NULL,
+  SnsTopicArn = NULL,
+  OrganizationConfiguration = NULL,
+  EnableCrossAccountsDiscovery = NULL
+)
 }
 \arguments{
 \item{S3BucketArn}{Amazon Resource Name (ARN) of the Amazon S3 bucket where the License
@@ -14,26 +18,13 @@ Manager information is stored.}
 \item{SnsTopicArn}{Amazon Resource Name (ARN) of the Amazon SNS topic used for License
 Manager alerts.}
 
-\item{OrganizationConfiguration}{Enables integration with AWS Organizations for cross-account discovery.}
+\item{OrganizationConfiguration}{Enables integration with Organizations for cross-account discovery.}
 
 \item{EnableCrossAccountsDiscovery}{Activates cross-account discovery.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates License Manager settings for the current Region.
-}
-\section{Request syntax}{
-\preformatted{svc$update_service_settings(
-  S3BucketArn = "string",
-  SnsTopicArn = "string",
-  OrganizationConfiguration = list(
-    EnableIntegration = TRUE|FALSE
-  ),
-  EnableCrossAccountsDiscovery = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/update_service_settings.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Returns a list of all of the email identities that are associated with
 your Amazon Pinpoint account}
 \usage{
-pinpointemail_list_email_identities(NextToken, PageSize)
+pinpointemail_list_email_identities(NextToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to
@@ -21,31 +21,9 @@ can use to obtain additional results.
 The value you specify has to be at least 0, and can be no more than
 1000.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EmailIdentities = list(
-    list(
-      IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
-      IdentityName = "string",
-      SendingEnabled = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of all of the email identities that are associated with
-your Amazon Pinpoint account. An identity can be either an email address
-or a domain. This operation returns identities that are verified as well
-as those that aren't.
-}
-\section{Request syntax}{
-\preformatted{svc$list_email_identities(
-  NextToken = "string",
-  PageSize = 123
-)
-}
-}
+Returns a list of all of the email identities that are associated with your Amazon Pinpoint account. An identity can be either an email address or a domain. This operation returns identities that are verified as well as those that aren't.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/list_email_identities.html} for full documentation.
+}
 \keyword{internal}

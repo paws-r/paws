@@ -9,17 +9,9 @@ redshift_delete_hsm_client_certificate(HsmClientCertificateIdentifier)
 \arguments{
 \item{HsmClientCertificateIdentifier}{[required] The identifier of the HSM client certificate to be deleted.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified HSM client certificate.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_hsm_client_certificate(
-  HsmClientCertificateIdentifier = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/delete_hsm_client_certificate.html} for full documentation.
+}
 \keyword{internal}

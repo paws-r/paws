@@ -6,24 +6,9 @@
 \usage{
 codebuild_list_source_credentials()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  sourceCredentialsInfos = list(
-    list(
-      arn = "string",
-      serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
-      authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of \code{SourceCredentialsInfo} objects.
-}
-\section{Request syntax}{
-\preformatted{svc$list_source_credentials()
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/list_source_credentials.html} for full documentation.
+}
 \keyword{internal}

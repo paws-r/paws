@@ -3,27 +3,76 @@
 #' @include appstream_service.R
 NULL
 
+#' Associates the specified application with the specified fleet
+#'
+#' @description
+#' Associates the specified application with the specified fleet. This is only supported for Elastic fleets.
+#'
+#' See [https://paws-r.github.io/docs/appstream/associate_application_fleet.html](https://paws-r.github.io/docs/appstream/associate_application_fleet.html) for full documentation.
+#'
+#' @param FleetName &#91;required&#93; The name of the fleet.
+#' @param ApplicationArn &#91;required&#93; The ARN of the application.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_associate_application_fleet
+appstream_associate_application_fleet <- function(FleetName, ApplicationArn) {
+  op <- new_operation(
+    name = "AssociateApplicationFleet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$associate_application_fleet_input(FleetName = FleetName, ApplicationArn = ApplicationArn)
+  output <- .appstream$associate_application_fleet_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$associate_application_fleet <- appstream_associate_application_fleet
+
+#' Associates an application to entitle
+#'
+#' @description
+#' Associates an application to entitle.
+#'
+#' See [https://paws-r.github.io/docs/appstream/associate_application_to_entitlement.html](https://paws-r.github.io/docs/appstream/associate_application_to_entitlement.html) for full documentation.
+#'
+#' @param StackName &#91;required&#93; The name of the stack.
+#' @param EntitlementName &#91;required&#93; The name of the entitlement.
+#' @param ApplicationIdentifier &#91;required&#93; The identifier of the application.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_associate_application_to_entitlement
+appstream_associate_application_to_entitlement <- function(StackName, EntitlementName, ApplicationIdentifier) {
+  op <- new_operation(
+    name = "AssociateApplicationToEntitlement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$associate_application_to_entitlement_input(StackName = StackName, EntitlementName = EntitlementName, ApplicationIdentifier = ApplicationIdentifier)
+  output <- .appstream$associate_application_to_entitlement_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$associate_application_to_entitlement <- appstream_associate_application_to_entitlement
+
 #' Associates the specified fleet with the specified stack
 #'
 #' @description
 #' Associates the specified fleet with the specified stack.
 #'
-#' @usage
-#' appstream_associate_fleet(FleetName, StackName)
+#' See [https://paws-r.github.io/docs/appstream/associate_fleet.html](https://paws-r.github.io/docs/appstream/associate_fleet.html) for full documentation.
 #'
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param StackName &#91;required&#93; The name of the stack.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_fleet(
-#'   FleetName = "string",
-#'   StackName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -48,47 +97,11 @@ appstream_associate_fleet <- function(FleetName, StackName) {
 #' Associates the specified users with the specified stacks
 #'
 #' @description
-#' Associates the specified users with the specified stacks. Users in a
-#' user pool cannot be assigned to stacks with fleets that are joined to an
-#' Active Directory domain.
+#' Associates the specified users with the specified stacks. Users in a user pool cannot be assigned to stacks with fleets that are joined to an Active Directory domain.
 #'
-#' @usage
-#' appstream_batch_associate_user_stack(UserStackAssociations)
+#' See [https://paws-r.github.io/docs/appstream/batch_associate_user_stack.html](https://paws-r.github.io/docs/appstream/batch_associate_user_stack.html) for full documentation.
 #'
 #' @param UserStackAssociations &#91;required&#93; The list of UserStackAssociation objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   errors = list(
-#'     list(
-#'       UserStackAssociation = list(
-#'         StackName = "string",
-#'         UserName = "string",
-#'         AuthenticationType = "API"|"SAML"|"USERPOOL",
-#'         SendEmailNotification = TRUE|FALSE
-#'       ),
-#'       ErrorCode = "STACK_NOT_FOUND"|"USER_NAME_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INTERNAL_ERROR",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_associate_user_stack(
-#'   UserStackAssociations = list(
-#'     list(
-#'       StackName = "string",
-#'       UserName = "string",
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
-#'       SendEmailNotification = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -115,43 +128,9 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
 #' @description
 #' Disassociates the specified users from the specified stacks.
 #'
-#' @usage
-#' appstream_batch_disassociate_user_stack(UserStackAssociations)
+#' See [https://paws-r.github.io/docs/appstream/batch_disassociate_user_stack.html](https://paws-r.github.io/docs/appstream/batch_disassociate_user_stack.html) for full documentation.
 #'
 #' @param UserStackAssociations &#91;required&#93; The list of UserStackAssociation objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   errors = list(
-#'     list(
-#'       UserStackAssociation = list(
-#'         StackName = "string",
-#'         UserName = "string",
-#'         AuthenticationType = "API"|"SAML"|"USERPOOL",
-#'         SendEmailNotification = TRUE|FALSE
-#'       ),
-#'       ErrorCode = "STACK_NOT_FOUND"|"USER_NAME_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INTERNAL_ERROR",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_disassociate_user_stack(
-#'   UserStackAssociations = list(
-#'     list(
-#'       StackName = "string",
-#'       UserName = "string",
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
-#'       SendEmailNotification = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -177,13 +156,9 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
 #' same AWS account
 #'
 #' @description
-#' Copies the image within the same region or to a new region within the
-#' same AWS account. Note that any tags you added to the image will not be
-#' copied.
+#' Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.
 #'
-#' @usage
-#' appstream_copy_image(SourceImageName, DestinationImageName,
-#'   DestinationRegion, DestinationImageDescription)
+#' See [https://paws-r.github.io/docs/appstream/copy_image.html](https://paws-r.github.io/docs/appstream/copy_image.html) for full documentation.
 #'
 #' @param SourceImageName &#91;required&#93; The name of the image to copy.
 #' @param DestinationImageName &#91;required&#93; The name that the image will have when it is copied to the destination.
@@ -191,24 +166,6 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
 #' is required, even if you are copying an image within the same region.
 #' @param DestinationImageDescription The description that the image will have when it is copied to the
 #' destination.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DestinationImageName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_image(
-#'   SourceImageName = "string",
-#'   DestinationImageName = "string",
-#'   DestinationRegion = "string",
-#'   DestinationImageDescription = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -230,16 +187,89 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 }
 .appstream$operations$copy_image <- appstream_copy_image
 
+#' Creates an app block
+#'
+#' @description
+#' Creates an app block.
+#'
+#' See [https://paws-r.github.io/docs/appstream/create_app_block.html](https://paws-r.github.io/docs/appstream/create_app_block.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the app block.
+#' @param Description The description of the app block.
+#' @param DisplayName The display name of the app block. This is not displayed to the user.
+#' @param SourceS3Location &#91;required&#93; The source S3 location of the app block.
+#' @param SetupScriptDetails &#91;required&#93; The setup script details of the app block.
+#' @param Tags The tags assigned to the app block.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_app_block
+appstream_create_app_block <- function(Name, Description = NULL, DisplayName = NULL, SourceS3Location, SetupScriptDetails, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAppBlock",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$create_app_block_input(Name = Name, Description = Description, DisplayName = DisplayName, SourceS3Location = SourceS3Location, SetupScriptDetails = SetupScriptDetails, Tags = Tags)
+  output <- .appstream$create_app_block_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_app_block <- appstream_create_app_block
+
+#' Creates an application
+#'
+#' @description
+#' Creates an application.
+#'
+#' See [https://paws-r.github.io/docs/appstream/create_application.html](https://paws-r.github.io/docs/appstream/create_application.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the application. This name is visible to users when display
+#' name is not specified.
+#' @param DisplayName The display name of the application. This name is visible to users in
+#' the application catalog.
+#' @param Description The description of the application.
+#' @param IconS3Location &#91;required&#93; The location in S3 of the application icon.
+#' @param LaunchPath &#91;required&#93; The launch path of the application.
+#' @param WorkingDirectory The working directory of the application.
+#' @param LaunchParameters The launch parameters of the application.
+#' @param Platforms &#91;required&#93; The platforms the application supports. WINDOWS_SERVER_2019 and
+#' AMAZON_LINUX2 are supported for Elastic fleets.
+#' @param InstanceFamilies &#91;required&#93; The instance families the application supports. Valid values are
+#' GENERAL_PURPOSE and GRAPHICS_G4.
+#' @param AppBlockArn &#91;required&#93; The app block ARN to which the application should be associated
+#' @param Tags The tags assigned to the application.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_application
+appstream_create_application <- function(Name, DisplayName = NULL, Description = NULL, IconS3Location, LaunchPath, WorkingDirectory = NULL, LaunchParameters = NULL, Platforms, InstanceFamilies, AppBlockArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$create_application_input(Name = Name, DisplayName = DisplayName, Description = Description, IconS3Location = IconS3Location, LaunchPath = LaunchPath, WorkingDirectory = WorkingDirectory, LaunchParameters = LaunchParameters, Platforms = Platforms, InstanceFamilies = InstanceFamilies, AppBlockArn = AppBlockArn, Tags = Tags)
+  output <- .appstream$create_application_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_application <- appstream_create_application
+
 #' Creates a Directory Config object in AppStream 2
 #'
 #' @description
-#' Creates a Directory Config object in AppStream 2.0. This object includes
-#' the configuration information required to join fleets and image builders
-#' to Microsoft Active Directory domains.
+#' Creates a Directory Config object in AppStream 2.0. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 #'
-#' @usage
-#' appstream_create_directory_config(DirectoryName,
-#'   OrganizationalUnitDistinguishedNames, ServiceAccountCredentials)
+#' See [https://paws-r.github.io/docs/appstream/create_directory_config.html](https://paws-r.github.io/docs/appstream/create_directory_config.html) for full documentation.
 #'
 #' @param DirectoryName &#91;required&#93; The fully qualified name of the directory (for example,
 #' corp.example.com).
@@ -247,40 +277,6 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #' accounts.
 #' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
 #' builder to connect to the directory.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DirectoryConfig = list(
-#'     DirectoryName = "string",
-#'     OrganizationalUnitDistinguishedNames = list(
-#'       "string"
-#'     ),
-#'     ServiceAccountCredentials = list(
-#'       AccountName = "string",
-#'       AccountPassword = "string"
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_directory_config(
-#'   DirectoryName = "string",
-#'   OrganizationalUnitDistinguishedNames = list(
-#'     "string"
-#'   ),
-#'   ServiceAccountCredentials = list(
-#'     AccountName = "string",
-#'     AccountPassword = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -302,24 +298,53 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 }
 .appstream$operations$create_directory_config <- appstream_create_directory_config
 
+#' Creates a new entitlement
+#'
+#' @description
+#' Creates a new entitlement. Entitlements control access to specific applications within a stack, based on user attributes. Entitlements apply to SAML 2.0 federated user identities. Amazon AppStream 2.0 user pool and streaming URL users are entitled to all applications in a stack. Entitlements don't apply to the desktop stream view application, or to applications managed by a dynamic app provider using the Dynamic Application Framework.
+#'
+#' See [https://paws-r.github.io/docs/appstream/create_entitlement.html](https://paws-r.github.io/docs/appstream/create_entitlement.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the entitlement.
+#' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
+#' @param Description The description of the entitlement.
+#' @param AppVisibility &#91;required&#93; Specifies whether all or selected apps are entitled.
+#' @param Attributes &#91;required&#93; The attributes of the entitlement.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_entitlement
+appstream_create_entitlement <- function(Name, StackName, Description = NULL, AppVisibility, Attributes) {
+  op <- new_operation(
+    name = "CreateEntitlement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$create_entitlement_input(Name = Name, StackName = StackName, Description = Description, AppVisibility = AppVisibility, Attributes = Attributes)
+  output <- .appstream$create_entitlement_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_entitlement <- appstream_create_entitlement
+
 #' Creates a fleet
 #'
 #' @description
-#' Creates a fleet. A fleet consists of streaming instances that run a
-#' specified image.
+#' Creates a fleet. A fleet consists of streaming instances that run a specified image when using Always-On or On-Demand.
 #'
-#' @usage
-#' appstream_create_fleet(Name, ImageName, ImageArn, InstanceType,
-#'   FleetType, ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
-#'   DisconnectTimeoutInSeconds, Description, DisplayName,
-#'   EnableDefaultInternetAccess, DomainJoinInfo, Tags,
-#'   IdleDisconnectTimeoutInSeconds, IamRoleArn, StreamView)
+#' See [https://paws-r.github.io/docs/appstream/create_fleet.html](https://paws-r.github.io/docs/appstream/create_fleet.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A unique name for the fleet.
 #' @param ImageName The name of the image used to create the fleet.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
 #' @param InstanceType &#91;required&#93; The instance type to use when launching fleet instances. The following
 #' instance types are available:
+#' 
+#' -   stream.standard.small
 #' 
 #' -   stream.standard.medium
 #' 
@@ -384,6 +409,12 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' -   stream.graphics-pro.8xlarge
 #' 
 #' -   stream.graphics-pro.16xlarge
+#' 
+#' The following instance types are available for Elastic fleets:
+#' 
+#' -   stream.standard.small
+#' 
+#' -   stream.standard.medium
 #' @param FleetType The fleet type.
 #' 
 #' ### ALWAYS_ON
@@ -398,8 +429,11 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' takes one to two minutes. You are charged for instance streaming when
 #' users are connected and a small hourly fee for instances that are not
 #' streaming apps.
-#' @param ComputeCapacity &#91;required&#93; The desired capacity for the fleet.
-#' @param VpcConfig The VPC configuration for the fleet.
+#' @param ComputeCapacity The desired capacity for the fleet. This is not allowed for Elastic
+#' fleets. For Elastic fleets, specify MaxConcurrentSessions instead.
+#' @param VpcConfig The VPC configuration for the fleet. This is required for Elastic
+#' fleets, but not required for other fleet types. Elastic fleets require
+#' that you specify at least two subnets in different availability zones.
 #' @param MaxUserDurationInSeconds The maximum amount of time that a streaming session can remain active,
 #' in seconds. If users are still connected to a streaming instance five
 #' minutes before this limit is reached, they are prompted to save any open
@@ -418,7 +452,8 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' @param DisplayName The fleet name to display.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
 #' @param DomainJoinInfo The name of the directory and organizational unit (OU) to use to join
-#' the fleet to a Microsoft Active Directory domain.
+#' the fleet to a Microsoft Active Directory domain. This is not allowed
+#' for Elastic fleets.
 #' @param Tags The tags to associate with the fleet. A tag is a key-value pair, and the
 #' value is optional. For example, Environment=Test. If you do not specify
 #' a value, Environment=.
@@ -474,106 +509,27 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' standard desktop that is provided by the operating system displays.
 #' 
 #' The default value is `APP`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Fleet = list(
-#'     Arn = "string",
-#'     Name = "string",
-#'     DisplayName = "string",
-#'     Description = "string",
-#'     ImageName = "string",
-#'     ImageArn = "string",
-#'     InstanceType = "string",
-#'     FleetType = "ALWAYS_ON"|"ON_DEMAND",
-#'     ComputeCapacityStatus = list(
-#'       Desired = 123,
-#'       Running = 123,
-#'       InUse = 123,
-#'       Available = 123
-#'     ),
-#'     MaxUserDurationInSeconds = 123,
-#'     DisconnectTimeoutInSeconds = 123,
-#'     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
-#'     VpcConfig = list(
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     FleetErrors = list(
-#'       list(
-#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-#'         ErrorMessage = "string"
-#'       )
-#'     ),
-#'     EnableDefaultInternetAccess = TRUE|FALSE,
-#'     DomainJoinInfo = list(
-#'       DirectoryName = "string",
-#'       OrganizationalUnitDistinguishedName = "string"
-#'     ),
-#'     IdleDisconnectTimeoutInSeconds = 123,
-#'     IamRoleArn = "string",
-#'     StreamView = "APP"|"DESKTOP"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_fleet(
-#'   Name = "string",
-#'   ImageName = "string",
-#'   ImageArn = "string",
-#'   InstanceType = "string",
-#'   FleetType = "ALWAYS_ON"|"ON_DEMAND",
-#'   ComputeCapacity = list(
-#'     DesiredInstances = 123
-#'   ),
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   MaxUserDurationInSeconds = 123,
-#'   DisconnectTimeoutInSeconds = 123,
-#'   Description = "string",
-#'   DisplayName = "string",
-#'   EnableDefaultInternetAccess = TRUE|FALSE,
-#'   DomainJoinInfo = list(
-#'     DirectoryName = "string",
-#'     OrganizationalUnitDistinguishedName = "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   IdleDisconnectTimeoutInSeconds = 123,
-#'   IamRoleArn = "string",
-#'   StreamView = "APP"|"DESKTOP"
-#' )
-#' ```
+#' @param Platform The fleet platform. WINDOWS_SERVER_2019 and AMAZON_LINUX2 are supported
+#' for Elastic fleets.
+#' @param MaxConcurrentSessions The maximum concurrent sessions of the Elastic fleet. This is required
+#' for Elastic fleets, and not allowed for other fleet types.
+#' @param UsbDeviceFilterStrings The USB device filter strings that specify which USB devices a user can
+#' redirect to the fleet streaming session, when using the Windows native
+#' client. This is allowed but not required for Elastic fleets.
+#' @param SessionScriptS3Location The S3 location of the session scripts configuration zip file. This only
+#' applies to Elastic fleets.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_fleet
-appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL) {
+appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView)
+  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location)
   output <- .appstream$create_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -586,23 +542,17 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' Creates an image builder
 #'
 #' @description
-#' Creates an image builder. An image builder is a virtual machine that is
-#' used to create an image.
-#' 
-#' The initial state of the builder is `PENDING`. When it is ready, the
-#' state is `RUNNING`.
+#' Creates an image builder. An image builder is a virtual machine that is used to create an image.
 #'
-#' @usage
-#' appstream_create_image_builder(Name, ImageName, ImageArn, InstanceType,
-#'   Description, DisplayName, VpcConfig, IamRoleArn,
-#'   EnableDefaultInternetAccess, DomainJoinInfo, AppstreamAgentVersion,
-#'   Tags, AccessEndpoints)
+#' See [https://paws-r.github.io/docs/appstream/create_image_builder.html](https://paws-r.github.io/docs/appstream/create_image_builder.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A unique name for the image builder.
 #' @param ImageName The name of the image used to create the image builder.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
 #' @param InstanceType &#91;required&#93; The instance type to use when launching the image builder. The following
 #' instance types are available:
+#' 
+#' -   stream.standard.small
 #' 
 #' -   stream.standard.medium
 #' 
@@ -706,100 +656,6 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' Administrators can connect to the image builder only through the
 #' specified endpoints.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImageBuilder = list(
-#'     Name = "string",
-#'     Arn = "string",
-#'     ImageArn = "string",
-#'     Description = "string",
-#'     DisplayName = "string",
-#'     VpcConfig = list(
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-#'     IamRoleArn = "string",
-#'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
-#'     StateChangeReason = list(
-#'       Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
-#'       Message = "string"
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnableDefaultInternetAccess = TRUE|FALSE,
-#'     DomainJoinInfo = list(
-#'       DirectoryName = "string",
-#'       OrganizationalUnitDistinguishedName = "string"
-#'     ),
-#'     NetworkAccessConfiguration = list(
-#'       EniPrivateIpAddress = "string",
-#'       EniId = "string"
-#'     ),
-#'     ImageBuilderErrors = list(
-#'       list(
-#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-#'         ErrorMessage = "string",
-#'         ErrorTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     AppstreamAgentVersion = "string",
-#'     AccessEndpoints = list(
-#'       list(
-#'         EndpointType = "STREAMING",
-#'         VpceId = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_image_builder(
-#'   Name = "string",
-#'   ImageName = "string",
-#'   ImageArn = "string",
-#'   InstanceType = "string",
-#'   Description = "string",
-#'   DisplayName = "string",
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   IamRoleArn = "string",
-#'   EnableDefaultInternetAccess = TRUE|FALSE,
-#'   DomainJoinInfo = list(
-#'     DirectoryName = "string",
-#'     OrganizationalUnitDistinguishedName = "string"
-#'   ),
-#'   AppstreamAgentVersion = "string",
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   AccessEndpoints = list(
-#'     list(
-#'       EndpointType = "STREAMING",
-#'       VpceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname appstream_create_image_builder
@@ -825,31 +681,11 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
 #' @description
 #' Creates a URL to start an image builder streaming session.
 #'
-#' @usage
-#' appstream_create_image_builder_streaming_url(Name, Validity)
+#' See [https://paws-r.github.io/docs/appstream/create_image_builder_streaming_url.html](https://paws-r.github.io/docs/appstream/create_image_builder_streaming_url.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
 #' @param Validity The time that the streaming URL will be valid, in seconds. Specify a
 #' value between 1 and 604800 seconds. The default is 3600 seconds.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StreamingURL = "string",
-#'   Expires = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_image_builder_streaming_url(
-#'   Name = "string",
-#'   Validity = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -874,14 +710,9 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' Creates a stack to start streaming applications to users
 #'
 #' @description
-#' Creates a stack to start streaming applications to users. A stack
-#' consists of an associated fleet, user access policies, and storage
-#' configurations.
+#' Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.
 #'
-#' @usage
-#' appstream_create_stack(Name, Description, DisplayName,
-#'   StorageConnectors, RedirectURL, FeedbackURL, UserSettings,
-#'   ApplicationSettings, Tags, AccessEndpoints, EmbedHostDomains)
+#' See [https://paws-r.github.io/docs/appstream/create_stack.html](https://paws-r.github.io/docs/appstream/create_stack.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the stack.
 #' @param Description The description to display.
@@ -916,113 +747,20 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' @param EmbedHostDomains The domains where AppStream 2.0 streaming sessions can be embedded in an
 #' iframe. You must approve the domains that you want to host embedded
 #' AppStream 2.0 streaming sessions.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Stack = list(
-#'     Arn = "string",
-#'     Name = "string",
-#'     Description = "string",
-#'     DisplayName = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     StorageConnectors = list(
-#'       list(
-#'         ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-#'         ResourceIdentifier = "string",
-#'         Domains = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     RedirectURL = "string",
-#'     FeedbackURL = "string",
-#'     StackErrors = list(
-#'       list(
-#'         ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
-#'         ErrorMessage = "string"
-#'       )
-#'     ),
-#'     UserSettings = list(
-#'       list(
-#'         Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-#'         Permission = "ENABLED"|"DISABLED"
-#'       )
-#'     ),
-#'     ApplicationSettings = list(
-#'       Enabled = TRUE|FALSE,
-#'       SettingsGroup = "string",
-#'       S3BucketName = "string"
-#'     ),
-#'     AccessEndpoints = list(
-#'       list(
-#'         EndpointType = "STREAMING",
-#'         VpceId = "string"
-#'       )
-#'     ),
-#'     EmbedHostDomains = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_stack(
-#'   Name = "string",
-#'   Description = "string",
-#'   DisplayName = "string",
-#'   StorageConnectors = list(
-#'     list(
-#'       ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-#'       ResourceIdentifier = "string",
-#'       Domains = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RedirectURL = "string",
-#'   FeedbackURL = "string",
-#'   UserSettings = list(
-#'     list(
-#'       Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-#'       Permission = "ENABLED"|"DISABLED"
-#'     )
-#'   ),
-#'   ApplicationSettings = list(
-#'     Enabled = TRUE|FALSE,
-#'     SettingsGroup = "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   AccessEndpoints = list(
-#'     list(
-#'       EndpointType = "STREAMING",
-#'       VpceId = "string"
-#'     )
-#'   ),
-#'   EmbedHostDomains = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param StreamingExperienceSettings The streaming protocol you want your stack to prefer. This can be UDP or
+#' TCP. Currently, UDP is only supported in the Windows native client.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_stack
-appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL, StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, UserSettings = NULL, ApplicationSettings = NULL, Tags = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL) {
+appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL, StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, UserSettings = NULL, ApplicationSettings = NULL, Tags = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL, StreamingExperienceSettings = NULL) {
   op <- new_operation(
     name = "CreateStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_stack_input(Name = Name, Description = Description, DisplayName = DisplayName, StorageConnectors = StorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, Tags = Tags, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains)
+  input <- .appstream$create_stack_input(Name = Name, Description = Description, DisplayName = DisplayName, StorageConnectors = StorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, Tags = Tags, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings)
   output <- .appstream$create_stack_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -1035,47 +773,23 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 #' Creates a temporary URL to start an AppStream 2
 #'
 #' @description
-#' Creates a temporary URL to start an AppStream 2.0 streaming session for
-#' the specified user. A streaming URL enables application streaming to be
-#' tested without user setup.
+#' Creates a temporary URL to start an AppStream 2.0 streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
 #'
-#' @usage
-#' appstream_create_streaming_url(StackName, FleetName, UserId,
-#'   ApplicationId, Validity, SessionContext)
+#' See [https://paws-r.github.io/docs/appstream/create_streaming_url.html](https://paws-r.github.io/docs/appstream/create_streaming_url.html) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack.
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param UserId &#91;required&#93; The identifier of the user.
 #' @param ApplicationId The name of the application to launch after the session starts. This is
-#' the name that you specified as **Name** in the Image Assistant.
+#' the name that you specified as **Name** in the Image Assistant. If your
+#' fleet is enabled for the **Desktop** stream view, you can also choose to
+#' launch directly to the operating system desktop. To do so, specify
+#' **Desktop**.
 #' @param Validity The time that the streaming URL will be valid, in seconds. Specify a
 #' value between 1 and 604800 seconds. The default is 60 seconds.
 #' @param SessionContext The session context. For more information, see [Session
 #' Context](https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
 #' in the *Amazon AppStream 2.0 Administration Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StreamingURL = "string",
-#'   Expires = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_streaming_url(
-#'   StackName = "string",
-#'   FleetName = "string",
-#'   UserId = "string",
-#'   ApplicationId = "string",
-#'   Validity = 123,
-#'   SessionContext = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1097,27 +811,66 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 }
 .appstream$operations$create_streaming_url <- appstream_create_streaming_url
 
+#' Creates a new image with the latest Windows operating system updates,
+#' driver updates, and AppStream 2
+#'
+#' @description
+#' Creates a new image with the latest Windows operating system updates, driver updates, and AppStream 2.0 agent software.
+#'
+#' See [https://paws-r.github.io/docs/appstream/create_updated_image.html](https://paws-r.github.io/docs/appstream/create_updated_image.html) for full documentation.
+#'
+#' @param existingImageName &#91;required&#93; The name of the image to update.
+#' @param newImageName &#91;required&#93; The name of the new image. The name must be unique within the AWS
+#' account and Region.
+#' @param newImageDescription The description to display for the new image.
+#' @param newImageDisplayName The name to display for the new image.
+#' @param newImageTags The tags to associate with the new image. A tag is a key-value pair, and
+#' the value is optional. For example, Environment=Test. If you do not
+#' specify a value, Environment=.
+#' 
+#' Generally allowed characters are: letters, numbers, and spaces
+#' representable in UTF-8, and the following special characters:
+#' 
+#' _ . : / = + \\ - @@
+#' 
+#' If you do not specify a value, the value is set to an empty string.
+#' 
+#' For more information about tags, see [Tagging Your
+#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' @param dryRun Indicates whether to display the status of image update availability
+#' before AppStream 2.0 initiates the process of creating a new updated
+#' image. If this value is set to `true`, AppStream 2.0 displays whether
+#' image updates are available. If this value is set to `false`, AppStream
+#' 2.0 initiates the process of creating a new updated image without
+#' displaying whether image updates are available.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_updated_image
+appstream_create_updated_image <- function(existingImageName, newImageName, newImageDescription = NULL, newImageDisplayName = NULL, newImageTags = NULL, dryRun = NULL) {
+  op <- new_operation(
+    name = "CreateUpdatedImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$create_updated_image_input(existingImageName = existingImageName, newImageName = newImageName, newImageDescription = newImageDescription, newImageDisplayName = newImageDisplayName, newImageTags = newImageTags, dryRun = dryRun)
+  output <- .appstream$create_updated_image_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_updated_image <- appstream_create_updated_image
+
 #' Creates a usage report subscription
 #'
 #' @description
 #' Creates a usage report subscription. Usage reports are generated daily.
 #'
-#' @usage
-#' appstream_create_usage_report_subscription()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   S3BucketName = "string",
-#'   Schedule = "DAILY"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_usage_report_subscription()
-#' ```
+#' See [https://paws-r.github.io/docs/appstream/create_usage_report_subscription.html](https://paws-r.github.io/docs/appstream/create_usage_report_subscription.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1144,9 +897,7 @@ appstream_create_usage_report_subscription <- function() {
 #' @description
 #' Creates a new user in the user pool.
 #'
-#' @usage
-#' appstream_create_user(UserName, MessageAction, FirstName, LastName,
-#'   AuthenticationType)
+#' See [https://paws-r.github.io/docs/appstream/create_user.html](https://paws-r.github.io/docs/appstream/create_user.html) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
@@ -1165,20 +916,6 @@ appstream_create_usage_report_subscription <- function() {
 #' @param FirstName The first name, or given name, of the user.
 #' @param LastName The last name, or surname, of the user.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_user(
-#'   UserName = "string",
-#'   MessageAction = "SUPPRESS"|"RESEND",
-#'   FirstName = "string",
-#'   LastName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1200,27 +937,72 @@ appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NU
 }
 .appstream$operations$create_user <- appstream_create_user
 
+#' Deletes an app block
+#'
+#' @description
+#' Deletes an app block.
+#'
+#' See [https://paws-r.github.io/docs/appstream/delete_app_block.html](https://paws-r.github.io/docs/appstream/delete_app_block.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the app block.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_delete_app_block
+appstream_delete_app_block <- function(Name) {
+  op <- new_operation(
+    name = "DeleteAppBlock",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$delete_app_block_input(Name = Name)
+  output <- .appstream$delete_app_block_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$delete_app_block <- appstream_delete_app_block
+
+#' Deletes an application
+#'
+#' @description
+#' Deletes an application.
+#'
+#' See [https://paws-r.github.io/docs/appstream/delete_application.html](https://paws-r.github.io/docs/appstream/delete_application.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the application.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_delete_application
+appstream_delete_application <- function(Name) {
+  op <- new_operation(
+    name = "DeleteApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$delete_application_input(Name = Name)
+  output <- .appstream$delete_application_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$delete_application <- appstream_delete_application
+
 #' Deletes the specified Directory Config object from AppStream 2
 #'
 #' @description
-#' Deletes the specified Directory Config object from AppStream 2.0. This
-#' object includes the information required to join streaming instances to
-#' an Active Directory domain.
+#' Deletes the specified Directory Config object from AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
 #'
-#' @usage
-#' appstream_delete_directory_config(DirectoryName)
+#' See [https://paws-r.github.io/docs/appstream/delete_directory_config.html](https://paws-r.github.io/docs/appstream/delete_directory_config.html) for full documentation.
 #'
 #' @param DirectoryName &#91;required&#93; The name of the directory configuration.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_directory_config(
-#'   DirectoryName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1242,25 +1024,44 @@ appstream_delete_directory_config <- function(DirectoryName) {
 }
 .appstream$operations$delete_directory_config <- appstream_delete_directory_config
 
+#' Deletes the specified entitlement
+#'
+#' @description
+#' Deletes the specified entitlement.
+#'
+#' See [https://paws-r.github.io/docs/appstream/delete_entitlement.html](https://paws-r.github.io/docs/appstream/delete_entitlement.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the entitlement.
+#' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_delete_entitlement
+appstream_delete_entitlement <- function(Name, StackName) {
+  op <- new_operation(
+    name = "DeleteEntitlement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$delete_entitlement_input(Name = Name, StackName = StackName)
+  output <- .appstream$delete_entitlement_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$delete_entitlement <- appstream_delete_entitlement
+
 #' Deletes the specified fleet
 #'
 #' @description
 #' Deletes the specified fleet.
 #'
-#' @usage
-#' appstream_delete_fleet(Name)
+#' See [https://paws-r.github.io/docs/appstream/delete_fleet.html](https://paws-r.github.io/docs/appstream/delete_fleet.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the fleet.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_fleet(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1285,68 +1086,11 @@ appstream_delete_fleet <- function(Name) {
 #' Deletes the specified image
 #'
 #' @description
-#' Deletes the specified image. You cannot delete an image when it is in
-#' use. After you delete an image, you cannot provision new capacity using
-#' the image.
+#' Deletes the specified image. You cannot delete an image when it is in use. After you delete an image, you cannot provision new capacity using the image.
 #'
-#' @usage
-#' appstream_delete_image(Name)
+#' See [https://paws-r.github.io/docs/appstream/delete_image.html](https://paws-r.github.io/docs/appstream/delete_image.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Image = list(
-#'     Name = "string",
-#'     Arn = "string",
-#'     BaseImageArn = "string",
-#'     DisplayName = "string",
-#'     State = "PENDING"|"AVAILABLE"|"FAILED"|"COPYING"|"DELETING",
-#'     Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
-#'     ImageBuilderSupported = TRUE|FALSE,
-#'     ImageBuilderName = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-#'     Description = "string",
-#'     StateChangeReason = list(
-#'       Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
-#'       Message = "string"
-#'     ),
-#'     Applications = list(
-#'       list(
-#'         Name = "string",
-#'         DisplayName = "string",
-#'         IconURL = "string",
-#'         LaunchPath = "string",
-#'         LaunchParameters = "string",
-#'         Enabled = TRUE|FALSE,
-#'         Metadata = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PublicBaseImageReleasedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     AppstreamAgentVersion = "string",
-#'     ImagePermissions = list(
-#'       allowFleet = TRUE|FALSE,
-#'       allowImageBuilder = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_image(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1373,75 +1117,9 @@ appstream_delete_image <- function(Name) {
 #' @description
 #' Deletes the specified image builder and releases the capacity.
 #'
-#' @usage
-#' appstream_delete_image_builder(Name)
+#' See [https://paws-r.github.io/docs/appstream/delete_image_builder.html](https://paws-r.github.io/docs/appstream/delete_image_builder.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImageBuilder = list(
-#'     Name = "string",
-#'     Arn = "string",
-#'     ImageArn = "string",
-#'     Description = "string",
-#'     DisplayName = "string",
-#'     VpcConfig = list(
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-#'     IamRoleArn = "string",
-#'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
-#'     StateChangeReason = list(
-#'       Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
-#'       Message = "string"
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnableDefaultInternetAccess = TRUE|FALSE,
-#'     DomainJoinInfo = list(
-#'       DirectoryName = "string",
-#'       OrganizationalUnitDistinguishedName = "string"
-#'     ),
-#'     NetworkAccessConfiguration = list(
-#'       EniPrivateIpAddress = "string",
-#'       EniId = "string"
-#'     ),
-#'     ImageBuilderErrors = list(
-#'       list(
-#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-#'         ErrorMessage = "string",
-#'         ErrorTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     AppstreamAgentVersion = "string",
-#'     AccessEndpoints = list(
-#'       list(
-#'         EndpointType = "STREAMING",
-#'         VpceId = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_image_builder(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1466,27 +1144,13 @@ appstream_delete_image_builder <- function(Name) {
 #' Deletes permissions for the specified private image
 #'
 #' @description
-#' Deletes permissions for the specified private image. After you delete
-#' permissions for an image, AWS accounts to which you previously granted
-#' these permissions can no longer use the image.
+#' Deletes permissions for the specified private image. After you delete permissions for an image, AWS accounts to which you previously granted these permissions can no longer use the image.
 #'
-#' @usage
-#' appstream_delete_image_permissions(Name, SharedAccountId)
+#' See [https://paws-r.github.io/docs/appstream/delete_image_permissions.html](https://paws-r.github.io/docs/appstream/delete_image_permissions.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the private image.
 #' @param SharedAccountId &#91;required&#93; The 12-digit identifier of the AWS account for which to delete image
 #' permissions.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_image_permissions(
-#'   Name = "string",
-#'   SharedAccountId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1511,25 +1175,11 @@ appstream_delete_image_permissions <- function(Name, SharedAccountId) {
 #' Deletes the specified stack
 #'
 #' @description
-#' Deletes the specified stack. After the stack is deleted, the application
-#' streaming environment provided by the stack is no longer available to
-#' users. Also, any reservations made for application streaming sessions
-#' for the stack are released.
+#' Deletes the specified stack. After the stack is deleted, the application streaming environment provided by the stack is no longer available to users. Also, any reservations made for application streaming sessions for the stack are released.
 #'
-#' @usage
-#' appstream_delete_stack(Name)
+#' See [https://paws-r.github.io/docs/appstream/delete_stack.html](https://paws-r.github.io/docs/appstream/delete_stack.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the stack.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_stack(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1556,16 +1206,7 @@ appstream_delete_stack <- function(Name) {
 #' @description
 #' Disables usage report generation.
 #'
-#' @usage
-#' appstream_delete_usage_report_subscription()
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_usage_report_subscription()
-#' ```
+#' See [https://paws-r.github.io/docs/appstream/delete_usage_report_subscription.html](https://paws-r.github.io/docs/appstream/delete_usage_report_subscription.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1592,24 +1233,12 @@ appstream_delete_usage_report_subscription <- function() {
 #' @description
 #' Deletes a user from the user pool.
 #'
-#' @usage
-#' appstream_delete_user(UserName, AuthenticationType)
+#' See [https://paws-r.github.io/docs/appstream/delete_user.html](https://paws-r.github.io/docs/appstream/delete_user.html) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
 #' Users' email addresses are case-sensitive.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_user(
-#'   UserName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1631,61 +1260,116 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
 }
 .appstream$operations$delete_user <- appstream_delete_user
 
+#' Retrieves a list that describes one or more app blocks
+#'
+#' @description
+#' Retrieves a list that describes one or more app blocks.
+#'
+#' See [https://paws-r.github.io/docs/appstream/describe_app_blocks.html](https://paws-r.github.io/docs/appstream/describe_app_blocks.html) for full documentation.
+#'
+#' @param Arns The ARNs of the app blocks.
+#' @param NextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#' @param MaxResults The maximum size of each page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_app_blocks
+appstream_describe_app_blocks <- function(Arns = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeAppBlocks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$describe_app_blocks_input(Arns = Arns, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .appstream$describe_app_blocks_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_app_blocks <- appstream_describe_app_blocks
+
+#' Retrieves a list that describes one or more application fleet
+#' associations
+#'
+#' @description
+#' Retrieves a list that describes one or more application fleet associations. Either ApplicationArn or FleetName must be specified.
+#'
+#' See [https://paws-r.github.io/docs/appstream/describe_application_fleet_associations.html](https://paws-r.github.io/docs/appstream/describe_application_fleet_associations.html) for full documentation.
+#'
+#' @param FleetName The name of the fleet.
+#' @param ApplicationArn The ARN of the application.
+#' @param MaxResults The maximum size of each page of results.
+#' @param NextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_application_fleet_associations
+appstream_describe_application_fleet_associations <- function(FleetName = NULL, ApplicationArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeApplicationFleetAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$describe_application_fleet_associations_input(FleetName = FleetName, ApplicationArn = ApplicationArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .appstream$describe_application_fleet_associations_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_application_fleet_associations <- appstream_describe_application_fleet_associations
+
+#' Retrieves a list that describes one or more applications
+#'
+#' @description
+#' Retrieves a list that describes one or more applications.
+#'
+#' See [https://paws-r.github.io/docs/appstream/describe_applications.html](https://paws-r.github.io/docs/appstream/describe_applications.html) for full documentation.
+#'
+#' @param Arns The ARNs for the applications.
+#' @param NextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#' @param MaxResults The maximum size of each page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_applications
+appstream_describe_applications <- function(Arns = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeApplications",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$describe_applications_input(Arns = Arns, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .appstream$describe_applications_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_applications <- appstream_describe_applications
+
 #' Retrieves a list that describes one or more specified Directory Config
 #' objects for AppStream 2
 #'
 #' @description
-#' Retrieves a list that describes one or more specified Directory Config
-#' objects for AppStream 2.0, if the names for these objects are provided.
-#' Otherwise, all Directory Config objects in the account are described.
-#' These objects include the configuration information required to join
-#' fleets and image builders to Microsoft Active Directory domains.
-#' 
-#' Although the response syntax in this topic includes the account
-#' password, this password is not returned in the actual response.
+#' Retrieves a list that describes one or more specified Directory Config objects for AppStream 2.0, if the names for these objects are provided. Otherwise, all Directory Config objects in the account are described. These objects include the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 #'
-#' @usage
-#' appstream_describe_directory_configs(DirectoryNames, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/appstream/describe_directory_configs.html](https://paws-r.github.io/docs/appstream/describe_directory_configs.html) for full documentation.
 #'
 #' @param DirectoryNames The directory names.
 #' @param MaxResults The maximum size of each page of results.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DirectoryConfigs = list(
-#'     list(
-#'       DirectoryName = "string",
-#'       OrganizationalUnitDistinguishedNames = list(
-#'         "string"
-#'       ),
-#'       ServiceAccountCredentials = list(
-#'         AccountName = "string",
-#'         AccountPassword = "string"
-#'       ),
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_directory_configs(
-#'   DirectoryNames = list(
-#'     "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1707,84 +1391,50 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
 }
 .appstream$operations$describe_directory_configs <- appstream_describe_directory_configs
 
+#' Retrieves a list that describes one of more entitlements
+#'
+#' @description
+#' Retrieves a list that describes one of more entitlements.
+#'
+#' See [https://paws-r.github.io/docs/appstream/describe_entitlements.html](https://paws-r.github.io/docs/appstream/describe_entitlements.html) for full documentation.
+#'
+#' @param Name The name of the entitlement.
+#' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
+#' @param NextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#' @param MaxResults The maximum size of each page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_entitlements
+appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeEntitlements",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$describe_entitlements_input(Name = Name, StackName = StackName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .appstream$describe_entitlements_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_entitlements <- appstream_describe_entitlements
+
 #' Retrieves a list that describes one or more specified fleets, if the
 #' fleet names are provided
 #'
 #' @description
-#' Retrieves a list that describes one or more specified fleets, if the
-#' fleet names are provided. Otherwise, all fleets in the account are
-#' described.
+#' Retrieves a list that describes one or more specified fleets, if the fleet names are provided. Otherwise, all fleets in the account are described.
 #'
-#' @usage
-#' appstream_describe_fleets(Names, NextToken)
+#' See [https://paws-r.github.io/docs/appstream/describe_fleets.html](https://paws-r.github.io/docs/appstream/describe_fleets.html) for full documentation.
 #'
 #' @param Names The names of the fleets to describe.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Fleets = list(
-#'     list(
-#'       Arn = "string",
-#'       Name = "string",
-#'       DisplayName = "string",
-#'       Description = "string",
-#'       ImageName = "string",
-#'       ImageArn = "string",
-#'       InstanceType = "string",
-#'       FleetType = "ALWAYS_ON"|"ON_DEMAND",
-#'       ComputeCapacityStatus = list(
-#'         Desired = 123,
-#'         Running = 123,
-#'         InUse = 123,
-#'         Available = 123
-#'       ),
-#'       MaxUserDurationInSeconds = 123,
-#'       DisconnectTimeoutInSeconds = 123,
-#'       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
-#'       VpcConfig = list(
-#'         SubnetIds = list(
-#'           "string"
-#'         ),
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       FleetErrors = list(
-#'         list(
-#'           ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-#'           ErrorMessage = "string"
-#'         )
-#'       ),
-#'       EnableDefaultInternetAccess = TRUE|FALSE,
-#'       DomainJoinInfo = list(
-#'         DirectoryName = "string",
-#'         OrganizationalUnitDistinguishedName = "string"
-#'       ),
-#'       IdleDisconnectTimeoutInSeconds = 123,
-#'       IamRoleArn = "string",
-#'       StreamView = "APP"|"DESKTOP"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_fleets(
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1810,89 +1460,14 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #' the image builder names are provided
 #'
 #' @description
-#' Retrieves a list that describes one or more specified image builders, if
-#' the image builder names are provided. Otherwise, all image builders in
-#' the account are described.
+#' Retrieves a list that describes one or more specified image builders, if the image builder names are provided. Otherwise, all image builders in the account are described.
 #'
-#' @usage
-#' appstream_describe_image_builders(Names, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/appstream/describe_image_builders.html](https://paws-r.github.io/docs/appstream/describe_image_builders.html) for full documentation.
 #'
 #' @param Names The names of the image builders to describe.
 #' @param MaxResults The maximum size of each page of results.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImageBuilders = list(
-#'     list(
-#'       Name = "string",
-#'       Arn = "string",
-#'       ImageArn = "string",
-#'       Description = "string",
-#'       DisplayName = "string",
-#'       VpcConfig = list(
-#'         SubnetIds = list(
-#'           "string"
-#'         ),
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       InstanceType = "string",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-#'       IamRoleArn = "string",
-#'       State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
-#'       StateChangeReason = list(
-#'         Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
-#'         Message = "string"
-#'       ),
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EnableDefaultInternetAccess = TRUE|FALSE,
-#'       DomainJoinInfo = list(
-#'         DirectoryName = "string",
-#'         OrganizationalUnitDistinguishedName = "string"
-#'       ),
-#'       NetworkAccessConfiguration = list(
-#'         EniPrivateIpAddress = "string",
-#'         EniId = "string"
-#'       ),
-#'       ImageBuilderErrors = list(
-#'         list(
-#'           ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-#'           ErrorMessage = "string",
-#'           ErrorTimestamp = as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       ),
-#'       AppstreamAgentVersion = "string",
-#'       AccessEndpoints = list(
-#'         list(
-#'           EndpointType = "STREAMING",
-#'           VpceId = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_image_builders(
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1918,12 +1493,9 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
 #' IDs on a private image that you own
 #'
 #' @description
-#' Retrieves a list that describes the permissions for shared AWS account
-#' IDs on a private image that you own.
+#' Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own.
 #'
-#' @usage
-#' appstream_describe_image_permissions(Name, MaxResults,
-#'   SharedAwsAccountIds, NextToken)
+#' See [https://paws-r.github.io/docs/appstream/describe_image_permissions.html](https://paws-r.github.io/docs/appstream/describe_image_permissions.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the private image for which to describe permissions. The
 #' image must be one that you own.
@@ -1932,36 +1504,6 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
 #' is shared.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   SharedImagePermissionsList = list(
-#'     list(
-#'       sharedAccountId = "string",
-#'       imagePermissions = list(
-#'         allowFleet = TRUE|FALSE,
-#'         allowImageBuilder = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_image_permissions(
-#'   Name = "string",
-#'   MaxResults = 123,
-#'   SharedAwsAccountIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1987,12 +1529,9 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #' image names or image ARNs are provided
 #'
 #' @description
-#' Retrieves a list that describes one or more specified images, if the
-#' image names or image ARNs are provided. Otherwise, all images in the
-#' account are described.
+#' Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided. Otherwise, all images in the account are described.
 #'
-#' @usage
-#' appstream_describe_images(Names, Arns, Type, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/appstream/describe_images.html](https://paws-r.github.io/docs/appstream/describe_images.html) for full documentation.
 #'
 #' @param Names The names of the public or private images to describe.
 #' @param Arns The ARNs of the public, private, and shared images to describe.
@@ -2000,71 +1539,6 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #' @param MaxResults The maximum size of each page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Images = list(
-#'     list(
-#'       Name = "string",
-#'       Arn = "string",
-#'       BaseImageArn = "string",
-#'       DisplayName = "string",
-#'       State = "PENDING"|"AVAILABLE"|"FAILED"|"COPYING"|"DELETING",
-#'       Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
-#'       ImageBuilderSupported = TRUE|FALSE,
-#'       ImageBuilderName = "string",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-#'       Description = "string",
-#'       StateChangeReason = list(
-#'         Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
-#'         Message = "string"
-#'       ),
-#'       Applications = list(
-#'         list(
-#'           Name = "string",
-#'           DisplayName = "string",
-#'           IconURL = "string",
-#'           LaunchPath = "string",
-#'           LaunchParameters = "string",
-#'           Enabled = TRUE|FALSE,
-#'           Metadata = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PublicBaseImageReleasedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       AppstreamAgentVersion = "string",
-#'       ImagePermissions = list(
-#'         allowFleet = TRUE|FALSE,
-#'         allowImageBuilder = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_images(
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   Arns = list(
-#'     "string"
-#'   ),
-#'   Type = "PUBLIC"|"PRIVATE"|"SHARED",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2090,15 +1564,9 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' stack and fleet
 #'
 #' @description
-#' Retrieves a list that describes the streaming sessions for a specified
-#' stack and fleet. If a UserId is provided for the stack and fleet, only
-#' streaming sessions for that user are described. If an authentication
-#' type is not provided, the default is to authenticate users using a
-#' streaming URL.
+#' Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
 #'
-#' @usage
-#' appstream_describe_sessions(StackName, FleetName, UserId, NextToken,
-#'   Limit, AuthenticationType)
+#' See [https://paws-r.github.io/docs/appstream/describe_sessions.html](https://paws-r.github.io/docs/appstream/describe_sessions.html) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack. This value is case-sensitive.
 #' @param FleetName &#91;required&#93; The name of the fleet. This value is case-sensitive.
@@ -2111,47 +1579,6 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' @param AuthenticationType The authentication method. Specify `API` for a user authenticated using
 #' a streaming URL or `SAML` for a SAML federated user. The default is to
 #' authenticate users using a streaming URL.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Sessions = list(
-#'     list(
-#'       Id = "string",
-#'       UserId = "string",
-#'       StackName = "string",
-#'       FleetName = "string",
-#'       State = "ACTIVE"|"PENDING"|"EXPIRED",
-#'       ConnectionState = "CONNECTED"|"NOT_CONNECTED",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       MaxExpirationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
-#'       NetworkAccessConfiguration = list(
-#'         EniPrivateIpAddress = "string",
-#'         EniId = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_sessions(
-#'   StackName = "string",
-#'   FleetName = "string",
-#'   UserId = "string",
-#'   NextToken = "string",
-#'   Limit = 123,
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2177,82 +1604,13 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
 #' stack names are provided
 #'
 #' @description
-#' Retrieves a list that describes one or more specified stacks, if the
-#' stack names are provided. Otherwise, all stacks in the account are
-#' described.
+#' Retrieves a list that describes one or more specified stacks, if the stack names are provided. Otherwise, all stacks in the account are described.
 #'
-#' @usage
-#' appstream_describe_stacks(Names, NextToken)
+#' See [https://paws-r.github.io/docs/appstream/describe_stacks.html](https://paws-r.github.io/docs/appstream/describe_stacks.html) for full documentation.
 #'
 #' @param Names The names of the stacks to describe.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Stacks = list(
-#'     list(
-#'       Arn = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       DisplayName = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StorageConnectors = list(
-#'         list(
-#'           ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-#'           ResourceIdentifier = "string",
-#'           Domains = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       RedirectURL = "string",
-#'       FeedbackURL = "string",
-#'       StackErrors = list(
-#'         list(
-#'           ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
-#'           ErrorMessage = "string"
-#'         )
-#'       ),
-#'       UserSettings = list(
-#'         list(
-#'           Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-#'           Permission = "ENABLED"|"DISABLED"
-#'         )
-#'       ),
-#'       ApplicationSettings = list(
-#'         Enabled = TRUE|FALSE,
-#'         SettingsGroup = "string",
-#'         S3BucketName = "string"
-#'       ),
-#'       AccessEndpoints = list(
-#'         list(
-#'           EndpointType = "STREAMING",
-#'           VpceId = "string"
-#'         )
-#'       ),
-#'       EmbedHostDomains = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_stacks(
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2279,43 +1637,11 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
 #' @description
 #' Retrieves a list that describes one or more usage report subscriptions.
 #'
-#' @usage
-#' appstream_describe_usage_report_subscriptions(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/appstream/describe_usage_report_subscriptions.html](https://paws-r.github.io/docs/appstream/describe_usage_report_subscriptions.html) for full documentation.
 #'
 #' @param MaxResults The maximum size of each page of results.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UsageReportSubscriptions = list(
-#'     list(
-#'       S3BucketName = "string",
-#'       Schedule = "DAILY",
-#'       LastGeneratedReportDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       SubscriptionErrors = list(
-#'         list(
-#'           ErrorCode = "RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
-#'           ErrorMessage = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_usage_report_subscriptions(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2340,17 +1666,9 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 #' Retrieves a list that describes the UserStackAssociation objects
 #'
 #' @description
-#' Retrieves a list that describes the UserStackAssociation objects. You
-#' must specify either or both of the following:
-#' 
-#' -   The stack name
-#' 
-#' -   The user name (email address of the user associated with the stack)
-#'     and the authentication type for the user
+#' Retrieves a list that describes the UserStackAssociation objects. You must specify either or both of the following:
 #'
-#' @usage
-#' appstream_describe_user_stack_associations(StackName, UserName,
-#'   AuthenticationType, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/appstream/describe_user_stack_associations.html](https://paws-r.github.io/docs/appstream/describe_user_stack_associations.html) for full documentation.
 #'
 #' @param StackName The name of the stack that is associated with the user.
 #' @param UserName The email address of the user who is associated with the stack.
@@ -2361,33 +1679,6 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 #' @param MaxResults The maximum size of each page of results.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UserStackAssociations = list(
-#'     list(
-#'       StackName = "string",
-#'       UserName = "string",
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
-#'       SendEmailNotification = TRUE|FALSE
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_user_stack_associations(
-#'   StackName = "string",
-#'   UserName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2413,48 +1704,15 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
 #' pool
 #'
 #' @description
-#' Retrieves a list that describes one or more specified users in the user
-#' pool.
+#' Retrieves a list that describes one or more specified users in the user pool.
 #'
-#' @usage
-#' appstream_describe_users(AuthenticationType, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/appstream/describe_users.html](https://paws-r.github.io/docs/appstream/describe_users.html) for full documentation.
 #'
 #' @param AuthenticationType &#91;required&#93; The authentication type for the users in the user pool to describe. You
 #' must specify USERPOOL.
 #' @param MaxResults The maximum size of each page of results.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Users = list(
-#'     list(
-#'       Arn = "string",
-#'       UserName = "string",
-#'       Enabled = TRUE|FALSE,
-#'       Status = "string",
-#'       FirstName = "string",
-#'       LastName = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_users(
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2479,28 +1737,14 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 #' Disables the specified user in the user pool
 #'
 #' @description
-#' Disables the specified user in the user pool. Users can't sign in to
-#' AppStream 2.0 until they are re-enabled. This action does not delete the
-#' user.
+#' Disables the specified user in the user pool. Users can't sign in to AppStream 2.0 until they are re-enabled. This action does not delete the user.
 #'
-#' @usage
-#' appstream_disable_user(UserName, AuthenticationType)
+#' See [https://paws-r.github.io/docs/appstream/disable_user.html](https://paws-r.github.io/docs/appstream/disable_user.html) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
 #' Users' email addresses are case-sensitive.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_user(
-#'   UserName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2522,27 +1766,76 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
 }
 .appstream$operations$disable_user <- appstream_disable_user
 
+#' Disassociates the specified application from the fleet
+#'
+#' @description
+#' Disassociates the specified application from the fleet.
+#'
+#' See [https://paws-r.github.io/docs/appstream/disassociate_application_fleet.html](https://paws-r.github.io/docs/appstream/disassociate_application_fleet.html) for full documentation.
+#'
+#' @param FleetName &#91;required&#93; The name of the fleet.
+#' @param ApplicationArn &#91;required&#93; The ARN of the application.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_disassociate_application_fleet
+appstream_disassociate_application_fleet <- function(FleetName, ApplicationArn) {
+  op <- new_operation(
+    name = "DisassociateApplicationFleet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$disassociate_application_fleet_input(FleetName = FleetName, ApplicationArn = ApplicationArn)
+  output <- .appstream$disassociate_application_fleet_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$disassociate_application_fleet <- appstream_disassociate_application_fleet
+
+#' Deletes the specified application from the specified entitlement
+#'
+#' @description
+#' Deletes the specified application from the specified entitlement.
+#'
+#' See [https://paws-r.github.io/docs/appstream/disassociate_application_from_entitlement.html](https://paws-r.github.io/docs/appstream/disassociate_application_from_entitlement.html) for full documentation.
+#'
+#' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
+#' @param EntitlementName &#91;required&#93; The name of the entitlement.
+#' @param ApplicationIdentifier &#91;required&#93; The identifier of the application to remove from the entitlement.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_disassociate_application_from_entitlement
+appstream_disassociate_application_from_entitlement <- function(StackName, EntitlementName, ApplicationIdentifier) {
+  op <- new_operation(
+    name = "DisassociateApplicationFromEntitlement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$disassociate_application_from_entitlement_input(StackName = StackName, EntitlementName = EntitlementName, ApplicationIdentifier = ApplicationIdentifier)
+  output <- .appstream$disassociate_application_from_entitlement_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$disassociate_application_from_entitlement <- appstream_disassociate_application_from_entitlement
+
 #' Disassociates the specified fleet from the specified stack
 #'
 #' @description
 #' Disassociates the specified fleet from the specified stack.
 #'
-#' @usage
-#' appstream_disassociate_fleet(FleetName, StackName)
+#' See [https://paws-r.github.io/docs/appstream/disassociate_fleet.html](https://paws-r.github.io/docs/appstream/disassociate_fleet.html) for full documentation.
 #'
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param StackName &#91;required&#93; The name of the stack.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_fleet(
-#'   FleetName = "string",
-#'   StackName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2567,12 +1860,9 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 #' Enables a user in the user pool
 #'
 #' @description
-#' Enables a user in the user pool. After being enabled, users can sign in
-#' to AppStream 2.0 and open applications from the stacks to which they are
-#' assigned.
+#' Enables a user in the user pool. After being enabled, users can sign in to AppStream 2.0 and open applications from the stacks to which they are assigned.
 #'
-#' @usage
-#' appstream_enable_user(UserName, AuthenticationType)
+#' See [https://paws-r.github.io/docs/appstream/enable_user.html](https://paws-r.github.io/docs/appstream/enable_user.html) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
@@ -2581,17 +1871,6 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 #' address specified when their user pool account was created, a "user does
 #' not exist" error message displays.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_user(
-#'   UserName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2618,20 +1897,9 @@ appstream_enable_user <- function(UserName, AuthenticationType) {
 #' @description
 #' Immediately stops the specified streaming session.
 #'
-#' @usage
-#' appstream_expire_session(SessionId)
+#' See [https://paws-r.github.io/docs/appstream/expire_session.html](https://paws-r.github.io/docs/appstream/expire_session.html) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The identifier of the streaming session.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$expire_session(
-#'   SessionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2657,34 +1925,13 @@ appstream_expire_session <- function(SessionId) {
 #' stack
 #'
 #' @description
-#' Retrieves the name of the fleet that is associated with the specified
-#' stack.
+#' Retrieves the name of the fleet that is associated with the specified stack.
 #'
-#' @usage
-#' appstream_list_associated_fleets(StackName, NextToken)
+#' See [https://paws-r.github.io/docs/appstream/list_associated_fleets.html](https://paws-r.github.io/docs/appstream/list_associated_fleets.html) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_associated_fleets(
-#'   StackName = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2710,34 +1957,13 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
 #' associated
 #'
 #' @description
-#' Retrieves the name of the stack with which the specified fleet is
-#' associated.
+#' Retrieves the name of the stack with which the specified fleet is associated.
 #'
-#' @usage
-#' appstream_list_associated_stacks(FleetName, NextToken)
+#' See [https://paws-r.github.io/docs/appstream/list_associated_stacks.html](https://paws-r.github.io/docs/appstream/list_associated_stacks.html) for full documentation.
 #'
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_associated_stacks(
-#'   FleetName = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2759,37 +1985,47 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
 }
 .appstream$operations$list_associated_stacks <- appstream_list_associated_stacks
 
+#' Retrieves a list of entitled applications
+#'
+#' @description
+#' Retrieves a list of entitled applications.
+#'
+#' See [https://paws-r.github.io/docs/appstream/list_entitled_applications.html](https://paws-r.github.io/docs/appstream/list_entitled_applications.html) for full documentation.
+#'
+#' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
+#' @param EntitlementName &#91;required&#93; The name of the entitlement.
+#' @param NextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#' @param MaxResults The maximum size of each page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_list_entitled_applications
+appstream_list_entitled_applications <- function(StackName, EntitlementName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEntitledApplications",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$list_entitled_applications_input(StackName = StackName, EntitlementName = EntitlementName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .appstream$list_entitled_applications_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$list_entitled_applications <- appstream_list_entitled_applications
+
 #' Retrieves a list of all tags for the specified AppStream 2
 #'
 #' @description
-#' Retrieves a list of all tags for the specified AppStream 2.0 resource.
-#' You can tag AppStream 2.0 image builders, images, fleets, and stacks.
-#' 
-#' For more information about tags, see [Tagging Your
-#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' Retrieves a list of all tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 #'
-#' @usage
-#' appstream_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/appstream/list_tags_for_resource.html](https://paws-r.github.io/docs/appstream/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2816,20 +2052,9 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Starts the specified fleet.
 #'
-#' @usage
-#' appstream_start_fleet(Name)
+#' See [https://paws-r.github.io/docs/appstream/start_fleet.html](https://paws-r.github.io/docs/appstream/start_fleet.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the fleet.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_fleet(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2856,78 +2081,11 @@ appstream_start_fleet <- function(Name) {
 #' @description
 #' Starts the specified image builder.
 #'
-#' @usage
-#' appstream_start_image_builder(Name, AppstreamAgentVersion)
+#' See [https://paws-r.github.io/docs/appstream/start_image_builder.html](https://paws-r.github.io/docs/appstream/start_image_builder.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
 #' @param AppstreamAgentVersion The version of the AppStream 2.0 agent to use for this image builder. To
 #' use the latest version of the AppStream 2.0 agent, specify \[LATEST\].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImageBuilder = list(
-#'     Name = "string",
-#'     Arn = "string",
-#'     ImageArn = "string",
-#'     Description = "string",
-#'     DisplayName = "string",
-#'     VpcConfig = list(
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-#'     IamRoleArn = "string",
-#'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
-#'     StateChangeReason = list(
-#'       Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
-#'       Message = "string"
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnableDefaultInternetAccess = TRUE|FALSE,
-#'     DomainJoinInfo = list(
-#'       DirectoryName = "string",
-#'       OrganizationalUnitDistinguishedName = "string"
-#'     ),
-#'     NetworkAccessConfiguration = list(
-#'       EniPrivateIpAddress = "string",
-#'       EniId = "string"
-#'     ),
-#'     ImageBuilderErrors = list(
-#'       list(
-#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-#'         ErrorMessage = "string",
-#'         ErrorTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     AppstreamAgentVersion = "string",
-#'     AccessEndpoints = list(
-#'       list(
-#'         EndpointType = "STREAMING",
-#'         VpceId = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_image_builder(
-#'   Name = "string",
-#'   AppstreamAgentVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2954,20 +2112,9 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
 #' @description
 #' Stops the specified fleet.
 #'
-#' @usage
-#' appstream_stop_fleet(Name)
+#' See [https://paws-r.github.io/docs/appstream/stop_fleet.html](https://paws-r.github.io/docs/appstream/stop_fleet.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the fleet.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_fleet(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2994,75 +2141,9 @@ appstream_stop_fleet <- function(Name) {
 #' @description
 #' Stops the specified image builder.
 #'
-#' @usage
-#' appstream_stop_image_builder(Name)
+#' See [https://paws-r.github.io/docs/appstream/stop_image_builder.html](https://paws-r.github.io/docs/appstream/stop_image_builder.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImageBuilder = list(
-#'     Name = "string",
-#'     Arn = "string",
-#'     ImageArn = "string",
-#'     Description = "string",
-#'     DisplayName = "string",
-#'     VpcConfig = list(
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-#'     IamRoleArn = "string",
-#'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
-#'     StateChangeReason = list(
-#'       Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
-#'       Message = "string"
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnableDefaultInternetAccess = TRUE|FALSE,
-#'     DomainJoinInfo = list(
-#'       DirectoryName = "string",
-#'       OrganizationalUnitDistinguishedName = "string"
-#'     ),
-#'     NetworkAccessConfiguration = list(
-#'       EniPrivateIpAddress = "string",
-#'       EniId = "string"
-#'     ),
-#'     ImageBuilderErrors = list(
-#'       list(
-#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-#'         ErrorMessage = "string",
-#'         ErrorTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     AppstreamAgentVersion = "string",
-#'     AccessEndpoints = list(
-#'       list(
-#'         EndpointType = "STREAMING",
-#'         VpceId = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_image_builder(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3087,24 +2168,9 @@ appstream_stop_image_builder <- function(Name) {
 #' Adds or overwrites one or more tags for the specified AppStream 2
 #'
 #' @description
-#' Adds or overwrites one or more tags for the specified AppStream 2.0
-#' resource. You can tag AppStream 2.0 image builders, images, fleets, and
-#' stacks.
-#' 
-#' Each tag consists of a key and an optional value. If a resource already
-#' has a tag with the same key, this operation updates its value.
-#' 
-#' To list the current tags for your resources, use
-#' [`list_tags_for_resource`][appstream_list_tags_for_resource]. To
-#' disassociate tags from your resources, use
-#' [`untag_resource`][appstream_untag_resource].
-#' 
-#' For more information about tags, see [Tagging Your
-#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 #'
-#' @usage
-#' appstream_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/appstream/tag_resource.html](https://paws-r.github.io/docs/appstream/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; The tags to associate. A tag is a key-value pair, and the value is
@@ -3117,19 +2183,6 @@ appstream_stop_image_builder <- function(Name) {
 #' representable in UTF-8, and the following special characters:
 #' 
 #' _ . : / = + \\ - @@
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3154,34 +2207,12 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 #' Disassociates one or more specified tags from the specified AppStream 2
 #'
 #' @description
-#' Disassociates one or more specified tags from the specified AppStream
-#' 2.0 resource.
-#' 
-#' To list the current tags for your resources, use
-#' [`list_tags_for_resource`][appstream_list_tags_for_resource].
-#' 
-#' For more information about tags, see [Tagging Your
-#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' Disassociates one or more specified tags from the specified AppStream 2.0 resource.
 #'
-#' @usage
-#' appstream_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/appstream/untag_resource.html](https://paws-r.github.io/docs/appstream/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys for the tags to disassociate.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3203,56 +2234,57 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .appstream$operations$untag_resource <- appstream_untag_resource
 
+#' Updates the specified application
+#'
+#' @description
+#' Updates the specified application.
+#'
+#' See [https://paws-r.github.io/docs/appstream/update_application.html](https://paws-r.github.io/docs/appstream/update_application.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the application. This name is visible to users when display
+#' name is not specified.
+#' @param DisplayName The display name of the application. This name is visible to users in
+#' the application catalog.
+#' @param Description The description of the application.
+#' @param IconS3Location The icon S3 location of the application.
+#' @param LaunchPath The launch path of the application.
+#' @param WorkingDirectory The working directory of the application.
+#' @param LaunchParameters The launch parameters of the application.
+#' @param AppBlockArn The ARN of the app block.
+#' @param AttributesToDelete The attributes to delete for an application.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_update_application
+appstream_update_application <- function(Name, DisplayName = NULL, Description = NULL, IconS3Location = NULL, LaunchPath = NULL, WorkingDirectory = NULL, LaunchParameters = NULL, AppBlockArn = NULL, AttributesToDelete = NULL) {
+  op <- new_operation(
+    name = "UpdateApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$update_application_input(Name = Name, DisplayName = DisplayName, Description = Description, IconS3Location = IconS3Location, LaunchPath = LaunchPath, WorkingDirectory = WorkingDirectory, LaunchParameters = LaunchParameters, AppBlockArn = AppBlockArn, AttributesToDelete = AttributesToDelete)
+  output <- .appstream$update_application_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$update_application <- appstream_update_application
+
 #' Updates the specified Directory Config object in AppStream 2
 #'
 #' @description
-#' Updates the specified Directory Config object in AppStream 2.0. This
-#' object includes the configuration information required to join fleets
-#' and image builders to Microsoft Active Directory domains.
+#' Updates the specified Directory Config object in AppStream 2.0. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 #'
-#' @usage
-#' appstream_update_directory_config(DirectoryName,
-#'   OrganizationalUnitDistinguishedNames, ServiceAccountCredentials)
+#' See [https://paws-r.github.io/docs/appstream/update_directory_config.html](https://paws-r.github.io/docs/appstream/update_directory_config.html) for full documentation.
 #'
 #' @param DirectoryName &#91;required&#93; The name of the Directory Config object.
 #' @param OrganizationalUnitDistinguishedNames The distinguished names of the organizational units for computer
 #' accounts.
 #' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
 #' builder to connect to the directory.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DirectoryConfig = list(
-#'     DirectoryName = "string",
-#'     OrganizationalUnitDistinguishedNames = list(
-#'       "string"
-#'     ),
-#'     ServiceAccountCredentials = list(
-#'       AccountName = "string",
-#'       AccountPassword = "string"
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_directory_config(
-#'   DirectoryName = "string",
-#'   OrganizationalUnitDistinguishedNames = list(
-#'     "string"
-#'   ),
-#'   ServiceAccountCredentials = list(
-#'     AccountName = "string",
-#'     AccountPassword = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3274,31 +2306,53 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 }
 .appstream$operations$update_directory_config <- appstream_update_directory_config
 
+#' Updates the specified entitlement
+#'
+#' @description
+#' Updates the specified entitlement.
+#'
+#' See [https://paws-r.github.io/docs/appstream/update_entitlement.html](https://paws-r.github.io/docs/appstream/update_entitlement.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the entitlement.
+#' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
+#' @param Description The description of the entitlement.
+#' @param AppVisibility Specifies whether all or only selected apps are entitled.
+#' @param Attributes The attributes of the entitlement.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_update_entitlement
+appstream_update_entitlement <- function(Name, StackName, Description = NULL, AppVisibility = NULL, Attributes = NULL) {
+  op <- new_operation(
+    name = "UpdateEntitlement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$update_entitlement_input(Name = Name, StackName = StackName, Description = Description, AppVisibility = AppVisibility, Attributes = Attributes)
+  output <- .appstream$update_entitlement_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$update_entitlement <- appstream_update_entitlement
+
 #' Updates the specified fleet
 #'
 #' @description
 #' Updates the specified fleet.
-#' 
-#' If the fleet is in the `STOPPED` state, you can update any attribute
-#' except the fleet name. If the fleet is in the `RUNNING` state, you can
-#' update the `DisplayName`, `ComputeCapacity`, `ImageARN`, `ImageName`,
-#' `IdleDisconnectTimeoutInSeconds`, and `DisconnectTimeoutInSeconds`
-#' attributes. If the fleet is in the `STARTING` or `STOPPING` state, you
-#' can't update it.
 #'
-#' @usage
-#' appstream_update_fleet(ImageName, ImageArn, Name, InstanceType,
-#'   ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
-#'   DisconnectTimeoutInSeconds, DeleteVpcConfig, Description, DisplayName,
-#'   EnableDefaultInternetAccess, DomainJoinInfo,
-#'   IdleDisconnectTimeoutInSeconds, AttributesToDelete, IamRoleArn,
-#'   StreamView)
+#' See [https://paws-r.github.io/docs/appstream/update_fleet.html](https://paws-r.github.io/docs/appstream/update_fleet.html) for full documentation.
 #'
 #' @param ImageName The name of the image used to create the fleet.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
 #' @param Name A unique name for the fleet.
 #' @param InstanceType The instance type to use when launching fleet instances. The following
 #' instance types are available:
+#' 
+#' -   stream.standard.small
 #' 
 #' -   stream.standard.medium
 #' 
@@ -3363,8 +2417,17 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' -   stream.graphics-pro.8xlarge
 #' 
 #' -   stream.graphics-pro.16xlarge
-#' @param ComputeCapacity The desired capacity for the fleet.
-#' @param VpcConfig The VPC configuration for the fleet.
+#' 
+#' The following instance types are available for Elastic fleets:
+#' 
+#' -   stream.standard.small
+#' 
+#' -   stream.standard.medium
+#' @param ComputeCapacity The desired capacity for the fleet. This is not allowed for Elastic
+#' fleets.
+#' @param VpcConfig The VPC configuration for the fleet. This is required for Elastic
+#' fleets, but not required for other fleet types. Elastic fleets require
+#' that you specify at least two subnets in different availability zones.
 #' @param MaxUserDurationInSeconds The maximum amount of time that a streaming session can remain active,
 #' in seconds. If users are still connected to a streaming instance five
 #' minutes before this limit is reached, they are prompted to save any open
@@ -3427,106 +2490,26 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' standard desktop that is provided by the operating system displays.
 #' 
 #' The default value is `APP`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Fleet = list(
-#'     Arn = "string",
-#'     Name = "string",
-#'     DisplayName = "string",
-#'     Description = "string",
-#'     ImageName = "string",
-#'     ImageArn = "string",
-#'     InstanceType = "string",
-#'     FleetType = "ALWAYS_ON"|"ON_DEMAND",
-#'     ComputeCapacityStatus = list(
-#'       Desired = 123,
-#'       Running = 123,
-#'       InUse = 123,
-#'       Available = 123
-#'     ),
-#'     MaxUserDurationInSeconds = 123,
-#'     DisconnectTimeoutInSeconds = 123,
-#'     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
-#'     VpcConfig = list(
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     FleetErrors = list(
-#'       list(
-#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-#'         ErrorMessage = "string"
-#'       )
-#'     ),
-#'     EnableDefaultInternetAccess = TRUE|FALSE,
-#'     DomainJoinInfo = list(
-#'       DirectoryName = "string",
-#'       OrganizationalUnitDistinguishedName = "string"
-#'     ),
-#'     IdleDisconnectTimeoutInSeconds = 123,
-#'     IamRoleArn = "string",
-#'     StreamView = "APP"|"DESKTOP"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_fleet(
-#'   ImageName = "string",
-#'   ImageArn = "string",
-#'   Name = "string",
-#'   InstanceType = "string",
-#'   ComputeCapacity = list(
-#'     DesiredInstances = 123
-#'   ),
-#'   VpcConfig = list(
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   MaxUserDurationInSeconds = 123,
-#'   DisconnectTimeoutInSeconds = 123,
-#'   DeleteVpcConfig = TRUE|FALSE,
-#'   Description = "string",
-#'   DisplayName = "string",
-#'   EnableDefaultInternetAccess = TRUE|FALSE,
-#'   DomainJoinInfo = list(
-#'     DirectoryName = "string",
-#'     OrganizationalUnitDistinguishedName = "string"
-#'   ),
-#'   IdleDisconnectTimeoutInSeconds = 123,
-#'   AttributesToDelete = list(
-#'     "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"|"IAM_ROLE_ARN"
-#'   ),
-#'   IamRoleArn = "string",
-#'   StreamView = "APP"|"DESKTOP"
-#' )
-#' ```
+#' @param Platform The platform of the fleet. WINDOWS_SERVER_2019 and AMAZON_LINUX2 are
+#' supported for Elastic fleets.
+#' @param MaxConcurrentSessions The maximum number of concurrent sessions for a fleet.
+#' @param UsbDeviceFilterStrings The USB device filter strings that specify which USB devices a user can
+#' redirect to the fleet streaming session, when using the Windows native
+#' client. This is allowed but not required for Elastic fleets.
+#' @param SessionScriptS3Location The S3 location of the session scripts configuration zip file. This only
+#' applies to Elastic fleets.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_update_fleet
-appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL) {
+appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView)
+  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location)
   output <- .appstream$update_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -3541,29 +2524,12 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
 #' @description
 #' Adds or updates permissions for the specified private image.
 #'
-#' @usage
-#' appstream_update_image_permissions(Name, SharedAccountId,
-#'   ImagePermissions)
+#' See [https://paws-r.github.io/docs/appstream/update_image_permissions.html](https://paws-r.github.io/docs/appstream/update_image_permissions.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the private image.
 #' @param SharedAccountId &#91;required&#93; The 12-digit identifier of the AWS account for which you want add or
 #' update image permissions.
 #' @param ImagePermissions &#91;required&#93; The permissions for the image.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_image_permissions(
-#'   Name = "string",
-#'   SharedAccountId = "string",
-#'   ImagePermissions = list(
-#'     allowFleet = TRUE|FALSE,
-#'     allowImageBuilder = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3590,11 +2556,7 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' @description
 #' Updates the specified fields for the specified stack.
 #'
-#' @usage
-#' appstream_update_stack(DisplayName, Description, Name,
-#'   StorageConnectors, DeleteStorageConnectors, RedirectURL, FeedbackURL,
-#'   AttributesToDelete, UserSettings, ApplicationSettings, AccessEndpoints,
-#'   EmbedHostDomains)
+#' See [https://paws-r.github.io/docs/appstream/update_stack.html](https://paws-r.github.io/docs/appstream/update_stack.html) for full documentation.
 #'
 #' @param DisplayName The stack name to display.
 #' @param Description The description to display.
@@ -3617,114 +2579,20 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' @param EmbedHostDomains The domains where AppStream 2.0 streaming sessions can be embedded in an
 #' iframe. You must approve the domains that you want to host embedded
 #' AppStream 2.0 streaming sessions.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Stack = list(
-#'     Arn = "string",
-#'     Name = "string",
-#'     Description = "string",
-#'     DisplayName = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     StorageConnectors = list(
-#'       list(
-#'         ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-#'         ResourceIdentifier = "string",
-#'         Domains = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     RedirectURL = "string",
-#'     FeedbackURL = "string",
-#'     StackErrors = list(
-#'       list(
-#'         ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
-#'         ErrorMessage = "string"
-#'       )
-#'     ),
-#'     UserSettings = list(
-#'       list(
-#'         Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-#'         Permission = "ENABLED"|"DISABLED"
-#'       )
-#'     ),
-#'     ApplicationSettings = list(
-#'       Enabled = TRUE|FALSE,
-#'       SettingsGroup = "string",
-#'       S3BucketName = "string"
-#'     ),
-#'     AccessEndpoints = list(
-#'       list(
-#'         EndpointType = "STREAMING",
-#'         VpceId = "string"
-#'       )
-#'     ),
-#'     EmbedHostDomains = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_stack(
-#'   DisplayName = "string",
-#'   Description = "string",
-#'   Name = "string",
-#'   StorageConnectors = list(
-#'     list(
-#'       ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-#'       ResourceIdentifier = "string",
-#'       Domains = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   DeleteStorageConnectors = TRUE|FALSE,
-#'   RedirectURL = "string",
-#'   FeedbackURL = "string",
-#'   AttributesToDelete = list(
-#'     "STORAGE_CONNECTORS"|"STORAGE_CONNECTOR_HOMEFOLDERS"|"STORAGE_CONNECTOR_GOOGLE_DRIVE"|"STORAGE_CONNECTOR_ONE_DRIVE"|"REDIRECT_URL"|"FEEDBACK_URL"|"THEME_NAME"|"USER_SETTINGS"|"EMBED_HOST_DOMAINS"|"IAM_ROLE_ARN"|"ACCESS_ENDPOINTS"
-#'   ),
-#'   UserSettings = list(
-#'     list(
-#'       Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-#'       Permission = "ENABLED"|"DISABLED"
-#'     )
-#'   ),
-#'   ApplicationSettings = list(
-#'     Enabled = TRUE|FALSE,
-#'     SettingsGroup = "string"
-#'   ),
-#'   AccessEndpoints = list(
-#'     list(
-#'       EndpointType = "STREAMING",
-#'       VpceId = "string"
-#'     )
-#'   ),
-#'   EmbedHostDomains = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param StreamingExperienceSettings The streaming protocol you want your stack to prefer. This can be UDP or
+#' TCP. Currently, UDP is only supported in the Windows native client.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_update_stack
-appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name, StorageConnectors = NULL, DeleteStorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, AttributesToDelete = NULL, UserSettings = NULL, ApplicationSettings = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL) {
+appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name, StorageConnectors = NULL, DeleteStorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, AttributesToDelete = NULL, UserSettings = NULL, ApplicationSettings = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL, StreamingExperienceSettings = NULL) {
   op <- new_operation(
     name = "UpdateStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$update_stack_input(DisplayName = DisplayName, Description = Description, Name = Name, StorageConnectors = StorageConnectors, DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains)
+  input <- .appstream$update_stack_input(DisplayName = DisplayName, Description = Description, Name = Name, StorageConnectors = StorageConnectors, DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings)
   output <- .appstream$update_stack_output()
   config <- get_config()
   svc <- .appstream$service(config)

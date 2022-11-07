@@ -18,7 +18,9 @@ NULL
 #'   DeliveryOptions, ReputationOptions, SendingOptions, Tags,
 #'   SuppressionOptions)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set. The name can contain up to 64
+#' alphanumeric characters, including letters, numbers, hyphens (-) and
+#' underscores (_) only.
 #' @param TrackingOptions An object that defines the open and click tracking options for emails
 #' that you send using the configuration set.
 #' @param DeliveryOptions An object that defines the dedicated IP pool that is used to send emails
@@ -27,8 +29,8 @@ NULL
 #' metrics for the emails that you send that use the configuration set.
 #' @param SendingOptions An object that defines whether or not Amazon SES can send email that you
 #' send using the configuration set.
-#' @param Tags An array of objects that define the tags (keys and values) that you want
-#' to associate with the configuration set.
+#' @param Tags An array of objects that define the tags (keys and values) to associate
+#' with the configuration set.
 #' @param SuppressionOptions 
 #'
 #' @return
@@ -104,8 +106,7 @@ sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions
 #' sesv2_create_configuration_set_event_destination(ConfigurationSetName,
 #'   EventDestinationName, EventDestination)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to add an event
-#' destination to.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set .
 #' @param EventDestinationName &#91;required&#93; A name that identifies the event destination within the configuration
 #' set.
 #' @param EventDestination &#91;required&#93; An object that defines the event destination.
@@ -289,8 +290,8 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
+#' SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -306,7 +307,7 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' email must be less than 10 MB. The message body may contain HTML, with
 #' some limitations. For more information, see [Custom Verification Email
 #' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq)
+#' Questions](https://docs.aws.amazon.com/ses/latest/dg/#custom-verification-emails-faq)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
@@ -352,10 +353,10 @@ sesv2_create_custom_verification_email_template <- function(TemplateName, FromEm
 #'
 #' @description
 #' Create a new pool of dedicated IP addresses. A pool can include one or
-#' more dedicated IP addresses that are associated with your AWS account.
-#' You can associate a pool with a configuration set. When you send an
-#' email that uses that configuration set, the message is sent from one of
-#' the addresses in the associated pool.
+#' more dedicated IP addresses that are associated with your Amazon Web
+#' Services account. You can associate a pool with a configuration set.
+#' When you send an email that uses that configuration set, the message is
+#' sent from one of the addresses in the associated pool.
 #'
 #' @usage
 #' sesv2_create_dedicated_ip_pool(PoolName, Tags)
@@ -516,7 +517,7 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' configuration for your domain. Your domain is verified when Amazon SES
 #' detects these records in the DNS configuration for your domain. This
 #' verification method is known as [Easy
-#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
+#' DKIM](https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html).
 #' 
 #' Alternatively, you can perform the verification process by providing
 #' your own public-private key pair. This verification method is known as
@@ -524,22 +525,36 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' [`create_email_identity`][sesv2_create_email_identity] operation has to
 #' include the `DkimSigningAttributes` object. When you specify this
 #' object, you provide a selector (a component of the DNS record name that
-#' identifies the public key that you want to use for DKIM authentication)
-#' and a private key.
+#' identifies the public key to use for DKIM authentication) and a private
+#' key.
+#' 
+#' When you verify a domain, this operation provides a set of DKIM tokens,
+#' which you can convert into CNAME tokens. You add these CNAME tokens to
+#' the DNS configuration for your domain. Your domain is verified when
+#' Amazon SES detects these records in the DNS configuration for your
+#' domain. For some DNS providers, it can take 72 hours or more to complete
+#' the domain verification process.
+#' 
+#' Additionally, you can associate an existing configuration set with the
+#' email identity that you're verifying.
 #'
 #' @usage
-#' sesv2_create_email_identity(EmailIdentity, Tags, DkimSigningAttributes)
+#' sesv2_create_email_identity(EmailIdentity, Tags, DkimSigningAttributes,
+#'   ConfigurationSetName)
 #'
-#' @param EmailIdentity &#91;required&#93; The email address or domain that you want to verify.
-#' @param Tags An array of objects that define the tags (keys and values) that you want
-#' to associate with the email identity.
+#' @param EmailIdentity &#91;required&#93; The email address or domain to verify.
+#' @param Tags An array of objects that define the tags (keys and values) to associate
+#' with the email identity.
 #' @param DkimSigningAttributes If your request includes this object, Amazon SES configures the identity
 #' to use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes,
-#' as opposed to the default method, [Easy
-#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
+#' or, configures the key length to be used for [Easy
+#' DKIM](https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html).
 #' 
 #' You can only specify this object if the email identity is a domain, as
 #' opposed to an address.
+#' @param ConfigurationSetName The configuration set to use by default when sending from this identity.
+#' Note that any configuration set defined in the email sending request
+#' takes precedence.
 #'
 #' @return
 #' A list with the following syntax:
@@ -553,7 +568,12 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #'     Tokens = list(
 #'       "string"
 #'     ),
-#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"
+#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL",
+#'     NextSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
+#'     CurrentSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
+#'     LastKeyGenerationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
 #'   )
 #' )
 #' ```
@@ -570,22 +590,24 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #'   ),
 #'   DkimSigningAttributes = list(
 #'     DomainSigningSelector = "string",
-#'     DomainSigningPrivateKey = "string"
-#'   )
+#'     DomainSigningPrivateKey = "string",
+#'     NextSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT"
+#'   ),
+#'   ConfigurationSetName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_create_email_identity
-sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningAttributes = NULL) {
+sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningAttributes = NULL, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "CreateEmailIdentity",
     http_method = "POST",
     http_path = "/v2/email/identities",
     paginator = list()
   )
-  input <- .sesv2$create_email_identity_input(EmailIdentity = EmailIdentity, Tags = Tags, DkimSigningAttributes = DkimSigningAttributes)
+  input <- .sesv2$create_email_identity_input(EmailIdentity = EmailIdentity, Tags = Tags, DkimSigningAttributes = DkimSigningAttributes, ConfigurationSetName = ConfigurationSetName)
   output <- .sesv2$create_email_identity_output()
   config <- get_config()
   svc <- .sesv2$service(config)
@@ -608,14 +630,14 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
 #' Sending authorization is a feature that enables an identity owner to
 #' authorize other senders to use its identities. For information about
 #' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
 #' @usage
 #' sesv2_create_email_identity_policy(EmailIdentity, PolicyName, Policy)
 #'
-#' @param EmailIdentity &#91;required&#93; The email identity for which you want to create a policy.
+#' @param EmailIdentity &#91;required&#93; The email identity.
 #' @param PolicyName &#91;required&#93; The name of the policy.
 #' 
 #' The policy name cannot exceed 64 characters and can only include
@@ -624,7 +646,7 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
 #' 
 #' For information about the syntax of sending authorization policies, see
 #' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html).
 #'
 #' @return
 #' An empty list.
@@ -664,14 +686,14 @@ sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' Creates an email template. Email templates enable you to send
 #' personalized email to one or more destinations in a single API
 #' operation. For more information, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
 #' @usage
 #' sesv2_create_email_template(TemplateName, TemplateContent)
 #'
-#' @param TemplateName &#91;required&#93; The name of the template you want to create.
+#' @param TemplateName &#91;required&#93; The name of the template.
 #' @param TemplateContent &#91;required&#93; The content of the email template, composed of a subject line, an HTML
 #' part, and a text-only part.
 #'
@@ -782,7 +804,7 @@ sesv2_create_import_job <- function(ImportDestination, ImportDataSource) {
 #' @usage
 #' sesv2_delete_configuration_set(ConfigurationSetName)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to delete.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set.
 #'
 #' @return
 #' An empty list.
@@ -830,9 +852,9 @@ sesv2_delete_configuration_set <- function(ConfigurationSetName) {
 #' sesv2_delete_configuration_set_event_destination(ConfigurationSetName,
 #'   EventDestinationName)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination
-#' that you want to delete.
-#' @param EventDestinationName &#91;required&#93; The name of the event destination that you want to delete.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination to
+#' delete.
+#' @param EventDestinationName &#91;required&#93; The name of the event destination to delete.
 #'
 #' @return
 #' An empty list.
@@ -953,8 +975,9 @@ sesv2_delete_contact_list <- function(ContactListName) {
 #' Deletes an existing custom verification email template.
 #' 
 #' For more information about custom verification email templates, see
-#' Using Custom Verification Email Templates in the *Amazon SES Developer
-#' Guide*.
+#' [Using Custom Verification Email
+#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
+#' SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -1043,8 +1066,7 @@ sesv2_delete_dedicated_ip_pool <- function(PoolName) {
 #' @usage
 #' sesv2_delete_email_identity(EmailIdentity)
 #'
-#' @param EmailIdentity &#91;required&#93; The identity (that is, the email address or domain) that you want to
-#' delete.
+#' @param EmailIdentity &#91;required&#93; The identity (that is, the email address or domain) to delete.
 #'
 #' @return
 #' An empty list.
@@ -1090,14 +1112,14 @@ sesv2_delete_email_identity <- function(EmailIdentity) {
 #' Sending authorization is a feature that enables an identity owner to
 #' authorize other senders to use its identities. For information about
 #' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
 #' @usage
 #' sesv2_delete_email_identity_policy(EmailIdentity, PolicyName)
 #'
-#' @param EmailIdentity &#91;required&#93; The email identity for which you want to delete a policy.
+#' @param EmailIdentity &#91;required&#93; The email identity.
 #' @param PolicyName &#91;required&#93; The name of the policy.
 #' 
 #' The policy name cannot exceed 64 characters and can only include
@@ -1218,11 +1240,11 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
 .sesv2$operations$delete_suppressed_destination <- sesv2_delete_suppressed_destination
 
 #' Obtain information about the email-sending status and capabilities of
-#' your Amazon SES account in the current AWS Region
+#' your Amazon SES account in the current Amazon Web Services Region
 #'
 #' @description
 #' Obtain information about the email-sending status and capabilities of
-#' your Amazon SES account in the current AWS Region.
+#' your Amazon SES account in the current Amazon Web Services Region.
 #'
 #' @usage
 #' sesv2_get_account()
@@ -1365,8 +1387,7 @@ sesv2_get_blacklist_reports <- function(BlacklistItemNames) {
 #' @usage
 #' sesv2_get_configuration_set(ConfigurationSetName)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to obtain more
-#' information about.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1655,8 +1676,8 @@ sesv2_get_contact_list <- function(ContactListName) {
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
+#' SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -1720,7 +1741,7 @@ sesv2_get_custom_verification_email_template <- function(TemplateName) {
 #'
 #' @param Ip &#91;required&#93; The IP address that you want to obtain more information about. The value
 #' you specify has to be a dedicated IP address that's assocaited with your
-#' AWS account.
+#' Amazon Web Services account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1762,12 +1783,12 @@ sesv2_get_dedicated_ip <- function(Ip) {
 }
 .sesv2$operations$get_dedicated_ip <- sesv2_get_dedicated_ip
 
-#' List the dedicated IP addresses that are associated with your AWS
-#' account
+#' List the dedicated IP addresses that are associated with your Amazon Web
+#' Services account
 #'
 #' @description
-#' List the dedicated IP addresses that are associated with your AWS
-#' account.
+#' List the dedicated IP addresses that are associated with your Amazon Web
+#' Services account.
 #'
 #' @usage
 #' sesv2_get_dedicated_ips(PoolName, NextToken, PageSize)
@@ -1839,9 +1860,10 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
 #' 
 #' When you use the Deliverability dashboard, you pay a monthly
 #' subscription charge, in addition to any other fees that you accrue by
-#' using Amazon SES and other AWS services. For more information about the
-#' features and cost of a Deliverability dashboard subscription, see
-#' [Amazon SES Pricing](https://aws.amazon.com/ses/pricing/).
+#' using Amazon SES and other Amazon Web Services services. For more
+#' information about the features and cost of a Deliverability dashboard
+#' subscription, see [Amazon SES
+#' Pricing](https://aws.amazon.com/ses/pricing/).
 #'
 #' @usage
 #' sesv2_get_deliverability_dashboard_options()
@@ -2171,7 +2193,7 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #' @usage
 #' sesv2_get_email_identity(EmailIdentity)
 #'
-#' @param EmailIdentity &#91;required&#93; The email identity that you want to retrieve details for.
+#' @param EmailIdentity &#91;required&#93; The email identity.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2186,7 +2208,12 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #'     Tokens = list(
 #'       "string"
 #'     ),
-#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"
+#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL",
+#'     NextSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
+#'     CurrentSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT",
+#'     LastKeyGenerationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
 #'   ),
 #'   MailFromAttributes = list(
 #'     MailFromDomain = "string",
@@ -2201,7 +2228,8 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   ConfigurationSetName = "string"
 #' )
 #' ```
 #'
@@ -2247,14 +2275,14 @@ sesv2_get_email_identity <- function(EmailIdentity) {
 #' Sending authorization is a feature that enables an identity owner to
 #' authorize other senders to use its identities. For information about
 #' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
 #' @usage
 #' sesv2_get_email_identity_policies(EmailIdentity)
 #'
-#' @param EmailIdentity &#91;required&#93; The email identity that you want to retrieve policies for.
+#' @param EmailIdentity &#91;required&#93; The email identity.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2305,7 +2333,7 @@ sesv2_get_email_identity_policies <- function(EmailIdentity) {
 #' @usage
 #' sesv2_get_email_template(TemplateName)
 #'
-#' @param TemplateName &#91;required&#93; The name of the template you want to retrieve.
+#' @param TemplateName &#91;required&#93; The name of the template.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2687,16 +2715,16 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
 .sesv2$operations$list_contacts <- sesv2_list_contacts
 
 #' Lists the existing custom verification email templates for your account
-#' in the current AWS Region
+#' in the current Amazon Web Services Region
 #'
 #' @description
 #' Lists the existing custom verification email templates for your account
-#' in the current AWS Region.
+#' in the current Amazon Web Services Region.
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
+#' SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -2760,12 +2788,12 @@ sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, Pag
 }
 .sesv2$operations$list_custom_verification_email_templates <- sesv2_list_custom_verification_email_templates
 
-#' List all of the dedicated IP pools that exist in your AWS account in the
-#' current Region
+#' List all of the dedicated IP pools that exist in your Amazon Web
+#' Services account in the current Region
 #'
 #' @description
-#' List all of the dedicated IP pools that exist in your AWS account in the
-#' current Region.
+#' List all of the dedicated IP pools that exist in your Amazon Web
+#' Services account in the current Region.
 #'
 #' @usage
 #' sesv2_list_dedicated_ip_pools(NextToken, PageSize)
@@ -2992,14 +3020,14 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
 .sesv2$operations$list_domain_deliverability_campaigns <- sesv2_list_domain_deliverability_campaigns
 
 #' Returns a list of all of the email identities that are associated with
-#' your AWS account
+#' your Amazon Web Services account
 #'
 #' @description
 #' Returns a list of all of the email identities that are associated with
-#' your AWS account. An identity can be either an email address or a
-#' domain. This operation returns identities that are verified as well as
-#' those that aren't. This operation returns identities that are associated
-#' with Amazon SES and Amazon Pinpoint.
+#' your Amazon Web Services account. An identity can be either an email
+#' address or a domain. This operation returns identities that are verified
+#' as well as those that aren't. This operation returns identities that are
+#' associated with Amazon SES and Amazon Pinpoint.
 #'
 #' @usage
 #' sesv2_list_email_identities(NextToken, PageSize)
@@ -3060,11 +3088,11 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
 .sesv2$operations$list_email_identities <- sesv2_list_email_identities
 
 #' Lists the email templates present in your Amazon SES account in the
-#' current AWS Region
+#' current Amazon Web Services Region
 #'
 #' @description
 #' Lists the email templates present in your Amazon SES account in the
-#' current AWS Region.
+#' current Amazon Web Services Region.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -3351,8 +3379,8 @@ sesv2_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param AutoWarmupEnabled Enables or disables the automatic warm-up feature for dedicated IP
 #' addresses that are associated with your Amazon SES account in the
-#' current AWS Region. Set to `true` to enable the automatic warm-up
-#' feature, or set to `false` to disable it.
+#' current Amazon Web Services Region. Set to `true` to enable the
+#' automatic warm-up feature, or set to `false` to disable it.
 #'
 #' @return
 #' An empty list.
@@ -3402,7 +3430,7 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
 #' @param AdditionalContactEmailAddresses Additional email addresses that you would like to be notified regarding
 #' Amazon SES matters.
 #' @param ProductionAccessEnabled Indicates whether or not your account should have production access in
-#' the current AWS Region.
+#' the current Amazon Web Services Region.
 #' 
 #' If the value is `false`, then your account is in the *sandbox*. When
 #' your account is in the sandbox, you can only send email to verified
@@ -3463,8 +3491,8 @@ sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NU
 #' @param SendingEnabled Enables or disables your account's ability to send email. Set to `true`
 #' to enable email sending, or set to `false` to disable email sending.
 #' 
-#' If AWS paused your account's ability to send email, you can't use this
-#' operation to resume your account's ability to send email.
+#' If Amazon Web Services paused your account's ability to send email, you
+#' can't use this operation to resume your account's ability to send email.
 #'
 #' @return
 #' An empty list.
@@ -3559,15 +3587,14 @@ sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
 #' sesv2_put_configuration_set_delivery_options(ConfigurationSetName,
 #'   TlsPolicy, SendingPoolName)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to associate with a
-#' dedicated IP pool.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to associate with a dedicated IP pool.
 #' @param TlsPolicy Specifies whether messages that use the configuration set are required
 #' to use Transport Layer Security (TLS). If the value is `Require`,
 #' messages are only delivered if a TLS connection can be established. If
 #' the value is `Optional`, messages can be delivered in plain text if a
 #' TLS connection can't be established.
-#' @param SendingPoolName The name of the dedicated IP pool that you want to associate with the
-#' configuration set.
+#' @param SendingPoolName The name of the dedicated IP pool to associate with the configuration
+#' set.
 #'
 #' @return
 #' An empty list.
@@ -3602,18 +3629,19 @@ sesv2_put_configuration_set_delivery_options <- function(ConfigurationSetName, T
 .sesv2$operations$put_configuration_set_delivery_options <- sesv2_put_configuration_set_delivery_options
 
 #' Enable or disable collection of reputation metrics for emails that you
-#' send using a particular configuration set in a specific AWS Region
+#' send using a particular configuration set in a specific Amazon Web
+#' Services Region
 #'
 #' @description
 #' Enable or disable collection of reputation metrics for emails that you
-#' send using a particular configuration set in a specific AWS Region.
+#' send using a particular configuration set in a specific Amazon Web
+#' Services Region.
 #'
 #' @usage
 #' sesv2_put_configuration_set_reputation_options(ConfigurationSetName,
 #'   ReputationMetricsEnabled)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to enable or disable
-#' reputation metric tracking for.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set.
 #' @param ReputationMetricsEnabled If `true`, tracking of reputation metrics is enabled for the
 #' configuration set. If `false`, tracking of reputation metrics is
 #' disabled for the configuration set.
@@ -3650,18 +3678,18 @@ sesv2_put_configuration_set_reputation_options <- function(ConfigurationSetName,
 .sesv2$operations$put_configuration_set_reputation_options <- sesv2_put_configuration_set_reputation_options
 
 #' Enable or disable email sending for messages that use a particular
-#' configuration set in a specific AWS Region
+#' configuration set in a specific Amazon Web Services Region
 #'
 #' @description
 #' Enable or disable email sending for messages that use a particular
-#' configuration set in a specific AWS Region.
+#' configuration set in a specific Amazon Web Services Region.
 #'
 #' @usage
 #' sesv2_put_configuration_set_sending_options(ConfigurationSetName,
 #'   SendingEnabled)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to enable or disable
-#' email sending for.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to enable or disable email sending
+#' for.
 #' @param SendingEnabled If `true`, email sending is enabled for the configuration set. If
 #' `false`, email sending is disabled for the configuration set.
 #'
@@ -3706,8 +3734,8 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 #' sesv2_put_configuration_set_suppression_options(ConfigurationSetName,
 #'   SuppressedReasons)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to change the
-#' suppression list preferences for.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to change the suppression list
+#' preferences for.
 #' @param SuppressedReasons A list that contains the reasons that email addresses are automatically
 #' added to the suppression list for your account. This list can contain
 #' any or all of the following:
@@ -3764,9 +3792,8 @@ sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName
 #' sesv2_put_configuration_set_tracking_options(ConfigurationSetName,
 #'   CustomRedirectDomain)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to add a custom tracking
-#' domain to.
-#' @param CustomRedirectDomain The domain that you want to use to track open and click events.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set.
+#' @param CustomRedirectDomain The domain to use to track open and click events.
 #'
 #' @return
 #' An empty list.
@@ -3805,7 +3832,7 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
 #' Move a dedicated IP address to an existing dedicated IP pool.
 #' 
 #' The dedicated IP address that you specify must already exist, and must
-#' be associated with your AWS account.
+#' be associated with your Amazon Web Services account.
 #' 
 #' The dedicated IP pool you specify must already exist. You can create a
 #' new pool by using the
@@ -3816,7 +3843,7 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
 #'
 #' @param Ip &#91;required&#93; The IP address that you want to move to the dedicated IP pool. The value
 #' you specify has to be a dedicated IP address that's associated with your
-#' AWS account.
+#' Amazon Web Services account.
 #' @param DestinationPoolName &#91;required&#93; The name of the IP pool that you want to add the dedicated IP address
 #' to. You have to specify an IP pool that already exists.
 #'
@@ -3905,9 +3932,10 @@ sesv2_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentage) {
 #' 
 #' When you use the Deliverability dashboard, you pay a monthly
 #' subscription charge, in addition to any other fees that you accrue by
-#' using Amazon SES and other AWS services. For more information about the
-#' features and cost of a Deliverability dashboard subscription, see
-#' [Amazon SES Pricing](https://aws.amazon.com/ses/pricing/).
+#' using Amazon SES and other Amazon Web Services services. For more
+#' information about the features and cost of a Deliverability dashboard
+#' subscription, see [Amazon SES
+#' Pricing](https://aws.amazon.com/ses/pricing/).
 #'
 #' @usage
 #' sesv2_put_deliverability_dashboard_option(DashboardEnabled,
@@ -3962,6 +3990,49 @@ sesv2_put_deliverability_dashboard_option <- function(DashboardEnabled, Subscrib
 }
 .sesv2$operations$put_deliverability_dashboard_option <- sesv2_put_deliverability_dashboard_option
 
+#' Used to associate a configuration set with an email identity
+#'
+#' @description
+#' Used to associate a configuration set with an email identity.
+#'
+#' @usage
+#' sesv2_put_email_identity_configuration_set_attributes(EmailIdentity,
+#'   ConfigurationSetName)
+#'
+#' @param EmailIdentity &#91;required&#93; The email address or domain to associate with a configuration set.
+#' @param ConfigurationSetName The configuration set to associate with an email identity.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_email_identity_configuration_set_attributes(
+#'   EmailIdentity = "string",
+#'   ConfigurationSetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_email_identity_configuration_set_attributes
+sesv2_put_email_identity_configuration_set_attributes <- function(EmailIdentity, ConfigurationSetName = NULL) {
+  op <- new_operation(
+    name = "PutEmailIdentityConfigurationSetAttributes",
+    http_method = "PUT",
+    http_path = "/v2/email/identities/{EmailIdentity}/configuration-set",
+    paginator = list()
+  )
+  input <- .sesv2$put_email_identity_configuration_set_attributes_input(EmailIdentity = EmailIdentity, ConfigurationSetName = ConfigurationSetName)
+  output <- .sesv2$put_email_identity_configuration_set_attributes_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_email_identity_configuration_set_attributes <- sesv2_put_email_identity_configuration_set_attributes
+
 #' Used to enable or disable DKIM authentication for an email identity
 #'
 #' @description
@@ -3970,7 +4041,7 @@ sesv2_put_deliverability_dashboard_option <- function(DashboardEnabled, Subscrib
 #' @usage
 #' sesv2_put_email_identity_dkim_attributes(EmailIdentity, SigningEnabled)
 #'
-#' @param EmailIdentity &#91;required&#93; The email identity that you want to change the DKIM settings for.
+#' @param EmailIdentity &#91;required&#93; The email identity.
 #' @param SigningEnabled Sets the DKIM signing configuration for the identity.
 #' 
 #' When you set this value `true`, then the messages that are sent from the
@@ -4019,6 +4090,8 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' -   Update the signing attributes for an identity that uses Bring Your
 #'     Own DKIM (BYODKIM).
 #' 
+#' -   Update the key length that should be used for Easy DKIM.
+#' 
 #' -   Change from using no DKIM authentication to using Easy DKIM.
 #' 
 #' -   Change from using no DKIM authentication to using BYODKIM.
@@ -4031,19 +4104,20 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' sesv2_put_email_identity_dkim_signing_attributes(EmailIdentity,
 #'   SigningAttributesOrigin, SigningAttributes)
 #'
-#' @param EmailIdentity &#91;required&#93; The email identity that you want to configure DKIM for.
-#' @param SigningAttributesOrigin &#91;required&#93; The method that you want to use to configure DKIM for the identity.
-#' There are two possible values:
+#' @param EmailIdentity &#91;required&#93; The email identity.
+#' @param SigningAttributesOrigin &#91;required&#93; The method to use to configure DKIM for the identity. There are the
+#' following possible values:
 #' 
 #' -   `AWS_SES` – Configure DKIM for the identity by using [Easy
-#'     DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
+#'     DKIM](https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html).
 #' 
 #' -   `EXTERNAL` – Configure DKIM for the identity by using Bring Your Own
 #'     DKIM (BYODKIM).
 #' @param SigningAttributes An object that contains information about the private key and selector
-#' that you want to use to configure DKIM for the identity. This object is
-#' only required if you want to configure Bring Your Own DKIM (BYODKIM) for
-#' the identity.
+#' that you want to use to configure DKIM for the identity for Bring Your
+#' Own DKIM (BYODKIM) for the identity, or, configures the key length to be
+#' used for [Easy
+#' DKIM](https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -4063,7 +4137,8 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #'   SigningAttributesOrigin = "AWS_SES"|"EXTERNAL",
 #'   SigningAttributes = list(
 #'     DomainSigningSelector = "string",
-#'     DomainSigningPrivateKey = "string"
+#'     DomainSigningPrivateKey = "string",
+#'     NextSigningKeyLength = "RSA_1024_BIT"|"RSA_2048_BIT"
 #'   )
 #' )
 #' ```
@@ -4109,8 +4184,7 @@ sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, Sign
 #' sesv2_put_email_identity_feedback_attributes(EmailIdentity,
 #'   EmailForwardingEnabled)
 #'
-#' @param EmailIdentity &#91;required&#93; The email identity that you want to configure bounce and complaint
-#' feedback forwarding for.
+#' @param EmailIdentity &#91;required&#93; The email identity.
 #' @param EmailForwardingEnabled Sets the feedback forwarding configuration for the identity.
 #' 
 #' If the value is `true`, you receive email notifications when bounce or
@@ -4165,8 +4239,7 @@ sesv2_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailFor
 #' sesv2_put_email_identity_mail_from_attributes(EmailIdentity,
 #'   MailFromDomain, BehaviorOnMxFailure)
 #'
-#' @param EmailIdentity &#91;required&#93; The verified email identity that you want to set up the custom MAIL FROM
-#' domain for.
+#' @param EmailIdentity &#91;required&#93; The verified email identity.
 #' @param MailFromDomain The custom MAIL FROM domain that you want the verified identity to use.
 #' The MAIL FROM domain must meet the following criteria:
 #' 
@@ -4176,10 +4249,10 @@ sesv2_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailFor
 #' 
 #' -   It can't be used in a "From" address if the MAIL FROM domain is a
 #'     destination for feedback forwarding emails.
-#' @param BehaviorOnMxFailure The action that you want to take if the required MX record isn't found
-#' when you send an email. When you set this value to `UseDefaultValue`,
-#' the mail is sent using *amazonses.com* as the MAIL FROM domain. When you
-#' set this value to `RejectMessage`, the Amazon SES API v2 returns a
+#' @param BehaviorOnMxFailure The action to take if the required MX record isn't found when you send
+#' an email. When you set this value to `UseDefaultValue`, the mail is sent
+#' using *amazonses.com* as the MAIL FROM domain. When you set this value
+#' to `RejectMessage`, the Amazon SES API v2 returns a
 #' `MailFromDomainNotVerified` error, and doesn't attempt to deliver the
 #' email.
 #' 
@@ -4273,8 +4346,8 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #'   FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags,
 #'   DefaultContent, BulkEmailEntries, ConfigurationSetName)
 #'
-#' @param FromEmailAddress The email address that you want to use as the "From" address for the
-#' email. The address that you specify has to be verified.
+#' @param FromEmailAddress The email address to use as the "From" address for the email. The
+#' address that you specify has to be verified.
 #' @param FromEmailAddressIdentityArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to use the email address specified in the
@@ -4289,7 +4362,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param ReplyToAddresses The "Reply-to" email addresses for the message. When the recipient
 #' replies to the message, each Reply-to address receives the reply.
 #' @param FeedbackForwardingEmailAddress The address that you want bounce and complaint notifications to be sent
@@ -4308,7 +4381,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param DefaultEmailTags A list of tags, in the form of name/value pairs, to apply to an email
 #' that you send using the [`send_email`][sesv2_send_email] operation. Tags
 #' correspond to characteristics of the email that you define, so that you
@@ -4316,8 +4389,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' @param DefaultContent &#91;required&#93; An object that contains the body of the message. You can specify a
 #' template message.
 #' @param BulkEmailEntries &#91;required&#93; The list of bulk email entry objects.
-#' @param ConfigurationSetName The name of the configuration set that you want to use when sending the
-#' email.
+#' @param ConfigurationSetName The name of the configuration set to use when sending the email.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4407,19 +4479,20 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
 .sesv2$operations$send_bulk_email <- sesv2_send_bulk_email
 
 #' Adds an email address to the list of identities for your Amazon SES
-#' account in the current AWS Region and attempts to verify it
+#' account in the current Amazon Web Services Region and attempts to verify
+#' it
 #'
 #' @description
 #' Adds an email address to the list of identities for your Amazon SES
-#' account in the current AWS Region and attempts to verify it. As a result
-#' of executing this operation, a customized verification email is sent to
-#' the specified address.
+#' account in the current Amazon Web Services Region and attempts to verify
+#' it. As a result of executing this operation, a customized verification
+#' email is sent to the specified address.
 #' 
 #' To use this operation, you must first create a custom verification email
 #' template. For more information about creating and using custom
 #' verification email templates, see [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
+#' SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -4472,8 +4545,8 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' Sends an email message
 #'
 #' @description
-#' Sends an email message. You can use the Amazon SES API v2 to send two
-#' types of messages:
+#' Sends an email message. You can use the Amazon SES API v2 to send the
+#' following types of messages:
 #' 
 #' -   **Simple** – A standard email message. When you create this type of
 #'     message, you specify the sender, the recipient, and the message
@@ -4495,8 +4568,8 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #'   FeedbackForwardingEmailAddressIdentityArn, Content, EmailTags,
 #'   ConfigurationSetName, ListManagementOptions)
 #'
-#' @param FromEmailAddress The email address that you want to use as the "From" address for the
-#' email. The address that you specify has to be verified.
+#' @param FromEmailAddress The email address to use as the "From" address for the email. The
+#' address that you specify has to be verified.
 #' @param FromEmailAddressIdentityArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to use the email address specified in the
@@ -4511,7 +4584,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' For Raw emails, the `FromEmailAddressIdentityArn` value overrides the
 #' X-SES-SOURCE-ARN and X-SES-FROM-ARN headers specified in raw email
@@ -4535,15 +4608,14 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param Content &#91;required&#93; An object that contains the body of the message. You can send either a
 #' Simple message Raw message or a template Message.
 #' @param EmailTags A list of tags, in the form of name/value pairs, to apply to an email
 #' that you send using the [`send_email`][sesv2_send_email] operation. Tags
 #' correspond to characteristics of the email that you define, so that you
 #' can publish email sending events.
-#' @param ConfigurationSetName The name of the configuration set that you want to use when sending the
-#' email.
+#' @param ConfigurationSetName The name of the configuration set to use when sending the email.
 #' @param ListManagementOptions An object used to specify a list or topic to which an email belongs,
 #' which will be used when a contact chooses to unsubscribe.
 #'
@@ -4708,7 +4780,7 @@ sesv2_tag_resource <- function(ResourceArn, Tags) {
 #' @usage
 #' sesv2_test_render_email_template(TemplateName, TemplateData)
 #'
-#' @param TemplateName &#91;required&#93; The name of the template that you want to render.
+#' @param TemplateName &#91;required&#93; The name of the template.
 #' @param TemplateData &#91;required&#93; A list of replacement values to apply to the template. This parameter is
 #' a JSON object, typically consisting of key-value pairs in which the keys
 #' correspond to replacement tags in the email template.
@@ -4818,9 +4890,9 @@ sesv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' sesv2_update_configuration_set_event_destination(ConfigurationSetName,
 #'   EventDestinationName, EventDestination)
 #'
-#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination
-#' that you want to modify.
-#' @param EventDestinationName &#91;required&#93; The name of the event destination that you want to modify.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination to
+#' modify.
+#' @param EventDestinationName &#91;required&#93; The name of the event destination.
 #' @param EventDestination &#91;required&#93; An object that defines the event destination.
 #'
 #' @return
@@ -4996,8 +5068,8 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
+#' SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -5014,7 +5086,7 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' email must be less than 10 MB. The message body may contain HTML, with
 #' some limitations. For more information, see [Custom Verification Email
 #' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq)
+#' Questions](https://docs.aws.amazon.com/ses/latest/dg/#custom-verification-emails-faq)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
@@ -5070,14 +5142,14 @@ sesv2_update_custom_verification_email_template <- function(TemplateName, FromEm
 #' Sending authorization is a feature that enables an identity owner to
 #' authorize other senders to use its identities. For information about
 #' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
 #' @usage
 #' sesv2_update_email_identity_policy(EmailIdentity, PolicyName, Policy)
 #'
-#' @param EmailIdentity &#91;required&#93; The email identity for which you want to update policy.
+#' @param EmailIdentity &#91;required&#93; The email identity.
 #' @param PolicyName &#91;required&#93; The name of the policy.
 #' 
 #' The policy name cannot exceed 64 characters and can only include
@@ -5086,7 +5158,7 @@ sesv2_update_custom_verification_email_template <- function(TemplateName, FromEm
 #' 
 #' For information about the syntax of sending authorization policies, see
 #' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html).
 #'
 #' @return
 #' An empty list.
@@ -5126,14 +5198,14 @@ sesv2_update_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' Updates an email template. Email templates enable you to send
 #' personalized email to one or more destinations in a single API
 #' operation. For more information, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
 #' @usage
 #' sesv2_update_email_template(TemplateName, TemplateContent)
 #'
-#' @param TemplateName &#91;required&#93; The name of the template you want to update.
+#' @param TemplateName &#91;required&#93; The name of the template.
 #' @param TemplateContent &#91;required&#93; The content of the email template, composed of a subject line, an HTML
 #' part, and a text-only part.
 #'

@@ -11,48 +11,9 @@ comprehendmedical_describe_icd10cm_inference_job(JobId)
 \verb{The StartICD10CMInferenceJob} operation returns this identifier in its
 response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ComprehendMedicalAsyncJobProperties = list(
-    JobId = "string",
-    JobName = "string",
-    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-    Message = "string",
-    SubmitTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExpirationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    InputDataConfig = list(
-      S3Bucket = "string",
-      S3Key = "string"
-    ),
-    OutputDataConfig = list(
-      S3Bucket = "string",
-      S3Key = "string"
-    ),
-    LanguageCode = "en",
-    DataAccessRoleArn = "string",
-    ManifestFilePath = "string",
-    KMSKey = "string",
-    ModelVersion = "string"
-  )
-)
-}
-}
 \description{
-Gets the properties associated with an InferICD10CM job. Use this
-operation to get the status of an inference job.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_icd10cm_inference_job(
-  JobId = "string"
-)
-}
-}
+Gets the properties associated with an InferICD10CM job. Use this operation to get the status of an inference job.
 
+See \url{https://paws-r.github.io/docs/comprehendmedical/describe_icd10cm_inference_job.html} for full documentation.
+}
 \keyword{internal}

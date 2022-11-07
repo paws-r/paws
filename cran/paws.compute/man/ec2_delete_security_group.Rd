@@ -4,7 +4,7 @@
 \alias{ec2_delete_security_group}
 \title{Deletes a security group}
 \usage{
-ec2_delete_security_group(GroupId, GroupName, DryRun)
+ec2_delete_security_group(GroupId = NULL, GroupName = NULL, DryRun = NULL)
 }
 \arguments{
 \item{GroupId}{The ID of the security group. Required for a nondefault VPC.}
@@ -17,33 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a security group.
 
-If you attempt to delete a security group that is associated with an
-instance, or is referenced by another security group, the operation
-fails with \code{InvalidGroup.InUse} in EC2-Classic or \code{DependencyViolation}
-in EC2-VPC.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_security_group(
-  GroupId = "string",
-  GroupName = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes the specified security group.
-svc$delete_security_group(
-  GroupId = "sg-903004f8"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_security_group.html} for full documentation.
 }
 \keyword{internal}

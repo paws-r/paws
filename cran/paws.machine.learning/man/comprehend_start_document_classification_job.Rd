@@ -4,9 +4,17 @@
 \alias{comprehend_start_document_classification_job}
 \title{Starts an asynchronous document classification job}
 \usage{
-comprehend_start_document_classification_job(JobName,
-  DocumentClassifierArn, InputDataConfig, OutputDataConfig,
-  DataAccessRoleArn, ClientRequestToken, VolumeKmsKeyId, VpcConfig)
+comprehend_start_document_classification_job(
+  JobName = NULL,
+  DocumentClassifierArn,
+  InputDataConfig,
+  OutputDataConfig,
+  DataAccessRoleArn,
+  ClientRequestToken = NULL,
+  VolumeKmsKeyId = NULL,
+  VpcConfig = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{JobName}{The identifier of the job.}
@@ -37,43 +45,15 @@ either of the following formats:
 \item{VpcConfig}{Configuration parameters for an optional private Virtual Private Cloud
 (VPC) containing the resources you are using for your document
 classification job. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string",
-  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-)
-}
+
+\item{Tags}{Tags to be associated with the document classification job. A tag is a
+key-value pair that adds metadata to a resource used by Amazon
+Comprehend. For example, a tag with "Sales" as the key might be added to
+a resource to indicate its use by the sales department.}
 }
 \description{
-Starts an asynchronous document classification job. Use the operation to
-track the progress of the job.
-}
-\section{Request syntax}{
-\preformatted{svc$start_document_classification_job(
-  JobName = "string",
-  DocumentClassifierArn = "string",
-  InputDataConfig = list(
-    S3Uri = "string",
-    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-  ),
-  OutputDataConfig = list(
-    S3Uri = "string",
-    KmsKeyId = "string"
-  ),
-  DataAccessRoleArn = "string",
-  ClientRequestToken = "string",
-  VolumeKmsKeyId = "string",
-  VpcConfig = list(
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Subnets = list(
-      "string"
-    )
-  )
-)
-}
-}
+Starts an asynchronous document classification job. Use the operation to track the progress of the job.
 
+See \url{https://paws-r.github.io/docs/comprehend/start_document_classification_job.html} for full documentation.
+}
 \keyword{internal}

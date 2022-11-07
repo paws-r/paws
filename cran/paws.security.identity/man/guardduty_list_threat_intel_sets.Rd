@@ -5,7 +5,11 @@
 \title{Lists the ThreatIntelSets of the GuardDuty service specified by the
 detector ID}
 \usage{
-guardduty_list_threat_intel_sets(DetectorId, MaxResults, NextToken)
+guardduty_list_threat_intel_sets(
+  DetectorId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that the threatIntelSet is associated
@@ -21,27 +25,9 @@ For subsequent calls to the action, fill nextToken in the request with
 the value of NextToken from the previous response to continue listing
 data.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThreatIntelSetIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the ThreatIntelSets of the GuardDuty service specified by the
-detector ID. If you use this operation from a member account, the
-ThreatIntelSets associated with the administrator account are returned.
-}
-\section{Request syntax}{
-\preformatted{svc$list_threat_intel_sets(
-  DetectorId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the ThreatIntelSets associated with the administrator account are returned.
 
+See \url{https://paws-r.github.io/docs/guardduty/list_threat_intel_sets.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{codebuild_create_report_group}
 \title{Creates a report group}
 \usage{
-codebuild_create_report_group(name, type, exportConfig, tags)
+codebuild_create_report_group(name, type, exportConfig, tags = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the report group.}
@@ -16,67 +16,12 @@ report group test results are exported.}
 
 \item{tags}{A list of tag key and value pairs associated with this report group.
 
-These tags are available for use by AWS services that support AWS
-CodeBuild report group tags.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  reportGroup = list(
-    arn = "string",
-    name = "string",
-    type = "TEST"|"CODE_COVERAGE",
-    exportConfig = list(
-      exportConfigType = "S3"|"NO_EXPORT",
-      s3Destination = list(
-        bucket = "string",
-        path = "string",
-        packaging = "ZIP"|"NONE",
-        encryptionKey = "string",
-        encryptionDisabled = TRUE|FALSE
-      )
-    ),
-    created = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastModified = as.POSIXct(
-      "2015-01-01"
-    ),
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    status = "ACTIVE"|"DELETING"
-  )
-)
-}
+These tags are available for use by Amazon Web Services services that
+support CodeBuild report group tags.}
 }
 \description{
 Creates a report group. A report group contains a collection of reports.
-}
-\section{Request syntax}{
-\preformatted{svc$create_report_group(
-  name = "string",
-  type = "TEST"|"CODE_COVERAGE",
-  exportConfig = list(
-    exportConfigType = "S3"|"NO_EXPORT",
-    s3Destination = list(
-      bucket = "string",
-      path = "string",
-      packaging = "ZIP"|"NONE",
-      encryptionKey = "string",
-      encryptionDisabled = TRUE|FALSE
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/create_report_group.html} for full documentation.
+}
 \keyword{internal}

@@ -4,11 +4,16 @@
 \alias{connect_update_routing_profile_name}
 \title{Updates the name and description of a routing profile}
 \usage{
-connect_update_routing_profile_name(InstanceId, RoutingProfileId, Name,
-  Description)
+connect_update_routing_profile_name(
+  InstanceId,
+  RoutingProfileId,
+  Name = NULL,
+  Description = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 
@@ -17,22 +22,9 @@ connect_update_routing_profile_name(InstanceId, RoutingProfileId, Name,
 \item{Description}{The description of the routing profile. Must not be more than 250
 characters.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the name and description of a routing profile. The request
-accepts the following data in JSON format. At least \code{Name} or
-\code{Description} must be provided.
-}
-\section{Request syntax}{
-\preformatted{svc$update_routing_profile_name(
-  InstanceId = "string",
-  RoutingProfileId = "string",
-  Name = "string",
-  Description = "string"
-)
-}
-}
+Updates the name and description of a routing profile. The request accepts the following data in JSON format. At least \code{Name} or \code{Description} must be provided.
 
+See \url{https://paws-r.github.io/docs/connect/update_routing_profile_name.html} for full documentation.
+}
 \keyword{internal}

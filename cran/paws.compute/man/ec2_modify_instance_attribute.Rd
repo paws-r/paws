@@ -4,16 +4,33 @@
 \alias{ec2_modify_instance_attribute}
 \title{Modifies the specified attribute of the specified instance}
 \usage{
-ec2_modify_instance_attribute(SourceDestCheck, Attribute,
-  BlockDeviceMappings, DisableApiTermination, DryRun, EbsOptimized,
-  EnaSupport, Groups, InstanceId, InstanceInitiatedShutdownBehavior,
-  InstanceType, Kernel, Ramdisk, SriovNetSupport, UserData, Value)
+ec2_modify_instance_attribute(
+  SourceDestCheck = NULL,
+  Attribute = NULL,
+  BlockDeviceMappings = NULL,
+  DisableApiTermination = NULL,
+  DryRun = NULL,
+  EbsOptimized = NULL,
+  EnaSupport = NULL,
+  Groups = NULL,
+  InstanceId,
+  InstanceInitiatedShutdownBehavior = NULL,
+  InstanceType = NULL,
+  Kernel = NULL,
+  Ramdisk = NULL,
+  SriovNetSupport = NULL,
+  UserData = NULL,
+  Value = NULL,
+  DisableApiStop = NULL
+)
 }
 \arguments{
-\item{SourceDestCheck}{Specifies whether source/destination checking is enabled. A value of
-\code{true} means that checking is enabled, and \code{false} means that checking
-is disabled. This value must be \code{false} for a NAT instance to perform
-NAT.}
+\item{SourceDestCheck}{Enable or disable source/destination checks, which ensure that the
+instance is either the source or the destination of any traffic that it
+receives. If the value is \code{true}, source/destination checks are enabled;
+otherwise, they are disabled. The default value is \code{true}. You must
+disable source/destination checks if the instance runs services such as
+network address translation, routing, or firewalls.}
 
 \item{Attribute}{The name of the attribute.}
 
@@ -23,9 +40,8 @@ is specified for \code{DeleteOnTermination}, the default is \code{true} and the
 volume is deleted when the instance is terminated.
 
 To add instance store volumes to an Amazon EBS-backed instance, you must
-add them when you launch the instance. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM}{Updating the block device mapping when launching an instance}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+add them when you launch the instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM}{Update the block device mapping when launching an instance}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{DisableApiTermination}{If the value is \code{true}, you can't terminate the instance using the
 Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use this
@@ -47,10 +63,10 @@ usage charges apply when using an EBS Optimized instance.}
 This option is supported only for HVM instances. Specifying this option
 with a PV instance can make it unreachable.}
 
-\item{Groups}{[EC2-VPC] Changes the security groups of the instance. You must
-specify at least one security group, even if it's just the default
-security group for the VPC. You must specify the security group ID, not
-the security group name.}
+\item{Groups}{[EC2-VPC] Replaces the security groups of the instance with the
+specified security groups. You must specify at least one security group,
+even if it's just the default security group for the VPC. You must
+specify the security group ID, not the security group name.}
 
 \item{InstanceId}{[required] The ID of the instance.}
 
@@ -59,9 +75,9 @@ shutdown from the instance (using the operating system command for
 system shutdown).}
 
 \item{InstanceType}{Changes the instance type to the specified value. For more information,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}.
-If the instance type is not valid, the error returned is
-\code{InvalidInstanceAttributeValue}.}
+see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
+in the \emph{Amazon EC2 User Guide}. If the instance type is not valid, the
+error returned is \code{InvalidInstanceAttributeValue}.}
 
 \item{Kernel}{Changes the instance's kernel to the specified value. We recommend that
 you use PV-GRUB instead of kernels and RAM disks. For more information,
@@ -83,107 +99,20 @@ This option is supported only for HVM instances. Specifying this option
 with a PV instance can make it unreachable.}
 
 \item{UserData}{Changes the instance's user data to the specified value. If you are
-using an AWS SDK or command line tool, base64-encoding is performed for
-you, and you can load the text from a file. Otherwise, you must provide
-base64-encoded text.}
+using an Amazon Web Services SDK or command line tool, base64-encoding
+is performed for you, and you can load the text from a file. Otherwise,
+you must provide base64-encoded text.}
 
 \item{Value}{A new value for the attribute. Use only with the \code{kernel}, \code{ramdisk},
 \code{userData}, \code{disableApiTermination}, or
 \code{instanceInitiatedShutdownBehavior} attribute.}
-}
-\value{
-An empty list.
+
+\item{DisableApiStop}{Indicates whether an instance is enabled for stop protection. For more
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html#Using_StopProtection}{Stop Protection}.}
 }
 \description{
-Modifies the specified attribute of the specified instance. You can
-specify only one attribute at a time.
+Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.
 
-\strong{Note:} Using this action to change the security groups associated
-with an elastic network interface (ENI) attached to an instance in a VPC
-can result in an error if the instance has more than one ENI. To change
-the security groups associated with an ENI attached to an instance that
-has multiple ENIs, we recommend that you use the
-\code{\link[=ec2_modify_network_interface_attribute]{modify_network_interface_attribute}}
-action.
-
-To modify some attributes, the instance must be stopped. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Modifying attributes of a stopped instance}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_instance_attribute(
-  SourceDestCheck = list(
-    Value = TRUE|FALSE
-  ),
-  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport"|"enclaveOptions",
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "string",
-      Ebs = list(
-        DeleteOnTermination = TRUE|FALSE,
-        VolumeId = "string"
-      ),
-      NoDevice = "string",
-      VirtualName = "string"
-    )
-  ),
-  DisableApiTermination = list(
-    Value = TRUE|FALSE
-  ),
-  DryRun = TRUE|FALSE,
-  EbsOptimized = list(
-    Value = TRUE|FALSE
-  ),
-  EnaSupport = list(
-    Value = TRUE|FALSE
-  ),
-  Groups = list(
-    "string"
-  ),
-  InstanceId = "string",
-  InstanceInitiatedShutdownBehavior = list(
-    Value = "string"
-  ),
-  InstanceType = list(
-    Value = "string"
-  ),
-  Kernel = list(
-    Value = "string"
-  ),
-  Ramdisk = list(
-    Value = "string"
-  ),
-  SriovNetSupport = list(
-    Value = "string"
-  ),
-  UserData = list(
-    Value = raw
-  ),
-  Value = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example modifies the instance type of the specified stopped
-# instance.
-svc$modify_instance_attribute(
-  InstanceId = "i-1234567890abcdef0",
-  InstanceType = list(
-    Value = "m5.large"
-  )
-)
-
-# This example enables enhanced networking for the specified stopped
-# instance.
-svc$modify_instance_attribute(
-  EnaSupport = list(
-    Value = TRUE
-  ),
-  InstanceId = "i-1234567890abcdef0"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/modify_instance_attribute.html} for full documentation.
 }
 \keyword{internal}

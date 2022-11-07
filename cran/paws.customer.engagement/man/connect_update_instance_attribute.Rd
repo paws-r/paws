@@ -8,28 +8,19 @@ change}
 connect_update_instance_attribute(InstanceId, AttributeType, Value)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
-\item{AttributeType}{[required] The type of attribute.}
+\item{AttributeType}{[required] The type of attribute.
+
+Only allowlisted customers can consume USE_CUSTOM_TTS_VOICES. To access
+this feature, contact Amazon Web Services Support for allowlisting.}
 
 \item{Value}{[required] The value for the attribute. Maximum character limit is 100.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Updates the value for the specified attribute type.
+See \url{https://paws-r.github.io/docs/connect/update_instance_attribute.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_instance_attribute(
-  InstanceId = "string",
-  AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA",
-  Value = "string"
-)
-}
-}
-
 \keyword{internal}

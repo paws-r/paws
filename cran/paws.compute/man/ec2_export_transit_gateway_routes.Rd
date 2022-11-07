@@ -5,8 +5,12 @@
 \title{Exports routes from the specified transit gateway route table to the
 specified S3 bucket}
 \usage{
-ec2_export_transit_gateway_routes(TransitGatewayRouteTableId, Filters,
-  S3Bucket, DryRun)
+ec2_export_transit_gateway_routes(
+  TransitGatewayRouteTableId,
+  Filters = NULL,
+  S3Bucket,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the route table.}
@@ -40,36 +44,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  S3Location = "string"
-)
-}
-}
 \description{
-Exports routes from the specified transit gateway route table to the
-specified S3 bucket. By default, all routes are exported. Alternatively,
-you can filter by CIDR range.
+Exports routes from the specified transit gateway route table to the specified S3 bucket. By default, all routes are exported. Alternatively, you can filter by CIDR range.
 
-The routes are saved to the specified bucket in a JSON file. For more
-information, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html#tgw-export-route-tables}{Export Route Tables to Amazon S3}
-in \emph{Transit Gateways}.
+See \url{https://paws-r.github.io/docs/ec2/export_transit_gateway_routes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$export_transit_gateway_routes(
-  TransitGatewayRouteTableId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  S3Bucket = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

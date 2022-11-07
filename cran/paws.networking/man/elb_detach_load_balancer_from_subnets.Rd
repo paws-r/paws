@@ -12,44 +12,9 @@ elb_detach_load_balancer_from_subnets(LoadBalancerName, Subnets)
 
 \item{Subnets}{[required] The IDs of the subnets.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Subnets = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Removes the specified subnets from the set of configured subnets for the
-load balancer.
+Removes the specified subnets from the set of configured subnets for the load balancer.
 
-After a subnet is removed, all EC2 instances registered with the load
-balancer in the removed subnet go into the \code{OutOfService} state. Then,
-the load balancer balances the traffic among the remaining routable
-subnets.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_load_balancer_from_subnets(
-  LoadBalancerName = "string",
-  Subnets = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example detaches the specified load balancer from the specified
-# subnet.
-svc$detach_load_balancer_from_subnets(
-  LoadBalancerName = "my-load-balancer",
-  Subnets = list(
-    "subnet-0ecac448"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/detach_load_balancer_from_subnets.html} for full documentation.
 }
 \keyword{internal}

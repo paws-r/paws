@@ -6,8 +6,12 @@
 IAM users that have explicitly specified a longer ID (17-character ID)
 preference}
 \usage{
-ec2_describe_principal_id_format(DryRun, Resources, MaxResults,
-  NextToken)
+ec2_describe_principal_id_format(
+  DryRun = NULL,
+  Resources = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -32,57 +36,9 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Principals = list(
-    list(
-      Arn = "string",
-      Statuses = list(
-        list(
-          Deadline = as.POSIXct(
-            "2015-01-01"
-          ),
-          Resource = "string",
-          UseLongIds = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the ID format settings for the root user and all IAM roles and
-IAM users that have explicitly specified a longer ID (17-character ID)
-preference.
+Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference.
 
-By default, all IAM roles and IAM users default to the same ID settings
-as the root user, unless they explicitly override the settings. This
-request is useful for identifying those IAM users and IAM roles that
-have overridden the default ID settings.
-
-The following resource types support longer IDs: \code{bundle} |
-\code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} |
-\code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} |
-\code{flow-log} | \code{image} | \code{import-task} | \code{instance} | \code{internet-gateway} |
-\code{network-acl} | \code{network-acl-association} | \code{network-interface} |
-\code{network-interface-attachment} | \code{prefix-list} | \code{reservation} |
-\code{route-table} | \code{route-table-association} | \code{security-group} |
-\code{snapshot} | \code{subnet} | \code{subnet-cidr-block-association} | \code{volume} |
-\code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} |
-\code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
+See \url{https://paws-r.github.io/docs/ec2/describe_principal_id_format.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_principal_id_format(
-  DryRun = TRUE|FALSE,
-  Resources = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

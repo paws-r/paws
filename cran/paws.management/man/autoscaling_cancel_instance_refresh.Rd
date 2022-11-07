@@ -9,33 +9,9 @@ autoscaling_cancel_instance_refresh(AutoScalingGroupName)
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceRefreshId = "string"
-)
-}
-}
 \description{
-Cancels an instance refresh operation in progress. Cancellation does not
-roll back any replacements that have already been completed, but it
-prevents new replacements from being started.
+Cancels an instance refresh operation in progress. Cancellation does not roll back any replacements that have already been completed, but it prevents new replacements from being started.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_instance_refresh(
-  AutoScalingGroupName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example cancels an instance refresh operation in progress.
-svc$cancel_instance_refresh(
-  AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/cancel_instance_refresh.html} for full documentation.
 }
 \keyword{internal}

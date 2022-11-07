@@ -12,67 +12,9 @@ rds_delete_db_snapshot(DBSnapshotIdentifier)
 Constraints: Must be the name of an existing DB snapshot in the
 \code{available} state.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBSnapshot = list(
-    DBSnapshotIdentifier = "string",
-    DBInstanceIdentifier = "string",
-    SnapshotCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Engine = "string",
-    AllocatedStorage = 123,
-    Status = "string",
-    Port = 123,
-    AvailabilityZone = "string",
-    VpcId = "string",
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    EngineVersion = "string",
-    LicenseModel = "string",
-    SnapshotType = "string",
-    Iops = 123,
-    OptionGroupName = "string",
-    PercentProgress = 123,
-    SourceRegion = "string",
-    SourceDBSnapshotIdentifier = "string",
-    StorageType = "string",
-    TdeCredentialArn = "string",
-    Encrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DBSnapshotArn = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    ProcessorFeatures = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    DbiResourceId = "string",
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Deletes a DB snapshot. If the snapshot is being copied, the copy
-operation is terminated.
+Deletes a DB snapshot. If the snapshot is being copied, the copy operation is terminated.
 
-The DB snapshot must be in the \code{available} state to be deleted.
+See \url{https://paws-r.github.io/docs/rds/delete_db_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_db_snapshot(
-  DBSnapshotIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

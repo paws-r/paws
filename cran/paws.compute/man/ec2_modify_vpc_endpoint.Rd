@@ -4,10 +4,21 @@
 \alias{ec2_modify_vpc_endpoint}
 \title{Modifies attributes of a specified VPC endpoint}
 \usage{
-ec2_modify_vpc_endpoint(DryRun, VpcEndpointId, ResetPolicy,
-  PolicyDocument, AddRouteTableIds, RemoveRouteTableIds, AddSubnetIds,
-  RemoveSubnetIds, AddSecurityGroupIds, RemoveSecurityGroupIds,
-  PrivateDnsEnabled)
+ec2_modify_vpc_endpoint(
+  DryRun = NULL,
+  VpcEndpointId,
+  ResetPolicy = NULL,
+  PolicyDocument = NULL,
+  AddRouteTableIds = NULL,
+  RemoveRouteTableIds = NULL,
+  AddSubnetIds = NULL,
+  RemoveSubnetIds = NULL,
+  AddSecurityGroupIds = NULL,
+  RemoveSecurityGroupIds = NULL,
+  IpAddressType = NULL,
+  DnsOptions = NULL,
+  PrivateDnsEnabled = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -43,48 +54,16 @@ the network interface.}
 \item{RemoveSecurityGroupIds}{(Interface endpoint) One or more security group IDs to disassociate from
 the network interface.}
 
+\item{IpAddressType}{The IP address type for the endpoint.}
+
+\item{DnsOptions}{The DNS options for the endpoint.}
+
 \item{PrivateDnsEnabled}{(Interface endpoint) Indicates whether a private hosted zone is
 associated with the VPC.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Modifies attributes of a specified VPC endpoint. The attributes that you
-can modify depend on the type of VPC endpoint (interface, gateway, or
-Gateway Load Balancer). For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html}{VPC Endpoints}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_vpc_endpoint(
-  DryRun = TRUE|FALSE,
-  VpcEndpointId = "string",
-  ResetPolicy = TRUE|FALSE,
-  PolicyDocument = "string",
-  AddRouteTableIds = list(
-    "string"
-  ),
-  RemoveRouteTableIds = list(
-    "string"
-  ),
-  AddSubnetIds = list(
-    "string"
-  ),
-  RemoveSubnetIds = list(
-    "string"
-  ),
-  AddSecurityGroupIds = list(
-    "string"
-  ),
-  RemoveSecurityGroupIds = list(
-    "string"
-  ),
-  PrivateDnsEnabled = TRUE|FALSE
-)
-}
-}
+Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface, gateway, or Gateway Load Balancer). For more information, see the \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{Amazon Web Services PrivateLink Guide}.
 
+See \url{https://paws-r.github.io/docs/ec2/modify_vpc_endpoint.html} for full documentation.
+}
 \keyword{internal}

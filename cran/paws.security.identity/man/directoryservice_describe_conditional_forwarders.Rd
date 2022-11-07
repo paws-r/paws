@@ -4,8 +4,10 @@
 \alias{directoryservice_describe_conditional_forwarders}
 \title{Obtains information about the conditional forwarders for this account}
 \usage{
-directoryservice_describe_conditional_forwarders(DirectoryId,
-  RemoteDomainNames)
+directoryservice_describe_conditional_forwarders(
+  DirectoryId,
+  RemoteDomainNames = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{[required] The directory ID for which to get the list of associated conditional
@@ -15,34 +17,9 @@ forwarders.}
 to get the list of associated conditional forwarders. If this member is
 null, all conditional forwarders are returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConditionalForwarders = list(
-    list(
-      RemoteDomainName = "string",
-      DnsIpAddrs = list(
-        "string"
-      ),
-      ReplicationScope = "Domain"
-    )
-  )
-)
-}
-}
 \description{
 Obtains information about the conditional forwarders for this account.
 
-If no input parameters are provided for RemoteDomainNames, this request
-describes all conditional forwarders for the specified directory ID.
+See \url{https://paws-r.github.io/docs/directoryservice/describe_conditional_forwarders.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_conditional_forwarders(
-  DirectoryId = "string",
-  RemoteDomainNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

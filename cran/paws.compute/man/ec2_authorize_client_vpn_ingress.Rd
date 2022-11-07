@@ -4,8 +4,15 @@
 \alias{ec2_authorize_client_vpn_ingress}
 \title{Adds an ingress authorization rule to a Client VPN endpoint}
 \usage{
-ec2_authorize_client_vpn_ingress(ClientVpnEndpointId, TargetNetworkCidr,
-  AccessGroupId, AuthorizeAllGroups, Description, ClientToken, DryRun)
+ec2_authorize_client_vpn_ingress(
+  ClientVpnEndpointId,
+  TargetNetworkCidr,
+  AccessGroupId = NULL,
+  AuthorizeAllGroups = NULL,
+  Description = NULL,
+  ClientToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -24,39 +31,16 @@ the network. Must be set to \code{true} if \code{AccessGroupId} is not specified
 \item{Description}{A brief description of the authorization rule.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = list(
-    Code = "authorizing"|"active"|"failed"|"revoking",
-    Message = "string"
-  )
-)
-}
-}
 \description{
-Adds an ingress authorization rule to a Client VPN endpoint. Ingress
-authorization rules act as firewall rules that grant access to networks.
-You must configure ingress authorization rules to enable clients to
-access resources in AWS or on-premises networks.
-}
-\section{Request syntax}{
-\preformatted{svc$authorize_client_vpn_ingress(
-  ClientVpnEndpointId = "string",
-  TargetNetworkCidr = "string",
-  AccessGroupId = "string",
-  AuthorizeAllGroups = TRUE|FALSE,
-  Description = "string",
-  ClientToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Adds an ingress authorization rule to a Client VPN endpoint. Ingress authorization rules act as firewall rules that grant access to networks. You must configure ingress authorization rules to enable clients to access resources in Amazon Web Services or on-premises networks.
 
+See \url{https://paws-r.github.io/docs/ec2/authorize_client_vpn_ingress.html} for full documentation.
+}
 \keyword{internal}

@@ -8,27 +8,15 @@ change}
 connect_associate_lambda_function(InstanceId, FunctionArn)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{FunctionArn}{[required] The Amazon Resource Name (ARN) for the Lambda function being associated.
 Maximum number of characters allowed is 140.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Allows the specified Amazon Connect instance to access the specified
-Lambda function.
+See \url{https://paws-r.github.io/docs/connect/associate_lambda_function.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_lambda_function(
-  InstanceId = "string",
-  FunctionArn = "string"
-)
-}
-}
-
 \keyword{internal}

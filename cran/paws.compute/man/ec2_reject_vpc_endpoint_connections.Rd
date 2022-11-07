@@ -5,7 +5,7 @@
 \title{Rejects one or more VPC endpoint connection requests to your VPC
 endpoint service}
 \usage{
-ec2_reject_vpc_endpoint_connections(DryRun, ServiceId, VpcEndpointIds)
+ec2_reject_vpc_endpoint_connections(DryRun = NULL, ServiceId, VpcEndpointIds)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,33 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcEndpointIds}{[required] The IDs of one or more VPC endpoints.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Unsuccessful = list(
-    list(
-      Error = list(
-        Code = "string",
-        Message = "string"
-      ),
-      ResourceId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Rejects one or more VPC endpoint connection requests to your VPC
-endpoint service.
-}
-\section{Request syntax}{
-\preformatted{svc$reject_vpc_endpoint_connections(
-  DryRun = TRUE|FALSE,
-  ServiceId = "string",
-  VpcEndpointIds = list(
-    "string"
-  )
-)
-}
-}
+Rejects one or more VPC endpoint connection requests to your VPC endpoint service.
 
+See \url{https://paws-r.github.io/docs/ec2/reject_vpc_endpoint_connections.html} for full documentation.
+}
 \keyword{internal}

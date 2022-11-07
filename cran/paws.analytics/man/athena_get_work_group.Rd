@@ -9,40 +9,9 @@ athena_get_work_group(WorkGroup)
 \arguments{
 \item{WorkGroup}{[required] The name of the workgroup.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WorkGroup = list(
-    Name = "string",
-    State = "ENABLED"|"DISABLED",
-    Configuration = list(
-      ResultConfiguration = list(
-        OutputLocation = "string",
-        EncryptionConfiguration = list(
-          EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-          KmsKey = "string"
-        )
-      ),
-      EnforceWorkGroupConfiguration = TRUE|FALSE,
-      PublishCloudWatchMetricsEnabled = TRUE|FALSE,
-      BytesScannedCutoffPerQuery = 123,
-      RequesterPaysEnabled = TRUE|FALSE
-    ),
-    Description = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Returns information about the workgroup with the specified name.
-}
-\section{Request syntax}{
-\preformatted{svc$get_work_group(
-  WorkGroup = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/athena/get_work_group.html} for full documentation.
+}
 \keyword{internal}

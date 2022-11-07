@@ -4,7 +4,7 @@
 \alias{backup_get_backup_plan}
 \title{Returns BackupPlan details for the specified BackupPlanId}
 \usage{
-backup_get_backup_plan(BackupPlanId, VersionId)
+backup_get_backup_plan(BackupPlanId, VersionId = NULL)
 }
 \arguments{
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
@@ -12,79 +12,9 @@ backup_get_backup_plan(BackupPlanId, VersionId)
 \item{VersionId}{Unique, randomly generated, Unicode, UTF-8 encoded strings that are at
 most 1,024 bytes long. Version IDs cannot be edited.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupPlan = list(
-    BackupPlanName = "string",
-    Rules = list(
-      list(
-        RuleName = "string",
-        TargetBackupVaultName = "string",
-        ScheduleExpression = "string",
-        StartWindowMinutes = 123,
-        CompletionWindowMinutes = 123,
-        Lifecycle = list(
-          MoveToColdStorageAfterDays = 123,
-          DeleteAfterDays = 123
-        ),
-        RecoveryPointTags = list(
-          "string"
-        ),
-        RuleId = "string",
-        CopyActions = list(
-          list(
-            Lifecycle = list(
-              MoveToColdStorageAfterDays = 123,
-              DeleteAfterDays = 123
-            ),
-            DestinationBackupVaultArn = "string"
-          )
-        )
-      )
-    ),
-    AdvancedBackupSettings = list(
-      list(
-        ResourceType = "string",
-        BackupOptions = list(
-          "string"
-        )
-      )
-    )
-  ),
-  BackupPlanId = "string",
-  BackupPlanArn = "string",
-  VersionId = "string",
-  CreatorRequestId = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  DeletionDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastExecutionDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  AdvancedBackupSettings = list(
-    list(
-      ResourceType = "string",
-      BackupOptions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns \code{BackupPlan} details for the specified \code{BackupPlanId}. Returns
-the body of a backup plan in JSON format, in addition to plan metadata.
-}
-\section{Request syntax}{
-\preformatted{svc$get_backup_plan(
-  BackupPlanId = "string",
-  VersionId = "string"
-)
-}
-}
+Returns \code{BackupPlan} details for the specified \code{BackupPlanId}. The details are the body of a backup plan in JSON format, in addition to plan metadata.
 
+See \url{https://paws-r.github.io/docs/backup/get_backup_plan.html} for full documentation.
+}
 \keyword{internal}

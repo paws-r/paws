@@ -12,25 +12,9 @@ codecommit_delete_branch(repositoryName, branchName)
 
 \item{branchName}{[required] The name of the branch to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  deletedBranch = list(
-    branchName = "string",
-    commitId = "string"
-  )
-)
-}
-}
 \description{
-Deletes a branch from a repository, unless that branch is the default
-branch for the repository.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_branch(
-  repositoryName = "string",
-  branchName = "string"
-)
-}
-}
+Deletes a branch from a repository, unless that branch is the default branch for the repository.
 
+See \url{https://paws-r.github.io/docs/codecommit/delete_branch.html} for full documentation.
+}
 \keyword{internal}

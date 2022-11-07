@@ -4,36 +4,14 @@
 \alias{xray_get_groups}
 \title{Retrieves all active group details}
 \usage{
-xray_get_groups(NextToken)
+xray_get_groups(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Groups = list(
-    list(
-      GroupName = "string",
-      GroupARN = "string",
-      FilterExpression = "string",
-      InsightsConfiguration = list(
-        InsightsEnabled = TRUE|FALSE,
-        NotificationsEnabled = TRUE|FALSE
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves all active group details.
-}
-\section{Request syntax}{
-\preformatted{svc$get_groups(
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/get_groups.html} for full documentation.
+}
 \keyword{internal}

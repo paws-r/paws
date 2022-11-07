@@ -4,12 +4,17 @@
 \alias{support_describe_communications}
 \title{Returns communications and attachments for one or more support cases}
 \usage{
-support_describe_communications(caseId, beforeTime, afterTime,
-  nextToken, maxResults)
+support_describe_communications(
+  caseId,
+  beforeTime = NULL,
+  afterTime = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
-\item{caseId}{[required] The AWS Support case ID requested or returned in the call. The case ID
-is an alphanumeric string formatted as shown in this example:
+\item{caseId}{[required] The support case ID requested or returned in the call. The case ID is an
+alphanumeric string formatted as shown in this example:
 case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 
 \item{beforeTime}{The end date for a filtered date search on support case communications.
@@ -23,58 +28,9 @@ creation.}
 
 \item{maxResults}{The maximum number of results to return before paginating.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  communications = list(
-    list(
-      caseId = "string",
-      body = "string",
-      submittedBy = "string",
-      timeCreated = "string",
-      attachmentSet = list(
-        list(
-          attachmentId = "string",
-          fileName = "string"
-        )
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns communications and attachments for one or more support cases.
-Use the \code{afterTime} and \code{beforeTime} parameters to filter by date. You
-can use the \code{caseId} parameter to restrict the results to a specific
-case.
+Returns communications and attachments for one or more support cases. Use the \code{afterTime} and \code{beforeTime} parameters to filter by date. You can use the \code{caseId} parameter to restrict the results to a specific case.
 
-Case data is available for 12 months after creation. If a case was
-created more than 12 months ago, a request for data might cause an
-error.
-
-You can use the \code{maxResults} and \code{nextToken} parameters to control the
-pagination of the results. Set \code{maxResults} to the number of cases that
-you want to display on each page, and use \code{nextToken} to specify the
-resumption of pagination.
-\itemize{
-\item You must have a Business or Enterprise support plan to use the AWS
-Support API.
-\item If you call the AWS Support API from an account that does not have a
-Business or Enterprise support plan, the
-\code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
+See \url{https://paws-r.github.io/docs/support/describe_communications.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$describe_communications(
-  caseId = "string",
-  beforeTime = "string",
-  afterTime = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
 \keyword{internal}

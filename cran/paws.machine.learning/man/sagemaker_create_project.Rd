@@ -6,8 +6,12 @@
 templates that set up an ML pipeline from training to deploying an
 approved model}
 \usage{
-sagemaker_create_project(ProjectName, ProjectDescription,
-  ServiceCatalogProvisioningDetails, Tags)
+sagemaker_create_project(
+  ProjectName,
+  ProjectDescription = NULL,
+  ServiceCatalogProvisioningDetails,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ProjectName}{[required] The name of the project.}
@@ -15,47 +19,19 @@ sagemaker_create_project(ProjectName, ProjectDescription,
 \item{ProjectDescription}{A description for the project.}
 
 \item{ServiceCatalogProvisioningDetails}{[required] The product ID and provisioning artifact ID to provision a service
-catalog. For information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html}{What is AWS Service Catalog}.}
+catalog. The provisioning artifact ID will default to the latest
+provisioning artifact ID of the product, if you don't provide the
+provisioning artifact ID. For more information, see What is Amazon Web
+Services Service Catalog.}
 
 \item{Tags}{An array of key-value pairs that you want to use to organize and track
-your AWS resource costs. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
-in the \emph{AWS General Reference Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ProjectArn = "string",
-  ProjectId = "string"
-)
-}
+your Amazon Web Services resource costs. For more information, see
+\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+in the \emph{Amazon Web Services General Reference Guide}.}
 }
 \description{
-Creates a machine learning (ML) project that can contain one or more
-templates that set up an ML pipeline from training to deploying an
-approved model.
-}
-\section{Request syntax}{
-\preformatted{svc$create_project(
-  ProjectName = "string",
-  ProjectDescription = "string",
-  ServiceCatalogProvisioningDetails = list(
-    ProductId = "string",
-    ProvisioningArtifactId = "string",
-    PathId = "string",
-    ProvisioningParameters = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_project.html} for full documentation.
+}
 \keyword{internal}

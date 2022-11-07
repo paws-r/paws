@@ -13,71 +13,9 @@ backup_update_backup_plan(BackupPlanId, BackupPlan)
 \item{BackupPlan}{[required] Specifies the body of a backup plan. Includes a \code{BackupPlanName} and one
 or more sets of \code{Rules}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupPlanId = "string",
-  BackupPlanArn = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  VersionId = "string",
-  AdvancedBackupSettings = list(
-    list(
-      ResourceType = "string",
-      BackupOptions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Updates an existing backup plan identified by its \code{backupPlanId} with
-the input document in JSON format. The new version is uniquely
-identified by a \code{VersionId}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_backup_plan(
-  BackupPlanId = "string",
-  BackupPlan = list(
-    BackupPlanName = "string",
-    Rules = list(
-      list(
-        RuleName = "string",
-        TargetBackupVaultName = "string",
-        ScheduleExpression = "string",
-        StartWindowMinutes = 123,
-        CompletionWindowMinutes = 123,
-        Lifecycle = list(
-          MoveToColdStorageAfterDays = 123,
-          DeleteAfterDays = 123
-        ),
-        RecoveryPointTags = list(
-          "string"
-        ),
-        CopyActions = list(
-          list(
-            Lifecycle = list(
-              MoveToColdStorageAfterDays = 123,
-              DeleteAfterDays = 123
-            ),
-            DestinationBackupVaultArn = "string"
-          )
-        )
-      )
-    ),
-    AdvancedBackupSettings = list(
-      list(
-        ResourceType = "string",
-        BackupOptions = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
+Updates an existing backup plan identified by its \code{backupPlanId} with the input document in JSON format. The new version is uniquely identified by a \code{VersionId}.
 
+See \url{https://paws-r.github.io/docs/backup/update_backup_plan.html} for full documentation.
+}
 \keyword{internal}

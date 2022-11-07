@@ -7,50 +7,13 @@ NULL
 #' the specified HTTPS or TLS listener
 #'
 #' @description
-#' Adds the specified SSL server certificate to the certificate list for
-#' the specified HTTPS or TLS listener.
-#' 
-#' If the certificate in already in the certificate list, the call is
-#' successful but the certificate is not added again.
-#' 
-#' For more information, see [HTTPS
-#' listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html)
-#' in the *Application Load Balancers Guide* or [TLS
-#' listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html)
-#' in the *Network Load Balancers Guide*.
+#' Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener.
 #'
-#' @usage
-#' elbv2_add_listener_certificates(ListenerArn, Certificates)
+#' See [https://paws-r.github.io/docs/elbv2/add_listener_certificates.html](https://paws-r.github.io/docs/elbv2/add_listener_certificates.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Certificates &#91;required&#93; The certificate to add. You can specify one certificate per call. Set
 #' `CertificateArn` to the certificate ARN but do not set `IsDefault`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Certificates = list(
-#'     list(
-#'       CertificateArn = "string",
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_listener_certificates(
-#'   ListenerArn = "string",
-#'   Certificates = list(
-#'     list(
-#'       CertificateArn = "string",
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -75,57 +38,12 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #' Adds the specified tags to the specified Elastic Load Balancing resource
 #'
 #' @description
-#' Adds the specified tags to the specified Elastic Load Balancing
-#' resource. You can tag your Application Load Balancers, Network Load
-#' Balancers, Gateway Load Balancers, target groups, listeners, and rules.
-#' 
-#' Each tag consists of a key and an optional value. If a resource already
-#' has a tag with the same key, [`add_tags`][elbv2_add_tags] updates its
-#' value.
+#' Adds the specified tags to the specified Elastic Load Balancing resource. You can tag your Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, listeners, and rules.
 #'
-#' @usage
-#' elbv2_add_tags(ResourceArns, Tags)
+#' See [https://paws-r.github.io/docs/elbv2/add_tags.html](https://paws-r.github.io/docs/elbv2/add_tags.html) for full documentation.
 #'
 #' @param ResourceArns &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; The tags.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_tags(
-#'   ResourceArns = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example adds the specified tags to the specified load balancer.
-#' svc$add_tags(
-#'   ResourceArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "project",
-#'       Value = "lima"
-#'     ),
-#'     list(
-#'       Key = "department",
-#'       Value = "digital-media"
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -148,38 +66,20 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 .elbv2$operations$add_tags <- elbv2_add_tags
 
 #' Creates a listener for the specified Application Load Balancer, Network
-#' Load Balancer
+#' Load Balancer, or Gateway Load Balancer
 #'
 #' @description
-#' Creates a listener for the specified Application Load Balancer, Network
-#' Load Balancer. or Gateway Load Balancer.
-#' 
-#' For more information, see the following:
-#' 
-#' -   [Listeners for your Application Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
-#' 
-#' -   [Listeners for your Network Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
-#' 
-#' -   [Listeners for your Gateway Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-listeners.html)
-#' 
-#' This operation is idempotent, which means that it completes at most one
-#' time. If you attempt to create multiple listeners with the same
-#' settings, each call succeeds.
+#' Creates a listener for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 #'
-#' @usage
-#' elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
-#'   Certificates, DefaultActions, AlpnPolicy, Tags)
+#' See [https://paws-r.github.io/docs/elbv2/create_listener.html](https://paws-r.github.io/docs/elbv2/create_listener.html) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param Protocol The protocol for connections from clients to the load balancer. For
 #' Application Load Balancers, the supported protocols are HTTP and HTTPS.
 #' For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-#' and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if
-#' dual-stack mode is enabled. You cannot specify a protocol for a Gateway
-#' Load Balancer.
+#' and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if dual-stack
+#' mode is enabled. You cannot specify a protocol for a Gateway Load
+#' Balancer.
 #' @param Port The port on which the load balancer is listening. You cannot specify a
 #' port for a Gateway Load Balancer.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
@@ -213,218 +113,6 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' in the *Network Load Balancers Guide*.
 #' @param Tags The tags to assign to the listener.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listeners = list(
-#'     list(
-#'       ListenerArn = "string",
-#'       LoadBalancerArn = "string",
-#'       Port = 123,
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'       Certificates = list(
-#'         list(
-#'           CertificateArn = "string",
-#'           IsDefault = TRUE|FALSE
-#'         )
-#'       ),
-#'       SslPolicy = "string",
-#'       DefaultActions = list(
-#'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'           TargetGroupArn = "string",
-#'           AuthenticateOidcConfig = list(
-#'             Issuer = "string",
-#'             AuthorizationEndpoint = "string",
-#'             TokenEndpoint = "string",
-#'             UserInfoEndpoint = "string",
-#'             ClientId = "string",
-#'             ClientSecret = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'             UseExistingClientSecret = TRUE|FALSE
-#'           ),
-#'           AuthenticateCognitoConfig = list(
-#'             UserPoolArn = "string",
-#'             UserPoolClientId = "string",
-#'             UserPoolDomain = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'           ),
-#'           Order = 123,
-#'           RedirectConfig = list(
-#'             Protocol = "string",
-#'             Port = "string",
-#'             Host = "string",
-#'             Path = "string",
-#'             Query = "string",
-#'             StatusCode = "HTTP_301"|"HTTP_302"
-#'           ),
-#'           FixedResponseConfig = list(
-#'             MessageBody = "string",
-#'             StatusCode = "string",
-#'             ContentType = "string"
-#'           ),
-#'           ForwardConfig = list(
-#'             TargetGroups = list(
-#'               list(
-#'                 TargetGroupArn = "string",
-#'                 Weight = 123
-#'               )
-#'             ),
-#'             TargetGroupStickinessConfig = list(
-#'               Enabled = TRUE|FALSE,
-#'               DurationSeconds = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       AlpnPolicy = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_listener(
-#'   LoadBalancerArn = "string",
-#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'   Port = 123,
-#'   SslPolicy = "string",
-#'   Certificates = list(
-#'     list(
-#'       CertificateArn = "string",
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   ),
-#'   DefaultActions = list(
-#'     list(
-#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'       TargetGroupArn = "string",
-#'       AuthenticateOidcConfig = list(
-#'         Issuer = "string",
-#'         AuthorizationEndpoint = "string",
-#'         TokenEndpoint = "string",
-#'         UserInfoEndpoint = "string",
-#'         ClientId = "string",
-#'         ClientSecret = "string",
-#'         SessionCookieName = "string",
-#'         Scope = "string",
-#'         SessionTimeout = 123,
-#'         AuthenticationRequestExtraParams = list(
-#'           "string"
-#'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'         UseExistingClientSecret = TRUE|FALSE
-#'       ),
-#'       AuthenticateCognitoConfig = list(
-#'         UserPoolArn = "string",
-#'         UserPoolClientId = "string",
-#'         UserPoolDomain = "string",
-#'         SessionCookieName = "string",
-#'         Scope = "string",
-#'         SessionTimeout = 123,
-#'         AuthenticationRequestExtraParams = list(
-#'           "string"
-#'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'       ),
-#'       Order = 123,
-#'       RedirectConfig = list(
-#'         Protocol = "string",
-#'         Port = "string",
-#'         Host = "string",
-#'         Path = "string",
-#'         Query = "string",
-#'         StatusCode = "HTTP_301"|"HTTP_302"
-#'       ),
-#'       FixedResponseConfig = list(
-#'         MessageBody = "string",
-#'         StatusCode = "string",
-#'         ContentType = "string"
-#'       ),
-#'       ForwardConfig = list(
-#'         TargetGroups = list(
-#'           list(
-#'             TargetGroupArn = "string",
-#'             Weight = 123
-#'           )
-#'         ),
-#'         TargetGroupStickinessConfig = list(
-#'           Enabled = TRUE|FALSE,
-#'           DurationSeconds = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   AlpnPolicy = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates an HTTP listener for the specified load balancer
-#' # that forwards requests to the specified target group.
-#' svc$create_listener(
-#'   DefaultActions = list(
-#'     list(
-#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
-#'       Type = "forward"
-#'     )
-#'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
-#'   Port = 80L,
-#'   Protocol = "HTTP"
-#' )
-#' 
-#' # This example creates an HTTPS listener for the specified load balancer
-#' # that forwards requests to the specified target group. Note that you must
-#' # specify an SSL certificate for an HTTPS listener. You can create and
-#' # manage certificates using AWS Certificate Manager (ACM). Alternatively,
-#' # you can create a certificate using SSL/TLS tools, get the certificate
-#' # signed by a certificate authority (CA), and upload the certificate to
-#' # AWS Identity and Access Management (IAM).
-#' svc$create_listener(
-#'   Certificates = list(
-#'     list(
-#'       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-server-cert"
-#'     )
-#'   ),
-#'   DefaultActions = list(
-#'     list(
-#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
-#'       Type = "forward"
-#'     )
-#'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
-#'   Port = 443L,
-#'   Protocol = "HTTPS",
-#'   SslPolicy = "ELBSecurityPolicy-2015-05"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname elbv2_create_listener
@@ -449,28 +137,9 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' Load Balancer
 #'
 #' @description
-#' Creates an Application Load Balancer, Network Load Balancer, or Gateway
-#' Load Balancer.
-#' 
-#' For more information, see the following:
-#' 
-#' -   [Application Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
-#' 
-#' -   [Network Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
-#' 
-#' -   [Gateway Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html)
-#' 
-#' This operation is idempotent, which means that it completes at most one
-#' time. If you attempt to create multiple load balancers with the same
-#' settings, each call succeeds.
+#' Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 #'
-#' @usage
-#' elbv2_create_load_balancer(Name, Subnets, SubnetMappings,
-#'   SecurityGroups, Scheme, Tags, Type, IpAddressType,
-#'   CustomerOwnedIpv4Pool)
+#' See [https://paws-r.github.io/docs/elbv2/create_load_balancer.html](https://paws-r.github.io/docs/elbv2/create_load_balancer.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the load balancer.
 #' 
@@ -479,7 +148,9 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' must not begin or end with a hyphen, and must not begin with
 #' "internal-".
 #' @param Subnets The IDs of the public subnets. You can specify only one subnet per
-#' Availability Zone. You must specify either subnets or subnet mappings.
+#' Availability Zone. You must specify either subnets or subnet mappings,
+#' but not both. To specify an Elastic IP address, specify subnet mappings
+#' instead of subnets.
 #' 
 #' \[Application Load Balancers\] You must specify subnets from at least
 #' two Availability Zones.
@@ -496,7 +167,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' \[Gateway Load Balancers\] You can specify subnets from one or more
 #' Availability Zones.
 #' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
-#' Availability Zone. You must specify either subnets or subnet mappings.
+#' Availability Zone. You must specify either subnets or subnet mappings,
+#' but not both.
 #' 
 #' \[Application Load Balancers\] You must specify subnets from at least
 #' two Availability Zones. You cannot specify Elastic IP addresses for your
@@ -538,110 +210,9 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' @param Type The type of load balancer. The default is `application`.
 #' @param IpAddressType The type of IP addresses used by the subnets for your load balancer. The
 #' possible values are `ipv4` (for IPv4 addresses) and `dualstack` (for
-#' IPv4 and IPv6 addresses). Internal load balancers must use `ipv4`.
+#' IPv4 and IPv6 addresses).
 #' @param CustomerOwnedIpv4Pool \[Application Load Balancers on Outposts\] The ID of the customer-owned
 #' address pool (CoIP pool).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LoadBalancers = list(
-#'     list(
-#'       LoadBalancerArn = "string",
-#'       DNSName = "string",
-#'       CanonicalHostedZoneId = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LoadBalancerName = "string",
-#'       Scheme = "internet-facing"|"internal",
-#'       VpcId = "string",
-#'       State = list(
-#'         Code = "active"|"provisioning"|"active_impaired"|"failed",
-#'         Reason = "string"
-#'       ),
-#'       Type = "application"|"network"|"gateway",
-#'       AvailabilityZones = list(
-#'         list(
-#'           ZoneName = "string",
-#'           SubnetId = "string",
-#'           OutpostId = "string",
-#'           LoadBalancerAddresses = list(
-#'             list(
-#'               IpAddress = "string",
-#'               AllocationId = "string",
-#'               PrivateIPv4Address = "string",
-#'               IPv6Address = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       SecurityGroups = list(
-#'         "string"
-#'       ),
-#'       IpAddressType = "ipv4"|"dualstack",
-#'       CustomerOwnedIpv4Pool = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_load_balancer(
-#'   Name = "string",
-#'   Subnets = list(
-#'     "string"
-#'   ),
-#'   SubnetMappings = list(
-#'     list(
-#'       SubnetId = "string",
-#'       AllocationId = "string",
-#'       PrivateIPv4Address = "string",
-#'       IPv6Address = "string"
-#'     )
-#'   ),
-#'   SecurityGroups = list(
-#'     "string"
-#'   ),
-#'   Scheme = "internet-facing"|"internal",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   Type = "application"|"network"|"gateway",
-#'   IpAddressType = "ipv4"|"dualstack",
-#'   CustomerOwnedIpv4Pool = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates an Internet-facing load balancer and enables the
-#' # Availability Zones for the specified subnets.
-#' svc$create_load_balancer(
-#'   Name = "my-load-balancer",
-#'   Subnets = list(
-#'     "subnet-b7d581c0",
-#'     "subnet-8360a9e7"
-#'   )
-#' )
-#' 
-#' # This example creates an internal load balancer and enables the
-#' # Availability Zones for the specified subnets.
-#' svc$create_load_balancer(
-#'   Name = "my-internal-load-balancer",
-#'   Scheme = "internal",
-#'   SecurityGroups = list(),
-#'   Subnets = list(
-#'     "subnet-b7d581c0",
-#'     "subnet-8360a9e7"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -666,20 +237,9 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' Creates a rule for the specified listener
 #'
 #' @description
-#' Creates a rule for the specified listener. The listener must be
-#' associated with an Application Load Balancer.
-#' 
-#' Each rule consists of a priority, one or more actions, and one or more
-#' conditions. Rules are evaluated in priority order, from the lowest value
-#' to the highest value. When the conditions for a rule are met, its
-#' actions are performed. If the conditions for no rules are met, the
-#' actions for the default rule are performed. For more information, see
-#' [Listener
-#' rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
-#' in the *Application Load Balancers Guide*.
+#' Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.
 #'
-#' @usage
-#' elbv2_create_rule(ListenerArn, Conditions, Priority, Actions, Tags)
+#' See [https://paws-r.github.io/docs/elbv2/create_rule.html](https://paws-r.github.io/docs/elbv2/create_rule.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Conditions &#91;required&#93; The conditions.
@@ -687,263 +247,6 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' priority.
 #' @param Actions &#91;required&#93; The actions.
 #' @param Tags The tags to assign to the rule.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rules = list(
-#'     list(
-#'       RuleArn = "string",
-#'       Priority = "string",
-#'       Conditions = list(
-#'         list(
-#'           Field = "string",
-#'           Values = list(
-#'             "string"
-#'           ),
-#'           HostHeaderConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           PathPatternConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           HttpHeaderConfig = list(
-#'             HttpHeaderName = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           QueryStringConfig = list(
-#'             Values = list(
-#'               list(
-#'                 Key = "string",
-#'                 Value = "string"
-#'               )
-#'             )
-#'           ),
-#'           HttpRequestMethodConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           SourceIpConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Actions = list(
-#'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'           TargetGroupArn = "string",
-#'           AuthenticateOidcConfig = list(
-#'             Issuer = "string",
-#'             AuthorizationEndpoint = "string",
-#'             TokenEndpoint = "string",
-#'             UserInfoEndpoint = "string",
-#'             ClientId = "string",
-#'             ClientSecret = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'             UseExistingClientSecret = TRUE|FALSE
-#'           ),
-#'           AuthenticateCognitoConfig = list(
-#'             UserPoolArn = "string",
-#'             UserPoolClientId = "string",
-#'             UserPoolDomain = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'           ),
-#'           Order = 123,
-#'           RedirectConfig = list(
-#'             Protocol = "string",
-#'             Port = "string",
-#'             Host = "string",
-#'             Path = "string",
-#'             Query = "string",
-#'             StatusCode = "HTTP_301"|"HTTP_302"
-#'           ),
-#'           FixedResponseConfig = list(
-#'             MessageBody = "string",
-#'             StatusCode = "string",
-#'             ContentType = "string"
-#'           ),
-#'           ForwardConfig = list(
-#'             TargetGroups = list(
-#'               list(
-#'                 TargetGroupArn = "string",
-#'                 Weight = 123
-#'               )
-#'             ),
-#'             TargetGroupStickinessConfig = list(
-#'               Enabled = TRUE|FALSE,
-#'               DurationSeconds = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_rule(
-#'   ListenerArn = "string",
-#'   Conditions = list(
-#'     list(
-#'       Field = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       HostHeaderConfig = list(
-#'         Values = list(
-#'           "string"
-#'         )
-#'       ),
-#'       PathPatternConfig = list(
-#'         Values = list(
-#'           "string"
-#'         )
-#'       ),
-#'       HttpHeaderConfig = list(
-#'         HttpHeaderName = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       ),
-#'       QueryStringConfig = list(
-#'         Values = list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string"
-#'           )
-#'         )
-#'       ),
-#'       HttpRequestMethodConfig = list(
-#'         Values = list(
-#'           "string"
-#'         )
-#'       ),
-#'       SourceIpConfig = list(
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Priority = 123,
-#'   Actions = list(
-#'     list(
-#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'       TargetGroupArn = "string",
-#'       AuthenticateOidcConfig = list(
-#'         Issuer = "string",
-#'         AuthorizationEndpoint = "string",
-#'         TokenEndpoint = "string",
-#'         UserInfoEndpoint = "string",
-#'         ClientId = "string",
-#'         ClientSecret = "string",
-#'         SessionCookieName = "string",
-#'         Scope = "string",
-#'         SessionTimeout = 123,
-#'         AuthenticationRequestExtraParams = list(
-#'           "string"
-#'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'         UseExistingClientSecret = TRUE|FALSE
-#'       ),
-#'       AuthenticateCognitoConfig = list(
-#'         UserPoolArn = "string",
-#'         UserPoolClientId = "string",
-#'         UserPoolDomain = "string",
-#'         SessionCookieName = "string",
-#'         Scope = "string",
-#'         SessionTimeout = 123,
-#'         AuthenticationRequestExtraParams = list(
-#'           "string"
-#'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'       ),
-#'       Order = 123,
-#'       RedirectConfig = list(
-#'         Protocol = "string",
-#'         Port = "string",
-#'         Host = "string",
-#'         Path = "string",
-#'         Query = "string",
-#'         StatusCode = "HTTP_301"|"HTTP_302"
-#'       ),
-#'       FixedResponseConfig = list(
-#'         MessageBody = "string",
-#'         StatusCode = "string",
-#'         ContentType = "string"
-#'       ),
-#'       ForwardConfig = list(
-#'         TargetGroups = list(
-#'           list(
-#'             TargetGroupArn = "string",
-#'             Weight = 123
-#'           )
-#'         ),
-#'         TargetGroupStickinessConfig = list(
-#'           Enabled = TRUE|FALSE,
-#'           DurationSeconds = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates a rule that forwards requests to the specified
-#' # target group if the URL contains the specified pattern (for example,
-#' # /img/*).
-#' svc$create_rule(
-#'   Actions = list(
-#'     list(
-#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
-#'       Type = "forward"
-#'     )
-#'   ),
-#'   Conditions = list(
-#'     list(
-#'       Field = "path-pattern",
-#'       Values = list(
-#'         "/img/*"
-#'       )
-#'     )
-#'   ),
-#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen...",
-#'   Priority = 10L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -969,28 +272,8 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'
 #' @description
 #' Creates a target group.
-#' 
-#' For more information, see the following:
-#' 
-#' -   [Target groups for your Application Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
-#' 
-#' -   [Target groups for your Network Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
-#' 
-#' -   [Target groups for your Gateway Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html)
-#' 
-#' This operation is idempotent, which means that it completes at most one
-#' time. If you attempt to create multiple target groups with the same
-#' settings, each call succeeds.
 #'
-#' @usage
-#' elbv2_create_target_group(Name, Protocol, ProtocolVersion, Port, VpcId,
-#'   HealthCheckProtocol, HealthCheckPort, HealthCheckEnabled,
-#'   HealthCheckPath, HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds,
-#'   HealthyThresholdCount, UnhealthyThresholdCount, Matcher, TargetType,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/elbv2/create_target_group.html](https://paws-r.github.io/docs/elbv2/create_target_group.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the target group.
 #' 
@@ -1027,18 +310,20 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' default is port 80.
 #' @param HealthCheckEnabled Indicates whether health checks are enabled. If the target type is
 #' `lambda`, health checks are disabled by default but can be enabled. If
-#' the target type is `instance` or `ip`, health checks are always enabled
-#' and cannot be disabled.
+#' the target type is `instance`, `ip`, or `alb`, health checks are always
+#' enabled and cannot be disabled.
 #' @param HealthCheckPath \[HTTP/HTTPS health checks\] The destination for health checks on the
 #' targets.
 #' 
 #' \[HTTP1 or HTTP2 protocol version\] The ping path. The default is /.
 #' 
 #' \[GRPC protocol version\] The path of a custom health check method with
-#' the format /package.service/method. The default is /AWS.ALB/healthcheck.
+#' the format /package.service/method. The default is /Amazon Web
+#' Services.ALB/healthcheck.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
-#' individual target. For TCP health checks, the supported values are 10
-#' and 30 seconds. If the target type is `instance` or `ip`, the default is
+#' individual target. If the target group protocol is HTTP or HTTPS, the
+#' default is 30 seconds. If the target group protocol is TCP, TLS, UDP, or
+#' TCP_UDP, the supported values are 10 and 30 seconds and the default is
 #' 30 seconds. If the target group protocol is GENEVE, the default is 10
 #' seconds. If the target type is `lambda`, the default is 35 seconds.
 #' @param HealthCheckTimeoutSeconds The amount of time, in seconds, during which no response from a target
@@ -1074,95 +359,24 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #'     specify publicly routable IP addresses.
 #' 
 #' -   `lambda` - Register a single Lambda function as a target.
+#' 
+#' -   `alb` - Register a single Application Load Balancer as a target.
 #' @param Tags The tags to assign to the target group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TargetGroups = list(
-#'     list(
-#'       TargetGroupArn = "string",
-#'       TargetGroupName = "string",
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'       Port = 123,
-#'       VpcId = "string",
-#'       HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'       HealthCheckPort = "string",
-#'       HealthCheckEnabled = TRUE|FALSE,
-#'       HealthCheckIntervalSeconds = 123,
-#'       HealthCheckTimeoutSeconds = 123,
-#'       HealthyThresholdCount = 123,
-#'       UnhealthyThresholdCount = 123,
-#'       HealthCheckPath = "string",
-#'       Matcher = list(
-#'         HttpCode = "string",
-#'         GrpcCode = "string"
-#'       ),
-#'       LoadBalancerArns = list(
-#'         "string"
-#'       ),
-#'       TargetType = "instance"|"ip"|"lambda",
-#'       ProtocolVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_target_group(
-#'   Name = "string",
-#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'   ProtocolVersion = "string",
-#'   Port = 123,
-#'   VpcId = "string",
-#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'   HealthCheckPort = "string",
-#'   HealthCheckEnabled = TRUE|FALSE,
-#'   HealthCheckPath = "string",
-#'   HealthCheckIntervalSeconds = 123,
-#'   HealthCheckTimeoutSeconds = 123,
-#'   HealthyThresholdCount = 123,
-#'   UnhealthyThresholdCount = 123,
-#'   Matcher = list(
-#'     HttpCode = "string",
-#'     GrpcCode = "string"
-#'   ),
-#'   TargetType = "instance"|"ip"|"lambda",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates a target group that you can use to route traffic to
-#' # targets using HTTP on port 80. This target group uses the default health
-#' # check configuration.
-#' svc$create_target_group(
-#'   Name = "my-targets",
-#'   Port = 80L,
-#'   Protocol = "HTTP",
-#'   VpcId = "vpc-3ac0fb5f"
-#' )
-#' }
+#' @param IpAddressType The type of IP address used for this target group. The possible values
+#' are `ipv4` and `ipv6`. This is an optional parameter. If not specified,
+#' the IP address type defaults to `ipv4`.
 #'
 #' @keywords internal
 #'
 #' @rdname elbv2_create_target_group
-elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = NULL, Port = NULL, VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL, Tags = NULL) {
+elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = NULL, Port = NULL, VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL, Tags = NULL, IpAddressType = NULL) {
   op <- new_operation(
     name = "CreateTargetGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$create_target_group_input(Name = Name, Protocol = Protocol, ProtocolVersion = ProtocolVersion, Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher, TargetType = TargetType, Tags = Tags)
+  input <- .elbv2$create_target_group_input(Name = Name, Protocol = Protocol, ProtocolVersion = ProtocolVersion, Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher, TargetType = TargetType, Tags = Tags, IpAddressType = IpAddressType)
   output <- .elbv2$create_target_group_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -1176,32 +390,10 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
 #'
 #' @description
 #' Deletes the specified listener.
-#' 
-#' Alternatively, your listener is deleted when you delete the load
-#' balancer to which it is attached.
 #'
-#' @usage
-#' elbv2_delete_listener(ListenerArn)
+#' See [https://paws-r.github.io/docs/elbv2/delete_listener.html](https://paws-r.github.io/docs/elbv2/delete_listener.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_listener(
-#'   ListenerArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the specified listener.
-#' svc$delete_listener(
-#'   ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listen..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1227,41 +419,11 @@ elbv2_delete_listener <- function(ListenerArn) {
 #' or Gateway Load Balancer
 #'
 #' @description
-#' Deletes the specified Application Load Balancer, Network Load Balancer,
-#' or Gateway Load Balancer. Deleting a load balancer also deletes its
-#' listeners.
-#' 
-#' You can't delete a load balancer if deletion protection is enabled. If
-#' the load balancer does not exist or has already been deleted, the call
-#' succeeds.
-#' 
-#' Deleting a load balancer does not affect its registered targets. For
-#' example, your EC2 instances continue to run and are still registered to
-#' their target groups. If you no longer need these EC2 instances, you can
-#' stop or terminate them.
+#' Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. Deleting a load balancer also deletes its listeners.
 #'
-#' @usage
-#' elbv2_delete_load_balancer(LoadBalancerArn)
+#' See [https://paws-r.github.io/docs/elbv2/delete_load_balancer.html](https://paws-r.github.io/docs/elbv2/delete_load_balancer.html) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_load_balancer(
-#'   LoadBalancerArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the specified load balancer.
-#' svc$delete_load_balancer(
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1287,31 +449,10 @@ elbv2_delete_load_balancer <- function(LoadBalancerArn) {
 #'
 #' @description
 #' Deletes the specified rule.
-#' 
-#' You can't delete the default rule.
 #'
-#' @usage
-#' elbv2_delete_rule(RuleArn)
+#' See [https://paws-r.github.io/docs/elbv2/delete_rule.html](https://paws-r.github.io/docs/elbv2/delete_rule.html) for full documentation.
 #'
 #' @param RuleArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_rule(
-#'   RuleArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the specified rule.
-#' svc$delete_rule(
-#'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-r..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1337,35 +478,10 @@ elbv2_delete_rule <- function(RuleArn) {
 #'
 #' @description
 #' Deletes the specified target group.
-#' 
-#' You can delete a target group if it is not referenced by any actions.
-#' Deleting a target group also deletes any associated health checks.
-#' Deleting a target group does not affect its registered targets. For
-#' example, any EC2 instances continue to run until you stop or terminate
-#' them.
 #'
-#' @usage
-#' elbv2_delete_target_group(TargetGroupArn)
+#' See [https://paws-r.github.io/docs/elbv2/delete_target_group.html](https://paws-r.github.io/docs/elbv2/delete_target_group.html) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_target_group(
-#'   TargetGroupArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the specified target group.
-#' svc$delete_target_group(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1390,48 +506,14 @@ elbv2_delete_target_group <- function(TargetGroupArn) {
 #' Deregisters the specified targets from the specified target group
 #'
 #' @description
-#' Deregisters the specified targets from the specified target group. After
-#' the targets are deregistered, they no longer receive traffic from the
-#' load balancer.
+#' Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer.
 #'
-#' @usage
-#' elbv2_deregister_targets(TargetGroupArn, Targets)
+#' See [https://paws-r.github.io/docs/elbv2/deregister_targets.html](https://paws-r.github.io/docs/elbv2/deregister_targets.html) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets &#91;required&#93; The targets. If you specified a port override when you registered a
 #' target, you must specify both the target ID and the port when you
 #' deregister it.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_targets(
-#'   TargetGroupArn = "string",
-#'   Targets = list(
-#'     list(
-#'       Id = "string",
-#'       Port = 123,
-#'       AvailabilityZone = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deregisters the specified instance from the specified
-#' # target group.
-#' svc$deregister_targets(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
-#'   Targets = list(
-#'     list(
-#'       Id = "i-0f76fade"
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1454,51 +536,16 @@ elbv2_deregister_targets <- function(TargetGroupArn, Targets) {
 .elbv2$operations$deregister_targets <- elbv2_deregister_targets
 
 #' Describes the current Elastic Load Balancing resource limits for your
-#' AWS account
+#' Amazon Web Services account
 #'
 #' @description
-#' Describes the current Elastic Load Balancing resource limits for your
-#' AWS account.
-#' 
-#' For more information, see the following:
-#' 
-#' -   [Quotas for your Application Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
-#' 
-#' -   [Quotas for your Network Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
-#' 
-#' -   [Quotas for your Gateway Load
-#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html)
+#' Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account.
 #'
-#' @usage
-#' elbv2_describe_account_limits(Marker, PageSize)
+#' See [https://paws-r.github.io/docs/elbv2/describe_account_limits.html](https://paws-r.github.io/docs/elbv2/describe_account_limits.html) for full documentation.
 #'
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param PageSize The maximum number of results to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Limits = list(
-#'     list(
-#'       Name = "string",
-#'       Max = "string"
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_account_limits(
-#'   Marker = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1524,49 +571,14 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #' specified HTTPS or TLS listener
 #'
 #' @description
-#' Describes the default certificate and the certificate list for the
-#' specified HTTPS or TLS listener.
-#' 
-#' If the default certificate is also in the certificate list, it appears
-#' twice in the results (once with `IsDefault` set to true and once with
-#' `IsDefault` set to false).
-#' 
-#' For more information, see [SSL
-#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates)
-#' in the *Application Load Balancers Guide* or [Server
-#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#tls-listener-certificate)
-#' in the *Network Load Balancers Guide*.
+#' Describes the default certificate and the certificate list for the specified HTTPS or TLS listener.
 #'
-#' @usage
-#' elbv2_describe_listener_certificates(ListenerArn, Marker, PageSize)
+#' See [https://paws-r.github.io/docs/elbv2/describe_listener_certificates.html](https://paws-r.github.io/docs/elbv2/describe_listener_certificates.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Names (ARN) of the listener.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param PageSize The maximum number of results to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Certificates = list(
-#'     list(
-#'       CertificateArn = "string",
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_listener_certificates(
-#'   ListenerArn = "string",
-#'   Marker = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1593,128 +605,15 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #' Balancer
 #'
 #' @description
-#' Describes the specified listeners or the listeners for the specified
-#' Application Load Balancer, Network Load Balancer, or Gateway Load
-#' Balancer. You must specify either a load balancer or one or more
-#' listeners.
+#' Describes the specified listeners or the listeners for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. You must specify either a load balancer or one or more listeners.
 #'
-#' @usage
-#' elbv2_describe_listeners(LoadBalancerArn, ListenerArns, Marker,
-#'   PageSize)
+#' See [https://paws-r.github.io/docs/elbv2/describe_listeners.html](https://paws-r.github.io/docs/elbv2/describe_listeners.html) for full documentation.
 #'
 #' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
 #' @param ListenerArns The Amazon Resource Names (ARN) of the listeners.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param PageSize The maximum number of results to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listeners = list(
-#'     list(
-#'       ListenerArn = "string",
-#'       LoadBalancerArn = "string",
-#'       Port = 123,
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'       Certificates = list(
-#'         list(
-#'           CertificateArn = "string",
-#'           IsDefault = TRUE|FALSE
-#'         )
-#'       ),
-#'       SslPolicy = "string",
-#'       DefaultActions = list(
-#'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'           TargetGroupArn = "string",
-#'           AuthenticateOidcConfig = list(
-#'             Issuer = "string",
-#'             AuthorizationEndpoint = "string",
-#'             TokenEndpoint = "string",
-#'             UserInfoEndpoint = "string",
-#'             ClientId = "string",
-#'             ClientSecret = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'             UseExistingClientSecret = TRUE|FALSE
-#'           ),
-#'           AuthenticateCognitoConfig = list(
-#'             UserPoolArn = "string",
-#'             UserPoolClientId = "string",
-#'             UserPoolDomain = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'           ),
-#'           Order = 123,
-#'           RedirectConfig = list(
-#'             Protocol = "string",
-#'             Port = "string",
-#'             Host = "string",
-#'             Path = "string",
-#'             Query = "string",
-#'             StatusCode = "HTTP_301"|"HTTP_302"
-#'           ),
-#'           FixedResponseConfig = list(
-#'             MessageBody = "string",
-#'             StatusCode = "string",
-#'             ContentType = "string"
-#'           ),
-#'           ForwardConfig = list(
-#'             TargetGroups = list(
-#'               list(
-#'                 TargetGroupArn = "string",
-#'                 Weight = 123
-#'               )
-#'             ),
-#'             TargetGroupStickinessConfig = list(
-#'               Enabled = TRUE|FALSE,
-#'               DurationSeconds = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       AlpnPolicy = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_listeners(
-#'   LoadBalancerArn = "string",
-#'   ListenerArns = list(
-#'     "string"
-#'   ),
-#'   Marker = "string",
-#'   PageSize = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the specified listener.
-#' svc$describe_listeners(
-#'   ListenerArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-lo..."
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1740,55 +639,11 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
 #' Network Load Balancer, or Gateway Load Balancer
 #'
 #' @description
-#' Describes the attributes for the specified Application Load Balancer,
-#' Network Load Balancer, or Gateway Load Balancer.
-#' 
-#' For more information, see the following:
-#' 
-#' -   [Load balancer
-#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
-#'     in the *Application Load Balancers Guide*
-#' 
-#' -   [Load balancer
-#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
-#'     in the *Network Load Balancers Guide*
-#' 
-#' -   [Load balancer
-#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html#load-balancer-attributes)
-#'     in the *Gateway Load Balancers Guide*
+#' Describes the attributes for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 #'
-#' @usage
-#' elbv2_describe_load_balancer_attributes(LoadBalancerArn)
+#' See [https://paws-r.github.io/docs/elbv2/describe_load_balancer_attributes.html](https://paws-r.github.io/docs/elbv2/describe_load_balancer_attributes.html) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Attributes = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_load_balancer_attributes(
-#'   LoadBalancerArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the attributes of the specified load balancer.
-#' svc$describe_load_balancer_attributes(
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1815,8 +670,7 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 #' @description
 #' Describes the specified load balancers or all of your load balancers.
 #'
-#' @usage
-#' elbv2_describe_load_balancers(LoadBalancerArns, Names, Marker, PageSize)
+#' See [https://paws-r.github.io/docs/elbv2/describe_load_balancers.html](https://paws-r.github.io/docs/elbv2/describe_load_balancers.html) for full documentation.
 #'
 #' @param LoadBalancerArns The Amazon Resource Names (ARN) of the load balancers. You can specify
 #' up to 20 load balancers in a single call.
@@ -1824,76 +678,6 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param PageSize The maximum number of results to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LoadBalancers = list(
-#'     list(
-#'       LoadBalancerArn = "string",
-#'       DNSName = "string",
-#'       CanonicalHostedZoneId = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LoadBalancerName = "string",
-#'       Scheme = "internet-facing"|"internal",
-#'       VpcId = "string",
-#'       State = list(
-#'         Code = "active"|"provisioning"|"active_impaired"|"failed",
-#'         Reason = "string"
-#'       ),
-#'       Type = "application"|"network"|"gateway",
-#'       AvailabilityZones = list(
-#'         list(
-#'           ZoneName = "string",
-#'           SubnetId = "string",
-#'           OutpostId = "string",
-#'           LoadBalancerAddresses = list(
-#'             list(
-#'               IpAddress = "string",
-#'               AllocationId = "string",
-#'               PrivateIPv4Address = "string",
-#'               IPv6Address = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       SecurityGroups = list(
-#'         "string"
-#'       ),
-#'       IpAddressType = "ipv4"|"dualstack",
-#'       CustomerOwnedIpv4Pool = "string"
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_load_balancers(
-#'   LoadBalancerArns = list(
-#'     "string"
-#'   ),
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   Marker = "string",
-#'   PageSize = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the specified load balancer.
-#' svc$describe_load_balancers(
-#'   LoadBalancerArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1918,156 +702,15 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #' Describes the specified rules or the rules for the specified listener
 #'
 #' @description
-#' Describes the specified rules or the rules for the specified listener.
-#' You must specify either a listener or one or more rules.
+#' Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.
 #'
-#' @usage
-#' elbv2_describe_rules(ListenerArn, RuleArns, Marker, PageSize)
+#' See [https://paws-r.github.io/docs/elbv2/describe_rules.html](https://paws-r.github.io/docs/elbv2/describe_rules.html) for full documentation.
 #'
 #' @param ListenerArn The Amazon Resource Name (ARN) of the listener.
 #' @param RuleArns The Amazon Resource Names (ARN) of the rules.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param PageSize The maximum number of results to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rules = list(
-#'     list(
-#'       RuleArn = "string",
-#'       Priority = "string",
-#'       Conditions = list(
-#'         list(
-#'           Field = "string",
-#'           Values = list(
-#'             "string"
-#'           ),
-#'           HostHeaderConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           PathPatternConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           HttpHeaderConfig = list(
-#'             HttpHeaderName = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           QueryStringConfig = list(
-#'             Values = list(
-#'               list(
-#'                 Key = "string",
-#'                 Value = "string"
-#'               )
-#'             )
-#'           ),
-#'           HttpRequestMethodConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           SourceIpConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Actions = list(
-#'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'           TargetGroupArn = "string",
-#'           AuthenticateOidcConfig = list(
-#'             Issuer = "string",
-#'             AuthorizationEndpoint = "string",
-#'             TokenEndpoint = "string",
-#'             UserInfoEndpoint = "string",
-#'             ClientId = "string",
-#'             ClientSecret = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'             UseExistingClientSecret = TRUE|FALSE
-#'           ),
-#'           AuthenticateCognitoConfig = list(
-#'             UserPoolArn = "string",
-#'             UserPoolClientId = "string",
-#'             UserPoolDomain = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'           ),
-#'           Order = 123,
-#'           RedirectConfig = list(
-#'             Protocol = "string",
-#'             Port = "string",
-#'             Host = "string",
-#'             Path = "string",
-#'             Query = "string",
-#'             StatusCode = "HTTP_301"|"HTTP_302"
-#'           ),
-#'           FixedResponseConfig = list(
-#'             MessageBody = "string",
-#'             StatusCode = "string",
-#'             ContentType = "string"
-#'           ),
-#'           ForwardConfig = list(
-#'             TargetGroups = list(
-#'               list(
-#'                 TargetGroupArn = "string",
-#'                 Weight = 123
-#'               )
-#'             ),
-#'             TargetGroupStickinessConfig = list(
-#'               Enabled = TRUE|FALSE,
-#'               DurationSeconds = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_rules(
-#'   ListenerArn = "string",
-#'   RuleArns = list(
-#'     "string"
-#'   ),
-#'   Marker = "string",
-#'   PageSize = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the specified rule.
-#' svc$describe_rules(
-#'   RuleArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/..."
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2093,77 +736,28 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' negotiation
 #'
 #' @description
-#' Describes the specified policies or all policies used for SSL
-#' negotiation.
-#' 
-#' For more information, see [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
-#' in the *Application Load Balancers Guide* or [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
-#' in the *Network Load Balancers Guide*.
+#' Describes the specified policies or all policies used for SSL negotiation.
 #'
-#' @usage
-#' elbv2_describe_ssl_policies(Names, Marker, PageSize)
+#' See [https://paws-r.github.io/docs/elbv2/describe_ssl_policies.html](https://paws-r.github.io/docs/elbv2/describe_ssl_policies.html) for full documentation.
 #'
 #' @param Names The names of the policies.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param PageSize The maximum number of results to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SslPolicies = list(
-#'     list(
-#'       SslProtocols = list(
-#'         "string"
-#'       ),
-#'       Ciphers = list(
-#'         list(
-#'           Name = "string",
-#'           Priority = 123
-#'         )
-#'       ),
-#'       Name = "string"
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_ssl_policies(
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   Marker = "string",
-#'   PageSize = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the specified policy used for SSL negotiation.
-#' svc$describe_ssl_policies(
-#'   Names = list(
-#'     "ELBSecurityPolicy-2015-05"
-#'   )
-#' )
-#' }
+#' @param LoadBalancerType The type of load balancer. The default lists the SSL policies for all
+#' load balancers.
 #'
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_ssl_policies
-elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = NULL) {
+elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = NULL, LoadBalancerType = NULL) {
   op <- new_operation(
     name = "DescribeSSLPolicies",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$describe_ssl_policies_input(Names = Names, Marker = Marker, PageSize = PageSize)
+  input <- .elbv2$describe_ssl_policies_input(Names = Names, Marker = Marker, PageSize = PageSize, LoadBalancerType = LoadBalancerType)
   output <- .elbv2$describe_ssl_policies_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -2176,53 +770,12 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
 #' Describes the tags for the specified Elastic Load Balancing resources
 #'
 #' @description
-#' Describes the tags for the specified Elastic Load Balancing resources.
-#' You can describe the tags for one or more Application Load Balancers,
-#' Network Load Balancers, Gateway Load Balancers, target groups,
-#' listeners, or rules.
+#' Describes the tags for the specified Elastic Load Balancing resources. You can describe the tags for one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, listeners, or rules.
 #'
-#' @usage
-#' elbv2_describe_tags(ResourceArns)
+#' See [https://paws-r.github.io/docs/elbv2/describe_tags.html](https://paws-r.github.io/docs/elbv2/describe_tags.html) for full documentation.
 #'
 #' @param ResourceArns &#91;required&#93; The Amazon Resource Names (ARN) of the resources. You can specify up to
 #' 20 resources in a single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagDescriptions = list(
-#'     list(
-#'       ResourceArn = "string",
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_tags(
-#'   ResourceArns = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the tags assigned to the specified load balancer.
-#' svc$describe_tags(
-#'   ResourceArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2248,53 +801,10 @@ elbv2_describe_tags <- function(ResourceArns) {
 #'
 #' @description
 #' Describes the attributes for the specified target group.
-#' 
-#' For more information, see the following:
-#' 
-#' -   [Target group
-#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
-#'     in the *Application Load Balancers Guide*
-#' 
-#' -   [Target group
-#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
-#'     in the *Network Load Balancers Guide*
-#' 
-#' -   [Target group
-#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#target-group-attributes)
-#'     in the *Gateway Load Balancers Guide*
 #'
-#' @usage
-#' elbv2_describe_target_group_attributes(TargetGroupArn)
+#' See [https://paws-r.github.io/docs/elbv2/describe_target_group_attributes.html](https://paws-r.github.io/docs/elbv2/describe_target_group_attributes.html) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Attributes = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_target_group_attributes(
-#'   TargetGroupArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the attributes of the specified target group.
-#' svc$describe_target_group_attributes(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2319,15 +829,9 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #' Describes the specified target groups or all of your target groups
 #'
 #' @description
-#' Describes the specified target groups or all of your target groups. By
-#' default, all target groups are described. Alternatively, you can specify
-#' one of the following to filter the results: the ARN of the load
-#' balancer, the names of one or more target groups, or the ARNs of one or
-#' more target groups.
+#' Describes the specified target groups or all of your target groups. By default, all target groups are described. Alternatively, you can specify one of the following to filter the results: the ARN of the load balancer, the names of one or more target groups, or the ARNs of one or more target groups.
 #'
-#' @usage
-#' elbv2_describe_target_groups(LoadBalancerArn, TargetGroupArns, Names,
-#'   Marker, PageSize)
+#' See [https://paws-r.github.io/docs/elbv2/describe_target_groups.html](https://paws-r.github.io/docs/elbv2/describe_target_groups.html) for full documentation.
 #'
 #' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
 #' @param TargetGroupArns The Amazon Resource Names (ARN) of the target groups.
@@ -2335,65 +839,6 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param PageSize The maximum number of results to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TargetGroups = list(
-#'     list(
-#'       TargetGroupArn = "string",
-#'       TargetGroupName = "string",
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'       Port = 123,
-#'       VpcId = "string",
-#'       HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'       HealthCheckPort = "string",
-#'       HealthCheckEnabled = TRUE|FALSE,
-#'       HealthCheckIntervalSeconds = 123,
-#'       HealthCheckTimeoutSeconds = 123,
-#'       HealthyThresholdCount = 123,
-#'       UnhealthyThresholdCount = 123,
-#'       HealthCheckPath = "string",
-#'       Matcher = list(
-#'         HttpCode = "string",
-#'         GrpcCode = "string"
-#'       ),
-#'       LoadBalancerArns = list(
-#'         "string"
-#'       ),
-#'       TargetType = "instance"|"ip"|"lambda",
-#'       ProtocolVersion = "string"
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_target_groups(
-#'   LoadBalancerArn = "string",
-#'   TargetGroupArns = list(
-#'     "string"
-#'   ),
-#'   Names = list(
-#'     "string"
-#'   ),
-#'   Marker = "string",
-#'   PageSize = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the specified target group.
-#' svc$describe_target_groups(
-#'   TargetGroupArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2420,69 +865,10 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #' @description
 #' Describes the health of the specified targets or all of your targets.
 #'
-#' @usage
-#' elbv2_describe_target_health(TargetGroupArn, Targets)
+#' See [https://paws-r.github.io/docs/elbv2/describe_target_health.html](https://paws-r.github.io/docs/elbv2/describe_target_health.html) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets The targets.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TargetHealthDescriptions = list(
-#'     list(
-#'       Target = list(
-#'         Id = "string",
-#'         Port = 123,
-#'         AvailabilityZone = "string"
-#'       ),
-#'       HealthCheckPort = "string",
-#'       TargetHealth = list(
-#'         State = "initial"|"healthy"|"unhealthy"|"unused"|"draining"|"unavailable",
-#'         Reason = "Elb.RegistrationInProgress"|"Elb.InitialHealthChecking"|"Target.ResponseCodeMismatch"|"Target.Timeout"|"Target.FailedHealthChecks"|"Target.NotRegistered"|"Target.NotInUse"|"Target.DeregistrationInProgress"|"Target.InvalidState"|"Target.IpUnusable"|"Target.HealthCheckDisabled"|"Elb.InternalError",
-#'         Description = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_target_health(
-#'   TargetGroupArn = "string",
-#'   Targets = list(
-#'     list(
-#'       Id = "string",
-#'       Port = 123,
-#'       AvailabilityZone = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the health of the targets for the specified
-#' # target group. One target is healthy but the other is not specified in an
-#' # action, so it can't receive traffic from the load balancer.
-#' svc$describe_target_health(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
-#' )
-#' 
-#' # This example describes the health of the specified target. This target
-#' # is healthy.
-#' svc$describe_target_health(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
-#'   Targets = list(
-#'     list(
-#'       Id = "i-0f76fade",
-#'       Port = 80L
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2507,21 +893,9 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' Replaces the specified properties of the specified listener
 #'
 #' @description
-#' Replaces the specified properties of the specified listener. Any
-#' properties that you do not specify remain unchanged.
-#' 
-#' Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes
-#' the security policy and default certificate properties. If you change
-#' the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the
-#' security policy and default certificate properties.
-#' 
-#' To add an item to a list, remove an item from a list, or update an item
-#' in a list, you must provide the entire list. For example, to add an
-#' action, specify a list with the current actions plus the new action.
+#' Replaces the specified properties of the specified listener. Any properties that you do not specify remain unchanged.
 #'
-#' @usage
-#' elbv2_modify_listener(ListenerArn, Port, Protocol, SslPolicy,
-#'   Certificates, DefaultActions, AlpnPolicy)
+#' See [https://paws-r.github.io/docs/elbv2/modify_listener.html](https://paws-r.github.io/docs/elbv2/modify_listener.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Port The port for connections from clients to the load balancer. You cannot
@@ -2561,195 +935,6 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
 #' in the *Network Load Balancers Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listeners = list(
-#'     list(
-#'       ListenerArn = "string",
-#'       LoadBalancerArn = "string",
-#'       Port = 123,
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'       Certificates = list(
-#'         list(
-#'           CertificateArn = "string",
-#'           IsDefault = TRUE|FALSE
-#'         )
-#'       ),
-#'       SslPolicy = "string",
-#'       DefaultActions = list(
-#'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'           TargetGroupArn = "string",
-#'           AuthenticateOidcConfig = list(
-#'             Issuer = "string",
-#'             AuthorizationEndpoint = "string",
-#'             TokenEndpoint = "string",
-#'             UserInfoEndpoint = "string",
-#'             ClientId = "string",
-#'             ClientSecret = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'             UseExistingClientSecret = TRUE|FALSE
-#'           ),
-#'           AuthenticateCognitoConfig = list(
-#'             UserPoolArn = "string",
-#'             UserPoolClientId = "string",
-#'             UserPoolDomain = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'           ),
-#'           Order = 123,
-#'           RedirectConfig = list(
-#'             Protocol = "string",
-#'             Port = "string",
-#'             Host = "string",
-#'             Path = "string",
-#'             Query = "string",
-#'             StatusCode = "HTTP_301"|"HTTP_302"
-#'           ),
-#'           FixedResponseConfig = list(
-#'             MessageBody = "string",
-#'             StatusCode = "string",
-#'             ContentType = "string"
-#'           ),
-#'           ForwardConfig = list(
-#'             TargetGroups = list(
-#'               list(
-#'                 TargetGroupArn = "string",
-#'                 Weight = 123
-#'               )
-#'             ),
-#'             TargetGroupStickinessConfig = list(
-#'               Enabled = TRUE|FALSE,
-#'               DurationSeconds = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       AlpnPolicy = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_listener(
-#'   ListenerArn = "string",
-#'   Port = 123,
-#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'   SslPolicy = "string",
-#'   Certificates = list(
-#'     list(
-#'       CertificateArn = "string",
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   ),
-#'   DefaultActions = list(
-#'     list(
-#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'       TargetGroupArn = "string",
-#'       AuthenticateOidcConfig = list(
-#'         Issuer = "string",
-#'         AuthorizationEndpoint = "string",
-#'         TokenEndpoint = "string",
-#'         UserInfoEndpoint = "string",
-#'         ClientId = "string",
-#'         ClientSecret = "string",
-#'         SessionCookieName = "string",
-#'         Scope = "string",
-#'         SessionTimeout = 123,
-#'         AuthenticationRequestExtraParams = list(
-#'           "string"
-#'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'         UseExistingClientSecret = TRUE|FALSE
-#'       ),
-#'       AuthenticateCognitoConfig = list(
-#'         UserPoolArn = "string",
-#'         UserPoolClientId = "string",
-#'         UserPoolDomain = "string",
-#'         SessionCookieName = "string",
-#'         Scope = "string",
-#'         SessionTimeout = 123,
-#'         AuthenticationRequestExtraParams = list(
-#'           "string"
-#'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'       ),
-#'       Order = 123,
-#'       RedirectConfig = list(
-#'         Protocol = "string",
-#'         Port = "string",
-#'         Host = "string",
-#'         Path = "string",
-#'         Query = "string",
-#'         StatusCode = "HTTP_301"|"HTTP_302"
-#'       ),
-#'       FixedResponseConfig = list(
-#'         MessageBody = "string",
-#'         StatusCode = "string",
-#'         ContentType = "string"
-#'       ),
-#'       ForwardConfig = list(
-#'         TargetGroups = list(
-#'           list(
-#'             TargetGroupArn = "string",
-#'             Weight = 123
-#'           )
-#'         ),
-#'         TargetGroupStickinessConfig = list(
-#'           Enabled = TRUE|FALSE,
-#'           DurationSeconds = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   AlpnPolicy = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example changes the default action for the specified listener.
-#' svc$modify_listener(
-#'   DefaultActions = list(
-#'     list(
-#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
-#'       Type = "forward"
-#'     )
-#'   ),
-#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
-#' )
-#' 
-#' # This example changes the server certificate for the specified HTTPS
-#' # listener.
-#' svc$modify_listener(
-#'   Certificates = list(
-#'     list(
-#'       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"
-#'     )
-#'   ),
-#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname elbv2_modify_listener
@@ -2774,93 +959,12 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #' Balancer, Network Load Balancer, or Gateway Load Balancer
 #'
 #' @description
-#' Modifies the specified attributes of the specified Application Load
-#' Balancer, Network Load Balancer, or Gateway Load Balancer.
-#' 
-#' If any of the specified attributes can't be modified as requested, the
-#' call fails. Any existing attributes that you do not modify retain their
-#' current values.
+#' Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 #'
-#' @usage
-#' elbv2_modify_load_balancer_attributes(LoadBalancerArn, Attributes)
+#' See [https://paws-r.github.io/docs/elbv2/modify_load_balancer_attributes.html](https://paws-r.github.io/docs/elbv2/modify_load_balancer_attributes.html) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param Attributes &#91;required&#93; The load balancer attributes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Attributes = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_load_balancer_attributes(
-#'   LoadBalancerArn = "string",
-#'   Attributes = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example enables deletion protection for the specified load
-#' # balancer.
-#' svc$modify_load_balancer_attributes(
-#'   Attributes = list(
-#'     list(
-#'       Key = "deletion_protection.enabled",
-#'       Value = "true"
-#'     )
-#'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
-#' )
-#' 
-#' # This example changes the idle timeout value for the specified load
-#' # balancer.
-#' svc$modify_load_balancer_attributes(
-#'   Attributes = list(
-#'     list(
-#'       Key = "idle_timeout.timeout_seconds",
-#'       Value = "30"
-#'     )
-#'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
-#' )
-#' 
-#' # This example enables access logs for the specified load balancer. Note
-#' # that the S3 bucket must exist in the same region as the load balancer
-#' # and must have a policy attached that grants access to the Elastic Load
-#' # Balancing service.
-#' svc$modify_load_balancer_attributes(
-#'   Attributes = list(
-#'     list(
-#'       Key = "access_logs.s3.enabled",
-#'       Value = "true"
-#'     ),
-#'     list(
-#'       Key = "access_logs.s3.bucket",
-#'       Value = "my-loadbalancer-logs"
-#'     ),
-#'     list(
-#'       Key = "access_logs.s3.prefix",
-#'       Value = "myapp"
-#'     )
-#'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2885,260 +989,13 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #' Replaces the specified properties of the specified rule
 #'
 #' @description
-#' Replaces the specified properties of the specified rule. Any properties
-#' that you do not specify are unchanged.
-#' 
-#' To add an item to a list, remove an item from a list, or update an item
-#' in a list, you must provide the entire list. For example, to add an
-#' action, specify a list with the current actions plus the new action.
+#' Replaces the specified properties of the specified rule. Any properties that you do not specify are unchanged.
 #'
-#' @usage
-#' elbv2_modify_rule(RuleArn, Conditions, Actions)
+#' See [https://paws-r.github.io/docs/elbv2/modify_rule.html](https://paws-r.github.io/docs/elbv2/modify_rule.html) for full documentation.
 #'
 #' @param RuleArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule.
 #' @param Conditions The conditions.
 #' @param Actions The actions.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rules = list(
-#'     list(
-#'       RuleArn = "string",
-#'       Priority = "string",
-#'       Conditions = list(
-#'         list(
-#'           Field = "string",
-#'           Values = list(
-#'             "string"
-#'           ),
-#'           HostHeaderConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           PathPatternConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           HttpHeaderConfig = list(
-#'             HttpHeaderName = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           QueryStringConfig = list(
-#'             Values = list(
-#'               list(
-#'                 Key = "string",
-#'                 Value = "string"
-#'               )
-#'             )
-#'           ),
-#'           HttpRequestMethodConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           SourceIpConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Actions = list(
-#'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'           TargetGroupArn = "string",
-#'           AuthenticateOidcConfig = list(
-#'             Issuer = "string",
-#'             AuthorizationEndpoint = "string",
-#'             TokenEndpoint = "string",
-#'             UserInfoEndpoint = "string",
-#'             ClientId = "string",
-#'             ClientSecret = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'             UseExistingClientSecret = TRUE|FALSE
-#'           ),
-#'           AuthenticateCognitoConfig = list(
-#'             UserPoolArn = "string",
-#'             UserPoolClientId = "string",
-#'             UserPoolDomain = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'           ),
-#'           Order = 123,
-#'           RedirectConfig = list(
-#'             Protocol = "string",
-#'             Port = "string",
-#'             Host = "string",
-#'             Path = "string",
-#'             Query = "string",
-#'             StatusCode = "HTTP_301"|"HTTP_302"
-#'           ),
-#'           FixedResponseConfig = list(
-#'             MessageBody = "string",
-#'             StatusCode = "string",
-#'             ContentType = "string"
-#'           ),
-#'           ForwardConfig = list(
-#'             TargetGroups = list(
-#'               list(
-#'                 TargetGroupArn = "string",
-#'                 Weight = 123
-#'               )
-#'             ),
-#'             TargetGroupStickinessConfig = list(
-#'               Enabled = TRUE|FALSE,
-#'               DurationSeconds = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_rule(
-#'   RuleArn = "string",
-#'   Conditions = list(
-#'     list(
-#'       Field = "string",
-#'       Values = list(
-#'         "string"
-#'       ),
-#'       HostHeaderConfig = list(
-#'         Values = list(
-#'           "string"
-#'         )
-#'       ),
-#'       PathPatternConfig = list(
-#'         Values = list(
-#'           "string"
-#'         )
-#'       ),
-#'       HttpHeaderConfig = list(
-#'         HttpHeaderName = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       ),
-#'       QueryStringConfig = list(
-#'         Values = list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string"
-#'           )
-#'         )
-#'       ),
-#'       HttpRequestMethodConfig = list(
-#'         Values = list(
-#'           "string"
-#'         )
-#'       ),
-#'       SourceIpConfig = list(
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Actions = list(
-#'     list(
-#'       Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'       TargetGroupArn = "string",
-#'       AuthenticateOidcConfig = list(
-#'         Issuer = "string",
-#'         AuthorizationEndpoint = "string",
-#'         TokenEndpoint = "string",
-#'         UserInfoEndpoint = "string",
-#'         ClientId = "string",
-#'         ClientSecret = "string",
-#'         SessionCookieName = "string",
-#'         Scope = "string",
-#'         SessionTimeout = 123,
-#'         AuthenticationRequestExtraParams = list(
-#'           "string"
-#'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'         UseExistingClientSecret = TRUE|FALSE
-#'       ),
-#'       AuthenticateCognitoConfig = list(
-#'         UserPoolArn = "string",
-#'         UserPoolClientId = "string",
-#'         UserPoolDomain = "string",
-#'         SessionCookieName = "string",
-#'         Scope = "string",
-#'         SessionTimeout = 123,
-#'         AuthenticationRequestExtraParams = list(
-#'           "string"
-#'         ),
-#'         OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'       ),
-#'       Order = 123,
-#'       RedirectConfig = list(
-#'         Protocol = "string",
-#'         Port = "string",
-#'         Host = "string",
-#'         Path = "string",
-#'         Query = "string",
-#'         StatusCode = "HTTP_301"|"HTTP_302"
-#'       ),
-#'       FixedResponseConfig = list(
-#'         MessageBody = "string",
-#'         StatusCode = "string",
-#'         ContentType = "string"
-#'       ),
-#'       ForwardConfig = list(
-#'         TargetGroups = list(
-#'           list(
-#'             TargetGroupArn = "string",
-#'             Weight = 123
-#'           )
-#'         ),
-#'         TargetGroupStickinessConfig = list(
-#'           Enabled = TRUE|FALSE,
-#'           DurationSeconds = 123
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example modifies the condition for the specified rule.
-#' svc$modify_rule(
-#'   Conditions = list(
-#'     list(
-#'       Field = "path-pattern",
-#'       Values = list(
-#'         "/images/*"
-#'       )
-#'     )
-#'   ),
-#'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-r..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3164,22 +1021,19 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' targets in the specified target group
 #'
 #' @description
-#' Modifies the health checks used when evaluating the health state of the
-#' targets in the specified target group.
+#' Modifies the health checks used when evaluating the health state of the targets in the specified target group.
 #'
-#' @usage
-#' elbv2_modify_target_group(TargetGroupArn, HealthCheckProtocol,
-#'   HealthCheckPort, HealthCheckPath, HealthCheckEnabled,
-#'   HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds,
-#'   HealthyThresholdCount, UnhealthyThresholdCount, Matcher)
+#' See [https://paws-r.github.io/docs/elbv2/modify_target_group.html](https://paws-r.github.io/docs/elbv2/modify_target_group.html) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on
-#' targets. The TCP protocol is supported for health checks only if the
-#' protocol of the target group is TCP, TLS, UDP, or TCP_UDP. The GENEVE,
-#' TLS, UDP, and TCP_UDP protocols are not supported for health checks.
-#' 
-#' With Network Load Balancers, you can't modify this setting.
+#' targets. For Application Load Balancers, the default is HTTP. For
+#' Network Load Balancers and Gateway Load Balancers, the default is TCP.
+#' The TCP protocol is not supported for health checks if the protocol of
+#' the target group is HTTP or HTTPS. It is supported for health checks
+#' only if the protocol of the target group is TCP, TLS, UDP, or TCP_UDP.
+#' The GENEVE, TLS, UDP, and TCP_UDP protocols are not supported for health
+#' checks.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on
 #' targets.
 #' @param HealthCheckPath \[HTTP/HTTPS health checks\] The destination for health checks on the
@@ -3188,17 +1042,14 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' \[HTTP1 or HTTP2 protocol version\] The ping path. The default is /.
 #' 
 #' \[GRPC protocol version\] The path of a custom health check method with
-#' the format /package.service/method. The default is /AWS.ALB/healthcheck.
+#' the format /package.service/method. The default is /Amazon Web
+#' Services.ALB/healthcheck.
 #' @param HealthCheckEnabled Indicates whether health checks are enabled.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
 #' individual target. For TCP health checks, the supported values are 10 or
 #' 30 seconds.
-#' 
-#' With Network Load Balancers, you can't modify this setting.
 #' @param HealthCheckTimeoutSeconds \[HTTP/HTTPS health checks\] The amount of time, in seconds, during
 #' which no response means a failed health check.
-#' 
-#' With Network Load Balancers, you can't modify this setting.
 #' @param HealthyThresholdCount The number of consecutive health checks successes required before
 #' considering an unhealthy target healthy.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before
@@ -3206,71 +1057,6 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' TCP or TLS, this value must be the same as the healthy threshold count.
 #' @param Matcher \[HTTP/HTTPS health checks\] The HTTP or gRPC codes to use when checking
 #' for a successful response from a target.
-#' 
-#' With Network Load Balancers, you can't modify this setting.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TargetGroups = list(
-#'     list(
-#'       TargetGroupArn = "string",
-#'       TargetGroupName = "string",
-#'       Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'       Port = 123,
-#'       VpcId = "string",
-#'       HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'       HealthCheckPort = "string",
-#'       HealthCheckEnabled = TRUE|FALSE,
-#'       HealthCheckIntervalSeconds = 123,
-#'       HealthCheckTimeoutSeconds = 123,
-#'       HealthyThresholdCount = 123,
-#'       UnhealthyThresholdCount = 123,
-#'       HealthCheckPath = "string",
-#'       Matcher = list(
-#'         HttpCode = "string",
-#'         GrpcCode = "string"
-#'       ),
-#'       LoadBalancerArns = list(
-#'         "string"
-#'       ),
-#'       TargetType = "instance"|"ip"|"lambda",
-#'       ProtocolVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_target_group(
-#'   TargetGroupArn = "string",
-#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-#'   HealthCheckPort = "string",
-#'   HealthCheckPath = "string",
-#'   HealthCheckEnabled = TRUE|FALSE,
-#'   HealthCheckIntervalSeconds = 123,
-#'   HealthCheckTimeoutSeconds = 123,
-#'   HealthyThresholdCount = 123,
-#'   UnhealthyThresholdCount = 123,
-#'   Matcher = list(
-#'     HttpCode = "string",
-#'     GrpcCode = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example changes the configuration of the health checks used to
-#' # evaluate the health of the targets for the specified target group.
-#' svc$modify_target_group(
-#'   HealthCheckPort = "443",
-#'   HealthCheckProtocol = "HTTPS",
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3297,52 +1083,10 @@ elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL
 #' @description
 #' Modifies the specified attributes of the specified target group.
 #'
-#' @usage
-#' elbv2_modify_target_group_attributes(TargetGroupArn, Attributes)
+#' See [https://paws-r.github.io/docs/elbv2/modify_target_group_attributes.html](https://paws-r.github.io/docs/elbv2/modify_target_group_attributes.html) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Attributes &#91;required&#93; The attributes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Attributes = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_target_group_attributes(
-#'   TargetGroupArn = "string",
-#'   Attributes = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example sets the deregistration delay timeout to the specified
-#' # value for the specified target group.
-#' svc$modify_target_group_attributes(
-#'   Attributes = list(
-#'     list(
-#'       Key = "deregistration_delay.timeout_seconds",
-#'       Value = "600"
-#'     )
-#'   ),
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3368,77 +1112,11 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 #'
 #' @description
 #' Registers the specified targets with the specified target group.
-#' 
-#' If the target is an EC2 instance, it must be in the `running` state when
-#' you register it.
-#' 
-#' By default, the load balancer routes requests to registered targets
-#' using the protocol and port for the target group. Alternatively, you can
-#' override the port for a target when you register it. You can register
-#' each EC2 instance or IP address with the same target group multiple
-#' times using different ports.
-#' 
-#' With a Network Load Balancer, you cannot register instances by instance
-#' ID if they have the following instance types: C1, CC1, CC2, CG1, CG2,
-#' CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register
-#' instances of these types by IP address.
 #'
-#' @usage
-#' elbv2_register_targets(TargetGroupArn, Targets)
+#' See [https://paws-r.github.io/docs/elbv2/register_targets.html](https://paws-r.github.io/docs/elbv2/register_targets.html) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets &#91;required&#93; The targets.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_targets(
-#'   TargetGroupArn = "string",
-#'   Targets = list(
-#'     list(
-#'       Id = "string",
-#'       Port = 123,
-#'       AvailabilityZone = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example registers the specified instances with the specified target
-#' # group.
-#' svc$register_targets(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
-#'   Targets = list(
-#'     list(
-#'       Id = "i-80c8dd94"
-#'     ),
-#'     list(
-#'       Id = "i-ceddcd4d"
-#'     )
-#'   )
-#' )
-#' 
-#' # This example registers the specified instance with the specified target
-#' # group using multiple ports. This enables you to register ECS containers
-#' # on the same instance as targets in the target group.
-#' svc$register_targets(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
-#'   Targets = list(
-#'     list(
-#'       Id = "i-80c8dd94",
-#'       Port = 80L
-#'     ),
-#'     list(
-#'       Id = "i-80c8dd94",
-#'       Port = 766L
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3464,31 +1142,13 @@ elbv2_register_targets <- function(TargetGroupArn, Targets) {
 #' specified HTTPS or TLS listener
 #'
 #' @description
-#' Removes the specified certificate from the certificate list for the
-#' specified HTTPS or TLS listener.
+#' Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener.
 #'
-#' @usage
-#' elbv2_remove_listener_certificates(ListenerArn, Certificates)
+#' See [https://paws-r.github.io/docs/elbv2/remove_listener_certificates.html](https://paws-r.github.io/docs/elbv2/remove_listener_certificates.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Certificates &#91;required&#93; The certificate to remove. You can specify one certificate per call. Set
 #' `CertificateArn` to the certificate ARN but do not set `IsDefault`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_listener_certificates(
-#'   ListenerArn = "string",
-#'   Certificates = list(
-#'     list(
-#'       CertificateArn = "string",
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3514,46 +1174,12 @@ elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
 #' resources
 #'
 #' @description
-#' Removes the specified tags from the specified Elastic Load Balancing
-#' resources. You can remove the tags for one or more Application Load
-#' Balancers, Network Load Balancers, Gateway Load Balancers, target
-#' groups, listeners, or rules.
+#' Removes the specified tags from the specified Elastic Load Balancing resources. You can remove the tags for one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, listeners, or rules.
 #'
-#' @usage
-#' elbv2_remove_tags(ResourceArns, TagKeys)
+#' See [https://paws-r.github.io/docs/elbv2/remove_tags.html](https://paws-r.github.io/docs/elbv2/remove_tags.html) for full documentation.
 #'
 #' @param ResourceArns &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys for the tags to remove.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_tags(
-#'   ResourceArns = list(
-#'     "string"
-#'   ),
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example removes the specified tags from the specified load
-#' # balancer.
-#' svc$remove_tags(
-#'   ResourceArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
-#'   ),
-#'   TagKeys = list(
-#'     "project",
-#'     "department"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3579,33 +1205,14 @@ elbv2_remove_tags <- function(ResourceArns, TagKeys) {
 #' Application Load Balancer or Network Load Balancer
 #'
 #' @description
-#' Sets the type of IP addresses used by the subnets of the specified
-#' Application Load Balancer or Network Load Balancer.
+#' Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer.
 #'
-#' @usage
-#' elbv2_set_ip_address_type(LoadBalancerArn, IpAddressType)
+#' See [https://paws-r.github.io/docs/elbv2/set_ip_address_type.html](https://paws-r.github.io/docs/elbv2/set_ip_address_type.html) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param IpAddressType &#91;required&#93; The IP address type. The possible values are `ipv4` (for IPv4 addresses)
-#' and `dualstack` (for IPv4 and IPv6 addresses). Internal load balancers
-#' must use `ipv4`. You can’t specify `dualstack` for a load balancer with
-#' a UDP or TCP_UDP listener.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IpAddressType = "ipv4"|"dualstack"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_ip_address_type(
-#'   LoadBalancerArn = "string",
-#'   IpAddressType = "ipv4"|"dualstack"
-#' )
-#' ```
+#' and `dualstack` (for IPv4 and IPv6 addresses). You can’t specify
+#' `dualstack` for a load balancer with a UDP or TCP_UDP listener.
 #'
 #' @keywords internal
 #'
@@ -3631,156 +1238,10 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 #'
 #' @description
 #' Sets the priorities of the specified rules.
-#' 
-#' You can reorder the rules as long as there are no priority conflicts in
-#' the new order. Any existing rules that you do not specify retain their
-#' current priority.
 #'
-#' @usage
-#' elbv2_set_rule_priorities(RulePriorities)
+#' See [https://paws-r.github.io/docs/elbv2/set_rule_priorities.html](https://paws-r.github.io/docs/elbv2/set_rule_priorities.html) for full documentation.
 #'
 #' @param RulePriorities &#91;required&#93; The rule priorities.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rules = list(
-#'     list(
-#'       RuleArn = "string",
-#'       Priority = "string",
-#'       Conditions = list(
-#'         list(
-#'           Field = "string",
-#'           Values = list(
-#'             "string"
-#'           ),
-#'           HostHeaderConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           PathPatternConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           HttpHeaderConfig = list(
-#'             HttpHeaderName = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           QueryStringConfig = list(
-#'             Values = list(
-#'               list(
-#'                 Key = "string",
-#'                 Value = "string"
-#'               )
-#'             )
-#'           ),
-#'           HttpRequestMethodConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           ),
-#'           SourceIpConfig = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Actions = list(
-#'         list(
-#'           Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-#'           TargetGroupArn = "string",
-#'           AuthenticateOidcConfig = list(
-#'             Issuer = "string",
-#'             AuthorizationEndpoint = "string",
-#'             TokenEndpoint = "string",
-#'             UserInfoEndpoint = "string",
-#'             ClientId = "string",
-#'             ClientSecret = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-#'             UseExistingClientSecret = TRUE|FALSE
-#'           ),
-#'           AuthenticateCognitoConfig = list(
-#'             UserPoolArn = "string",
-#'             UserPoolClientId = "string",
-#'             UserPoolDomain = "string",
-#'             SessionCookieName = "string",
-#'             Scope = "string",
-#'             SessionTimeout = 123,
-#'             AuthenticationRequestExtraParams = list(
-#'               "string"
-#'             ),
-#'             OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-#'           ),
-#'           Order = 123,
-#'           RedirectConfig = list(
-#'             Protocol = "string",
-#'             Port = "string",
-#'             Host = "string",
-#'             Path = "string",
-#'             Query = "string",
-#'             StatusCode = "HTTP_301"|"HTTP_302"
-#'           ),
-#'           FixedResponseConfig = list(
-#'             MessageBody = "string",
-#'             StatusCode = "string",
-#'             ContentType = "string"
-#'           ),
-#'           ForwardConfig = list(
-#'             TargetGroups = list(
-#'               list(
-#'                 TargetGroupArn = "string",
-#'                 Weight = 123
-#'               )
-#'             ),
-#'             TargetGroupStickinessConfig = list(
-#'               Enabled = TRUE|FALSE,
-#'               DurationSeconds = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       IsDefault = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_rule_priorities(
-#'   RulePriorities = list(
-#'     list(
-#'       RuleArn = "string",
-#'       Priority = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example sets the priority of the specified rule.
-#' svc$set_rule_priorities(
-#'   RulePriorities = list(
-#'     list(
-#'       Priority = 5L,
-#'       RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3806,50 +1267,12 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 #' Load Balancer
 #'
 #' @description
-#' Associates the specified security groups with the specified Application
-#' Load Balancer. The specified security groups override the previously
-#' associated security groups.
-#' 
-#' You can't specify a security group for a Network Load Balancer or
-#' Gateway Load Balancer.
+#' Associates the specified security groups with the specified Application Load Balancer. The specified security groups override the previously associated security groups.
 #'
-#' @usage
-#' elbv2_set_security_groups(LoadBalancerArn, SecurityGroups)
+#' See [https://paws-r.github.io/docs/elbv2/set_security_groups.html](https://paws-r.github.io/docs/elbv2/set_security_groups.html) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param SecurityGroups &#91;required&#93; The IDs of the security groups.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_security_groups(
-#'   LoadBalancerArn = "string",
-#'   SecurityGroups = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example associates the specified security group with the specified
-#' # load balancer.
-#' svc$set_security_groups(
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
-#'   SecurityGroups = list(
-#'     "sg-5943793c"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3875,17 +1298,9 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' specified Application Load Balancer or Network Load Balancer
 #'
 #' @description
-#' Enables the Availability Zones for the specified public subnets for the
-#' specified Application Load Balancer or Network Load Balancer. The
-#' specified subnets replace the previously enabled subnets.
-#' 
-#' When you specify subnets for a Network Load Balancer, you must include
-#' all subnets that were enabled previously, with their existing
-#' configurations, plus any additional subnets.
+#' Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer. The specified subnets replace the previously enabled subnets.
 #'
-#' @usage
-#' elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings,
-#'   IpAddressType)
+#' See [https://paws-r.github.io/docs/elbv2/set_subnets.html](https://paws-r.github.io/docs/elbv2/set_subnets.html) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param Subnets The IDs of the public subnets. You can specify only one subnet per
@@ -3925,62 +1340,7 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' for your load balancer. The possible values are `ipv4` (for IPv4
 #' addresses) and `dualstack` (for IPv4 and IPv6 addresses). You can’t
 #' specify `dualstack` for a load balancer with a UDP or TCP_UDP listener.
-#' Internal load balancers must use `ipv4`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AvailabilityZones = list(
-#'     list(
-#'       ZoneName = "string",
-#'       SubnetId = "string",
-#'       OutpostId = "string",
-#'       LoadBalancerAddresses = list(
-#'         list(
-#'           IpAddress = "string",
-#'           AllocationId = "string",
-#'           PrivateIPv4Address = "string",
-#'           IPv6Address = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   IpAddressType = "ipv4"|"dualstack"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_subnets(
-#'   LoadBalancerArn = "string",
-#'   Subnets = list(
-#'     "string"
-#'   ),
-#'   SubnetMappings = list(
-#'     list(
-#'       SubnetId = "string",
-#'       AllocationId = "string",
-#'       PrivateIPv4Address = "string",
-#'       IPv6Address = "string"
-#'     )
-#'   ),
-#'   IpAddressType = "ipv4"|"dualstack"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example enables the Availability Zones for the specified subnets
-#' # for the specified load balancer.
-#' svc$set_subnets(
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
-#'   Subnets = list(
-#'     "subnet-8360a9e7",
-#'     "subnet-b7d581c0"
-#'   )
-#' )
-#' }
+#' .
 #'
 #' @keywords internal
 #'

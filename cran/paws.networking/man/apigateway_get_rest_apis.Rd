@@ -4,7 +4,7 @@
 \alias{apigateway_get_rest_apis}
 \title{Lists the RestApis resources for your collection}
 \usage{
-apigateway_get_rest_apis(position, limit)
+apigateway_get_rest_apis(position = NULL, limit = NULL)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}
@@ -12,53 +12,9 @@ apigateway_get_rest_apis(position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      id = "string",
-      name = "string",
-      description = "string",
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      version = "string",
-      warnings = list(
-        "string"
-      ),
-      binaryMediaTypes = list(
-        "string"
-      ),
-      minimumCompressionSize = 123,
-      apiKeySource = "HEADER"|"AUTHORIZER",
-      endpointConfiguration = list(
-        types = list(
-          "REGIONAL"|"EDGE"|"PRIVATE"
-        ),
-        vpcEndpointIds = list(
-          "string"
-        )
-      ),
-      policy = "string",
-      tags = list(
-        "string"
-      ),
-      disableExecuteApiEndpoint = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
 Lists the RestApis resources for your collection.
-}
-\section{Request syntax}{
-\preformatted{svc$get_rest_apis(
-  position = "string",
-  limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_rest_apis.html} for full documentation.
+}
 \keyword{internal}

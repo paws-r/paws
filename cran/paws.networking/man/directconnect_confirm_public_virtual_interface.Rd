@@ -2,32 +2,17 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_confirm_public_virtual_interface}
 \alias{directconnect_confirm_public_virtual_interface}
-\title{Accepts ownership of a public virtual interface created by another AWS
-account}
+\title{Accepts ownership of a public virtual interface created by another
+Amazon Web Services account}
 \usage{
 directconnect_confirm_public_virtual_interface(virtualInterfaceId)
 }
 \arguments{
 \item{virtualInterfaceId}{[required] The ID of the virtual interface.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
-)
-}
-}
 \description{
-Accepts ownership of a public virtual interface created by another AWS
-account.
+Accepts ownership of a public virtual interface created by another Amazon Web Services account.
 
-After the virtual interface owner makes this call, the specified virtual
-interface is created and made available to handle traffic.
+See \url{https://paws-r.github.io/docs/directconnect/confirm_public_virtual_interface.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$confirm_public_virtual_interface(
-  virtualInterfaceId = "string"
-)
-}
-}
-
 \keyword{internal}

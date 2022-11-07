@@ -9,17 +9,9 @@ globalaccelerator_delete_custom_routing_listener(ListenerArn)
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Delete a listener for a custom routing accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_custom_routing_listener(
-  ListenerArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_listener.html} for full documentation.
+}
 \keyword{internal}

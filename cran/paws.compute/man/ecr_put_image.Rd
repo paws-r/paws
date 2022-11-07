@@ -4,13 +4,19 @@
 \alias{ecr_put_image}
 \title{Creates or updates the image manifest and tags associated with an image}
 \usage{
-ecr_put_image(registryId, repositoryName, imageManifest,
-  imageManifestMediaType, imageTag, imageDigest)
+ecr_put_image(
+  registryId = NULL,
+  repositoryName,
+  imageManifest,
+  imageManifestMediaType = NULL,
+  imageTag = NULL,
+  imageDigest = NULL
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository in which to put the image. If you do not specify a registry,
-the default registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository in which to put the image. If you do not specify
+a registry, the default registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository in which to put the image.}
 
@@ -26,42 +32,9 @@ Initiative (OCI) formats.}
 
 \item{imageDigest}{The image digest of the image manifest corresponding to the image.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  image = list(
-    registryId = "string",
-    repositoryName = "string",
-    imageId = list(
-      imageDigest = "string",
-      imageTag = "string"
-    ),
-    imageManifest = "string",
-    imageManifestMediaType = "string"
-  )
-)
-}
-}
 \description{
 Creates or updates the image manifest and tags associated with an image.
 
-When an image is pushed and all new image layers have been uploaded, the
-PutImage API is called once to create or update the image manifest and
-the tags associated with the image.
-
-This operation is used by the Amazon ECR proxy and is not generally used
-by customers for pulling and pushing images. In most cases, you should
-use the \code{docker} CLI to pull, tag, and push images.
+See \url{https://paws-r.github.io/docs/ecr/put_image.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_image(
-  registryId = "string",
-  repositoryName = "string",
-  imageManifest = "string",
-  imageManifestMediaType = "string",
-  imageTag = "string",
-  imageDigest = "string"
-)
-}
-}
-
 \keyword{internal}

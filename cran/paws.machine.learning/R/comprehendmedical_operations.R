@@ -6,57 +6,13 @@ NULL
 #' Gets the properties associated with a medical entities detection job
 #'
 #' @description
-#' Gets the properties associated with a medical entities detection job.
-#' Use this operation to get the status of a detection job.
+#' Gets the properties associated with a medical entities detection job. Use this operation to get the status of a detection job.
 #'
-#' @usage
-#' comprehendmedical_describe_entities_detection_v2_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehendmedical/describe_entities_detection_v2_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_entities_detection_v2_job.html) for full documentation.
 #'
-#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
+#' @param JobId &#91;required&#93; The identifier that Comprehend Medical; generated for the job. The
 #' [`start_entities_detection_v2_job`][comprehendmedical_start_entities_detection_v2_job]
 #' operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComprehendMedicalAsyncJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExpirationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     LanguageCode = "en",
-#'     DataAccessRoleArn = "string",
-#'     ManifestFilePath = "string",
-#'     KMSKey = "string",
-#'     ModelVersion = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_entities_detection_v2_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -81,57 +37,13 @@ comprehendmedical_describe_entities_detection_v2_job <- function(JobId) {
 #' Gets the properties associated with an InferICD10CM job
 #'
 #' @description
-#' Gets the properties associated with an InferICD10CM job. Use this
-#' operation to get the status of an inference job.
+#' Gets the properties associated with an InferICD10CM job. Use this operation to get the status of an inference job.
 #'
-#' @usage
-#' comprehendmedical_describe_icd10cm_inference_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehendmedical/describe_icd10cm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_icd10cm_inference_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job.
 #' `The StartICD10CMInferenceJob` operation returns this identifier in its
 #' response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComprehendMedicalAsyncJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExpirationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     LanguageCode = "en",
-#'     DataAccessRoleArn = "string",
-#'     ManifestFilePath = "string",
-#'     KMSKey = "string",
-#'     ModelVersion = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_icd10cm_inference_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -157,57 +69,13 @@ comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
 #' detection job
 #'
 #' @description
-#' Gets the properties associated with a protected health information (PHI)
-#' detection job. Use this operation to get the status of a detection job.
+#' Gets the properties associated with a protected health information (PHI) detection job. Use this operation to get the status of a detection job.
 #'
-#' @usage
-#' comprehendmedical_describe_phi_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehendmedical/describe_phi_detection_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_phi_detection_job.html) for full documentation.
 #'
-#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
+#' @param JobId &#91;required&#93; The identifier that Comprehend Medical; generated for the job. The
 #' [`start_phi_detection_job`][comprehendmedical_start_phi_detection_job]
 #' operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComprehendMedicalAsyncJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExpirationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     LanguageCode = "en",
-#'     DataAccessRoleArn = "string",
-#'     ManifestFilePath = "string",
-#'     KMSKey = "string",
-#'     ModelVersion = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_phi_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -232,57 +100,13 @@ comprehendmedical_describe_phi_detection_job <- function(JobId) {
 #' Gets the properties associated with an InferRxNorm job
 #'
 #' @description
-#' Gets the properties associated with an InferRxNorm job. Use this
-#' operation to get the status of an inference job.
+#' Gets the properties associated with an InferRxNorm job. Use this operation to get the status of an inference job.
 #'
-#' @usage
-#' comprehendmedical_describe_rx_norm_inference_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehendmedical/describe_rx_norm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_rx_norm_inference_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
 #' StartRxNormInferenceJob operation returns this identifier in its
 #' response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComprehendMedicalAsyncJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExpirationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     LanguageCode = "en",
-#'     DataAccessRoleArn = "string",
-#'     ManifestFilePath = "string",
-#'     KMSKey = "string",
-#'     ModelVersion = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_rx_norm_inference_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -304,98 +128,47 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
 }
 .comprehendmedical$operations$describe_rx_norm_inference_job <- comprehendmedical_describe_rx_norm_inference_job
 
+#' Gets the properties associated with an InferSNOMEDCT job
+#'
+#' @description
+#' Gets the properties associated with an InferSNOMEDCT job. Use this operation to get the status of an inference job.
+#'
+#' See [https://paws-r.github.io/docs/comprehendmedical/describe_snomedct_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_snomedct_inference_job.html) for full documentation.
+#'
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
+#' StartSNOMEDCTInferenceJob operation returns this identifier in its
+#' response.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_describe_snomedct_inference_job
+comprehendmedical_describe_snomedct_inference_job <- function(JobId) {
+  op <- new_operation(
+    name = "DescribeSNOMEDCTInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$describe_snomedct_inference_job_input(JobId = JobId)
+  output <- .comprehendmedical$describe_snomedct_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$describe_snomedct_inference_job <- comprehendmedical_describe_snomedct_inference_job
+
 #' The DetectEntities operation is deprecated
 #'
 #' @description
-#' The [`detect_entities`][comprehendmedical_detect_entities] operation is
-#' deprecated. You should use the
-#' [`detect_entities_v2`][comprehendmedical_detect_entities_v2] operation
-#' instead.
-#' 
-#' Inspects the clinical text for a variety of medical entities and returns
-#' specific information about them such as entity category, location, and
-#' confidence score on that information .
+#' The [`detect_entities`][comprehendmedical_detect_entities] operation is deprecated. You should use the [`detect_entities_v2`][comprehendmedical_detect_entities_v2] operation instead.
 #'
-#' @usage
-#' comprehendmedical_detect_entities(Text)
+#' See [https://paws-r.github.io/docs/comprehendmedical/detect_entities.html](https://paws-r.github.io/docs/comprehendmedical/detect_entities.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string containing the clinical content being examined for
 #' entities. Each string must contain fewer than 20,000 bytes of
 #' characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entities = list(
-#'     list(
-#'       Id = 123,
-#'       BeginOffset = 123,
-#'       EndOffset = 123,
-#'       Score = 123.0,
-#'       Text = "string",
-#'       Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'       Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-#'       Traits = list(
-#'         list(
-#'           Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-#'           Score = 123.0
-#'         )
-#'       ),
-#'       Attributes = list(
-#'         list(
-#'           Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-#'           Score = 123.0,
-#'           RelationshipScore = 123.0,
-#'           RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
-#'           Id = 123,
-#'           BeginOffset = 123,
-#'           EndOffset = 123,
-#'           Text = "string",
-#'           Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'           Traits = list(
-#'             list(
-#'               Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-#'               Score = 123.0
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   UnmappedAttributes = list(
-#'     list(
-#'       Type = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'       Attribute = list(
-#'         Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-#'         Score = 123.0,
-#'         RelationshipScore = 123.0,
-#'         RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
-#'         Id = 123,
-#'         BeginOffset = 123,
-#'         EndOffset = 123,
-#'         Text = "string",
-#'         Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'         Traits = list(
-#'           list(
-#'             Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-#'             Score = 123.0
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   PaginationToken = "string",
-#'   ModelVersion = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detect_entities(
-#'   Text = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -422,104 +195,13 @@ comprehendmedical_detect_entities <- function(Text) {
 #' confidence score on that information
 #'
 #' @description
-#' Inspects the clinical text for a variety of medical entities and returns
-#' specific information about them such as entity category, location, and
-#' confidence score on that information. Amazon Comprehend Medical only
-#' detects medical entities in English language texts.
-#' 
-#' The [`detect_entities_v2`][comprehendmedical_detect_entities_v2]
-#' operation replaces the
-#' [`detect_entities`][comprehendmedical_detect_entities] operation. This
-#' new action uses a different model for determining the entities in your
-#' medical text and changes the way that some entities are returned in the
-#' output. You should use the
-#' [`detect_entities_v2`][comprehendmedical_detect_entities_v2] operation
-#' in all new applications.
-#' 
-#' The [`detect_entities_v2`][comprehendmedical_detect_entities_v2]
-#' operation returns the `Acuity` and `Direction` entities as attributes
-#' instead of types.
+#' Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information. Amazon Comprehend Medical only detects medical entities in English language texts.
 #'
-#' @usage
-#' comprehendmedical_detect_entities_v2(Text)
+#' See [https://paws-r.github.io/docs/comprehendmedical/detect_entities_v2.html](https://paws-r.github.io/docs/comprehendmedical/detect_entities_v2.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 string containing the clinical content being examined for
 #' entities. Each string must contain fewer than 20,000 bytes of
 #' characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entities = list(
-#'     list(
-#'       Id = 123,
-#'       BeginOffset = 123,
-#'       EndOffset = 123,
-#'       Score = 123.0,
-#'       Text = "string",
-#'       Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'       Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-#'       Traits = list(
-#'         list(
-#'           Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-#'           Score = 123.0
-#'         )
-#'       ),
-#'       Attributes = list(
-#'         list(
-#'           Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-#'           Score = 123.0,
-#'           RelationshipScore = 123.0,
-#'           RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
-#'           Id = 123,
-#'           BeginOffset = 123,
-#'           EndOffset = 123,
-#'           Text = "string",
-#'           Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'           Traits = list(
-#'             list(
-#'               Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-#'               Score = 123.0
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   UnmappedAttributes = list(
-#'     list(
-#'       Type = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'       Attribute = list(
-#'         Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-#'         Score = 123.0,
-#'         RelationshipScore = 123.0,
-#'         RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
-#'         Id = 123,
-#'         BeginOffset = 123,
-#'         EndOffset = 123,
-#'         Text = "string",
-#'         Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'         Traits = list(
-#'           list(
-#'             Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-#'             Score = 123.0
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   PaginationToken = "string",
-#'   ModelVersion = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detect_entities_v2(
-#'   Text = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -546,69 +228,13 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
 #' for each entity
 #'
 #' @description
-#' Inspects the clinical text for protected health information (PHI)
-#' entities and returns the entity category, location, and confidence score
-#' for each entity. Amazon Comprehend Medical only detects entities in
-#' English language texts.
+#' Inspects the clinical text for protected health information (PHI) entities and returns the entity category, location, and confidence score for each entity. Amazon Comprehend Medical only detects entities in English language texts.
 #'
-#' @usage
-#' comprehendmedical_detect_phi(Text)
+#' See [https://paws-r.github.io/docs/comprehendmedical/detect_phi.html](https://paws-r.github.io/docs/comprehendmedical/detect_phi.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string containing the clinical content being examined for
 #' PHI entities. Each string must contain fewer than 20,000 bytes of
 #' characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entities = list(
-#'     list(
-#'       Id = 123,
-#'       BeginOffset = 123,
-#'       EndOffset = 123,
-#'       Score = 123.0,
-#'       Text = "string",
-#'       Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'       Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-#'       Traits = list(
-#'         list(
-#'           Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-#'           Score = 123.0
-#'         )
-#'       ),
-#'       Attributes = list(
-#'         list(
-#'           Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-#'           Score = 123.0,
-#'           RelationshipScore = 123.0,
-#'           RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
-#'           Id = 123,
-#'           BeginOffset = 123,
-#'           EndOffset = 123,
-#'           Text = "string",
-#'           Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-#'           Traits = list(
-#'             list(
-#'               Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-#'               Score = 123.0
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   PaginationToken = "string",
-#'   ModelVersion = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detect_phi(
-#'   Text = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -635,74 +261,12 @@ comprehendmedical_detect_phi <- function(Text) {
 #' ICD-10-CM knowledge base from the Centers for Disease Control
 #'
 #' @description
-#' InferICD10CM detects medical conditions as entities listed in a patient
-#' record and links those entities to normalized concept identifiers in the
-#' ICD-10-CM knowledge base from the Centers for Disease Control. Amazon
-#' Comprehend Medical only detects medical entities in English language
-#' texts.
+#' InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control. Amazon Comprehend Medical only detects medical entities in English language texts.
 #'
-#' @usage
-#' comprehendmedical_infer_icd10cm(Text)
+#' See [https://paws-r.github.io/docs/comprehendmedical/infer_icd10cm.html](https://paws-r.github.io/docs/comprehendmedical/infer_icd10cm.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; The input text used for analysis. The input for InferICD10CM is a string
 #' from 1 to 10000 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entities = list(
-#'     list(
-#'       Id = 123,
-#'       Text = "string",
-#'       Category = "MEDICAL_CONDITION",
-#'       Type = "DX_NAME",
-#'       Score = 123.0,
-#'       BeginOffset = 123,
-#'       EndOffset = 123,
-#'       Attributes = list(
-#'         list(
-#'           Type = "ACUITY"|"DIRECTION"|"SYSTEM_ORGAN_SITE"|"QUALITY"|"QUANTITY",
-#'           Score = 123.0,
-#'           RelationshipScore = 123.0,
-#'           Id = 123,
-#'           BeginOffset = 123,
-#'           EndOffset = 123,
-#'           Text = "string",
-#'           Traits = list(
-#'             list(
-#'               Name = "NEGATION"|"DIAGNOSIS"|"SIGN"|"SYMPTOM",
-#'               Score = 123.0
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Traits = list(
-#'         list(
-#'           Name = "NEGATION"|"DIAGNOSIS"|"SIGN"|"SYMPTOM",
-#'           Score = 123.0
-#'         )
-#'       ),
-#'       ICD10CMConcepts = list(
-#'         list(
-#'           Description = "string",
-#'           Code = "string",
-#'           Score = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   PaginationToken = "string",
-#'   ModelVersion = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$infer_icd10cm(
-#'   Text = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -729,73 +293,12 @@ comprehendmedical_infer_icd10cm <- function(Text) {
 #' from the National Library of Medicine
 #'
 #' @description
-#' InferRxNorm detects medications as entities listed in a patient record
-#' and links to the normalized concept identifiers in the RxNorm database
-#' from the National Library of Medicine. Amazon Comprehend Medical only
-#' detects medical entities in English language texts.
+#' InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept identifiers in the RxNorm database from the National Library of Medicine. Amazon Comprehend Medical only detects medical entities in English language texts.
 #'
-#' @usage
-#' comprehendmedical_infer_rx_norm(Text)
+#' See [https://paws-r.github.io/docs/comprehendmedical/infer_rx_norm.html](https://paws-r.github.io/docs/comprehendmedical/infer_rx_norm.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; The input text used for analysis. The input for InferRxNorm is a string
 #' from 1 to 10000 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entities = list(
-#'     list(
-#'       Id = 123,
-#'       Text = "string",
-#'       Category = "MEDICATION",
-#'       Type = "BRAND_NAME"|"GENERIC_NAME",
-#'       Score = 123.0,
-#'       BeginOffset = 123,
-#'       EndOffset = 123,
-#'       Attributes = list(
-#'         list(
-#'           Type = "DOSAGE"|"DURATION"|"FORM"|"FREQUENCY"|"RATE"|"ROUTE_OR_MODE"|"STRENGTH",
-#'           Score = 123.0,
-#'           RelationshipScore = 123.0,
-#'           Id = 123,
-#'           BeginOffset = 123,
-#'           EndOffset = 123,
-#'           Text = "string",
-#'           Traits = list(
-#'             list(
-#'               Name = "NEGATION",
-#'               Score = 123.0
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Traits = list(
-#'         list(
-#'           Name = "NEGATION",
-#'           Score = 123.0
-#'         )
-#'       ),
-#'       RxNormConcepts = list(
-#'         list(
-#'           Description = "string",
-#'           Code = "string",
-#'           Score = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   PaginationToken = "string",
-#'   ModelVersion = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$infer_rx_norm(
-#'   Text = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -817,14 +320,44 @@ comprehendmedical_infer_rx_norm <- function(Text) {
 }
 .comprehendmedical$operations$infer_rx_norm <- comprehendmedical_infer_rx_norm
 
+#' InferSNOMEDCT detects possible medical concepts as entities and links
+#' them to codes from the Systematized Nomenclature of Medicine, Clinical
+#' Terms (SNOMED-CT) ontology
+#'
+#' @description
+#' InferSNOMEDCT detects possible medical concepts as entities and links them to codes from the Systematized Nomenclature of Medicine, Clinical Terms (SNOMED-CT) ontology
+#'
+#' See [https://paws-r.github.io/docs/comprehendmedical/infer_snomedct.html](https://paws-r.github.io/docs/comprehendmedical/infer_snomedct.html) for full documentation.
+#'
+#' @param Text &#91;required&#93; The input text to be analyzed using InferSNOMEDCT. The text should be a
+#' string with 1 to 10000 characters.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_infer_snomedct
+comprehendmedical_infer_snomedct <- function(Text) {
+  op <- new_operation(
+    name = "InferSNOMEDCT",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$infer_snomedct_input(Text = Text)
+  output <- .comprehendmedical$infer_snomedct_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$infer_snomedct <- comprehendmedical_infer_snomedct
+
 #' Gets a list of medical entity detection jobs that you have submitted
 #'
 #' @description
 #' Gets a list of medical entity detection jobs that you have submitted.
 #'
-#' @usage
-#' comprehendmedical_list_entities_detection_v2_jobs(Filter, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/comprehendmedical/list_entities_detection_v2_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_entities_detection_v2_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs based on their
 #' names, status, or the date and time that they were submitted. You can
@@ -832,62 +365,6 @@ comprehendmedical_infer_rx_norm <- function(Text) {
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComprehendMedicalAsyncJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExpirationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Bucket = "string",
-#'         S3Key = "string"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Bucket = "string",
-#'         S3Key = "string"
-#'       ),
-#'       LanguageCode = "en",
-#'       DataAccessRoleArn = "string",
-#'       ManifestFilePath = "string",
-#'       KMSKey = "string",
-#'       ModelVersion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_entities_detection_v2_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -914,9 +391,7 @@ comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, Nex
 #' @description
 #' Gets a list of InferICD10CM jobs that you have submitted.
 #'
-#' @usage
-#' comprehendmedical_list_icd10cm_inference_jobs(Filter, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/comprehendmedical/list_icd10cm_inference_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_icd10cm_inference_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs based on their
 #' names, status, or the date and time that they were submitted. You can
@@ -924,62 +399,6 @@ comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, Nex
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComprehendMedicalAsyncJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExpirationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Bucket = "string",
-#'         S3Key = "string"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Bucket = "string",
-#'         S3Key = "string"
-#'       ),
-#'       LanguageCode = "en",
-#'       DataAccessRoleArn = "string",
-#'       ManifestFilePath = "string",
-#'       KMSKey = "string",
-#'       ModelVersion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_icd10cm_inference_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1005,11 +424,9 @@ comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextTok
 #' you have submitted
 #'
 #' @description
-#' Gets a list of protected health information (PHI) detection jobs that
-#' you have submitted.
+#' Gets a list of protected health information (PHI) detection jobs that you have submitted.
 #'
-#' @usage
-#' comprehendmedical_list_phi_detection_jobs(Filter, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/comprehendmedical/list_phi_detection_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_phi_detection_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs based on their
 #' names, status, or the date and time that they were submitted. You can
@@ -1017,62 +434,6 @@ comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextTok
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComprehendMedicalAsyncJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExpirationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Bucket = "string",
-#'         S3Key = "string"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Bucket = "string",
-#'         S3Key = "string"
-#'       ),
-#'       LanguageCode = "en",
-#'       DataAccessRoleArn = "string",
-#'       ManifestFilePath = "string",
-#'       KMSKey = "string",
-#'       ModelVersion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_phi_detection_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1099,71 +460,13 @@ comprehendmedical_list_phi_detection_jobs <- function(Filter = NULL, NextToken =
 #' @description
 #' Gets a list of InferRxNorm jobs that you have submitted.
 #'
-#' @usage
-#' comprehendmedical_list_rx_norm_inference_jobs(Filter, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/comprehendmedical/list_rx_norm_inference_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_rx_norm_inference_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs based on their
 #' names, status, or the date and time that they were submitted. You can
 #' only set one filter at a time.
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults Identifies the next page of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComprehendMedicalAsyncJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExpirationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Bucket = "string",
-#'         S3Key = "string"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Bucket = "string",
-#'         S3Key = "string"
-#'       ),
-#'       LanguageCode = "en",
-#'       DataAccessRoleArn = "string",
-#'       ManifestFilePath = "string",
-#'       KMSKey = "string",
-#'       ModelVersion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_rx_norm_inference_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1185,61 +488,61 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
 }
 .comprehendmedical$operations$list_rx_norm_inference_jobs <- comprehendmedical_list_rx_norm_inference_jobs
 
+#' Gets a list of InferSNOMEDCT jobs a user has submitted
+#'
+#' @description
+#' Gets a list of InferSNOMEDCT jobs a user has submitted.
+#'
+#' See [https://paws-r.github.io/docs/comprehendmedical/list_snomedct_inference_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_snomedct_inference_jobs.html) for full documentation.
+#'
+#' @param Filter 
+#' @param NextToken Identifies the next page of InferSNOMEDCT results to return.
+#' @param MaxResults The maximum number of results to return in each page. The default is
+#' 100.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_list_snomedct_inference_jobs
+comprehendmedical_list_snomedct_inference_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListSNOMEDCTInferenceJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$list_snomedct_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehendmedical$list_snomedct_inference_jobs_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$list_snomedct_inference_jobs <- comprehendmedical_list_snomedct_inference_jobs
+
 #' Starts an asynchronous medical entity detection job for a collection of
 #' documents
 #'
 #' @description
-#' Starts an asynchronous medical entity detection job for a collection of
-#' documents. Use the
-#' [`describe_entities_detection_v2_job`][comprehendmedical_describe_entities_detection_v2_job]
-#' operation to track the status of a job.
+#' Starts an asynchronous medical entity detection job for a collection of documents. Use the [`describe_entities_detection_v2_job`][comprehendmedical_describe_entities_detection_v2_job] operation to track the status of a job.
 #'
-#' @usage
-#' comprehendmedical_start_entities_detection_v2_job(InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
-#'   KMSKey, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehendmedical/start_entities_detection_v2_job.html](https://paws-r.github.io/docs/comprehendmedical/start_entities_detection_v2_job.html) for full documentation.
 #'
-#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
-#' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
+#' @param InputDataConfig &#91;required&#93; The input configuration that specifies the format and location of the
+#' input data for the job.
+#' @param OutputDataConfig &#91;required&#93; The output configuration that specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend Medical read access to your
-#' input data. For more information, see [Role-Based Permissions Required
-#' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' (IAM) role that grants Comprehend Medical; read access to your input
+#' data. For more information, see [Role-Based Permissions Required for
+#' Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Amazon Comprehend Medical generates one.
+#' token, Comprehend Medical; generates one for you.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
-#' language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_entities_detection_v2_job(
-#'   InputDataConfig = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   ClientRequestToken = "string",
-#'   KMSKey = "string",
-#'   LanguageCode = "en"
-#' )
-#' ```
+#' language. Comprehend Medical; processes files in US English (en).
 #'
 #' @keywords internal
 #'
@@ -1265,57 +568,24 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 #' the ICD-10-CM ontology
 #'
 #' @description
-#' Starts an asynchronous job to detect medical conditions and link them to
-#' the ICD-10-CM ontology. Use the
-#' [`describe_icd10cm_inference_job`][comprehendmedical_describe_icd10cm_inference_job]
-#' operation to track the status of a job.
+#' Starts an asynchronous job to detect medical conditions and link them to the ICD-10-CM ontology. Use the [`describe_icd10cm_inference_job`][comprehendmedical_describe_icd10cm_inference_job] operation to track the status of a job.
 #'
-#' @usage
-#' comprehendmedical_start_icd10cm_inference_job(InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
-#'   KMSKey, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehendmedical/start_icd10cm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/start_icd10cm_inference_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend Medical read access to your
-#' input data. For more information, see [Role-Based Permissions Required
-#' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' (IAM) role that grants Comprehend Medical; read access to your input
+#' data. For more information, see [Role-Based Permissions Required for
+#' Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Amazon Comprehend Medical generates one.
+#' token, Comprehend Medical; generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
 #' language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_icd10cm_inference_job(
-#'   InputDataConfig = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   ClientRequestToken = "string",
-#'   KMSKey = "string",
-#'   LanguageCode = "en"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1340,57 +610,24 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
 #' Starts an asynchronous job to detect protected health information (PHI)
 #'
 #' @description
-#' Starts an asynchronous job to detect protected health information (PHI).
-#' Use the
-#' [`describe_phi_detection_job`][comprehendmedical_describe_phi_detection_job]
-#' operation to track the status of a job.
+#' Starts an asynchronous job to detect protected health information (PHI). Use the [`describe_phi_detection_job`][comprehendmedical_describe_phi_detection_job] operation to track the status of a job.
 #'
-#' @usage
-#' comprehendmedical_start_phi_detection_job(InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
-#'   KMSKey, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehendmedical/start_phi_detection_job.html](https://paws-r.github.io/docs/comprehendmedical/start_phi_detection_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend Medical read access to your
-#' input data. For more information, see [Role-Based Permissions Required
-#' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' (IAM) role that grants Comprehend Medical; read access to your input
+#' data. For more information, see [Role-Based Permissions Required for
+#' Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Amazon Comprehend Medical generates one.
+#' token, Comprehend Medical; generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
 #' language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_phi_detection_job(
-#'   InputDataConfig = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   ClientRequestToken = "string",
-#'   KMSKey = "string",
-#'   LanguageCode = "en"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1416,57 +653,24 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 #' to the RxNorm ontology
 #'
 #' @description
-#' Starts an asynchronous job to detect medication entities and link them
-#' to the RxNorm ontology. Use the
-#' [`describe_rx_norm_inference_job`][comprehendmedical_describe_rx_norm_inference_job]
-#' operation to track the status of a job.
+#' Starts an asynchronous job to detect medication entities and link them to the RxNorm ontology. Use the [`describe_rx_norm_inference_job`][comprehendmedical_describe_rx_norm_inference_job] operation to track the status of a job.
 #'
-#' @usage
-#' comprehendmedical_start_rx_norm_inference_job(InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
-#'   KMSKey, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehendmedical/start_rx_norm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/start_rx_norm_inference_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend Medical read access to your
-#' input data. For more information, see [Role-Based Permissions Required
-#' for Asynchronous
-#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' (IAM) role that grants Comprehend Medical; read access to your input
+#' data. For more information, see [Role-Based Permissions Required for
+#' Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Amazon Comprehend Medical generates one.
+#' token, Comprehend Medical; generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
 #' language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_rx_norm_inference_job(
-#'   InputDataConfig = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   ClientRequestToken = "string",
-#'   KMSKey = "string",
-#'   LanguageCode = "en"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1488,30 +692,55 @@ comprehendmedical_start_rx_norm_inference_job <- function(InputDataConfig, Outpu
 }
 .comprehendmedical$operations$start_rx_norm_inference_job <- comprehendmedical_start_rx_norm_inference_job
 
+#' Starts an asynchronous job to detect medical concepts and link them to
+#' the SNOMED-CT ontology
+#'
+#' @description
+#' Starts an asynchronous job to detect medical concepts and link them to the SNOMED-CT ontology. Use the DescribeSNOMEDCTInferenceJob operation to track the status of a job.
+#'
+#' See [https://paws-r.github.io/docs/comprehendmedical/start_snomedct_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/start_snomedct_inference_job.html) for full documentation.
+#'
+#' @param InputDataConfig &#91;required&#93; 
+#' @param OutputDataConfig &#91;required&#93; 
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data.
+#' @param JobName The user generated name the asynchronous InferSNOMEDCT job.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend Medical generates one.
+#' @param KMSKey An AWS Key Management Service key used to encrypt your output files. If
+#' you do not specify a key, the files are written in plain text.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
+#' language.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_start_snomedct_inference_job
+comprehendmedical_start_snomedct_inference_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
+  op <- new_operation(
+    name = "StartSNOMEDCTInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$start_snomedct_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
+  output <- .comprehendmedical$start_snomedct_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$start_snomedct_inference_job <- comprehendmedical_start_snomedct_inference_job
+
 #' Stops a medical entities detection job in progress
 #'
 #' @description
 #' Stops a medical entities detection job in progress.
 #'
-#' @usage
-#' comprehendmedical_stop_entities_detection_v2_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehendmedical/stop_entities_detection_v2_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_entities_detection_v2_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the medical entities job to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_entities_detection_v2_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1538,25 +767,9 @@ comprehendmedical_stop_entities_detection_v2_job <- function(JobId) {
 #' @description
 #' Stops an InferICD10CM inference job in progress.
 #'
-#' @usage
-#' comprehendmedical_stop_icd10cm_inference_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehendmedical/stop_icd10cm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_icd10cm_inference_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_icd10cm_inference_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1583,25 +796,9 @@ comprehendmedical_stop_icd10cm_inference_job <- function(JobId) {
 #' @description
 #' Stops a protected health information (PHI) detection job in progress.
 #'
-#' @usage
-#' comprehendmedical_stop_phi_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehendmedical/stop_phi_detection_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_phi_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the PHI detection job to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_phi_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1628,25 +825,9 @@ comprehendmedical_stop_phi_detection_job <- function(JobId) {
 #' @description
 #' Stops an InferRxNorm inference job in progress.
 #'
-#' @usage
-#' comprehendmedical_stop_rx_norm_inference_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehendmedical/stop_rx_norm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_rx_norm_inference_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_rx_norm_inference_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1667,3 +848,32 @@ comprehendmedical_stop_rx_norm_inference_job <- function(JobId) {
   return(response)
 }
 .comprehendmedical$operations$stop_rx_norm_inference_job <- comprehendmedical_stop_rx_norm_inference_job
+
+#' Stops an InferSNOMEDCT inference job in progress
+#'
+#' @description
+#' Stops an InferSNOMEDCT inference job in progress.
+#'
+#' See [https://paws-r.github.io/docs/comprehendmedical/stop_snomedct_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_snomedct_inference_job.html) for full documentation.
+#'
+#' @param JobId &#91;required&#93; The job id of the asynchronous InferSNOMEDCT job to be stopped.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_stop_snomedct_inference_job
+comprehendmedical_stop_snomedct_inference_job <- function(JobId) {
+  op <- new_operation(
+    name = "StopSNOMEDCTInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$stop_snomedct_inference_job_input(JobId = JobId)
+  output <- .comprehendmedical$stop_snomedct_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$stop_snomedct_inference_job <- comprehendmedical_stop_snomedct_inference_job

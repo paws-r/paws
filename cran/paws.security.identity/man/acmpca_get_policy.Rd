@@ -11,43 +11,9 @@ acmpca_get_policy(ResourceArn)
 policy retrieved. You can find the CA's ARN by calling the
 ListCertificateAuthorities action.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policy = "string"
-)
-}
-}
 \description{
-Retrieves the resource-based policy attached to a private CA. If either
-the private CA resource or the policy cannot be found, this action
-returns a \code{ResourceNotFoundException}.
+Retrieves the resource-based policy attached to a private CA. If either the private CA resource or the policy cannot be found, this action returns a \code{ResourceNotFoundException}.
 
-The policy can be attached or updated with
-\code{\link[=acmpca_put_policy]{put_policy}} and removed with
-\code{\link[=acmpca_delete_policy]{delete_policy}}.
-
-\strong{About Policies}
-\itemize{
-\item A policy grants access on a private CA to an AWS customer account,
-to AWS Organizations, or to an AWS Organizations unit. Policies are
-under the control of a CA administrator. For more information, see
-\href{https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html}{Using a Resource Based Policy with ACM Private CA}.
-\item A policy permits a user of AWS Certificate Manager (ACM) to issue
-ACM certificates signed by a CA in another account.
-\item For ACM to manage automatic renewal of these certificates, the ACM
-user must configure a Service Linked Role (SLR). The SLR allows the
-ACM service to assume the identity of the user, subject to
-confirmation against the ACM Private CA policy. For more
-information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html}{Using a Service Linked Role with ACM}.
-\item Updates made in AWS Resource Manager (RAM) are reflected in
-policies. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html}{Attach a Policy for Cross-Account Access}.
+See \url{https://paws-r.github.io/docs/acmpca/get_policy.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_policy(
-  ResourceArn = "string"
-)
-}
-}
-
 \keyword{internal}

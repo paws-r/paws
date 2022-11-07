@@ -2,10 +2,14 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_describe_change_set}
 \alias{cloudformation_describe_change_set}
-\title{Returns the inputs for the change set and a list of changes that AWS
+\title{Returns the inputs for the change set and a list of changes that
 CloudFormation will make if you execute the change set}
 \usage{
-cloudformation_describe_change_set(ChangeSetName, StackName, NextToken)
+cloudformation_describe_change_set(
+  ChangeSetName,
+  StackName = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want
@@ -19,100 +23,9 @@ to describe.}
 output) that identifies the next page of information that you want to
 retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeSetName = "string",
-  ChangeSetId = "string",
-  StackId = "string",
-  StackName = "string",
-  Description = "string",
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  ExecutionStatus = "UNAVAILABLE"|"AVAILABLE"|"EXECUTE_IN_PROGRESS"|"EXECUTE_COMPLETE"|"EXECUTE_FAILED"|"OBSOLETE",
-  Status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"FAILED",
-  StatusReason = "string",
-  NotificationARNs = list(
-    "string"
-  ),
-  RollbackConfiguration = list(
-    RollbackTriggers = list(
-      list(
-        Arn = "string",
-        Type = "string"
-      )
-    ),
-    MonitoringTimeInMinutes = 123
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  Changes = list(
-    list(
-      Type = "Resource",
-      ResourceChange = list(
-        Action = "Add"|"Modify"|"Remove"|"Import"|"Dynamic",
-        LogicalResourceId = "string",
-        PhysicalResourceId = "string",
-        ResourceType = "string",
-        Replacement = "True"|"False"|"Conditional",
-        Scope = list(
-          "Properties"|"Metadata"|"CreationPolicy"|"UpdatePolicy"|"DeletionPolicy"|"Tags"
-        ),
-        Details = list(
-          list(
-            Target = list(
-              Attribute = "Properties"|"Metadata"|"CreationPolicy"|"UpdatePolicy"|"DeletionPolicy"|"Tags",
-              Name = "string",
-              RequiresRecreation = "Never"|"Conditionally"|"Always"
-            ),
-            Evaluation = "Static"|"Dynamic",
-            ChangeSource = "ResourceReference"|"ParameterReference"|"ResourceAttribute"|"DirectModification"|"Automatic",
-            CausingEntity = "string"
-          )
-        ),
-        ChangeSetId = "string",
-        ModuleInfo = list(
-          TypeHierarchy = "string",
-          LogicalIdHierarchy = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string",
-  IncludeNestedStacks = TRUE|FALSE,
-  ParentChangeSetId = "string",
-  RootChangeSetId = "string"
-)
-}
-}
 \description{
-Returns the inputs for the change set and a list of changes that AWS
-CloudFormation will make if you execute the change set. For more
-information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html}{Updating Stacks Using Change Sets}
-in the AWS CloudFormation User Guide.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_change_set(
-  ChangeSetName = "string",
-  StackName = "string",
-  NextToken = "string"
-)
-}
-}
+Returns the inputs for the change set and a list of changes that CloudFormation will make if you execute the change set. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html}{Updating Stacks Using Change Sets} in the CloudFormation User Guide.
 
+See \url{https://paws-r.github.io/docs/cloudformation/describe_change_set.html} for full documentation.
+}
 \keyword{internal}

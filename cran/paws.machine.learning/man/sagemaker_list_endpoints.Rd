@@ -4,9 +4,18 @@
 \alias{sagemaker_list_endpoints}
 \title{Lists endpoints}
 \usage{
-sagemaker_list_endpoints(SortBy, SortOrder, NextToken, MaxResults,
-  NameContains, CreationTimeBefore, CreationTimeAfter,
-  LastModifiedTimeBefore, LastModifiedTimeAfter, StatusEquals)
+sagemaker_list_endpoints(
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  StatusEquals = NULL
+)
 }
 \arguments{
 \item{SortBy}{Sorts the list of results. The default is \code{CreationTime}.}
@@ -17,7 +26,8 @@ sagemaker_list_endpoints(SortBy, SortOrder, NextToken, MaxResults,
 was truncated, the response includes a \code{NextToken}. To retrieve the next
 set of endpoints, use the token in the next request.}
 
-\item{MaxResults}{The maximum number of endpoints to return in the response.}
+\item{MaxResults}{The maximum number of endpoints to return in the response. This value
+defaults to 10.}
 
 \item{NameContains}{A string in endpoint names. This filter returns only endpoints whose
 name contains the specified string.}
@@ -36,50 +46,9 @@ specified timestamp.}
 
 \item{StatusEquals}{A filter that returns only endpoints with the specified status.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Endpoints = list(
-    list(
-      EndpointName = "string",
-      EndpointArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndpointStatus = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists endpoints.
-}
-\section{Request syntax}{
-\preformatted{svc$list_endpoints(
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  StatusEquals = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_endpoints.html} for full documentation.
+}
 \keyword{internal}

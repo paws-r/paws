@@ -3,11 +3,12 @@
 #' @include dlm_service.R
 NULL
 
-#' Creates a policy to manage the lifecycle of the specified AWS resources
+#' Creates a policy to manage the lifecycle of the specified Amazon Web
+#' Services resources
 #'
 #' @description
-#' Creates a policy to manage the lifecycle of the specified AWS resources.
-#' You can create up to 100 lifecycle policies.
+#' Creates a policy to manage the lifecycle of the specified Amazon Web
+#' Services resources. You can create up to 100 lifecycle policies.
 #'
 #' @usage
 #' dlm_create_lifecycle_policy(ExecutionRoleArn, Description, State,
@@ -40,6 +41,9 @@ NULL
 #'     ResourceTypes = list(
 #'       "VOLUME"|"INSTANCE"
 #'     ),
+#'     ResourceLocations = list(
+#'       "CLOUD"|"OUTPOST"
+#'     ),
 #'     TargetTags = list(
 #'       list(
 #'         Key = "string",
@@ -63,6 +67,7 @@ NULL
 #'           )
 #'         ),
 #'         CreateRule = list(
+#'           Location = "CLOUD"|"OUTPOST_LOCAL",
 #'           Interval = 123,
 #'           IntervalUnit = "HOURS",
 #'           Times = list(
@@ -86,10 +91,15 @@ NULL
 #'         CrossRegionCopyRules = list(
 #'           list(
 #'             TargetRegion = "string",
+#'             Target = "string",
 #'             Encrypted = TRUE|FALSE,
 #'             CmkArn = "string",
 #'             CopyTags = TRUE|FALSE,
 #'             RetainRule = list(
+#'               Interval = 123,
+#'               IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+#'             ),
+#'             DeprecateRule = list(
 #'               Interval = 123,
 #'               IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
 #'             )
@@ -103,12 +113,23 @@ NULL
 #'             UnshareInterval = 123,
 #'             UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
 #'           )
+#'         ),
+#'         DeprecateRule = list(
+#'           Count = 123,
+#'           Interval = 123,
+#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
 #'         )
 #'       )
 #'     ),
 #'     Parameters = list(
 #'       ExcludeBootVolume = TRUE|FALSE,
-#'       NoReboot = TRUE|FALSE
+#'       NoReboot = TRUE|FALSE,
+#'       ExcludeDataVolumeTags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
 #'     ),
 #'     EventSource = list(
 #'       Type = "MANAGED_CWE",
@@ -231,8 +252,8 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #' 
 #' Tags are strings in the format `key=value`.
 #' 
-#' These user-defined tags are added in addition to the AWS-added lifecycle
-#' tags.
+#' These user-defined tags are added in addition to the Amazon Web
+#' Services-added lifecycle tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -322,6 +343,9 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'       ResourceTypes = list(
 #'         "VOLUME"|"INSTANCE"
 #'       ),
+#'       ResourceLocations = list(
+#'         "CLOUD"|"OUTPOST"
+#'       ),
 #'       TargetTags = list(
 #'         list(
 #'           Key = "string",
@@ -345,6 +369,7 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'             )
 #'           ),
 #'           CreateRule = list(
+#'             Location = "CLOUD"|"OUTPOST_LOCAL",
 #'             Interval = 123,
 #'             IntervalUnit = "HOURS",
 #'             Times = list(
@@ -368,10 +393,15 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'           CrossRegionCopyRules = list(
 #'             list(
 #'               TargetRegion = "string",
+#'               Target = "string",
 #'               Encrypted = TRUE|FALSE,
 #'               CmkArn = "string",
 #'               CopyTags = TRUE|FALSE,
 #'               RetainRule = list(
+#'                 Interval = 123,
+#'                 IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+#'               ),
+#'               DeprecateRule = list(
 #'                 Interval = 123,
 #'                 IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
 #'               )
@@ -385,12 +415,23 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'               UnshareInterval = 123,
 #'               UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
 #'             )
+#'           ),
+#'           DeprecateRule = list(
+#'             Count = 123,
+#'             Interval = 123,
+#'             IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
 #'           )
 #'         )
 #'       ),
 #'       Parameters = list(
 #'         ExcludeBootVolume = TRUE|FALSE,
-#'         NoReboot = TRUE|FALSE
+#'         NoReboot = TRUE|FALSE,
+#'         ExcludeDataVolumeTags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
 #'       ),
 #'       EventSource = list(
 #'         Type = "MANAGED_CWE",
@@ -623,6 +664,9 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'     ResourceTypes = list(
 #'       "VOLUME"|"INSTANCE"
 #'     ),
+#'     ResourceLocations = list(
+#'       "CLOUD"|"OUTPOST"
+#'     ),
 #'     TargetTags = list(
 #'       list(
 #'         Key = "string",
@@ -646,6 +690,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'           )
 #'         ),
 #'         CreateRule = list(
+#'           Location = "CLOUD"|"OUTPOST_LOCAL",
 #'           Interval = 123,
 #'           IntervalUnit = "HOURS",
 #'           Times = list(
@@ -669,10 +714,15 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'         CrossRegionCopyRules = list(
 #'           list(
 #'             TargetRegion = "string",
+#'             Target = "string",
 #'             Encrypted = TRUE|FALSE,
 #'             CmkArn = "string",
 #'             CopyTags = TRUE|FALSE,
 #'             RetainRule = list(
+#'               Interval = 123,
+#'               IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+#'             ),
+#'             DeprecateRule = list(
 #'               Interval = 123,
 #'               IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
 #'             )
@@ -686,12 +736,23 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'             UnshareInterval = 123,
 #'             UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
 #'           )
+#'         ),
+#'         DeprecateRule = list(
+#'           Count = 123,
+#'           Interval = 123,
+#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
 #'         )
 #'       )
 #'     ),
 #'     Parameters = list(
 #'       ExcludeBootVolume = TRUE|FALSE,
-#'       NoReboot = TRUE|FALSE
+#'       NoReboot = TRUE|FALSE,
+#'       ExcludeDataVolumeTags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
 #'     ),
 #'     EventSource = list(
 #'       Type = "MANAGED_CWE",

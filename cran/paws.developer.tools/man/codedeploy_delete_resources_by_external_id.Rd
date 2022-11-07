@@ -4,23 +4,15 @@
 \alias{codedeploy_delete_resources_by_external_id}
 \title{Deletes resources linked to an external ID}
 \usage{
-codedeploy_delete_resources_by_external_id(externalId)
+codedeploy_delete_resources_by_external_id(externalId = NULL)
 }
 \arguments{
 \item{externalId}{The unique ID of an external resource (for example, a CloudFormation
 stack ID) that is linked to one or more CodeDeploy resources.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes resources linked to an external ID.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_resources_by_external_id(
-  externalId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/delete_resources_by_external_id.html} for full documentation.
+}
 \keyword{internal}

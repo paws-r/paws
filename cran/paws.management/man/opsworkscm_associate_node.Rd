@@ -28,48 +28,9 @@ required for the \code{chef-client} agent to access the Chef API.
 that is created by the node.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NodeAssociationStatusToken = "string"
-)
-}
-}
 \description{
-Associates a new node with the server. For more information about how to
-disassociate a node, see
-\code{\link[=opsworkscm_disassociate_node]{disassociate_node}}.
+Associates a new node with the server. For more information about how to disassociate a node, see \code{\link[=opsworkscm_disassociate_node]{disassociate_node}}.
 
-On a Chef server: This command is an alternative to \verb{knife bootstrap}.
-
-Example (Chef):
-\verb{aws opsworks-cm associate-node --server-name MyServer --node-name MyManagedNode --engine-attributes "Name=CHEF_ORGANIZATION,Value=default" "Name=CHEF_NODE_PUBLIC_KEY,Value=public-key-pem"}
-
-On a Puppet server, this command is an alternative to the
-\verb{puppet cert sign} command that signs a Puppet node CSR.
-
-Example (Puppet):
-\verb{aws opsworks-cm associate-node --server-name MyServer --node-name MyManagedNode --engine-attributes "Name=PUPPET_NODE_CSR,Value=csr-pem"}
-
-A node can can only be associated with servers that are in a \code{HEALTHY}
-state. Otherwise, an \code{InvalidStateException} is thrown. A
-\code{ResourceNotFoundException} is thrown when the server does not exist. A
-\code{ValidationException} is raised when parameters of the request are not
-valid. The AssociateNode API call can be integrated into Auto Scaling
-configurations, AWS Cloudformation templates, or the user data of a
-server's instance.
+See \url{https://paws-r.github.io/docs/opsworkscm/associate_node.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_node(
-  ServerName = "string",
-  NodeName = "string",
-  EngineAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -11,24 +11,9 @@ apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
 
 \item{DomainName}{[required] The domain name.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApiId = "string",
-  ApiMappingId = "string",
-  ApiMappingKey = "string",
-  Stage = "string"
-)
-}
-}
 \description{
 Gets an API mapping.
-}
-\section{Request syntax}{
-\preformatted{svc$get_api_mapping(
-  ApiMappingId = "string",
-  DomainName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_api_mapping.html} for full documentation.
+}
 \keyword{internal}

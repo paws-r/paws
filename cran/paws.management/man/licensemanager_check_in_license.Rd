@@ -4,26 +4,16 @@
 \alias{licensemanager_check_in_license}
 \title{Checks in the specified license}
 \usage{
-licensemanager_check_in_license(LicenseConsumptionToken, Beneficiary)
+licensemanager_check_in_license(LicenseConsumptionToken, Beneficiary = NULL)
 }
 \arguments{
 \item{LicenseConsumptionToken}{[required] License consumption token.}
 
 \item{Beneficiary}{License beneficiary.}
 }
-\value{
-An empty list.
-}
 \description{
-Checks in the specified license. Check in a license when it is no longer
-in use.
-}
-\section{Request syntax}{
-\preformatted{svc$check_in_license(
-  LicenseConsumptionToken = "string",
-  Beneficiary = "string"
-)
-}
-}
+Checks in the specified license. Check in a license when it is no longer in use.
 
+See \url{https://paws-r.github.io/docs/licensemanager/check_in_license.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{wafregional_list_rate_based_rules}
 \title{This is AWS WAF Classic documentation}
 \usage{
-wafregional_list_rate_based_rules(NextMarker, Limit)
+wafregional_list_rate_based_rules(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{Rules} than the
@@ -19,36 +19,9 @@ request. If you have more \code{Rules} than the number that you specify for
 \code{Limit}, the response includes a \code{NextMarker} value that you can use to
 get another batch of \code{Rules}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  Rules = list(
-    list(
-      RuleId = "string",
-      Name = "string"
-    )
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns an array of RuleSummary objects.
+See \url{https://paws-r.github.io/docs/wafregional/list_rate_based_rules.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_rate_based_rules(
-  NextMarker = "string",
-  Limit = 123
-)
-}
-}
-
 \keyword{internal}

@@ -6,32 +6,18 @@
 repository}
 \usage{
 codecommit_associate_approval_rule_template_with_repository(
-  approvalRuleTemplateName, repositoryName)
+  approvalRuleTemplateName,
+  repositoryName
+)
 }
 \arguments{
 \item{approvalRuleTemplateName}{[required] The name for the approval rule template.}
 
 \item{repositoryName}{[required] The name of the repository that you want to associate with the template.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates an association between an approval rule template and a specified
-repository. Then, the next time a pull request is created in the
-repository where the destination reference (if specified) matches the
-destination reference (branch) for the pull request, an approval rule
-that matches the template conditions is automatically created for that
-pull request. If no destination references are specified in the
-template, an approval rule that matches the template contents is created
-for all pull requests in that repository.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_approval_rule_template_with_repository(
-  approvalRuleTemplateName = "string",
-  repositoryName = "string"
-)
-}
-}
+Creates an association between an approval rule template and a specified repository. Then, the next time a pull request is created in the repository where the destination reference (if specified) matches the destination reference (branch) for the pull request, an approval rule that matches the template conditions is automatically created for that pull request. If no destination references are specified in the template, an approval rule that matches the template contents is created for all pull requests in that repository.
 
+See \url{https://paws-r.github.io/docs/codecommit/associate_approval_rule_template_with_repository.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Disables a virtual private gateway (VGW) from propagating routes to a
 specified route table of a VPC}
 \usage{
-ec2_disable_vgw_route_propagation(GatewayId, RouteTableId, DryRun)
+ec2_disable_vgw_route_propagation(GatewayId, RouteTableId, DryRun = NULL)
 }
 \arguments{
 \item{GatewayId}{[required] The ID of the virtual private gateway.}
@@ -17,31 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Disables a virtual private gateway (VGW) from propagating routes to a
-specified route table of a VPC.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_vgw_route_propagation(
-  GatewayId = "string",
-  RouteTableId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC.
 
-\examples{
-\dontrun{
-# This example disables the specified virtual private gateway from
-# propagating static routes to the specified route table.
-svc$disable_vgw_route_propagation(
-  GatewayId = "vgw-9a4cacf3",
-  RouteTableId = "rtb-22574640"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/disable_vgw_route_propagation.html} for full documentation.
 }
 \keyword{internal}

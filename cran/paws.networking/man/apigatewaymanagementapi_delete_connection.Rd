@@ -9,17 +9,9 @@ apigatewaymanagementapi_delete_connection(ConnectionId)
 \arguments{
 \item{ConnectionId}{[required]}
 }
-\value{
-An empty list.
-}
 \description{
 Delete the connection with the provided id.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_connection(
-  ConnectionId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewaymanagementapi/delete_connection.html} for full documentation.
+}
 \keyword{internal}

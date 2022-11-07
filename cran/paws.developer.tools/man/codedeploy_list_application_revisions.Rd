@@ -4,8 +4,15 @@
 \alias{codedeploy_list_application_revisions}
 \title{Lists information about revisions for an application}
 \usage{
-codedeploy_list_application_revisions(applicationName, sortBy,
-  sortOrder, s3Bucket, s3KeyPrefix, deployed, nextToken)
+codedeploy_list_application_revisions(
+  applicationName,
+  sortBy = NULL,
+  sortOrder = NULL,
+  s3Bucket = NULL,
+  s3KeyPrefix = NULL,
+  deployed = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user
@@ -55,50 +62,9 @@ deployment group.
 \code{\link[=codedeploy_list_application_revisions]{list_application_revisions}}
 call. It can be used to return the next set of applications in the list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  revisions = list(
-    list(
-      revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-      s3Location = list(
-        bucket = "string",
-        key = "string",
-        bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-        version = "string",
-        eTag = "string"
-      ),
-      gitHubLocation = list(
-        repository = "string",
-        commitId = "string"
-      ),
-      string = list(
-        content = "string",
-        sha256 = "string"
-      ),
-      appSpecContent = list(
-        content = "string",
-        sha256 = "string"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists information about revisions for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$list_application_revisions(
-  applicationName = "string",
-  sortBy = "registerTime"|"firstUsedTime"|"lastUsedTime",
-  sortOrder = "ascending"|"descending",
-  s3Bucket = "string",
-  s3KeyPrefix = "string",
-  deployed = "include"|"exclude"|"ignore",
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/list_application_revisions.html} for full documentation.
+}
 \keyword{internal}

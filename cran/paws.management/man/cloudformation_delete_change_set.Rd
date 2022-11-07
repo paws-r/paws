@@ -4,37 +4,18 @@
 \alias{cloudformation_delete_change_set}
 \title{Deletes the specified change set}
 \usage{
-cloudformation_delete_change_set(ChangeSetName, StackName)
+cloudformation_delete_change_set(ChangeSetName, StackName = NULL)
 }
 \arguments{
 \item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want
 to delete.}
 
 \item{StackName}{If you specified the name of a change set to delete, specify the stack
-name or ID (ARN) that is associated with it.}
-}
-\value{
-An empty list.
+name or Amazon Resource Name (ARN) that's associated with it.}
 }
 \description{
-Deletes the specified change set. Deleting change sets ensures that no
-one executes the wrong change set.
+Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set.
 
-If the call successfully completes, AWS CloudFormation successfully
-deleted the change set.
-
-If \code{IncludeNestedStacks} specifies \code{True} during the creation of the
-nested change set, then
-\code{\link[=cloudformation_delete_change_set]{delete_change_set}} will delete all
-change sets that belong to the stacks hierarchy and will also delete all
-change sets for nested stacks with the status of \code{REVIEW_IN_PROGRESS}.
+See \url{https://paws-r.github.io/docs/cloudformation/delete_change_set.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_change_set(
-  ChangeSetName = "string",
-  StackName = "string"
-)
-}
-}
-
 \keyword{internal}

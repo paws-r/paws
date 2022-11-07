@@ -12,21 +12,9 @@ assigned to.}
 
 \item{TagKeys}{[required] The keys of the tags to remove from the user pool.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the specified tags from an Amazon Cognito user pool. You can use
-this action up to 5 times per second, per account
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes the specified tags from an Amazon Cognito user pool. You can use this action up to 5 times per second, per account.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/untag_resource.html} for full documentation.
+}
 \keyword{internal}

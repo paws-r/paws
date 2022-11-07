@@ -4,8 +4,14 @@
 \alias{ec2_describe_host_reservation_offerings}
 \title{Describes the Dedicated Host reservations that are available to purchase}
 \usage{
-ec2_describe_host_reservation_offerings(Filter, MaxDuration, MaxResults,
-  MinDuration, NextToken, OfferingId)
+ec2_describe_host_reservation_offerings(
+  Filter = NULL,
+  MaxDuration = NULL,
+  MaxResults = NULL,
+  MinDuration = NULL,
+  NextToken = NULL,
+  OfferingId = NULL
+)
 }
 \arguments{
 \item{Filter}{The filters.
@@ -37,52 +43,9 @@ or 3). For example, specify 31536000 for one year.}
 
 \item{OfferingId}{The ID of the reservation offering.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  OfferingSet = list(
-    list(
-      CurrencyCode = "USD",
-      Duration = 123,
-      HourlyPrice = "string",
-      InstanceFamily = "string",
-      OfferingId = "string",
-      PaymentOption = "AllUpfront"|"PartialUpfront"|"NoUpfront",
-      UpfrontPrice = "string"
-    )
-  )
-)
-}
-}
 \description{
-Describes the Dedicated Host reservations that are available to
-purchase.
+Describes the Dedicated Host reservations that are available to purchase.
 
-The results describe all of the Dedicated Host reservation offerings,
-including offerings that might not match the instance family and Region
-of your Dedicated Hosts. When purchasing an offering, ensure that the
-instance family and Region of the offering matches that of the Dedicated
-Hosts with which it is to be associated. For more information about
-supported instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html}{Dedicated Hosts Overview}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/describe_host_reservation_offerings.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_host_reservation_offerings(
-  Filter = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxDuration = 123,
-  MaxResults = 123,
-  MinDuration = 123,
-  NextToken = "string",
-  OfferingId = "string"
-)
-}
-}
-
 \keyword{internal}

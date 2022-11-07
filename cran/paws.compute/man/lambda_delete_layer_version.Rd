@@ -2,7 +2,7 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_delete_layer_version}
 \alias{lambda_delete_layer_version}
-\title{Deletes a version of an AWS Lambda layer}
+\title{Deletes a version of an Lambda layer}
 \usage{
 lambda_delete_layer_version(LayerName, VersionNumber)
 }
@@ -11,31 +11,9 @@ lambda_delete_layer_version(LayerName, VersionNumber)
 
 \item{VersionNumber}{[required] The version number.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
-Deleted versions can no longer be viewed or added to functions. To avoid
-breaking functions, a copy of the version remains in Lambda until no
-functions refer to it.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_layer_version(
-  LayerName = "string",
-  VersionNumber = 123
-)
-}
-}
+Deletes a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions refer to it.
 
-\examples{
-\dontrun{
-# The following example deletes version 2 of a layer named my-layer.
-svc$delete_layer_version(
-  LayerName = "my-layer",
-  VersionNumber = 2L
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/delete_layer_version.html} for full documentation.
 }
 \keyword{internal}

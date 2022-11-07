@@ -5,8 +5,10 @@
 \title{Returns all of the runtime parameters offered by the underlying database
 software, or engine, for a specific database in Amazon Lightsail}
 \usage{
-lightsail_get_relational_database_parameters(relationalDatabaseName,
-  pageToken)
+lightsail_get_relational_database_parameters(
+  relationalDatabaseName,
+  pageToken = NULL
+)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database for which to get parameters.}
@@ -19,39 +21,9 @@ request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  parameters = list(
-    list(
-      allowedValues = "string",
-      applyMethod = "string",
-      applyType = "string",
-      dataType = "string",
-      description = "string",
-      isModifiable = TRUE|FALSE,
-      parameterName = "string",
-      parameterValue = "string"
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
-Returns all of the runtime parameters offered by the underlying database
-software, or engine, for a specific database in Amazon Lightsail.
+Returns all of the runtime parameters offered by the underlying database software, or engine, for a specific database in Amazon Lightsail.
 
-In addition to the parameter names and values, this operation returns
-other information about each parameter. This information includes
-whether changes require a reboot, whether the parameter is modifiable,
-the allowed values, and the data types.
+See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_parameters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_relational_database_parameters(
-  relationalDatabaseName = "string",
-  pageToken = "string"
-)
-}
-}
-
 \keyword{internal}

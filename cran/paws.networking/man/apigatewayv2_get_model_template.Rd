@@ -11,21 +11,9 @@ apigatewayv2_get_model_template(ApiId, ModelId)
 
 \item{ModelId}{[required] The model ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Value = "string"
-)
-}
-}
 \description{
 Gets a model template.
-}
-\section{Request syntax}{
-\preformatted{svc$get_model_template(
-  ApiId = "string",
-  ModelId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_model_template.html} for full documentation.
+}
 \keyword{internal}

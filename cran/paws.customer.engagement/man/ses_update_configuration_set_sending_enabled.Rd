@@ -5,8 +5,7 @@
 \title{Enables or disables email sending for messages sent using a specific
 configuration set in a given AWS Region}
 \usage{
-ses_update_configuration_set_sending_enabled(ConfigurationSetName,
-  Enabled)
+ses_update_configuration_set_sending_enabled(ConfigurationSetName, Enabled)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to update.}
@@ -14,35 +13,9 @@ ses_update_configuration_set_sending_enabled(ConfigurationSetName,
 \item{Enabled}{[required] Describes whether email sending is enabled or disabled for the
 configuration set.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables or disables email sending for messages sent using a specific
-configuration set in a given AWS Region. You can use this operation in
-conjunction with Amazon CloudWatch alarms to temporarily pause email
-sending for a configuration set when the reputation metrics for that
-configuration set (such as your bounce on complaint rate) exceed certain
-thresholds.
+Enables or disables email sending for messages sent using a specific configuration set in a given AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending for a configuration set when the reputation metrics for that configuration set (such as your bounce on complaint rate) exceed certain thresholds.
 
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$update_configuration_set_sending_enabled(
-  ConfigurationSetName = "string",
-  Enabled = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# Set the sending enabled flag for a specific configuration set.
-svc$update_configuration_set_sending_enabled(
-  ConfigurationSetName = "foo",
-  Enabled = TRUE
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/update_configuration_set_sending_enabled.html} for full documentation.
 }
 \keyword{internal}

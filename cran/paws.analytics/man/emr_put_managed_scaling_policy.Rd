@@ -12,30 +12,9 @@ attached.}
 
 \item{ManagedScalingPolicy}{[required] Specifies the constraints for the managed scaling policy.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates or updates a managed scaling policy for an Amazon EMR cluster.
-The managed scaling policy defines the limits for resources, such as EC2
-instances that can be added or terminated from a cluster. The policy
-only applies to the core and task nodes. The master node cannot be
-scaled after initial configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$put_managed_scaling_policy(
-  ClusterId = "string",
-  ManagedScalingPolicy = list(
-    ComputeLimits = list(
-      UnitType = "InstanceFleetUnits"|"Instances"|"VCPU",
-      MinimumCapacityUnits = 123,
-      MaximumCapacityUnits = 123,
-      MaximumOnDemandCapacityUnits = 123,
-      MaximumCoreCapacityUnits = 123
-    )
-  )
-)
-}
-}
+Creates or updates a managed scaling policy for an Amazon EMR cluster. The managed scaling policy defines the limits for resources, such as EC2 instances that can be added or terminated from a cluster. The policy only applies to the core and task nodes. The master node cannot be scaled after initial configuration.
 
+See \url{https://paws-r.github.io/docs/emr/put_managed_scaling_policy.html} for full documentation.
+}
 \keyword{internal}

@@ -4,9 +4,14 @@
 \alias{configservice_put_conformance_pack}
 \title{Creates or updates a conformance pack}
 \usage{
-configservice_put_conformance_pack(ConformancePackName, TemplateS3Uri,
-  TemplateBody, DeliveryS3Bucket, DeliveryS3KeyPrefix,
-  ConformancePackInputParameters)
+configservice_put_conformance_pack(
+  ConformancePackName,
+  TemplateS3Uri = NULL,
+  TemplateBody = NULL,
+  DeliveryS3Bucket = NULL,
+  DeliveryS3KeyPrefix = NULL,
+  ConformancePackInputParameters = NULL
+)
 }
 \arguments{
 \item{ConformancePackName}{[required] Name of the conformance pack you want to create.}
@@ -22,50 +27,24 @@ You must have access to read Amazon S3 bucket.}
 containing the template body with a minimum length of 1 byte and a
 maximum length of 51,200 bytes.
 
-You can only use a YAML template with one resource type, that is, config
-rule and a remediation action.}
+You can only use a YAML template with two resource types: Config rule
+(\verb{AWS::Config::ConfigRule}) and a remediation action
+(\verb{AWS::Config::RemediationConfiguration}).}
 
-\item{DeliveryS3Bucket}{AWS Config stores intermediate files while processing conformance pack
-template.}
+\item{DeliveryS3Bucket}{The name of the Amazon S3 bucket where Config stores conformance pack
+templates.
 
-\item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.}
+This field is optional.}
+
+\item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.
+
+This field is optional.}
 
 \item{ConformancePackInputParameters}{A list of \code{ConformancePackInputParameter} objects.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConformancePackArn = "string"
-)
-}
-}
 \description{
-Creates or updates a conformance pack. A conformance pack is a
-collection of AWS Config rules that can be easily deployed in an account
-and a region and across AWS Organization.
+Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across Amazon Web Services Organization. For information on how many conformance packs you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the Config Developer Guide.
 
-This API creates a service linked role \code{AWSServiceRoleForConfigConforms}
-in your account. The service linked role is created only when the role
-does not exist in your account.
-
-You must specify either the \code{TemplateS3Uri} or the \code{TemplateBody}
-parameter, but not both. If you provide both AWS Config uses the
-\code{TemplateS3Uri} parameter and ignores the \code{TemplateBody} parameter.
+See \url{https://paws-r.github.io/docs/configservice/put_conformance_pack.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_conformance_pack(
-  ConformancePackName = "string",
-  TemplateS3Uri = "string",
-  TemplateBody = "string",
-  DeliveryS3Bucket = "string",
-  DeliveryS3KeyPrefix = "string",
-  ConformancePackInputParameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

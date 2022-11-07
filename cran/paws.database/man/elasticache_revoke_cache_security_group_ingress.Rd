@@ -4,48 +4,24 @@
 \alias{elasticache_revoke_cache_security_group_ingress}
 \title{Revokes ingress from a cache security group}
 \usage{
-elasticache_revoke_cache_security_group_ingress(CacheSecurityGroupName,
-  EC2SecurityGroupName, EC2SecurityGroupOwnerId)
+elasticache_revoke_cache_security_group_ingress(
+  CacheSecurityGroupName,
+  EC2SecurityGroupName,
+  EC2SecurityGroupOwnerId
+)
 }
 \arguments{
 \item{CacheSecurityGroupName}{[required] The name of the cache security group to revoke ingress from.}
 
 \item{EC2SecurityGroupName}{[required] The name of the Amazon EC2 security group to revoke access from.}
 
-\item{EC2SecurityGroupOwnerId}{[required] The AWS account number of the Amazon EC2 security group owner. Note that
-this is not the same thing as an AWS access key ID - you must provide a
-valid AWS account number for this parameter.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheSecurityGroup = list(
-    OwnerId = "string",
-    CacheSecurityGroupName = "string",
-    Description = "string",
-    EC2SecurityGroups = list(
-      list(
-        Status = "string",
-        EC2SecurityGroupName = "string",
-        EC2SecurityGroupOwnerId = "string"
-      )
-    ),
-    ARN = "string"
-  )
-)
-}
+\item{EC2SecurityGroupOwnerId}{[required] The Amazon account number of the Amazon EC2 security group owner. Note
+that this is not the same thing as an Amazon access key ID - you must
+provide a valid Amazon account number for this parameter.}
 }
 \description{
-Revokes ingress from a cache security group. Use this operation to
-disallow access from an Amazon EC2 security group that had been
-previously authorized.
-}
-\section{Request syntax}{
-\preformatted{svc$revoke_cache_security_group_ingress(
-  CacheSecurityGroupName = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
-}
-}
+Revokes ingress from a cache security group. Use this operation to disallow access from an Amazon EC2 security group that had been previously authorized.
 
+See \url{https://paws-r.github.io/docs/elasticache/revoke_cache_security_group_ingress.html} for full documentation.
+}
 \keyword{internal}

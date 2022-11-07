@@ -7,31 +7,15 @@
 quicksight_cancel_ingestion(AwsAccountId, DataSetId, IngestionId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
 \item{DataSetId}{[required] The ID of the dataset used in the ingestion.}
 
 \item{IngestionId}{[required] An ID for the ingestion.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  IngestionId = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Cancels an ongoing ingestion of data into SPICE.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_ingestion(
-  AwsAccountId = "string",
-  DataSetId = "string",
-  IngestionId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/cancel_ingestion.html} for full documentation.
+}
 \keyword{internal}

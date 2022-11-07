@@ -6,19 +6,9 @@
 \usage{
 appstream_create_usage_report_subscription()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  S3BucketName = "string",
-  Schedule = "DAILY"
-)
-}
-}
 \description{
 Creates a usage report subscription. Usage reports are generated daily.
-}
-\section{Request syntax}{
-\preformatted{svc$create_usage_report_subscription()
-}
-}
 
+See \url{https://paws-r.github.io/docs/appstream/create_usage_report_subscription.html} for full documentation.
+}
 \keyword{internal}

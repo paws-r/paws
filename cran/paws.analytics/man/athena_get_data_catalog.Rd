@@ -9,27 +9,9 @@ athena_get_data_catalog(Name)
 \arguments{
 \item{Name}{[required] The name of the data catalog to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DataCatalog = list(
-    Name = "string",
-    Description = "string",
-    Type = "LAMBDA"|"GLUE"|"HIVE",
-    Parameters = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns the specified data catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$get_data_catalog(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/athena/get_data_catalog.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{rds_describe_option_groups}
 \title{Describes the available option groups}
 \usage{
-rds_describe_option_groups(OptionGroupName, Filters, Marker, MaxRecords,
-  EngineName, MajorEngineVersion)
+rds_describe_option_groups(
+  OptionGroupName = NULL,
+  Filters = NULL,
+  Marker = NULL,
+  MaxRecords = NULL,
+  EngineName = NULL,
+  MajorEngineVersion = NULL
+)
 }
 \arguments{
 \item{OptionGroupName}{The name of the option group to describe. Can't be supplied together
@@ -27,84 +33,30 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 
 \item{EngineName}{Filters the list of option groups to only include groups associated with
-a specific database engine.}
+a specific database engine.
+
+Valid Values:
+\itemize{
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-ee-cdb}
+\item \code{oracle-se2}
+\item \code{oracle-se2-cdb}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
+}}
 
 \item{MajorEngineVersion}{Filters the list of option groups to only include groups associated with
 a specific database engine version. If specified, then EngineName must
 also be specified.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OptionGroupsList = list(
-    list(
-      OptionGroupName = "string",
-      OptionGroupDescription = "string",
-      EngineName = "string",
-      MajorEngineVersion = "string",
-      Options = list(
-        list(
-          OptionName = "string",
-          OptionDescription = "string",
-          Persistent = TRUE|FALSE,
-          Permanent = TRUE|FALSE,
-          Port = 123,
-          OptionVersion = "string",
-          OptionSettings = list(
-            list(
-              Name = "string",
-              Value = "string",
-              DefaultValue = "string",
-              Description = "string",
-              ApplyType = "string",
-              DataType = "string",
-              AllowedValues = "string",
-              IsModifiable = TRUE|FALSE,
-              IsCollection = TRUE|FALSE
-            )
-          ),
-          DBSecurityGroupMemberships = list(
-            list(
-              DBSecurityGroupName = "string",
-              Status = "string"
-            )
-          ),
-          VpcSecurityGroupMemberships = list(
-            list(
-              VpcSecurityGroupId = "string",
-              Status = "string"
-            )
-          )
-        )
-      ),
-      AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
-      VpcId = "string",
-      OptionGroupArn = "string"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Describes the available option groups.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_option_groups(
-  OptionGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  MaxRecords = 123,
-  EngineName = "string",
-  MajorEngineVersion = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/describe_option_groups.html} for full documentation.
+}
 \keyword{internal}

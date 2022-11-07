@@ -12,23 +12,9 @@ opsworks_detach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 \item{LayerId}{[required] The ID of the layer that the Elastic Load Balancing instance is attached
 to.}
 }
-\value{
-An empty list.
-}
 \description{
 Detaches a specified Elastic Load Balancing instance from its layer.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/detach_elastic_load_balancer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$detach_elastic_load_balancer(
-  ElasticLoadBalancerName = "string",
-  LayerId = "string"
-)
-}
-}
-
 \keyword{internal}

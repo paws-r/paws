@@ -2,9 +2,9 @@
 % Please edit documentation in R/globalaccelerator_operations.R
 \name{globalaccelerator_provision_byoip_cidr}
 \alias{globalaccelerator_provision_byoip_cidr}
-\title{Provisions an IP address range to use with your AWS resources through
-bring your own IP addresses (BYOIP) and creates a corresponding address
-pool}
+\title{Provisions an IP address range to use with your Amazon Web Services
+resources through bring your own IP addresses (BYOIP) and creates a
+corresponding address pool}
 \usage{
 globalaccelerator_provision_byoip_cidr(Cidr, CidrAuthorizationContext)
 }
@@ -17,42 +17,9 @@ Region.}
 \item{CidrAuthorizationContext}{[required] A signed document that proves that you are authorized to bring the
 specified IP address range to Amazon using BYOIP.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ByoipCidr = list(
-    Cidr = "string",
-    State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
-    Events = list(
-      list(
-        Message = "string",
-        Timestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Provisions an IP address range to use with your AWS resources through
-bring your own IP addresses (BYOIP) and creates a corresponding address
-pool. After the address range is provisioned, it is ready to be
-advertised using
-\href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{AdvertiseByoipCidr}.
+Provisions an IP address range to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised using \href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{AdvertiseByoipCidr}.
 
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring Your Own IP Addresses (BYOIP)}
-in the \emph{AWS Global Accelerator Developer Guide}.
+See \url{https://paws-r.github.io/docs/globalaccelerator/provision_byoip_cidr.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$provision_byoip_cidr(
-  Cidr = "string",
-  CidrAuthorizationContext = list(
-    Message = "string",
-    Signature = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

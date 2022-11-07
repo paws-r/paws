@@ -6,26 +6,18 @@ NULL
 #' Creates a new capacity provider
 #'
 #' @description
-#' Creates a new capacity provider. Capacity providers are associated with
-#' an Amazon ECS cluster and are used in capacity provider strategies to
-#' facilitate cluster auto scaling.
-#' 
-#' Only capacity providers using an Auto Scaling group can be created.
-#' Amazon ECS tasks on AWS Fargate use the `FARGATE` and `FARGATE_SPOT`
-#' capacity providers which are already created and available to all
-#' accounts in Regions supported by AWS Fargate.
+#' Creates a new capacity provider. Capacity providers are associated with an Amazon ECS cluster and are used in capacity provider strategies to facilitate cluster auto scaling.
 #'
-#' @usage
-#' ecs_create_capacity_provider(name, autoScalingGroupProvider, tags)
+#' See [https://paws-r.github.io/docs/ecs/create_capacity_provider.html](https://paws-r.github.io/docs/ecs/create_capacity_provider.html) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the capacity provider. Up to 255 characters are allowed,
-#' including letters (upper and lowercase), numbers, underscores, and
-#' hyphens. The name cannot be prefixed with "`aws`", "`ecs`", or
-#' "`fargate`".
+#' @param name &#91;required&#93; The name of the capacity provider. Up to 255 characters are allowed.
+#' They include letters (both upper and lowercase letters), numbers,
+#' underscores (_), and hyphens (-). The name can't be prefixed with
+#' "`aws`", "`ecs`", or "`fargate`".
 #' @param autoScalingGroupProvider &#91;required&#93; The details of the Auto Scaling group for the capacity provider.
-#' @param tags The metadata that you apply to the capacity provider to help you
-#' categorize and organize them. Each tag consists of a key and an optional
-#' value, both of which you define.
+#' @param tags The metadata that you apply to the capacity provider to categorize and
+#' organize them more conveniently. Each tag consists of a key and an
+#' optional value. You define both of them.
 #' 
 #' The following basic restrictions apply to tags:
 #' 
@@ -47,65 +39,10 @@ NULL
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for AWS
-#'     use. You cannot edit or delete tag keys or values with this prefix.
-#'     Tags with this prefix do not count against your tags per resource
-#'     limit.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   capacityProvider = list(
-#'     capacityProviderArn = "string",
-#'     name = "string",
-#'     status = "ACTIVE"|"INACTIVE",
-#'     autoScalingGroupProvider = list(
-#'       autoScalingGroupArn = "string",
-#'       managedScaling = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         targetCapacity = 123,
-#'         minimumScalingStepSize = 123,
-#'         maximumScalingStepSize = 123,
-#'         instanceWarmupPeriod = 123
-#'       ),
-#'       managedTerminationProtection = "ENABLED"|"DISABLED"
-#'     ),
-#'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-#'     updateStatusReason = "string",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_capacity_provider(
-#'   name = "string",
-#'   autoScalingGroupProvider = list(
-#'     autoScalingGroupArn = "string",
-#'     managedScaling = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       targetCapacity = 123,
-#'       minimumScalingStepSize = 123,
-#'       maximumScalingStepSize = 123,
-#'       instanceWarmupPeriod = 123
-#'     ),
-#'     managedTerminationProtection = "ENABLED"|"DISABLED"
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
 #'
 #' @keywords internal
 #'
@@ -130,31 +67,17 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' Creates a new Amazon ECS cluster
 #'
 #' @description
-#' Creates a new Amazon ECS cluster. By default, your account receives a
-#' `default` cluster when you launch your first container instance.
-#' However, you can create your own cluster with a unique name with the
-#' [`create_cluster`][ecs_create_cluster] action.
-#' 
-#' When you call the [`create_cluster`][ecs_create_cluster] API operation,
-#' Amazon ECS attempts to create the Amazon ECS service-linked role for
-#' your account so that required resources in other AWS services can be
-#' managed on your behalf. However, if the IAM user that makes the call
-#' does not have permissions to create the service-linked role, it is not
-#' created. For more information, see [Using Service-Linked Roles for
-#' Amazon
-#' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Creates a new Amazon ECS cluster. By default, your account receives a `default` cluster when you launch your first container instance. However, you can create your own cluster with a unique name with the [`create_cluster`][ecs_create_cluster] action.
 #'
-#' @usage
-#' ecs_create_cluster(clusterName, tags, settings, capacityProviders,
-#'   defaultCapacityProviderStrategy)
+#' See [https://paws-r.github.io/docs/ecs/create_cluster.html](https://paws-r.github.io/docs/ecs/create_cluster.html) for full documentation.
 #'
-#' @param clusterName The name of your cluster. If you do not specify a name for your cluster,
-#' you create a cluster named `default`. Up to 255 letters (uppercase and
-#' lowercase), numbers, and hyphens are allowed.
+#' @param clusterName The name of your cluster. If you don't specify a name for your cluster,
+#' you create a cluster that's named `default`. Up to 255 letters
+#' (uppercase and lowercase), numbers, underscores, and hyphens are
+#' allowed.
 #' @param tags The metadata that you apply to the cluster to help you categorize and
-#' organize them. Each tag consists of a key and an optional value, both of
-#' which you define.
+#' organize them. Each tag consists of a key and an optional value. You
+#' define both.
 #' 
 #' The following basic restrictions apply to tags:
 #' 
@@ -176,169 +99,61 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for AWS
-#'     use. You cannot edit or delete tag keys or values with this prefix.
-#'     Tags with this prefix do not count against your tags per resource
-#'     limit.
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
 #' @param settings The setting to use when creating a cluster. This parameter is used to
-#' enable CloudWatch Container Insights for a cluster. If this value is
-#' specified, it will override the `containerInsights` value set with
+#' turn on CloudWatch Container Insights for a cluster. If this value is
+#' specified, it overrides the `containerInsights` value set with
 #' [`put_account_setting`][ecs_put_account_setting] or
 #' [`put_account_setting_default`][ecs_put_account_setting_default].
+#' @param configuration The `execute` command configuration for the cluster.
 #' @param capacityProviders The short name of one or more capacity providers to associate with the
-#' cluster.
+#' cluster. A capacity provider must be associated with a cluster before it
+#' can be included as part of the default capacity provider strategy of the
+#' cluster or used in a capacity provider strategy when calling the
+#' [`create_service`][ecs_create_service] or [`run_task`][ecs_run_task]
+#' actions.
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
-#' capacity provider must already be created and not already associated
-#' with another cluster. New capacity providers can be created with the
-#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' capacity provider must be created but not associated with another
+#' cluster. New Auto Scaling group capacity providers can be created with
+#' the [`create_capacity_provider`][ecs_create_capacity_provider] API
 #' operation.
 #' 
-#' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
-#' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
-#' are available to all accounts and only need to be associated with a
-#' cluster to be used.
+#' To use a Fargate capacity provider, specify either the `FARGATE` or
+#' `FARGATE_SPOT` capacity providers. The Fargate capacity providers are
+#' available to all accounts and only need to be associated with a cluster
+#' to be used.
 #' 
 #' The
 #' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
 #' API operation is used to update the list of available capacity providers
 #' for a cluster after the cluster is created.
-#' @param defaultCapacityProviderStrategy The capacity provider strategy to use by default for the cluster.
-#' 
-#' When creating a service or running a task on a cluster, if no capacity
-#' provider or launch type is specified then the default capacity provider
+#' @param defaultCapacityProviderStrategy The capacity provider strategy to set as the default for the cluster.
+#' After a default capacity provider strategy is set for a cluster, when
+#' you call the [`run_task`][ecs_run_task] or
+#' [`create_service`][ecs_create_service] APIs with no capacity provider
+#' strategy or launch type specified, the default capacity provider
 #' strategy for the cluster is used.
 #' 
-#' A capacity provider strategy consists of one or more capacity providers
-#' along with the `base` and `weight` to assign to them. A capacity
-#' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' API is used to associate a capacity provider with a cluster. Only
-#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
-#' 
-#' If specifying a capacity provider that uses an Auto Scaling group, the
-#' capacity provider must already be created. New capacity providers can be
-#' created with the
-#' [`create_capacity_provider`][ecs_create_capacity_provider] API
-#' operation.
-#' 
-#' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
-#' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
-#' are available to all accounts and only need to be associated with a
-#' cluster to be used.
-#' 
-#' If a default capacity provider strategy is not defined for a cluster
-#' during creation, it can be defined later with the
+#' If a default capacity provider strategy isn't defined for a cluster when
+#' it was created, it can be defined later with the
 #' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
 #' API operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cluster = list(
-#'     clusterArn = "string",
-#'     clusterName = "string",
-#'     status = "string",
-#'     registeredContainerInstancesCount = 123,
-#'     runningTasksCount = 123,
-#'     pendingTasksCount = 123,
-#'     activeServicesCount = 123,
-#'     statistics = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     settings = list(
-#'       list(
-#'         name = "containerInsights",
-#'         value = "string"
-#'       )
-#'     ),
-#'     capacityProviders = list(
-#'       "string"
-#'     ),
-#'     defaultCapacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     attachments = list(
-#'       list(
-#'         id = "string",
-#'         type = "string",
-#'         status = "string",
-#'         details = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     attachmentsStatus = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_cluster(
-#'   clusterName = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   settings = list(
-#'     list(
-#'       name = "containerInsights",
-#'       value = "string"
-#'     )
-#'   ),
-#'   capacityProviders = list(
-#'     "string"
-#'   ),
-#'   defaultCapacityProviderStrategy = list(
-#'     list(
-#'       capacityProvider = "string",
-#'       weight = 123,
-#'       base = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates a cluster in your default region.
-#' svc$create_cluster(
-#'   clusterName = "my_cluster"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_create_cluster
-ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL, capacityProviders = NULL, defaultCapacityProviderStrategy = NULL) {
+ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL, configuration = NULL, capacityProviders = NULL, defaultCapacityProviderStrategy = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$create_cluster_input(clusterName = clusterName, tags = tags, settings = settings, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy)
+  input <- .ecs$create_cluster_input(clusterName = clusterName, tags = tags, settings = settings, configuration = configuration, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy)
   output <- .ecs$create_cluster_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -348,276 +163,142 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 }
 .ecs$operations$create_cluster <- ecs_create_cluster
 
-#' Runs and maintains a desired number of tasks from a specified task
+#' Runs and maintains your desired number of tasks from a specified task
 #' definition
 #'
 #' @description
-#' Runs and maintains a desired number of tasks from a specified task
-#' definition. If the number of tasks running in a service drops below the
-#' `desiredCount`, Amazon ECS runs another copy of the task in the
-#' specified cluster. To update an existing service, see the UpdateService
-#' action.
-#' 
-#' In addition to maintaining the desired count of tasks in your service,
-#' you can optionally run your service behind one or more load balancers.
-#' The load balancers distribute traffic across the tasks that are
-#' associated with the service. For more information, see [Service Load
-#' Balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' Tasks for services that *do not* use a load balancer are considered
-#' healthy if they're in the `RUNNING` state. Tasks for services that *do*
-#' use a load balancer are considered healthy if they're in the `RUNNING`
-#' state and the container instance that they're hosted on is reported as
-#' healthy by the load balancer.
-#' 
-#' There are two service scheduler strategies available:
-#' 
-#' -   `REPLICA` - The replica scheduling strategy places and maintains the
-#'     desired number of tasks across your cluster. By default, the service
-#'     scheduler spreads tasks across Availability Zones. You can use task
-#'     placement strategies and constraints to customize task placement
-#'     decisions. For more information, see [Service Scheduler
-#'     Concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
-#'     in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' -   `DAEMON` - The daemon scheduling strategy deploys exactly one task
-#'     on each active container instance that meets all of the task
-#'     placement constraints that you specify in your cluster. The service
-#'     scheduler also evaluates the task placement constraints for running
-#'     tasks and will stop tasks that do not meet the placement
-#'     constraints. When using this strategy, you don't need to specify a
-#'     desired number of tasks, a task placement strategy, or use Service
-#'     Auto Scaling policies. For more information, see [Service Scheduler
-#'     Concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
-#'     in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' You can optionally specify a deployment configuration for your service.
-#' The deployment is triggered by changing properties, such as the task
-#' definition or the desired count of a service, with an
-#' [`update_service`][ecs_update_service] operation. The default value for
-#' a replica service for `minimumHealthyPercent` is 100%. The default value
-#' for a daemon service for `minimumHealthyPercent` is 0%.
-#' 
-#' If a service is using the `ECS` deployment controller, the minimum
-#' healthy percent represents a lower limit on the number of tasks in a
-#' service that must remain in the `RUNNING` state during a deployment, as
-#' a percentage of the desired number of tasks (rounded up to the nearest
-#' integer), and while any container instances are in the `DRAINING` state
-#' if the service contains tasks using the EC2 launch type. This parameter
-#' enables you to deploy without using additional cluster capacity. For
-#' example, if your service has a desired number of four tasks and a
-#' minimum healthy percent of 50%, the scheduler might stop two existing
-#' tasks to free up cluster capacity before starting two new tasks. Tasks
-#' for services that *do not* use a load balancer are considered healthy if
-#' they're in the `RUNNING` state. Tasks for services that *do* use a load
-#' balancer are considered healthy if they're in the `RUNNING` state and
-#' they're reported as healthy by the load balancer. The default value for
-#' minimum healthy percent is 100%.
-#' 
-#' If a service is using the `ECS` deployment controller, the **maximum
-#' percent** parameter represents an upper limit on the number of tasks in
-#' a service that are allowed in the `RUNNING` or `PENDING` state during a
-#' deployment, as a percentage of the desired number of tasks (rounded down
-#' to the nearest integer), and while any container instances are in the
-#' `DRAINING` state if the service contains tasks using the EC2 launch
-#' type. This parameter enables you to define the deployment batch size.
-#' For example, if your service has a desired number of four tasks and a
-#' maximum percent value of 200%, the scheduler may start four new tasks
-#' before stopping the four older tasks (provided that the cluster
-#' resources required to do this are available). The default value for
-#' maximum percent is 200%.
-#' 
-#' If a service is using either the `CODE_DEPLOY` or `EXTERNAL` deployment
-#' controller types and tasks that use the EC2 launch type, the **minimum
-#' healthy percent** and **maximum percent** values are used only to define
-#' the lower and upper limit on the number of the tasks in the service that
-#' remain in the `RUNNING` state while the container instances are in the
-#' `DRAINING` state. If the tasks in the service use the Fargate launch
-#' type, the minimum healthy percent and maximum percent values aren't
-#' used, although they're currently visible when describing your service.
-#' 
-#' When creating a service that uses the `EXTERNAL` deployment controller,
-#' you can specify only parameters that aren't controlled at the task set
-#' level. The only required parameter is the service name. You control your
-#' services using the [`create_task_set`][ecs_create_task_set] operation.
-#' For more information, see [Amazon ECS Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' When the service scheduler launches new tasks, it determines task
-#' placement in your cluster using the following logic:
-#' 
-#' -   Determine which of the container instances in your cluster can
-#'     support your service's task definition (for example, they have the
-#'     required CPU, memory, ports, and container instance attributes).
-#' 
-#' -   By default, the service scheduler attempts to balance tasks across
-#'     Availability Zones in this manner (although you can choose a
-#'     different placement strategy) with the `placementStrategy`
-#'     parameter):
-#' 
-#'     -   Sort the valid container instances, giving priority to instances
-#'         that have the fewest number of running tasks for this service in
-#'         their respective Availability Zone. For example, if zone A has
-#'         one running service task and zones B and C each have zero, valid
-#'         container instances in either zone B or C are considered optimal
-#'         for placement.
-#' 
-#'     -   Place the new service task on a valid container instance in an
-#'         optimal Availability Zone (based on the previous steps),
-#'         favoring container instances with the fewest number of running
-#'         tasks for this service.
+#' Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the `desiredCount`, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, see the [`update_service`][ecs_update_service] action.
 #'
-#' @usage
-#' ecs_create_service(cluster, serviceName, taskDefinition, loadBalancers,
-#'   serviceRegistries, desiredCount, clientToken, launchType,
-#'   capacityProviderStrategy, platformVersion, role,
-#'   deploymentConfiguration, placementConstraints, placementStrategy,
-#'   networkConfiguration, healthCheckGracePeriodSeconds, schedulingStrategy,
-#'   deploymentController, tags, enableECSManagedTags, propagateTags)
+#' See [https://paws-r.github.io/docs/ecs/create_service.html](https://paws-r.github.io/docs/ecs/create_service.html) for full documentation.
 #'
-#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster on
-#' which to run your service. If you do not specify a cluster, the default
+#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
+#' you run your service on. If you do not specify a cluster, the default
 #' cluster is assumed.
 #' @param serviceName &#91;required&#93; The name of your service. Up to 255 letters (uppercase and lowercase),
-#' numbers, and hyphens are allowed. Service names must be unique within a
-#' cluster, but you can have similarly named services in multiple clusters
-#' within a Region or across multiple Regions.
+#' numbers, underscores, and hyphens are allowed. Service names must be
+#' unique within a cluster, but you can have similarly named services in
+#' multiple clusters within a Region or across multiple Regions.
 #' @param taskDefinition The `family` and `revision` (`family:revision`) or full ARN of the task
-#' definition to run in your service. If a `revision` is not specified, the
+#' definition to run in your service. If a `revision` isn't specified, the
 #' latest `ACTIVE` revision is used.
 #' 
-#' A task definition must be specified if the service is using either the
-#' `ECS` or `CODE_DEPLOY` deployment controllers.
+#' A task definition must be specified if the service uses either the `ECS`
+#' or `CODE_DEPLOY` deployment controllers.
 #' @param loadBalancers A load balancer object representing the load balancers to use with your
-#' service. For more information, see [Service Load
-#' Balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
+#' service. For more information, see [Service load
+#' balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' If the service is using the rolling update (`ECS`) deployment controller
-#' and using either an Application Load Balancer or Network Load Balancer,
-#' you must specify one or more target group ARNs to attach to the service.
-#' The service-linked role is required for services that make use of
-#' multiple target groups. For more information, see [Using Service-Linked
-#' Roles for Amazon
+#' If the service uses the rolling update (`ECS`) deployment controller and
+#' using either an Application Load Balancer or Network Load Balancer, you
+#' must specify one or more target group ARNs to attach to the service. The
+#' service-linked role is required for services that use multiple target
+#' groups. For more information, see [Using service-linked roles for Amazon
 #' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' If the service is using the `CODE_DEPLOY` deployment controller, the
-#' service is required to use either an Application Load Balancer or
-#' Network Load Balancer. When creating an AWS CodeDeploy deployment group,
-#' you specify two target groups (referred to as a `targetGroupPair`).
-#' During a deployment, AWS CodeDeploy determines which task set in your
-#' service has the status `PRIMARY` and associates one target group with
-#' it, and then associates the other target group with the replacement task
-#' set. The load balancer can also have up to two listeners: a required
-#' listener for production traffic and an optional listener that allows you
-#' perform validation tests with Lambda functions before routing production
-#' traffic to it.
+#' If the service uses the `CODE_DEPLOY` deployment controller, the service
+#' is required to use either an Application Load Balancer or Network Load
+#' Balancer. When creating an CodeDeploy deployment group, you specify two
+#' target groups (referred to as a `targetGroupPair`). During a deployment,
+#' CodeDeploy determines which task set in your service has the status
+#' `PRIMARY`, and it associates one target group with it. Then, it also
+#' associates the other target group with the replacement task set. The
+#' load balancer can also have up to two listeners: a required listener for
+#' production traffic and an optional listener that you can use to perform
+#' validation tests with Lambda functions before routing production traffic
+#' to it.
 #' 
-#' After you create a service using the `ECS` deployment controller, the
-#' load balancer name or target group ARN, container name, and container
-#' port specified in the service definition are immutable. If you are using
-#' the `CODE_DEPLOY` deployment controller, these values can be changed
-#' when updating the service.
+#' If you use the `CODE_DEPLOY` deployment controller, these values can be
+#' changed when updating the service.
 #' 
 #' For Application Load Balancers and Network Load Balancers, this object
-#' must contain the load balancer target group ARN, the container name (as
-#' it appears in a container definition), and the container port to access
-#' from the load balancer. The load balancer name parameter must be
-#' omitted. When a task from this service is placed on a container
-#' instance, the container instance and port combination is registered as a
-#' target in the target group specified here.
+#' must contain the load balancer target group ARN, the container name, and
+#' the container port to access from the load balancer. The container name
+#' must be as it appears in a container definition. The load balancer name
+#' parameter must be omitted. When a task from this service is placed on a
+#' container instance, the container instance and port combination is
+#' registered as a target in the target group that's specified here.
 #' 
 #' For Classic Load Balancers, this object must contain the load balancer
-#' name, the container name (as it appears in a container definition), and
-#' the container port to access from the load balancer. The target group
-#' ARN parameter must be omitted. When a task from this service is placed
-#' on a container instance, the container instance is registered with the
-#' load balancer specified here.
+#' name, the container name , and the container port to access from the
+#' load balancer. The container name must be as it appears in a container
+#' definition. The target group ARN parameter must be omitted. When a task
+#' from this service is placed on a container instance, the container
+#' instance is registered with the load balancer that's specified here.
 #' 
 #' Services with tasks that use the `awsvpc` network mode (for example,
 #' those with the Fargate launch type) only support Application Load
-#' Balancers and Network Load Balancers. Classic Load Balancers are not
+#' Balancers and Network Load Balancers. Classic Load Balancers aren't
 #' supported. Also, when you create any target groups for these services,
-#' you must choose `ip` as the target type, not `instance`, because tasks
-#' that use the `awsvpc` network mode are associated with an elastic
+#' you must choose `ip` as the target type, not `instance`. This is because
+#' tasks that use the `awsvpc` network mode are associated with an elastic
 #' network interface, not an Amazon EC2 instance.
-#' @param serviceRegistries The details of the service discovery registries to assign to this
+#' @param serviceRegistries The details of the service discovery registry to associate with this
 #' service. For more information, see [Service
-#' Discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+#' discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 #' 
-#' Service discovery is supported for Fargate tasks if you are using
-#' platform version v1.1.0 or later. For more information, see [AWS Fargate
-#' Platform
-#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+#' Each service may be associated with one service registry. Multiple
+#' service registries for each service isn't supported.
 #' @param desiredCount The number of instantiations of the specified task definition to place
 #' and keep running on your cluster.
 #' 
-#' This is required if `schedulingStrategy` is `REPLICA` or is not
-#' specified. If `schedulingStrategy` is `DAEMON` then this is not
-#' required.
-#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. Up to 32 ASCII characters are allowed.
-#' @param launchType The launch type on which to run your service. For more information, see
-#' [Amazon ECS Launch
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+#' This is required if `schedulingStrategy` is `REPLICA` or isn't
+#' specified. If `schedulingStrategy` is `DAEMON` then this isn't required.
+#' @param clientToken An identifier that you provide to ensure the idempotency of the request.
+#' It must be unique and is case sensitive. Up to 32 ASCII characters are
+#' allowed.
+#' @param launchType The infrastructure that you run your service on. For more information,
+#' see [Amazon ECS launch
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
+#' The `FARGATE` launch type runs your tasks on Fargate On-Demand
+#' infrastructure.
+#' 
+#' Fargate Spot infrastructure is available for use but a capacity provider
+#' strategy must be used. For more information, see [Fargate capacity
+#' providers](https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-capacity-providers.html)
+#' in the *Amazon ECS User Guide for Fargate*.
+#' 
+#' The `EC2` launch type runs your tasks on Amazon EC2 instances registered
+#' to your cluster.
+#' 
+#' The `EXTERNAL` launch type runs your tasks on your on-premises server or
+#' virtual machine (VM) capacity registered to your cluster.
+#' 
+#' A service can use either a launch type or a capacity provider strategy.
 #' If a `launchType` is specified, the `capacityProviderStrategy` parameter
 #' must be omitted.
 #' @param capacityProviderStrategy The capacity provider strategy to use for the service.
-#' 
-#' A capacity provider strategy consists of one or more capacity providers
-#' along with the `base` and `weight` to assign to them. A capacity
-#' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' API is used to associate a capacity provider with a cluster. Only
-#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
 #' 
 #' If a `capacityProviderStrategy` is specified, the `launchType` parameter
 #' must be omitted. If no `capacityProviderStrategy` or `launchType` is
 #' specified, the `defaultCapacityProviderStrategy` for the cluster is
 #' used.
 #' 
-#' If specifying a capacity provider that uses an Auto Scaling group, the
-#' capacity provider must already be created. New capacity providers can be
-#' created with the
-#' [`create_capacity_provider`][ecs_create_capacity_provider] API
-#' operation.
-#' 
-#' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
-#' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
-#' are available to all accounts and only need to be associated with a
-#' cluster to be used.
-#' 
-#' The
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' API operation is used to update the list of available capacity providers
-#' for a cluster after the cluster is created.
+#' A capacity provider strategy may contain a maximum of 6 capacity
+#' providers.
 #' @param platformVersion The platform version that your tasks in the service are running on. A
 #' platform version is specified only for tasks using the Fargate launch
-#' type. If one isn't specified, the `LATEST` platform version is used by
-#' default. For more information, see [AWS Fargate Platform
-#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+#' type. If one isn't specified, the `LATEST` platform version is used. For
+#' more information, see [Fargate platform
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param role The name or full Amazon Resource Name (ARN) of the IAM role that allows
 #' Amazon ECS to make calls to your load balancer on your behalf. This
 #' parameter is only permitted if you are using a load balancer with your
-#' service and your task definition does not use the `awsvpc` network mode.
+#' service and your task definition doesn't use the `awsvpc` network mode.
 #' If you specify the `role` parameter, you must also specify a load
 #' balancer object with the `loadBalancers` parameter.
 #' 
 #' If your account has already created the Amazon ECS service-linked role,
-#' that role is used by default for your service unless you specify a role
-#' here. The service-linked role is required if your task definition uses
-#' the `awsvpc` network mode or if the service is configured to use service
+#' that role is used for your service unless you specify a role here. The
+#' service-linked role is required if your task definition uses the
+#' `awsvpc` network mode or if the service is configured to use service
 #' discovery, an external deployment controller, multiple target groups, or
-#' Elastic Inference accelerators in which case you should not specify a
-#' role here. For more information, see [Using Service-Linked Roles for
-#' Amazon
+#' Elastic Inference accelerators in which case you don't specify a role
+#' here. For more information, see [Using service-linked roles for Amazon
 #' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
@@ -625,36 +306,41 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' specify the full role ARN (this is recommended) or prefix the role name
 #' with the path. For example, if a role with the name `bar` has a path of
 #' `/foo/` then you would specify `/foo/bar` as the role name. For more
-#' information, see [Friendly Names and
-#' Paths](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names)
+#' information, see [Friendly names and
+#' paths](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names)
 #' in the *IAM User Guide*.
 #' @param deploymentConfiguration Optional deployment parameters that control how many tasks run during
 #' the deployment and the ordering of stopping and starting tasks.
 #' @param placementConstraints An array of placement constraint objects to use for tasks in your
-#' service. You can specify a maximum of 10 constraints per task (this
+#' service. You can specify a maximum of 10 constraints for each task. This
 #' limit includes constraints in the task definition and those specified at
-#' runtime).
+#' runtime.
 #' @param placementStrategy The placement strategy objects to use for tasks in your service. You can
-#' specify a maximum of five strategy rules per service.
+#' specify a maximum of 5 strategy rules for each service.
 #' @param networkConfiguration The network configuration for the service. This parameter is required
 #' for task definitions that use the `awsvpc` network mode to receive their
-#' own elastic network interface, and it is not supported for other network
+#' own elastic network interface, and it isn't supported for other network
 #' modes. For more information, see [Task
-#' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+#' networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param healthCheckGracePeriodSeconds The period of time, in seconds, that the Amazon ECS service scheduler
-#' should ignore unhealthy Elastic Load Balancing target health checks
-#' after a task has first started. This is only used when your service is
+#' ignores unhealthy Elastic Load Balancing target health checks after a
+#' task has first started. This is only used when your service is
 #' configured to use a load balancer. If your service has a load balancer
 #' defined and you don't specify a health check grace period value, the
 #' default value of `0` is used.
 #' 
+#' If you do not use an Elastic Load Balancing, we recomend that you use
+#' the `startPeriod` in the task definition healtch check parameters. For
+#' more information, see [Health
+#' check](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html).
+#' 
 #' If your service's tasks take a while to start and respond to Elastic
 #' Load Balancing health checks, you can specify a health check grace
-#' period of up to 2,147,483,647 seconds. During that time, the Amazon ECS
-#' service scheduler ignores health check status. This grace period can
-#' prevent the service scheduler from marking tasks as unhealthy and
-#' stopping them before they have time to come up.
+#' period of up to 2,147,483,647 seconds (about 69 years). During that
+#' time, the Amazon ECS service scheduler ignores health check status. This
+#' grace period can prevent the service scheduler from marking tasks as
+#' unhealthy and stopping them before they have time to come up.
 #' @param schedulingStrategy The scheduling strategy to use for the service. For more information,
 #' see
 #' [Services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
@@ -665,14 +351,14 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     desired number of tasks across your cluster. By default, the service
 #'     scheduler spreads tasks across Availability Zones. You can use task
 #'     placement strategies and constraints to customize task placement
-#'     decisions. This scheduler strategy is required if the service is
-#'     using the `CODE_DEPLOY` or `EXTERNAL` deployment controller types.
+#'     decisions. This scheduler strategy is required if the service uses
+#'     the `CODE_DEPLOY` or `EXTERNAL` deployment controller types.
 #' 
 #' -   `DAEMON`-The daemon scheduling strategy deploys exactly one task on
 #'     each active container instance that meets all of the task placement
 #'     constraints that you specify in your cluster. The service scheduler
 #'     also evaluates the task placement constraints for running tasks and
-#'     will stop tasks that do not meet the placement constraints. When
+#'     will stop tasks that don't meet the placement constraints. When
 #'     you're using this strategy, you don't need to specify a desired
 #'     number of tasks, a task placement strategy, or use Service Auto
 #'     Scaling policies.
@@ -680,7 +366,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     Tasks using the Fargate launch type or the `CODE_DEPLOY` or
 #'     `EXTERNAL` deployment controller types don't support the `DAEMON`
 #'     scheduling strategy.
-#' @param deploymentController The deployment controller to use for the service.
+#' @param deploymentController The deployment controller to use for the service. If no deployment
+#' controller is specified, the default value of `ECS` is used.
 #' @param tags The metadata that you apply to the service to help you categorize and
 #' organize them. Each tag consists of a key and an optional value, both of
 #' which you define. When a service is deleted, the tags are deleted as
@@ -706,352 +393,34 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for AWS
-#'     use. You cannot edit or delete tag keys or values with this prefix.
-#'     Tags with this prefix do not count against your tags per resource
-#'     limit.
-#' @param enableECSManagedTags Specifies whether to enable Amazon ECS managed tags for the tasks within
-#' the service. For more information, see [Tagging Your Amazon ECS
-#' Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
+#' @param enableECSManagedTags Specifies whether to turn on Amazon ECS managed tags for the tasks
+#' within the service. For more information, see [Tagging your Amazon ECS
+#' resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
-#' @param propagateTags Specifies whether to propagate the tags from the task definition or the
-#' service to the tasks in the service. If no value is specified, the tags
-#' are not propagated. Tags can only be propagated to the tasks within the
-#' service during service creation. To add tags to a task after service
-#' creation, use the [`tag_resource`][ecs_tag_resource] API action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   service = list(
-#'     serviceArn = "string",
-#'     serviceName = "string",
-#'     clusterArn = "string",
-#'     loadBalancers = list(
-#'       list(
-#'         targetGroupArn = "string",
-#'         loadBalancerName = "string",
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     serviceRegistries = list(
-#'       list(
-#'         registryArn = "string",
-#'         port = 123,
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     status = "string",
-#'     desiredCount = 123,
-#'     runningCount = 123,
-#'     pendingCount = 123,
-#'     launchType = "EC2"|"FARGATE",
-#'     capacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     platformVersion = "string",
-#'     taskDefinition = "string",
-#'     deploymentConfiguration = list(
-#'       deploymentCircuitBreaker = list(
-#'         enable = TRUE|FALSE,
-#'         rollback = TRUE|FALSE
-#'       ),
-#'       maximumPercent = 123,
-#'       minimumHealthyPercent = 123
-#'     ),
-#'     taskSets = list(
-#'       list(
-#'         id = "string",
-#'         taskSetArn = "string",
-#'         serviceArn = "string",
-#'         clusterArn = "string",
-#'         startedBy = "string",
-#'         externalId = "string",
-#'         status = "string",
-#'         taskDefinition = "string",
-#'         computedDesiredCount = 123,
-#'         pendingCount = 123,
-#'         runningCount = 123,
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         updatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         launchType = "EC2"|"FARGATE",
-#'         capacityProviderStrategy = list(
-#'           list(
-#'             capacityProvider = "string",
-#'             weight = 123,
-#'             base = 123
-#'           )
-#'         ),
-#'         platformVersion = "string",
-#'         networkConfiguration = list(
-#'           awsvpcConfiguration = list(
-#'             subnets = list(
-#'               "string"
-#'             ),
-#'             securityGroups = list(
-#'               "string"
-#'             ),
-#'             assignPublicIp = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         loadBalancers = list(
-#'           list(
-#'             targetGroupArn = "string",
-#'             loadBalancerName = "string",
-#'             containerName = "string",
-#'             containerPort = 123
-#'           )
-#'         ),
-#'         serviceRegistries = list(
-#'           list(
-#'             registryArn = "string",
-#'             port = 123,
-#'             containerName = "string",
-#'             containerPort = 123
-#'           )
-#'         ),
-#'         scale = list(
-#'           value = 123.0,
-#'           unit = "PERCENT"
-#'         ),
-#'         stabilityStatus = "STEADY_STATE"|"STABILIZING",
-#'         stabilityStatusAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         tags = list(
-#'           list(
-#'             key = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     deployments = list(
-#'       list(
-#'         id = "string",
-#'         status = "string",
-#'         taskDefinition = "string",
-#'         desiredCount = 123,
-#'         pendingCount = 123,
-#'         runningCount = 123,
-#'         failedTasks = 123,
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         updatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         capacityProviderStrategy = list(
-#'           list(
-#'             capacityProvider = "string",
-#'             weight = 123,
-#'             base = 123
-#'           )
-#'         ),
-#'         launchType = "EC2"|"FARGATE",
-#'         platformVersion = "string",
-#'         networkConfiguration = list(
-#'           awsvpcConfiguration = list(
-#'             subnets = list(
-#'               "string"
-#'             ),
-#'             securityGroups = list(
-#'               "string"
-#'             ),
-#'             assignPublicIp = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         rolloutState = "COMPLETED"|"FAILED"|"IN_PROGRESS",
-#'         rolloutStateReason = "string"
-#'       )
-#'     ),
-#'     roleArn = "string",
-#'     events = list(
-#'       list(
-#'         id = "string",
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         message = "string"
-#'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     placementConstraints = list(
-#'       list(
-#'         type = "distinctInstance"|"memberOf",
-#'         expression = "string"
-#'       )
-#'     ),
-#'     placementStrategy = list(
-#'       list(
-#'         type = "random"|"spread"|"binpack",
-#'         field = "string"
-#'       )
-#'     ),
-#'     networkConfiguration = list(
-#'       awsvpcConfiguration = list(
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroups = list(
-#'           "string"
-#'         ),
-#'         assignPublicIp = "ENABLED"|"DISABLED"
-#'       )
-#'     ),
-#'     healthCheckGracePeriodSeconds = 123,
-#'     schedulingStrategy = "REPLICA"|"DAEMON",
-#'     deploymentController = list(
-#'       type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     createdBy = "string",
-#'     enableECSManagedTags = TRUE|FALSE,
-#'     propagateTags = "TASK_DEFINITION"|"SERVICE"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_service(
-#'   cluster = "string",
-#'   serviceName = "string",
-#'   taskDefinition = "string",
-#'   loadBalancers = list(
-#'     list(
-#'       targetGroupArn = "string",
-#'       loadBalancerName = "string",
-#'       containerName = "string",
-#'       containerPort = 123
-#'     )
-#'   ),
-#'   serviceRegistries = list(
-#'     list(
-#'       registryArn = "string",
-#'       port = 123,
-#'       containerName = "string",
-#'       containerPort = 123
-#'     )
-#'   ),
-#'   desiredCount = 123,
-#'   clientToken = "string",
-#'   launchType = "EC2"|"FARGATE",
-#'   capacityProviderStrategy = list(
-#'     list(
-#'       capacityProvider = "string",
-#'       weight = 123,
-#'       base = 123
-#'     )
-#'   ),
-#'   platformVersion = "string",
-#'   role = "string",
-#'   deploymentConfiguration = list(
-#'     deploymentCircuitBreaker = list(
-#'       enable = TRUE|FALSE,
-#'       rollback = TRUE|FALSE
-#'     ),
-#'     maximumPercent = 123,
-#'     minimumHealthyPercent = 123
-#'   ),
-#'   placementConstraints = list(
-#'     list(
-#'       type = "distinctInstance"|"memberOf",
-#'       expression = "string"
-#'     )
-#'   ),
-#'   placementStrategy = list(
-#'     list(
-#'       type = "random"|"spread"|"binpack",
-#'       field = "string"
-#'     )
-#'   ),
-#'   networkConfiguration = list(
-#'     awsvpcConfiguration = list(
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroups = list(
-#'         "string"
-#'       ),
-#'       assignPublicIp = "ENABLED"|"DISABLED"
-#'     )
-#'   ),
-#'   healthCheckGracePeriodSeconds = 123,
-#'   schedulingStrategy = "REPLICA"|"DAEMON",
-#'   deploymentController = list(
-#'     type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   enableECSManagedTags = TRUE|FALSE,
-#'   propagateTags = "TASK_DEFINITION"|"SERVICE"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates a service in your default region called
-#' # `ecs-simple-service`. The service uses the `hello_world` task
-#' # definition and it maintains 10 copies of that task.
-#' svc$create_service(
-#'   desiredCount = 10L,
-#'   serviceName = "ecs-simple-service",
-#'   taskDefinition = "hello_world"
-#' )
-#' 
-#' # This example creates a service in your default region called
-#' # `ecs-simple-service-elb`. The service uses the `ecs-demo` task
-#' # definition and it maintains 10 copies of that task. You must reference
-#' # an existing load balancer in the same region by its name.
-#' svc$create_service(
-#'   desiredCount = 10L,
-#'   loadBalancers = list(
-#'     list(
-#'       containerName = "simple-app",
-#'       containerPort = 80L,
-#'       loadBalancerName = "EC2Contai-EcsElast-15DCDAURT3ZO2"
-#'     )
-#'   ),
-#'   role = "ecsServiceRole",
-#'   serviceName = "ecs-simple-service-elb",
-#'   taskDefinition = "console-sample-app-static"
-#' )
-#' }
+#' @param propagateTags Specifies whether to propagate the tags from the task definition to the
+#' task. If no value is specified, the tags aren't propagated. Tags can
+#' only be propagated to the task during task creation. To add tags to a
+#' task after task creation, use the [`tag_resource`][ecs_tag_resource] API
+#' action.
+#' @param enableExecuteCommand Determines whether the execute command functionality is enabled for the
+#' service. If `true`, this enables execute command functionality on all
+#' containers in the service tasks.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_create_service
-ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL) {
+ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags)
+  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand)
   output <- .ecs$create_service_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -1064,16 +433,9 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' Create a task set in the specified cluster and service
 #'
 #' @description
-#' Create a task set in the specified cluster and service. This is used
-#' when a service uses the `EXTERNAL` deployment controller type. For more
-#' information, see [Amazon ECS Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Create a task set in the specified cluster and service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS deployment types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' @usage
-#' ecs_create_task_set(service, cluster, externalId, taskDefinition,
-#'   networkConfiguration, loadBalancers, serviceRegistries, launchType,
-#'   capacityProviderStrategy, platformVersion, scale, clientToken, tags)
+#' See [https://paws-r.github.io/docs/ecs/create_task_set.html](https://paws-r.github.io/docs/ecs/create_task_set.html) for full documentation.
 #'
 #' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service to
 #' create the task set in.
@@ -1082,19 +444,19 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' @param externalId An optional non-unique tag that identifies this task set in external
 #' systems. If the task set is associated with a service discovery
 #' registry, the tasks in this task set will have the
-#' `ECS_TASK_SET_EXTERNAL_ID` AWS Cloud Map attribute set to the provided
+#' `ECS_TASK_SET_EXTERNAL_ID` Cloud Map attribute set to the provided
 #' value.
 #' @param taskDefinition &#91;required&#93; The task definition for the tasks in the task set to use.
-#' @param networkConfiguration 
+#' @param networkConfiguration An object representing the network configuration for a task set.
 #' @param loadBalancers A load balancer object representing the load balancer to use with the
 #' task set. The supported load balancer types are either an Application
 #' Load Balancer or a Network Load Balancer.
 #' @param serviceRegistries The details of the service discovery registries to assign to this task
 #' set. For more information, see [Service
-#' Discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
-#' @param launchType The launch type that new tasks in the task set will use. For more
-#' information, see [Amazon ECS Launch
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+#' discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+#' @param launchType The launch type that new tasks in the task set uses. For more
+#' information, see [Amazon ECS launch
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' If a `launchType` is specified, the `capacityProviderStrategy` parameter
@@ -1120,26 +482,26 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' [`create_capacity_provider`][ecs_create_capacity_provider] API
 #' operation.
 #' 
-#' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
-#' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
-#' are available to all accounts and only need to be associated with a
-#' cluster to be used.
+#' To use a Fargate capacity provider, specify either the `FARGATE` or
+#' `FARGATE_SPOT` capacity providers. The Fargate capacity providers are
+#' available to all accounts and only need to be associated with a cluster
+#' to be used.
 #' 
 #' The
 #' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
 #' API operation is used to update the list of available capacity providers
 #' for a cluster after the cluster is created.
-#' @param platformVersion The platform version that the tasks in the task set should use. A
-#' platform version is specified only for tasks using the Fargate launch
-#' type. If one isn't specified, the `LATEST` platform version is used by
-#' default.
-#' @param scale 
-#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. Up to 32 ASCII characters are allowed.
+#' @param platformVersion The platform version that the tasks in the task set uses. A platform
+#' version is specified only for tasks using the Fargate launch type. If
+#' one isn't specified, the `LATEST` platform version is used.
+#' @param scale A floating-point percentage of the desired number of tasks to place and
+#' keep running in the task set.
+#' @param clientToken The identifier that you provide to ensure the idempotency of the
+#' request. It's case sensitive and must be unique. It can be up to 32
+#' ASCII characters are allowed.
 #' @param tags The metadata that you apply to the task set to help you categorize and
-#' organize them. Each tag consists of a key and an optional value, both of
-#' which you define. When a service is deleted, the tags are deleted as
-#' well.
+#' organize them. Each tag consists of a key and an optional value. You
+#' define both. When a service is deleted, the tags are deleted.
 #' 
 #' The following basic restrictions apply to tags:
 #' 
@@ -1161,143 +523,10 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for AWS
-#'     use. You cannot edit or delete tag keys or values with this prefix.
-#'     Tags with this prefix do not count against your tags per resource
-#'     limit.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskSet = list(
-#'     id = "string",
-#'     taskSetArn = "string",
-#'     serviceArn = "string",
-#'     clusterArn = "string",
-#'     startedBy = "string",
-#'     externalId = "string",
-#'     status = "string",
-#'     taskDefinition = "string",
-#'     computedDesiredCount = 123,
-#'     pendingCount = 123,
-#'     runningCount = 123,
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     launchType = "EC2"|"FARGATE",
-#'     capacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     platformVersion = "string",
-#'     networkConfiguration = list(
-#'       awsvpcConfiguration = list(
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroups = list(
-#'           "string"
-#'         ),
-#'         assignPublicIp = "ENABLED"|"DISABLED"
-#'       )
-#'     ),
-#'     loadBalancers = list(
-#'       list(
-#'         targetGroupArn = "string",
-#'         loadBalancerName = "string",
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     serviceRegistries = list(
-#'       list(
-#'         registryArn = "string",
-#'         port = 123,
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     scale = list(
-#'       value = 123.0,
-#'       unit = "PERCENT"
-#'     ),
-#'     stabilityStatus = "STEADY_STATE"|"STABILIZING",
-#'     stabilityStatusAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_task_set(
-#'   service = "string",
-#'   cluster = "string",
-#'   externalId = "string",
-#'   taskDefinition = "string",
-#'   networkConfiguration = list(
-#'     awsvpcConfiguration = list(
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroups = list(
-#'         "string"
-#'       ),
-#'       assignPublicIp = "ENABLED"|"DISABLED"
-#'     )
-#'   ),
-#'   loadBalancers = list(
-#'     list(
-#'       targetGroupArn = "string",
-#'       loadBalancerName = "string",
-#'       containerName = "string",
-#'       containerPort = 123
-#'     )
-#'   ),
-#'   serviceRegistries = list(
-#'     list(
-#'       registryArn = "string",
-#'       port = 123,
-#'       containerName = "string",
-#'       containerPort = 123
-#'     )
-#'   ),
-#'   launchType = "EC2"|"FARGATE",
-#'   capacityProviderStrategy = list(
-#'     list(
-#'       capacityProvider = "string",
-#'       weight = 123,
-#'       base = 123
-#'     )
-#'   ),
-#'   platformVersion = "string",
-#'   scale = list(
-#'     value = 123.0,
-#'     unit = "PERCENT"
-#'   ),
-#'   clientToken = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
 #'
 #' @keywords internal
 #'
@@ -1323,13 +552,11 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' root user for an account
 #'
 #' @description
-#' Disables an account setting for a specified IAM user, IAM role, or the
-#' root user for an account.
+#' Disables an account setting for a specified IAM user, IAM role, or the root user for an account.
 #'
-#' @usage
-#' ecs_delete_account_setting(name, principalArn)
+#' See [https://paws-r.github.io/docs/ecs/delete_account_setting.html](https://paws-r.github.io/docs/ecs/delete_account_setting.html) for full documentation.
 #'
-#' @param name &#91;required&#93; The resource name for which to disable the account setting. If
+#' @param name &#91;required&#93; The resource name to disable the account setting for. If
 #' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
 #' services is affected. If `taskLongArnFormat` is specified, the ARN and
 #' resource ID for your Amazon ECS tasks is affected. If
@@ -1337,48 +564,12 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
 #' is specified, the ENI limit for your Amazon ECS container instances is
 #' affected.
-#' @param principalArn The ARN of the principal, which can be an IAM user, IAM role, or the
-#' root user. If you specify the root user, it disables the account setting
-#' for all IAM users, IAM roles, and the root user of the account unless an
-#' IAM user or role explicitly overrides these settings. If this field is
-#' omitted, the setting is changed only for the authenticated user.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-#'     value = "string",
-#'     principalArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-#'   principalArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the account setting for your user for the specified
-#' # resource type.
-#' svc$delete_account_setting(
-#'   name = "serviceLongArnFormat"
-#' )
-#' 
-#' # This example deletes the account setting for a specific IAM user or IAM
-#' # role for the specified resource type. Only the root user can view or
-#' # modify the account settings for another user.
-#' svc$delete_account_setting(
-#'   name = "containerInstanceLongArnFormat",
-#'   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
-#' )
-#' }
+#' @param principalArn The Amazon Resource Name (ARN) of the principal. It can be an IAM user,
+#' IAM role, or the root user. If you specify the root user, it disables
+#' the account setting for all IAM users, IAM roles, and the root user of
+#' the account unless an IAM user or role explicitly overrides these
+#' settings. If this field is omitted, the setting is changed only for the
+#' authenticated user.
 #'
 #' @keywords internal
 #'
@@ -1405,46 +596,16 @@ ecs_delete_account_setting <- function(name, principalArn = NULL) {
 #' @description
 #' Deletes one or more custom attributes from an Amazon ECS resource.
 #'
-#' @usage
-#' ecs_delete_attributes(cluster, attributes)
+#' See [https://paws-r.github.io/docs/ecs/delete_attributes.html](https://paws-r.github.io/docs/ecs/delete_attributes.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' contains the resource to delete attributes. If you do not specify a
 #' cluster, the default cluster is assumed.
 #' @param attributes &#91;required&#93; The attributes to delete from your resource. You can specify up to 10
-#' attributes per request. For custom attributes, specify the attribute
-#' name and target ID, but do not specify the value. If you specify the
-#' target ID using the short form, you must also specify the target type.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   attributes = list(
-#'     list(
-#'       name = "string",
-#'       value = "string",
-#'       targetType = "container-instance",
-#'       targetId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_attributes(
-#'   cluster = "string",
-#'   attributes = list(
-#'     list(
-#'       name = "string",
-#'       value = "string",
-#'       targetType = "container-instance",
-#'       targetId = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' attributes for each request. For custom attributes, specify the
+#' attribute name and target ID, but don't specify the value. If you
+#' specify the target ID using the short form, you must also specify the
+#' target type.
 #'
 #' @keywords internal
 #'
@@ -1470,69 +631,11 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #'
 #' @description
 #' Deletes the specified capacity provider.
-#' 
-#' The `FARGATE` and `FARGATE_SPOT` capacity providers are reserved and
-#' cannot be deleted. You can disassociate them from a cluster using either
-#' the
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' API or by deleting the cluster.
-#' 
-#' Prior to a capacity provider being deleted, the capacity provider must
-#' be removed from the capacity provider strategy from all services. The
-#' [`update_service`][ecs_update_service] API can be used to remove a
-#' capacity provider from a service's capacity provider strategy. When
-#' updating a service, the `forceNewDeployment` option can be used to
-#' ensure that any tasks using the Amazon EC2 instance capacity provided by
-#' the capacity provider are transitioned to use the capacity from the
-#' remaining capacity providers. Only capacity providers that are not
-#' associated with a cluster can be deleted. To remove a capacity provider
-#' from a cluster, you can either use
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' or delete the cluster.
 #'
-#' @usage
-#' ecs_delete_capacity_provider(capacityProvider)
+#' See [https://paws-r.github.io/docs/ecs/delete_capacity_provider.html](https://paws-r.github.io/docs/ecs/delete_capacity_provider.html) for full documentation.
 #'
 #' @param capacityProvider &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the capacity
 #' provider to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   capacityProvider = list(
-#'     capacityProviderArn = "string",
-#'     name = "string",
-#'     status = "ACTIVE"|"INACTIVE",
-#'     autoScalingGroupProvider = list(
-#'       autoScalingGroupArn = "string",
-#'       managedScaling = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         targetCapacity = 123,
-#'         minimumScalingStepSize = 123,
-#'         maximumScalingStepSize = 123,
-#'         instanceWarmupPeriod = 123
-#'       ),
-#'       managedTerminationProtection = "ENABLED"|"DISABLED"
-#'     ),
-#'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-#'     updateStatusReason = "string",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_capacity_provider(
-#'   capacityProvider = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1557,96 +660,12 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
 #' Deletes the specified cluster
 #'
 #' @description
-#' Deletes the specified cluster. The cluster will transition to the
-#' `INACTIVE` state. Clusters with an `INACTIVE` status may remain
-#' discoverable in your account for a period of time. However, this
-#' behavior is subject to change in the future, so you should not rely on
-#' `INACTIVE` clusters persisting.
-#' 
-#' You must deregister all container instances from this cluster before you
-#' may delete it. You can list the container instances in a cluster with
-#' [`list_container_instances`][ecs_list_container_instances] and
-#' deregister them with
-#' [`deregister_container_instance`][ecs_deregister_container_instance].
+#' Deletes the specified cluster. The cluster transitions to the `INACTIVE` state. Clusters with an `INACTIVE` status might remain discoverable in your account for a period of time. However, this behavior is subject to change in the future. We don't recommend that you rely on `INACTIVE` clusters persisting.
 #'
-#' @usage
-#' ecs_delete_cluster(cluster)
+#' See [https://paws-r.github.io/docs/ecs/delete_cluster.html](https://paws-r.github.io/docs/ecs/delete_cluster.html) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster to
 #' delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cluster = list(
-#'     clusterArn = "string",
-#'     clusterName = "string",
-#'     status = "string",
-#'     registeredContainerInstancesCount = 123,
-#'     runningTasksCount = 123,
-#'     pendingTasksCount = 123,
-#'     activeServicesCount = 123,
-#'     statistics = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     settings = list(
-#'       list(
-#'         name = "containerInsights",
-#'         value = "string"
-#'       )
-#'     ),
-#'     capacityProviders = list(
-#'       "string"
-#'     ),
-#'     defaultCapacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     attachments = list(
-#'       list(
-#'         id = "string",
-#'         type = "string",
-#'         status = "string",
-#'         details = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     attachmentsStatus = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_cluster(
-#'   cluster = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes an empty cluster in your default region.
-#' svc$delete_cluster(
-#'   cluster = "my_cluster"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1671,265 +690,17 @@ ecs_delete_cluster <- function(cluster) {
 #' Deletes a specified service within a cluster
 #'
 #' @description
-#' Deletes a specified service within a cluster. You can delete a service
-#' if you have no running tasks in it and the desired task count is zero.
-#' If the service is actively maintaining tasks, you cannot delete it, and
-#' you must update the service to a desired task count of zero. For more
-#' information, see [`update_service`][ecs_update_service].
-#' 
-#' When you delete a service, if there are still running tasks that require
-#' cleanup, the service status moves from `ACTIVE` to `DRAINING`, and the
-#' service is no longer visible in the console or in the
-#' [`list_services`][ecs_list_services] API operation. After all tasks have
-#' transitioned to either `STOPPING` or `STOPPED` status, the service
-#' status moves from `DRAINING` to `INACTIVE`. Services in the `DRAINING`
-#' or `INACTIVE` status can still be viewed with the
-#' [`describe_services`][ecs_describe_services] API operation. However, in
-#' the future, `INACTIVE` services may be cleaned up and purged from Amazon
-#' ECS record keeping, and [`describe_services`][ecs_describe_services]
-#' calls on those services return a `ServiceNotFoundException` error.
-#' 
-#' If you attempt to create a new service with the same name as an existing
-#' service in either `ACTIVE` or `DRAINING` status, you receive an error.
+#' Deletes a specified service within a cluster. You can delete a service if you have no running tasks in it and the desired task count is zero. If the service is actively maintaining tasks, you can't delete it, and you must update the service to a desired task count of zero. For more information, see [`update_service`][ecs_update_service].
 #'
-#' @usage
-#' ecs_delete_service(cluster, service, force)
+#' See [https://paws-r.github.io/docs/ecs/delete_service.html](https://paws-r.github.io/docs/ecs/delete_service.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service to delete. If you do not specify a cluster, the
 #' default cluster is assumed.
 #' @param service &#91;required&#93; The name of the service to delete.
-#' @param force If `true`, allows you to delete a service even if it has not been scaled
-#' down to zero tasks. It is only necessary to use this if the service is
-#' using the `REPLICA` scheduling strategy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   service = list(
-#'     serviceArn = "string",
-#'     serviceName = "string",
-#'     clusterArn = "string",
-#'     loadBalancers = list(
-#'       list(
-#'         targetGroupArn = "string",
-#'         loadBalancerName = "string",
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     serviceRegistries = list(
-#'       list(
-#'         registryArn = "string",
-#'         port = 123,
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     status = "string",
-#'     desiredCount = 123,
-#'     runningCount = 123,
-#'     pendingCount = 123,
-#'     launchType = "EC2"|"FARGATE",
-#'     capacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     platformVersion = "string",
-#'     taskDefinition = "string",
-#'     deploymentConfiguration = list(
-#'       deploymentCircuitBreaker = list(
-#'         enable = TRUE|FALSE,
-#'         rollback = TRUE|FALSE
-#'       ),
-#'       maximumPercent = 123,
-#'       minimumHealthyPercent = 123
-#'     ),
-#'     taskSets = list(
-#'       list(
-#'         id = "string",
-#'         taskSetArn = "string",
-#'         serviceArn = "string",
-#'         clusterArn = "string",
-#'         startedBy = "string",
-#'         externalId = "string",
-#'         status = "string",
-#'         taskDefinition = "string",
-#'         computedDesiredCount = 123,
-#'         pendingCount = 123,
-#'         runningCount = 123,
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         updatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         launchType = "EC2"|"FARGATE",
-#'         capacityProviderStrategy = list(
-#'           list(
-#'             capacityProvider = "string",
-#'             weight = 123,
-#'             base = 123
-#'           )
-#'         ),
-#'         platformVersion = "string",
-#'         networkConfiguration = list(
-#'           awsvpcConfiguration = list(
-#'             subnets = list(
-#'               "string"
-#'             ),
-#'             securityGroups = list(
-#'               "string"
-#'             ),
-#'             assignPublicIp = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         loadBalancers = list(
-#'           list(
-#'             targetGroupArn = "string",
-#'             loadBalancerName = "string",
-#'             containerName = "string",
-#'             containerPort = 123
-#'           )
-#'         ),
-#'         serviceRegistries = list(
-#'           list(
-#'             registryArn = "string",
-#'             port = 123,
-#'             containerName = "string",
-#'             containerPort = 123
-#'           )
-#'         ),
-#'         scale = list(
-#'           value = 123.0,
-#'           unit = "PERCENT"
-#'         ),
-#'         stabilityStatus = "STEADY_STATE"|"STABILIZING",
-#'         stabilityStatusAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         tags = list(
-#'           list(
-#'             key = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     deployments = list(
-#'       list(
-#'         id = "string",
-#'         status = "string",
-#'         taskDefinition = "string",
-#'         desiredCount = 123,
-#'         pendingCount = 123,
-#'         runningCount = 123,
-#'         failedTasks = 123,
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         updatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         capacityProviderStrategy = list(
-#'           list(
-#'             capacityProvider = "string",
-#'             weight = 123,
-#'             base = 123
-#'           )
-#'         ),
-#'         launchType = "EC2"|"FARGATE",
-#'         platformVersion = "string",
-#'         networkConfiguration = list(
-#'           awsvpcConfiguration = list(
-#'             subnets = list(
-#'               "string"
-#'             ),
-#'             securityGroups = list(
-#'               "string"
-#'             ),
-#'             assignPublicIp = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         rolloutState = "COMPLETED"|"FAILED"|"IN_PROGRESS",
-#'         rolloutStateReason = "string"
-#'       )
-#'     ),
-#'     roleArn = "string",
-#'     events = list(
-#'       list(
-#'         id = "string",
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         message = "string"
-#'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     placementConstraints = list(
-#'       list(
-#'         type = "distinctInstance"|"memberOf",
-#'         expression = "string"
-#'       )
-#'     ),
-#'     placementStrategy = list(
-#'       list(
-#'         type = "random"|"spread"|"binpack",
-#'         field = "string"
-#'       )
-#'     ),
-#'     networkConfiguration = list(
-#'       awsvpcConfiguration = list(
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroups = list(
-#'           "string"
-#'         ),
-#'         assignPublicIp = "ENABLED"|"DISABLED"
-#'       )
-#'     ),
-#'     healthCheckGracePeriodSeconds = 123,
-#'     schedulingStrategy = "REPLICA"|"DAEMON",
-#'     deploymentController = list(
-#'       type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     createdBy = "string",
-#'     enableECSManagedTags = TRUE|FALSE,
-#'     propagateTags = "TASK_DEFINITION"|"SERVICE"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_service(
-#'   cluster = "string",
-#'   service = "string",
-#'   force = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the my-http-service service. The service must have
-#' # a desired count and running count of 0 before you can delete it.
-#' svc$delete_service(
-#'   service = "my-http-service"
-#' )
-#' }
+#' @param force If `true`, allows you to delete a service even if it wasn't scaled down
+#' to zero tasks. It's only necessary to use this if the service uses the
+#' `REPLICA` scheduling strategy.
 #'
 #' @keywords internal
 #'
@@ -1954,109 +725,18 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #' Deletes a specified task set within a service
 #'
 #' @description
-#' Deletes a specified task set within a service. This is used when a
-#' service uses the `EXTERNAL` deployment controller type. For more
-#' information, see [Amazon ECS Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Deletes a specified task set within a service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS deployment types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' @usage
-#' ecs_delete_task_set(cluster, service, taskSet, force)
+#' See [https://paws-r.github.io/docs/ecs/delete_task_set.html](https://paws-r.github.io/docs/ecs/delete_task_set.html) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
-#' hosts the service that the task set exists in to delete.
+#' hosts the service that the task set found in to delete.
 #' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service that
 #' hosts the task set to delete.
 #' @param taskSet &#91;required&#93; The task set ID or full Amazon Resource Name (ARN) of the task set to
 #' delete.
-#' @param force If `true`, this allows you to delete a task set even if it hasn't been
-#' scaled down to zero.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskSet = list(
-#'     id = "string",
-#'     taskSetArn = "string",
-#'     serviceArn = "string",
-#'     clusterArn = "string",
-#'     startedBy = "string",
-#'     externalId = "string",
-#'     status = "string",
-#'     taskDefinition = "string",
-#'     computedDesiredCount = 123,
-#'     pendingCount = 123,
-#'     runningCount = 123,
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     launchType = "EC2"|"FARGATE",
-#'     capacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     platformVersion = "string",
-#'     networkConfiguration = list(
-#'       awsvpcConfiguration = list(
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroups = list(
-#'           "string"
-#'         ),
-#'         assignPublicIp = "ENABLED"|"DISABLED"
-#'       )
-#'     ),
-#'     loadBalancers = list(
-#'       list(
-#'         targetGroupArn = "string",
-#'         loadBalancerName = "string",
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     serviceRegistries = list(
-#'       list(
-#'         registryArn = "string",
-#'         port = 123,
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     scale = list(
-#'       value = 123.0,
-#'       unit = "PERCENT"
-#'     ),
-#'     stabilityStatus = "STEADY_STATE"|"STABILIZING",
-#'     stabilityStatusAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_task_set(
-#'   cluster = "string",
-#'   service = "string",
-#'   taskSet = "string",
-#'   force = TRUE|FALSE
-#' )
-#' ```
+#' @param force If `true`, you can delete a task set even if it hasn't been scaled down
+#' to zero.
 #'
 #' @keywords internal
 #'
@@ -2081,40 +761,22 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #' Deregisters an Amazon ECS container instance from the specified cluster
 #'
 #' @description
-#' Deregisters an Amazon ECS container instance from the specified cluster.
-#' This instance is no longer available to run tasks.
-#' 
-#' If you intend to use the container instance for some other purpose after
-#' deregistration, you should stop all of the tasks running on the
-#' container instance before deregistration. That prevents any orphaned
-#' tasks from consuming resources.
-#' 
-#' Deregistering a container instance removes the instance from a cluster,
-#' but it does not terminate the EC2 instance. If you are finished using
-#' the instance, be sure to terminate it in the Amazon EC2 console to stop
-#' billing.
-#' 
-#' If you terminate a running container instance, Amazon ECS automatically
-#' deregisters the instance from your cluster (stopped container instances
-#' or instances with disconnected agents are not automatically deregistered
-#' when terminated).
+#' Deregisters an Amazon ECS container instance from the specified cluster. This instance is no longer available to run tasks.
 #'
-#' @usage
-#' ecs_deregister_container_instance(cluster, containerInstance, force)
+#' See [https://paws-r.github.io/docs/ecs/deregister_container_instance.html](https://paws-r.github.io/docs/ecs/deregister_container_instance.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instance to deregister. If you do not specify a
 #' cluster, the default cluster is assumed.
 #' @param containerInstance &#91;required&#93; The container instance ID or full ARN of the container instance to
-#' deregister. The ARN contains the `arn:aws:ecs` namespace, followed by
-#' the Region of the container instance, the AWS account ID of the
-#' container instance owner, the `container-instance` namespace, and then
-#' the container instance ID. For example,
-#' `arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID`.
-#' @param force Forces the deregistration of the container instance. If you have tasks
+#' deregister. For more information about the ARN format, see [Amazon
+#' Resource Name
+#' (ARN)](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#ecs-resource-ids)
+#' in the *Amazon ECS Developer Guide*.
+#' @param force Forces the container instance to be deregistered. If you have tasks
 #' running on the container instance when you deregister it with the
 #' `force` option, these tasks remain running until you terminate the
-#' instance or the tasks stop through some other means, but they are
+#' instance or the tasks stop through some other means, but they're
 #' orphaned (no longer monitored or accounted for by Amazon ECS). If an
 #' orphaned task on your container instance is part of an Amazon ECS
 #' service, then the service scheduler starts another copy of that task, on
@@ -2124,106 +786,6 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #' Classic Load Balancer or an Application Load Balancer target group are
 #' deregistered. They begin connection draining according to the settings
 #' on the load balancer or target group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerInstance = list(
-#'     containerInstanceArn = "string",
-#'     ec2InstanceId = "string",
-#'     capacityProviderName = "string",
-#'     version = 123,
-#'     versionInfo = list(
-#'       agentVersion = "string",
-#'       agentHash = "string",
-#'       dockerVersion = "string"
-#'     ),
-#'     remainingResources = list(
-#'       list(
-#'         name = "string",
-#'         type = "string",
-#'         doubleValue = 123.0,
-#'         longValue = 123,
-#'         integerValue = 123,
-#'         stringSetValue = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     registeredResources = list(
-#'       list(
-#'         name = "string",
-#'         type = "string",
-#'         doubleValue = 123.0,
-#'         longValue = 123,
-#'         integerValue = 123,
-#'         stringSetValue = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     status = "string",
-#'     statusReason = "string",
-#'     agentConnected = TRUE|FALSE,
-#'     runningTasksCount = 123,
-#'     pendingTasksCount = 123,
-#'     agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
-#'     attributes = list(
-#'       list(
-#'         name = "string",
-#'         value = "string",
-#'         targetType = "container-instance",
-#'         targetId = "string"
-#'       )
-#'     ),
-#'     registeredAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     attachments = list(
-#'       list(
-#'         id = "string",
-#'         type = "string",
-#'         status = "string",
-#'         details = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_container_instance(
-#'   cluster = "string",
-#'   containerInstance = "string",
-#'   force = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deregisters a container instance from the specified cluster
-#' # in your default region. If there are still tasks running on the
-#' # container instance, you must either stop those tasks before
-#' # deregistering, or use the force option.
-#' svc$deregister_container_instance(
-#'   cluster = "default",
-#'   containerInstance = "container_instance_UUID",
-#'   force = TRUE
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2248,302 +810,13 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #' Deregisters the specified task definition by family and revision
 #'
 #' @description
-#' Deregisters the specified task definition by family and revision. Upon
-#' deregistration, the task definition is marked as `INACTIVE`. Existing
-#' tasks and services that reference an `INACTIVE` task definition continue
-#' to run without disruption. Existing services that reference an
-#' `INACTIVE` task definition can still scale up or down by modifying the
-#' service's desired count.
-#' 
-#' You cannot use an `INACTIVE` task definition to run new tasks or create
-#' new services, and you cannot update an existing service to reference an
-#' `INACTIVE` task definition. However, there may be up to a 10-minute
-#' window following deregistration where these restrictions have not yet
-#' taken effect.
-#' 
-#' At this time, `INACTIVE` task definitions remain discoverable in your
-#' account indefinitely. However, this behavior is subject to change in the
-#' future, so you should not rely on `INACTIVE` task definitions persisting
-#' beyond the lifecycle of any associated tasks and services.
+#' Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as `INACTIVE`. Existing tasks and services that reference an `INACTIVE` task definition continue to run without disruption. Existing services that reference an `INACTIVE` task definition can still scale up or down by modifying the service's desired count.
 #'
-#' @usage
-#' ecs_deregister_task_definition(taskDefinition)
+#' See [https://paws-r.github.io/docs/ecs/deregister_task_definition.html](https://paws-r.github.io/docs/ecs/deregister_task_definition.html) for full documentation.
 #'
 #' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full Amazon Resource
 #' Name (ARN) of the task definition to deregister. You must specify a
 #' `revision`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskDefinition = list(
-#'     taskDefinitionArn = "string",
-#'     containerDefinitions = list(
-#'       list(
-#'         name = "string",
-#'         image = "string",
-#'         repositoryCredentials = list(
-#'           credentialsParameter = "string"
-#'         ),
-#'         cpu = 123,
-#'         memory = 123,
-#'         memoryReservation = 123,
-#'         links = list(
-#'           "string"
-#'         ),
-#'         portMappings = list(
-#'           list(
-#'             containerPort = 123,
-#'             hostPort = 123,
-#'             protocol = "tcp"|"udp"
-#'           )
-#'         ),
-#'         essential = TRUE|FALSE,
-#'         entryPoint = list(
-#'           "string"
-#'         ),
-#'         command = list(
-#'           "string"
-#'         ),
-#'         environment = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         environmentFiles = list(
-#'           list(
-#'             value = "string",
-#'             type = "s3"
-#'           )
-#'         ),
-#'         mountPoints = list(
-#'           list(
-#'             sourceVolume = "string",
-#'             containerPath = "string",
-#'             readOnly = TRUE|FALSE
-#'           )
-#'         ),
-#'         volumesFrom = list(
-#'           list(
-#'             sourceContainer = "string",
-#'             readOnly = TRUE|FALSE
-#'           )
-#'         ),
-#'         linuxParameters = list(
-#'           capabilities = list(
-#'             add = list(
-#'               "string"
-#'             ),
-#'             drop = list(
-#'               "string"
-#'             )
-#'           ),
-#'           devices = list(
-#'             list(
-#'               hostPath = "string",
-#'               containerPath = "string",
-#'               permissions = list(
-#'                 "read"|"write"|"mknod"
-#'               )
-#'             )
-#'           ),
-#'           initProcessEnabled = TRUE|FALSE,
-#'           sharedMemorySize = 123,
-#'           tmpfs = list(
-#'             list(
-#'               containerPath = "string",
-#'               size = 123,
-#'               mountOptions = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           maxSwap = 123,
-#'           swappiness = 123
-#'         ),
-#'         secrets = list(
-#'           list(
-#'             name = "string",
-#'             valueFrom = "string"
-#'           )
-#'         ),
-#'         dependsOn = list(
-#'           list(
-#'             containerName = "string",
-#'             condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
-#'           )
-#'         ),
-#'         startTimeout = 123,
-#'         stopTimeout = 123,
-#'         hostname = "string",
-#'         user = "string",
-#'         workingDirectory = "string",
-#'         disableNetworking = TRUE|FALSE,
-#'         privileged = TRUE|FALSE,
-#'         readonlyRootFilesystem = TRUE|FALSE,
-#'         dnsServers = list(
-#'           "string"
-#'         ),
-#'         dnsSearchDomains = list(
-#'           "string"
-#'         ),
-#'         extraHosts = list(
-#'           list(
-#'             hostname = "string",
-#'             ipAddress = "string"
-#'           )
-#'         ),
-#'         dockerSecurityOptions = list(
-#'           "string"
-#'         ),
-#'         interactive = TRUE|FALSE,
-#'         pseudoTerminal = TRUE|FALSE,
-#'         dockerLabels = list(
-#'           "string"
-#'         ),
-#'         ulimits = list(
-#'           list(
-#'             name = "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",
-#'             softLimit = 123,
-#'             hardLimit = 123
-#'           )
-#'         ),
-#'         logConfiguration = list(
-#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
-#'           options = list(
-#'             "string"
-#'           ),
-#'           secretOptions = list(
-#'             list(
-#'               name = "string",
-#'               valueFrom = "string"
-#'             )
-#'           )
-#'         ),
-#'         healthCheck = list(
-#'           command = list(
-#'             "string"
-#'           ),
-#'           interval = 123,
-#'           timeout = 123,
-#'           retries = 123,
-#'           startPeriod = 123
-#'         ),
-#'         systemControls = list(
-#'           list(
-#'             namespace = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resourceRequirements = list(
-#'           list(
-#'             value = "string",
-#'             type = "GPU"|"InferenceAccelerator"
-#'           )
-#'         ),
-#'         firelensConfiguration = list(
-#'           type = "fluentd"|"fluentbit",
-#'           options = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     family = "string",
-#'     taskRoleArn = "string",
-#'     executionRoleArn = "string",
-#'     networkMode = "bridge"|"host"|"awsvpc"|"none",
-#'     revision = 123,
-#'     volumes = list(
-#'       list(
-#'         name = "string",
-#'         host = list(
-#'           sourcePath = "string"
-#'         ),
-#'         dockerVolumeConfiguration = list(
-#'           scope = "task"|"shared",
-#'           autoprovision = TRUE|FALSE,
-#'           driver = "string",
-#'           driverOpts = list(
-#'             "string"
-#'           ),
-#'           labels = list(
-#'             "string"
-#'           )
-#'         ),
-#'         efsVolumeConfiguration = list(
-#'           fileSystemId = "string",
-#'           rootDirectory = "string",
-#'           transitEncryption = "ENABLED"|"DISABLED",
-#'           transitEncryptionPort = 123,
-#'           authorizationConfig = list(
-#'             accessPointId = "string",
-#'             iam = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         fsxWindowsFileServerVolumeConfiguration = list(
-#'           fileSystemId = "string",
-#'           rootDirectory = "string",
-#'           authorizationConfig = list(
-#'             credentialsParameter = "string",
-#'             domain = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = "ACTIVE"|"INACTIVE",
-#'     requiresAttributes = list(
-#'       list(
-#'         name = "string",
-#'         value = "string",
-#'         targetType = "container-instance",
-#'         targetId = "string"
-#'       )
-#'     ),
-#'     placementConstraints = list(
-#'       list(
-#'         type = "memberOf",
-#'         expression = "string"
-#'       )
-#'     ),
-#'     compatibilities = list(
-#'       "EC2"|"FARGATE"
-#'     ),
-#'     requiresCompatibilities = list(
-#'       "EC2"|"FARGATE"
-#'     ),
-#'     cpu = "string",
-#'     memory = "string",
-#'     inferenceAccelerators = list(
-#'       list(
-#'         deviceName = "string",
-#'         deviceType = "string"
-#'       )
-#'     ),
-#'     pidMode = "host"|"task",
-#'     ipcMode = "host"|"task"|"none",
-#'     proxyConfiguration = list(
-#'       type = "APPMESH",
-#'       containerName = "string",
-#'       properties = list(
-#'         list(
-#'           name = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_task_definition(
-#'   taskDefinition = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2570,16 +843,14 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #' @description
 #' Describes one or more of your capacity providers.
 #'
-#' @usage
-#' ecs_describe_capacity_providers(capacityProviders, include, maxResults,
-#'   nextToken)
+#' See [https://paws-r.github.io/docs/ecs/describe_capacity_providers.html](https://paws-r.github.io/docs/ecs/describe_capacity_providers.html) for full documentation.
 #'
 #' @param capacityProviders The short name or full Amazon Resource Name (ARN) of one or more
 #' capacity providers. Up to `100` capacity providers can be described in
 #' an action.
 #' @param include Specifies whether or not you want to see the resource tags for the
 #' capacity provider. If `TAGS` is specified, the tags are included in the
-#' response. If this field is omitted, tags are not included in the
+#' response. If this field is omitted, tags aren't included in the
 #' response.
 #' @param maxResults The maximum number of account setting results returned by
 #' [`describe_capacity_providers`][ecs_describe_capacity_providers] in
@@ -2602,61 +873,6 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   capacityProviders = list(
-#'     list(
-#'       capacityProviderArn = "string",
-#'       name = "string",
-#'       status = "ACTIVE"|"INACTIVE",
-#'       autoScalingGroupProvider = list(
-#'         autoScalingGroupArn = "string",
-#'         managedScaling = list(
-#'           status = "ENABLED"|"DISABLED",
-#'           targetCapacity = 123,
-#'           minimumScalingStepSize = 123,
-#'           maximumScalingStepSize = 123,
-#'           instanceWarmupPeriod = 123
-#'         ),
-#'         managedTerminationProtection = "ENABLED"|"DISABLED"
-#'       ),
-#'       updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-#'       updateStatusReason = "string",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   failures = list(
-#'     list(
-#'       arn = "string",
-#'       reason = "string",
-#'       detail = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_capacity_providers(
-#'   capacityProviders = list(
-#'     "string"
-#'   ),
-#'   include = list(
-#'     "TAGS"
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2683,132 +899,28 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
 #' @description
 #' Describes one or more of your clusters.
 #'
-#' @usage
-#' ecs_describe_clusters(clusters, include)
+#' See [https://paws-r.github.io/docs/ecs/describe_clusters.html](https://paws-r.github.io/docs/ecs/describe_clusters.html) for full documentation.
 #'
 #' @param clusters A list of up to 100 cluster names or full cluster Amazon Resource Name
 #' (ARN) entries. If you do not specify a cluster, the default cluster is
 #' assumed.
-#' @param include Whether to include additional information about your clusters in the
-#' response. If this field is omitted, the attachments, statistics, and
-#' tags are not included.
+#' @param include Determines whether to include additional information about the clusters
+#' in the response. If this field is omitted, this information isn't
+#' included.
 #' 
 #' If `ATTACHMENTS` is specified, the attachments for the container
 #' instances or tasks within the cluster are included.
 #' 
 #' If `SETTINGS` is specified, the settings for the cluster are included.
 #' 
-#' If `STATISTICS` is specified, the following additional information,
-#' separated by launch type, is included:
+#' If `CONFIGURATIONS` is specified, the configuration for the cluster is
+#' included.
 #' 
-#' -   runningEC2TasksCount
-#' 
-#' -   runningFargateTasksCount
-#' 
-#' -   pendingEC2TasksCount
-#' 
-#' -   pendingFargateTasksCount
-#' 
-#' -   activeEC2ServiceCount
-#' 
-#' -   activeFargateServiceCount
-#' 
-#' -   drainingEC2ServiceCount
-#' 
-#' -   drainingFargateServiceCount
+#' If `STATISTICS` is specified, the task and service count is included,
+#' separated by launch type.
 #' 
 #' If `TAGS` is specified, the metadata tags associated with the cluster
 #' are included.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   clusters = list(
-#'     list(
-#'       clusterArn = "string",
-#'       clusterName = "string",
-#'       status = "string",
-#'       registeredContainerInstancesCount = 123,
-#'       runningTasksCount = 123,
-#'       pendingTasksCount = 123,
-#'       activeServicesCount = 123,
-#'       statistics = list(
-#'         list(
-#'           name = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       settings = list(
-#'         list(
-#'           name = "containerInsights",
-#'           value = "string"
-#'         )
-#'       ),
-#'       capacityProviders = list(
-#'         "string"
-#'       ),
-#'       defaultCapacityProviderStrategy = list(
-#'         list(
-#'           capacityProvider = "string",
-#'           weight = 123,
-#'           base = 123
-#'         )
-#'       ),
-#'       attachments = list(
-#'         list(
-#'           id = "string",
-#'           type = "string",
-#'           status = "string",
-#'           details = list(
-#'             list(
-#'               name = "string",
-#'               value = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       attachmentsStatus = "string"
-#'     )
-#'   ),
-#'   failures = list(
-#'     list(
-#'       arn = "string",
-#'       reason = "string",
-#'       detail = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_clusters(
-#'   clusters = list(
-#'     "string"
-#'   ),
-#'   include = list(
-#'     "ATTACHMENTS"|"SETTINGS"|"STATISTICS"|"TAGS"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example provides a description of the specified cluster in your
-#' # default region.
-#' svc$describe_clusters(
-#'   clusters = list(
-#'     "default"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2830,15 +942,12 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 }
 .ecs$operations$describe_clusters <- ecs_describe_clusters
 
-#' Describes Amazon Elastic Container Service container instances
+#' Describes one or more container instances
 #'
 #' @description
-#' Describes Amazon Elastic Container Service container instances. Returns
-#' metadata about registered and remaining resources on each container
-#' instance requested.
+#' Describes one or more container instances. Returns metadata about each container instance requested.
 #'
-#' @usage
-#' ecs_describe_container_instances(cluster, containerInstances, include)
+#' See [https://paws-r.github.io/docs/ecs/describe_container_instances.html](https://paws-r.github.io/docs/ecs/describe_container_instances.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instances to describe. If you do not specify a
@@ -2849,120 +958,9 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 #' (ARN) entries.
 #' @param include Specifies whether you want to see the resource tags for the container
 #' instance. If `TAGS` is specified, the tags are included in the response.
-#' If this field is omitted, tags are not included in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerInstances = list(
-#'     list(
-#'       containerInstanceArn = "string",
-#'       ec2InstanceId = "string",
-#'       capacityProviderName = "string",
-#'       version = 123,
-#'       versionInfo = list(
-#'         agentVersion = "string",
-#'         agentHash = "string",
-#'         dockerVersion = "string"
-#'       ),
-#'       remainingResources = list(
-#'         list(
-#'           name = "string",
-#'           type = "string",
-#'           doubleValue = 123.0,
-#'           longValue = 123,
-#'           integerValue = 123,
-#'           stringSetValue = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       registeredResources = list(
-#'         list(
-#'           name = "string",
-#'           type = "string",
-#'           doubleValue = 123.0,
-#'           longValue = 123,
-#'           integerValue = 123,
-#'           stringSetValue = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       status = "string",
-#'       statusReason = "string",
-#'       agentConnected = TRUE|FALSE,
-#'       runningTasksCount = 123,
-#'       pendingTasksCount = 123,
-#'       agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
-#'       attributes = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           targetType = "container-instance",
-#'           targetId = "string"
-#'         )
-#'       ),
-#'       registeredAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       attachments = list(
-#'         list(
-#'           id = "string",
-#'           type = "string",
-#'           status = "string",
-#'           details = list(
-#'             list(
-#'               name = "string",
-#'               value = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   failures = list(
-#'     list(
-#'       arn = "string",
-#'       reason = "string",
-#'       detail = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_container_instances(
-#'   cluster = "string",
-#'   containerInstances = list(
-#'     "string"
-#'   ),
-#'   include = list(
-#'     "TAGS"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example provides a description of the specified container instance
-#' # in your default region, using the container instance UUID as an
-#' # identifier.
-#' svc$describe_container_instances(
-#'   cluster = "default",
-#'   containerInstances = list(
-#'     "f2756532-8f13-4d53-87c9-aed50dc94cd7"
-#'   )
-#' )
-#' }
+#' If `CONTAINER_INSTANCE_HEALTH` is specified, the container instance
+#' health is included in the response. If this field is omitted, tags and
+#' container instance health status aren't included in the response.
 #'
 #' @keywords internal
 #'
@@ -2989,8 +987,7 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #' @description
 #' Describes the specified services running in your cluster.
 #'
-#' @usage
-#' ecs_describe_services(cluster, services, include)
+#' See [https://paws-r.github.io/docs/ecs/describe_services.html](https://paws-r.github.io/docs/ecs/describe_services.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN)the cluster that hosts
 #' the service to describe. If you do not specify a cluster, the default
@@ -2999,252 +996,9 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #' default cluster.
 #' @param services &#91;required&#93; A list of services to describe. You may specify up to 10 services to
 #' describe in a single operation.
-#' @param include Specifies whether you want to see the resource tags for the service. If
+#' @param include Determines whether you want to see the resource tags for the service. If
 #' `TAGS` is specified, the tags are included in the response. If this
-#' field is omitted, tags are not included in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   services = list(
-#'     list(
-#'       serviceArn = "string",
-#'       serviceName = "string",
-#'       clusterArn = "string",
-#'       loadBalancers = list(
-#'         list(
-#'           targetGroupArn = "string",
-#'           loadBalancerName = "string",
-#'           containerName = "string",
-#'           containerPort = 123
-#'         )
-#'       ),
-#'       serviceRegistries = list(
-#'         list(
-#'           registryArn = "string",
-#'           port = 123,
-#'           containerName = "string",
-#'           containerPort = 123
-#'         )
-#'       ),
-#'       status = "string",
-#'       desiredCount = 123,
-#'       runningCount = 123,
-#'       pendingCount = 123,
-#'       launchType = "EC2"|"FARGATE",
-#'       capacityProviderStrategy = list(
-#'         list(
-#'           capacityProvider = "string",
-#'           weight = 123,
-#'           base = 123
-#'         )
-#'       ),
-#'       platformVersion = "string",
-#'       taskDefinition = "string",
-#'       deploymentConfiguration = list(
-#'         deploymentCircuitBreaker = list(
-#'           enable = TRUE|FALSE,
-#'           rollback = TRUE|FALSE
-#'         ),
-#'         maximumPercent = 123,
-#'         minimumHealthyPercent = 123
-#'       ),
-#'       taskSets = list(
-#'         list(
-#'           id = "string",
-#'           taskSetArn = "string",
-#'           serviceArn = "string",
-#'           clusterArn = "string",
-#'           startedBy = "string",
-#'           externalId = "string",
-#'           status = "string",
-#'           taskDefinition = "string",
-#'           computedDesiredCount = 123,
-#'           pendingCount = 123,
-#'           runningCount = 123,
-#'           createdAt = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           updatedAt = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           launchType = "EC2"|"FARGATE",
-#'           capacityProviderStrategy = list(
-#'             list(
-#'               capacityProvider = "string",
-#'               weight = 123,
-#'               base = 123
-#'             )
-#'           ),
-#'           platformVersion = "string",
-#'           networkConfiguration = list(
-#'             awsvpcConfiguration = list(
-#'               subnets = list(
-#'                 "string"
-#'               ),
-#'               securityGroups = list(
-#'                 "string"
-#'               ),
-#'               assignPublicIp = "ENABLED"|"DISABLED"
-#'             )
-#'           ),
-#'           loadBalancers = list(
-#'             list(
-#'               targetGroupArn = "string",
-#'               loadBalancerName = "string",
-#'               containerName = "string",
-#'               containerPort = 123
-#'             )
-#'           ),
-#'           serviceRegistries = list(
-#'             list(
-#'               registryArn = "string",
-#'               port = 123,
-#'               containerName = "string",
-#'               containerPort = 123
-#'             )
-#'           ),
-#'           scale = list(
-#'             value = 123.0,
-#'             unit = "PERCENT"
-#'           ),
-#'           stabilityStatus = "STEADY_STATE"|"STABILIZING",
-#'           stabilityStatusAt = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           tags = list(
-#'             list(
-#'               key = "string",
-#'               value = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       deployments = list(
-#'         list(
-#'           id = "string",
-#'           status = "string",
-#'           taskDefinition = "string",
-#'           desiredCount = 123,
-#'           pendingCount = 123,
-#'           runningCount = 123,
-#'           failedTasks = 123,
-#'           createdAt = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           updatedAt = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           capacityProviderStrategy = list(
-#'             list(
-#'               capacityProvider = "string",
-#'               weight = 123,
-#'               base = 123
-#'             )
-#'           ),
-#'           launchType = "EC2"|"FARGATE",
-#'           platformVersion = "string",
-#'           networkConfiguration = list(
-#'             awsvpcConfiguration = list(
-#'               subnets = list(
-#'                 "string"
-#'               ),
-#'               securityGroups = list(
-#'                 "string"
-#'               ),
-#'               assignPublicIp = "ENABLED"|"DISABLED"
-#'             )
-#'           ),
-#'           rolloutState = "COMPLETED"|"FAILED"|"IN_PROGRESS",
-#'           rolloutStateReason = "string"
-#'         )
-#'       ),
-#'       roleArn = "string",
-#'       events = list(
-#'         list(
-#'           id = "string",
-#'           createdAt = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           message = "string"
-#'         )
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       placementConstraints = list(
-#'         list(
-#'           type = "distinctInstance"|"memberOf",
-#'           expression = "string"
-#'         )
-#'       ),
-#'       placementStrategy = list(
-#'         list(
-#'           type = "random"|"spread"|"binpack",
-#'           field = "string"
-#'         )
-#'       ),
-#'       networkConfiguration = list(
-#'         awsvpcConfiguration = list(
-#'           subnets = list(
-#'             "string"
-#'           ),
-#'           securityGroups = list(
-#'             "string"
-#'           ),
-#'           assignPublicIp = "ENABLED"|"DISABLED"
-#'         )
-#'       ),
-#'       healthCheckGracePeriodSeconds = 123,
-#'       schedulingStrategy = "REPLICA"|"DAEMON",
-#'       deploymentController = list(
-#'         type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       createdBy = "string",
-#'       enableECSManagedTags = TRUE|FALSE,
-#'       propagateTags = "TASK_DEFINITION"|"SERVICE"
-#'     )
-#'   ),
-#'   failures = list(
-#'     list(
-#'       arn = "string",
-#'       reason = "string",
-#'       detail = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_services(
-#'   cluster = "string",
-#'   services = list(
-#'     "string"
-#'   ),
-#'   include = list(
-#'     "TAGS"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example provides descriptive information about the service named
-#' # `ecs-simple-service`.
-#' svc$describe_services(
-#'   services = list(
-#'     "ecs-simple-service"
-#'   )
-#' )
-#' }
+#' field is omitted, tags aren't included in the response.
 #'
 #' @keywords internal
 #'
@@ -3269,311 +1023,16 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #' Describes a task definition
 #'
 #' @description
-#' Describes a task definition. You can specify a `family` and `revision`
-#' to find information about a specific task definition, or you can simply
-#' specify the family to find the latest `ACTIVE` revision in that family.
-#' 
-#' You can only describe `INACTIVE` task definitions while an active task
-#' or service references them.
+#' Describes a task definition. You can specify a `family` and `revision` to find information about a specific task definition, or you can simply specify the family to find the latest `ACTIVE` revision in that family.
 #'
-#' @usage
-#' ecs_describe_task_definition(taskDefinition, include)
+#' See [https://paws-r.github.io/docs/ecs/describe_task_definition.html](https://paws-r.github.io/docs/ecs/describe_task_definition.html) for full documentation.
 #'
 #' @param taskDefinition &#91;required&#93; The `family` for the latest `ACTIVE` revision, `family` and `revision`
 #' (`family:revision`) for a specific revision in the family, or full
 #' Amazon Resource Name (ARN) of the task definition to describe.
-#' @param include Specifies whether to see the resource tags for the task definition. If
+#' @param include Determines whether to see the resource tags for the task definition. If
 #' `TAGS` is specified, the tags are included in the response. If this
-#' field is omitted, tags are not included in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskDefinition = list(
-#'     taskDefinitionArn = "string",
-#'     containerDefinitions = list(
-#'       list(
-#'         name = "string",
-#'         image = "string",
-#'         repositoryCredentials = list(
-#'           credentialsParameter = "string"
-#'         ),
-#'         cpu = 123,
-#'         memory = 123,
-#'         memoryReservation = 123,
-#'         links = list(
-#'           "string"
-#'         ),
-#'         portMappings = list(
-#'           list(
-#'             containerPort = 123,
-#'             hostPort = 123,
-#'             protocol = "tcp"|"udp"
-#'           )
-#'         ),
-#'         essential = TRUE|FALSE,
-#'         entryPoint = list(
-#'           "string"
-#'         ),
-#'         command = list(
-#'           "string"
-#'         ),
-#'         environment = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         environmentFiles = list(
-#'           list(
-#'             value = "string",
-#'             type = "s3"
-#'           )
-#'         ),
-#'         mountPoints = list(
-#'           list(
-#'             sourceVolume = "string",
-#'             containerPath = "string",
-#'             readOnly = TRUE|FALSE
-#'           )
-#'         ),
-#'         volumesFrom = list(
-#'           list(
-#'             sourceContainer = "string",
-#'             readOnly = TRUE|FALSE
-#'           )
-#'         ),
-#'         linuxParameters = list(
-#'           capabilities = list(
-#'             add = list(
-#'               "string"
-#'             ),
-#'             drop = list(
-#'               "string"
-#'             )
-#'           ),
-#'           devices = list(
-#'             list(
-#'               hostPath = "string",
-#'               containerPath = "string",
-#'               permissions = list(
-#'                 "read"|"write"|"mknod"
-#'               )
-#'             )
-#'           ),
-#'           initProcessEnabled = TRUE|FALSE,
-#'           sharedMemorySize = 123,
-#'           tmpfs = list(
-#'             list(
-#'               containerPath = "string",
-#'               size = 123,
-#'               mountOptions = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           maxSwap = 123,
-#'           swappiness = 123
-#'         ),
-#'         secrets = list(
-#'           list(
-#'             name = "string",
-#'             valueFrom = "string"
-#'           )
-#'         ),
-#'         dependsOn = list(
-#'           list(
-#'             containerName = "string",
-#'             condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
-#'           )
-#'         ),
-#'         startTimeout = 123,
-#'         stopTimeout = 123,
-#'         hostname = "string",
-#'         user = "string",
-#'         workingDirectory = "string",
-#'         disableNetworking = TRUE|FALSE,
-#'         privileged = TRUE|FALSE,
-#'         readonlyRootFilesystem = TRUE|FALSE,
-#'         dnsServers = list(
-#'           "string"
-#'         ),
-#'         dnsSearchDomains = list(
-#'           "string"
-#'         ),
-#'         extraHosts = list(
-#'           list(
-#'             hostname = "string",
-#'             ipAddress = "string"
-#'           )
-#'         ),
-#'         dockerSecurityOptions = list(
-#'           "string"
-#'         ),
-#'         interactive = TRUE|FALSE,
-#'         pseudoTerminal = TRUE|FALSE,
-#'         dockerLabels = list(
-#'           "string"
-#'         ),
-#'         ulimits = list(
-#'           list(
-#'             name = "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",
-#'             softLimit = 123,
-#'             hardLimit = 123
-#'           )
-#'         ),
-#'         logConfiguration = list(
-#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
-#'           options = list(
-#'             "string"
-#'           ),
-#'           secretOptions = list(
-#'             list(
-#'               name = "string",
-#'               valueFrom = "string"
-#'             )
-#'           )
-#'         ),
-#'         healthCheck = list(
-#'           command = list(
-#'             "string"
-#'           ),
-#'           interval = 123,
-#'           timeout = 123,
-#'           retries = 123,
-#'           startPeriod = 123
-#'         ),
-#'         systemControls = list(
-#'           list(
-#'             namespace = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resourceRequirements = list(
-#'           list(
-#'             value = "string",
-#'             type = "GPU"|"InferenceAccelerator"
-#'           )
-#'         ),
-#'         firelensConfiguration = list(
-#'           type = "fluentd"|"fluentbit",
-#'           options = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     family = "string",
-#'     taskRoleArn = "string",
-#'     executionRoleArn = "string",
-#'     networkMode = "bridge"|"host"|"awsvpc"|"none",
-#'     revision = 123,
-#'     volumes = list(
-#'       list(
-#'         name = "string",
-#'         host = list(
-#'           sourcePath = "string"
-#'         ),
-#'         dockerVolumeConfiguration = list(
-#'           scope = "task"|"shared",
-#'           autoprovision = TRUE|FALSE,
-#'           driver = "string",
-#'           driverOpts = list(
-#'             "string"
-#'           ),
-#'           labels = list(
-#'             "string"
-#'           )
-#'         ),
-#'         efsVolumeConfiguration = list(
-#'           fileSystemId = "string",
-#'           rootDirectory = "string",
-#'           transitEncryption = "ENABLED"|"DISABLED",
-#'           transitEncryptionPort = 123,
-#'           authorizationConfig = list(
-#'             accessPointId = "string",
-#'             iam = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         fsxWindowsFileServerVolumeConfiguration = list(
-#'           fileSystemId = "string",
-#'           rootDirectory = "string",
-#'           authorizationConfig = list(
-#'             credentialsParameter = "string",
-#'             domain = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = "ACTIVE"|"INACTIVE",
-#'     requiresAttributes = list(
-#'       list(
-#'         name = "string",
-#'         value = "string",
-#'         targetType = "container-instance",
-#'         targetId = "string"
-#'       )
-#'     ),
-#'     placementConstraints = list(
-#'       list(
-#'         type = "memberOf",
-#'         expression = "string"
-#'       )
-#'     ),
-#'     compatibilities = list(
-#'       "EC2"|"FARGATE"
-#'     ),
-#'     requiresCompatibilities = list(
-#'       "EC2"|"FARGATE"
-#'     ),
-#'     cpu = "string",
-#'     memory = "string",
-#'     inferenceAccelerators = list(
-#'       list(
-#'         deviceName = "string",
-#'         deviceType = "string"
-#'       )
-#'     ),
-#'     pidMode = "host"|"task",
-#'     ipcMode = "host"|"task"|"none",
-#'     proxyConfiguration = list(
-#'       type = "APPMESH",
-#'       containerName = "string",
-#'       properties = list(
-#'         list(
-#'           name = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_task_definition(
-#'   taskDefinition = "string",
-#'   include = list(
-#'     "TAGS"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example provides a description of the specified task definition.
-#' svc$describe_task_definition(
-#'   taskDefinition = "hello_world:8"
-#' )
-#' }
+#' field is omitted, tags aren't included in the response.
 #'
 #' @keywords internal
 #'
@@ -3598,14 +1057,9 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' Describes the task sets in the specified cluster and service
 #'
 #' @description
-#' Describes the task sets in the specified cluster and service. This is
-#' used when a service uses the `EXTERNAL` deployment controller type. For
-#' more information, see [Amazon ECS Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Describes the task sets in the specified cluster and service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' @usage
-#' ecs_describe_task_sets(cluster, service, taskSets, include)
+#' See [https://paws-r.github.io/docs/ecs/describe_task_sets.html](https://paws-r.github.io/docs/ecs/describe_task_sets.html) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service that the task sets exist in.
@@ -3614,106 +1068,7 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' @param taskSets The ID or full Amazon Resource Name (ARN) of task sets to describe.
 #' @param include Specifies whether to see the resource tags for the task set. If `TAGS`
 #' is specified, the tags are included in the response. If this field is
-#' omitted, tags are not included in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskSets = list(
-#'     list(
-#'       id = "string",
-#'       taskSetArn = "string",
-#'       serviceArn = "string",
-#'       clusterArn = "string",
-#'       startedBy = "string",
-#'       externalId = "string",
-#'       status = "string",
-#'       taskDefinition = "string",
-#'       computedDesiredCount = 123,
-#'       pendingCount = 123,
-#'       runningCount = 123,
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       updatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       launchType = "EC2"|"FARGATE",
-#'       capacityProviderStrategy = list(
-#'         list(
-#'           capacityProvider = "string",
-#'           weight = 123,
-#'           base = 123
-#'         )
-#'       ),
-#'       platformVersion = "string",
-#'       networkConfiguration = list(
-#'         awsvpcConfiguration = list(
-#'           subnets = list(
-#'             "string"
-#'           ),
-#'           securityGroups = list(
-#'             "string"
-#'           ),
-#'           assignPublicIp = "ENABLED"|"DISABLED"
-#'         )
-#'       ),
-#'       loadBalancers = list(
-#'         list(
-#'           targetGroupArn = "string",
-#'           loadBalancerName = "string",
-#'           containerName = "string",
-#'           containerPort = 123
-#'         )
-#'       ),
-#'       serviceRegistries = list(
-#'         list(
-#'           registryArn = "string",
-#'           port = 123,
-#'           containerName = "string",
-#'           containerPort = 123
-#'         )
-#'       ),
-#'       scale = list(
-#'         value = 123.0,
-#'         unit = "PERCENT"
-#'       ),
-#'       stabilityStatus = "STEADY_STATE"|"STABILIZING",
-#'       stabilityStatusAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   failures = list(
-#'     list(
-#'       arn = "string",
-#'       reason = "string",
-#'       detail = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_task_sets(
-#'   cluster = "string",
-#'   service = "string",
-#'   taskSets = list(
-#'     "string"
-#'   ),
-#'   include = list(
-#'     "TAGS"
-#'   )
-#' )
-#' ```
+#' omitted, tags aren't included in the response.
 #'
 #' @keywords internal
 #'
@@ -3740,8 +1095,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #' @description
 #' Describes a specified task or tasks.
 #'
-#' @usage
-#' ecs_describe_tasks(cluster, tasks, include)
+#' See [https://paws-r.github.io/docs/ecs/describe_tasks.html](https://paws-r.github.io/docs/ecs/describe_tasks.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task or tasks to describe. If you do not specify a cluster,
@@ -3751,201 +1105,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #' @param tasks &#91;required&#93; A list of up to 100 task IDs or full ARN entries.
 #' @param include Specifies whether you want to see the resource tags for the task. If
 #' `TAGS` is specified, the tags are included in the response. If this
-#' field is omitted, tags are not included in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tasks = list(
-#'     list(
-#'       attachments = list(
-#'         list(
-#'           id = "string",
-#'           type = "string",
-#'           status = "string",
-#'           details = list(
-#'             list(
-#'               name = "string",
-#'               value = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       attributes = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           targetType = "container-instance",
-#'           targetId = "string"
-#'         )
-#'       ),
-#'       availabilityZone = "string",
-#'       capacityProviderName = "string",
-#'       clusterArn = "string",
-#'       connectivity = "CONNECTED"|"DISCONNECTED",
-#'       connectivityAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       containerInstanceArn = "string",
-#'       containers = list(
-#'         list(
-#'           containerArn = "string",
-#'           taskArn = "string",
-#'           name = "string",
-#'           image = "string",
-#'           imageDigest = "string",
-#'           runtimeId = "string",
-#'           lastStatus = "string",
-#'           exitCode = 123,
-#'           reason = "string",
-#'           networkBindings = list(
-#'             list(
-#'               bindIP = "string",
-#'               containerPort = 123,
-#'               hostPort = 123,
-#'               protocol = "tcp"|"udp"
-#'             )
-#'           ),
-#'           networkInterfaces = list(
-#'             list(
-#'               attachmentId = "string",
-#'               privateIpv4Address = "string",
-#'               ipv6Address = "string"
-#'             )
-#'           ),
-#'           healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-#'           cpu = "string",
-#'           memory = "string",
-#'           memoryReservation = "string",
-#'           gpuIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       cpu = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       desiredStatus = "string",
-#'       executionStoppedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       group = "string",
-#'       healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-#'       inferenceAccelerators = list(
-#'         list(
-#'           deviceName = "string",
-#'           deviceType = "string"
-#'         )
-#'       ),
-#'       lastStatus = "string",
-#'       launchType = "EC2"|"FARGATE",
-#'       memory = "string",
-#'       overrides = list(
-#'         containerOverrides = list(
-#'           list(
-#'             name = "string",
-#'             command = list(
-#'               "string"
-#'             ),
-#'             environment = list(
-#'               list(
-#'                 name = "string",
-#'                 value = "string"
-#'               )
-#'             ),
-#'             environmentFiles = list(
-#'               list(
-#'                 value = "string",
-#'                 type = "s3"
-#'               )
-#'             ),
-#'             cpu = 123,
-#'             memory = 123,
-#'             memoryReservation = 123,
-#'             resourceRequirements = list(
-#'               list(
-#'                 value = "string",
-#'                 type = "GPU"|"InferenceAccelerator"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         cpu = "string",
-#'         inferenceAcceleratorOverrides = list(
-#'           list(
-#'             deviceName = "string",
-#'             deviceType = "string"
-#'           )
-#'         ),
-#'         executionRoleArn = "string",
-#'         memory = "string",
-#'         taskRoleArn = "string"
-#'       ),
-#'       platformVersion = "string",
-#'       pullStartedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       pullStoppedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       startedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       startedBy = "string",
-#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
-#'       stoppedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       stoppedReason = "string",
-#'       stoppingAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       taskArn = "string",
-#'       taskDefinitionArn = "string",
-#'       version = 123
-#'     )
-#'   ),
-#'   failures = list(
-#'     list(
-#'       arn = "string",
-#'       reason = "string",
-#'       detail = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_tasks(
-#'   cluster = "string",
-#'   tasks = list(
-#'     "string"
-#'   ),
-#'   include = list(
-#'     "TAGS"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example provides a description of the specified task, using the
-#' # task UUID as an identifier.
-#' svc$describe_tasks(
-#'   tasks = list(
-#'     "c5cba4eb-5dad-405e-96db-71ef8eefe6a8"
-#'   )
-#' )
-#' }
+#' field is omitted, tags aren't included in the response.
 #'
 #' @keywords internal
 #'
@@ -3971,39 +1131,16 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
 #' for use outside of the agent
 #'
 #' @description
-#' This action is only used by the Amazon ECS agent, and it is not intended
-#' for use outside of the agent.
-#' 
-#' Returns an endpoint for the Amazon ECS agent to poll for updates.
+#' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' @usage
-#' ecs_discover_poll_endpoint(containerInstance, cluster)
+#' See [https://paws-r.github.io/docs/ecs/discover_poll_endpoint.html](https://paws-r.github.io/docs/ecs/discover_poll_endpoint.html) for full documentation.
 #'
-#' @param containerInstance The container instance ID or full ARN of the container instance. The ARN
-#' contains the `arn:aws:ecs` namespace, followed by the Region of the
-#' container instance, the AWS account ID of the container instance owner,
-#' the `container-instance` namespace, and then the container instance ID.
-#' For example,
-#' `arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID`.
-#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to
-#' which the container instance belongs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   endpoint = "string",
-#'   telemetryEndpoint = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$discover_poll_endpoint(
-#'   containerInstance = "string",
-#'   cluster = "string"
-#' )
-#' ```
+#' @param containerInstance The container instance ID or full ARN of the container instance. For
+#' more information about the ARN format, see [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#ecs-resource-ids)
+#' in the *Amazon ECS Developer Guide*.
+#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
+#' the container instance belongs to.
 #'
 #' @keywords internal
 #'
@@ -4025,30 +1162,68 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 }
 .ecs$operations$discover_poll_endpoint <- ecs_discover_poll_endpoint
 
+#' Runs a command remotely on a container within a task
+#'
+#' @description
+#' Runs a command remotely on a container within a task.
+#'
+#' See [https://paws-r.github.io/docs/ecs/execute_command.html](https://paws-r.github.io/docs/ecs/execute_command.html) for full documentation.
+#'
+#' @param cluster The Amazon Resource Name (ARN) or short name of the cluster the task is
+#' running in. If you do not specify a cluster, the default cluster is
+#' assumed.
+#' @param container The name of the container to execute the command on. A container name
+#' only needs to be specified for tasks containing multiple containers.
+#' @param command &#91;required&#93; The command to run on the container.
+#' @param interactive &#91;required&#93; Use this flag to run your command in interactive mode.
+#' @param task &#91;required&#93; The Amazon Resource Name (ARN) or ID of the task the container is part
+#' of.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_execute_command
+ecs_execute_command <- function(cluster = NULL, container = NULL, command, interactive, task) {
+  op <- new_operation(
+    name = "ExecuteCommand",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$execute_command_input(cluster = cluster, container = container, command = command, interactive = interactive, task = task)
+  output <- .ecs$execute_command_output()
+  config <- get_config()
+  svc <- .ecs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$execute_command <- ecs_execute_command
+
 #' Lists the account settings for a specified principal
 #'
 #' @description
 #' Lists the account settings for a specified principal.
 #'
-#' @usage
-#' ecs_list_account_settings(name, value, principalArn, effectiveSettings,
-#'   nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/ecs/list_account_settings.html](https://paws-r.github.io/docs/ecs/list_account_settings.html) for full documentation.
 #'
 #' @param name The name of the account setting you want to list the settings for.
-#' @param value The value of the account settings with which to filter results. You must
-#' also specify an account setting name to use this parameter.
+#' @param value The value of the account settings to filter results with. You must also
+#' specify an account setting name to use this parameter.
 #' @param principalArn The ARN of the principal, which can be an IAM user, IAM role, or the
 #' root user. If this field is omitted, the account settings are listed
 #' only for the authenticated user.
-#' @param effectiveSettings Specifies whether to return the effective settings. If `true`, the
+#' 
+#' Federated users assume the account setting of the root user and can't
+#' have explicit account settings set for them.
+#' @param effectiveSettings Determines whether to return the effective settings. If `true`, the
 #' account settings for the root user or the default setting for the
 #' `principalArn` are returned. If `false`, the account settings for the
-#' `principalArn` are returned if they are set. Otherwise, no account
+#' `principalArn` are returned if they're set. Otherwise, no account
 #' settings are returned.
 #' @param nextToken The `nextToken` value returned from a
 #' [`list_account_settings`][ecs_list_account_settings] request indicating
 #' that more results are available to fulfill the request and further calls
-#' will be needed. If `maxResults` was provided, it is possible the number
+#' will be needed. If `maxResults` was provided, it's possible the number
 #' of results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
@@ -4062,51 +1237,9 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #' element. The remaining results of the initial request can be seen by
 #' sending another [`list_account_settings`][ecs_list_account_settings]
 #' request with the returned `nextToken` value. This value can be between 1
-#' and 10. If this parameter is not used, then
+#' and 10. If this parameter isn't used, then
 #' [`list_account_settings`][ecs_list_account_settings] returns up to 10
 #' results and a `nextToken` value if applicable.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   settings = list(
-#'     list(
-#'       name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-#'       value = "string",
-#'       principalArn = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_account_settings(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-#'   value = "string",
-#'   principalArn = "string",
-#'   effectiveSettings = TRUE|FALSE,
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example displays the effective account settings for your account.
-#' svc$list_account_settings(
-#'   effectiveSettings = TRUE
-#' )
-#' 
-#' # This example displays the effective account settings for the specified
-#' # user or role.
-#' svc$list_account_settings(
-#'   effectiveSettings = TRUE,
-#'   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4132,73 +1265,36 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
 #' type and cluster
 #'
 #' @description
-#' Lists the attributes for Amazon ECS resources within a specified target
-#' type and cluster. When you specify a target type and cluster,
-#' [`list_attributes`][ecs_list_attributes] returns a list of attribute
-#' objects, one for each attribute on each resource. You can filter the
-#' list of results to a single attribute name to only return results that
-#' have that name. You can also filter the results by attribute name and
-#' value, for example, to see which container instances in a cluster are
-#' running a Linux AMI (`ecs.os-type=linux`).
+#' Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a target type and cluster, [`list_attributes`][ecs_list_attributes] returns a list of attribute objects, one for each attribute on each resource. You can filter the list of results to a single attribute name to only return results that have that name. You can also filter the results by attribute name and value. You can do this, for example, to see which container instances in a cluster are running a Linux AMI (`ecs.os-type=linux`).
 #'
-#' @usage
-#' ecs_list_attributes(cluster, targetType, attributeName, attributeValue,
-#'   nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/ecs/list_attributes.html](https://paws-r.github.io/docs/ecs/list_attributes.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to list
 #' attributes. If you do not specify a cluster, the default cluster is
 #' assumed.
-#' @param targetType &#91;required&#93; The type of the target with which to list attributes.
-#' @param attributeName The name of the attribute with which to filter the results.
-#' @param attributeValue The value of the attribute with which to filter results. You must also
-#' specify an attribute name to use this parameter.
+#' @param targetType &#91;required&#93; The type of the target to list attributes with.
+#' @param attributeName The name of the attribute to filter the results with.
+#' @param attributeValue The value of the attribute to filter results with. You must also specify
+#' an attribute name to use this parameter.
 #' @param nextToken The `nextToken` value returned from a
 #' [`list_attributes`][ecs_list_attributes] request indicating that more
-#' results are available to fulfill the request and further calls will be
-#' needed. If `maxResults` was provided, it is possible the number of
+#' results are available to fulfill the request and further calls are
+#' needed. If `maxResults` was provided, it's possible the number of
 #' results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of cluster results returned by
-#' [`list_attributes`][ecs_list_attributes] in paginated output. When this
-#' parameter is used, [`list_attributes`][ecs_list_attributes] only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another [`list_attributes`][ecs_list_attributes] request with
-#' the returned `nextToken` value. This value can be between 1 and 100. If
-#' this parameter is not used, then
-#' [`list_attributes`][ecs_list_attributes] returns up to 100 results and a
-#' `nextToken` value if applicable.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   attributes = list(
-#'     list(
-#'       name = "string",
-#'       value = "string",
-#'       targetType = "container-instance",
-#'       targetId = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_attributes(
-#'   cluster = "string",
-#'   targetType = "container-instance",
-#'   attributeName = "string",
-#'   attributeValue = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
+#' @param maxResults The maximum number of cluster results that
+#' [`list_attributes`][ecs_list_attributes] returned in paginated output.
+#' When this parameter is used, [`list_attributes`][ecs_list_attributes]
+#' only returns `maxResults` results in a single page along with a
+#' `nextToken` response element. The remaining results of the initial
+#' request can be seen by sending another
+#' [`list_attributes`][ecs_list_attributes] request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If this
+#' parameter isn't used, then [`list_attributes`][ecs_list_attributes]
+#' returns up to 100 results and a `nextToken` value if applicable.
 #'
 #' @keywords internal
 #'
@@ -4225,53 +1321,27 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
 #' @description
 #' Returns a list of existing clusters.
 #'
-#' @usage
-#' ecs_list_clusters(nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/ecs/list_clusters.html](https://paws-r.github.io/docs/ecs/list_clusters.html) for full documentation.
 #'
 #' @param nextToken The `nextToken` value returned from a
 #' [`list_clusters`][ecs_list_clusters] request indicating that more
-#' results are available to fulfill the request and further calls will be
-#' needed. If `maxResults` was provided, it is possible the number of
+#' results are available to fulfill the request and further calls are
+#' needed. If `maxResults` was provided, it's possible the number of
 #' results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of cluster results returned by
-#' [`list_clusters`][ecs_list_clusters] in paginated output. When this
-#' parameter is used, [`list_clusters`][ecs_list_clusters] only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another [`list_clusters`][ecs_list_clusters] request with the
-#' returned `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then [`list_clusters`][ecs_list_clusters] returns
-#' up to 100 results and a `nextToken` value if applicable.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   clusterArns = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_clusters(
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists all of your available clusters in your default
-#' # region.
-#' svc$list_clusters()
-#' }
+#' @param maxResults The maximum number of cluster results that
+#' [`list_clusters`][ecs_list_clusters] returned in paginated output. When
+#' this parameter is used, [`list_clusters`][ecs_list_clusters] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another [`list_clusters`][ecs_list_clusters] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 100. If this parameter isn't used, then
+#' [`list_clusters`][ecs_list_clusters] returns up to 100 results and a
+#' `nextToken` value if applicable.
 #'
 #' @keywords internal
 #'
@@ -4296,17 +1366,9 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' Returns a list of container instances in a specified cluster
 #'
 #' @description
-#' Returns a list of container instances in a specified cluster. You can
-#' filter the results of a
-#' [`list_container_instances`][ecs_list_container_instances] operation
-#' with cluster query language statements inside the `filter` parameter.
-#' For more information, see [Cluster Query
-#' Language](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Returns a list of container instances in a specified cluster. You can filter the results of a [`list_container_instances`][ecs_list_container_instances] operation with cluster query language statements inside the `filter` parameter. For more information, see [Cluster Query Language](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' @usage
-#' ecs_list_container_instances(cluster, filter, nextToken, maxResults,
-#'   status)
+#' See [https://paws-r.github.io/docs/ecs/list_container_instances.html](https://paws-r.github.io/docs/ecs/list_container_instances.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instances to list. If you do not specify a cluster,
@@ -4320,61 +1382,30 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' @param nextToken The `nextToken` value returned from a
 #' [`list_container_instances`][ecs_list_container_instances] request
 #' indicating that more results are available to fulfill the request and
-#' further calls will be needed. If `maxResults` was provided, it is
-#' possible the number of results to be fewer than `maxResults`.
+#' further calls are needed. If `maxResults` was provided, it's possible
+#' the number of results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of container instance results returned by
-#' [`list_container_instances`][ecs_list_container_instances] in paginated
-#' output. When this parameter is used,
+#' @param maxResults The maximum number of container instance results that
+#' [`list_container_instances`][ecs_list_container_instances] returned in
+#' paginated output. When this parameter is used,
 #' [`list_container_instances`][ecs_list_container_instances] only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
 #' sending another
 #' [`list_container_instances`][ecs_list_container_instances] request with
 #' the returned `nextToken` value. This value can be between 1 and 100. If
-#' this parameter is not used, then
+#' this parameter isn't used, then
 #' [`list_container_instances`][ecs_list_container_instances] returns up to
 #' 100 results and a `nextToken` value if applicable.
 #' @param status Filters the container instances by status. For example, if you specify
 #' the `DRAINING` status, the results include only container instances that
 #' have been set to `DRAINING` using
 #' [`update_container_instances_state`][ecs_update_container_instances_state].
-#' If you do not specify this parameter, the default is to include
-#' container instances set to all states other than `INACTIVE`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerInstanceArns = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_container_instances(
-#'   cluster = "string",
-#'   filter = "string",
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists all of your available container instances in the
-#' # specified cluster in your default region.
-#' svc$list_container_instances(
-#'   cluster = "default"
-#' )
-#' }
+#' If you don't specify this parameter, the default is to include container
+#' instances set to all states other than `INACTIVE`.
 #'
 #' @keywords internal
 #'
@@ -4396,18 +1427,16 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 }
 .ecs$operations$list_container_instances <- ecs_list_container_instances
 
-#' Lists the services that are running in a specified cluster
+#' Returns a list of services
 #'
 #' @description
-#' Lists the services that are running in a specified cluster.
+#' Returns a list of services. You can filter the results by cluster, launch type, and scheduling strategy.
 #'
-#' @usage
-#' ecs_list_services(cluster, nextToken, maxResults, launchType,
-#'   schedulingStrategy)
+#' See [https://paws-r.github.io/docs/ecs/list_services.html](https://paws-r.github.io/docs/ecs/list_services.html) for full documentation.
 #'
-#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
-#' hosts the services to list. If you do not specify a cluster, the default
-#' cluster is assumed.
+#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to use
+#' when filtering the [`list_services`][ecs_list_services] results. If you
+#' do not specify a cluster, the default cluster is assumed.
 #' @param nextToken The `nextToken` value returned from a
 #' [`list_services`][ecs_list_services] request indicating that more
 #' results are available to fulfill the request and further calls will be
@@ -4417,46 +1446,20 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of service results returned by
-#' [`list_services`][ecs_list_services] in paginated output. When this
-#' parameter is used, [`list_services`][ecs_list_services] only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another [`list_services`][ecs_list_services] request with the
-#' returned `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then [`list_services`][ecs_list_services] returns
-#' up to 10 results and a `nextToken` value if applicable.
-#' @param launchType The launch type for the services to list.
-#' @param schedulingStrategy The scheduling strategy for services to list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   serviceArns = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_services(
-#'   cluster = "string",
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   launchType = "EC2"|"FARGATE",
-#'   schedulingStrategy = "REPLICA"|"DAEMON"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists the services running in the default cluster for an
-#' # account.
-#' svc$list_services()
-#' }
+#' @param maxResults The maximum number of service results that
+#' [`list_services`][ecs_list_services] returned in paginated output. When
+#' this parameter is used, [`list_services`][ecs_list_services] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another [`list_services`][ecs_list_services] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 100. If this parameter isn't used, then
+#' [`list_services`][ecs_list_services] returns up to 10 results and a
+#' `nextToken` value if applicable.
+#' @param launchType The launch type to use when filtering the
+#' [`list_services`][ecs_list_services] results.
+#' @param schedulingStrategy The scheduling strategy to use when filtering the
+#' [`list_services`][ecs_list_services] results.
 #'
 #' @keywords internal
 #'
@@ -4483,40 +1486,11 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
 #' @description
 #' List the tags for an Amazon ECS resource.
 #'
-#' @usage
-#' ecs_list_tags_for_resource(resourceArn)
+#' See [https://paws-r.github.io/docs/ecs/list_tags_for_resource.html](https://paws-r.github.io/docs/ecs/list_tags_for_resource.html) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. Currently, the supported resources are Amazon ECS tasks,
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list the
+#' tags for. Currently, the supported resources are Amazon ECS tasks,
 #' services, task definitions, clusters, and container instances.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   resourceArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists the tags for the 'dev' cluster.
-#' svc$list_tags_for_resource(
-#'   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4539,30 +1513,20 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 .ecs$operations$list_tags_for_resource <- ecs_list_tags_for_resource
 
 #' Returns a list of task definition families that are registered to your
-#' account (which may include task definition families that no longer have
-#' any ACTIVE task definition revisions)
+#' account
 #'
 #' @description
-#' Returns a list of task definition families that are registered to your
-#' account (which may include task definition families that no longer have
-#' any `ACTIVE` task definition revisions).
-#' 
-#' You can filter out task definition families that do not contain any
-#' `ACTIVE` task definition revisions by setting the `status` parameter to
-#' `ACTIVE`. You can also filter the results with the `familyPrefix`
-#' parameter.
+#' Returns a list of task definition families that are registered to your account. This list includes task definition families that no longer have any `ACTIVE` task definition revisions.
 #'
-#' @usage
-#' ecs_list_task_definition_families(familyPrefix, status, nextToken,
-#'   maxResults)
+#' See [https://paws-r.github.io/docs/ecs/list_task_definition_families.html](https://paws-r.github.io/docs/ecs/list_task_definition_families.html) for full documentation.
 #'
-#' @param familyPrefix The `familyPrefix` is a string that is used to filter the results of
+#' @param familyPrefix The `familyPrefix` is a string that's used to filter the results of
 #' [`list_task_definition_families`][ecs_list_task_definition_families]. If
 #' you specify a `familyPrefix`, only task definition family names that
 #' begin with the `familyPrefix` string are returned.
-#' @param status The task definition family status with which to filter the
+#' @param status The task definition family status to filter the
 #' [`list_task_definition_families`][ecs_list_task_definition_families]
-#' results. By default, both `ACTIVE` and `INACTIVE` task definition
+#' results with. By default, both `ACTIVE` and `INACTIVE` task definition
 #' families are listed. If this parameter is set to `ACTIVE`, only task
 #' definition families that have an `ACTIVE` task definition revision are
 #' returned. If this parameter is set to `INACTIVE`, only task definition
@@ -4578,50 +1542,18 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of task definition family results returned by
-#' [`list_task_definition_families`][ecs_list_task_definition_families] in
-#' paginated output. When this parameter is used,
+#' @param maxResults The maximum number of task definition family results that
+#' [`list_task_definition_families`][ecs_list_task_definition_families]
+#' returned in paginated output. When this parameter is used,
 #' [`list_task_definitions`][ecs_list_task_definitions] only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
 #' sending another
 #' [`list_task_definition_families`][ecs_list_task_definition_families]
 #' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If this parameter is not used, then
+#' and 100. If this parameter isn't used, then
 #' [`list_task_definition_families`][ecs_list_task_definition_families]
 #' returns up to 100 results and a `nextToken` value if applicable.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   families = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_task_definition_families(
-#'   familyPrefix = "string",
-#'   status = "ACTIVE"|"INACTIVE"|"ALL",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists all of your registered task definition families.
-#' svc$list_task_definition_families()
-#' 
-#' # This example lists the task definition revisions that start with "hpcc".
-#' svc$list_task_definition_families(
-#'   familyPrefix = "hpcc"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4646,32 +1578,27 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #' Returns a list of task definitions that are registered to your account
 #'
 #' @description
-#' Returns a list of task definitions that are registered to your account.
-#' You can filter the results by family name with the `familyPrefix`
-#' parameter or by status with the `status` parameter.
+#' Returns a list of task definitions that are registered to your account. You can filter the results by family name with the `familyPrefix` parameter or by status with the `status` parameter.
 #'
-#' @usage
-#' ecs_list_task_definitions(familyPrefix, status, sort, nextToken,
-#'   maxResults)
+#' See [https://paws-r.github.io/docs/ecs/list_task_definitions.html](https://paws-r.github.io/docs/ecs/list_task_definitions.html) for full documentation.
 #'
-#' @param familyPrefix The full family name with which to filter the
-#' [`list_task_definitions`][ecs_list_task_definitions] results. Specifying
-#' a `familyPrefix` limits the listed task definitions to task definition
-#' revisions that belong to that family.
-#' @param status The task definition status with which to filter the
-#' [`list_task_definitions`][ecs_list_task_definitions] results. By
+#' @param familyPrefix The full family name to filter the
+#' [`list_task_definitions`][ecs_list_task_definitions] results with.
+#' Specifying a `familyPrefix` limits the listed task definitions to task
+#' definition revisions that belong to that family.
+#' @param status The task definition status to filter the
+#' [`list_task_definitions`][ecs_list_task_definitions] results with. By
 #' default, only `ACTIVE` task definitions are listed. By setting this
 #' parameter to `INACTIVE`, you can view task definitions that are
 #' `INACTIVE` as long as an active task or service still references them.
 #' If you paginate the resulting output, be sure to keep the `status` value
 #' constant in each subsequent request.
-#' @param sort The order in which to sort the results. Valid values are `ASC` and
-#' `DESC`. By default (`ASC`), task definitions are listed
-#' lexicographically by family name and in ascending numerical order by
-#' revision so that the newest task definitions in a family are listed
-#' last. Setting this parameter to `DESC` reverses the sort order on family
-#' name and revision so that the newest task definitions in a family are
-#' listed first.
+#' @param sort The order to sort the results in. Valid values are `ASC` and `DESC`. By
+#' default, (`ASC`) task definitions are listed lexicographically by family
+#' name and in ascending numerical order by revision so that the newest
+#' task definitions in a family are listed last. Setting this parameter to
+#' `DESC` reverses the sort order on family name and revision. This is so
+#' that the newest task definitions in a family are listed first.
 #' @param nextToken The `nextToken` value returned from a
 #' [`list_task_definitions`][ecs_list_task_definitions] request indicating
 #' that more results are available to fulfill the request and further calls
@@ -4681,50 +1608,17 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of task definition results returned by
-#' [`list_task_definitions`][ecs_list_task_definitions] in paginated
-#' output. When this parameter is used,
+#' @param maxResults The maximum number of task definition results that
+#' [`list_task_definitions`][ecs_list_task_definitions] returned in
+#' paginated output. When this parameter is used,
 #' [`list_task_definitions`][ecs_list_task_definitions] only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
 #' sending another [`list_task_definitions`][ecs_list_task_definitions]
 #' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If this parameter is not used, then
+#' and 100. If this parameter isn't used, then
 #' [`list_task_definitions`][ecs_list_task_definitions] returns up to 100
 #' results and a `nextToken` value if applicable.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskDefinitionArns = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_task_definitions(
-#'   familyPrefix = "string",
-#'   status = "ACTIVE"|"INACTIVE",
-#'   sort = "ASC"|"DESC",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists all of your registered task definitions.
-#' svc$list_task_definitions()
-#' 
-#' # This example lists the task definition revisions of a specified family.
-#' svc$list_task_definitions(
-#'   familyPrefix = "wordpress"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4746,109 +1640,60 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 }
 .ecs$operations$list_task_definitions <- ecs_list_task_definitions
 
-#' Returns a list of tasks for a specified cluster
+#' Returns a list of tasks
 #'
 #' @description
-#' Returns a list of tasks for a specified cluster. You can filter the
-#' results by family name, by a particular container instance, or by the
-#' desired status of the task with the `family`, `containerInstance`, and
-#' `desiredStatus` parameters.
-#' 
-#' Recently stopped tasks might appear in the returned results. Currently,
-#' stopped tasks appear in the returned results for at least one hour.
+#' Returns a list of tasks. You can filter the results by cluster, task definition family, container instance, launch type, what IAM principal started the task, or by the desired status of the task.
 #'
-#' @usage
-#' ecs_list_tasks(cluster, containerInstance, family, nextToken,
-#'   maxResults, startedBy, serviceName, desiredStatus, launchType)
+#' See [https://paws-r.github.io/docs/ecs/list_tasks.html](https://paws-r.github.io/docs/ecs/list_tasks.html) for full documentation.
 #'
-#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
-#' hosts the tasks to list. If you do not specify a cluster, the default
-#' cluster is assumed.
-#' @param containerInstance The container instance ID or full ARN of the container instance with
-#' which to filter the [`list_tasks`][ecs_list_tasks] results. Specifying a
+#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to use
+#' when filtering the [`list_tasks`][ecs_list_tasks] results. If you do not
+#' specify a cluster, the default cluster is assumed.
+#' @param containerInstance The container instance ID or full ARN of the container instance to use
+#' when filtering the [`list_tasks`][ecs_list_tasks] results. Specifying a
 #' `containerInstance` limits the results to tasks that belong to that
 #' container instance.
-#' @param family The name of the family with which to filter the
+#' @param family The name of the task definition family to use when filtering the
 #' [`list_tasks`][ecs_list_tasks] results. Specifying a `family` limits the
 #' results to tasks that belong to that family.
 #' @param nextToken The `nextToken` value returned from a [`list_tasks`][ecs_list_tasks]
 #' request indicating that more results are available to fulfill the
 #' request and further calls will be needed. If `maxResults` was provided,
-#' it is possible the number of results to be fewer than `maxResults`.
+#' it's possible the number of results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of task results returned by
-#' [`list_tasks`][ecs_list_tasks] in paginated output. When this parameter
-#' is used, [`list_tasks`][ecs_list_tasks] only returns `maxResults`
-#' results in a single page along with a `nextToken` response element. The
-#' remaining results of the initial request can be seen by sending another
+#' @param maxResults The maximum number of task results that [`list_tasks`][ecs_list_tasks]
+#' returned in paginated output. When this parameter is used,
+#' [`list_tasks`][ecs_list_tasks] only returns `maxResults` results in a
+#' single page along with a `nextToken` response element. The remaining
+#' results of the initial request can be seen by sending another
 #' [`list_tasks`][ecs_list_tasks] request with the returned `nextToken`
-#' value. This value can be between 1 and 100. If this parameter is not
+#' value. This value can be between 1 and 100. If this parameter isn't
 #' used, then [`list_tasks`][ecs_list_tasks] returns up to 100 results and
 #' a `nextToken` value if applicable.
-#' @param startedBy The `startedBy` value with which to filter the task results. Specifying
-#' a `startedBy` value limits the results to tasks that were started with
+#' @param startedBy The `startedBy` value to filter the task results with. Specifying a
+#' `startedBy` value limits the results to tasks that were started with
 #' that value.
-#' @param serviceName The name of the service with which to filter the
+#' @param serviceName The name of the service to use when filtering the
 #' [`list_tasks`][ecs_list_tasks] results. Specifying a `serviceName`
 #' limits the results to tasks that belong to that service.
-#' @param desiredStatus The task desired status with which to filter the
+#' @param desiredStatus The task desired status to use when filtering the
 #' [`list_tasks`][ecs_list_tasks] results. Specifying a `desiredStatus` of
 #' `STOPPED` limits the results to tasks that Amazon ECS has set the
 #' desired status to `STOPPED`. This can be useful for debugging tasks that
-#' are not starting properly or have died or finished. The default status
+#' aren't starting properly or have died or finished. The default status
 #' filter is `RUNNING`, which shows tasks that Amazon ECS has set the
 #' desired status to `RUNNING`.
 #' 
 #' Although you can filter results based on a desired status of `PENDING`,
-#' this does not return any results. Amazon ECS never sets the desired
+#' this doesn't return any results. Amazon ECS never sets the desired
 #' status of a task to that value (only a task's `lastStatus` may have a
 #' value of `PENDING`).
-#' @param launchType The launch type for services to list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskArns = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tasks(
-#'   cluster = "string",
-#'   containerInstance = "string",
-#'   family = "string",
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   startedBy = "string",
-#'   serviceName = "string",
-#'   desiredStatus = "RUNNING"|"PENDING"|"STOPPED",
-#'   launchType = "EC2"|"FARGATE"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists all of the tasks in a cluster.
-#' svc$list_tasks(
-#'   cluster = "default"
-#' )
-#' 
-#' # This example lists the tasks of a specified container instance.
-#' # Specifying a `containerInstance` value limits  the  results  to  tasks
-#' #  that belong to that container instance.
-#' svc$list_tasks(
-#'   cluster = "default",
-#'   containerInstance = "f6bbb147-5370-4ace-8c73-c7181ded911f"
-#' )
-#' }
+#' @param launchType The launch type to use when filtering the [`list_tasks`][ecs_list_tasks]
+#' results.
 #'
 #' @keywords internal
 #'
@@ -4873,44 +1718,9 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' Modifies an account setting
 #'
 #' @description
-#' Modifies an account setting. Account settings are set on a per-Region
-#' basis.
-#' 
-#' If you change the account setting for the root user, the default
-#' settings for all of the IAM users and roles for which no individual
-#' account setting has been specified are reset. For more information, see
-#' [Account
-#' Settings](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' When `serviceLongArnFormat`, `taskLongArnFormat`, or
-#' `containerInstanceLongArnFormat` are specified, the Amazon Resource Name
-#' (ARN) and resource ID format of the resource type for a specified IAM
-#' user, IAM role, or the root user for an account is affected. The opt-in
-#' and opt-out account setting must be set for each Amazon ECS resource
-#' separately. The ARN and resource ID format of a resource will be defined
-#' by the opt-in status of the IAM user or role that created the resource.
-#' You must enable this setting to use Amazon ECS features such as resource
-#' tagging.
-#' 
-#' When `awsvpcTrunking` is specified, the elastic network interface (ENI)
-#' limit for any new container instances that support the feature is
-#' changed. If `awsvpcTrunking` is enabled, any new container instances
-#' that support the feature are launched have the increased ENI limits
-#' available to them. For more information, see [Elastic Network Interface
-#' Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' When `containerInsights` is specified, the default setting indicating
-#' whether CloudWatch Container Insights is enabled for your clusters is
-#' changed. If `containerInsights` is enabled, any new clusters that are
-#' created will have Container Insights enabled unless you disable it
-#' during cluster creation. For more information, see [CloudWatch Container
-#' Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Modifies an account setting. Account settings are set on a per-Region basis.
 #'
-#' @usage
-#' ecs_put_account_setting(name, value, principalArn)
+#' See [https://paws-r.github.io/docs/ecs/put_account_setting.html](https://paws-r.github.io/docs/ecs/put_account_setting.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The Amazon ECS resource name for which to modify the account setting. If
 #' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
@@ -4929,50 +1739,9 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' for all IAM users, IAM roles, and the root user of the account unless an
 #' IAM user or role explicitly overrides these settings. If this field is
 #' omitted, the setting is changed only for the authenticated user.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-#'     value = "string",
-#'     principalArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-#'   value = "string",
-#'   principalArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example modifies your account settings to opt in to the new ARN and
-#' # resource ID format for Amazon ECS services. If you’re using this command
-#' # as the root user, then changes apply to the entire AWS account, unless
-#' # an IAM user or role explicitly overrides these settings for themselves.
-#' svc$put_account_setting(
-#'   name = "serviceLongArnFormat",
-#'   value = "enabled"
-#' )
 #' 
-#' # This example modifies the account setting for a specific IAM user or IAM
-#' # role to opt in to the new ARN and resource ID format for Amazon ECS
-#' # container instances. If you’re using this command as the root user, then
-#' # changes apply to the entire AWS account, unless an IAM user or role
-#' # explicitly overrides these settings for themselves.
-#' svc$put_account_setting(
-#'   name = "containerInstanceLongArnFormat",
-#'   value = "enabled",
-#'   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
-#' )
-#' }
+#' Federated users assume the account setting of the root user and can't
+#' have explicit account settings set for them.
 #'
 #' @keywords internal
 #'
@@ -4998,12 +1767,9 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' individual account setting has been specified
 #'
 #' @description
-#' Modifies an account setting for all IAM users on an account for whom no
-#' individual account setting has been specified. Account settings are set
-#' on a per-Region basis.
+#' Modifies an account setting for all IAM users on an account for whom no individual account setting has been specified. Account settings are set on a per-Region basis.
 #'
-#' @usage
-#' ecs_put_account_setting_default(name, value)
+#' See [https://paws-r.github.io/docs/ecs/put_account_setting_default.html](https://paws-r.github.io/docs/ecs/put_account_setting_default.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The resource name for which to modify the account setting. If
 #' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
@@ -5016,38 +1782,6 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' CloudWatch Container Insights for your clusters is affected.
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled` and `disabled`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-#'     value = "string",
-#'     principalArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_account_setting_default(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-#'   value = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example modifies the default account setting for the specified
-#' # resource for all IAM users or roles on an account. These changes apply
-#' # to the entire AWS account, unless an IAM user or role explicitly
-#' # overrides these settings for themselves.
-#' svc$put_account_setting_default(
-#'   name = "serviceLongArnFormat",
-#'   value = "enabled"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5072,52 +1806,16 @@ ecs_put_account_setting_default <- function(name, value) {
 #' Create or update an attribute on an Amazon ECS resource
 #'
 #' @description
-#' Create or update an attribute on an Amazon ECS resource. If the
-#' attribute does not exist, it is created. If the attribute exists, its
-#' value is replaced with the specified value. To delete an attribute, use
-#' [`delete_attributes`][ecs_delete_attributes]. For more information, see
-#' [Attributes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Create or update an attribute on an Amazon ECS resource. If the attribute doesn't exist, it's created. If the attribute exists, its value is replaced with the specified value. To delete an attribute, use [`delete_attributes`][ecs_delete_attributes]. For more information, see [Attributes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' @usage
-#' ecs_put_attributes(cluster, attributes)
+#' See [https://paws-r.github.io/docs/ecs/put_attributes.html](https://paws-r.github.io/docs/ecs/put_attributes.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' contains the resource to apply attributes. If you do not specify a
 #' cluster, the default cluster is assumed.
 #' @param attributes &#91;required&#93; The attributes to apply to your resource. You can specify up to 10
-#' custom attributes per resource. You can specify up to 10 attributes in a
-#' single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   attributes = list(
-#'     list(
-#'       name = "string",
-#'       value = "string",
-#'       targetType = "container-instance",
-#'       targetId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_attributes(
-#'   cluster = "string",
-#'   attributes = list(
-#'     list(
-#'       name = "string",
-#'       value = "string",
-#'       targetType = "container-instance",
-#'       targetId = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' custom attributes for each resource. You can specify up to 10 attributes
+#' in a single call.
 #'
 #' @keywords internal
 #'
@@ -5143,32 +1841,12 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' provider strategy for a cluster
 #'
 #' @description
-#' Modifies the available capacity providers and the default capacity
-#' provider strategy for a cluster.
-#' 
-#' You must specify both the available capacity providers and a default
-#' capacity provider strategy for the cluster. If the specified cluster has
-#' existing capacity providers associated with it, you must specify all
-#' existing capacity providers in addition to any new ones you want to add.
-#' Any existing capacity providers associated with a cluster that are
-#' omitted from a
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' API call will be disassociated with the cluster. You can only
-#' disassociate an existing capacity provider from a cluster if it's not
-#' being used by any existing tasks.
-#' 
-#' When creating a service or running a task on a cluster, if no capacity
-#' provider or launch type is specified, then the cluster's default
-#' capacity provider strategy is used. It is recommended to define a
-#' default capacity provider strategy for your cluster, however you may
-#' specify an empty array (`[]`) to bypass defining a default strategy.
+#' Modifies the available capacity providers and the default capacity provider strategy for a cluster.
 #'
-#' @usage
-#' ecs_put_cluster_capacity_providers(cluster, capacityProviders,
-#'   defaultCapacityProviderStrategy)
+#' See [https://paws-r.github.io/docs/ecs/put_cluster_capacity_providers.html](https://paws-r.github.io/docs/ecs/put_cluster_capacity_providers.html) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster to
-#' modify the capacity provider settings for. If you do not specify a
+#' modify the capacity provider settings for. If you don't specify a
 #' cluster, the default cluster is assumed.
 #' @param capacityProviders &#91;required&#93; The name of one or more capacity providers to associate with the
 #' cluster.
@@ -5179,10 +1857,10 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' [`create_capacity_provider`][ecs_create_capacity_provider] API
 #' operation.
 #' 
-#' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
-#' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
-#' are available to all accounts and only need to be associated with a
-#' cluster to be used.
+#' To use a Fargate capacity provider, specify either the `FARGATE` or
+#' `FARGATE_SPOT` capacity providers. The Fargate capacity providers are
+#' available to all accounts and only need to be associated with a cluster
+#' to be used.
 #' @param defaultCapacityProviderStrategy &#91;required&#93; The capacity provider strategy to use by default for the cluster.
 #' 
 #' When creating a service or running a task on a cluster, if no capacity
@@ -5203,85 +1881,10 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' [`create_capacity_provider`][ecs_create_capacity_provider] API
 #' operation.
 #' 
-#' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
-#' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
-#' are available to all accounts and only need to be associated with a
-#' cluster to be used.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cluster = list(
-#'     clusterArn = "string",
-#'     clusterName = "string",
-#'     status = "string",
-#'     registeredContainerInstancesCount = 123,
-#'     runningTasksCount = 123,
-#'     pendingTasksCount = 123,
-#'     activeServicesCount = 123,
-#'     statistics = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     settings = list(
-#'       list(
-#'         name = "containerInsights",
-#'         value = "string"
-#'       )
-#'     ),
-#'     capacityProviders = list(
-#'       "string"
-#'     ),
-#'     defaultCapacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     attachments = list(
-#'       list(
-#'         id = "string",
-#'         type = "string",
-#'         status = "string",
-#'         details = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     attachmentsStatus = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_cluster_capacity_providers(
-#'   cluster = "string",
-#'   capacityProviders = list(
-#'     "string"
-#'   ),
-#'   defaultCapacityProviderStrategy = list(
-#'     list(
-#'       capacityProvider = "string",
-#'       weight = 123,
-#'       base = 123
-#'     )
-#'   )
-#' )
-#' ```
+#' To use a Fargate capacity provider, specify either the `FARGATE` or
+#' `FARGATE_SPOT` capacity providers. The Fargate capacity providers are
+#' available to all accounts and only need to be associated with a cluster
+#' to be used.
 #'
 #' @keywords internal
 #'
@@ -5307,20 +1910,13 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #' for use outside of the agent
 #'
 #' @description
-#' This action is only used by the Amazon ECS agent, and it is not intended
-#' for use outside of the agent.
-#' 
-#' Registers an EC2 instance into the specified cluster. This instance
-#' becomes available to place containers on.
+#' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' @usage
-#' ecs_register_container_instance(cluster, instanceIdentityDocument,
-#'   instanceIdentityDocumentSignature, totalResources, versionInfo,
-#'   containerInstanceArn, attributes, platformDevices, tags)
+#' See [https://paws-r.github.io/docs/ecs/register_container_instance.html](https://paws-r.github.io/docs/ecs/register_container_instance.html) for full documentation.
 #'
-#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster with
-#' which to register your container instance. If you do not specify a
-#' cluster, the default cluster is assumed.
+#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to
+#' register your container instance with. If you do not specify a cluster,
+#' the default cluster is assumed.
 #' @param instanceIdentityDocument The instance identity document for the EC2 instance to register. This
 #' document can be found by running the following command from the
 #' instance:
@@ -5331,14 +1927,14 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #' `curl http://169.254.169.254/latest/dynamic/instance-identity/signature/`
 #' @param totalResources The resources available on the instance.
 #' @param versionInfo The version information for the Amazon ECS container agent and Docker
-#' daemon running on the container instance.
+#' daemon that runs on the container instance.
 #' @param containerInstanceArn The ARN of the container instance (if it was previously registered).
 #' @param attributes The container instance attributes that this container instance supports.
 #' @param platformDevices The devices that are available on the container instance. The only
 #' supported device type is a GPU.
 #' @param tags The metadata that you apply to the container instance to help you
 #' categorize and organize them. Each tag consists of a key and an optional
-#' value, both of which you define.
+#' value. You define both.
 #' 
 #' The following basic restrictions apply to tags:
 #' 
@@ -5360,135 +1956,10 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for AWS
-#'     use. You cannot edit or delete tag keys or values with this prefix.
-#'     Tags with this prefix do not count against your tags per resource
-#'     limit.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerInstance = list(
-#'     containerInstanceArn = "string",
-#'     ec2InstanceId = "string",
-#'     capacityProviderName = "string",
-#'     version = 123,
-#'     versionInfo = list(
-#'       agentVersion = "string",
-#'       agentHash = "string",
-#'       dockerVersion = "string"
-#'     ),
-#'     remainingResources = list(
-#'       list(
-#'         name = "string",
-#'         type = "string",
-#'         doubleValue = 123.0,
-#'         longValue = 123,
-#'         integerValue = 123,
-#'         stringSetValue = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     registeredResources = list(
-#'       list(
-#'         name = "string",
-#'         type = "string",
-#'         doubleValue = 123.0,
-#'         longValue = 123,
-#'         integerValue = 123,
-#'         stringSetValue = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     status = "string",
-#'     statusReason = "string",
-#'     agentConnected = TRUE|FALSE,
-#'     runningTasksCount = 123,
-#'     pendingTasksCount = 123,
-#'     agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
-#'     attributes = list(
-#'       list(
-#'         name = "string",
-#'         value = "string",
-#'         targetType = "container-instance",
-#'         targetId = "string"
-#'       )
-#'     ),
-#'     registeredAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     attachments = list(
-#'       list(
-#'         id = "string",
-#'         type = "string",
-#'         status = "string",
-#'         details = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_container_instance(
-#'   cluster = "string",
-#'   instanceIdentityDocument = "string",
-#'   instanceIdentityDocumentSignature = "string",
-#'   totalResources = list(
-#'     list(
-#'       name = "string",
-#'       type = "string",
-#'       doubleValue = 123.0,
-#'       longValue = 123,
-#'       integerValue = 123,
-#'       stringSetValue = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   versionInfo = list(
-#'     agentVersion = "string",
-#'     agentHash = "string",
-#'     dockerVersion = "string"
-#'   ),
-#'   containerInstanceArn = "string",
-#'   attributes = list(
-#'     list(
-#'       name = "string",
-#'       value = "string",
-#'       targetType = "container-instance",
-#'       targetId = "string"
-#'     )
-#'   ),
-#'   platformDevices = list(
-#'     list(
-#'       id = "string",
-#'       type = "GPU"
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
 #'
 #' @keywords internal
 #'
@@ -5514,42 +1985,14 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' containerDefinitions
 #'
 #' @description
-#' Registers a new task definition from the supplied `family` and
-#' `containerDefinitions`. Optionally, you can add data volumes to your
-#' containers with the `volumes` parameter. For more information about task
-#' definition parameters and defaults, see [Amazon ECS Task
-#' Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' You can specify an IAM role for your task with the `taskRoleArn`
-#' parameter. When you specify an IAM role for a task, its containers can
-#' then use the latest versions of the AWS CLI or SDKs to make API requests
-#' to the AWS services that are specified in the IAM policy associated with
-#' the role. For more information, see [IAM Roles for
-#' Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' You can specify a Docker networking mode for the containers in your task
-#' definition with the `networkMode` parameter. The available network modes
-#' correspond to those described in [Network
-#' settings](https://docs.docker.com/engine/reference/run/#/network-settings)
-#' in the Docker run reference. If you specify the `awsvpc` network mode,
-#' the task is allocated an elastic network interface, and you must specify
-#' a NetworkConfiguration when you create a service or run a task with the
-#' task definition. For more information, see [Task
-#' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Registers a new task definition from the supplied `family` and `containerDefinitions`. Optionally, you can add data volumes to your containers with the `volumes` parameter. For more information about task definition parameters and defaults, see [Amazon ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' @usage
-#' ecs_register_task_definition(family, taskRoleArn, executionRoleArn,
-#'   networkMode, containerDefinitions, volumes, placementConstraints,
-#'   requiresCompatibilities, cpu, memory, tags, pidMode, ipcMode,
-#'   proxyConfiguration, inferenceAccelerators)
+#' See [https://paws-r.github.io/docs/ecs/register_task_definition.html](https://paws-r.github.io/docs/ecs/register_task_definition.html) for full documentation.
 #'
-#' @param family &#91;required&#93; You must specify a `family` for a task definition, which allows you to
-#' track multiple versions of the same task definition. The `family` is
-#' used as a name for your task definition. Up to 255 letters (uppercase
-#' and lowercase), numbers, and hyphens are allowed.
+#' @param family &#91;required&#93; You must specify a `family` for a task definition. You can use it track
+#' multiple versions of the same task definition. The `family` is used as a
+#' name for your task definition. Up to 255 letters (uppercase and
+#' lowercase), numbers, underscores, and hyphens are allowed.
 #' @param taskRoleArn The short name or full Amazon Resource Name (ARN) of the IAM role that
 #' containers in this task can assume. All containers in this task are
 #' granted the permissions that are specified in this role. For more
@@ -5557,10 +2000,10 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param executionRoleArn The Amazon Resource Name (ARN) of the task execution role that grants
-#' the Amazon ECS container agent permission to make AWS API calls on your
-#' behalf. The task execution IAM role is required depending on the
-#' requirements of your task. For more information, see [Amazon ECS task
-#' execution IAM
+#' the Amazon ECS container agent permission to make Amazon Web Services
+#' API calls on your behalf. The task execution IAM role is required
+#' depending on the requirements of your task. For more information, see
+#' [Amazon ECS task execution IAM
 #' role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param networkMode The Docker networking mode to use for the containers in the task. The
@@ -5568,13 +2011,14 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' mode is specified, the default is `bridge`.
 #' 
 #' For Amazon ECS tasks on Fargate, the `awsvpc` network mode is required.
-#' For Amazon ECS tasks on Amazon EC2 instances, any network mode can be
-#' used. If the network mode is set to `none`, you cannot specify port
-#' mappings in your container definitions, and the tasks containers do not
-#' have external connectivity. The `host` and `awsvpc` network modes offer
-#' the highest networking performance for containers because they use the
-#' EC2 network stack instead of the virtualized network stack provided by
-#' the `bridge` mode.
+#' For Amazon ECS tasks on Amazon EC2 Linux instances, any network mode can
+#' be used. For Amazon ECS tasks on Amazon EC2 Windows instances,
+#' `<default>` or `awsvpc` can be used. If the network mode is set to
+#' `none`, you cannot specify port mappings in your container definitions,
+#' and the tasks containers do not have external connectivity. The `host`
+#' and `awsvpc` network modes offer the highest networking performance for
+#' containers because they use the EC2 network stack instead of the
+#' virtualized network stack provided by the `bridge` mode.
 #' 
 #' With the `host` and `awsvpc` network modes, exposed container ports are
 #' mapped directly to the corresponding host port (for the `host` network
@@ -5593,19 +2037,9 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants
-#' with the `ecs-init` package, or AWS Fargate infrastructure support the
-#' `awsvpc` network mode.
-#' 
 #' If the network mode is `host`, you cannot run multiple instantiations of
 #' the same task on a single container instance when port mappings are
 #' used.
-#' 
-#' Docker for Windows uses different network modes than Docker for Linux.
-#' When you register a task definition with Windows containers, you must
-#' not specify a network mode. If you use the console to register a task
-#' definition with Windows containers, you must choose the `<default>`
-#' network mode object.
 #' 
 #' For more information, see [Network
 #' settings](https://docs.docker.com/engine/reference/run/#network-settings)
@@ -5613,17 +2047,17 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @param containerDefinitions &#91;required&#93; A list of container definitions in JSON format that describe the
 #' different containers that make up your task.
 #' @param volumes A list of volume definitions in JSON format that containers in your task
-#' may use.
+#' might use.
 #' @param placementConstraints An array of placement constraint objects to use for the task. You can
-#' specify a maximum of 10 constraints per task (this limit includes
-#' constraints in the task definition and those specified at runtime).
-#' @param requiresCompatibilities The task launch type that Amazon ECS should validate the task definition
-#' against. This ensures that the task definition parameters are compatible
-#' with the specified launch type. If no value is specified, it defaults to
-#' `EC2`.
+#' specify a maximum of 10 constraints for each task. This limit includes
+#' constraints in the task definition and those specified at runtime.
+#' @param requiresCompatibilities The task launch type that Amazon ECS validates the task definition
+#' against. A client exception is returned if the task definition doesn't
+#' validate against the compatibilities specified. If no value is
+#' specified, the parameter is omitted from the response.
 #' @param cpu The number of CPU units used by the task. It can be expressed as an
-#' integer using CPU units, for example `1024`, or as a string using vCPUs,
-#' for example `1 vCPU` or `1 vcpu`, in a task definition. String values
+#' integer using CPU units (for example, `1024`) or as a string using vCPUs
+#' (for example, `1 vCPU` or `1 vcpu`) in a task definition. String values
 #' are converted to an integer indicating the CPU units when the task
 #' definition is registered.
 #' 
@@ -5631,13 +2065,16 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' We recommend specifying container-level resources for Windows
 #' containers.
 #' 
-#' If you are using the EC2 launch type, this field is optional. Supported
+#' If you're using the EC2 launch type, this field is optional. Supported
 #' values are between `128` CPU units (`0.125` vCPUs) and `10240` CPU units
 #' (`10` vCPUs).
 #' 
-#' If you are using the Fargate launch type, this field is required and you
+#' If you're using the Fargate launch type, this field is required and you
 #' must use one of the following values, which determines your range of
 #' supported values for the `memory` parameter:
+#' 
+#' The CPU units cannot be less than 1 vCPU when you use Windows containers
+#' on Fargate.
 #' 
 #' -   256 (.25 vCPU) - Available `memory` values: 512 (0.5 GB), 1024 (1
 #'     GB), 2048 (2 GB)
@@ -5654,8 +2091,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' -   4096 (4 vCPU) - Available `memory` values: Between 8192 (8 GB) and
 #'     30720 (30 GB) in increments of 1024 (1 GB)
 #' @param memory The amount of memory (in MiB) used by the task. It can be expressed as
-#' an integer using MiB, for example `1024`, or as a string using GB, for
-#' example `1GB` or `1 GB`, in a task definition. String values are
+#' an integer using MiB (for example ,`1024`) or as a string using GB (for
+#' example, `1GB` or `1 GB`) in a task definition. String values are
 #' converted to an integer indicating the MiB when the task definition is
 #' registered.
 #' 
@@ -5666,8 +2103,11 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' If using the EC2 launch type, this field is optional.
 #' 
 #' If using the Fargate launch type, this field is required and you must
-#' use one of the following values, which determines your range of
-#' supported values for the `cpu` parameter:
+#' use one of the following values. This determines your range of supported
+#' values for the `cpu` parameter.
+#' 
+#' The CPU units cannot be less than 1 vCPU when you use Windows containers
+#' on Fargate.
 #' 
 #' -   512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available `cpu` values: 256
 #'     (.25 vCPU)
@@ -5685,7 +2125,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'     Available `cpu` values: 4096 (4 vCPU)
 #' @param tags The metadata that you apply to the task definition to help you
 #' categorize and organize them. Each tag consists of a key and an optional
-#' value, both of which you define.
+#' value. You define both of them.
 #' 
 #' The following basic restrictions apply to tags:
 #' 
@@ -5707,10 +2147,10 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for AWS
-#'     use. You cannot edit or delete tag keys or values with this prefix.
-#'     Tags with this prefix do not count against your tags per resource
-#'     limit.
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
 #' @param pidMode The process namespace to use for the containers in the task. The valid
 #' values are `host` or `task`. If `host` is specified, then all containers
 #' within the tasks that specified the `host` PID mode on the same
@@ -5724,10 +2164,10 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' 
 #' If the `host` PID mode is used, be aware that there is a heightened risk
 #' of undesired process namespace expose. For more information, see [Docker
-#' security](https://docs.docker.com/engine/security/security/).
+#' security](https://docs.docker.com/engine/security/).
 #' 
-#' This parameter is not supported for Windows containers or tasks using
-#' the Fargate launch type.
+#' This parameter is not supported for Windows containers or tasks run on
+#' Fargate.
 #' @param ipcMode The IPC resource namespace to use for the containers in the task. The
 #' valid values are `host`, `task`, or `none`. If `host` is specified, then
 #' all containers within the tasks that specified the `host` IPC mode on
@@ -5744,7 +2184,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' 
 #' If the `host` IPC mode is used, be aware that there is a heightened risk
 #' of undesired IPC namespace expose. For more information, see [Docker
-#' security](https://docs.docker.com/engine/security/security/).
+#' security](https://docs.docker.com/engine/security/).
 #' 
 #' If you are setting namespaced kernel parameters using `systemControls`
 #' for the containers in the task, the following will apply to your IPC
@@ -5758,571 +2198,51 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' -   For tasks that use the `task` IPC mode, IPC namespace related
 #'     `systemControls` will apply to all containers within a task.
 #' 
-#' This parameter is not supported for Windows containers or tasks using
-#' the Fargate launch type.
-#' @param proxyConfiguration 
+#' This parameter is not supported for Windows containers or tasks run on
+#' Fargate.
+#' @param proxyConfiguration The configuration details for the App Mesh proxy.
+#' 
+#' For tasks hosted on Amazon EC2 instances, the container instances
+#' require at least version `1.26.0` of the container agent and at least
+#' version `1.26.0-1` of the `ecs-init` package to use a proxy
+#' configuration. If your container instances are launched from the Amazon
+#' ECS-optimized AMI version `20190301` or later, then they contain the
+#' required versions of the container agent and `ecs-init`. For more
+#' information, see [Amazon ECS-optimized AMI
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ami-versions.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param inferenceAccelerators The Elastic Inference accelerators to use for the containers in the
 #' task.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskDefinition = list(
-#'     taskDefinitionArn = "string",
-#'     containerDefinitions = list(
-#'       list(
-#'         name = "string",
-#'         image = "string",
-#'         repositoryCredentials = list(
-#'           credentialsParameter = "string"
-#'         ),
-#'         cpu = 123,
-#'         memory = 123,
-#'         memoryReservation = 123,
-#'         links = list(
-#'           "string"
-#'         ),
-#'         portMappings = list(
-#'           list(
-#'             containerPort = 123,
-#'             hostPort = 123,
-#'             protocol = "tcp"|"udp"
-#'           )
-#'         ),
-#'         essential = TRUE|FALSE,
-#'         entryPoint = list(
-#'           "string"
-#'         ),
-#'         command = list(
-#'           "string"
-#'         ),
-#'         environment = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         environmentFiles = list(
-#'           list(
-#'             value = "string",
-#'             type = "s3"
-#'           )
-#'         ),
-#'         mountPoints = list(
-#'           list(
-#'             sourceVolume = "string",
-#'             containerPath = "string",
-#'             readOnly = TRUE|FALSE
-#'           )
-#'         ),
-#'         volumesFrom = list(
-#'           list(
-#'             sourceContainer = "string",
-#'             readOnly = TRUE|FALSE
-#'           )
-#'         ),
-#'         linuxParameters = list(
-#'           capabilities = list(
-#'             add = list(
-#'               "string"
-#'             ),
-#'             drop = list(
-#'               "string"
-#'             )
-#'           ),
-#'           devices = list(
-#'             list(
-#'               hostPath = "string",
-#'               containerPath = "string",
-#'               permissions = list(
-#'                 "read"|"write"|"mknod"
-#'               )
-#'             )
-#'           ),
-#'           initProcessEnabled = TRUE|FALSE,
-#'           sharedMemorySize = 123,
-#'           tmpfs = list(
-#'             list(
-#'               containerPath = "string",
-#'               size = 123,
-#'               mountOptions = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           maxSwap = 123,
-#'           swappiness = 123
-#'         ),
-#'         secrets = list(
-#'           list(
-#'             name = "string",
-#'             valueFrom = "string"
-#'           )
-#'         ),
-#'         dependsOn = list(
-#'           list(
-#'             containerName = "string",
-#'             condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
-#'           )
-#'         ),
-#'         startTimeout = 123,
-#'         stopTimeout = 123,
-#'         hostname = "string",
-#'         user = "string",
-#'         workingDirectory = "string",
-#'         disableNetworking = TRUE|FALSE,
-#'         privileged = TRUE|FALSE,
-#'         readonlyRootFilesystem = TRUE|FALSE,
-#'         dnsServers = list(
-#'           "string"
-#'         ),
-#'         dnsSearchDomains = list(
-#'           "string"
-#'         ),
-#'         extraHosts = list(
-#'           list(
-#'             hostname = "string",
-#'             ipAddress = "string"
-#'           )
-#'         ),
-#'         dockerSecurityOptions = list(
-#'           "string"
-#'         ),
-#'         interactive = TRUE|FALSE,
-#'         pseudoTerminal = TRUE|FALSE,
-#'         dockerLabels = list(
-#'           "string"
-#'         ),
-#'         ulimits = list(
-#'           list(
-#'             name = "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",
-#'             softLimit = 123,
-#'             hardLimit = 123
-#'           )
-#'         ),
-#'         logConfiguration = list(
-#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
-#'           options = list(
-#'             "string"
-#'           ),
-#'           secretOptions = list(
-#'             list(
-#'               name = "string",
-#'               valueFrom = "string"
-#'             )
-#'           )
-#'         ),
-#'         healthCheck = list(
-#'           command = list(
-#'             "string"
-#'           ),
-#'           interval = 123,
-#'           timeout = 123,
-#'           retries = 123,
-#'           startPeriod = 123
-#'         ),
-#'         systemControls = list(
-#'           list(
-#'             namespace = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         resourceRequirements = list(
-#'           list(
-#'             value = "string",
-#'             type = "GPU"|"InferenceAccelerator"
-#'           )
-#'         ),
-#'         firelensConfiguration = list(
-#'           type = "fluentd"|"fluentbit",
-#'           options = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     family = "string",
-#'     taskRoleArn = "string",
-#'     executionRoleArn = "string",
-#'     networkMode = "bridge"|"host"|"awsvpc"|"none",
-#'     revision = 123,
-#'     volumes = list(
-#'       list(
-#'         name = "string",
-#'         host = list(
-#'           sourcePath = "string"
-#'         ),
-#'         dockerVolumeConfiguration = list(
-#'           scope = "task"|"shared",
-#'           autoprovision = TRUE|FALSE,
-#'           driver = "string",
-#'           driverOpts = list(
-#'             "string"
-#'           ),
-#'           labels = list(
-#'             "string"
-#'           )
-#'         ),
-#'         efsVolumeConfiguration = list(
-#'           fileSystemId = "string",
-#'           rootDirectory = "string",
-#'           transitEncryption = "ENABLED"|"DISABLED",
-#'           transitEncryptionPort = 123,
-#'           authorizationConfig = list(
-#'             accessPointId = "string",
-#'             iam = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         fsxWindowsFileServerVolumeConfiguration = list(
-#'           fileSystemId = "string",
-#'           rootDirectory = "string",
-#'           authorizationConfig = list(
-#'             credentialsParameter = "string",
-#'             domain = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = "ACTIVE"|"INACTIVE",
-#'     requiresAttributes = list(
-#'       list(
-#'         name = "string",
-#'         value = "string",
-#'         targetType = "container-instance",
-#'         targetId = "string"
-#'       )
-#'     ),
-#'     placementConstraints = list(
-#'       list(
-#'         type = "memberOf",
-#'         expression = "string"
-#'       )
-#'     ),
-#'     compatibilities = list(
-#'       "EC2"|"FARGATE"
-#'     ),
-#'     requiresCompatibilities = list(
-#'       "EC2"|"FARGATE"
-#'     ),
-#'     cpu = "string",
-#'     memory = "string",
-#'     inferenceAccelerators = list(
-#'       list(
-#'         deviceName = "string",
-#'         deviceType = "string"
-#'       )
-#'     ),
-#'     pidMode = "host"|"task",
-#'     ipcMode = "host"|"task"|"none",
-#'     proxyConfiguration = list(
-#'       type = "APPMESH",
-#'       containerName = "string",
-#'       properties = list(
-#'         list(
-#'           name = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_task_definition(
-#'   family = "string",
-#'   taskRoleArn = "string",
-#'   executionRoleArn = "string",
-#'   networkMode = "bridge"|"host"|"awsvpc"|"none",
-#'   containerDefinitions = list(
-#'     list(
-#'       name = "string",
-#'       image = "string",
-#'       repositoryCredentials = list(
-#'         credentialsParameter = "string"
-#'       ),
-#'       cpu = 123,
-#'       memory = 123,
-#'       memoryReservation = 123,
-#'       links = list(
-#'         "string"
-#'       ),
-#'       portMappings = list(
-#'         list(
-#'           containerPort = 123,
-#'           hostPort = 123,
-#'           protocol = "tcp"|"udp"
-#'         )
-#'       ),
-#'       essential = TRUE|FALSE,
-#'       entryPoint = list(
-#'         "string"
-#'       ),
-#'       command = list(
-#'         "string"
-#'       ),
-#'       environment = list(
-#'         list(
-#'           name = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       environmentFiles = list(
-#'         list(
-#'           value = "string",
-#'           type = "s3"
-#'         )
-#'       ),
-#'       mountPoints = list(
-#'         list(
-#'           sourceVolume = "string",
-#'           containerPath = "string",
-#'           readOnly = TRUE|FALSE
-#'         )
-#'       ),
-#'       volumesFrom = list(
-#'         list(
-#'           sourceContainer = "string",
-#'           readOnly = TRUE|FALSE
-#'         )
-#'       ),
-#'       linuxParameters = list(
-#'         capabilities = list(
-#'           add = list(
-#'             "string"
-#'           ),
-#'           drop = list(
-#'             "string"
-#'           )
-#'         ),
-#'         devices = list(
-#'           list(
-#'             hostPath = "string",
-#'             containerPath = "string",
-#'             permissions = list(
-#'               "read"|"write"|"mknod"
-#'             )
-#'           )
-#'         ),
-#'         initProcessEnabled = TRUE|FALSE,
-#'         sharedMemorySize = 123,
-#'         tmpfs = list(
-#'           list(
-#'             containerPath = "string",
-#'             size = 123,
-#'             mountOptions = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         maxSwap = 123,
-#'         swappiness = 123
-#'       ),
-#'       secrets = list(
-#'         list(
-#'           name = "string",
-#'           valueFrom = "string"
-#'         )
-#'       ),
-#'       dependsOn = list(
-#'         list(
-#'           containerName = "string",
-#'           condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
-#'         )
-#'       ),
-#'       startTimeout = 123,
-#'       stopTimeout = 123,
-#'       hostname = "string",
-#'       user = "string",
-#'       workingDirectory = "string",
-#'       disableNetworking = TRUE|FALSE,
-#'       privileged = TRUE|FALSE,
-#'       readonlyRootFilesystem = TRUE|FALSE,
-#'       dnsServers = list(
-#'         "string"
-#'       ),
-#'       dnsSearchDomains = list(
-#'         "string"
-#'       ),
-#'       extraHosts = list(
-#'         list(
-#'           hostname = "string",
-#'           ipAddress = "string"
-#'         )
-#'       ),
-#'       dockerSecurityOptions = list(
-#'         "string"
-#'       ),
-#'       interactive = TRUE|FALSE,
-#'       pseudoTerminal = TRUE|FALSE,
-#'       dockerLabels = list(
-#'         "string"
-#'       ),
-#'       ulimits = list(
-#'         list(
-#'           name = "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",
-#'           softLimit = 123,
-#'           hardLimit = 123
-#'         )
-#'       ),
-#'       logConfiguration = list(
-#'         logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
-#'         options = list(
-#'           "string"
-#'         ),
-#'         secretOptions = list(
-#'           list(
-#'             name = "string",
-#'             valueFrom = "string"
-#'           )
-#'         )
-#'       ),
-#'       healthCheck = list(
-#'         command = list(
-#'           "string"
-#'         ),
-#'         interval = 123,
-#'         timeout = 123,
-#'         retries = 123,
-#'         startPeriod = 123
-#'       ),
-#'       systemControls = list(
-#'         list(
-#'           namespace = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       resourceRequirements = list(
-#'         list(
-#'           value = "string",
-#'           type = "GPU"|"InferenceAccelerator"
-#'         )
-#'       ),
-#'       firelensConfiguration = list(
-#'         type = "fluentd"|"fluentbit",
-#'         options = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   volumes = list(
-#'     list(
-#'       name = "string",
-#'       host = list(
-#'         sourcePath = "string"
-#'       ),
-#'       dockerVolumeConfiguration = list(
-#'         scope = "task"|"shared",
-#'         autoprovision = TRUE|FALSE,
-#'         driver = "string",
-#'         driverOpts = list(
-#'           "string"
-#'         ),
-#'         labels = list(
-#'           "string"
-#'         )
-#'       ),
-#'       efsVolumeConfiguration = list(
-#'         fileSystemId = "string",
-#'         rootDirectory = "string",
-#'         transitEncryption = "ENABLED"|"DISABLED",
-#'         transitEncryptionPort = 123,
-#'         authorizationConfig = list(
-#'           accessPointId = "string",
-#'           iam = "ENABLED"|"DISABLED"
-#'         )
-#'       ),
-#'       fsxWindowsFileServerVolumeConfiguration = list(
-#'         fileSystemId = "string",
-#'         rootDirectory = "string",
-#'         authorizationConfig = list(
-#'           credentialsParameter = "string",
-#'           domain = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   placementConstraints = list(
-#'     list(
-#'       type = "memberOf",
-#'       expression = "string"
-#'     )
-#'   ),
-#'   requiresCompatibilities = list(
-#'     "EC2"|"FARGATE"
-#'   ),
-#'   cpu = "string",
-#'   memory = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   pidMode = "host"|"task",
-#'   ipcMode = "host"|"task"|"none",
-#'   proxyConfiguration = list(
-#'     type = "APPMESH",
-#'     containerName = "string",
-#'     properties = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   ),
-#'   inferenceAccelerators = list(
-#'     list(
-#'       deviceName = "string",
-#'       deviceType = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example registers a task definition to the specified family.
-#' svc$register_task_definition(
-#'   containerDefinitions = list(
-#'     list(
-#'       name = "sleep",
-#'       command = list(
-#'         "sleep",
-#'         "360"
-#'       ),
-#'       cpu = 10L,
-#'       essential = TRUE,
-#'       image = "busybox",
-#'       memory = 10L
-#'     )
-#'   ),
-#'   family = "sleep360",
-#'   taskRoleArn = "",
-#'   volumes = list()
-#' )
-#' }
+#' @param ephemeralStorage The amount of ephemeral storage to allocate for the task. This parameter
+#' is used to expand the total amount of ephemeral storage available,
+#' beyond the default amount, for tasks hosted on Fargate. For more
+#' information, see [Fargate task
+#' storage](https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_data_volumes.html)
+#' in the *Amazon ECS User Guide for Fargate*.
+#' 
+#' This parameter is only supported for tasks hosted on Fargate using the
+#' following platform versions:
+#' 
+#' -   Linux platform version `1.4.0` or later.
+#' 
+#' -   Windows platform version `1.0.0` or later.
+#' @param runtimePlatform The operating system that your tasks definitions run on. A platform
+#' family is specified only for tasks using the Fargate launch type.
+#' 
+#' When you specify a task definition in a service, this value must match
+#' the `runtimePlatform` value of the service.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_register_task_definition
-ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, networkMode = NULL, containerDefinitions, volumes = NULL, placementConstraints = NULL, requiresCompatibilities = NULL, cpu = NULL, memory = NULL, tags = NULL, pidMode = NULL, ipcMode = NULL, proxyConfiguration = NULL, inferenceAccelerators = NULL) {
+ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, networkMode = NULL, containerDefinitions, volumes = NULL, placementConstraints = NULL, requiresCompatibilities = NULL, cpu = NULL, memory = NULL, tags = NULL, pidMode = NULL, ipcMode = NULL, proxyConfiguration = NULL, inferenceAccelerators = NULL, ephemeralStorage = NULL, runtimePlatform = NULL) {
   op <- new_operation(
     name = "RegisterTaskDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$register_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, networkMode = networkMode, containerDefinitions = containerDefinitions, volumes = volumes, placementConstraints = placementConstraints, requiresCompatibilities = requiresCompatibilities, cpu = cpu, memory = memory, tags = tags, pidMode = pidMode, ipcMode = ipcMode, proxyConfiguration = proxyConfiguration, inferenceAccelerators = inferenceAccelerators)
+  input <- .ecs$register_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, networkMode = networkMode, containerDefinitions = containerDefinitions, volumes = volumes, placementConstraints = placementConstraints, requiresCompatibilities = requiresCompatibilities, cpu = cpu, memory = memory, tags = tags, pidMode = pidMode, ipcMode = ipcMode, proxyConfiguration = proxyConfiguration, inferenceAccelerators = inferenceAccelerators, ephemeralStorage = ephemeralStorage, runtimePlatform = runtimePlatform)
   output <- .ecs$register_task_definition_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -6336,102 +2256,73 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'
 #' @description
 #' Starts a new task using the specified task definition.
-#' 
-#' You can allow Amazon ECS to place tasks for you, or you can customize
-#' how Amazon ECS places tasks using placement constraints and placement
-#' strategies. For more information, see [Scheduling
-#' Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' Alternatively, you can use [`start_task`][ecs_start_task] to use your
-#' own scheduler or place tasks manually on specific container instances.
-#' 
-#' The Amazon ECS API follows an eventual consistency model, due to the
-#' distributed nature of the system supporting the API. This means that the
-#' result of an API command you run that affects your Amazon ECS resources
-#' might not be immediately visible to all subsequent commands you run.
-#' Keep this in mind when you carry out an API command that immediately
-#' follows a previous API command.
-#' 
-#' To manage eventual consistency, you can do the following:
-#' 
-#' -   Confirm the state of the resource before you run a command to modify
-#'     it. Run the DescribeTasks command using an exponential backoff
-#'     algorithm to ensure that you allow enough time for the previous
-#'     command to propagate through the system. To do this, run the
-#'     DescribeTasks command repeatedly, starting with a couple of seconds
-#'     of wait time and increasing gradually up to five minutes of wait
-#'     time.
-#' 
-#' -   Add wait time between subsequent commands, even if the DescribeTasks
-#'     command returns an accurate response. Apply an exponential backoff
-#'     algorithm starting with a couple of seconds of wait time, and
-#'     increase gradually up to about five minutes of wait time.
 #'
-#' @usage
-#' ecs_run_task(capacityProviderStrategy, cluster, count,
-#'   enableECSManagedTags, group, launchType, networkConfiguration,
-#'   overrides, placementConstraints, placementStrategy, platformVersion,
-#'   propagateTags, referenceId, startedBy, tags, taskDefinition)
+#' See [https://paws-r.github.io/docs/ecs/run_task.html](https://paws-r.github.io/docs/ecs/run_task.html) for full documentation.
 #'
 #' @param capacityProviderStrategy The capacity provider strategy to use for the task.
-#' 
-#' A capacity provider strategy consists of one or more capacity providers
-#' along with the `base` and `weight` to assign to them. A capacity
-#' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' API is used to associate a capacity provider with a cluster. Only
-#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
 #' 
 #' If a `capacityProviderStrategy` is specified, the `launchType` parameter
 #' must be omitted. If no `capacityProviderStrategy` or `launchType` is
 #' specified, the `defaultCapacityProviderStrategy` for the cluster is
 #' used.
 #' 
-#' If specifying a capacity provider that uses an Auto Scaling group, the
-#' capacity provider must already be created. New capacity providers can be
-#' created with the
-#' [`create_capacity_provider`][ecs_create_capacity_provider] API
-#' operation.
+#' When you use cluster auto scaling, you must specify
+#' `capacityProviderStrategy` and not `launchType`.
 #' 
-#' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
-#' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
-#' are available to all accounts and only need to be associated with a
-#' cluster to be used.
-#' 
-#' The
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
-#' API operation is used to update the list of available capacity providers
-#' for a cluster after the cluster is created.
-#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster on
-#' which to run your task. If you do not specify a cluster, the default
-#' cluster is assumed.
+#' A capacity provider strategy may contain a maximum of 6 capacity
+#' providers.
+#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to run
+#' your task on. If you do not specify a cluster, the default cluster is
+#' assumed.
 #' @param count The number of instantiations of the specified task to place on your
-#' cluster. You can specify up to 10 tasks per call.
-#' @param enableECSManagedTags Specifies whether to enable Amazon ECS managed tags for the task. For
-#' more information, see [Tagging Your Amazon ECS
+#' cluster. You can specify up to 10 tasks for each call.
+#' @param enableECSManagedTags Specifies whether to use Amazon ECS managed tags for the task. For more
+#' information, see [Tagging Your Amazon ECS
 #' Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' @param enableExecuteCommand Determines whether to use the execute command functionality for the
+#' containers in this task. If `true`, this enables execute command
+#' functionality on all containers in the task.
+#' 
+#' If `true`, then the task definition must have a task role, or you must
+#' provide one as an override.
 #' @param group The name of the task group to associate with the task. The default value
 #' is the family name of the task definition (for example,
-#' family:my-family-name).
-#' @param launchType The launch type on which to run your task. For more information, see
-#' [Amazon ECS Launch
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
+#' `family:my-family-name`).
+#' @param launchType The infrastructure to run your standalone task on. For more information,
+#' see [Amazon ECS launch
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' If a `launchType` is specified, the `capacityProviderStrategy` parameter
+#' The `FARGATE` launch type runs your tasks on Fargate On-Demand
+#' infrastructure.
+#' 
+#' Fargate Spot infrastructure is available for use but a capacity provider
+#' strategy must be used. For more information, see [Fargate capacity
+#' providers](https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-capacity-providers.html)
+#' in the *Amazon ECS User Guide for Fargate*.
+#' 
+#' The `EC2` launch type runs your tasks on Amazon EC2 instances registered
+#' to your cluster.
+#' 
+#' The `EXTERNAL` launch type runs your tasks on your on-premises server or
+#' virtual machine (VM) capacity registered to your cluster.
+#' 
+#' A task can use either a launch type or a capacity provider strategy. If
+#' a `launchType` is specified, the `capacityProviderStrategy` parameter
 #' must be omitted.
+#' 
+#' When you use cluster auto scaling, you must specify
+#' `capacityProviderStrategy` and not `launchType`.
 #' @param networkConfiguration The network configuration for the task. This parameter is required for
 #' task definitions that use the `awsvpc` network mode to receive their own
-#' elastic network interface, and it is not supported for other network
+#' elastic network interface, and it isn't supported for other network
 #' modes. For more information, see [Task
-#' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+#' networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param overrides A list of container overrides in JSON format that specify the name of a
 #' container in the specified task definition and the overrides it should
-#' receive. You can override the default command for a container (that is
+#' receive. You can override the default command for a container (that's
 #' specified in the task definition or Docker image) with a `command`
 #' override. You can also override existing environment variables (that are
 #' specified in the task definition or Docker image) on a container or add
@@ -6440,32 +2331,32 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' A total of 8192 characters are allowed for overrides. This limit
 #' includes the JSON formatting characters of the override structure.
 #' @param placementConstraints An array of placement constraint objects to use for the task. You can
-#' specify up to 10 constraints per task (including constraints in the task
-#' definition and those specified at runtime).
+#' specify up to 10 constraints for each task (including constraints in the
+#' task definition and those specified at runtime).
 #' @param placementStrategy The placement strategy objects to use for the task. You can specify a
-#' maximum of five strategy rules per task.
-#' @param platformVersion The platform version the task should run. A platform version is only
-#' specified for tasks using the Fargate launch type. If one is not
-#' specified, the `LATEST` platform version is used by default. For more
-#' information, see [AWS Fargate Platform
-#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+#' maximum of 5 strategy rules for each task.
+#' @param platformVersion The platform version the task uses. A platform version is only specified
+#' for tasks hosted on Fargate. If one isn't specified, the `LATEST`
+#' platform version is used. For more information, see [Fargate platform
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
-#' task. If no value is specified, the tags are not propagated. Tags can
+#' task. If no value is specified, the tags aren't propagated. Tags can
 #' only be propagated to the task during task creation. To add tags to a
 #' task after task creation, use the [`tag_resource`][ecs_tag_resource] API
 #' action.
 #' 
 #' An error will be received if you specify the `SERVICE` option when
 #' running a task.
-#' @param referenceId The reference ID to use for the task.
+#' @param referenceId The reference ID to use for the task. The reference ID can have a
+#' maximum length of 1024 characters.
 #' @param startedBy An optional tag specified when a task is started. For example, if you
 #' automatically trigger a task to run a batch process job, you could apply
 #' a unique identifier for that job to your task with the `startedBy`
 #' parameter. You can then identify which tasks belong to that job by
 #' filtering the results of a [`list_tasks`][ecs_list_tasks] call with the
 #' `startedBy` value. Up to 36 letters (uppercase and lowercase), numbers,
-#' hyphens, and underscores are allowed.
+#' hyphens (-), and underscores (_) are allowed.
 #' 
 #' If a task is started by an Amazon ECS service, then the `startedBy`
 #' parameter contains the deployment ID of the service that starts it.
@@ -6493,297 +2384,48 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for AWS
-#'     use. You cannot edit or delete tag keys or values with this prefix.
-#'     Tags with this prefix do not count against your tags per resource
-#'     limit.
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
 #' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full ARN of the task
-#' definition to run. If a `revision` is not specified, the latest `ACTIVE`
+#' definition to run. If a `revision` isn't specified, the latest `ACTIVE`
 #' revision is used.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tasks = list(
-#'     list(
-#'       attachments = list(
-#'         list(
-#'           id = "string",
-#'           type = "string",
-#'           status = "string",
-#'           details = list(
-#'             list(
-#'               name = "string",
-#'               value = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       attributes = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           targetType = "container-instance",
-#'           targetId = "string"
-#'         )
-#'       ),
-#'       availabilityZone = "string",
-#'       capacityProviderName = "string",
-#'       clusterArn = "string",
-#'       connectivity = "CONNECTED"|"DISCONNECTED",
-#'       connectivityAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       containerInstanceArn = "string",
-#'       containers = list(
-#'         list(
-#'           containerArn = "string",
-#'           taskArn = "string",
-#'           name = "string",
-#'           image = "string",
-#'           imageDigest = "string",
-#'           runtimeId = "string",
-#'           lastStatus = "string",
-#'           exitCode = 123,
-#'           reason = "string",
-#'           networkBindings = list(
-#'             list(
-#'               bindIP = "string",
-#'               containerPort = 123,
-#'               hostPort = 123,
-#'               protocol = "tcp"|"udp"
-#'             )
-#'           ),
-#'           networkInterfaces = list(
-#'             list(
-#'               attachmentId = "string",
-#'               privateIpv4Address = "string",
-#'               ipv6Address = "string"
-#'             )
-#'           ),
-#'           healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-#'           cpu = "string",
-#'           memory = "string",
-#'           memoryReservation = "string",
-#'           gpuIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       cpu = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       desiredStatus = "string",
-#'       executionStoppedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       group = "string",
-#'       healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-#'       inferenceAccelerators = list(
-#'         list(
-#'           deviceName = "string",
-#'           deviceType = "string"
-#'         )
-#'       ),
-#'       lastStatus = "string",
-#'       launchType = "EC2"|"FARGATE",
-#'       memory = "string",
-#'       overrides = list(
-#'         containerOverrides = list(
-#'           list(
-#'             name = "string",
-#'             command = list(
-#'               "string"
-#'             ),
-#'             environment = list(
-#'               list(
-#'                 name = "string",
-#'                 value = "string"
-#'               )
-#'             ),
-#'             environmentFiles = list(
-#'               list(
-#'                 value = "string",
-#'                 type = "s3"
-#'               )
-#'             ),
-#'             cpu = 123,
-#'             memory = 123,
-#'             memoryReservation = 123,
-#'             resourceRequirements = list(
-#'               list(
-#'                 value = "string",
-#'                 type = "GPU"|"InferenceAccelerator"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         cpu = "string",
-#'         inferenceAcceleratorOverrides = list(
-#'           list(
-#'             deviceName = "string",
-#'             deviceType = "string"
-#'           )
-#'         ),
-#'         executionRoleArn = "string",
-#'         memory = "string",
-#'         taskRoleArn = "string"
-#'       ),
-#'       platformVersion = "string",
-#'       pullStartedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       pullStoppedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       startedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       startedBy = "string",
-#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
-#'       stoppedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       stoppedReason = "string",
-#'       stoppingAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       taskArn = "string",
-#'       taskDefinitionArn = "string",
-#'       version = 123
-#'     )
-#'   ),
-#'   failures = list(
-#'     list(
-#'       arn = "string",
-#'       reason = "string",
-#'       detail = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$run_task(
-#'   capacityProviderStrategy = list(
-#'     list(
-#'       capacityProvider = "string",
-#'       weight = 123,
-#'       base = 123
-#'     )
-#'   ),
-#'   cluster = "string",
-#'   count = 123,
-#'   enableECSManagedTags = TRUE|FALSE,
-#'   group = "string",
-#'   launchType = "EC2"|"FARGATE",
-#'   networkConfiguration = list(
-#'     awsvpcConfiguration = list(
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroups = list(
-#'         "string"
-#'       ),
-#'       assignPublicIp = "ENABLED"|"DISABLED"
-#'     )
-#'   ),
-#'   overrides = list(
-#'     containerOverrides = list(
-#'       list(
-#'         name = "string",
-#'         command = list(
-#'           "string"
-#'         ),
-#'         environment = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         environmentFiles = list(
-#'           list(
-#'             value = "string",
-#'             type = "s3"
-#'           )
-#'         ),
-#'         cpu = 123,
-#'         memory = 123,
-#'         memoryReservation = 123,
-#'         resourceRequirements = list(
-#'           list(
-#'             value = "string",
-#'             type = "GPU"|"InferenceAccelerator"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     cpu = "string",
-#'     inferenceAcceleratorOverrides = list(
-#'       list(
-#'         deviceName = "string",
-#'         deviceType = "string"
-#'       )
-#'     ),
-#'     executionRoleArn = "string",
-#'     memory = "string",
-#'     taskRoleArn = "string"
-#'   ),
-#'   placementConstraints = list(
-#'     list(
-#'       type = "distinctInstance"|"memberOf",
-#'       expression = "string"
-#'     )
-#'   ),
-#'   placementStrategy = list(
-#'     list(
-#'       type = "random"|"spread"|"binpack",
-#'       field = "string"
-#'     )
-#'   ),
-#'   platformVersion = "string",
-#'   propagateTags = "TASK_DEFINITION"|"SERVICE",
-#'   referenceId = "string",
-#'   startedBy = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   taskDefinition = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example runs the specified task definition on your default cluster.
-#' svc$run_task(
-#'   cluster = "default",
-#'   taskDefinition = "sleep360:1"
-#' )
-#' }
+#' 
+#' When you create an IAM policy for run-task, you can set the resource to
+#' be the latest task definition revision, or a specific revision.
+#' 
+#' The full ARN value must match the value that you specified as the
+#' `Resource` of the IAM principal's permissions policy.
+#' 
+#' When you specify the policy resource as the latest task definition
+#' version (by setting the `Resource` in the policy to
+#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName`),
+#' then set this value to
+#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName`.
+#' 
+#' When you specify the policy resource as a specific task definition
+#' version (by setting the `Resource` in the policy to
+#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:1` or
+#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:*`),
+#' then set this value to
+#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:1`.
+#' 
+#' For more information, see [Policy Resources for Amazon
+#' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-resources)
+#' in the Amazon Elastic Container Service developer Guide.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_run_task
-ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count = NULL, enableECSManagedTags = NULL, group = NULL, launchType = NULL, networkConfiguration = NULL, overrides = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition) {
+ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count = NULL, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, launchType = NULL, networkConfiguration = NULL, overrides = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition) {
   op <- new_operation(
     name = "RunTask",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$run_task_input(capacityProviderStrategy = capacityProviderStrategy, cluster = cluster, count = count, enableECSManagedTags = enableECSManagedTags, group = group, launchType = launchType, networkConfiguration = networkConfiguration, overrides = overrides, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition)
+  input <- .ecs$run_task_input(capacityProviderStrategy = capacityProviderStrategy, cluster = cluster, count = count, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, launchType = launchType, networkConfiguration = networkConfiguration, overrides = overrides, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition)
   output <- .ecs$run_task_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -6797,29 +2439,23 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' container instance or instances
 #'
 #' @description
-#' Starts a new task from the specified task definition on the specified
-#' container instance or instances.
-#' 
-#' Alternatively, you can use [`run_task`][ecs_run_task] to place tasks for
-#' you. For more information, see [Scheduling
-#' Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Starts a new task from the specified task definition on the specified container instance or instances.
 #'
-#' @usage
-#' ecs_start_task(cluster, containerInstances, enableECSManagedTags, group,
-#'   networkConfiguration, overrides, propagateTags, referenceId, startedBy,
-#'   tags, taskDefinition)
+#' See [https://paws-r.github.io/docs/ecs/start_task.html](https://paws-r.github.io/docs/ecs/start_task.html) for full documentation.
 #'
-#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster on
-#' which to start your task. If you do not specify a cluster, the default
-#' cluster is assumed.
+#' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster where
+#' to start your task. If you do not specify a cluster, the default cluster
+#' is assumed.
 #' @param containerInstances &#91;required&#93; The container instance IDs or full ARN entries for the container
-#' instances on which you would like to place your task. You can specify up
-#' to 10 container instances.
-#' @param enableECSManagedTags Specifies whether to enable Amazon ECS managed tags for the task. For
-#' more information, see [Tagging Your Amazon ECS
+#' instances where you would like to place your task. You can specify up to
+#' 10 container instances.
+#' @param enableECSManagedTags Specifies whether to use Amazon ECS managed tags for the task. For more
+#' information, see [Tagging Your Amazon ECS
 #' Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' @param enableExecuteCommand Whether or not the execute command functionality is enabled for the
+#' task. If `true`, this enables execute command functionality on all
+#' containers in the task.
 #' @param group The name of the task group to associate with the task. The default value
 #' is the family name of the task definition (for example,
 #' family:my-family-name).
@@ -6827,8 +2463,8 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' their own elastic network interface by using the `awsvpc` networking
 #' mode.
 #' @param overrides A list of container overrides in JSON format that specify the name of a
-#' container in the specified task definition and the overrides it should
-#' receive. You can override the default command for a container (that is
+#' container in the specified task definition and the overrides it
+#' receives. You can override the default command for a container (that's
 #' specified in the task definition or Docker image) with a `command`
 #' override. You can also override existing environment variables (that are
 #' specified in the task definition or Docker image) on a container or add
@@ -6837,7 +2473,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' A total of 8192 characters are allowed for overrides. This limit
 #' includes the JSON formatting characters of the override structure.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition or the
-#' service to the task. If no value is specified, the tags are not
+#' service to the task. If no value is specified, the tags aren't
 #' propagated.
 #' @param referenceId The reference ID to use for the task.
 #' @param startedBy An optional tag specified when a task is started. For example, if you
@@ -6846,10 +2482,10 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' parameter. You can then identify which tasks belong to that job by
 #' filtering the results of a [`list_tasks`][ecs_list_tasks] call with the
 #' `startedBy` value. Up to 36 letters (uppercase and lowercase), numbers,
-#' hyphens, and underscores are allowed.
+#' hyphens (-), and underscores (_) are allowed.
 #' 
-#' If a task is started by an Amazon ECS service, then the `startedBy`
-#' parameter contains the deployment ID of the service that starts it.
+#' If a task is started by an Amazon ECS service, the `startedBy` parameter
+#' contains the deployment ID of the service that starts it.
 #' @param tags The metadata that you apply to the task to help you categorize and
 #' organize them. Each tag consists of a key and an optional value, both of
 #' which you define.
@@ -6874,269 +2510,25 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for AWS
-#'     use. You cannot edit or delete tag keys or values with this prefix.
-#'     Tags with this prefix do not count against your tags per resource
-#'     limit.
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
 #' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full ARN of the task
-#' definition to start. If a `revision` is not specified, the latest
+#' definition to start. If a `revision` isn't specified, the latest
 #' `ACTIVE` revision is used.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tasks = list(
-#'     list(
-#'       attachments = list(
-#'         list(
-#'           id = "string",
-#'           type = "string",
-#'           status = "string",
-#'           details = list(
-#'             list(
-#'               name = "string",
-#'               value = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       attributes = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           targetType = "container-instance",
-#'           targetId = "string"
-#'         )
-#'       ),
-#'       availabilityZone = "string",
-#'       capacityProviderName = "string",
-#'       clusterArn = "string",
-#'       connectivity = "CONNECTED"|"DISCONNECTED",
-#'       connectivityAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       containerInstanceArn = "string",
-#'       containers = list(
-#'         list(
-#'           containerArn = "string",
-#'           taskArn = "string",
-#'           name = "string",
-#'           image = "string",
-#'           imageDigest = "string",
-#'           runtimeId = "string",
-#'           lastStatus = "string",
-#'           exitCode = 123,
-#'           reason = "string",
-#'           networkBindings = list(
-#'             list(
-#'               bindIP = "string",
-#'               containerPort = 123,
-#'               hostPort = 123,
-#'               protocol = "tcp"|"udp"
-#'             )
-#'           ),
-#'           networkInterfaces = list(
-#'             list(
-#'               attachmentId = "string",
-#'               privateIpv4Address = "string",
-#'               ipv6Address = "string"
-#'             )
-#'           ),
-#'           healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-#'           cpu = "string",
-#'           memory = "string",
-#'           memoryReservation = "string",
-#'           gpuIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       cpu = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       desiredStatus = "string",
-#'       executionStoppedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       group = "string",
-#'       healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-#'       inferenceAccelerators = list(
-#'         list(
-#'           deviceName = "string",
-#'           deviceType = "string"
-#'         )
-#'       ),
-#'       lastStatus = "string",
-#'       launchType = "EC2"|"FARGATE",
-#'       memory = "string",
-#'       overrides = list(
-#'         containerOverrides = list(
-#'           list(
-#'             name = "string",
-#'             command = list(
-#'               "string"
-#'             ),
-#'             environment = list(
-#'               list(
-#'                 name = "string",
-#'                 value = "string"
-#'               )
-#'             ),
-#'             environmentFiles = list(
-#'               list(
-#'                 value = "string",
-#'                 type = "s3"
-#'               )
-#'             ),
-#'             cpu = 123,
-#'             memory = 123,
-#'             memoryReservation = 123,
-#'             resourceRequirements = list(
-#'               list(
-#'                 value = "string",
-#'                 type = "GPU"|"InferenceAccelerator"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         cpu = "string",
-#'         inferenceAcceleratorOverrides = list(
-#'           list(
-#'             deviceName = "string",
-#'             deviceType = "string"
-#'           )
-#'         ),
-#'         executionRoleArn = "string",
-#'         memory = "string",
-#'         taskRoleArn = "string"
-#'       ),
-#'       platformVersion = "string",
-#'       pullStartedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       pullStoppedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       startedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       startedBy = "string",
-#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
-#'       stoppedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       stoppedReason = "string",
-#'       stoppingAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       taskArn = "string",
-#'       taskDefinitionArn = "string",
-#'       version = 123
-#'     )
-#'   ),
-#'   failures = list(
-#'     list(
-#'       arn = "string",
-#'       reason = "string",
-#'       detail = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_task(
-#'   cluster = "string",
-#'   containerInstances = list(
-#'     "string"
-#'   ),
-#'   enableECSManagedTags = TRUE|FALSE,
-#'   group = "string",
-#'   networkConfiguration = list(
-#'     awsvpcConfiguration = list(
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroups = list(
-#'         "string"
-#'       ),
-#'       assignPublicIp = "ENABLED"|"DISABLED"
-#'     )
-#'   ),
-#'   overrides = list(
-#'     containerOverrides = list(
-#'       list(
-#'         name = "string",
-#'         command = list(
-#'           "string"
-#'         ),
-#'         environment = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         environmentFiles = list(
-#'           list(
-#'             value = "string",
-#'             type = "s3"
-#'           )
-#'         ),
-#'         cpu = 123,
-#'         memory = 123,
-#'         memoryReservation = 123,
-#'         resourceRequirements = list(
-#'           list(
-#'             value = "string",
-#'             type = "GPU"|"InferenceAccelerator"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     cpu = "string",
-#'     inferenceAcceleratorOverrides = list(
-#'       list(
-#'         deviceName = "string",
-#'         deviceType = "string"
-#'       )
-#'     ),
-#'     executionRoleArn = "string",
-#'     memory = "string",
-#'     taskRoleArn = "string"
-#'   ),
-#'   propagateTags = "TASK_DEFINITION"|"SERVICE",
-#'   referenceId = "string",
-#'   startedBy = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   taskDefinition = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_start_task
-ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedTags = NULL, group = NULL, networkConfiguration = NULL, overrides = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition) {
+ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, networkConfiguration = NULL, overrides = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition) {
   op <- new_operation(
     name = "StartTask",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$start_task_input(cluster = cluster, containerInstances = containerInstances, enableECSManagedTags = enableECSManagedTags, group = group, networkConfiguration = networkConfiguration, overrides = overrides, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition)
+  input <- .ecs$start_task_input(cluster = cluster, containerInstances = containerInstances, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, networkConfiguration = networkConfiguration, overrides = overrides, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition)
   output <- .ecs$start_task_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -7150,202 +2542,18 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #'
 #' @description
 #' Stops a running task. Any tags associated with the task will be deleted.
-#' 
-#' When [`stop_task`][ecs_stop_task] is called on a task, the equivalent of
-#' `docker stop` is issued to the containers running in the task. This
-#' results in a `SIGTERM` value and a default 30-second timeout, after
-#' which the `SIGKILL` value is sent and the containers are forcibly
-#' stopped. If the container handles the `SIGTERM` value gracefully and
-#' exits within 30 seconds from receiving it, no `SIGKILL` value is sent.
-#' 
-#' The default 30-second timeout can be configured on the Amazon ECS
-#' container agent with the `ECS_CONTAINER_STOP_TIMEOUT` variable. For more
-#' information, see [Amazon ECS Container Agent
-#' Configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' @usage
-#' ecs_stop_task(cluster, task, reason)
+#' See [https://paws-r.github.io/docs/ecs/stop_task.html](https://paws-r.github.io/docs/ecs/stop_task.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task to stop. If you do not specify a cluster, the default
 #' cluster is assumed.
 #' @param task &#91;required&#93; The task ID or full Amazon Resource Name (ARN) of the task to stop.
 #' @param reason An optional message specified when a task is stopped. For example, if
-#' you are using a custom scheduler, you can use this parameter to specify
+#' you're using a custom scheduler, you can use this parameter to specify
 #' the reason for stopping the task here, and the message appears in
 #' subsequent [`describe_tasks`][ecs_describe_tasks] API operations on this
 #' task. Up to 255 characters are allowed in this message.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   task = list(
-#'     attachments = list(
-#'       list(
-#'         id = "string",
-#'         type = "string",
-#'         status = "string",
-#'         details = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     attributes = list(
-#'       list(
-#'         name = "string",
-#'         value = "string",
-#'         targetType = "container-instance",
-#'         targetId = "string"
-#'       )
-#'     ),
-#'     availabilityZone = "string",
-#'     capacityProviderName = "string",
-#'     clusterArn = "string",
-#'     connectivity = "CONNECTED"|"DISCONNECTED",
-#'     connectivityAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     containerInstanceArn = "string",
-#'     containers = list(
-#'       list(
-#'         containerArn = "string",
-#'         taskArn = "string",
-#'         name = "string",
-#'         image = "string",
-#'         imageDigest = "string",
-#'         runtimeId = "string",
-#'         lastStatus = "string",
-#'         exitCode = 123,
-#'         reason = "string",
-#'         networkBindings = list(
-#'           list(
-#'             bindIP = "string",
-#'             containerPort = 123,
-#'             hostPort = 123,
-#'             protocol = "tcp"|"udp"
-#'           )
-#'         ),
-#'         networkInterfaces = list(
-#'           list(
-#'             attachmentId = "string",
-#'             privateIpv4Address = "string",
-#'             ipv6Address = "string"
-#'           )
-#'         ),
-#'         healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-#'         cpu = "string",
-#'         memory = "string",
-#'         memoryReservation = "string",
-#'         gpuIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     cpu = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     desiredStatus = "string",
-#'     executionStoppedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     group = "string",
-#'     healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-#'     inferenceAccelerators = list(
-#'       list(
-#'         deviceName = "string",
-#'         deviceType = "string"
-#'       )
-#'     ),
-#'     lastStatus = "string",
-#'     launchType = "EC2"|"FARGATE",
-#'     memory = "string",
-#'     overrides = list(
-#'       containerOverrides = list(
-#'         list(
-#'           name = "string",
-#'           command = list(
-#'             "string"
-#'           ),
-#'           environment = list(
-#'             list(
-#'               name = "string",
-#'               value = "string"
-#'             )
-#'           ),
-#'           environmentFiles = list(
-#'             list(
-#'               value = "string",
-#'               type = "s3"
-#'             )
-#'           ),
-#'           cpu = 123,
-#'           memory = 123,
-#'           memoryReservation = 123,
-#'           resourceRequirements = list(
-#'             list(
-#'               value = "string",
-#'               type = "GPU"|"InferenceAccelerator"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       cpu = "string",
-#'       inferenceAcceleratorOverrides = list(
-#'         list(
-#'           deviceName = "string",
-#'           deviceType = "string"
-#'         )
-#'       ),
-#'       executionRoleArn = "string",
-#'       memory = "string",
-#'       taskRoleArn = "string"
-#'     ),
-#'     platformVersion = "string",
-#'     pullStartedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     pullStoppedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     startedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     startedBy = "string",
-#'     stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
-#'     stoppedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     stoppedReason = "string",
-#'     stoppingAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     taskArn = "string",
-#'     taskDefinitionArn = "string",
-#'     version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_task(
-#'   cluster = "string",
-#'   task = "string",
-#'   reason = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7371,38 +2579,13 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
 #' for use outside of the agent
 #'
 #' @description
-#' This action is only used by the Amazon ECS agent, and it is not intended
-#' for use outside of the agent.
-#' 
-#' Sent to acknowledge that an attachment changed states.
+#' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' @usage
-#' ecs_submit_attachment_state_changes(cluster, attachments)
+#' See [https://paws-r.github.io/docs/ecs/submit_attachment_state_changes.html](https://paws-r.github.io/docs/ecs/submit_attachment_state_changes.html) for full documentation.
 #'
 #' @param cluster The short name or full ARN of the cluster that hosts the container
 #' instance the attachment belongs to.
 #' @param attachments &#91;required&#93; Any attachments associated with the state change request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   acknowledgment = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$submit_attachment_state_changes(
-#'   cluster = "string",
-#'   attachments = list(
-#'     list(
-#'       attachmentArn = "string",
-#'       status = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7428,14 +2611,9 @@ ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
 #' for use outside of the agent
 #'
 #' @description
-#' This action is only used by the Amazon ECS agent, and it is not intended
-#' for use outside of the agent.
-#' 
-#' Sent to acknowledge that a container changed states.
+#' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' @usage
-#' ecs_submit_container_state_change(cluster, task, containerName,
-#'   runtimeId, status, exitCode, reason, networkBindings)
+#' See [https://paws-r.github.io/docs/ecs/submit_container_state_change.html](https://paws-r.github.io/docs/ecs/submit_container_state_change.html) for full documentation.
 #'
 #' @param cluster The short name or full ARN of the cluster that hosts the container.
 #' @param task The task ID or full Amazon Resource Name (ARN) of the task that hosts
@@ -7443,38 +2621,9 @@ ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
 #' @param containerName The name of the container.
 #' @param runtimeId The ID of the Docker container.
 #' @param status The status of the state change request.
-#' @param exitCode The exit code returned for the state change request.
+#' @param exitCode The exit code that's returned for the state change request.
 #' @param reason The reason for the state change request.
 #' @param networkBindings The network bindings of the container.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   acknowledgment = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$submit_container_state_change(
-#'   cluster = "string",
-#'   task = "string",
-#'   containerName = "string",
-#'   runtimeId = "string",
-#'   status = "string",
-#'   exitCode = 123,
-#'   reason = "string",
-#'   networkBindings = list(
-#'     list(
-#'       bindIP = "string",
-#'       containerPort = 123,
-#'       hostPort = 123,
-#'       protocol = "tcp"|"udp"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7500,88 +2649,33 @@ ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, conta
 #' for use outside of the agent
 #'
 #' @description
-#' This action is only used by the Amazon ECS agent, and it is not intended
-#' for use outside of the agent.
-#' 
-#' Sent to acknowledge that a task changed states.
+#' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' @usage
-#' ecs_submit_task_state_change(cluster, task, status, reason, containers,
-#'   attachments, pullStartedAt, pullStoppedAt, executionStoppedAt)
+#' See [https://paws-r.github.io/docs/ecs/submit_task_state_change.html](https://paws-r.github.io/docs/ecs/submit_task_state_change.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task.
 #' @param task The task ID or full ARN of the task in the state change request.
 #' @param status The status of the state change request.
 #' @param reason The reason for the state change request.
-#' @param containers Any containers associated with the state change request.
+#' @param containers Any containers that's associated with the state change request.
 #' @param attachments Any attachments associated with the state change request.
-#' @param pullStartedAt The Unix timestamp for when the container image pull began.
-#' @param pullStoppedAt The Unix timestamp for when the container image pull completed.
-#' @param executionStoppedAt The Unix timestamp for when the task execution stopped.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   acknowledgment = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$submit_task_state_change(
-#'   cluster = "string",
-#'   task = "string",
-#'   status = "string",
-#'   reason = "string",
-#'   containers = list(
-#'     list(
-#'       containerName = "string",
-#'       imageDigest = "string",
-#'       runtimeId = "string",
-#'       exitCode = 123,
-#'       networkBindings = list(
-#'         list(
-#'           bindIP = "string",
-#'           containerPort = 123,
-#'           hostPort = 123,
-#'           protocol = "tcp"|"udp"
-#'         )
-#'       ),
-#'       reason = "string",
-#'       status = "string"
-#'     )
-#'   ),
-#'   attachments = list(
-#'     list(
-#'       attachmentArn = "string",
-#'       status = "string"
-#'     )
-#'   ),
-#'   pullStartedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   pullStoppedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   executionStoppedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
+#' @param managedAgents The details for the managed agent that's associated with the task.
+#' @param pullStartedAt The Unix timestamp for the time when the container image pull started.
+#' @param pullStoppedAt The Unix timestamp for the time when the container image pull completed.
+#' @param executionStoppedAt The Unix timestamp for the time when the task execution stopped.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_submit_task_state_change
-ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = NULL, reason = NULL, containers = NULL, attachments = NULL, pullStartedAt = NULL, pullStoppedAt = NULL, executionStoppedAt = NULL) {
+ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = NULL, reason = NULL, containers = NULL, attachments = NULL, managedAgents = NULL, pullStartedAt = NULL, pullStoppedAt = NULL, executionStoppedAt = NULL) {
   op <- new_operation(
     name = "SubmitTaskStateChange",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$submit_task_state_change_input(cluster = cluster, task = task, status = status, reason = reason, containers = containers, attachments = attachments, pullStartedAt = pullStartedAt, pullStoppedAt = pullStoppedAt, executionStoppedAt = executionStoppedAt)
+  input <- .ecs$submit_task_state_change_input(cluster = cluster, task = task, status = status, reason = reason, containers = containers, attachments = attachments, managedAgents = managedAgents, pullStartedAt = pullStartedAt, pullStoppedAt = pullStoppedAt, executionStoppedAt = executionStoppedAt)
   output <- .ecs$submit_task_state_change_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -7595,15 +2689,11 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #' resourceArn
 #'
 #' @description
-#' Associates the specified tags to a resource with the specified
-#' `resourceArn`. If existing tags on a resource are not specified in the
-#' request parameters, they are not changed. When a resource is deleted,
-#' the tags associated with that resource are deleted as well.
+#' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well.
 #'
-#' @usage
-#' ecs_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/ecs/tag_resource.html](https://paws-r.github.io/docs/ecs/tag_resource.html) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which to add tags.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to add tags to.
 #' Currently, the supported resources are Amazon ECS capacity providers,
 #' tasks, services, task definitions, clusters, and container instances.
 #' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
@@ -7628,40 +2718,10 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #' -   Tag keys and values are case-sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for AWS
-#'     use. You cannot edit or delete tag keys or values with this prefix.
-#'     Tags with this prefix do not count against your tags per resource
-#'     limit.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example tags the 'dev' cluster with key 'team' and value 'dev'.
-#' svc$tag_resource(
-#'   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
-#'   tags = list(
-#'     list(
-#'       key = "team",
-#'       value = "dev"
-#'     )
-#'   )
-#' )
-#' }
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
 #'
 #' @keywords internal
 #'
@@ -7688,38 +2748,12 @@ ecs_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' @usage
-#' ecs_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/ecs/untag_resource.html](https://paws-r.github.io/docs/ecs/untag_resource.html) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete
-#' tags. Currently, the supported resources are Amazon ECS capacity
-#' providers, tasks, services, task definitions, clusters, and container
-#' instances.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to delete tags from.
+#' Currently, the supported resources are Amazon ECS capacity providers,
+#' tasks, services, task definitions, clusters, and container instances.
 #' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the 'team' tag from the 'dev' cluster.
-#' svc$untag_resource(
-#'   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
-#'   tagKeys = list(
-#'     "team"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -7746,60 +2780,11 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Modifies the parameters for a capacity provider.
 #'
-#' @usage
-#' ecs_update_capacity_provider(name, autoScalingGroupProvider)
+#' See [https://paws-r.github.io/docs/ecs/update_capacity_provider.html](https://paws-r.github.io/docs/ecs/update_capacity_provider.html) for full documentation.
 #'
-#' @param name &#91;required&#93; An object representing the parameters to update for the Auto Scaling
+#' @param name &#91;required&#93; The name of the capacity provider to update.
+#' @param autoScalingGroupProvider &#91;required&#93; An object that represent the parameters to update for the Auto Scaling
 #' group capacity provider.
-#' @param autoScalingGroupProvider &#91;required&#93; The name of the capacity provider to update.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   capacityProvider = list(
-#'     capacityProviderArn = "string",
-#'     name = "string",
-#'     status = "ACTIVE"|"INACTIVE",
-#'     autoScalingGroupProvider = list(
-#'       autoScalingGroupArn = "string",
-#'       managedScaling = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         targetCapacity = 123,
-#'         minimumScalingStepSize = 123,
-#'         maximumScalingStepSize = 123,
-#'         instanceWarmupPeriod = 123
-#'       ),
-#'       managedTerminationProtection = "ENABLED"|"DISABLED"
-#'     ),
-#'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-#'     updateStatusReason = "string",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_capacity_provider(
-#'   name = "string",
-#'   autoScalingGroupProvider = list(
-#'     managedScaling = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       targetCapacity = 123,
-#'       minimumScalingStepSize = 123,
-#'       maximumScalingStepSize = 123,
-#'       instanceWarmupPeriod = 123
-#'     ),
-#'     managedTerminationProtection = "ENABLED"|"DISABLED"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7821,91 +2806,50 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
 }
 .ecs$operations$update_capacity_provider <- ecs_update_capacity_provider
 
+#' Updates the cluster
+#'
+#' @description
+#' Updates the cluster.
+#'
+#' See [https://paws-r.github.io/docs/ecs/update_cluster.html](https://paws-r.github.io/docs/ecs/update_cluster.html) for full documentation.
+#'
+#' @param cluster &#91;required&#93; The name of the cluster to modify the settings for.
+#' @param settings The cluster settings for your cluster.
+#' @param configuration The execute command configuration for the cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_update_cluster
+ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL) {
+  op <- new_operation(
+    name = "UpdateCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$update_cluster_input(cluster = cluster, settings = settings, configuration = configuration)
+  output <- .ecs$update_cluster_output()
+  config <- get_config()
+  svc <- .ecs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$update_cluster <- ecs_update_cluster
+
 #' Modifies the settings to use for a cluster
 #'
 #' @description
 #' Modifies the settings to use for a cluster.
 #'
-#' @usage
-#' ecs_update_cluster_settings(cluster, settings)
+#' See [https://paws-r.github.io/docs/ecs/update_cluster_settings.html](https://paws-r.github.io/docs/ecs/update_cluster_settings.html) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The name of the cluster to modify the settings for.
 #' @param settings &#91;required&#93; The setting to use by default for a cluster. This parameter is used to
-#' enable CloudWatch Container Insights for a cluster. If this value is
-#' specified, it will override the `containerInsights` value set with
+#' turn on CloudWatch Container Insights for a cluster. If this value is
+#' specified, it overrides the `containerInsights` value set with
 #' [`put_account_setting`][ecs_put_account_setting] or
 #' [`put_account_setting_default`][ecs_put_account_setting_default].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cluster = list(
-#'     clusterArn = "string",
-#'     clusterName = "string",
-#'     status = "string",
-#'     registeredContainerInstancesCount = 123,
-#'     runningTasksCount = 123,
-#'     pendingTasksCount = 123,
-#'     activeServicesCount = 123,
-#'     statistics = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     settings = list(
-#'       list(
-#'         name = "containerInsights",
-#'         value = "string"
-#'       )
-#'     ),
-#'     capacityProviders = list(
-#'       "string"
-#'     ),
-#'     defaultCapacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     attachments = list(
-#'       list(
-#'         id = "string",
-#'         type = "string",
-#'         status = "string",
-#'         details = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     attachmentsStatus = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_cluster_settings(
-#'   cluster = "string",
-#'   settings = list(
-#'     list(
-#'       name = "containerInsights",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7930,115 +2874,15 @@ ecs_update_cluster_settings <- function(cluster, settings) {
 #' Updates the Amazon ECS container agent on a specified container instance
 #'
 #' @description
-#' Updates the Amazon ECS container agent on a specified container
-#' instance. Updating the Amazon ECS container agent does not interrupt
-#' running tasks or services on the container instance. The process for
-#' updating the agent differs depending on whether your container instance
-#' was launched with the Amazon ECS-optimized AMI or another operating
-#' system.
-#' 
-#' [`update_container_agent`][ecs_update_container_agent] requires the
-#' Amazon ECS-optimized AMI or Amazon Linux with the `ecs-init` service
-#' installed and running. For help updating the Amazon ECS container agent
-#' on other operating systems, see [Manually Updating the Amazon ECS
-#' Container
-#' Agent](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Updates the Amazon ECS container agent on a specified container instance. Updating the Amazon ECS container agent doesn't interrupt running tasks or services on the container instance. The process for updating the agent differs depending on whether your container instance was launched with the Amazon ECS-optimized AMI or another operating system.
 #'
-#' @usage
-#' ecs_update_container_agent(cluster, containerInstance)
+#' See [https://paws-r.github.io/docs/ecs/update_container_agent.html](https://paws-r.github.io/docs/ecs/update_container_agent.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' your container instance is running on. If you do not specify a cluster,
 #' the default cluster is assumed.
 #' @param containerInstance &#91;required&#93; The container instance ID or full ARN entries for the container instance
-#' on which you would like to update the Amazon ECS container agent.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerInstance = list(
-#'     containerInstanceArn = "string",
-#'     ec2InstanceId = "string",
-#'     capacityProviderName = "string",
-#'     version = 123,
-#'     versionInfo = list(
-#'       agentVersion = "string",
-#'       agentHash = "string",
-#'       dockerVersion = "string"
-#'     ),
-#'     remainingResources = list(
-#'       list(
-#'         name = "string",
-#'         type = "string",
-#'         doubleValue = 123.0,
-#'         longValue = 123,
-#'         integerValue = 123,
-#'         stringSetValue = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     registeredResources = list(
-#'       list(
-#'         name = "string",
-#'         type = "string",
-#'         doubleValue = 123.0,
-#'         longValue = 123,
-#'         integerValue = 123,
-#'         stringSetValue = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     status = "string",
-#'     statusReason = "string",
-#'     agentConnected = TRUE|FALSE,
-#'     runningTasksCount = 123,
-#'     pendingTasksCount = 123,
-#'     agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
-#'     attributes = list(
-#'       list(
-#'         name = "string",
-#'         value = "string",
-#'         targetType = "container-instance",
-#'         targetId = "string"
-#'       )
-#'     ),
-#'     registeredAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     attachments = list(
-#'       list(
-#'         id = "string",
-#'         type = "string",
-#'         status = "string",
-#'         details = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_container_agent(
-#'   cluster = "string",
-#'   containerInstance = "string"
-#' )
-#' ```
+#' where you would like to update the Amazon ECS container agent.
 #'
 #' @keywords internal
 #'
@@ -8064,174 +2908,19 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #'
 #' @description
 #' Modifies the status of an Amazon ECS container instance.
-#' 
-#' Once a container instance has reached an `ACTIVE` state, you can change
-#' the status of a container instance to `DRAINING` to manually remove an
-#' instance from a cluster, for example to perform system updates, update
-#' the Docker daemon, or scale down the cluster size.
-#' 
-#' A container instance cannot be changed to `DRAINING` until it has
-#' reached an `ACTIVE` status. If the instance is in any other status, an
-#' error will be received.
-#' 
-#' When you set a container instance to `DRAINING`, Amazon ECS prevents new
-#' tasks from being scheduled for placement on the container instance and
-#' replacement service tasks are started on other container instances in
-#' the cluster if the resources are available. Service tasks on the
-#' container instance that are in the `PENDING` state are stopped
-#' immediately.
-#' 
-#' Service tasks on the container instance that are in the `RUNNING` state
-#' are stopped and replaced according to the service's deployment
-#' configuration parameters, `minimumHealthyPercent` and `maximumPercent`.
-#' You can change the deployment configuration of your service using
-#' [`update_service`][ecs_update_service].
-#' 
-#' -   If `minimumHealthyPercent` is below 100%, the scheduler can ignore
-#'     `desiredCount` temporarily during task replacement. For example,
-#'     `desiredCount` is four tasks, a minimum of 50% allows the scheduler
-#'     to stop two existing tasks before starting two new tasks. If the
-#'     minimum is 100%, the service scheduler can't remove existing tasks
-#'     until the replacement tasks are considered healthy. Tasks for
-#'     services that do not use a load balancer are considered healthy if
-#'     they are in the `RUNNING` state. Tasks for services that use a load
-#'     balancer are considered healthy if they are in the `RUNNING` state
-#'     and the container instance they are hosted on is reported as healthy
-#'     by the load balancer.
-#' 
-#' -   The `maximumPercent` parameter represents an upper limit on the
-#'     number of running tasks during task replacement, which enables you
-#'     to define the replacement batch size. For example, if `desiredCount`
-#'     is four tasks, a maximum of 200% starts four new tasks before
-#'     stopping the four tasks to be drained, provided that the cluster
-#'     resources required to do this are available. If the maximum is 100%,
-#'     then replacement tasks can't start until the draining tasks have
-#'     stopped.
-#' 
-#' Any `PENDING` or `RUNNING` tasks that do not belong to a service are not
-#' affected. You must wait for them to finish or stop them manually.
-#' 
-#' A container instance has completed draining when it has no more
-#' `RUNNING` tasks. You can verify this using
-#' [`list_tasks`][ecs_list_tasks].
-#' 
-#' When a container instance has been drained, you can set a container
-#' instance to `ACTIVE` status and once it has reached that status the
-#' Amazon ECS scheduler can begin scheduling tasks on the instance again.
 #'
-#' @usage
-#' ecs_update_container_instances_state(cluster, containerInstances,
-#'   status)
+#' See [https://paws-r.github.io/docs/ecs/update_container_instances_state.html](https://paws-r.github.io/docs/ecs/update_container_instances_state.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instance to update. If you do not specify a cluster,
 #' the default cluster is assumed.
-#' @param containerInstances &#91;required&#93; A list of container instance IDs or full ARN entries.
-#' @param status &#91;required&#93; The container instance state with which to update the container
-#' instance. The only valid values for this action are `ACTIVE` and
-#' `DRAINING`. A container instance can only be updated to `DRAINING`
-#' status once it has reached an `ACTIVE` state. If a container instance is
-#' in `REGISTERING`, `DEREGISTERING`, or `REGISTRATION_FAILED` state you
-#' can describe the container instance but will be unable to update the
-#' container instance state.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerInstances = list(
-#'     list(
-#'       containerInstanceArn = "string",
-#'       ec2InstanceId = "string",
-#'       capacityProviderName = "string",
-#'       version = 123,
-#'       versionInfo = list(
-#'         agentVersion = "string",
-#'         agentHash = "string",
-#'         dockerVersion = "string"
-#'       ),
-#'       remainingResources = list(
-#'         list(
-#'           name = "string",
-#'           type = "string",
-#'           doubleValue = 123.0,
-#'           longValue = 123,
-#'           integerValue = 123,
-#'           stringSetValue = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       registeredResources = list(
-#'         list(
-#'           name = "string",
-#'           type = "string",
-#'           doubleValue = 123.0,
-#'           longValue = 123,
-#'           integerValue = 123,
-#'           stringSetValue = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       status = "string",
-#'       statusReason = "string",
-#'       agentConnected = TRUE|FALSE,
-#'       runningTasksCount = 123,
-#'       pendingTasksCount = 123,
-#'       agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
-#'       attributes = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           targetType = "container-instance",
-#'           targetId = "string"
-#'         )
-#'       ),
-#'       registeredAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       attachments = list(
-#'         list(
-#'           id = "string",
-#'           type = "string",
-#'           status = "string",
-#'           details = list(
-#'             list(
-#'               name = "string",
-#'               value = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   failures = list(
-#'     list(
-#'       arn = "string",
-#'       reason = "string",
-#'       detail = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_container_instances_state(
-#'   cluster = "string",
-#'   containerInstances = list(
-#'     "string"
-#'   ),
-#'   status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
-#' )
-#' ```
+#' @param containerInstances &#91;required&#93; A list of up to 10 container instance IDs or full ARN entries.
+#' @param status &#91;required&#93; The container instance state to update the container instance with. The
+#' only valid values for this action are `ACTIVE` and `DRAINING`. A
+#' container instance can only be updated to `DRAINING` status once it has
+#' reached an `ACTIVE` state. If a container instance is in `REGISTERING`,
+#' `DEREGISTERING`, or `REGISTRATION_FAILED` state you can describe the
+#' container instance but can't update the container instance state.
 #'
 #' @keywords internal
 #'
@@ -8253,134 +2942,15 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 }
 .ecs$operations$update_container_instances_state <- ecs_update_container_instances_state
 
-#' Updating the task placement strategies and constraints on an Amazon ECS
-#' service remains in preview and is a Beta Service as defined by and
-#' subject to the Beta Service Participation Service Terms located at
-#' https://aws
+#' Modifies the parameters of a service
 #'
 #' @description
-#' Updating the task placement strategies and constraints on an Amazon ECS
-#' service remains in preview and is a Beta Service as defined by and
-#' subject to the Beta Service Participation Service Terms located at
-#' [https://aws.amazon.com/service-terms](https://aws.amazon.com/service-terms/)
-#' ("Beta Terms"). These Beta Terms apply to your participation in this
-#' preview.
-#' 
 #' Modifies the parameters of a service.
-#' 
-#' For services using the rolling update (`ECS`) deployment controller, the
-#' desired count, deployment configuration, network configuration, task
-#' placement constraints and strategies, or task definition used can be
-#' updated.
-#' 
-#' For services using the blue/green (`CODE_DEPLOY`) deployment controller,
-#' only the desired count, deployment configuration, task placement
-#' constraints and strategies, and health check grace period can be updated
-#' using this API. If the network configuration, platform version, or task
-#' definition need to be updated, a new AWS CodeDeploy deployment should be
-#' created. For more information, see
-#' [CreateDeployment](https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html)
-#' in the *AWS CodeDeploy API Reference*.
-#' 
-#' For services using an external deployment controller, you can update
-#' only the desired count, task placement constraints and strategies, and
-#' health check grace period using this API. If the launch type, load
-#' balancer, network configuration, platform version, or task definition
-#' need to be updated, you should create a new task set. For more
-#' information, see [`create_task_set`][ecs_create_task_set].
-#' 
-#' You can add to or subtract from the number of instantiations of a task
-#' definition in a service by specifying the cluster that the service is
-#' running in and a new `desiredCount` parameter.
-#' 
-#' If you have updated the Docker image of your application, you can create
-#' a new task definition with that image and deploy it to your service. The
-#' service scheduler uses the minimum healthy percent and maximum percent
-#' parameters (in the service's deployment configuration) to determine the
-#' deployment strategy.
-#' 
-#' If your updated Docker image uses the same tag as what is in the
-#' existing task definition for your service (for example,
-#' `my_image:latest`), you do not need to create a new revision of your
-#' task definition. You can update the service using the
-#' `forceNewDeployment` option. The new tasks launched by the deployment
-#' pull the current image/tag combination from your repository when they
-#' start.
-#' 
-#' You can also update the deployment configuration of a service. When a
-#' deployment is triggered by updating the task definition of a service,
-#' the service scheduler uses the deployment configuration parameters,
-#' `minimumHealthyPercent` and `maximumPercent`, to determine the
-#' deployment strategy.
-#' 
-#' -   If `minimumHealthyPercent` is below 100%, the scheduler can ignore
-#'     `desiredCount` temporarily during a deployment. For example, if
-#'     `desiredCount` is four tasks, a minimum of 50% allows the scheduler
-#'     to stop two existing tasks before starting two new tasks. Tasks for
-#'     services that do not use a load balancer are considered healthy if
-#'     they are in the `RUNNING` state. Tasks for services that use a load
-#'     balancer are considered healthy if they are in the `RUNNING` state
-#'     and the container instance they are hosted on is reported as healthy
-#'     by the load balancer.
-#' 
-#' -   The `maximumPercent` parameter represents an upper limit on the
-#'     number of running tasks during a deployment, which enables you to
-#'     define the deployment batch size. For example, if `desiredCount` is
-#'     four tasks, a maximum of 200% starts four new tasks before stopping
-#'     the four older tasks (provided that the cluster resources required
-#'     to do this are available).
-#' 
-#' When [`update_service`][ecs_update_service] stops a task during a
-#' deployment, the equivalent of `docker stop` is issued to the containers
-#' running in the task. This results in a `SIGTERM` and a 30-second
-#' timeout, after which `SIGKILL` is sent and the containers are forcibly
-#' stopped. If the container handles the `SIGTERM` gracefully and exits
-#' within 30 seconds from receiving it, no `SIGKILL` is sent.
-#' 
-#' When the service scheduler launches new tasks, it determines task
-#' placement in your cluster with the following logic:
-#' 
-#' -   Determine which of the container instances in your cluster can
-#'     support your service's task definition (for example, they have the
-#'     required CPU, memory, ports, and container instance attributes).
-#' 
-#' -   By default, the service scheduler attempts to balance tasks across
-#'     Availability Zones in this manner (although you can choose a
-#'     different placement strategy):
-#' 
-#'     -   Sort the valid container instances by the fewest number of
-#'         running tasks for this service in the same Availability Zone as
-#'         the instance. For example, if zone A has one running service
-#'         task and zones B and C each have zero, valid container instances
-#'         in either zone B or C are considered optimal for placement.
-#' 
-#'     -   Place the new service task on a valid container instance in an
-#'         optimal Availability Zone (based on the previous steps),
-#'         favoring container instances with the fewest number of running
-#'         tasks for this service.
-#' 
-#' When the service scheduler stops running tasks, it attempts to maintain
-#' balance across the Availability Zones in your cluster using the
-#' following logic:
-#' 
-#' -   Sort the container instances by the largest number of running tasks
-#'     for this service in the same Availability Zone as the instance. For
-#'     example, if zone A has one running service task and zones B and C
-#'     each have two, container instances in either zone B or C are
-#'     considered optimal for termination.
-#' 
-#' -   Stop the task on a container instance in an optimal Availability
-#'     Zone (based on the previous steps), favoring container instances
-#'     with the largest number of running tasks for this service.
 #'
-#' @usage
-#' ecs_update_service(cluster, service, desiredCount, taskDefinition,
-#'   capacityProviderStrategy, deploymentConfiguration, networkConfiguration,
-#'   placementConstraints, placementStrategy, platformVersion,
-#'   forceNewDeployment, healthCheckGracePeriodSeconds)
+#' See [https://paws-r.github.io/docs/ecs/update_service.html](https://paws-r.github.io/docs/ecs/update_service.html) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
-#' your service is running on. If you do not specify a cluster, the default
+#' your service runs on. If you do not specify a cluster, the default
 #' cluster is assumed.
 #' @param service &#91;required&#93; The name of the service to update.
 #' @param desiredCount The number of instantiations of the task to place and keep running in
@@ -8393,11 +2963,11 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' the new version is running.
 #' @param capacityProviderStrategy The capacity provider strategy to update the service to use.
 #' 
-#' If the service is using the default capacity provider strategy for the
+#' if the service uses the default capacity provider strategy for the
 #' cluster, the service can be updated to use one or more capacity
 #' providers as opposed to the default capacity provider strategy. However,
-#' when a service is using a capacity provider strategy that is not the
-#' default capacity provider strategy, the service cannot be updated to use
+#' when a service is using a capacity provider strategy that's not the
+#' default capacity provider strategy, the service can't be updated to use
 #' the cluster's default capacity provider strategy.
 #' 
 #' A capacity provider strategy consists of one or more capacity providers
@@ -8414,10 +2984,10 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' [`create_capacity_provider`][ecs_create_capacity_provider] API
 #' operation.
 #' 
-#' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
-#' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
-#' are available to all accounts and only need to be associated with a
-#' cluster to be used.
+#' To use a Fargate capacity provider, specify either the `FARGATE` or
+#' `FARGATE_SPOT` capacity providers. The Fargate capacity providers are
+#' available to all accounts and only need to be associated with a cluster
+#' to be used.
 #' 
 #' The
 #' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
@@ -8425,336 +2995,119 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' for a cluster after the cluster is created.
 #' @param deploymentConfiguration Optional deployment parameters that control how many tasks run during
 #' the deployment and the ordering of stopping and starting tasks.
-#' @param networkConfiguration 
+#' @param networkConfiguration An object representing the network configuration for the service.
 #' @param placementConstraints An array of task placement constraint objects to update the service to
 #' use. If no value is specified, the existing placement constraints for
 #' the service will remain unchanged. If this value is specified, it will
 #' override any existing placement constraints defined for the service. To
 #' remove all existing placement constraints, specify an empty array.
 #' 
-#' You can specify a maximum of 10 constraints per task (this limit
+#' You can specify a maximum of 10 constraints for each task. This limit
 #' includes constraints in the task definition and those specified at
-#' runtime).
+#' runtime.
 #' @param placementStrategy The task placement strategy objects to update the service to use. If no
 #' value is specified, the existing placement strategy for the service will
 #' remain unchanged. If this value is specified, it will override the
 #' existing placement strategy defined for the service. To remove an
 #' existing placement strategy, specify an empty object.
 #' 
-#' You can specify a maximum of five strategy rules per service.
-#' @param platformVersion The platform version on which your tasks in the service are running. A
-#' platform version is only specified for tasks using the Fargate launch
-#' type. If a platform version is not specified, the `LATEST` platform
-#' version is used by default. For more information, see [AWS Fargate
-#' Platform
+#' You can specify a maximum of five strategy rules for each service.
+#' @param platformVersion The platform version that your tasks in the service run on. A platform
+#' version is only specified for tasks using the Fargate launch type. If a
+#' platform version is not specified, the `LATEST` platform version is
+#' used. For more information, see [Fargate Platform
 #' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
-#' @param forceNewDeployment Whether to force a new deployment of the service. Deployments are not
-#' forced by default. You can use this option to trigger a new deployment
-#' with no service definition changes. For example, you can update a
-#' service's tasks to use a newer Docker image with the same image/tag
-#' combination (`my_image:latest`) or to roll Fargate tasks onto a newer
-#' platform version.
+#' @param forceNewDeployment Determines whether to force a new deployment of the service. By default,
+#' deployments aren't forced. You can use this option to start a new
+#' deployment with no service definition changes. For example, you can
+#' update a service's tasks to use a newer Docker image with the same
+#' image/tag combination (`my_image:latest`) or to roll Fargate tasks onto
+#' a newer platform version.
 #' @param healthCheckGracePeriodSeconds The period of time, in seconds, that the Amazon ECS service scheduler
-#' should ignore unhealthy Elastic Load Balancing target health checks
-#' after a task has first started. This is only valid if your service is
-#' configured to use a load balancer. If your service's tasks take a while
-#' to start and respond to Elastic Load Balancing health checks, you can
-#' specify a health check grace period of up to 2,147,483,647 seconds.
-#' During that time, the Amazon ECS service scheduler ignores the Elastic
-#' Load Balancing health check status. This grace period can prevent the
-#' ECS service scheduler from marking tasks as unhealthy and stopping them
+#' ignores unhealthy Elastic Load Balancing target health checks after a
+#' task has first started. This is only valid if your service is configured
+#' to use a load balancer. If your service's tasks take a while to start
+#' and respond to Elastic Load Balancing health checks, you can specify a
+#' health check grace period of up to 2,147,483,647 seconds. During that
+#' time, the Amazon ECS service scheduler ignores the Elastic Load
+#' Balancing health check status. This grace period can prevent the ECS
+#' service scheduler from marking tasks as unhealthy and stopping them
 #' before they have time to come up.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   service = list(
-#'     serviceArn = "string",
-#'     serviceName = "string",
-#'     clusterArn = "string",
-#'     loadBalancers = list(
-#'       list(
-#'         targetGroupArn = "string",
-#'         loadBalancerName = "string",
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     serviceRegistries = list(
-#'       list(
-#'         registryArn = "string",
-#'         port = 123,
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     status = "string",
-#'     desiredCount = 123,
-#'     runningCount = 123,
-#'     pendingCount = 123,
-#'     launchType = "EC2"|"FARGATE",
-#'     capacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     platformVersion = "string",
-#'     taskDefinition = "string",
-#'     deploymentConfiguration = list(
-#'       deploymentCircuitBreaker = list(
-#'         enable = TRUE|FALSE,
-#'         rollback = TRUE|FALSE
-#'       ),
-#'       maximumPercent = 123,
-#'       minimumHealthyPercent = 123
-#'     ),
-#'     taskSets = list(
-#'       list(
-#'         id = "string",
-#'         taskSetArn = "string",
-#'         serviceArn = "string",
-#'         clusterArn = "string",
-#'         startedBy = "string",
-#'         externalId = "string",
-#'         status = "string",
-#'         taskDefinition = "string",
-#'         computedDesiredCount = 123,
-#'         pendingCount = 123,
-#'         runningCount = 123,
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         updatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         launchType = "EC2"|"FARGATE",
-#'         capacityProviderStrategy = list(
-#'           list(
-#'             capacityProvider = "string",
-#'             weight = 123,
-#'             base = 123
-#'           )
-#'         ),
-#'         platformVersion = "string",
-#'         networkConfiguration = list(
-#'           awsvpcConfiguration = list(
-#'             subnets = list(
-#'               "string"
-#'             ),
-#'             securityGroups = list(
-#'               "string"
-#'             ),
-#'             assignPublicIp = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         loadBalancers = list(
-#'           list(
-#'             targetGroupArn = "string",
-#'             loadBalancerName = "string",
-#'             containerName = "string",
-#'             containerPort = 123
-#'           )
-#'         ),
-#'         serviceRegistries = list(
-#'           list(
-#'             registryArn = "string",
-#'             port = 123,
-#'             containerName = "string",
-#'             containerPort = 123
-#'           )
-#'         ),
-#'         scale = list(
-#'           value = 123.0,
-#'           unit = "PERCENT"
-#'         ),
-#'         stabilityStatus = "STEADY_STATE"|"STABILIZING",
-#'         stabilityStatusAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         tags = list(
-#'           list(
-#'             key = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     deployments = list(
-#'       list(
-#'         id = "string",
-#'         status = "string",
-#'         taskDefinition = "string",
-#'         desiredCount = 123,
-#'         pendingCount = 123,
-#'         runningCount = 123,
-#'         failedTasks = 123,
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         updatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         capacityProviderStrategy = list(
-#'           list(
-#'             capacityProvider = "string",
-#'             weight = 123,
-#'             base = 123
-#'           )
-#'         ),
-#'         launchType = "EC2"|"FARGATE",
-#'         platformVersion = "string",
-#'         networkConfiguration = list(
-#'           awsvpcConfiguration = list(
-#'             subnets = list(
-#'               "string"
-#'             ),
-#'             securityGroups = list(
-#'               "string"
-#'             ),
-#'             assignPublicIp = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         rolloutState = "COMPLETED"|"FAILED"|"IN_PROGRESS",
-#'         rolloutStateReason = "string"
-#'       )
-#'     ),
-#'     roleArn = "string",
-#'     events = list(
-#'       list(
-#'         id = "string",
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         message = "string"
-#'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     placementConstraints = list(
-#'       list(
-#'         type = "distinctInstance"|"memberOf",
-#'         expression = "string"
-#'       )
-#'     ),
-#'     placementStrategy = list(
-#'       list(
-#'         type = "random"|"spread"|"binpack",
-#'         field = "string"
-#'       )
-#'     ),
-#'     networkConfiguration = list(
-#'       awsvpcConfiguration = list(
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroups = list(
-#'           "string"
-#'         ),
-#'         assignPublicIp = "ENABLED"|"DISABLED"
-#'       )
-#'     ),
-#'     healthCheckGracePeriodSeconds = 123,
-#'     schedulingStrategy = "REPLICA"|"DAEMON",
-#'     deploymentController = list(
-#'       type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     createdBy = "string",
-#'     enableECSManagedTags = TRUE|FALSE,
-#'     propagateTags = "TASK_DEFINITION"|"SERVICE"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_service(
-#'   cluster = "string",
-#'   service = "string",
-#'   desiredCount = 123,
-#'   taskDefinition = "string",
-#'   capacityProviderStrategy = list(
-#'     list(
-#'       capacityProvider = "string",
-#'       weight = 123,
-#'       base = 123
-#'     )
-#'   ),
-#'   deploymentConfiguration = list(
-#'     deploymentCircuitBreaker = list(
-#'       enable = TRUE|FALSE,
-#'       rollback = TRUE|FALSE
-#'     ),
-#'     maximumPercent = 123,
-#'     minimumHealthyPercent = 123
-#'   ),
-#'   networkConfiguration = list(
-#'     awsvpcConfiguration = list(
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroups = list(
-#'         "string"
-#'       ),
-#'       assignPublicIp = "ENABLED"|"DISABLED"
-#'     )
-#'   ),
-#'   placementConstraints = list(
-#'     list(
-#'       type = "distinctInstance"|"memberOf",
-#'       expression = "string"
-#'     )
-#'   ),
-#'   placementStrategy = list(
-#'     list(
-#'       type = "random"|"spread"|"binpack",
-#'       field = "string"
-#'     )
-#'   ),
-#'   platformVersion = "string",
-#'   forceNewDeployment = TRUE|FALSE,
-#'   healthCheckGracePeriodSeconds = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example updates the my-http-service service to use the
-#' # amazon-ecs-sample task definition.
-#' svc$update_service(
-#'   service = "my-http-service",
-#'   taskDefinition = "amazon-ecs-sample"
-#' )
+#' @param enableExecuteCommand If `true`, this enables execute command functionality on all task
+#' containers.
 #' 
-#' # This example updates the desired count of the my-http-service service to
-#' # 10.
-#' svc$update_service(
-#'   desiredCount = 10L,
-#'   service = "my-http-service"
-#' )
-#' }
+#' If you do not want to override the value that was set when the service
+#' was created, you can set this to `null` when performing this action.
+#' @param enableECSManagedTags Determines whether to turn on Amazon ECS managed tags for the tasks in
+#' the service. For more information, see [Tagging Your Amazon ECS
+#' Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' Only tasks launched after the update will reflect the update. To update
+#' the tags on all tasks, set `forceNewDeployment` to `true`, so that
+#' Amazon ECS starts new tasks with the updated tags.
+#' @param loadBalancers A list of Elastic Load Balancing load balancer objects. It contains the
+#' load balancer name, the container name, and the container port to access
+#' from the load balancer. The container name is as it appears in a
+#' container definition.
+#' 
+#' When you add, update, or remove a load balancer configuration, Amazon
+#' ECS starts new tasks with the updated Elastic Load Balancing
+#' configuration, and then stops the old tasks when the new tasks are
+#' running.
+#' 
+#' For services that use rolling updates, you can add, update, or remove
+#' Elastic Load Balancing target groups. You can update from a single
+#' target group to multiple target groups and from multiple target groups
+#' to a single target group.
+#' 
+#' For services that use blue/green deployments, you can update Elastic
+#' Load Balancing target groups by using ` CreateDeployment ` through
+#' CodeDeploy. Note that multiple target groups are not supported for
+#' blue/green deployments. For more information see [Register multiple
+#' target groups with a
+#' service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/register-multiple-targetgroups.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' For services that use the external deployment controller, you can add,
+#' update, or remove load balancers by using
+#' [`create_task_set`][ecs_create_task_set]. Note that multiple target
+#' groups are not supported for external deployments. For more information
+#' see [Register multiple target groups with a
+#' service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/register-multiple-targetgroups.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' You can remove existing `loadBalancers` by passing an empty list.
+#' @param propagateTags Determines whether to propagate the tags from the task definition or the
+#' service to the task. If no value is specified, the tags aren't
+#' propagated.
+#' 
+#' Only tasks launched after the update will reflect the update. To update
+#' the tags on all tasks, set `forceNewDeployment` to `true`, so that
+#' Amazon ECS starts new tasks with the updated tags.
+#' @param serviceRegistries The details for the service discovery registries to assign to this
+#' service. For more information, see [Service
+#' Discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+#' 
+#' When you add, update, or remove the service registries configuration,
+#' Amazon ECS starts new tasks with the updated service registries
+#' configuration, and then stops the old tasks when the new tasks are
+#' running.
+#' 
+#' You can remove existing `serviceRegistries` by passing an empty list.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_update_service
-ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL) {
+ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds)
+  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries)
   output <- .ecs$update_service_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -8767,16 +3120,9 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #' Modifies which task set in a service is the primary task set
 #'
 #' @description
-#' Modifies which task set in a service is the primary task set. Any
-#' parameters that are updated on the primary task set in a service will
-#' transition to the service. This is used when a service uses the
-#' `EXTERNAL` deployment controller type. For more information, see [Amazon
-#' ECS Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Modifies which task set in a service is the primary task set. Any parameters that are updated on the primary task set in a service will transition to the service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' @usage
-#' ecs_update_service_primary_task_set(cluster, service, primaryTaskSet)
+#' See [https://paws-r.github.io/docs/ecs/update_service_primary_task_set.html](https://paws-r.github.io/docs/ecs/update_service_primary_task_set.html) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service that the task set exists in.
@@ -8784,91 +3130,6 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #' the task set exists in.
 #' @param primaryTaskSet &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the task set to set
 #' as the primary task set in the deployment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskSet = list(
-#'     id = "string",
-#'     taskSetArn = "string",
-#'     serviceArn = "string",
-#'     clusterArn = "string",
-#'     startedBy = "string",
-#'     externalId = "string",
-#'     status = "string",
-#'     taskDefinition = "string",
-#'     computedDesiredCount = 123,
-#'     pendingCount = 123,
-#'     runningCount = 123,
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     launchType = "EC2"|"FARGATE",
-#'     capacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     platformVersion = "string",
-#'     networkConfiguration = list(
-#'       awsvpcConfiguration = list(
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroups = list(
-#'           "string"
-#'         ),
-#'         assignPublicIp = "ENABLED"|"DISABLED"
-#'       )
-#'     ),
-#'     loadBalancers = list(
-#'       list(
-#'         targetGroupArn = "string",
-#'         loadBalancerName = "string",
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     serviceRegistries = list(
-#'       list(
-#'         registryArn = "string",
-#'         port = 123,
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     scale = list(
-#'       value = 123.0,
-#'       unit = "PERCENT"
-#'     ),
-#'     stabilityStatus = "STEADY_STATE"|"STABILIZING",
-#'     stabilityStatusAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_service_primary_task_set(
-#'   cluster = "string",
-#'   service = "string",
-#'   primaryTaskSet = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8893,111 +3154,18 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #' Modifies a task set
 #'
 #' @description
-#' Modifies a task set. This is used when a service uses the `EXTERNAL`
-#' deployment controller type. For more information, see [Amazon ECS
-#' Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' Modifies a task set. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' @usage
-#' ecs_update_task_set(cluster, service, taskSet, scale)
+#' See [https://paws-r.github.io/docs/ecs/update_task_set.html](https://paws-r.github.io/docs/ecs/update_task_set.html) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
-#' hosts the service that the task set exists in.
+#' hosts the service that the task set is found in.
 #' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service that
-#' the task set exists in.
+#' the task set is found in.
 #' @param taskSet &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the task set to
 #' update.
-#' @param scale &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskSet = list(
-#'     id = "string",
-#'     taskSetArn = "string",
-#'     serviceArn = "string",
-#'     clusterArn = "string",
-#'     startedBy = "string",
-#'     externalId = "string",
-#'     status = "string",
-#'     taskDefinition = "string",
-#'     computedDesiredCount = 123,
-#'     pendingCount = 123,
-#'     runningCount = 123,
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     launchType = "EC2"|"FARGATE",
-#'     capacityProviderStrategy = list(
-#'       list(
-#'         capacityProvider = "string",
-#'         weight = 123,
-#'         base = 123
-#'       )
-#'     ),
-#'     platformVersion = "string",
-#'     networkConfiguration = list(
-#'       awsvpcConfiguration = list(
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroups = list(
-#'           "string"
-#'         ),
-#'         assignPublicIp = "ENABLED"|"DISABLED"
-#'       )
-#'     ),
-#'     loadBalancers = list(
-#'       list(
-#'         targetGroupArn = "string",
-#'         loadBalancerName = "string",
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     serviceRegistries = list(
-#'       list(
-#'         registryArn = "string",
-#'         port = 123,
-#'         containerName = "string",
-#'         containerPort = 123
-#'       )
-#'     ),
-#'     scale = list(
-#'       value = 123.0,
-#'       unit = "PERCENT"
-#'     ),
-#'     stabilityStatus = "STEADY_STATE"|"STABILIZING",
-#'     stabilityStatusAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_task_set(
-#'   cluster = "string",
-#'   service = "string",
-#'   taskSet = "string",
-#'   scale = list(
-#'     value = 123.0,
-#'     unit = "PERCENT"
-#'   )
-#' )
-#' ```
+#' @param scale &#91;required&#93; A floating-point percentage of the desired number of tasks to place and
+#' keep running in the task set.
 #'
 #' @keywords internal
 #'

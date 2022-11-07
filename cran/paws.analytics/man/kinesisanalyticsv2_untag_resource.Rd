@@ -12,21 +12,9 @@ the tags.}
 
 \item{TagKeys}{[required] A list of keys of tags to remove from the specified application.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes one or more tags from a Kinesis Data Analytics application. For
-more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceARN = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes one or more tags from a Kinesis Data Analytics application. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/untag_resource.html} for full documentation.
+}
 \keyword{internal}

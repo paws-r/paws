@@ -4,33 +4,16 @@
 \alias{machinelearning_update_batch_prediction}
 \title{Updates the BatchPredictionName of a BatchPrediction}
 \usage{
-machinelearning_update_batch_prediction(BatchPredictionId,
-  BatchPredictionName)
+machinelearning_update_batch_prediction(BatchPredictionId, BatchPredictionName)
 }
 \arguments{
 \item{BatchPredictionId}{[required] The ID assigned to the \code{BatchPrediction} during creation.}
 
 \item{BatchPredictionName}{[required] A new user-supplied name or description of the \code{BatchPrediction}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BatchPredictionId = "string"
-)
-}
-}
 \description{
 Updates the \code{BatchPredictionName} of a \code{BatchPrediction}.
 
-You can use the
-\code{\link[=machinelearning_get_batch_prediction]{get_batch_prediction}} operation
-to view the contents of the updated data element.
+See \url{https://paws-r.github.io/docs/machinelearning/update_batch_prediction.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_batch_prediction(
-  BatchPredictionId = "string",
-  BatchPredictionName = "string"
-)
-}
-}
-
 \keyword{internal}

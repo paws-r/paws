@@ -5,42 +5,16 @@
 \title{Retrieves the resource query associated with the specified resource
 group}
 \usage{
-resourcegroups_get_group_query(GroupName, Group)
+resourcegroups_get_group_query(GroupName = NULL, Group = NULL)
 }
 \arguments{
 \item{GroupName}{Don't use this parameter. Use \code{Group} instead.}
 
 \item{Group}{The name or the ARN of the resource group to query.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GroupQuery = list(
-    GroupName = "string",
-    ResourceQuery = list(
-      Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-      Query = "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves the resource query associated with the specified resource
-group. For more information about resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
+Retrieves the resource query associated with the specified resource group. For more information about resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:GetGroupQuery}
+See \url{https://paws-r.github.io/docs/resourcegroups/get_group_query.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_group_query(
-  GroupName = "string",
-  Group = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,35 +4,35 @@
 \alias{kinesisanalyticsv2_delete_application_vpc_configuration}
 \title{Removes a VPC configuration from a Kinesis Data Analytics application}
 \usage{
-kinesisanalyticsv2_delete_application_vpc_configuration(ApplicationName,
-  CurrentApplicationVersionId, VpcConfigurationId)
+kinesisanalyticsv2_delete_application_vpc_configuration(
+  ApplicationName,
+  CurrentApplicationVersionId = NULL,
+  VpcConfigurationId,
+  ConditionalToken = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
 
-\item{CurrentApplicationVersionId}{[required] The current application version ID. You can retrieve the application
-version ID using
-\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
+\item{CurrentApplicationVersionId}{The current application version ID. You must provide the
+\code{CurrentApplicationVersionId} or the \code{ConditionalToken}. You can
+retrieve the application version ID using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}. For
+better concurrency support, use the \code{ConditionalToken} parameter instead
+of \code{CurrentApplicationVersionId}.}
 
 \item{VpcConfigurationId}{[required] The ID of the VPC configuration to delete.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationARN = "string",
-  ApplicationVersionId = 123
-)
-}
+
+\item{ConditionalToken}{A value you use to implement strong concurrency for application updates.
+You must provide the \code{CurrentApplicationVersionId} or the
+\code{ConditionalToken}. You get the application's current \code{ConditionalToken}
+using \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.
+For better concurrency support, use the \code{ConditionalToken} parameter
+instead of \code{CurrentApplicationVersionId}.}
 }
 \description{
 Removes a VPC configuration from a Kinesis Data Analytics application.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application_vpc_configuration(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  VpcConfigurationId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_vpc_configuration.html} for full documentation.
+}
 \keyword{internal}

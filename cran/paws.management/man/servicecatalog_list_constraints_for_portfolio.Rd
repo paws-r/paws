@@ -4,8 +4,13 @@
 \alias{servicecatalog_list_constraints_for_portfolio}
 \title{Lists the constraints for the specified portfolio and product}
 \usage{
-servicecatalog_list_constraints_for_portfolio(AcceptLanguage,
-  PortfolioId, ProductId, PageSize, PageToken)
+servicecatalog_list_constraints_for_portfolio(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  ProductId = NULL,
+  PageSize = NULL,
+  PageToken = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -24,34 +29,9 @@ servicecatalog_list_constraints_for_portfolio(AcceptLanguage,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConstraintDetails = list(
-    list(
-      ConstraintId = "string",
-      Type = "string",
-      Description = "string",
-      Owner = "string",
-      ProductId = "string",
-      PortfolioId = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
 Lists the constraints for the specified portfolio and product.
-}
-\section{Request syntax}{
-\preformatted{svc$list_constraints_for_portfolio(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  ProductId = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_constraints_for_portfolio.html} for full documentation.
+}
 \keyword{internal}

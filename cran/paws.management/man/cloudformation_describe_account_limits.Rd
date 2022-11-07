@@ -2,38 +2,18 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_describe_account_limits}
 \alias{cloudformation_describe_account_limits}
-\title{Retrieves your account's AWS CloudFormation limits, such as the maximum
+\title{Retrieves your account's CloudFormation limits, such as the maximum
 number of stacks that you can create in your account}
 \usage{
-cloudformation_describe_account_limits(NextToken)
+cloudformation_describe_account_limits(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{A string that identifies the next page of limits that you want to
 retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountLimits = list(
-    list(
-      Name = "string",
-      Value = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves your account's AWS CloudFormation limits, such as the maximum
-number of stacks that you can create in your account. For more
-information about account limits, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html}{AWS CloudFormation Limits}
-in the \emph{AWS CloudFormation User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_account_limits(
-  NextToken = "string"
-)
-}
-}
+Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account. For more information about account limits, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html}{CloudFormation Quotas} in the \emph{CloudFormation User Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudformation/describe_account_limits.html} for full documentation.
+}
 \keyword{internal}

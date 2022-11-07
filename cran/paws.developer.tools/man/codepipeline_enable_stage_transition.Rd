@@ -4,8 +4,7 @@
 \alias{codepipeline_enable_stage_transition}
 \title{Enables artifacts in a pipeline to transition to a stage in a pipeline}
 \usage{
-codepipeline_enable_stage_transition(pipelineName, stageName,
-  transitionType)
+codepipeline_enable_stage_transition(pipelineName, stageName, transitionType)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline in which you want to enable the flow of
@@ -20,19 +19,9 @@ processed by the actions in that stage (inbound) or whether already
 processed artifacts are allowed to transition to the next stage
 (outbound).}
 }
-\value{
-An empty list.
-}
 \description{
 Enables artifacts in a pipeline to transition to a stage in a pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_stage_transition(
-  pipelineName = "string",
-  stageName = "string",
-  transitionType = "Inbound"|"Outbound"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codepipeline/enable_stage_transition.html} for full documentation.
+}
 \keyword{internal}

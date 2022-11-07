@@ -4,9 +4,20 @@
 \alias{opsworks_create_app}
 \title{Creates an app for a specified stack}
 \usage{
-opsworks_create_app(StackId, Shortname, Name, Description, DataSources,
-  Type, AppSource, Domains, EnableSsl, SslConfiguration, Attributes,
-  Environment)
+opsworks_create_app(
+  StackId,
+  Shortname = NULL,
+  Name,
+  Description = NULL,
+  DataSources = NULL,
+  Type,
+  AppSource = NULL,
+  Domains = NULL,
+  EnableSsl = NULL,
+  SslConfiguration = NULL,
+  Attributes = NULL,
+  Environment = NULL
+)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -53,64 +64,9 @@ it will cause an exception with the message, "Environment: is too large
 If you have specified one or more environment variables, you cannot
 modify the stack's Chef version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AppId = "string"
-)
-}
-}
 \description{
-Creates an app for a specified stack. For more information, see
-\href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html}{Creating Apps}.
+Creates an app for a specified stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html}{Creating Apps}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/create_app.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_app(
-  StackId = "string",
-  Shortname = "string",
-  Name = "string",
-  Description = "string",
-  DataSources = list(
-    list(
-      Type = "string",
-      Arn = "string",
-      DatabaseName = "string"
-    )
-  ),
-  Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
-  AppSource = list(
-    Type = "git"|"svn"|"archive"|"s3",
-    Url = "string",
-    Username = "string",
-    Password = "string",
-    SshKey = "string",
-    Revision = "string"
-  ),
-  Domains = list(
-    "string"
-  ),
-  EnableSsl = TRUE|FALSE,
-  SslConfiguration = list(
-    Certificate = "string",
-    PrivateKey = "string",
-    Chain = "string"
-  ),
-  Attributes = list(
-    "string"
-  ),
-  Environment = list(
-    list(
-      Key = "string",
-      Value = "string",
-      Secure = TRUE|FALSE
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

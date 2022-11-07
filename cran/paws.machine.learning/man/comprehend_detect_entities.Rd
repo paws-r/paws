@@ -4,7 +4,7 @@
 \alias{comprehend_detect_entities}
 \title{Inspects text for named entities, and returns information about them}
 \usage{
-comprehend_detect_entities(Text, LanguageCode, EndpointArn)
+comprehend_detect_entities(Text, LanguageCode = NULL, EndpointArn = NULL)
 }
 \arguments{
 \item{Text}{[required] A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
@@ -25,33 +25,13 @@ that is used by Amazon Comprehend.
 
 If you specify an endpoint, Amazon Comprehend uses the language of your
 custom model, and it ignores any language code that you provide in your
-request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Entities = list(
-    list(
-      Score = 123.0,
-      Type = "PERSON"|"LOCATION"|"ORGANIZATION"|"COMMERCIAL_ITEM"|"EVENT"|"DATE"|"QUANTITY"|"TITLE"|"OTHER",
-      Text = "string",
-      BeginOffset = 123,
-      EndOffset = 123
-    )
-  )
-)
-}
+request.
+
+For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.}
 }
 \description{
-Inspects text for named entities, and returns information about them.
-For more information, about named entities, see how-entities.
-}
-\section{Request syntax}{
-\preformatted{svc$detect_entities(
-  Text = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-  EndpointArn = "string"
-)
-}
-}
+Inspects text for named entities, and returns information about them. For more information, about named entities, see how-entities.
 
+See \url{https://paws-r.github.io/docs/comprehend/detect_entities.html} for full documentation.
+}
 \keyword{internal}

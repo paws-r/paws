@@ -8,34 +8,11 @@ lexmodelbuildingservice_get_builtin_intent(signature)
 }
 \arguments{
 \item{signature}{[required] The unique identifier for a built-in intent. To find the signature for
-an intent, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
-in the \emph{Alexa Skills Kit}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  signature = "string",
-  supportedLocales = list(
-    "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
-  ),
-  slots = list(
-    list(
-      name = "string"
-    )
-  )
-)
-}
+an intent, see Standard Built-in Intents in the \emph{Alexa Skills Kit}.}
 }
 \description{
 Returns information about a built-in intent.
 
-This operation requires permission for the \code{lex:GetBuiltinIntent}
-action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intent.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_builtin_intent(
-  signature = "string"
-)
-}
-}
-
 \keyword{internal}

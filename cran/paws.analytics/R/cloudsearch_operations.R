@@ -6,31 +6,11 @@ NULL
 #' Indexes the search suggestions
 #'
 #' @description
-#' Indexes the search suggestions. For more information, see [Configuring
-#' Suggesters](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Indexes the search suggestions. For more information, see [Configuring Suggesters](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters) in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_build_suggesters(DomainName)
+#' See [https://paws-r.github.io/docs/cloudsearch/build_suggesters.html](https://paws-r.github.io/docs/cloudsearch/build_suggesters.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FieldNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$build_suggesters(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -55,54 +35,14 @@ cloudsearch_build_suggesters <- function(DomainName) {
 #' Creates a new search domain
 #'
 #' @description
-#' Creates a new search domain. For more information, see [Creating a
-#' Search
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Creates a new search domain. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html" target="_blank">Creating a Search Domain</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_create_domain(DomainName)
+#' See [https://paws-r.github.io/docs/cloudsearch/create_domain.html](https://paws-r.github.io/docs/cloudsearch/create_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; A name for the domain you are creating. Allowed characters are a-z
 #' (lower-case letters), 0-9, and hyphen (-). Domain names must start with
 #' a letter or number and be at least 3 and no more than 28 characters
 #' long.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainStatus = list(
-#'     DomainId = "string",
-#'     DomainName = "string",
-#'     ARN = "string",
-#'     Created = TRUE|FALSE,
-#'     Deleted = TRUE|FALSE,
-#'     DocService = list(
-#'       Endpoint = "string"
-#'     ),
-#'     SearchService = list(
-#'       Endpoint = "string"
-#'     ),
-#'     RequiresIndexDocuments = TRUE|FALSE,
-#'     Processing = TRUE|FALSE,
-#'     SearchInstanceType = "string",
-#'     SearchPartitionCount = 123,
-#'     SearchInstanceCount = 123,
-#'     Limits = list(
-#'       MaximumReplicationCount = 123,
-#'       MaximumPartitionCount = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_domain(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -128,66 +68,12 @@ cloudsearch_create_domain <- function(DomainName) {
 #' text-array field to define language-specific text processing options
 #'
 #' @description
-#' Configures an analysis scheme that can be applied to a `text` or
-#' `text-array` field to define language-specific text processing options.
-#' For more information, see [Configuring Analysis
-#' Schemes](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Configures an analysis scheme that can be applied to a `text` or `text-array` field to define language-specific text processing options. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_define_analysis_scheme(DomainName, AnalysisScheme)
+#' See [https://paws-r.github.io/docs/cloudsearch/define_analysis_scheme.html](https://paws-r.github.io/docs/cloudsearch/define_analysis_scheme.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param AnalysisScheme &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AnalysisScheme = list(
-#'     Options = list(
-#'       AnalysisSchemeName = "string",
-#'       AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
-#'       AnalysisOptions = list(
-#'         Synonyms = "string",
-#'         Stopwords = "string",
-#'         StemmingDictionary = "string",
-#'         JapaneseTokenizationDictionary = "string",
-#'         AlgorithmicStemming = "none"|"minimal"|"light"|"full"
-#'       )
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$define_analysis_scheme(
-#'   DomainName = "string",
-#'   AnalysisScheme = list(
-#'     AnalysisSchemeName = "string",
-#'     AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
-#'     AnalysisOptions = list(
-#'       Synonyms = "string",
-#'       Stopwords = "string",
-#'       StemmingDictionary = "string",
-#'       JapaneseTokenizationDictionary = "string",
-#'       AlgorithmicStemming = "none"|"minimal"|"light"|"full"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -212,53 +98,12 @@ cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
 #' Configures an Expression for the search domain
 #'
 #' @description
-#' Configures an `Expression` for the search domain. Used to create new
-#' expressions and modify existing ones. If the expression exists, the new
-#' configuration replaces the old one. For more information, see
-#' [Configuring
-#' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Configures an `Expression` for the search domain. Used to create new expressions and modify existing ones. If the expression exists, the new configuration replaces the old one. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_define_expression(DomainName, Expression)
+#' See [https://paws-r.github.io/docs/cloudsearch/define_expression.html](https://paws-r.github.io/docs/cloudsearch/define_expression.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param Expression &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Expression = list(
-#'     Options = list(
-#'       ExpressionName = "string",
-#'       ExpressionValue = "string"
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$define_expression(
-#'   DomainName = "string",
-#'   Expression = list(
-#'     ExpressionName = "string",
-#'     ExpressionValue = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -283,223 +128,12 @@ cloudsearch_define_expression <- function(DomainName, Expression) {
 #' Configures an IndexField for the search domain
 #'
 #' @description
-#' Configures an `IndexField` for the search domain. Used to create new
-#' fields and modify existing ones. You must specify the name of the domain
-#' you are configuring and an index field configuration. The index field
-#' configuration specifies a unique name, the index field type, and the
-#' options you want to configure for the field. The options you can specify
-#' depend on the `IndexFieldType`. If the field exists, the new
-#' configuration replaces the old one. For more information, see
-#' [Configuring Index
-#' Fields](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Configures an `IndexField` for the search domain. Used to create new fields and modify existing ones. You must specify the name of the domain you are configuring and an index field configuration. The index field configuration specifies a unique name, the index field type, and the options you want to configure for the field. The options you can specify depend on the `IndexFieldType`. If the field exists, the new configuration replaces the old one. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_define_index_field(DomainName, IndexField)
+#' See [https://paws-r.github.io/docs/cloudsearch/define_index_field.html](https://paws-r.github.io/docs/cloudsearch/define_index_field.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param IndexField &#91;required&#93; The index field and field options you want to configure.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IndexField = list(
-#'     Options = list(
-#'       IndexFieldName = "string",
-#'       IndexFieldType = "int"|"double"|"literal"|"text"|"date"|"latlon"|"int-array"|"double-array"|"literal-array"|"text-array"|"date-array",
-#'       IntOptions = list(
-#'         DefaultValue = 123,
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       DoubleOptions = list(
-#'         DefaultValue = 123.0,
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       LiteralOptions = list(
-#'         DefaultValue = "string",
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       TextOptions = list(
-#'         DefaultValue = "string",
-#'         SourceField = "string",
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE,
-#'         HighlightEnabled = TRUE|FALSE,
-#'         AnalysisScheme = "string"
-#'       ),
-#'       DateOptions = list(
-#'         DefaultValue = "string",
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       LatLonOptions = list(
-#'         DefaultValue = "string",
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       IntArrayOptions = list(
-#'         DefaultValue = 123,
-#'         SourceFields = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE
-#'       ),
-#'       DoubleArrayOptions = list(
-#'         DefaultValue = 123.0,
-#'         SourceFields = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE
-#'       ),
-#'       LiteralArrayOptions = list(
-#'         DefaultValue = "string",
-#'         SourceFields = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE
-#'       ),
-#'       TextArrayOptions = list(
-#'         DefaultValue = "string",
-#'         SourceFields = "string",
-#'         ReturnEnabled = TRUE|FALSE,
-#'         HighlightEnabled = TRUE|FALSE,
-#'         AnalysisScheme = "string"
-#'       ),
-#'       DateArrayOptions = list(
-#'         DefaultValue = "string",
-#'         SourceFields = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$define_index_field(
-#'   DomainName = "string",
-#'   IndexField = list(
-#'     IndexFieldName = "string",
-#'     IndexFieldType = "int"|"double"|"literal"|"text"|"date"|"latlon"|"int-array"|"double-array"|"literal-array"|"text-array"|"date-array",
-#'     IntOptions = list(
-#'       DefaultValue = 123,
-#'       SourceField = "string",
-#'       FacetEnabled = TRUE|FALSE,
-#'       SearchEnabled = TRUE|FALSE,
-#'       ReturnEnabled = TRUE|FALSE,
-#'       SortEnabled = TRUE|FALSE
-#'     ),
-#'     DoubleOptions = list(
-#'       DefaultValue = 123.0,
-#'       SourceField = "string",
-#'       FacetEnabled = TRUE|FALSE,
-#'       SearchEnabled = TRUE|FALSE,
-#'       ReturnEnabled = TRUE|FALSE,
-#'       SortEnabled = TRUE|FALSE
-#'     ),
-#'     LiteralOptions = list(
-#'       DefaultValue = "string",
-#'       SourceField = "string",
-#'       FacetEnabled = TRUE|FALSE,
-#'       SearchEnabled = TRUE|FALSE,
-#'       ReturnEnabled = TRUE|FALSE,
-#'       SortEnabled = TRUE|FALSE
-#'     ),
-#'     TextOptions = list(
-#'       DefaultValue = "string",
-#'       SourceField = "string",
-#'       ReturnEnabled = TRUE|FALSE,
-#'       SortEnabled = TRUE|FALSE,
-#'       HighlightEnabled = TRUE|FALSE,
-#'       AnalysisScheme = "string"
-#'     ),
-#'     DateOptions = list(
-#'       DefaultValue = "string",
-#'       SourceField = "string",
-#'       FacetEnabled = TRUE|FALSE,
-#'       SearchEnabled = TRUE|FALSE,
-#'       ReturnEnabled = TRUE|FALSE,
-#'       SortEnabled = TRUE|FALSE
-#'     ),
-#'     LatLonOptions = list(
-#'       DefaultValue = "string",
-#'       SourceField = "string",
-#'       FacetEnabled = TRUE|FALSE,
-#'       SearchEnabled = TRUE|FALSE,
-#'       ReturnEnabled = TRUE|FALSE,
-#'       SortEnabled = TRUE|FALSE
-#'     ),
-#'     IntArrayOptions = list(
-#'       DefaultValue = 123,
-#'       SourceFields = "string",
-#'       FacetEnabled = TRUE|FALSE,
-#'       SearchEnabled = TRUE|FALSE,
-#'       ReturnEnabled = TRUE|FALSE
-#'     ),
-#'     DoubleArrayOptions = list(
-#'       DefaultValue = 123.0,
-#'       SourceFields = "string",
-#'       FacetEnabled = TRUE|FALSE,
-#'       SearchEnabled = TRUE|FALSE,
-#'       ReturnEnabled = TRUE|FALSE
-#'     ),
-#'     LiteralArrayOptions = list(
-#'       DefaultValue = "string",
-#'       SourceFields = "string",
-#'       FacetEnabled = TRUE|FALSE,
-#'       SearchEnabled = TRUE|FALSE,
-#'       ReturnEnabled = TRUE|FALSE
-#'     ),
-#'     TextArrayOptions = list(
-#'       DefaultValue = "string",
-#'       SourceFields = "string",
-#'       ReturnEnabled = TRUE|FALSE,
-#'       HighlightEnabled = TRUE|FALSE,
-#'       AnalysisScheme = "string"
-#'     ),
-#'     DateArrayOptions = list(
-#'       DefaultValue = "string",
-#'       SourceFields = "string",
-#'       FacetEnabled = TRUE|FALSE,
-#'       SearchEnabled = TRUE|FALSE,
-#'       ReturnEnabled = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -524,62 +158,12 @@ cloudsearch_define_index_field <- function(DomainName, IndexField) {
 #' Configures a suggester for a domain
 #'
 #' @description
-#' Configures a suggester for a domain. A suggester enables you to display
-#' possible matches before users finish typing their queries. When you
-#' configure a suggester, you must specify the name of the text field you
-#' want to search for possible matches and a unique name for the suggester.
-#' For more information, see [Getting Search
-#' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Configures a suggester for a domain. A suggester enables you to display possible matches before users finish typing their queries. When you configure a suggester, you must specify the name of the text field you want to search for possible matches and a unique name for the suggester. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_define_suggester(DomainName, Suggester)
+#' See [https://paws-r.github.io/docs/cloudsearch/define_suggester.html](https://paws-r.github.io/docs/cloudsearch/define_suggester.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param Suggester &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Suggester = list(
-#'     Options = list(
-#'       SuggesterName = "string",
-#'       DocumentSuggesterOptions = list(
-#'         SourceField = "string",
-#'         FuzzyMatching = "none"|"low"|"high",
-#'         SortExpression = "string"
-#'       )
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$define_suggester(
-#'   DomainName = "string",
-#'   Suggester = list(
-#'     SuggesterName = "string",
-#'     DocumentSuggesterOptions = list(
-#'       SourceField = "string",
-#'       FuzzyMatching = "none"|"low"|"high",
-#'       SortExpression = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -604,55 +188,12 @@ cloudsearch_define_suggester <- function(DomainName, Suggester) {
 #' Deletes an analysis scheme
 #'
 #' @description
-#' Deletes an analysis scheme. For more information, see [Configuring
-#' Analysis
-#' Schemes](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Deletes an analysis scheme. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_delete_analysis_scheme(DomainName, AnalysisSchemeName)
+#' See [https://paws-r.github.io/docs/cloudsearch/delete_analysis_scheme.html](https://paws-r.github.io/docs/cloudsearch/delete_analysis_scheme.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param AnalysisSchemeName &#91;required&#93; The name of the analysis scheme you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AnalysisScheme = list(
-#'     Options = list(
-#'       AnalysisSchemeName = "string",
-#'       AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
-#'       AnalysisOptions = list(
-#'         Synonyms = "string",
-#'         Stopwords = "string",
-#'         StemmingDictionary = "string",
-#'         JapaneseTokenizationDictionary = "string",
-#'         AlgorithmicStemming = "none"|"minimal"|"light"|"full"
-#'       )
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_analysis_scheme(
-#'   DomainName = "string",
-#'   AnalysisSchemeName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -677,52 +218,11 @@ cloudsearch_delete_analysis_scheme <- function(DomainName, AnalysisSchemeName) {
 #' Permanently deletes a search domain and all of its data
 #'
 #' @description
-#' Permanently deletes a search domain and all of its data. Once a domain
-#' has been deleted, it cannot be recovered. For more information, see
-#' [Deleting a Search
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Permanently deletes a search domain and all of its data. Once a domain has been deleted, it cannot be recovered. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html" target="_blank">Deleting a Search Domain</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_delete_domain(DomainName)
+#' See [https://paws-r.github.io/docs/cloudsearch/delete_domain.html](https://paws-r.github.io/docs/cloudsearch/delete_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to permanently delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainStatus = list(
-#'     DomainId = "string",
-#'     DomainName = "string",
-#'     ARN = "string",
-#'     Created = TRUE|FALSE,
-#'     Deleted = TRUE|FALSE,
-#'     DocService = list(
-#'       Endpoint = "string"
-#'     ),
-#'     SearchService = list(
-#'       Endpoint = "string"
-#'     ),
-#'     RequiresIndexDocuments = TRUE|FALSE,
-#'     Processing = TRUE|FALSE,
-#'     SearchInstanceType = "string",
-#'     SearchPartitionCount = 123,
-#'     SearchInstanceCount = 123,
-#'     Limits = list(
-#'       MaximumReplicationCount = 123,
-#'       MaximumPartitionCount = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_domain(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -747,48 +247,12 @@ cloudsearch_delete_domain <- function(DomainName) {
 #' Removes an Expression from the search domain
 #'
 #' @description
-#' Removes an `Expression` from the search domain. For more information,
-#' see [Configuring
-#' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Removes an `Expression` from the search domain. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_delete_expression(DomainName, ExpressionName)
+#' See [https://paws-r.github.io/docs/cloudsearch/delete_expression.html](https://paws-r.github.io/docs/cloudsearch/delete_expression.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param ExpressionName &#91;required&#93; The name of the `Expression` to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Expression = list(
-#'     Options = list(
-#'       ExpressionName = "string",
-#'       ExpressionValue = "string"
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_expression(
-#'   DomainName = "string",
-#'   ExpressionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -813,132 +277,13 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
 #' Removes an IndexField from the search domain
 #'
 #' @description
-#' Removes an `IndexField` from the search domain. For more information,
-#' see [Configuring Index
-#' Fields](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Removes an `IndexField` from the search domain. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_delete_index_field(DomainName, IndexFieldName)
+#' See [https://paws-r.github.io/docs/cloudsearch/delete_index_field.html](https://paws-r.github.io/docs/cloudsearch/delete_index_field.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param IndexFieldName &#91;required&#93; The name of the index field your want to remove from the domain's
 #' indexing options.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IndexField = list(
-#'     Options = list(
-#'       IndexFieldName = "string",
-#'       IndexFieldType = "int"|"double"|"literal"|"text"|"date"|"latlon"|"int-array"|"double-array"|"literal-array"|"text-array"|"date-array",
-#'       IntOptions = list(
-#'         DefaultValue = 123,
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       DoubleOptions = list(
-#'         DefaultValue = 123.0,
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       LiteralOptions = list(
-#'         DefaultValue = "string",
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       TextOptions = list(
-#'         DefaultValue = "string",
-#'         SourceField = "string",
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE,
-#'         HighlightEnabled = TRUE|FALSE,
-#'         AnalysisScheme = "string"
-#'       ),
-#'       DateOptions = list(
-#'         DefaultValue = "string",
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       LatLonOptions = list(
-#'         DefaultValue = "string",
-#'         SourceField = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE,
-#'         SortEnabled = TRUE|FALSE
-#'       ),
-#'       IntArrayOptions = list(
-#'         DefaultValue = 123,
-#'         SourceFields = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE
-#'       ),
-#'       DoubleArrayOptions = list(
-#'         DefaultValue = 123.0,
-#'         SourceFields = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE
-#'       ),
-#'       LiteralArrayOptions = list(
-#'         DefaultValue = "string",
-#'         SourceFields = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE
-#'       ),
-#'       TextArrayOptions = list(
-#'         DefaultValue = "string",
-#'         SourceFields = "string",
-#'         ReturnEnabled = TRUE|FALSE,
-#'         HighlightEnabled = TRUE|FALSE,
-#'         AnalysisScheme = "string"
-#'       ),
-#'       DateArrayOptions = list(
-#'         DefaultValue = "string",
-#'         SourceFields = "string",
-#'         FacetEnabled = TRUE|FALSE,
-#'         SearchEnabled = TRUE|FALSE,
-#'         ReturnEnabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_index_field(
-#'   DomainName = "string",
-#'   IndexFieldName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -963,51 +308,12 @@ cloudsearch_delete_index_field <- function(DomainName, IndexFieldName) {
 #' Deletes a suggester
 #'
 #' @description
-#' Deletes a suggester. For more information, see [Getting Search
-#' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Deletes a suggester. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_delete_suggester(DomainName, SuggesterName)
+#' See [https://paws-r.github.io/docs/cloudsearch/delete_suggester.html](https://paws-r.github.io/docs/cloudsearch/delete_suggester.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param SuggesterName &#91;required&#93; Specifies the name of the suggester you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Suggester = list(
-#'     Options = list(
-#'       SuggesterName = "string",
-#'       DocumentSuggesterOptions = list(
-#'         SourceField = "string",
-#'         FuzzyMatching = "none"|"low"|"high",
-#'         SortExpression = "string"
-#'       )
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_suggester(
-#'   DomainName = "string",
-#'   SuggesterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1032,68 +338,14 @@ cloudsearch_delete_suggester <- function(DomainName, SuggesterName) {
 #' Gets the analysis schemes configured for a domain
 #'
 #' @description
-#' Gets the analysis schemes configured for a domain. An analysis scheme
-#' defines language-specific text processing options for a `text` field.
-#' Can be limited to specific analysis schemes by name. By default, shows
-#' all analysis schemes and includes any pending changes to the
-#' configuration. Set the `Deployed` option to `true` to show the active
-#' configuration and exclude pending changes. For more information, see
-#' [Configuring Analysis
-#' Schemes](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing options for a `text` field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes and includes any pending changes to the configuration. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_describe_analysis_schemes(DomainName, AnalysisSchemeNames,
-#'   Deployed)
+#' See [https://paws-r.github.io/docs/cloudsearch/describe_analysis_schemes.html](https://paws-r.github.io/docs/cloudsearch/describe_analysis_schemes.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param AnalysisSchemeNames The analysis schemes you want to describe.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AnalysisSchemes = list(
-#'     list(
-#'       Options = list(
-#'         AnalysisSchemeName = "string",
-#'         AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
-#'         AnalysisOptions = list(
-#'           Synonyms = "string",
-#'           Stopwords = "string",
-#'           StemmingDictionary = "string",
-#'           JapaneseTokenizationDictionary = "string",
-#'           AlgorithmicStemming = "none"|"minimal"|"light"|"full"
-#'         )
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_analysis_schemes(
-#'   DomainName = "string",
-#'   AnalysisSchemeNames = list(
-#'     "string"
-#'   ),
-#'   Deployed = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1118,48 +370,13 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
 #' Gets the availability options configured for a domain
 #'
 #' @description
-#' Gets the availability options configured for a domain. By default, shows
-#' the configuration with any pending changes. Set the `Deployed` option to
-#' `true` to show the active configuration and exclude pending changes. For
-#' more information, see [Configuring Availability
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_describe_availability_options(DomainName, Deployed)
+#' See [https://paws-r.github.io/docs/cloudsearch/describe_availability_options.html](https://paws-r.github.io/docs/cloudsearch/describe_availability_options.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AvailabilityOptions = list(
-#'     Options = TRUE|FALSE,
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_availability_options(
-#'   DomainName = "string",
-#'   Deployed = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1185,51 +402,14 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
 #' to the domain must arrive over HTTPS
 #'
 #' @description
-#' Returns the domain's endpoint options, specifically whether all requests
-#' to the domain must arrive over HTTPS. For more information, see
-#' [Configuring Domain Endpoint
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Returns the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html" target="_blank">Configuring Domain Endpoint Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_describe_domain_endpoint_options(DomainName, Deployed)
+#' See [https://paws-r.github.io/docs/cloudsearch/describe_domain_endpoint_options.html](https://paws-r.github.io/docs/cloudsearch/describe_domain_endpoint_options.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; A string that represents the name of a domain.
 #' @param Deployed Whether to retrieve the latest configuration (which might be in a
 #' Processing state) or the current, active configuration. Defaults to
 #' `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainEndpointOptions = list(
-#'     Options = list(
-#'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_domain_endpoint_options(
-#'   DomainName = "string",
-#'   Deployed = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1254,59 +434,11 @@ cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = 
 #' Gets information about the search domains owned by this account
 #'
 #' @description
-#' Gets information about the search domains owned by this account. Can be
-#' limited to specific domains. Shows all domains by default. To get the
-#' number of searchable documents in a domain, use the console or submit a
-#' `matchall` request to your domain's search endpoint:
-#' `q=matchall&amp;q.parser=structured&amp;size=0`. For more information,
-#' see [Getting Information about a Search
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Gets information about the search domains owned by this account. Can be limited to specific domains. Shows all domains by default. To get the number of searchable documents in a domain, use the console or submit a `matchall` request to your domain's search endpoint: `q=matchall&amp;q.parser=structured&amp;size=0`. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">Getting Information about a Search Domain</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_describe_domains(DomainNames)
+#' See [https://paws-r.github.io/docs/cloudsearch/describe_domains.html](https://paws-r.github.io/docs/cloudsearch/describe_domains.html) for full documentation.
 #'
 #' @param DomainNames The names of the domains you want to include in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainStatusList = list(
-#'     list(
-#'       DomainId = "string",
-#'       DomainName = "string",
-#'       ARN = "string",
-#'       Created = TRUE|FALSE,
-#'       Deleted = TRUE|FALSE,
-#'       DocService = list(
-#'         Endpoint = "string"
-#'       ),
-#'       SearchService = list(
-#'         Endpoint = "string"
-#'       ),
-#'       RequiresIndexDocuments = TRUE|FALSE,
-#'       Processing = TRUE|FALSE,
-#'       SearchInstanceType = "string",
-#'       SearchPartitionCount = 123,
-#'       SearchInstanceCount = 123,
-#'       Limits = list(
-#'         MaximumReplicationCount = 123,
-#'         MaximumPartitionCount = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_domains(
-#'   DomainNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1331,16 +463,9 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
 #' Gets the expressions configured for the search domain
 #'
 #' @description
-#' Gets the expressions configured for the search domain. Can be limited to
-#' specific expressions by name. By default, shows all expressions and
-#' includes any pending changes to the configuration. Set the `Deployed`
-#' option to `true` to show the active configuration and exclude pending
-#' changes. For more information, see [Configuring
-#' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Gets the expressions configured for the search domain. Can be limited to specific expressions by name. By default, shows all expressions and includes any pending changes to the configuration. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_describe_expressions(DomainName, ExpressionNames, Deployed)
+#' See [https://paws-r.github.io/docs/cloudsearch/describe_expressions.html](https://paws-r.github.io/docs/cloudsearch/describe_expressions.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param ExpressionNames Limits the [`describe_expressions`][cloudsearch_describe_expressions]
@@ -1348,43 +473,6 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
 #' are shown.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Expressions = list(
-#'     list(
-#'       Options = list(
-#'         ExpressionName = "string",
-#'         ExpressionValue = "string"
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_expressions(
-#'   DomainName = "string",
-#'   ExpressionNames = list(
-#'     "string"
-#'   ),
-#'   Deployed = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1409,142 +497,15 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
 #' Gets information about the index fields configured for the search domain
 #'
 #' @description
-#' Gets information about the index fields configured for the search
-#' domain. Can be limited to specific fields by name. By default, shows all
-#' fields and includes any pending changes to the configuration. Set the
-#' `Deployed` option to `true` to show the active configuration and exclude
-#' pending changes. For more information, see [Getting Domain
-#' Information](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. By default, shows all fields and includes any pending changes to the configuration. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">Getting Domain Information</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_describe_index_fields(DomainName, FieldNames, Deployed)
+#' See [https://paws-r.github.io/docs/cloudsearch/describe_index_fields.html](https://paws-r.github.io/docs/cloudsearch/describe_index_fields.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param FieldNames A list of the index fields you want to describe. If not specified,
 #' information is returned for all configured index fields.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IndexFields = list(
-#'     list(
-#'       Options = list(
-#'         IndexFieldName = "string",
-#'         IndexFieldType = "int"|"double"|"literal"|"text"|"date"|"latlon"|"int-array"|"double-array"|"literal-array"|"text-array"|"date-array",
-#'         IntOptions = list(
-#'           DefaultValue = 123,
-#'           SourceField = "string",
-#'           FacetEnabled = TRUE|FALSE,
-#'           SearchEnabled = TRUE|FALSE,
-#'           ReturnEnabled = TRUE|FALSE,
-#'           SortEnabled = TRUE|FALSE
-#'         ),
-#'         DoubleOptions = list(
-#'           DefaultValue = 123.0,
-#'           SourceField = "string",
-#'           FacetEnabled = TRUE|FALSE,
-#'           SearchEnabled = TRUE|FALSE,
-#'           ReturnEnabled = TRUE|FALSE,
-#'           SortEnabled = TRUE|FALSE
-#'         ),
-#'         LiteralOptions = list(
-#'           DefaultValue = "string",
-#'           SourceField = "string",
-#'           FacetEnabled = TRUE|FALSE,
-#'           SearchEnabled = TRUE|FALSE,
-#'           ReturnEnabled = TRUE|FALSE,
-#'           SortEnabled = TRUE|FALSE
-#'         ),
-#'         TextOptions = list(
-#'           DefaultValue = "string",
-#'           SourceField = "string",
-#'           ReturnEnabled = TRUE|FALSE,
-#'           SortEnabled = TRUE|FALSE,
-#'           HighlightEnabled = TRUE|FALSE,
-#'           AnalysisScheme = "string"
-#'         ),
-#'         DateOptions = list(
-#'           DefaultValue = "string",
-#'           SourceField = "string",
-#'           FacetEnabled = TRUE|FALSE,
-#'           SearchEnabled = TRUE|FALSE,
-#'           ReturnEnabled = TRUE|FALSE,
-#'           SortEnabled = TRUE|FALSE
-#'         ),
-#'         LatLonOptions = list(
-#'           DefaultValue = "string",
-#'           SourceField = "string",
-#'           FacetEnabled = TRUE|FALSE,
-#'           SearchEnabled = TRUE|FALSE,
-#'           ReturnEnabled = TRUE|FALSE,
-#'           SortEnabled = TRUE|FALSE
-#'         ),
-#'         IntArrayOptions = list(
-#'           DefaultValue = 123,
-#'           SourceFields = "string",
-#'           FacetEnabled = TRUE|FALSE,
-#'           SearchEnabled = TRUE|FALSE,
-#'           ReturnEnabled = TRUE|FALSE
-#'         ),
-#'         DoubleArrayOptions = list(
-#'           DefaultValue = 123.0,
-#'           SourceFields = "string",
-#'           FacetEnabled = TRUE|FALSE,
-#'           SearchEnabled = TRUE|FALSE,
-#'           ReturnEnabled = TRUE|FALSE
-#'         ),
-#'         LiteralArrayOptions = list(
-#'           DefaultValue = "string",
-#'           SourceFields = "string",
-#'           FacetEnabled = TRUE|FALSE,
-#'           SearchEnabled = TRUE|FALSE,
-#'           ReturnEnabled = TRUE|FALSE
-#'         ),
-#'         TextArrayOptions = list(
-#'           DefaultValue = "string",
-#'           SourceFields = "string",
-#'           ReturnEnabled = TRUE|FALSE,
-#'           HighlightEnabled = TRUE|FALSE,
-#'           AnalysisScheme = "string"
-#'         ),
-#'         DateArrayOptions = list(
-#'           DefaultValue = "string",
-#'           SourceFields = "string",
-#'           FacetEnabled = TRUE|FALSE,
-#'           SearchEnabled = TRUE|FALSE,
-#'           ReturnEnabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_index_fields(
-#'   DomainName = "string",
-#'   FieldNames = list(
-#'     "string"
-#'   ),
-#'   Deployed = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1569,48 +530,11 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
 #' Gets the scaling parameters configured for a domain
 #'
 #' @description
-#' Gets the scaling parameters configured for a domain. A domain's scaling
-#' parameters specify the desired search instance type and replication
-#' count. For more information, see [Configuring Scaling
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired search instance type and replication count. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">Configuring Scaling Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_describe_scaling_parameters(DomainName)
+#' See [https://paws-r.github.io/docs/cloudsearch/describe_scaling_parameters.html](https://paws-r.github.io/docs/cloudsearch/describe_scaling_parameters.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ScalingParameters = list(
-#'     Options = list(
-#'       DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
-#'       DesiredReplicationCount = 123,
-#'       DesiredPartitionCount = 123
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_scaling_parameters(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1636,49 +560,13 @@ cloudsearch_describe_scaling_parameters <- function(DomainName) {
 #' domain's document and search endpoints
 #'
 #' @description
-#' Gets information about the access policies that control access to the
-#' domain's document and search endpoints. By default, shows the
-#' configuration with any pending changes. Set the `Deployed` option to
-#' `true` to show the active configuration and exclude pending changes. For
-#' more information, see [Configuring Access for a Search
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Gets information about the access policies that control access to the domain's document and search endpoints. By default, shows the configuration with any pending changes. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for a Search Domain</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_describe_service_access_policies(DomainName, Deployed)
+#' See [https://paws-r.github.io/docs/cloudsearch/describe_service_access_policies.html](https://paws-r.github.io/docs/cloudsearch/describe_service_access_policies.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccessPolicies = list(
-#'     Options = "string",
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_service_access_policies(
-#'   DomainName = "string",
-#'   Deployed = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1703,63 +591,14 @@ cloudsearch_describe_service_access_policies <- function(DomainName, Deployed = 
 #' Gets the suggesters configured for a domain
 #'
 #' @description
-#' Gets the suggesters configured for a domain. A suggester enables you to
-#' display possible matches before users finish typing their queries. Can
-#' be limited to specific suggesters by name. By default, shows all
-#' suggesters and includes any pending changes to the configuration. Set
-#' the `Deployed` option to `true` to show the active configuration and
-#' exclude pending changes. For more information, see [Getting Search
-#' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Gets the suggesters configured for a domain. A suggester enables you to display possible matches before users finish typing their queries. Can be limited to specific suggesters by name. By default, shows all suggesters and includes any pending changes to the configuration. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_describe_suggesters(DomainName, SuggesterNames, Deployed)
+#' See [https://paws-r.github.io/docs/cloudsearch/describe_suggesters.html](https://paws-r.github.io/docs/cloudsearch/describe_suggesters.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param SuggesterNames The suggesters you want to describe.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Suggesters = list(
-#'     list(
-#'       Options = list(
-#'         SuggesterName = "string",
-#'         DocumentSuggesterOptions = list(
-#'           SourceField = "string",
-#'           FuzzyMatching = "none"|"low"|"high",
-#'           SortExpression = "string"
-#'         )
-#'       ),
-#'       Status = list(
-#'         CreationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         UpdateVersion = 123,
-#'         State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'         PendingDeletion = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_suggesters(
-#'   DomainName = "string",
-#'   SuggesterNames = list(
-#'     "string"
-#'   ),
-#'   Deployed = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1785,31 +624,11 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
 #' indexing options
 #'
 #' @description
-#' Tells the search domain to start indexing its documents using the latest
-#' indexing options. This operation must be invoked to activate options
-#' whose OptionStatus is `RequiresIndexDocuments`.
+#' Tells the search domain to start indexing its documents using the latest indexing options. This operation must be invoked to activate options whose OptionStatus is `RequiresIndexDocuments`.
 #'
-#' @usage
-#' cloudsearch_index_documents(DomainName)
+#' See [https://paws-r.github.io/docs/cloudsearch/index_documents.html](https://paws-r.github.io/docs/cloudsearch/index_documents.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FieldNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$index_documents(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1836,20 +655,7 @@ cloudsearch_index_documents <- function(DomainName) {
 #' @description
 #' Lists all search domains owned by an account.
 #'
-#' @usage
-#' cloudsearch_list_domain_names()
-#'
-
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' See [https://paws-r.github.io/docs/cloudsearch/list_domain_names.html](https://paws-r.github.io/docs/cloudsearch/list_domain_names.html) for full documentation.
 #'
 
 #'
@@ -1876,52 +682,15 @@ cloudsearch_list_domain_names <- function() {
 #' Configures the availability options for a domain
 #'
 #' @description
-#' Configures the availability options for a domain. Enabling the Multi-AZ
-#' option expands an Amazon CloudSearch domain to an additional
-#' Availability Zone in the same Region to increase fault tolerance in the
-#' event of a service disruption. Changes to the Multi-AZ option can take
-#' about half an hour to become active. For more information, see
-#' [Configuring Availability
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_update_availability_options(DomainName, MultiAZ)
+#' See [https://paws-r.github.io/docs/cloudsearch/update_availability_options.html](https://paws-r.github.io/docs/cloudsearch/update_availability_options.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param MultiAZ &#91;required&#93; You expand an existing search domain to a second Availability Zone by
 #' setting the Multi-AZ option to true. Similarly, you can turn off the
 #' Multi-AZ option to downgrade the domain to a single Availability Zone by
 #' setting the Multi-AZ option to `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AvailabilityOptions = list(
-#'     Options = TRUE|FALSE,
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_availability_options(
-#'   DomainName = "string",
-#'   MultiAZ = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1947,56 +716,15 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
 #' to the domain must arrive over HTTPS
 #'
 #' @description
-#' Updates the domain's endpoint options, specifically whether all requests
-#' to the domain must arrive over HTTPS. For more information, see
-#' [Configuring Domain Endpoint
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html" target="_blank">Configuring Domain Endpoint Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_update_domain_endpoint_options(DomainName,
-#'   DomainEndpointOptions)
+#' See [https://paws-r.github.io/docs/cloudsearch/update_domain_endpoint_options.html](https://paws-r.github.io/docs/cloudsearch/update_domain_endpoint_options.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; A string that represents the name of a domain.
 #' @param DomainEndpointOptions &#91;required&#93; Whether to require that all requests to the domain arrive over HTTPS. We
 #' recommend Policy-Min-TLS-1-2-2019-07 for TLSSecurityPolicy. For
 #' compatibility with older clients, the default is
 #' Policy-Min-TLS-1-0-2019-07.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainEndpointOptions = list(
-#'     Options = list(
-#'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_domain_endpoint_options(
-#'   DomainName = "string",
-#'   DomainEndpointOptions = list(
-#'     EnforceHTTPS = TRUE|FALSE,
-#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2021,58 +749,12 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
 #' Configures scaling parameters for a domain
 #'
 #' @description
-#' Configures scaling parameters for a domain. A domain's scaling
-#' parameters specify the desired search instance type and replication
-#' count. Amazon CloudSearch will still automatically scale your domain
-#' based on the volume of data and traffic, but not below the desired
-#' instance type and replication count. If the Multi-AZ option is enabled,
-#' these values control the resources used per Availability Zone. For more
-#' information, see [Configuring Scaling
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Configures scaling parameters for a domain. A domain's scaling parameters specify the desired search instance type and replication count. Amazon CloudSearch will still automatically scale your domain based on the volume of data and traffic, but not below the desired instance type and replication count. If the Multi-AZ option is enabled, these values control the resources used per Availability Zone. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">Configuring Scaling Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' @usage
-#' cloudsearch_update_scaling_parameters(DomainName, ScalingParameters)
+#' See [https://paws-r.github.io/docs/cloudsearch/update_scaling_parameters.html](https://paws-r.github.io/docs/cloudsearch/update_scaling_parameters.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param ScalingParameters &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ScalingParameters = list(
-#'     Options = list(
-#'       DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
-#'       DesiredReplicationCount = 123,
-#'       DesiredPartitionCount = 123
-#'     ),
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_scaling_parameters(
-#'   DomainName = "string",
-#'   ScalingParameters = list(
-#'     DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
-#'     DesiredReplicationCount = 123,
-#'     DesiredPartitionCount = 123
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2098,46 +780,13 @@ cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters)
 #' and search endpoints
 #'
 #' @description
-#' Configures the access rules that control access to the domain's document
-#' and search endpoints. For more information, see [Configuring Access for
-#' an Amazon CloudSearch
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html).
+#' Configures the access rules that control access to the domain's document and search endpoints. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for an Amazon CloudSearch Domain</a>.
 #'
-#' @usage
-#' cloudsearch_update_service_access_policies(DomainName, AccessPolicies)
+#' See [https://paws-r.github.io/docs/cloudsearch/update_service_access_policies.html](https://paws-r.github.io/docs/cloudsearch/update_service_access_policies.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param AccessPolicies &#91;required&#93; The access rules you want to configure. These rules replace any existing
 #' rules.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccessPolicies = list(
-#'     Options = "string",
-#'     Status = list(
-#'       CreationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdateVersion = 123,
-#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-#'       PendingDeletion = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_service_access_policies(
-#'   DomainName = "string",
-#'   AccessPolicies = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

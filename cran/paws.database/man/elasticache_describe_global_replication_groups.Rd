@@ -4,11 +4,15 @@
 \alias{elasticache_describe_global_replication_groups}
 \title{Returns information about a particular global replication group}
 \usage{
-elasticache_describe_global_replication_groups(GlobalReplicationGroupId,
-  MaxRecords, Marker, ShowMemberInfo)
+elasticache_describe_global_replication_groups(
+  GlobalReplicationGroupId = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  ShowMemberInfo = NULL
+)
 }
 \arguments{
-\item{GlobalReplicationGroupId}{The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{The name of the Global datastore}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified MaxRecords value, a marker is included
@@ -19,57 +23,11 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 
-\item{ShowMemberInfo}{Returns the list of members that comprise the Global Datastore.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  GlobalReplicationGroups = list(
-    list(
-      GlobalReplicationGroupId = "string",
-      GlobalReplicationGroupDescription = "string",
-      Status = "string",
-      CacheNodeType = "string",
-      Engine = "string",
-      EngineVersion = "string",
-      Members = list(
-        list(
-          ReplicationGroupId = "string",
-          ReplicationGroupRegion = "string",
-          Role = "string",
-          AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-          Status = "string"
-        )
-      ),
-      ClusterEnabled = TRUE|FALSE,
-      GlobalNodeGroups = list(
-        list(
-          GlobalNodeGroupId = "string",
-          Slots = "string"
-        )
-      ),
-      AuthTokenEnabled = TRUE|FALSE,
-      TransitEncryptionEnabled = TRUE|FALSE,
-      AtRestEncryptionEnabled = TRUE|FALSE,
-      ARN = "string"
-    )
-  )
-)
-}
+\item{ShowMemberInfo}{Returns the list of members that comprise the Global datastore.}
 }
 \description{
-Returns information about a particular global replication group. If no
-identifier is specified, returns information about all Global
-Datastores.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_global_replication_groups(
-  GlobalReplicationGroupId = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  ShowMemberInfo = TRUE|FALSE
-)
-}
-}
+Returns information about a particular global replication group. If no identifier is specified, returns information about all Global datastores.
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_global_replication_groups.html} for full documentation.
+}
 \keyword{internal}

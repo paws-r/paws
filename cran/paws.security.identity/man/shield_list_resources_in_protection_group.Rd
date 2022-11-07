@@ -4,47 +4,44 @@
 \alias{shield_list_resources_in_protection_group}
 \title{Retrieves the resources that are included in the protection group}
 \usage{
-shield_list_resources_in_protection_group(ProtectionGroupId, NextToken,
-  MaxResults)
+shield_list_resources_in_protection_group(
+  ProtectionGroupId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ProtectionGroupId}{[required] The name of the protection group. You use this to identify the
 protection group in lists and to manage the protection group, for
 example to update, delete, or describe it.}
 
-\item{NextToken}{The next token value from a previous call to
-\code{\link[=shield_list_resources_in_protection_group]{list_resources_in_protection_group}}.
-Pass null if this is the first call.}
+\item{NextToken}{When you request a list of objects from Shield Advanced, if the response
+does not include all of the remaining available objects, Shield Advanced
+includes a \code{NextToken} value in the response. You can retrieve the next
+batch of objects by requesting the list again and providing the token
+that was returned by the prior call in your request.
 
-\item{MaxResults}{The maximum number of resource ARN objects to return. If you leave this
-blank, Shield Advanced returns the first 20 results.
+You can indicate the maximum number of objects that you want Shield
+Advanced to return for a single call with the \code{MaxResults} setting.
+Shield Advanced will not return more than \code{MaxResults} objects, but may
+return fewer, even if more objects are still available.
 
-This is a maximum value. Shield Advanced might return the results in
-smaller batches. That is, the number of objects returned could be less
-than \code{MaxResults}, even if there are still more objects yet to return.
-If there are more objects to return, Shield Advanced returns a value in
-\code{NextToken} that you can use in your next request, to get the next batch
-of objects.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceArns = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
+Whenever more objects remain that Shield Advanced has not yet returned
+to you, the response will include a \code{NextToken} value.
+
+On your first call to a list operation, leave this setting empty.}
+
+\item{MaxResults}{The greatest number of objects that you want Shield Advanced to return
+to the list request. Shield Advanced might return fewer objects than you
+indicate in this setting, even if more objects are available. If there
+are more objects remaining, Shield Advanced will always also return a
+\code{NextToken} value in the response.
+
+The default setting is 20.}
 }
 \description{
 Retrieves the resources that are included in the protection group.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resources_in_protection_group(
-  ProtectionGroupId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/shield/list_resources_in_protection_group.html} for full documentation.
+}
 \keyword{internal}

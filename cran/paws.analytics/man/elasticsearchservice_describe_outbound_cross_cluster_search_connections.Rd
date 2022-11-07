@@ -6,7 +6,10 @@
 domain}
 \usage{
 elasticsearchservice_describe_outbound_cross_cluster_search_connections(
-  Filters, MaxResults, NextToken)
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filters}{A list of filters used to match properties for outbound cross-cluster
@@ -25,50 +28,9 @@ specified, defaults to 100.}
 \item{NextToken}{NextToken is sent in case the earlier API call results contain the
 NextToken. It is used for pagination.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CrossClusterSearchConnections = list(
-    list(
-      SourceDomainInfo = list(
-        OwnerId = "string",
-        DomainName = "string",
-        Region = "string"
-      ),
-      DestinationDomainInfo = list(
-        OwnerId = "string",
-        DomainName = "string",
-        Region = "string"
-      ),
-      CrossClusterSearchConnectionId = "string",
-      ConnectionAlias = "string",
-      ConnectionStatus = list(
-        StatusCode = "PENDING_ACCEPTANCE"|"VALIDATING"|"VALIDATION_FAILED"|"PROVISIONING"|"ACTIVE"|"REJECTED"|"DELETING"|"DELETED",
-        Message = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all the outbound cross-cluster search connections for a source
-domain.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_outbound_cross_cluster_search_connections(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists all the outbound cross-cluster search connections for a source domain.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/describe_outbound_cross_cluster_search_connections.html} for full documentation.
+}
 \keyword{internal}

@@ -9,22 +9,9 @@ worklink_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the fleet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Retrieves a list of tags for the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -3,27 +3,13 @@
 \name{iam_list_open_id_connect_providers}
 \alias{iam_list_open_id_connect_providers}
 \title{Lists information about the IAM OpenID Connect (OIDC) provider resource
-objects defined in the AWS account}
+objects defined in the Amazon Web Services account}
 \usage{
 iam_list_open_id_connect_providers()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OpenIDConnectProviderList = list(
-    list(
-      Arn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists information about the IAM OpenID Connect (OIDC) provider resource
-objects defined in the AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_open_id_connect_providers()
-}
-}
+Lists information about the IAM OpenID Connect (OIDC) provider resource objects defined in the Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/iam/list_open_id_connect_providers.html} for full documentation.
+}
 \keyword{internal}

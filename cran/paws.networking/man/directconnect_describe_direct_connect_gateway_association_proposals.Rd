@@ -6,8 +6,12 @@
 virtual private gateway or transit gateway and a Direct Connect gateway}
 \usage{
 directconnect_describe_direct_connect_gateway_association_proposals(
-  directConnectGatewayId, proposalId, associatedGatewayId, maxResults,
-  nextToken)
+  directConnectGatewayId = NULL,
+  proposalId = NULL,
+  associatedGatewayId = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
@@ -25,49 +29,9 @@ returned.}
 
 \item{nextToken}{The token for the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  directConnectGatewayAssociationProposals = list(
-    list(
-      proposalId = "string",
-      directConnectGatewayId = "string",
-      directConnectGatewayOwnerAccount = "string",
-      proposalState = "requested"|"accepted"|"deleted",
-      associatedGateway = list(
-        id = "string",
-        type = "virtualPrivateGateway"|"transitGateway",
-        ownerAccount = "string",
-        region = "string"
-      ),
-      existingAllowedPrefixesToDirectConnectGateway = list(
-        list(
-          cidr = "string"
-        )
-      ),
-      requestedAllowedPrefixesToDirectConnectGateway = list(
-        list(
-          cidr = "string"
-        )
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Describes one or more association proposals for connection between a
-virtual private gateway or transit gateway and a Direct Connect gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_direct_connect_gateway_association_proposals(
-  directConnectGatewayId = "string",
-  proposalId = "string",
-  associatedGatewayId = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
+Describes one or more association proposals for connection between a virtual private gateway or transit gateway and a Direct Connect gateway.
 
+See \url{https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_association_proposals.html} for full documentation.
+}
 \keyword{internal}

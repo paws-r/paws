@@ -2,7 +2,7 @@
 % Please edit documentation in R/xray_operations.R
 \name{xray_untag_resource}
 \alias{xray_untag_resource}
-\title{Removes tags from an AWS X-Ray group or sampling rule}
+\title{Removes tags from an Amazon Web Services X-Ray group or sampling rule}
 \usage{
 xray_untag_resource(ResourceARN, TagKeys)
 }
@@ -12,21 +12,9 @@ xray_untag_resource(ResourceARN, TagKeys)
 \item{TagKeys}{[required] Keys for one or more tags that you want to remove from an X-Ray group or
 sampling rule.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes tags from an AWS X-Ray group or sampling rule. You cannot edit
-or delete system tags (those with an \verb{aws:} prefix).
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceARN = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes tags from an Amazon Web Services X-Ray group or sampling rule. You cannot edit or delete system tags (those with an \verb{aws:} prefix).
 
+See \url{https://paws-r.github.io/docs/xray/untag_resource.html} for full documentation.
+}
 \keyword{internal}

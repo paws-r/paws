@@ -5,8 +5,11 @@
 \title{Replaces the current set of policies for the specified load balancer
 port with the specified set of policies}
 \usage{
-elb_set_load_balancer_policies_of_listener(LoadBalancerName,
-  LoadBalancerPort, PolicyNames)
+elb_set_load_balancer_policies_of_listener(
+  LoadBalancerName,
+  LoadBalancerPort,
+  PolicyNames
+)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -17,44 +20,9 @@ elb_set_load_balancer_policies_of_listener(LoadBalancerName,
 enabled. If you omit a policy that is currently enabled, it is disabled.
 If the list is empty, all current policies are disabled.}
 }
-\value{
-An empty list.
-}
 \description{
-Replaces the current set of policies for the specified load balancer
-port with the specified set of policies.
+Replaces the current set of policies for the specified load balancer port with the specified set of policies.
 
-To enable back-end server authentication, use
-\code{\link[=elb_set_load_balancer_policies_for_backend_server]{set_load_balancer_policies_for_backend_server}}.
-
-For more information about setting policies, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html}{Update the SSL Negotiation Configuration},
-\href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration}{Duration-Based Session Stickiness},
-and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application}{Application-Controlled Session Stickiness}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_load_balancer_policies_of_listener(
-  LoadBalancerName = "string",
-  LoadBalancerPort = 123,
-  PolicyNames = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example replaces the policies that are currently associated with
-# the specified listener.
-svc$set_load_balancer_policies_of_listener(
-  LoadBalancerName = "my-load-balancer",
-  LoadBalancerPort = 80L,
-  PolicyNames = list(
-    "my-SSLNegotiation-policy"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/set_load_balancer_policies_of_listener.html} for full documentation.
 }
 \keyword{internal}

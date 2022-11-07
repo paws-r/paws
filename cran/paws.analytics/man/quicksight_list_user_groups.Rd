@@ -5,15 +5,21 @@
 \title{Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
 member of}
 \usage{
-quicksight_list_user_groups(UserName, AwsAccountId, Namespace,
-  NextToken, MaxResults)
+quicksight_list_user_groups(
+  UserName,
+  AwsAccountId,
+  Namespace,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{UserName}{[required] The Amazon QuickSight user name that you want to list group memberships
 for.}
 
-\item{AwsAccountId}{[required] The AWS account ID that the user is in. Currently, you use the ID for
-the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID that the user is in. Currently, you
+use the ID for the Amazon Web Services account that contains your Amazon
+QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 
@@ -21,35 +27,9 @@ the AWS account that contains your Amazon QuickSight account.}
 
 \item{MaxResults}{The maximum number of results to return from this request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GroupList = list(
-    list(
-      Arn = "string",
-      GroupName = "string",
-      Description = "string",
-      PrincipalId = "string"
-    )
-  ),
-  NextToken = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
-member of.
-}
-\section{Request syntax}{
-\preformatted{svc$list_user_groups(
-  UserName = "string",
-  AwsAccountId = "string",
-  Namespace = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of.
 
+See \url{https://paws-r.github.io/docs/quicksight/list_user_groups.html} for full documentation.
+}
 \keyword{internal}

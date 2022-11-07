@@ -4,56 +4,25 @@
 \alias{configservice_describe_conformance_packs}
 \title{Returns a list of one or more conformance packs}
 \usage{
-configservice_describe_conformance_packs(ConformancePackNames, Limit,
-  NextToken)
+configservice_describe_conformance_packs(
+  ConformancePackNames = NULL,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ConformancePackNames}{Comma-separated list of conformance pack names for which you want
-details. If you do not specify any names, AWS Config returns details for
-all your conformance packs.}
+details. If you do not specify any names, Config returns details for all
+your conformance packs.}
 
 \item{Limit}{The maximum number of conformance packs returned on each page.}
 
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConformancePackDetails = list(
-    list(
-      ConformancePackName = "string",
-      ConformancePackArn = "string",
-      ConformancePackId = "string",
-      DeliveryS3Bucket = "string",
-      DeliveryS3KeyPrefix = "string",
-      ConformancePackInputParameters = list(
-        list(
-          ParameterName = "string",
-          ParameterValue = "string"
-        )
-      ),
-      LastUpdateRequestedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatedBy = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of one or more conformance packs.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_conformance_packs(
-  ConformancePackNames = list(
-    "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/configservice/describe_conformance_packs.html} for full documentation.
+}
 \keyword{internal}

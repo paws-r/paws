@@ -4,15 +4,19 @@
 \alias{ssm_describe_maintenance_window_tasks}
 \title{Lists the tasks in a maintenance window}
 \usage{
-ssm_describe_maintenance_window_tasks(WindowId, Filters, MaxResults,
-  NextToken)
+ssm_describe_maintenance_window_tasks(
+  WindowId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the maintenance window whose tasks should be retrieved.}
 
 \item{Filters}{Optional filters used to narrow down the scope of the returned tasks.
-The supported filter keys are WindowTaskId, TaskArn, Priority, and
-TaskType.}
+The supported filter keys are \code{WindowTaskId}, \code{TaskArn}, \code{Priority}, and
+\code{TaskType}.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -21,70 +25,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tasks = list(
-    list(
-      WindowId = "string",
-      WindowTaskId = "string",
-      TaskArn = "string",
-      Type = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-      Targets = list(
-        list(
-          Key = "string",
-          Values = list(
-            "string"
-          )
-        )
-      ),
-      TaskParameters = list(
-        list(
-          Values = list(
-            "string"
-          )
-        )
-      ),
-      Priority = 123,
-      LoggingInfo = list(
-        S3BucketName = "string",
-        S3KeyPrefix = "string",
-        S3Region = "string"
-      ),
-      ServiceRoleArn = "string",
-      MaxConcurrency = "string",
-      MaxErrors = "string",
-      Name = "string",
-      Description = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the tasks in a maintenance window.
 
-For maintenance window tasks without a specified target, you cannot
-supply values for \code{--max-errors} and \code{--max-concurrency}. Instead, the
-system inserts a placeholder value of \code{1}, which may be reported in the
-response to this command. These values do not affect the running of your
-task and can be ignored.
+See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_tasks.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_maintenance_window_tasks(
-  WindowId = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

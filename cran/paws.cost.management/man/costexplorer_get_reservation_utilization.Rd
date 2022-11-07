@@ -4,15 +4,22 @@
 \alias{costexplorer_get_reservation_utilization}
 \title{Retrieves the reservation utilization for your account}
 \usage{
-costexplorer_get_reservation_utilization(TimePeriod, GroupBy,
-  Granularity, Filter, SortBy, NextPageToken, MaxResults)
+costexplorer_get_reservation_utilization(
+  TimePeriod,
+  GroupBy = NULL,
+  Granularity = NULL,
+  Filter = NULL,
+  SortBy = NULL,
+  NextPageToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{TimePeriod}{[required] Sets the start and end dates for retrieving RI utilization. The start
-date is inclusive, but the end date is exclusive. For example, if
-\code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and
-usage data is retrieved from \code{2017-01-01} up to and including
-\code{2017-04-30} but not including \code{2017-05-01}.}
+\item{TimePeriod}{[required] Sets the start and end dates for retrieving Reserved Instance (RI)
+utilization. The start date is inclusive, but the end date is exclusive.
+For example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then
+the cost and usage data is retrieved from \code{2017-01-01} up to and
+including \code{2017-04-30} but not including \code{2017-05-01}.}
 
 \item{GroupBy}{Groups only by \code{SUBSCRIPTION_ID}. Metadata is included.}
 
@@ -49,7 +56,7 @@ object as the other operations, but only \code{AND} is supported among each
 dimension, and nesting is supported up to only one level deep. If there
 are multiple values for a dimension, they are OR'd together.}
 
-\item{SortBy}{The value by which you want to sort the data.
+\item{SortBy}{The value that you want to sort the data by.
 
 The following values are supported for \code{Key}:
 \itemize{
@@ -72,162 +79,20 @@ The following values are supported for \code{Key}:
 \item \code{UnrealizedSavings}
 }
 
-Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
+The supported values for \code{SortOrder} are \code{ASCENDING} and \code{DESCENDING}.}
 
-\item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
-when the response from a previous call has more results than the maximum
-page size.}
+\item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
+provides the token when the response from a previous call has more
+results than the maximum page size.}
 
 \item{MaxResults}{The maximum number of objects that you returned for this request. If
-more objects are available, in the response, AWS provides a
-NextPageToken value that you can use in a subsequent call to get the
-next batch of objects.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UtilizationsByTime = list(
-    list(
-      TimePeriod = list(
-        Start = "string",
-        End = "string"
-      ),
-      Groups = list(
-        list(
-          Key = "string",
-          Value = "string",
-          Attributes = list(
-            "string"
-          ),
-          Utilization = list(
-            UtilizationPercentage = "string",
-            UtilizationPercentageInUnits = "string",
-            PurchasedHours = "string",
-            PurchasedUnits = "string",
-            TotalActualHours = "string",
-            TotalActualUnits = "string",
-            UnusedHours = "string",
-            UnusedUnits = "string",
-            OnDemandCostOfRIHoursUsed = "string",
-            NetRISavings = "string",
-            TotalPotentialRISavings = "string",
-            AmortizedUpfrontFee = "string",
-            AmortizedRecurringFee = "string",
-            TotalAmortizedFee = "string",
-            RICostForUnusedHours = "string",
-            RealizedSavings = "string",
-            UnrealizedSavings = "string"
-          )
-        )
-      ),
-      Total = list(
-        UtilizationPercentage = "string",
-        UtilizationPercentageInUnits = "string",
-        PurchasedHours = "string",
-        PurchasedUnits = "string",
-        TotalActualHours = "string",
-        TotalActualUnits = "string",
-        UnusedHours = "string",
-        UnusedUnits = "string",
-        OnDemandCostOfRIHoursUsed = "string",
-        NetRISavings = "string",
-        TotalPotentialRISavings = "string",
-        AmortizedUpfrontFee = "string",
-        AmortizedRecurringFee = "string",
-        TotalAmortizedFee = "string",
-        RICostForUnusedHours = "string",
-        RealizedSavings = "string",
-        UnrealizedSavings = "string"
-      )
-    )
-  ),
-  Total = list(
-    UtilizationPercentage = "string",
-    UtilizationPercentageInUnits = "string",
-    PurchasedHours = "string",
-    PurchasedUnits = "string",
-    TotalActualHours = "string",
-    TotalActualUnits = "string",
-    UnusedHours = "string",
-    UnusedUnits = "string",
-    OnDemandCostOfRIHoursUsed = "string",
-    NetRISavings = "string",
-    TotalPotentialRISavings = "string",
-    AmortizedUpfrontFee = "string",
-    AmortizedRecurringFee = "string",
-    TotalAmortizedFee = "string",
-    RICostForUnusedHours = "string",
-    RealizedSavings = "string",
-    UnrealizedSavings = "string"
-  ),
-  NextPageToken = "string"
-)
-}
+more objects are available, in the response, Amazon Web Services
+provides a NextPageToken value that you can use in a subsequent call to
+get the next batch of objects.}
 }
 \description{
-Retrieves the reservation utilization for your account. Management
-account in an organization have access to member accounts. You can
-filter data by dimensions in a time period. You can use
-\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} to determine
-the possible dimension values. Currently, you can group only by
-\code{SUBSCRIPTION_ID}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_reservation_utilization(
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  GroupBy = list(
-    list(
-      Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
-      Key = "string"
-    )
-  ),
-  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  SortBy = list(
-    Key = "string",
-    SortOrder = "ASCENDING"|"DESCENDING"
-  ),
-  NextPageToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves the reservation utilization for your account. Management account in an organization have access to member accounts. You can filter data by dimensions in a time period. You can use \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} to determine the possible dimension values. Currently, you can group only by \code{SUBSCRIPTION_ID}.
 
+See \url{https://paws-r.github.io/docs/costexplorer/get_reservation_utilization.html} for full documentation.
+}
 \keyword{internal}

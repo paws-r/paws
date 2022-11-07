@@ -4,37 +4,24 @@
 \alias{ecr_put_lifecycle_policy}
 \title{Creates or updates the lifecycle policy for the specified repository}
 \usage{
-ecr_put_lifecycle_policy(registryId, repositoryName,
-  lifecyclePolicyText)
+ecr_put_lifecycle_policy(
+  registryId = NULL,
+  repositoryName,
+  lifecyclePolicyText
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository. If you do not specify a registry, the default registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository. If you do not specify a registry, the default
+registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository to receive the policy.}
 
 \item{lifecyclePolicyText}{[required] The JSON repository policy text to apply to the repository.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  repositoryName = "string",
-  lifecyclePolicyText = "string"
-)
-}
-}
 \description{
-Creates or updates the lifecycle policy for the specified repository.
-For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle Policy Template}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_lifecycle_policy(
-  registryId = "string",
-  repositoryName = "string",
-  lifecyclePolicyText = "string"
-)
-}
-}
+Creates or updates the lifecycle policy for the specified repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle policy template}.
 
+See \url{https://paws-r.github.io/docs/ecr/put_lifecycle_policy.html} for full documentation.
+}
 \keyword{internal}

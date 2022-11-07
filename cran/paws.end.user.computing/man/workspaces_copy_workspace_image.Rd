@@ -5,8 +5,13 @@
 \title{Copies the specified image from the specified Region to the current
 Region}
 \usage{
-workspaces_copy_workspace_image(Name, Description, SourceImageId,
-  SourceRegion, Tags)
+workspaces_copy_workspace_image(
+  Name,
+  Description = NULL,
+  SourceImageId,
+  SourceRegion,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the image.}
@@ -19,44 +24,9 @@ workspaces_copy_workspace_image(Name, Description, SourceImageId,
 
 \item{Tags}{The tags for the image.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageId = "string"
-)
-}
-}
 \description{
-Copies the specified image from the specified Region to the current
-Region. For more information about copying images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html}{Copy a Custom WorkSpaces Image}.
+Copies the specified image from the specified Region to the current Region. For more information about copying images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html}{Copy a Custom WorkSpaces Image}.
 
-In the China (Ningxia) Region, you can copy images only within the same
-Region.
-
-In the AWS GovCloud (US-West) Region, to copy images to and from other
-AWS Regions, contact AWS Support.
-
-Before copying a shared image, be sure to verify that it has been shared
-from the correct AWS account. To determine if an image has been shared
-and to see the AWS account ID that owns an image, use the
-\href{https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html}{DescribeWorkSpaceImages}
-and
-\code{\link[=workspaces_describe_workspace_image_permissions]{describe_workspace_image_permissions}}
-API operations.
+See \url{https://paws-r.github.io/docs/workspaces/copy_workspace_image.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$copy_workspace_image(
-  Name = "string",
-  Description = "string",
-  SourceImageId = "string",
-  SourceRegion = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

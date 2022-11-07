@@ -5,8 +5,7 @@
 \title{Returns information about the association between an Amazon Lex bot and
 a messaging platform}
 \usage{
-lexmodelbuildingservice_get_bot_channel_association(name, botName,
-  botAlias)
+lexmodelbuildingservice_get_bot_channel_association(name, botName, botAlias)
 }
 \arguments{
 \item{name}{[required] The name of the association between the bot and the channel. The name is
@@ -17,38 +16,9 @@ case sensitive.}
 \item{botAlias}{[required] An alias pointing to the specific version of the Amazon Lex bot to which
 this association is being made.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  description = "string",
-  botAlias = "string",
-  botName = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  type = "Facebook"|"Slack"|"Twilio-Sms"|"Kik",
-  botConfiguration = list(
-    "string"
-  ),
-  status = "IN_PROGRESS"|"CREATED"|"FAILED",
-  failureReason = "string"
-)
-}
-}
 \description{
-Returns information about the association between an Amazon Lex bot and
-a messaging platform.
+Returns information about the association between an Amazon Lex bot and a messaging platform.
 
-This operation requires permissions for the
-\code{lex:GetBotChannelAssociation} action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_association.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_bot_channel_association(
-  name = "string",
-  botName = "string",
-  botAlias = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -309,6 +309,30 @@ NULL
   return(populate(args, shape))
 }
 
+.lexmodelbuildingservice$get_migration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(migrationId = structure(logical(0), tags = list(location = "uri", locationName = "migrationId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lexmodelbuildingservice$get_migration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(migrationId = structure(logical(0), tags = list(type = "string")), v1BotName = structure(logical(0), tags = list(type = "string")), v1BotVersion = structure(logical(0), tags = list(type = "string")), v1BotLocale = structure(logical(0), tags = list(type = "string")), v2BotId = structure(logical(0), tags = list(type = "string")), v2BotRole = structure(logical(0), tags = list(type = "string")), migrationStatus = structure(logical(0), tags = list(type = "string")), migrationStrategy = structure(logical(0), tags = list(type = "string")), migrationTimestamp = structure(logical(0), tags = list(type = "timestamp")), alerts = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), details = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), referenceURLs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lexmodelbuildingservice$get_migrations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(sortByAttribute = structure(logical(0), tags = list(location = "querystring", locationName = "sortByAttribute", type = "string")), sortByOrder = structure(logical(0), tags = list(location = "querystring", locationName = "sortByOrder", type = "string")), v1BotNameContains = structure(logical(0), tags = list(location = "querystring", locationName = "v1BotNameContains", type = "string")), migrationStatusEquals = structure(logical(0), tags = list(location = "querystring", locationName = "migrationStatusEquals", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lexmodelbuildingservice$get_migrations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(migrationSummaries = structure(list(structure(list(migrationId = structure(logical(0), tags = list(type = "string")), v1BotName = structure(logical(0), tags = list(type = "string")), v1BotVersion = structure(logical(0), tags = list(type = "string")), v1BotLocale = structure(logical(0), tags = list(type = "string")), v2BotId = structure(logical(0), tags = list(type = "string")), v2BotRole = structure(logical(0), tags = list(type = "string")), migrationStatus = structure(logical(0), tags = list(type = "string")), migrationStrategy = structure(logical(0), tags = list(type = "string")), migrationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lexmodelbuildingservice$get_slot_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(name = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), version = structure(logical(0), tags = list(location = "uri", locationName = "version", type = "string"))), tags = list(type = "structure"))
@@ -426,6 +450,18 @@ NULL
 .lexmodelbuildingservice$start_import_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), mergeStrategy = structure(logical(0), tags = list(type = "string")), importId = structure(logical(0), tags = list(type = "string")), importStatus = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lexmodelbuildingservice$start_migration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(v1BotName = structure(logical(0), tags = list(type = "string")), v1BotVersion = structure(logical(0), tags = list(type = "string")), v2BotName = structure(logical(0), tags = list(type = "string")), v2BotRole = structure(logical(0), tags = list(type = "string")), migrationStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lexmodelbuildingservice$start_migration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(v1BotName = structure(logical(0), tags = list(type = "string")), v1BotVersion = structure(logical(0), tags = list(type = "string")), v1BotLocale = structure(logical(0), tags = list(type = "string")), v2BotId = structure(logical(0), tags = list(type = "string")), v2BotRole = structure(logical(0), tags = list(type = "string")), migrationId = structure(logical(0), tags = list(type = "string")), migrationStrategy = structure(logical(0), tags = list(type = "string")), migrationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

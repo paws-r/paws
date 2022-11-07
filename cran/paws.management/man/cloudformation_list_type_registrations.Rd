@@ -2,27 +2,31 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_type_registrations}
 \alias{cloudformation_list_type_registrations}
-\title{Returns a list of registration tokens for the specified type(s)}
+\title{Returns a list of registration tokens for the specified extension(s)}
 \usage{
-cloudformation_list_type_registrations(Type, TypeName, TypeArn,
-  RegistrationStatusFilter, MaxResults, NextToken)
+cloudformation_list_type_registrations(
+  Type = NULL,
+  TypeName = NULL,
+  TypeArn = NULL,
+  RegistrationStatusFilter = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{Type}{The kind of type.
-
-Currently the only valid value is \code{RESOURCE}.
+\item{Type}{The kind of extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{TypeName}{The name of the type.
+\item{TypeName}{The name of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{TypeArn}{The Amazon Resource Name (ARN) of the type.
+\item{TypeArn}{The Amazon Resource Name (ARN) of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{RegistrationStatusFilter}{The current status of the type registration request.
+\item{RegistrationStatusFilter}{The current status of the extension registration request.
 
 The default is \code{IN_PROGRESS}.}
 
@@ -31,35 +35,16 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 
-\item{NextToken}{If the previous paginated request didn't return all of the remaining
+\item{NextToken}{If the previous paginated request didn't return all the remaining
 results, the response object's \code{NextToken} parameter value is set to a
 token. To retrieve the next set of results, call this action again and
 assign that token to the request object's \code{NextToken} parameter. If
 there are no remaining results, the previous response object's
 \code{NextToken} parameter is set to \code{null}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegistrationTokenList = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of registration tokens for the specified type(s).
-}
-\section{Request syntax}{
-\preformatted{svc$list_type_registrations(
-  Type = "RESOURCE"|"MODULE",
-  TypeName = "string",
-  TypeArn = "string",
-  RegistrationStatusFilter = "COMPLETE"|"IN_PROGRESS"|"FAILED",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of registration tokens for the specified extension(s).
 
+See \url{https://paws-r.github.io/docs/cloudformation/list_type_registrations.html} for full documentation.
+}
 \keyword{internal}

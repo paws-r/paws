@@ -2,15 +2,15 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_list_retirable_grants}
 \alias{kms_list_retirable_grants}
-\title{Returns all grants in which the specified principal is the
-RetiringPrincipal in the grant}
+\title{Returns information about all grants in the Amazon Web Services account
+and Region that have the specified retiring principal}
 \usage{
-kms_list_retirable_grants(Limit, Marker, RetiringPrincipal)
+kms_list_retirable_grants(Limit = NULL, Marker = NULL, RetiringPrincipal)
 }
 \arguments{
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
-When this value is present, AWS KMS does not return more than the
-specified number of items, but it might return fewer.
+When this value is present, KMS does not return more than the specified
+number of items, but it might return fewer.
 
 This value is optional. If you include a value, it must be between 1 and
 100, inclusive. If you do not include a value, it defaults to 50.}
@@ -20,91 +20,19 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 
 \item{RetiringPrincipal}{[required] The retiring principal for which to list grants. Enter a principal in
-your AWS account.
+your Amazon Web Services account.
 
 To specify the retiring principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
-of an AWS principal. Valid AWS principals include AWS accounts (root),
-IAM users, federated users, and assumed role users. For examples of the
-ARN syntax for specifying a principal, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{AWS Identity and Access Management (IAM)}
+of an Amazon Web Services principal. Valid Amazon Web Services
+principals include Amazon Web Services accounts (root), IAM users,
+federated users, and assumed role users. For examples of the ARN syntax
+for specifying a principal, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{Amazon Web Services Identity and Access Management (IAM)}
 in the Example ARNs section of the \emph{Amazon Web Services General
 Reference}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Grants = list(
-    list(
-      KeyId = "string",
-      GrantId = "string",
-      Name = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      GranteePrincipal = "string",
-      RetiringPrincipal = "string",
-      IssuingAccount = "string",
-      Operations = list(
-        "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"Sign"|"Verify"|"GetPublicKey"|"CreateGrant"|"RetireGrant"|"DescribeKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"
-      ),
-      Constraints = list(
-        EncryptionContextSubset = list(
-          "string"
-        ),
-        EncryptionContextEquals = list(
-          "string"
-        )
-      )
-    )
-  ),
-  NextMarker = "string",
-  Truncated = TRUE|FALSE
-)
-}
-}
 \description{
-Returns all grants in which the specified principal is the
-\code{RetiringPrincipal} in the grant.
+Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal.
 
-You can specify any principal in your AWS account. The grants that are
-returned include grants for CMKs in your AWS account and other AWS
-accounts.
-
-You might use this operation to determine which grants you may retire.
-To retire a grant, use the \code{\link[=kms_retire_grant]{retire_grant}} operation.
-
-\strong{Cross-account use}: You must specify a principal in your AWS account.
-However, this operation can return grants in any AWS account. You do not
-need \code{kms:ListRetirableGrants} permission (or any other additional
-permission) in any AWS account other than your own.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListRetirableGrants}
-(IAM policy) in your AWS account.
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_create_grant]{create_grant}}
-\item \code{\link[=kms_list_grants]{list_grants}}
-\item \code{\link[=kms_retire_grant]{retire_grant}}
-\item \code{\link[=kms_revoke_grant]{revoke_grant}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_retirable_grants(
-  Limit = 123,
-  Marker = "string",
-  RetiringPrincipal = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists the grants that the specified principal
-# (identity) can retire.
-svc$list_retirable_grants(
-  RetiringPrincipal = "arn:aws:iam::111122223333:role/ExampleRole"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/list_retirable_grants.html} for full documentation.
 }
 \keyword{internal}

@@ -5,10 +5,23 @@
 \title{Creates an application, optionally including an AWS SAM file to create
 the first application version in the same call}
 \usage{
-serverlessapplicationrepository_create_application(Author, Description,
-  HomePageUrl, Labels, LicenseBody, LicenseUrl, Name, ReadmeBody,
-  ReadmeUrl, SemanticVersion, SourceCodeArchiveUrl, SourceCodeUrl,
-  SpdxLicenseId, TemplateBody, TemplateUrl)
+serverlessapplicationrepository_create_application(
+  Author,
+  Description,
+  HomePageUrl = NULL,
+  Labels = NULL,
+  LicenseBody = NULL,
+  LicenseUrl = NULL,
+  Name,
+  ReadmeBody = NULL,
+  ReadmeUrl = NULL,
+  SemanticVersion = NULL,
+  SourceCodeArchiveUrl = NULL,
+  SourceCodeUrl = NULL,
+  SpdxLicenseId = NULL,
+  TemplateBody = NULL,
+  TemplateUrl = NULL
+)
 }
 \arguments{
 \item{Author}{[required] The name of the author publishing the app.
@@ -32,7 +45,7 @@ Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";}
 
 \item{LicenseBody}{A local text file that contains the license of the app that matches the
 spdxLicenseID value of your application. The file has the format
-file://<path>/<filename>.
+file://\<path\>/\<filename\>.
 
 Maximum size 5 MB
 
@@ -55,7 +68,7 @@ Pattern: "[a-zA-Z0-9\\\\-]+";}
 
 \item{ReadmeBody}{A local text readme file in Markdown language that contains a more
 detailed description of the application and how it works. The file has
-the format file://<path>/<filename>.
+the format file://\<path\>/\<filename\>.
 
 Maximum size 5 MB
 
@@ -85,7 +98,7 @@ for example the URL of a specific GitHub commit.}
 \item{SpdxLicenseId}{A valid identifier from \url{https://spdx.org/licenses/}.}
 
 \item{TemplateBody}{The local raw packaged AWS SAM template file of your application. The
-file has the format file://<path>/<filename>.
+file has the format file://\<path\>/\<filename\>.
 
 You can specify only one of templateBody and templateUrl; otherwise an
 error results.}
@@ -96,83 +109,9 @@ application.
 You can specify only one of templateBody and templateUrl; otherwise an
 error results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationId = "string",
-  Author = "string",
-  CreationTime = "string",
-  Description = "string",
-  HomePageUrl = "string",
-  IsVerifiedAuthor = TRUE|FALSE,
-  Labels = list(
-    "string"
-  ),
-  LicenseUrl = "string",
-  Name = "string",
-  ReadmeUrl = "string",
-  SpdxLicenseId = "string",
-  VerifiedAuthorUrl = "string",
-  Version = list(
-    ApplicationId = "string",
-    CreationTime = "string",
-    ParameterDefinitions = list(
-      list(
-        AllowedPattern = "string",
-        AllowedValues = list(
-          "string"
-        ),
-        ConstraintDescription = "string",
-        DefaultValue = "string",
-        Description = "string",
-        MaxLength = 123,
-        MaxValue = 123,
-        MinLength = 123,
-        MinValue = 123,
-        Name = "string",
-        NoEcho = TRUE|FALSE,
-        ReferencedByResources = list(
-          "string"
-        ),
-        Type = "string"
-      )
-    ),
-    RequiredCapabilities = list(
-      "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
-    ),
-    ResourcesSupported = TRUE|FALSE,
-    SemanticVersion = "string",
-    SourceCodeArchiveUrl = "string",
-    SourceCodeUrl = "string",
-    TemplateUrl = "string"
-  )
-)
-}
-}
 \description{
-Creates an application, optionally including an AWS SAM file to create
-the first application version in the same call.
-}
-\section{Request syntax}{
-\preformatted{svc$create_application(
-  Author = "string",
-  Description = "string",
-  HomePageUrl = "string",
-  Labels = list(
-    "string"
-  ),
-  LicenseBody = "string",
-  LicenseUrl = "string",
-  Name = "string",
-  ReadmeBody = "string",
-  ReadmeUrl = "string",
-  SemanticVersion = "string",
-  SourceCodeArchiveUrl = "string",
-  SourceCodeUrl = "string",
-  SpdxLicenseId = "string",
-  TemplateBody = "string",
-  TemplateUrl = "string"
-)
-}
-}
+Creates an application, optionally including an AWS SAM file to create the first application version in the same call.
 
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/create_application.html} for full documentation.
+}
 \keyword{internal}

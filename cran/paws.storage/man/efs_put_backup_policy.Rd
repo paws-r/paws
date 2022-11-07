@@ -12,26 +12,9 @@ efs_put_backup_policy(FileSystemId, BackupPolicy)
 \item{BackupPolicy}{[required] The backup policy included in the
 \code{\link[=efs_put_backup_policy]{put_backup_policy}} request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupPolicy = list(
-    Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
-  )
-)
-}
-}
 \description{
-Updates the file system's backup policy. Use this action to start or
-stop automatic backups of the file system.
-}
-\section{Request syntax}{
-\preformatted{svc$put_backup_policy(
-  FileSystemId = "string",
-  BackupPolicy = list(
-    Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
-  )
-)
-}
-}
+Updates the file system's backup policy. Use this action to start or stop automatic backups of the file system.
 
+See \url{https://paws-r.github.io/docs/efs/put_backup_policy.html} for full documentation.
+}
 \keyword{internal}

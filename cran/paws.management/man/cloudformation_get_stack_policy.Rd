@@ -7,24 +7,12 @@
 cloudformation_get_stack_policy(StackName)
 }
 \arguments{
-\item{StackName}{[required] The name or unique stack ID that is associated with the stack whose
+\item{StackName}{[required] The name or unique stack ID that's associated with the stack whose
 policy you want to get.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackPolicyBody = "string"
-)
-}
-}
 \description{
-Returns the stack policy for a specified stack. If a stack doesn't have
-a policy, a null value is returned.
-}
-\section{Request syntax}{
-\preformatted{svc$get_stack_policy(
-  StackName = "string"
-)
-}
-}
+Returns the stack policy for a specified stack. If a stack doesn't have a policy, a null value is returned.
 
+See \url{https://paws-r.github.io/docs/cloudformation/get_stack_policy.html} for full documentation.
+}
 \keyword{internal}

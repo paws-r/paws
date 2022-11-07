@@ -4,86 +4,16 @@
 \alias{glue_get_classifiers}
 \title{Lists all classifier objects in the Data Catalog}
 \usage{
-glue_get_classifiers(MaxResults, NextToken)
+glue_get_classifiers(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The size of the list to return (optional).}
 
 \item{NextToken}{An optional continuation token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Classifiers = list(
-    list(
-      GrokClassifier = list(
-        Name = "string",
-        Classification = "string",
-        CreationTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        LastUpdated = as.POSIXct(
-          "2015-01-01"
-        ),
-        Version = 123,
-        GrokPattern = "string",
-        CustomPatterns = "string"
-      ),
-      XMLClassifier = list(
-        Name = "string",
-        Classification = "string",
-        CreationTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        LastUpdated = as.POSIXct(
-          "2015-01-01"
-        ),
-        Version = 123,
-        RowTag = "string"
-      ),
-      JsonClassifier = list(
-        Name = "string",
-        CreationTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        LastUpdated = as.POSIXct(
-          "2015-01-01"
-        ),
-        Version = 123,
-        JsonPath = "string"
-      ),
-      CsvClassifier = list(
-        Name = "string",
-        CreationTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        LastUpdated = as.POSIXct(
-          "2015-01-01"
-        ),
-        Version = 123,
-        Delimiter = "string",
-        QuoteSymbol = "string",
-        ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
-        Header = list(
-          "string"
-        ),
-        DisableValueTrimming = TRUE|FALSE,
-        AllowSingleColumn = TRUE|FALSE
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists all classifier objects in the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$get_classifiers(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_classifiers.html} for full documentation.
+}
 \keyword{internal}

@@ -4,9 +4,18 @@
 \alias{sagemaker_list_transform_jobs}
 \title{Lists transform jobs}
 \usage{
-sagemaker_list_transform_jobs(CreationTimeAfter, CreationTimeBefore,
-  LastModifiedTimeAfter, LastModifiedTimeBefore, NameContains,
-  StatusEquals, SortBy, SortOrder, NextToken, MaxResults)
+sagemaker_list_transform_jobs(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  NameContains = NULL,
+  StatusEquals = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only transform jobs created after the specified
@@ -38,54 +47,9 @@ of transform jobs, use the token in the next request.}
 \item{MaxResults}{The maximum number of transform jobs to return in the response. The
 default value is \code{10}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransformJobSummaries = list(
-    list(
-      TransformJobName = "string",
-      TransformJobArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TransformEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TransformJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-      FailureReason = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists transform jobs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_transform_jobs(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  NameContains = "string",
-  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_transform_jobs.html} for full documentation.
+}
 \keyword{internal}

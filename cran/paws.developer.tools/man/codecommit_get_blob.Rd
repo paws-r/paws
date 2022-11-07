@@ -12,22 +12,9 @@ codecommit_get_blob(repositoryName, blobId)
 
 \item{blobId}{[required] The ID of the blob, which is its SHA-1 pointer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  content = raw
-)
-}
-}
 \description{
-Returns the base-64 encoded content of an individual blob in a
-repository.
-}
-\section{Request syntax}{
-\preformatted{svc$get_blob(
-  repositoryName = "string",
-  blobId = "string"
-)
-}
-}
+Returns the base-64 encoded content of an individual blob in a repository.
 
+See \url{https://paws-r.github.io/docs/codecommit/get_blob.html} for full documentation.
+}
 \keyword{internal}

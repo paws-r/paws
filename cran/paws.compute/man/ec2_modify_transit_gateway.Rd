@@ -4,8 +4,12 @@
 \alias{ec2_modify_transit_gateway}
 \title{Modifies the specified transit gateway}
 \usage{
-ec2_modify_transit_gateway(TransitGatewayId, Description, Options,
-  DryRun)
+ec2_modify_transit_gateway(
+  TransitGatewayId,
+  Description = NULL,
+  Options = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayId}{[required] The ID of the transit gateway.}
@@ -19,69 +23,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGateway = list(
-    TransitGatewayId = "string",
-    TransitGatewayArn = "string",
-    State = "pending"|"available"|"modifying"|"deleting"|"deleted",
-    OwnerId = "string",
-    Description = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Options = list(
-      AmazonSideAsn = 123,
-      TransitGatewayCidrBlocks = list(
-        "string"
-      ),
-      AutoAcceptSharedAttachments = "enable"|"disable",
-      DefaultRouteTableAssociation = "enable"|"disable",
-      AssociationDefaultRouteTableId = "string",
-      DefaultRouteTablePropagation = "enable"|"disable",
-      PropagationDefaultRouteTableId = "string",
-      VpnEcmpSupport = "enable"|"disable",
-      DnsSupport = "enable"|"disable",
-      MulticastSupport = "enable"|"disable"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Modifies the specified transit gateway. When you modify a transit
-gateway, the modified options are applied to new transit gateway
-attachments only. Your existing transit gateway attachments are not
-modified.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_transit_gateway(
-  TransitGatewayId = "string",
-  Description = "string",
-  Options = list(
-    AddTransitGatewayCidrBlocks = list(
-      "string"
-    ),
-    RemoveTransitGatewayCidrBlocks = list(
-      "string"
-    ),
-    VpnEcmpSupport = "enable"|"disable",
-    DnsSupport = "enable"|"disable",
-    AutoAcceptSharedAttachments = "enable"|"disable",
-    DefaultRouteTableAssociation = "enable"|"disable",
-    AssociationDefaultRouteTableId = "string",
-    DefaultRouteTablePropagation = "enable"|"disable",
-    PropagationDefaultRouteTableId = "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Modifies the specified transit gateway. When you modify a transit gateway, the modified options are applied to new transit gateway attachments only. Your existing transit gateway attachments are not modified.
 
+See \url{https://paws-r.github.io/docs/ec2/modify_transit_gateway.html} for full documentation.
+}
 \keyword{internal}

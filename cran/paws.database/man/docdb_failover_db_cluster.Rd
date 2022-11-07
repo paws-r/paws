@@ -4,8 +4,10 @@
 \alias{docdb_failover_db_cluster}
 \title{Forces a failover for a cluster}
 \usage{
-docdb_failover_db_cluster(DBClusterIdentifier,
-  TargetDBInstanceIdentifier)
+docdb_failover_db_cluster(
+  DBClusterIdentifier = NULL,
+  TargetDBInstanceIdentifier = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{A cluster identifier to force a failover for. This parameter is not case
@@ -21,87 +23,9 @@ Constraints:
 You must specify the instance identifier for an Amazon DocumentDB
 replica in the cluster. For example, \code{mydbcluster-replica1}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string"
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
 Forces a failover for a cluster.
 
-A failover for a cluster promotes one of the Amazon DocumentDB replicas
-(read-only instances) in the cluster to be the primary instance (the
-cluster writer).
-
-If the primary instance fails, Amazon DocumentDB automatically fails
-over to an Amazon DocumentDB replica, if one exists. You can force a
-failover when you want to simulate a failure of a primary instance for
-testing.
+See \url{https://paws-r.github.io/docs/docdb/failover_db_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$failover_db_cluster(
-  DBClusterIdentifier = "string",
-  TargetDBInstanceIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,11 +5,11 @@
 \title{Returns all stack related events for a specified stack in reverse
 chronological order}
 \usage{
-cloudformation_describe_stack_events(StackName, NextToken)
+cloudformation_describe_stack_events(StackName = NULL, NextToken = NULL)
 }
 \arguments{
-\item{StackName}{The name or the unique stack ID that is associated with the stack, which
-are not always interchangeable:
+\item{StackName}{The name or the unique stack ID that's associated with the stack, which
+aren't always interchangeable:
 \itemize{
 \item Running stacks: You can specify either the stack's name or its
 unique stack ID.
@@ -21,45 +21,9 @@ Default: There is no default value.}
 \item{NextToken}{A string that identifies the next page of events that you want to
 retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackEvents = list(
-    list(
-      StackId = "string",
-      EventId = "string",
-      StackName = "string",
-      LogicalResourceId = "string",
-      PhysicalResourceId = "string",
-      ResourceType = "string",
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
-      ResourceStatusReason = "string",
-      ResourceProperties = "string",
-      ClientRequestToken = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns all stack related events for a specified stack in reverse
-chronological order. For more information about a stack's event history,
-go to
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html}{Stacks}
-in the AWS CloudFormation User Guide.
+Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html}{Stacks} in the CloudFormation User Guide.
 
-You can list events for stacks that have failed to create or have been
-deleted by specifying the unique stack identifier (stack ID).
+See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_events.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_stack_events(
-  StackName = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

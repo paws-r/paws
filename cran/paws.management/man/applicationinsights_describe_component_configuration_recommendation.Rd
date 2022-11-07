@@ -5,33 +5,21 @@
 \title{Describes the recommended monitoring configuration of the component}
 \usage{
 applicationinsights_describe_component_configuration_recommendation(
-  ResourceGroupName, ComponentName, Tier)
+  ResourceGroupName,
+  ComponentName,
+  Tier
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 
 \item{ComponentName}{[required] The name of the component.}
 
-\item{Tier}{[required] The tier of the application component. Supported tiers include
-\code{DOT_NET_CORE}, \code{DOT_NET_WORKER}, \code{DOT_NET_WEB}, \code{SQL_SERVER}, and
-\code{DEFAULT}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ComponentConfiguration = "string"
-)
-}
+\item{Tier}{[required] The tier of the application component.}
 }
 \description{
 Describes the recommended monitoring configuration of the component.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_component_configuration_recommendation(
-  ResourceGroupName = "string",
-  ComponentName = "string",
-  Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/describe_component_configuration_recommendation.html} for full documentation.
+}
 \keyword{internal}

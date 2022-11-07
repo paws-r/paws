@@ -4,43 +4,19 @@
 \alias{ecr_delete_repository_policy}
 \title{Deletes the repository policy associated with the specified repository}
 \usage{
-ecr_delete_repository_policy(registryId, repositoryName)
+ecr_delete_repository_policy(registryId = NULL, repositoryName)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository policy to delete. If you do not specify a registry, the
-default registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository policy to delete. If you do not specify a
+registry, the default registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository that is associated with the repository policy
 to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  repositoryName = "string",
-  policyText = "string"
-)
-}
-}
 \description{
 Deletes the repository policy associated with the specified repository.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_repository_policy(
-  registryId = "string",
-  repositoryName = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example deletes the policy associated with the repository named
-# ubuntu in the current account.
-svc$delete_repository_policy(
-  repositoryName = "ubuntu"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecr/delete_repository_policy.html} for full documentation.
 }
 \keyword{internal}

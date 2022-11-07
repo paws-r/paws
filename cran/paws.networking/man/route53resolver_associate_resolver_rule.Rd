@@ -4,7 +4,7 @@
 \alias{route53resolver_associate_resolver_rule}
 \title{Associates a Resolver rule with a VPC}
 \usage{
-route53resolver_associate_resolver_rule(ResolverRuleId, Name, VPCId)
+route53resolver_associate_resolver_rule(ResolverRuleId, Name = NULL, VPCId)
 }
 \arguments{
 \item{ResolverRuleId}{[required] The ID of the Resolver rule that you want to associate with the VPC. To
@@ -16,34 +16,9 @@ and a VPC.}
 
 \item{VPCId}{[required] The ID of the VPC that you want to associate the Resolver rule with.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverRuleAssociation = list(
-    Id = "string",
-    ResolverRuleId = "string",
-    Name = "string",
-    VPCId = "string",
-    Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
-    StatusMessage = "string"
-  )
-)
-}
-}
 \description{
-Associates a Resolver rule with a VPC. When you associate a rule with a
-VPC, Resolver forwards all DNS queries for the domain name that is
-specified in the rule and that originate in the VPC. The queries are
-forwarded to the IP addresses for the DNS resolvers that are specified
-in the rule. For more information about rules, see
-\code{\link[=route53resolver_create_resolver_rule]{create_resolver_rule}}.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_resolver_rule(
-  ResolverRuleId = "string",
-  Name = "string",
-  VPCId = "string"
-)
-}
-}
+Associates a Resolver rule with a VPC. When you associate a rule with a VPC, Resolver forwards all DNS queries for the domain name that is specified in the rule and that originate in the VPC. The queries are forwarded to the IP addresses for the DNS resolvers that are specified in the rule. For more information about rules, see \code{\link[=route53resolver_create_resolver_rule]{create_resolver_rule}}.
 
+See \url{https://paws-r.github.io/docs/route53resolver/associate_resolver_rule.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,12 @@
 \title{Updates the resource record sets in a specified hosted zone that were
 created based on the settings in a specified traffic policy version}
 \usage{
-route53_update_traffic_policy_instance(Id, TTL, TrafficPolicyId,
-  TrafficPolicyVersion)
+route53_update_traffic_policy_instance(
+  Id,
+  TTL,
+  TrafficPolicyId,
+  TrafficPolicyVersion
+)
 }
 \arguments{
 \item{Id}{[required] The ID of the traffic policy instance that you want to update.}
@@ -21,50 +25,9 @@ update resource record sets for the specified traffic policy instance.}
 to update resource record sets for the specified traffic policy
 instance.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficPolicyInstance = list(
-    Id = "string",
-    HostedZoneId = "string",
-    Name = "string",
-    TTL = 123,
-    State = "string",
-    Message = "string",
-    TrafficPolicyId = "string",
-    TrafficPolicyVersion = 123,
-    TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
-  )
-)
-}
-}
 \description{
-Updates the resource record sets in a specified hosted zone that were
-created based on the settings in a specified traffic policy version.
+Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version.
 
-When you update a traffic policy instance, Amazon Route 53 continues to
-respond to DNS queries for the root resource record set name (such as
-example.com) while it replaces one group of resource record sets with
-another. Route 53 performs the following operations:
-\enumerate{
-\item Route 53 creates a new group of resource record sets based on the
-specified traffic policy. This is true regardless of how significant
-the differences are between the existing resource record sets and
-the new resource record sets.
-\item When all of the new resource record sets have been created, Route 53
-starts to respond to DNS queries for the root resource record set
-name (such as example.com) by using the new resource record sets.
-\item Route 53 deletes the old group of resource record sets that are
-associated with the root resource record set name.
+See \url{https://paws-r.github.io/docs/route53/update_traffic_policy_instance.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$update_traffic_policy_instance(
-  Id = "string",
-  TTL = 123,
-  TrafficPolicyId = "string",
-  TrafficPolicyVersion = 123
-)
-}
-}
-
 \keyword{internal}

@@ -3,36 +3,59 @@
 #' @include docdb_service.R
 NULL
 
+#' Adds a source identifier to an existing event notification subscription
+#'
+#' @description
+#' Adds a source identifier to an existing event notification subscription.
+#'
+#' See [https://paws-r.github.io/docs/docdb/add_source_identifier_to_subscription.html](https://paws-r.github.io/docs/docdb/add_source_identifier_to_subscription.html) for full documentation.
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription that
+#' you want to add a source identifier to.
+#' @param SourceIdentifier &#91;required&#93; The identifier of the event source to be added:
+#' 
+#' -   If the source type is an instance, a `DBInstanceIdentifier` must be
+#'     provided.
+#' 
+#' -   If the source type is a security group, a `DBSecurityGroupName` must
+#'     be provided.
+#' 
+#' -   If the source type is a parameter group, a `DBParameterGroupName`
+#'     must be provided.
+#' 
+#' -   If the source type is a snapshot, a `DBSnapshotIdentifier` must be
+#'     provided.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_add_source_identifier_to_subscription
+docdb_add_source_identifier_to_subscription <- function(SubscriptionName, SourceIdentifier) {
+  op <- new_operation(
+    name = "AddSourceIdentifierToSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$add_source_identifier_to_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
+  output <- .docdb$add_source_identifier_to_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$add_source_identifier_to_subscription <- docdb_add_source_identifier_to_subscription
+
 #' Adds metadata tags to an Amazon DocumentDB resource
 #'
 #' @description
-#' Adds metadata tags to an Amazon DocumentDB resource. You can use these
-#' tags with cost allocation reporting to track costs that are associated
-#' with Amazon DocumentDB resources. or in a `Condition` statement in an
-#' AWS Identity and Access Management (IAM) policy for Amazon DocumentDB.
+#' Adds metadata tags to an Amazon DocumentDB resource. You can use these tags with cost allocation reporting to track costs that are associated with Amazon DocumentDB resources or in a `Condition` statement in an Identity and Access Management (IAM) policy for Amazon DocumentDB.
 #'
-#' @usage
-#' docdb_add_tags_to_resource(ResourceName, Tags)
+#' See [https://paws-r.github.io/docs/docdb/add_tags_to_resource.html](https://paws-r.github.io/docs/docdb/add_tags_to_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon DocumentDB resource that the tags are added to. This value is
 #' an Amazon Resource Name .
 #' @param Tags &#91;required&#93; The tags to be assigned to the Amazon DocumentDB resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_tags_to_resource(
-#'   ResourceName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -58,12 +81,9 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
 #' Amazon DocumentDB instance)
 #'
 #' @description
-#' Applies a pending maintenance action to a resource (for example, to an
-#' Amazon DocumentDB instance).
+#' Applies a pending maintenance action to a resource (for example, to an Amazon DocumentDB instance).
 #'
-#' @usage
-#' docdb_apply_pending_maintenance_action(ResourceIdentifier, ApplyAction,
-#'   OptInType)
+#' See [https://paws-r.github.io/docs/docdb/apply_pending_maintenance_action.html](https://paws-r.github.io/docs/docdb/apply_pending_maintenance_action.html) for full documentation.
 #'
 #' @param ResourceIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the resource that the pending
 #' maintenance action applies to.
@@ -82,41 +102,6 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
 #' 
 #' -   `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
 #'     requests.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourcePendingMaintenanceActions = list(
-#'     ResourceIdentifier = "string",
-#'     PendingMaintenanceActionDetails = list(
-#'       list(
-#'         Action = "string",
-#'         AutoAppliedAfterDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ForcedApplyDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         OptInStatus = "string",
-#'         CurrentApplyDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Description = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$apply_pending_maintenance_action(
-#'   ResourceIdentifier = "string",
-#'   ApplyAction = "string",
-#'   OptInType = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -143,11 +128,7 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #' @description
 #' Copies the specified cluster parameter group.
 #'
-#' @usage
-#' docdb_copy_db_cluster_parameter_group(
-#'   SourceDBClusterParameterGroupIdentifier,
-#'   TargetDBClusterParameterGroupIdentifier,
-#'   TargetDBClusterParameterGroupDescription, Tags)
+#' See [https://paws-r.github.io/docs/docdb/copy_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/copy_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param SourceDBClusterParameterGroupIdentifier &#91;required&#93; The identifier or Amazon Resource Name (ARN) for the source cluster
 #' parameter group.
@@ -156,12 +137,14 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #' 
 #' -   Must specify a valid cluster parameter group.
 #' 
-#' -   If the source cluster parameter group is in the same AWS Region as
-#'     the copy, specify a valid parameter group identifier; for example,
-#'     `my-db-cluster-param-group`, or a valid ARN.
+#' -   If the source cluster parameter group is in the same Amazon Web
+#'     Services Region as the copy, specify a valid parameter group
+#'     identifier; for example, `my-db-cluster-param-group`, or a valid
+#'     ARN.
 #' 
-#' -   If the source parameter group is in a different AWS Region than the
-#'     copy, specify a valid cluster parameter group ARN; for example,
+#' -   If the source parameter group is in a different Amazon Web Services
+#'     Region than the copy, specify a valid cluster parameter group ARN;
+#'     for example,
 #'     `arn:aws:rds:us-east-1:123456789012:sample-cluster:sample-parameter-group`.
 #' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied cluster parameter group.
 #' 
@@ -178,34 +161,6 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #' Example: `my-cluster-param-group1`
 #' @param TargetDBClusterParameterGroupDescription &#91;required&#93; A description for the copied cluster parameter group.
 #' @param Tags The tags that are to be assigned to the parameter group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroup = list(
-#'     DBClusterParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBClusterParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_db_cluster_parameter_group(
-#'   SourceDBClusterParameterGroupIdentifier = "string",
-#'   TargetDBClusterParameterGroupIdentifier = "string",
-#'   TargetDBClusterParameterGroupDescription = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -231,20 +186,8 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #'
 #' @description
 #' Copies a snapshot of a cluster.
-#' 
-#' To copy a cluster snapshot from a shared manual cluster snapshot,
-#' `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name
-#' (ARN) of the shared cluster snapshot. You can only copy a shared DB
-#' cluster snapshot, whether encrypted or not, in the same AWS Region.
-#' 
-#' To cancel the copy operation after it is in progress, delete the target
-#' cluster snapshot identified by `TargetDBClusterSnapshotIdentifier` while
-#' that cluster snapshot is in the *copying* status.
 #'
-#' @usage
-#' docdb_copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
-#'   TargetDBClusterSnapshotIdentifier, KmsKeyId, PreSignedUrl, CopyTags,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/docdb/copy_db_cluster_snapshot.html](https://paws-r.github.io/docs/docdb/copy_db_cluster_snapshot.html) for full documentation.
 #'
 #' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot to copy. This parameter is not
 #' case sensitive.
@@ -253,11 +196,11 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' 
 #' -   Must specify a valid system snapshot in the *available* state.
 #' 
-#' -   If the source snapshot is in the same AWS Region as the copy,
-#'     specify a valid snapshot identifier.
+#' -   If the source snapshot is in the same Amazon Web Services Region as
+#'     the copy, specify a valid snapshot identifier.
 #' 
-#' -   If the source snapshot is in a different AWS Region than the copy,
-#'     specify a valid cluster snapshot ARN.
+#' -   If the source snapshot is in a different Amazon Web Services Region
+#'     than the copy, specify a valid cluster snapshot ARN.
 #' 
 #' Example: `my-cluster-snapshot1`
 #' @param TargetDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the new cluster snapshot to create from the source
@@ -272,55 +215,57 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot2`
-#' @param KmsKeyId The AWS KMS key ID for an encrypted cluster snapshot. The AWS KMS key ID
-#' is the Amazon Resource Name (ARN), AWS KMS key identifier, or the AWS
-#' KMS key alias for the AWS KMS encryption key.
+#' @param KmsKeyId The KMS key ID for an encrypted cluster snapshot. The KMS key ID is the
+#' Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for
+#' the KMS encryption key.
 #' 
-#' If you copy an encrypted cluster snapshot from your AWS account, you can
-#' specify a value for `KmsKeyId` to encrypt the copy with a new AWS KMS
-#' encryption key. If you don't specify a value for `KmsKeyId`, then the
-#' copy of the cluster snapshot is encrypted with the same AWS KMS key as
-#' the source cluster snapshot.
+#' If you copy an encrypted cluster snapshot from your Amazon Web Services
+#' account, you can specify a value for `KmsKeyId` to encrypt the copy with
+#' a new KMS encryption key. If you don't specify a value for `KmsKeyId`,
+#' then the copy of the cluster snapshot is encrypted with the same KMS key
+#' as the source cluster snapshot.
 #' 
 #' If you copy an encrypted cluster snapshot that is shared from another
-#' AWS account, then you must specify a value for `KmsKeyId`.
+#' Amazon Web Services account, then you must specify a value for
+#' `KmsKeyId`.
 #' 
-#' To copy an encrypted cluster snapshot to another AWS Region, set
-#' `KmsKeyId` to the AWS KMS key ID that you want to use to encrypt the
-#' copy of the cluster snapshot in the destination Region. AWS KMS
-#' encryption keys are specific to the AWS Region that they are created in,
-#' and you can't use encryption keys from one AWS Region in another AWS
-#' Region.
+#' To copy an encrypted cluster snapshot to another Amazon Web Services
+#' Region, set `KmsKeyId` to the KMS key ID that you want to use to encrypt
+#' the copy of the cluster snapshot in the destination Region. KMS
+#' encryption keys are specific to the Amazon Web Services Region that they
+#' are created in, and you can't use encryption keys from one Amazon Web
+#' Services Region in another Amazon Web Services Region.
 #' 
 #' If you copy an unencrypted cluster snapshot and specify a value for the
 #' `KmsKeyId` parameter, an error is returned.
-#' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
-#' [`copy_db_cluster_snapshot`][docdb_copy_db_cluster_snapshot] API action
-#' in the AWS Region that contains the source cluster snapshot to copy. You
-#' must use the `PreSignedUrl` parameter when copying a cluster snapshot
-#' from another AWS Region.
+#' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for
+#' the[`copy_db_cluster_snapshot`][docdb_copy_db_cluster_snapshot] API
+#' action in the Amazon Web Services Region that contains the source
+#' cluster snapshot to copy. You must use the `PreSignedUrl` parameter when
+#' copying a cluster snapshot from another Amazon Web Services Region.
 #' 
-#' If you are using an AWS SDK tool or the AWS CLI, you can specify
-#' `SourceRegion` (or `--source-region` for the AWS CLI) instead of
+#' If you are using an Amazon Web Services SDK tool or the CLI, you can
+#' specify `SourceRegion` (or `--source-region` for the CLI) instead of
 #' specifying `PreSignedUrl` manually. Specifying `SourceRegion`
 #' autogenerates a pre-signed URL that is a valid request for the operation
-#' that can be executed in the source AWS Region.
+#' that can be executed in the source Amazon Web Services Region.
 #' 
 #' The presigned URL must be a valid request for the
 #' [`copy_db_cluster_snapshot`][docdb_copy_db_cluster_snapshot] API action
-#' that can be executed in the source AWS Region that contains the cluster
-#' snapshot to be copied. The presigned URL request must contain the
-#' following parameter values:
+#' that can be executed in the source Amazon Web Services Region that
+#' contains the cluster snapshot to be copied. The presigned URL request
+#' must contain the following parameter values:
 #' 
 #' -   `SourceRegion` - The ID of the region that contains the snapshot to
 #'     be copied.
 #' 
 #' -   `SourceDBClusterSnapshotIdentifier` - The identifier for the the
 #'     encrypted cluster snapshot to be copied. This identifier must be in
-#'     the Amazon Resource Name (ARN) format for the source AWS Region. For
-#'     example, if you are copying an encrypted cluster snapshot from the
-#'     us-east-1 AWS Region, then your `SourceDBClusterSnapshotIdentifier`
-#'     looks something like the following:
+#'     the Amazon Resource Name (ARN) format for the source Amazon Web
+#'     Services Region. For example, if you are copying an encrypted
+#'     cluster snapshot from the us-east-1 Amazon Web Services Region, then
+#'     your `SourceDBClusterSnapshotIdentifier` looks something like the
+#'     following:
 #'     `arn:aws:rds:us-east-1:12345678012:sample-cluster:sample-cluster-snapshot`.
 #' 
 #' -   `TargetDBClusterSnapshotIdentifier` - The identifier for the new
@@ -328,55 +273,6 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' @param CopyTags Set to `true` to copy all tags from the source cluster snapshot to the
 #' target cluster snapshot, and otherwise `false`. The default is `false`.
 #' @param Tags The tags to be assigned to the cluster snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshot = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     Status = "string",
-#'     Port = 123,
-#'     VpcId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     SnapshotType = "string",
-#'     PercentProgress = 123,
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_db_cluster_snapshot(
-#'   SourceDBClusterSnapshotIdentifier = "string",
-#'   TargetDBClusterSnapshotIdentifier = "string",
-#'   KmsKeyId = "string",
-#'   PreSignedUrl = "string",
-#'   CopyTags = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -403,13 +299,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @description
 #' Creates a new Amazon DocumentDB cluster.
 #'
-#' @usage
-#' docdb_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
-#'   DBClusterIdentifier, DBClusterParameterGroupName, VpcSecurityGroupIds,
-#'   DBSubnetGroupName, Engine, EngineVersion, Port, MasterUsername,
-#'   MasterUserPassword, PreferredBackupWindow, PreferredMaintenanceWindow,
-#'   Tags, StorageEncrypted, KmsKeyId, PreSignedUrl,
-#'   EnableCloudwatchLogsExports, DeletionProtection)
+#' See [https://paws-r.github.io/docs/docdb/create_db_cluster.html](https://paws-r.github.io/docs/docdb/create_db_cluster.html) for full documentation.
 #'
 #' @param AvailabilityZones A list of Amazon EC2 Availability Zones that instances in the cluster
 #' can be created in.
@@ -443,13 +333,13 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @param Engine &#91;required&#93; The name of the database engine to be used for this cluster.
 #' 
 #' Valid values: `docdb`
-#' @param EngineVersion The version number of the database engine to use. The --engine-version
+#' @param EngineVersion The version number of the database engine to use. The `--engine-version`
 #' will default to the latest major engine version. For production
 #' workloads, we recommend explicitly declaring this parameter with the
 #' intended major engine version.
 #' @param Port The port number on which the instances in the cluster accept
 #' connections.
-#' @param MasterUsername &#91;required&#93; The name of the master user for the cluster.
+#' @param MasterUsername The name of the master user for the cluster.
 #' 
 #' Constraints:
 #' 
@@ -458,7 +348,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' -   The first character must be a letter.
 #' 
 #' -   Cannot be a reserved word for the chosen database engine.
-#' @param MasterUserPassword &#91;required&#93; The password for the master database user. This password can contain any
+#' @param MasterUserPassword The password for the master database user. This password can contain any
 #' printable ASCII character except forward slash (/), double quote ("), or
 #' the "at" symbol (@@).
 #' 
@@ -468,7 +358,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region.
+#' block of time for each Amazon Web Services Region.
 #' 
 #' Constraints:
 #' 
@@ -485,29 +375,30 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week.
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week.
 #' 
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' Constraints: Minimum 30-minute window.
 #' @param Tags The tags to be assigned to the cluster.
 #' @param StorageEncrypted Specifies whether the cluster is encrypted.
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted cluster.
+#' @param KmsKeyId The KMS key identifier for an encrypted cluster.
 #' 
-#' The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-#' KMS encryption key. If you are creating a cluster using the same AWS
-#' account that owns the AWS KMS encryption key that is used to encrypt the
-#' new cluster, you can use the AWS KMS key alias instead of the ARN for
-#' the AWS KMS encryption key.
+#' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+#' encryption key. If you are creating a cluster using the same Amazon Web
+#' Services account that owns the KMS encryption key that is used to
+#' encrypt the new cluster, you can use the KMS key alias instead of the
+#' ARN for the KMS encryption key.
 #' 
 #' If an encryption key is not specified in `KmsKeyId`:
 #' 
 #' -   If the `StorageEncrypted` parameter is `true`, Amazon DocumentDB
 #'     uses your default encryption key.
 #' 
-#' AWS KMS creates the default encryption key for your AWS account. Your
-#' AWS account has a different default encryption key for each AWS Region.
+#' KMS creates the default encryption key for your Amazon Web Services
+#' account. Your Amazon Web Services account has a different default
+#' encryption key for each Amazon Web Services Regions.
 #' @param PreSignedUrl Not currently supported.
 #' @param EnableCloudwatchLogsExports A list of log types that need to be enabled for exporting to Amazon
 #' CloudWatch Logs. You can enable audit logs or profiler logs. For more
@@ -519,119 +410,19 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster(
-#'   AvailabilityZones = list(
-#'     "string"
-#'   ),
-#'   BackupRetentionPeriod = 123,
-#'   DBClusterIdentifier = "string",
-#'   DBClusterParameterGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   DBSubnetGroupName = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   Port = 123,
-#'   MasterUsername = "string",
-#'   MasterUserPassword = "string",
-#'   PreferredBackupWindow = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   StorageEncrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   PreSignedUrl = "string",
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
+#' @param GlobalClusterIdentifier The cluster identifier of the new global cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_cluster
-docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername, MasterUserPassword, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
+docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
+  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier)
   output <- .docdb$create_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -645,29 +436,8 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
 #'
 #' @description
 #' Creates a new cluster parameter group.
-#' 
-#' Parameters in a cluster parameter group apply to all of the instances in
-#' a cluster.
-#' 
-#' A cluster parameter group is initially created with the default
-#' parameters for the database engine used by instances in the cluster. In
-#' Amazon DocumentDB, you cannot make modifications directly to the
-#' `default.docdb3.6` cluster parameter group. If your Amazon DocumentDB
-#' cluster is using the default cluster parameter group and you want to
-#' modify a value in it, you must first [create a new parameter
-#' group](https://docs.aws.amazon.com/documentdb/latest/developerguide/) or
-#' [copy an existing parameter
-#' group](https://docs.aws.amazon.com/documentdb/latest/developerguide/),
-#' modify it, and then apply the modified parameter group to your cluster.
-#' For the new cluster parameter group and associated settings to take
-#' effect, you must then reboot the instances in the cluster without
-#' failover. For more information, see [Modifying Amazon DocumentDB Cluster
-#' Parameter
-#' Groups](https://docs.aws.amazon.com/documentdb/latest/developerguide/).
 #'
-#' @usage
-#' docdb_create_db_cluster_parameter_group(DBClusterParameterGroupName,
-#'   DBParameterGroupFamily, Description, Tags)
+#' See [https://paws-r.github.io/docs/docdb/create_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/create_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group.
 #' 
@@ -679,34 +449,6 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
 #' @param DBParameterGroupFamily &#91;required&#93; The cluster parameter group family name.
 #' @param Description &#91;required&#93; The description for the cluster parameter group.
 #' @param Tags The tags to be assigned to the cluster parameter group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroup = list(
-#'     DBClusterParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBClusterParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string",
-#'   DBParameterGroupFamily = "string",
-#'   Description = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -733,9 +475,7 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' @description
 #' Creates a snapshot of a cluster.
 #'
-#' @usage
-#' docdb_create_db_cluster_snapshot(DBClusterSnapshotIdentifier,
-#'   DBClusterIdentifier, Tags)
+#' See [https://paws-r.github.io/docs/docdb/create_db_cluster_snapshot.html](https://paws-r.github.io/docs/docdb/create_db_cluster_snapshot.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot. This parameter is stored as a
 #' lowercase string.
@@ -758,52 +498,6 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' 
 #' Example: `my-cluster`
 #' @param Tags The tags to be assigned to the cluster snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshot = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     Status = "string",
-#'     Port = 123,
-#'     VpcId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     SnapshotType = "string",
-#'     PercentProgress = 123,
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster_snapshot(
-#'   DBClusterSnapshotIdentifier = "string",
-#'   DBClusterIdentifier = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -830,10 +524,7 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' @description
 #' Creates a new instance.
 #'
-#' @usage
-#' docdb_create_db_instance(DBInstanceIdentifier, DBInstanceClass, Engine,
-#'   AvailabilityZone, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
-#'   Tags, DBClusterIdentifier, PromotionTier)
+#' See [https://paws-r.github.io/docs/docdb/create_db_instance.html](https://paws-r.github.io/docs/docdb/create_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This parameter is stored as a lowercase string.
 #' 
@@ -853,8 +544,8 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Valid value: `docdb`
 #' @param AvailabilityZone The Amazon EC2 Availability Zone that the instance is created in.
 #' 
-#' Default: A random, system-chosen Availability Zone in the endpoint's AWS
-#' Region.
+#' Default: A random, system-chosen Availability Zone in the endpoint's
+#' Amazon Web Services Region.
 #' 
 #' Example: `us-east-1d`
 #' @param PreferredMaintenanceWindow The time range each week during which system maintenance can occur, in
@@ -863,19 +554,21 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week.
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week.
 #' 
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' Constraints: Minimum 30-minute window.
-#' @param AutoMinorVersionUpgrade Indicates that minor engine upgrades are applied automatically to the
-#' instance during the maintenance window.
+#' @param AutoMinorVersionUpgrade This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB
+#' does not perform minor version upgrades regardless of the value set.
 #' 
-#' Default: `true`
+#' Default: `false`
 #' @param Tags The tags to be assigned to the instance. You can assign up to 10 tags to
 #' an instance.
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the cluster that the instance will belong to.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy tags from the DB instance to
+#' snapshots of the DB instance. By default, tags are not copied.
 #' @param PromotionTier A value that specifies the order in which an Amazon DocumentDB replica
 #' is promoted to the primary instance after a failure of the existing
 #' primary instance.
@@ -883,132 +576,30 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Default: 1
 #' 
 #' Valid values: 0-15
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   DBInstanceClass = "string",
-#'   Engine = "string",
-#'   AvailabilityZone = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   DBClusterIdentifier = "string",
-#'   PromotionTier = 123
-#' )
-#' ```
+#' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
+#' Instance. For more information, see [Using Amazon Performance
+#' Insights](https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html).
+#' @param PerformanceInsightsKMSKeyId The KMS key identifier for encryption of Performance Insights data.
+#' 
+#' The KMS key identifier is the key ARN, key ID, alias ARN, or alias name
+#' for the KMS key.
+#' 
+#' If you do not specify a value for PerformanceInsightsKMSKeyId, then
+#' Amazon DocumentDB uses your default KMS key. There is a default KMS key
+#' for your Amazon Web Services account. Your Amazon Web Services account
+#' has a different default KMS key for each Amazon Web Services region.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_instance
-docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engine, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL, DBClusterIdentifier, PromotionTier = NULL) {
+docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engine, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL, DBClusterIdentifier, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
   op <- new_operation(
     name = "CreateDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, PromotionTier = PromotionTier)
+  input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId)
   output <- .docdb$create_db_instance_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -1021,12 +612,9 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
 #' Creates a new subnet group
 #'
 #' @description
-#' Creates a new subnet group. subnet groups must contain at least one
-#' subnet in at least two Availability Zones in the AWS Region.
+#' Creates a new subnet group. subnet groups must contain at least one subnet in at least two Availability Zones in the Amazon Web Services Region.
 #'
-#' @usage
-#' docdb_create_db_subnet_group(DBSubnetGroupName,
-#'   DBSubnetGroupDescription, SubnetIds, Tags)
+#' See [https://paws-r.github.io/docs/docdb/create_db_subnet_group.html](https://paws-r.github.io/docs/docdb/create_db_subnet_group.html) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the subnet group. This value is stored as a lowercase
 #' string.
@@ -1038,46 +626,6 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
 #' @param DBSubnetGroupDescription &#91;required&#93; The description for the subnet group.
 #' @param SubnetIds &#91;required&#93; The Amazon EC2 subnet IDs for the subnet group.
 #' @param Tags The tags to be assigned to the subnet group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSubnetGroup = list(
-#'     DBSubnetGroupName = "string",
-#'     DBSubnetGroupDescription = "string",
-#'     VpcId = "string",
-#'     SubnetGroupStatus = "string",
-#'     Subnets = list(
-#'       list(
-#'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = list(
-#'           Name = "string"
-#'         ),
-#'         SubnetStatus = "string"
-#'       )
-#'     ),
-#'     DBSubnetGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_subnet_group(
-#'   DBSubnetGroupName = "string",
-#'   DBSubnetGroupDescription = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1099,16 +647,119 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 }
 .docdb$operations$create_db_subnet_group <- docdb_create_db_subnet_group
 
+#' Creates an Amazon DocumentDB event notification subscription
+#'
+#' @description
+#' Creates an Amazon DocumentDB event notification subscription. This action requires a topic Amazon Resource Name (ARN) created by using the Amazon DocumentDB console, the Amazon SNS console, or the Amazon SNS API. To obtain an ARN with Amazon SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the Amazon SNS console.
+#'
+#' See [https://paws-r.github.io/docs/docdb/create_event_subscription.html](https://paws-r.github.io/docs/docdb/create_event_subscription.html) for full documentation.
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the subscription.
+#' 
+#' Constraints: The name must be fewer than 255 characters.
+#' @param SnsTopicArn &#91;required&#93; The Amazon Resource Name (ARN) of the SNS topic created for event
+#' notification. Amazon SNS creates the ARN when you create a topic and
+#' subscribe to it.
+#' @param SourceType The type of source that is generating the events. For example, if you
+#' want to be notified of events generated by an instance, you would set
+#' this parameter to `db-instance`. If this value is not specified, all
+#' events are returned.
+#' 
+#' Valid values: `db-instance`, `db-cluster`, `db-parameter-group`,
+#' `db-security-group`, `db-cluster-snapshot`
+#' @param EventCategories A list of event categories for a `SourceType` that you want to subscribe
+#' to.
+#' @param SourceIds The list of identifiers of the event sources for which events are
+#' returned. If not specified, then all sources are included in the
+#' response. An identifier must begin with a letter and must contain only
+#' ASCII letters, digits, and hyphens; it can't end with a hyphen or
+#' contain two consecutive hyphens.
+#' 
+#' Constraints:
+#' 
+#' -   If `SourceIds` are provided, `SourceType` must also be provided.
+#' 
+#' -   If the source type is an instance, a `DBInstanceIdentifier` must be
+#'     provided.
+#' 
+#' -   If the source type is a security group, a `DBSecurityGroupName` must
+#'     be provided.
+#' 
+#' -   If the source type is a parameter group, a `DBParameterGroupName`
+#'     must be provided.
+#' 
+#' -   If the source type is a snapshot, a `DBSnapshotIdentifier` must be
+#'     provided.
+#' @param Enabled A Boolean value; set to `true` to activate the subscription, set to
+#' `false` to create the subscription but not active it.
+#' @param Tags The tags to be assigned to the event subscription.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_create_event_subscription
+docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceType = NULL, EventCategories = NULL, SourceIds = NULL, Enabled = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateEventSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$create_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, SourceIds = SourceIds, Enabled = Enabled, Tags = Tags)
+  output <- .docdb$create_event_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$create_event_subscription <- docdb_create_event_subscription
+
+#' Creates an Amazon DocumentDB global cluster that can span multiple
+#' multiple Amazon Web Services Regions
+#'
+#' @description
+#' Creates an Amazon DocumentDB global cluster that can span multiple multiple Amazon Web Services Regions. The global cluster contains one primary cluster with read-write capability, and up-to give read-only secondary clusters. Global clusters uses storage-based fast replication across regions with latencies less than one second, using dedicated infrastructure with no impact to your workload’s performance.
+#'
+#' See [https://paws-r.github.io/docs/docdb/create_global_cluster.html](https://paws-r.github.io/docs/docdb/create_global_cluster.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the new global cluster.
+#' @param SourceDBClusterIdentifier The Amazon Resource Name (ARN) to use as the primary cluster of the
+#' global cluster. This parameter is optional.
+#' @param Engine The name of the database engine to be used for this cluster.
+#' @param EngineVersion The engine version of the global cluster.
+#' @param DeletionProtection The deletion protection setting for the new global cluster. The global
+#' cluster can't be deleted when deletion protection is enabled.
+#' @param DatabaseName The name for your database of up to 64 alpha-numeric characters. If you
+#' do not provide a name, Amazon DocumentDB will not create a database in
+#' the global cluster you are creating.
+#' @param StorageEncrypted The storage encryption setting for the new global cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_create_global_cluster
+docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClusterIdentifier = NULL, Engine = NULL, EngineVersion = NULL, DeletionProtection = NULL, DatabaseName = NULL, StorageEncrypted = NULL) {
+  op <- new_operation(
+    name = "CreateGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, DatabaseName = DatabaseName, StorageEncrypted = StorageEncrypted)
+  output <- .docdb$create_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$create_global_cluster <- docdb_create_global_cluster
+
 #' Deletes a previously provisioned cluster
 #'
 #' @description
-#' Deletes a previously provisioned cluster. When you delete a cluster, all
-#' automated backups for that cluster are deleted and can't be recovered.
-#' Manual DB cluster snapshots of the specified cluster are not deleted.
+#' Deletes a previously provisioned cluster. When you delete a cluster, all automated backups for that cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified cluster are not deleted.
 #'
-#' @usage
-#' docdb_delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot,
-#'   FinalDBSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/docdb/delete_db_cluster.html](https://paws-r.github.io/docs/docdb/delete_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster to be deleted. This parameter
 #' isn't case sensitive.
@@ -1139,80 +790,6 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   SkipFinalSnapshot = TRUE|FALSE,
-#'   FinalDBSnapshotIdentifier = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname docdb_delete_db_cluster
@@ -1236,11 +813,9 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 #' Deletes a specified cluster parameter group
 #'
 #' @description
-#' Deletes a specified cluster parameter group. The cluster parameter group
-#' to be deleted can't be associated with any clusters.
+#' Deletes a specified cluster parameter group. The cluster parameter group to be deleted can't be associated with any clusters.
 #'
-#' @usage
-#' docdb_delete_db_cluster_parameter_group(DBClusterParameterGroupName)
+#' See [https://paws-r.github.io/docs/docdb/delete_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/delete_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group.
 #' 
@@ -1251,16 +826,6 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 #' -   You can't delete a default cluster parameter group.
 #' 
 #' -   Cannot be associated with any clusters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1285,57 +850,14 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
 #' Deletes a cluster snapshot
 #'
 #' @description
-#' Deletes a cluster snapshot. If the snapshot is being copied, the copy
-#' operation is terminated.
-#' 
-#' The cluster snapshot must be in the `available` state to be deleted.
+#' Deletes a cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
 #'
-#' @usage
-#' docdb_delete_db_cluster_snapshot(DBClusterSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/docdb/delete_db_cluster_snapshot.html](https://paws-r.github.io/docs/docdb/delete_db_cluster_snapshot.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot to delete.
 #' 
 #' Constraints: Must be the name of an existing cluster snapshot in the
 #' `available` state.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshot = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     Status = "string",
-#'     Port = 123,
-#'     VpcId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     SnapshotType = "string",
-#'     PercentProgress = 123,
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster_snapshot(
-#'   DBClusterSnapshotIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1362,8 +884,7 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' @description
 #' Deletes a previously provisioned instance.
 #'
-#' @usage
-#' docdb_delete_db_instance(DBInstanceIdentifier)
+#' See [https://paws-r.github.io/docs/docdb/delete_db_instance.html](https://paws-r.github.io/docs/docdb/delete_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier for the instance to be deleted. This parameter
 #' isn't case sensitive.
@@ -1371,107 +892,6 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' Constraints:
 #' 
 #' -   Must match the name of an existing instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_instance(
-#'   DBInstanceIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1497,12 +917,8 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
 #'
 #' @description
 #' Deletes a subnet group.
-#' 
-#' The specified database subnet group must not be associated with any DB
-#' instances.
 #'
-#' @usage
-#' docdb_delete_db_subnet_group(DBSubnetGroupName)
+#' See [https://paws-r.github.io/docs/docdb/delete_db_subnet_group.html](https://paws-r.github.io/docs/docdb/delete_db_subnet_group.html) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name of the database subnet group to delete.
 #' 
@@ -1513,16 +929,6 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
 #' Must match the name of an existing `DBSubnetGroup`. Must not be default.
 #' 
 #' Example: `mySubnetgroup`
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_subnet_group(
-#'   DBSubnetGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1544,16 +950,72 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
 }
 .docdb$operations$delete_db_subnet_group <- docdb_delete_db_subnet_group
 
-#' Returns a list of certificate authority (CA) certificates provided by
-#' Amazon DocumentDB for this AWS account
+#' Deletes an Amazon DocumentDB event notification subscription
 #'
 #' @description
-#' Returns a list of certificate authority (CA) certificates provided by
-#' Amazon DocumentDB for this AWS account.
+#' Deletes an Amazon DocumentDB event notification subscription.
 #'
-#' @usage
-#' docdb_describe_certificates(CertificateIdentifier, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/docdb/delete_event_subscription.html](https://paws-r.github.io/docs/docdb/delete_event_subscription.html) for full documentation.
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription that
+#' you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_delete_event_subscription
+docdb_delete_event_subscription <- function(SubscriptionName) {
+  op <- new_operation(
+    name = "DeleteEventSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$delete_event_subscription_input(SubscriptionName = SubscriptionName)
+  output <- .docdb$delete_event_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$delete_event_subscription <- docdb_delete_event_subscription
+
+#' Deletes a global cluster
+#'
+#' @description
+#' Deletes a global cluster. The primary and secondary clusters must already be detached or deleted before attempting to delete a global cluster.
+#'
+#' See [https://paws-r.github.io/docs/docdb/delete_global_cluster.html](https://paws-r.github.io/docs/docdb/delete_global_cluster.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the global cluster being deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_delete_global_cluster
+docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
+  op <- new_operation(
+    name = "DeleteGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
+  output <- .docdb$delete_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$delete_global_cluster <- docdb_delete_global_cluster
+
+#' Returns a list of certificate authority (CA) certificates provided by
+#' Amazon DocumentDB for this Amazon Web Services account
+#'
+#' @description
+#' Returns a list of certificate authority (CA) certificates provided by Amazon DocumentDB for this Amazon Web Services account.
+#'
+#' See [https://paws-r.github.io/docs/docdb/describe_certificates.html](https://paws-r.github.io/docs/docdb/describe_certificates.html) for full documentation.
 #'
 #' @param CertificateIdentifier The user-supplied certificate identifier. If this parameter is
 #' specified, information for only the specified certificate is returned.
@@ -1581,45 +1043,6 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Certificates = list(
-#'     list(
-#'       CertificateIdentifier = "string",
-#'       CertificateType = "string",
-#'       Thumbprint = "string",
-#'       ValidFrom = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ValidTill = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CertificateArn = "string"
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_certificates(
-#'   CertificateIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname docdb_describe_certificates
@@ -1643,13 +1066,9 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
 #' Returns a list of DBClusterParameterGroup descriptions
 #'
 #' @description
-#' Returns a list of `DBClusterParameterGroup` descriptions. If a
-#' `DBClusterParameterGroupName` parameter is specified, the list contains
-#' only the description of the specified cluster parameter group.
+#' Returns a list of `DBClusterParameterGroup` descriptions. If a `DBClusterParameterGroupName` parameter is specified, the list contains only the description of the specified cluster parameter group.
 #'
-#' @usage
-#' docdb_describe_db_cluster_parameter_groups(DBClusterParameterGroupName,
-#'   Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/docdb/describe_db_cluster_parameter_groups.html](https://paws-r.github.io/docs/docdb/describe_db_cluster_parameter_groups.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName The name of a specific cluster parameter group to return details for.
 #' 
@@ -1669,39 +1088,6 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusterParameterGroups = list(
-#'     list(
-#'       DBClusterParameterGroupName = "string",
-#'       DBParameterGroupFamily = "string",
-#'       Description = "string",
-#'       DBClusterParameterGroupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_parameter_groups(
-#'   DBClusterParameterGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1727,12 +1113,9 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
 #' group
 #'
 #' @description
-#' Returns the detailed parameter list for a particular cluster parameter
-#' group.
+#' Returns the detailed parameter list for a particular cluster parameter group.
 #'
-#' @usage
-#' docdb_describe_db_cluster_parameters(DBClusterParameterGroupName,
-#'   Source, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/docdb/describe_db_cluster_parameters.html](https://paws-r.github.io/docs/docdb/describe_db_cluster_parameters.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of a specific cluster parameter group to return parameter
 #' details for.
@@ -1755,46 +1138,6 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot"
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_parameters(
-#'   DBClusterParameterGroupName = "string",
-#'   Source = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1820,47 +1163,11 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
 #' manual DB cluster snapshot
 #'
 #' @description
-#' Returns a list of cluster snapshot attribute names and values for a
-#' manual DB cluster snapshot.
-#' 
-#' When you share snapshots with other AWS accounts,
-#' [`describe_db_cluster_snapshot_attributes`][docdb_describe_db_cluster_snapshot_attributes]
-#' returns the `restore` attribute and a list of IDs for the AWS accounts
-#' that are authorized to copy or restore the manual cluster snapshot. If
-#' `all` is included in the list of values for the `restore` attribute,
-#' then the manual cluster snapshot is public and can be copied or restored
-#' by all AWS accounts.
+#' Returns a list of cluster snapshot attribute names and values for a manual DB cluster snapshot.
 #'
-#' @usage
-#' docdb_describe_db_cluster_snapshot_attributes(
-#'   DBClusterSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/docdb/describe_db_cluster_snapshot_attributes.html](https://paws-r.github.io/docs/docdb/describe_db_cluster_snapshot_attributes.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the cluster snapshot to describe the attributes for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshotAttributesResult = list(
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterSnapshotAttributes = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeValues = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_snapshot_attributes(
-#'   DBClusterSnapshotIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1885,13 +1192,9 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' Returns information about cluster snapshots
 #'
 #' @description
-#' Returns information about cluster snapshots. This API operation supports
-#' pagination.
+#' Returns information about cluster snapshots. This API operation supports pagination.
 #'
-#' @usage
-#' docdb_describe_db_cluster_snapshots(DBClusterIdentifier,
-#'   DBClusterSnapshotIdentifier, SnapshotType, Filters, MaxRecords, Marker,
-#'   IncludeShared, IncludePublic)
+#' See [https://paws-r.github.io/docs/docdb/describe_db_cluster_snapshots.html](https://paws-r.github.io/docs/docdb/describe_db_cluster_snapshots.html) for full documentation.
 #'
 #' @param DBClusterIdentifier The ID of the cluster to retrieve the list of cluster snapshots for.
 #' This parameter can't be used with the `DBClusterSnapshotIdentifier`
@@ -1915,13 +1218,13 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' following values:
 #' 
 #' -   `automated` - Return all cluster snapshots that Amazon DocumentDB
-#'     has automatically created for your AWS account.
+#'     has automatically created for your Amazon Web Services account.
 #' 
 #' -   `manual` - Return all cluster snapshots that you have manually
-#'     created for your AWS account.
+#'     created for your Amazon Web Services account.
 #' 
 #' -   `shared` - Return all manual cluster snapshots that have been shared
-#'     to your AWS account.
+#'     to your Amazon Web Services account.
 #' 
 #' -   `public` - Return all cluster snapshots that have been marked as
 #'     public.
@@ -1930,7 +1233,7 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' manual cluster snapshots are returned. You can include shared cluster
 #' snapshots with these results by setting the `IncludeShared` parameter to
 #' `true`. You can include public cluster snapshots with these results by
-#' setting the `IncludePublic` parameter to `true`.
+#' setting the`IncludePublic` parameter to `true`.
 #' 
 #' The `IncludeShared` and `IncludePublic` parameters don't apply for
 #' `SnapshotType` values of `manual` or `automated`. The `IncludePublic`
@@ -1949,68 +1252,13 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#' @param IncludeShared Set to `true` to include shared manual cluster snapshots from other AWS
-#' accounts that this AWS account has been given permission to copy or
-#' restore, and otherwise `false`. The default is `false`.
-#' @param IncludePublic Set to `true` to include manual cluster snapshots that are public and
-#' can be copied or restored by any AWS account, and otherwise `false`. The
+#' @param IncludeShared Set to `true` to include shared manual cluster snapshots from other
+#' Amazon Web Services accounts that this Amazon Web Services account has
+#' been given permission to copy or restore, and otherwise `false`. The
 #' default is `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusterSnapshots = list(
-#'     list(
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       DBClusterSnapshotIdentifier = "string",
-#'       DBClusterIdentifier = "string",
-#'       SnapshotCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Engine = "string",
-#'       Status = "string",
-#'       Port = 123,
-#'       VpcId = "string",
-#'       ClusterCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       MasterUsername = "string",
-#'       EngineVersion = "string",
-#'       SnapshotType = "string",
-#'       PercentProgress = 123,
-#'       StorageEncrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DBClusterSnapshotArn = "string",
-#'       SourceDBClusterSnapshotArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_snapshots(
-#'   DBClusterIdentifier = "string",
-#'   DBClusterSnapshotIdentifier = "string",
-#'   SnapshotType = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   IncludeShared = TRUE|FALSE,
-#'   IncludePublic = TRUE|FALSE
-#' )
-#' ```
+#' @param IncludePublic Set to `true` to include manual cluster snapshots that are public and
+#' can be copied or restored by any Amazon Web Services account, and
+#' otherwise `false`. The default is `false`.
 #'
 #' @keywords internal
 #'
@@ -2035,16 +1283,9 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #' Returns information about provisioned Amazon DocumentDB clusters
 #'
 #' @description
-#' Returns information about provisioned Amazon DocumentDB clusters. This
-#' API operation supports pagination. For certain management features such
-#' as cluster and instance lifecycle management, Amazon DocumentDB
-#' leverages operational technology that is shared with Amazon RDS and
-#' Amazon Neptune. Use the `filterName=engine,Values=docdb` filter
-#' parameter to return only Amazon DocumentDB clusters.
+#' Returns information about provisioned Amazon DocumentDB clusters. This API operation supports pagination. For certain management features such as cluster and instance lifecycle management, Amazon DocumentDB leverages operational technology that is shared with Amazon RDS and Amazon Neptune. Use the `filterName=engine,Values=docdb` filter parameter to return only Amazon DocumentDB clusters.
 #'
-#' @usage
-#' docdb_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/docdb/describe_db_clusters.html](https://paws-r.github.io/docs/docdb/describe_db_clusters.html) for full documentation.
 #'
 #' @param DBClusterIdentifier The user-provided cluster identifier. If this parameter is specified,
 #' information from only the specific cluster is returned. This parameter
@@ -2072,91 +1313,6 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusters = list(
-#'     list(
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       BackupRetentionPeriod = 123,
-#'       DBClusterIdentifier = "string",
-#'       DBClusterParameterGroup = "string",
-#'       DBSubnetGroup = "string",
-#'       Status = "string",
-#'       PercentProgress = "string",
-#'       EarliestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Endpoint = "string",
-#'       ReaderEndpoint = "string",
-#'       MultiAZ = TRUE|FALSE,
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       LatestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Port = 123,
-#'       MasterUsername = "string",
-#'       PreferredBackupWindow = "string",
-#'       PreferredMaintenanceWindow = "string",
-#'       DBClusterMembers = list(
-#'         list(
-#'           DBInstanceIdentifier = "string",
-#'           IsClusterWriter = TRUE|FALSE,
-#'           DBClusterParameterGroupStatus = "string",
-#'           PromotionTier = 123
-#'         )
-#'       ),
-#'       VpcSecurityGroups = list(
-#'         list(
-#'           VpcSecurityGroupId = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       HostedZoneId = "string",
-#'       StorageEncrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DbClusterResourceId = "string",
-#'       DBClusterArn = "string",
-#'       AssociatedRoles = list(
-#'         list(
-#'           RoleArn = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       ClusterCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EnabledCloudwatchLogsExports = list(
-#'         "string"
-#'       ),
-#'       DeletionProtection = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_clusters(
-#'   DBClusterIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_clusters
@@ -2182,10 +1338,7 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #' @description
 #' Returns a list of the available engines.
 #'
-#' @usage
-#' docdb_describe_db_engine_versions(Engine, EngineVersion,
-#'   DBParameterGroupFamily, Filters, MaxRecords, Marker, DefaultOnly,
-#'   ListSupportedCharacterSets, ListSupportedTimezones)
+#' See [https://paws-r.github.io/docs/docdb/describe_db_engine_versions.html](https://paws-r.github.io/docs/docdb/describe_db_engine_versions.html) for full documentation.
 #'
 #' @param Engine The database engine to return.
 #' @param EngineVersion The database engine version to return.
@@ -2219,58 +1372,6 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #' [`create_db_instance`][docdb_create_db_instance], the response includes
 #' a list of supported time zones for each engine version.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBEngineVersions = list(
-#'     list(
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       DBParameterGroupFamily = "string",
-#'       DBEngineDescription = "string",
-#'       DBEngineVersionDescription = "string",
-#'       ValidUpgradeTarget = list(
-#'         list(
-#'           Engine = "string",
-#'           EngineVersion = "string",
-#'           Description = "string",
-#'           AutoUpgrade = TRUE|FALSE,
-#'           IsMajorVersionUpgrade = TRUE|FALSE
-#'         )
-#'       ),
-#'       ExportableLogTypes = list(
-#'         "string"
-#'       ),
-#'       SupportsLogExportsToCloudwatchLogs = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_engine_versions(
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   DBParameterGroupFamily = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   DefaultOnly = TRUE|FALSE,
-#'   ListSupportedCharacterSets = TRUE|FALSE,
-#'   ListSupportedTimezones = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_engine_versions
@@ -2294,12 +1395,9 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #' Returns information about provisioned Amazon DocumentDB instances
 #'
 #' @description
-#' Returns information about provisioned Amazon DocumentDB instances. This
-#' API supports pagination.
+#' Returns information about provisioned Amazon DocumentDB instances. This API supports pagination.
 #'
-#' @usage
-#' docdb_describe_db_instances(DBInstanceIdentifier, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/docdb/describe_db_instances.html](https://paws-r.github.io/docs/docdb/describe_db_instances.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier The user-provided instance identifier. If this parameter is specified,
 #' information from only the specific instance is returned. This parameter
@@ -2332,120 +1430,6 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBInstances = list(
-#'     list(
-#'       DBInstanceIdentifier = "string",
-#'       DBInstanceClass = "string",
-#'       Engine = "string",
-#'       DBInstanceStatus = "string",
-#'       Endpoint = list(
-#'         Address = "string",
-#'         Port = 123,
-#'         HostedZoneId = "string"
-#'       ),
-#'       InstanceCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PreferredBackupWindow = "string",
-#'       BackupRetentionPeriod = 123,
-#'       VpcSecurityGroups = list(
-#'         list(
-#'           VpcSecurityGroupId = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       AvailabilityZone = "string",
-#'       DBSubnetGroup = list(
-#'         DBSubnetGroupName = "string",
-#'         DBSubnetGroupDescription = "string",
-#'         VpcId = "string",
-#'         SubnetGroupStatus = "string",
-#'         Subnets = list(
-#'           list(
-#'             SubnetIdentifier = "string",
-#'             SubnetAvailabilityZone = list(
-#'               Name = "string"
-#'             ),
-#'             SubnetStatus = "string"
-#'           )
-#'         ),
-#'         DBSubnetGroupArn = "string"
-#'       ),
-#'       PreferredMaintenanceWindow = "string",
-#'       PendingModifiedValues = list(
-#'         DBInstanceClass = "string",
-#'         AllocatedStorage = 123,
-#'         MasterUserPassword = "string",
-#'         Port = 123,
-#'         BackupRetentionPeriod = 123,
-#'         MultiAZ = TRUE|FALSE,
-#'         EngineVersion = "string",
-#'         LicenseModel = "string",
-#'         Iops = 123,
-#'         DBInstanceIdentifier = "string",
-#'         StorageType = "string",
-#'         CACertificateIdentifier = "string",
-#'         DBSubnetGroupName = "string",
-#'         PendingCloudwatchLogsExports = list(
-#'           LogTypesToEnable = list(
-#'             "string"
-#'           ),
-#'           LogTypesToDisable = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       LatestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EngineVersion = "string",
-#'       AutoMinorVersionUpgrade = TRUE|FALSE,
-#'       PubliclyAccessible = TRUE|FALSE,
-#'       StatusInfos = list(
-#'         list(
-#'           StatusType = "string",
-#'           Normal = TRUE|FALSE,
-#'           Status = "string",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       StorageEncrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DbiResourceId = "string",
-#'       CACertificateIdentifier = "string",
-#'       PromotionTier = 123,
-#'       DBInstanceArn = "string",
-#'       EnabledCloudwatchLogsExports = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_instances(
-#'   DBInstanceIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_instances
@@ -2469,13 +1453,9 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
 #' Returns a list of DBSubnetGroup descriptions
 #'
 #' @description
-#' Returns a list of `DBSubnetGroup` descriptions. If a `DBSubnetGroupName`
-#' is specified, the list will contain only the descriptions of the
-#' specified `DBSubnetGroup`.
+#' Returns a list of `DBSubnetGroup` descriptions. If a `DBSubnetGroupName` is specified, the list will contain only the descriptions of the specified `DBSubnetGroup`.
 #'
-#' @usage
-#' docdb_describe_db_subnet_groups(DBSubnetGroupName, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/docdb/describe_db_subnet_groups.html](https://paws-r.github.io/docs/docdb/describe_db_subnet_groups.html) for full documentation.
 #'
 #' @param DBSubnetGroupName The name of the subnet group to return details for.
 #' @param Filters This parameter is not currently supported.
@@ -2490,49 +1470,6 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBSubnetGroups = list(
-#'     list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_subnet_groups(
-#'   DBSubnetGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2558,12 +1495,9 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
 #' cluster database engine
 #'
 #' @description
-#' Returns the default engine and system parameter information for the
-#' cluster database engine.
+#' Returns the default engine and system parameter information for the cluster database engine.
 #'
-#' @usage
-#' docdb_describe_engine_default_cluster_parameters(DBParameterGroupFamily,
-#'   Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/docdb/describe_engine_default_cluster_parameters.html](https://paws-r.github.io/docs/docdb/describe_engine_default_cluster_parameters.html) for full documentation.
 #'
 #' @param DBParameterGroupFamily &#91;required&#93; The name of the cluster parameter group family to return the engine
 #' parameter information for.
@@ -2579,48 +1513,6 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EngineDefaults = list(
-#'     DBParameterGroupFamily = "string",
-#'     Marker = "string",
-#'     Parameters = list(
-#'       list(
-#'         ParameterName = "string",
-#'         ParameterValue = "string",
-#'         Description = "string",
-#'         Source = "string",
-#'         ApplyType = "string",
-#'         DataType = "string",
-#'         AllowedValues = "string",
-#'         IsModifiable = TRUE|FALSE,
-#'         MinimumEngineVersion = "string",
-#'         ApplyMethod = "immediate"|"pending-reboot"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_engine_default_cluster_parameters(
-#'   DBParameterGroupFamily = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2646,47 +1538,14 @@ docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFam
 #' specified, for a specified source type
 #'
 #' @description
-#' Displays a list of categories for all event source types, or, if
-#' specified, for a specified source type.
+#' Displays a list of categories for all event source types, or, if specified, for a specified source type.
 #'
-#' @usage
-#' docdb_describe_event_categories(SourceType, Filters)
+#' See [https://paws-r.github.io/docs/docdb/describe_event_categories.html](https://paws-r.github.io/docs/docdb/describe_event_categories.html) for full documentation.
 #'
 #' @param SourceType The type of source that is generating the events.
 #' 
-#' Valid values: `db-instance`, `db-parameter-group`, `db-security-group`,
-#' `db-snapshot`
+#' Valid values: `db-instance`, `db-parameter-group`, `db-security-group`
 #' @param Filters This parameter is not currently supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventCategoriesMapList = list(
-#'     list(
-#'       SourceType = "string",
-#'       EventCategories = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_event_categories(
-#'   SourceType = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2708,19 +1567,55 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 }
 .docdb$operations$describe_event_categories <- docdb_describe_event_categories
 
+#' Lists all the subscription descriptions for a customer account
+#'
+#' @description
+#' Lists all the subscription descriptions for a customer account. The description for a subscription includes `SubscriptionName`, `SNSTopicARN`, `CustomerID`, `SourceType`, `SourceID`, `CreationTime`, and `Status`.
+#'
+#' See [https://paws-r.github.io/docs/docdb/describe_event_subscriptions.html](https://paws-r.github.io/docs/docdb/describe_event_subscriptions.html) for full documentation.
+#'
+#' @param SubscriptionName The name of the Amazon DocumentDB event notification subscription that
+#' you want to describe.
+#' @param Filters This parameter is not currently supported.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' (marker) is included in the response so that the remaining results can
+#' be retrieved.
+#' 
+#' Default: 100
+#' 
+#' Constraints: Minimum 20, maximum 100.
+#' @param Marker An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_describe_event_subscriptions
+docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeEventSubscriptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .docdb$describe_event_subscriptions_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$describe_event_subscriptions <- docdb_describe_event_subscriptions
+
 #' Returns events related to instances, security groups, snapshots, and DB
 #' parameter groups for the past 14 days
 #'
 #' @description
-#' Returns events related to instances, security groups, snapshots, and DB
-#' parameter groups for the past 14 days. You can obtain events specific to
-#' a particular DB instance, security group, snapshot, or parameter group
-#' by providing the name as a parameter. By default, the events of the past
-#' hour are returned.
+#' Returns events related to instances, security groups, snapshots, and DB parameter groups for the past 14 days. You can obtain events specific to a particular DB instance, security group, snapshot, or parameter group by providing the name as a parameter. By default, the events of the past hour are returned.
 #'
-#' @usage
-#' docdb_describe_events(SourceIdentifier, SourceType, StartTime, EndTime,
-#'   Duration, EventCategories, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/docdb/describe_events.html](https://paws-r.github.io/docs/docdb/describe_events.html) for full documentation.
 #'
 #' @param SourceIdentifier The identifier of the event source for which events are returned. If not
 #' specified, then all sources are included in the response.
@@ -2771,56 +1666,6 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   Events = list(
-#'     list(
-#'       SourceIdentifier = "string",
-#'       SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-#'       Message = "string",
-#'       EventCategories = list(
-#'         "string"
-#'       ),
-#'       Date = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       SourceArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_events(
-#'   SourceIdentifier = "string",
-#'   SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Duration = 123,
-#'   EventCategories = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname docdb_describe_events
@@ -2841,14 +1686,56 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
 }
 .docdb$operations$describe_events <- docdb_describe_events
 
+#' Returns information about Amazon DocumentDB global clusters
+#'
+#' @description
+#' Returns information about Amazon DocumentDB global clusters. This API supports pagination.
+#'
+#' See [https://paws-r.github.io/docs/docdb/describe_global_clusters.html](https://paws-r.github.io/docs/docdb/describe_global_clusters.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier The user-supplied cluster identifier. If this parameter is specified,
+#' information from only the specific cluster is returned. This parameter
+#' isn't case-sensitive.
+#' @param Filters A filter that specifies one or more global DB clusters to describe.
+#' 
+#' Supported filters: `db-cluster-id` accepts cluster identifiers and
+#' cluster Amazon Resource Names (ARNs). The results list will only include
+#' information about the clusters identified by these ARNs.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a marker is included in the response so that you can retrieve the
+#' remaining results.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_global_clusters`][docdb_describe_global_clusters] request. If
+#' this parameter is specified, the response includes only records beyond
+#' the marker, up to the value specified by `MaxRecords`.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_describe_global_clusters
+docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeGlobalClusters",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .docdb$describe_global_clusters_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$describe_global_clusters <- docdb_describe_global_clusters
+
 #' Returns a list of orderable instance options for the specified engine
 #'
 #' @description
 #' Returns a list of orderable instance options for the specified engine.
 #'
-#' @usage
-#' docdb_describe_orderable_db_instance_options(Engine, EngineVersion,
-#'   DBInstanceClass, LicenseModel, Vpc, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/docdb/describe_orderable_db_instance_options.html](https://paws-r.github.io/docs/docdb/describe_orderable_db_instance_options.html) for full documentation.
 #'
 #' @param Engine &#91;required&#93; The name of the engine to retrieve instance options for.
 #' @param EngineVersion The engine version filter value. Specify this parameter to show only the
@@ -2871,49 +1758,6 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrderableDBInstanceOptions = list(
-#'     list(
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       DBInstanceClass = "string",
-#'       LicenseModel = "string",
-#'       AvailabilityZones = list(
-#'         list(
-#'           Name = "string"
-#'         )
-#'       ),
-#'       Vpc = TRUE|FALSE
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_orderable_db_instance_options(
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   DBInstanceClass = "string",
-#'   LicenseModel = "string",
-#'   Vpc = TRUE|FALSE,
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2939,12 +1783,9 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
 #' one pending maintenance action
 #'
 #' @description
-#' Returns a list of resources (for example, instances) that have at least
-#' one pending maintenance action.
+#' Returns a list of resources (for example, instances) that have at least one pending maintenance action.
 #'
-#' @usage
-#' docdb_describe_pending_maintenance_actions(ResourceIdentifier, Filters,
-#'   Marker, MaxRecords)
+#' See [https://paws-r.github.io/docs/docdb/describe_pending_maintenance_actions.html](https://paws-r.github.io/docs/docdb/describe_pending_maintenance_actions.html) for full documentation.
 #'
 #' @param ResourceIdentifier The ARN of a resource to return pending maintenance actions for.
 #' @param Filters A filter that specifies one or more resources to return pending
@@ -2971,52 +1812,6 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PendingMaintenanceActions = list(
-#'     list(
-#'       ResourceIdentifier = "string",
-#'       PendingMaintenanceActionDetails = list(
-#'         list(
-#'           Action = "string",
-#'           AutoAppliedAfterDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           ForcedApplyDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           OptInStatus = "string",
-#'           CurrentApplyDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           Description = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_pending_maintenance_actions(
-#'   ResourceIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   MaxRecords = 123
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname docdb_describe_pending_maintenance_actions
@@ -3041,19 +1836,8 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #'
 #' @description
 #' Forces a failover for a cluster.
-#' 
-#' A failover for a cluster promotes one of the Amazon DocumentDB replicas
-#' (read-only instances) in the cluster to be the primary instance (the
-#' cluster writer).
-#' 
-#' If the primary instance fails, Amazon DocumentDB automatically fails
-#' over to an Amazon DocumentDB replica, if one exists. You can force a
-#' failover when you want to simulate a failure of a primary instance for
-#' testing.
 #'
-#' @usage
-#' docdb_failover_db_cluster(DBClusterIdentifier,
-#'   TargetDBInstanceIdentifier)
+#' See [https://paws-r.github.io/docs/docdb/failover_db_cluster.html](https://paws-r.github.io/docs/docdb/failover_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier A cluster identifier to force a failover for. This parameter is not case
 #' sensitive.
@@ -3065,79 +1849,6 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #' 
 #' You must specify the instance identifier for an Amazon DocumentDB
 #' replica in the cluster. For example, `mydbcluster-replica1`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$failover_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   TargetDBInstanceIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3164,40 +1875,11 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 #' @description
 #' Lists all tags on an Amazon DocumentDB resource.
 #'
-#' @usage
-#' docdb_list_tags_for_resource(ResourceName, Filters)
+#' See [https://paws-r.github.io/docs/docdb/list_tags_for_resource.html](https://paws-r.github.io/docs/docdb/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon DocumentDB resource with tags to be listed. This value is an
 #' Amazon Resource Name (ARN).
 #' @param Filters This parameter is not currently supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3222,16 +1904,9 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Modifies a setting for an Amazon DocumentDB cluster
 #'
 #' @description
-#' Modifies a setting for an Amazon DocumentDB cluster. You can change one
-#' or more database configuration parameters by specifying these parameters
-#' and the new values in the request.
+#' Modifies a setting for an Amazon DocumentDB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 #'
-#' @usage
-#' docdb_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
-#'   ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
-#'   VpcSecurityGroupIds, Port, MasterUserPassword, PreferredBackupWindow,
-#'   PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration,
-#'   EngineVersion, DeletionProtection)
+#' See [https://paws-r.github.io/docs/docdb/modify_db_cluster.html](https://paws-r.github.io/docs/docdb/modify_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster that is being modified. This
 #' parameter is not case sensitive.
@@ -3292,7 +1967,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region.
+#' block of time for each Amazon Web Services Region.
 #' 
 #' Constraints:
 #' 
@@ -3309,8 +1984,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week.
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week.
 #' 
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
@@ -3320,106 +1995,11 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' `EnableLogTypes` and `DisableLogTypes` arrays determine which logs are
 #' exported (or not exported) to CloudWatch Logs.
 #' @param EngineVersion The version number of the database engine to which you want to upgrade.
-#' Changing this parameter results in an outage. The change is applied
-#' during the next maintenance window unless the `ApplyImmediately`
-#' parameter is set to `true`.
+#' Modifying engine version is not supported on Amazon DocumentDB.
 #' @param DeletionProtection Specifies whether this cluster can be deleted. If `DeletionProtection`
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   NewDBClusterIdentifier = "string",
-#'   ApplyImmediately = TRUE|FALSE,
-#'   BackupRetentionPeriod = 123,
-#'   DBClusterParameterGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Port = 123,
-#'   MasterUserPassword = "string",
-#'   PreferredBackupWindow = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   CloudwatchLogsExportConfiguration = list(
-#'     EnableLogTypes = list(
-#'       "string"
-#'     ),
-#'     DisableLogTypes = list(
-#'       "string"
-#'     )
-#'   ),
-#'   EngineVersion = "string",
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3444,59 +2024,12 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
 #' Modifies the parameters of a cluster parameter group
 #'
 #' @description
-#' Modifies the parameters of a cluster parameter group. To modify more
-#' than one parameter, submit a list of the following: `ParameterName`,
-#' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
-#' modified in a single request.
-#' 
-#' Changes to dynamic parameters are applied immediately. Changes to static
-#' parameters require a reboot or maintenance window before the change can
-#' take effect.
-#' 
-#' After you create a cluster parameter group, you should wait at least 5
-#' minutes before creating your first cluster that uses that cluster
-#' parameter group as the default parameter group. This allows Amazon
-#' DocumentDB to fully complete the create action before the parameter
-#' group is used as the default for a new cluster. This step is especially
-#' important for parameters that are critical when creating the default
-#' database for a cluster, such as the character set for the default
-#' database defined by the `character_set_database` parameter.
+#' Modifies the parameters of a cluster parameter group. To modify more than one parameter, submit a list of the following: `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be modified in a single request.
 #'
-#' @usage
-#' docdb_modify_db_cluster_parameter_group(DBClusterParameterGroupName,
-#'   Parameters)
+#' See [https://paws-r.github.io/docs/docdb/modify_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/modify_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group to modify.
 #' @param Parameters &#91;required&#93; A list of parameters in the cluster parameter group to modify.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string",
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3519,83 +2052,37 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 .docdb$operations$modify_db_cluster_parameter_group <- docdb_modify_db_cluster_parameter_group
 
 #' Adds an attribute and values to, or removes an attribute and values
-#' from, a manual DB cluster snapshot
+#' from, a manual cluster snapshot
 #'
 #' @description
-#' Adds an attribute and values to, or removes an attribute and values
-#' from, a manual DB cluster snapshot.
-#' 
-#' To share a manual cluster snapshot with other AWS accounts, specify
-#' `restore` as the `AttributeName`, and use the `ValuesToAdd` parameter to
-#' add a list of IDs of the AWS accounts that are authorized to restore the
-#' manual cluster snapshot. Use the value `all` to make the manual cluster
-#' snapshot public, which means that it can be copied or restored by all
-#' AWS accounts. Do not add the `all` value for any manual DB cluster
-#' snapshots that contain private information that you don't want available
-#' to all AWS accounts. If a manual cluster snapshot is encrypted, it can
-#' be shared, but only by specifying a list of authorized AWS account IDs
-#' for the `ValuesToAdd` parameter. You can't use `all` as a value for that
-#' parameter in this case.
+#' Adds an attribute and values to, or removes an attribute and values from, a manual cluster snapshot.
 #'
-#' @usage
-#' docdb_modify_db_cluster_snapshot_attribute(DBClusterSnapshotIdentifier,
-#'   AttributeName, ValuesToAdd, ValuesToRemove)
+#' See [https://paws-r.github.io/docs/docdb/modify_db_cluster_snapshot_attribute.html](https://paws-r.github.io/docs/docdb/modify_db_cluster_snapshot_attribute.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the cluster snapshot to modify the attributes for.
 #' @param AttributeName &#91;required&#93; The name of the cluster snapshot attribute to modify.
 #' 
-#' To manage authorization for other AWS accounts to copy or restore a
-#' manual cluster snapshot, set this value to `restore`.
+#' To manage authorization for other Amazon Web Services accounts to copy
+#' or restore a manual cluster snapshot, set this value to `restore`.
 #' @param ValuesToAdd A list of cluster snapshot attributes to add to the attribute specified
 #' by `AttributeName`.
 #' 
-#' To authorize other AWS accounts to copy or restore a manual cluster
-#' snapshot, set this list to include one or more AWS account IDs. To make
-#' the manual cluster snapshot restorable by any AWS account, set it to
-#' `all`. Do not add the `all` value for any manual cluster snapshots that
-#' contain private information that you don't want to be available to all
-#' AWS accounts.
+#' To authorize other Amazon Web Services accounts to copy or restore a
+#' manual cluster snapshot, set this list to include one or more Amazon Web
+#' Services account IDs. To make the manual cluster snapshot restorable by
+#' any Amazon Web Services account, set it to `all`. Do not add the `all`
+#' value for any manual cluster snapshots that contain private information
+#' that you don't want to be available to all Amazon Web Services accounts.
 #' @param ValuesToRemove A list of cluster snapshot attributes to remove from the attribute
 #' specified by `AttributeName`.
 #' 
-#' To remove authorization for other AWS accounts to copy or restore a
-#' manual cluster snapshot, set this list to include one or more AWS
-#' account identifiers. To remove authorization for any AWS account to copy
-#' or restore the cluster snapshot, set it to `all` . If you specify `all`,
-#' an AWS account whose account ID is explicitly added to the `restore`
-#' attribute can still copy or restore a manual cluster snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshotAttributesResult = list(
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterSnapshotAttributes = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeValues = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster_snapshot_attribute(
-#'   DBClusterSnapshotIdentifier = "string",
-#'   AttributeName = "string",
-#'   ValuesToAdd = list(
-#'     "string"
-#'   ),
-#'   ValuesToRemove = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' To remove authorization for other Amazon Web Services accounts to copy
+#' or restore a manual cluster snapshot, set this list to include one or
+#' more Amazon Web Services account identifiers. To remove authorization
+#' for any Amazon Web Services account to copy or restore the cluster
+#' snapshot, set it to `all` . If you specify `all`, an Amazon Web Services
+#' account whose account ID is explicitly added to the `restore` attribute
+#' can still copy or restore a manual cluster snapshot.
 #'
 #' @keywords internal
 #'
@@ -3620,14 +2107,9 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' Modifies settings for an instance
 #'
 #' @description
-#' Modifies settings for an instance. You can change one or more database
-#' configuration parameters by specifying these parameters and the new
-#' values in the request.
+#' Modifies settings for an instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 #'
-#' @usage
-#' docdb_modify_db_instance(DBInstanceIdentifier, DBInstanceClass,
-#'   ApplyImmediately, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
-#'   NewDBInstanceIdentifier, CACertificateIdentifier, PromotionTier)
+#' See [https://paws-r.github.io/docs/docdb/modify_db_instance.html](https://paws-r.github.io/docs/docdb/modify_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This value is stored as a lowercase string.
 #' 
@@ -3635,8 +2117,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' 
 #' -   Must match the identifier of an existing `DBInstance`.
 #' @param DBInstanceClass The new compute and memory capacity of the instance; for example,
-#' `db.r5.large`. Not all instance classes are available in all AWS
-#' Regions.
+#' `db.r5.large`. Not all instance classes are available in all Amazon Web
+#' Services Regions.
 #' 
 #' If you modify the instance class, an outage occurs during the change.
 #' The change is applied during the next maintenance window, unless
@@ -3669,13 +2151,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' Constraints: Must be at least 30 minutes.
-#' @param AutoMinorVersionUpgrade Indicates that minor version upgrades are applied automatically to the
-#' instance during the maintenance window. Changing this parameter doesn't
-#' result in an outage except in the following case, and the change is
-#' asynchronously applied as soon as possible. An outage results if this
-#' parameter is set to `true` during the maintenance window, and a newer
-#' minor version is available, and Amazon DocumentDB has enabled automatic
-#' patching for that engine version.
+#' @param AutoMinorVersionUpgrade This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB
+#' does not perform minor version upgrades regardless of the value set.
 #' @param NewDBInstanceIdentifier The new instance identifier for the instance when renaming an instance.
 #' When you change the instance identifier, an instance reboot occurs
 #' immediately if you set `Apply Immediately` to `true`. It occurs during
@@ -3692,6 +2169,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' 
 #' Example: `mydbinstance`
 #' @param CACertificateIdentifier Indicates the certificate that needs to be associated with the instance.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB instance to
+#' snapshots of the DB instance. By default, tags are not copied.
 #' @param PromotionTier A value that specifies the order in which an Amazon DocumentDB replica
 #' is promoted to the primary instance after a failure of the existing
 #' primary instance.
@@ -3699,126 +2178,30 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' Default: 1
 #' 
 #' Valid values: 0-15
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   DBInstanceClass = "string",
-#'   ApplyImmediately = TRUE|FALSE,
-#'   PreferredMaintenanceWindow = "string",
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   NewDBInstanceIdentifier = "string",
-#'   CACertificateIdentifier = "string",
-#'   PromotionTier = 123
-#' )
-#' ```
+#' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
+#' Instance. For more information, see [Using Amazon Performance
+#' Insights](https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html).
+#' @param PerformanceInsightsKMSKeyId The KMS key identifier for encryption of Performance Insights data.
+#' 
+#' The KMS key identifier is the key ARN, key ID, alias ARN, or alias name
+#' for the KMS key.
+#' 
+#' If you do not specify a value for PerformanceInsightsKMSKeyId, then
+#' Amazon DocumentDB uses your default KMS key. There is a default KMS key
+#' for your Amazon Web Services account. Your Amazon Web Services account
+#' has a different default KMS key for each Amazon Web Services region.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_instance
-docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, PromotionTier = NULL) {
+docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, PromotionTier = PromotionTier)
+  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId)
   output <- .docdb$modify_db_instance_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -3831,12 +2214,9 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 #' Modifies an existing subnet group
 #'
 #' @description
-#' Modifies an existing subnet group. subnet groups must contain at least
-#' one subnet in at least two Availability Zones in the AWS Region.
+#' Modifies an existing subnet group. subnet groups must contain at least one subnet in at least two Availability Zones in the Amazon Web Services Region.
 #'
-#' @usage
-#' docdb_modify_db_subnet_group(DBSubnetGroupName,
-#'   DBSubnetGroupDescription, SubnetIds)
+#' See [https://paws-r.github.io/docs/docdb/modify_db_subnet_group.html](https://paws-r.github.io/docs/docdb/modify_db_subnet_group.html) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the subnet group. This value is stored as a lowercase
 #' string. You can't modify the default subnet group.
@@ -3847,40 +2227,6 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 #' Example: `mySubnetgroup`
 #' @param DBSubnetGroupDescription The description for the subnet group.
 #' @param SubnetIds &#91;required&#93; The Amazon EC2 subnet IDs for the subnet group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSubnetGroup = list(
-#'     DBSubnetGroupName = "string",
-#'     DBSubnetGroupDescription = "string",
-#'     VpcId = "string",
-#'     SubnetGroupStatus = "string",
-#'     Subnets = list(
-#'       list(
-#'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = list(
-#'           Name = "string"
-#'         ),
-#'         SubnetStatus = "string"
-#'       )
-#'     ),
-#'     DBSubnetGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_subnet_group(
-#'   DBSubnetGroupName = "string",
-#'   DBSubnetGroupDescription = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3902,20 +2248,99 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 }
 .docdb$operations$modify_db_subnet_group <- docdb_modify_db_subnet_group
 
+#' Modifies an existing Amazon DocumentDB event notification subscription
+#'
+#' @description
+#' Modifies an existing Amazon DocumentDB event notification subscription.
+#'
+#' See [https://paws-r.github.io/docs/docdb/modify_event_subscription.html](https://paws-r.github.io/docs/docdb/modify_event_subscription.html) for full documentation.
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription.
+#' @param SnsTopicArn The Amazon Resource Name (ARN) of the SNS topic created for event
+#' notification. The ARN is created by Amazon SNS when you create a topic
+#' and subscribe to it.
+#' @param SourceType The type of source that is generating the events. For example, if you
+#' want to be notified of events generated by an instance, set this
+#' parameter to `db-instance`. If this value is not specified, all events
+#' are returned.
+#' 
+#' Valid values: `db-instance`, `db-parameter-group`, `db-security-group`
+#' @param EventCategories A list of event categories for a `SourceType` that you want to subscribe
+#' to.
+#' @param Enabled A Boolean value; set to `true` to activate the subscription.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_modify_event_subscription
+docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, SourceType = NULL, EventCategories = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "ModifyEventSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$modify_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, Enabled = Enabled)
+  output <- .docdb$modify_event_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$modify_event_subscription <- docdb_modify_event_subscription
+
+#' Modify a setting for an Amazon DocumentDB global cluster
+#'
+#' @description
+#' Modify a setting for an Amazon DocumentDB global cluster. You can change one or more configuration parameters (for example: deletion protection), or the global cluster identifier by specifying these parameters and the new values in the request.
+#'
+#' See [https://paws-r.github.io/docs/docdb/modify_global_cluster.html](https://paws-r.github.io/docs/docdb/modify_global_cluster.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The identifier for the global cluster being modified. This parameter
+#' isn't case-sensitive.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing global cluster.
+#' @param NewGlobalClusterIdentifier The new identifier for a global cluster when you modify a global
+#' cluster. This value is stored as a lowercase string.
+#' 
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens
+#' 
+#'     The first character must be a letter
+#' 
+#'     Can't end with a hyphen or contain two consecutive hyphens
+#' 
+#' Example: `my-cluster2`
+#' @param DeletionProtection Indicates if the global cluster has deletion protection enabled. The
+#' global cluster can't be deleted when deletion protection is enabled.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_modify_global_cluster
+docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL) {
+  op <- new_operation(
+    name = "ModifyGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection)
+  output <- .docdb$modify_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$modify_global_cluster <- docdb_modify_global_cluster
+
 #' You might need to reboot your instance, usually for maintenance reasons
 #'
 #' @description
-#' You might need to reboot your instance, usually for maintenance reasons.
-#' For example, if you make certain changes, or if you change the cluster
-#' parameter group that is associated with the instance, you must reboot
-#' the instance for the changes to take effect.
-#' 
-#' Rebooting an instance restarts the database engine service. Rebooting an
-#' instance results in a momentary outage, during which the instance status
-#' is set to *rebooting*.
+#' You might need to reboot your instance, usually for maintenance reasons. For example, if you make certain changes, or if you change the cluster parameter group that is associated with the instance, you must reboot the instance for the changes to take effect.
 #'
-#' @usage
-#' docdb_reboot_db_instance(DBInstanceIdentifier, ForceFailover)
+#' See [https://paws-r.github.io/docs/docdb/reboot_db_instance.html](https://paws-r.github.io/docs/docdb/reboot_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This parameter is stored as a lowercase string.
 #' 
@@ -3926,108 +2351,6 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #' 
 #' Constraint: You can't specify `true` if the instance is not configured
 #' for Multi-AZ.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reboot_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   ForceFailover = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4049,30 +2372,81 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
 }
 .docdb$operations$reboot_db_instance <- docdb_reboot_db_instance
 
+#' Detaches an Amazon DocumentDB secondary cluster from a global cluster
+#'
+#' @description
+#' Detaches an Amazon DocumentDB secondary cluster from a global cluster. The cluster becomes a standalone cluster with read-write capability instead of being read-only and receiving data from a primary in a different region.
+#'
+#' See [https://paws-r.github.io/docs/docdb/remove_from_global_cluster.html](https://paws-r.github.io/docs/docdb/remove_from_global_cluster.html) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier to detach from the Amazon DocumentDB global
+#' cluster.
+#' @param DbClusterIdentifier &#91;required&#93; The Amazon Resource Name (ARN) identifying the cluster that was detached
+#' from the Amazon DocumentDB global cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_remove_from_global_cluster
+docdb_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterIdentifier) {
+  op <- new_operation(
+    name = "RemoveFromGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, DbClusterIdentifier = DbClusterIdentifier)
+  output <- .docdb$remove_from_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$remove_from_global_cluster <- docdb_remove_from_global_cluster
+
+#' Removes a source identifier from an existing Amazon DocumentDB event
+#' notification subscription
+#'
+#' @description
+#' Removes a source identifier from an existing Amazon DocumentDB event notification subscription.
+#'
+#' See [https://paws-r.github.io/docs/docdb/remove_source_identifier_from_subscription.html](https://paws-r.github.io/docs/docdb/remove_source_identifier_from_subscription.html) for full documentation.
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription that
+#' you want to remove a source identifier from.
+#' @param SourceIdentifier &#91;required&#93; The source identifier to be removed from the subscription, such as the
+#' instance identifier for an instance, or the name of a security group.
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_remove_source_identifier_from_subscription
+docdb_remove_source_identifier_from_subscription <- function(SubscriptionName, SourceIdentifier) {
+  op <- new_operation(
+    name = "RemoveSourceIdentifierFromSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$remove_source_identifier_from_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
+  output <- .docdb$remove_source_identifier_from_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$remove_source_identifier_from_subscription <- docdb_remove_source_identifier_from_subscription
+
 #' Removes metadata tags from an Amazon DocumentDB resource
 #'
 #' @description
 #' Removes metadata tags from an Amazon DocumentDB resource.
 #'
-#' @usage
-#' docdb_remove_tags_from_resource(ResourceName, TagKeys)
+#' See [https://paws-r.github.io/docs/docdb/remove_tags_from_resource.html](https://paws-r.github.io/docs/docdb/remove_tags_from_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon DocumentDB resource that the tags are removed from. This
 #' value is an Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; The tag key (name) of the tag to be removed.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_tags_from_resource(
-#'   ResourceName = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4098,19 +2472,9 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' value
 #'
 #' @description
-#' Modifies the parameters of a cluster parameter group to the default
-#' value. To reset specific parameters, submit a list of the following:
-#' `ParameterName` and `ApplyMethod`. To reset the entire cluster parameter
-#' group, specify the `DBClusterParameterGroupName` and
-#' `ResetAllParameters` parameters.
-#' 
-#' When you reset the entire group, dynamic parameters are updated
-#' immediately and static parameters are set to `pending-reboot` to take
-#' effect on the next DB instance reboot.
+#' Modifies the parameters of a cluster parameter group to the default value. To reset specific parameters, submit a list of the following: `ParameterName` and `ApplyMethod`. To reset the entire cluster parameter group, specify the `DBClusterParameterGroupName` and `ResetAllParameters` parameters.
 #'
-#' @usage
-#' docdb_reset_db_cluster_parameter_group(DBClusterParameterGroupName,
-#'   ResetAllParameters, Parameters)
+#' See [https://paws-r.github.io/docs/docdb/reset_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/reset_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group to reset.
 #' @param ResetAllParameters A value that is set to `true` to reset all parameters in the cluster
@@ -4120,36 +2484,6 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @param Parameters A list of parameter names in the cluster parameter group to reset to the
 #' default values. You can't use this parameter if the `ResetAllParameters`
 #' parameter is set to `true`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reset_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string",
-#'   ResetAllParameters = TRUE|FALSE,
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4175,21 +2509,8 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'
 #' @description
 #' Creates a new cluster from a snapshot or cluster snapshot.
-#' 
-#' If a snapshot is specified, the target cluster is created from the
-#' source DB snapshot with a default configuration and default security
-#' group.
-#' 
-#' If a cluster snapshot is specified, the target cluster is created from
-#' the source cluster restore point with the same configuration as the
-#' original source DB cluster, except that the new cluster is created with
-#' the default security group.
 #'
-#' @usage
-#' docdb_restore_db_cluster_from_snapshot(AvailabilityZones,
-#'   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
-#'   DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
-#'   EnableCloudwatchLogsExports, DeletionProtection)
+#' See [https://paws-r.github.io/docs/docdb/restore_db_cluster_from_snapshot.html](https://paws-r.github.io/docs/docdb/restore_db_cluster_from_snapshot.html) for full documentation.
 #'
 #' @param AvailabilityZones Provides the list of Amazon EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
@@ -4234,21 +2555,21 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' @param VpcSecurityGroupIds A list of virtual private cloud (VPC) security groups that the new
 #' cluster will belong to.
 #' @param Tags The tags to be assigned to the restored cluster.
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted cluster
-#' from a DB snapshot or cluster snapshot.
+#' @param KmsKeyId The KMS key identifier to use when restoring an encrypted cluster from a
+#' DB snapshot or cluster snapshot.
 #' 
-#' The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-#' KMS encryption key. If you are restoring a cluster with the same AWS
-#' account that owns the AWS KMS encryption key used to encrypt the new
-#' cluster, then you can use the AWS KMS key alias instead of the ARN for
-#' the AWS KMS encryption key.
+#' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+#' encryption key. If you are restoring a cluster with the same Amazon Web
+#' Services account that owns the KMS encryption key used to encrypt the
+#' new cluster, then you can use the KMS key alias instead of the ARN for
+#' the KMS encryption key.
 #' 
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
 #' -   If the snapshot or cluster snapshot in `SnapshotIdentifier` is
-#'     encrypted, then the restored cluster is encrypted using the AWS KMS
-#'     key that was used to encrypt the snapshot or the cluster snapshot.
+#'     encrypted, then the restored cluster is encrypted using the KMS key
+#'     that was used to encrypt the snapshot or the cluster snapshot.
 #' 
 #' -   If the snapshot or the cluster snapshot in `SnapshotIdentifier` is
 #'     not encrypted, then the restored DB cluster is not encrypted.
@@ -4258,100 +2579,6 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_cluster_from_snapshot(
-#'   AvailabilityZones = list(
-#'     "string"
-#'   ),
-#'   DBClusterIdentifier = "string",
-#'   SnapshotIdentifier = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   Port = 123,
-#'   DBSubnetGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   KmsKeyId = "string",
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4376,17 +2603,9 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' Restores a cluster to an arbitrary point in time
 #'
 #' @description
-#' Restores a cluster to an arbitrary point in time. Users can restore to
-#' any point in time before `LatestRestorableTime` for up to
-#' `BackupRetentionPeriod` days. The target cluster is created from the
-#' source cluster with the same configuration as the original cluster,
-#' except that the new cluster is created with the default security group.
+#' Restores a cluster to an arbitrary point in time. Users can restore to any point in time before `LatestRestorableTime` for up to `BackupRetentionPeriod` days. The target cluster is created from the source cluster with the same configuration as the original cluster, except that the new cluster is created with the default security group.
 #'
-#' @usage
-#' docdb_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
-#'   SourceDBClusterIdentifier, RestoreToTime, UseLatestRestorableTime, Port,
-#'   DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
-#'   EnableCloudwatchLogsExports, DeletionProtection)
+#' See [https://paws-r.github.io/docs/docdb/restore_db_cluster_to_point_in_time.html](https://paws-r.github.io/docs/docdb/restore_db_cluster_to_point_in_time.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new cluster to be created.
 #' 
@@ -4397,6 +2616,20 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' -   The first character must be a letter.
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' @param RestoreType The type of restore to be performed. You can specify one of the
+#' following values:
+#' 
+#' -   `full-copy` - The new DB cluster is restored as a full copy of the
+#'     source DB cluster.
+#' 
+#' -   `copy-on-write` - The new DB cluster is restored as a clone of the
+#'     source DB cluster.
+#' 
+#' Constraints: You can't specify `copy-on-write` if the engine version of
+#' the source DB cluster is earlier than 1.11.
+#' 
+#' If you don't specify a `RestoreType` value, then the new DB cluster is
+#' restored as a full copy of the source DB cluster.
 #' @param SourceDBClusterIdentifier &#91;required&#93; The identifier of the source cluster from which to restore.
 #' 
 #' Constraints:
@@ -4440,25 +2673,25 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' Example: `mySubnetgroup`
 #' @param VpcSecurityGroupIds A list of VPC security groups that the new cluster belongs to.
 #' @param Tags The tags to be assigned to the restored cluster.
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted cluster
-#' from an encrypted cluster.
+#' @param KmsKeyId The KMS key identifier to use when restoring an encrypted cluster from
+#' an encrypted cluster.
 #' 
-#' The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-#' KMS encryption key. If you are restoring a cluster with the same AWS
-#' account that owns the AWS KMS encryption key used to encrypt the new
-#' cluster, then you can use the AWS KMS key alias instead of the ARN for
-#' the AWS KMS encryption key.
+#' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+#' encryption key. If you are restoring a cluster with the same Amazon Web
+#' Services account that owns the KMS encryption key used to encrypt the
+#' new cluster, then you can use the KMS key alias instead of the ARN for
+#' the KMS encryption key.
 #' 
-#' You can restore to a new cluster and encrypt the new cluster with an AWS
-#' KMS key that is different from the AWS KMS key used to encrypt the
-#' source cluster. The new DB cluster is encrypted with the AWS KMS key
-#' identified by the `KmsKeyId` parameter.
+#' You can restore to a new cluster and encrypt the new cluster with an KMS
+#' key that is different from the KMS key used to encrypt the source
+#' cluster. The new DB cluster is encrypted with the KMS key identified by
+#' the `KmsKeyId` parameter.
 #' 
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
 #' -   If the cluster is encrypted, then the restored cluster is encrypted
-#'     using the AWS KMS key that was used to encrypt the source cluster.
+#'     using the KMS key that was used to encrypt the source cluster.
 #' 
 #' -   If the cluster is not encrypted, then the restored cluster is not
 #'     encrypted.
@@ -4472,110 +2705,17 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_cluster_to_point_in_time(
-#'   DBClusterIdentifier = "string",
-#'   SourceDBClusterIdentifier = "string",
-#'   RestoreToTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   UseLatestRestorableTime = TRUE|FALSE,
-#'   Port = 123,
-#'   DBSubnetGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   KmsKeyId = "string",
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname docdb_restore_db_cluster_to_point_in_time
-docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
+docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
+  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
   output <- .docdb$restore_db_cluster_to_point_in_time_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -4588,87 +2728,12 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Sourc
 #' Restarts the stopped cluster that is specified by DBClusterIdentifier
 #'
 #' @description
-#' Restarts the stopped cluster that is specified by `DBClusterIdentifier`.
-#' For more information, see [Stopping and Starting an Amazon DocumentDB
-#' Cluster](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html).
+#' Restarts the stopped cluster that is specified by `DBClusterIdentifier`. For more information, see [Stopping and Starting an Amazon DocumentDB Cluster](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html).
 #'
-#' @usage
-#' docdb_start_db_cluster(DBClusterIdentifier)
+#' See [https://paws-r.github.io/docs/docdb/start_db_cluster.html](https://paws-r.github.io/docs/docdb/start_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the cluster to restart. Example:
 #' `docdb-2019-05-28-15-24-52`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_db_cluster(
-#'   DBClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4693,88 +2758,12 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
 #' Stops the running cluster that is specified by DBClusterIdentifier
 #'
 #' @description
-#' Stops the running cluster that is specified by `DBClusterIdentifier`.
-#' The cluster must be in the *available* state. For more information, see
-#' [Stopping and Starting an Amazon DocumentDB
-#' Cluster](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html).
+#' Stops the running cluster that is specified by `DBClusterIdentifier`. The cluster must be in the *available* state. For more information, see [Stopping and Starting an Amazon DocumentDB Cluster](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html).
 #'
-#' @usage
-#' docdb_stop_db_cluster(DBClusterIdentifier)
+#' See [https://paws-r.github.io/docs/docdb/stop_db_cluster.html](https://paws-r.github.io/docs/docdb/stop_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the cluster to stop. Example:
 #' `docdb-2019-05-28-15-24-52`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_db_cluster(
-#'   DBClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

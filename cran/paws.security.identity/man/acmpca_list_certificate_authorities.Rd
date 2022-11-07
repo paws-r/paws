@@ -5,8 +5,11 @@
 \title{Lists the private certificate authorities that you created by using the
 CreateCertificateAuthority action}
 \usage{
-acmpca_list_certificate_authorities(NextToken, MaxResults,
-  ResourceOwner)
+acmpca_list_certificate_authorities(
+  NextToken = NULL,
+  MaxResults = NULL,
+  ResourceOwner = NULL
+)
 }
 \arguments{
 \item{NextToken}{Use this parameter when paginating results in a subsequent request after
@@ -22,129 +25,9 @@ retrieve additional items.}
 \item{ResourceOwner}{Use this parameter to filter the returned set of certificate authorities
 based on their owner. The default is SELF.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CertificateAuthorities = list(
-    list(
-      Arn = "string",
-      OwnerAccount = "string",
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastStateChangeAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      Type = "ROOT"|"SUBORDINATE",
-      Serial = "string",
-      Status = "CREATING"|"PENDING_CERTIFICATE"|"ACTIVE"|"DELETED"|"DISABLED"|"EXPIRED"|"FAILED",
-      NotBefore = as.POSIXct(
-        "2015-01-01"
-      ),
-      NotAfter = as.POSIXct(
-        "2015-01-01"
-      ),
-      FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
-      CertificateAuthorityConfiguration = list(
-        KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
-        SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
-        Subject = list(
-          Country = "string",
-          Organization = "string",
-          OrganizationalUnit = "string",
-          DistinguishedNameQualifier = "string",
-          State = "string",
-          CommonName = "string",
-          SerialNumber = "string",
-          Locality = "string",
-          Title = "string",
-          Surname = "string",
-          GivenName = "string",
-          Initials = "string",
-          Pseudonym = "string",
-          GenerationQualifier = "string"
-        ),
-        CsrExtensions = list(
-          KeyUsage = list(
-            DigitalSignature = TRUE|FALSE,
-            NonRepudiation = TRUE|FALSE,
-            KeyEncipherment = TRUE|FALSE,
-            DataEncipherment = TRUE|FALSE,
-            KeyAgreement = TRUE|FALSE,
-            KeyCertSign = TRUE|FALSE,
-            CRLSign = TRUE|FALSE,
-            EncipherOnly = TRUE|FALSE,
-            DecipherOnly = TRUE|FALSE
-          ),
-          SubjectInformationAccess = list(
-            list(
-              AccessMethod = list(
-                CustomObjectIdentifier = "string",
-                AccessMethodType = "CA_REPOSITORY"|"RESOURCE_PKI_MANIFEST"|"RESOURCE_PKI_NOTIFY"
-              ),
-              AccessLocation = list(
-                OtherName = list(
-                  TypeId = "string",
-                  Value = "string"
-                ),
-                Rfc822Name = "string",
-                DnsName = "string",
-                DirectoryName = list(
-                  Country = "string",
-                  Organization = "string",
-                  OrganizationalUnit = "string",
-                  DistinguishedNameQualifier = "string",
-                  State = "string",
-                  CommonName = "string",
-                  SerialNumber = "string",
-                  Locality = "string",
-                  Title = "string",
-                  Surname = "string",
-                  GivenName = "string",
-                  Initials = "string",
-                  Pseudonym = "string",
-                  GenerationQualifier = "string"
-                ),
-                EdiPartyName = list(
-                  PartyName = "string",
-                  NameAssigner = "string"
-                ),
-                UniformResourceIdentifier = "string",
-                IpAddress = "string",
-                RegisteredId = "string"
-              )
-            )
-          )
-        )
-      ),
-      RevocationConfiguration = list(
-        CrlConfiguration = list(
-          Enabled = TRUE|FALSE,
-          ExpirationInDays = 123,
-          CustomCname = "string",
-          S3BucketName = "string"
-        )
-      ),
-      RestorableUntil = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the private certificate authorities that you created by using the
-\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
-action.
-}
-\section{Request syntax}{
-\preformatted{svc$list_certificate_authorities(
-  NextToken = "string",
-  MaxResults = 123,
-  ResourceOwner = "SELF"|"OTHER_ACCOUNTS"
-)
-}
-}
+Lists the private certificate authorities that you created by using the \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}} action.
 
+See \url{https://paws-r.github.io/docs/acmpca/list_certificate_authorities.html} for full documentation.
+}
 \keyword{internal}

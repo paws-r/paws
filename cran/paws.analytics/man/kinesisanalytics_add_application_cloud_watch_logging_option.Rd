@@ -6,7 +6,10 @@
 API, which only supports SQL applications}
 \usage{
 kinesisanalytics_add_application_cloud_watch_logging_option(
-  ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOption)
+  ApplicationName,
+  CurrentApplicationVersionId,
+  CloudWatchLoggingOption
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The Kinesis Analytics application name.}
@@ -17,29 +20,9 @@ kinesisanalytics_add_application_cloud_watch_logging_option(
 IAM role ARN. Note: To write application messages to CloudWatch, the IAM
 role that is used must have the \code{PutLogEvents} policy action enabled.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Adds a CloudWatch log stream to monitor application configuration
-errors. For more information about using CloudWatch log streams with
-Amazon Kinesis Analytics applications, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/add_application_cloud_watch_logging_option.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_application_cloud_watch_logging_option(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  CloudWatchLoggingOption = list(
-    LogStreamARN = "string",
-    RoleARN = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

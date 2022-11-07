@@ -6,51 +6,12 @@ NULL
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Adds or overwrites one or more tags for the specified AWS CloudHSM
-#' resource.
-#' 
-#' Each tag consists of a key and a value. Tag keys must be unique to each
-#' resource.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_add_tags_to_resource(ResourceArn, TagList)
+#' See [https://paws-r.github.io/docs/cloudhsm/add_tags_to_resource.html](https://paws-r.github.io/docs/cloudhsm/add_tags_to_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.
 #' @param TagList &#91;required&#93; One or more tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_tags_to_resource(
-#'   ResourceArn = "string",
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -75,42 +36,11 @@ cloudhsm_add_tags_to_resource <- function(ResourceArn, TagList) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Creates a high-availability partition group. A high-availability
-#' partition group is a group of partitions that spans multiple physical
-#' HSMs.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_create_hapg(Label)
+#' See [https://paws-r.github.io/docs/cloudhsm/create_hapg.html](https://paws-r.github.io/docs/cloudhsm/create_hapg.html) for full documentation.
 #'
 #' @param Label &#91;required&#93; The label of the new high-availability partition group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HapgArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_hapg(
-#'   Label = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -135,36 +65,9 @@ cloudhsm_create_hapg <- function(Label) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Creates an uninitialized HSM instance.
-#' 
-#' There is an upfront fee charged for each HSM instance that you create
-#' with the [`create_hsm`][cloudhsm_create_hsm] operation. If you
-#' accidentally provision an HSM and want to request a refund, delete the
-#' instance using the [`delete_hsm`][cloudhsm_delete_hsm] operation, go to
-#' the AWS Support Center, create a new case, and select **Account and
-#' Billing Support**.
-#' 
-#' It can take up to 20 minutes to create and provision an HSM. You can
-#' monitor the status of the HSM with the
-#' [`describe_hsm`][cloudhsm_describe_hsm] operation. The HSM is ready to
-#' be initialized when the status changes to `RUNNING`.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_create_hsm(SubnetId, SshKey, EniIp, IamRoleArn, ExternalId,
-#'   SubscriptionType, ClientToken, SyslogIp)
+#' See [https://paws-r.github.io/docs/cloudhsm/create_hsm.html](https://paws-r.github.io/docs/cloudhsm/create_hsm.html) for full documentation.
 #'
 #' @param SubnetId &#91;required&#93; The identifier of the subnet in your VPC in which to place the HSM.
 #' @param SshKey &#91;required&#93; The SSH public key to install on the HSM.
@@ -180,28 +83,6 @@ cloudhsm_create_hapg <- function(Label) {
 #' operation with the same token will be ignored.
 #' @param SyslogIp The IP address for the syslog monitoring server. The AWS CloudHSM
 #' service only supports one syslog monitoring server.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HsmArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_hsm(
-#'   SubnetId = "string",
-#'   SshKey = "string",
-#'   EniIp = "string",
-#'   IamRoleArn = "string",
-#'   ExternalId = "string",
-#'   SubscriptionType = "PRODUCTION",
-#'   ClientToken = "string",
-#'   SyslogIp = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -226,43 +107,13 @@ cloudhsm_create_hsm <- function(SubnetId, SshKey, EniIp = NULL, IamRoleArn, Exte
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Creates an HSM client.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_create_luna_client(Label, Certificate)
+#' See [https://paws-r.github.io/docs/cloudhsm/create_luna_client.html](https://paws-r.github.io/docs/cloudhsm/create_luna_client.html) for full documentation.
 #'
 #' @param Label The label for the client.
 #' @param Certificate &#91;required&#93; The contents of a Base64-Encoded X.509 v3 certificate to be installed on
 #' the HSMs used by this client.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ClientArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_luna_client(
-#'   Label = "string",
-#'   Certificate = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -287,40 +138,11 @@ cloudhsm_create_luna_client <- function(Label = NULL, Certificate) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Deletes a high-availability partition group.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_delete_hapg(HapgArn)
+#' See [https://paws-r.github.io/docs/cloudhsm/delete_hapg.html](https://paws-r.github.io/docs/cloudhsm/delete_hapg.html) for full documentation.
 #'
 #' @param HapgArn &#91;required&#93; The ARN of the high-availability partition group to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_hapg(
-#'   HapgArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -345,41 +167,11 @@ cloudhsm_delete_hapg <- function(HapgArn) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Deletes an HSM. After completion, this operation cannot be undone and
-#' your key material cannot be recovered.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_delete_hsm(HsmArn)
+#' See [https://paws-r.github.io/docs/cloudhsm/delete_hsm.html](https://paws-r.github.io/docs/cloudhsm/delete_hsm.html) for full documentation.
 #'
 #' @param HsmArn &#91;required&#93; The ARN of the HSM to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_hsm(
-#'   HsmArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -404,40 +196,11 @@ cloudhsm_delete_hsm <- function(HsmArn) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Deletes a client.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_delete_luna_client(ClientArn)
+#' See [https://paws-r.github.io/docs/cloudhsm/delete_luna_client.html](https://paws-r.github.io/docs/cloudhsm/delete_luna_client.html) for full documentation.
 #'
 #' @param ClientArn &#91;required&#93; The ARN of the client to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_luna_client(
-#'   ClientArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -462,56 +225,11 @@ cloudhsm_delete_luna_client <- function(ClientArn) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Retrieves information about a high-availability partition group.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_describe_hapg(HapgArn)
+#' See [https://paws-r.github.io/docs/cloudhsm/describe_hapg.html](https://paws-r.github.io/docs/cloudhsm/describe_hapg.html) for full documentation.
 #'
 #' @param HapgArn &#91;required&#93; The ARN of the high-availability partition group to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HapgArn = "string",
-#'   HapgSerial = "string",
-#'   HsmsLastActionFailed = list(
-#'     "string"
-#'   ),
-#'   HsmsPendingDeletion = list(
-#'     "string"
-#'   ),
-#'   HsmsPendingRegistration = list(
-#'     "string"
-#'   ),
-#'   Label = "string",
-#'   LastModifiedTimestamp = "string",
-#'   PartitionSerialList = list(
-#'     "string"
-#'   ),
-#'   State = "READY"|"UPDATING"|"DEGRADED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_hapg(
-#'   HapgArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -536,67 +254,14 @@ cloudhsm_describe_hapg <- function(HapgArn) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Retrieves information about an HSM. You can identify the HSM by its ARN
-#' or its serial number.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_describe_hsm(HsmArn, HsmSerialNumber)
+#' See [https://paws-r.github.io/docs/cloudhsm/describe_hsm.html](https://paws-r.github.io/docs/cloudhsm/describe_hsm.html) for full documentation.
 #'
 #' @param HsmArn The ARN of the HSM. Either the `HsmArn` or the `SerialNumber` parameter
 #' must be specified.
 #' @param HsmSerialNumber The serial number of the HSM. Either the `HsmArn` or the
 #' `HsmSerialNumber` parameter must be specified.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HsmArn = "string",
-#'   Status = "PENDING"|"RUNNING"|"UPDATING"|"SUSPENDED"|"TERMINATING"|"TERMINATED"|"DEGRADED",
-#'   StatusDetails = "string",
-#'   AvailabilityZone = "string",
-#'   EniId = "string",
-#'   EniIp = "string",
-#'   SubscriptionType = "PRODUCTION",
-#'   SubscriptionStartDate = "string",
-#'   SubscriptionEndDate = "string",
-#'   VpcId = "string",
-#'   SubnetId = "string",
-#'   IamRoleArn = "string",
-#'   SerialNumber = "string",
-#'   VendorName = "string",
-#'   HsmType = "string",
-#'   SoftwareVersion = "string",
-#'   SshPublicKey = "string",
-#'   SshKeyLastUpdated = "string",
-#'   ServerCertUri = "string",
-#'   ServerCertLastUpdated = "string",
-#'   Partitions = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_hsm(
-#'   HsmArn = "string",
-#'   HsmSerialNumber = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -621,46 +286,12 @@ cloudhsm_describe_hsm <- function(HsmArn = NULL, HsmSerialNumber = NULL) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Retrieves information about an HSM client.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_describe_luna_client(ClientArn, CertificateFingerprint)
+#' See [https://paws-r.github.io/docs/cloudhsm/describe_luna_client.html](https://paws-r.github.io/docs/cloudhsm/describe_luna_client.html) for full documentation.
 #'
 #' @param ClientArn The ARN of the client.
 #' @param CertificateFingerprint The certificate fingerprint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ClientArn = "string",
-#'   Certificate = "string",
-#'   CertificateFingerprint = "string",
-#'   LastModifiedTimestamp = "string",
-#'   Label = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_luna_client(
-#'   ClientArn = "string",
-#'   CertificateFingerprint = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -685,50 +316,14 @@ cloudhsm_describe_luna_client <- function(ClientArn = NULL, CertificateFingerpri
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Gets the configuration files necessary to connect to all high
-#' availability partition groups the client is associated with.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_get_config(ClientArn, ClientVersion, HapgList)
+#' See [https://paws-r.github.io/docs/cloudhsm/get_config.html](https://paws-r.github.io/docs/cloudhsm/get_config.html) for full documentation.
 #'
 #' @param ClientArn &#91;required&#93; The ARN of the client.
 #' @param ClientVersion &#91;required&#93; The client version.
 #' @param HapgList &#91;required&#93; A list of ARNs that identify the high-availability partition groups that
 #' are associated with the client.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigType = "string",
-#'   ConfigFile = "string",
-#'   ConfigCred = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_config(
-#'   ClientArn = "string",
-#'   ClientVersion = "5.1"|"5.3",
-#'   HapgList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -753,38 +348,9 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Lists the Availability Zones that have available AWS CloudHSM capacity.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_list_available_zones()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AZList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_available_zones()
-#' ```
+#' See [https://paws-r.github.io/docs/cloudhsm/list_available_zones.html](https://paws-r.github.io/docs/cloudhsm/list_available_zones.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -809,50 +375,13 @@ cloudhsm_list_available_zones <- function() {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Lists the high-availability partition groups for the account.
-#' 
-#' This operation supports pagination with the use of the `NextToken`
-#' member. If more results are available, the `NextToken` member of the
-#' response contains a token that you pass in the next call to
-#' [`list_hapgs`][cloudhsm_list_hapgs] to retrieve the next set of items.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_list_hapgs(NextToken)
+#' See [https://paws-r.github.io/docs/cloudhsm/list_hapgs.html](https://paws-r.github.io/docs/cloudhsm/list_hapgs.html) for full documentation.
 #'
 #' @param NextToken The `NextToken` value from a previous call to
 #' [`list_hapgs`][cloudhsm_list_hapgs]. Pass null if this is the first
 #' call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HapgList = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_hapgs(
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -877,50 +406,12 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Retrieves the identifiers of all of the HSMs provisioned for the current
-#' customer.
-#' 
-#' This operation supports pagination with the use of the `NextToken`
-#' member. If more results are available, the `NextToken` member of the
-#' response contains a token that you pass in the next call to
-#' [`list_hsms`][cloudhsm_list_hsms] to retrieve the next set of items.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_list_hsms(NextToken)
+#' See [https://paws-r.github.io/docs/cloudhsm/list_hsms.html](https://paws-r.github.io/docs/cloudhsm/list_hsms.html) for full documentation.
 #'
 #' @param NextToken The `NextToken` value from a previous call to
 #' [`list_hsms`][cloudhsm_list_hsms]. Pass null if this is the first call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HsmList = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_hsms(
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -945,51 +436,13 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Lists all of the clients.
-#' 
-#' This operation supports pagination with the use of the `NextToken`
-#' member. If more results are available, the `NextToken` member of the
-#' response contains a token that you pass in the next call to
-#' [`list_luna_clients`][cloudhsm_list_luna_clients] to retrieve the next
-#' set of items.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_list_luna_clients(NextToken)
+#' See [https://paws-r.github.io/docs/cloudhsm/list_luna_clients.html](https://paws-r.github.io/docs/cloudhsm/list_luna_clients.html) for full documentation.
 #'
 #' @param NextToken The `NextToken` value from a previous call to
 #' [`list_luna_clients`][cloudhsm_list_luna_clients]. Pass null if this is
 #' the first call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ClientList = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_luna_clients(
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1014,45 +467,11 @@ cloudhsm_list_luna_clients <- function(NextToken = NULL) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Returns a list of all tags for the specified AWS CloudHSM resource.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/cloudhsm/list_tags_for_resource.html](https://paws-r.github.io/docs/cloudhsm/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS CloudHSM resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1077,47 +496,14 @@ cloudhsm_list_tags_for_resource <- function(ResourceArn) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Modifies an existing high-availability partition group.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_modify_hapg(HapgArn, Label, PartitionSerialList)
+#' See [https://paws-r.github.io/docs/cloudhsm/modify_hapg.html](https://paws-r.github.io/docs/cloudhsm/modify_hapg.html) for full documentation.
 #'
 #' @param HapgArn &#91;required&#93; The ARN of the high-availability partition group to modify.
 #' @param Label The new label for the high-availability partition group.
 #' @param PartitionSerialList The list of partition serial numbers to make members of the
 #' high-availability partition group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HapgArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_hapg(
-#'   HapgArn = "string",
-#'   Label = "string",
-#'   PartitionSerialList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1142,30 +528,9 @@ cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NU
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Modifies an HSM.
-#' 
-#' This operation can result in the HSM being offline for up to 15 minutes
-#' while the AWS CloudHSM service is reconfigured. If you are modifying a
-#' production HSM, you should ensure that your AWS CloudHSM service is
-#' configured for high availability, and consider executing this operation
-#' during a maintenance window.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_modify_hsm(HsmArn, SubnetId, EniIp, IamRoleArn, ExternalId,
-#'   SyslogIp)
+#' See [https://paws-r.github.io/docs/cloudhsm/modify_hsm.html](https://paws-r.github.io/docs/cloudhsm/modify_hsm.html) for full documentation.
 #'
 #' @param HsmArn &#91;required&#93; The ARN of the HSM to modify.
 #' @param SubnetId The new identifier of the subnet that the HSM is in. The new subnet must
@@ -1180,26 +545,6 @@ cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NU
 #' @param ExternalId The new external ID.
 #' @param SyslogIp The new IP address for the syslog monitoring server. The AWS CloudHSM
 #' service only supports one syslog monitoring server.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HsmArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_hsm(
-#'   HsmArn = "string",
-#'   SubnetId = "string",
-#'   EniIp = "string",
-#'   IamRoleArn = "string",
-#'   ExternalId = "string",
-#'   SyslogIp = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1224,45 +569,12 @@ cloudhsm_modify_hsm <- function(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleAr
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Modifies the certificate used by the client.
-#' 
-#' This action can potentially start a workflow to install the new
-#' certificate on the client's HSMs.
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_modify_luna_client(ClientArn, Certificate)
+#' See [https://paws-r.github.io/docs/cloudhsm/modify_luna_client.html](https://paws-r.github.io/docs/cloudhsm/modify_luna_client.html) for full documentation.
 #'
 #' @param ClientArn &#91;required&#93; The ARN of the client.
 #' @param Certificate &#91;required&#93; The new certificate for the client.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ClientArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_luna_client(
-#'   ClientArn = "string",
-#'   Certificate = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1287,27 +599,9 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #' This is documentation for AWS CloudHSM Classic
 #'
 #' @description
-#' This is documentation for **AWS CloudHSM Classic**. For more
-#' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
-#' **For information about the current version of AWS CloudHSM**, see [AWS
-#' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
-#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
-#' [AWS CloudHSM API
-#' Reference](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
-#' 
-#' Removes one or more tags from the specified AWS CloudHSM resource.
-#' 
-#' To remove a tag, specify only the tag key to remove (not the value). To
-#' overwrite the value for an existing tag, use
-#' [`add_tags_to_resource`][cloudhsm_add_tags_to_resource].
+#' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/), and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' @usage
-#' cloudhsm_remove_tags_from_resource(ResourceArn, TagKeyList)
+#' See [https://paws-r.github.io/docs/cloudhsm/remove_tags_from_resource.html](https://paws-r.github.io/docs/cloudhsm/remove_tags_from_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS CloudHSM resource.
 #' @param TagKeyList &#91;required&#93; The tag key or keys to remove.
@@ -1315,24 +609,6 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #' Specify only the tag key to remove (not the value). To overwrite the
 #' value for an existing tag, use
 #' [`add_tags_to_resource`][cloudhsm_add_tags_to_resource].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_tags_from_resource(
-#'   ResourceArn = "string",
-#'   TagKeyList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

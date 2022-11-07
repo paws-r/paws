@@ -4,15 +4,15 @@
 \alias{xray_put_encryption_config}
 \title{Updates the encryption configuration for X-Ray data}
 \usage{
-xray_put_encryption_config(KeyId, Type)
+xray_put_encryption_config(KeyId = NULL, Type)
 }
 \arguments{
-\item{KeyId}{An AWS KMS customer master key (CMK) in one of the following formats:
+\item{KeyId}{An Amazon Web Services KMS key in one of the following formats:
 \itemize{
 \item \strong{Alias} - The name of the key. For example, \code{alias/MyKey}.
 \item \strong{Key ID} - The KMS key ID of the key. For example,
-\verb{ae4aa6d49-a4d8-9df9-a475-4ff6d7898456}. AWS X-Ray does not support
-asymmetric CMKs.
+\verb{ae4aa6d49-a4d8-9df9-a475-4ff6d7898456}. Amazon Web Services X-Ray
+does not support asymmetric KMS keys.
 \item \strong{ARN} - The full Amazon Resource Name of the key ID or alias. For
 example,
 \verb{arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456}.
@@ -24,25 +24,9 @@ Omit this key if you set \code{Type} to \code{NONE}.}
 \item{Type}{[required] The type of encryption. Set to \code{KMS} to use your own key for encryption.
 Set to \code{NONE} for default encryption.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EncryptionConfig = list(
-    KeyId = "string",
-    Status = "UPDATING"|"ACTIVE",
-    Type = "NONE"|"KMS"
-  )
-)
-}
-}
 \description{
 Updates the encryption configuration for X-Ray data.
-}
-\section{Request syntax}{
-\preformatted{svc$put_encryption_config(
-  KeyId = "string",
-  Type = "NONE"|"KMS"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/put_encryption_config.html} for full documentation.
+}
 \keyword{internal}

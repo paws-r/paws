@@ -4,7 +4,12 @@
 \alias{apigatewayv2_create_vpc_link}
 \title{Creates a VPC link}
 \usage{
-apigatewayv2_create_vpc_link(Name, SecurityGroupIds, SubnetIds, Tags)
+apigatewayv2_create_vpc_link(
+  Name,
+  SecurityGroupIds = NULL,
+  SubnetIds,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the VPC link.}
@@ -15,45 +20,9 @@ apigatewayv2_create_vpc_link(Name, SecurityGroupIds, SubnetIds, Tags)
 
 \item{Tags}{A list of tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  Name = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    "string"
-  ),
-  VpcLinkId = "string",
-  VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
-  VpcLinkStatusMessage = "string",
-  VpcLinkVersion = "V2"
-)
-}
-}
 \description{
 Creates a VPC link.
-}
-\section{Request syntax}{
-\preformatted{svc$create_vpc_link(
-  Name = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_vpc_link.html} for full documentation.
+}
 \keyword{internal}

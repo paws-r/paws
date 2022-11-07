@@ -11,19 +11,9 @@ sagemaker_delete_image_version(ImageName, Version)
 
 \item{Version}{[required] The version to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a version of a SageMaker image. The container image the version
-represents isn't deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_image_version(
-  ImageName = "string",
-  Version = 123
-)
-}
-}
+Deletes a version of a SageMaker image. The container image the version represents isn't deleted.
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_image_version.html} for full documentation.
+}
 \keyword{internal}

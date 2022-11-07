@@ -4,8 +4,10 @@
 \alias{ses_put_configuration_set_delivery_options}
 \title{Adds or updates the delivery options for a configuration set}
 \usage{
-ses_put_configuration_set_delivery_options(ConfigurationSetName,
-  DeliveryOptions)
+ses_put_configuration_set_delivery_options(
+  ConfigurationSetName,
+  DeliveryOptions = NULL
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to specify the delivery
@@ -14,20 +16,9 @@ options for.}
 \item{DeliveryOptions}{Specifies whether messages that use the configuration set are required
 to use Transport Layer Security (TLS).}
 }
-\value{
-An empty list.
-}
 \description{
 Adds or updates the delivery options for a configuration set.
-}
-\section{Request syntax}{
-\preformatted{svc$put_configuration_set_delivery_options(
-  ConfigurationSetName = "string",
-  DeliveryOptions = list(
-    TlsPolicy = "Require"|"Optional"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ses/put_configuration_set_delivery_options.html} for full documentation.
+}
 \keyword{internal}

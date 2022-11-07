@@ -11,24 +11,9 @@ cloudwatchlogs_untag_log_group(logGroupName, tags)
 
 \item{tags}{[required] The tag keys. The corresponding tags are removed from the log group.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the specified tags from the specified log group.
 
-To list the tags for a log group, use
-\code{\link[=cloudwatchlogs_list_tags_log_group]{list_tags_log_group}}. To add
-tags, use \code{\link[=cloudwatchlogs_tag_log_group]{tag_log_group}}.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/untag_log_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$untag_log_group(
-  logGroupName = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

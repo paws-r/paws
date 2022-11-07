@@ -2,11 +2,17 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_list_model_package_groups}
 \alias{sagemaker_list_model_package_groups}
-\title{Gets a list of the model groups in your AWS account}
+\title{Gets a list of the model groups in your Amazon Web Services account}
 \usage{
-sagemaker_list_model_package_groups(CreationTimeAfter,
-  CreationTimeBefore, MaxResults, NameContains, NextToken, SortBy,
-  SortOrder)
+sagemaker_list_model_package_groups(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  NextToken = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only model groups created after the specified
@@ -29,41 +35,9 @@ the next set of model groups, use the token in the next request.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelPackageGroupSummaryList = list(
-    list(
-      ModelPackageGroupName = "string",
-      ModelPackageGroupArn = "string",
-      ModelPackageGroupDescription = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModelPackageGroupStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting"|"DeleteFailed"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets a list of the model groups in your AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_model_package_groups(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NameContains = "string",
-  NextToken = "string",
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
+Gets a list of the model groups in your Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_model_package_groups.html} for full documentation.
+}
 \keyword{internal}

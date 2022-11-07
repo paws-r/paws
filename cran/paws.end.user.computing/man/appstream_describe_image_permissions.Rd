@@ -5,8 +5,12 @@
 \title{Retrieves a list that describes the permissions for shared AWS account
 IDs on a private image that you own}
 \usage{
-appstream_describe_image_permissions(Name, MaxResults,
-  SharedAwsAccountIds, NextToken)
+appstream_describe_image_permissions(
+  Name,
+  MaxResults = NULL,
+  SharedAwsAccountIds = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the private image for which to describe permissions. The
@@ -20,36 +24,9 @@ is shared.}
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  SharedImagePermissionsList = list(
-    list(
-      sharedAccountId = "string",
-      imagePermissions = list(
-        allowFleet = TRUE|FALSE,
-        allowImageBuilder = TRUE|FALSE
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list that describes the permissions for shared AWS account
-IDs on a private image that you own.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_image_permissions(
-  Name = "string",
-  MaxResults = 123,
-  SharedAwsAccountIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
+Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own.
 
+See \url{https://paws-r.github.io/docs/appstream/describe_image_permissions.html} for full documentation.
+}
 \keyword{internal}

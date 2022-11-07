@@ -7,14 +7,21 @@ endpoint the queries pass through, one domain name that you want to
 forward to your network, and the IP addresses of the DNS resolvers in
 your network}
 \usage{
-route53resolver_create_resolver_rule(CreatorRequestId, Name, RuleType,
-  DomainName, TargetIps, ResolverEndpointId, Tags)
+route53resolver_create_resolver_rule(
+  CreatorRequestId,
+  Name = NULL,
+  RuleType,
+  DomainName,
+  TargetIps = NULL,
+  ResolverEndpointId = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{CreatorRequestId}{[required] A unique string that identifies the request and that allows failed
-requests to be retried without the risk of executing the operation
-twice. \code{CreatorRequestId} can be any unique string, for example, a
-date/time stamp.}
+requests to be retried without the risk of running the operation twice.
+\code{CreatorRequestId} can be any unique string, for example, a date/time
+stamp.}
 
 \item{Name}{A friendly name that lets you easily find a rule in the Resolver
 dashboard in the Route 53 console.}
@@ -41,7 +48,7 @@ the Resolver rule that contains the most specific domain name
 (www.example.com).}
 
 \item{TargetIps}{The IPs that you want Resolver to forward DNS queries to. You can
-specify only IPv4 addresses. Separate IP addresses with a comma.
+specify only IPv4 addresses. Separate IP addresses with a space.
 
 \code{TargetIps} is available only when the value of \verb{Rule type} is
 \code{FORWARD}.}
@@ -52,59 +59,9 @@ DNS queries to the IP addresses that you specify in \code{TargetIps}.}
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 endpoint.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverRule = list(
-    Id = "string",
-    CreatorRequestId = "string",
-    Arn = "string",
-    DomainName = "string",
-    Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
-    StatusMessage = "string",
-    RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-    Name = "string",
-    TargetIps = list(
-      list(
-        Ip = "string",
-        Port = 123
-      )
-    ),
-    ResolverEndpointId = "string",
-    OwnerId = "string",
-    ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-    CreationTime = "string",
-    ModificationTime = "string"
-  )
-)
-}
-}
 \description{
-For DNS queries that originate in your VPCs, specifies which Resolver
-endpoint the queries pass through, one domain name that you want to
-forward to your network, and the IP addresses of the DNS resolvers in
-your network.
-}
-\section{Request syntax}{
-\preformatted{svc$create_resolver_rule(
-  CreatorRequestId = "string",
-  Name = "string",
-  RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-  DomainName = "string",
-  TargetIps = list(
-    list(
-      Ip = "string",
-      Port = 123
-    )
-  ),
-  ResolverEndpointId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
 
+See \url{https://paws-r.github.io/docs/route53resolver/create_resolver_rule.html} for full documentation.
+}
 \keyword{internal}

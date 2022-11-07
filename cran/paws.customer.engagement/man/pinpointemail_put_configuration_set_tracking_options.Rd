@@ -6,7 +6,9 @@
 email that you send using Amazon Pinpoint}
 \usage{
 pinpointemail_put_configuration_set_tracking_options(
-  ConfigurationSetName, CustomRedirectDomain)
+  ConfigurationSetName,
+  CustomRedirectDomain = NULL
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to add a custom tracking
@@ -14,19 +16,9 @@ domain to.}
 
 \item{CustomRedirectDomain}{The domain that you want to use to track open and click events.}
 }
-\value{
-An empty list.
-}
 \description{
-Specify a custom domain to use for open and click tracking elements in
-email that you send using Amazon Pinpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$put_configuration_set_tracking_options(
-  ConfigurationSetName = "string",
-  CustomRedirectDomain = "string"
-)
-}
-}
+Specify a custom domain to use for open and click tracking elements in email that you send using Amazon Pinpoint.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/put_configuration_set_tracking_options.html} for full documentation.
+}
 \keyword{internal}

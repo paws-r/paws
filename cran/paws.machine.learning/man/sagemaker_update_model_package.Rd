@@ -4,32 +4,37 @@
 \alias{sagemaker_update_model_package}
 \title{Updates a versioned model}
 \usage{
-sagemaker_update_model_package(ModelPackageArn, ModelApprovalStatus,
-  ApprovalDescription)
-}
-\arguments{
-\item{ModelPackageArn}{[required] The Amazon Resource Name (ARN) of the model.}
-
-\item{ModelApprovalStatus}{[required] The approval status of the model.}
-
-\item{ApprovalDescription}{A description for the approval status of the model.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelPackageArn = "string"
+sagemaker_update_model_package(
+  ModelPackageArn,
+  ModelApprovalStatus = NULL,
+  ApprovalDescription = NULL,
+  CustomerMetadataProperties = NULL,
+  CustomerMetadataPropertiesToRemove = NULL,
+  AdditionalInferenceSpecificationsToAdd = NULL
 )
 }
+\arguments{
+\item{ModelPackageArn}{[required] The Amazon Resource Name (ARN) of the model package.}
+
+\item{ModelApprovalStatus}{The approval status of the model.}
+
+\item{ApprovalDescription}{A description for the approval status of the model.}
+
+\item{CustomerMetadataProperties}{The metadata properties associated with the model package versions.}
+
+\item{CustomerMetadataPropertiesToRemove}{The metadata properties associated with the model package versions to
+remove.}
+
+\item{AdditionalInferenceSpecificationsToAdd}{An array of additional Inference Specification objects to be added to
+the existing array additional Inference Specification. Total number of
+additional Inference Specifications can not exceed 15. Each additional
+Inference Specification specifies artifacts based on this model package
+that can be used on inference endpoints. Generally used with SageMaker
+Neo to store the compiled artifacts.}
 }
 \description{
 Updates a versioned model.
-}
-\section{Request syntax}{
-\preformatted{svc$update_model_package(
-  ModelPackageArn = "string",
-  ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
-  ApprovalDescription = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_model_package.html} for full documentation.
+}
 \keyword{internal}

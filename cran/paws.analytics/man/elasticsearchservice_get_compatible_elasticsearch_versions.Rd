@@ -4,34 +4,14 @@
 \alias{elasticsearchservice_get_compatible_elasticsearch_versions}
 \title{Returns a list of upgrade compatible Elastisearch versions}
 \usage{
-elasticsearchservice_get_compatible_elasticsearch_versions(DomainName)
+elasticsearchservice_get_compatible_elasticsearch_versions(DomainName = NULL)
 }
 \arguments{
 \item{DomainName}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CompatibleElasticsearchVersions = list(
-    list(
-      SourceVersion = "string",
-      TargetVersions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of upgrade compatible Elastisearch versions. You can
-optionally pass a \code{DomainName} to get all upgrade compatible
-Elasticsearch versions for that specific domain.
-}
-\section{Request syntax}{
-\preformatted{svc$get_compatible_elasticsearch_versions(
-  DomainName = "string"
-)
-}
-}
+Returns a list of upgrade compatible Elastisearch versions. You can optionally pass a \code{DomainName} to get all upgrade compatible Elasticsearch versions for that specific domain.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/get_compatible_elasticsearch_versions.html} for full documentation.
+}
 \keyword{internal}

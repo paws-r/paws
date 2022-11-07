@@ -4,8 +4,10 @@
 \alias{pinpointemail_put_email_identity_dkim_attributes}
 \title{Used to enable or disable DKIM authentication for an email identity}
 \usage{
-pinpointemail_put_email_identity_dkim_attributes(EmailIdentity,
-  SigningEnabled)
+pinpointemail_put_email_identity_dkim_attributes(
+  EmailIdentity,
+  SigningEnabled = NULL
+)
 }
 \arguments{
 \item{EmailIdentity}{[required] The email identity that you want to change the DKIM settings for.}
@@ -17,18 +19,9 @@ sends from the identity are DKIM-signed. When you set this value to
 \code{false}, then the messages that Amazon Pinpoint sends from the identity
 aren't DKIM-signed.}
 }
-\value{
-An empty list.
-}
 \description{
 Used to enable or disable DKIM authentication for an email identity.
-}
-\section{Request syntax}{
-\preformatted{svc$put_email_identity_dkim_attributes(
-  EmailIdentity = "string",
-  SigningEnabled = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpointemail/put_email_identity_dkim_attributes.html} for full documentation.
+}
 \keyword{internal}

@@ -7,7 +7,19 @@
 appmesh(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,14 +28,15 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS App Mesh is a service mesh based on the Envoy proxy that makes it
-easy to monitor and control microservices. App Mesh standardizes how
-your microservices communicate, giving you end-to-end visibility and
-helping to ensure high availability for your applications.
+App Mesh is a service mesh based on the Envoy proxy that makes it easy
+to monitor and control microservices. App Mesh standardizes how your
+microservices communicate, giving you end-to-end visibility and helping
+to ensure high availability for your applications.
 
 App Mesh gives you consistent visibility and network traffic controls
-for every microservice in an application. You can use App Mesh with AWS
-Fargate, Amazon ECS, Amazon EKS, Kubernetes on AWS, and Amazon EC2.
+for every microservice in an application. You can use App Mesh with
+Amazon Web Services Fargate, Amazon ECS, Amazon EKS, Kubernetes on
+Amazon Web Services, and Amazon EC2.
 
 App Mesh supports microservice applications that use service discovery
 naming for their components. For more information about service
@@ -33,7 +46,9 @@ in the \emph{Amazon Elastic Container Service Developer Guide}. Kubernetes
 in the Kubernetes documentation.
 }
 \section{Service syntax}{
-\preformatted{svc <- appmesh(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- appmesh(
   config = list(
     credentials = list(
       creds = list(
@@ -41,13 +56,17 @@ in the Kubernetes documentation.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

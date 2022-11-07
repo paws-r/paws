@@ -4,7 +4,7 @@
 \alias{codestar_list_projects}
 \title{Lists all projects in AWS CodeStar associated with your AWS account}
 \usage{
-codestar_list_projects(nextToken, maxResults)
+codestar_list_projects(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The continuation token to be used to return the next set of results, if
@@ -13,27 +13,9 @@ the results cannot be returned in one response.}
 \item{maxResults}{The maximum amount of data that can be contained in a single set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  projects = list(
-    list(
-      projectId = "string",
-      projectArn = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists all projects in AWS CodeStar associated with your AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_projects(
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codestar/list_projects.html} for full documentation.
+}
 \keyword{internal}

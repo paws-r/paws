@@ -5,14 +5,18 @@
 \title{The GetDomainSuggestions operation returns a list of suggested domain
 names}
 \usage{
-route53domains_get_domain_suggestions(DomainName, SuggestionCount,
-  OnlyAvailable)
+route53domains_get_domain_suggestions(
+  DomainName,
+  SuggestionCount,
+  OnlyAvailable
+)
 }
 \arguments{
 \item{DomainName}{[required] A domain name that you want to use as the basis for a list of possible
 domain names. The top-level domain (TLD), such as .com, must be a TLD
-that Route 53 supports. For a list of supported TLDs, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
-in the \emph{Amazon Route 53 Developer Guide}.
+that Route 53 supports. For a list of supported TLDs, see Domains that
+You Can Register with Amazon Route 53 in the \emph{Amazon Route 53 Developer
+Guide}.
 
 The domain name can contain only the following characters:
 \itemize{
@@ -26,7 +30,8 @@ label.
 
 Internationalized domain names are not supported for some top-level
 domains. To determine whether the TLD that you want to use supports
-internationalized domain names, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}.}
+internationalized domain names, see Domains that You Can Register with
+Amazon Route 53.}
 
 \item{SuggestionCount}{[required] The number of suggested domain names that you want Route 53 to return.
 Specify a value between 1 and 50.}
@@ -37,28 +42,9 @@ names without checking whether they're available to be registered. To
 determine whether the domain is available, you can call
 \code{checkDomainAvailability} for each suggestion.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SuggestionsList = list(
-    list(
-      DomainName = "string",
-      Availability = "string"
-    )
-  )
-)
-}
-}
 \description{
-The GetDomainSuggestions operation returns a list of suggested domain
-names.
-}
-\section{Request syntax}{
-\preformatted{svc$get_domain_suggestions(
-  DomainName = "string",
-  SuggestionCount = 123,
-  OnlyAvailable = TRUE|FALSE
-)
-}
-}
+The GetDomainSuggestions operation returns a list of suggested domain names.
 
+See \url{https://paws-r.github.io/docs/route53domains/get_domain_suggestions.html} for full documentation.
+}
 \keyword{internal}

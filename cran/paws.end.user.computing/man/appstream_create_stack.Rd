@@ -4,9 +4,20 @@
 \alias{appstream_create_stack}
 \title{Creates a stack to start streaming applications to users}
 \usage{
-appstream_create_stack(Name, Description, DisplayName,
-  StorageConnectors, RedirectURL, FeedbackURL, UserSettings,
-  ApplicationSettings, Tags, AccessEndpoints, EmbedHostDomains)
+appstream_create_stack(
+  Name,
+  Description = NULL,
+  DisplayName = NULL,
+  StorageConnectors = NULL,
+  RedirectURL = NULL,
+  FeedbackURL = NULL,
+  UserSettings = NULL,
+  ApplicationSettings = NULL,
+  Tags = NULL,
+  AccessEndpoints = NULL,
+  EmbedHostDomains = NULL,
+  StreamingExperienceSettings = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the stack.}
@@ -51,103 +62,13 @@ endpoints.}
 \item{EmbedHostDomains}{The domains where AppStream 2.0 streaming sessions can be embedded in an
 iframe. You must approve the domains that you want to host embedded
 AppStream 2.0 streaming sessions.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Stack = list(
-    Arn = "string",
-    Name = "string",
-    Description = "string",
-    DisplayName = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    StorageConnectors = list(
-      list(
-        ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-        ResourceIdentifier = "string",
-        Domains = list(
-          "string"
-        )
-      )
-    ),
-    RedirectURL = "string",
-    FeedbackURL = "string",
-    StackErrors = list(
-      list(
-        ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
-        ErrorMessage = "string"
-      )
-    ),
-    UserSettings = list(
-      list(
-        Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-        Permission = "ENABLED"|"DISABLED"
-      )
-    ),
-    ApplicationSettings = list(
-      Enabled = TRUE|FALSE,
-      SettingsGroup = "string",
-      S3BucketName = "string"
-    ),
-    AccessEndpoints = list(
-      list(
-        EndpointType = "STREAMING",
-        VpceId = "string"
-      )
-    ),
-    EmbedHostDomains = list(
-      "string"
-    )
-  )
-)
-}
+
+\item{StreamingExperienceSettings}{The streaming protocol you want your stack to prefer. This can be UDP or
+TCP. Currently, UDP is only supported in the Windows native client.}
 }
 \description{
-Creates a stack to start streaming applications to users. A stack
-consists of an associated fleet, user access policies, and storage
-configurations.
-}
-\section{Request syntax}{
-\preformatted{svc$create_stack(
-  Name = "string",
-  Description = "string",
-  DisplayName = "string",
-  StorageConnectors = list(
-    list(
-      ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-      ResourceIdentifier = "string",
-      Domains = list(
-        "string"
-      )
-    )
-  ),
-  RedirectURL = "string",
-  FeedbackURL = "string",
-  UserSettings = list(
-    list(
-      Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-      Permission = "ENABLED"|"DISABLED"
-    )
-  ),
-  ApplicationSettings = list(
-    Enabled = TRUE|FALSE,
-    SettingsGroup = "string"
-  ),
-  Tags = list(
-    "string"
-  ),
-  AccessEndpoints = list(
-    list(
-      EndpointType = "STREAMING",
-      VpceId = "string"
-    )
-  ),
-  EmbedHostDomains = list(
-    "string"
-  )
-)
-}
-}
+Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.
 
+See \url{https://paws-r.github.io/docs/appstream/create_stack.html} for full documentation.
+}
 \keyword{internal}

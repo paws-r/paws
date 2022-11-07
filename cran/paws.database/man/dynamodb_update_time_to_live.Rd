@@ -13,56 +13,9 @@ dynamodb_update_time_to_live(TableName, TimeToLiveSpecification)
 \item{TimeToLiveSpecification}{[required] Represents the settings used to enable or disable Time to Live for the
 specified table.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TimeToLiveSpecification = list(
-    Enabled = TRUE|FALSE,
-    AttributeName = "string"
-  )
-)
-}
-}
 \description{
-The \code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} method enables
-or disables Time to Live (TTL) for the specified table. A successful
-\code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} call returns the
-current \code{TimeToLiveSpecification}. It can take up to one hour for the
-change to fully process. Any additional
-\code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} calls for the same
-table during this one hour duration result in a \code{ValidationException}.
+The \code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} method enables or disables Time to Live (TTL) for the specified table. A successful \code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} call returns the current \code{TimeToLiveSpecification}. It can take up to one hour for the change to fully process. Any additional \code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} calls for the same table during this one hour duration result in a \code{ValidationException}.
 
-TTL compares the current time in epoch time format to the time stored in
-the TTL attribute of an item. If the epoch time value stored in the
-attribute is less than the current time, the item is marked as expired
-and subsequently deleted.
-
-The epoch time format is the number of seconds elapsed since 12:00:00 AM
-January 1, 1970 UTC.
-
-DynamoDB deletes expired items on a best-effort basis to ensure
-availability of throughput for other data operations.
-
-DynamoDB typically deletes expired items within two days of expiration.
-The exact duration within which an item gets deleted after expiration is
-specific to the nature of the workload. Items that have expired and not
-been deleted will still show up in reads, queries, and scans.
-
-As items are deleted, they are removed from any local secondary index
-and global secondary index immediately in the same eventually consistent
-way as a standard delete operation.
-
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html}{Time To Live}
-in the Amazon DynamoDB Developer Guide.
+See \url{https://paws-r.github.io/docs/dynamodb/update_time_to_live.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_time_to_live(
-  TableName = "string",
-  TimeToLiveSpecification = list(
-    Enabled = TRUE|FALSE,
-    AttributeName = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

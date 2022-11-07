@@ -4,7 +4,11 @@
 \alias{elasticbeanstalk_list_platform_branches}
 \title{Lists the platform branches available for your account in an AWS Region}
 \usage{
-elasticbeanstalk_list_platform_branches(Filters, MaxRecords, NextToken)
+elasticbeanstalk_list_platform_branches(
+  Filters = NULL,
+  MaxRecords = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filters}{Criteria for restricting the resulting list of platform branches. The
@@ -50,45 +54,9 @@ identical to the ones specified in the initial request.
 
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PlatformBranchSummaryList = list(
-    list(
-      PlatformName = "string",
-      BranchName = "string",
-      LifecycleState = "string",
-      BranchOrder = 123,
-      SupportedTierList = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the platform branches available for your account in an AWS Region.
-Provides summary information about each platform branch.
+Lists the platform branches available for your account in an AWS Region. Provides summary information about each platform branch.
 
-For definitions of platform branch and other platform-related terms, see
-\href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html}{AWS Elastic Beanstalk Platforms Glossary}.
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/list_platform_branches.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_platform_branches(
-  Filters = list(
-    list(
-      Attribute = "string",
-      Operator = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

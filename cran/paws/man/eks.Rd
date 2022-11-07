@@ -7,7 +7,19 @@
 eks(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -17,10 +29,10 @@ Operations section.
 }
 \description{
 Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that
-makes it easy for you to run Kubernetes on AWS without needing to stand
-up or maintain your own Kubernetes control plane. Kubernetes is an
-open-source system for automating the deployment, scaling, and
-management of containerized applications.
+makes it easy for you to run Kubernetes on Amazon Web Services without
+needing to stand up or maintain your own Kubernetes control plane.
+Kubernetes is an open-source system for automating the deployment,
+scaling, and management of containerized applications.
 
 Amazon EKS runs up-to-date versions of the open-source Kubernetes
 software, so you can use all the existing plugins and tooling from the
@@ -31,7 +43,9 @@ clouds. This means that you can easily migrate any standard Kubernetes
 application to Amazon EKS without any code modification required.
 }
 \section{Service syntax}{
-\preformatted{svc <- eks(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- eks(
   config = list(
     credentials = list(
       creds = list(
@@ -39,38 +53,49 @@ application to Amazon EKS without any code modification required.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
+\link[=eks_associate_encryption_config]{associate_encryption_config} \tab Associate encryption configuration to an existing cluster\cr
+\link[=eks_associate_identity_provider_config]{associate_identity_provider_config} \tab Associate an identity provider configuration to a cluster\cr
 \link[=eks_create_addon]{create_addon} \tab Creates an Amazon EKS add-on\cr
 \link[=eks_create_cluster]{create_cluster} \tab Creates an Amazon EKS control plane\cr
-\link[=eks_create_fargate_profile]{create_fargate_profile} \tab Creates an AWS Fargate profile for your Amazon EKS cluster\cr
-\link[=eks_create_nodegroup]{create_nodegroup} \tab Creates a managed worker node group for an Amazon EKS cluster\cr
+\link[=eks_create_fargate_profile]{create_fargate_profile} \tab Creates an Fargate profile for your Amazon EKS cluster\cr
+\link[=eks_create_nodegroup]{create_nodegroup} \tab Creates a managed node group for an Amazon EKS cluster\cr
 \link[=eks_delete_addon]{delete_addon} \tab Delete an Amazon EKS add-on\cr
 \link[=eks_delete_cluster]{delete_cluster} \tab Deletes the Amazon EKS cluster control plane\cr
-\link[=eks_delete_fargate_profile]{delete_fargate_profile} \tab Deletes an AWS Fargate profile\cr
+\link[=eks_delete_fargate_profile]{delete_fargate_profile} \tab Deletes an Fargate profile\cr
 \link[=eks_delete_nodegroup]{delete_nodegroup} \tab Deletes an Amazon EKS node group for a cluster\cr
+\link[=eks_deregister_cluster]{deregister_cluster} \tab Deregisters a connected cluster to remove it from the Amazon EKS control plane\cr
 \link[=eks_describe_addon]{describe_addon} \tab Describes an Amazon EKS add-on\cr
 \link[=eks_describe_addon_versions]{describe_addon_versions} \tab Describes the Kubernetes versions that the add-on can be used with\cr
 \link[=eks_describe_cluster]{describe_cluster} \tab Returns descriptive information about an Amazon EKS cluster\cr
-\link[=eks_describe_fargate_profile]{describe_fargate_profile} \tab Returns descriptive information about an AWS Fargate profile\cr
+\link[=eks_describe_fargate_profile]{describe_fargate_profile} \tab Returns descriptive information about an Fargate profile\cr
+\link[=eks_describe_identity_provider_config]{describe_identity_provider_config} \tab Returns descriptive information about an identity provider configuration\cr
 \link[=eks_describe_nodegroup]{describe_nodegroup} \tab Returns descriptive information about an Amazon EKS node group\cr
-\link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group\cr
+\link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on\cr
+\link[=eks_disassociate_identity_provider_config]{disassociate_identity_provider_config} \tab Disassociates an identity provider configuration from a cluster\cr
 \link[=eks_list_addons]{list_addons} \tab Lists the available add-ons\cr
-\link[=eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your AWS account in the specified Region\cr
-\link[=eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the AWS Fargate profiles associated with the specified cluster in your AWS account in the specified Region\cr
-\link[=eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS managed node groups associated with the specified cluster in your AWS account in the specified Region\cr
+\link[=eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region\cr
+\link[=eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Region\cr
+\link[=eks_list_identity_provider_configs]{list_identity_provider_configs} \tab A list of identity provider configurations\cr
+\link[=eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region\cr
 \link[=eks_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon EKS resource\cr
-\link[=eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster or managed node group in your AWS account, in the specified Region\cr
+\link[=eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster or managed node group in your Amazon Web Services account, in the specified Region\cr
+\link[=eks_register_cluster]{register_cluster} \tab Connects a Kubernetes cluster to the Amazon EKS control plane\cr
 \link[=eks_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 \link[=eks_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
 \link[=eks_update_addon]{update_addon} \tab Updates an Amazon EKS add-on\cr

@@ -5,17 +5,23 @@
 \title{Creates recommendations that help you save cost by identifying idle and
 underutilized Amazon EC2 instances}
 \usage{
-costexplorer_get_rightsizing_recommendation(Filter, Configuration,
-  Service, PageSize, NextPageToken)
+costexplorer_get_rightsizing_recommendation(
+  Filter = NULL,
+  Configuration = NULL,
+  Service,
+  PageSize = NULL,
+  NextPageToken = NULL
+)
 }
 \arguments{
 \item{Filter}{}
 
-\item{Configuration}{Enables you to customize recommendations across two attributes. You can
-choose to view recommendations for instances within the same instance
-families or across different instance families. You can also choose to
-view your estimated savings associated with recommendations with
-consideration of existing Savings Plans or RI benefits, or neither.}
+\item{Configuration}{You can use Configuration to customize recommendations across two
+attributes. You can choose to view recommendations for instances within
+the same instance families or across different instance families. You
+can also choose to view your estimated savings that are associated with
+recommendations with consideration of existing Savings Plans or RI
+benefits, or neither.}
 
 \item{Service}{[required] The specific service that you want recommendations for. The only valid
 value for
@@ -28,177 +34,9 @@ response object.}
 \item{NextPageToken}{The pagination token that indicates the next set of results that you
 want to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Metadata = list(
-    RecommendationId = "string",
-    GenerationTimestamp = "string",
-    LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
-    AdditionalMetadata = "string"
-  ),
-  Summary = list(
-    TotalRecommendationCount = "string",
-    EstimatedTotalMonthlySavingsAmount = "string",
-    SavingsCurrencyCode = "string",
-    SavingsPercentage = "string"
-  ),
-  RightsizingRecommendations = list(
-    list(
-      AccountId = "string",
-      CurrentInstance = list(
-        ResourceId = "string",
-        InstanceName = "string",
-        Tags = list(
-          list(
-            Key = "string",
-            Values = list(
-              "string"
-            ),
-            MatchOptions = list(
-              "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-            )
-          )
-        ),
-        ResourceDetails = list(
-          EC2ResourceDetails = list(
-            HourlyOnDemandRate = "string",
-            InstanceType = "string",
-            Platform = "string",
-            Region = "string",
-            Sku = "string",
-            Memory = "string",
-            NetworkPerformance = "string",
-            Storage = "string",
-            Vcpu = "string"
-          )
-        ),
-        ResourceUtilization = list(
-          EC2ResourceUtilization = list(
-            MaxCpuUtilizationPercentage = "string",
-            MaxMemoryUtilizationPercentage = "string",
-            MaxStorageUtilizationPercentage = "string",
-            EBSResourceUtilization = list(
-              EbsReadOpsPerSecond = "string",
-              EbsWriteOpsPerSecond = "string",
-              EbsReadBytesPerSecond = "string",
-              EbsWriteBytesPerSecond = "string"
-            )
-          )
-        ),
-        ReservationCoveredHoursInLookbackPeriod = "string",
-        SavingsPlansCoveredHoursInLookbackPeriod = "string",
-        OnDemandHoursInLookbackPeriod = "string",
-        TotalRunningHoursInLookbackPeriod = "string",
-        MonthlyCost = "string",
-        CurrencyCode = "string"
-      ),
-      RightsizingType = "TERMINATE"|"MODIFY",
-      ModifyRecommendationDetail = list(
-        TargetInstances = list(
-          list(
-            EstimatedMonthlyCost = "string",
-            EstimatedMonthlySavings = "string",
-            CurrencyCode = "string",
-            DefaultTargetInstance = TRUE|FALSE,
-            ResourceDetails = list(
-              EC2ResourceDetails = list(
-                HourlyOnDemandRate = "string",
-                InstanceType = "string",
-                Platform = "string",
-                Region = "string",
-                Sku = "string",
-                Memory = "string",
-                NetworkPerformance = "string",
-                Storage = "string",
-                Vcpu = "string"
-              )
-            ),
-            ExpectedResourceUtilization = list(
-              EC2ResourceUtilization = list(
-                MaxCpuUtilizationPercentage = "string",
-                MaxMemoryUtilizationPercentage = "string",
-                MaxStorageUtilizationPercentage = "string",
-                EBSResourceUtilization = list(
-                  EbsReadOpsPerSecond = "string",
-                  EbsWriteOpsPerSecond = "string",
-                  EbsReadBytesPerSecond = "string",
-                  EbsWriteBytesPerSecond = "string"
-                )
-              )
-            )
-          )
-        )
-      ),
-      TerminateRecommendationDetail = list(
-        EstimatedMonthlySavings = "string",
-        CurrencyCode = "string"
-      )
-    )
-  ),
-  NextPageToken = "string",
-  Configuration = list(
-    RecommendationTarget = "SAME_INSTANCE_FAMILY"|"CROSS_INSTANCE_FAMILY",
-    BenefitsConsidered = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Creates recommendations that help you save cost by identifying idle and
-underutilized Amazon EC2 instances.
+Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances.
 
-Recommendations are generated to either downsize or terminate instances,
-along with providing savings detail and metrics. For details on
-calculation and function, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-rightsizing.html}{Optimizing Your Cost with Rightsizing Recommendations}
-in the \emph{AWS Billing and Cost Management User Guide}.
+See \url{https://paws-r.github.io/docs/costexplorer/get_rightsizing_recommendation.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_rightsizing_recommendation(
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  Configuration = list(
-    RecommendationTarget = "SAME_INSTANCE_FAMILY"|"CROSS_INSTANCE_FAMILY",
-    BenefitsConsidered = TRUE|FALSE
-  ),
-  Service = "string",
-  PageSize = 123,
-  NextPageToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -6,10 +6,18 @@
 destination branch for that pull request at the specified commit using
 the three-way merge strategy}
 \usage{
-codecommit_merge_pull_request_by_three_way(pullRequestId,
-  repositoryName, sourceCommitId, conflictDetailLevel,
-  conflictResolutionStrategy, commitMessage, authorName, email,
-  keepEmptyFolders, conflictResolution)
+codecommit_merge_pull_request_by_three_way(
+  pullRequestId,
+  repositoryName,
+  sourceCommitId = NULL,
+  conflictDetailLevel = NULL,
+  conflictResolutionStrategy = NULL,
+  commitMessage = NULL,
+  authorName = NULL,
+  email = NULL,
+  keepEmptyFolders = NULL,
+  conflictResolution = NULL
+)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
@@ -48,101 +56,9 @@ file is created for empty folders. The default is false.}
 \item{conflictResolution}{If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 use when resolving conflicts during a merge.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pullRequest = list(
-    pullRequestId = "string",
-    title = "string",
-    description = "string",
-    lastActivityDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    pullRequestStatus = "OPEN"|"CLOSED",
-    authorArn = "string",
-    pullRequestTargets = list(
-      list(
-        repositoryName = "string",
-        sourceReference = "string",
-        destinationReference = "string",
-        destinationCommit = "string",
-        sourceCommit = "string",
-        mergeBase = "string",
-        mergeMetadata = list(
-          isMerged = TRUE|FALSE,
-          mergedBy = "string",
-          mergeCommitId = "string",
-          mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-        )
-      )
-    ),
-    clientRequestToken = "string",
-    revisionId = "string",
-    approvalRules = list(
-      list(
-        approvalRuleId = "string",
-        approvalRuleName = "string",
-        approvalRuleContent = "string",
-        ruleContentSha256 = "string",
-        lastModifiedDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        creationDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        lastModifiedUser = "string",
-        originApprovalRuleTemplate = list(
-          approvalRuleTemplateId = "string",
-          approvalRuleTemplateName = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Attempts to merge the source commit of a pull request into the specified
-destination branch for that pull request at the specified commit using
-the three-way merge strategy. If the merge is successful, it closes the
-pull request.
-}
-\section{Request syntax}{
-\preformatted{svc$merge_pull_request_by_three_way(
-  pullRequestId = "string",
-  repositoryName = "string",
-  sourceCommitId = "string",
-  conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-  conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-  commitMessage = "string",
-  authorName = "string",
-  email = "string",
-  keepEmptyFolders = TRUE|FALSE,
-  conflictResolution = list(
-    replaceContents = list(
-      list(
-        filePath = "string",
-        replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
-        content = raw,
-        fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-      )
-    ),
-    deleteFiles = list(
-      list(
-        filePath = "string"
-      )
-    ),
-    setFileModes = list(
-      list(
-        filePath = "string",
-        fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-      )
-    )
-  )
-)
-}
-}
+Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the three-way merge strategy. If the merge is successful, it closes the pull request.
 
+See \url{https://paws-r.github.io/docs/codecommit/merge_pull_request_by_three_way.html} for full documentation.
+}
 \keyword{internal}

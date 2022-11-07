@@ -11,30 +11,9 @@ route53_delete_traffic_policy(Id, Version)
 
 \item{Version}{[required] The version number of the traffic policy that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a traffic policy.
 
-When you delete a traffic policy, Route 53 sets a flag on the policy to
-indicate that it has been deleted. However, Route 53 never fully deletes
-the traffic policy. Note the following:
-\itemize{
-\item Deleted traffic policies aren't listed if you run
-\code{\link[=route53_list_traffic_policies]{list_traffic_policies}}.
-\item There's no way to get a list of deleted policies.
-\item If you retain the ID of the policy, you can get information about
-the policy, including the traffic policy document, by running
-\code{\link[=route53_get_traffic_policy]{get_traffic_policy}}.
+See \url{https://paws-r.github.io/docs/route53/delete_traffic_policy.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$delete_traffic_policy(
-  Id = "string",
-  Version = 123
-)
-}
-}
-
 \keyword{internal}

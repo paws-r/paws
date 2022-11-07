@@ -7,30 +7,14 @@
 quicksight_delete_data_source(AwsAccountId, DataSourceId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
-\item{DataSourceId}{[required] The ID of the data source. This ID is unique per AWS Region for each AWS
-account.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  DataSourceId = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{DataSourceId}{[required] The ID of the data source. This ID is unique per Amazon Web Services
+Region for each Amazon Web Services account.}
 }
 \description{
-Deletes the data source permanently. This operation breaks all the
-datasets that reference the deleted data source.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_data_source(
-  AwsAccountId = "string",
-  DataSourceId = "string"
-)
-}
-}
+Deletes the data source permanently. This operation breaks all the datasets that reference the deleted data source.
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_data_source.html} for full documentation.
+}
 \keyword{internal}

@@ -2,15 +2,14 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_list_key_policies}
 \alias{kms_list_key_policies}
-\title{Gets the names of the key policies that are attached to a customer
-master key (CMK)}
+\title{Gets the names of the key policies that are attached to a KMS key}
 \usage{
-kms_list_key_policies(KeyId, Limit, Marker)
+kms_list_key_policies(KeyId, Limit = NULL, Marker = NULL)
 }
 \arguments{
-\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] Gets the names of key policies for the specified KMS key.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
@@ -19,12 +18,12 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
-When this value is present, AWS KMS does not return more than the
-specified number of items, but it might return fewer.
+When this value is present, KMS does not return more than the specified
+number of items, but it might return fewer.
 
 This value is optional. If you include a value, it must be between 1 and
 1000, inclusive. If you do not include a value, it defaults to 100.
@@ -35,51 +34,9 @@ Only one policy can be attached to a key.}
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyNames = list(
-    "string"
-  ),
-  NextMarker = "string",
-  Truncated = TRUE|FALSE
-)
-}
-}
 \description{
-Gets the names of the key policies that are attached to a customer
-master key (CMK). This operation is designed to get policy names that
-you can use in a \code{\link[=kms_get_key_policy]{get_key_policy}} operation.
-However, the only valid policy name is \code{default}.
+Gets the names of the key policies that are attached to a KMS key. This operation is designed to get policy names that you can use in a \code{\link[=kms_get_key_policy]{get_key_policy}} operation. However, the only valid policy name is \code{default}.
 
-\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
-a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListKeyPolicies}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_get_key_policy]{get_key_policy}}
-\item \code{\link[=kms_put_key_policy]{put_key_policy}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_key_policies(
-  KeyId = "string",
-  Limit = 123,
-  Marker = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists key policies for the specified CMK.
-svc$list_key_policies(
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/list_key_policies.html} for full documentation.
 }
 \keyword{internal}

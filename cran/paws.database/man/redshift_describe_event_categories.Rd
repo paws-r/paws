@@ -5,7 +5,7 @@
 \title{Displays a list of event categories for all event source types, or for a
 specified source type}
 \usage{
-redshift_describe_event_categories(SourceType)
+redshift_describe_event_categories(SourceType = NULL)
 }
 \arguments{
 \item{SourceType}{The source type, such as cluster or parameter group, to which the
@@ -14,36 +14,9 @@ described event categories apply.
 Valid values: cluster, cluster-snapshot, cluster-parameter-group,
 cluster-security-group, and scheduled-action.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventCategoriesMapList = list(
-    list(
-      SourceType = "string",
-      Events = list(
-        list(
-          EventId = "string",
-          EventCategories = list(
-            "string"
-          ),
-          EventDescription = "string",
-          Severity = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Displays a list of event categories for all event source types, or for a
-specified source type. For a list of the event categories and source
-types, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html}{Amazon Redshift Event Notifications}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_event_categories(
-  SourceType = "string"
-)
-}
-}
+Displays a list of event categories for all event source types, or for a specified source type. For a list of the event categories and source types, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html}{Amazon Redshift Event Notifications}.
 
+See \url{https://paws-r.github.io/docs/redshift/describe_event_categories.html} for full documentation.
+}
 \keyword{internal}

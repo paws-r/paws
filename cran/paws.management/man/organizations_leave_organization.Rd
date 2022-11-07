@@ -6,57 +6,9 @@
 \usage{
 organizations_leave_organization()
 }
-\value{
-An empty list.
-}
 \description{
-Removes a member account from its parent organization. This version of
-the operation is performed by the account that wants to leave. To remove
-a member account as a user in the management account, use
-\code{\link[=organizations_remove_account_from_organization]{remove_account_from_organization}}
-instead.
+Removes a member account from its parent organization. This version of the operation is performed by the account that wants to leave. To remove a member account as a user in the management account, use \code{\link[=organizations_remove_account_from_organization]{remove_account_from_organization}} instead.
 
-This operation can be called only from a member account in the
-organization.
-\itemize{
-\item The management account in an organization with all features enabled
-can set service control policies (SCPs) that can restrict what
-administrators of member accounts can do. This includes preventing
-them from successfully calling
-\code{\link[=organizations_leave_organization]{leave_organization}} and leaving
-the organization.
-\item You can leave an organization as a member account only if the
-account is configured with the information required to operate as a
-standalone account. When you create an account in an organization
-using the AWS Organizations console, API, or CLI commands, the
-information required of standalone accounts is \emph{not} automatically
-collected. For each account that you want to make standalone, you
-must perform the following steps. If any of the steps are already
-completed for this account, that step doesn't appear.
-\itemize{
-\item Choose a support plan
-\item Provide and verify the required contact information
-\item Provide a current payment method
-}
-
-AWS uses the payment method to charge for any billable (not free
-tier) AWS activity that occurs while the account isn't attached to
-an organization. Follow the steps at \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization when all required account information has not yet been provided}
-in the \emph{AWS Organizations User Guide.}
-\item You can leave an organization only after you enable IAM user access
-to billing in your account. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
-in the \emph{AWS Billing and Cost Management User Guide.}
-\item After the account leaves the organization, all tags that were
-attached to the account object in the organization are deleted. AWS
-accounts outside of an organization do not support tags.
-}
-}
-\examples{
-\dontrun{
-# TThe following example shows how to remove your member account from an
-# organization:
-svc$leave_organization()
-}
-
+See \url{https://paws-r.github.io/docs/organizations/leave_organization.html} for full documentation.
 }
 \keyword{internal}

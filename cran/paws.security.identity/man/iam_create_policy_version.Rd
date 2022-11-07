@@ -4,22 +4,26 @@
 \alias{iam_create_policy_version}
 \title{Creates a new version of the specified managed policy}
 \usage{
-iam_create_policy_version(PolicyArn, PolicyDocument, SetAsDefault)
+iam_create_policy_version(PolicyArn, PolicyDocument, SetAsDefault = NULL)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy to which you want to
 add a new version.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{PolicyDocument}{[required] The JSON policy document that you want to use as the content for this
 new version of the policy.
 
-You must provide policies in JSON format in IAM. However, for AWS
+You must provide policies in JSON format in IAM. However, for
 CloudFormation templates formatted in YAML, you can provide the policy
-in JSON or YAML format. AWS CloudFormation always converts a YAML policy
-to JSON format before submitting it to IAM.
+in JSON or YAML format. CloudFormation always converts a YAML policy to
+JSON format before submitting it to IAM.
+
+The maximum length of the policy document that you can pass in this
+operation, including whitespace, is listed below. To view the maximum
+character counts of a managed policy with no whitespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entity-length}{IAM and STS character quotas}.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
 validate this parameter is a string of characters consisting of the
@@ -39,44 +43,12 @@ When this parameter is \code{true}, the new policy version becomes the
 operative version. That is, it becomes the version that is in effect for
 the IAM users, groups, and roles that the policy is attached to.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for managed policies}
 in the \emph{IAM User Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyVersion = list(
-    Document = "string",
-    VersionId = "string",
-    IsDefaultVersion = TRUE|FALSE,
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Creates a new version of the specified managed policy. To update a
-managed policy, you create a new policy version. A managed policy can
-have up to five versions. If the policy has five versions, you must
-delete an existing version using
-\code{\link[=iam_delete_policy_version]{delete_policy_version}} before you create a
-new version.
+Creates a new version of the specified managed policy. To update a managed policy, you create a new policy version. A managed policy can have up to five versions. If the policy has five versions, you must delete an existing version using \code{\link[=iam_delete_policy_version]{delete_policy_version}} before you create a new version.
 
-Optionally, you can set the new version as the policy's default version.
-The default version is the version that is in effect for the IAM users,
-groups, and roles to which the policy is attached.
-
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
-in the \emph{IAM User Guide}.
+See \url{https://paws-r.github.io/docs/iam/create_policy_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_policy_version(
-  PolicyArn = "string",
-  PolicyDocument = "string",
-  SetAsDefault = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

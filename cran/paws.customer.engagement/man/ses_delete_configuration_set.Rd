@@ -9,21 +9,9 @@ ses_delete_configuration_set(ConfigurationSetName)
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a configuration set. Configuration sets enable you to publish
-email sending events. For information about using configuration sets,
-see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
+Deletes a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/delete_configuration_set.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_configuration_set(
-  ConfigurationSetName = "string"
-)
-}
-}
-
 \keyword{internal}

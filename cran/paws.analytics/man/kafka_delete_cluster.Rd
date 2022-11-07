@@ -5,30 +5,16 @@
 \title{Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
 the request}
 \usage{
-kafka_delete_cluster(ClusterArn, CurrentVersion)
+kafka_delete_cluster(ClusterArn, CurrentVersion = NULL)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
 
 \item{CurrentVersion}{The current version of the MSK cluster.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterArn = "string",
-  State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING"
-)
-}
-}
 \description{
-Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
-the request.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_cluster(
-  ClusterArn = "string",
-  CurrentVersion = "string"
-)
-}
-}
+Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.
 
+See \url{https://paws-r.github.io/docs/kafka/delete_cluster.html} for full documentation.
+}
 \keyword{internal}

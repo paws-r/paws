@@ -4,8 +4,12 @@
 \alias{workdocs_add_resource_permissions}
 \title{Creates a set of permissions for the specified folder or document}
 \usage{
-workdocs_add_resource_permissions(AuthenticationToken, ResourceId,
-  Principals, NotificationOptions)
+workdocs_add_resource_permissions(
+  AuthenticationToken = NULL,
+  ResourceId,
+  Principals,
+  NotificationOptions = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -17,43 +21,9 @@ administrator credentials to access the API.}
 
 \item{NotificationOptions}{The notification options.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ShareResults = list(
-    list(
-      PrincipalId = "string",
-      InviteePrincipalId = "string",
-      Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER",
-      Status = "SUCCESS"|"FAILURE",
-      ShareId = "string",
-      StatusMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a set of permissions for the specified folder or document. The
-resource permissions are overwritten if the principals already have
-different permissions.
-}
-\section{Request syntax}{
-\preformatted{svc$add_resource_permissions(
-  AuthenticationToken = "string",
-  ResourceId = "string",
-  Principals = list(
-    list(
-      Id = "string",
-      Type = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION",
-      Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER"
-    )
-  ),
-  NotificationOptions = list(
-    SendEmail = TRUE|FALSE,
-    EmailMessage = "string"
-  )
-)
-}
-}
+Creates a set of permissions for the specified folder or document. The resource permissions are overwritten if the principals already have different permissions.
 
+See \url{https://paws-r.github.io/docs/workdocs/add_resource_permissions.html} for full documentation.
+}
 \keyword{internal}

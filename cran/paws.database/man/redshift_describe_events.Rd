@@ -5,8 +5,15 @@
 \title{Returns events related to clusters, security groups, snapshots, and
 parameter groups for the past 14 days}
 \usage{
-redshift_describe_events(SourceIdentifier, SourceType, StartTime,
-  EndTime, Duration, MaxRecords, Marker)
+redshift_describe_events(
+  SourceIdentifier = NULL,
+  SourceType = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  Duration = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{SourceIdentifier}{The identifier of the event source for which events will be returned. If
@@ -72,54 +79,14 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_events]{describe_events}} request exceed the value
-specified in \code{MaxRecords}, AWS returns a value in the \code{Marker} field of
-the response. You can retrieve the next set of response records by
-providing the returned marker value in the \code{Marker} parameter and
-retrying the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  Events = list(
-    list(
-      SourceIdentifier = "string",
-      SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot"|"scheduled-action",
-      Message = "string",
-      EventCategories = list(
-        "string"
-      ),
-      Severity = "string",
-      Date = as.POSIXct(
-        "2015-01-01"
-      ),
-      EventId = "string"
-    )
-  )
-)
-}
+specified in \code{MaxRecords}, Amazon Web Services returns a value in the
+\code{Marker} field of the response. You can retrieve the next set of
+response records by providing the returned marker value in the \code{Marker}
+parameter and retrying the request.}
 }
 \description{
-Returns events related to clusters, security groups, snapshots, and
-parameter groups for the past 14 days. Events specific to a particular
-cluster, security group, snapshot or parameter group can be obtained by
-providing the name as a parameter. By default, the past hour of events
-are returned.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_events(
-  SourceIdentifier = "string",
-  SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot"|"scheduled-action",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Duration = 123,
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days. Events specific to a particular cluster, security group, snapshot or parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
 
+See \url{https://paws-r.github.io/docs/redshift/describe_events.html} for full documentation.
+}
 \keyword{internal}

@@ -2,14 +2,14 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_enable_key}
 \alias{kms_enable_key}
-\title{Sets the key state of a customer master key (CMK) to enabled}
+\title{Sets the key state of a KMS key to enabled}
 \usage{
 kms_enable_key(KeyId)
 }
 \arguments{
-\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] Identifies the KMS key to enable.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
@@ -18,43 +18,12 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets the key state of a customer master key (CMK) to enabled. This
-allows you to use the CMK for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
+Sets the key state of a KMS key to enabled. This allows you to use the KMS key for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
 
-The CMK that you use for this operation must be in a compatible key
-state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
-a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:EnableKey}
-(key policy)
-
-\strong{Related operations}: \code{\link[=kms_disable_key]{disable_key}}
-}
-\section{Request syntax}{
-\preformatted{svc$enable_key(
-  KeyId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example enables the specified CMK.
-svc$enable_key(
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/enable_key.html} for full documentation.
 }
 \keyword{internal}

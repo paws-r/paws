@@ -2,21 +2,13 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_delete_subscription}
 \alias{shield_delete_subscription}
-\title{Removes AWS Shield Advanced from an account}
+\title{Removes Shield Advanced from an account}
 \usage{
 shield_delete_subscription()
 }
-\value{
-An empty list.
-}
 \description{
-Removes AWS Shield Advanced from an account. AWS Shield Advanced
-requires a 1-year subscription commitment. You cannot delete a
-subscription prior to the completion of that commitment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_subscription()
-}
-}
+Removes Shield Advanced from an account. Shield Advanced requires a 1-year subscription commitment. You cannot delete a subscription prior to the completion of that commitment.
 
+See \url{https://paws-r.github.io/docs/shield/delete_subscription.html} for full documentation.
+}
 \keyword{internal}

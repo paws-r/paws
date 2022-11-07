@@ -2,11 +2,17 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_create_interconnect}
 \alias{directconnect_create_interconnect}
-\title{Creates an interconnect between an AWS Direct Connect Partner's network
-and a specific AWS Direct Connect location}
+\title{Creates an interconnect between an Direct Connect Partner's network and
+a specific Direct Connect location}
 \usage{
-directconnect_create_interconnect(interconnectName, bandwidth, location,
-  lagId, tags, providerName)
+directconnect_create_interconnect(
+  interconnectName,
+  bandwidth,
+  location,
+  lagId = NULL,
+  tags = NULL,
+  providerName = NULL
+)
 }
 \arguments{
 \item{interconnectName}{[required] The name of the interconnect.}
@@ -21,74 +27,9 @@ directconnect_create_interconnect(interconnectName, bandwidth, location,
 
 \item{providerName}{The name of the service provider associated with the interconnect.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  interconnectId = "string",
-  interconnectName = "string",
-  interconnectState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
-  region = "string",
-  location = "string",
-  bandwidth = "string",
-  loaIssueTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  lagId = "string",
-  awsDevice = "string",
-  jumboFrameCapable = TRUE|FALSE,
-  awsDeviceV2 = "string",
-  hasLogicalRedundancy = "unknown"|"yes"|"no",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
-}
 \description{
-Creates an interconnect between an AWS Direct Connect Partner's network
-and a specific AWS Direct Connect location.
+Creates an interconnect between an Direct Connect Partner's network and a specific Direct Connect location.
 
-An interconnect is a connection that is capable of hosting other
-connections. The AWS Direct Connect partner can use an interconnect to
-provide AWS Direct Connect hosted connections to customers through their
-own network services. Like a standard connection, an interconnect links
-the partner's network to an AWS Direct Connect location over a standard
-Ethernet fiber-optic cable. One end is connected to the partner's
-router, the other to an AWS Direct Connect router.
-
-You can automatically add the new interconnect to a link aggregation
-group (LAG) by specifying a LAG ID in the request. This ensures that the
-new interconnect is allocated on the same AWS Direct Connect endpoint
-that hosts the specified LAG. If there are no available ports on the
-endpoint, the request fails and no interconnect is created.
-
-For each end customer, the AWS Direct Connect Partner provisions a
-connection on their interconnect by calling
-\code{\link[=directconnect_allocate_hosted_connection]{allocate_hosted_connection}}.
-The end customer can then connect to AWS resources by creating a virtual
-interface on their connection, using the VLAN assigned to them by the
-AWS Direct Connect Partner.
-
-Intended for use by AWS Direct Connect Partners only.
+See \url{https://paws-r.github.io/docs/directconnect/create_interconnect.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_interconnect(
-  interconnectName = "string",
-  bandwidth = "string",
-  location = "string",
-  lagId = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
-}
-
 \keyword{internal}

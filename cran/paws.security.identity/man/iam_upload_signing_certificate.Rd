@@ -4,7 +4,7 @@
 \alias{iam_upload_signing_certificate}
 \title{Uploads an X}
 \usage{
-iam_upload_signing_certificate(UserName, CertificateBody)
+iam_upload_signing_certificate(UserName = NULL, CertificateBody)
 }
 \arguments{
 \item{UserName}{The name of the user the signing certificate is for.
@@ -27,58 +27,9 @@ character set (through \verb{\\u00FF})
 carriage return (\verb{\\u000D})
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Certificate = list(
-    UserName = "string",
-    CertificateId = "string",
-    CertificateBody = "string",
-    Status = "Active"|"Inactive",
-    UploadDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Uploads an X.509 signing certificate and associates it with the
-specified IAM user. Some AWS services use X.509 signing certificates to
-validate requests that are signed with a corresponding private key. When
-you upload the certificate, its default status is \code{Active}.
+Uploads an X.509 signing certificate and associates it with the specified IAM user. Some Amazon Web Services services require you to use certificates to validate requests that are signed with a corresponding private key. When you upload the certificate, its default status is \code{Active}.
 
-If the \code{UserName} is not specified, the IAM user name is determined
-implicitly based on the AWS access key ID used to sign the request. This
-operation works for access keys under the AWS account. Consequently, you
-can use this operation to manage AWS account root user credentials even
-if the AWS account has no associated users.
-
-Because the body of an X.509 certificate can be large, you should use
-POST rather than GET when calling
-\code{\link[=iam_upload_signing_certificate]{upload_signing_certificate}}. For
-information about setting up signatures and authorization through the
-API, go to \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
-in the \emph{AWS General Reference}. For general information about using the
-Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Making Query Requests}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$upload_signing_certificate(
-  UserName = "string",
-  CertificateBody = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command uploads a signing certificate for the IAM user
-# named Bob.
-svc$upload_signing_certificate(
-  CertificateBody = "-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----",
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/upload_signing_certificate.html} for full documentation.
 }
 \keyword{internal}

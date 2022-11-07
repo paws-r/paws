@@ -4,12 +4,26 @@
 \alias{opsworks_update_stack}
 \title{Updates a specified stack}
 \usage{
-opsworks_update_stack(StackId, Name, Attributes, ServiceRoleArn,
-  DefaultInstanceProfileArn, DefaultOs, HostnameTheme,
-  DefaultAvailabilityZone, DefaultSubnetId, CustomJson,
-  ConfigurationManager, ChefConfiguration, UseCustomCookbooks,
-  CustomCookbooksSource, DefaultSshKeyName, DefaultRootDeviceType,
-  UseOpsworksSecurityGroups, AgentVersion)
+opsworks_update_stack(
+  StackId,
+  Name = NULL,
+  Attributes = NULL,
+  ServiceRoleArn = NULL,
+  DefaultInstanceProfileArn = NULL,
+  DefaultOs = NULL,
+  HostnameTheme = NULL,
+  DefaultAvailabilityZone = NULL,
+  DefaultSubnetId = NULL,
+  CustomJson = NULL,
+  ConfigurationManager = NULL,
+  ChefConfiguration = NULL,
+  UseCustomCookbooks = NULL,
+  CustomCookbooksSource = NULL,
+  DefaultSshKeyName = NULL,
+  DefaultRootDeviceType = NULL,
+  UseOpsworksSecurityGroups = NULL,
+  AgentVersion = NULL
+)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -162,54 +176,9 @@ AgentVersion cannot be set to Chef 12.2.
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a specified stack.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/update_stack.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_stack(
-  StackId = "string",
-  Name = "string",
-  Attributes = list(
-    "string"
-  ),
-  ServiceRoleArn = "string",
-  DefaultInstanceProfileArn = "string",
-  DefaultOs = "string",
-  HostnameTheme = "string",
-  DefaultAvailabilityZone = "string",
-  DefaultSubnetId = "string",
-  CustomJson = "string",
-  ConfigurationManager = list(
-    Name = "string",
-    Version = "string"
-  ),
-  ChefConfiguration = list(
-    ManageBerkshelf = TRUE|FALSE,
-    BerkshelfVersion = "string"
-  ),
-  UseCustomCookbooks = TRUE|FALSE,
-  CustomCookbooksSource = list(
-    Type = "git"|"svn"|"archive"|"s3",
-    Url = "string",
-    Username = "string",
-    Password = "string",
-    SshKey = "string",
-    Revision = "string"
-  ),
-  DefaultSshKeyName = "string",
-  DefaultRootDeviceType = "ebs"|"instance-store",
-  UseOpsworksSecurityGroups = TRUE|FALSE,
-  AgentVersion = "string"
-)
-}
-}
-
 \keyword{internal}

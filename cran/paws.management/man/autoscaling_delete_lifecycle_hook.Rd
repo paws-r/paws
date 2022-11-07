@@ -4,40 +4,16 @@
 \alias{autoscaling_delete_lifecycle_hook}
 \title{Deletes the specified lifecycle hook}
 \usage{
-autoscaling_delete_lifecycle_hook(LifecycleHookName,
-  AutoScalingGroupName)
+autoscaling_delete_lifecycle_hook(LifecycleHookName, AutoScalingGroupName)
 }
 \arguments{
 \item{LifecycleHookName}{[required] The name of the lifecycle hook.}
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified lifecycle hook.
 
-If there are any outstanding lifecycle actions, they are completed first
-(\code{ABANDON} for launching instances, \code{CONTINUE} for terminating
-instances).
-}
-\section{Request syntax}{
-\preformatted{svc$delete_lifecycle_hook(
-  LifecycleHookName = "string",
-  AutoScalingGroupName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes the specified lifecycle hook.
-svc$delete_lifecycle_hook(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  LifecycleHookName = "my-lifecycle-hook"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/delete_lifecycle_hook.html} for full documentation.
 }
 \keyword{internal}

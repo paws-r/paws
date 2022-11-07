@@ -4,40 +4,24 @@
 \alias{cognitoidentityprovider_admin_set_user_settings}
 \title{This action is no longer supported}
 \usage{
-cognitoidentityprovider_admin_set_user_settings(UserPoolId, Username,
-  MFAOptions)
+cognitoidentityprovider_admin_set_user_settings(
+  UserPoolId,
+  Username,
+  MFAOptions
+)
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool that contains the user that you are setting
-options for.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the user whose options you're
+setting.}
 
-\item{Username}{[required] The user name of the user that you are setting options for.}
+\item{Username}{[required] The user name of the user whose options you're setting.}
 
 \item{MFAOptions}{[required] You can use this parameter only to set an SMS configuration that uses
 SMS for delivery.}
 }
-\value{
-An empty list.
-}
 \description{
-\emph{This action is no longer supported.} You can use it to configure only
-SMS MFA. You can't use it to configure TOTP software token MFA. To
-configure either type of MFA, use
-\code{\link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference}}
-instead.
-}
-\section{Request syntax}{
-\preformatted{svc$admin_set_user_settings(
-  UserPoolId = "string",
-  Username = "string",
-  MFAOptions = list(
-    list(
-      DeliveryMedium = "SMS"|"EMAIL",
-      AttributeName = "string"
-    )
-  )
-)
-}
-}
+\emph{This action is no longer supported.} You can use it to configure only SMS MFA. You can't use it to configure time-based one-time password (TOTP) software token MFA. To configure either type of MFA, use \code{\link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference}} instead.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_settings.html} for full documentation.
+}
 \keyword{internal}

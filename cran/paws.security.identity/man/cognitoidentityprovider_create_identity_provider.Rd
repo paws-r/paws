@@ -2,21 +2,26 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_create_identity_provider}
 \alias{cognitoidentityprovider_create_identity_provider}
-\title{Creates an identity provider for a user pool}
+\title{Creates an IdP for a user pool}
 \usage{
-cognitoidentityprovider_create_identity_provider(UserPoolId,
-  ProviderName, ProviderType, ProviderDetails, AttributeMapping,
-  IdpIdentifiers)
+cognitoidentityprovider_create_identity_provider(
+  UserPoolId,
+  ProviderName,
+  ProviderType,
+  ProviderDetails,
+  AttributeMapping = NULL,
+  IdpIdentifiers = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 
-\item{ProviderName}{[required] The identity provider name.}
+\item{ProviderName}{[required] The IdP name.}
 
-\item{ProviderType}{[required] The identity provider type.}
+\item{ProviderType}{[required] The IdP type.}
 
-\item{ProviderDetails}{[required] The identity provider details. The following list describes the provider
-detail keys for each identity provider type.
+\item{ProviderDetails}{[required] The IdP details. The following list describes the provider detail keys
+for each IdP type.
 \itemize{
 \item For Google and Login with Amazon:
 \itemize{
@@ -39,78 +44,41 @@ detail keys for each identity provider type.
 \item private_key
 \item authorize_scopes
 }
-\item For OIDC providers:
+\item For OpenID Connect (OIDC) providers:
 \itemize{
 \item client_id
 \item client_secret
 \item attributes_request_method
 \item oidc_issuer
 \item authorize_scopes
-\item authorize_url \emph{if not available from discovery URL specified by
-oidc_issuer key}
-\item token_url \emph{if not available from discovery URL specified by
-oidc_issuer key}
-\item attributes_url \emph{if not available from discovery URL specified
-by oidc_issuer key}
-\item jwks_uri \emph{if not available from discovery URL specified by
-oidc_issuer key}
+\item The following keys are only present if Amazon Cognito didn't
+discover them at the \code{oidc_issuer} URL.
+\itemize{
+\item authorize_url
+\item token_url
+\item attributes_url
+\item jwks_uri
+}
+\item Amazon Cognito sets the value of the following keys
+automatically. They are read-only.
+\itemize{
+\item attributes_url_add_attributes
+}
 }
 \item For SAML providers:
 \itemize{
-\item MetadataFile OR MetadataURL
+\item MetadataFile or MetadataURL
 \item IDPSignout \emph{optional}
 }
 }}
 
-\item{AttributeMapping}{A mapping of identity provider attributes to standard and custom user
-pool attributes.}
+\item{AttributeMapping}{A mapping of IdP attributes to standard and custom user pool attributes.}
 
-\item{IdpIdentifiers}{A list of identity provider identifiers.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityProvider = list(
-    UserPoolId = "string",
-    ProviderName = "string",
-    ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
-    ProviderDetails = list(
-      "string"
-    ),
-    AttributeMapping = list(
-      "string"
-    ),
-    IdpIdentifiers = list(
-      "string"
-    ),
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+\item{IdpIdentifiers}{A list of IdP identifiers.}
 }
 \description{
-Creates an identity provider for a user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$create_identity_provider(
-  UserPoolId = "string",
-  ProviderName = "string",
-  ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
-  ProviderDetails = list(
-    "string"
-  ),
-  AttributeMapping = list(
-    "string"
-  ),
-  IdpIdentifiers = list(
-    "string"
-  )
-)
-}
-}
+Creates an IdP for a user pool.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_identity_provider.html} for full documentation.
+}
 \keyword{internal}

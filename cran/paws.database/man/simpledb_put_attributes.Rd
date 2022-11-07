@@ -4,7 +4,7 @@
 \alias{simpledb_put_attributes}
 \title{The PutAttributes operation creates or replaces attributes in an item}
 \usage{
-simpledb_put_attributes(DomainName, ItemName, Attributes, Expected)
+simpledb_put_attributes(DomainName, ItemName, Attributes, Expected = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain in which to perform the operation.}
@@ -18,73 +18,9 @@ specified attributes will be updated or not. The update condition must
 be satisfied in order for this request to be processed and the
 attributes to be updated.}
 }
-\value{
-An empty list.
-}
 \description{
-The PutAttributes operation creates or replaces attributes in an item.
-The client may specify new attributes using a combination of the
-\code{Attribute.X.Name} and \code{Attribute.X.Value} parameters. The client
-specifies the first attribute by the parameters \code{Attribute.0.Name} and
-\code{Attribute.0.Value}, the second attribute by the parameters
-\code{Attribute.1.Name} and \code{Attribute.1.Value}, and so on.
+The PutAttributes operation creates or replaces attributes in an item. The client may specify new attributes using a combination of the \code{Attribute.X.Name} and \code{Attribute.X.Value} parameters. The client specifies the first attribute by the parameters \code{Attribute.0.Name} and \code{Attribute.0.Value}, the second attribute by the parameters \code{Attribute.1.Name} and \code{Attribute.1.Value}, and so on.
 
-Attributes are uniquely identified in an item by their name/value
-combination. For example, a single item can have the attributes
-\verb{\{ "first_name", "first_value" \}} and
-\verb{\{ \\"first_name\\", second_value\\" \}}. However, it cannot have two
-attribute instances where both the \code{Attribute.X.Name} and
-\code{Attribute.X.Value} are the same.
-
-Optionally, the requestor can supply the \code{Replace} parameter for each
-individual attribute. Setting this value to \code{true} causes the new
-attribute value to replace the existing attribute value(s). For example,
-if an item has the attributes \verb{\{ 'a', '1' \}}, \verb{\{ 'b', '2'\}} and
-\verb{\{ 'b', '3' \}} and the requestor calls
-\code{\link[=simpledb_put_attributes]{put_attributes}} using the attributes
-\verb{\{ 'b', '4' \}} with the \code{Replace} parameter set to true, the final
-attributes of the item are changed to \verb{\{ 'a', '1' \}} and \verb{\{ 'b', '4' \}},
-which replaces the previous values of the 'b' attribute with the new
-value.
-
-Using \code{\link[=simpledb_put_attributes]{put_attributes}} to replace attribute
-values that do not exist will not result in an error response.
-
-You cannot specify an empty string as an attribute name.
-
-Because Amazon SimpleDB makes multiple copies of client data and uses an
-eventual consistency update model, an immediate
-\code{\link[=simpledb_get_attributes]{get_attributes}} or
-\code{\link[=simpledb_select]{select}} operation (read) immediately after a
-\code{\link[=simpledb_put_attributes]{put_attributes}} or
-\code{\link[=simpledb_delete_attributes]{delete_attributes}} operation (write)
-might not return the updated data.
-
-The following limitations are enforced for this operation:
-\itemize{
-\item 256 total attribute name-value pairs per item
-\item One billion attributes per domain
-\item 10 GB of total user data storage per domain
+See \url{https://paws-r.github.io/docs/simpledb/put_attributes.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$put_attributes(
-  DomainName = "string",
-  ItemName = "string",
-  Attributes = list(
-    list(
-      Name = "string",
-      Value = "string",
-      Replace = TRUE|FALSE
-    )
-  ),
-  Expected = list(
-    Name = "string",
-    Value = "string",
-    Exists = TRUE|FALSE
-  )
-)
-}
-}
-
 \keyword{internal}

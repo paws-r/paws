@@ -4,8 +4,15 @@
 \alias{lightsail_create_container_service}
 \title{Creates an Amazon Lightsail container service}
 \usage{
-lightsail_create_container_service(serviceName, power, scale, tags,
-  publicDomainNames, deployment)
+lightsail_create_container_service(
+  serviceName,
+  power,
+  scale,
+  tags = NULL,
+  publicDomainNames = NULL,
+  deployment = NULL,
+  privateRegistryAccess = NULL
+)
 }
 \arguments{
 \item{serviceName}{[required] The name for the container service.
@@ -21,7 +28,8 @@ for your container service will be like the following example:
 
 The following are the requirements for container service names:
 \itemize{
-\item Must be unique within each AWS Region in your Lightsail account.
+\item Must be unique within each Amazon Web Services Region in your
+Lightsail account.
 \item Must contain 1 to 63 characters.
 \item Must contain only alphanumeric characters and hyphens.
 \item A hyphen (-) can separate words but cannot be at the start or end of
@@ -49,10 +57,14 @@ configured capacity. To determine the monthly price of your container
 service, multiply the base price of the \code{power} with the \code{scale} (the
 number of nodes) of the service.}
 
-\item{tags}{The tag keys and optional values for the container service.
+\item{tags}{The tag keys and optional values to add to the container service during
+create.
 
-For more information about tags in Lightsail, see the Lightsail Dev
-Guide.}
+Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
+resource after it's created.
+
+For more information about tags in Lightsail, see the Amazon Lightsail
+Developer Guide.}
 
 \item{publicDomainNames}{The public domain names to use with the container service, such as
 \code{example.com} and \code{www.example.com}.
@@ -82,162 +94,18 @@ environment variables to apply, and the launch command to run. It also
 specifies the container that will serve as the public endpoint of the
 deployment and its settings, such as the HTTP or HTTPS port to use, and
 the health check configuration.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  containerService = list(
-    containerServiceName = "string",
-    arn = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    location = list(
-      availabilityZone = "string",
-      regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-    ),
-    resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-    powerId = "string",
-    state = "PENDING"|"READY"|"RUNNING"|"UPDATING"|"DELETING"|"DISABLED",
-    scale = 123,
-    currentDeployment = list(
-      version = 123,
-      state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-      containers = list(
-        list(
-          image = "string",
-          command = list(
-            "string"
-          ),
-          environment = list(
-            "string"
-          ),
-          ports = list(
-            "HTTP"|"HTTPS"|"TCP"|"UDP"
-          )
-        )
-      ),
-      publicEndpoint = list(
-        containerName = "string",
-        containerPort = 123,
-        healthCheck = list(
-          healthyThreshold = 123,
-          unhealthyThreshold = 123,
-          timeoutSeconds = 123,
-          intervalSeconds = 123,
-          path = "string",
-          successCodes = "string"
-        )
-      ),
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    nextDeployment = list(
-      version = 123,
-      state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-      containers = list(
-        list(
-          image = "string",
-          command = list(
-            "string"
-          ),
-          environment = list(
-            "string"
-          ),
-          ports = list(
-            "HTTP"|"HTTPS"|"TCP"|"UDP"
-          )
-        )
-      ),
-      publicEndpoint = list(
-        containerName = "string",
-        containerPort = 123,
-        healthCheck = list(
-          healthyThreshold = 123,
-          unhealthyThreshold = 123,
-          timeoutSeconds = 123,
-          intervalSeconds = 123,
-          path = "string",
-          successCodes = "string"
-        )
-      ),
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    isDisabled = TRUE|FALSE,
-    principalArn = "string",
-    privateDomainName = "string",
-    publicDomainNames = list(
-      list(
-        "string"
-      )
-    ),
-    url = "string"
-  )
-)
-}
+
+\item{privateRegistryAccess}{An object to describe the configuration for the container service to
+access private container image repositories, such as Amazon Elastic
+Container Registry (Amazon ECR) private repositories.
+
+For more information, see Configuring access to an Amazon ECR private
+repository for an Amazon Lightsail container service in the \emph{Amazon
+Lightsail Developer Guide}.}
 }
 \description{
 Creates an Amazon Lightsail container service.
 
-A Lightsail container service is a compute resource to which you can
-deploy containers. For more information, see Container services in
-Amazon Lightsail in the \emph{Lightsail Dev Guide}.
+See \url{https://paws-r.github.io/docs/lightsail/create_container_service.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_container_service(
-  serviceName = "string",
-  power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-  scale = 123,
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  publicDomainNames = list(
-    list(
-      "string"
-    )
-  ),
-  deployment = list(
-    containers = list(
-      list(
-        image = "string",
-        command = list(
-          "string"
-        ),
-        environment = list(
-          "string"
-        ),
-        ports = list(
-          "HTTP"|"HTTPS"|"TCP"|"UDP"
-        )
-      )
-    ),
-    publicEndpoint = list(
-      containerName = "string",
-      containerPort = 123,
-      healthCheck = list(
-        healthyThreshold = 123,
-        unhealthyThreshold = 123,
-        timeoutSeconds = 123,
-        intervalSeconds = 123,
-        path = "string",
-        successCodes = "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

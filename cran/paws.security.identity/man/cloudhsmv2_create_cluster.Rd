@@ -4,8 +4,13 @@
 \alias{cloudhsmv2_create_cluster}
 \title{Creates a new AWS CloudHSM cluster}
 \usage{
-cloudhsmv2_create_cluster(BackupRetentionPolicy, HsmType,
-  SourceBackupId, SubnetIds, TagList)
+cloudhsmv2_create_cluster(
+  BackupRetentionPolicy = NULL,
+  HsmType,
+  SourceBackupId = NULL,
+  SubnetIds,
+  TagList = NULL
+)
 }
 \arguments{
 \item{BackupRetentionPolicy}{A policy that defines how the service retains backups.}
@@ -28,79 +33,9 @@ they must meet the following criteria:
 
 \item{TagList}{Tags to apply to the CloudHSM cluster during creation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Cluster = list(
-    BackupPolicy = "DEFAULT",
-    BackupRetentionPolicy = list(
-      Type = "DAYS",
-      Value = "string"
-    ),
-    ClusterId = "string",
-    CreateTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    Hsms = list(
-      list(
-        AvailabilityZone = "string",
-        ClusterId = "string",
-        SubnetId = "string",
-        EniId = "string",
-        EniIp = "string",
-        HsmId = "string",
-        State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
-        StateMessage = "string"
-      )
-    ),
-    HsmType = "string",
-    PreCoPassword = "string",
-    SecurityGroup = "string",
-    SourceBackupId = "string",
-    State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
-    StateMessage = "string",
-    SubnetMapping = list(
-      "string"
-    ),
-    VpcId = "string",
-    Certificates = list(
-      ClusterCsr = "string",
-      HsmCertificate = "string",
-      AwsHardwareCertificate = "string",
-      ManufacturerHardwareCertificate = "string",
-      ClusterCertificate = "string"
-    ),
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Creates a new AWS CloudHSM cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$create_cluster(
-  BackupRetentionPolicy = list(
-    Type = "DAYS",
-    Value = "string"
-  ),
-  HsmType = "string",
-  SourceBackupId = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudhsmv2/create_cluster.html} for full documentation.
+}
 \keyword{internal}

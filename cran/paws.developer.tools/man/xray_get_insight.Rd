@@ -10,68 +10,9 @@ xray_get_insight(InsightId)
 \item{InsightId}{[required] The insight's unique identifier. Use the GetInsightSummaries action to
 retrieve an InsightId.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Insight = list(
-    InsightId = "string",
-    GroupARN = "string",
-    GroupName = "string",
-    RootCauseServiceId = list(
-      Name = "string",
-      Names = list(
-        "string"
-      ),
-      AccountId = "string",
-      Type = "string"
-    ),
-    Categories = list(
-      "FAULT"
-    ),
-    State = "ACTIVE"|"CLOSED",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Summary = "string",
-    ClientRequestImpactStatistics = list(
-      FaultCount = 123,
-      OkCount = 123,
-      TotalCount = 123
-    ),
-    RootCauseServiceRequestImpactStatistics = list(
-      FaultCount = 123,
-      OkCount = 123,
-      TotalCount = 123
-    ),
-    TopAnomalousServices = list(
-      list(
-        ServiceId = list(
-          Name = "string",
-          Names = list(
-            "string"
-          ),
-          AccountId = "string",
-          Type = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves the summary information of an insight. This includes impact to
-clients and root cause services, the top anomalous services, the
-category, the state of the insight, and the start and end time of the
-insight.
-}
-\section{Request syntax}{
-\preformatted{svc$get_insight(
-  InsightId = "string"
-)
-}
-}
+Retrieves the summary information of an insight. This includes impact to clients and root cause services, the top anomalous services, the category, the state of the insight, and the start and end time of the insight.
 
+See \url{https://paws-r.github.io/docs/xray/get_insight.html} for full documentation.
+}
 \keyword{internal}

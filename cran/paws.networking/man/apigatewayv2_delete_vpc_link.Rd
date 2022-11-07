@@ -9,17 +9,9 @@ apigatewayv2_delete_vpc_link(VpcLinkId)
 \arguments{
 \item{VpcLinkId}{[required] The ID of the VPC link.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a VPC link.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vpc_link(
-  VpcLinkId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_vpc_link.html} for full documentation.
+}
 \keyword{internal}

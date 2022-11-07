@@ -11,44 +11,9 @@ resourcegroups_group_resources(Group, ResourceArns)
 
 \item{ResourceArns}{[required] The list of ARNs for resources to be added to the group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Succeeded = list(
-    "string"
-  ),
-  Failed = list(
-    list(
-      ResourceArn = "string",
-      ErrorMessage = "string",
-      ErrorCode = "string"
-    )
-  ),
-  Pending = list(
-    list(
-      ResourceArn = "string"
-    )
-  )
-)
-}
-}
 \description{
 Adds the specified resources to the specified group.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:GroupResources}
+See \url{https://paws-r.github.io/docs/resourcegroups/group_resources.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$group_resources(
-  Group = "string",
-  ResourceArns = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

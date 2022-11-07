@@ -47,6 +47,6 @@ NULL
 
 .marketplacemetering$resolve_customer_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CustomerIdentifier = structure(logical(0), tags = list(type = "string")), ProductCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CustomerIdentifier = structure(logical(0), tags = list(type = "string")), ProductCode = structure(logical(0), tags = list(type = "string")), CustomerAWSAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

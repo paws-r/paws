@@ -4,8 +4,11 @@
 \alias{cognitosync_set_identity_pool_configuration}
 \title{Sets the necessary configuration for push sync}
 \usage{
-cognitosync_set_identity_pool_configuration(IdentityPoolId, PushSync,
-  CognitoStreams)
+cognitosync_set_identity_pool_configuration(
+  IdentityPoolId,
+  PushSync = NULL,
+  CognitoStreams = NULL
+)
 }
 \arguments{
 \item{IdentityPoolId}{[required] A name-spaced GUID (for example,
@@ -16,46 +19,9 @@ Cognito. This is the ID of the pool to modify.}
 
 \item{CognitoStreams}{Options to apply to this identity pool for Amazon Cognito streams.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityPoolId = "string",
-  PushSync = list(
-    ApplicationArns = list(
-      "string"
-    ),
-    RoleArn = "string"
-  ),
-  CognitoStreams = list(
-    StreamName = "string",
-    RoleArn = "string",
-    StreamingStatus = "ENABLED"|"DISABLED"
-  )
-)
-}
-}
 \description{
 Sets the necessary configuration for push sync.
 
-This API can only be called with developer credentials. You cannot call
-this API with the temporary user credentials provided by Cognito
-Identity.
+See \url{https://paws-r.github.io/docs/cognitosync/set_identity_pool_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$set_identity_pool_configuration(
-  IdentityPoolId = "string",
-  PushSync = list(
-    ApplicationArns = list(
-      "string"
-    ),
-    RoleArn = "string"
-  ),
-  CognitoStreams = list(
-    StreamName = "string",
-    RoleArn = "string",
-    StreamingStatus = "ENABLED"|"DISABLED"
-  )
-)
-}
-}
-
 \keyword{internal}

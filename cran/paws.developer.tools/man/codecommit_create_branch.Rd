@@ -13,22 +13,9 @@ codecommit_create_branch(repositoryName, branchName, commitId)
 
 \item{commitId}{[required] The ID of the commit to point the new branch to.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates a branch in a repository and points the branch to a commit.
 
-Calling the create branch operation does not set a repository's default
-branch. To do this, call the update default branch operation.
+See \url{https://paws-r.github.io/docs/codecommit/create_branch.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_branch(
-  repositoryName = "string",
-  branchName = "string",
-  commitId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,11 @@
 \alias{directoryservice_list_schema_extensions}
 \title{Lists all schema extensions applied to a Microsoft AD Directory}
 \usage{
-directoryservice_list_schema_extensions(DirectoryId, NextToken, Limit)
+directoryservice_list_schema_extensions(
+  DirectoryId,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory from which to retrieve the schema
@@ -16,37 +20,9 @@ Pass null if this is the first call.}
 
 \item{Limit}{The maximum number of items to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaExtensionsInfo = list(
-    list(
-      DirectoryId = "string",
-      SchemaExtensionId = "string",
-      Description = "string",
-      SchemaExtensionStatus = "Initializing"|"CreatingSnapshot"|"UpdatingSchema"|"Replicating"|"CancelInProgress"|"RollbackInProgress"|"Cancelled"|"Failed"|"Completed",
-      SchemaExtensionStatusReason = "string",
-      StartDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists all schema extensions applied to a Microsoft AD Directory.
-}
-\section{Request syntax}{
-\preformatted{svc$list_schema_extensions(
-  DirectoryId = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/list_schema_extensions.html} for full documentation.
+}
 \keyword{internal}

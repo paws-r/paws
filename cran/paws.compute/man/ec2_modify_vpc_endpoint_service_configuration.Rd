@@ -4,10 +4,19 @@
 \alias{ec2_modify_vpc_endpoint_service_configuration}
 \title{Modifies the attributes of your VPC endpoint service configuration}
 \usage{
-ec2_modify_vpc_endpoint_service_configuration(DryRun, ServiceId,
-  PrivateDnsName, RemovePrivateDnsName, AcceptanceRequired,
-  AddNetworkLoadBalancerArns, RemoveNetworkLoadBalancerArns,
-  AddGatewayLoadBalancerArns, RemoveGatewayLoadBalancerArns)
+ec2_modify_vpc_endpoint_service_configuration(
+  DryRun = NULL,
+  ServiceId,
+  PrivateDnsName = NULL,
+  RemovePrivateDnsName = NULL,
+  AcceptanceRequired = NULL,
+  AddNetworkLoadBalancerArns = NULL,
+  RemoveNetworkLoadBalancerArns = NULL,
+  AddGatewayLoadBalancerArns = NULL,
+  RemoveGatewayLoadBalancerArns = NULL,
+  AddSupportedIpAddressTypes = NULL,
+  RemoveSupportedIpAddressTypes = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -37,44 +46,14 @@ your service configuration.}
 
 \item{RemoveGatewayLoadBalancerArns}{The Amazon Resource Names (ARNs) of Gateway Load Balancers to remove
 from your service configuration.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
+
+\item{AddSupportedIpAddressTypes}{The IP address types to add to your service configuration.}
+
+\item{RemoveSupportedIpAddressTypes}{The IP address types to remove from your service configuration.}
 }
 \description{
-Modifies the attributes of your VPC endpoint service configuration. You
-can change the Network Load Balancers or Gateway Load Balancers for your
-service, and you can specify whether acceptance is required for requests
-to connect to your endpoint service through an interface VPC endpoint.
+Modifies the attributes of your VPC endpoint service configuration. You can change the Network Load Balancers or Gateway Load Balancers for your service, and you can specify whether acceptance is required for requests to connect to your endpoint service through an interface VPC endpoint.
 
-If you set or modify the private DNS name, you must prove that you own
-the private DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html}{VPC Endpoint Service Private DNS Name Verification}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/modify_vpc_endpoint_service_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_vpc_endpoint_service_configuration(
-  DryRun = TRUE|FALSE,
-  ServiceId = "string",
-  PrivateDnsName = "string",
-  RemovePrivateDnsName = TRUE|FALSE,
-  AcceptanceRequired = TRUE|FALSE,
-  AddNetworkLoadBalancerArns = list(
-    "string"
-  ),
-  RemoveNetworkLoadBalancerArns = list(
-    "string"
-  ),
-  AddGatewayLoadBalancerArns = list(
-    "string"
-  ),
-  RemoveGatewayLoadBalancerArns = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

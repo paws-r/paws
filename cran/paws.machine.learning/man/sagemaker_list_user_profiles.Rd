@@ -4,8 +4,14 @@
 \alias{sagemaker_list_user_profiles}
 \title{Lists user profiles}
 \usage{
-sagemaker_list_user_profiles(NextToken, MaxResults, SortOrder, SortBy,
-  DomainIdEquals, UserProfileNameContains)
+sagemaker_list_user_profiles(
+  NextToken = NULL,
+  MaxResults = NULL,
+  SortOrder = NULL,
+  SortBy = NULL,
+  DomainIdEquals = NULL,
+  UserProfileNameContains = NULL
+)
 }
 \arguments{
 \item{NextToken}{If the previous response was truncated, you will receive this token. Use
@@ -21,38 +27,9 @@ it in your next request to receive the next set of results.}
 
 \item{UserProfileNameContains}{A parameter by which to filter the results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserProfiles = list(
-    list(
-      DomainId = "string",
-      UserProfileName = "string",
-      Status = "Deleting"|"Failed"|"InService"|"Pending"|"Updating"|"Update_Failed"|"Delete_Failed",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists user profiles.
-}
-\section{Request syntax}{
-\preformatted{svc$list_user_profiles(
-  NextToken = "string",
-  MaxResults = 123,
-  SortOrder = "Ascending"|"Descending",
-  SortBy = "CreationTime"|"LastModifiedTime",
-  DomainIdEquals = "string",
-  UserProfileNameContains = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_user_profiles.html} for full documentation.
+}
 \keyword{internal}

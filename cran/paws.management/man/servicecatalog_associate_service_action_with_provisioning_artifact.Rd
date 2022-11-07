@@ -5,7 +5,11 @@
 \title{Associates a self-service action with a provisioning artifact}
 \usage{
 servicecatalog_associate_service_action_with_provisioning_artifact(
-  ProductId, ProvisioningArtifactId, ServiceActionId, AcceptLanguage)
+  ProductId,
+  ProvisioningArtifactId,
+  ServiceActionId,
+  AcceptLanguage = NULL
+)
 }
 \arguments{
 \item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
@@ -22,20 +26,9 @@ servicecatalog_associate_service_action_with_provisioning_artifact(
 \item \code{zh} - Chinese
 }}
 }
-\value{
-An empty list.
-}
 \description{
 Associates a self-service action with a provisioning artifact.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_service_action_with_provisioning_artifact(
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  ServiceActionId = "string",
-  AcceptLanguage = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/associate_service_action_with_provisioning_artifact.html} for full documentation.
+}
 \keyword{internal}

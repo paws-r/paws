@@ -4,17 +4,24 @@
 \alias{ecs_create_cluster}
 \title{Creates a new Amazon ECS cluster}
 \usage{
-ecs_create_cluster(clusterName, tags, settings, capacityProviders,
-  defaultCapacityProviderStrategy)
+ecs_create_cluster(
+  clusterName = NULL,
+  tags = NULL,
+  settings = NULL,
+  configuration = NULL,
+  capacityProviders = NULL,
+  defaultCapacityProviderStrategy = NULL
+)
 }
 \arguments{
-\item{clusterName}{The name of your cluster. If you do not specify a name for your cluster,
-you create a cluster named \code{default}. Up to 255 letters (uppercase and
-lowercase), numbers, and hyphens are allowed.}
+\item{clusterName}{The name of your cluster. If you don't specify a name for your cluster,
+you create a cluster that's named \code{default}. Up to 255 letters
+(uppercase and lowercase), numbers, underscores, and hyphens are
+allowed.}
 
 \item{tags}{The metadata that you apply to the cluster to help you categorize and
-organize them. Each tag consists of a key and an optional value, both of
-which you define.
+organize them. Each tag consists of a key and an optional value. You
+define both.
 
 The following basic restrictions apply to tags:
 \itemize{
@@ -30,173 +37,58 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for either keys or values as it is reserved for AWS
-use. You cannot edit or delete tag keys or values with this prefix.
-Tags with this prefix do not count against your tags per resource
-limit.
+such as a prefix for either keys or values as it is reserved for
+Amazon Web Services use. You cannot edit or delete tag keys or
+values with this prefix. Tags with this prefix do not count against
+your tags per resource limit.
 }}
 
 \item{settings}{The setting to use when creating a cluster. This parameter is used to
-enable CloudWatch Container Insights for a cluster. If this value is
-specified, it will override the \code{containerInsights} value set with
+turn on CloudWatch Container Insights for a cluster. If this value is
+specified, it overrides the \code{containerInsights} value set with
 \code{\link[=ecs_put_account_setting]{put_account_setting}} or
 \code{\link[=ecs_put_account_setting_default]{put_account_setting_default}}.}
 
+\item{configuration}{The \code{execute} command configuration for the cluster.}
+
 \item{capacityProviders}{The short name of one or more capacity providers to associate with the
-cluster.
+cluster. A capacity provider must be associated with a cluster before it
+can be included as part of the default capacity provider strategy of the
+cluster or used in a capacity provider strategy when calling the
+\code{\link[=ecs_create_service]{create_service}} or \code{\link[=ecs_run_task]{run_task}}
+actions.
 
 If specifying a capacity provider that uses an Auto Scaling group, the
-capacity provider must already be created and not already associated
-with another cluster. New capacity providers can be created with the
-\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
+capacity provider must be created but not associated with another
+cluster. New Auto Scaling group capacity providers can be created with
+the \code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
 operation.
 
-To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
-\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
-are available to all accounts and only need to be associated with a
-cluster to be used.
+To use a Fargate capacity provider, specify either the \code{FARGATE} or
+\code{FARGATE_SPOT} capacity providers. The Fargate capacity providers are
+available to all accounts and only need to be associated with a cluster
+to be used.
 
 The
 \code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
 API operation is used to update the list of available capacity providers
 for a cluster after the cluster is created.}
 
-\item{defaultCapacityProviderStrategy}{The capacity provider strategy to use by default for the cluster.
-
-When creating a service or running a task on a cluster, if no capacity
-provider or launch type is specified then the default capacity provider
+\item{defaultCapacityProviderStrategy}{The capacity provider strategy to set as the default for the cluster.
+After a default capacity provider strategy is set for a cluster, when
+you call the \code{\link[=ecs_run_task]{run_task}} or
+\code{\link[=ecs_create_service]{create_service}} APIs with no capacity provider
+strategy or launch type specified, the default capacity provider
 strategy for the cluster is used.
 
-A capacity provider strategy consists of one or more capacity providers
-along with the \code{base} and \code{weight} to assign to them. A capacity
-provider must be associated with the cluster to be used in a capacity
-provider strategy. The
-\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
-API is used to associate a capacity provider with a cluster. Only
-capacity providers with an \code{ACTIVE} or \code{UPDATING} status can be used.
-
-If specifying a capacity provider that uses an Auto Scaling group, the
-capacity provider must already be created. New capacity providers can be
-created with the
-\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
-operation.
-
-To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
-\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
-are available to all accounts and only need to be associated with a
-cluster to be used.
-
-If a default capacity provider strategy is not defined for a cluster
-during creation, it can be defined later with the
+If a default capacity provider strategy isn't defined for a cluster when
+it was created, it can be defined later with the
 \code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
 API operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  cluster = list(
-    clusterArn = "string",
-    clusterName = "string",
-    status = "string",
-    registeredContainerInstancesCount = 123,
-    runningTasksCount = 123,
-    pendingTasksCount = 123,
-    activeServicesCount = 123,
-    statistics = list(
-      list(
-        name = "string",
-        value = "string"
-      )
-    ),
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    settings = list(
-      list(
-        name = "containerInsights",
-        value = "string"
-      )
-    ),
-    capacityProviders = list(
-      "string"
-    ),
-    defaultCapacityProviderStrategy = list(
-      list(
-        capacityProvider = "string",
-        weight = 123,
-        base = 123
-      )
-    ),
-    attachments = list(
-      list(
-        id = "string",
-        type = "string",
-        status = "string",
-        details = list(
-          list(
-            name = "string",
-            value = "string"
-          )
-        )
-      )
-    ),
-    attachmentsStatus = "string"
-  )
-)
-}
-}
 \description{
-Creates a new Amazon ECS cluster. By default, your account receives a
-\code{default} cluster when you launch your first container instance.
-However, you can create your own cluster with a unique name with the
-\code{\link[=ecs_create_cluster]{create_cluster}} action.
+Creates a new Amazon ECS cluster. By default, your account receives a \code{default} cluster when you launch your first container instance. However, you can create your own cluster with a unique name with the \code{\link[=ecs_create_cluster]{create_cluster}} action.
 
-When you call the \code{\link[=ecs_create_cluster]{create_cluster}} API operation,
-Amazon ECS attempts to create the Amazon ECS service-linked role for
-your account so that required resources in other AWS services can be
-managed on your behalf. However, if the IAM user that makes the call
-does not have permissions to create the service-linked role, it is not
-created. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_cluster(
-  clusterName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  settings = list(
-    list(
-      name = "containerInsights",
-      value = "string"
-    )
-  ),
-  capacityProviders = list(
-    "string"
-  ),
-  defaultCapacityProviderStrategy = list(
-    list(
-      capacityProvider = "string",
-      weight = 123,
-      base = 123
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a cluster in your default region.
-svc$create_cluster(
-  clusterName = "my_cluster"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/create_cluster.html} for full documentation.
 }
 \keyword{internal}

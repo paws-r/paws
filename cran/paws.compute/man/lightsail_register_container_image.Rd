@@ -38,34 +38,9 @@ version number will be \code{3}, and so on.}
 
 \item{digest}{[required] The digest of the container image to be registered.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  containerImage = list(
-    image = "string",
-    digest = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Registers a container image to your Amazon Lightsail container service.
 
-This action is not required if you install and use the Lightsail Control
-(lightsailctl) plugin to push container images to your Lightsail
-container service. For more information, see Pushing and managing
-container images on your Amazon Lightsail container services in the
-\emph{Lightsail Dev Guide}.
+See \url{https://paws-r.github.io/docs/lightsail/register_container_image.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_container_image(
-  serviceName = "string",
-  label = "string",
-  digest = "string"
-)
-}
-}
-
 \keyword{internal}

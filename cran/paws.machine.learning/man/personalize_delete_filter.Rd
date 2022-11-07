@@ -9,17 +9,9 @@ personalize_delete_filter(filterArn)
 \arguments{
 \item{filterArn}{[required] The ARN of the filter to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a filter.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_filter(
-  filterArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/personalize/delete_filter.html} for full documentation.
+}
 \keyword{internal}

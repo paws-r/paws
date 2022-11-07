@@ -9,31 +9,9 @@ elasticbeanstalk_check_dns_availability(CNAMEPrefix)
 \arguments{
 \item{CNAMEPrefix}{[required] The prefix used when this CNAME is reserved.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Available = TRUE|FALSE,
-  FullyQualifiedCNAME = "string"
-)
-}
-}
 \description{
 Checks if the specified CNAME is available.
-}
-\section{Request syntax}{
-\preformatted{svc$check_dns_availability(
-  CNAMEPrefix = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following operation checks the availability of the subdomain
-# my-cname:
-svc$check_dns_availability(
-  CNAMEPrefix = "my-cname"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/check_dns_availability.html} for full documentation.
 }
 \keyword{internal}

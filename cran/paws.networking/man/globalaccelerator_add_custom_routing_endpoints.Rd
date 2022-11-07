@@ -5,8 +5,10 @@
 \title{Associate a virtual private cloud (VPC) subnet endpoint with your custom
 routing accelerator}
 \usage{
-globalaccelerator_add_custom_routing_endpoints(EndpointConfigurations,
-  EndpointGroupArn)
+globalaccelerator_add_custom_routing_endpoints(
+  EndpointConfigurations,
+  EndpointGroupArn
+)
 }
 \arguments{
 \item{EndpointConfigurations}{[required] The list of endpoint objects to add to a custom routing accelerator.}
@@ -14,46 +16,9 @@ globalaccelerator_add_custom_routing_endpoints(EndpointConfigurations,
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group for the custom
 routing endpoint.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointDescriptions = list(
-    list(
-      EndpointId = "string"
-    )
-  ),
-  EndpointGroupArn = "string"
-)
-}
-}
 \description{
-Associate a virtual private cloud (VPC) subnet endpoint with your custom
-routing accelerator.
+Associate a virtual private cloud (VPC) subnet endpoint with your custom routing accelerator.
 
-The listener port range must be large enough to support the number of IP
-addresses that can be specified in your subnet. The number of ports
-required is: subnet size times the number of ports per destination EC2
-instances. For example, a subnet defined as /24 requires a listener port
-range of at least 255 ports.
-
-Note: You must have enough remaining listener ports available to map to
-the subnet ports, or the call will fail with a LimitExceededException.
-
-By default, all destinations in a subnet in a custom routing accelerator
-cannot receive traffic. To enable all destinations to receive traffic,
-or to specify individual port mappings that can receive traffic, see the
-\href{https://docs.aws.amazon.com/global-accelerator/latest/api/API_AllowCustomRoutingTraffic.html}{AllowCustomRoutingTraffic}
-operation.
+See \url{https://paws-r.github.io/docs/globalaccelerator/add_custom_routing_endpoints.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_custom_routing_endpoints(
-  EndpointConfigurations = list(
-    list(
-      EndpointId = "string"
-    )
-  ),
-  EndpointGroupArn = "string"
-)
-}
-}
-
 \keyword{internal}

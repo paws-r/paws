@@ -5,12 +5,16 @@
 \title{Lists the consumers registered to receive data from a stream using
 enhanced fan-out, and provides information about each consumer}
 \usage{
-kinesis_list_stream_consumers(StreamARN, NextToken, MaxResults,
-  StreamCreationTimestamp)
+kinesis_list_stream_consumers(
+  StreamARN,
+  NextToken = NULL,
+  MaxResults = NULL,
+  StreamCreationTimestamp = NULL
+)
 }
 \arguments{
 \item{StreamARN}{[required] The ARN of the Kinesis data stream for which you want to list the
-registered consumers. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
+registered consumers. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
 
 \item{NextToken}{When the number of consumers that are registered with the data stream is
 greater than the default value for the \code{MaxResults} parameter, or if you
@@ -40,7 +44,9 @@ seconds to use that value. If you specify an expired token in a call to
 \code{ExpiredNextTokenException}.}
 
 \item{MaxResults}{The maximum number of consumers that you want a single call of
-\code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}} to return.}
+\code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}} to return. The
+default value is 100. If you specify a value greater than 100, at most
+100 results are returned.}
 
 \item{StreamCreationTimestamp}{Specify this input parameter to distinguish data streams that have the
 same name. For example, if you create a data stream and then delete it,
@@ -50,38 +56,9 @@ list the consumers for.
 
 You can't specify this parameter if you specify the NextToken parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Consumers = list(
-    list(
-      ConsumerName = "string",
-      ConsumerARN = "string",
-      ConsumerStatus = "CREATING"|"DELETING"|"ACTIVE",
-      ConsumerCreationTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the consumers registered to receive data from a stream using
-enhanced fan-out, and provides information about each consumer.
+Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides information about each consumer.
 
-This operation has a limit of 5 transactions per second per stream.
+See \url{https://paws-r.github.io/docs/kinesis/list_stream_consumers.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_stream_consumers(
-  StreamARN = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  StreamCreationTimestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

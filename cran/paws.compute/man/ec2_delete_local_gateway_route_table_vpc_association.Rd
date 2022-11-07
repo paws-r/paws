@@ -6,7 +6,9 @@
 table}
 \usage{
 ec2_delete_local_gateway_route_table_vpc_association(
-  LocalGatewayRouteTableVpcAssociationId, DryRun)
+  LocalGatewayRouteTableVpcAssociationId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{LocalGatewayRouteTableVpcAssociationId}{[required] The ID of the association.}
@@ -16,36 +18,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LocalGatewayRouteTableVpcAssociation = list(
-    LocalGatewayRouteTableVpcAssociationId = "string",
-    LocalGatewayRouteTableId = "string",
-    LocalGatewayRouteTableArn = "string",
-    LocalGatewayId = "string",
-    VpcId = "string",
-    OwnerId = "string",
-    State = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Deletes the specified association between a VPC and local gateway route
-table.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_local_gateway_route_table_vpc_association(
-  LocalGatewayRouteTableVpcAssociationId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes the specified association between a VPC and local gateway route table.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_local_gateway_route_table_vpc_association.html} for full documentation.
+}
 \keyword{internal}

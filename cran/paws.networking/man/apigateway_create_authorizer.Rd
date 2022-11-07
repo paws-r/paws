@@ -4,20 +4,28 @@
 \alias{apigateway_create_authorizer}
 \title{Adds a new Authorizer resource to an existing RestApi resource}
 \usage{
-apigateway_create_authorizer(restApiId, name, type, providerARNs,
-  authType, authorizerUri, authorizerCredentials, identitySource,
-  identityValidationExpression, authorizerResultTtlInSeconds)
+apigateway_create_authorizer(
+  restApiId,
+  name,
+  type,
+  providerARNs = NULL,
+  authType = NULL,
+  authorizerUri = NULL,
+  authorizerCredentials = NULL,
+  identitySource = NULL,
+  identityValidationExpression = NULL,
+  authorizerResultTtlInSeconds = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{name}{[required] [Required] The name of the authorizer.}
+\item{name}{[required] The name of the authorizer.}
 
-\item{type}{[required] [Required] The authorizer type. Valid values are \code{TOKEN} for a Lambda
-function using a single authorization token submitted in a custom
-header, \code{REQUEST} for a Lambda function using incoming request
-parameters, and \code{COGNITO_USER_POOLS} for using an Amazon Cognito user
-pool.}
+\item{type}{[required] The authorizer type. Valid values are \code{TOKEN} for a Lambda function
+using a single authorization token submitted in a custom header,
+\code{REQUEST} for a Lambda function using incoming request parameters, and
+\code{COGNITO_USER_POOLS} for using an Amazon Cognito user pool.}
 
 \item{providerARNs}{A list of the Amazon Cognito user pool ARNs for the \code{COGNITO_USER_POOLS}
 authorizer. Each element is of this format:
@@ -44,29 +52,26 @@ invoke the authorizer. To specify an IAM role for API Gateway to assume,
 use the role's Amazon Resource Name (ARN). To use resource-based
 permissions on the Lambda function, specify null.}
 
-\item{identitySource}{The identity source for which authorization is requested.
-\itemize{
-\item For a \code{TOKEN} or \code{COGNITO_USER_POOLS} authorizer, this is required
-and specifies the request header mapping expression for the custom
-header holding the authorization token submitted by the client. For
-example, if the token header name is \code{Auth}, the header mapping
-expression is \code{method.request.header.Auth}.
-\item For the \code{REQUEST} authorizer, this is required when authorization
-caching is enabled. The value is a comma-separated string of one or
-more mapping expressions of the specified request parameters. For
-example, if an \code{Auth} header, a \code{Name} query string parameter are
-defined as identity sources, this value is
+\item{identitySource}{The identity source for which authorization is requested. For a \code{TOKEN}
+or \code{COGNITO_USER_POOLS} authorizer, this is required and specifies the
+request header mapping expression for the custom header holding the
+authorization token submitted by the client. For example, if the token
+header name is \code{Auth}, the header mapping expression is
+\code{method.request.header.Auth}. For the \code{REQUEST} authorizer, this is
+required when authorization caching is enabled. The value is a
+comma-separated string of one or more mapping expressions of the
+specified request parameters. For example, if an \code{Auth} header, a \code{Name}
+query string parameter are defined as identity sources, this value is
 \verb{method.request.header.Auth, method.request.querystring.Name}. These
-parameters will be used to derive the authorization caching key and
-to perform runtime validation of the \code{REQUEST} authorizer by
-verifying all of the identity-related request parameters are
-present, not null and non-empty. Only when this is true does the
-authorizer invoke the authorizer Lambda function, otherwise, it
-returns a 401 Unauthorized response without calling the Lambda
-function. The valid value is a string of comma-separated mapping
-expressions of the specified request parameters. When the
-authorization caching is not enabled, this property is optional.
-}}
+parameters will be used to derive the authorization caching key and to
+perform runtime validation of the \code{REQUEST} authorizer by verifying all
+of the identity-related request parameters are present, not null and
+non-empty. Only when this is true does the authorizer invoke the
+authorizer Lambda function, otherwise, it returns a 401 Unauthorized
+response without calling the Lambda function. The valid value is a
+string of comma-separated mapping expressions of the specified request
+parameters. When the authorization caching is not enabled, this property
+is optional.}
 
 \item{identityValidationExpression}{A validation expression for the incoming identity token. For \code{TOKEN}
 authorizers, this value is a regular expression. For
@@ -82,45 +87,9 @@ authorization caching is disabled. If it is greater than 0, API Gateway
 will cache authorizer responses. If this field is not set, the default
 value is 300. The maximum value is 3600, or 1 hour.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-  providerARNs = list(
-    "string"
-  ),
-  authType = "string",
-  authorizerUri = "string",
-  authorizerCredentials = "string",
-  identitySource = "string",
-  identityValidationExpression = "string",
-  authorizerResultTtlInSeconds = 123
-)
-}
-}
 \description{
-Adds a new Authorizer resource to an existing RestApi resource.<div class="seeAlso">
+Adds a new Authorizer resource to an existing RestApi resource.
 
-
-\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html}{AWS CLI}</div>
+See \url{https://paws-r.github.io/docs/apigateway/create_authorizer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_authorizer(
-  restApiId = "string",
-  name = "string",
-  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-  providerARNs = list(
-    "string"
-  ),
-  authType = "string",
-  authorizerUri = "string",
-  authorizerCredentials = "string",
-  identitySource = "string",
-  identityValidationExpression = "string",
-  authorizerResultTtlInSeconds = 123
-)
-}
-}
-
 \keyword{internal}

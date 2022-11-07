@@ -5,7 +5,7 @@
 \title{Deletes the specified key pair, by removing the public key from Amazon
 EC2}
 \usage{
-ec2_delete_key_pair(KeyName, KeyPairId, DryRun)
+ec2_delete_key_pair(KeyName = NULL, KeyPairId = NULL, DryRun = NULL)
 }
 \arguments{
 \item{KeyName}{The name of the key pair.}
@@ -17,29 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified key pair, by removing the public key from Amazon
-EC2.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_key_pair(
-  KeyName = "string",
-  KeyPairId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes the specified key pair, by removing the public key from Amazon EC2.
 
-\examples{
-\dontrun{
-# This example deletes the specified key pair.
-svc$delete_key_pair(
-  KeyName = "my-key-pair"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_key_pair.html} for full documentation.
 }
 \keyword{internal}

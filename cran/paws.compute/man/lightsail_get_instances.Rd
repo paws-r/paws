@@ -5,7 +5,7 @@
 \title{Returns information about all Amazon Lightsail virtual private servers,
 or instances}
 \usage{
-lightsail_get_instances(pageToken)
+lightsail_get_instances(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{The token to advance to the next page of results from your request.
@@ -15,127 +15,9 @@ To get a page token, perform an initial
 paginated, the response will return a next page token that you can
 specify as the page token in a subsequent request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  instances = list(
-    list(
-      name = "string",
-      arn = "string",
-      supportCode = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      blueprintId = "string",
-      blueprintName = "string",
-      bundleId = "string",
-      addOns = list(
-        list(
-          name = "string",
-          status = "string",
-          snapshotTimeOfDay = "string",
-          nextSnapshotTimeOfDay = "string"
-        )
-      ),
-      isStaticIp = TRUE|FALSE,
-      privateIpAddress = "string",
-      publicIpAddress = "string",
-      ipv6Address = "string",
-      hardware = list(
-        cpuCount = 123,
-        disks = list(
-          list(
-            name = "string",
-            arn = "string",
-            supportCode = "string",
-            createdAt = as.POSIXct(
-              "2015-01-01"
-            ),
-            location = list(
-              availabilityZone = "string",
-              regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-            ),
-            resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-            tags = list(
-              list(
-                key = "string",
-                value = "string"
-              )
-            ),
-            addOns = list(
-              list(
-                name = "string",
-                status = "string",
-                snapshotTimeOfDay = "string",
-                nextSnapshotTimeOfDay = "string"
-              )
-            ),
-            sizeInGb = 123,
-            isSystemDisk = TRUE|FALSE,
-            iops = 123,
-            path = "string",
-            state = "pending"|"error"|"available"|"in-use"|"unknown",
-            attachedTo = "string",
-            isAttached = TRUE|FALSE,
-            attachmentState = "string",
-            gbInUse = 123
-          )
-        ),
-        ramSizeInGb = 123.0
-      ),
-      networking = list(
-        monthlyTransfer = list(
-          gbPerMonthAllocated = 123
-        ),
-        ports = list(
-          list(
-            fromPort = 123,
-            toPort = 123,
-            protocol = "tcp"|"all"|"udp"|"icmp",
-            accessFrom = "string",
-            accessType = "Public"|"Private",
-            commonName = "string",
-            accessDirection = "inbound"|"outbound",
-            cidrs = list(
-              "string"
-            ),
-            cidrListAliases = list(
-              "string"
-            )
-          )
-        )
-      ),
-      state = list(
-        code = 123,
-        name = "string"
-      ),
-      username = "string",
-      sshKeyName = "string"
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
-Returns information about all Amazon Lightsail virtual private servers,
-or \emph{instances}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_instances(
-  pageToken = "string"
-)
-}
-}
+Returns information about all Amazon Lightsail virtual private servers, or \emph{instances}.
 
+See \url{https://paws-r.github.io/docs/lightsail/get_instances.html} for full documentation.
+}
 \keyword{internal}

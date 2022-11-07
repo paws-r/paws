@@ -4,42 +4,14 @@
 \alias{elasticbeanstalk_delete_platform_version}
 \title{Deletes the specified version of a custom platform}
 \usage{
-elasticbeanstalk_delete_platform_version(PlatformArn)
+elasticbeanstalk_delete_platform_version(PlatformArn = NULL)
 }
 \arguments{
 \item{PlatformArn}{The ARN of the version of the custom platform.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PlatformSummary = list(
-    PlatformArn = "string",
-    PlatformOwner = "string",
-    PlatformStatus = "Creating"|"Failed"|"Ready"|"Deleting"|"Deleted",
-    PlatformCategory = "string",
-    OperatingSystemName = "string",
-    OperatingSystemVersion = "string",
-    SupportedTierList = list(
-      "string"
-    ),
-    SupportedAddonList = list(
-      "string"
-    ),
-    PlatformLifecycleState = "string",
-    PlatformVersion = "string",
-    PlatformBranchName = "string",
-    PlatformBranchLifecycleState = "string"
-  )
-)
-}
-}
 \description{
 Deletes the specified version of a custom platform.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_platform_version(
-  PlatformArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/delete_platform_version.html} for full documentation.
+}
 \keyword{internal}

@@ -4,42 +4,14 @@
 \alias{storagegateway_list_automatic_tape_creation_policies}
 \title{Lists the automatic tape creation policies for a gateway}
 \usage{
-storagegateway_list_automatic_tape_creation_policies(GatewayARN)
+storagegateway_list_automatic_tape_creation_policies(GatewayARN = NULL)
 }
 \arguments{
 \item{GatewayARN}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutomaticTapeCreationPolicyInfos = list(
-    list(
-      AutomaticTapeCreationRules = list(
-        list(
-          TapeBarcodePrefix = "string",
-          PoolId = "string",
-          TapeSizeInBytes = 123,
-          MinimumNumTapes = 123,
-          Worm = TRUE|FALSE
-        )
-      ),
-      GatewayARN = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the automatic tape creation policies for a gateway. If there are
-no automatic tape creation policies for the gateway, it returns an empty
-list.
+Lists the automatic tape creation policies for a gateway. If there are no automatic tape creation policies for the gateway, it returns an empty list.
 
-This operation is only supported for tape gateways.
+See \url{https://paws-r.github.io/docs/storagegateway/list_automatic_tape_creation_policies.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_automatic_tape_creation_policies(
-  GatewayARN = "string"
-)
-}
-}
-
 \keyword{internal}

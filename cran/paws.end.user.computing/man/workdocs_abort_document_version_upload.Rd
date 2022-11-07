@@ -5,8 +5,11 @@
 \title{Aborts the upload of the specified document version that was previously
 initiated by InitiateDocumentVersionUpload}
 \usage{
-workdocs_abort_document_version_upload(AuthenticationToken, DocumentId,
-  VersionId)
+workdocs_abort_document_version_upload(
+  AuthenticationToken = NULL,
+  DocumentId,
+  VersionId
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -16,23 +19,9 @@ administrator credentials to access the API.}
 
 \item{VersionId}{[required] The ID of the version.}
 }
-\value{
-An empty list.
-}
 \description{
-Aborts the upload of the specified document version that was previously
-initiated by
-\code{\link[=workdocs_initiate_document_version_upload]{initiate_document_version_upload}}.
-The client should make this call only when it no longer intends to
-upload the document version, or fails to do so.
-}
-\section{Request syntax}{
-\preformatted{svc$abort_document_version_upload(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  VersionId = "string"
-)
-}
-}
+Aborts the upload of the specified document version that was previously initiated by \code{\link[=workdocs_initiate_document_version_upload]{initiate_document_version_upload}}. The client should make this call only when it no longer intends to upload the document version, or fails to do so.
 
+See \url{https://paws-r.github.io/docs/workdocs/abort_document_version_upload.html} for full documentation.
+}
 \keyword{internal}

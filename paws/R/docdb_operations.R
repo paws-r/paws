@@ -3,13 +3,89 @@
 #' @include docdb_service.R
 NULL
 
+#' Adds a source identifier to an existing event notification subscription
+#'
+#' @description
+#' Adds a source identifier to an existing event notification subscription.
+#'
+#' @usage
+#' docdb_add_source_identifier_to_subscription(SubscriptionName,
+#'   SourceIdentifier)
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription that
+#' you want to add a source identifier to.
+#' @param SourceIdentifier &#91;required&#93; The identifier of the event source to be added:
+#' 
+#' -   If the source type is an instance, a `DBInstanceIdentifier` must be
+#'     provided.
+#' 
+#' -   If the source type is a security group, a `DBSecurityGroupName` must
+#'     be provided.
+#' 
+#' -   If the source type is a parameter group, a `DBParameterGroupName`
+#'     must be provided.
+#' 
+#' -   If the source type is a snapshot, a `DBSnapshotIdentifier` must be
+#'     provided.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_source_identifier_to_subscription(
+#'   SubscriptionName = "string",
+#'   SourceIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_add_source_identifier_to_subscription
+docdb_add_source_identifier_to_subscription <- function(SubscriptionName, SourceIdentifier) {
+  op <- new_operation(
+    name = "AddSourceIdentifierToSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$add_source_identifier_to_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
+  output <- .docdb$add_source_identifier_to_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$add_source_identifier_to_subscription <- docdb_add_source_identifier_to_subscription
+
 #' Adds metadata tags to an Amazon DocumentDB resource
 #'
 #' @description
 #' Adds metadata tags to an Amazon DocumentDB resource. You can use these
 #' tags with cost allocation reporting to track costs that are associated
-#' with Amazon DocumentDB resources. or in a `Condition` statement in an
-#' AWS Identity and Access Management (IAM) policy for Amazon DocumentDB.
+#' with Amazon DocumentDB resources or in a `Condition` statement in an
+#' Identity and Access Management (IAM) policy for Amazon DocumentDB.
 #'
 #' @usage
 #' docdb_add_tags_to_resource(ResourceName, Tags)
@@ -156,12 +232,14 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #' 
 #' -   Must specify a valid cluster parameter group.
 #' 
-#' -   If the source cluster parameter group is in the same AWS Region as
-#'     the copy, specify a valid parameter group identifier; for example,
-#'     `my-db-cluster-param-group`, or a valid ARN.
+#' -   If the source cluster parameter group is in the same Amazon Web
+#'     Services Region as the copy, specify a valid parameter group
+#'     identifier; for example, `my-db-cluster-param-group`, or a valid
+#'     ARN.
 #' 
-#' -   If the source parameter group is in a different AWS Region than the
-#'     copy, specify a valid cluster parameter group ARN; for example,
+#' -   If the source parameter group is in a different Amazon Web Services
+#'     Region than the copy, specify a valid cluster parameter group ARN;
+#'     for example,
 #'     `arn:aws:rds:us-east-1:123456789012:sample-cluster:sample-parameter-group`.
 #' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied cluster parameter group.
 #' 
@@ -235,7 +313,8 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' To copy a cluster snapshot from a shared manual cluster snapshot,
 #' `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name
 #' (ARN) of the shared cluster snapshot. You can only copy a shared DB
-#' cluster snapshot, whether encrypted or not, in the same AWS Region.
+#' cluster snapshot, whether encrypted or not, in the same Amazon Web
+#' Services Region.
 #' 
 #' To cancel the copy operation after it is in progress, delete the target
 #' cluster snapshot identified by `TargetDBClusterSnapshotIdentifier` while
@@ -253,11 +332,11 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' 
 #' -   Must specify a valid system snapshot in the *available* state.
 #' 
-#' -   If the source snapshot is in the same AWS Region as the copy,
-#'     specify a valid snapshot identifier.
+#' -   If the source snapshot is in the same Amazon Web Services Region as
+#'     the copy, specify a valid snapshot identifier.
 #' 
-#' -   If the source snapshot is in a different AWS Region than the copy,
-#'     specify a valid cluster snapshot ARN.
+#' -   If the source snapshot is in a different Amazon Web Services Region
+#'     than the copy, specify a valid cluster snapshot ARN.
 #' 
 #' Example: `my-cluster-snapshot1`
 #' @param TargetDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the new cluster snapshot to create from the source
@@ -272,55 +351,57 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot2`
-#' @param KmsKeyId The AWS KMS key ID for an encrypted cluster snapshot. The AWS KMS key ID
-#' is the Amazon Resource Name (ARN), AWS KMS key identifier, or the AWS
-#' KMS key alias for the AWS KMS encryption key.
+#' @param KmsKeyId The KMS key ID for an encrypted cluster snapshot. The KMS key ID is the
+#' Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for
+#' the KMS encryption key.
 #' 
-#' If you copy an encrypted cluster snapshot from your AWS account, you can
-#' specify a value for `KmsKeyId` to encrypt the copy with a new AWS KMS
-#' encryption key. If you don't specify a value for `KmsKeyId`, then the
-#' copy of the cluster snapshot is encrypted with the same AWS KMS key as
-#' the source cluster snapshot.
+#' If you copy an encrypted cluster snapshot from your Amazon Web Services
+#' account, you can specify a value for `KmsKeyId` to encrypt the copy with
+#' a new KMS encryption key. If you don't specify a value for `KmsKeyId`,
+#' then the copy of the cluster snapshot is encrypted with the same KMS key
+#' as the source cluster snapshot.
 #' 
 #' If you copy an encrypted cluster snapshot that is shared from another
-#' AWS account, then you must specify a value for `KmsKeyId`.
+#' Amazon Web Services account, then you must specify a value for
+#' `KmsKeyId`.
 #' 
-#' To copy an encrypted cluster snapshot to another AWS Region, set
-#' `KmsKeyId` to the AWS KMS key ID that you want to use to encrypt the
-#' copy of the cluster snapshot in the destination Region. AWS KMS
-#' encryption keys are specific to the AWS Region that they are created in,
-#' and you can't use encryption keys from one AWS Region in another AWS
-#' Region.
+#' To copy an encrypted cluster snapshot to another Amazon Web Services
+#' Region, set `KmsKeyId` to the KMS key ID that you want to use to encrypt
+#' the copy of the cluster snapshot in the destination Region. KMS
+#' encryption keys are specific to the Amazon Web Services Region that they
+#' are created in, and you can't use encryption keys from one Amazon Web
+#' Services Region in another Amazon Web Services Region.
 #' 
 #' If you copy an unencrypted cluster snapshot and specify a value for the
 #' `KmsKeyId` parameter, an error is returned.
-#' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
-#' [`copy_db_cluster_snapshot`][docdb_copy_db_cluster_snapshot] API action
-#' in the AWS Region that contains the source cluster snapshot to copy. You
-#' must use the `PreSignedUrl` parameter when copying a cluster snapshot
-#' from another AWS Region.
+#' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for
+#' the[`copy_db_cluster_snapshot`][docdb_copy_db_cluster_snapshot] API
+#' action in the Amazon Web Services Region that contains the source
+#' cluster snapshot to copy. You must use the `PreSignedUrl` parameter when
+#' copying a cluster snapshot from another Amazon Web Services Region.
 #' 
-#' If you are using an AWS SDK tool or the AWS CLI, you can specify
-#' `SourceRegion` (or `--source-region` for the AWS CLI) instead of
+#' If you are using an Amazon Web Services SDK tool or the CLI, you can
+#' specify `SourceRegion` (or `--source-region` for the CLI) instead of
 #' specifying `PreSignedUrl` manually. Specifying `SourceRegion`
 #' autogenerates a pre-signed URL that is a valid request for the operation
-#' that can be executed in the source AWS Region.
+#' that can be executed in the source Amazon Web Services Region.
 #' 
 #' The presigned URL must be a valid request for the
 #' [`copy_db_cluster_snapshot`][docdb_copy_db_cluster_snapshot] API action
-#' that can be executed in the source AWS Region that contains the cluster
-#' snapshot to be copied. The presigned URL request must contain the
-#' following parameter values:
+#' that can be executed in the source Amazon Web Services Region that
+#' contains the cluster snapshot to be copied. The presigned URL request
+#' must contain the following parameter values:
 #' 
 #' -   `SourceRegion` - The ID of the region that contains the snapshot to
 #'     be copied.
 #' 
 #' -   `SourceDBClusterSnapshotIdentifier` - The identifier for the the
 #'     encrypted cluster snapshot to be copied. This identifier must be in
-#'     the Amazon Resource Name (ARN) format for the source AWS Region. For
-#'     example, if you are copying an encrypted cluster snapshot from the
-#'     us-east-1 AWS Region, then your `SourceDBClusterSnapshotIdentifier`
-#'     looks something like the following:
+#'     the Amazon Resource Name (ARN) format for the source Amazon Web
+#'     Services Region. For example, if you are copying an encrypted
+#'     cluster snapshot from the us-east-1 Amazon Web Services Region, then
+#'     your `SourceDBClusterSnapshotIdentifier` looks something like the
+#'     following:
 #'     `arn:aws:rds:us-east-1:12345678012:sample-cluster:sample-cluster-snapshot`.
 #' 
 #' -   `TargetDBClusterSnapshotIdentifier` - The identifier for the new
@@ -409,7 +490,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   DBSubnetGroupName, Engine, EngineVersion, Port, MasterUsername,
 #'   MasterUserPassword, PreferredBackupWindow, PreferredMaintenanceWindow,
 #'   Tags, StorageEncrypted, KmsKeyId, PreSignedUrl,
-#'   EnableCloudwatchLogsExports, DeletionProtection)
+#'   EnableCloudwatchLogsExports, DeletionProtection,
+#'   GlobalClusterIdentifier)
 #'
 #' @param AvailabilityZones A list of Amazon EC2 Availability Zones that instances in the cluster
 #' can be created in.
@@ -443,13 +525,13 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @param Engine &#91;required&#93; The name of the database engine to be used for this cluster.
 #' 
 #' Valid values: `docdb`
-#' @param EngineVersion The version number of the database engine to use. The --engine-version
+#' @param EngineVersion The version number of the database engine to use. The `--engine-version`
 #' will default to the latest major engine version. For production
 #' workloads, we recommend explicitly declaring this parameter with the
 #' intended major engine version.
 #' @param Port The port number on which the instances in the cluster accept
 #' connections.
-#' @param MasterUsername &#91;required&#93; The name of the master user for the cluster.
+#' @param MasterUsername The name of the master user for the cluster.
 #' 
 #' Constraints:
 #' 
@@ -458,7 +540,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' -   The first character must be a letter.
 #' 
 #' -   Cannot be a reserved word for the chosen database engine.
-#' @param MasterUserPassword &#91;required&#93; The password for the master database user. This password can contain any
+#' @param MasterUserPassword The password for the master database user. This password can contain any
 #' printable ASCII character except forward slash (/), double quote ("), or
 #' the "at" symbol (@@).
 #' 
@@ -468,7 +550,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region.
+#' block of time for each Amazon Web Services Region.
 #' 
 #' Constraints:
 #' 
@@ -485,29 +567,30 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week.
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week.
 #' 
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' Constraints: Minimum 30-minute window.
 #' @param Tags The tags to be assigned to the cluster.
 #' @param StorageEncrypted Specifies whether the cluster is encrypted.
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted cluster.
+#' @param KmsKeyId The KMS key identifier for an encrypted cluster.
 #' 
-#' The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-#' KMS encryption key. If you are creating a cluster using the same AWS
-#' account that owns the AWS KMS encryption key that is used to encrypt the
-#' new cluster, you can use the AWS KMS key alias instead of the ARN for
-#' the AWS KMS encryption key.
+#' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+#' encryption key. If you are creating a cluster using the same Amazon Web
+#' Services account that owns the KMS encryption key that is used to
+#' encrypt the new cluster, you can use the KMS key alias instead of the
+#' ARN for the KMS encryption key.
 #' 
 #' If an encryption key is not specified in `KmsKeyId`:
 #' 
 #' -   If the `StorageEncrypted` parameter is `true`, Amazon DocumentDB
 #'     uses your default encryption key.
 #' 
-#' AWS KMS creates the default encryption key for your AWS account. Your
-#' AWS account has a different default encryption key for each AWS Region.
+#' KMS creates the default encryption key for your Amazon Web Services
+#' account. Your Amazon Web Services account has a different default
+#' encryption key for each Amazon Web Services Regions.
 #' @param PreSignedUrl Not currently supported.
 #' @param EnableCloudwatchLogsExports A list of log types that need to be enabled for exporting to Amazon
 #' CloudWatch Logs. You can enable audit logs or profiler logs. For more
@@ -519,6 +602,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
+#' @param GlobalClusterIdentifier The cluster identifier of the new global cluster.
 #'
 #' @return
 #' A list with the following syntax:
@@ -549,6 +633,10 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'     MasterUsername = "string",
 #'     PreferredBackupWindow = "string",
 #'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -574,6 +662,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'         Status = "string"
 #'       )
 #'     ),
+#'     CloneGroupId = "string",
 #'     ClusterCreateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -617,21 +706,22 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   EnableCloudwatchLogsExports = list(
 #'     "string"
 #'   ),
-#'   DeletionProtection = TRUE|FALSE
+#'   DeletionProtection = TRUE|FALSE,
+#'   GlobalClusterIdentifier = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_cluster
-docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername, MasterUserPassword, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
+docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
+  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier)
   output <- .docdb$create_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -833,7 +923,8 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' @usage
 #' docdb_create_db_instance(DBInstanceIdentifier, DBInstanceClass, Engine,
 #'   AvailabilityZone, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
-#'   Tags, DBClusterIdentifier, PromotionTier)
+#'   Tags, DBClusterIdentifier, CopyTagsToSnapshot, PromotionTier,
+#'   EnablePerformanceInsights, PerformanceInsightsKMSKeyId)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This parameter is stored as a lowercase string.
 #' 
@@ -853,8 +944,8 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Valid value: `docdb`
 #' @param AvailabilityZone The Amazon EC2 Availability Zone that the instance is created in.
 #' 
-#' Default: A random, system-chosen Availability Zone in the endpoint's AWS
-#' Region.
+#' Default: A random, system-chosen Availability Zone in the endpoint's
+#' Amazon Web Services Region.
 #' 
 #' Example: `us-east-1d`
 #' @param PreferredMaintenanceWindow The time range each week during which system maintenance can occur, in
@@ -863,19 +954,21 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week.
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week.
 #' 
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' Constraints: Minimum 30-minute window.
-#' @param AutoMinorVersionUpgrade Indicates that minor engine upgrades are applied automatically to the
-#' instance during the maintenance window.
+#' @param AutoMinorVersionUpgrade This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB
+#' does not perform minor version upgrades regardless of the value set.
 #' 
-#' Default: `true`
+#' Default: `false`
 #' @param Tags The tags to be assigned to the instance. You can assign up to 10 tags to
 #' an instance.
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the cluster that the instance will belong to.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy tags from the DB instance to
+#' snapshots of the DB instance. By default, tags are not copied.
 #' @param PromotionTier A value that specifies the order in which an Amazon DocumentDB replica
 #' is promoted to the primary instance after a failure of the existing
 #' primary instance.
@@ -883,6 +976,18 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Default: 1
 #' 
 #' Valid values: 0-15
+#' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
+#' Instance. For more information, see [Using Amazon Performance
+#' Insights](https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html).
+#' @param PerformanceInsightsKMSKeyId The KMS key identifier for encryption of Performance Insights data.
+#' 
+#' The KMS key identifier is the key ARN, key ID, alias ARN, or alias name
+#' for the KMS key.
+#' 
+#' If you do not specify a value for PerformanceInsightsKMSKeyId, then
+#' Amazon DocumentDB uses your default KMS key. There is a default KMS key
+#' for your Amazon Web Services account. Your Amazon Web Services account
+#' has a different default KMS key for each Amazon Web Services region.
 #'
 #' @return
 #' A list with the following syntax:
@@ -969,6 +1074,7 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #'     KmsKeyId = "string",
 #'     DbiResourceId = "string",
 #'     CACertificateIdentifier = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
 #'     PromotionTier = 123,
 #'     DBInstanceArn = "string",
 #'     EnabledCloudwatchLogsExports = list(
@@ -994,21 +1100,24 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #'     )
 #'   ),
 #'   DBClusterIdentifier = "string",
-#'   PromotionTier = 123
+#'   CopyTagsToSnapshot = TRUE|FALSE,
+#'   PromotionTier = 123,
+#'   EnablePerformanceInsights = TRUE|FALSE,
+#'   PerformanceInsightsKMSKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_instance
-docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engine, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL, DBClusterIdentifier, PromotionTier = NULL) {
+docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engine, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL, DBClusterIdentifier, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
   op <- new_operation(
     name = "CreateDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, PromotionTier = PromotionTier)
+  input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId)
   output <- .docdb$create_db_instance_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -1022,7 +1131,8 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
 #'
 #' @description
 #' Creates a new subnet group. subnet groups must contain at least one
-#' subnet in at least two Availability Zones in the AWS Region.
+#' subnet in at least two Availability Zones in the Amazon Web Services
+#' Region.
 #'
 #' @usage
 #' docdb_create_db_subnet_group(DBSubnetGroupName,
@@ -1099,6 +1209,237 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 }
 .docdb$operations$create_db_subnet_group <- docdb_create_db_subnet_group
 
+#' Creates an Amazon DocumentDB event notification subscription
+#'
+#' @description
+#' Creates an Amazon DocumentDB event notification subscription. This
+#' action requires a topic Amazon Resource Name (ARN) created by using the
+#' Amazon DocumentDB console, the Amazon SNS console, or the Amazon SNS
+#' API. To obtain an ARN with Amazon SNS, you must create a topic in Amazon
+#' SNS and subscribe to the topic. The ARN is displayed in the Amazon SNS
+#' console.
+#' 
+#' You can specify the type of source (`SourceType`) that you want to be
+#' notified of. You can also provide a list of Amazon DocumentDB sources
+#' (`SourceIds`) that trigger the events, and you can provide a list of
+#' event categories (`EventCategories`) for events that you want to be
+#' notified of. For example, you can specify `SourceType = db-instance`,
+#' `SourceIds = mydbinstance1, mydbinstance2` and
+#' `EventCategories = Availability, Backup`.
+#' 
+#' If you specify both the `SourceType` and `SourceIds` (such as
+#' `SourceType = db-instance` and `SourceIdentifier = myDBInstance1`), you
+#' are notified of all the `db-instance` events for the specified source.
+#' If you specify a `SourceType` but do not specify a `SourceIdentifier`,
+#' you receive notice of the events for that source type for all your
+#' Amazon DocumentDB sources. If you do not specify either the `SourceType`
+#' or the `SourceIdentifier`, you are notified of events generated from all
+#' Amazon DocumentDB sources belonging to your customer account.
+#'
+#' @usage
+#' docdb_create_event_subscription(SubscriptionName, SnsTopicArn,
+#'   SourceType, EventCategories, SourceIds, Enabled, Tags)
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the subscription.
+#' 
+#' Constraints: The name must be fewer than 255 characters.
+#' @param SnsTopicArn &#91;required&#93; The Amazon Resource Name (ARN) of the SNS topic created for event
+#' notification. Amazon SNS creates the ARN when you create a topic and
+#' subscribe to it.
+#' @param SourceType The type of source that is generating the events. For example, if you
+#' want to be notified of events generated by an instance, you would set
+#' this parameter to `db-instance`. If this value is not specified, all
+#' events are returned.
+#' 
+#' Valid values: `db-instance`, `db-cluster`, `db-parameter-group`,
+#' `db-security-group`, `db-cluster-snapshot`
+#' @param EventCategories A list of event categories for a `SourceType` that you want to subscribe
+#' to.
+#' @param SourceIds The list of identifiers of the event sources for which events are
+#' returned. If not specified, then all sources are included in the
+#' response. An identifier must begin with a letter and must contain only
+#' ASCII letters, digits, and hyphens; it can't end with a hyphen or
+#' contain two consecutive hyphens.
+#' 
+#' Constraints:
+#' 
+#' -   If `SourceIds` are provided, `SourceType` must also be provided.
+#' 
+#' -   If the source type is an instance, a `DBInstanceIdentifier` must be
+#'     provided.
+#' 
+#' -   If the source type is a security group, a `DBSecurityGroupName` must
+#'     be provided.
+#' 
+#' -   If the source type is a parameter group, a `DBParameterGroupName`
+#'     must be provided.
+#' 
+#' -   If the source type is a snapshot, a `DBSnapshotIdentifier` must be
+#'     provided.
+#' @param Enabled A Boolean value; set to `true` to activate the subscription, set to
+#' `false` to create the subscription but not active it.
+#' @param Tags The tags to be assigned to the event subscription.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_event_subscription(
+#'   SubscriptionName = "string",
+#'   SnsTopicArn = "string",
+#'   SourceType = "string",
+#'   EventCategories = list(
+#'     "string"
+#'   ),
+#'   SourceIds = list(
+#'     "string"
+#'   ),
+#'   Enabled = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_create_event_subscription
+docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceType = NULL, EventCategories = NULL, SourceIds = NULL, Enabled = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateEventSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$create_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, SourceIds = SourceIds, Enabled = Enabled, Tags = Tags)
+  output <- .docdb$create_event_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$create_event_subscription <- docdb_create_event_subscription
+
+#' Creates an Amazon DocumentDB global cluster that can span multiple
+#' multiple Amazon Web Services Regions
+#'
+#' @description
+#' Creates an Amazon DocumentDB global cluster that can span multiple
+#' multiple Amazon Web Services Regions. The global cluster contains one
+#' primary cluster with read-write capability, and up-to give read-only
+#' secondary clusters. Global clusters uses storage-based fast replication
+#' across regions with latencies less than one second, using dedicated
+#' infrastructure with no impact to your workload’s performance.
+#' 
+#' You can create a global cluster that is initially empty, and then add a
+#' primary and a secondary to it. Or you can specify an existing cluster
+#' during the create operation, and this cluster becomes the primary of the
+#' global cluster.
+#' 
+#' This action only applies to Amazon DocumentDB clusters.
+#'
+#' @usage
+#' docdb_create_global_cluster(GlobalClusterIdentifier,
+#'   SourceDBClusterIdentifier, Engine, EngineVersion, DeletionProtection,
+#'   DatabaseName, StorageEncrypted)
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the new global cluster.
+#' @param SourceDBClusterIdentifier The Amazon Resource Name (ARN) to use as the primary cluster of the
+#' global cluster. This parameter is optional.
+#' @param Engine The name of the database engine to be used for this cluster.
+#' @param EngineVersion The engine version of the global cluster.
+#' @param DeletionProtection The deletion protection setting for the new global cluster. The global
+#' cluster can't be deleted when deletion protection is enabled.
+#' @param DatabaseName The name for your database of up to 64 alpha-numeric characters. If you
+#' do not provide a name, Amazon DocumentDB will not create a database in
+#' the global cluster you are creating.
+#' @param StorageEncrypted The storage encryption setting for the new global cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     DatabaseName = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_global_cluster(
+#'   GlobalClusterIdentifier = "string",
+#'   SourceDBClusterIdentifier = "string",
+#'   Engine = "string",
+#'   EngineVersion = "string",
+#'   DeletionProtection = TRUE|FALSE,
+#'   DatabaseName = "string",
+#'   StorageEncrypted = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_create_global_cluster
+docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClusterIdentifier = NULL, Engine = NULL, EngineVersion = NULL, DeletionProtection = NULL, DatabaseName = NULL, StorageEncrypted = NULL) {
+  op <- new_operation(
+    name = "CreateGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, DatabaseName = DatabaseName, StorageEncrypted = StorageEncrypted)
+  output <- .docdb$create_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$create_global_cluster <- docdb_create_global_cluster
+
 #' Deletes a previously provisioned cluster
 #'
 #' @description
@@ -1168,6 +1509,10 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #'     MasterUsername = "string",
 #'     PreferredBackupWindow = "string",
 #'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -1193,6 +1538,7 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #'         Status = "string"
 #'       )
 #'     ),
+#'     CloneGroupId = "string",
 #'     ClusterCreateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1457,6 +1803,7 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #'     KmsKeyId = "string",
 #'     DbiResourceId = "string",
 #'     CACertificateIdentifier = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
 #'     PromotionTier = 123,
 #'     DBInstanceArn = "string",
 #'     EnabledCloudwatchLogsExports = list(
@@ -1544,12 +1891,141 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
 }
 .docdb$operations$delete_db_subnet_group <- docdb_delete_db_subnet_group
 
+#' Deletes an Amazon DocumentDB event notification subscription
+#'
+#' @description
+#' Deletes an Amazon DocumentDB event notification subscription.
+#'
+#' @usage
+#' docdb_delete_event_subscription(SubscriptionName)
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription that
+#' you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_event_subscription(
+#'   SubscriptionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_delete_event_subscription
+docdb_delete_event_subscription <- function(SubscriptionName) {
+  op <- new_operation(
+    name = "DeleteEventSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$delete_event_subscription_input(SubscriptionName = SubscriptionName)
+  output <- .docdb$delete_event_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$delete_event_subscription <- docdb_delete_event_subscription
+
+#' Deletes a global cluster
+#'
+#' @description
+#' Deletes a global cluster. The primary and secondary clusters must
+#' already be detached or deleted before attempting to delete a global
+#' cluster.
+#' 
+#' This action only applies to Amazon DocumentDB clusters.
+#'
+#' @usage
+#' docdb_delete_global_cluster(GlobalClusterIdentifier)
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the global cluster being deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     DatabaseName = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_global_cluster(
+#'   GlobalClusterIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_delete_global_cluster
+docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
+  op <- new_operation(
+    name = "DeleteGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
+  output <- .docdb$delete_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$delete_global_cluster <- docdb_delete_global_cluster
+
 #' Returns a list of certificate authority (CA) certificates provided by
-#' Amazon DocumentDB for this AWS account
+#' Amazon DocumentDB for this Amazon Web Services account
 #'
 #' @description
 #' Returns a list of certificate authority (CA) certificates provided by
-#' Amazon DocumentDB for this AWS account.
+#' Amazon DocumentDB for this Amazon Web Services account.
 #'
 #' @usage
 #' docdb_describe_certificates(CertificateIdentifier, Filters, MaxRecords,
@@ -1823,13 +2299,13 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
 #' Returns a list of cluster snapshot attribute names and values for a
 #' manual DB cluster snapshot.
 #' 
-#' When you share snapshots with other AWS accounts,
+#' When you share snapshots with other Amazon Web Services accounts,
 #' [`describe_db_cluster_snapshot_attributes`][docdb_describe_db_cluster_snapshot_attributes]
-#' returns the `restore` attribute and a list of IDs for the AWS accounts
-#' that are authorized to copy or restore the manual cluster snapshot. If
-#' `all` is included in the list of values for the `restore` attribute,
-#' then the manual cluster snapshot is public and can be copied or restored
-#' by all AWS accounts.
+#' returns the `restore` attribute and a list of IDs for the Amazon Web
+#' Services accounts that are authorized to copy or restore the manual
+#' cluster snapshot. If `all` is included in the list of values for the
+#' `restore` attribute, then the manual cluster snapshot is public and can
+#' be copied or restored by all Amazon Web Services accounts.
 #'
 #' @usage
 #' docdb_describe_db_cluster_snapshot_attributes(
@@ -1915,13 +2391,13 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' following values:
 #' 
 #' -   `automated` - Return all cluster snapshots that Amazon DocumentDB
-#'     has automatically created for your AWS account.
+#'     has automatically created for your Amazon Web Services account.
 #' 
 #' -   `manual` - Return all cluster snapshots that you have manually
-#'     created for your AWS account.
+#'     created for your Amazon Web Services account.
 #' 
 #' -   `shared` - Return all manual cluster snapshots that have been shared
-#'     to your AWS account.
+#'     to your Amazon Web Services account.
 #' 
 #' -   `public` - Return all cluster snapshots that have been marked as
 #'     public.
@@ -1930,7 +2406,7 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' manual cluster snapshots are returned. You can include shared cluster
 #' snapshots with these results by setting the `IncludeShared` parameter to
 #' `true`. You can include public cluster snapshots with these results by
-#' setting the `IncludePublic` parameter to `true`.
+#' setting the`IncludePublic` parameter to `true`.
 #' 
 #' The `IncludeShared` and `IncludePublic` parameters don't apply for
 #' `SnapshotType` values of `manual` or `automated`. The `IncludePublic`
@@ -1949,12 +2425,13 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#' @param IncludeShared Set to `true` to include shared manual cluster snapshots from other AWS
-#' accounts that this AWS account has been given permission to copy or
-#' restore, and otherwise `false`. The default is `false`.
-#' @param IncludePublic Set to `true` to include manual cluster snapshots that are public and
-#' can be copied or restored by any AWS account, and otherwise `false`. The
+#' @param IncludeShared Set to `true` to include shared manual cluster snapshots from other
+#' Amazon Web Services accounts that this Amazon Web Services account has
+#' been given permission to copy or restore, and otherwise `false`. The
 #' default is `false`.
+#' @param IncludePublic Set to `true` to include manual cluster snapshots that are public and
+#' can be copied or restored by any Amazon Web Services account, and
+#' otherwise `false`. The default is `false`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2103,6 +2580,10 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #'       MasterUsername = "string",
 #'       PreferredBackupWindow = "string",
 #'       PreferredMaintenanceWindow = "string",
+#'       ReplicationSourceIdentifier = "string",
+#'       ReadReplicaIdentifiers = list(
+#'         "string"
+#'       ),
 #'       DBClusterMembers = list(
 #'         list(
 #'           DBInstanceIdentifier = "string",
@@ -2128,6 +2609,7 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #'           Status = "string"
 #'         )
 #'       ),
+#'       CloneGroupId = "string",
 #'       ClusterCreateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -2419,6 +2901,7 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #'       KmsKeyId = "string",
 #'       DbiResourceId = "string",
 #'       CACertificateIdentifier = "string",
+#'       CopyTagsToSnapshot = TRUE|FALSE,
 #'       PromotionTier = 123,
 #'       DBInstanceArn = "string",
 #'       EnabledCloudwatchLogsExports = list(
@@ -2654,8 +3137,7 @@ docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFam
 #'
 #' @param SourceType The type of source that is generating the events.
 #' 
-#' Valid values: `db-instance`, `db-parameter-group`, `db-security-group`,
-#' `db-snapshot`
+#' Valid values: `db-instance`, `db-parameter-group`, `db-security-group`
 #' @param Filters This parameter is not currently supported.
 #'
 #' @return
@@ -2707,6 +3189,99 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
   return(response)
 }
 .docdb$operations$describe_event_categories <- docdb_describe_event_categories
+
+#' Lists all the subscription descriptions for a customer account
+#'
+#' @description
+#' Lists all the subscription descriptions for a customer account. The
+#' description for a subscription includes `SubscriptionName`,
+#' `SNSTopicARN`, `CustomerID`, `SourceType`, `SourceID`, `CreationTime`,
+#' and `Status`.
+#' 
+#' If you specify a `SubscriptionName`, lists the description for that
+#' subscription.
+#'
+#' @usage
+#' docdb_describe_event_subscriptions(SubscriptionName, Filters,
+#'   MaxRecords, Marker)
+#'
+#' @param SubscriptionName The name of the Amazon DocumentDB event notification subscription that
+#' you want to describe.
+#' @param Filters This parameter is not currently supported.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' (marker) is included in the response so that the remaining results can
+#' be retrieved.
+#' 
+#' Default: 100
+#' 
+#' Constraints: Minimum 20, maximum 100.
+#' @param Marker An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   EventSubscriptionsList = list(
+#'     list(
+#'       CustomerAwsId = "string",
+#'       CustSubscriptionId = "string",
+#'       SnsTopicArn = "string",
+#'       Status = "string",
+#'       SubscriptionCreationTime = "string",
+#'       SourceType = "string",
+#'       SourceIdsList = list(
+#'         "string"
+#'       ),
+#'       EventCategoriesList = list(
+#'         "string"
+#'       ),
+#'       Enabled = TRUE|FALSE,
+#'       EventSubscriptionArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_event_subscriptions(
+#'   SubscriptionName = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_describe_event_subscriptions
+docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeEventSubscriptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .docdb$describe_event_subscriptions_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$describe_event_subscriptions <- docdb_describe_event_subscriptions
 
 #' Returns events related to instances, security groups, snapshots, and DB
 #' parameter groups for the past 14 days
@@ -2840,6 +3415,102 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
   return(response)
 }
 .docdb$operations$describe_events <- docdb_describe_events
+
+#' Returns information about Amazon DocumentDB global clusters
+#'
+#' @description
+#' Returns information about Amazon DocumentDB global clusters. This API
+#' supports pagination.
+#' 
+#' This action only applies to Amazon DocumentDB clusters.
+#'
+#' @usage
+#' docdb_describe_global_clusters(GlobalClusterIdentifier, Filters,
+#'   MaxRecords, Marker)
+#'
+#' @param GlobalClusterIdentifier The user-supplied cluster identifier. If this parameter is specified,
+#' information from only the specific cluster is returned. This parameter
+#' isn't case-sensitive.
+#' @param Filters A filter that specifies one or more global DB clusters to describe.
+#' 
+#' Supported filters: `db-cluster-id` accepts cluster identifiers and
+#' cluster Amazon Resource Names (ARNs). The results list will only include
+#' information about the clusters identified by these ARNs.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a marker is included in the response so that you can retrieve the
+#' remaining results.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_global_clusters`][docdb_describe_global_clusters] request. If
+#' this parameter is specified, the response includes only records beyond
+#' the marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   GlobalClusters = list(
+#'     list(
+#'       GlobalClusterIdentifier = "string",
+#'       GlobalClusterResourceId = "string",
+#'       GlobalClusterArn = "string",
+#'       Status = "string",
+#'       Engine = "string",
+#'       EngineVersion = "string",
+#'       DatabaseName = "string",
+#'       StorageEncrypted = TRUE|FALSE,
+#'       DeletionProtection = TRUE|FALSE,
+#'       GlobalClusterMembers = list(
+#'         list(
+#'           DBClusterArn = "string",
+#'           Readers = list(
+#'             "string"
+#'           ),
+#'           IsWriter = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_global_clusters(
+#'   GlobalClusterIdentifier = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_describe_global_clusters
+docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeGlobalClusters",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .docdb$describe_global_clusters_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$describe_global_clusters <- docdb_describe_global_clusters
 
 #' Returns a list of orderable instance options for the specified engine
 #'
@@ -3095,6 +3766,10 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #'     MasterUsername = "string",
 #'     PreferredBackupWindow = "string",
 #'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -3120,6 +3795,7 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #'         Status = "string"
 #'       )
 #'     ),
+#'     CloneGroupId = "string",
 #'     ClusterCreateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -3292,7 +3968,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region.
+#' block of time for each Amazon Web Services Region.
 #' 
 #' Constraints:
 #' 
@@ -3309,8 +3985,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week.
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week.
 #' 
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
@@ -3320,9 +3996,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' `EnableLogTypes` and `DisableLogTypes` arrays determine which logs are
 #' exported (or not exported) to CloudWatch Logs.
 #' @param EngineVersion The version number of the database engine to which you want to upgrade.
-#' Changing this parameter results in an outage. The change is applied
-#' during the next maintenance window unless the `ApplyImmediately`
-#' parameter is set to `true`.
+#' Modifying engine version is not supported on Amazon DocumentDB.
 #' @param DeletionProtection Specifies whether this cluster can be deleted. If `DeletionProtection`
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
@@ -3357,6 +4031,10 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'     MasterUsername = "string",
 #'     PreferredBackupWindow = "string",
 #'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -3382,6 +4060,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'         Status = "string"
 #'       )
 #'     ),
+#'     CloneGroupId = "string",
 #'     ClusterCreateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -3519,23 +4198,24 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 .docdb$operations$modify_db_cluster_parameter_group <- docdb_modify_db_cluster_parameter_group
 
 #' Adds an attribute and values to, or removes an attribute and values
-#' from, a manual DB cluster snapshot
+#' from, a manual cluster snapshot
 #'
 #' @description
 #' Adds an attribute and values to, or removes an attribute and values
-#' from, a manual DB cluster snapshot.
+#' from, a manual cluster snapshot.
 #' 
-#' To share a manual cluster snapshot with other AWS accounts, specify
-#' `restore` as the `AttributeName`, and use the `ValuesToAdd` parameter to
-#' add a list of IDs of the AWS accounts that are authorized to restore the
-#' manual cluster snapshot. Use the value `all` to make the manual cluster
-#' snapshot public, which means that it can be copied or restored by all
-#' AWS accounts. Do not add the `all` value for any manual DB cluster
-#' snapshots that contain private information that you don't want available
-#' to all AWS accounts. If a manual cluster snapshot is encrypted, it can
-#' be shared, but only by specifying a list of authorized AWS account IDs
-#' for the `ValuesToAdd` parameter. You can't use `all` as a value for that
-#' parameter in this case.
+#' To share a manual cluster snapshot with other Amazon Web Services
+#' accounts, specify `restore` as the `AttributeName`, and use the
+#' `ValuesToAdd` parameter to add a list of IDs of the Amazon Web Services
+#' accounts that are authorized to restore the manual cluster snapshot. Use
+#' the value `all` to make the manual cluster snapshot public, which means
+#' that it can be copied or restored by all Amazon Web Services accounts.
+#' Do not add the `all` value for any manual cluster snapshots that contain
+#' private information that you don't want available to all Amazon Web
+#' Services accounts. If a manual cluster snapshot is encrypted, it can be
+#' shared, but only by specifying a list of authorized Amazon Web Services
+#' account IDs for the `ValuesToAdd` parameter. You can't use `all` as a
+#' value for that parameter in this case.
 #'
 #' @usage
 #' docdb_modify_db_cluster_snapshot_attribute(DBClusterSnapshotIdentifier,
@@ -3544,26 +4224,27 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the cluster snapshot to modify the attributes for.
 #' @param AttributeName &#91;required&#93; The name of the cluster snapshot attribute to modify.
 #' 
-#' To manage authorization for other AWS accounts to copy or restore a
-#' manual cluster snapshot, set this value to `restore`.
+#' To manage authorization for other Amazon Web Services accounts to copy
+#' or restore a manual cluster snapshot, set this value to `restore`.
 #' @param ValuesToAdd A list of cluster snapshot attributes to add to the attribute specified
 #' by `AttributeName`.
 #' 
-#' To authorize other AWS accounts to copy or restore a manual cluster
-#' snapshot, set this list to include one or more AWS account IDs. To make
-#' the manual cluster snapshot restorable by any AWS account, set it to
-#' `all`. Do not add the `all` value for any manual cluster snapshots that
-#' contain private information that you don't want to be available to all
-#' AWS accounts.
+#' To authorize other Amazon Web Services accounts to copy or restore a
+#' manual cluster snapshot, set this list to include one or more Amazon Web
+#' Services account IDs. To make the manual cluster snapshot restorable by
+#' any Amazon Web Services account, set it to `all`. Do not add the `all`
+#' value for any manual cluster snapshots that contain private information
+#' that you don't want to be available to all Amazon Web Services accounts.
 #' @param ValuesToRemove A list of cluster snapshot attributes to remove from the attribute
 #' specified by `AttributeName`.
 #' 
-#' To remove authorization for other AWS accounts to copy or restore a
-#' manual cluster snapshot, set this list to include one or more AWS
-#' account identifiers. To remove authorization for any AWS account to copy
-#' or restore the cluster snapshot, set it to `all` . If you specify `all`,
-#' an AWS account whose account ID is explicitly added to the `restore`
-#' attribute can still copy or restore a manual cluster snapshot.
+#' To remove authorization for other Amazon Web Services accounts to copy
+#' or restore a manual cluster snapshot, set this list to include one or
+#' more Amazon Web Services account identifiers. To remove authorization
+#' for any Amazon Web Services account to copy or restore the cluster
+#' snapshot, set it to `all` . If you specify `all`, an Amazon Web Services
+#' account whose account ID is explicitly added to the `restore` attribute
+#' can still copy or restore a manual cluster snapshot.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3627,7 +4308,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' @usage
 #' docdb_modify_db_instance(DBInstanceIdentifier, DBInstanceClass,
 #'   ApplyImmediately, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
-#'   NewDBInstanceIdentifier, CACertificateIdentifier, PromotionTier)
+#'   NewDBInstanceIdentifier, CACertificateIdentifier, CopyTagsToSnapshot,
+#'   PromotionTier, EnablePerformanceInsights, PerformanceInsightsKMSKeyId)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This value is stored as a lowercase string.
 #' 
@@ -3635,8 +4317,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' 
 #' -   Must match the identifier of an existing `DBInstance`.
 #' @param DBInstanceClass The new compute and memory capacity of the instance; for example,
-#' `db.r5.large`. Not all instance classes are available in all AWS
-#' Regions.
+#' `db.r5.large`. Not all instance classes are available in all Amazon Web
+#' Services Regions.
 #' 
 #' If you modify the instance class, an outage occurs during the change.
 #' The change is applied during the next maintenance window, unless
@@ -3669,13 +4351,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' Constraints: Must be at least 30 minutes.
-#' @param AutoMinorVersionUpgrade Indicates that minor version upgrades are applied automatically to the
-#' instance during the maintenance window. Changing this parameter doesn't
-#' result in an outage except in the following case, and the change is
-#' asynchronously applied as soon as possible. An outage results if this
-#' parameter is set to `true` during the maintenance window, and a newer
-#' minor version is available, and Amazon DocumentDB has enabled automatic
-#' patching for that engine version.
+#' @param AutoMinorVersionUpgrade This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB
+#' does not perform minor version upgrades regardless of the value set.
 #' @param NewDBInstanceIdentifier The new instance identifier for the instance when renaming an instance.
 #' When you change the instance identifier, an instance reboot occurs
 #' immediately if you set `Apply Immediately` to `true`. It occurs during
@@ -3692,6 +4369,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' 
 #' Example: `mydbinstance`
 #' @param CACertificateIdentifier Indicates the certificate that needs to be associated with the instance.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB instance to
+#' snapshots of the DB instance. By default, tags are not copied.
 #' @param PromotionTier A value that specifies the order in which an Amazon DocumentDB replica
 #' is promoted to the primary instance after a failure of the existing
 #' primary instance.
@@ -3699,6 +4378,18 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' Default: 1
 #' 
 #' Valid values: 0-15
+#' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
+#' Instance. For more information, see [Using Amazon Performance
+#' Insights](https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html).
+#' @param PerformanceInsightsKMSKeyId The KMS key identifier for encryption of Performance Insights data.
+#' 
+#' The KMS key identifier is the key ARN, key ID, alias ARN, or alias name
+#' for the KMS key.
+#' 
+#' If you do not specify a value for PerformanceInsightsKMSKeyId, then
+#' Amazon DocumentDB uses your default KMS key. There is a default KMS key
+#' for your Amazon Web Services account. Your Amazon Web Services account
+#' has a different default KMS key for each Amazon Web Services region.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3785,6 +4476,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #'     KmsKeyId = "string",
 #'     DbiResourceId = "string",
 #'     CACertificateIdentifier = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
 #'     PromotionTier = 123,
 #'     DBInstanceArn = "string",
 #'     EnabledCloudwatchLogsExports = list(
@@ -3804,21 +4496,24 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   NewDBInstanceIdentifier = "string",
 #'   CACertificateIdentifier = "string",
-#'   PromotionTier = 123
+#'   CopyTagsToSnapshot = TRUE|FALSE,
+#'   PromotionTier = 123,
+#'   EnablePerformanceInsights = TRUE|FALSE,
+#'   PerformanceInsightsKMSKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_instance
-docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, PromotionTier = NULL) {
+docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, PromotionTier = PromotionTier)
+  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId)
   output <- .docdb$modify_db_instance_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -3832,7 +4527,8 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 #'
 #' @description
 #' Modifies an existing subnet group. subnet groups must contain at least
-#' one subnet in at least two Availability Zones in the AWS Region.
+#' one subnet in at least two Availability Zones in the Amazon Web Services
+#' Region.
 #'
 #' @usage
 #' docdb_modify_db_subnet_group(DBSubnetGroupName,
@@ -3901,6 +4597,174 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
   return(response)
 }
 .docdb$operations$modify_db_subnet_group <- docdb_modify_db_subnet_group
+
+#' Modifies an existing Amazon DocumentDB event notification subscription
+#'
+#' @description
+#' Modifies an existing Amazon DocumentDB event notification subscription.
+#'
+#' @usage
+#' docdb_modify_event_subscription(SubscriptionName, SnsTopicArn,
+#'   SourceType, EventCategories, Enabled)
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription.
+#' @param SnsTopicArn The Amazon Resource Name (ARN) of the SNS topic created for event
+#' notification. The ARN is created by Amazon SNS when you create a topic
+#' and subscribe to it.
+#' @param SourceType The type of source that is generating the events. For example, if you
+#' want to be notified of events generated by an instance, set this
+#' parameter to `db-instance`. If this value is not specified, all events
+#' are returned.
+#' 
+#' Valid values: `db-instance`, `db-parameter-group`, `db-security-group`
+#' @param EventCategories A list of event categories for a `SourceType` that you want to subscribe
+#' to.
+#' @param Enabled A Boolean value; set to `true` to activate the subscription.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_event_subscription(
+#'   SubscriptionName = "string",
+#'   SnsTopicArn = "string",
+#'   SourceType = "string",
+#'   EventCategories = list(
+#'     "string"
+#'   ),
+#'   Enabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_modify_event_subscription
+docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, SourceType = NULL, EventCategories = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "ModifyEventSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$modify_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, Enabled = Enabled)
+  output <- .docdb$modify_event_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$modify_event_subscription <- docdb_modify_event_subscription
+
+#' Modify a setting for an Amazon DocumentDB global cluster
+#'
+#' @description
+#' Modify a setting for an Amazon DocumentDB global cluster. You can change
+#' one or more configuration parameters (for example: deletion protection),
+#' or the global cluster identifier by specifying these parameters and the
+#' new values in the request.
+#' 
+#' This action only applies to Amazon DocumentDB clusters.
+#'
+#' @usage
+#' docdb_modify_global_cluster(GlobalClusterIdentifier,
+#'   NewGlobalClusterIdentifier, DeletionProtection)
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The identifier for the global cluster being modified. This parameter
+#' isn't case-sensitive.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing global cluster.
+#' @param NewGlobalClusterIdentifier The new identifier for a global cluster when you modify a global
+#' cluster. This value is stored as a lowercase string.
+#' 
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens
+#' 
+#'     The first character must be a letter
+#' 
+#'     Can't end with a hyphen or contain two consecutive hyphens
+#' 
+#' Example: `my-cluster2`
+#' @param DeletionProtection Indicates if the global cluster has deletion protection enabled. The
+#' global cluster can't be deleted when deletion protection is enabled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     DatabaseName = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_global_cluster(
+#'   GlobalClusterIdentifier = "string",
+#'   NewGlobalClusterIdentifier = "string",
+#'   DeletionProtection = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_modify_global_cluster
+docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL) {
+  op <- new_operation(
+    name = "ModifyGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection)
+  output <- .docdb$modify_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$modify_global_cluster <- docdb_modify_global_cluster
 
 #' You might need to reboot your instance, usually for maintenance reasons
 #'
@@ -4012,6 +4876,7 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #'     KmsKeyId = "string",
 #'     DbiResourceId = "string",
 #'     CACertificateIdentifier = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
 #'     PromotionTier = 123,
 #'     DBInstanceArn = "string",
 #'     EnabledCloudwatchLogsExports = list(
@@ -4048,6 +4913,147 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
   return(response)
 }
 .docdb$operations$reboot_db_instance <- docdb_reboot_db_instance
+
+#' Detaches an Amazon DocumentDB secondary cluster from a global cluster
+#'
+#' @description
+#' Detaches an Amazon DocumentDB secondary cluster from a global cluster.
+#' The cluster becomes a standalone cluster with read-write capability
+#' instead of being read-only and receiving data from a primary in a
+#' different region.
+#' 
+#' This action only applies to Amazon DocumentDB clusters.
+#'
+#' @usage
+#' docdb_remove_from_global_cluster(GlobalClusterIdentifier,
+#'   DbClusterIdentifier)
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier to detach from the Amazon DocumentDB global
+#' cluster.
+#' @param DbClusterIdentifier &#91;required&#93; The Amazon Resource Name (ARN) identifying the cluster that was detached
+#' from the Amazon DocumentDB global cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     DatabaseName = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_from_global_cluster(
+#'   GlobalClusterIdentifier = "string",
+#'   DbClusterIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_remove_from_global_cluster
+docdb_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterIdentifier) {
+  op <- new_operation(
+    name = "RemoveFromGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, DbClusterIdentifier = DbClusterIdentifier)
+  output <- .docdb$remove_from_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$remove_from_global_cluster <- docdb_remove_from_global_cluster
+
+#' Removes a source identifier from an existing Amazon DocumentDB event
+#' notification subscription
+#'
+#' @description
+#' Removes a source identifier from an existing Amazon DocumentDB event
+#' notification subscription.
+#'
+#' @usage
+#' docdb_remove_source_identifier_from_subscription(SubscriptionName,
+#'   SourceIdentifier)
+#'
+#' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription that
+#' you want to remove a source identifier from.
+#' @param SourceIdentifier &#91;required&#93; The source identifier to be removed from the subscription, such as the
+#' instance identifier for an instance, or the name of a security group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_source_identifier_from_subscription(
+#'   SubscriptionName = "string",
+#'   SourceIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_remove_source_identifier_from_subscription
+docdb_remove_source_identifier_from_subscription <- function(SubscriptionName, SourceIdentifier) {
+  op <- new_operation(
+    name = "RemoveSourceIdentifierFromSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$remove_source_identifier_from_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
+  output <- .docdb$remove_source_identifier_from_subscription_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$remove_source_identifier_from_subscription <- docdb_remove_source_identifier_from_subscription
 
 #' Removes metadata tags from an Amazon DocumentDB resource
 #'
@@ -4234,21 +5240,21 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' @param VpcSecurityGroupIds A list of virtual private cloud (VPC) security groups that the new
 #' cluster will belong to.
 #' @param Tags The tags to be assigned to the restored cluster.
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted cluster
-#' from a DB snapshot or cluster snapshot.
+#' @param KmsKeyId The KMS key identifier to use when restoring an encrypted cluster from a
+#' DB snapshot or cluster snapshot.
 #' 
-#' The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-#' KMS encryption key. If you are restoring a cluster with the same AWS
-#' account that owns the AWS KMS encryption key used to encrypt the new
-#' cluster, then you can use the AWS KMS key alias instead of the ARN for
-#' the AWS KMS encryption key.
+#' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+#' encryption key. If you are restoring a cluster with the same Amazon Web
+#' Services account that owns the KMS encryption key used to encrypt the
+#' new cluster, then you can use the KMS key alias instead of the ARN for
+#' the KMS encryption key.
 #' 
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
 #' -   If the snapshot or cluster snapshot in `SnapshotIdentifier` is
-#'     encrypted, then the restored cluster is encrypted using the AWS KMS
-#'     key that was used to encrypt the snapshot or the cluster snapshot.
+#'     encrypted, then the restored cluster is encrypted using the KMS key
+#'     that was used to encrypt the snapshot or the cluster snapshot.
 #' 
 #' -   If the snapshot or the cluster snapshot in `SnapshotIdentifier` is
 #'     not encrypted, then the restored DB cluster is not encrypted.
@@ -4288,6 +5294,10 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'     MasterUsername = "string",
 #'     PreferredBackupWindow = "string",
 #'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -4313,6 +5323,7 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'         Status = "string"
 #'       )
 #'     ),
+#'     CloneGroupId = "string",
 #'     ClusterCreateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -4384,9 +5395,9 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'
 #' @usage
 #' docdb_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
-#'   SourceDBClusterIdentifier, RestoreToTime, UseLatestRestorableTime, Port,
-#'   DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
-#'   EnableCloudwatchLogsExports, DeletionProtection)
+#'   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
+#'   UseLatestRestorableTime, Port, DBSubnetGroupName, VpcSecurityGroupIds,
+#'   Tags, KmsKeyId, EnableCloudwatchLogsExports, DeletionProtection)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new cluster to be created.
 #' 
@@ -4397,6 +5408,20 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' -   The first character must be a letter.
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' @param RestoreType The type of restore to be performed. You can specify one of the
+#' following values:
+#' 
+#' -   `full-copy` - The new DB cluster is restored as a full copy of the
+#'     source DB cluster.
+#' 
+#' -   `copy-on-write` - The new DB cluster is restored as a clone of the
+#'     source DB cluster.
+#' 
+#' Constraints: You can't specify `copy-on-write` if the engine version of
+#' the source DB cluster is earlier than 1.11.
+#' 
+#' If you don't specify a `RestoreType` value, then the new DB cluster is
+#' restored as a full copy of the source DB cluster.
 #' @param SourceDBClusterIdentifier &#91;required&#93; The identifier of the source cluster from which to restore.
 #' 
 #' Constraints:
@@ -4440,25 +5465,25 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' Example: `mySubnetgroup`
 #' @param VpcSecurityGroupIds A list of VPC security groups that the new cluster belongs to.
 #' @param Tags The tags to be assigned to the restored cluster.
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted cluster
-#' from an encrypted cluster.
+#' @param KmsKeyId The KMS key identifier to use when restoring an encrypted cluster from
+#' an encrypted cluster.
 #' 
-#' The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-#' KMS encryption key. If you are restoring a cluster with the same AWS
-#' account that owns the AWS KMS encryption key used to encrypt the new
-#' cluster, then you can use the AWS KMS key alias instead of the ARN for
-#' the AWS KMS encryption key.
+#' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+#' encryption key. If you are restoring a cluster with the same Amazon Web
+#' Services account that owns the KMS encryption key used to encrypt the
+#' new cluster, then you can use the KMS key alias instead of the ARN for
+#' the KMS encryption key.
 #' 
-#' You can restore to a new cluster and encrypt the new cluster with an AWS
-#' KMS key that is different from the AWS KMS key used to encrypt the
-#' source cluster. The new DB cluster is encrypted with the AWS KMS key
-#' identified by the `KmsKeyId` parameter.
+#' You can restore to a new cluster and encrypt the new cluster with an KMS
+#' key that is different from the KMS key used to encrypt the source
+#' cluster. The new DB cluster is encrypted with the KMS key identified by
+#' the `KmsKeyId` parameter.
 #' 
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
 #' -   If the cluster is encrypted, then the restored cluster is encrypted
-#'     using the AWS KMS key that was used to encrypt the source cluster.
+#'     using the KMS key that was used to encrypt the source cluster.
 #' 
 #' -   If the cluster is not encrypted, then the restored cluster is not
 #'     encrypted.
@@ -4501,6 +5526,10 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'     MasterUsername = "string",
 #'     PreferredBackupWindow = "string",
 #'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -4526,6 +5555,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'         Status = "string"
 #'       )
 #'     ),
+#'     CloneGroupId = "string",
 #'     ClusterCreateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -4541,6 +5571,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' ```
 #' svc$restore_db_cluster_to_point_in_time(
 #'   DBClusterIdentifier = "string",
+#'   RestoreType = "string",
 #'   SourceDBClusterIdentifier = "string",
 #'   RestoreToTime = as.POSIXct(
 #'     "2015-01-01"
@@ -4568,14 +5599,14 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' @keywords internal
 #'
 #' @rdname docdb_restore_db_cluster_to_point_in_time
-docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
+docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
+  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
   output <- .docdb$restore_db_cluster_to_point_in_time_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -4627,6 +5658,10 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Sourc
 #'     MasterUsername = "string",
 #'     PreferredBackupWindow = "string",
 #'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -4652,6 +5687,7 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Sourc
 #'         Status = "string"
 #'       )
 #'     ),
+#'     CloneGroupId = "string",
 #'     ClusterCreateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -4733,6 +5769,10 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
 #'     MasterUsername = "string",
 #'     PreferredBackupWindow = "string",
 #'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -4758,6 +5798,7 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
 #'         Status = "string"
 #'       )
 #'     ),
+#'     CloneGroupId = "string",
 #'     ClusterCreateTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),

@@ -8,9 +8,7 @@ NULL
 #' @description
 #' Adds an IAM user to the team for an AWS CodeStar project.
 #'
-#' @usage
-#' codestar_associate_team_member(projectId, clientRequestToken, userArn,
-#'   projectRole, remoteAccessAllowed)
+#' See [https://paws-r.github.io/docs/codestar/associate_team_member.html](https://paws-r.github.io/docs/codestar/associate_team_member.html) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the project to which you will add the IAM user.
 #' @param clientRequestToken A user- or system-generated token that identifies the entity that
@@ -22,25 +20,6 @@ NULL
 #' determines what actions a user can take in an AWS CodeStar project.
 #' @param remoteAccessAllowed Whether the team member is allowed to use an SSH public/private key pair
 #' to remotely access project resources, for example Amazon EC2 instances.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   clientRequestToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_team_member(
-#'   projectId = "string",
-#'   clientRequestToken = "string",
-#'   userArn = "string",
-#'   projectRole = "string",
-#'   remoteAccessAllowed = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -65,14 +44,9 @@ codestar_associate_team_member <- function(projectId, clientRequestToken = NULL,
 #' Creates a project, including project resources
 #'
 #' @description
-#' Creates a project, including project resources. This action creates a
-#' project based on a submitted project request. A set of source code files
-#' and a toolchain template file can be included with the project request.
-#' If these are not provided, an empty project is created.
+#' Creates a project, including project resources. This action creates a project based on a submitted project request. A set of source code files and a toolchain template file can be included with the project request. If these are not provided, an empty project is created.
 #'
-#' @usage
-#' codestar_create_project(name, id, description, clientRequestToken,
-#'   sourceCode, toolchain, tags)
+#' See [https://paws-r.github.io/docs/codestar/create_project.html](https://paws-r.github.io/docs/codestar/create_project.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The display name for the project to be created in AWS CodeStar.
 #' @param id &#91;required&#93; The ID of the project to be created in AWS CodeStar.
@@ -87,66 +61,6 @@ codestar_associate_team_member <- function(projectId, clientRequestToken = NULL,
 #' request. If this parameter is specified, the request must also include
 #' the sourceCode parameter.
 #' @param tags The tags created for the project.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   arn = "string",
-#'   clientRequestToken = "string",
-#'   projectTemplateId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_project(
-#'   name = "string",
-#'   id = "string",
-#'   description = "string",
-#'   clientRequestToken = "string",
-#'   sourceCode = list(
-#'     list(
-#'       source = list(
-#'         s3 = list(
-#'           bucketName = "string",
-#'           bucketKey = "string"
-#'         )
-#'       ),
-#'       destination = list(
-#'         codeCommit = list(
-#'           name = "string"
-#'         ),
-#'         gitHub = list(
-#'           name = "string",
-#'           description = "string",
-#'           type = "string",
-#'           owner = "string",
-#'           privateRepository = TRUE|FALSE,
-#'           issuesEnabled = TRUE|FALSE,
-#'           token = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   toolchain = list(
-#'     source = list(
-#'       s3 = list(
-#'         bucketName = "string",
-#'         bucketKey = "string"
-#'       )
-#'     ),
-#'     roleArn = "string",
-#'     stackParameters = list(
-#'       "string"
-#'     )
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -173,15 +87,9 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
 #' CodeStar
 #'
 #' @description
-#' Creates a profile for a user that includes user preferences, such as the
-#' display name and email address assocciated with the user, in AWS
-#' CodeStar. The user profile is not project-specific. Information in the
-#' user profile is displayed wherever the user's information appears to
-#' other users in AWS CodeStar.
+#' Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.
 #'
-#' @usage
-#' codestar_create_user_profile(userArn, displayName, emailAddress,
-#'   sshPublicKey)
+#' See [https://paws-r.github.io/docs/codestar/create_user_profile.html](https://paws-r.github.io/docs/codestar/create_user_profile.html) for full documentation.
 #'
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user in IAM.
 #' @param displayName &#91;required&#93; The name that will be displayed as the friendly name for the user in AWS
@@ -192,33 +100,6 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
 #' project owner allows the user remote access to project resources, this
 #' public key will be used along with the user's private key for SSH
 #' access.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   userArn = "string",
-#'   displayName = "string",
-#'   emailAddress = "string",
-#'   sshPublicKey = "string",
-#'   createdTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastModifiedTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_user_profile(
-#'   userArn = "string",
-#'   displayName = "string",
-#'   emailAddress = "string",
-#'   sshPublicKey = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -243,12 +124,9 @@ codestar_create_user_profile <- function(userArn, displayName, emailAddress, ssh
 #' Deletes a project, including project resources
 #'
 #' @description
-#' Deletes a project, including project resources. Does not delete users
-#' associated with the project, but does delete the IAM roles that allowed
-#' access to the project.
+#' Deletes a project, including project resources. Does not delete users associated with the project, but does delete the IAM roles that allowed access to the project.
 #'
-#' @usage
-#' codestar_delete_project(id, clientRequestToken, deleteStack)
+#' See [https://paws-r.github.io/docs/codestar/delete_project.html](https://paws-r.github.io/docs/codestar/delete_project.html) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project to be deleted in AWS CodeStar.
 #' @param clientRequestToken A user- or system-generated token that identifies the entity that
@@ -259,24 +137,6 @@ codestar_create_user_profile <- function(userArn, displayName, emailAddress, ssh
 #' resources. This option will delete all AWS resources for the project
 #' (except for any buckets in Amazon S3) as well as deleting the project
 #' itself. Recommended for most use cases.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   stackId = "string",
-#'   projectArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_project(
-#'   id = "string",
-#'   clientRequestToken = "string",
-#'   deleteStack = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -303,30 +163,11 @@ codestar_delete_project <- function(id, clientRequestToken = NULL, deleteStack =
 #' email address
 #'
 #' @description
-#' Deletes a user profile in AWS CodeStar, including all personal
-#' preference data associated with that profile, such as display name and
-#' email address. It does not delete the history of that user, for example
-#' the history of commits made by that user.
+#' Deletes a user profile in AWS CodeStar, including all personal preference data associated with that profile, such as display name and email address. It does not delete the history of that user, for example the history of commits made by that user.
 #'
-#' @usage
-#' codestar_delete_user_profile(userArn)
+#' See [https://paws-r.github.io/docs/codestar/delete_user_profile.html](https://paws-r.github.io/docs/codestar/delete_user_profile.html) for full documentation.
 #'
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   userArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_user_profile(
-#'   userArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -353,38 +194,9 @@ codestar_delete_user_profile <- function(userArn) {
 #' @description
 #' Describes a project and its resources.
 #'
-#' @usage
-#' codestar_describe_project(id)
+#' See [https://paws-r.github.io/docs/codestar/describe_project.html](https://paws-r.github.io/docs/codestar/describe_project.html) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   id = "string",
-#'   arn = "string",
-#'   description = "string",
-#'   clientRequestToken = "string",
-#'   createdTimeStamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   stackId = "string",
-#'   projectTemplateId = "string",
-#'   status = list(
-#'     state = "string",
-#'     reason = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_project(
-#'   id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -410,37 +222,11 @@ codestar_describe_project <- function(id) {
 #' projects
 #'
 #' @description
-#' Describes a user in AWS CodeStar and the user attributes across all
-#' projects.
+#' Describes a user in AWS CodeStar and the user attributes across all projects.
 #'
-#' @usage
-#' codestar_describe_user_profile(userArn)
+#' See [https://paws-r.github.io/docs/codestar/describe_user_profile.html](https://paws-r.github.io/docs/codestar/describe_user_profile.html) for full documentation.
 #'
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   userArn = "string",
-#'   displayName = "string",
-#'   emailAddress = "string",
-#'   sshPublicKey = "string",
-#'   createdTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastModifiedTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_user_profile(
-#'   userArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -465,30 +251,14 @@ codestar_describe_user_profile <- function(userArn) {
 #' Removes a user from a project
 #'
 #' @description
-#' Removes a user from a project. Removing a user from a project also
-#' removes the IAM policies from that user that allowed access to the
-#' project and its resources. Disassociating a team member does not remove
-#' that user's profile from AWS CodeStar. It does not remove the user from
-#' IAM.
+#' Removes a user from a project. Removing a user from a project also removes the IAM policies from that user that allowed access to the project and its resources. Disassociating a team member does not remove that user's profile from AWS CodeStar. It does not remove the user from IAM.
 #'
-#' @usage
-#' codestar_disassociate_team_member(projectId, userArn)
+#' See [https://paws-r.github.io/docs/codestar/disassociate_team_member.html](https://paws-r.github.io/docs/codestar/disassociate_team_member.html) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the AWS CodeStar project from which you want to remove a team
 #' member.
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM user or group whom you want to
 #' remove from the project.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_team_member(
-#'   projectId = "string",
-#'   userArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -515,35 +285,12 @@ codestar_disassociate_team_member <- function(projectId, userArn) {
 #' @description
 #' Lists all projects in AWS CodeStar associated with your AWS account.
 #'
-#' @usage
-#' codestar_list_projects(nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codestar/list_projects.html](https://paws-r.github.io/docs/codestar/list_projects.html) for full documentation.
 #'
 #' @param nextToken The continuation token to be used to return the next set of results, if
 #' the results cannot be returned in one response.
 #' @param maxResults The maximum amount of data that can be contained in a single set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   projects = list(
-#'     list(
-#'       projectId = "string",
-#'       projectArn = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_projects(
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -570,36 +317,13 @@ codestar_list_projects <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Lists resources associated with a project in AWS CodeStar.
 #'
-#' @usage
-#' codestar_list_resources(projectId, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codestar/list_resources.html](https://paws-r.github.io/docs/codestar/list_resources.html) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the project.
 #' @param nextToken The continuation token for the next set of results, if the results
 #' cannot be returned in one response.
 #' @param maxResults The maximum amount of data that can be contained in a single set of
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   resources = list(
-#'     list(
-#'       id = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resources(
-#'   projectId = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -626,32 +350,11 @@ codestar_list_resources <- function(projectId, nextToken = NULL, maxResults = NU
 #' @description
 #' Gets the tags for a project.
 #'
-#' @usage
-#' codestar_list_tags_for_project(id, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codestar/list_tags_for_project.html](https://paws-r.github.io/docs/codestar/list_tags_for_project.html) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project to get tags for.
 #' @param nextToken Reserved for future use.
 #' @param maxResults Reserved for future use.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_project(
-#'   id = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -678,37 +381,12 @@ codestar_list_tags_for_project <- function(id, nextToken = NULL, maxResults = NU
 #' @description
 #' Lists all team members associated with a project.
 #'
-#' @usage
-#' codestar_list_team_members(projectId, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codestar/list_team_members.html](https://paws-r.github.io/docs/codestar/list_team_members.html) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the project for which you want to list team members.
 #' @param nextToken The continuation token for the next set of results, if the results
 #' cannot be returned in one response.
 #' @param maxResults The maximum number of team members you want returned in a response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   teamMembers = list(
-#'     list(
-#'       userArn = "string",
-#'       projectRole = "string",
-#'       remoteAccessAllowed = TRUE|FALSE
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_team_members(
-#'   projectId = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -734,39 +412,13 @@ codestar_list_team_members <- function(projectId, nextToken = NULL, maxResults =
 #' CodeStar
 #'
 #' @description
-#' Lists all the user profiles configured for your AWS account in AWS
-#' CodeStar.
+#' Lists all the user profiles configured for your AWS account in AWS CodeStar.
 #'
-#' @usage
-#' codestar_list_user_profiles(nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codestar/list_user_profiles.html](https://paws-r.github.io/docs/codestar/list_user_profiles.html) for full documentation.
 #'
 #' @param nextToken The continuation token for the next set of results, if the results
 #' cannot be returned in one response.
 #' @param maxResults The maximum number of results to return in a response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   userProfiles = list(
-#'     list(
-#'       userArn = "string",
-#'       displayName = "string",
-#'       emailAddress = "string",
-#'       sshPublicKey = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_user_profiles(
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -793,31 +445,10 @@ codestar_list_user_profiles <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Adds tags to a project.
 #'
-#' @usage
-#' codestar_tag_project(id, tags)
+#' See [https://paws-r.github.io/docs/codestar/tag_project.html](https://paws-r.github.io/docs/codestar/tag_project.html) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project you want to add a tag to.
 #' @param tags &#91;required&#93; The tags you want to add to the project.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_project(
-#'   id = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -844,24 +475,10 @@ codestar_tag_project <- function(id, tags) {
 #' @description
 #' Removes tags from a project.
 #'
-#' @usage
-#' codestar_untag_project(id, tags)
+#' See [https://paws-r.github.io/docs/codestar/untag_project.html](https://paws-r.github.io/docs/codestar/untag_project.html) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project to remove tags from.
 #' @param tags &#91;required&#93; The tags to remove from the project.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_project(
-#'   id = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -888,24 +505,11 @@ codestar_untag_project <- function(id, tags) {
 #' @description
 #' Updates a project in AWS CodeStar.
 #'
-#' @usage
-#' codestar_update_project(id, name, description)
+#' See [https://paws-r.github.io/docs/codestar/update_project.html](https://paws-r.github.io/docs/codestar/update_project.html) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project you want to update.
 #' @param name The name of the project you want to update.
 #' @param description The description of the project, if any.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_project(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -930,13 +534,9 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 #' Updates a team member's attributes in an AWS CodeStar project
 #'
 #' @description
-#' Updates a team member's attributes in an AWS CodeStar project. For
-#' example, you can change a team member's role in the project, or change
-#' whether they have remote access to project resources.
+#' Updates a team member's attributes in an AWS CodeStar project. For example, you can change a team member's role in the project, or change whether they have remote access to project resources.
 #'
-#' @usage
-#' codestar_update_team_member(projectId, userArn, projectRole,
-#'   remoteAccessAllowed)
+#' See [https://paws-r.github.io/docs/codestar/update_team_member.html](https://paws-r.github.io/docs/codestar/update_team_member.html) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the project.
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user for whom you want to change
@@ -949,26 +549,6 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 #' using the SSH public key associated with the user's profile. Even if
 #' this is set to True, the user must associate a public key with their
 #' profile before the user can access resources.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   userArn = "string",
-#'   projectRole = "string",
-#'   remoteAccessAllowed = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_team_member(
-#'   projectId = "string",
-#'   userArn = "string",
-#'   projectRole = "string",
-#'   remoteAccessAllowed = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -993,13 +573,9 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
 #' Updates a user's profile in AWS CodeStar
 #'
 #' @description
-#' Updates a user's profile in AWS CodeStar. The user profile is not
-#' project-specific. Information in the user profile is displayed wherever
-#' the user's information appears to other users in AWS CodeStar.
+#' Updates a user's profile in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.
 #'
-#' @usage
-#' codestar_update_user_profile(userArn, displayName, emailAddress,
-#'   sshPublicKey)
+#' See [https://paws-r.github.io/docs/codestar/update_user_profile.html](https://paws-r.github.io/docs/codestar/update_user_profile.html) for full documentation.
 #'
 #' @param userArn &#91;required&#93; The name that will be displayed as the friendly name for the user in AWS
 #' CodeStar.
@@ -1011,33 +587,6 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
 #' project owner allows the user remote access to project resources, this
 #' public key will be used along with the user's private key for SSH
 #' access.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   userArn = "string",
-#'   displayName = "string",
-#'   emailAddress = "string",
-#'   sshPublicKey = "string",
-#'   createdTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastModifiedTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_user_profile(
-#'   userArn = "string",
-#'   displayName = "string",
-#'   emailAddress = "string",
-#'   sshPublicKey = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

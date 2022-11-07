@@ -5,31 +5,46 @@ NULL
 #' AWS CloudFormation
 #'
 #' @description
-#' AWS CloudFormation allows you to create and manage AWS infrastructure
-#' deployments predictably and repeatedly. You can use AWS CloudFormation
-#' to leverage AWS products, such as Amazon Elastic Compute Cloud, Amazon
-#' Elastic Block Store, Amazon Simple Notification Service, Elastic Load
-#' Balancing, and Auto Scaling to build highly-reliable, highly scalable,
-#' cost-effective applications without creating or configuring the
-#' underlying AWS infrastructure.
+#' CloudFormation
 #' 
-#' With AWS CloudFormation, you declare all of your resources and
-#' dependencies in a template file. The template defines a collection of
-#' resources as a single unit called a stack. AWS CloudFormation creates
-#' and deletes all member resources of the stack together and manages all
-#' dependencies between the resources for you.
+#' CloudFormation allows you to create and manage Amazon Web Services
+#' infrastructure deployments predictably and repeatedly. You can use
+#' CloudFormation to leverage Amazon Web Services products, such as Amazon
+#' Elastic Compute Cloud, Amazon Elastic Block Store, Amazon Simple
+#' Notification Service, Elastic Load Balancing, and Auto Scaling to build
+#' highly reliable, highly scalable, cost-effective applications without
+#' creating or configuring the underlying Amazon Web Services
+#' infrastructure.
 #' 
-#' For more information about AWS CloudFormation, see the [AWS
-#' CloudFormation Product Page](https://aws.amazon.com/cloudformation/).
+#' With CloudFormation, you declare all your resources and dependencies in
+#' a template file. The template defines a collection of resources as a
+#' single unit called a stack. CloudFormation creates and deletes all
+#' member resources of the stack together and manages all dependencies
+#' between the resources for you.
 #' 
-#' Amazon CloudFormation makes use of other AWS products. If you need
-#' additional technical information about a specific AWS product, you can
-#' find the product's technical documentation at
-#' [docs.aws.amazon.com](https://docs.aws.amazon.com/).
+#' For more information about CloudFormation, see the [CloudFormation
+#' product page](https://aws.amazon.com/cloudformation/).
+#' 
+#' CloudFormation makes use of other Amazon Web Services products. If you
+#' need additional technical information about a specific Amazon Web
+#' Services product, you can find the product's technical documentation at
+#' [`docs.aws.amazon.com`](https://docs.aws.amazon.com/) .
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -41,10 +56,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -52,37 +71,42 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- cloudformation()
-#' svc$cancel_update_stack(
+#' svc$activate_type(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=cloudformation_activate_type]{activate_type} \tab Activates a public third-party extension, making it available for use in stack templates\cr
+#'  \link[=cloudformation_batch_describe_type_configurations]{batch_describe_type_configurations} \tab Returns configuration data for the specified CloudFormation extensions, from the CloudFormation registry for the account and region\cr
 #'  \link[=cloudformation_cancel_update_stack]{cancel_update_stack} \tab Cancels an update on the specified stack\cr
-#'  \link[=cloudformation_continue_update_rollback]{continue_update_rollback} \tab For a specified stack that is in the UPDATE_ROLLBACK_FAILED state, continues rolling it back to the UPDATE_ROLLBACK_COMPLETE state\cr
+#'  \link[=cloudformation_continue_update_rollback]{continue_update_rollback} \tab For a specified stack that's in the UPDATE_ROLLBACK_FAILED state, continues rolling it back to the UPDATE_ROLLBACK_COMPLETE state\cr
 #'  \link[=cloudformation_create_change_set]{create_change_set} \tab Creates a list of changes that will be applied to a stack so that you can review the changes before executing them\cr
 #'  \link[=cloudformation_create_stack]{create_stack} \tab Creates a stack as specified in the template\cr
-#'  \link[=cloudformation_create_stack_instances]{create_stack_instances} \tab Creates stack instances for the specified accounts, within the specified Regions\cr
+#'  \link[=cloudformation_create_stack_instances]{create_stack_instances} \tab Creates stack instances for the specified accounts, within the specified Amazon Web Services Regions\cr
 #'  \link[=cloudformation_create_stack_set]{create_stack_set} \tab Creates a stack set\cr
+#'  \link[=cloudformation_deactivate_type]{deactivate_type} \tab Deactivates a public extension that was previously activated in this account and region\cr
 #'  \link[=cloudformation_delete_change_set]{delete_change_set} \tab Deletes the specified change set\cr
 #'  \link[=cloudformation_delete_stack]{delete_stack} \tab Deletes a specified stack\cr
-#'  \link[=cloudformation_delete_stack_instances]{delete_stack_instances} \tab Deletes stack instances for the specified accounts, in the specified Regions\cr
+#'  \link[=cloudformation_delete_stack_instances]{delete_stack_instances} \tab Deletes stack instances for the specified accounts, in the specified Amazon Web Services Regions\cr
 #'  \link[=cloudformation_delete_stack_set]{delete_stack_set} \tab Deletes a stack set\cr
-#'  \link[=cloudformation_deregister_type]{deregister_type} \tab Removes a type or type version from active use in the CloudFormation registry\cr
-#'  \link[=cloudformation_describe_account_limits]{describe_account_limits} \tab Retrieves your account's AWS CloudFormation limits, such as the maximum number of stacks that you can create in your account\cr
-#'  \link[=cloudformation_describe_change_set]{describe_change_set} \tab Returns the inputs for the change set and a list of changes that AWS CloudFormation will make if you execute the change set\cr
+#'  \link[=cloudformation_deregister_type]{deregister_type} \tab Marks an extension or extension version as DEPRECATED in the CloudFormation registry, removing it from active use\cr
+#'  \link[=cloudformation_describe_account_limits]{describe_account_limits} \tab Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account\cr
+#'  \link[=cloudformation_describe_change_set]{describe_change_set} \tab Returns the inputs for the change set and a list of changes that CloudFormation will make if you execute the change set\cr
+#'  \link[=cloudformation_describe_change_set_hooks]{describe_change_set_hooks} \tab Returns hook-related information for the change set and a list of changes that CloudFormation makes when you run the change set\cr
+#'  \link[=cloudformation_describe_publisher]{describe_publisher} \tab Returns information about a CloudFormation extension publisher\cr
 #'  \link[=cloudformation_describe_stack_drift_detection_status]{describe_stack_drift_detection_status} \tab Returns information about a stack drift detection operation\cr
 #'  \link[=cloudformation_describe_stack_events]{describe_stack_events} \tab Returns all stack related events for a specified stack in reverse chronological order\cr
-#'  \link[=cloudformation_describe_stack_instance]{describe_stack_instance} \tab Returns the stack instance that's associated with the specified stack set, AWS account, and Region\cr
+#'  \link[=cloudformation_describe_stack_instance]{describe_stack_instance} \tab Returns the stack instance that's associated with the specified stack set, Amazon Web Services account, and Region\cr
 #'  \link[=cloudformation_describe_stack_resource]{describe_stack_resource} \tab Returns a description of the specified resource in the specified stack\cr
 #'  \link[=cloudformation_describe_stack_resource_drifts]{describe_stack_resource_drifts} \tab Returns drift information for the resources that have been checked for drift in the specified stack\cr
-#'  \link[=cloudformation_describe_stack_resources]{describe_stack_resources} \tab Returns AWS resource descriptions for running and deleted stacks\cr
+#'  \link[=cloudformation_describe_stack_resources]{describe_stack_resources} \tab Returns Amazon Web Services resource descriptions for running and deleted stacks\cr
 #'  \link[=cloudformation_describe_stacks]{describe_stacks} \tab Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created\cr
 #'  \link[=cloudformation_describe_stack_set]{describe_stack_set} \tab Returns the description of the specified stack set\cr
 #'  \link[=cloudformation_describe_stack_set_operation]{describe_stack_set_operation} \tab Returns the description of the specified stack set operation\cr
-#'  \link[=cloudformation_describe_type]{describe_type} \tab Returns detailed information about a type that has been registered\cr
-#'  \link[=cloudformation_describe_type_registration]{describe_type_registration} \tab Returns information about a type's registration, including its current status and type and version identifiers\cr
+#'  \link[=cloudformation_describe_type]{describe_type} \tab Returns detailed information about an extension that has been registered\cr
+#'  \link[=cloudformation_describe_type_registration]{describe_type_registration} \tab Returns information about an extension's registration, including its current status and type and version identifiers\cr
 #'  \link[=cloudformation_detect_stack_drift]{detect_stack_drift} \tab Detects whether a stack's actual configuration differs, or has drifted, from it's expected configuration, as defined in the stack template and any values specified as template parameters\cr
 #'  \link[=cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift} \tab Returns information about whether a resource's actual configuration differs, or has drifted, from it's expected configuration, as defined in the stack template and any values specified as template parameters\cr
 #'  \link[=cloudformation_detect_stack_set_drift]{detect_stack_set_drift} \tab Detect drift on a stack set\cr
@@ -91,6 +115,7 @@ NULL
 #'  \link[=cloudformation_get_stack_policy]{get_stack_policy} \tab Returns the stack policy for a specified stack\cr
 #'  \link[=cloudformation_get_template]{get_template} \tab Returns the template body for a specified stack\cr
 #'  \link[=cloudformation_get_template_summary]{get_template_summary} \tab Returns information about a new or existing template\cr
+#'  \link[=cloudformation_import_stacks_to_stack_set]{import_stacks_to_stack_set} \tab Import existing stacks into a new stack sets\cr
 #'  \link[=cloudformation_list_change_sets]{list_change_sets} \tab Returns the ID and status of each active change set for a stack\cr
 #'  \link[=cloudformation_list_exports]{list_exports} \tab Lists all exported output values in the account and Region in which you call this action\cr
 #'  \link[=cloudformation_list_imports]{list_imports} \tab Lists all stacks that are importing an exported output value\cr
@@ -100,18 +125,23 @@ NULL
 #'  \link[=cloudformation_list_stack_set_operation_results]{list_stack_set_operation_results} \tab Returns summary information about the results of a stack set operation\cr
 #'  \link[=cloudformation_list_stack_set_operations]{list_stack_set_operations} \tab Returns summary information about operations performed on a stack set\cr
 #'  \link[=cloudformation_list_stack_sets]{list_stack_sets} \tab Returns summary information about stack sets that are associated with the user\cr
-#'  \link[=cloudformation_list_type_registrations]{list_type_registrations} \tab Returns a list of registration tokens for the specified type(s)\cr
-#'  \link[=cloudformation_list_types]{list_types} \tab Returns summary information about types that have been registered with CloudFormation\cr
-#'  \link[=cloudformation_list_type_versions]{list_type_versions} \tab Returns summary information about the versions of a type\cr
+#'  \link[=cloudformation_list_type_registrations]{list_type_registrations} \tab Returns a list of registration tokens for the specified extension(s)\cr
+#'  \link[=cloudformation_list_types]{list_types} \tab Returns summary information about extension that have been registered with CloudFormation\cr
+#'  \link[=cloudformation_list_type_versions]{list_type_versions} \tab Returns summary information about the versions of an extension\cr
+#'  \link[=cloudformation_publish_type]{publish_type} \tab Publishes the specified extension to the CloudFormation registry as a public extension in this region\cr
 #'  \link[=cloudformation_record_handler_progress]{record_handler_progress} \tab Reports progress of a resource handler to CloudFormation\cr
-#'  \link[=cloudformation_register_type]{register_type} \tab Registers a type with the CloudFormation service\cr
+#'  \link[=cloudformation_register_publisher]{register_publisher} \tab Registers your account as a publisher of public extensions in the CloudFormation registry\cr
+#'  \link[=cloudformation_register_type]{register_type} \tab Registers an extension with the CloudFormation service\cr
+#'  \link[=cloudformation_rollback_stack]{rollback_stack} \tab When specifying RollbackStack, you preserve the state of previously provisioned resources when an operation fails\cr
 #'  \link[=cloudformation_set_stack_policy]{set_stack_policy} \tab Sets a stack policy for a specified stack\cr
-#'  \link[=cloudformation_set_type_default_version]{set_type_default_version} \tab Specify the default version of a type\cr
+#'  \link[=cloudformation_set_type_configuration]{set_type_configuration} \tab Specifies the configuration data for a registered CloudFormation extension, in the given account and region\cr
+#'  \link[=cloudformation_set_type_default_version]{set_type_default_version} \tab Specify the default version of an extension\cr
 #'  \link[=cloudformation_signal_resource]{signal_resource} \tab Sends a signal to the specified resource with a success or failure status\cr
 #'  \link[=cloudformation_stop_stack_set_operation]{stop_stack_set_operation} \tab Stops an in-progress operation on a stack set and its associated stack instances\cr
+#'  \link[=cloudformation_test_type]{test_type} \tab Tests a registered extension to make sure it meets all necessary requirements for being published in the CloudFormation registry\cr
 #'  \link[=cloudformation_update_stack]{update_stack} \tab Updates a stack as specified in the template\cr
-#'  \link[=cloudformation_update_stack_instances]{update_stack_instances} \tab Updates the parameter values for stack instances for the specified accounts, within the specified Regions\cr
-#'  \link[=cloudformation_update_stack_set]{update_stack_set} \tab Updates the stack set, and associated stack instances in the specified accounts and Regions\cr
+#'  \link[=cloudformation_update_stack_instances]{update_stack_instances} \tab Updates the parameter values for stack instances for the specified accounts, within the specified Amazon Web Services Regions\cr
+#'  \link[=cloudformation_update_stack_set]{update_stack_set} \tab Updates the stack set, and associated stack instances in the specified accounts and Amazon Web Services Regions\cr
 #'  \link[=cloudformation_update_termination_protection]{update_termination_protection} \tab Updates termination protection for the specified stack\cr
 #'  \link[=cloudformation_validate_template]{validate_template} \tab Validates a specified template
 #' }

@@ -4,10 +4,19 @@
 \alias{sagemaker_list_edge_packaging_jobs}
 \title{Returns a list of edge packaging jobs}
 \usage{
-sagemaker_list_edge_packaging_jobs(NextToken, MaxResults,
-  CreationTimeAfter, CreationTimeBefore, LastModifiedTimeAfter,
-  LastModifiedTimeBefore, NameContains, ModelNameContains, StatusEquals,
-  SortBy, SortOrder)
+sagemaker_list_edge_packaging_jobs(
+  NextToken = NULL,
+  MaxResults = NULL,
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  NameContains = NULL,
+  ModelNameContains = NULL,
+  StatusEquals = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{NextToken}{The response from the last list when returning a list large enough to
@@ -33,54 +42,9 @@ need tokening.}
 
 \item{SortOrder}{What direction to sort by.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EdgePackagingJobSummaries = list(
-    list(
-      EdgePackagingJobArn = "string",
-      EdgePackagingJobName = "string",
-      EdgePackagingJobStatus = "STARTING"|"INPROGRESS"|"COMPLETED"|"FAILED"|"STOPPING"|"STOPPED",
-      CompilationJobName = "string",
-      ModelName = "string",
-      ModelVersion = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of edge packaging jobs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_edge_packaging_jobs(
-  NextToken = "string",
-  MaxResults = 123,
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  NameContains = "string",
-  ModelNameContains = "string",
-  StatusEquals = "STARTING"|"INPROGRESS"|"COMPLETED"|"FAILED"|"STOPPING"|"STOPPED",
-  SortBy = "NAME"|"MODEL_NAME"|"CREATION_TIME"|"LAST_MODIFIED_TIME"|"STATUS",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_edge_packaging_jobs.html} for full documentation.
+}
 \keyword{internal}

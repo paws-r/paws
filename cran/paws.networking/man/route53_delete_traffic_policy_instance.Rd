@@ -14,21 +14,9 @@ When you delete a traffic policy instance, Amazon Route 53 also deletes
 all of the resource record sets that were created when you created the
 traffic policy instance.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a traffic policy instance and all of the resource record sets
-that Amazon Route 53 created when you created the instance.
+Deletes a traffic policy instance and all of the resource record sets that Amazon Route 53 created when you created the instance.
 
-In the Route 53 console, traffic policy instances are known as policy
-records.
+See \url{https://paws-r.github.io/docs/route53/delete_traffic_policy_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_traffic_policy_instance(
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

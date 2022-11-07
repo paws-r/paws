@@ -5,7 +5,7 @@
 \title{Enables I/O operations for a volume that had I/O operations disabled
 because the data on the volume was potentially inconsistent}
 \usage{
-ec2_enable_volume_io(DryRun, VolumeId)
+ec2_enable_volume_io(DryRun = NULL, VolumeId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -15,28 +15,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VolumeId}{[required] The ID of the volume.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables I/O operations for a volume that had I/O operations disabled
-because the data on the volume was potentially inconsistent.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_volume_io(
-  DryRun = TRUE|FALSE,
-  VolumeId = "string"
-)
-}
-}
+Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.
 
-\examples{
-\dontrun{
-# This example enables I/O on volume `vol-1234567890abcdef0`.
-svc$enable_volume_io(
-  VolumeId = "vol-1234567890abcdef0"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/enable_volume_io.html} for full documentation.
 }
 \keyword{internal}

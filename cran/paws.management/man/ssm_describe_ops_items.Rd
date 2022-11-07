@@ -4,7 +4,11 @@
 \alias{ssm_describe_ops_items}
 \title{Query a set of OpsItems}
 \usage{
-ssm_describe_ops_items(OpsItemFilters, MaxResults, NextToken)
+ssm_describe_ops_items(
+  OpsItemFilters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{OpsItemFilters}{One or more filters to limit the response.
@@ -27,10 +31,10 @@ Operations: Contains, Equals
 \item Key: Status
 
 Operations: Equals
-\item Key: Title
+\item Key: Title*
 
-Operations: Contains
-\item Key: OperationalData*
+Operations: Equals,Contains
+\item Key: OperationalData**
 
 Operations: Equals
 \item Key: OperationalDataKey
@@ -50,7 +54,11 @@ Operations: Contains
 Operations: Equals
 }
 
-*If you filter the response by using the OperationalData operator,
+*The Equals operator for Title matches the first 100 characters. If you
+specify more than 100 characters, they system returns an error that the
+filter value exceeds the length limit.
+
+**If you filter the response by using the OperationalData operator,
 specify a key-value pair by using the following JSON format:
 \{"key":"key_name","value":"a_value"\}}
 
@@ -61,76 +69,9 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  OpsItemSummaries = list(
-    list(
-      CreatedBy = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedBy = "string",
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Priority = 123,
-      Source = "string",
-      Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
-      OpsItemId = "string",
-      Title = "string",
-      OperationalData = list(
-        list(
-          Value = "string",
-          Type = "SearchableString"|"String"
-        )
-      ),
-      Category = "string",
-      Severity = "string",
-      OpsItemType = "string",
-      ActualStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ActualEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      PlannedStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      PlannedEndTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Query a set of OpsItems. You must have permission in AWS Identity and
-Access Management (IAM) to query a list of OpsItems. For more
-information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
-in the \emph{AWS Systems Manager User Guide}.
+Query a set of OpsItems. You must have permission in Identity and Access Management (IAM) to query a list of OpsItems. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-Operations engineers and IT professionals use OpsCenter to view,
-investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
-in the \emph{AWS Systems Manager User Guide}.
+See \url{https://paws-r.github.io/docs/ssm/describe_ops_items.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_ops_items(
-  OpsItemFilters = list(
-    list(
-      Key = "Status"|"CreatedBy"|"Source"|"Priority"|"Title"|"OpsItemId"|"CreatedTime"|"LastModifiedTime"|"ActualStartTime"|"ActualEndTime"|"PlannedStartTime"|"PlannedEndTime"|"OperationalData"|"OperationalDataKey"|"OperationalDataValue"|"ResourceId"|"AutomationId"|"Category"|"Severity"|"OpsItemType"|"ChangeRequestByRequesterArn"|"ChangeRequestByRequesterName"|"ChangeRequestByApproverArn"|"ChangeRequestByApproverName"|"ChangeRequestByTemplate"|"ChangeRequestByTargetsResourceGroup",
-      Values = list(
-        "string"
-      ),
-      Operator = "Equal"|"Contains"|"GreaterThan"|"LessThan"
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,10 +4,21 @@
 \alias{appstream_create_image_builder}
 \title{Creates an image builder}
 \usage{
-appstream_create_image_builder(Name, ImageName, ImageArn, InstanceType,
-  Description, DisplayName, VpcConfig, IamRoleArn,
-  EnableDefaultInternetAccess, DomainJoinInfo, AppstreamAgentVersion,
-  Tags, AccessEndpoints)
+appstream_create_image_builder(
+  Name,
+  ImageName = NULL,
+  ImageArn = NULL,
+  InstanceType,
+  Description = NULL,
+  DisplayName = NULL,
+  VpcConfig = NULL,
+  IamRoleArn = NULL,
+  EnableDefaultInternetAccess = NULL,
+  DomainJoinInfo = NULL,
+  AppstreamAgentVersion = NULL,
+  Tags = NULL,
+  AccessEndpoints = NULL
+)
 }
 \arguments{
 \item{Name}{[required] A unique name for the image builder.}
@@ -19,6 +30,7 @@ appstream_create_image_builder(Name, ImageName, ImageArn, InstanceType,
 \item{InstanceType}{[required] The instance type to use when launching the image builder. The following
 instance types are available:
 \itemize{
+\item stream.standard.small
 \item stream.standard.medium
 \item stream.standard.large
 \item stream.compute.large
@@ -97,103 +109,9 @@ in the \emph{Amazon AppStream 2.0 Administration Guide}.}
 Administrators can connect to the image builder only through the
 specified endpoints.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageBuilder = list(
-    Name = "string",
-    Arn = "string",
-    ImageArn = "string",
-    Description = "string",
-    DisplayName = "string",
-    VpcConfig = list(
-      SubnetIds = list(
-        "string"
-      ),
-      SecurityGroupIds = list(
-        "string"
-      )
-    ),
-    InstanceType = "string",
-    Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-    IamRoleArn = "string",
-    State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
-    StateChangeReason = list(
-      Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
-      Message = "string"
-    ),
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnableDefaultInternetAccess = TRUE|FALSE,
-    DomainJoinInfo = list(
-      DirectoryName = "string",
-      OrganizationalUnitDistinguishedName = "string"
-    ),
-    NetworkAccessConfiguration = list(
-      EniPrivateIpAddress = "string",
-      EniId = "string"
-    ),
-    ImageBuilderErrors = list(
-      list(
-        ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-        ErrorMessage = "string",
-        ErrorTimestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    AppstreamAgentVersion = "string",
-    AccessEndpoints = list(
-      list(
-        EndpointType = "STREAMING",
-        VpceId = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates an image builder. An image builder is a virtual machine that is
-used to create an image.
+Creates an image builder. An image builder is a virtual machine that is used to create an image.
 
-The initial state of the builder is \code{PENDING}. When it is ready, the
-state is \code{RUNNING}.
+See \url{https://paws-r.github.io/docs/appstream/create_image_builder.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_image_builder(
-  Name = "string",
-  ImageName = "string",
-  ImageArn = "string",
-  InstanceType = "string",
-  Description = "string",
-  DisplayName = "string",
-  VpcConfig = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  IamRoleArn = "string",
-  EnableDefaultInternetAccess = TRUE|FALSE,
-  DomainJoinInfo = list(
-    DirectoryName = "string",
-    OrganizationalUnitDistinguishedName = "string"
-  ),
-  AppstreamAgentVersion = "string",
-  Tags = list(
-    "string"
-  ),
-  AccessEndpoints = list(
-    list(
-      EndpointType = "STREAMING",
-      VpceId = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

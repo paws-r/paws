@@ -6,8 +6,10 @@
 from being included in scheduled event notifications for resources in
 the Region}
 \usage{
-ec2_deregister_instance_event_notification_attributes(DryRun,
-  InstanceTagAttribute)
+ec2_deregister_instance_event_notification_attributes(
+  DryRun = NULL,
+  InstanceTagAttribute = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,33 +19,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceTagAttribute}{Information about the tag keys to deregister.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceTagAttribute = list(
-    InstanceTagKeys = list(
-      "string"
-    ),
-    IncludeAllTagsOfInstance = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Deregisters tag keys to prevent tags that have the specified tag keys
-from being included in scheduled event notifications for resources in
-the Region.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_instance_event_notification_attributes(
-  DryRun = TRUE|FALSE,
-  InstanceTagAttribute = list(
-    IncludeAllTagsOfInstance = TRUE|FALSE,
-    InstanceTagKeys = list(
-      "string"
-    )
-  )
-)
-}
-}
+Deregisters tag keys to prevent tags that have the specified tag keys from being included in scheduled event notifications for resources in the Region.
 
+See \url{https://paws-r.github.io/docs/ec2/deregister_instance_event_notification_attributes.html} for full documentation.
+}
 \keyword{internal}

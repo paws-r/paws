@@ -4,7 +4,7 @@
 \alias{datapipeline_get_pipeline_definition}
 \title{Gets the definition of the specified pipeline}
 \usage{
-datapipeline_get_pipeline_definition(pipelineId, version)
+datapipeline_get_pipeline_definition(pipelineId, version = NULL)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -13,53 +13,9 @@ datapipeline_get_pipeline_definition(pipelineId, version)
 to \code{latest} (default) to use the last definition saved to the pipeline
 or \code{active} to use the last definition that was activated.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineObjects = list(
-    list(
-      id = "string",
-      name = "string",
-      fields = list(
-        list(
-          key = "string",
-          stringValue = "string",
-          refValue = "string"
-        )
-      )
-    )
-  ),
-  parameterObjects = list(
-    list(
-      id = "string",
-      attributes = list(
-        list(
-          key = "string",
-          stringValue = "string"
-        )
-      )
-    )
-  ),
-  parameterValues = list(
-    list(
-      id = "string",
-      stringValue = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets the definition of the specified pipeline. You can call
-\code{\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition}} to
-retrieve the pipeline definition that you provided using
-\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_pipeline_definition(
-  pipelineId = "string",
-  version = "string"
-)
-}
-}
+Gets the definition of the specified pipeline. You can call \code{\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition}} to retrieve the pipeline definition that you provided using \code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}}.
 
+See \url{https://paws-r.github.io/docs/datapipeline/get_pipeline_definition.html} for full documentation.
+}
 \keyword{internal}

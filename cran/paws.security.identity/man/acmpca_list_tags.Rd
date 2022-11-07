@@ -5,7 +5,7 @@
 \title{Lists the tags, if any, that are associated with your private CA or one
 that has been shared with you}
 \usage{
-acmpca_list_tags(CertificateAuthorityArn, NextToken, MaxResults)
+acmpca_list_tags(CertificateAuthorityArn, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
@@ -24,35 +24,9 @@ number you specify, the \strong{NextToken} element is sent in the response.
 Use this \strong{NextToken} value in a subsequent request to retrieve
 additional items.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the tags, if any, that are associated with your private CA or one
-that has been shared with you. Tags are labels that you can use to
-identify and organize your CAs. Each tag consists of a key and an
-optional value. Call the
-\code{\link[=acmpca_tag_certificate_authority]{tag_certificate_authority}} action
-to add one or more tags to your CA. Call the
-\code{\link[=acmpca_untag_certificate_authority]{untag_certificate_authority}}
-action to remove tags.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags(
-  CertificateAuthorityArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists the tags, if any, that are associated with your private CA or one that has been shared with you. Tags are labels that you can use to identify and organize your CAs. Each tag consists of a key and an optional value. Call the \code{\link[=acmpca_tag_certificate_authority]{tag_certificate_authority}} action to add one or more tags to your CA. Call the \code{\link[=acmpca_untag_certificate_authority]{untag_certificate_authority}} action to remove tags.
 
+See \url{https://paws-r.github.io/docs/acmpca/list_tags.html} for full documentation.
+}
 \keyword{internal}

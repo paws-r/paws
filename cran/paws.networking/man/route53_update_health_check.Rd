@@ -4,11 +4,25 @@
 \alias{route53_update_health_check}
 \title{Updates an existing health check}
 \usage{
-route53_update_health_check(HealthCheckId, HealthCheckVersion,
-  IPAddress, Port, ResourcePath, FullyQualifiedDomainName, SearchString,
-  FailureThreshold, Inverted, Disabled, HealthThreshold,
-  ChildHealthChecks, EnableSNI, Regions, AlarmIdentifier,
-  InsufficientDataHealthStatus, ResetElements)
+route53_update_health_check(
+  HealthCheckId,
+  HealthCheckVersion = NULL,
+  IPAddress = NULL,
+  Port = NULL,
+  ResourcePath = NULL,
+  FullyQualifiedDomainName = NULL,
+  SearchString = NULL,
+  FailureThreshold = NULL,
+  Inverted = NULL,
+  Disabled = NULL,
+  HealthThreshold = NULL,
+  ChildHealthChecks = NULL,
+  EnableSNI = NULL,
+  Regions = NULL,
+  AlarmIdentifier = NULL,
+  InsufficientDataHealthStatus = NULL,
+  ResetElements = NULL
+)
 }
 \arguments{
 \item{HealthCheckId}{[required] The ID for the health check for which you want detailed information.
@@ -63,25 +77,24 @@ documentation:
 \itemize{
 \item Linux: \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
 in the \emph{Amazon EC2 User Guide for Linux Instances}
-\item Windows: \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
-in the \emph{Amazon EC2 User Guide for Windows Instances}
+\item Windows: Elastic IP Addresses (EIP) in the \emph{Amazon EC2 User Guide
+for Windows Instances}
 }
 
 If a health check already has a value for \code{IPAddress}, you can change
 the value. However, you can't update an existing health check to add or
 remove the value of \code{IPAddress}.
 
-For more information, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName}{FullyQualifiedDomainName}.
+For more information, see FullyQualifiedDomainName.
 
 Constraints: Route 53 can't check the health of endpoints for which the
 IP address is in local, private, non-routable, or multicast ranges. For
 more information about IP addresses for which you can't create health
 checks, see the following documents:
 \itemize{
-\item \href{https://datatracker.ietf.org/doc/html/rfc5735}{RFC 5735, Special Use IPv4 Addresses}
-\item \href{https://datatracker.ietf.org/doc/html/rfc6598}{RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space}
-\item \href{https://datatracker.ietf.org/doc/html/rfc5156}{RFC 5156, Special-Use IPv6 Addresses}
+\item RFC 5735, Special Use IPv4 Addresses
+\item RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
+\item RFC 5156, Special-Use IPv6 Addresses
 }}
 
 \item{Port}{The port on the endpoint that you want Amazon Route 53 to perform health
@@ -123,8 +136,8 @@ constructs the \code{Host} header:
 \code{HTTPS_STR_MATCH} for \code{Type}, Route 53 passes the value of
 \code{FullyQualifiedDomainName} to the endpoint in the \code{Host} header.
 \item If you specify another value for \code{Port} and any value except \code{TCP}
-for \code{Type}, Route 53 passes \emph{\code{FullyQualifiedDomainName}:\code{Port}} to
-the endpoint in the \code{Host} header.
+for \code{Type}, Route 53 passes \emph{FullyQualifiedDomainName:Port} to the
+endpoint in the \code{Host} header.
 }
 
 If you don't specify a value for \code{FullyQualifiedDomainName}, Route 53
@@ -173,8 +186,9 @@ Route 53 considers the resource healthy. (You can't change the value of
 
 \item{FailureThreshold}{The number of consecutive health checks that an endpoint must pass or
 fail for Amazon Route 53 to change the current status of the endpoint
-from unhealthy to healthy or vice versa. For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html}{How Amazon Route 53 Determines Whether an Endpoint Is Healthy}
-in the \emph{Amazon Route 53 Developer Guide}.
+from unhealthy to healthy or vice versa. For more information, see How
+Amazon Route 53 Determines Whether an Endpoint Is Healthy in the \emph{Amazon
+Route 53 Developer Guide}.
 
 If you don't specify a value for \code{FailureThreshold}, the default value
 is three health checks.}
@@ -198,10 +212,10 @@ After you disable a health check, Route 53 considers the status of the
 health check to always be healthy. If you configured DNS failover, Route
 53 continues to route traffic to the corresponding resources. If you
 want to stop routing traffic to a resource, change the value of
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted}{Inverted}.
+Inverted.
 
 Charges for a health check still apply when the health check is
-disabled. For more information, see \href{https://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.}
+disabled. For more information, see Amazon Route 53 Pricing.}
 
 \item{HealthThreshold}{The number of child health checks that are associated with a
 \code{CALCULATED} health that Amazon Route 53 must consider healthy for the
@@ -258,122 +272,28 @@ health check:
 \itemize{
 \item \code{Healthy}: Route 53 considers the health check to be healthy.
 \item \code{Unhealthy}: Route 53 considers the health check to be unhealthy.
-\item \code{LastKnownStatus}: Route 53 uses the status of the health check from
-the last time CloudWatch had sufficient data to determine the alarm
-state. For new health checks that have no last known status, the
-default status for the health check is healthy.
+\item \code{LastKnownStatus}: By default, Route 53 uses the status of the
+health check from the last time CloudWatch had sufficient data to
+determine the alarm state. For new health checks that have no last
+known status, the status for the health check is healthy.
 }}
 
 \item{ResetElements}{A complex type that contains one \code{ResettableElementName} element for
 each element that you want to reset to the default value. Valid values
 for \code{ResettableElementName} include the following:
 \itemize{
-\item \code{ChildHealthChecks}: Amazon Route 53 resets
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks}{ChildHealthChecks}
-to null.
+\item \code{ChildHealthChecks}: Amazon Route 53 resets ChildHealthChecks to
+null.
 \item \code{FullyQualifiedDomainName}: Route 53 resets
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName}{FullyQualifiedDomainName}.
-to null.
-\item \code{Regions}: Route 53 resets the
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions}{Regions}
-list to the default set of regions.
-\item \code{ResourcePath}: Route 53 resets
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath}{ResourcePath}
-to null.
+FullyQualifiedDomainName. to null.
+\item \code{Regions}: Route 53 resets the Regions list to the default set of
+regions.
+\item \code{ResourcePath}: Route 53 resets ResourcePath to null.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HealthCheck = list(
-    Id = "string",
-    CallerReference = "string",
-    LinkedService = list(
-      ServicePrincipal = "string",
-      Description = "string"
-    ),
-    HealthCheckConfig = list(
-      IPAddress = "string",
-      Port = 123,
-      Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
-      ResourcePath = "string",
-      FullyQualifiedDomainName = "string",
-      SearchString = "string",
-      RequestInterval = 123,
-      FailureThreshold = 123,
-      MeasureLatency = TRUE|FALSE,
-      Inverted = TRUE|FALSE,
-      Disabled = TRUE|FALSE,
-      HealthThreshold = 123,
-      ChildHealthChecks = list(
-        "string"
-      ),
-      EnableSNI = TRUE|FALSE,
-      Regions = list(
-        "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-      ),
-      AlarmIdentifier = list(
-        Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
-        Name = "string"
-      ),
-      InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
-    ),
-    HealthCheckVersion = 123,
-    CloudWatchAlarmConfiguration = list(
-      EvaluationPeriods = 123,
-      Threshold = 123.0,
-      ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-      Period = 123,
-      MetricName = "string",
-      Namespace = "string",
-      Statistic = "Average"|"Sum"|"SampleCount"|"Maximum"|"Minimum",
-      Dimensions = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Updates an existing health check. Note that some values can't be
-updated.
+Updates an existing health check. Note that some values can't be updated.
 
-For more information about updating health checks, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html}{Creating, Updating, and Deleting Health Checks}
-in the \emph{Amazon Route 53 Developer Guide}.
+See \url{https://paws-r.github.io/docs/route53/update_health_check.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_health_check(
-  HealthCheckId = "string",
-  HealthCheckVersion = 123,
-  IPAddress = "string",
-  Port = 123,
-  ResourcePath = "string",
-  FullyQualifiedDomainName = "string",
-  SearchString = "string",
-  FailureThreshold = 123,
-  Inverted = TRUE|FALSE,
-  Disabled = TRUE|FALSE,
-  HealthThreshold = 123,
-  ChildHealthChecks = list(
-    "string"
-  ),
-  EnableSNI = TRUE|FALSE,
-  Regions = list(
-    "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-  ),
-  AlarmIdentifier = list(
-    Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
-    Name = "string"
-  ),
-  InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",
-  ResetElements = list(
-    "FullyQualifiedDomainName"|"Regions"|"ResourcePath"|"ChildHealthChecks"
-  )
-)
-}
-}
-
 \keyword{internal}

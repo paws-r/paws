@@ -4,65 +4,45 @@
 \alias{s3_put_bucket_request_payment}
 \title{Sets the request payment configuration for a bucket}
 \usage{
-s3_put_bucket_request_payment(Bucket, ContentMD5,
-  RequestPaymentConfiguration, ExpectedBucketOwner)
+s3_put_bucket_request_payment(
+  Bucket,
+  ContentMD5 = NULL,
+  ChecksumAlgorithm = NULL,
+  RequestPaymentConfiguration,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
-\item{ContentMD5}{>The base64-encoded 128-bit MD5 digest of the data. You must use this
+\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, see \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.
+not corrupted in transit. For more information, see RFC 1864.
 
-For requests made using the AWS Command Line Interface (CLI) or AWS
-SDKs, this field is calculated automatically.}
+For requests made using the Amazon Web Services Command Line Interface
+(CLI) or Amazon Web Services SDKs, this field is calculated
+automatically.}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see Checking object integrity
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
 
 \item{RequestPaymentConfiguration}{[required] Container for Payer.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Sets the request payment configuration for a bucket. By default, the
-bucket owner pays for downloads from the bucket. This configuration
-parameter enables the bucket owner (only) to specify that the person
-requesting the download will be charged for the download. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html}{Requester Pays Buckets}.
+Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. For more information, see Requester Pays Buckets.
 
-The following operations are related to
-\code{\link[=s3_put_bucket_request_payment]{put_bucket_request_payment}}:
-\itemize{
-\item \code{\link[=s3_create_bucket]{create_bucket}}
-\item \code{\link[=s3_get_bucket_request_payment]{get_bucket_request_payment}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_bucket_request_payment(
-  Bucket = "string",
-  ContentMD5 = "string",
-  RequestPaymentConfiguration = list(
-    Payer = "Requester"|"BucketOwner"
-  ),
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example sets request payment configuration on a bucket so
-# that person requesting the download is charged.
-svc$put_bucket_request_payment(
-  Bucket = "examplebucket",
-  RequestPaymentConfiguration = list(
-    Payer = "Requester"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/put_bucket_request_payment.html} for full documentation.
 }
 \keyword{internal}

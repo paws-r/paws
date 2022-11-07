@@ -4,49 +4,27 @@
 \alias{fms_list_policies}
 \title{Returns an array of PolicySummary objects}
 \usage{
-fms_list_policies(NextToken, MaxResults)
+fms_list_policies(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{If you specify a value for \code{MaxResults} and you have more
 \code{PolicySummary} objects than the number that you specify for
-\code{MaxResults}, AWS Firewall Manager returns a \code{NextToken} value in the
+\code{MaxResults}, Firewall Manager returns a \code{NextToken} value in the
 response that allows you to list another group of \code{PolicySummary}
 objects. For the second and subsequent
 \code{\link[=fms_list_policies]{list_policies}} requests, specify the value of
 \code{NextToken} from the previous response to get information about another
 batch of \code{PolicySummary} objects.}
 
-\item{MaxResults}{Specifies the number of \code{PolicySummary} objects that you want AWS
-Firewall Manager to return for this request. If you have more
-\code{PolicySummary} objects than the number that you specify for
-\code{MaxResults}, the response includes a \code{NextToken} value that you can use
-to get another batch of \code{PolicySummary} objects.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyList = list(
-    list(
-      PolicyArn = "string",
-      PolicyId = "string",
-      PolicyName = "string",
-      ResourceType = "string",
-      SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
-      RemediationEnabled = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{Specifies the number of \code{PolicySummary} objects that you want Firewall
+Manager to return for this request. If you have more \code{PolicySummary}
+objects than the number that you specify for \code{MaxResults}, the response
+includes a \code{NextToken} value that you can use to get another batch of
+\code{PolicySummary} objects.}
 }
 \description{
 Returns an array of \code{PolicySummary} objects.
-}
-\section{Request syntax}{
-\preformatted{svc$list_policies(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/fms/list_policies.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{organizations_list_roots}
 \title{Lists the roots that are defined in the current organization}
 \usage{
-organizations_list_roots(NextToken, MaxResults)
+organizations_list_roots(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The parameter for receiving additional results if you receive a
@@ -24,59 +24,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Roots = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string",
-      PolicyTypes = list(
-        list(
-          Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
-          Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the roots that are defined in the current organization.
 
-Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \verb{List*} operation. These operations can occasionally return an
-empty set of results even when there are more results available. The
-\code{NextToken} response parameter value is \code{null} \emph{only} when there are no
-more results to display.
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-
-Policy types can be enabled and disabled in roots. This is distinct from
-whether they're available in the organization. When you enable all
-features, you make policy types available for use in that organization.
-Individual policy types can then be enabled and disabled in a root. To
-see the availability of a policy type in an organization, use
-\code{\link[=organizations_describe_organization]{describe_organization}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_roots(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to get the list of the roots in the
-# current organization:/n/n
-svc$list_roots()
-}
-
+See \url{https://paws-r.github.io/docs/organizations/list_roots.html} for full documentation.
 }
 \keyword{internal}

@@ -2,11 +2,13 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_disassociate_enclave_certificate_iam_role}
 \alias{ec2_disassociate_enclave_certificate_iam_role}
-\title{Disassociates an IAM role from an AWS Certificate Manager (ACM)
-certificate}
+\title{Disassociates an IAM role from an Certificate Manager (ACM) certificate}
 \usage{
-ec2_disassociate_enclave_certificate_iam_role(CertificateArn, RoleArn,
-  DryRun)
+ec2_disassociate_enclave_certificate_iam_role(
+  CertificateArn = NULL,
+  RoleArn = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{CertificateArn}{The ARN of the ACM certificate from which to disassociate the IAM role.}
@@ -18,28 +20,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Disassociates an IAM role from an AWS Certificate Manager (ACM)
-certificate. Disassociating an IAM role from an ACM certificate removes
-the Amazon S3 object that contains the certificate, certificate chain,
-and encrypted private key from the Amazon S3 bucket. It also revokes the
-IAM role's permission to use the AWS Key Management Service (KMS)
-customer master key (CMK) used to encrypt the private key. This
-effectively revokes the role's permission to use the certificate.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_enclave_certificate_iam_role(
-  CertificateArn = "string",
-  RoleArn = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Disassociates an IAM role from an Certificate Manager (ACM) certificate. Disassociating an IAM role from an ACM certificate removes the Amazon S3 object that contains the certificate, certificate chain, and encrypted private key from the Amazon S3 bucket. It also revokes the IAM role's permission to use the KMS key used to encrypt the private key. This effectively revokes the role's permission to use the certificate.
 
+See \url{https://paws-r.github.io/docs/ec2/disassociate_enclave_certificate_iam_role.html} for full documentation.
+}
 \keyword{internal}

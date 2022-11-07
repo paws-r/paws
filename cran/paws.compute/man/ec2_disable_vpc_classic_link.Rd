@@ -4,7 +4,7 @@
 \alias{ec2_disable_vpc_classic_link}
 \title{Disables ClassicLink for a VPC}
 \usage{
-ec2_disable_vpc_classic_link(DryRun, VpcId)
+ec2_disable_vpc_classic_link(DryRun = NULL, VpcId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,22 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC
-that has EC2-Classic instances linked to it.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_vpc_classic_link(
-  DryRun = TRUE|FALSE,
-  VpcId = "string"
-)
-}
-}
+Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.
 
+See \url{https://paws-r.github.io/docs/ec2/disable_vpc_classic_link.html} for full documentation.
+}
 \keyword{internal}

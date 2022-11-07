@@ -4,7 +4,7 @@
 \alias{securityhub_update_security_hub_configuration}
 \title{Updates configuration options for Security Hub}
 \usage{
-securityhub_update_security_hub_configuration(AutoEnableControls)
+securityhub_update_security_hub_configuration(AutoEnableControls = NULL)
 }
 \arguments{
 \item{AutoEnableControls}{Whether to automatically enable new controls when they are added to
@@ -14,17 +14,9 @@ By default, this is set to \code{true}, and new controls are enabled
 automatically. To not automatically enable new controls, set this to
 \code{false}.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates configuration options for Security Hub.
-}
-\section{Request syntax}{
-\preformatted{svc$update_security_hub_configuration(
-  AutoEnableControls = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/securityhub/update_security_hub_configuration.html} for full documentation.
+}
 \keyword{internal}

@@ -5,41 +5,16 @@
 \title{Returns information about contributor insights, for a given table or
 global secondary index}
 \usage{
-dynamodb_describe_contributor_insights(TableName, IndexName)
+dynamodb_describe_contributor_insights(TableName, IndexName = NULL)
 }
 \arguments{
 \item{TableName}{[required] The name of the table to describe.}
 
 \item{IndexName}{The name of the global secondary index to describe, if applicable.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TableName = "string",
-  IndexName = "string",
-  ContributorInsightsRuleList = list(
-    "string"
-  ),
-  ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED",
-  LastUpdateDateTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  FailureException = list(
-    ExceptionName = "string",
-    ExceptionDescription = "string"
-  )
-)
-}
-}
 \description{
-Returns information about contributor insights, for a given table or
-global secondary index.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_contributor_insights(
-  TableName = "string",
-  IndexName = "string"
-)
-}
-}
+Returns information about contributor insights, for a given table or global secondary index.
 
+See \url{https://paws-r.github.io/docs/dynamodb/describe_contributor_insights.html} for full documentation.
+}
 \keyword{internal}

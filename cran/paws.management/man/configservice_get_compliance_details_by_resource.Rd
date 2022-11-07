@@ -2,15 +2,22 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_get_compliance_details_by_resource}
 \alias{configservice_get_compliance_details_by_resource}
-\title{Returns the evaluation results for the specified AWS resource}
+\title{Returns the evaluation results for the specified Amazon Web Services
+resource}
 \usage{
-configservice_get_compliance_details_by_resource(ResourceType,
-  ResourceId, ComplianceTypes, NextToken)
+configservice_get_compliance_details_by_resource(
+  ResourceType,
+  ResourceId,
+  ComplianceTypes = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{ResourceType}{[required] The type of the AWS resource for which you want compliance information.}
+\item{ResourceType}{[required] The type of the Amazon Web Services resource for which you want
+compliance information.}
 
-\item{ResourceId}{[required] The ID of the AWS resource for which you want compliance information.}
+\item{ResourceId}{[required] The ID of the Amazon Web Services resource for which you want compliance
+information.}
 
 \item{ComplianceTypes}{Filters the results by compliance.
 
@@ -20,51 +27,9 @@ The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EvaluationResults = list(
-    list(
-      EvaluationResultIdentifier = list(
-        EvaluationResultQualifier = list(
-          ConfigRuleName = "string",
-          ResourceType = "string",
-          ResourceId = "string"
-        ),
-        OrderingTimestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-      ResultRecordedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ConfigRuleInvokedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Annotation = "string",
-      ResultToken = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the evaluation results for the specified AWS resource. The
-results indicate which AWS Config rules were used to evaluate the
-resource, when each rule was last used, and whether the resource
-complies with each rule.
-}
-\section{Request syntax}{
-\preformatted{svc$get_compliance_details_by_resource(
-  ResourceType = "string",
-  ResourceId = "string",
-  ComplianceTypes = list(
-    "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
-  ),
-  NextToken = "string"
-)
-}
-}
+Returns the evaluation results for the specified Amazon Web Services resource. The results indicate which Config rules were used to evaluate the resource, when each rule was last used, and whether the resource complies with each rule.
 
+See \url{https://paws-r.github.io/docs/configservice/get_compliance_details_by_resource.html} for full documentation.
+}
 \keyword{internal}

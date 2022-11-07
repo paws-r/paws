@@ -4,8 +4,11 @@
 \alias{rekognition_detect_moderation_labels}
 \title{Detects unsafe content in a specified JPEG or PNG format image}
 \usage{
-rekognition_detect_moderation_labels(Image, MinConfidence,
-  HumanLoopConfig)
+rekognition_detect_moderation_labels(
+  Image,
+  MinConfidence = NULL,
+  HumanLoopConfig = NULL
+)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the
@@ -26,67 +29,9 @@ confidence values greater than or equal to 50 percent.}
 \item{HumanLoopConfig}{Sets up the configuration for human evaluation, including the
 FlowDefinition the image will be sent to.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ModerationLabels = list(
-    list(
-      Confidence = 123.0,
-      Name = "string",
-      ParentName = "string"
-    )
-  ),
-  ModerationModelVersion = "string",
-  HumanLoopActivationOutput = list(
-    HumanLoopArn = "string",
-    HumanLoopActivationReasons = list(
-      "string"
-    ),
-    HumanLoopActivationConditionsEvaluationResults = "string"
-  )
-)
-}
-}
 \description{
-Detects unsafe content in a specified JPEG or PNG format image. Use
-\code{\link[=rekognition_detect_moderation_labels]{detect_moderation_labels}} to
-moderate images depending on your requirements. For example, you might
-want to filter images that contain nudity, but not images containing
-suggestive content.
+Detects unsafe content in a specified JPEG or PNG format image. Use \code{\link[=rekognition_detect_moderation_labels]{detect_moderation_labels}} to moderate images depending on your requirements. For example, you might want to filter images that contain nudity, but not images containing suggestive content.
 
-To filter images, use the labels returned by
-\code{\link[=rekognition_detect_moderation_labels]{detect_moderation_labels}} to
-determine which types of content are appropriate.
-
-For information about moderation labels, see Detecting Unsafe Content in
-the Amazon Rekognition Developer Guide.
-
-You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
-call Amazon Rekognition operations, passing image bytes is not
-supported. The image must be either a PNG or JPEG formatted file.
+See \url{https://paws-r.github.io/docs/rekognition/detect_moderation_labels.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$detect_moderation_labels(
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  MinConfidence = 123.0,
-  HumanLoopConfig = list(
-    HumanLoopName = "string",
-    FlowDefinitionArn = "string",
-    DataAttributes = list(
-      ContentClassifiers = list(
-        "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

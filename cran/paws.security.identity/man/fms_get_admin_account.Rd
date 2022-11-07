@@ -2,25 +2,14 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_get_admin_account}
 \alias{fms_get_admin_account}
-\title{Returns the AWS Organizations master account that is associated with AWS
-Firewall Manager as the AWS Firewall Manager administrator}
+\title{Returns the Organizations account that is associated with Firewall
+Manager as the Firewall Manager administrator}
 \usage{
 fms_get_admin_account()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AdminAccount = "string",
-  RoleStatus = "READY"|"CREATING"|"PENDING_DELETION"|"DELETING"|"DELETED"
-)
-}
-}
 \description{
-Returns the AWS Organizations master account that is associated with AWS
-Firewall Manager as the AWS Firewall Manager administrator.
-}
-\section{Request syntax}{
-\preformatted{svc$get_admin_account()
-}
-}
+Returns the Organizations account that is associated with Firewall Manager as the Firewall Manager administrator.
 
+See \url{https://paws-r.github.io/docs/fms/get_admin_account.html} for full documentation.
+}
 \keyword{internal}

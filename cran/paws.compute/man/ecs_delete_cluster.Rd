@@ -10,89 +10,9 @@ ecs_delete_cluster(cluster)
 \item{cluster}{[required] The short name or full Amazon Resource Name (ARN) of the cluster to
 delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  cluster = list(
-    clusterArn = "string",
-    clusterName = "string",
-    status = "string",
-    registeredContainerInstancesCount = 123,
-    runningTasksCount = 123,
-    pendingTasksCount = 123,
-    activeServicesCount = 123,
-    statistics = list(
-      list(
-        name = "string",
-        value = "string"
-      )
-    ),
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    settings = list(
-      list(
-        name = "containerInsights",
-        value = "string"
-      )
-    ),
-    capacityProviders = list(
-      "string"
-    ),
-    defaultCapacityProviderStrategy = list(
-      list(
-        capacityProvider = "string",
-        weight = 123,
-        base = 123
-      )
-    ),
-    attachments = list(
-      list(
-        id = "string",
-        type = "string",
-        status = "string",
-        details = list(
-          list(
-            name = "string",
-            value = "string"
-          )
-        )
-      )
-    ),
-    attachmentsStatus = "string"
-  )
-)
-}
-}
 \description{
-Deletes the specified cluster. The cluster will transition to the
-\code{INACTIVE} state. Clusters with an \code{INACTIVE} status may remain
-discoverable in your account for a period of time. However, this
-behavior is subject to change in the future, so you should not rely on
-\code{INACTIVE} clusters persisting.
+Deletes the specified cluster. The cluster transitions to the \code{INACTIVE} state. Clusters with an \code{INACTIVE} status might remain discoverable in your account for a period of time. However, this behavior is subject to change in the future. We don't recommend that you rely on \code{INACTIVE} clusters persisting.
 
-You must deregister all container instances from this cluster before you
-may delete it. You can list the container instances in a cluster with
-\code{\link[=ecs_list_container_instances]{list_container_instances}} and
-deregister them with
-\code{\link[=ecs_deregister_container_instance]{deregister_container_instance}}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_cluster(
-  cluster = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes an empty cluster in your default region.
-svc$delete_cluster(
-  cluster = "my_cluster"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/delete_cluster.html} for full documentation.
 }
 \keyword{internal}

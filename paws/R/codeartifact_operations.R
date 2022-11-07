@@ -17,8 +17,8 @@ NULL
 #'   repository, externalConnection)
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository to which the external connection is added.
 #' @param externalConnection &#91;required&#93; The name of the external connection to add to the repository. The
 #' following values are supported:
@@ -34,8 +34,6 @@ NULL
 #' -   `public:maven-gradleplugins` - for the Gradle plugins repository.
 #' 
 #' -   `public:maven-commonsware` - for the CommonsWare Android repository.
-#' 
-#' -   `public:nuget-org` - for the NuGet Gallery.
 #'
 #' @return
 #' A list with the following syntax:
@@ -111,34 +109,25 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the source and destination
 #' repositories.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
-#' @param sourceRepository &#91;required&#93; The name of the repository that contains the package versions to copy.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param sourceRepository &#91;required&#93; The name of the repository that contains the package versions to be
+#' copied.
 #' @param destinationRepository &#91;required&#93; The name of the repository into which package versions are copied.
-#' @param format &#91;required&#93; The format of the package that is copied. The valid package types are:
+#' @param format &#91;required&#93; The format of the package versions to be copied.
+#' @param namespace The namespace of the package versions to be copied. The package version
+#' component that specifies its namespace depends on its type. For example:
 #' 
-#' -   `npm`: A Node Package Manager (npm) package.
+#' -   The namespace of a Maven package version is its `groupId`. The
+#'     namespace is required when copying Maven package versions.
 #' 
-#' -   `pypi`: A Python Package Index (PyPI) package.
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   `maven`: A Maven package that contains compiled code in a
-#'     distributable format, such as a JAR file.
-#' 
-#' -   `nuget`: A NuGet package.
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
-#' 
-#' -   The namespace of a Maven package is its `groupId`.
-#' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
-#' @param package &#91;required&#93; The name of the package that is copied.
-#' @param versions The versions of the package to copy.
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
+#' @param package &#91;required&#93; The name of the package that contains the versions to be copied.
+#' @param versions The versions of the package to be copied.
 #' 
 #' You must specify `versions` or `versionRevisions`. You cannot specify
 #' both.
@@ -224,9 +213,9 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 #' @description
 #' Creates a domain. CodeArtifact *domains* make it easier to manage
 #' multiple repositories across an organization. You can use a domain to
-#' apply permissions across many repositories owned by different AWS
-#' accounts. An asset is stored only once in a domain, even if it's in
-#' multiple repositories.
+#' apply permissions across many repositories owned by different Amazon Web
+#' Services accounts. An asset is stored only once in a domain, even if
+#' it's in multiple repositories.
 #' 
 #' Although you can have multiple domains, we recommend a single production
 #' domain that contains all published artifacts so that your development
@@ -236,10 +225,11 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 #' @usage
 #' codeartifact_create_domain(domain, encryptionKey, tags)
 #'
-#' @param domain &#91;required&#93; The name of the domain to create. All domain names in an AWS Region that
-#' are in the same AWS account must be unique. The domain name is used as
-#' the prefix in DNS hostnames. Do not use sensitive information in a
-#' domain name because it is publicly discoverable.
+#' @param domain &#91;required&#93; The name of the domain to create. All domain names in an Amazon Web
+#' Services Region that are in the same Amazon Web Services account must be
+#' unique. The domain name is used as the prefix in DNS hostnames. Do not
+#' use sensitive information in a domain name because it is publicly
+#' discoverable.
 #' @param encryptionKey The encryption key for the domain. This is used to encrypt content
 #' stored in a domain. An encryption key can be a key ID, a key Amazon
 #' Resource Name (ARN), a key alias, or a key alias ARN. To specify an
@@ -247,16 +237,16 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 #' `kms:CreateGrant` permissions on the encryption key that is used. For
 #' more information, see
 #' [DescribeKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestSyntax)
-#' in the *AWS Key Management Service API Reference* and [AWS KMS API
-#' Permissions
+#' in the *Key Management Service API Reference* and [Key Management
+#' Service API Permissions
 #' Reference](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
-#' in the *AWS Key Management Service Developer Guide*.
+#' in the *Key Management Service Developer Guide*.
 #' 
 #' CodeArtifact supports only symmetric CMKs. Do not associate an
 #' asymmetric CMK with your domain. For more information, see [Using
 #' symmetric and asymmetric
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-#' in the *AWS Key Management Service Developer Guide*.
+#' in the *Key Management Service Developer Guide*.
 #' @param tags One or more tag key-value pairs for the domain.
 #'
 #' @return
@@ -322,15 +312,15 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
 #' codeartifact_create_repository(domain, domainOwner, repository,
 #'   description, upstreams, tags)
 #'
-#' @param domain &#91;required&#93; The domain that contains the created repository.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domain &#91;required&#93; The name of the domain that contains the created repository.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository to create.
 #' @param description A description of the created repository.
 #' @param upstreams A list of upstream repositories to associate with the repository. The
 #' order of the upstream repositories in the list determines their priority
-#' order when AWS CodeArtifact looks for a requested package version. For
-#' more information, see [Working with upstream
+#' order when CodeArtifact looks for a requested package version. For more
+#' information, see [Working with upstream
 #' repositories](https://docs.aws.amazon.com/codeartifact/latest/ug/repos-upstream.html).
 #' @param tags One or more tag key-value pairs for the repository.
 #'
@@ -413,8 +403,8 @@ codeartifact_create_repository <- function(domain, domainOwner = NULL, repositor
 #' codeartifact_delete_domain(domain, domainOwner)
 #'
 #' @param domain &#91;required&#93; The name of the domain to delete.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #'
 #' @return
 #' A list with the following syntax:
@@ -475,8 +465,8 @@ codeartifact_delete_domain <- function(domain, domainOwner = NULL) {
 #'
 #' @param domain &#91;required&#93; The name of the domain associated with the resource policy to be
 #' deleted.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param policyRevision The current revision of the resource policy to be deleted. This revision
 #' is used for optimistic locking, which prevents others from overwriting
 #' your changes to the domain's resource policy.
@@ -530,7 +520,8 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' version from your repository and be able to restore it later, set its
 #' status to `Archived`. Archived packages cannot be downloaded from a
 #' repository and don't show up with list package APIs (for example,
-#' ` ListackageVersions `), but you can restore them using
+#' [ListackageVersions](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html)),
+#' but you can restore them using
 #' [`update_package_versions_status`][codeartifact_update_package_versions_status].
 #'
 #' @usage
@@ -538,43 +529,24 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #'   format, namespace, package, versions, expectedStatus)
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the package to delete.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that contains the package versions to delete.
-#' @param format &#91;required&#93; The format of the package versions to delete. The valid values are:
+#' @param format &#91;required&#93; The format of the package versions to delete.
+#' @param namespace The namespace of the package versions to be deleted. The package version
+#' component that specifies its namespace depends on its type. For example:
 #' 
-#' -   `npm`
+#' -   The namespace of a Maven package version is its `groupId`. The
+#'     namespace is required when deleting Maven package versions.
 #' 
-#' -   `pypi`
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   `maven`
-#' 
-#' -   `nuget`
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
-#' 
-#' -   The namespace of a Maven package is its `groupId`.
-#' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
 #' @param package &#91;required&#93; The name of the package with the versions to delete.
 #' @param versions &#91;required&#93; An array of strings that specify the versions of the package to delete.
-#' @param expectedStatus The expected status of the package version to delete. Valid values are:
-#' 
-#' -   `Published`
-#' 
-#' -   `Unfinished`
-#' 
-#' -   `Unlisted`
-#' 
-#' -   `Archived`
-#' 
-#' -   `Disposed`
+#' @param expectedStatus The expected status of the package version to delete.
 #'
 #' @return
 #' A list with the following syntax:
@@ -640,8 +612,8 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
 #' codeartifact_delete_repository(domain, domainOwner, repository)
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository to delete.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository to delete.
 #'
 #' @return
@@ -710,9 +682,9 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
 #' 
 #' Use
 #' [`delete_repository_permissions_policy`][codeartifact_delete_repository_permissions_policy]
-#' with caution. After a policy is deleted, AWS users, roles, and accounts
-#' lose permissions to perform the repository actions granted by the
-#' deleted policy.
+#' with caution. After a policy is deleted, Amazon Web Services users,
+#' roles, and accounts lose permissions to perform the repository actions
+#' granted by the deleted policy.
 #'
 #' @usage
 #' codeartifact_delete_repository_permissions_policy(domain, domainOwner,
@@ -720,8 +692,8 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository associated with the
 #' resource policy to be deleted.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that is associated with the resource policy
 #' to be deleted
 #' @param policyRevision The revision of the repository's resource policy to be deleted. This
@@ -776,15 +748,15 @@ codeartifact_delete_repository_permissions_policy <- function(domain, domainOwne
 #'
 #' @description
 #' Returns a
-#' [`DomainDescription`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html)
+#' [DomainDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html)
 #' object that contains information about the requested domain.
 #'
 #' @usage
 #' codeartifact_describe_domain(domain, domainOwner)
 #'
 #' @param domain &#91;required&#93; A string that specifies the name of the requested domain.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #'
 #' @return
 #' A list with the following syntax:
@@ -834,12 +806,92 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 }
 .codeartifact$operations$describe_domain <- codeartifact_describe_domain
 
+#' Returns a PackageDescription object that contains information about the
+#' requested package
+#'
+#' @description
+#' Returns a
+#' [PackageDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html)
+#' object that contains information about the requested package.
+#'
+#' @usage
+#' codeartifact_describe_package(domain, domainOwner, repository, format,
+#'   namespace, package)
+#'
+#' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
+#' package.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param repository &#91;required&#93; The name of the repository that contains the requested package.
+#' @param format &#91;required&#93; A format that specifies the type of the requested package.
+#' @param namespace The namespace of the requested package. The package component that
+#' specifies its namespace depends on its type. For example:
+#' 
+#' -   The namespace of a Maven package is its `groupId`. The namespace is
+#'     required when requesting Maven packages.
+#' 
+#' -   The namespace of an npm package is its `scope`.
+#' 
+#' -   Python and NuGet packages do not contain a corresponding component,
+#'     packages of those formats do not have a namespace.
+#' @param package &#91;required&#93; The name of the requested package.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   package = list(
+#'     format = "npm"|"pypi"|"maven"|"nuget",
+#'     namespace = "string",
+#'     name = "string",
+#'     originConfiguration = list(
+#'       restrictions = list(
+#'         publish = "ALLOW"|"BLOCK",
+#'         upstream = "ALLOW"|"BLOCK"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_package(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   repository = "string",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
+#'   namespace = "string",
+#'   package = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_describe_package
+codeartifact_describe_package <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package) {
+  op <- new_operation(
+    name = "DescribePackage",
+    http_method = "GET",
+    http_path = "/v1/package",
+    paginator = list()
+  )
+  input <- .codeartifact$describe_package_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package)
+  output <- .codeartifact$describe_package_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$describe_package <- codeartifact_describe_package
+
 #' Returns a PackageVersionDescription object that contains information
 #' about the requested package version
 #'
 #' @description
 #' Returns a
-#' [`PackageVersionDescription`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html)
+#' [PackageVersionDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html)
 #' object that contains information about the requested package version.
 #'
 #' @usage
@@ -848,31 +900,20 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' package version.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that contains the package version.
-#' @param format &#91;required&#93; A format that specifies the type of the requested package version. The
-#' valid values are:
+#' @param format &#91;required&#93; A format that specifies the type of the requested package version.
+#' @param namespace The namespace of the requested package version. The package version
+#' component that specifies its namespace depends on its type. For example:
 #' 
-#' -   `npm`
+#' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   `pypi`
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   `maven`
-#' 
-#' -   `nuget`
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
-#' 
-#' -   The namespace of a Maven package is its `groupId`.
-#' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
 #' @param package &#91;required&#93; The name of the requested package version.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #'
@@ -899,7 +940,14 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #'       )
 #'     ),
 #'     revision = "string",
-#'     status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted"
+#'     status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted",
+#'     origin = list(
+#'       domainEntryPoint = list(
+#'         repositoryName = "string",
+#'         externalConnectionName = "string"
+#'       ),
+#'       originType = "INTERNAL"|"EXTERNAL"|"UNKNOWN"
+#'     )
 #'   )
 #' )
 #' ```
@@ -948,8 +996,8 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
 #' codeartifact_describe_repository(domain, domainOwner, repository)
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository to describe.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; A string that specifies the name of the requested repository.
 #'
 #' @return
@@ -1019,8 +1067,8 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository from which to remove
 #' the external repository.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository from which the external connection will be
 #' removed.
 #' @param externalConnection &#91;required&#93; The name of the external connection to be removed from the repository.
@@ -1091,60 +1139,40 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' your repository because its assets are deleted.
 #' 
 #' To view all disposed package versions in a repository, use
-#' [`list_package_versions`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html)
-#' and set the
-#' [`status`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax)
+#' [`list_package_versions`][codeartifact_list_package_versions] and set
+#' the
+#' [status](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax)
 #' parameter to `Disposed`.
 #' 
 #' To view information about a disposed package version, use
-#' [`describe_package_version`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html)
-#' ..
+#' [`describe_package_version`][codeartifact_describe_package_version].
 #'
 #' @usage
 #' codeartifact_dispose_package_versions(domain, domainOwner, repository,
 #'   format, namespace, package, versions, versionRevisions, expectedStatus)
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository you want to dispose.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that contains the package versions you want
 #' to dispose.
 #' @param format &#91;required&#93; A format that specifies the type of package versions you want to
-#' dispose. The valid values are:
+#' dispose.
+#' @param namespace The namespace of the package versions to be disposed. The package
+#' version component that specifies its namespace depends on its type. For
+#' example:
 #' 
-#' -   `npm`
+#' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   `pypi`
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   `maven`
-#' 
-#' -   `nuget`
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
-#' 
-#' -   The namespace of a Maven package is its `groupId`.
-#' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
 #' @param package &#91;required&#93; The name of the package with the versions you want to dispose.
 #' @param versions &#91;required&#93; The versions of the package you want to dispose.
 #' @param versionRevisions The revisions of the package versions you want to dispose.
-#' @param expectedStatus The expected status of the package version to dispose. Valid values are:
-#' 
-#' -   `Published`
-#' 
-#' -   `Unfinished`
-#' 
-#' -   `Unlisted`
-#' 
-#' -   `Archived`
-#' 
-#' -   `Disposed`
+#' @param expectedStatus The expected status of the package version to dispose.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1211,7 +1239,7 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #' Generates a temporary authorization token for accessing repositories in
 #' the domain. This API requires the `codeartifact:GetAuthorizationToken`
 #' and `sts:GetServiceBearerToken` permissions. For more information about
-#' authorization tokens, see [AWS CodeArtifact authentication and
+#' authorization tokens, see [CodeArtifact authentication and
 #' tokens](https://docs.aws.amazon.com/codeartifact/latest/ug/tokens-authentication.html).
 #' 
 #' CodeArtifact authorization tokens are valid for a period of 12 hours
@@ -1242,8 +1270,8 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #'
 #' @param domain &#91;required&#93; The name of the domain that is in scope for the generated authorization
 #' token.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param durationSeconds The time, in seconds, that the generated authorization token is valid.
 #' Valid values are `0` and any number between `900` (15 minutes) and
 #' `43200` (12 hours). A value of `0` will set the expiration of the
@@ -1298,14 +1326,14 @@ codeartifact_get_authorization_token <- function(domain, domainOwner = NULL, dur
 #' The policy is a resource-based policy, not an identity-based policy. For
 #' more information, see [Identity-based policies and resource-based
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html)
-#' in the *AWS Identity and Access Management User Guide*.
+#' in the *IAM User Guide*.
 #'
 #' @usage
 #' codeartifact_get_domain_permissions_policy(domain, domainOwner)
 #'
 #' @param domain &#91;required&#93; The name of the domain to which the resource policy is attached.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1361,34 +1389,25 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'   format, namespace, package, packageVersion, asset,
 #'   packageVersionRevision)
 #'
-#' @param domain &#91;required&#93; The domain that contains the repository that contains the package
-#' version with the requested asset.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
+#' package version with the requested asset.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The repository that contains the package version with the requested
 #' asset.
 #' @param format &#91;required&#93; A format that specifies the type of the package version with the
-#' requested asset file. The valid values are:
+#' requested asset file.
+#' @param namespace The namespace of the package version with the requested asset file. The
+#' package version component that specifies its namespace depends on its
+#' type. For example:
 #' 
-#' -   `npm`
+#' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   `pypi`
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   `maven`
-#' 
-#' -   `nuget`
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
-#' 
-#' -   The namespace of a Maven package is its `groupId`.
-#' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
 #' @param package &#91;required&#93; The name of the package that contains the requested asset.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param asset &#91;required&#93; The name of the requested asset.
@@ -1458,31 +1477,22 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' package version with the requested readme file.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The repository that contains the package with the requested readme file.
 #' @param format &#91;required&#93; A format that specifies the type of the package version with the
-#' requested readme file. The valid values are:
+#' requested readme file.
+#' @param namespace The namespace of the package version with the requested readme file. The
+#' package version component that specifies its namespace depends on its
+#' type. For example:
 #' 
-#' -   `npm`
+#' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   `pypi`
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   `maven`
-#' 
-#' -   `nuget`
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
-#' 
-#' -   The namespace of a Maven package is its `groupId`.
-#' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
 #' @param package &#91;required&#93; The name of the package version that contains the requested readme file.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #'
@@ -1538,32 +1548,25 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' Returns the endpoint of a repository for a specific package format. A
 #' repository has one endpoint for each package format:
 #' 
-#' -   `npm`
-#' 
-#' -   `pypi`
-#' 
 #' -   `maven`
 #' 
+#' -   `npm`
+#' 
 #' -   `nuget`
+#' 
+#' -   `pypi`
 #'
 #' @usage
 #' codeartifact_get_repository_endpoint(domain, domainOwner, repository,
 #'   format)
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain that
-#' contains the repository. It does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain that contains the repository. It does not include dashes or
+#' spaces.
 #' @param repository &#91;required&#93; The name of the repository.
 #' @param format &#91;required&#93; Returns which endpoint of a repository to return. A repository has one
-#' endpoint for each package format:
-#' 
-#' -   `npm`
-#' 
-#' -   `pypi`
-#' 
-#' -   `maven`
-#' 
-#' -   `nuget`
+#' endpoint for each package format.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1614,8 +1617,8 @@ codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, rep
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the repository whose associated
 #' resource policy is to be retrieved.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository whose associated resource policy is to be
 #' retrieved.
 #'
@@ -1660,13 +1663,15 @@ codeartifact_get_repository_permissions_policy <- function(domain, domainOwner =
 }
 .codeartifact$operations$get_repository_permissions_policy <- codeartifact_get_repository_permissions_policy
 
-#' Returns a list of DomainSummary objects for all domains owned by the AWS
-#' account that makes this call
+#' Returns a list of DomainSummary objects for all domains owned by the
+#' Amazon Web Services account that makes this call
 #'
 #' @description
-#' Returns a list of ` DomainSummary ` objects for all domains owned by the
-#' AWS account that makes this call. Each returned `DomainSummary` object
-#' contains information about a domain.
+#' Returns a list of
+#' [DomainSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html)
+#' objects for all domains owned by the Amazon Web Services account that
+#' makes this call. Each returned `DomainSummary` object contains
+#' information about a domain.
 #'
 #' @usage
 #' codeartifact_list_domains(maxResults, nextToken)
@@ -1728,7 +1733,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @description
 #' Returns a list of
-#' [`AssetSummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html)
+#' [AssetSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html)
 #' objects for assets in a package version.
 #'
 #' @usage
@@ -1738,34 +1743,24 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository associated with the
 #' package version assets.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that contains the package that contains the
-#' returned package version assets.
-#' @param format &#91;required&#93; The format of the package that contains the returned package version
-#' assets. The valid package types are:
-#' 
-#' -   `npm`: A Node Package Manager (npm) package.
-#' 
-#' -   `pypi`: A Python Package Index (PyPI) package.
-#' 
-#' -   `maven`: A Maven package that contains compiled code in a
-#'     distributable format, such as a JAR file.
-#' 
-#' -   `nuget`: A NuGet package.
-#' @param namespace The namespace of the package. The package component that specifies its
+#' requested package version assets.
+#' @param format &#91;required&#93; The format of the package that contains the requested package version
+#' assets.
+#' @param namespace The namespace of the package version that contains the requested package
+#' version assets. The package version component that specifies its
 #' namespace depends on its type. For example:
 #' 
-#' -   The namespace of a Maven package is its `groupId`.
+#' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm package is its `scope`.
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
-#' @param package &#91;required&#93; The name of the package that contains the returned package version
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
+#' @param package &#91;required&#93; The name of the package that contains the requested package version
 #' assets.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param maxResults The maximum number of results to return per page.
@@ -1835,7 +1830,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' @description
 #' Returns the direct dependencies for a package version. The dependencies
 #' are returned as
-#' [`PackageDependency`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html)
+#' [PackageDependency](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html)
 #' objects. CodeArtifact extracts the dependencies for a package version
 #' from the metadata file for the package format (for example, the
 #' `package.json` file for npm packages and the `pom.xml` file for Maven).
@@ -1846,34 +1841,23 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' codeartifact_list_package_version_dependencies(domain, domainOwner,
 #'   repository, format, namespace, package, packageVersion, nextToken)
 #'
-#' @param domain &#91;required&#93; The domain that contains the repository that contains the requested
-#' package version dependencies.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
+#' requested package version dependencies.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that contains the requested package version.
-#' @param format &#91;required&#93; The format of the package with the requested dependencies. The valid
-#' package types are:
+#' @param format &#91;required&#93; The format of the package with the requested dependencies.
+#' @param namespace The namespace of the package version with the requested dependencies.
+#' The package version component that specifies its namespace depends on
+#' its type. For example:
 #' 
-#' -   `npm`: A Node Package Manager (npm) package.
+#' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   `pypi`: A Python Package Index (PyPI) package.
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   `maven`: A Maven package that contains compiled code in a
-#'     distributable format, such as a JAR file.
-#' 
-#' -   `nuget`: A NuGet package.
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
-#' 
-#' -   The namespace of a Maven package is its `groupId`.
-#' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
 #' @param package &#91;required&#93; The name of the package versions' package.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param nextToken The token for the next set of results. Use the value returned in the
@@ -1940,60 +1924,40 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #'
 #' @description
 #' Returns a list of
-#' [`PackageVersionSummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html)
+#' [PackageVersionSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html)
 #' objects for package versions in a repository that match the request
 #' parameters.
 #'
 #' @usage
 #' codeartifact_list_package_versions(domain, domainOwner, repository,
-#'   format, namespace, package, status, sortBy, maxResults, nextToken)
+#'   format, namespace, package, status, sortBy, maxResults, nextToken,
+#'   originType)
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
-#' returned package versions.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
-#' @param repository &#91;required&#93; The name of the repository that contains the package.
-#' @param format &#91;required&#93; The format of the returned packages. The valid package types are:
-#' 
-#' -   `npm`: A Node Package Manager (npm) package.
-#' 
-#' -   `pypi`: A Python Package Index (PyPI) package.
-#' 
-#' -   `maven`: A Maven package that contains compiled code in a
-#'     distributable format, such as a JAR file.
-#' 
-#' -   `nuget`: A NuGet package.
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
+#' requested package versions.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param repository &#91;required&#93; The name of the repository that contains the requested package versions.
+#' @param format &#91;required&#93; The format of the returned package versions.
+#' @param namespace The namespace of the package that contains the requested package
+#' versions. The package component that specifies its namespace depends on
+#' its type. For example:
 #' 
 #' -   The namespace of a Maven package is its `groupId`.
 #' 
 #' -   The namespace of an npm package is its `scope`.
 #' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
-#' @param package &#91;required&#93; The name of the package for which you want to return a list of package
-#' versions.
-#' @param status A string that specifies the status of the package versions to include in
-#' the returned list. It can be one of the following:
-#' 
-#' -   `Published`
-#' 
-#' -   `Unfinished`
-#' 
-#' -   `Unlisted`
-#' 
-#' -   `Archived`
-#' 
-#' -   `Disposed`
-#' @param sortBy How to sort the returned list of package versions.
+#' -   Python and NuGet packages do not contain a corresponding component,
+#'     packages of those formats do not have a namespace.
+#' @param package &#91;required&#93; The name of the package for which you want to request package versions.
+#' @param status A string that filters the requested package versions by status.
+#' @param sortBy How to sort the requested list of package versions.
 #' @param maxResults The maximum number of results to return per page.
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
+#' @param originType The `originType` used to filter package versions. Only package versions
+#' with the provided `originType` will be returned.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2007,7 +1971,14 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #'     list(
 #'       version = "string",
 #'       revision = "string",
-#'       status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted"
+#'       status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted",
+#'       origin = list(
+#'         domainEntryPoint = list(
+#'           repositoryName = "string",
+#'           externalConnectionName = "string"
+#'         ),
+#'         originType = "INTERNAL"|"EXTERNAL"|"UNKNOWN"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2026,21 +1997,22 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #'   status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted",
 #'   sortBy = "PUBLISHED_TIME",
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   originType = "INTERNAL"|"EXTERNAL"|"UNKNOWN"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_package_versions
-codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, status = NULL, sortBy = NULL, maxResults = NULL, nextToken = NULL) {
+codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, status = NULL, sortBy = NULL, maxResults = NULL, nextToken = NULL, originType = NULL) {
   op <- new_operation(
     name = "ListPackageVersions",
     http_method = "POST",
     http_path = "/v1/package/versions",
     paginator = list()
   )
-  input <- .codeartifact$list_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, status = status, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
+  input <- .codeartifact$list_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, status = status, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken, originType = originType)
   output <- .codeartifact$list_package_versions_output()
   config <- get_config()
   svc <- .codeartifact$service(config)
@@ -2055,46 +2027,44 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #'
 #' @description
 #' Returns a list of
-#' [`PackageSummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html)
+#' [PackageSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html)
 #' objects for packages in a repository that match the request parameters.
 #'
 #' @usage
 #' codeartifact_list_packages(domain, domainOwner, repository, format,
-#'   namespace, packagePrefix, maxResults, nextToken)
+#'   namespace, packagePrefix, maxResults, nextToken, publish, upstream)
 #'
-#' @param domain &#91;required&#93; The domain that contains the repository that contains the requested list
-#' of packages.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
-#' @param repository &#91;required&#93; The name of the repository from which packages are to be listed.
-#' @param format The format of the packages. The valid package types are:
-#' 
-#' -   `npm`: A Node Package Manager (npm) package.
-#' 
-#' -   `pypi`: A Python Package Index (PyPI) package.
-#' 
-#' -   `maven`: A Maven package that contains compiled code in a
-#'     distributable format, such as a JAR file.
-#' 
-#' -   `nuget`: A NuGet package.
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
+#' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
+#' requested packages.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param repository &#91;required&#93; The name of the repository that contains the requested packages.
+#' @param format The format used to filter requested packages. Only packages from the
+#' provided format will be returned.
+#' @param namespace The namespace used to filter requested packages. Only packages with the
+#' provided namespace will be returned. The package component that
+#' specifies its namespace depends on its type. For example:
 #' 
 #' -   The namespace of a Maven package is its `groupId`.
 #' 
 #' -   The namespace of an npm package is its `scope`.
 #' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
-#' @param packagePrefix A prefix used to filter returned packages. Only packages with names that
-#' start with `packagePrefix` are returned.
+#' -   Python and NuGet packages do not contain a corresponding component,
+#'     packages of those formats do not have a namespace.
+#' @param packagePrefix A prefix used to filter requested packages. Only packages with names
+#' that start with `packagePrefix` are returned.
 #' @param maxResults The maximum number of results to return per page.
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
+#' @param publish The value of the `Publish` package origin control restriction used to
+#' filter requested packages. Only packages with the provided restriction
+#' are returned. For more information, see
+#' [PackageOriginRestrictions](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageOriginRestrictions.html).
+#' @param upstream The value of the `Upstream` package origin control restriction used to
+#' filter requested packages. Only packages with the provided restriction
+#' are returned. For more information, see
+#' [PackageOriginRestrictions](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageOriginRestrictions.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2104,7 +2074,13 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #'     list(
 #'       format = "npm"|"pypi"|"maven"|"nuget",
 #'       namespace = "string",
-#'       package = "string"
+#'       package = "string",
+#'       originConfiguration = list(
+#'         restrictions = list(
+#'           publish = "ALLOW"|"BLOCK",
+#'           upstream = "ALLOW"|"BLOCK"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2121,21 +2097,23 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #'   namespace = "string",
 #'   packagePrefix = "string",
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   publish = "ALLOW"|"BLOCK",
+#'   upstream = "ALLOW"|"BLOCK"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_packages
-codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, format = NULL, namespace = NULL, packagePrefix = NULL, maxResults = NULL, nextToken = NULL) {
+codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, format = NULL, namespace = NULL, packagePrefix = NULL, maxResults = NULL, nextToken = NULL, publish = NULL, upstream = NULL) {
   op <- new_operation(
     name = "ListPackages",
     http_method = "POST",
     http_path = "/v1/packages",
     paginator = list()
   )
-  input <- .codeartifact$list_packages_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, packagePrefix = packagePrefix, maxResults = maxResults, nextToken = nextToken)
+  input <- .codeartifact$list_packages_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, packagePrefix = packagePrefix, maxResults = maxResults, nextToken = nextToken, publish = publish, upstream = upstream)
   output <- .codeartifact$list_packages_output()
   config <- get_config()
   svc <- .codeartifact$service(config)
@@ -2149,10 +2127,10 @@ codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, f
 #'
 #' @description
 #' Returns a list of
-#' [`RepositorySummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html)
+#' [RepositorySummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html)
 #' objects. Each `RepositorySummary` contains information about a
-#' repository in the specified AWS account and that matches the input
-#' parameters.
+#' repository in the specified Amazon Web Services account and that matches
+#' the input parameters.
 #'
 #' @usage
 #' codeartifact_list_repositories(repositoryPrefix, maxResults, nextToken)
@@ -2215,7 +2193,7 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
 #'
 #' @description
 #' Returns a list of
-#' [`RepositorySummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html)
+#' [RepositorySummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html)
 #' objects. Each `RepositorySummary` contains information about a
 #' repository in the specified domain and that matches the input
 #' parameters.
@@ -2225,10 +2203,10 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
 #'   administratorAccount, repositoryPrefix, maxResults, nextToken)
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the returned list of repositories.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param administratorAccount Filter the list of repositories to only include those that are managed
-#' by the AWS account ID.
+#' by the Amazon Web Services account ID.
 #' @param repositoryPrefix A prefix used to filter returned repositories. Only repositories with
 #' names that start with `repositoryPrefix` are returned.
 #' @param maxResults The maximum number of results to return per page.
@@ -2286,12 +2264,12 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
 }
 .codeartifact$operations$list_repositories_in_domain <- codeartifact_list_repositories_in_domain
 
-#' Gets information about AWS tags for a specified Amazon Resource Name
-#' (ARN) in AWS CodeArtifact
+#' Gets information about Amazon Web Services tags for a specified Amazon
+#' Resource Name (ARN) in CodeArtifact
 #'
 #' @description
-#' Gets information about AWS tags for a specified Amazon Resource Name
-#' (ARN) in AWS CodeArtifact.
+#' Gets information about Amazon Web Services tags for a specified Amazon
+#' Resource Name (ARN) in CodeArtifact.
 #'
 #' @usage
 #' codeartifact_list_tags_for_resource(resourceArn)
@@ -2357,8 +2335,8 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #'   policyRevision, policyDocument)
 #'
 #' @param domain &#91;required&#93; The name of the domain on which to set the resource policy.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param policyRevision The current revision of the resource policy to be set. This revision is
 #' used for optimistic locking, which prevents others from overwriting your
 #' changes to the domain's resource policy.
@@ -2407,6 +2385,110 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 }
 .codeartifact$operations$put_domain_permissions_policy <- codeartifact_put_domain_permissions_policy
 
+#' Sets the package origin configuration for a package
+#'
+#' @description
+#' Sets the package origin configuration for a package.
+#' 
+#' The package origin configuration determines how new versions of a
+#' package can be added to a repository. You can allow or block direct
+#' publishing of new package versions, or ingestion and retaining of new
+#' package versions from an external connection or upstream source. For
+#' more information about package origin controls and configuration, see
+#' [Editing package origin
+#' controls](https://docs.aws.amazon.com/codeartifact/latest/ug/package-origin-controls.html)
+#' in the *CodeArtifact User Guide*.
+#' 
+#' [`put_package_origin_configuration`][codeartifact_put_package_origin_configuration]
+#' can be called on a package that doesn't yet exist in the repository.
+#' When called on a package that does not exist, a package is created in
+#' the repository with no versions and the requested restrictions are set
+#' on the package. This can be used to preemptively block ingesting or
+#' retaining any versions from external connections or upstream
+#' repositories, or to block publishing any versions of the package into
+#' the repository before connecting any package managers or publishers to
+#' the repository.
+#'
+#' @usage
+#' codeartifact_put_package_origin_configuration(domain, domainOwner,
+#'   repository, format, namespace, package, restrictions)
+#'
+#' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
+#' package.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param repository &#91;required&#93; The name of the repository that contains the package.
+#' @param format &#91;required&#93; A format that specifies the type of the package to be updated.
+#' @param namespace The namespace of the package to be updated. The package component that
+#' specifies its namespace depends on its type. For example:
+#' 
+#' -   The namespace of a Maven package is its `groupId`.
+#' 
+#' -   The namespace of an npm package is its `scope`.
+#' 
+#' -   Python and NuGet packages do not contain a corresponding component,
+#'     packages of those formats do not have a namespace.
+#' @param package &#91;required&#93; The name of the package to be updated.
+#' @param restrictions &#91;required&#93; A
+#' [PackageOriginRestrictions](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageOriginRestrictions.html)
+#' object that contains information about the `upstream` and `publish`
+#' package origin restrictions. The `upstream` restriction determines if
+#' new package versions can be ingested or retained from external
+#' connections or upstream repositories. The `publish` restriction
+#' determines if new package versions can be published directly to the
+#' repository.
+#' 
+#' You must include both the desired `upstream` and `publish` restrictions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   originConfiguration = list(
+#'     restrictions = list(
+#'       publish = "ALLOW"|"BLOCK",
+#'       upstream = "ALLOW"|"BLOCK"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_package_origin_configuration(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   repository = "string",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
+#'   namespace = "string",
+#'   package = "string",
+#'   restrictions = list(
+#'     publish = "ALLOW"|"BLOCK",
+#'     upstream = "ALLOW"|"BLOCK"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_put_package_origin_configuration
+codeartifact_put_package_origin_configuration <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, restrictions) {
+  op <- new_operation(
+    name = "PutPackageOriginConfiguration",
+    http_method = "POST",
+    http_path = "/v1/package",
+    paginator = list()
+  )
+  input <- .codeartifact$put_package_origin_configuration_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, restrictions = restrictions)
+  output <- .codeartifact$put_package_origin_configuration_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$put_package_origin_configuration <- codeartifact_put_package_origin_configuration
+
 #' Sets the resource policy on a repository that specifies permissions to
 #' access it
 #'
@@ -2427,8 +2509,8 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the repository to set the resource
 #' policy on.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository to set the resource policy on.
 #' @param policyRevision Sets the revision of the resource policy that specifies permissions to
 #' access the repository. This revision is used for optimistic locking,
@@ -2480,10 +2562,10 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 }
 .codeartifact$operations$put_repository_permissions_policy <- codeartifact_put_repository_permissions_policy
 
-#' Adds or updates tags for a resource in AWS CodeArtifact
+#' Adds or updates tags for a resource in CodeArtifact
 #'
 #' @description
-#' Adds or updates tags for a resource in AWS CodeArtifact.
+#' Adds or updates tags for a resource in CodeArtifact.
 #'
 #' @usage
 #' codeartifact_tag_resource(resourceArn, tags)
@@ -2528,10 +2610,10 @@ codeartifact_tag_resource <- function(resourceArn, tags) {
 }
 .codeartifact$operations$tag_resource <- codeartifact_tag_resource
 
-#' Removes tags from a resource in AWS CodeArtifact
+#' Removes tags from a resource in CodeArtifact
 #'
 #' @description
-#' Removes tags from a resource in AWS CodeArtifact.
+#' Removes tags from a resource in CodeArtifact.
 #'
 #' @usage
 #' codeartifact_untag_resource(resourceArn, tagKeys)
@@ -2576,41 +2658,36 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the status of one or more versions of a package
 #'
 #' @description
-#' Updates the status of one or more versions of a package.
+#' Updates the status of one or more versions of a package. Using
+#' [`update_package_versions_status`][codeartifact_update_package_versions_status],
+#' you can update the status of package versions to `Archived`,
+#' `Published`, or `Unlisted`. To set the status of a package version to
+#' `Disposed`, use
+#' [`dispose_package_versions`][codeartifact_dispose_package_versions].
 #'
 #' @usage
 #' codeartifact_update_package_versions_status(domain, domainOwner,
 #'   repository, format, namespace, package, versions, versionRevisions,
 #'   expectedStatus, targetStatus)
 #'
-#' @param domain &#91;required&#93; The domain that contains the repository that contains the package
-#' versions with a status to be updated.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
+#' package versions with a status to be updated.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The repository that contains the package versions with the status you
 #' want to update.
 #' @param format &#91;required&#93; A format that specifies the type of the package with the statuses to
-#' update. The valid values are:
+#' update.
+#' @param namespace The namespace of the package version to be updated. The package version
+#' component that specifies its namespace depends on its type. For example:
 #' 
-#' -   `npm`
+#' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   `pypi`
+#' -   The namespace of an npm package version is its `scope`.
 #' 
-#' -   `maven`
-#' 
-#' -   `nuget`
-#' @param namespace The namespace of the package. The package component that specifies its
-#' namespace depends on its type. For example:
-#' 
-#' -   The namespace of a Maven package is its `groupId`.
-#' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   A Python package does not contain a corresponding component, so
-#'     Python packages do not have a namespace.
-#' 
-#' -   A NuGet package does not contain a corresponding component, so NuGet
-#'     packages do not have a namespace.
+#' -   Python and NuGet package versions do not contain a corresponding
+#'     component, package versions of those formats do not have a
+#'     namespace.
 #' @param package &#91;required&#93; The name of the package with the version statuses to update.
 #' @param versions &#91;required&#93; An array of strings that specify the versions of the package with the
 #' statuses to update.
@@ -2693,14 +2770,14 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
 #'   description, upstreams)
 #'
 #' @param domain &#91;required&#93; The name of the domain associated with the repository to update.
-#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
-#' does not include dashes or spaces.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository to update.
 #' @param description An updated repository description.
 #' @param upstreams A list of upstream repositories to associate with the repository. The
 #' order of the upstream repositories in the list determines their priority
-#' order when AWS CodeArtifact looks for a requested package version. For
-#' more information, see [Working with upstream
+#' order when CodeArtifact looks for a requested package version. For more
+#' information, see [Working with upstream
 #' repositories](https://docs.aws.amazon.com/codeartifact/latest/ug/repos-upstream.html).
 #'
 #' @return

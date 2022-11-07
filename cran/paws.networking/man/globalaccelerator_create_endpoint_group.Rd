@@ -4,22 +4,31 @@
 \alias{globalaccelerator_create_endpoint_group}
 \title{Create an endpoint group for the specified listener}
 \usage{
-globalaccelerator_create_endpoint_group(ListenerArn,
-  EndpointGroupRegion, EndpointConfigurations, TrafficDialPercentage,
-  HealthCheckPort, HealthCheckProtocol, HealthCheckPath,
-  HealthCheckIntervalSeconds, ThresholdCount, IdempotencyToken,
-  PortOverrides)
+globalaccelerator_create_endpoint_group(
+  ListenerArn,
+  EndpointGroupRegion,
+  EndpointConfigurations = NULL,
+  TrafficDialPercentage = NULL,
+  HealthCheckPort = NULL,
+  HealthCheckProtocol = NULL,
+  HealthCheckPath = NULL,
+  HealthCheckIntervalSeconds = NULL,
+  ThresholdCount = NULL,
+  IdempotencyToken,
+  PortOverrides = NULL
+)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 
-\item{EndpointGroupRegion}{[required] The AWS Region where the endpoint group is located. A listener can have
-only one endpoint group in a specific Region.}
+\item{EndpointGroupRegion}{[required] The Amazon Web Services Region where the endpoint group is located. A
+listener can have only one endpoint group in a specific Region.}
 
 \item{EndpointConfigurations}{The list of endpoint objects.}
 
-\item{TrafficDialPercentage}{The percentage of traffic to send to an AWS Region. Additional traffic
-is distributed to other endpoint groups for this listener.
+\item{TrafficDialPercentage}{The percentage of traffic to send to an Amazon Web Services Region.
+Additional traffic is distributed to other endpoint groups for this
+listener.
 
 Use this action to increase (dial up) or decrease (dial down) traffic to
 a specific Region. The percentage is applied to the traffic that would
@@ -27,13 +36,12 @@ otherwise have been routed to the Region based on optimal routing.
 
 The default value is 100.}
 
-\item{HealthCheckPort}{The port that AWS Global Accelerator uses to check the health of
-endpoints that are part of this endpoint group. The default port is the
-listener port that this endpoint group is associated with. If listener
-port is a list of ports, Global Accelerator uses the first port in the
-list.}
+\item{HealthCheckPort}{The port that Global Accelerator uses to check the health of endpoints
+that are part of this endpoint group. The default port is the listener
+port that this endpoint group is associated with. If listener port is a
+list of ports, Global Accelerator uses the first port in the list.}
 
-\item{HealthCheckProtocol}{The protocol that AWS Global Accelerator uses to check the health of
+\item{HealthCheckProtocol}{The protocol that Global Accelerator uses to check the health of
 endpoints that are part of this endpoint group. The default value is
 TCP.}
 
@@ -56,70 +64,12 @@ override in which the listener receives user traffic on ports 80 and
 443, but your accelerator routes that traffic to ports 1080 and 1443,
 respectively, on the endpoints.
 
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html}{Port overrides}
-in the \emph{AWS Global Accelerator Developer Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointGroup = list(
-    EndpointGroupArn = "string",
-    EndpointGroupRegion = "string",
-    EndpointDescriptions = list(
-      list(
-        EndpointId = "string",
-        Weight = 123,
-        HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
-        HealthReason = "string",
-        ClientIPPreservationEnabled = TRUE|FALSE
-      )
-    ),
-    TrafficDialPercentage = 123.0,
-    HealthCheckPort = 123,
-    HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-    HealthCheckPath = "string",
-    HealthCheckIntervalSeconds = 123,
-    ThresholdCount = 123,
-    PortOverrides = list(
-      list(
-        ListenerPort = 123,
-        EndpointPort = 123
-      )
-    )
-  )
-)
-}
+For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html}{Overriding listener ports}
+in the \emph{Global Accelerator Developer Guide}.}
 }
 \description{
-Create an endpoint group for the specified listener. An endpoint group
-is a collection of endpoints in one AWS Region. A resource must be valid
-and active when you add it as an endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$create_endpoint_group(
-  ListenerArn = "string",
-  EndpointGroupRegion = "string",
-  EndpointConfigurations = list(
-    list(
-      EndpointId = "string",
-      Weight = 123,
-      ClientIPPreservationEnabled = TRUE|FALSE
-    )
-  ),
-  TrafficDialPercentage = 123.0,
-  HealthCheckPort = 123,
-  HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-  HealthCheckPath = "string",
-  HealthCheckIntervalSeconds = 123,
-  ThresholdCount = 123,
-  IdempotencyToken = "string",
-  PortOverrides = list(
-    list(
-      ListenerPort = 123,
-      EndpointPort = 123
-    )
-  )
-)
-}
-}
+Create an endpoint group for the specified listener. An endpoint group is a collection of endpoints in one Amazon Web Services Region. A resource must be valid and active when you add it as an endpoint.
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/create_endpoint_group.html} for full documentation.
+}
 \keyword{internal}

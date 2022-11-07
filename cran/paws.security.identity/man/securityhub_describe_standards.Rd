@@ -4,7 +4,7 @@
 \alias{securityhub_describe_standards}
 \title{Returns a list of the available standards in Security Hub}
 \usage{
-securityhub_describe_standards(NextToken, MaxResults)
+securityhub_describe_standards(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The token that is required for pagination. On your first call to the
@@ -17,32 +17,9 @@ response.}
 
 \item{MaxResults}{The maximum number of standards to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Standards = list(
-    list(
-      StandardsArn = "string",
-      Name = "string",
-      Description = "string",
-      EnabledByDefault = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of the available standards in Security Hub.
 
-For each standard, the results include the standard ARN, the name, and a
-description.
+See \url{https://paws-r.github.io/docs/securityhub/describe_standards.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_standards(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

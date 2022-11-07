@@ -4,8 +4,15 @@
 \alias{opsworks_create_deployment}
 \title{Runs deployment or stack commands}
 \usage{
-opsworks_create_deployment(StackId, AppId, InstanceIds, LayerIds,
-  Command, Comment, CustomJson)
+opsworks_create_deployment(
+  StackId,
+  AppId = NULL,
+  InstanceIds = NULL,
+  LayerIds = NULL,
+  Command,
+  Comment = NULL,
+  CustomJson = NULL
+)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -31,43 +38,9 @@ JSON values. The string should be in the following format:
 For more information about custom JSON, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}
 and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Overriding Attributes With Custom JSON}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeploymentId = "string"
-)
-}
-}
 \description{
-Runs deployment or stack commands. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html}{Deploying Apps}
-and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html}{Run Stack Commands}.
+Runs deployment or stack commands. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html}{Deploying Apps} and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html}{Run Stack Commands}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Deploy or Manage permissions level for the stack, or an attached policy
-that explicitly grants permissions. For more information on user
-permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/create_deployment.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_deployment(
-  StackId = "string",
-  AppId = "string",
-  InstanceIds = list(
-    "string"
-  ),
-  LayerIds = list(
-    "string"
-  ),
-  Command = list(
-    Name = "install_dependencies"|"update_dependencies"|"update_custom_cookbooks"|"execute_recipes"|"configure"|"setup"|"deploy"|"rollback"|"start"|"stop"|"restart"|"undeploy",
-    Args = list(
-      list(
-        "string"
-      )
-    )
-  ),
-  Comment = "string",
-  CustomJson = "string"
-)
-}
-}
-
 \keyword{internal}

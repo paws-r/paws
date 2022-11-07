@@ -4,7 +4,11 @@
 \alias{opsworks_describe_deployments}
 \title{Requests a description of a specified set of deployments}
 \usage{
-opsworks_describe_deployments(StackId, AppId, DeploymentIds)
+opsworks_describe_deployments(
+  StackId = NULL,
+  AppId = NULL,
+  DeploymentIds = NULL
+)
 }
 \arguments{
 \item{StackId}{The stack ID. If you include this parameter, the command returns a
@@ -17,55 +21,9 @@ description of the commands associated with the specified app.}
 parameter, the command returns a description of the specified
 deployments. Otherwise, it returns a description of every deployment.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Deployments = list(
-    list(
-      DeploymentId = "string",
-      StackId = "string",
-      AppId = "string",
-      CreatedAt = "string",
-      CompletedAt = "string",
-      Duration = 123,
-      IamUserArn = "string",
-      Comment = "string",
-      Command = list(
-        Name = "install_dependencies"|"update_dependencies"|"update_custom_cookbooks"|"execute_recipes"|"configure"|"setup"|"deploy"|"rollback"|"start"|"stop"|"restart"|"undeploy",
-        Args = list(
-          list(
-            "string"
-          )
-        )
-      ),
-      Status = "string",
-      CustomJson = "string",
-      InstanceIds = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Requests a description of a specified set of deployments.
 
-This call accepts only one resource-identifying parameter.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_deployments.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_deployments(
-  StackId = "string",
-  AppId = "string",
-  DeploymentIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

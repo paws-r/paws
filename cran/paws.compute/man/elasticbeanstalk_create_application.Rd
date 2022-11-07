@@ -5,8 +5,12 @@
 \title{Creates an application that has one configuration template named default
 and no application versions}
 \usage{
-elasticbeanstalk_create_application(ApplicationName, Description,
-  ResourceLifecycleConfig, Tags)
+elasticbeanstalk_create_application(
+  ApplicationName,
+  Description = NULL,
+  ResourceLifecycleConfig = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application. Must be unique within your account.}
@@ -21,84 +25,9 @@ your application from accumulating too many versions.}
 Elastic Beanstalk applies these tags only to the application.
 Environments that you create in the application don't inherit the tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Application = list(
-    ApplicationArn = "string",
-    ApplicationName = "string",
-    Description = "string",
-    DateCreated = as.POSIXct(
-      "2015-01-01"
-    ),
-    DateUpdated = as.POSIXct(
-      "2015-01-01"
-    ),
-    Versions = list(
-      "string"
-    ),
-    ConfigurationTemplates = list(
-      "string"
-    ),
-    ResourceLifecycleConfig = list(
-      ServiceRole = "string",
-      VersionLifecycleConfig = list(
-        MaxCountRule = list(
-          Enabled = TRUE|FALSE,
-          MaxCount = 123,
-          DeleteSourceFromS3 = TRUE|FALSE
-        ),
-        MaxAgeRule = list(
-          Enabled = TRUE|FALSE,
-          MaxAgeInDays = 123,
-          DeleteSourceFromS3 = TRUE|FALSE
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates an application that has one configuration template named
-\code{default} and no application versions.
-}
-\section{Request syntax}{
-\preformatted{svc$create_application(
-  ApplicationName = "string",
-  Description = "string",
-  ResourceLifecycleConfig = list(
-    ServiceRole = "string",
-    VersionLifecycleConfig = list(
-      MaxCountRule = list(
-        Enabled = TRUE|FALSE,
-        MaxCount = 123,
-        DeleteSourceFromS3 = TRUE|FALSE
-      ),
-      MaxAgeRule = list(
-        Enabled = TRUE|FALSE,
-        MaxAgeInDays = 123,
-        DeleteSourceFromS3 = TRUE|FALSE
-      )
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates an application that has one configuration template named \code{default} and no application versions.
 
-\examples{
-\dontrun{
-# The following operation creates a new application named my-app:
-svc$create_application(
-  ApplicationName = "my-app",
-  Description = "my application"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_application.html} for full documentation.
 }
 \keyword{internal}

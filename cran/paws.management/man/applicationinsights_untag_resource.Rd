@@ -18,20 +18,9 @@ To remove more than one tag from the application, append the \code{TagKeys}
 parameter and argument for each additional tag to remove, separated by
 an ampersand.}
 }
-\value{
-An empty list.
-}
 \description{
 Remove one or more tags (keys and values) from a specified application.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceARN = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/untag_resource.html} for full documentation.
+}
 \keyword{internal}

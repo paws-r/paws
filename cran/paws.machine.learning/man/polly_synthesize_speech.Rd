@@ -4,8 +4,17 @@
 \alias{polly_synthesize_speech}
 \title{Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes}
 \usage{
-polly_synthesize_speech(Engine, LanguageCode, LexiconNames,
-  OutputFormat, SampleRate, SpeechMarkTypes, Text, TextType, VoiceId)
+polly_synthesize_speech(
+  Engine = NULL,
+  LanguageCode = NULL,
+  LexiconNames = NULL,
+  OutputFormat,
+  SampleRate = NULL,
+  SpeechMarkTypes = NULL,
+  Text,
+  TextType = NULL,
+  VoiceId
+)
 }
 \arguments{
 \item{Engine}{Specifies the engine (\code{standard} or \code{neural}) for Amazon Polly to use
@@ -36,7 +45,7 @@ necessary if using a bilingual voice, such as Aditi, which can be used
 for either Indian English (en-IN) or Hindi (hi-IN).
 
 If a bilingual voice is used and no language code is specified, Amazon
-Polly will use the default language of the bilingual voice. The default
+Polly uses the default language of the bilingual voice. The default
 language for any voice is the one returned by the
 \code{\link[=polly_describe_voices]{describe_voices}} operation for the
 \code{LanguageCode} parameter. For example, if no language code is specified,
@@ -74,54 +83,9 @@ value is plain text. For more information, see \href{https://docs.aws.amazon.com
 \item{VoiceId}{[required] Voice ID to use for the synthesis. You can get a list of available voice
 IDs by calling the \code{\link[=polly_describe_voices]{describe_voices}} operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AudioStream = raw,
-  ContentType = "string",
-  RequestCharacters = 123
-)
-}
-}
 \description{
-Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML
-input must be valid, well-formed SSML. Some alphabets might not be
-available with all the voices (for example, Cyrillic might not be read
-at all by English voices) unless phoneme mapping is used. For more
-information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html}{How it Works}.
-}
-\section{Request syntax}{
-\preformatted{svc$synthesize_speech(
-  Engine = "standard"|"neural",
-  LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-  LexiconNames = list(
-    "string"
-  ),
-  OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-  SampleRate = "string",
-  SpeechMarkTypes = list(
-    "sentence"|"ssml"|"viseme"|"word"
-  ),
-  Text = "string",
-  TextType = "ssml"|"text",
-  VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu"
-)
-}
-}
+Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML input must be valid, well-formed SSML. Some alphabets might not be available with all the voices (for example, Cyrillic might not be read at all by English voices) unless phoneme mapping is used. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html}{How it Works}.
 
-\examples{
-\dontrun{
-# Synthesizes plain text or SSML into a file of human-like speech.
-svc$synthesize_speech(
-  LexiconNames = list(
-    "example"
-  ),
-  OutputFormat = "mp3",
-  SampleRate = "8000",
-  Text = "All Gaul is divided into three parts",
-  TextType = "text",
-  VoiceId = "Joanna"
-)
-}
-
+See \url{https://paws-r.github.io/docs/polly/synthesize_speech.html} for full documentation.
 }
 \keyword{internal}

@@ -4,12 +4,18 @@
 \alias{glue_get_user_defined_functions}
 \title{Retrieves multiple function definitions from the Data Catalog}
 \usage{
-glue_get_user_defined_functions(CatalogId, DatabaseName, Pattern,
-  NextToken, MaxResults)
+glue_get_user_defined_functions(
+  CatalogId = NULL,
+  DatabaseName = NULL,
+  Pattern,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the functions to be retrieved are
-located. If none is provided, the AWS account ID is used by default.}
+located. If none is provided, the Amazon Web Services account ID is used
+by default.}
 
 \item{DatabaseName}{The name of the catalog database where the functions are located. If
 none is provided, functions from all the databases across the catalog
@@ -22,43 +28,9 @@ definitions returned.}
 
 \item{MaxResults}{The maximum number of functions to return in one response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserDefinedFunctions = list(
-    list(
-      FunctionName = "string",
-      DatabaseName = "string",
-      ClassName = "string",
-      OwnerName = "string",
-      OwnerType = "USER"|"ROLE"|"GROUP",
-      CreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResourceUris = list(
-        list(
-          ResourceType = "JAR"|"FILE"|"ARCHIVE",
-          Uri = "string"
-        )
-      ),
-      CatalogId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves multiple function definitions from the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$get_user_defined_functions(
-  CatalogId = "string",
-  DatabaseName = "string",
-  Pattern = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_user_defined_functions.html} for full documentation.
+}
 \keyword{internal}

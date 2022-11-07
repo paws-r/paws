@@ -11,27 +11,9 @@ guardduty_get_ip_set(DetectorId, IpSetId)
 
 \item{IpSetId}{[required] The unique ID of the IPSet to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
-  Location = "string",
-  Status = "INACTIVE"|"ACTIVATING"|"ACTIVE"|"DEACTIVATING"|"ERROR"|"DELETE_PENDING"|"DELETED",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Retrieves the IPSet specified by the \code{ipSetId}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_ip_set(
-  DetectorId = "string",
-  IpSetId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/get_ip_set.html} for full documentation.
+}
 \keyword{internal}

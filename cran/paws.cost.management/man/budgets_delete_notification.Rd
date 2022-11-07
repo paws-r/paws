@@ -14,28 +14,9 @@ you want to delete.}
 
 \item{Notification}{[required] The notification that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a notification.
 
-Deleting a notification also deletes the subscribers that are associated
-with the notification.
+See \url{https://paws-r.github.io/docs/budgets/delete_notification.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_notification(
-  AccountId = "string",
-  BudgetName = "string",
-  Notification = list(
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-    Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-    NotificationState = "OK"|"ALARM"
-  )
-)
-}
-}
-
 \keyword{internal}

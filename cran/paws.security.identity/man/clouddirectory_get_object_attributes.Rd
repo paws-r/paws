@@ -4,8 +4,13 @@
 \alias{clouddirectory_get_object_attributes}
 \title{Retrieves attributes within a facet that are associated with an object}
 \usage{
-clouddirectory_get_object_attributes(DirectoryArn, ObjectReference,
-  ConsistencyLevel, SchemaFacet, AttributeNames)
+clouddirectory_get_object_attributes(
+  DirectoryArn,
+  ObjectReference,
+  ConsistencyLevel = NULL,
+  SchemaFacet,
+  AttributeNames
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -20,48 +25,9 @@ SchemaFacet for details.}
 
 \item{AttributeNames}{[required] List of attribute names whose values will be retrieved.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      Key = list(
-        SchemaArn = "string",
-        FacetName = "string",
-        Name = "string"
-      ),
-      Value = list(
-        StringValue = "string",
-        BinaryValue = raw,
-        BooleanValue = TRUE|FALSE,
-        NumberValue = "string",
-        DatetimeValue = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Retrieves attributes within a facet that are associated with an object.
-}
-\section{Request syntax}{
-\preformatted{svc$get_object_attributes(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
-  SchemaFacet = list(
-    SchemaArn = "string",
-    FacetName = "string"
-  ),
-  AttributeNames = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/get_object_attributes.html} for full documentation.
+}
 \keyword{internal}

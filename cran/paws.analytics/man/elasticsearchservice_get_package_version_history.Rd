@@ -5,8 +5,11 @@
 \title{Returns a list of versions of the package, along with their creation
 time and commit message}
 \usage{
-elasticsearchservice_get_package_version_history(PackageID, MaxResults,
-  NextToken)
+elasticsearchservice_get_package_version_history(
+  PackageID,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{PackageID}{[required] Returns an audit history of versions of the package.}
@@ -17,33 +20,9 @@ elasticsearchservice_get_package_version_history(PackageID, MaxResults,
 non-null NextToken value. If provided, returns results for the next
 page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PackageID = "string",
-  PackageVersionHistoryList = list(
-    list(
-      PackageVersion = "string",
-      CommitMessage = "string",
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of versions of the package, along with their creation
-time and commit message.
-}
-\section{Request syntax}{
-\preformatted{svc$get_package_version_history(
-  PackageID = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of versions of the package, along with their creation time and commit message.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/get_package_version_history.html} for full documentation.
+}
 \keyword{internal}

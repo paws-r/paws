@@ -24,6 +24,10 @@ test_that("list_field_level_encryption_profiles", {
   expect_error(svc$list_field_level_encryption_profiles(), NA)
 })
 
+test_that("list_functions", {
+  expect_error(svc$list_functions(), NA)
+})
+
 test_that("list_key_groups", {
   expect_error(svc$list_key_groups(), NA)
 })
@@ -38,6 +42,10 @@ test_that("list_public_keys", {
 
 test_that("list_realtime_log_configs", {
   expect_error(svc$list_realtime_log_configs(), NA)
+})
+
+test_that("list_response_headers_policies", {
+  expect_error(svc$list_response_headers_policies(), NA)
 })
 
 test_that("list_streaming_distributions", {

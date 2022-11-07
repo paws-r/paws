@@ -10,50 +10,9 @@ comprehend_describe_pii_entities_detection_job(JobId)
 \item{JobId}{[required] The identifier that Amazon Comprehend generated for the job. The
 operation returns this identifier in its response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PiiEntitiesDetectionJobProperties = list(
-    JobId = "string",
-    JobName = "string",
-    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-    Message = "string",
-    SubmitTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    InputDataConfig = list(
-      S3Uri = "string",
-      InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-    ),
-    OutputDataConfig = list(
-      S3Uri = "string",
-      KmsKeyId = "string"
-    ),
-    RedactionConfig = list(
-      PiiEntityTypes = list(
-        "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL"
-      ),
-      MaskMode = "MASK"|"REPLACE_WITH_PII_ENTITY_TYPE",
-      MaskCharacter = "string"
-    ),
-    LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-    DataAccessRoleArn = "string",
-    Mode = "ONLY_REDACTION"|"ONLY_OFFSETS"
-  )
-)
-}
-}
 \description{
-Gets the properties associated with a PII entities detection job. For
-example, you can use this operation to get the job status.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_pii_entities_detection_job(
-  JobId = "string"
-)
-}
-}
+Gets the properties associated with a PII entities detection job. For example, you can use this operation to get the job status.
 
+See \url{https://paws-r.github.io/docs/comprehend/describe_pii_entities_detection_job.html} for full documentation.
+}
 \keyword{internal}

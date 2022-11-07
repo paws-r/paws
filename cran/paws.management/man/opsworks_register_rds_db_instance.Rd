@@ -4,8 +4,12 @@
 \alias{opsworks_register_rds_db_instance}
 \title{Registers an Amazon RDS instance with a stack}
 \usage{
-opsworks_register_rds_db_instance(StackId, RdsDbInstanceArn, DbUser,
-  DbPassword)
+opsworks_register_rds_db_instance(
+  StackId,
+  RdsDbInstanceArn,
+  DbUser,
+  DbPassword
+)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -16,25 +20,9 @@ opsworks_register_rds_db_instance(StackId, RdsDbInstanceArn, DbUser,
 
 \item{DbPassword}{[required] The database password.}
 }
-\value{
-An empty list.
-}
 \description{
 Registers an Amazon RDS instance with a stack.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/register_rds_db_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_rds_db_instance(
-  StackId = "string",
-  RdsDbInstanceArn = "string",
-  DbUser = "string",
-  DbPassword = "string"
-)
-}
-}
-
 \keyword{internal}

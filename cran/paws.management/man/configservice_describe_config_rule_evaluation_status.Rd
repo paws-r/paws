@@ -2,15 +2,18 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_describe_config_rule_evaluation_status}
 \alias{configservice_describe_config_rule_evaluation_status}
-\title{Returns status information for each of your AWS managed Config rules}
+\title{Returns status information for each of your Config managed rules}
 \usage{
-configservice_describe_config_rule_evaluation_status(ConfigRuleNames,
-  NextToken, Limit)
+configservice_describe_config_rule_evaluation_status(
+  ConfigRuleNames = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
-\item{ConfigRuleNames}{The name of the AWS managed Config rules for which you want status
-information. If you do not specify any names, AWS Config returns status
-information for all AWS managed Config rules that you use.}
+\item{ConfigRuleNames}{The name of the Config managed rules for which you want status
+information. If you do not specify any names, Config returns status
+information for all Config managed rules that you use.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
@@ -20,58 +23,12 @@ the next page of results in a paginated response.}
 This parameter is required if the rule limit for your account is more
 than the default of 150 rules.
 
-For information about requesting a rule limit increase, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{AWS Config Limits}
-in the \emph{AWS General Reference Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ConfigRulesEvaluationStatus = list(
-    list(
-      ConfigRuleName = "string",
-      ConfigRuleArn = "string",
-      ConfigRuleId = "string",
-      LastSuccessfulInvocationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastFailedInvocationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastSuccessfulEvaluationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastFailedEvaluationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FirstActivatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastDeactivatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastErrorCode = "string",
-      LastErrorMessage = "string",
-      FirstEvaluationStarted = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
+For information about requesting a rule limit increase, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{Config Limits}
+in the \emph{Amazon Web Services General Reference Guide}.}
 }
 \description{
-Returns status information for each of your AWS managed Config rules.
-The status includes information such as the last time AWS Config invoked
-the rule, the last time AWS Config failed to invoke the rule, and the
-related error for the last failure.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_config_rule_evaluation_status(
-  ConfigRuleNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Returns status information for each of your Config managed rules. The status includes information such as the last time Config invoked the rule, the last time Config failed to invoke the rule, and the related error for the last failure.
 
+See \url{https://paws-r.github.io/docs/configservice/describe_config_rule_evaluation_status.html} for full documentation.
+}
 \keyword{internal}

@@ -5,20 +5,15 @@
 \title{Returns the name of all Elasticsearch domains owned by the current
 user's account}
 \usage{
-elasticsearchservice_list_domain_names()
+elasticsearchservice_list_domain_names(EngineType = NULL)
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainNames = list(
-    list(
-      DomainName = "string"
-    )
-  )
-)
-}
+\arguments{
+\item{EngineType}{Optional parameter to filter the output by domain engine type.
+Acceptable values are 'Elasticsearch' and 'OpenSearch'.}
 }
 \description{
-Returns the name of all Elasticsearch domains owned by the current
-user's account.
+Returns the name of all Elasticsearch domains owned by the current user's account.
+
+See \url{https://paws-r.github.io/docs/elasticsearchservice/list_domain_names.html} for full documentation.
 }
 \keyword{internal}

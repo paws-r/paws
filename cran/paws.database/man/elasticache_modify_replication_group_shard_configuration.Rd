@@ -3,12 +3,17 @@
 \name{elasticache_modify_replication_group_shard_configuration}
 \alias{elasticache_modify_replication_group_shard_configuration}
 \title{Modifies a replication group's shards (node groups) by allowing you to
-add shards, remove shards, or rebalance the keyspaces among exisiting
+add shards, remove shards, or rebalance the keyspaces among existing
 shards}
 \usage{
 elasticache_modify_replication_group_shard_configuration(
-  ReplicationGroupId, NodeGroupCount, ApplyImmediately,
-  ReshardingConfiguration, NodeGroupsToRemove, NodeGroupsToRetain)
+  ReplicationGroupId,
+  NodeGroupCount,
+  ApplyImmediately,
+  ReshardingConfiguration = NULL,
+  NodeGroupsToRemove = NULL,
+  NodeGroupsToRetain = NULL
+)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The name of the Redis (cluster mode enabled) cluster (replication group)
@@ -47,120 +52,9 @@ groups (shards), then either \code{NodeGroupsToRemove} or
 ElastiCache for Redis will attempt to remove all node groups except
 those listed by \code{NodeGroupsToRetain} from the cluster.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReplicationGroup = list(
-    ReplicationGroupId = "string",
-    Description = "string",
-    GlobalReplicationGroupInfo = list(
-      GlobalReplicationGroupId = "string",
-      GlobalReplicationGroupMemberRole = "string"
-    ),
-    Status = "string",
-    PendingModifiedValues = list(
-      PrimaryClusterId = "string",
-      AutomaticFailoverStatus = "enabled"|"disabled",
-      Resharding = list(
-        SlotMigration = list(
-          ProgressPercentage = 123.0
-        )
-      ),
-      AuthTokenStatus = "SETTING"|"ROTATING",
-      UserGroups = list(
-        UserGroupIdsToAdd = list(
-          "string"
-        ),
-        UserGroupIdsToRemove = list(
-          "string"
-        )
-      )
-    ),
-    MemberClusters = list(
-      "string"
-    ),
-    NodeGroups = list(
-      list(
-        NodeGroupId = "string",
-        Status = "string",
-        PrimaryEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        ReaderEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        Slots = "string",
-        NodeGroupMembers = list(
-          list(
-            CacheClusterId = "string",
-            CacheNodeId = "string",
-            ReadEndpoint = list(
-              Address = "string",
-              Port = 123
-            ),
-            PreferredAvailabilityZone = "string",
-            PreferredOutpostArn = "string",
-            CurrentRole = "string"
-          )
-        )
-      )
-    ),
-    SnapshottingClusterId = "string",
-    AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-    MultiAZ = "enabled"|"disabled",
-    ConfigurationEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    ClusterEnabled = TRUE|FALSE,
-    CacheNodeType = "string",
-    AuthTokenEnabled = TRUE|FALSE,
-    AuthTokenLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    MemberClustersOutpostArns = list(
-      "string"
-    ),
-    KmsKeyId = "string",
-    ARN = "string",
-    UserGroupIds = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Modifies a replication group's shards (node groups) by allowing you to
-add shards, remove shards, or rebalance the keyspaces among exisiting
-shards.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_replication_group_shard_configuration(
-  ReplicationGroupId = "string",
-  NodeGroupCount = 123,
-  ApplyImmediately = TRUE|FALSE,
-  ReshardingConfiguration = list(
-    list(
-      NodeGroupId = "string",
-      PreferredAvailabilityZones = list(
-        "string"
-      )
-    )
-  ),
-  NodeGroupsToRemove = list(
-    "string"
-  ),
-  NodeGroupsToRetain = list(
-    "string"
-  )
-)
-}
-}
+Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among existing shards.
 
+See \url{https://paws-r.github.io/docs/elasticache/modify_replication_group_shard_configuration.html} for full documentation.
+}
 \keyword{internal}

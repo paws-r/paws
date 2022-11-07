@@ -9,20 +9,9 @@ ssm_delete_maintenance_window(WindowId)
 \arguments{
 \item{WindowId}{[required] The ID of the maintenance window to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowId = "string"
-)
-}
-}
 \description{
 Deletes a maintenance window.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_maintenance_window(
-  WindowId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/delete_maintenance_window.html} for full documentation.
+}
 \keyword{internal}

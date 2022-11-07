@@ -5,7 +5,7 @@
 \title{Returns an inventory configuration (identified by the inventory
 configuration ID) from the bucket}
 \usage{
-s3_get_bucket_inventory_configuration(Bucket, Id, ExpectedBucketOwner)
+s3_get_bucket_inventory_configuration(Bucket, Id, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the inventory configuration to
@@ -13,70 +13,13 @@ retrieve.}
 
 \item{Id}{[required] The ID used to identify the inventory configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  InventoryConfiguration = list(
-    Destination = list(
-      S3BucketDestination = list(
-        AccountId = "string",
-        Bucket = "string",
-        Format = "CSV"|"ORC"|"Parquet",
-        Prefix = "string",
-        Encryption = list(
-          SSES3 = list(),
-          SSEKMS = list(
-            KeyId = "string"
-          )
-        )
-      )
-    ),
-    IsEnabled = TRUE|FALSE,
-    Filter = list(
-      Prefix = "string"
-    ),
-    Id = "string",
-    IncludedObjectVersions = "All"|"Current",
-    OptionalFields = list(
-      "Size"|"LastModifiedDate"|"StorageClass"|"ETag"|"IsMultipartUploaded"|"ReplicationStatus"|"EncryptionStatus"|"ObjectLockRetainUntilDate"|"ObjectLockMode"|"ObjectLockLegalHoldStatus"|"IntelligentTieringAccessTier"
-    ),
-    Schedule = list(
-      Frequency = "Daily"|"Weekly"
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns an inventory configuration (identified by the inventory
-configuration ID) from the bucket.
+Returns an inventory configuration (identified by the inventory configuration ID) from the bucket.
 
-To use this operation, you must have permissions to perform the
-\code{s3:GetInventoryConfiguration} action. The bucket owner has this
-permission by default and can grant this permission to others. For more
-information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
-
-For information about the Amazon S3 inventory feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html}{Amazon S3 Inventory}.
-
-The following operations are related to
-\code{\link[=s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration}}:
-\itemize{
-\item \code{\link[=s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration}}
-\item \code{\link[=s3_list_bucket_inventory_configurations]{list_bucket_inventory_configurations}}
-\item \code{\link[=s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration}}
+See \url{https://paws-r.github.io/docs/s3/get_bucket_inventory_configuration.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_inventory_configuration(
-  Bucket = "string",
-  Id = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

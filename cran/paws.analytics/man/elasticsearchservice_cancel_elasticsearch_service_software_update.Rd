@@ -4,40 +4,15 @@
 \alias{elasticsearchservice_cancel_elasticsearch_service_software_update}
 \title{Cancels a scheduled service software update for an Amazon ES domain}
 \usage{
-elasticsearchservice_cancel_elasticsearch_service_software_update(
-  DomainName)
+elasticsearchservice_cancel_elasticsearch_service_software_update(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to stop the latest service software
 update on.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceSoftwareOptions = list(
-    CurrentVersion = "string",
-    NewVersion = "string",
-    UpdateAvailable = TRUE|FALSE,
-    Cancellable = TRUE|FALSE,
-    UpdateStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE",
-    Description = "string",
-    AutomatedUpdateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    OptionalDeployment = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Cancels a scheduled service software update for an Amazon ES domain. You
-can only perform this operation before the \code{AutomatedUpdateDate} and
-when the \code{UpdateStatus} is in the \code{PENDING_UPDATE} state.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_elasticsearch_service_software_update(
-  DomainName = "string"
-)
-}
-}
+Cancels a scheduled service software update for an Amazon ES domain. You can only perform this operation before the \code{AutomatedUpdateDate} and when the \code{UpdateStatus} is in the \code{PENDING_UPDATE} state.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/cancel_elasticsearch_service_software_update.html} for full documentation.
+}
 \keyword{internal}

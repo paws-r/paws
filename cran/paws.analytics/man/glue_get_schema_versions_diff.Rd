@@ -5,8 +5,12 @@
 \title{Fetches the schema version difference in the specified difference type
 between two stored schema versions in the Schema Registry}
 \usage{
-glue_get_schema_versions_diff(SchemaId, FirstSchemaVersionNumber,
-  SecondSchemaVersionNumber, SchemaDiffType)
+glue_get_schema_versions_diff(
+  SchemaId,
+  FirstSchemaVersionNumber,
+  SecondSchemaVersionNumber,
+  SchemaDiffType
+)
 }
 \arguments{
 \item{SchemaId}{[required] This is a wrapper structure to contain schema identity fields. The
@@ -24,37 +28,9 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 
 \item{SchemaDiffType}{[required] Refers to \code{SYNTAX_DIFF}, which is the currently supported diff type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Diff = "string"
-)
-}
-}
 \description{
-Fetches the schema version difference in the specified difference type
-between two stored schema versions in the Schema Registry.
+Fetches the schema version difference in the specified difference type between two stored schema versions in the Schema Registry.
 
-This API allows you to compare two schema versions between two schema
-definitions under the same schema.
+See \url{https://paws-r.github.io/docs/glue/get_schema_versions_diff.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_schema_versions_diff(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  ),
-  FirstSchemaVersionNumber = list(
-    LatestVersion = TRUE|FALSE,
-    VersionNumber = 123
-  ),
-  SecondSchemaVersionNumber = list(
-    LatestVersion = TRUE|FALSE,
-    VersionNumber = 123
-  ),
-  SchemaDiffType = "SYNTAX_DIFF"
-)
-}
-}
-
 \keyword{internal}

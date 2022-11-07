@@ -11,27 +11,9 @@ servicecatalog_create_tag_option(Key, Value)
 
 \item{Value}{[required] The TagOption value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagOptionDetail = list(
-    Key = "string",
-    Value = "string",
-    Active = TRUE|FALSE,
-    Id = "string",
-    Owner = "string"
-  )
-)
-}
-}
 \description{
 Creates a TagOption.
-}
-\section{Request syntax}{
-\preformatted{svc$create_tag_option(
-  Key = "string",
-  Value = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/create_tag_option.html} for full documentation.
+}
 \keyword{internal}

@@ -12,32 +12,9 @@ opsworks_assign_instance(InstanceId, LayerIds)
 \item{LayerIds}{[required] The layer ID, which must correspond to a custom layer. You cannot assign
 a registered instance to a built-in layer.}
 }
-\value{
-An empty list.
-}
 \description{
 Assign a registered instance to a layer.
-\itemize{
-\item You can assign registered on-premises instances to any layer type.
-\item You can assign registered Amazon EC2 instances only to custom
-layers.
-\item You cannot use this action with instances that were created with AWS
-OpsWorks Stacks.
-}
 
-\strong{Required Permissions}: To use this action, an AWS Identity and Access
-Management (IAM) user must have a Manage permissions level for the stack
-or an attached policy that explicitly grants permissions. For more
-information on user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/assign_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$assign_instance(
-  InstanceId = "string",
-  LayerIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

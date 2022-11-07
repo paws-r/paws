@@ -10,39 +10,9 @@ cloudfront_create_public_key(PublicKeyConfig)
 \arguments{
 \item{PublicKeyConfig}{[required] A CloudFront public key configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PublicKey = list(
-    Id = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PublicKeyConfig = list(
-      CallerReference = "string",
-      Name = "string",
-      EncodedKey = "string",
-      Comment = "string"
-    )
-  ),
-  Location = "string",
-  ETag = "string"
-)
-}
-}
 \description{
-Uploads a public key to CloudFront that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{signed URLs and signed cookies},
-or with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html}{field-level encryption}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_public_key(
-  PublicKeyConfig = list(
-    CallerReference = "string",
-    Name = "string",
-    EncodedKey = "string",
-    Comment = "string"
-  )
-)
-}
-}
+Uploads a public key to CloudFront that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{signed URLs and signed cookies}, or with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html}{field-level encryption}.
 
+See \url{https://paws-r.github.io/docs/cloudfront/create_public_key.html} for full documentation.
+}
 \keyword{internal}

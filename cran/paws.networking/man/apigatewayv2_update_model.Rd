@@ -4,8 +4,14 @@
 \alias{apigatewayv2_update_model}
 \title{Updates a Model}
 \usage{
-apigatewayv2_update_model(ApiId, ContentType, Description, ModelId,
-  Name, Schema)
+apigatewayv2_update_model(
+  ApiId,
+  ContentType = NULL,
+  Description = NULL,
+  ModelId,
+  Name = NULL,
+  Schema = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -21,29 +27,9 @@ apigatewayv2_update_model(ApiId, ContentType, Description, ModelId,
 \item{Schema}{The schema for the model. For application/json models, this should be
 JSON schema draft 4 model.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContentType = "string",
-  Description = "string",
-  ModelId = "string",
-  Name = "string",
-  Schema = "string"
-)
-}
-}
 \description{
 Updates a Model.
-}
-\section{Request syntax}{
-\preformatted{svc$update_model(
-  ApiId = "string",
-  ContentType = "string",
-  Description = "string",
-  ModelId = "string",
-  Name = "string",
-  Schema = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_model.html} for full documentation.
+}
 \keyword{internal}

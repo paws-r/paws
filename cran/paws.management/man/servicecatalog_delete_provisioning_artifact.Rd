@@ -5,8 +5,11 @@
 \title{Deletes the specified provisioning artifact (also known as a version)
 for the specified product}
 \usage{
-servicecatalog_delete_provisioning_artifact(AcceptLanguage, ProductId,
-  ProvisioningArtifactId)
+servicecatalog_delete_provisioning_artifact(
+  AcceptLanguage = NULL,
+  ProductId,
+  ProvisioningArtifactId
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -20,25 +23,9 @@ servicecatalog_delete_provisioning_artifact(AcceptLanguage, ProductId,
 
 \item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified provisioning artifact (also known as a version)
-for the specified product.
+Deletes the specified provisioning artifact (also known as a version) for the specified product.
 
-You cannot delete a provisioning artifact associated with a product that
-was shared with you. You cannot delete the last provisioning artifact
-for a product, because a product must have at least one provisioning
-artifact.
+See \url{https://paws-r.github.io/docs/servicecatalog/delete_provisioning_artifact.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_provisioning_artifact(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  ProvisioningArtifactId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -11,43 +11,9 @@ efs_describe_lifecycle_configuration(FileSystemId)
 \item{FileSystemId}{[required] The ID of the file system whose \code{LifecycleConfiguration} object you want
 to retrieve (String).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LifecyclePolicies = list(
-    list(
-      TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
-    )
-  )
-)
-}
-}
 \description{
-Returns the current \code{LifecycleConfiguration} object for the specified
-Amazon EFS file system. EFS lifecycle management uses the
-\code{LifecycleConfiguration} object to identify which files to move to the
-EFS Infrequent Access (IA) storage class. For a file system without a
-\code{LifecycleConfiguration} object, the call returns an empty array in the
-response.
+Returns the current \code{LifecycleConfiguration} object for the specified Amazon EFS file system. EFS lifecycle management uses the \code{LifecycleConfiguration} object to identify which files to move to the EFS Infrequent Access (IA) storage class. For a file system without a \code{LifecycleConfiguration} object, the call returns an empty array in the response.
 
-This operation requires permissions for the
-\code{elasticfilesystem:DescribeLifecycleConfiguration} operation.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_lifecycle_configuration(
-  FileSystemId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation describes a file system's LifecycleConfiguration. EFS
-# lifecycle management uses the LifecycleConfiguration object to identify
-# which files to move to the EFS Infrequent Access (IA) storage class.
-svc$describe_lifecycle_configuration(
-  FileSystemId = "fs-01234567"
-)
-}
-
+See \url{https://paws-r.github.io/docs/efs/describe_lifecycle_configuration.html} for full documentation.
 }
 \keyword{internal}

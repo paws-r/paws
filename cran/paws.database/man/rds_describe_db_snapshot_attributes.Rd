@@ -10,44 +10,9 @@ rds_describe_db_snapshot_attributes(DBSnapshotIdentifier)
 \arguments{
 \item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot to describe the attributes for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBSnapshotAttributesResult = list(
-    DBSnapshotIdentifier = "string",
-    DBSnapshotAttributes = list(
-      list(
-        AttributeName = "string",
-        AttributeValues = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of DB snapshot attribute names and values for a manual DB
-snapshot.
+Returns a list of DB snapshot attribute names and values for a manual DB snapshot.
 
-When sharing snapshots with other AWS accounts,
-\code{\link[=rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes}}
-returns the \code{restore} attribute and a list of IDs for the AWS accounts
-that are authorized to copy or restore the manual DB snapshot. If \code{all}
-is included in the list of values for the \code{restore} attribute, then the
-manual DB snapshot is public and can be copied or restored by all AWS
-accounts.
-
-To add or remove access for an AWS account to copy or restore a manual
-DB snapshot, or to make the manual DB snapshot public or private, use
-the \code{\link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute}}
-API action.
+See \url{https://paws-r.github.io/docs/rds/describe_db_snapshot_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_snapshot_attributes(
-  DBSnapshotIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

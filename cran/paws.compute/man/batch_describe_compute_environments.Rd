@@ -4,8 +4,11 @@
 \alias{batch_describe_compute_environments}
 \title{Describes one or more of your compute environments}
 \usage{
-batch_describe_compute_environments(computeEnvironments, maxResults,
-  nextToken)
+batch_describe_compute_environments(
+  computeEnvironments = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{computeEnvironments}{A list of up to 100 compute environment names or full Amazon Resource
@@ -35,90 +38,9 @@ This token should be treated as an opaque identifier that's only used to
 retrieve the next items in a list and not for other programmatic
 purposes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  computeEnvironments = list(
-    list(
-      computeEnvironmentName = "string",
-      computeEnvironmentArn = "string",
-      ecsClusterArn = "string",
-      tags = list(
-        "string"
-      ),
-      type = "MANAGED"|"UNMANAGED",
-      state = "ENABLED"|"DISABLED",
-      status = "CREATING"|"UPDATING"|"DELETING"|"DELETED"|"VALID"|"INVALID",
-      statusReason = "string",
-      computeResources = list(
-        type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
-        allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
-        minvCpus = 123,
-        maxvCpus = 123,
-        desiredvCpus = 123,
-        instanceTypes = list(
-          "string"
-        ),
-        imageId = "string",
-        subnets = list(
-          "string"
-        ),
-        securityGroupIds = list(
-          "string"
-        ),
-        ec2KeyPair = "string",
-        instanceRole = "string",
-        tags = list(
-          "string"
-        ),
-        placementGroup = "string",
-        bidPercentage = 123,
-        spotIamFleetRole = "string",
-        launchTemplate = list(
-          launchTemplateId = "string",
-          launchTemplateName = "string",
-          version = "string"
-        ),
-        ec2Configuration = list(
-          list(
-            imageType = "string",
-            imageIdOverride = "string"
-          )
-        )
-      ),
-      serviceRole = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your compute environments.
 
-If you're using an unmanaged compute environment, you can use the
-\code{DescribeComputeEnvironment} operation to determine the \code{ecsClusterArn}
-that you should launch your Amazon ECS container instances into.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_compute_environments(
-  computeEnvironments = list(
-    "string"
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the P2OnDemand compute environment.
-svc$describe_compute_environments(
-  computeEnvironments = list(
-    "P2OnDemand"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/describe_compute_environments.html} for full documentation.
 }
 \keyword{internal}

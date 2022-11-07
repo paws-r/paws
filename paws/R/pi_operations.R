@@ -15,17 +15,21 @@ NULL
 #'
 #' @usage
 #' pi_describe_dimension_keys(ServiceType, Identifier, StartTime, EndTime,
-#'   Metric, PeriodInSeconds, GroupBy, PartitionBy, Filter, MaxResults,
-#'   NextToken)
+#'   Metric, PeriodInSeconds, GroupBy, AdditionalMetrics, PartitionBy,
+#'   Filter, MaxResults, NextToken)
 #'
-#' @param ServiceType &#91;required&#93; The AWS service for which Performance Insights will return metrics. The
-#' only valid value for *ServiceType* is `RDS`.
-#' @param Identifier &#91;required&#93; An immutable, AWS Region-unique identifier for a data source.
-#' Performance Insights gathers metrics from this data source.
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights will
+#' return metrics. Valid values are as follows:
+#' 
+#' -   `RDS`
+#' 
+#' -   `DOCDB`
+#' @param Identifier &#91;required&#93; An immutable, Amazon Web Services Region-unique identifier for a data
+#' source. Performance Insights gathers metrics from this data source.
 #' 
 #' To use an Amazon RDS instance as a data source, you specify its
 #' `DbiResourceId` value. For example, specify
-#' `db-FAIHNTYBKTGAUSUZQYPDS2GW4A`
+#' `db-FAIHNTYBKTGAUSUZQYPDS2GW4A`.
 #' @param StartTime &#91;required&#93; The date and time specifying the beginning of the requested time series
 #' data. You must specify a `StartTime` within the past 7 days. The value
 #' specified is *inclusive*, which means that data points equal to or
@@ -41,10 +45,10 @@ NULL
 #' 
 #' Valid values for `Metric` are:
 #' 
-#' -   `db.load.avg` - a scaled representation of the number of active
+#' -   `db.load.avg` - A scaled representation of the number of active
 #'     sessions for the database engine.
 #' 
-#' -   `db.sampledload.avg` - the raw number of active sessions for the
+#' -   `db.sampledload.avg` - The raw number of active sessions for the
 #'     database engine.
 #' 
 #' If the number of active sessions is less than an internal Performance
@@ -76,6 +80,11 @@ NULL
 #' returns all dimensions within this group, unless you provide the names
 #' of specific dimensions within this group. You can also request that
 #' Performance Insights return a limited number of values for a dimension.
+#' @param AdditionalMetrics Additional metrics for the top `N` dimension keys. If the specified
+#' dimension group in the `GroupBy` parameter is `db.sql_tokenized`, you
+#' can specify per-SQL metrics to get the values for the top `N` SQL
+#' digests. The response syntax is as follows:
+#' `"AdditionalMetrics" : { "string" : "string" }`.
 #' @param PartitionBy For each dimension specified in `GroupBy`, specify a secondary dimension
 #' to further subdivide the partition keys in the response.
 #' @param Filter One or more filters to apply in the request. Restrictions:
@@ -114,6 +123,9 @@ NULL
 #'         "string"
 #'       ),
 #'       Total = 123.0,
+#'       AdditionalMetrics = list(
+#'         123.0
+#'       ),
 #'       Partitions = list(
 #'         123.0
 #'       )
@@ -126,7 +138,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$describe_dimension_keys(
-#'   ServiceType = "RDS",
+#'   ServiceType = "RDS"|"DOCDB",
 #'   Identifier = "string",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
@@ -142,6 +154,9 @@ NULL
 #'       "string"
 #'     ),
 #'     Limit = 123
+#'   ),
+#'   AdditionalMetrics = list(
+#'     "string"
 #'   ),
 #'   PartitionBy = list(
 #'     Group = "string",
@@ -161,14 +176,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname pi_describe_dimension_keys
-pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTime, Metric, PeriodInSeconds = NULL, GroupBy, PartitionBy = NULL, Filter = NULL, MaxResults = NULL, NextToken = NULL) {
+pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTime, Metric, PeriodInSeconds = NULL, GroupBy, AdditionalMetrics = NULL, PartitionBy = NULL, Filter = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDimensionKeys",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .pi$describe_dimension_keys_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Metric = Metric, PeriodInSeconds = PeriodInSeconds, GroupBy = GroupBy, PartitionBy = PartitionBy, Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .pi$describe_dimension_keys_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Metric = Metric, PeriodInSeconds = PeriodInSeconds, GroupBy = GroupBy, AdditionalMetrics = AdditionalMetrics, PartitionBy = PartitionBy, Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pi$describe_dimension_keys_output()
   config <- get_config()
   svc <- .pi$service(config)
@@ -178,11 +193,166 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 }
 .pi$operations$describe_dimension_keys <- pi_describe_dimension_keys
 
-#' Retrieve Performance Insights metrics for a set of data sources, over a
+#' Get the attributes of the specified dimension group for a DB instance or
+#' data source
+#'
+#' @description
+#' Get the attributes of the specified dimension group for a DB instance or
+#' data source. For example, if you specify a SQL ID,
+#' [`get_dimension_key_details`][pi_get_dimension_key_details] retrieves
+#' the full text of the dimension `db.sql.statement` associated with this
+#' ID. This operation is useful because
+#' [`get_resource_metrics`][pi_get_resource_metrics] and
+#' [`describe_dimension_keys`][pi_describe_dimension_keys] don't support
+#' retrieval of large SQL statement text.
+#'
+#' @usage
+#' pi_get_dimension_key_details(ServiceType, Identifier, Group,
+#'   GroupIdentifier, RequestedDimensions)
+#'
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
+#' data. The only valid value is `RDS`.
+#' @param Identifier &#91;required&#93; The ID for a data source from which to gather dimension data. This ID
+#' must be immutable and unique within an Amazon Web Services Region. When
+#' a DB instance is the data source, specify its `DbiResourceId` value. For
+#' example, specify `db-ABCDEFGHIJKLMNOPQRSTU1VW2X`.
+#' @param Group &#91;required&#93; The name of the dimension group. Performance Insights searches the
+#' specified group for the dimension group ID. The following group name
+#' values are valid:
+#' 
+#' -   `db.query` (Amazon DocumentDB only)
+#' 
+#' -   `db.sql` (Amazon RDS and Aurora only)
+#' @param GroupIdentifier &#91;required&#93; The ID of the dimension group from which to retrieve dimension details.
+#' For dimension group `db.sql`, the group ID is `db.sql.id`. The following
+#' group ID values are valid:
+#' 
+#' -   `db.sql.id` for dimension group `db.sql` (Aurora and RDS only)
+#' 
+#' -   `db.query.id` for dimension group `db.query` (DocumentDB only)
+#' @param RequestedDimensions A list of dimensions to retrieve the detail data for within the given
+#' dimension group. If you don't specify this parameter, Performance
+#' Insights returns all dimension data within the specified dimension
+#' group. Specify dimension names for the following dimension groups:
+#' 
+#' -   `db.sql` - Specify either the full dimension name `db.sql.statement`
+#'     or the short dimension name `statement` (Aurora and RDS only).
+#' 
+#' -   `db.query` - Specify either the full dimension name
+#'     `db.query.statement` or the short dimension name `statement`
+#'     (DocumentDB only).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Dimensions = list(
+#'     list(
+#'       Value = "string",
+#'       Dimension = "string",
+#'       Status = "AVAILABLE"|"PROCESSING"|"UNAVAILABLE"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_dimension_key_details(
+#'   ServiceType = "RDS"|"DOCDB",
+#'   Identifier = "string",
+#'   Group = "string",
+#'   GroupIdentifier = "string",
+#'   RequestedDimensions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pi_get_dimension_key_details
+pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupIdentifier, RequestedDimensions = NULL) {
+  op <- new_operation(
+    name = "GetDimensionKeyDetails",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$get_dimension_key_details_input(ServiceType = ServiceType, Identifier = Identifier, Group = Group, GroupIdentifier = GroupIdentifier, RequestedDimensions = RequestedDimensions)
+  output <- .pi$get_dimension_key_details_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$get_dimension_key_details <- pi_get_dimension_key_details
+
+#' Retrieve the metadata for different features
+#'
+#' @description
+#' Retrieve the metadata for different features. For example, the metadata
+#' might indicate that a feature is turned on or off on a specific DB
+#' instance.
+#'
+#' @usage
+#' pi_get_resource_metadata(ServiceType, Identifier)
+#'
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
+#' metrics.
+#' @param Identifier &#91;required&#93; An immutable identifier for a data source that is unique for an Amazon
+#' Web Services Region. Performance Insights gathers metrics from this data
+#' source. To use a DB instance as a data source, specify its
+#' `DbiResourceId` value. For example, specify
+#' `db-ABCDEFGHIJKLMNOPQRSTU1VW2X`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Identifier = "string",
+#'   Features = list(
+#'     list(
+#'       Status = "ENABLED"|"DISABLED"|"UNSUPPORTED"|"ENABLED_PENDING_REBOOT"|"DISABLED_PENDING_REBOOT"|"UNKNOWN"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_metadata(
+#'   ServiceType = "RDS"|"DOCDB",
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pi_get_resource_metadata
+pi_get_resource_metadata <- function(ServiceType, Identifier) {
+  op <- new_operation(
+    name = "GetResourceMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$get_resource_metadata_input(ServiceType = ServiceType, Identifier = Identifier)
+  output <- .pi$get_resource_metadata_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$get_resource_metadata <- pi_get_resource_metadata
+
+#' Retrieve Performance Insights metrics for a set of data sources over a
 #' time period
 #'
 #' @description
-#' Retrieve Performance Insights metrics for a set of data sources, over a
+#' Retrieve Performance Insights metrics for a set of data sources over a
 #' time period. You can provide specific dimension groups and dimensions,
 #' and provide aggregation and filtering criteria for each group.
 #' 
@@ -193,25 +363,34 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' pi_get_resource_metrics(ServiceType, Identifier, MetricQueries,
 #'   StartTime, EndTime, PeriodInSeconds, MaxResults, NextToken)
 #'
-#' @param ServiceType &#91;required&#93; The AWS service for which Performance Insights returns metrics. The only
-#' valid value for *ServiceType* is `RDS`.
-#' @param Identifier &#91;required&#93; An immutable, AWS Region-unique identifier for a data source.
-#' Performance Insights gathers metrics from this data source.
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
+#' metrics. Valid values are as follows:
+#' 
+#' -   `RDS`
+#' 
+#' -   `DOCDB`
+#' @param Identifier &#91;required&#93; An immutable identifier for a data source that is unique for an Amazon
+#' Web Services Region. Performance Insights gathers metrics from this data
+#' source. In the console, the identifier is shown as *ResourceID*. When
+#' you call `DescribeDBInstances`, the identifier is returned as
+#' `DbiResourceId`.
 #' 
 #' To use a DB instance as a data source, specify its `DbiResourceId`
-#' value. For example, specify `db-FAIHNTYBKTGAUSUZQYPDS2GW4A`.
+#' value. For example, specify `db-ABCDEFGHIJKLMNOPQRSTU1VW2X`.
 #' @param MetricQueries &#91;required&#93; An array of one or more queries to perform. Each query must specify a
 #' Performance Insights metric, and can optionally specify aggregation and
 #' filtering criteria.
 #' @param StartTime &#91;required&#93; The date and time specifying the beginning of the requested time series
-#' data. You can't specify a `StartTime` that's earlier than 7 days ago.
-#' The value specified is *inclusive* - data points equal to or greater
-#' than `StartTime` will be returned.
+#' query range. You can't specify a `StartTime` that is earlier than 7 days
+#' ago. By default, Performance Insights has 7 days of retention, but you
+#' can extend this range up to 2 years. The value specified is *inclusive*.
+#' Thus, the command returns data points equal to or greater than
+#' `StartTime`.
 #' 
 #' The value for `StartTime` must be earlier than the value for `EndTime`.
-#' @param EndTime &#91;required&#93; The date and time specifying the end of the requested time series data.
-#' The value specified is *exclusive* - data points less than (but not
-#' equal to) `EndTime` will be returned.
+#' @param EndTime &#91;required&#93; The date and time specifying the end of the requested time series query
+#' range. The value specified is *exclusive*. Thus, the command returns
+#' data points less than (but not equal to) `EndTime`.
 #' 
 #' The value for `EndTime` must be later than the value for `StartTime`.
 #' @param PeriodInSeconds The granularity, in seconds, of the data points returned from
@@ -274,7 +453,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' @section Request syntax:
 #' ```
 #' svc$get_resource_metrics(
-#'   ServiceType = "RDS",
+#'   ServiceType = "RDS"|"DOCDB",
 #'   Identifier = "string",
 #'   MetricQueries = list(
 #'     list(
@@ -322,3 +501,171 @@ pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, Star
   return(response)
 }
 .pi$operations$get_resource_metrics <- pi_get_resource_metrics
+
+#' Retrieve the dimensions that can be queried for each specified metric
+#' type on a specified DB instance
+#'
+#' @description
+#' Retrieve the dimensions that can be queried for each specified metric
+#' type on a specified DB instance.
+#'
+#' @usage
+#' pi_list_available_resource_dimensions(ServiceType, Identifier, Metrics,
+#'   MaxResults, NextToken)
+#'
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
+#' metrics.
+#' @param Identifier &#91;required&#93; An immutable identifier for a data source that is unique within an
+#' Amazon Web Services Region. Performance Insights gathers metrics from
+#' this data source. To use an Amazon RDS DB instance as a data source,
+#' specify its `DbiResourceId` value. For example, specify
+#' `db-ABCDEFGHIJKLMNOPQRSTU1VWZ`.
+#' @param Metrics &#91;required&#93; The types of metrics for which to retrieve dimensions. Valid values
+#' include `db.load`.
+#' @param MaxResults The maximum number of items to return in the response. If more items
+#' exist than the specified `MaxRecords` value, a pagination token is
+#' included in the response so that the remaining results can be retrieved.
+#' @param NextToken An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' token, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MetricDimensions = list(
+#'     list(
+#'       Metric = "string",
+#'       Groups = list(
+#'         list(
+#'           Group = "string",
+#'           Dimensions = list(
+#'             list(
+#'               Identifier = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_available_resource_dimensions(
+#'   ServiceType = "RDS"|"DOCDB",
+#'   Identifier = "string",
+#'   Metrics = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pi_list_available_resource_dimensions
+pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metrics, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAvailableResourceDimensions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$list_available_resource_dimensions_input(ServiceType = ServiceType, Identifier = Identifier, Metrics = Metrics, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .pi$list_available_resource_dimensions_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$list_available_resource_dimensions <- pi_list_available_resource_dimensions
+
+#' Retrieve metrics of the specified types that can be queried for a
+#' specified DB instance
+#'
+#' @description
+#' Retrieve metrics of the specified types that can be queried for a
+#' specified DB instance.
+#'
+#' @usage
+#' pi_list_available_resource_metrics(ServiceType, Identifier, MetricTypes,
+#'   NextToken, MaxResults)
+#'
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
+#' metrics.
+#' @param Identifier &#91;required&#93; An immutable identifier for a data source that is unique within an
+#' Amazon Web Services Region. Performance Insights gathers metrics from
+#' this data source. To use an Amazon RDS DB instance as a data source,
+#' specify its `DbiResourceId` value. For example, specify
+#' `db-ABCDEFGHIJKLMNOPQRSTU1VWZ`.
+#' @param MetricTypes &#91;required&#93; The types of metrics to return in the response. Valid values in the
+#' array include the following:
+#' 
+#' -   `os` (OS counter metrics) - All engines
+#' 
+#' -   `db` (DB load metrics) - All engines except for Amazon DocumentDB
+#' 
+#' -   `db.sql.stats` (per-SQL metrics) - All engines except for Amazon
+#'     DocumentDB
+#' 
+#' -   `db.sql_tokenized.stats` (per-SQL digest metrics) - All engines
+#'     except for Amazon DocumentDB
+#' @param NextToken An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' token, up to the value specified by `MaxRecords`.
+#' @param MaxResults The maximum number of items to return. If the `MaxRecords` value is less
+#' than the number of existing items, the response includes a pagination
+#' token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metrics = list(
+#'     list(
+#'       Metric = "string",
+#'       Description = "string",
+#'       Unit = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_available_resource_metrics(
+#'   ServiceType = "RDS"|"DOCDB",
+#'   Identifier = "string",
+#'   MetricTypes = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pi_list_available_resource_metrics
+pi_list_available_resource_metrics <- function(ServiceType, Identifier, MetricTypes, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAvailableResourceMetrics",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$list_available_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricTypes = MetricTypes, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pi$list_available_resource_metrics_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$list_available_resource_metrics <- pi_list_available_resource_metrics

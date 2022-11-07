@@ -4,7 +4,7 @@
 \alias{appmesh_list_tags_for_resource}
 \title{List the tags for an App Mesh resource}
 \usage{
-appmesh_list_tags_for_resource(limit, nextToken, resourceArn)
+appmesh_list_tags_for_resource(limit = NULL, nextToken = NULL, resourceArn)
 }
 \arguments{
 \item{limit}{The maximum number of tag results returned by
@@ -29,28 +29,9 @@ the \code{nextToken} value.}
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource to list the
 tags for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 \description{
 List the tags for an App Mesh resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  limit = 123,
-  nextToken = "string",
-  resourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appmesh/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

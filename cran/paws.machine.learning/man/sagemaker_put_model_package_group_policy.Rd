@@ -4,31 +4,16 @@
 \alias{sagemaker_put_model_package_group_policy}
 \title{Adds a resouce policy to control access to a model group}
 \usage{
-sagemaker_put_model_package_group_policy(ModelPackageGroupName,
-  ResourcePolicy)
+sagemaker_put_model_package_group_policy(ModelPackageGroupName, ResourcePolicy)
 }
 \arguments{
 \item{ModelPackageGroupName}{[required] The name of the model group to add a resource policy to.}
 
 \item{ResourcePolicy}{[required] The resource policy for the model group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelPackageGroupArn = "string"
-)
-}
-}
 \description{
-Adds a resouce policy to control access to a model group. For
-information about resoure policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html}{Identity-based policies and resource-based policies}
-in the \emph{AWS Identity and Access Management User Guide.}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_model_package_group_policy(
-  ModelPackageGroupName = "string",
-  ResourcePolicy = "string"
-)
-}
-}
+Adds a resouce policy to control access to a model group. For information about resoure policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html}{Identity-based policies and resource-based policies} in the \emph{Amazon Web Services Identity and Access Management User Guide.}.
 
+See \url{https://paws-r.github.io/docs/sagemaker/put_model_package_group_policy.html} for full documentation.
+}
 \keyword{internal}

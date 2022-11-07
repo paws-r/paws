@@ -11,19 +11,9 @@ worklink_disassociate_domain(FleetArn, DomainName)
 
 \item{DomainName}{[required] The name of the domain.}
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates a domain from Amazon WorkLink. End users lose the ability
-to access the domain with Amazon WorkLink.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_domain(
-  FleetArn = "string",
-  DomainName = "string"
-)
-}
-}
+Disassociates a domain from Amazon WorkLink. End users lose the ability to access the domain with Amazon WorkLink.
 
+See \url{https://paws-r.github.io/docs/worklink/disassociate_domain.html} for full documentation.
+}
 \keyword{internal}

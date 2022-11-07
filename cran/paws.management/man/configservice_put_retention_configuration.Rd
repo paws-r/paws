@@ -3,41 +3,19 @@
 \name{configservice_put_retention_configuration}
 \alias{configservice_put_retention_configuration}
 \title{Creates and updates the retention configuration with details about
-retention period (number of days) that AWS Config stores your historical
+retention period (number of days) that Config stores your historical
 information}
 \usage{
 configservice_put_retention_configuration(RetentionPeriodInDays)
 }
 \arguments{
-\item{RetentionPeriodInDays}{[required] Number of days AWS Config stores your historical information.
+\item{RetentionPeriodInDays}{[required] Number of days Config stores your historical information.
 
 Currently, only applicable to the configuration item history.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RetentionConfiguration = list(
-    Name = "string",
-    RetentionPeriodInDays = 123
-  )
-)
-}
-}
 \description{
-Creates and updates the retention configuration with details about
-retention period (number of days) that AWS Config stores your historical
-information. The API creates the \code{RetentionConfiguration} object and
-names the object as \strong{default}. When you have a
-\code{RetentionConfiguration} object named \strong{default}, calling the API
-modifies the default object.
+Creates and updates the retention configuration with details about retention period (number of days) that Config stores your historical information. The API creates the \code{RetentionConfiguration} object and names the object as \strong{default}. When you have a \code{RetentionConfiguration} object named \strong{default}, calling the API modifies the default object.
 
-Currently, AWS Config supports only one retention configuration per
-region in your account.
+See \url{https://paws-r.github.io/docs/configservice/put_retention_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_retention_configuration(
-  RetentionPeriodInDays = 123
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{sagemaker_update_pipeline_execution}
 \title{Updates a pipeline execution}
 \usage{
-sagemaker_update_pipeline_execution(PipelineExecutionArn,
-  PipelineExecutionDescription, PipelineExecutionDisplayName)
+sagemaker_update_pipeline_execution(
+  PipelineExecutionArn,
+  PipelineExecutionDescription = NULL,
+  PipelineExecutionDisplayName = NULL,
+  ParallelismConfiguration = NULL
+)
 }
 \arguments{
 \item{PipelineExecutionArn}{[required] The Amazon Resource Name (ARN) of the pipeline execution.}
@@ -13,23 +17,13 @@ sagemaker_update_pipeline_execution(PipelineExecutionArn,
 \item{PipelineExecutionDescription}{The description of the pipeline execution.}
 
 \item{PipelineExecutionDisplayName}{The display name of the pipeline execution.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineExecutionArn = "string"
-)
-}
+
+\item{ParallelismConfiguration}{This configuration, if specified, overrides the parallelism
+configuration of the parent pipeline for this specific run.}
 }
 \description{
 Updates a pipeline execution.
-}
-\section{Request syntax}{
-\preformatted{svc$update_pipeline_execution(
-  PipelineExecutionArn = "string",
-  PipelineExecutionDescription = "string",
-  PipelineExecutionDisplayName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_pipeline_execution.html} for full documentation.
+}
 \keyword{internal}

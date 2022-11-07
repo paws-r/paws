@@ -9,26 +9,9 @@ cloudfront_get_public_key_config(Id)
 \arguments{
 \item{Id}{[required] The identifier of the public key whose configuration you are getting.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PublicKeyConfig = list(
-    CallerReference = "string",
-    Name = "string",
-    EncodedKey = "string",
-    Comment = "string"
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Gets a public key configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$get_public_key_config(
-  Id = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/get_public_key_config.html} for full documentation.
+}
 \keyword{internal}

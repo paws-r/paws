@@ -5,8 +5,13 @@
 \title{Describes your Elastic IP addresses that are being moved to the EC2-VPC
 platform, or that are being restored to the EC2-Classic platform}
 \usage{
-ec2_describe_moving_addresses(Filters, DryRun, MaxResults, NextToken,
-  PublicIps)
+ec2_describe_moving_addresses(
+  Filters = NULL,
+  DryRun = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  PublicIps = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -32,49 +37,9 @@ Default: If no value is provided, the default is 1000.}
 
 \item{PublicIps}{One or more Elastic IP addresses.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MovingAddressStatuses = list(
-    list(
-      MoveStatus = "movingToVpc"|"restoringToClassic",
-      PublicIp = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes your Elastic IP addresses that are being moved to the EC2-VPC
-platform, or that are being restored to the EC2-Classic platform. This
-request does not return information about any other Elastic IP addresses
-in your account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_moving_addresses(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string",
-  PublicIps = list(
-    "string"
-  )
-)
-}
-}
+Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform. This request does not return information about any other Elastic IP addresses in your account.
 
-\examples{
-\dontrun{
-# This example describes all of your moving Elastic IP addresses.
-svc$describe_moving_addresses()
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_moving_addresses.html} for full documentation.
 }
 \keyword{internal}

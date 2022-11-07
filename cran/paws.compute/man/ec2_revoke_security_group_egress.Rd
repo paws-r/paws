@@ -2,12 +2,21 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_revoke_security_group_egress}
 \alias{ec2_revoke_security_group_egress}
-\title{[VPC only] Removes the specified egress rules from a security
-group for EC2-VPC}
+\title{[VPC only] Removes the specified outbound (egress) rules from a
+security group for EC2-VPC}
 \usage{
-ec2_revoke_security_group_egress(DryRun, GroupId, IpPermissions, CidrIp,
-  FromPort, IpProtocol, ToPort, SourceSecurityGroupName,
-  SourceSecurityGroupOwnerId)
+ec2_revoke_security_group_egress(
+  DryRun = NULL,
+  GroupId,
+  IpPermissions = NULL,
+  SecurityGroupRuleIds = NULL,
+  CidrIp = NULL,
+  FromPort = NULL,
+  IpProtocol = NULL,
+  ToPort = NULL,
+  SourceSecurityGroupName = NULL,
+  SourceSecurityGroupOwnerId = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -19,6 +28,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{IpPermissions}{The sets of IP permissions. You can't specify a destination security
 group and a CIDR IP address range in the same set of permissions.}
+
+\item{SecurityGroupRuleIds}{The IDs of the security group rules.}
 
 \item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}
 
@@ -35,120 +46,9 @@ security group.}
 \item{SourceSecurityGroupOwnerId}{Not supported. Use a set of IP permissions to specify a destination
 security group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE,
-  UnknownIpPermissions = list(
-    list(
-      FromPort = 123,
-      IpProtocol = "string",
-      IpRanges = list(
-        list(
-          CidrIp = "string",
-          Description = "string"
-        )
-      ),
-      Ipv6Ranges = list(
-        list(
-          CidrIpv6 = "string",
-          Description = "string"
-        )
-      ),
-      PrefixListIds = list(
-        list(
-          Description = "string",
-          PrefixListId = "string"
-        )
-      ),
-      ToPort = 123,
-      UserIdGroupPairs = list(
-        list(
-          Description = "string",
-          GroupId = "string",
-          GroupName = "string",
-          PeeringStatus = "string",
-          UserId = "string",
-          VpcId = "string",
-          VpcPeeringConnectionId = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-[VPC only] Removes the specified egress rules from a security group
-for EC2-VPC. This action does not apply to security groups for use in
-EC2-Classic. To remove a rule, the values that you specify (for example,
-ports) must match the existing rule's values exactly.
+[VPC only] Removes the specified outbound (egress) rules from a security group for EC2-VPC. This action does not apply to security groups for use in EC2-Classic.
 
-[Default VPC] If the values you specify do not match the existing
-rule's values, no error is returned, and the output describes the
-security group rules that were not revoked.
-
-AWS recommends that you use
-\code{\link[=ec2_describe_security_groups]{describe_security_groups}} to verify
-that the rule has been removed.
-
-Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or
-source security group. For the TCP and UDP protocols, you must also
-specify the destination port or range of ports. For the ICMP protocol,
-you must also specify the ICMP type and code. If the security group rule
-has a description, you do not have to specify the description to revoke
-the rule.
-
-Rule changes are propagated to instances within the security group as
-quickly as possible. However, a small delay might occur.
+See \url{https://paws-r.github.io/docs/ec2/revoke_security_group_egress.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$revoke_security_group_egress(
-  DryRun = TRUE|FALSE,
-  GroupId = "string",
-  IpPermissions = list(
-    list(
-      FromPort = 123,
-      IpProtocol = "string",
-      IpRanges = list(
-        list(
-          CidrIp = "string",
-          Description = "string"
-        )
-      ),
-      Ipv6Ranges = list(
-        list(
-          CidrIpv6 = "string",
-          Description = "string"
-        )
-      ),
-      PrefixListIds = list(
-        list(
-          Description = "string",
-          PrefixListId = "string"
-        )
-      ),
-      ToPort = 123,
-      UserIdGroupPairs = list(
-        list(
-          Description = "string",
-          GroupId = "string",
-          GroupName = "string",
-          PeeringStatus = "string",
-          UserId = "string",
-          VpcId = "string",
-          VpcPeeringConnectionId = "string"
-        )
-      )
-    )
-  ),
-  CidrIp = "string",
-  FromPort = 123,
-  IpProtocol = "string",
-  ToPort = 123,
-  SourceSecurityGroupName = "string",
-  SourceSecurityGroupOwnerId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -11,23 +11,9 @@ opsworkscm_delete_backup(BackupId)
 list of backup IDs. Backup IDs are in the format
 \code{ServerName-yyyyMMddHHmmssSSS}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a backup. You can delete both manual and automated backups. This
-operation is asynchronous.
+Deletes a backup. You can delete both manual and automated backups. This operation is asynchronous.
 
-An \code{InvalidStateException} is thrown when a backup deletion is already
-in progress. A \code{ResourceNotFoundException} is thrown when the backup
-does not exist. A \code{ValidationException} is thrown when parameters of the
-request are not valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/delete_backup.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_backup(
-  BackupId = "string"
-)
-}
-}
-
 \keyword{internal}

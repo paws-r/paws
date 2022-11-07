@@ -9,43 +9,9 @@ rds_delete_global_cluster(GlobalClusterIdentifier)
 \arguments{
 \item{GlobalClusterIdentifier}{[required] The cluster identifier of the global database cluster being deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalCluster = list(
-    GlobalClusterIdentifier = "string",
-    GlobalClusterResourceId = "string",
-    GlobalClusterArn = "string",
-    Status = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    DatabaseName = "string",
-    StorageEncrypted = TRUE|FALSE,
-    DeletionProtection = TRUE|FALSE,
-    GlobalClusterMembers = list(
-      list(
-        DBClusterArn = "string",
-        Readers = list(
-          "string"
-        ),
-        IsWriter = TRUE|FALSE,
-        GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Deletes a global database cluster. The primary and secondary clusters
-must already be detached or destroyed first.
+Deletes a global database cluster. The primary and secondary clusters must already be detached or destroyed first.
 
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/delete_global_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_global_cluster(
-  GlobalClusterIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

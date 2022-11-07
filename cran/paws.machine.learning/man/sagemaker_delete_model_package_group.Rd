@@ -9,17 +9,9 @@ sagemaker_delete_model_package_group(ModelPackageGroupName)
 \arguments{
 \item{ModelPackageGroupName}{[required] The name of the model group to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified model group.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_model_package_group(
-  ModelPackageGroupName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_model_package_group.html} for full documentation.
+}
 \keyword{internal}

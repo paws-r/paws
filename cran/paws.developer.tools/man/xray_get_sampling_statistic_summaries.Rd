@@ -5,37 +5,14 @@
 \title{Retrieves information about recent sampling results for all sampling
 rules}
 \usage{
-xray_get_sampling_statistic_summaries(NextToken)
+xray_get_sampling_statistic_summaries(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SamplingStatisticSummaries = list(
-    list(
-      RuleName = "string",
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      RequestCount = 123,
-      BorrowCount = 123,
-      SampledCount = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves information about recent sampling results for all sampling
-rules.
-}
-\section{Request syntax}{
-\preformatted{svc$get_sampling_statistic_summaries(
-  NextToken = "string"
-)
-}
-}
+Retrieves information about recent sampling results for all sampling rules.
 
+See \url{https://paws-r.github.io/docs/xray/get_sampling_statistic_summaries.html} for full documentation.
+}
 \keyword{internal}

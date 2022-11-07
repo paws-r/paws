@@ -12,34 +12,9 @@ sqs_delete_queue(QueueUrl)
 
 Queue URLs and names are case-sensitive.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the queue specified by the \code{QueueUrl}, regardless of the queue's
-contents.
+Deletes the queue specified by the \code{QueueUrl}, regardless of the queue's contents.
 
-Be careful with the \code{\link[=sqs_delete_queue]{delete_queue}} action: When you
-delete a queue, any messages in the queue are no longer available.
-
-When you delete a queue, the deletion process takes up to 60 seconds.
-Requests you send involving that queue during the 60 seconds might
-succeed. For example, a \code{\link[=sqs_send_message]{send_message}} request might
-succeed, but after 60 seconds the queue and the message you sent no
-longer exist.
-
-When you delete a queue, you must wait at least 60 seconds before
-creating a queue with the same name.
-
-Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+See \url{https://paws-r.github.io/docs/sqs/delete_queue.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_queue(
-  QueueUrl = "string"
-)
-}
-}
-
 \keyword{internal}

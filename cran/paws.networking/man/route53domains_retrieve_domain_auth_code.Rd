@@ -9,21 +9,9 @@ route53domains_retrieve_domain_auth_code(DomainName)
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to get an authorization code for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AuthCode = "string"
-)
-}
-}
 \description{
-This operation returns the AuthCode for the domain. To transfer a domain
-to another registrar, you provide this value to the new registrar.
-}
-\section{Request syntax}{
-\preformatted{svc$retrieve_domain_auth_code(
-  DomainName = "string"
-)
-}
-}
+This operation returns the AuthCode for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.
 
+See \url{https://paws-r.github.io/docs/route53domains/retrieve_domain_auth_code.html} for full documentation.
+}
 \keyword{internal}

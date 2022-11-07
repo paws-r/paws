@@ -4,8 +4,11 @@
 \alias{apigatewayv2_delete_route_request_parameter}
 \title{Deletes a route request parameter}
 \usage{
-apigatewayv2_delete_route_request_parameter(ApiId, RequestParameterKey,
-  RouteId)
+apigatewayv2_delete_route_request_parameter(
+  ApiId,
+  RequestParameterKey,
+  RouteId
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -14,19 +17,9 @@ apigatewayv2_delete_route_request_parameter(ApiId, RequestParameterKey,
 
 \item{RouteId}{[required] The route ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a route request parameter.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_route_request_parameter(
-  ApiId = "string",
-  RequestParameterKey = "string",
-  RouteId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_route_request_parameter.html} for full documentation.
+}
 \keyword{internal}

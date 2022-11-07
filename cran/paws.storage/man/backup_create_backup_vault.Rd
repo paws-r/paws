@@ -4,14 +4,18 @@
 \alias{backup_create_backup_vault}
 \title{Creates a logical container where backups are stored}
 \usage{
-backup_create_backup_vault(BackupVaultName, BackupVaultTags,
-  EncryptionKeyArn, CreatorRequestId)
+backup_create_backup_vault(
+  BackupVaultName,
+  BackupVaultTags = NULL,
+  EncryptionKeyArn = NULL,
+  CreatorRequestId = NULL
+)
 }
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
+them and the Amazon Web Services Region where they are created. They
+consist of letters, numbers, and hyphens.}
 
 \item{BackupVaultTags}{Metadata that you can assign to help organize the resources that you
 create. Each tag is a key-value pair.}
@@ -21,37 +25,15 @@ example,
 \verb{arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and allows failed requests
-to be retried without the risk of running the operation twice.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupVaultName = "string",
-  BackupVaultArn = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+to be retried without the risk of running the operation twice. This
+parameter is optional.
+
+If used, this parameter must contain 1 to 50 alphanumeric or '-_.'
+characters.}
 }
 \description{
-Creates a logical container where backups are stored. A
-\code{\link[=backup_create_backup_vault]{create_backup_vault}} request includes a
-name, optionally one or more resource tags, an encryption key, and a
-request ID.
+Creates a logical container where backups are stored. A \code{\link[=backup_create_backup_vault]{create_backup_vault}} request includes a name, optionally one or more resource tags, an encryption key, and a request ID.
 
-Sensitive data, such as passport numbers, should not be included the
-name of a backup vault.
+See \url{https://paws-r.github.io/docs/backup/create_backup_vault.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_backup_vault(
-  BackupVaultName = "string",
-  BackupVaultTags = list(
-    "string"
-  ),
-  EncryptionKeyArn = "string",
-  CreatorRequestId = "string"
-)
-}
-}
-
 \keyword{internal}

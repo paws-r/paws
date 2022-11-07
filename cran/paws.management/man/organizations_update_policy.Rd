@@ -4,7 +4,12 @@
 \alias{organizations_update_policy}
 \title{Updates an existing policy with a new name, description, or content}
 \usage{
-organizations_update_policy(PolicyId, Name, Description, Content)
+organizations_update_policy(
+  PolicyId,
+  Name = NULL,
+  Description = NULL,
+  Content = NULL
+)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to update.
@@ -24,61 +29,11 @@ ASCII character range.}
 \item{Content}{If provided, the new content for the policy. The text must be correctly
 formatted JSON that complies with the syntax for the policy's type. For
 more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html}{Service Control Policy Syntax}
-in the \emph{AWS Organizations User Guide.}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Policy = list(
-    PolicySummary = list(
-      Id = "string",
-      Arn = "string",
-      Name = "string",
-      Description = "string",
-      Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
-      AwsManaged = TRUE|FALSE
-    ),
-    Content = "string"
-  )
-)
-}
+in the \emph{Organizations User Guide.}}
 }
 \description{
-Updates an existing policy with a new name, description, or content. If
-you don't supply any parameter, that value remains unchanged. You can't
-change a policy's type.
+Updates an existing policy with a new name, description, or content. If you don't supply any parameter, that value remains unchanged. You can't change a policy's type.
 
-This operation can be called only from the organization's management
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$update_policy(
-  PolicyId = "string",
-  Name = "string",
-  Description = "string",
-  Content = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to rename a policy and give it a new
-# description and new content. The output confirms the new name and
-# description text:/n/n
-svc$update_policy(
-  Description = "This description replaces the original.",
-  Name = "Renamed-Policy",
-  PolicyId = "p-examplepolicyid111"
-)
-
-# The following example shows how to replace the JSON text of the SCP from
-# the preceding example with a new JSON policy text string that allows S3
-# actions instead of EC2 actions:/n/n
-svc$update_policy(
-  Content = "\{ \"Version\": \"2012-10-17\", \"Statement\": \{\"Effect\": \"Allow\", \"A...",
-  PolicyId = "p-examplepolicyid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/update_policy.html} for full documentation.
 }
 \keyword{internal}

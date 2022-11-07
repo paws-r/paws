@@ -4,8 +4,12 @@
 \alias{rds_download_db_log_file_portion}
 \title{Downloads all or a portion of the specified log file, up to 1 MB in size}
 \usage{
-rds_download_db_log_file_portion(DBInstanceIdentifier, LogFileName,
-  Marker, NumberOfLines)
+rds_download_db_log_file_portion(
+  DBInstanceIdentifier,
+  LogFileName,
+  Marker = NULL,
+  NumberOfLines = NULL
+)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The customer-assigned name of the DB instance that contains the log
@@ -45,26 +49,9 @@ Marker value for the next request, continuing until the
 AdditionalDataPending response element returns false.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LogFileData = "string",
-  Marker = "string",
-  AdditionalDataPending = TRUE|FALSE
-)
-}
-}
 \description{
-Downloads all or a portion of the specified log file, up to 1 MB in
-size.
-}
-\section{Request syntax}{
-\preformatted{svc$download_db_log_file_portion(
-  DBInstanceIdentifier = "string",
-  LogFileName = "string",
-  Marker = "string",
-  NumberOfLines = 123
-)
-}
-}
+Downloads all or a portion of the specified log file, up to 1 MB in size.
 
+See \url{https://paws-r.github.io/docs/rds/download_db_log_file_portion.html} for full documentation.
+}
 \keyword{internal}

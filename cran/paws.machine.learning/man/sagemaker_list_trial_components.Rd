@@ -4,8 +4,17 @@
 \alias{sagemaker_list_trial_components}
 \title{Lists the trial components in your account}
 \usage{
-sagemaker_list_trial_components(ExperimentName, TrialName, SourceArn,
-  CreatedAfter, CreatedBefore, SortBy, SortOrder, MaxResults, NextToken)
+sagemaker_list_trial_components(
+  ExperimentName = NULL,
+  TrialName = NULL,
+  SourceArn = NULL,
+  CreatedAfter = NULL,
+  CreatedBefore = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ExperimentName}{A filter that returns only components that are part of the specified
@@ -36,77 +45,9 @@ value is 10.}
 the full set of components, the call returns a token for getting the
 next set of components.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrialComponentSummaries = list(
-    list(
-      TrialComponentName = "string",
-      TrialComponentArn = "string",
-      DisplayName = "string",
-      TrialComponentSource = list(
-        SourceArn = "string",
-        SourceType = "string"
-      ),
-      Status = list(
-        PrimaryStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-        Message = "string"
-      ),
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatedBy = list(
-        UserProfileArn = "string",
-        UserProfileName = "string",
-        DomainId = "string"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedBy = list(
-        UserProfileArn = "string",
-        UserProfileName = "string",
-        DomainId = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the trial components in your account. You can sort the list by
-trial component name or creation time. You can filter the list to show
-only components that were created in a specific time range. You can also
-filter on one of the following:
-\itemize{
-\item \code{ExperimentName}
-\item \code{SourceArn}
-\item \code{TrialName}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_trial_components(
-  ExperimentName = "string",
-  TrialName = "string",
-  SourceArn = "string",
-  CreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists the trial components in your account. You can sort the list by trial component name or creation time. You can filter the list to show only components that were created in a specific time range. You can also filter on one of the following:
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_trial_components.html} for full documentation.
+}
 \keyword{internal}

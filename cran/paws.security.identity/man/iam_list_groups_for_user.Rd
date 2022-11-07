@@ -4,7 +4,7 @@
 \alias{iam_list_groups_for_user}
 \title{Lists the IAM groups that the specified IAM user belongs to}
 \usage{
-iam_list_groups_for_user(UserName, Marker, MaxItems)
+iam_list_groups_for_user(UserName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{[required] The name of the user to list groups for.
@@ -28,47 +28,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Groups = list(
-    list(
-      Path = "string",
-      GroupName = "string",
-      GroupId = "string",
-      Arn = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
 Lists the IAM groups that the specified IAM user belongs to.
 
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
-}
-\section{Request syntax}{
-\preformatted{svc$list_groups_for_user(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command displays the groups that the IAM user named Bob
-# belongs to.
-svc$list_groups_for_user(
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/list_groups_for_user.html} for full documentation.
 }
 \keyword{internal}

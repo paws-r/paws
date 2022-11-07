@@ -3,16 +3,21 @@
 \name{route53_list_hosted_zones_by_vpc}
 \alias{route53_list_hosted_zones_by_vpc}
 \title{Lists all the private hosted zones that a specified VPC is associated
-with, regardless of which AWS account or AWS service owns the hosted
-zones}
+with, regardless of which Amazon Web Services account or Amazon Web
+Services service owns the hosted zones}
 \usage{
-route53_list_hosted_zones_by_vpc(VPCId, VPCRegion, MaxItems, NextToken)
+route53_list_hosted_zones_by_vpc(
+  VPCId,
+  VPCRegion,
+  MaxItems = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{VPCId}{[required] The ID of the Amazon VPC that you want to list hosted zones for.}
 
-\item{VPCRegion}{[required] For the Amazon VPC that you specified for \code{VPCId}, the AWS Region that
-you created the VPC in.}
+\item{VPCRegion}{[required] For the Amazon VPC that you specified for \code{VPCId}, the Amazon Web
+Services Region that you created the VPC in.}
 
 \item{MaxItems}{(Optional) The maximum number of hosted zones that you want Amazon Route
 53 to return. If the specified VPC is associated with more than
@@ -31,47 +36,9 @@ previous response.
 If the previous response didn't include a \code{NextToken} element, there are
 no more hosted zones to get.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HostedZoneSummaries = list(
-    list(
-      HostedZoneId = "string",
-      Name = "string",
-      Owner = list(
-        OwningAccount = "string",
-        OwningService = "string"
-      )
-    )
-  ),
-  MaxItems = "string",
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all the private hosted zones that a specified VPC is associated
-with, regardless of which AWS account or AWS service owns the hosted
-zones. The \code{HostedZoneOwner} structure in the response contains one of
-the following values:
-\itemize{
-\item An \code{OwningAccount} element, which contains the account number of
-either the current AWS account or another AWS account. Some
-services, such as AWS Cloud Map, create hosted zones using the
-current account.
-\item An \code{OwningService} element, which identifies the AWS service that
-created and owns the hosted zone. For example, if a hosted zone was
-created by Amazon Elastic File System (Amazon EFS), the value of
-\code{Owner} is \code{efs.amazonaws.com}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_hosted_zones_by_vpc(
-  VPCId = "string",
-  VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-  MaxItems = "string",
-  NextToken = "string"
-)
-}
-}
+Lists all the private hosted zones that a specified VPC is associated with, regardless of which Amazon Web Services account or Amazon Web Services service owns the hosted zones. The \code{HostedZoneOwner} structure in the response contains one of the following values:
 
+See \url{https://paws-r.github.io/docs/route53/list_hosted_zones_by_vpc.html} for full documentation.
+}
 \keyword{internal}

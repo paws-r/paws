@@ -4,8 +4,10 @@
 \alias{globalaccelerator_remove_custom_routing_endpoints}
 \title{Remove endpoints from a custom routing accelerator}
 \usage{
-globalaccelerator_remove_custom_routing_endpoints(EndpointIds,
-  EndpointGroupArn)
+globalaccelerator_remove_custom_routing_endpoints(
+  EndpointIds,
+  EndpointGroupArn
+)
 }
 \arguments{
 \item{EndpointIds}{[required] The IDs for the endpoints. For custom routing accelerators, endpoint IDs
@@ -14,20 +16,9 @@ are the virtual private cloud (VPC) subnet IDs.}
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
 from.}
 }
-\value{
-An empty list.
-}
 \description{
 Remove endpoints from a custom routing accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_custom_routing_endpoints(
-  EndpointIds = list(
-    "string"
-  ),
-  EndpointGroupArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/remove_custom_routing_endpoints.html} for full documentation.
+}
 \keyword{internal}

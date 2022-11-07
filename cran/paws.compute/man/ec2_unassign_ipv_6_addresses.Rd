@@ -2,35 +2,25 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_unassign_ipv_6_addresses}
 \alias{ec2_unassign_ipv_6_addresses}
-\title{Unassigns one or more IPv6 addresses from a network interface}
+\title{Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes
+from a network interface}
 \usage{
-ec2_unassign_ipv_6_addresses(Ipv6Addresses, NetworkInterfaceId)
+ec2_unassign_ipv_6_addresses(
+  Ipv6Addresses = NULL,
+  Ipv6Prefixes = NULL,
+  NetworkInterfaceId
+)
 }
 \arguments{
-\item{Ipv6Addresses}{[required] The IPv6 addresses to unassign from the network interface.}
+\item{Ipv6Addresses}{The IPv6 addresses to unassign from the network interface.}
+
+\item{Ipv6Prefixes}{One or more IPv6 prefixes to unassign from the network interface.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NetworkInterfaceId = "string",
-  UnassignedIpv6Addresses = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Unassigns one or more IPv6 addresses from a network interface.
-}
-\section{Request syntax}{
-\preformatted{svc$unassign_ipv_6_addresses(
-  Ipv6Addresses = list(
-    "string"
-  ),
-  NetworkInterfaceId = "string"
-)
-}
-}
+Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes from a network interface.
 
+See \url{https://paws-r.github.io/docs/ec2/unassign_ipv_6_addresses.html} for full documentation.
+}
 \keyword{internal}

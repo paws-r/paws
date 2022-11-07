@@ -5,7 +5,7 @@
 \title{Lists the email templates present in your Amazon SES account in the
 current AWS Region}
 \usage{
-ses_list_templates(NextToken, MaxItems)
+ses_list_templates(NextToken = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to
@@ -17,32 +17,9 @@ and less than or equal to 10. If you do not specify a value, or if you
 specify a value less than 1 or greater than 10, the operation will
 return up to 10 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplatesMetadata = list(
-    list(
-      Name = "string",
-      CreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the email templates present in your Amazon SES account in the
-current AWS Region.
+Lists the email templates present in your Amazon SES account in the current AWS Region.
 
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/list_templates.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_templates(
-  NextToken = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

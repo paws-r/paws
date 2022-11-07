@@ -4,7 +4,12 @@
 \alias{connect_create_user_hierarchy_group}
 \title{Creates a new user hierarchy group}
 \usage{
-connect_create_user_hierarchy_group(Name, ParentGroupId, InstanceId)
+connect_create_user_hierarchy_group(
+  Name,
+  ParentGroupId = NULL,
+  InstanceId,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the user hierarchy group. Must not be more than 100
@@ -13,25 +18,14 @@ characters.}
 \item{ParentGroupId}{The identifier for the parent hierarchy group. The user hierarchy is
 created at level one if the parent group ID is null.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  HierarchyGroupId = "string",
-  HierarchyGroupArn = "string"
-)
-}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
+
+\item{Tags}{The tags used to organize, track, or control access for this resource.}
 }
 \description{
 Creates a new user hierarchy group.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user_hierarchy_group(
-  Name = "string",
-  ParentGroupId = "string",
-  InstanceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/create_user_hierarchy_group.html} for full documentation.
+}
 \keyword{internal}

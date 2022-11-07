@@ -4,7 +4,7 @@
 \alias{iam_update_user}
 \title{Updates the name and/or the path of the specified IAM user}
 \usage{
-iam_update_user(UserName, NewPath, NewUserName)
+iam_update_user(UserName, NewPath = NULL, NewUserName = NULL)
 }
 \arguments{
 \item{UserName}{[required] Name of the user to update. If you're changing the name of the user,
@@ -31,41 +31,9 @@ IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
 create resources named both "MyResource" and "myresource".}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the name and/or the path of the specified IAM user.
 
-You should understand the implications of changing an IAM user's path or
-name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming}{Renaming an IAM User}
-and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html}{Renaming an IAM Group}
-in the \emph{IAM User Guide}.
-
-To change a user name, the requester must have appropriate permissions
-on both the source object and the target object. For example, to change
-Bob to Robert, the entity making the request must have permission on Bob
-and Robert, or must have permission on all (*). For more information
-about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Permissions and Policies}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user(
-  UserName = "string",
-  NewPath = "string",
-  NewUserName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command changes the name of the IAM user Bob to Robert. It
-# does not change the user's path.
-svc$update_user(
-  NewUserName = "Robert",
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/update_user.html} for full documentation.
 }
 \keyword{internal}

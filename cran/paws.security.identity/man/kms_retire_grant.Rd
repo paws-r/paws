@@ -2,79 +2,36 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_retire_grant}
 \alias{kms_retire_grant}
-\title{Retires a grant}
+\title{Deletes a grant}
 \usage{
-kms_retire_grant(GrantToken, KeyId, GrantId)
+kms_retire_grant(GrantToken = NULL, KeyId = NULL, GrantId = NULL)
 }
 \arguments{
-\item{GrantToken}{Token that identifies the grant to be retired.}
+\item{GrantToken}{Identifies the grant to be retired. You can use a grant token to
+identify a new grant even before it has achieved eventual consistency.
 
-\item{KeyId}{The Amazon Resource Name (ARN) of the CMK associated with the grant.
+Only the \code{\link[=kms_create_grant]{create_grant}} operation returns a grant
+token. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-eventual-consistency}{Eventual consistency}
+in the \emph{Key Management Service Developer Guide}.}
+
+\item{KeyId}{The key ARN KMS key associated with the grant. To find the key ARN, use
+the \code{\link[=kms_list_keys]{list_keys}} operation.
 
 For example:
 \verb{arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab}}
 
-\item{GrantId}{Unique identifier of the grant to retire. The grant ID is returned in
-the response to a \code{\link[=kms_create_grant]{create_grant}} operation.
+\item{GrantId}{Identifies the grant to retire. To get the grant ID, use
+\code{\link[=kms_create_grant]{create_grant}}, \code{\link[=kms_list_grants]{list_grants}}, or
+\code{\link[=kms_list_retirable_grants]{list_retirable_grants}}.
 \itemize{
 \item Grant ID Example -
 0123456789012345678901234567890123456789012345678901234567890123
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Retires a grant. To clean up, you can retire a grant when you're done
-using it. You should revoke a grant when you intend to actively deny
-operations that depend on it. The following are permitted to call this
-API:
-\itemize{
-\item The AWS account (root user) under which the grant was created
-\item The \code{RetiringPrincipal}, if present in the grant
-\item The \code{GranteePrincipal}, if \code{\link[=kms_retire_grant]{retire_grant}} is an
-operation specified in the grant
-}
+Deletes a grant. Typically, you retire a grant when you no longer need its permissions. To identify the grant to retire, use a \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{grant token}, or both the grant ID and a key identifier (key ID or key ARN) of the KMS key. The \code{\link[=kms_create_grant]{create_grant}} operation returns both values.
 
-You must identify the grant to retire by its grant token or by a
-combination of the grant ID and the Amazon Resource Name (ARN) of the
-customer master key (CMK). A grant token is a unique variable-length
-base64-encoded string. A grant ID is a 64 character unique identifier of
-a grant. The \code{\link[=kms_create_grant]{create_grant}} operation returns both.
-
-\strong{Cross-account use}: Yes. You can retire a grant on a CMK in a
-different AWS account.
-
-\strong{Required permissions:}: Permission to retire a grant is specified in
-the grant. You cannot control access to this operation in a policy. For
-more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html}{Using grants}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_create_grant]{create_grant}}
-\item \code{\link[=kms_list_grants]{list_grants}}
-\item \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}
-\item \code{\link[=kms_revoke_grant]{revoke_grant}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$retire_grant(
-  GrantToken = "string",
-  KeyId = "string",
-  GrantId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example retires a grant.
-svc$retire_grant(
-  GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
-  KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/retire_grant.html} for full documentation.
 }
 \keyword{internal}

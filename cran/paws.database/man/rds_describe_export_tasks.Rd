@@ -4,8 +4,13 @@
 \alias{rds_describe_export_tasks}
 \title{Returns information about a snapshot export to Amazon S3}
 \usage{
-rds_describe_export_tasks(ExportTaskIdentifier, SourceArn, Filters,
-  Marker, MaxRecords)
+rds_describe_export_tasks(
+  ExportTaskIdentifier = NULL,
+  SourceArn = NULL,
+  Filters = NULL,
+  Marker = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{ExportTaskIdentifier}{The identifier of the snapshot export task to be described.}
@@ -23,8 +28,16 @@ task.
 \item \code{s3-bucket} - The Amazon S3 bucket the snapshot is exported to.
 \item \code{source-arn} - The Amazon Resource Name (ARN) of the snapshot
 exported to Amazon S3
-\item \code{status} - The status of the export task. Must be lowercase, for
-example, \code{complete}.
+\item \code{status} - The status of the export task. Must be lowercase. Valid
+statuses are the following:
+\itemize{
+\item \code{canceled}
+\item \code{canceling}
+\item \code{complete}
+\item \code{failed}
+\item \code{in_progress}
+\item \code{starting}
+}
 }}
 
 \item{Marker}{An optional pagination token provided by a previous
@@ -42,59 +55,9 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ExportTasks = list(
-    list(
-      ExportTaskIdentifier = "string",
-      SourceArn = "string",
-      ExportOnly = list(
-        "string"
-      ),
-      SnapshotTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TaskStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TaskEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      S3Bucket = "string",
-      S3Prefix = "string",
-      IamRoleArn = "string",
-      KmsKeyId = "string",
-      Status = "string",
-      PercentProgress = 123,
-      TotalExtractedDataInGB = 123,
-      FailureCause = "string",
-      WarningMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns information about a snapshot export to Amazon S3. This API
-operation supports pagination.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_export_tasks(
-  ExportTaskIdentifier = "string",
-  SourceArn = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  MaxRecords = 123
-)
-}
-}
+Returns information about a snapshot export to Amazon S3. This API operation supports pagination.
 
+See \url{https://paws-r.github.io/docs/rds/describe_export_tasks.html} for full documentation.
+}
 \keyword{internal}

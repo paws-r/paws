@@ -4,9 +4,17 @@
 \alias{cloudwatch_describe_alarms}
 \title{Retrieves the specified alarms}
 \usage{
-cloudwatch_describe_alarms(AlarmNames, AlarmNamePrefix, AlarmTypes,
-  ChildrenOfAlarmName, ParentsOfAlarmName, StateValue, ActionPrefix,
-  MaxRecords, NextToken)
+cloudwatch_describe_alarms(
+  AlarmNames = NULL,
+  AlarmNamePrefix = NULL,
+  AlarmTypes = NULL,
+  ChildrenOfAlarmName = NULL,
+  ParentsOfAlarmName = NULL,
+  StateValue = NULL,
+  ActionPrefix = NULL,
+  MaxRecords = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AlarmNames}{The names of the alarms to retrieve information about.}
@@ -32,12 +40,12 @@ If you specify \code{ChildrenOfAlarmName}, you cannot specify any other
 parameters in the request except for \code{MaxRecords} and \code{NextToken}. If
 you do so, you receive a validation error.
 
-Only the \verb{Alarm Name}, \code{ARN}, \code{StateValue}
-(OK/ALARM/INSUFFICIENT_DATA), and \code{StateUpdatedTimestamp} information
-are returned by this operation when you use this parameter. To get
-complete information about these alarms, perform another
-\code{\link[=cloudwatch_describe_alarms]{describe_alarms}} operation and specify
-the parent alarm names in the \code{AlarmNames} parameter.}
+Only the \verb{Alarm Name}, \code{ARN}, \code{StateValue} (OK/ALARM/INSUFFICIENT_DATA),
+and \code{StateUpdatedTimestamp} information are returned by this operation
+when you use this parameter. To get complete information about these
+alarms, perform another \code{\link[=cloudwatch_describe_alarms]{describe_alarms}}
+operation and specify the parent alarm names in the \code{AlarmNames}
+parameter.}
 
 \item{ParentsOfAlarmName}{If you use this parameter and specify the name of a metric or composite
 alarm, the operation returns information about the "parent" alarms of
@@ -68,130 +76,9 @@ that topic.}
 \item{NextToken}{The token returned by a previous call to indicate that there is more
 data available.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CompositeAlarms = list(
-    list(
-      ActionsEnabled = TRUE|FALSE,
-      AlarmActions = list(
-        "string"
-      ),
-      AlarmArn = "string",
-      AlarmConfigurationUpdatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      AlarmDescription = "string",
-      AlarmName = "string",
-      AlarmRule = "string",
-      InsufficientDataActions = list(
-        "string"
-      ),
-      OKActions = list(
-        "string"
-      ),
-      StateReason = "string",
-      StateReasonData = "string",
-      StateUpdatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA"
-    )
-  ),
-  MetricAlarms = list(
-    list(
-      AlarmName = "string",
-      AlarmArn = "string",
-      AlarmDescription = "string",
-      AlarmConfigurationUpdatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ActionsEnabled = TRUE|FALSE,
-      OKActions = list(
-        "string"
-      ),
-      AlarmActions = list(
-        "string"
-      ),
-      InsufficientDataActions = list(
-        "string"
-      ),
-      StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
-      StateReason = "string",
-      StateReasonData = "string",
-      StateUpdatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      MetricName = "string",
-      Namespace = "string",
-      Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
-      ExtendedStatistic = "string",
-      Dimensions = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      Period = 123,
-      Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-      EvaluationPeriods = 123,
-      DatapointsToAlarm = 123,
-      Threshold = 123.0,
-      ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
-      TreatMissingData = "string",
-      EvaluateLowSampleCountPercentile = "string",
-      Metrics = list(
-        list(
-          Id = "string",
-          MetricStat = list(
-            Metric = list(
-              Namespace = "string",
-              MetricName = "string",
-              Dimensions = list(
-                list(
-                  Name = "string",
-                  Value = "string"
-                )
-              )
-            ),
-            Period = 123,
-            Stat = "string",
-            Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-          ),
-          Expression = "string",
-          Label = "string",
-          ReturnData = TRUE|FALSE,
-          Period = 123
-        )
-      ),
-      ThresholdMetricId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the specified alarms. You can filter the results by specifying
-a prefix for the alarm name, the alarm state, or a prefix for any
-action.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_alarms(
-  AlarmNames = list(
-    "string"
-  ),
-  AlarmNamePrefix = "string",
-  AlarmTypes = list(
-    "CompositeAlarm"|"MetricAlarm"
-  ),
-  ChildrenOfAlarmName = "string",
-  ParentsOfAlarmName = "string",
-  StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
-  ActionPrefix = "string",
-  MaxRecords = 123,
-  NextToken = "string"
-)
-}
-}
+Retrieves the specified alarms. You can filter the results by specifying a prefix for the alarm name, the alarm state, or a prefix for any action.
 
+See \url{https://paws-r.github.io/docs/cloudwatch/describe_alarms.html} for full documentation.
+}
 \keyword{internal}

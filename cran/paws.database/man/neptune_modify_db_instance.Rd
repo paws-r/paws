@@ -4,19 +4,45 @@
 \alias{neptune_modify_db_instance}
 \title{Modifies settings for a DB instance}
 \usage{
-neptune_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
-  DBInstanceClass, DBSubnetGroupName, DBSecurityGroups,
-  VpcSecurityGroupIds, ApplyImmediately, MasterUserPassword,
-  DBParameterGroupName, BackupRetentionPeriod, PreferredBackupWindow,
-  PreferredMaintenanceWindow, MultiAZ, EngineVersion,
-  AllowMajorVersionUpgrade, AutoMinorVersionUpgrade, LicenseModel, Iops,
-  OptionGroupName, NewDBInstanceIdentifier, StorageType, TdeCredentialArn,
-  TdeCredentialPassword, CACertificateIdentifier, Domain,
-  CopyTagsToSnapshot, MonitoringInterval, DBPortNumber,
-  PubliclyAccessible, MonitoringRoleArn, DomainIAMRoleName, PromotionTier,
-  EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-  PerformanceInsightsKMSKeyId, CloudwatchLogsExportConfiguration,
-  DeletionProtection)
+neptune_modify_db_instance(
+  DBInstanceIdentifier,
+  AllocatedStorage = NULL,
+  DBInstanceClass = NULL,
+  DBSubnetGroupName = NULL,
+  DBSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL,
+  ApplyImmediately = NULL,
+  MasterUserPassword = NULL,
+  DBParameterGroupName = NULL,
+  BackupRetentionPeriod = NULL,
+  PreferredBackupWindow = NULL,
+  PreferredMaintenanceWindow = NULL,
+  MultiAZ = NULL,
+  EngineVersion = NULL,
+  AllowMajorVersionUpgrade = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  LicenseModel = NULL,
+  Iops = NULL,
+  OptionGroupName = NULL,
+  NewDBInstanceIdentifier = NULL,
+  StorageType = NULL,
+  TdeCredentialArn = NULL,
+  TdeCredentialPassword = NULL,
+  CACertificateIdentifier = NULL,
+  Domain = NULL,
+  CopyTagsToSnapshot = NULL,
+  MonitoringInterval = NULL,
+  DBPortNumber = NULL,
+  PubliclyAccessible = NULL,
+  MonitoringRoleArn = NULL,
+  DomainIAMRoleName = NULL,
+  PromotionTier = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnablePerformanceInsights = NULL,
+  PerformanceInsightsKMSKeyId = NULL,
+  CloudwatchLogsExportConfiguration = NULL,
+  DeletionProtection = NULL
+)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
@@ -26,13 +52,10 @@ Constraints:
 \item Must match the identifier of an existing DBInstance.
 }}
 
-\item{AllocatedStorage}{The new amount of storage (in gibibytes) to allocate for the DB
-instance.
-
-Not applicable. Storage is managed by the DB Cluster.}
+\item{AllocatedStorage}{Not supported by Neptune.}
 
 \item{DBInstanceClass}{The new compute and memory capacity of the DB instance, for example,
-\code{db.m4.large}. Not all DB instance classes are available in all AWS
+\code{db.m4.large}. Not all DB instance classes are available in all Amazon
 Regions.
 
 If you modify the DB instance class, an outage occurs during the change.
@@ -86,7 +109,7 @@ reboot.
 
 Default: \code{false}}
 
-\item{MasterUserPassword}{Not applicable.}
+\item{MasterUserPassword}{Not supported by Neptune.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to apply to the DB instance. Changing
 this setting doesn't result in an outage. The parameter group name
@@ -162,7 +185,7 @@ this parameter is set to \code{true} during the maintenance window, and a
 newer minor version is available, and Neptune has enabled auto patching
 for that engine version.}
 
-\item{LicenseModel}{Not supported.}
+\item{LicenseModel}{Not supported by Neptune.}
 
 \item{Iops}{The new Provisioned IOPS (I/O operations per second) value for the
 instance.
@@ -242,14 +265,14 @@ Default: 1
 
 Valid Values: 0 - 15}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
+\item{EnableIAMDatabaseAuthentication}{True to enable mapping of Amazon Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
 
 You can enable IAM database authentication for the following database
 engines
 
-Not applicable. Mapping AWS IAM accounts to database accounts is managed
-by the DB cluster. For more information, see
+Not applicable. Mapping Amazon IAM accounts to database accounts is
+managed by the DB cluster. For more information, see
 \code{\link[=neptune_modify_db_cluster]{modify_db_cluster}}.
 
 Default: \code{false}}
@@ -265,211 +288,9 @@ CloudWatch Logs for a specific DB instance or DB cluster.}
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. See \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-instances-delete.html}{Deleting a DB Instance}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstance = list(
-    DBInstanceIdentifier = "string",
-    DBInstanceClass = "string",
-    Engine = "string",
-    DBInstanceStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    AllocatedStorage = 123,
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredBackupWindow = "string",
-    BackupRetentionPeriod = 123,
-    DBSecurityGroups = list(
-      list(
-        DBSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    DBParameterGroups = list(
-      list(
-        DBParameterGroupName = "string",
-        ParameterApplyStatus = "string"
-      )
-    ),
-    AvailabilityZone = "string",
-    DBSubnetGroup = list(
-      DBSubnetGroupName = "string",
-      DBSubnetGroupDescription = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string"
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      DBSubnetGroupArn = "string"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      DBInstanceClass = "string",
-      AllocatedStorage = 123,
-      MasterUserPassword = "string",
-      Port = 123,
-      BackupRetentionPeriod = 123,
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      LicenseModel = "string",
-      Iops = 123,
-      DBInstanceIdentifier = "string",
-      StorageType = "string",
-      CACertificateIdentifier = "string",
-      DBSubnetGroupName = "string",
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      )
-    ),
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MultiAZ = TRUE|FALSE,
-    EngineVersion = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    ReadReplicaSourceDBInstanceIdentifier = "string",
-    ReadReplicaDBInstanceIdentifiers = list(
-      "string"
-    ),
-    ReadReplicaDBClusterIdentifiers = list(
-      "string"
-    ),
-    LicenseModel = "string",
-    Iops = 123,
-    OptionGroupMemberships = list(
-      list(
-        OptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    CharacterSetName = "string",
-    SecondaryAvailabilityZone = "string",
-    PubliclyAccessible = TRUE|FALSE,
-    StatusInfos = list(
-      list(
-        StatusType = "string",
-        Normal = TRUE|FALSE,
-        Status = "string",
-        Message = "string"
-      )
-    ),
-    StorageType = "string",
-    TdeCredentialArn = "string",
-    DbInstancePort = 123,
-    DBClusterIdentifier = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbiResourceId = "string",
-    CACertificateIdentifier = "string",
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    CopyTagsToSnapshot = TRUE|FALSE,
-    MonitoringInterval = 123,
-    EnhancedMonitoringResourceArn = "string",
-    MonitoringRoleArn = "string",
-    PromotionTier = 123,
-    DBInstanceArn = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    PerformanceInsightsEnabled = TRUE|FALSE,
-    PerformanceInsightsKMSKeyId = "string",
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Modifies settings for a DB instance. You can change one or more database
-configuration parameters by specifying these parameters and the new
-values in the request. To learn what modifications you can make to your
-DB instance, call
-\code{\link[=neptune_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}}
-before you call \code{\link[=neptune_modify_db_instance]{modify_db_instance}}.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_db_instance(
-  DBInstanceIdentifier = "string",
-  AllocatedStorage = 123,
-  DBInstanceClass = "string",
-  DBSubnetGroupName = "string",
-  DBSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  ApplyImmediately = TRUE|FALSE,
-  MasterUserPassword = "string",
-  DBParameterGroupName = "string",
-  BackupRetentionPeriod = 123,
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AllowMajorVersionUpgrade = TRUE|FALSE,
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  NewDBInstanceIdentifier = "string",
-  StorageType = "string",
-  TdeCredentialArn = "string",
-  TdeCredentialPassword = "string",
-  CACertificateIdentifier = "string",
-  Domain = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  DBPortNumber = 123,
-  PubliclyAccessible = TRUE|FALSE,
-  MonitoringRoleArn = "string",
-  DomainIAMRoleName = "string",
-  PromotionTier = 123,
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  CloudwatchLogsExportConfiguration = list(
-    EnableLogTypes = list(
-      "string"
-    ),
-    DisableLogTypes = list(
-      "string"
-    )
-  ),
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
+Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call \code{\link[=neptune_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} before you call \code{\link[=neptune_modify_db_instance]{modify_db_instance}}.
 
+See \url{https://paws-r.github.io/docs/neptune/modify_db_instance.html} for full documentation.
+}
 \keyword{internal}

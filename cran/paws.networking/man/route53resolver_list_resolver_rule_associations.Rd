@@ -3,10 +3,13 @@
 \name{route53resolver_list_resolver_rule_associations}
 \alias{route53resolver_list_resolver_rule_associations}
 \title{Lists the associations that were created between Resolver rules and VPCs
-using the current AWS account}
+using the current Amazon Web Services account}
 \usage{
-route53resolver_list_resolver_rule_associations(MaxResults, NextToken,
-  Filters)
+route53resolver_list_resolver_rule_associations(
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of rule associations that you want to return in the
@@ -30,41 +33,9 @@ If you submit a second or subsequent
 request and specify the \code{NextToken} parameter, you must use the same
 values for \code{Filters}, if any, as in the previous request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  MaxResults = 123,
-  ResolverRuleAssociations = list(
-    list(
-      Id = "string",
-      ResolverRuleId = "string",
-      Name = "string",
-      VPCId = "string",
-      Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
-      StatusMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the associations that were created between Resolver rules and VPCs
-using the current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resolver_rule_associations(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Lists the associations that were created between Resolver rules and VPCs using the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/route53resolver/list_resolver_rule_associations.html} for full documentation.
+}
 \keyword{internal}

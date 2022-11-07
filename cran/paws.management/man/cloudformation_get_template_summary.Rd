@@ -4,30 +4,36 @@
 \alias{cloudformation_get_template_summary}
 \title{Returns information about a new or existing template}
 \usage{
-cloudformation_get_template_summary(TemplateBody, TemplateURL,
-  StackName, StackSetName)
+cloudformation_get_template_summary(
+  TemplateBody = NULL,
+  TemplateURL = NULL,
+  StackName = NULL,
+  StackSetName = NULL,
+  CallAs = NULL
+)
 }
 \arguments{
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information about
-templates, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.
+templates, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
+in the CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
-template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information about templates, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.
+template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
+or a Systems Manager document. For more information about templates, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
+in the CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
 
-\item{StackName}{The name or the stack ID that is associated with the stack, which are
-not always interchangeable. For running stacks, you can specify either
-the stack's name or its unique stack ID. For deleted stack, you must
-specify the unique stack ID.
+\item{StackName}{The name or the stack ID that's associated with the stack, which aren't
+always interchangeable. For running stacks, you can specify either the
+stack's name or its unique stack ID. For deleted stack, you must specify
+the unique stack ID.
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
@@ -36,76 +42,27 @@ Conditional: You must specify only one of the following parameters:
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      DefaultValue = "string",
-      ParameterType = "string",
-      NoEcho = TRUE|FALSE,
-      Description = "string",
-      ParameterConstraints = list(
-        AllowedValues = list(
-          "string"
-        )
-      )
-    )
-  ),
-  Description = "string",
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  CapabilitiesReason = "string",
-  ResourceTypes = list(
-    "string"
-  ),
-  Version = "string",
-  Metadata = "string",
-  DeclaredTransforms = list(
-    "string"
-  ),
-  ResourceIdentifierSummaries = list(
-    list(
-      ResourceType = "string",
-      LogicalResourceIds = list(
-        "string"
-      ),
-      ResourceIdentifiers = list(
-        "string"
-      )
-    )
-  )
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
-Returns information about a new or existing template. The
-\code{\link[=cloudformation_get_template_summary]{get_template_summary}} action is
-useful for viewing parameter information, such as default parameter
-values and parameter types, before you create or update a stack or stack
-set.
+Returns information about a new or existing template. The \code{\link[=cloudformation_get_template_summary]{get_template_summary}} action is useful for viewing parameter information, such as default parameter values and parameter types, before you create or update a stack or stack set.
 
-You can use the
-\code{\link[=cloudformation_get_template_summary]{get_template_summary}} action
-when you submit a template, or you can get template information for a
-stack set, or a running or deleted stack.
-
-For deleted stacks,
-\code{\link[=cloudformation_get_template_summary]{get_template_summary}} returns
-the template information for up to 90 days after the stack has been
-deleted. If the template does not exist, a \code{ValidationError} is
-returned.
+See \url{https://paws-r.github.io/docs/cloudformation/get_template_summary.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_template_summary(
-  TemplateBody = "string",
-  TemplateURL = "string",
-  StackName = "string",
-  StackSetName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -7,29 +7,14 @@
 quicksight_delete_data_set(AwsAccountId, DataSetId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
 \item{DataSetId}{[required] The ID for the dataset that you want to create. This ID is unique per
-AWS Region for each AWS account.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  DataSetId = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
+Amazon Web Services Region for each Amazon Web Services account.}
 }
 \description{
 Deletes a dataset.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_data_set(
-  AwsAccountId = "string",
-  DataSetId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_data_set.html} for full documentation.
+}
 \keyword{internal}

@@ -4,9 +4,19 @@
 \alias{cloudwatch_put_composite_alarm}
 \title{Creates or updates a composite alarm}
 \usage{
-cloudwatch_put_composite_alarm(ActionsEnabled, AlarmActions,
-  AlarmDescription, AlarmName, AlarmRule, InsufficientDataActions,
-  OKActions, Tags)
+cloudwatch_put_composite_alarm(
+  ActionsEnabled = NULL,
+  AlarmActions = NULL,
+  AlarmDescription = NULL,
+  AlarmName,
+  AlarmRule,
+  InsufficientDataActions = NULL,
+  OKActions = NULL,
+  Tags = NULL,
+  ActionsSuppressor = NULL,
+  ActionsSuppressorWaitPeriod = NULL,
+  ActionsSuppressorExtensionPeriod = NULL
+)
 }
 \arguments{
 \item{ActionsEnabled}{Indicates whether actions should be executed during any changes to the
@@ -95,79 +105,27 @@ associate as many as 50 tags with an alarm.
 Tags can help you organize and categorize your resources. You can also
 use them to scope user permissions, by granting a user permission to
 access or change only resources with certain tag values.}
-}
-\value{
-An empty list.
+
+\item{ActionsSuppressor}{Actions will be suppressed if the suppressor alarm is in the \code{ALARM}
+state. \code{ActionsSuppressor} can be an AlarmName or an Amazon Resource
+Name (ARN) from an existing alarm.}
+
+\item{ActionsSuppressorWaitPeriod}{The maximum time in seconds that the composite alarm waits for the
+suppressor alarm to go into the \code{ALARM} state. After this time, the
+composite alarm performs its actions.
+
+\code{WaitPeriod} is required only when \code{ActionsSuppressor} is specified.}
+
+\item{ActionsSuppressorExtensionPeriod}{The maximum time in seconds that the composite alarm waits after
+suppressor alarm goes out of the \code{ALARM} state. After this time, the
+composite alarm performs its actions.
+
+\code{ExtensionPeriod} is required only when \code{ActionsSuppressor} is
+specified.}
 }
 \description{
-Creates or updates a \emph{composite alarm}. When you create a composite
-alarm, you specify a rule expression for the alarm that takes into
-account the alarm states of other alarms that you have created. The
-composite alarm goes into ALARM state only if all conditions of the rule
-are met.
+Creates or updates a \emph{composite alarm}. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met.
 
-The alarms specified in a composite alarm's rule expression can include
-metric alarms and other composite alarms.
-
-Using composite alarms can reduce alarm noise. You can create multiple
-metric alarms, and also create a composite alarm and set up alerts only
-for the composite alarm. For example, you could create a composite alarm
-that goes into ALARM state only when more than one of the underlying
-metric alarms are in ALARM state.
-
-Currently, the only alarm actions that can be taken by composite alarms
-are notifying SNS topics.
-
-It is possible to create a loop or cycle of composite alarms, where
-composite alarm A depends on composite alarm B, and composite alarm B
-also depends on composite alarm A. In this scenario, you can't delete
-any composite alarm that is part of the cycle because there is always
-still a composite alarm that depends on that alarm that you want to
-delete.
-
-To get out of such a situation, you must break the cycle by changing the
-rule of one of the composite alarms in the cycle to remove a dependency
-that creates the cycle. The simplest change to make to break a cycle is
-to change the \code{AlarmRule} of one of the alarms to \code{False}.
-
-Additionally, the evaluation of composite alarms stops if CloudWatch
-detects a cycle in the evaluation path.
-
-When this operation creates an alarm, the alarm state is immediately set
-to \code{INSUFFICIENT_DATA}. The alarm is then evaluated and its state is set
-appropriately. Any actions associated with the new state are then
-executed. For a composite alarm, this initial time after creation is the
-only time that the alarm can be in \code{INSUFFICIENT_DATA} state.
-
-When you update an existing alarm, its state is left unchanged, but the
-update completely overwrites the previous configuration of the alarm.
-
-If you are an IAM user, you must have \code{iam:CreateServiceLinkedRole} to
-create a composite alarm that has Systems Manager OpsItem actions.
+See \url{https://paws-r.github.io/docs/cloudwatch/put_composite_alarm.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_composite_alarm(
-  ActionsEnabled = TRUE|FALSE,
-  AlarmActions = list(
-    "string"
-  ),
-  AlarmDescription = "string",
-  AlarmName = "string",
-  AlarmRule = "string",
-  InsufficientDataActions = list(
-    "string"
-  ),
-  OKActions = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

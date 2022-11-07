@@ -2,14 +2,19 @@
 % Please edit documentation in R/support_operations.R
 \name{support_add_communication_to_case}
 \alias{support_add_communication_to_case}
-\title{Adds additional customer communication to an AWS Support case}
+\title{Adds additional customer communication to an Amazon Web Services Support
+case}
 \usage{
-support_add_communication_to_case(caseId, communicationBody,
-  ccEmailAddresses, attachmentSetId)
+support_add_communication_to_case(
+  caseId = NULL,
+  communicationBody,
+  ccEmailAddresses = NULL,
+  attachmentSetId = NULL
+)
 }
 \arguments{
-\item{caseId}{The AWS Support case ID requested or returned in the call. The case ID
-is an alphanumeric string formatted as shown in this example:
+\item{caseId}{The support case ID requested or returned in the call. The case ID is an
+alphanumeric string formatted as shown in this example:
 case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 
 \item{communicationBody}{[required] The body of an email communication to add to the support case.}
@@ -21,37 +26,9 @@ support case.}
 to the case. Create the set by calling
 \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  result = TRUE|FALSE
-)
-}
-}
 \description{
-Adds additional customer communication to an AWS Support case. Use the
-\code{caseId} parameter to identify the case to which to add communication.
-You can list a set of email addresses to copy on the communication by
-using the \code{ccEmailAddresses} parameter. The \code{communicationBody} value
-contains the text of the communication.
-\itemize{
-\item You must have a Business or Enterprise support plan to use the AWS
-Support API.
-\item If you call the AWS Support API from an account that does not have a
-Business or Enterprise support plan, the
-\code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$add_communication_to_case(
-  caseId = "string",
-  communicationBody = "string",
-  ccEmailAddresses = list(
-    "string"
-  ),
-  attachmentSetId = "string"
-)
-}
-}
+Adds additional customer communication to an Amazon Web Services Support case. Use the \code{caseId} parameter to identify the case to which to add communication. You can list a set of email addresses to copy on the communication by using the \code{ccEmailAddresses} parameter. The \code{communicationBody} value contains the text of the communication.
 
+See \url{https://paws-r.github.io/docs/support/add_communication_to_case.html} for full documentation.
+}
 \keyword{internal}

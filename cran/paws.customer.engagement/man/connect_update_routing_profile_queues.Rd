@@ -5,11 +5,15 @@
 \title{Updates the properties associated with a set of queues for a routing
 profile}
 \usage{
-connect_update_routing_profile_queues(InstanceId, RoutingProfileId,
-  QueueConfigs)
+connect_update_routing_profile_queues(
+  InstanceId,
+  RoutingProfileId,
+  QueueConfigs
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 
@@ -17,29 +21,9 @@ connect_update_routing_profile_queues(InstanceId, RoutingProfileId,
 associated to the routing profile. You can do this using
 AssociateRoutingProfileQueues.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the properties associated with a set of queues for a routing
-profile.
-}
-\section{Request syntax}{
-\preformatted{svc$update_routing_profile_queues(
-  InstanceId = "string",
-  RoutingProfileId = "string",
-  QueueConfigs = list(
-    list(
-      QueueReference = list(
-        QueueId = "string",
-        Channel = "VOICE"|"CHAT"|"TASK"
-      ),
-      Priority = 123,
-      Delay = 123
-    )
-  )
-)
-}
-}
+Updates the properties associated with a set of queues for a routing profile.
 
+See \url{https://paws-r.github.io/docs/connect/update_routing_profile_queues.html} for full documentation.
+}
 \keyword{internal}

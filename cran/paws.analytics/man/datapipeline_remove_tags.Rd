@@ -11,20 +11,9 @@ datapipeline_remove_tags(pipelineId, tagKeys)
 
 \item{tagKeys}{[required] The keys of the tags to remove.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes existing tags from the specified pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_tags(
-  pipelineId = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/datapipeline/remove_tags.html} for full documentation.
+}
 \keyword{internal}

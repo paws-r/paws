@@ -5,7 +5,7 @@
 \title{Lists the root or organizational units (OUs) that serve as the immediate
 parent of the specified child OU or account}
 \usage{
-organizations_list_parents(ChildId, NextToken, MaxResults)
+organizations_list_parents(ChildId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ChildId}{[required] The unique identifier (ID) of the OU or account whose parent containers
@@ -38,53 +38,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Parents = list(
-    list(
-      Id = "string",
-      Type = "ROOT"|"ORGANIZATIONAL_UNIT"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the root or organizational units (OUs) that serve as the immediate
-parent of the specified child OU or account. This operation, along with
-\code{\link[=organizations_list_children]{list_children}} enables you to traverse
-the tree structure that makes up this root.
+Lists the root or organizational units (OUs) that serve as the immediate parent of the specified child OU or account. This operation, along with \code{\link[=organizations_list_children]{list_children}} enables you to traverse the tree structure that makes up this root.
 
-Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \verb{List*} operation. These operations can occasionally return an
-empty set of results even when there are more results available. The
-\code{NextToken} response parameter value is \code{null} \emph{only} when there are no
-more results to display.
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-
-In the current release, a child can have only a single parent.
-}
-\section{Request syntax}{
-\preformatted{svc$list_parents(
-  ChildId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to list the root or OUs that contain
-# account 444444444444:/n/n
-svc$list_parents(
-  ChildId = "444444444444"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/list_parents.html} for full documentation.
 }
 \keyword{internal}

@@ -7,7 +7,8 @@
 quicksight_delete_template_alias(AwsAccountId, TemplateId, AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the item to delete.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the item to
+delete.}
 
 \item{TemplateId}{[required] The ID for the template that the specified alias is for.}
 
@@ -16,28 +17,9 @@ the version that the alias points to. You can specify the alias name, or
 specify the latest version of the template by providing the keyword
 \verb{$LATEST} in the \code{AliasName} parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = 123,
-  TemplateId = "string",
-  AliasName = "string",
-  Arn = "string",
-  RequestId = "string"
-)
-}
-}
 \description{
-Deletes the item that the specified template alias points to. If you
-provide a specific alias, you delete the version of the template that
-the alias points to.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_template_alias(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  AliasName = "string"
-)
-}
-}
+Deletes the item that the specified template alias points to. If you provide a specific alias, you delete the version of the template that the alias points to.
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_template_alias.html} for full documentation.
+}
 \keyword{internal}

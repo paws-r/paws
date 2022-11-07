@@ -5,8 +5,11 @@
 \title{Creates a custom component by grouping similar standalone instances to
 monitor}
 \usage{
-applicationinsights_create_component(ResourceGroupName, ComponentName,
-  ResourceList)
+applicationinsights_create_component(
+  ResourceGroupName,
+  ComponentName,
+  ResourceList
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
@@ -15,22 +18,9 @@ applicationinsights_create_component(ResourceGroupName, ComponentName,
 
 \item{ResourceList}{[required] The list of resource ARNs that belong to the component.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a custom component by grouping similar standalone instances to
-monitor.
-}
-\section{Request syntax}{
-\preformatted{svc$create_component(
-  ResourceGroupName = "string",
-  ComponentName = "string",
-  ResourceList = list(
-    "string"
-  )
-)
-}
-}
+Creates a custom component by grouping similar standalone instances to monitor.
 
+See \url{https://paws-r.github.io/docs/applicationinsights/create_component.html} for full documentation.
+}
 \keyword{internal}

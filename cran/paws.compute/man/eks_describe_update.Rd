@@ -3,65 +3,25 @@
 \name{eks_describe_update}
 \alias{eks_describe_update}
 \title{Returns descriptive information about an update against your Amazon EKS
-cluster or associated managed node group}
+cluster or associated managed node group or Amazon EKS add-on}
 \usage{
-eks_describe_update(name, updateId, nodegroupName, addonName)
+eks_describe_update(name, updateId, nodegroupName = NULL, addonName = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster associated with the update.}
 
 \item{updateId}{[required] The ID of the update to describe.}
 
-\item{nodegroupName}{The name of the Amazon EKS node group associated with the update.}
+\item{nodegroupName}{The name of the Amazon EKS node group associated with the update. This
+parameter is required if the update is a node group update.}
 
 \item{addonName}{The name of the add-on. The name must match one of the names returned by
 \href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
-.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  update = list(
-    id = "string",
-    status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-    type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
-    params = list(
-      list(
-        type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
-        value = "string"
-      )
-    ),
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    errors = list(
-      list(
-        errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-        errorMessage = "string",
-        resourceIds = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
+. This parameter is required if the update is an add-on update.}
 }
 \description{
-Returns descriptive information about an update against your Amazon EKS
-cluster or associated managed node group.
+Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on.
 
-When the status of the update is \code{Succeeded}, the update is complete. If
-an update fails, the status is \code{Failed}, and an error detail explains
-the reason for the failure.
+See \url{https://paws-r.github.io/docs/eks/describe_update.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_update(
-  name = "string",
-  updateId = "string",
-  nodegroupName = "string",
-  addonName = "string"
-)
-}
-}
-
 \keyword{internal}

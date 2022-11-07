@@ -11,48 +11,9 @@ wafregional_get_ip_set(IPSetId)
 by \code{\link[=wafregional_create_ip_set]{create_ip_set}} and by
 \code{\link[=wafregional_list_ip_sets]{list_ip_sets}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IPSet = list(
-    IPSetId = "string",
-    Name = "string",
-    IPSetDescriptors = list(
-      list(
-        Type = "IPV4"|"IPV6",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns the IPSet that is specified by \code{IPSetId}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_ip_set(
-  IPSetId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns the details of an IP match set with the ID
-# example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-svc$get_ip_set(
-  IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-)
-}
-
+See \url{https://paws-r.github.io/docs/wafregional/get_ip_set.html} for full documentation.
 }
 \keyword{internal}

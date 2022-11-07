@@ -4,7 +4,7 @@
 \alias{cloudsearch_describe_availability_options}
 \title{Gets the availability options configured for a domain}
 \usage{
-cloudsearch_describe_availability_options(DomainName, Deployed)
+cloudsearch_describe_availability_options(DomainName, Deployed = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -12,38 +12,9 @@ cloudsearch_describe_availability_options(DomainName, Deployed)
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any
 pending changes (\code{false}). Defaults to \code{false}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AvailabilityOptions = list(
-    Options = TRUE|FALSE,
-    Status = list(
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateVersion = 123,
-      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-      PendingDeletion = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Gets the availability options configured for a domain. By default, shows
-the configuration with any pending changes. Set the \code{Deployed} option to
-\code{true} to show the active configuration and exclude pending changes. For
-more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html}{Configuring Availability Options}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_availability_options(
-  DomainName = "string",
-  Deployed = TRUE|FALSE
-)
-}
-}
+Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/describe_availability_options.html} for full documentation.
+}
 \keyword{internal}

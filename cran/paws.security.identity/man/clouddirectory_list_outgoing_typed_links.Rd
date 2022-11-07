@@ -5,9 +5,15 @@
 \title{Returns a paginated list of all the outgoing TypedLinkSpecifier
 information for an object}
 \usage{
-clouddirectory_list_outgoing_typed_links(DirectoryArn, ObjectReference,
-  FilterAttributeRanges, FilterTypedLink, NextToken, MaxResults,
-  ConsistencyLevel)
+clouddirectory_list_outgoing_typed_links(
+  DirectoryArn,
+  ObjectReference,
+  FilterAttributeRanges = NULL,
+  FilterTypedLink = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  ConsistencyLevel = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to list
@@ -29,87 +35,9 @@ typed link facet, not the order they are supplied to any API calls.}
 
 \item{ConsistencyLevel}{The consistency level to execute the request at.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TypedLinkSpecifiers = list(
-    list(
-      TypedLinkFacet = list(
-        SchemaArn = "string",
-        TypedLinkName = "string"
-      ),
-      SourceObjectReference = list(
-        Selector = "string"
-      ),
-      TargetObjectReference = list(
-        Selector = "string"
-      ),
-      IdentityAttributeValues = list(
-        list(
-          AttributeName = "string",
-          Value = list(
-            StringValue = "string",
-            BinaryValue = raw,
-            BooleanValue = TRUE|FALSE,
-            NumberValue = "string",
-            DatetimeValue = as.POSIXct(
-              "2015-01-01"
-            )
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a paginated list of all the outgoing TypedLinkSpecifier
-information for an object. It also supports filtering by typed link
-facet and identity attributes. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_outgoing_typed_links(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  FilterAttributeRanges = list(
-    list(
-      AttributeName = "string",
-      Range = list(
-        StartMode = "FIRST"|"LAST"|"LAST_BEFORE_MISSING_VALUES"|"INCLUSIVE"|"EXCLUSIVE",
-        StartValue = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        ),
-        EndMode = "FIRST"|"LAST"|"LAST_BEFORE_MISSING_VALUES"|"INCLUSIVE"|"EXCLUSIVE",
-        EndValue = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  FilterTypedLink = list(
-    SchemaArn = "string",
-    TypedLinkName = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
-}
-}
+Returns a paginated list of all the outgoing TypedLinkSpecifier information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_outgoing_typed_links.html} for full documentation.
+}
 \keyword{internal}

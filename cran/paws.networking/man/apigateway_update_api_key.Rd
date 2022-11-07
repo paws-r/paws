@@ -4,53 +4,16 @@
 \alias{apigateway_update_api_key}
 \title{Changes information about an ApiKey resource}
 \usage{
-apigateway_update_api_key(apiKey, patchOperations)
+apigateway_update_api_key(apiKey, patchOperations = NULL)
 }
 \arguments{
-\item{apiKey}{[required] [Required] The identifier of the ApiKey resource to be updated.}
+\item{apiKey}{[required] The identifier of the ApiKey resource to be updated.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  value = "string",
-  name = "string",
-  customerId = "string",
-  description = "string",
-  enabled = TRUE|FALSE,
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  stageKeys = list(
-    "string"
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Changes information about an ApiKey resource.
-}
-\section{Request syntax}{
-\preformatted{svc$update_api_key(
-  apiKey = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_api_key.html} for full documentation.
+}
 \keyword{internal}

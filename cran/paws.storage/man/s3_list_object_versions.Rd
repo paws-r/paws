@@ -4,8 +4,16 @@
 \alias{s3_list_object_versions}
 \title{Returns metadata about all versions of the objects in a bucket}
 \usage{
-s3_list_object_versions(Bucket, Delimiter, EncodingType, KeyMarker,
-  MaxKeys, Prefix, VersionIdMarker, ExpectedBucketOwner)
+s3_list_object_versions(
+  Bucket,
+  Delimiter = NULL,
+  EncodingType = NULL,
+  KeyMarker = NULL,
+  MaxKeys = NULL,
+  Prefix = NULL,
+  VersionIdMarker = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name that contains the objects.}
@@ -22,11 +30,11 @@ response.}
 \item{KeyMarker}{Specifies the key to start with when listing objects in a bucket.}
 
 \item{MaxKeys}{Sets the maximum number of keys returned in the response. By default the
-API returns up to 1,000 key names. The response might contain fewer keys
-but will never contain more. If additional keys satisfy the search
+action returns up to 1,000 key names. The response might contain fewer
+keys but will never contain more. If additional keys satisfy the search
 criteria, but were not returned because max-keys was exceeded, the
-response contains <isTruncated>true</isTruncated>. To return
-the additional keys, see key-marker and version-id-marker.}
+response contains \<isTruncated\>true\</isTruncated\>. To return the
+additional keys, see key-marker and version-id-marker.}
 
 \item{Prefix}{Use this parameter to select only those keys that begin with the
 specified prefix. You can use prefixes to separate a bucket into
@@ -37,109 +45,13 @@ under CommonPrefixes.}
 
 \item{VersionIdMarker}{Specifies the object version you want to start listing from.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IsTruncated = TRUE|FALSE,
-  KeyMarker = "string",
-  VersionIdMarker = "string",
-  NextKeyMarker = "string",
-  NextVersionIdMarker = "string",
-  Versions = list(
-    list(
-      ETag = "string",
-      Size = 123,
-      StorageClass = "STANDARD",
-      Key = "string",
-      VersionId = "string",
-      IsLatest = TRUE|FALSE,
-      LastModified = as.POSIXct(
-        "2015-01-01"
-      ),
-      Owner = list(
-        DisplayName = "string",
-        ID = "string"
-      )
-    )
-  ),
-  DeleteMarkers = list(
-    list(
-      Owner = list(
-        DisplayName = "string",
-        ID = "string"
-      ),
-      Key = "string",
-      VersionId = "string",
-      IsLatest = TRUE|FALSE,
-      LastModified = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Name = "string",
-  Prefix = "string",
-  Delimiter = "string",
-  MaxKeys = 123,
-  CommonPrefixes = list(
-    list(
-      Prefix = "string"
-    )
-  ),
-  EncodingType = "url"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns metadata about all versions of the objects in a bucket. You can
-also use request parameters as selection criteria to return metadata
-about a subset of all the object versions.
+Returns metadata about all versions of the objects in a bucket. You can also use request parameters as selection criteria to return metadata about a subset of all the object versions.
 
-A 200 OK response can contain valid or invalid XML. Make sure to design
-your application to parse the contents of the response and handle it
-appropriately.
-
-To use this operation, you must have READ access to the bucket.
-
-This action is not supported by Amazon S3 on Outposts.
-
-The following operations are related to
-\code{\link[=s3_list_object_versions]{list_object_versions}}:
-\itemize{
-\item \code{\link[=s3_list_objects_v2]{list_objects_v2}}
-\item \code{\link[=s3_get_object]{get_object}}
-\item \code{\link[=s3_put_object]{put_object}}
-\item \code{\link[=s3_delete_object]{delete_object}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_object_versions(
-  Bucket = "string",
-  Delimiter = "string",
-  EncodingType = "url",
-  KeyMarker = "string",
-  MaxKeys = 123,
-  Prefix = "string",
-  VersionIdMarker = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example return versions of an object with specific key
-# name prefix. The request limits the number of items returned to two. If
-# there are are more than two object version, S3 returns NextToken in the
-# response. You can specify this token value in your next request to fetch
-# next set of object versions.
-svc$list_object_versions(
-  Bucket = "examplebucket",
-  Prefix = "HappyFace.jpg"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/list_object_versions.html} for full documentation.
 }
 \keyword{internal}

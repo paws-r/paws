@@ -2,23 +2,31 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_register_type}
 \alias{cloudformation_register_type}
-\title{Registers a type with the CloudFormation service}
+\title{Registers an extension with the CloudFormation service}
 \usage{
-cloudformation_register_type(Type, TypeName, SchemaHandlerPackage,
-  LoggingConfig, ExecutionRoleArn, ClientRequestToken)
+cloudformation_register_type(
+  Type = NULL,
+  TypeName,
+  SchemaHandlerPackage,
+  LoggingConfig = NULL,
+  ExecutionRoleArn = NULL,
+  ClientRequestToken = NULL
+)
 }
 \arguments{
-\item{Type}{The kind of type.
+\item{Type}{The kind of extension.}
 
-Currently, the only valid value is \code{RESOURCE}.}
+\item{TypeName}{[required] The name of the extension being registered.
 
-\item{TypeName}{[required] The name of the type being registered.
+We suggest that extension names adhere to the following patterns:
+\itemize{
+\item For resource types, \emph{company_or_organization}::\emph{service}::\emph{type}.
+\item For modules, \emph{company_or_organization}::\emph{service}::\emph{type}::MODULE.
+\item For hooks, \emph{MyCompany}::\emph{Testing}::\emph{MyTestHook}.
+}
 
-We recommend that type names adhere to the following pattern:
-\emph{company_or_organization}::\emph{service}::\emph{type}.
-
-The following organization namespaces are reserved and cannot be used in
-your resource type names:
+The following organization namespaces are reserved and can't be used in
+your extension names:
 \itemize{
 \item \code{Alexa}
 \item \code{AMZN}
@@ -28,84 +36,52 @@ your resource type names:
 \item \code{Dev}
 }}
 
-\item{SchemaHandlerPackage}{[required] A url to the S3 bucket containing the schema handler package that
-contains the schema, event handlers, and associated files for the type
-you want to register.
+\item{SchemaHandlerPackage}{[required] A URL to the S3 bucket containing the extension project package that
+contains the necessary files for the extension you want to register.
 
-For information on generating a schema handler package for the type you
-want to register, see
+For information about generating a schema handler package for the
+extension you want to register, see
 \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html}{submit}
 in the \emph{CloudFormation CLI User Guide}.
 
-The user registering the resource provider type must be able to access
-the the schema handler package in the S3 bucket. That is, the user needs
-to have
+The user registering the extension must be able to access the package in
+the S3 bucket. That's, the user needs to have
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
 permissions for the schema handler package. For more information, see
 \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3}
-in the \emph{AWS Identity and Access Management User Guide}.}
+in the \emph{Identity and Access Management User Guide}.}
 
-\item{LoggingConfig}{Specifies logging configuration information for a type.}
+\item{LoggingConfig}{Specifies logging configuration information for an extension.}
 
 \item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role for CloudFormation to
-assume when invoking the resource provider. If your resource type calls
-AWS APIs in any of its handlers, you must create an \emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}}
-that includes the necessary permissions to call those AWS APIs, and
-provision that execution role in your account. When CloudFormation needs
-to invoke the resource provider handler, CloudFormation assumes this
-execution role to create a temporary session token, which it then passes
-to the resource provider handler, thereby supplying your resource
-provider with the appropriate credentials.}
+assume when invoking the extension.
+
+For CloudFormation to assume the specified execution role, the role must
+contain a trust relationship with the CloudFormation service principle
+(\code{resources.cloudformation.amazonaws.com}). For more information about
+adding trust relationships, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-managingrole_edit-trust-policy}{Modifying a role trust policy}
+in the \emph{Identity and Access Management User Guide}.
+
+If your extension calls Amazon Web Services APIs in any of its handlers,
+you must create an \emph{<span
+href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html">IAM
+execution role</span>} that includes the necessary permissions to call
+those Amazon Web Services APIs, and provision that execution role in
+your account. When CloudFormation needs to invoke the resource type
+handler, CloudFormation assumes this execution role to create a
+temporary session token, which it then passes to the resource type
+handler, thereby supplying your resource type with the appropriate
+credentials.}
 
 \item{ClientRequestToken}{A unique identifier that acts as an idempotency key for this
 registration request. Specifying a client request token prevents
-CloudFormation from generating more than one version of a type from the
-same registeration request, even if the request is submitted multiple
-times.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  RegistrationToken = "string"
-)
-}
+CloudFormation from generating more than one version of an extension
+from the same registration request, even if the request is submitted
+multiple times.}
 }
 \description{
-Registers a type with the CloudFormation service. Registering a type
-makes it available for use in CloudFormation templates in your AWS
-account, and includes:
-\itemize{
-\item Validating the resource schema
-\item Determining which handlers have been specified for the resource
-\item Making the resource type available for use in your account
-}
+Registers an extension with the CloudFormation service. Registering an extension makes it available for use in CloudFormation templates in your Amazon Web Services account, and includes:
 
-For more information on how to develop types and ready them for
-registeration, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html}{Creating Resource Providers}
-in the \emph{CloudFormation CLI User Guide}.
-
-You can have a maximum of 50 resource type versions registered at a
-time. This maximum is per account and per region. Use
-\code{\link[=cloudformation_deregister_type]{deregister_type}} to deregister
-specific resource type versions if necessary.
-
-Once you have initiated a registration request using
-\code{\link[=cloudformation_register_type]{register_type}}, you can use
-\code{\link[=cloudformation_describe_type_registration]{describe_type_registration}}
-to monitor the progress of the registration request.
+See \url{https://paws-r.github.io/docs/cloudformation/register_type.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_type(
-  Type = "RESOURCE"|"MODULE",
-  TypeName = "string",
-  SchemaHandlerPackage = "string",
-  LoggingConfig = list(
-    LogRoleArn = "string",
-    LogGroupName = "string"
-  ),
-  ExecutionRoleArn = "string",
-  ClientRequestToken = "string"
-)
-}
-}
-
 \keyword{internal}

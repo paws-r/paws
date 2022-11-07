@@ -14,26 +14,9 @@ health check association from.}
 \item{HealthCheckArn}{[required] The Amazon Resource Name (ARN) of the health check that is associated
 with the protection.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes health-based detection from the Shield Advanced protection for a
-resource. Shield Advanced health-based detection uses the health of your
-AWS resource to improve responsiveness and accuracy in attack detection
-and mitigation.
+Removes health-based detection from the Shield Advanced protection for a resource. Shield Advanced health-based detection uses the health of your Amazon Web Services resource to improve responsiveness and accuracy in attack detection and response.
 
-You define the health check in Route 53 and then associate or
-disassociate it with your Shield Advanced protection. For more
-information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option}{Shield Advanced Health-Based Detection}
-in the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF and AWS Shield Developer Guide}.
+See \url{https://paws-r.github.io/docs/shield/disassociate_health_check.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_health_check(
-  ProtectionId = "string",
-  HealthCheckArn = "string"
-)
-}
-}
-
 \keyword{internal}

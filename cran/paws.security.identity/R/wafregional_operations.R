@@ -6,22 +6,9 @@ NULL
 #' This is AWS WAF Classic Regional documentation
 #'
 #' @description
-#' This is **AWS WAF Classic Regional** documentation. For more
-#' information, see [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Associates a web ACL with a resource, either an application load
-#' balancer or Amazon API Gateway stage.
+#' This is **AWS WAF Classic Regional** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_associate_web_acl(WebACLId, ResourceArn)
+#' See [https://paws-r.github.io/docs/wafregional/associate_web_acl.html](https://paws-r.github.io/docs/wafregional/associate_web_acl.html) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; A unique identifier (ID) for the web ACL.
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource to be protected, either
@@ -34,17 +21,6 @@ NULL
 #' 
 #' -   For an Amazon API Gateway stage:
 #'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_web_acl(
-#'   WebACLId = "string",
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -69,89 +45,14 @@ wafregional_associate_web_acl <- function(WebACLId, ResourceArn) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates a `ByteMatchSet`. You then use
-#' [`update_byte_match_set`][wafregional_update_byte_match_set] to identify
-#' the part of a web request that you want AWS WAF to inspect, such as the
-#' values of the `User-Agent` header or the query string. For example, you
-#' can create a `ByteMatchSet` that matches any requests with `User-Agent`
-#' headers that contain the string `BadBot`. You can then configure AWS WAF
-#' to reject those requests.
-#' 
-#' To create and configure a `ByteMatchSet`, perform the following steps:
-#' 
-#' 1.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_byte_match_set`][wafregional_create_byte_match_set]
-#'     request.
-#' 
-#' 2.  Submit a
-#'     [`create_byte_match_set`][wafregional_create_byte_match_set]
-#'     request.
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_byte_match_set`][wafregional_update_byte_match_set]
-#'     request.
-#' 
-#' 4.  Submit an
-#'     [`update_byte_match_set`][wafregional_update_byte_match_set] request
-#'     to specify the part of the request that you want AWS WAF to inspect
-#'     (for example, the header or the URI) and the value that you want AWS
-#'     WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_byte_match_set(Name, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/create_byte_match_set.html](https://paws-r.github.io/docs/wafregional/create_byte_match_set.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the ByteMatchSet. You can't change
 #' `Name` after you create a `ByteMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ByteMatchSet = list(
-#'     ByteMatchSetId = "string",
-#'     Name = "string",
-#'     ByteMatchTuples = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TargetString = raw,
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-#'         PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_byte_match_set(
-#'   Name = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -176,77 +77,14 @@ wafregional_create_byte_match_set <- function(Name, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates an GeoMatchSet, which you use to specify which web requests you
-#' want to allow or block based on the country that the requests originate
-#' from. For example, if you're receiving a lot of requests from one or
-#' more countries and you want to block the requests, you can create an
-#' `GeoMatchSet` that contains those countries and then configure AWS WAF
-#' to block the requests.
-#' 
-#' To create and configure a `GeoMatchSet`, perform the following steps:
-#' 
-#' 1.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_geo_match_set`][wafregional_create_geo_match_set] request.
-#' 
-#' 2.  Submit a [`create_geo_match_set`][wafregional_create_geo_match_set]
-#'     request.
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_geo_match_set`][wafregional_update_geo_match_set] request.
-#' 
-#' 4.  Submit an `UpdateGeoMatchSetSet` request to specify the countries
-#'     that you want AWS WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_geo_match_set(Name, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/create_geo_match_set.html](https://paws-r.github.io/docs/wafregional/create_geo_match_set.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the GeoMatchSet. You can't change
 #' `Name` after you create the `GeoMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GeoMatchSet = list(
-#'     GeoMatchSetId = "string",
-#'     Name = "string",
-#'     GeoMatchConstraints = list(
-#'       list(
-#'         Type = "Country",
-#'         Value = "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_geo_match_set(
-#'   Name = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -271,86 +109,14 @@ wafregional_create_geo_match_set <- function(Name, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates an IPSet, which you use to specify which web requests that you
-#' want to allow or block based on the IP addresses that the requests
-#' originate from. For example, if you're receiving a lot of requests from
-#' one or more individual IP addresses or one or more ranges of IP
-#' addresses and you want to block the requests, you can create an `IPSet`
-#' that contains those IP addresses and then configure AWS WAF to block the
-#' requests.
-#' 
-#' To create and configure an `IPSet`, perform the following steps:
-#' 
-#' 1.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_ip_set`][wafregional_create_ip_set] request.
-#' 
-#' 2.  Submit a [`create_ip_set`][wafregional_create_ip_set] request.
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_ip_set`][wafregional_update_ip_set] request.
-#' 
-#' 4.  Submit an [`update_ip_set`][wafregional_update_ip_set] request to
-#'     specify the IP addresses that you want AWS WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_ip_set(Name, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/create_ip_set.html](https://paws-r.github.io/docs/wafregional/create_ip_set.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the IPSet. You can't change `Name`
 #' after you create the `IPSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IPSet = list(
-#'     IPSetId = "string",
-#'     Name = "string",
-#'     IPSetDescriptors = list(
-#'       list(
-#'         Type = "IPV4"|"IPV6",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_ip_set(
-#'   Name = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates an IP match set named MyIPSetFriendlyName.
-#' svc$create_ip_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   Name = "MyIPSetFriendlyName"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -375,96 +141,9 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates a RateBasedRule. The `RateBasedRule` contains a `RateLimit`,
-#' which specifies the maximum number of requests that AWS WAF allows from
-#' a specified IP address in a five-minute period. The `RateBasedRule` also
-#' contains the `IPSet` objects, `ByteMatchSet` objects, and other
-#' predicates that identify the requests that you want to count or block if
-#' these requests exceed the `RateLimit`.
-#' 
-#' If you add more than one predicate to a `RateBasedRule`, a request not
-#' only must exceed the `RateLimit`, but it also must match all the
-#' conditions to be counted or blocked. For example, suppose you add the
-#' following to a `RateBasedRule`:
-#' 
-#' -   An `IPSet` that matches the IP address `192.0.2.44/32`
-#' 
-#' -   A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
-#' 
-#' Further, you specify a `RateLimit` of 1,000.
-#' 
-#' You then add the `RateBasedRule` to a `WebACL` and specify that you want
-#' to block requests that meet the conditions in the rule. For a request to
-#' be blocked, it must come from the IP address 192.0.2.44 *and* the
-#' `User-Agent` header in the request must contain the value `BadBot`.
-#' Further, requests that match these two conditions must be received at a
-#' rate of more than 1,000 requests every five minutes. If both conditions
-#' are met and the rate is exceeded, AWS WAF blocks the requests. If the
-#' rate drops below 1,000 for a five-minute period, AWS WAF no longer
-#' blocks the requests.
-#' 
-#' As a second example, suppose you want to limit requests to a particular
-#' page on your site. To do this, you could add the following to a
-#' `RateBasedRule`:
-#' 
-#' -   A `ByteMatchSet` with `FieldToMatch` of `URI`
-#' 
-#' -   A `PositionalConstraint` of `STARTS_WITH`
-#' 
-#' -   A `TargetString` of `login`
-#' 
-#' Further, you specify a `RateLimit` of 1,000.
-#' 
-#' By adding this `RateBasedRule` to a `WebACL`, you could limit requests
-#' to your login page without affecting the rest of your site.
-#' 
-#' To create and configure a `RateBasedRule`, perform the following steps:
-#' 
-#' 1.  Create and update the predicates that you want to include in the
-#'     rule. For more information, see
-#'     [`create_byte_match_set`][wafregional_create_byte_match_set],
-#'     [`create_ip_set`][wafregional_create_ip_set], and
-#'     [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_rule`][wafregional_create_rule] request.
-#' 
-#' 3.  Submit a
-#'     [`create_rate_based_rule`][wafregional_create_rate_based_rule]
-#'     request.
-#' 
-#' 4.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_rule`][wafregional_update_rule] request.
-#' 
-#' 5.  Submit an
-#'     [`update_rate_based_rule`][wafregional_update_rate_based_rule]
-#'     request to specify the predicates that you want to include in the
-#'     rule.
-#' 
-#' 6.  Create and update a `WebACL` that contains the `RateBasedRule`. For
-#'     more information, see
-#'     [`create_web_acl`][wafregional_create_web_acl].
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
-#'   ChangeToken, Tags)
+#' See [https://paws-r.github.io/docs/wafregional/create_rate_based_rule.html](https://paws-r.github.io/docs/wafregional/create_rate_based_rule.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RateBasedRule. You can't change
 #' the name of a `RateBasedRule` after you create it.
@@ -491,45 +170,6 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
 #' [`get_change_token_status`][wafregional_get_change_token_status].
 #' @param Tags 
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rule = list(
-#'     RuleId = "string",
-#'     Name = "string",
-#'     MetricName = "string",
-#'     MatchPredicates = list(
-#'       list(
-#'         Negated = TRUE|FALSE,
-#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-#'         DataId = "string"
-#'       )
-#'     ),
-#'     RateKey = "IP",
-#'     RateLimit = 123
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_rate_based_rule(
-#'   Name = "string",
-#'   MetricName = "string",
-#'   RateKey = "IP",
-#'   RateLimit = 123,
-#'   ChangeToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname wafregional_create_rate_based_rule
@@ -553,89 +193,14 @@ wafregional_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLi
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates a RegexMatchSet. You then use
-#' [`update_regex_match_set`][wafregional_update_regex_match_set] to
-#' identify the part of a web request that you want AWS WAF to inspect,
-#' such as the values of the `User-Agent` header or the query string. For
-#' example, you can create a `RegexMatchSet` that contains a
-#' `RegexMatchTuple` that looks for any requests with `User-Agent` headers
-#' that match a `RegexPatternSet` with pattern `B[a@@]dB[o0]t`. You can then
-#' configure AWS WAF to reject those requests.
-#' 
-#' To create and configure a `RegexMatchSet`, perform the following steps:
-#' 
-#' 1.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_regex_match_set`][wafregional_create_regex_match_set]
-#'     request.
-#' 
-#' 2.  Submit a
-#'     [`create_regex_match_set`][wafregional_create_regex_match_set]
-#'     request.
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_regex_match_set`][wafregional_update_regex_match_set]
-#'     request.
-#' 
-#' 4.  Submit an
-#'     [`update_regex_match_set`][wafregional_update_regex_match_set]
-#'     request to specify the part of the request that you want AWS WAF to
-#'     inspect (for example, the header or the URI) and the value, using a
-#'     `RegexPatternSet`, that you want AWS WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_regex_match_set(Name, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/create_regex_match_set.html](https://paws-r.github.io/docs/wafregional/create_regex_match_set.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RegexMatchSet. You can't change
 #' `Name` after you create a `RegexMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegexMatchSet = list(
-#'     RegexMatchSetId = "string",
-#'     Name = "string",
-#'     RegexMatchTuples = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-#'         RegexPatternSetId = "string"
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_regex_match_set(
-#'   Name = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -660,78 +225,14 @@ wafregional_create_regex_match_set <- function(Name, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates a `RegexPatternSet`. You then use
-#' [`update_regex_pattern_set`][wafregional_update_regex_pattern_set] to
-#' specify the regular expression (regex) pattern that you want AWS WAF to
-#' search for, such as `B[a@@]dB[o0]t`. You can then configure AWS WAF to
-#' reject those requests.
-#' 
-#' To create and configure a `RegexPatternSet`, perform the following
-#' steps:
-#' 
-#' 1.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_regex_pattern_set`][wafregional_create_regex_pattern_set]
-#'     request.
-#' 
-#' 2.  Submit a
-#'     [`create_regex_pattern_set`][wafregional_create_regex_pattern_set]
-#'     request.
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_regex_pattern_set`][wafregional_update_regex_pattern_set]
-#'     request.
-#' 
-#' 4.  Submit an
-#'     [`update_regex_pattern_set`][wafregional_update_regex_pattern_set]
-#'     request to specify the string that you want AWS WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_regex_pattern_set(Name, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/create_regex_pattern_set.html](https://paws-r.github.io/docs/wafregional/create_regex_pattern_set.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RegexPatternSet. You can't change
 #' `Name` after you create a `RegexPatternSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegexPatternSet = list(
-#'     RegexPatternSetId = "string",
-#'     Name = "string",
-#'     RegexPatternStrings = list(
-#'       "string"
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_regex_pattern_set(
-#'   Name = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -756,62 +257,9 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates a `Rule`, which contains the `IPSet` objects, `ByteMatchSet`
-#' objects, and other predicates that identify the requests that you want
-#' to block. If you add more than one predicate to a `Rule`, a request must
-#' match all of the specifications to be allowed or blocked. For example,
-#' suppose that you add the following to a `Rule`:
-#' 
-#' -   An `IPSet` that matches the IP address `192.0.2.44/32`
-#' 
-#' -   A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
-#' 
-#' You then add the `Rule` to a `WebACL` and specify that you want to
-#' blocks requests that satisfy the `Rule`. For a request to be blocked, it
-#' must come from the IP address 192.0.2.44 *and* the `User-Agent` header
-#' in the request must contain the value `BadBot`.
-#' 
-#' To create and configure a `Rule`, perform the following steps:
-#' 
-#' 1.  Create and update the predicates that you want to include in the
-#'     `Rule`. For more information, see
-#'     [`create_byte_match_set`][wafregional_create_byte_match_set],
-#'     [`create_ip_set`][wafregional_create_ip_set], and
-#'     [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_rule`][wafregional_create_rule] request.
-#' 
-#' 3.  Submit a [`create_rule`][wafregional_create_rule] request.
-#' 
-#' 4.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_rule`][wafregional_update_rule] request.
-#' 
-#' 5.  Submit an [`update_rule`][wafregional_update_rule] request to
-#'     specify the predicates that you want to include in the `Rule`.
-#' 
-#' 6.  Create and update a `WebACL` that contains the `Rule`. For more
-#'     information, see [`create_web_acl`][wafregional_create_web_acl].
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_rule(Name, MetricName, ChangeToken, Tags)
+#' See [https://paws-r.github.io/docs/wafregional/create_rule.html](https://paws-r.github.io/docs/wafregional/create_rule.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the Rule. You can't change the name of
 #' a `Rule` after you create it.
@@ -823,51 +271,6 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
 #' @param Tags 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rule = list(
-#'     RuleId = "string",
-#'     Name = "string",
-#'     MetricName = "string",
-#'     Predicates = list(
-#'       list(
-#'         Negated = TRUE|FALSE,
-#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-#'         DataId = "string"
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_rule(
-#'   Name = "string",
-#'   MetricName = "string",
-#'   ChangeToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a rule named WAFByteHeaderRule.
-#' svc$create_rule(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   MetricName = "WAFByteHeaderRule",
-#'   Name = "WAFByteHeaderRule"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -892,37 +295,9 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) 
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates a `RuleGroup`. A rule group is a collection of predefined rules
-#' that you add to a web ACL. You use
-#' [`update_rule_group`][wafregional_update_rule_group] to add rules to the
-#' rule group.
-#' 
-#' Rule groups are subject to the following limits:
-#' 
-#' -   Three rule groups per account. You can request an increase to this
-#'     limit by contacting customer support.
-#' 
-#' -   One rule group per web ACL.
-#' 
-#' -   Ten rules per rule group.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_rule_group(Name, MetricName, ChangeToken, Tags)
+#' See [https://paws-r.github.io/docs/wafregional/create_rule_group.html](https://paws-r.github.io/docs/wafregional/create_rule_group.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RuleGroup. You can't change `Name`
 #' after you create a `RuleGroup`.
@@ -935,34 +310,6 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) 
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
 #' @param Tags 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RuleGroup = list(
-#'     RuleGroupId = "string",
-#'     Name = "string",
-#'     MetricName = "string"
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_rule_group(
-#'   Name = "string",
-#'   MetricName = "string",
-#'   ChangeToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -987,100 +334,14 @@ wafregional_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = 
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates a `SizeConstraintSet`. You then use
-#' [`update_size_constraint_set`][wafregional_update_size_constraint_set]
-#' to identify the part of a web request that you want AWS WAF to check for
-#' length, such as the length of the `User-Agent` header or the length of
-#' the query string. For example, you can create a `SizeConstraintSet` that
-#' matches any requests that have a query string that is longer than 100
-#' bytes. You can then configure AWS WAF to reject those requests.
-#' 
-#' To create and configure a `SizeConstraintSet`, perform the following
-#' steps:
-#' 
-#' 1.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_size_constraint_set`][wafregional_create_size_constraint_set]
-#'     request.
-#' 
-#' 2.  Submit a
-#'     [`create_size_constraint_set`][wafregional_create_size_constraint_set]
-#'     request.
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_size_constraint_set`][wafregional_update_size_constraint_set]
-#'     request.
-#' 
-#' 4.  Submit an
-#'     [`update_size_constraint_set`][wafregional_update_size_constraint_set]
-#'     request to specify the part of the request that you want AWS WAF to
-#'     inspect (for example, the header or the URI) and the value that you
-#'     want AWS WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_size_constraint_set(Name, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/create_size_constraint_set.html](https://paws-r.github.io/docs/wafregional/create_size_constraint_set.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the SizeConstraintSet. You can't
 #' change `Name` after you create a `SizeConstraintSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SizeConstraintSet = list(
-#'     SizeConstraintSetId = "string",
-#'     Name = "string",
-#'     SizeConstraints = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-#'         ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
-#'         Size = 123
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_size_constraint_set(
-#'   Name = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates size constraint set named
-#' # MySampleSizeConstraintSet.
-#' svc$create_size_constraint_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   Name = "MySampleSizeConstraintSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1105,95 +366,15 @@ wafregional_create_size_constraint_set <- function(Name, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates a SqlInjectionMatchSet, which you use to allow, block, or count
-#' requests that contain snippets of SQL code in a specified part of web
-#' requests. AWS WAF searches for character sequences that are likely to be
-#' malicious strings.
-#' 
-#' To create and configure a `SqlInjectionMatchSet`, perform the following
-#' steps:
-#' 
-#' 1.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set]
-#'     request.
-#' 
-#' 2.  Submit a
-#'     [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set]
-#'     request.
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_sql_injection_match_set`][wafregional_update_sql_injection_match_set]
-#'     request.
-#' 
-#' 4.  Submit an
-#'     [`update_sql_injection_match_set`][wafregional_update_sql_injection_match_set]
-#'     request to specify the parts of web requests in which you want to
-#'     allow, block, or count malicious SQL code.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_sql_injection_match_set(Name, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/create_sql_injection_match_set.html](https://paws-r.github.io/docs/wafregional/create_sql_injection_match_set.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description for the SqlInjectionMatchSet that you're
 #' creating. You can't change `Name` after you create the
 #' `SqlInjectionMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SqlInjectionMatchSet = list(
-#'     SqlInjectionMatchSetId = "string",
-#'     Name = "string",
-#'     SqlInjectionMatchTuples = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_sql_injection_match_set(
-#'   Name = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a SQL injection match set named
-#' # MySQLInjectionMatchSet.
-#' svc$create_sql_injection_match_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   Name = "MySQLInjectionMatchSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1218,65 +399,9 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates a `WebACL`, which contains the `Rules` that identify the
-#' CloudFront web requests that you want to allow, block, or count. AWS WAF
-#' evaluates `Rules` in order based on the value of `Priority` for each
-#' `Rule`.
-#' 
-#' You also specify a default action, either `ALLOW` or `BLOCK`. If a web
-#' request doesn't match any of the `Rules` in a `WebACL`, AWS WAF responds
-#' to the request with the default action.
-#' 
-#' To create and configure a `WebACL`, perform the following steps:
-#' 
-#' 1.  Create and update the `ByteMatchSet` objects and other predicates
-#'     that you want to include in `Rules`. For more information, see
-#'     [`create_byte_match_set`][wafregional_create_byte_match_set],
-#'     [`update_byte_match_set`][wafregional_update_byte_match_set],
-#'     [`create_ip_set`][wafregional_create_ip_set],
-#'     [`update_ip_set`][wafregional_update_ip_set],
-#'     [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set],
-#'     and
-#'     [`update_sql_injection_match_set`][wafregional_update_sql_injection_match_set].
-#' 
-#' 2.  Create and update the `Rules` that you want to include in the
-#'     `WebACL`. For more information, see
-#'     [`create_rule`][wafregional_create_rule] and
-#'     [`update_rule`][wafregional_update_rule].
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_web_acl`][wafregional_create_web_acl] request.
-#' 
-#' 4.  Submit a [`create_web_acl`][wafregional_create_web_acl] request.
-#' 
-#' 5.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_web_acl`][wafregional_update_web_acl] request.
-#' 
-#' 6.  Submit an [`update_web_acl`][wafregional_update_web_acl] request to
-#'     specify the `Rules` that you want to include in the `WebACL`, to
-#'     specify the default action, and to associate the `WebACL` with a
-#'     CloudFront distribution.
-#' 
-#' For more information about how to use the AWS WAF API, see the [AWS WAF
-#' Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_web_acl(Name, MetricName, DefaultAction, ChangeToken,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/wafregional/create_web_acl.html](https://paws-r.github.io/docs/wafregional/create_web_acl.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the WebACL. You can't change `Name`
 #' after you create the `WebACL`.
@@ -1292,72 +417,6 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
 #' @param Tags 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WebACL = list(
-#'     WebACLId = "string",
-#'     Name = "string",
-#'     MetricName = "string",
-#'     DefaultAction = list(
-#'       Type = "BLOCK"|"ALLOW"|"COUNT"
-#'     ),
-#'     Rules = list(
-#'       list(
-#'         Priority = 123,
-#'         RuleId = "string",
-#'         Action = list(
-#'           Type = "BLOCK"|"ALLOW"|"COUNT"
-#'         ),
-#'         OverrideAction = list(
-#'           Type = "NONE"|"COUNT"
-#'         ),
-#'         Type = "REGULAR"|"RATE_BASED"|"GROUP",
-#'         ExcludedRules = list(
-#'           list(
-#'             RuleId = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     WebACLArn = "string"
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_web_acl(
-#'   Name = "string",
-#'   MetricName = "string",
-#'   DefaultAction = list(
-#'     Type = "BLOCK"|"ALLOW"|"COUNT"
-#'   ),
-#'   ChangeToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a web ACL named CreateExample.
-#' svc$create_web_acl(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   DefaultAction = list(
-#'     Type = "ALLOW"
-#'   ),
-#'   MetricName = "CreateExample",
-#'   Name = "CreateExample"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1383,24 +442,9 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
 #' in the specified Amazon S3 bucket
 #'
 #' @description
-#' Creates an AWS CloudFormation WAFV2 template for the specified web ACL
-#' in the specified Amazon S3 bucket. Then, in CloudFormation, you create a
-#' stack from the template, to create the web ACL and its resources in AWS
-#' WAFV2. Use this to migrate your AWS WAF Classic web ACL to the latest
-#' version of AWS WAF.
-#' 
-#' This is part of a larger migration procedure for web ACLs from AWS WAF
-#' Classic to the latest version of AWS WAF. For the full procedure,
-#' including caveats and manual steps to complete the migration and switch
-#' over to the new web ACL, see [Migrating your AWS WAF Classic resources
-#' to AWS
-#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-migrating-from-classic.html)
-#' in the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' Creates an AWS CloudFormation WAFV2 template for the specified web ACL in the specified Amazon S3 bucket. Then, in CloudFormation, you create a stack from the template, to create the web ACL and its resources in AWS WAFV2. Use this to migrate your AWS WAF Classic web ACL to the latest version of AWS WAF.
 #'
-#' @usage
-#' wafregional_create_web_acl_migration_stack(WebACLId, S3BucketName,
-#'   IgnoreUnsupportedType)
+#' See [https://paws-r.github.io/docs/wafregional/create_web_acl_migration_stack.html](https://paws-r.github.io/docs/wafregional/create_web_acl_migration_stack.html) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The UUID of the WAF Classic web ACL that you want to migrate to WAF v2.
 #' @param S3BucketName &#91;required&#93; The name of the Amazon S3 bucket to store the CloudFormation template
@@ -1420,23 +464,6 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
 #' the migration. Set this to true to ignore unsupported entities in the
 #' web ACL during the migration. Otherwise, if AWS WAF encounters
 #' unsupported entities, it stops the process and throws an exception.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   S3ObjectUrl = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_web_acl_migration_stack(
-#'   WebACLId = "string",
-#'   S3BucketName = "string",
-#'   IgnoreUnsupportedType = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1461,89 +488,14 @@ wafregional_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, I
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Creates an XssMatchSet, which you use to allow, block, or count requests
-#' that contain cross-site scripting attacks in the specified part of web
-#' requests. AWS WAF searches for character sequences that are likely to be
-#' malicious strings.
-#' 
-#' To create and configure an `XssMatchSet`, perform the following steps:
-#' 
-#' 1.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`create_xss_match_set`][wafregional_create_xss_match_set] request.
-#' 
-#' 2.  Submit a [`create_xss_match_set`][wafregional_create_xss_match_set]
-#'     request.
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_xss_match_set`][wafregional_update_xss_match_set] request.
-#' 
-#' 4.  Submit an [`update_xss_match_set`][wafregional_update_xss_match_set]
-#'     request to specify the parts of web requests in which you want to
-#'     allow, block, or count cross-site scripting attacks.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_create_xss_match_set(Name, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/create_xss_match_set.html](https://paws-r.github.io/docs/wafregional/create_xss_match_set.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description for the XssMatchSet that you're creating.
 #' You can't change `Name` after you create the `XssMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   XssMatchSet = list(
-#'     XssMatchSetId = "string",
-#'     Name = "string",
-#'     XssMatchTuples = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_xss_match_set(
-#'   Name = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates an XSS match set named
-#' # MySampleXssMatchSet.
-#' svc$create_xss_match_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   Name = "MySampleXssMatchSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1568,41 +520,9 @@ wafregional_create_xss_match_set <- function(Name, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a ByteMatchSet. You can't delete a `ByteMatchSet` if
-#' it's still used in any `Rules` or if it still includes any
-#' ByteMatchTuple objects (any filters).
-#' 
-#' If you just want to remove a `ByteMatchSet` from a `Rule`, use
-#' [`update_rule`][wafregional_update_rule].
-#' 
-#' To permanently delete a `ByteMatchSet`, perform the following steps:
-#' 
-#' 1.  Update the `ByteMatchSet` to remove filters, if any. For more
-#'     information, see
-#'     [`update_byte_match_set`][wafregional_update_byte_match_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_byte_match_set`][wafregional_delete_byte_match_set]
-#'     request.
-#' 
-#' 3.  Submit a
-#'     [`delete_byte_match_set`][wafregional_delete_byte_match_set]
-#'     request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_byte_match_set(ByteMatchSetId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_byte_match_set.html](https://paws-r.github.io/docs/wafregional/delete_byte_match_set.html) for full documentation.
 #'
 #' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to delete.
 #' `ByteMatchSetId` is returned by
@@ -1610,32 +530,6 @@ wafregional_create_xss_match_set <- function(Name, ChangeToken) {
 #' [`list_byte_match_sets`][wafregional_list_byte_match_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_byte_match_set(
-#'   ByteMatchSetId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a byte match set with the ID
-#' # exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$delete_byte_match_set(
-#'   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1660,39 +554,9 @@ wafregional_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a GeoMatchSet. You can't delete a `GeoMatchSet` if
-#' it's still used in any `Rules` or if it still includes any countries.
-#' 
-#' If you just want to remove a `GeoMatchSet` from a `Rule`, use
-#' [`update_rule`][wafregional_update_rule].
-#' 
-#' To permanently delete a `GeoMatchSet` from AWS WAF, perform the
-#' following steps:
-#' 
-#' 1.  Update the `GeoMatchSet` to remove any countries. For more
-#'     information, see
-#'     [`update_geo_match_set`][wafregional_update_geo_match_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_geo_match_set`][wafregional_delete_geo_match_set] request.
-#' 
-#' 3.  Submit a [`delete_geo_match_set`][wafregional_delete_geo_match_set]
-#'     request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_geo_match_set(GeoMatchSetId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_geo_match_set.html](https://paws-r.github.io/docs/wafregional/delete_geo_match_set.html) for full documentation.
 #'
 #' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetID` of the GeoMatchSet that you want to delete.
 #' `GeoMatchSetId` is returned by
@@ -1700,22 +564,6 @@ wafregional_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 #' [`list_geo_match_sets`][wafregional_list_geo_match_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_geo_match_set(
-#'   GeoMatchSetId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1740,69 +588,15 @@ wafregional_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes an IPSet. You can't delete an `IPSet` if it's still
-#' used in any `Rules` or if it still includes any IP addresses.
-#' 
-#' If you just want to remove an `IPSet` from a `Rule`, use
-#' [`update_rule`][wafregional_update_rule].
-#' 
-#' To permanently delete an `IPSet` from AWS WAF, perform the following
-#' steps:
-#' 
-#' 1.  Update the `IPSet` to remove IP address ranges, if any. For more
-#'     information, see [`update_ip_set`][wafregional_update_ip_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_ip_set`][wafregional_delete_ip_set] request.
-#' 
-#' 3.  Submit a [`delete_ip_set`][wafregional_delete_ip_set] request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_ip_set(IPSetId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_ip_set.html](https://paws-r.github.io/docs/wafregional/delete_ip_set.html) for full documentation.
 #'
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to delete. `IPSetId` is
 #' returned by [`create_ip_set`][wafregional_create_ip_set] and by
 #' [`list_ip_sets`][wafregional_list_ip_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_ip_set(
-#'   IPSetId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an IP match set  with the ID
-#' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$delete_ip_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1827,34 +621,12 @@ wafregional_delete_ip_set <- function(IPSetId, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes the LoggingConfiguration from the specified web ACL.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_logging_configuration(ResourceArn)
+#' See [https://paws-r.github.io/docs/wafregional/delete_logging_configuration.html](https://paws-r.github.io/docs/wafregional/delete_logging_configuration.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to
 #' delete the LoggingConfiguration.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_logging_configuration(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1879,38 +651,14 @@ wafregional_delete_logging_configuration <- function(ResourceArn) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes an IAM policy from the specified RuleGroup.
-#' 
-#' The user making the request must be the owner of the RuleGroup.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_permission_policy(ResourceArn)
+#' See [https://paws-r.github.io/docs/wafregional/delete_permission_policy.html](https://paws-r.github.io/docs/wafregional/delete_permission_policy.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup from which you want to
 #' delete the policy.
 #' 
 #' The user making the request must be the owner of the RuleGroup.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_permission_policy(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1935,42 +683,9 @@ wafregional_delete_permission_policy <- function(ResourceArn) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a RateBasedRule. You can't delete a rule if it's
-#' still used in any `WebACL` objects or if it still includes any
-#' predicates, such as `ByteMatchSet` objects.
-#' 
-#' If you just want to remove a rule from a `WebACL`, use
-#' [`update_web_acl`][wafregional_update_web_acl].
-#' 
-#' To permanently delete a `RateBasedRule` from AWS WAF, perform the
-#' following steps:
-#' 
-#' 1.  Update the `RateBasedRule` to remove predicates, if any. For more
-#'     information, see
-#'     [`update_rate_based_rule`][wafregional_update_rate_based_rule].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_rate_based_rule`][wafregional_delete_rate_based_rule]
-#'     request.
-#' 
-#' 3.  Submit a
-#'     [`delete_rate_based_rule`][wafregional_delete_rate_based_rule]
-#'     request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_rate_based_rule(RuleId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_rate_based_rule.html](https://paws-r.github.io/docs/wafregional/delete_rate_based_rule.html) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to delete. `RuleId` is
 #' returned by
@@ -1978,22 +693,6 @@ wafregional_delete_permission_policy <- function(ResourceArn) {
 #' [`list_rate_based_rules`][wafregional_list_rate_based_rules].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_rate_based_rule(
-#'   RuleId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2018,41 +717,9 @@ wafregional_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a RegexMatchSet. You can't delete a `RegexMatchSet`
-#' if it's still used in any `Rules` or if it still includes any
-#' `RegexMatchTuples` objects (any filters).
-#' 
-#' If you just want to remove a `RegexMatchSet` from a `Rule`, use
-#' [`update_rule`][wafregional_update_rule].
-#' 
-#' To permanently delete a `RegexMatchSet`, perform the following steps:
-#' 
-#' 1.  Update the `RegexMatchSet` to remove filters, if any. For more
-#'     information, see
-#'     [`update_regex_match_set`][wafregional_update_regex_match_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_regex_match_set`][wafregional_delete_regex_match_set]
-#'     request.
-#' 
-#' 3.  Submit a
-#'     [`delete_regex_match_set`][wafregional_delete_regex_match_set]
-#'     request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_regex_match_set(RegexMatchSetId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_regex_match_set.html](https://paws-r.github.io/docs/wafregional/delete_regex_match_set.html) for full documentation.
 #'
 #' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to delete.
 #' `RegexMatchSetId` is returned by
@@ -2060,22 +727,6 @@ wafregional_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 #' [`list_regex_match_sets`][wafregional_list_regex_match_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_regex_match_set(
-#'   RegexMatchSetId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2100,23 +751,9 @@ wafregional_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a RegexPatternSet. You can't delete a
-#' `RegexPatternSet` if it's still used in any `RegexMatchSet` or if the
-#' `RegexPatternSet` is not empty.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_regex_pattern_set(RegexPatternSetId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_regex_pattern_set.html](https://paws-r.github.io/docs/wafregional/delete_regex_pattern_set.html) for full documentation.
 #'
 #' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to delete.
 #' `RegexPatternSetId` is returned by
@@ -2124,22 +761,6 @@ wafregional_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 #' by [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_regex_pattern_set(
-#'   RegexPatternSetId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2164,69 +785,15 @@ wafregional_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken)
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a Rule. You can't delete a `Rule` if it's still used
-#' in any `WebACL` objects or if it still includes any predicates, such as
-#' `ByteMatchSet` objects.
-#' 
-#' If you just want to remove a `Rule` from a `WebACL`, use
-#' [`update_web_acl`][wafregional_update_web_acl].
-#' 
-#' To permanently delete a `Rule` from AWS WAF, perform the following
-#' steps:
-#' 
-#' 1.  Update the `Rule` to remove predicates, if any. For more
-#'     information, see [`update_rule`][wafregional_update_rule].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_rule`][wafregional_delete_rule] request.
-#' 
-#' 3.  Submit a [`delete_rule`][wafregional_delete_rule] request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_rule(RuleId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_rule.html](https://paws-r.github.io/docs/wafregional/delete_rule.html) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to delete. `RuleId` is returned
 #' by [`create_rule`][wafregional_create_rule] and by
 #' [`list_rules`][wafregional_list_rules].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_rule(
-#'   RuleId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a rule with the ID WAFRule-1-Example.
-#' svc$delete_rule(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   RuleId = "WAFRule-1-Example"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2251,39 +818,9 @@ wafregional_delete_rule <- function(RuleId, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a RuleGroup. You can't delete a `RuleGroup` if it's
-#' still used in any `WebACL` objects or if it still includes any rules.
-#' 
-#' If you just want to remove a `RuleGroup` from a `WebACL`, use
-#' [`update_web_acl`][wafregional_update_web_acl].
-#' 
-#' To permanently delete a `RuleGroup` from AWS WAF, perform the following
-#' steps:
-#' 
-#' 1.  Update the `RuleGroup` to remove rules, if any. For more
-#'     information, see
-#'     [`update_rule_group`][wafregional_update_rule_group].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_rule_group`][wafregional_delete_rule_group] request.
-#' 
-#' 3.  Submit a [`delete_rule_group`][wafregional_delete_rule_group]
-#'     request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_rule_group(RuleGroupId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_rule_group.html](https://paws-r.github.io/docs/wafregional/delete_rule_group.html) for full documentation.
 #'
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to delete.
 #' `RuleGroupId` is returned by
@@ -2291,22 +828,6 @@ wafregional_delete_rule <- function(RuleId, ChangeToken) {
 #' [`list_rule_groups`][wafregional_list_rule_groups].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_rule_group(
-#'   RuleGroupId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2331,42 +852,9 @@ wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a SizeConstraintSet. You can't delete a
-#' `SizeConstraintSet` if it's still used in any `Rules` or if it still
-#' includes any SizeConstraint objects (any filters).
-#' 
-#' If you just want to remove a `SizeConstraintSet` from a `Rule`, use
-#' [`update_rule`][wafregional_update_rule].
-#' 
-#' To permanently delete a `SizeConstraintSet`, perform the following
-#' steps:
-#' 
-#' 1.  Update the `SizeConstraintSet` to remove filters, if any. For more
-#'     information, see
-#'     [`update_size_constraint_set`][wafregional_update_size_constraint_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_size_constraint_set`][wafregional_delete_size_constraint_set]
-#'     request.
-#' 
-#' 3.  Submit a
-#'     [`delete_size_constraint_set`][wafregional_delete_size_constraint_set]
-#'     request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_size_constraint_set(SizeConstraintSetId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_size_constraint_set.html](https://paws-r.github.io/docs/wafregional/delete_size_constraint_set.html) for full documentation.
 #'
 #' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to
 #' delete. `SizeConstraintSetId` is returned by
@@ -2375,32 +863,6 @@ wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 #' [`list_size_constraint_sets`][wafregional_list_size_constraint_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_size_constraint_set(
-#'   SizeConstraintSetId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a size constraint set  with the ID
-#' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$delete_size_constraint_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2425,43 +887,9 @@ wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a SqlInjectionMatchSet. You can't delete a
-#' `SqlInjectionMatchSet` if it's still used in any `Rules` or if it still
-#' contains any SqlInjectionMatchTuple objects.
-#' 
-#' If you just want to remove a `SqlInjectionMatchSet` from a `Rule`, use
-#' [`update_rule`][wafregional_update_rule].
-#' 
-#' To permanently delete a `SqlInjectionMatchSet` from AWS WAF, perform the
-#' following steps:
-#' 
-#' 1.  Update the `SqlInjectionMatchSet` to remove filters, if any. For
-#'     more information, see
-#'     [`update_sql_injection_match_set`][wafregional_update_sql_injection_match_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_sql_injection_match_set`][wafregional_delete_sql_injection_match_set]
-#'     request.
-#' 
-#' 3.  Submit a
-#'     [`delete_sql_injection_match_set`][wafregional_delete_sql_injection_match_set]
-#'     request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_sql_injection_match_set(SqlInjectionMatchSetId,
-#'   ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_sql_injection_match_set.html](https://paws-r.github.io/docs/wafregional/delete_sql_injection_match_set.html) for full documentation.
 #'
 #' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want
 #' to delete. `SqlInjectionMatchSetId` is returned by
@@ -2470,32 +898,6 @@ wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #' [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_sql_injection_match_set(
-#'   SqlInjectionMatchSetId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a SQL injection match set  with the ID
-#' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$delete_sql_injection_match_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2520,65 +922,15 @@ wafregional_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes a WebACL. You can't delete a `WebACL` if it still
-#' contains any `Rules`.
-#' 
-#' To delete a `WebACL`, perform the following steps:
-#' 
-#' 1.  Update the `WebACL` to remove `Rules`, if any. For more information,
-#'     see [`update_web_acl`][wafregional_update_web_acl].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_web_acl`][wafregional_delete_web_acl] request.
-#' 
-#' 3.  Submit a [`delete_web_acl`][wafregional_delete_web_acl] request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_web_acl(WebACLId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_web_acl.html](https://paws-r.github.io/docs/wafregional/delete_web_acl.html) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to delete. `WebACLId` is
 #' returned by [`create_web_acl`][wafregional_create_web_acl] and by
 #' [`list_web_ac_ls`][wafregional_list_web_ac_ls].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_web_acl(
-#'   WebACLId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a web ACL with the ID
-#' # example-46da-4444-5555-example.
-#' svc$delete_web_acl(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   WebACLId = "example-46da-4444-5555-example"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2603,40 +955,9 @@ wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Permanently deletes an XssMatchSet. You can't delete an `XssMatchSet` if
-#' it's still used in any `Rules` or if it still contains any XssMatchTuple
-#' objects.
-#' 
-#' If you just want to remove an `XssMatchSet` from a `Rule`, use
-#' [`update_rule`][wafregional_update_rule].
-#' 
-#' To permanently delete an `XssMatchSet` from AWS WAF, perform the
-#' following steps:
-#' 
-#' 1.  Update the `XssMatchSet` to remove filters, if any. For more
-#'     information, see
-#'     [`update_xss_match_set`][wafregional_update_xss_match_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of a
-#'     [`delete_xss_match_set`][wafregional_delete_xss_match_set] request.
-#' 
-#' 3.  Submit a [`delete_xss_match_set`][wafregional_delete_xss_match_set]
-#'     request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_delete_xss_match_set(XssMatchSetId, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/delete_xss_match_set.html](https://paws-r.github.io/docs/wafregional/delete_xss_match_set.html) for full documentation.
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to delete.
 #' `XssMatchSetId` is returned by
@@ -2644,32 +965,6 @@ wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
 #' [`list_xss_match_sets`][wafregional_list_xss_match_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_xss_match_set(
-#'   XssMatchSetId = "string",
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an XSS match set with the ID
-#' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$delete_xss_match_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2694,22 +989,9 @@ wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 #' This is AWS WAF Classic Regional documentation
 #'
 #' @description
-#' This is **AWS WAF Classic Regional** documentation. For more
-#' information, see [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Removes a web ACL from the specified resource, either an application
-#' load balancer or Amazon API Gateway stage.
+#' This is **AWS WAF Classic Regional** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_disassociate_web_acl(ResourceArn)
+#' See [https://paws-r.github.io/docs/wafregional/disassociate_web_acl.html](https://paws-r.github.io/docs/wafregional/disassociate_web_acl.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource from which the web ACL is
 #' being removed, either an application load balancer or Amazon API Gateway
@@ -2722,16 +1004,6 @@ wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 #' 
 #' -   For an Amazon API Gateway stage:
 #'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_web_acl(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2756,64 +1028,14 @@ wafregional_disassociate_web_acl <- function(ResourceArn) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the ByteMatchSet specified by `ByteMatchSetId`.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_byte_match_set(ByteMatchSetId)
+#' See [https://paws-r.github.io/docs/wafregional/get_byte_match_set.html](https://paws-r.github.io/docs/wafregional/get_byte_match_set.html) for full documentation.
 #'
 #' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to get.
 #' `ByteMatchSetId` is returned by
 #' [`create_byte_match_set`][wafregional_create_byte_match_set] and by
 #' [`list_byte_match_sets`][wafregional_list_byte_match_sets].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ByteMatchSet = list(
-#'     ByteMatchSetId = "string",
-#'     Name = "string",
-#'     ByteMatchTuples = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TargetString = raw,
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-#'         PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_byte_match_set(
-#'   ByteMatchSetId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the details of a byte match set with the
-#' # ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$get_byte_match_set(
-#'   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2838,59 +1060,9 @@ wafregional_get_byte_match_set <- function(ByteMatchSetId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' When you want to create, update, or delete AWS WAF objects, get a change
-#' token and include the change token in the create, update, or delete
-#' request. Change tokens ensure that your application doesn't submit
-#' conflicting requests to AWS WAF.
-#' 
-#' Each create, update, or delete request must use a unique change token.
-#' If your application submits a
-#' [`get_change_token`][wafregional_get_change_token] request and then
-#' submits a second [`get_change_token`][wafregional_get_change_token]
-#' request before submitting a create, update, or delete request, the
-#' second [`get_change_token`][wafregional_get_change_token] request
-#' returns the same value as the first
-#' [`get_change_token`][wafregional_get_change_token] request.
-#' 
-#' When you use a change token in a create, update, or delete request, the
-#' status of the change token changes to `PENDING`, which indicates that
-#' AWS WAF is propagating the change to all AWS WAF servers. Use
-#' [`get_change_token_status`][wafregional_get_change_token_status] to
-#' determine the status of your change token.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_change_token()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_change_token()
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a change token to use for a create, update
-#' # or delete operation.
-#' svc$get_change_token()
-#' }
+#' See [https://paws-r.github.io/docs/wafregional/get_change_token.html](https://paws-r.github.io/docs/wafregional/get_change_token.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -2915,61 +1087,13 @@ wafregional_get_change_token <- function() {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the status of a `ChangeToken` that you got by calling
-#' [`get_change_token`][wafregional_get_change_token]. `ChangeTokenStatus`
-#' is one of the following values:
-#' 
-#' -   `PROVISIONED`: You requested the change token by calling
-#'     [`get_change_token`][wafregional_get_change_token], but you haven't
-#'     used it yet in a call to create, update, or delete an AWS WAF
-#'     object.
-#' 
-#' -   `PENDING`: AWS WAF is propagating the create, update, or delete
-#'     request to all AWS WAF servers.
-#' 
-#' -   `INSYNC`: Propagation is complete.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_change_token_status(ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/get_change_token_status.html](https://paws-r.github.io/docs/wafregional/get_change_token_status.html) for full documentation.
 #'
 #' @param ChangeToken &#91;required&#93; The change token for which you want to get the status. This change token
 #' was previously returned in the
 #' [`get_change_token`][wafregional_get_change_token] response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeTokenStatus = "PROVISIONED"|"PENDING"|"INSYNC"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_change_token_status(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the status of a change token with the ID
-#' # abcd12f2-46da-4fdb-b8d5-fbd4c466928f.
-#' svc$get_change_token_status(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2994,50 +1118,14 @@ wafregional_get_change_token_status <- function(ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the GeoMatchSet that is specified by `GeoMatchSetId`.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_geo_match_set(GeoMatchSetId)
+#' See [https://paws-r.github.io/docs/wafregional/get_geo_match_set.html](https://paws-r.github.io/docs/wafregional/get_geo_match_set.html) for full documentation.
 #'
 #' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to get.
 #' `GeoMatchSetId` is returned by
 #' [`create_geo_match_set`][wafregional_create_geo_match_set] and by
 #' [`list_geo_match_sets`][wafregional_list_geo_match_sets].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GeoMatchSet = list(
-#'     GeoMatchSetId = "string",
-#'     Name = "string",
-#'     GeoMatchConstraints = list(
-#'       list(
-#'         Type = "Country",
-#'         Value = "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_geo_match_set(
-#'   GeoMatchSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3062,58 +1150,13 @@ wafregional_get_geo_match_set <- function(GeoMatchSetId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the IPSet that is specified by `IPSetId`.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_ip_set(IPSetId)
+#' See [https://paws-r.github.io/docs/wafregional/get_ip_set.html](https://paws-r.github.io/docs/wafregional/get_ip_set.html) for full documentation.
 #'
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to get. `IPSetId` is returned
 #' by [`create_ip_set`][wafregional_create_ip_set] and by
 #' [`list_ip_sets`][wafregional_list_ip_sets].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IPSet = list(
-#'     IPSetId = "string",
-#'     Name = "string",
-#'     IPSetDescriptors = list(
-#'       list(
-#'         Type = "IPV4"|"IPV6",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ip_set(
-#'   IPSetId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the details of an IP match set with the ID
-#' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$get_ip_set(
-#'   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3138,50 +1181,12 @@ wafregional_get_ip_set <- function(IPSetId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the LoggingConfiguration for the specified web ACL.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_logging_configuration(ResourceArn)
+#' See [https://paws-r.github.io/docs/wafregional/get_logging_configuration.html](https://paws-r.github.io/docs/wafregional/get_logging_configuration.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get
 #' the LoggingConfiguration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LoggingConfiguration = list(
-#'     ResourceArn = "string",
-#'     LogDestinationConfigs = list(
-#'       "string"
-#'     ),
-#'     RedactedFields = list(
-#'       list(
-#'         Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'         Data = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_logging_configuration(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3206,39 +1211,12 @@ wafregional_get_logging_configuration <- function(ResourceArn) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the IAM policy attached to the RuleGroup.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_permission_policy(ResourceArn)
+#' See [https://paws-r.github.io/docs/wafregional/get_permission_policy.html](https://paws-r.github.io/docs/wafregional/get_permission_policy.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup for which you want to
 #' get the policy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Policy = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_permission_policy(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3263,56 +1241,14 @@ wafregional_get_permission_policy <- function(ResourceArn) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the RateBasedRule that is specified by the `RuleId` that you
-#' included in the [`get_rate_based_rule`][wafregional_get_rate_based_rule]
-#' request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_rate_based_rule(RuleId)
+#' See [https://paws-r.github.io/docs/wafregional/get_rate_based_rule.html](https://paws-r.github.io/docs/wafregional/get_rate_based_rule.html) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to get. `RuleId` is
 #' returned by
 #' [`create_rate_based_rule`][wafregional_create_rate_based_rule] and by
 #' [`list_rate_based_rules`][wafregional_list_rate_based_rules].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rule = list(
-#'     RuleId = "string",
-#'     Name = "string",
-#'     MetricName = "string",
-#'     MatchPredicates = list(
-#'       list(
-#'         Negated = TRUE|FALSE,
-#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-#'         DataId = "string"
-#'       )
-#'     ),
-#'     RateKey = "IP",
-#'     RateLimit = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_rate_based_rule(
-#'   RuleId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3337,25 +1273,9 @@ wafregional_get_rate_based_rule <- function(RuleId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of IP addresses currently being blocked by the
-#' RateBasedRule that is specified by the `RuleId`. The maximum number of
-#' managed keys that will be blocked is 10,000. If more than 10,000
-#' addresses exceed the rate limit, the 10,000 addresses with the highest
-#' rates will be blocked.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_rate_based_rule_managed_keys(RuleId, NextMarker)
+#' See [https://paws-r.github.io/docs/wafregional/get_rate_based_rule_managed_keys.html](https://paws-r.github.io/docs/wafregional/get_rate_based_rule_managed_keys.html) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule for which you want to get a list of
 #' `ManagedKeys`. `RuleId` is returned by
@@ -3363,25 +1283,6 @@ wafregional_get_rate_based_rule <- function(RuleId) {
 #' [`list_rate_based_rules`][wafregional_list_rate_based_rules].
 #' @param NextMarker A null value and not currently used. Do not include this in your
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ManagedKeys = list(
-#'     "string"
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_rate_based_rule_managed_keys(
-#'   RuleId = "string",
-#'   NextMarker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3406,54 +1307,14 @@ wafregional_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NU
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the RegexMatchSet specified by `RegexMatchSetId`.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_regex_match_set(RegexMatchSetId)
+#' See [https://paws-r.github.io/docs/wafregional/get_regex_match_set.html](https://paws-r.github.io/docs/wafregional/get_regex_match_set.html) for full documentation.
 #'
 #' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to get.
 #' `RegexMatchSetId` is returned by
 #' [`create_regex_match_set`][wafregional_create_regex_match_set] and by
 #' [`list_regex_match_sets`][wafregional_list_regex_match_sets].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegexMatchSet = list(
-#'     RegexMatchSetId = "string",
-#'     Name = "string",
-#'     RegexMatchTuples = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-#'         RegexPatternSetId = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_regex_match_set(
-#'   RegexMatchSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3478,47 +1339,14 @@ wafregional_get_regex_match_set <- function(RegexMatchSetId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the RegexPatternSet specified by `RegexPatternSetId`.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_regex_pattern_set(RegexPatternSetId)
+#' See [https://paws-r.github.io/docs/wafregional/get_regex_pattern_set.html](https://paws-r.github.io/docs/wafregional/get_regex_pattern_set.html) for full documentation.
 #'
 #' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to get.
 #' `RegexPatternSetId` is returned by
 #' [`create_regex_pattern_set`][wafregional_create_regex_pattern_set] and
 #' by [`list_regex_pattern_sets`][wafregional_list_regex_pattern_sets].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RegexPatternSet = list(
-#'     RegexPatternSetId = "string",
-#'     Name = "string",
-#'     RegexPatternStrings = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_regex_pattern_set(
-#'   RegexPatternSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3543,61 +1371,13 @@ wafregional_get_regex_pattern_set <- function(RegexPatternSetId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the Rule that is specified by the `RuleId` that you included in
-#' the [`get_rule`][wafregional_get_rule] request.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_rule(RuleId)
+#' See [https://paws-r.github.io/docs/wafregional/get_rule.html](https://paws-r.github.io/docs/wafregional/get_rule.html) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to get. `RuleId` is returned by
 #' [`create_rule`][wafregional_create_rule] and by
 #' [`list_rules`][wafregional_list_rules].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rule = list(
-#'     RuleId = "string",
-#'     Name = "string",
-#'     MetricName = "string",
-#'     Predicates = list(
-#'       list(
-#'         Negated = TRUE|FALSE,
-#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-#'         DataId = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_rule(
-#'   RuleId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the details of a rule with the ID
-#' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$get_rule(
-#'   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3622,48 +1402,13 @@ wafregional_get_rule <- function(RuleId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the RuleGroup that is specified by the `RuleGroupId` that you
-#' included in the [`get_rule_group`][wafregional_get_rule_group] request.
-#' 
-#' To view the rules in a rule group, use
-#' [`list_activated_rules_in_rule_group`][wafregional_list_activated_rules_in_rule_group].
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_rule_group(RuleGroupId)
+#' See [https://paws-r.github.io/docs/wafregional/get_rule_group.html](https://paws-r.github.io/docs/wafregional/get_rule_group.html) for full documentation.
 #'
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to get. `RuleGroupId`
 #' is returned by [`create_rule_group`][wafregional_create_rule_group] and
 #' by [`list_rule_groups`][wafregional_list_rule_groups].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RuleGroup = list(
-#'     RuleGroupId = "string",
-#'     Name = "string",
-#'     MetricName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_rule_group(
-#'   RuleGroupId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3688,33 +1433,9 @@ wafregional_get_rule_group <- function(RuleGroupId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Gets detailed information about a specified number of requests--a
-#' sample--that AWS WAF randomly selects from among the first 5,000
-#' requests that your AWS resource received during a time range that you
-#' choose. You can specify a sample size of up to 500 requests, and you can
-#' specify any time range in the previous three hours.
-#' 
-#' [`get_sampled_requests`][wafregional_get_sampled_requests] returns a
-#' time range, which is usually the time range that you specified. However,
-#' if your resource (such as a CloudFront distribution) received 5,000
-#' requests before the specified time range elapsed,
-#' [`get_sampled_requests`][wafregional_get_sampled_requests] returns an
-#' updated time range. This new time range indicates the actual period
-#' during which AWS WAF selected the requests in the sample.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_sampled_requests(WebAclId, RuleId, TimeWindow, MaxItems)
+#' See [https://paws-r.github.io/docs/wafregional/get_sampled_requests.html](https://paws-r.github.io/docs/wafregional/get_sampled_requests.html) for full documentation.
 #'
 #' @param WebAclId &#91;required&#93; The `WebACLId` of the `WebACL` for which you want
 #' [`get_sampled_requests`][wafregional_get_sampled_requests] to return a
@@ -3742,79 +1463,6 @@ wafregional_get_rule_group <- function(RuleGroupId) {
 #' `MaxItems`, [`get_sampled_requests`][wafregional_get_sampled_requests]
 #' returns information about all of them.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SampledRequests = list(
-#'     list(
-#'       Request = list(
-#'         ClientIP = "string",
-#'         Country = "string",
-#'         URI = "string",
-#'         Method = "string",
-#'         HTTPVersion = "string",
-#'         Headers = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string"
-#'           )
-#'         )
-#'       ),
-#'       Weight = 123,
-#'       Timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Action = "string",
-#'       RuleWithinRuleGroup = "string"
-#'     )
-#'   ),
-#'   PopulationSize = 123,
-#'   TimeWindow = list(
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sampled_requests(
-#'   WebAclId = "string",
-#'   RuleId = "string",
-#'   TimeWindow = list(
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns detailed information about 100 requests
-#' # --a sample-- that AWS WAF randomly selects from among the first 5,000
-#' # requests that your AWS resource received between the time period
-#' # 2016-09-27T15:50Z to 2016-09-27T15:50Z.
-#' svc$get_sampled_requests(
-#'   MaxItems = 100L,
-#'   RuleId = "WAFRule-1-Example",
-#'   TimeWindow = list(
-#'     EndTime = "2016-09-27T15:50Z",
-#'     StartTime = "2016-09-27T15:50Z"
-#'   ),
-#'   WebAclId = "createwebacl-1472061481310"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname wafregional_get_sampled_requests
@@ -3838,65 +1486,15 @@ wafregional_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxIt
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the SizeConstraintSet specified by `SizeConstraintSetId`.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_size_constraint_set(SizeConstraintSetId)
+#' See [https://paws-r.github.io/docs/wafregional/get_size_constraint_set.html](https://paws-r.github.io/docs/wafregional/get_size_constraint_set.html) for full documentation.
 #'
 #' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to get.
 #' `SizeConstraintSetId` is returned by
 #' [`create_size_constraint_set`][wafregional_create_size_constraint_set]
 #' and by
 #' [`list_size_constraint_sets`][wafregional_list_size_constraint_sets].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SizeConstraintSet = list(
-#'     SizeConstraintSetId = "string",
-#'     Name = "string",
-#'     SizeConstraints = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-#'         ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
-#'         Size = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_size_constraint_set(
-#'   SizeConstraintSetId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the details of a size constraint match set
-#' # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$get_size_constraint_set(
-#'   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3921,64 +1519,15 @@ wafregional_get_size_constraint_set <- function(SizeConstraintSetId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the SqlInjectionMatchSet that is specified by
-#' `SqlInjectionMatchSetId`.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_sql_injection_match_set(SqlInjectionMatchSetId)
+#' See [https://paws-r.github.io/docs/wafregional/get_sql_injection_match_set.html](https://paws-r.github.io/docs/wafregional/get_sql_injection_match_set.html) for full documentation.
 #'
 #' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want
 #' to get. `SqlInjectionMatchSetId` is returned by
 #' [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set]
 #' and by
 #' [`list_sql_injection_match_sets`][wafregional_list_sql_injection_match_sets].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SqlInjectionMatchSet = list(
-#'     SqlInjectionMatchSetId = "string",
-#'     Name = "string",
-#'     SqlInjectionMatchTuples = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sql_injection_match_set(
-#'   SqlInjectionMatchSetId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the details of a SQL injection match set
-#' # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$get_sql_injection_match_set(
-#'   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4003,75 +1552,13 @@ wafregional_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the WebACL that is specified by `WebACLId`.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_web_acl(WebACLId)
+#' See [https://paws-r.github.io/docs/wafregional/get_web_acl.html](https://paws-r.github.io/docs/wafregional/get_web_acl.html) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to get. `WebACLId` is
 #' returned by [`create_web_acl`][wafregional_create_web_acl] and by
 #' [`list_web_ac_ls`][wafregional_list_web_ac_ls].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WebACL = list(
-#'     WebACLId = "string",
-#'     Name = "string",
-#'     MetricName = "string",
-#'     DefaultAction = list(
-#'       Type = "BLOCK"|"ALLOW"|"COUNT"
-#'     ),
-#'     Rules = list(
-#'       list(
-#'         Priority = 123,
-#'         RuleId = "string",
-#'         Action = list(
-#'           Type = "BLOCK"|"ALLOW"|"COUNT"
-#'         ),
-#'         OverrideAction = list(
-#'           Type = "NONE"|"COUNT"
-#'         ),
-#'         Type = "REGULAR"|"RATE_BASED"|"GROUP",
-#'         ExcludedRules = list(
-#'           list(
-#'             RuleId = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     WebACLArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_web_acl(
-#'   WebACLId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the details of a web ACL with the ID
-#' # createwebacl-1472061481310.
-#' svc$get_web_acl(
-#'   WebACLId = "createwebacl-1472061481310"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4096,22 +1583,9 @@ wafregional_get_web_acl <- function(WebACLId) {
 #' This is AWS WAF Classic Regional documentation
 #'
 #' @description
-#' This is **AWS WAF Classic Regional** documentation. For more
-#' information, see [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the web ACL for the specified resource, either an application
-#' load balancer or Amazon API Gateway stage.
+#' This is **AWS WAF Classic Regional** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_web_acl_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/wafregional/get_web_acl_for_resource.html](https://paws-r.github.io/docs/wafregional/get_web_acl_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource for which to get the web
 #' ACL, either an application load balancer or Amazon API Gateway stage.
@@ -4123,24 +1597,6 @@ wafregional_get_web_acl <- function(WebACLId) {
 #' 
 #' -   For an Amazon API Gateway stage:
 #'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WebACLSummary = list(
-#'     WebACLId = "string",
-#'     Name = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_web_acl_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4165,62 +1621,14 @@ wafregional_get_web_acl_for_resource <- function(ResourceArn) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns the XssMatchSet that is specified by `XssMatchSetId`.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_get_xss_match_set(XssMatchSetId)
+#' See [https://paws-r.github.io/docs/wafregional/get_xss_match_set.html](https://paws-r.github.io/docs/wafregional/get_xss_match_set.html) for full documentation.
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to get.
 #' `XssMatchSetId` is returned by
 #' [`create_xss_match_set`][wafregional_create_xss_match_set] and by
 #' [`list_xss_match_sets`][wafregional_list_xss_match_sets].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   XssMatchSet = list(
-#'     XssMatchSetId = "string",
-#'     Name = "string",
-#'     XssMatchTuples = list(
-#'       list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_xss_match_set(
-#'   XssMatchSetId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the details of an XSS match set with the
-#' # ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$get_xss_match_set(
-#'   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4245,22 +1653,9 @@ wafregional_get_xss_match_set <- function(XssMatchSetId) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of ActivatedRule objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_activated_rules_in_rule_group(RuleGroupId, NextMarker,
-#'   Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_activated_rules_in_rule_group.html](https://paws-r.github.io/docs/wafregional/list_activated_rules_in_rule_group.html) for full documentation.
 #'
 #' @param RuleGroupId The `RuleGroupId` of the RuleGroup for which you want to get a list of
 #' ActivatedRule objects.
@@ -4275,41 +1670,6 @@ wafregional_get_xss_match_set <- function(XssMatchSetId) {
 #' for this request. If you have more `ActivatedRules` than the number that
 #' you specify for `Limit`, the response includes a `NextMarker` value that
 #' you can use to get another batch of `ActivatedRules`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   ActivatedRules = list(
-#'     list(
-#'       Priority = 123,
-#'       RuleId = "string",
-#'       Action = list(
-#'         Type = "BLOCK"|"ALLOW"|"COUNT"
-#'       ),
-#'       OverrideAction = list(
-#'         Type = "NONE"|"COUNT"
-#'       ),
-#'       Type = "REGULAR"|"RATE_BASED"|"GROUP",
-#'       ExcludedRules = list(
-#'         list(
-#'           RuleId = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_activated_rules_in_rule_group(
-#'   RuleGroupId = "string",
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4334,21 +1694,9 @@ wafregional_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, N
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of ByteMatchSetSummary objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_byte_match_sets(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_byte_match_sets.html](https://paws-r.github.io/docs/wafregional/list_byte_match_sets.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `ByteMatchSets`
 #' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
@@ -4361,28 +1709,6 @@ wafregional_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, N
 #' return for this request. If you have more `ByteMatchSets` objects than
 #' the number you specify for `Limit`, the response includes a `NextMarker`
 #' value that you can use to get another batch of `ByteMatchSet` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   ByteMatchSets = list(
-#'     list(
-#'       ByteMatchSetId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_byte_match_sets(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4407,21 +1733,9 @@ wafregional_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of GeoMatchSetSummary objects in the response.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_geo_match_sets(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_geo_match_sets.html](https://paws-r.github.io/docs/wafregional/list_geo_match_sets.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `GeoMatchSet`s than
 #' the value of `Limit`, AWS WAF returns a `NextMarker` value in the
@@ -4434,28 +1748,6 @@ wafregional_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' return for this request. If you have more `GeoMatchSet` objects than the
 #' number you specify for `Limit`, the response includes a `NextMarker`
 #' value that you can use to get another batch of `GeoMatchSet` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   GeoMatchSets = list(
-#'     list(
-#'       GeoMatchSetId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_geo_match_sets(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4480,21 +1772,9 @@ wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of IPSetSummary objects in the response.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_ip_sets(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_ip_sets.html](https://paws-r.github.io/docs/wafregional/list_ip_sets.html) for full documentation.
 #'
 #' @param NextMarker AWS WAF returns a `NextMarker` value in the response that allows you to
 #' list another group of `IPSets`. For the second and subsequent
@@ -4505,36 +1785,6 @@ wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' for this request. If you have more `IPSet` objects than the number you
 #' specify for `Limit`, the response includes a `NextMarker` value that you
 #' can use to get another batch of `IPSet` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   IPSets = list(
-#'     list(
-#'       IPSetId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_ip_sets(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns an array of up to 100 IP match sets.
-#' svc$list_ip_sets(
-#'   Limit = 100L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4559,21 +1809,9 @@ wafregional_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of LoggingConfiguration objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_logging_configurations(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_logging_configurations.html](https://paws-r.github.io/docs/wafregional/list_logging_configurations.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more
 #' `LoggingConfigurations` than the value of `Limit`, AWS WAF returns a
@@ -4588,36 +1826,6 @@ wafregional_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' the number that you specify for `Limit`, the response includes a
 #' `NextMarker` value that you can use to get another batch of
 #' `LoggingConfigurations`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LoggingConfigurations = list(
-#'     list(
-#'       ResourceArn = "string",
-#'       LogDestinationConfigs = list(
-#'         "string"
-#'       ),
-#'       RedactedFields = list(
-#'         list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_logging_configurations(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4642,21 +1850,9 @@ wafregional_list_logging_configurations <- function(NextMarker = NULL, Limit = N
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of RuleSummary objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_rate_based_rules(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_rate_based_rules.html](https://paws-r.github.io/docs/wafregional/list_rate_based_rules.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the
 #' value of `Limit`, AWS WAF returns a `NextMarker` value in the response
@@ -4668,28 +1864,6 @@ wafregional_list_logging_configurations <- function(NextMarker = NULL, Limit = N
 #' request. If you have more `Rules` than the number that you specify for
 #' `Limit`, the response includes a `NextMarker` value that you can use to
 #' get another batch of `Rules`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   Rules = list(
-#'     list(
-#'       RuleId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_rate_based_rules(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4714,21 +1888,9 @@ wafregional_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of RegexMatchSetSummary objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_regex_match_sets(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_regex_match_sets.html](https://paws-r.github.io/docs/wafregional/list_regex_match_sets.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `RegexMatchSet`
 #' objects than the value of `Limit`, AWS WAF returns a `NextMarker` value
@@ -4741,28 +1903,6 @@ wafregional_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' return for this request. If you have more `RegexMatchSet` objects than
 #' the number you specify for `Limit`, the response includes a `NextMarker`
 #' value that you can use to get another batch of `RegexMatchSet` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   RegexMatchSets = list(
-#'     list(
-#'       RegexMatchSetId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_regex_match_sets(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4787,21 +1927,9 @@ wafregional_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of RegexPatternSetSummary objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_regex_pattern_sets(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_regex_pattern_sets.html](https://paws-r.github.io/docs/wafregional/list_regex_pattern_sets.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `RegexPatternSet`
 #' objects than the value of `Limit`, AWS WAF returns a `NextMarker` value
@@ -4815,28 +1943,6 @@ wafregional_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' than the number you specify for `Limit`, the response includes a
 #' `NextMarker` value that you can use to get another batch of
 #' `RegexPatternSet` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   RegexPatternSets = list(
-#'     list(
-#'       RegexPatternSetId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_regex_pattern_sets(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4861,44 +1967,14 @@ wafregional_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL)
 #' This is AWS WAF Classic Regional documentation
 #'
 #' @description
-#' This is **AWS WAF Classic Regional** documentation. For more
-#' information, see [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of resources associated with the specified web ACL.
+#' This is **AWS WAF Classic Regional** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_resources_for_web_acl(WebACLId, ResourceType)
+#' See [https://paws-r.github.io/docs/wafregional/list_resources_for_web_acl.html](https://paws-r.github.io/docs/wafregional/list_resources_for_web_acl.html) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The unique identifier (ID) of the web ACL for which to list the
 #' associated resources.
 #' @param ResourceType The type of resource to list, either an application load balancer or
 #' Amazon API Gateway.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceArns = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resources_for_web_acl(
-#'   WebACLId = "string",
-#'   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4923,21 +1999,9 @@ wafregional_list_resources_for_web_acl <- function(WebACLId, ResourceType = NULL
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of RuleGroup objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_rule_groups(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_rule_groups.html](https://paws-r.github.io/docs/wafregional/list_rule_groups.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `RuleGroups` than
 #' the value of `Limit`, AWS WAF returns a `NextMarker` value in the
@@ -4949,28 +2013,6 @@ wafregional_list_resources_for_web_acl <- function(WebACLId, ResourceType = NULL
 #' this request. If you have more `RuleGroups` than the number that you
 #' specify for `Limit`, the response includes a `NextMarker` value that you
 #' can use to get another batch of `RuleGroups`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   RuleGroups = list(
-#'     list(
-#'       RuleGroupId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_rule_groups(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4995,21 +2037,9 @@ wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of RuleSummary objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_rules(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_rules.html](https://paws-r.github.io/docs/wafregional/list_rules.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the
 #' value of `Limit`, AWS WAF returns a `NextMarker` value in the response
@@ -5021,36 +2051,6 @@ wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' request. If you have more `Rules` than the number that you specify for
 #' `Limit`, the response includes a `NextMarker` value that you can use to
 #' get another batch of `Rules`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   Rules = list(
-#'     list(
-#'       RuleId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_rules(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns an array of up to 100 rules.
-#' svc$list_rules(
-#'   Limit = 100L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5075,21 +2075,9 @@ wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of SizeConstraintSetSummary objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_size_constraint_sets(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_size_constraint_sets.html](https://paws-r.github.io/docs/wafregional/list_size_constraint_sets.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more
 #' `SizeConstraintSets` than the value of `Limit`, AWS WAF returns a
@@ -5103,37 +2091,6 @@ wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' objects than the number you specify for `Limit`, the response includes a
 #' `NextMarker` value that you can use to get another batch of
 #' `SizeConstraintSet` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   SizeConstraintSets = list(
-#'     list(
-#'       SizeConstraintSetId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_size_constraint_sets(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns an array of up to 100 size contraint match
-#' # sets.
-#' svc$list_size_constraint_sets(
-#'   Limit = 100L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5158,21 +2115,9 @@ wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NUL
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of SqlInjectionMatchSet objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_sql_injection_match_sets(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_sql_injection_match_sets.html](https://paws-r.github.io/docs/wafregional/list_sql_injection_match_sets.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more
 #' SqlInjectionMatchSet objects than the value of `Limit`, AWS WAF returns
@@ -5185,37 +2130,6 @@ wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NUL
 #' WAF to return for this request. If you have more `SqlInjectionMatchSet`
 #' objects than the number you specify for `Limit`, the response includes a
 #' `NextMarker` value that you can use to get another batch of `Rules`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   SqlInjectionMatchSets = list(
-#'     list(
-#'       SqlInjectionMatchSetId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_sql_injection_match_sets(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns an array of up to 100 SQL injection match
-#' # sets.
-#' svc$list_sql_injection_match_sets(
-#'   Limit = 100L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5240,21 +2154,9 @@ wafregional_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit =
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of RuleGroup objects that you are subscribed to.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_subscribed_rule_groups(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_subscribed_rule_groups.html](https://paws-r.github.io/docs/wafregional/list_subscribed_rule_groups.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more
 #' `ByteMatchSets`subscribed rule groups than the value of `Limit`, AWS WAF
@@ -5267,29 +2169,6 @@ wafregional_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit =
 #' return for this request. If you have more objects than the number you
 #' specify for `Limit`, the response includes a `NextMarker` value that you
 #' can use to get another batch of objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   RuleGroups = list(
-#'     list(
-#'       RuleGroupId = "string",
-#'       Name = "string",
-#'       MetricName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_subscribed_rule_groups(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5314,61 +2193,13 @@ wafregional_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = N
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Retrieves the tags associated with the specified AWS resource. Tags are
-#' key:value pairs that you can use to categorize and manage your
-#' resources, for purposes like billing. For example, you might set the tag
-#' key to "customer" and the value to the customer name or ID. You can
-#' specify one or more tags to add to each AWS resource, up to 50 tags for
-#' a resource.
-#' 
-#' Tagging is only available through the API, SDKs, and CLI. You can't
-#' manage or view tags through the AWS WAF Classic console. You can tag the
-#' AWS resources that you manage through AWS WAF Classic: web ACLs, rule
-#' groups, and rules.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_tags_for_resource(NextMarker, Limit, ResourceARN)
+#' See [https://paws-r.github.io/docs/wafregional/list_tags_for_resource.html](https://paws-r.github.io/docs/wafregional/list_tags_for_resource.html) for full documentation.
 #'
 #' @param NextMarker 
 #' @param Limit 
 #' @param ResourceARN &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   TagInfoForResource = list(
-#'     ResourceARN = "string",
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   NextMarker = "string",
-#'   Limit = 123,
-#'   ResourceARN = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5393,21 +2224,9 @@ wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, 
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of WebACLSummary objects in the response.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_web_ac_ls(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_web_ac_ls.html](https://paws-r.github.io/docs/wafregional/list_web_ac_ls.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `WebACL` objects
 #' than the number that you specify for `Limit`, AWS WAF returns a
@@ -5420,36 +2239,6 @@ wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, 
 #' for this request. If you have more `WebACL` objects than the number that
 #' you specify for `Limit`, the response includes a `NextMarker` value that
 #' you can use to get another batch of `WebACL` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   WebACLs = list(
-#'     list(
-#'       WebACLId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_web_ac_ls(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns an array of up to 100 web ACLs.
-#' svc$list_web_ac_ls(
-#'   Limit = 100L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5474,21 +2263,9 @@ wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Returns an array of XssMatchSet objects.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_list_xss_match_sets(NextMarker, Limit)
+#' See [https://paws-r.github.io/docs/wafregional/list_xss_match_sets.html](https://paws-r.github.io/docs/wafregional/list_xss_match_sets.html) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more XssMatchSet objects
 #' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
@@ -5501,36 +2278,6 @@ wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 #' return for this request. If you have more `XssMatchSet` objects than the
 #' number you specify for `Limit`, the response includes a `NextMarker`
 #' value that you can use to get another batch of `Rules`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextMarker = "string",
-#'   XssMatchSets = list(
-#'     list(
-#'       XssMatchSetId = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_xss_match_sets(
-#'   NextMarker = "string",
-#'   Limit = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns an array of up to 100 XSS match sets.
-#' svc$list_xss_match_sets(
-#'   Limit = 100L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5555,45 +2302,9 @@ wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Associates a LoggingConfiguration with a specified web ACL.
-#' 
-#' You can access information about all traffic that AWS WAF inspects using
-#' the following steps:
-#' 
-#' 1.  Create an Amazon Kinesis Data Firehose.
-#' 
-#'     Create the data firehose with a PUT source and in the region that
-#'     you are operating. However, if you are capturing logs for Amazon
-#'     CloudFront, always create the firehose in US East (N. Virginia).
-#' 
-#'     Do not create the data firehose using a `Kinesis stream` as your
-#'     source.
-#' 
-#' 2.  Associate that firehose to your web ACL using a
-#'     [`put_logging_configuration`][wafregional_put_logging_configuration]
-#'     request.
-#' 
-#' When you successfully enable logging using a
-#' [`put_logging_configuration`][wafregional_put_logging_configuration]
-#' request, AWS WAF will create a service linked role with the necessary
-#' permissions to write logs to the Amazon Kinesis Data Firehose. For more
-#' information, see [Logging Web ACL Traffic
-#' Information](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
-#' in the *AWS WAF Developer Guide*.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_put_logging_configuration(LoggingConfiguration)
+#' See [https://paws-r.github.io/docs/wafregional/put_logging_configuration.html](https://paws-r.github.io/docs/wafregional/put_logging_configuration.html) for full documentation.
 #'
 #' @param LoggingConfiguration &#91;required&#93; The Amazon Kinesis Data Firehose that contains the inspected traffic
 #' information, the redacted fields details, and the Amazon Resource Name
@@ -5601,43 +2312,6 @@ wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' 
 #' When specifying `Type` in `RedactedFields`, you must use one of the
 #' following values: `URI`, `QUERY_STRING`, `HEADER`, or `METHOD`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LoggingConfiguration = list(
-#'     ResourceArn = "string",
-#'     LogDestinationConfigs = list(
-#'       "string"
-#'     ),
-#'     RedactedFields = list(
-#'       list(
-#'         Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'         Data = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_logging_configuration(
-#'   LoggingConfiguration = list(
-#'     ResourceArn = "string",
-#'     LogDestinationConfigs = list(
-#'       "string"
-#'     ),
-#'     RedactedFields = list(
-#'       list(
-#'         Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'         Data = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5662,68 +2336,13 @@ wafregional_put_logging_configuration <- function(LoggingConfiguration) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Attaches an IAM policy to the specified resource. The only supported use
-#' for this action is to share a RuleGroup across accounts.
-#' 
-#' The [`put_permission_policy`][wafregional_put_permission_policy] is
-#' subject to the following restrictions:
-#' 
-#' -   You can attach only one policy with each
-#'     [`put_permission_policy`][wafregional_put_permission_policy]
-#'     request.
-#' 
-#' -   The policy must include an `Effect`, `Action` and `Principal`.
-#' 
-#' -   `Effect` must specify `Allow`.
-#' 
-#' -   The `Action` in the policy must be `waf:UpdateWebACL`,
-#'     `waf-regional:UpdateWebACL`, `waf:GetRuleGroup` and
-#'     `waf-regional:GetRuleGroup` . Any extra or wildcard actions in the
-#'     policy will be rejected.
-#' 
-#' -   The policy cannot include a `Resource` parameter.
-#' 
-#' -   The ARN in the request must be a valid WAF RuleGroup ARN and the
-#'     RuleGroup must exist in the same region.
-#' 
-#' -   The user making the request must be the owner of the RuleGroup.
-#' 
-#' -   Your policy must be composed using IAM Policy version 2012-10-17.
-#' 
-#' For more information, see [IAM
-#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
-#' 
-#' An example of a valid policy parameter is shown in the Examples section
-#' below.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_put_permission_policy(ResourceArn, Policy)
+#' See [https://paws-r.github.io/docs/wafregional/put_permission_policy.html](https://paws-r.github.io/docs/wafregional/put_permission_policy.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup to which you want to
 #' attach the policy.
 #' @param Policy &#91;required&#93; The policy to attach to the specified RuleGroup.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_permission_policy(
-#'   ResourceArn = "string",
-#'   Policy = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5748,49 +2367,12 @@ wafregional_put_permission_policy <- function(ResourceArn, Policy) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Associates tags with the specified AWS resource. Tags are key:value
-#' pairs that you can use to categorize and manage your resources, for
-#' purposes like billing. For example, you might set the tag key to
-#' "customer" and the value to the customer name or ID. You can specify one
-#' or more tags to add to each AWS resource, up to 50 tags for a resource.
-#' 
-#' Tagging is only available through the API, SDKs, and CLI. You can't
-#' manage or view tags through the AWS WAF Classic console. You can use
-#' this action to tag the AWS resources that you manage through AWS WAF
-#' Classic: web ACLs, rule groups, and rules.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_tag_resource(ResourceARN, Tags)
+#' See [https://paws-r.github.io/docs/wafregional/tag_resource.html](https://paws-r.github.io/docs/wafregional/tag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; 
 #' @param Tags &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceARN = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5815,35 +2397,12 @@ wafregional_tag_resource <- function(ResourceARN, Tags) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_untag_resource(ResourceARN, TagKeys)
+#' See [https://paws-r.github.io/docs/wafregional/untag_resource.html](https://paws-r.github.io/docs/wafregional/untag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; 
 #' @param TagKeys &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceARN = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5868,65 +2427,9 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
-#' For each `ByteMatchTuple` object, you specify the following values:
-#' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change a `ByteMatchSetUpdate` object, you delete the existing
-#'     object and add a new one.
-#' 
-#' -   The part of a web request that you want AWS WAF to inspect, such as
-#'     a query string or the value of the `User-Agent` header.
-#' 
-#' -   The bytes (typically a string that corresponds with ASCII
-#'     characters) that you want AWS WAF to look for. For more information,
-#'     including how you specify the values for the AWS WAF API and the AWS
-#'     CLI or SDKs, see `TargetString` in the ByteMatchTuple data type.
-#' 
-#' -   Where to look, such as at the beginning or the end of a query
-#'     string.
-#' 
-#' -   Whether to perform any conversions on the request, such as
-#'     converting it to lowercase, before inspecting it for the specified
-#'     string.
-#' 
-#' For example, you can add a `ByteMatchSetUpdate` object that matches web
-#' requests in which `User-Agent` headers contain the string `BadBot`. You
-#' can then configure AWS WAF to block those requests.
-#' 
-#' To create and configure a `ByteMatchSet`, perform the following steps:
-#' 
-#' 1.  Create a `ByteMatchSet.` For more information, see
-#'     [`create_byte_match_set`][wafregional_create_byte_match_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_byte_match_set`][wafregional_update_byte_match_set]
-#'     request.
-#' 
-#' 3.  Submit an
-#'     [`update_byte_match_set`][wafregional_update_byte_match_set] request
-#'     to specify the part of the request that you want AWS WAF to inspect
-#'     (for example, the header or the URI) and the value that you want AWS
-#'     WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_byte_match_set(ByteMatchSetId, ChangeToken, Updates)
+#' See [https://paws-r.github.io/docs/wafregional/update_byte_match_set.html](https://paws-r.github.io/docs/wafregional/update_byte_match_set.html) for full documentation.
 #'
 #' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to update.
 #' `ByteMatchSetId` is returned by
@@ -5944,60 +2447,6 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
 #'     `TargetString`, and `TextTransformation`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_byte_match_set(
-#'   ByteMatchSetId = "string",
-#'   ChangeToken = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       ByteMatchTuple = list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TargetString = raw,
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-#'         PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a ByteMatchTuple object (filters) in an
-#' # byte match set with the ID exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$update_byte_match_set(
-#'   ByteMatchSetId = "exampleIDs3t-46da-4fdb-b8d5-abc321j569j5",
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   Updates = list(
-#'     list(
-#'       Action = "DELETE",
-#'       ByteMatchTuple = list(
-#'         FieldToMatch = list(
-#'           Data = "referer",
-#'           Type = "HEADER"
-#'         ),
-#'         PositionalConstraint = "CONTAINS",
-#'         TargetString = "badrefer1",
-#'         TextTransformation = "NONE"
-#'       )
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -6022,52 +2471,9 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes GeoMatchConstraint objects in an `GeoMatchSet`. For
-#' each `GeoMatchConstraint` object, you specify the following values:
-#' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change an `GeoMatchConstraint` object, you delete the existing
-#'     object and add a new one.
-#' 
-#' -   The `Type`. The only valid value for `Type` is `Country`.
-#' 
-#' -   The `Value`, which is a two character code for the country to add to
-#'     the `GeoMatchConstraint` object. Valid codes are listed in
-#'     GeoMatchConstraint$Value.
-#' 
-#' To create and configure an `GeoMatchSet`, perform the following steps:
-#' 
-#' 1.  Submit a [`create_geo_match_set`][wafregional_create_geo_match_set]
-#'     request.
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_geo_match_set`][wafregional_update_geo_match_set] request.
-#' 
-#' 3.  Submit an [`update_geo_match_set`][wafregional_update_geo_match_set]
-#'     request to specify the country that you want AWS WAF to watch for.
-#' 
-#' When you update an `GeoMatchSet`, you specify the country that you want
-#' to add and/or the country that you want to delete. If you want to change
-#' a country, you delete the existing country and add the new one.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_geo_match_set(GeoMatchSetId, ChangeToken, Updates)
+#' See [https://paws-r.github.io/docs/wafregional/update_geo_match_set.html](https://paws-r.github.io/docs/wafregional/update_geo_match_set.html) for full documentation.
 #'
 #' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to update.
 #' `GeoMatchSetId` is returned by
@@ -6086,31 +2492,6 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
 #'     You can have only one `Type` and `Value` per `GeoMatchConstraint`.
 #'     To add multiple countries, include multiple `GeoMatchSetUpdate`
 #'     objects in your request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_geo_match_set(
-#'   GeoMatchSetId = "string",
-#'   ChangeToken = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       GeoMatchConstraint = list(
-#'         Type = "Country",
-#'         Value = "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6135,77 +2516,9 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes IPSetDescriptor objects in an `IPSet`. For each
-#' `IPSetDescriptor` object, you specify the following values:
-#' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change an `IPSetDescriptor` object, you delete the existing
-#'     object and add a new one.
-#' 
-#' -   The IP address version, `IPv4` or `IPv6`.
-#' 
-#' -   The IP address in CIDR notation, for example, `192.0.2.0/24` (for
-#'     the range of IP addresses from `192.0.2.0` to `192.0.2.255`) or
-#'     `192.0.2.44/32` (for the individual IP address `192.0.2.44`).
-#' 
-#' AWS WAF supports IPv4 address ranges: /8 and any range between /16
-#' through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56,
-#' /64, and /128. For more information about CIDR notation, see the
-#' Wikipedia entry [Classless Inter-Domain
-#' Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
-#' 
-#' IPv6 addresses can be represented using any of the following formats:
-#' 
-#' -   1111:0000:0000:0000:0000:0000:0000:0111/128
-#' 
-#' -   1111:0:0:0:0:0:0:0111/128
-#' 
-#' -   1111::0111/128
-#' 
-#' -   1111::111/128
-#' 
-#' You use an `IPSet` to specify which web requests you want to allow or
-#' block based on the IP addresses that the requests originated from. For
-#' example, if you're receiving a lot of requests from one or a small
-#' number of IP addresses and you want to block the requests, you can
-#' create an `IPSet` that specifies those IP addresses, and then configure
-#' AWS WAF to block the requests.
-#' 
-#' To create and configure an `IPSet`, perform the following steps:
-#' 
-#' 1.  Submit a [`create_ip_set`][wafregional_create_ip_set] request.
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_ip_set`][wafregional_update_ip_set] request.
-#' 
-#' 3.  Submit an [`update_ip_set`][wafregional_update_ip_set] request to
-#'     specify the IP addresses that you want AWS WAF to watch for.
-#' 
-#' When you update an `IPSet`, you specify the IP addresses that you want
-#' to add and/or the IP addresses that you want to delete. If you want to
-#' change an IP address, you delete the existing IP address and add the new
-#' one.
-#' 
-#' You can insert a maximum of 1000 addresses in a single request.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_ip_set(IPSetId, ChangeToken, Updates)
+#' See [https://paws-r.github.io/docs/wafregional/update_ip_set.html](https://paws-r.github.io/docs/wafregional/update_ip_set.html) for full documentation.
 #'
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to update. `IPSetId` is
 #' returned by [`create_ip_set`][wafregional_create_ip_set] and by
@@ -6220,50 +2533,6 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 #' -   IPSetDescriptor: Contains `Type` and `Value`
 #' 
 #' You can insert a maximum of 1000 addresses in a single request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_ip_set(
-#'   IPSetId = "string",
-#'   ChangeToken = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       IPSetDescriptor = list(
-#'         Type = "IPV4"|"IPV6",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an IPSetDescriptor object in an IP match
-#' # set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$update_ip_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
-#'   Updates = list(
-#'     list(
-#'       Action = "DELETE",
-#'       IPSetDescriptor = list(
-#'         Type = "IPV4",
-#'         Value = "192.0.2.44/32"
-#'       )
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -6288,62 +2557,9 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes Predicate objects in a rule and updates the
-#' `RateLimit` in the rule.
-#' 
-#' Each `Predicate` object identifies a predicate, such as a ByteMatchSet
-#' or an IPSet, that specifies the web requests that you want to block or
-#' count. The `RateLimit` specifies the number of requests every five
-#' minutes that triggers the rule.
-#' 
-#' If you add more than one predicate to a `RateBasedRule`, a request must
-#' match all the predicates and exceed the `RateLimit` to be counted or
-#' blocked. For example, suppose you add the following to a
-#' `RateBasedRule`:
-#' 
-#' -   An `IPSet` that matches the IP address `192.0.2.44/32`
-#' 
-#' -   A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
-#' 
-#' Further, you specify a `RateLimit` of 1,000.
-#' 
-#' You then add the `RateBasedRule` to a `WebACL` and specify that you want
-#' to block requests that satisfy the rule. For a request to be blocked, it
-#' must come from the IP address 192.0.2.44 *and* the `User-Agent` header
-#' in the request must contain the value `BadBot`. Further, requests that
-#' match these two conditions much be received at a rate of more than 1,000
-#' every five minutes. If the rate drops below this limit, AWS WAF no
-#' longer blocks the requests.
-#' 
-#' As a second example, suppose you want to limit requests to a particular
-#' page on your site. To do this, you could add the following to a
-#' `RateBasedRule`:
-#' 
-#' -   A `ByteMatchSet` with `FieldToMatch` of `URI`
-#' 
-#' -   A `PositionalConstraint` of `STARTS_WITH`
-#' 
-#' -   A `TargetString` of `login`
-#' 
-#' Further, you specify a `RateLimit` of 1,000.
-#' 
-#' By adding this `RateBasedRule` to a `WebACL`, you could limit requests
-#' to your login page without affecting the rest of your site.
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_rate_based_rule(RuleId, ChangeToken, Updates,
-#'   RateLimit)
+#' See [https://paws-r.github.io/docs/wafregional/update_rate_based_rule.html](https://paws-r.github.io/docs/wafregional/update_rate_based_rule.html) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the `RateBasedRule` that you want to update. `RuleId` is
 #' returned by
@@ -6358,33 +2574,6 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' the number of requests exceeds the `RateLimit` and the other predicates
 #' specified in the rule are also met, AWS WAF triggers the action that is
 #' specified for this rule.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_rate_based_rule(
-#'   RuleId = "string",
-#'   ChangeToken = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       Predicate = list(
-#'         Negated = TRUE|FALSE,
-#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-#'         DataId = "string"
-#'       )
-#'     )
-#'   ),
-#'   RateLimit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6409,62 +2598,9 @@ wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, Rat
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes RegexMatchTuple objects (filters) in a RegexMatchSet.
-#' For each `RegexMatchSetUpdate` object, you specify the following values:
-#' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change a `RegexMatchSetUpdate` object, you delete the existing
-#'     object and add a new one.
-#' 
-#' -   The part of a web request that you want AWS WAF to inspectupdate,
-#'     such as a query string or the value of the `User-Agent` header.
-#' 
-#' -   The identifier of the pattern (a regular expression) that you want
-#'     AWS WAF to look for. For more information, see RegexPatternSet.
-#' 
-#' -   Whether to perform any conversions on the request, such as
-#'     converting it to lowercase, before inspecting it for the specified
-#'     string.
-#' 
-#' For example, you can create a `RegexPatternSet` that matches any
-#' requests with `User-Agent` headers that contain the string
-#' `B[a@@]dB[o0]t`. You can then configure AWS WAF to reject those requests.
-#' 
-#' To create and configure a `RegexMatchSet`, perform the following steps:
-#' 
-#' 1.  Create a `RegexMatchSet.` For more information, see
-#'     [`create_regex_match_set`][wafregional_create_regex_match_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_regex_match_set`][wafregional_update_regex_match_set]
-#'     request.
-#' 
-#' 3.  Submit an
-#'     [`update_regex_match_set`][wafregional_update_regex_match_set]
-#'     request to specify the part of the request that you want AWS WAF to
-#'     inspect (for example, the header or the URI) and the identifier of
-#'     the `RegexPatternSet` that contain the regular expression patters
-#'     you want AWS WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_regex_match_set(RegexMatchSetId, Updates,
-#'   ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/update_regex_match_set.html](https://paws-r.github.io/docs/wafregional/update_regex_match_set.html) for full documentation.
 #'
 #' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to update.
 #' `RegexMatchSetId` is returned by
@@ -6475,35 +2611,6 @@ wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, Rat
 #' RegexMatchTuple.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_regex_match_set(
-#'   RegexMatchSetId = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       RegexMatchTuple = list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-#'         RegexPatternSetId = "string"
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6528,59 +2635,9 @@ wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeT
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes `RegexPatternString` objects in a RegexPatternSet.
-#' For each `RegexPatternString` object, you specify the following values:
-#' 
-#' -   Whether to insert or delete the `RegexPatternString`.
-#' 
-#' -   The regular expression pattern that you want to insert or delete.
-#'     For more information, see RegexPatternSet.
-#' 
-#' For example, you can create a `RegexPatternString` such as
-#' `B[a@@]dB[o0]t`. AWS WAF will match this `RegexPatternString` to:
-#' 
-#' -   BadBot
-#' 
-#' -   BadB0t
-#' 
-#' -   B@@dBot
-#' 
-#' -   B@@dB0t
-#' 
-#' To create and configure a `RegexPatternSet`, perform the following
-#' steps:
-#' 
-#' 1.  Create a `RegexPatternSet.` For more information, see
-#'     [`create_regex_pattern_set`][wafregional_create_regex_pattern_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_regex_pattern_set`][wafregional_update_regex_pattern_set]
-#'     request.
-#' 
-#' 3.  Submit an
-#'     [`update_regex_pattern_set`][wafregional_update_regex_pattern_set]
-#'     request to specify the regular expression pattern that you want AWS
-#'     WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_regex_pattern_set(RegexPatternSetId, Updates,
-#'   ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/update_regex_pattern_set.html](https://paws-r.github.io/docs/wafregional/update_regex_pattern_set.html) for full documentation.
 #'
 #' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to update.
 #' `RegexPatternSetId` is returned by
@@ -6590,28 +2647,6 @@ wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeT
 #' or delete from a RegexPatternSet.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_regex_pattern_set(
-#'   RegexPatternSetId = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       RegexPatternString = "string"
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6636,60 +2671,9 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes Predicate objects in a `Rule`. Each `Predicate`
-#' object identifies a predicate, such as a ByteMatchSet or an IPSet, that
-#' specifies the web requests that you want to allow, block, or count. If
-#' you add more than one predicate to a `Rule`, a request must match all of
-#' the specifications to be allowed, blocked, or counted. For example,
-#' suppose that you add the following to a `Rule`:
-#' 
-#' -   A `ByteMatchSet` that matches the value `BadBot` in the `User-Agent`
-#'     header
-#' 
-#' -   An `IPSet` that matches the IP address `192.0.2.44`
-#' 
-#' You then add the `Rule` to a `WebACL` and specify that you want to block
-#' requests that satisfy the `Rule`. For a request to be blocked, the
-#' `User-Agent` header in the request must contain the value `BadBot` *and*
-#' the request must originate from the IP address 192.0.2.44.
-#' 
-#' To create and configure a `Rule`, perform the following steps:
-#' 
-#' 1.  Create and update the predicates that you want to include in the
-#'     `Rule`.
-#' 
-#' 2.  Create the `Rule`. See [`create_rule`][wafregional_create_rule].
-#' 
-#' 3.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_rule`][wafregional_update_rule] request.
-#' 
-#' 4.  Submit an [`update_rule`][wafregional_update_rule] request to add
-#'     predicates to the `Rule`.
-#' 
-#' 5.  Create and update a `WebACL` that contains the `Rule`. See
-#'     [`create_web_acl`][wafregional_create_web_acl].
-#' 
-#' If you want to replace one `ByteMatchSet` or `IPSet` with another, you
-#' delete the existing one and add the new one.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_rule(RuleId, ChangeToken, Updates)
+#' See [https://paws-r.github.io/docs/wafregional/update_rule.html](https://paws-r.github.io/docs/wafregional/update_rule.html) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the `Rule` that you want to update. `RuleId` is returned
 #' by [`create_rule`][wafregional_create_rule] and by
@@ -6704,52 +2688,6 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
 #' -   Predicate: Contains `DataId`, `Negated`, and `Type`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_rule(
-#'   RuleId = "string",
-#'   ChangeToken = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       Predicate = list(
-#'         Negated = TRUE|FALSE,
-#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-#'         DataId = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a Predicate object in a rule with the ID
-#' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$update_rule(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
-#'   Updates = list(
-#'     list(
-#'       Action = "DELETE",
-#'       Predicate = list(
-#'         DataId = "MyByteMatchSetID",
-#'         Negated = FALSE,
-#'         Type = "ByteMatch"
-#'       )
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -6774,47 +2712,9 @@ wafregional_update_rule <- function(RuleId, ChangeToken, Updates) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes ActivatedRule objects in a `RuleGroup`.
-#' 
-#' You can only insert `REGULAR` rules into a rule group.
-#' 
-#' You can have a maximum of ten rules per rule group.
-#' 
-#' To create and configure a `RuleGroup`, perform the following steps:
-#' 
-#' 1.  Create and update the `Rules` that you want to include in the
-#'     `RuleGroup`. See [`create_rule`][wafregional_create_rule].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_rule_group`][wafregional_update_rule_group] request.
-#' 
-#' 3.  Submit an [`update_rule_group`][wafregional_update_rule_group]
-#'     request to add `Rules` to the `RuleGroup`.
-#' 
-#' 4.  Create and update a `WebACL` that contains the `RuleGroup`. See
-#'     [`create_web_acl`][wafregional_create_web_acl].
-#' 
-#' If you want to replace one `Rule` with another, you delete the existing
-#' one and add the new one.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_rule_group(RuleGroupId, Updates, ChangeToken)
+#' See [https://paws-r.github.io/docs/wafregional/update_rule_group.html](https://paws-r.github.io/docs/wafregional/update_rule_group.html) for full documentation.
 #'
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to update.
 #' `RuleGroupId` is returned by
@@ -6832,43 +2732,6 @@ wafregional_update_rule <- function(RuleId, ChangeToken, Updates) {
 #' `ActivatedRule|OverrideAction`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][wafregional_get_change_token].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_rule_group(
-#'   RuleGroupId = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       ActivatedRule = list(
-#'         Priority = 123,
-#'         RuleId = "string",
-#'         Action = list(
-#'           Type = "BLOCK"|"ALLOW"|"COUNT"
-#'         ),
-#'         OverrideAction = list(
-#'           Type = "NONE"|"COUNT"
-#'         ),
-#'         Type = "REGULAR"|"RATE_BASED"|"GROUP",
-#'         ExcludedRules = list(
-#'           list(
-#'             RuleId = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ChangeToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6893,73 +2756,9 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes SizeConstraint objects (filters) in a
-#' SizeConstraintSet. For each `SizeConstraint` object, you specify the
-#' following values:
-#' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change a `SizeConstraintSetUpdate` object, you delete the
-#'     existing object and add a new one.
-#' 
-#' -   The part of a web request that you want AWS WAF to evaluate, such as
-#'     the length of a query string or the length of the `User-Agent`
-#'     header.
-#' 
-#' -   Whether to perform any transformations on the request, such as
-#'     converting it to lowercase, before checking its length. Note that
-#'     transformations of the request body are not supported because the
-#'     AWS resource forwards only the first `8192` bytes of your request to
-#'     AWS WAF.
-#' 
-#'     You can only specify a single type of TextTransformation.
-#' 
-#' -   A `ComparisonOperator` used for evaluating the selected part of the
-#'     request against the specified `Size`, such as equals, greater than,
-#'     less than, and so on.
-#' 
-#' -   The length, in bytes, that you want AWS WAF to watch for in selected
-#'     part of the request. The length is computed after applying the
-#'     transformation.
-#' 
-#' For example, you can add a `SizeConstraintSetUpdate` object that matches
-#' web requests in which the length of the `User-Agent` header is greater
-#' than 100 bytes. You can then configure AWS WAF to block those requests.
-#' 
-#' To create and configure a `SizeConstraintSet`, perform the following
-#' steps:
-#' 
-#' 1.  Create a `SizeConstraintSet.` For more information, see
-#'     [`create_size_constraint_set`][wafregional_create_size_constraint_set].
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_size_constraint_set`][wafregional_update_size_constraint_set]
-#'     request.
-#' 
-#' 3.  Submit an
-#'     [`update_size_constraint_set`][wafregional_update_size_constraint_set]
-#'     request to specify the part of the request that you want AWS WAF to
-#'     inspect (for example, the header or the URI) and the value that you
-#'     want AWS WAF to watch for.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_size_constraint_set(SizeConstraintSetId, ChangeToken,
-#'   Updates)
+#' See [https://paws-r.github.io/docs/wafregional/update_size_constraint_set.html](https://paws-r.github.io/docs/wafregional/update_size_constraint_set.html) for full documentation.
 #'
 #' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to
 #' update. `SizeConstraintSetId` is returned by
@@ -6978,60 +2777,6 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #'     `ComparisonOperator`, and `Size`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_size_constraint_set(
-#'   SizeConstraintSetId = "string",
-#'   ChangeToken = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       SizeConstraint = list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-#'         ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
-#'         Size = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a SizeConstraint object (filters) in a
-#' # size constraint set with the ID
-#' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$update_size_constraint_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
-#'   Updates = list(
-#'     list(
-#'       Action = "DELETE",
-#'       SizeConstraint = list(
-#'         ComparisonOperator = "GT",
-#'         FieldToMatch = list(
-#'           Type = "QUERY_STRING"
-#'         ),
-#'         Size = 0L,
-#'         TextTransformation = "NONE"
-#'       )
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -7056,65 +2801,9 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
-#' SqlInjectionMatchSet. For each `SqlInjectionMatchTuple` object, you
-#' specify the following values:
-#' 
-#' -   `Action`: Whether to insert the object into or delete the object
-#'     from the array. To change a `SqlInjectionMatchTuple`, you delete the
-#'     existing object and add a new one.
-#' 
-#' -   `FieldToMatch`: The part of web requests that you want AWS WAF to
-#'     inspect and, if you want AWS WAF to inspect a header or custom query
-#'     parameter, the name of the header or parameter.
-#' 
-#' -   `TextTransformation`: Which text transformation, if any, to perform
-#'     on the web request before inspecting the request for snippets of
-#'     malicious SQL code.
-#' 
-#'     You can only specify a single type of TextTransformation.
-#' 
-#' You use `SqlInjectionMatchSet` objects to specify which CloudFront
-#' requests that you want to allow, block, or count. For example, if you're
-#' receiving requests that contain snippets of SQL code in the query string
-#' and you want to block the requests, you can create a
-#' `SqlInjectionMatchSet` with the applicable settings, and then configure
-#' AWS WAF to block the requests.
-#' 
-#' To create and configure a `SqlInjectionMatchSet`, perform the following
-#' steps:
-#' 
-#' 1.  Submit a
-#'     [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set]
-#'     request.
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_ip_set`][wafregional_update_ip_set] request.
-#' 
-#' 3.  Submit an
-#'     [`update_sql_injection_match_set`][wafregional_update_sql_injection_match_set]
-#'     request to specify the parts of web requests that you want AWS WAF
-#'     to inspect for snippets of SQL code.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_sql_injection_match_set(SqlInjectionMatchSetId,
-#'   ChangeToken, Updates)
+#' See [https://paws-r.github.io/docs/wafregional/update_sql_injection_match_set.html](https://paws-r.github.io/docs/wafregional/update_sql_injection_match_set.html) for full documentation.
 #'
 #' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the `SqlInjectionMatchSet` that you want
 #' to update. `SqlInjectionMatchSetId` is returned by
@@ -7134,56 +2823,6 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #'     `TextTransformation`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_sql_injection_match_set(
-#'   SqlInjectionMatchSetId = "string",
-#'   ChangeToken = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       SqlInjectionMatchTuple = list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a SqlInjectionMatchTuple object (filters)
-#' # in a SQL injection match set with the ID
-#' # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$update_sql_injection_match_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   SqlInjectionMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
-#'   Updates = list(
-#'     list(
-#'       Action = "DELETE",
-#'       SqlInjectionMatchTuple = list(
-#'         FieldToMatch = list(
-#'           Type = "QUERY_STRING"
-#'         ),
-#'         TextTransformation = "URL_DECODE"
-#'       )
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -7208,94 +2847,9 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes ActivatedRule objects in a `WebACL`. Each `Rule`
-#' identifies web requests that you want to allow, block, or count. When
-#' you update a `WebACL`, you specify the following values:
-#' 
-#' -   A default action for the `WebACL`, either `ALLOW` or `BLOCK`. AWS
-#'     WAF performs the default action if a request doesn't match the
-#'     criteria in any of the `Rules` in a `WebACL`.
-#' 
-#' -   The `Rules` that you want to add or delete. If you want to replace
-#'     one `Rule` with another, you delete the existing `Rule` and add the
-#'     new one.
-#' 
-#' -   For each `Rule`, whether you want AWS WAF to allow requests, block
-#'     requests, or count requests that match the conditions in the `Rule`.
-#' 
-#' -   The order in which you want AWS WAF to evaluate the `Rules` in a
-#'     `WebACL`. If you add more than one `Rule` to a `WebACL`, AWS WAF
-#'     evaluates each request against the `Rules` in order based on the
-#'     value of `Priority`. (The `Rule` that has the lowest value for
-#'     `Priority` is evaluated first.) When a web request matches all the
-#'     predicates (such as `ByteMatchSets` and `IPSets`) in a `Rule`, AWS
-#'     WAF immediately takes the corresponding action, allow or block, and
-#'     doesn't evaluate the request against the remaining `Rules` in the
-#'     `WebACL`, if any.
-#' 
-#' To create and configure a `WebACL`, perform the following steps:
-#' 
-#' 1.  Create and update the predicates that you want to include in
-#'     `Rules`. For more information, see
-#'     [`create_byte_match_set`][wafregional_create_byte_match_set],
-#'     [`update_byte_match_set`][wafregional_update_byte_match_set],
-#'     [`create_ip_set`][wafregional_create_ip_set],
-#'     [`update_ip_set`][wafregional_update_ip_set],
-#'     [`create_sql_injection_match_set`][wafregional_create_sql_injection_match_set],
-#'     and
-#'     [`update_sql_injection_match_set`][wafregional_update_sql_injection_match_set].
-#' 
-#' 2.  Create and update the `Rules` that you want to include in the
-#'     `WebACL`. For more information, see
-#'     [`create_rule`][wafregional_create_rule] and
-#'     [`update_rule`][wafregional_update_rule].
-#' 
-#' 3.  Create a `WebACL`. See
-#'     [`create_web_acl`][wafregional_create_web_acl].
-#' 
-#' 4.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_web_acl`][wafregional_update_web_acl] request.
-#' 
-#' 5.  Submit an [`update_web_acl`][wafregional_update_web_acl] request to
-#'     specify the `Rules` that you want to include in the `WebACL`, to
-#'     specify the default action, and to associate the `WebACL` with a
-#'     CloudFront distribution.
-#' 
-#'     The `ActivatedRule` can be a rule group. If you specify a rule group
-#'     as your `ActivatedRule` , you can exclude specific rules from that
-#'     rule group.
-#' 
-#'     If you already have a rule group associated with a web ACL and want
-#'     to submit an [`update_web_acl`][wafregional_update_web_acl] request
-#'     to exclude certain rules from that rule group, you must first remove
-#'     the rule group from the web ACL, the re-insert it again, specifying
-#'     the excluded rules. For details, see ActivatedRule$ExcludedRules .
-#' 
-#' Be aware that if you try to add a RATE_BASED rule to a web ACL without
-#' setting the rule type when first creating the rule, the
-#' [`update_web_acl`][wafregional_update_web_acl] request will fail because
-#' the request tries to add a REGULAR rule (the default rule type) with the
-#' specified ID, which does not exist.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_web_acl(WebACLId, ChangeToken, Updates,
-#'   DefaultAction)
+#' See [https://paws-r.github.io/docs/wafregional/update_web_acl.html](https://paws-r.github.io/docs/wafregional/update_web_acl.html) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to update. `WebACLId` is
 #' returned by [`create_web_acl`][wafregional_create_web_acl] and by
@@ -7322,71 +2876,6 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #' performs the default action if a request doesn't match the criteria in
 #' any of the rules in a web ACL.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_web_acl(
-#'   WebACLId = "string",
-#'   ChangeToken = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       ActivatedRule = list(
-#'         Priority = 123,
-#'         RuleId = "string",
-#'         Action = list(
-#'           Type = "BLOCK"|"ALLOW"|"COUNT"
-#'         ),
-#'         OverrideAction = list(
-#'           Type = "NONE"|"COUNT"
-#'         ),
-#'         Type = "REGULAR"|"RATE_BASED"|"GROUP",
-#'         ExcludedRules = list(
-#'           list(
-#'             RuleId = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   DefaultAction = list(
-#'     Type = "BLOCK"|"ALLOW"|"COUNT"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an ActivatedRule object in a WebACL with
-#' # the ID webacl-1472061481310.
-#' svc$update_web_acl(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   DefaultAction = list(
-#'     Type = "ALLOW"
-#'   ),
-#'   Updates = list(
-#'     list(
-#'       Action = "DELETE",
-#'       ActivatedRule = list(
-#'         Action = list(
-#'           Type = "ALLOW"
-#'         ),
-#'         Priority = 1L,
-#'         RuleId = "WAFRule-1-Example"
-#'       )
-#'     )
-#'   ),
-#'   WebACLId = "webacl-1472061481310"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname wafregional_update_web_acl
@@ -7410,60 +2899,9 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
 #' This is AWS WAF Classic documentation
 #'
 #' @description
-#' This is **AWS WAF Classic** documentation. For more information, see
-#' [AWS WAF
-#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
-#' in the developer guide.
-#' 
-#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
-#' [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' With the latest version, AWS WAF has a single set of endpoints for
-#' regional and global use.
-#' 
-#' Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet.
-#' For each `XssMatchTuple` object, you specify the following values:
-#' 
-#' -   `Action`: Whether to insert the object into or delete the object
-#'     from the array. To change an `XssMatchTuple`, you delete the
-#'     existing object and add a new one.
-#' 
-#' -   `FieldToMatch`: The part of web requests that you want AWS WAF to
-#'     inspect and, if you want AWS WAF to inspect a header or custom query
-#'     parameter, the name of the header or parameter.
-#' 
-#' -   `TextTransformation`: Which text transformation, if any, to perform
-#'     on the web request before inspecting the request for cross-site
-#'     scripting attacks.
-#' 
-#'     You can only specify a single type of TextTransformation.
-#' 
-#' You use `XssMatchSet` objects to specify which CloudFront requests that
-#' you want to allow, block, or count. For example, if you're receiving
-#' requests that contain cross-site scripting attacks in the request body
-#' and you want to block the requests, you can create an `XssMatchSet` with
-#' the applicable settings, and then configure AWS WAF to block the
-#' requests.
-#' 
-#' To create and configure an `XssMatchSet`, perform the following steps:
-#' 
-#' 1.  Submit a [`create_xss_match_set`][wafregional_create_xss_match_set]
-#'     request.
-#' 
-#' 2.  Use [`get_change_token`][wafregional_get_change_token] to get the
-#'     change token that you provide in the `ChangeToken` parameter of an
-#'     [`update_ip_set`][wafregional_update_ip_set] request.
-#' 
-#' 3.  Submit an [`update_xss_match_set`][wafregional_update_xss_match_set]
-#'     request to specify the parts of web requests that you want AWS WAF
-#'     to inspect for cross-site scripting attacks.
-#' 
-#' For more information about how to use the AWS WAF API to allow or block
-#' HTTP requests, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' @usage
-#' wafregional_update_xss_match_set(XssMatchSetId, ChangeToken, Updates)
+#' See [https://paws-r.github.io/docs/wafregional/update_xss_match_set.html](https://paws-r.github.io/docs/wafregional/update_xss_match_set.html) for full documentation.
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the `XssMatchSet` that you want to update.
 #' `XssMatchSetId` is returned by
@@ -7480,55 +2918,6 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
 #' -   XssMatchTuple: Contains `FieldToMatch` and `TextTransformation`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_xss_match_set(
-#'   XssMatchSetId = "string",
-#'   ChangeToken = "string",
-#'   Updates = list(
-#'     list(
-#'       Action = "INSERT"|"DELETE",
-#'       XssMatchTuple = list(
-#'         FieldToMatch = list(
-#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-#'           Data = "string"
-#'         ),
-#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an XssMatchTuple object (filters) in an
-#' # XssMatchSet with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-#' svc$update_xss_match_set(
-#'   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-#'   Updates = list(
-#'     list(
-#'       Action = "DELETE",
-#'       XssMatchTuple = list(
-#'         FieldToMatch = list(
-#'           Type = "QUERY_STRING"
-#'         ),
-#'         TextTransformation = "URL_DECODE"
-#'       )
-#'     )
-#'   ),
-#'   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
-#' )
-#' }
 #'
 #' @keywords internal
 #'

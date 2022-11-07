@@ -10,21 +10,9 @@ clouddirectory_delete_schema(SchemaArn)
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) of the development schema. For more
 information, see arns.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaArn = "string"
-)
-}
-}
 \description{
-Deletes a given schema. Schemas in a development and published state can
-only be deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_schema(
-  SchemaArn = "string"
-)
-}
-}
+Deletes a given schema. Schemas in a development and published state can only be deleted.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/delete_schema.html} for full documentation.
+}
 \keyword{internal}

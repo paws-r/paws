@@ -13,67 +13,9 @@ cloudformation_detect_stack_resource_drift(StackName, LogicalResourceId)
 
 \item{LogicalResourceId}{[required] The logical name of the resource for which to return drift information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackResourceDrift = list(
-    StackId = "string",
-    LogicalResourceId = "string",
-    PhysicalResourceId = "string",
-    PhysicalResourceIdContext = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    ResourceType = "string",
-    ExpectedProperties = "string",
-    ActualProperties = "string",
-    PropertyDifferences = list(
-      list(
-        PropertyPath = "string",
-        ExpectedValue = "string",
-        ActualValue = "string",
-        DifferenceType = "ADD"|"REMOVE"|"NOT_EQUAL"
-      )
-    ),
-    StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
-    Timestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ModuleInfo = list(
-      TypeHierarchy = "string",
-      LogicalIdHierarchy = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns information about whether a resource's actual configuration
-differs, or has \emph{drifted}, from it's expected configuration, as defined
-in the stack template and any values specified as template parameters.
-This information includes actual and expected property values for
-resources in which AWS CloudFormation detects drift. Only resource
-properties explicitly defined in the stack template are checked for
-drift. For more information about stack and resource drift, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
+Returns information about whether a resource's actual configuration differs, or has \emph{drifted}, from it's expected configuration, as defined in the stack template and any values specified as template parameters. This information includes actual and expected property values for resources in which CloudFormation detects drift. Only resource properties explicitly defined in the stack template are checked for drift. For more information about stack and resource drift, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
 
-Use
-\code{\link[=cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift}}
-to detect drift on individual resources, or
-\code{\link[=cloudformation_detect_stack_drift]{detect_stack_drift}} to detect
-drift on all resources in a given stack that support drift detection.
-
-Resources that do not currently support drift detection cannot be
-checked. For a list of resources that support drift detection, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html}{Resources that Support Drift Detection}.
+See \url{https://paws-r.github.io/docs/cloudformation/detect_stack_resource_drift.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$detect_stack_resource_drift(
-  StackName = "string",
-  LogicalResourceId = "string"
-)
-}
-}
-
 \keyword{internal}

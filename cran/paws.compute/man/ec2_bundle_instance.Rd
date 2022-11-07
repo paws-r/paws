@@ -4,7 +4,7 @@
 \alias{ec2_bundle_instance}
 \title{Bundles an Amazon instance store-backed Windows instance}
 \usage{
-ec2_bundle_instance(InstanceId, Storage, DryRun)
+ec2_bundle_instance(InstanceId, Storage, DryRun = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance to bundle.
@@ -25,60 +25,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BundleTask = list(
-    BundleId = "string",
-    BundleTaskError = list(
-      Code = "string",
-      Message = "string"
-    ),
-    InstanceId = "string",
-    Progress = "string",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    State = "pending"|"waiting-for-shutdown"|"bundling"|"storing"|"cancelling"|"complete"|"failed",
-    Storage = list(
-      S3 = list(
-        AWSAccessKeyId = "string",
-        Bucket = "string",
-        Prefix = "string",
-        UploadPolicy = raw,
-        UploadPolicySignature = "string"
-      )
-    ),
-    UpdateTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Bundles an Amazon instance store-backed Windows instance.
 
-During bundling, only the root device volume (C:\\) is bundled. Data on
-other instance store volumes is not preserved.
-
-This action is not applicable for Linux/Unix instances or Windows
-instances that are backed by Amazon EBS.
+See \url{https://paws-r.github.io/docs/ec2/bundle_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$bundle_instance(
-  InstanceId = "string",
-  Storage = list(
-    S3 = list(
-      AWSAccessKeyId = "string",
-      Bucket = "string",
-      Prefix = "string",
-      UploadPolicy = raw,
-      UploadPolicySignature = "string"
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

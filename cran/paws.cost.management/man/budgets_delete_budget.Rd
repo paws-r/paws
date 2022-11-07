@@ -12,21 +12,9 @@ delete.}
 
 \item{BudgetName}{[required] The name of the budget that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a budget. You can delete your budget at any time.
 
-Deleting a budget also deletes the notifications and subscribers that
-are associated with that budget.
+See \url{https://paws-r.github.io/docs/budgets/delete_budget.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_budget(
-  AccountId = "string",
-  BudgetName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,9 +4,19 @@
 \alias{rdsdataservice_execute_statement}
 \title{Runs a SQL statement against a database}
 \usage{
-rdsdataservice_execute_statement(continueAfterTimeout, database,
-  includeResultMetadata, parameters, resourceArn, resultSetOptions,
-  schema, secretArn, sql, transactionId)
+rdsdataservice_execute_statement(
+  continueAfterTimeout = NULL,
+  database = NULL,
+  formatRecordsAs = NULL,
+  includeResultMetadata = NULL,
+  parameters = NULL,
+  resourceArn,
+  resultSetOptions = NULL,
+  schema = NULL,
+  secretArn,
+  sql,
+  transactionId = NULL
+)
 }
 \arguments{
 \item{continueAfterTimeout}{A value that indicates whether to continue running the statement after
@@ -20,6 +30,15 @@ structures.}
 
 \item{database}{The name of the database.}
 
+\item{formatRecordsAs}{A value that indicates whether to format the result set as a single JSON
+string. This parameter only applies to \code{SELECT} statements and is
+ignored for other types of statements. Allowed values are \code{NONE} and
+\code{JSON}. The default value is \code{NONE}. The result is returned in the
+\code{formattedRecords} field.
+
+For usage information about the JSON format for result sets, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using the Data API}
+in the \emph{Amazon Aurora User Guide}.}
+
 \item{includeResultMetadata}{A value that indicates whether to include metadata in the results.}
 
 \item{parameters}{The parameters for the SQL statement.
@@ -30,9 +49,14 @@ Array parameters are not supported.}
 
 \item{resultSetOptions}{Options that control how the result set is returned.}
 
-\item{schema}{The name of the database schema.}
+\item{schema}{The name of the database schema.
 
-\item{secretArn}{[required] The name or ARN of the secret that enables access to the DB cluster.}
+Currently, the \code{schema} parameter isn't supported.}
+
+\item{secretArn}{[required] The ARN of the secret that enables access to the DB cluster. Enter the
+database user name and password for the credentials in the secret.
+
+For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
 
 \item{sql}{[required] The SQL statement to run.}
 
@@ -44,142 +68,9 @@ the SQL statement in.
 If the SQL statement is not part of a transaction, don't set this
 parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  columnMetadata = list(
-    list(
-      arrayBaseColumnType = 123,
-      isAutoIncrement = TRUE|FALSE,
-      isCaseSensitive = TRUE|FALSE,
-      isCurrency = TRUE|FALSE,
-      isSigned = TRUE|FALSE,
-      label = "string",
-      name = "string",
-      nullable = 123,
-      precision = 123,
-      scale = 123,
-      schemaName = "string",
-      tableName = "string",
-      type = 123,
-      typeName = "string"
-    )
-  ),
-  generatedFields = list(
-    list(
-      arrayValue = list(
-        arrayValues = list(
-          list()
-        ),
-        booleanValues = list(
-          TRUE|FALSE
-        ),
-        doubleValues = list(
-          123.0
-        ),
-        longValues = list(
-          123
-        ),
-        stringValues = list(
-          "string"
-        )
-      ),
-      blobValue = raw,
-      booleanValue = TRUE|FALSE,
-      doubleValue = 123.0,
-      isNull = TRUE|FALSE,
-      longValue = 123,
-      stringValue = "string"
-    )
-  ),
-  numberOfRecordsUpdated = 123,
-  records = list(
-    list(
-      list(
-        arrayValue = list(
-          arrayValues = list(
-            list()
-          ),
-          booleanValues = list(
-            TRUE|FALSE
-          ),
-          doubleValues = list(
-            123.0
-          ),
-          longValues = list(
-            123
-          ),
-          stringValues = list(
-            "string"
-          )
-        ),
-        blobValue = raw,
-        booleanValue = TRUE|FALSE,
-        doubleValue = 123.0,
-        isNull = TRUE|FALSE,
-        longValue = 123,
-        stringValue = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Runs a SQL statement against a database.
 
-If a call isn't part of a transaction because it doesn't include the
-\code{transactionID} parameter, changes that result from the call are
-committed automatically.
-
-The response size limit is 1 MB. If the call returns more than 1 MB of
-response data, the call is terminated.
+See \url{https://paws-r.github.io/docs/rdsdataservice/execute_statement.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$execute_statement(
-  continueAfterTimeout = TRUE|FALSE,
-  database = "string",
-  includeResultMetadata = TRUE|FALSE,
-  parameters = list(
-    list(
-      name = "string",
-      typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
-      value = list(
-        arrayValue = list(
-          arrayValues = list(
-            list()
-          ),
-          booleanValues = list(
-            TRUE|FALSE
-          ),
-          doubleValues = list(
-            123.0
-          ),
-          longValues = list(
-            123
-          ),
-          stringValues = list(
-            "string"
-          )
-        ),
-        blobValue = raw,
-        booleanValue = TRUE|FALSE,
-        doubleValue = 123.0,
-        isNull = TRUE|FALSE,
-        longValue = 123,
-        stringValue = "string"
-      )
-    )
-  ),
-  resourceArn = "string",
-  resultSetOptions = list(
-    decimalReturnType = "DOUBLE_OR_LONG"|"STRING"
-  ),
-  schema = "string",
-  secretArn = "string",
-  sql = "string",
-  transactionId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,7 +5,11 @@
 \title{Lists all configuration management servers that are identified with your
 account}
 \usage{
-opsworkscm_describe_servers(ServerName, NextToken, MaxResults)
+opsworkscm_describe_servers(
+  ServerName = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ServerName}{Describes the server with the specified ServerName.}
@@ -16,69 +20,9 @@ opsworkscm_describe_servers(ServerName, NextToken, MaxResults)
 \item{MaxResults}{This is not currently implemented for
 \code{\link[=opsworkscm_describe_servers]{describe_servers}} requests.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Servers = list(
-    list(
-      AssociatePublicIpAddress = TRUE|FALSE,
-      BackupRetentionCount = 123,
-      ServerName = "string",
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      CloudFormationStackArn = "string",
-      CustomDomain = "string",
-      DisableAutomatedBackup = TRUE|FALSE,
-      Endpoint = "string",
-      Engine = "string",
-      EngineModel = "string",
-      EngineAttributes = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      EngineVersion = "string",
-      InstanceProfileArn = "string",
-      InstanceType = "string",
-      KeyPair = "string",
-      MaintenanceStatus = "SUCCESS"|"FAILED",
-      PreferredMaintenanceWindow = "string",
-      PreferredBackupWindow = "string",
-      SecurityGroupIds = list(
-        "string"
-      ),
-      ServiceRoleArn = "string",
-      Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-      StatusReason = "string",
-      SubnetIds = list(
-        "string"
-      ),
-      ServerArn = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all configuration management servers that are identified with your
-account. Only the stored results from Amazon DynamoDB are returned. AWS
-OpsWorks CM does not query other services.
+Lists all configuration management servers that are identified with your account. Only the stored results from Amazon DynamoDB are returned. AWS OpsWorks CM does not query other services.
 
-This operation is synchronous.
-
-A \code{ResourceNotFoundException} is thrown when the server does not exist.
-A \code{ValidationException} is raised when parameters of the request are not
-valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/describe_servers.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_servers(
-  ServerName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

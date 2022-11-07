@@ -2,18 +2,25 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_account_customization}
 \alias{quicksight_create_account_customization}
-\title{Creates Amazon QuickSight customizations the current AWS Region}
+\title{Creates Amazon QuickSight customizations for the current Amazon Web
+Services Region}
 \usage{
-quicksight_create_account_customization(AwsAccountId, Namespace,
-  AccountCustomization, Tags)
+quicksight_create_account_customization(
+  AwsAccountId,
+  Namespace = NULL,
+  AccountCustomization,
+  Tags = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that you want to customize QuickSight for.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to customize
+Amazon QuickSight for.}
 
-\item{Namespace}{The QuickSight namespace that you want to add customizations to.}
+\item{Namespace}{The Amazon QuickSight namespace that you want to add customizations to.}
 
-\item{AccountCustomization}{[required] The QuickSight customizations you're adding in the current AWS Region.
-You can add these to an AWS account and a QuickSight namespace.
+\item{AccountCustomization}{[required] The Amazon QuickSight customizations you're adding in the current Amazon
+Web Services Region. You can add these to an Amazon Web Services account
+and a QuickSight namespace.
 
 For example, you can add a default theme by setting
 \code{AccountCustomization} to the midnight theme:
@@ -23,63 +30,9 @@ Or, you can add a custom theme by specifying
 
 \item{Tags}{A list of the tags that you want to attach to this resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  AwsAccountId = "string",
-  Namespace = "string",
-  AccountCustomization = list(
-    DefaultTheme = "string"
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Creates Amazon QuickSight customizations the current AWS Region.
-Currently, you can add a custom default theme by using the
-\code{\link[=quicksight_create_account_customization]{create_account_customization}}
-or
-\code{\link[=quicksight_update_account_customization]{update_account_customization}}
-API operation. To further customize QuickSight by removing QuickSight
-sample assets and videos for all new users, see \href{https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html}{Customizing QuickSight}
-in the \emph{Amazon QuickSight User Guide.}
+Creates Amazon QuickSight customizations for the current Amazon Web Services Region. Currently, you can add a custom default theme by using the \code{\link[=quicksight_create_account_customization]{create_account_customization}} or \code{\link[=quicksight_update_account_customization]{update_account_customization}} API operation. To further customize Amazon QuickSight by removing Amazon QuickSight sample assets and videos for all new users, see \href{https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html}{Customizing Amazon QuickSight} in the \emph{Amazon QuickSight User Guide.}
 
-You can create customizations for your AWS account or, if you specify a
-namespace, for a QuickSight namespace instead. Customizations that apply
-to a namespace always override customizations that apply to an AWS
-account. To find out which customizations apply, use the
-\code{\link[=quicksight_describe_account_customization]{describe_account_customization}}
-API operation.
-
-Before you use the
-\code{\link[=quicksight_create_account_customization]{create_account_customization}}
-API operation to add a theme as the namespace default, make sure that
-you first share the theme with the namespace. If you don't share it with
-the namespace, the theme isn't visible to your users even if you make it
-the default theme. To check if the theme is shared, view the current
-permissions by using the
-\code{\link[=quicksight_describe_theme_permissions]{describe_theme_permissions}}
-API operation. To share the theme, grant permissions by using the
-\code{\link[=quicksight_update_theme_permissions]{update_theme_permissions}} API
-operation.
+See \url{https://paws-r.github.io/docs/quicksight/create_account_customization.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_account_customization(
-  AwsAccountId = "string",
-  Namespace = "string",
-  AccountCustomization = list(
-    DefaultTheme = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

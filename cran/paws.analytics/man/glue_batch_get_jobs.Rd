@@ -10,72 +10,9 @@ glue_batch_get_jobs(JobNames)
 \item{JobNames}{[required] A list of job names, which might be the names returned from the
 \code{\link[=glue_list_jobs]{list_jobs}} operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Jobs = list(
-    list(
-      Name = "string",
-      Description = "string",
-      LogUri = "string",
-      Role = "string",
-      CreatedOn = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedOn = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExecutionProperty = list(
-        MaxConcurrentRuns = 123
-      ),
-      Command = list(
-        Name = "string",
-        ScriptLocation = "string",
-        PythonVersion = "string"
-      ),
-      DefaultArguments = list(
-        "string"
-      ),
-      NonOverridableArguments = list(
-        "string"
-      ),
-      Connections = list(
-        Connections = list(
-          "string"
-        )
-      ),
-      MaxRetries = 123,
-      AllocatedCapacity = 123,
-      Timeout = 123,
-      MaxCapacity = 123.0,
-      WorkerType = "Standard"|"G.1X"|"G.2X",
-      NumberOfWorkers = 123,
-      SecurityConfiguration = "string",
-      NotificationProperty = list(
-        NotifyDelayAfter = 123
-      ),
-      GlueVersion = "string"
-    )
-  ),
-  JobsNotFound = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns a list of resource metadata for a given list of job names. After
-calling the \code{\link[=glue_list_jobs]{list_jobs}} operation, you can call this
-operation to access the data to which you have been granted permissions.
-This operation supports all IAM permissions, including permission
-conditions that uses tags.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_get_jobs(
-  JobNames = list(
-    "string"
-  )
-)
-}
-}
+Returns a list of resource metadata for a given list of job names. After calling the \code{\link[=glue_list_jobs]{list_jobs}} operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 
+See \url{https://paws-r.github.io/docs/glue/batch_get_jobs.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{ec2_describe_classic_link_instances}
 \title{Describes one or more of your linked EC2-Classic instances}
 \usage{
-ec2_describe_classic_link_instances(Filters, DryRun, InstanceIds,
-  MaxResults, NextToken)
+ec2_describe_classic_link_instances(
+  Filters = NULL,
+  DryRun = NULL,
+  InstanceIds = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -13,11 +18,11 @@ ec2_describe_classic_link_instances(Filters, DryRun, InstanceIds,
 \item \code{group-id} - The ID of a VPC security group that's associated with
 the instance.
 \item \code{instance-id} - The ID of the instance.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -43,54 +48,9 @@ items.}
 
 \item{NextToken}{The token for the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Instances = list(
-    list(
-      Groups = list(
-        list(
-          GroupName = "string",
-          GroupId = "string"
-        )
-      ),
-      InstanceId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      VpcId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more of your linked EC2-Classic instances. This request
-only returns information about EC2-Classic instances linked to a VPC
-through ClassicLink. You cannot use this request to return information
-about other instances.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_classic_link_instances(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  InstanceIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes one or more of your linked EC2-Classic instances. This request only returns information about EC2-Classic instances linked to a VPC through ClassicLink. You cannot use this request to return information about other instances.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_classic_link_instances.html} for full documentation.
+}
 \keyword{internal}

@@ -9,17 +9,9 @@ ssm_delete_ops_metadata(OpsMetadataArn)
 \arguments{
 \item{OpsMetadataArn}{[required] The Amazon Resource Name (ARN) of an OpsMetadata Object to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Delete OpsMetadata related to an application.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_ops_metadata(
-  OpsMetadataArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/delete_ops_metadata.html} for full documentation.
+}
 \keyword{internal}

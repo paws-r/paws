@@ -4,7 +4,7 @@
 \alias{guardduty_list_filters}
 \title{Returns a paginated list of the current filters}
 \usage{
-guardduty_list_filters(DetectorId, MaxResults, NextToken)
+guardduty_list_filters(DetectorId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that the filter is associated with.}
@@ -18,25 +18,9 @@ this parameter to null on your first call to the list action. For
 subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FilterNames = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a paginated list of the current filters.
-}
-\section{Request syntax}{
-\preformatted{svc$list_filters(
-  DetectorId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/list_filters.html} for full documentation.
+}
 \keyword{internal}

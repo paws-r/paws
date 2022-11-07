@@ -2,35 +2,18 @@
 % Please edit documentation in R/cloud9_operations.R
 \name{cloud9_list_tags_for_resource}
 \alias{cloud9_list_tags_for_resource}
-\title{Gets a list of the tags associated with an AWS Cloud9 development
+\title{Gets a list of the tags associated with an Cloud9 development
 environment}
 \usage{
 cloud9_list_tags_for_resource(ResourceARN)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
-to get the tags for.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the Cloud9 development environment to
+get the tags for.}
 }
 \description{
-Gets a list of the tags associated with an AWS Cloud9 development
-environment.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceARN = "string"
-)
-}
-}
+Gets a list of the tags associated with an Cloud9 development environment.
 
+See \url{https://paws-r.github.io/docs/cloud9/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,11 @@
 \title{Returns a list of ContributorInsightsSummary for a table and all its
 global secondary indexes}
 \usage{
-dynamodb_list_contributor_insights(TableName, NextToken, MaxResults)
+dynamodb_list_contributor_insights(
+  TableName = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{TableName}{The name of the table.}
@@ -14,30 +18,9 @@ dynamodb_list_contributor_insights(TableName, NextToken, MaxResults)
 
 \item{MaxResults}{Maximum number of results to return per page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContributorInsightsSummaries = list(
-    list(
-      TableName = "string",
-      IndexName = "string",
-      ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of ContributorInsightsSummary for a table and all its
-global secondary indexes.
-}
-\section{Request syntax}{
-\preformatted{svc$list_contributor_insights(
-  TableName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes.
 
+See \url{https://paws-r.github.io/docs/dynamodb/list_contributor_insights.html} for full documentation.
+}
 \keyword{internal}

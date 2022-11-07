@@ -4,8 +4,7 @@
 \alias{clouddirectory_detach_from_index}
 \title{Detaches the specified object from the specified index}
 \usage{
-clouddirectory_detach_from_index(DirectoryArn, IndexReference,
-  TargetReference)
+clouddirectory_detach_from_index(DirectoryArn, IndexReference, TargetReference)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory the index and object
@@ -15,26 +14,9 @@ exist in.}
 
 \item{TargetReference}{[required] A reference to the object being detached from the index.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DetachedObjectIdentifier = "string"
-)
-}
-}
 \description{
 Detaches the specified object from the specified index.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_from_index(
-  DirectoryArn = "string",
-  IndexReference = list(
-    Selector = "string"
-  ),
-  TargetReference = list(
-    Selector = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/detach_from_index.html} for full documentation.
+}
 \keyword{internal}

@@ -111,13 +111,25 @@ NULL
 
 .cognitoidentity$get_open_id_token_for_developer_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TokenDuration = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), PrincipalTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TokenDuration = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cognitoidentity$get_open_id_token_for_developer_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentity$get_principal_tag_attribute_map_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), IdentityProviderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentity$get_principal_tag_attribute_map_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), IdentityProviderName = structure(logical(0), tags = list(type = "string")), UseDefaults = structure(logical(0), tags = list(type = "boolean")), PrincipalTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -189,6 +201,18 @@ NULL
 
 .cognitoidentity$set_identity_pool_roles_output <- function(...) {
   list()
+}
+
+.cognitoidentity$set_principal_tag_attribute_map_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), IdentityProviderName = structure(logical(0), tags = list(type = "string")), UseDefaults = structure(logical(0), tags = list(type = "boolean")), PrincipalTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentity$set_principal_tag_attribute_map_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), IdentityProviderName = structure(logical(0), tags = list(type = "string")), UseDefaults = structure(logical(0), tags = list(type = "boolean")), PrincipalTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .cognitoidentity$tag_resource_input <- function(...) {

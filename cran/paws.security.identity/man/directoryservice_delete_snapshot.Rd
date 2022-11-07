@@ -9,20 +9,9 @@ directoryservice_delete_snapshot(SnapshotId)
 \arguments{
 \item{SnapshotId}{[required] The identifier of the directory snapshot to be deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SnapshotId = "string"
-)
-}
-}
 \description{
 Deletes a directory snapshot.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_snapshot(
-  SnapshotId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/delete_snapshot.html} for full documentation.
+}
 \keyword{internal}

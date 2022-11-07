@@ -4,8 +4,10 @@
 \alias{ec2_delete_transit_gateway_connect_peer}
 \title{Deletes the specified Connect peer}
 \usage{
-ec2_delete_transit_gateway_connect_peer(TransitGatewayConnectPeerId,
-  DryRun)
+ec2_delete_transit_gateway_connect_peer(
+  TransitGatewayConnectPeerId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayConnectPeerId}{[required] The ID of the Connect peer.}
@@ -15,51 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayConnectPeer = list(
-    TransitGatewayAttachmentId = "string",
-    TransitGatewayConnectPeerId = "string",
-    State = "pending"|"available"|"deleting"|"deleted",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ConnectPeerConfiguration = list(
-      TransitGatewayAddress = "string",
-      PeerAddress = "string",
-      InsideCidrBlocks = list(
-        "string"
-      ),
-      Protocol = "gre",
-      BgpConfigurations = list(
-        list(
-          TransitGatewayAsn = 123,
-          PeerAsn = 123,
-          TransitGatewayAddress = "string",
-          PeerAddress = "string",
-          BgpStatus = "up"|"down"
-        )
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Deletes the specified Connect peer.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_transit_gateway_connect_peer(
-  TransitGatewayConnectPeerId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_transit_gateway_connect_peer.html} for full documentation.
+}
 \keyword{internal}

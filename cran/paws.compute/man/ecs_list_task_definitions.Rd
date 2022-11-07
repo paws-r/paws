@@ -4,30 +4,34 @@
 \alias{ecs_list_task_definitions}
 \title{Returns a list of task definitions that are registered to your account}
 \usage{
-ecs_list_task_definitions(familyPrefix, status, sort, nextToken,
-  maxResults)
+ecs_list_task_definitions(
+  familyPrefix = NULL,
+  status = NULL,
+  sort = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
-\item{familyPrefix}{The full family name with which to filter the
-\code{\link[=ecs_list_task_definitions]{list_task_definitions}} results. Specifying
-a \code{familyPrefix} limits the listed task definitions to task definition
-revisions that belong to that family.}
+\item{familyPrefix}{The full family name to filter the
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} results with.
+Specifying a \code{familyPrefix} limits the listed task definitions to task
+definition revisions that belong to that family.}
 
-\item{status}{The task definition status with which to filter the
-\code{\link[=ecs_list_task_definitions]{list_task_definitions}} results. By
+\item{status}{The task definition status to filter the
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} results with. By
 default, only \code{ACTIVE} task definitions are listed. By setting this
 parameter to \code{INACTIVE}, you can view task definitions that are
 \code{INACTIVE} as long as an active task or service still references them.
 If you paginate the resulting output, be sure to keep the \code{status} value
 constant in each subsequent request.}
 
-\item{sort}{The order in which to sort the results. Valid values are \code{ASC} and
-\code{DESC}. By default (\code{ASC}), task definitions are listed
-lexicographically by family name and in ascending numerical order by
-revision so that the newest task definitions in a family are listed
-last. Setting this parameter to \code{DESC} reverses the sort order on family
-name and revision so that the newest task definitions in a family are
-listed first.}
+\item{sort}{The order to sort the results in. Valid values are \code{ASC} and \code{DESC}. By
+default, (\code{ASC}) task definitions are listed lexicographically by family
+name and in ascending numerical order by revision so that the newest
+task definitions in a family are listed last. Setting this parameter to
+\code{DESC} reverses the sort order on family name and revision. This is so
+that the newest task definitions in a family are listed first.}
 
 \item{nextToken}{The \code{nextToken} value returned from a
 \code{\link[=ecs_list_task_definitions]{list_task_definitions}} request indicating
@@ -39,53 +43,21 @@ This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of task definition results returned by
-\code{\link[=ecs_list_task_definitions]{list_task_definitions}} in paginated
-output. When this parameter is used,
+\item{maxResults}{The maximum number of task definition results that
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} returned in
+paginated output. When this parameter is used,
 \code{\link[=ecs_list_task_definitions]{list_task_definitions}} only returns
 \code{maxResults} results in a single page along with a \code{nextToken} response
 element. The remaining results of the initial request can be seen by
 sending another \code{\link[=ecs_list_task_definitions]{list_task_definitions}}
 request with the returned \code{nextToken} value. This value can be between 1
-and 100. If this parameter is not used, then
+and 100. If this parameter isn't used, then
 \code{\link[=ecs_list_task_definitions]{list_task_definitions}} returns up to 100
 results and a \code{nextToken} value if applicable.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  taskDefinitionArns = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of task definitions that are registered to your account.
-You can filter the results by family name with the \code{familyPrefix}
-parameter or by status with the \code{status} parameter.
-}
-\section{Request syntax}{
-\preformatted{svc$list_task_definitions(
-  familyPrefix = "string",
-  status = "ACTIVE"|"INACTIVE",
-  sort = "ASC"|"DESC",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns a list of task definitions that are registered to your account. You can filter the results by family name with the \code{familyPrefix} parameter or by status with the \code{status} parameter.
 
-\examples{
-\dontrun{
-# This example lists all of your registered task definitions.
-svc$list_task_definitions()
-
-# This example lists the task definition revisions of a specified family.
-svc$list_task_definitions(
-  familyPrefix = "wordpress"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/list_task_definitions.html} for full documentation.
 }
 \keyword{internal}

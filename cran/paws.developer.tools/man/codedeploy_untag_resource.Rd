@@ -14,22 +14,9 @@ disassociate the tags with the keys in the \code{TagKeys} input parameter.}
 keys are disassociated from the resource specified by the \code{ResourceArn}
 input parameter.}
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates a resource from a list of tags. The resource is identified
-by the \code{ResourceArn} input parameter. The tags are identified by the
-list of keys in the \code{TagKeys} input parameter.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Disassociates a resource from a list of tags. The resource is identified by the \code{ResourceArn} input parameter. The tags are identified by the list of keys in the \code{TagKeys} input parameter.
 
+See \url{https://paws-r.github.io/docs/codedeploy/untag_resource.html} for full documentation.
+}
 \keyword{internal}

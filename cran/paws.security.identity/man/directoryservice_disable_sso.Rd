@@ -4,7 +4,7 @@
 \alias{directoryservice_disable_sso}
 \title{Disables single-sign on for a directory}
 \usage{
-directoryservice_disable_sso(DirectoryId, UserName, Password)
+directoryservice_disable_sso(DirectoryId, UserName = NULL, Password = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which to disable single-sign on.}
@@ -23,19 +23,9 @@ Connector service account is not changed.}
 This is only used for AD Connector directories. For more information,
 see the \emph{UserName} parameter.}
 }
-\value{
-An empty list.
-}
 \description{
 Disables single-sign on for a directory.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_sso(
-  DirectoryId = "string",
-  UserName = "string",
-  Password = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/disable_sso.html} for full documentation.
+}
 \keyword{internal}

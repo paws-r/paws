@@ -12,33 +12,9 @@ cloudwatchlogs_test_metric_filter(filterPattern, logEventMessages)
 
 \item{logEventMessages}{[required] The log event messages to test.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  matches = list(
-    list(
-      eventNumber = 123,
-      eventMessage = "string",
-      extractedValues = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Tests the filter pattern of a metric filter against a sample of log
-event messages. You can use this operation to validate the correctness
-of a metric filter pattern.
-}
-\section{Request syntax}{
-\preformatted{svc$test_metric_filter(
-  filterPattern = "string",
-  logEventMessages = list(
-    "string"
-  )
-)
-}
-}
+Tests the filter pattern of a metric filter against a sample of log event messages. You can use this operation to validate the correctness of a metric filter pattern.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/test_metric_filter.html} for full documentation.
+}
 \keyword{internal}

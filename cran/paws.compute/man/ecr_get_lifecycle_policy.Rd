@@ -4,35 +4,18 @@
 \alias{ecr_get_lifecycle_policy}
 \title{Retrieves the lifecycle policy for the specified repository}
 \usage{
-ecr_get_lifecycle_policy(registryId, repositoryName)
+ecr_get_lifecycle_policy(registryId = NULL, repositoryName)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository. If you do not specify a registry, the default registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository. If you do not specify a registry, the default
+registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  repositoryName = "string",
-  lifecyclePolicyText = "string",
-  lastEvaluatedAt = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Retrieves the lifecycle policy for the specified repository.
-}
-\section{Request syntax}{
-\preformatted{svc$get_lifecycle_policy(
-  registryId = "string",
-  repositoryName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ecr/get_lifecycle_policy.html} for full documentation.
+}
 \keyword{internal}

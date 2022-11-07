@@ -6,8 +6,12 @@
 repository tasks, if one or more TaskIds values are provided in the
 request, or if filters are used in the request}
 \usage{
-fsx_describe_data_repository_tasks(TaskIds, Filters, MaxResults,
-  NextToken)
+fsx_describe_data_repository_tasks(
+  TaskIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{TaskIds}{(Optional) IDs of the tasks whose descriptions you want to retrieve
@@ -22,89 +26,9 @@ specific lifecycle state.}
 
 \item{NextToken}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DataRepositoryTasks = list(
-    list(
-      TaskId = "string",
-      Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
-      Type = "EXPORT_TO_REPOSITORY",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResourceARN = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      FileSystemId = "string",
-      Paths = list(
-        "string"
-      ),
-      FailureDetails = list(
-        Message = "string"
-      ),
-      Status = list(
-        TotalCount = 123,
-        SucceededCount = 123,
-        FailedCount = 123,
-        LastUpdatedTime = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      Report = list(
-        Enabled = TRUE|FALSE,
-        Path = "string",
-        Format = "REPORT_CSV_20191124",
-        Scope = "FAILED_FILES_ONLY"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the description of specific Amazon FSx for Lustre data
-repository tasks, if one or more \code{TaskIds} values are provided in the
-request, or if filters are used in the request. You can use filters to
-narrow the response to include just tasks for specific file systems, or
-tasks in a specific lifecycle state. Otherwise, it returns all data
-repository tasks owned by your AWS account in the AWS Region of the
-endpoint that you're calling.
+Returns the description of specific Amazon FSx for Lustre data repository tasks, if one or more \code{TaskIds} values are provided in the request, or if filters are used in the request. You can use filters to narrow the response to include just tasks for specific file systems, or tasks in a specific lifecycle state. Otherwise, it returns all data repository tasks owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-When retrieving all tasks, you can paginate the response by using the
-optional \code{MaxResults} parameter to limit the number of tasks returned in
-a response. If more tasks remain, Amazon FSx returns a \code{NextToken} value
-in the response. In this case, send a later request with the \code{NextToken}
-request parameter set to the value of \code{NextToken} from the last
-response.
+See \url{https://paws-r.github.io/docs/fsx/describe_data_repository_tasks.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_data_repository_tasks(
-  TaskIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "file-system-id"|"task-lifecycle",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,9 +4,18 @@
 \alias{sagemaker_list_processing_jobs}
 \title{Lists processing jobs that satisfy various filters}
 \usage{
-sagemaker_list_processing_jobs(CreationTimeAfter, CreationTimeBefore,
-  LastModifiedTimeAfter, LastModifiedTimeBefore, NameContains,
-  StatusEquals, SortBy, SortOrder, NextToken, MaxResults)
+sagemaker_list_processing_jobs(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  NameContains = NULL,
+  StatusEquals = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only processing jobs created after the specified
@@ -37,55 +46,9 @@ of processing jobs, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of processing jobs to return in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProcessingJobSummaries = list(
-    list(
-      ProcessingJobName = "string",
-      ProcessingJobArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ProcessingEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ProcessingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-      FailureReason = "string",
-      ExitMessage = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists processing jobs that satisfy various filters.
-}
-\section{Request syntax}{
-\preformatted{svc$list_processing_jobs(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  NameContains = "string",
-  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_processing_jobs.html} for full documentation.
+}
 \keyword{internal}

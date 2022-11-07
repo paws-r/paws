@@ -5,9 +5,15 @@
 \title{Copies the specified source product to the specified target product or a
 new product}
 \usage{
-servicecatalog_copy_product(AcceptLanguage, SourceProductArn,
-  TargetProductId, TargetProductName,
-  SourceProvisioningArtifactIdentifiers, CopyOptions, IdempotencyToken)
+servicecatalog_copy_product(
+  AcceptLanguage = NULL,
+  SourceProductArn,
+  TargetProductId = NULL,
+  TargetProductName = NULL,
+  SourceProvisioningArtifactIdentifiers = NULL,
+  CopyOptions = NULL,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -36,40 +42,9 @@ product are copied to the target product.}
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CopyProductToken = "string"
-)
-}
-}
 \description{
-Copies the specified source product to the specified target product or a
-new product.
+Copies the specified source product to the specified target product or a new product.
 
-You can copy a product to the same account or another account. You can
-copy a product to the same region or another region.
-
-This operation is performed asynchronously. To track the progress of the
-operation, use
-\code{\link[=servicecatalog_describe_copy_product_status]{describe_copy_product_status}}.
+See \url{https://paws-r.github.io/docs/servicecatalog/copy_product.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$copy_product(
-  AcceptLanguage = "string",
-  SourceProductArn = "string",
-  TargetProductId = "string",
-  TargetProductName = "string",
-  SourceProvisioningArtifactIdentifiers = list(
-    list(
-      "string"
-    )
-  ),
-  CopyOptions = list(
-    "CopyTags"
-  ),
-  IdempotencyToken = "string"
-)
-}
-}
-
 \keyword{internal}

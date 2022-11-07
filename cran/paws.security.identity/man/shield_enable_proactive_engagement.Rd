@@ -2,23 +2,15 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_enable_proactive_engagement}
 \alias{shield_enable_proactive_engagement}
-\title{Authorizes the DDoS Response Team (DRT) to use email and phone to notify
-contacts about escalations to the DRT and to initiate proactive customer
-support}
+\title{Authorizes the Shield Response Team (SRT) to use email and phone to
+notify contacts about escalations to the SRT and to initiate proactive
+customer support}
 \usage{
 shield_enable_proactive_engagement()
 }
-\value{
-An empty list.
-}
 \description{
-Authorizes the DDoS Response Team (DRT) to use email and phone to notify
-contacts about escalations to the DRT and to initiate proactive customer
-support.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_proactive_engagement()
-}
-}
+Authorizes the Shield Response Team (SRT) to use email and phone to notify contacts about escalations to the SRT and to initiate proactive customer support.
 
+See \url{https://paws-r.github.io/docs/shield/enable_proactive_engagement.html} for full documentation.
+}
 \keyword{internal}

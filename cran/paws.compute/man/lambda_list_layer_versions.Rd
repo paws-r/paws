@@ -2,10 +2,15 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_list_layer_versions}
 \alias{lambda_list_layer_versions}
-\title{Lists the versions of an AWS Lambda layer}
+\title{Lists the versions of an Lambda layer}
 \usage{
-lambda_list_layer_versions(CompatibleRuntime, LayerName, Marker,
-  MaxItems)
+lambda_list_layer_versions(
+  CompatibleRuntime = NULL,
+  LayerName,
+  Marker = NULL,
+  MaxItems = NULL,
+  CompatibleArchitecture = NULL
+)
 }
 \arguments{
 \item{CompatibleRuntime}{A runtime identifier. For example, \code{go1.x}.}
@@ -15,49 +20,12 @@ lambda_list_layer_versions(CompatibleRuntime, LayerName, Marker,
 \item{Marker}{A pagination token returned by a previous call.}
 
 \item{MaxItems}{The maximum number of versions to return.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  LayerVersions = list(
-    list(
-      LayerVersionArn = "string",
-      Version = 123,
-      Description = "string",
-      CreatedDate = "string",
-      CompatibleRuntimes = list(
-        "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
-      ),
-      LicenseInfo = "string"
-    )
-  )
-)
-}
+
+\item{CompatibleArchitecture}{The compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.}
 }
 \description{
-Lists the versions of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
-Versions that have been deleted aren't listed. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier}
-to list only versions that indicate that they're compatible with that
-runtime.
-}
-\section{Request syntax}{
-\preformatted{svc$list_layer_versions(
-  CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-  LayerName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Lists the versions of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}. Versions that have been deleted aren't listed. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier} to list only versions that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layer versions that are compatible with that architecture.
 
-\examples{
-\dontrun{
-# The following example displays information about the versions for the
-# layer named blank-java-lib
-svc$list_layer_versions(
-  LayerName = "blank-java-lib"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/list_layer_versions.html} for full documentation.
 }
 \keyword{internal}

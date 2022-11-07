@@ -2,68 +2,32 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_evaluations}
 \alias{configservice_put_evaluations}
-\title{Used by an AWS Lambda function to deliver evaluation results to AWS
-Config}
+\title{Used by an Lambda function to deliver evaluation results to Config}
 \usage{
-configservice_put_evaluations(Evaluations, ResultToken, TestMode)
+configservice_put_evaluations(Evaluations = NULL, ResultToken, TestMode = NULL)
 }
 \arguments{
-\item{Evaluations}{The assessments that the AWS Lambda function performs. Each evaluation
-identifies an AWS resource and indicates whether it complies with the
-AWS Config rule that invokes the AWS Lambda function.}
+\item{Evaluations}{The assessments that the Lambda function performs. Each evaluation
+identifies an Amazon Web Services resource and indicates whether it
+complies with the Config rule that invokes the Lambda function.}
 
-\item{ResultToken}{[required] An encrypted token that associates an evaluation with an AWS Config
-rule. Identifies the rule and the event that triggered the evaluation.}
+\item{ResultToken}{[required] An encrypted token that associates an evaluation with an Config rule.
+Identifies the rule and the event that triggered the evaluation.}
 
 \item{TestMode}{Use this parameter to specify a test run for
 \code{\link[=configservice_put_evaluations]{put_evaluations}}. You can verify
-whether your AWS Lambda function will deliver evaluation results to AWS
-Config. No updates occur to your existing evaluations, and evaluation
-results are not sent to AWS Config.
+whether your Lambda function will deliver evaluation results to Config.
+No updates occur to your existing evaluations, and evaluation results
+are not sent to Config.
 
 When \code{TestMode} is \code{true},
 \code{\link[=configservice_put_evaluations]{put_evaluations}} doesn't require a
 valid value for the \code{ResultToken} parameter, but the value cannot be
 null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedEvaluations = list(
-    list(
-      ComplianceResourceType = "string",
-      ComplianceResourceId = "string",
-      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-      Annotation = "string",
-      OrderingTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Used by an AWS Lambda function to deliver evaluation results to AWS
-Config. This action is required in every AWS Lambda function that is
-invoked by an AWS Config rule.
-}
-\section{Request syntax}{
-\preformatted{svc$put_evaluations(
-  Evaluations = list(
-    list(
-      ComplianceResourceType = "string",
-      ComplianceResourceId = "string",
-      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-      Annotation = "string",
-      OrderingTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  ResultToken = "string",
-  TestMode = TRUE|FALSE
-)
-}
-}
+Used by an Lambda function to deliver evaluation results to Config. This action is required in every Lambda function that is invoked by an Config rule.
 
+See \url{https://paws-r.github.io/docs/configservice/put_evaluations.html} for full documentation.
+}
 \keyword{internal}

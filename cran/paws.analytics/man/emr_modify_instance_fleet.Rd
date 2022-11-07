@@ -11,29 +11,11 @@ emr_modify_instance_fleet(ClusterId, InstanceFleet)
 \arguments{
 \item{ClusterId}{[required] The unique identifier of the cluster.}
 
-\item{InstanceFleet}{[required] The unique identifier of the instance fleet.}
-}
-\value{
-An empty list.
+\item{InstanceFleet}{[required] The configuration parameters of the instance fleet.}
 }
 \description{
-Modifies the target On-Demand and target Spot capacities for the
-instance fleet with the specified InstanceFleetID within the cluster
-specified using ClusterID. The call either succeeds or fails atomically.
+Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified InstanceFleetID within the cluster specified using ClusterID. The call either succeeds or fails atomically.
 
-The instance fleet configuration is available only in Amazon EMR
-versions 4.8.0 and later, excluding 5.0.x versions.
+See \url{https://paws-r.github.io/docs/emr/modify_instance_fleet.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_instance_fleet(
-  ClusterId = "string",
-  InstanceFleet = list(
-    InstanceFleetId = "string",
-    TargetOnDemandCapacity = 123,
-    TargetSpotCapacity = 123
-  )
-)
-}
-}
-
 \keyword{internal}

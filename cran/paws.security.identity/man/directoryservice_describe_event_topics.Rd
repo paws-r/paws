@@ -2,52 +2,25 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_describe_event_topics}
 \alias{directoryservice_describe_event_topics}
-\title{Obtains information about which SNS topics receive status messages from
-the specified directory}
+\title{Obtains information about which Amazon SNS topics receive status
+messages from the specified directory}
 \usage{
-directoryservice_describe_event_topics(DirectoryId, TopicNames)
+directoryservice_describe_event_topics(DirectoryId = NULL, TopicNames = NULL)
 }
 \arguments{
-\item{DirectoryId}{The Directory ID for which to get the list of associated SNS topics. If
-this member is null, associations for all Directory IDs are returned.}
+\item{DirectoryId}{The Directory ID for which to get the list of associated Amazon SNS
+topics. If this member is null, associations for all Directory IDs are
+returned.}
 
-\item{TopicNames}{A list of SNS topic names for which to obtain the information. If this
-member is null, all associations for the specified Directory ID are
+\item{TopicNames}{A list of Amazon SNS topic names for which to obtain the information. If
+this member is null, all associations for the specified Directory ID are
 returned.
 
 An empty list results in an \code{InvalidParameterException} being thrown.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventTopics = list(
-    list(
-      DirectoryId = "string",
-      TopicName = "string",
-      TopicArn = "string",
-      CreatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "Registered"|"Topic not found"|"Failed"|"Deleted"
-    )
-  )
-)
-}
-}
 \description{
-Obtains information about which SNS topics receive status messages from
-the specified directory.
+Obtains information about which Amazon SNS topics receive status messages from the specified directory.
 
-If no input parameters are provided, such as DirectoryId or TopicName,
-this request describes all of the associations in the account.
+See \url{https://paws-r.github.io/docs/directoryservice/describe_event_topics.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_event_topics(
-  DirectoryId = "string",
-  TopicNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

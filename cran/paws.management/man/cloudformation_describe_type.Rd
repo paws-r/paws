@@ -2,78 +2,49 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_describe_type}
 \alias{cloudformation_describe_type}
-\title{Returns detailed information about a type that has been registered}
+\title{Returns detailed information about an extension that has been registered}
 \usage{
-cloudformation_describe_type(Type, TypeName, Arn, VersionId)
+cloudformation_describe_type(
+  Type = NULL,
+  TypeName = NULL,
+  Arn = NULL,
+  VersionId = NULL,
+  PublisherId = NULL,
+  PublicVersionNumber = NULL
+)
 }
 \arguments{
-\item{Type}{The kind of type.
-
-Currently the only valid value is \code{RESOURCE}.
+\item{Type}{The kind of extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{TypeName}{The name of the type.
+\item{TypeName}{The name of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{Arn}{The Amazon Resource Name (ARN) of the type.
+\item{Arn}{The Amazon Resource Name (ARN) of the extension.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{VersionId}{The ID of a specific version of the type. The version ID is the value at
-the end of the Amazon Resource Name (ARN) assigned to the type version
-when it is registered.
+\item{VersionId}{The ID of a specific version of the extension. The version ID is the
+value at the end of the Amazon Resource Name (ARN) assigned to the
+extension version when it is registered.
 
 If you specify a \code{VersionId},
 \code{\link[=cloudformation_describe_type]{describe_type}} returns information
-about that specific type version. Otherwise, it returns information
-about the default type version.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  Type = "RESOURCE"|"MODULE",
-  TypeName = "string",
-  DefaultVersionId = "string",
-  IsDefaultVersion = TRUE|FALSE,
-  Description = "string",
-  Schema = "string",
-  ProvisioningType = "NON_PROVISIONABLE"|"IMMUTABLE"|"FULLY_MUTABLE",
-  DeprecatedStatus = "LIVE"|"DEPRECATED",
-  LoggingConfig = list(
-    LogRoleArn = "string",
-    LogGroupName = "string"
-  ),
-  ExecutionRoleArn = "string",
-  Visibility = "PUBLIC"|"PRIVATE",
-  SourceUrl = "string",
-  DocumentationUrl = "string",
-  LastUpdated = as.POSIXct(
-    "2015-01-01"
-  ),
-  TimeCreated = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+about that specific extension version. Otherwise, it returns information
+about the default extension version.}
+
+\item{PublisherId}{The publisher ID of the extension publisher.
+
+Extensions provided by Amazon Web Services are not assigned a publisher
+ID.}
+
+\item{PublicVersionNumber}{The version number of a public third-party extension.}
 }
 \description{
-Returns detailed information about a type that has been registered.
+Returns detailed information about an extension that has been registered.
 
-If you specify a \code{VersionId},
-\code{\link[=cloudformation_describe_type]{describe_type}} returns information
-about that specific type version. Otherwise, it returns information
-about the default type version.
+See \url{https://paws-r.github.io/docs/cloudformation/describe_type.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_type(
-  Type = "RESOURCE"|"MODULE",
-  TypeName = "string",
-  Arn = "string",
-  VersionId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{ec2_delete_vpc_peering_connection}
 \title{Deletes a VPC peering connection}
 \usage{
-ec2_delete_vpc_peering_connection(DryRun, VpcPeeringConnectionId)
+ec2_delete_vpc_peering_connection(DryRun = NULL, VpcPeeringConnectionId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,25 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Deletes a VPC peering connection. Either the owner of the requester VPC
-or the owner of the accepter VPC can delete the VPC peering connection
-if it's in the \code{active} state. The owner of the requester VPC can delete
-a VPC peering connection in the \code{pending-acceptance} state. You cannot
-delete a VPC peering connection that's in the \code{failed} state.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vpc_peering_connection(
-  DryRun = TRUE|FALSE,
-  VpcPeeringConnectionId = "string"
-)
-}
-}
+Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can delete the VPC peering connection if it's in the \code{active} state. The owner of the requester VPC can delete a VPC peering connection in the \code{pending-acceptance} state. You cannot delete a VPC peering connection that's in the \code{failed} state.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_vpc_peering_connection.html} for full documentation.
+}
 \keyword{internal}

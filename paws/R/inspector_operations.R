@@ -92,14 +92,14 @@ inspector_add_attributes_to_findings <- function(findingArns, attributes) {
 #' resourceGroupArn is not specified, all EC2 instances in the current AWS
 #' account and region are included in the assessment target. If the
 #' [service-linked
-#' role](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html)
+#' role](https://docs.aws.amazon.com/inspector/v1/userguide/inspector_slr.html)
 #' isn’t already registered, this action also creates and registers a
 #' service-linked role to grant Amazon Inspector access to AWS Services
 #' needed to perform security assessments. You can create up to 50
 #' assessment targets per AWS account. You can run up to 500 concurrent
 #' agents per AWS account. For more information, see [Amazon Inspector
 #' Assessment
-#' Targets](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
+#' Targets](https://docs.aws.amazon.com/inspector/v1/userguide/inspector_applications.html).
 #'
 #' @usage
 #' inspector_create_assessment_target(assessmentTargetName,
@@ -166,7 +166,7 @@ inspector_create_assessment_target <- function(assessmentTargetName, resourceGro
 #' @description
 #' Creates an assessment template for the assessment target that is
 #' specified by the ARN of the assessment target. If the [service-linked
-#' role](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html)
+#' role](https://docs.aws.amazon.com/inspector/v1/userguide/inspector_slr.html)
 #' isn’t already registered, this action also creates and registers a
 #' service-linked role to grant Amazon Inspector access to AWS Services
 #' needed to perform security assessments.
@@ -1267,7 +1267,7 @@ inspector_describe_rules_packages <- function(rulesPackageArns, locale = NULL) {
 #' @param reportType &#91;required&#93; Specifies the type of the assessment report that you want to generate.
 #' There are two types of assessment reports: a finding report and a full
 #' report. For more information, see [Assessment
-#' Reports](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html).
+#' Reports](https://docs.aws.amazon.com/inspector/v1/userguide/inspector_reports.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1679,7 +1679,7 @@ inspector_list_assessment_runs <- function(assessmentTemplateArns = NULL, filter
 #' Lists the ARNs of the assessment targets within this AWS account. For
 #' more information about assessment targets, see [Amazon Inspector
 #' Assessment
-#' Targets](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
+#' Targets](https://docs.aws.amazon.com/inspector/v1/userguide/inspector_applications.html).
 #'
 #' @usage
 #' inspector_list_assessment_targets(filter, nextToken, maxResults)

@@ -6,7 +6,11 @@
 specified self-service action}
 \usage{
 servicecatalog_list_provisioning_artifacts_for_service_action(
-  ServiceActionId, PageSize, PageToken, AcceptLanguage)
+  ServiceActionId,
+  PageSize = NULL,
+  PageToken = NULL,
+  AcceptLanguage = NULL
+)
 }
 \arguments{
 \item{ServiceActionId}{[required] The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
@@ -23,50 +27,9 @@ results, use null.}
 \item \code{zh} - Chinese
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisioningArtifactViews = list(
-    list(
-      ProductViewSummary = list(
-        Id = "string",
-        ProductId = "string",
-        Name = "string",
-        Owner = "string",
-        ShortDescription = "string",
-        Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-        Distributor = "string",
-        HasDefaultPath = TRUE|FALSE,
-        SupportEmail = "string",
-        SupportDescription = "string",
-        SupportUrl = "string"
-      ),
-      ProvisioningArtifact = list(
-        Id = "string",
-        Name = "string",
-        Description = "string",
-        CreatedTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Guidance = "DEFAULT"|"DEPRECATED"
-      )
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Lists all provisioning artifacts (also known as versions) for the
-specified self-service action.
-}
-\section{Request syntax}{
-\preformatted{svc$list_provisioning_artifacts_for_service_action(
-  ServiceActionId = "string",
-  PageSize = 123,
-  PageToken = "string",
-  AcceptLanguage = "string"
-)
-}
-}
+Lists all provisioning artifacts (also known as versions) for the specified self-service action.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts_for_service_action.html} for full documentation.
+}
 \keyword{internal}

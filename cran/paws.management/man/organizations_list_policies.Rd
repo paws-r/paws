@@ -5,7 +5,7 @@
 \title{Retrieves the list of all policies in an organization of a specified
 type}
 \usage{
-organizations_list_policies(Filter, NextToken, MaxResults)
+organizations_list_policies(Filter, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Filter}{[required] Specifies the type of policy that you want to include in the response.
@@ -34,53 +34,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policies = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string",
-      Description = "string",
-      Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
-      AwsManaged = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the list of all policies in an organization of a specified
-type.
+Retrieves the list of all policies in an organization of a specified type.
 
-Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \verb{List*} operation. These operations can occasionally return an
-empty set of results even when there are more results available. The
-\code{NextToken} response parameter value is \code{null} \emph{only} when there are no
-more results to display.
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$list_policies(
-  Filter = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to get a list of service control
-# policies (SCPs):/n/n
-svc$list_policies(
-  Filter = "SERVICE_CONTROL_POLICY"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/list_policies.html} for full documentation.
 }
 \keyword{internal}

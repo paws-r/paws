@@ -5,14 +5,25 @@ NULL
 #' AWS EC2 Instance Connect
 #'
 #' @description
-#' AWS EC2 Connect Service is a service that enables system administrators
-#' to publish temporary SSH keys to their EC2 instances in order to
-#' establish connections to their instances without leaving a permanent
-#' authentication option.
+#' Amazon EC2 Instance Connect enables system administrators to publish
+#' one-time use SSH public keys to EC2, providing users a simple and secure
+#' way to connect to their instances.
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -24,10 +35,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -47,7 +62,8 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=ec2instanceconnect_send_ssh_public_key]{send_ssh_public_key} \tab Pushes an SSH public key to a particular OS user on a given EC2 instance for 60 seconds
+#'  \link[=ec2instanceconnect_send_serial_console_ssh_public_key]{send_serial_console_ssh_public_key} \tab Pushes an SSH public key to the specified EC2 instance\cr
+#'  \link[=ec2instanceconnect_send_ssh_public_key]{send_ssh_public_key} \tab Pushes an SSH public key to the specified EC2 instance for use by the specified user
 #' }
 #'
 #' @return

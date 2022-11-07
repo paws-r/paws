@@ -4,7 +4,7 @@
 \alias{opsworks_describe_elastic_ips}
 \title{Describes Elastic IP addresses}
 \usage{
-opsworks_describe_elastic_ips(InstanceId, StackId, Ips)
+opsworks_describe_elastic_ips(InstanceId = NULL, StackId = NULL, Ips = NULL)
 }
 \arguments{
 \item{InstanceId}{The instance ID. If you include this parameter,
@@ -22,39 +22,9 @@ parameter, \code{\link[=opsworks_describe_elastic_ips]{describe_elastic_ips}}
 returns a description of the specified Elastic IP addresses. Otherwise,
 it returns a description of every Elastic IP address.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ElasticIps = list(
-    list(
-      Ip = "string",
-      Name = "string",
-      Domain = "string",
-      Region = "string",
-      InstanceId = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP addresses}.
 
-This call accepts only one resource-identifying parameter.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_elastic_ips.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_elastic_ips(
-  InstanceId = "string",
-  StackId = "string",
-  Ips = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

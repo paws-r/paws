@@ -14,26 +14,9 @@ list the tags. Currently, the supported resources are \code{ConfigRule},
 
 \item{Tags}{[required] An array of tag object.}
 }
-\value{
-An empty list.
-}
 \description{
-Associates the specified tags to a resource with the specified
-resourceArn. If existing tags on a resource are not specified in the
-request parameters, they are not changed. When a resource is deleted,
-the tags associated with that resource are deleted as well.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.
 
+See \url{https://paws-r.github.io/docs/configservice/tag_resource.html} for full documentation.
+}
 \keyword{internal}

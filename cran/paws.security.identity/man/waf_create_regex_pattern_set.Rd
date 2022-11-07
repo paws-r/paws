@@ -13,59 +13,9 @@ waf_create_regex_pattern_set(Name, ChangeToken)
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegexPatternSet = list(
-    RegexPatternSetId = "string",
-    Name = "string",
-    RegexPatternStrings = list(
-      "string"
-    )
-  ),
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Creates a \code{RegexPatternSet}. You then use
-\code{\link[=waf_update_regex_pattern_set]{update_regex_pattern_set}} to specify
-the regular expression (regex) pattern that you want AWS WAF to search
-for, such as \verb{B[a@]dB[o0]t}. You can then configure AWS WAF to reject
-those requests.
-
-To create and configure a \code{RegexPatternSet}, perform the following
-steps:
-\enumerate{
-\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
-token that you provide in the \code{ChangeToken} parameter of a
-\code{\link[=waf_create_regex_pattern_set]{create_regex_pattern_set}} request.
-\item Submit a \code{\link[=waf_create_regex_pattern_set]{create_regex_pattern_set}}
-request.
-\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
-token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=waf_update_regex_pattern_set]{update_regex_pattern_set}} request.
-\item Submit an \code{\link[=waf_update_regex_pattern_set]{update_regex_pattern_set}}
-request to specify the string that you want AWS WAF to watch for.
+See \url{https://paws-r.github.io/docs/waf/create_regex_pattern_set.html} for full documentation.
 }
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_regex_pattern_set(
-  Name = "string",
-  ChangeToken = "string"
-)
-}
-}
-
 \keyword{internal}

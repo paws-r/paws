@@ -4,7 +4,7 @@
 \alias{opsworks_stop_instance}
 \title{Stops a specified instance}
 \usage{
-opsworks_stop_instance(InstanceId, Force)
+opsworks_stop_instance(InstanceId, Force = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
@@ -17,26 +17,9 @@ You must also delete the formerly-associated instance in EC2 after
 troubleshooting and replacing the AWS OpsWorks Stacks instance with a
 new one.}
 }
-\value{
-An empty list.
-}
 \description{
-Stops a specified instance. When you stop a standard instance, the data
-disappears and must be reinstalled when you restart the instance. You
-can stop an Amazon EBS-backed instance without losing data. For more
-information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html}{Starting, Stopping, and Rebooting Instances}.
+Stops a specified instance. When you stop a standard instance, the data disappears and must be reinstalled when you restart the instance. You can stop an Amazon EBS-backed instance without losing data. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html}{Starting, Stopping, and Rebooting Instances}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/stop_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_instance(
-  InstanceId = "string",
-  Force = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

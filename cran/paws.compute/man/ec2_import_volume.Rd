@@ -5,7 +5,13 @@
 \title{Creates an import volume task using metadata from the specified disk
 image}
 \usage{
-ec2_import_volume(AvailabilityZone, Description, DryRun, Image, Volume)
+ec2_import_volume(
+  AvailabilityZone,
+  Description = NULL,
+  DryRun = NULL,
+  Image,
+  Volume
+)
 }
 \arguments{
 \item{AvailabilityZone}{[required] The Availability Zone for the resulting EBS volume.}
@@ -21,84 +27,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Volume}{[required] The volume size.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConversionTask = list(
-    ConversionTaskId = "string",
-    ExpirationTime = "string",
-    ImportInstance = list(
-      Description = "string",
-      InstanceId = "string",
-      Platform = "Windows",
-      Volumes = list(
-        list(
-          AvailabilityZone = "string",
-          BytesConverted = 123,
-          Description = "string",
-          Image = list(
-            Checksum = "string",
-            Format = "VMDK"|"RAW"|"VHD",
-            ImportManifestUrl = "string",
-            Size = 123
-          ),
-          Status = "string",
-          StatusMessage = "string",
-          Volume = list(
-            Id = "string",
-            Size = 123
-          )
-        )
-      )
-    ),
-    ImportVolume = list(
-      AvailabilityZone = "string",
-      BytesConverted = 123,
-      Description = "string",
-      Image = list(
-        Checksum = "string",
-        Format = "VMDK"|"RAW"|"VHD",
-        ImportManifestUrl = "string",
-        Size = 123
-      ),
-      Volume = list(
-        Id = "string",
-        Size = 123
-      )
-    ),
-    State = "active"|"cancelling"|"cancelled"|"completed",
-    StatusMessage = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates an import volume task using metadata from the specified disk
-image.For more information, see \href{http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf}{Importing Disks to Amazon EBS}.
+Creates an import volume task using metadata from the specified disk image.
 
-For information about the import manifest referenced by this API action,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
+See \url{https://paws-r.github.io/docs/ec2/import_volume.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$import_volume(
-  AvailabilityZone = "string",
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  Image = list(
-    Bytes = 123,
-    Format = "VMDK"|"RAW"|"VHD",
-    ImportManifestUrl = "string"
-  ),
-  Volume = list(
-    Size = 123
-  )
-)
-}
-}
-
 \keyword{internal}

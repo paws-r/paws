@@ -4,22 +4,31 @@
 \alias{ec2_allocate_hosts}
 \title{Allocates a Dedicated Host to your account}
 \usage{
-ec2_allocate_hosts(AutoPlacement, AvailabilityZone, ClientToken,
-  InstanceType, InstanceFamily, Quantity, TagSpecifications, HostRecovery)
+ec2_allocate_hosts(
+  AutoPlacement = NULL,
+  AvailabilityZone,
+  ClientToken = NULL,
+  InstanceType = NULL,
+  InstanceFamily = NULL,
+  Quantity,
+  TagSpecifications = NULL,
+  HostRecovery = NULL,
+  OutpostArn = NULL
+)
 }
 \arguments{
 \item{AutoPlacement}{Indicates whether the host accepts any untargeted instance launches that
 match its instance type configuration, or if it only accepts Host
 tenancy instance launches that specify its unique host ID. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding}{Understanding Instance Placement and Host Affinity}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding}{Understanding auto-placement and affinity}
+in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{on}}
 
 \item{AvailabilityZone}{[required] The Availability Zone in which to allocate the Dedicated Host.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
 \item{InstanceType}{Specifies the instance type to be supported by the Dedicated Hosts. If
 you specify an instance type, the Dedicated Hosts support instances of
@@ -46,46 +55,17 @@ parameters.}
 
 \item{HostRecovery}{Indicates whether to enable or disable host recovery for the Dedicated
 Host. Host recovery is disabled by default. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host Recovery}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host recovery}
+in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{off}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  HostIds = list(
-    "string"
-  )
-)
-}
+
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on
+which to allocate the Dedicated Host.}
 }
 \description{
-Allocates a Dedicated Host to your account. At a minimum, specify the
-supported instance type or instance family, the Availability Zone in
-which to allocate the host, and the number of hosts to allocate.
-}
-\section{Request syntax}{
-\preformatted{svc$allocate_hosts(
-  AutoPlacement = "on"|"off",
-  AvailabilityZone = "string",
-  ClientToken = "string",
-  InstanceType = "string",
-  InstanceFamily = "string",
-  Quantity = 123,
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  HostRecovery = "on"|"off"
-)
-}
-}
+Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or instance family, the Availability Zone in which to allocate the host, and the number of hosts to allocate.
 
+See \url{https://paws-r.github.io/docs/ec2/allocate_hosts.html} for full documentation.
+}
 \keyword{internal}

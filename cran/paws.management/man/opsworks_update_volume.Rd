@@ -4,7 +4,7 @@
 \alias{opsworks_update_volume}
 \title{Updates an Amazon EBS volume's name or mount point}
 \usage{
-opsworks_update_volume(VolumeId, Name, MountPoint)
+opsworks_update_volume(VolumeId, Name = NULL, MountPoint = NULL)
 }
 \arguments{
 \item{VolumeId}{[required] The volume ID.}
@@ -13,25 +13,9 @@ opsworks_update_volume(VolumeId, Name, MountPoint)
 
 \item{MountPoint}{The new mount point.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates an Amazon EBS volume's name or mount point. For more
-information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
+Updates an Amazon EBS volume's name or mount point. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/update_volume.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_volume(
-  VolumeId = "string",
-  Name = "string",
-  MountPoint = "string"
-)
-}
-}
-
 \keyword{internal}

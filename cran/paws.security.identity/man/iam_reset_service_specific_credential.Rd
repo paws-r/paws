@@ -4,8 +4,10 @@
 \alias{iam_reset_service_specific_credential}
 \title{Resets the password for a service-specific credential}
 \usage{
-iam_reset_service_specific_credential(UserName,
-  ServiceSpecificCredentialId)
+iam_reset_service_specific_credential(
+  UserName = NULL,
+  ServiceSpecificCredentialId
+)
 }
 \arguments{
 \item{UserName}{The name of the IAM user associated with the service-specific
@@ -21,34 +23,9 @@ spaces. You can also include any of the following characters: _+=,.@-}
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 that can consist of any upper or lowercased letter or digit.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceSpecificCredential = list(
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    ServiceName = "string",
-    ServiceUserName = "string",
-    ServicePassword = "string",
-    ServiceSpecificCredentialId = "string",
-    UserName = "string",
-    Status = "Active"|"Inactive"
-  )
-)
-}
-}
 \description{
-Resets the password for a service-specific credential. The new password
-is AWS generated and cryptographically strong. It cannot be configured
-by the user. Resetting the password immediately invalidates the previous
-password associated with this user.
-}
-\section{Request syntax}{
-\preformatted{svc$reset_service_specific_credential(
-  UserName = "string",
-  ServiceSpecificCredentialId = "string"
-)
-}
-}
+Resets the password for a service-specific credential. The new password is Amazon Web Services generated and cryptographically strong. It cannot be configured by the user. Resetting the password immediately invalidates the previous password associated with this user.
 
+See \url{https://paws-r.github.io/docs/iam/reset_service_specific_credential.html} for full documentation.
+}
 \keyword{internal}

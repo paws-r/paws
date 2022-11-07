@@ -4,8 +4,13 @@
 \alias{cloudformation_list_stack_set_operation_results}
 \title{Returns summary information about the results of a stack set operation}
 \usage{
-cloudformation_list_stack_set_operation_results(StackSetName,
-  OperationId, NextToken, MaxResults)
+cloudformation_list_stack_set_operation_results(
+  StackSetName,
+  OperationId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  CallAs = NULL
+)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to get operation
@@ -13,7 +18,7 @@ results for.}
 
 \item{OperationId}{[required] The ID of the stack set operation.}
 
-\item{NextToken}{If the previous request didn't return all of the remaining results, the
+\item{NextToken}{If the previous request didn't return all the remaining results, the
 response object's \code{NextToken} parameter value is set to a token. To
 retrieve the next set of results, call
 \code{\link[=cloudformation_list_stack_set_operation_results]{list_stack_set_operation_results}}
@@ -25,37 +30,27 @@ object's \code{NextToken} parameter is set to \code{null}.}
 number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Summaries = list(
-    list(
-      Account = "string",
-      Region = "string",
-      Status = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED",
-      StatusReason = "string",
-      AccountGateResult = list(
-        Status = "SUCCEEDED"|"FAILED"|"SKIPPED",
-        StatusReason = "string"
-      ),
-      OrganizationalUnitId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
 Returns summary information about the results of a stack set operation.
-}
-\section{Request syntax}{
-\preformatted{svc$list_stack_set_operation_results(
-  StackSetName = "string",
-  OperationId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudformation/list_stack_set_operation_results.html} for full documentation.
+}
 \keyword{internal}

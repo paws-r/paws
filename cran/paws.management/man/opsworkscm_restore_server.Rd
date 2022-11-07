@@ -5,7 +5,12 @@
 \title{Restores a backup to a server that is in a CONNECTION_LOST, HEALTHY,
 RUNNING, UNHEALTHY, or TERMINATED state}
 \usage{
-opsworkscm_restore_server(BackupId, ServerName, InstanceType, KeyPair)
+opsworkscm_restore_server(
+  BackupId,
+  ServerName,
+  InstanceType = NULL,
+  KeyPair = NULL
+)
 }
 \arguments{
 \item{BackupId}{[required] The ID of the backup that you want to use to restore a server.}
@@ -21,38 +26,9 @@ specified backup.}
 \item{KeyPair}{The name of the key pair to set on the new EC2 instance. This can be
 helpful if the administrator no longer has the SSH key.}
 }
-\value{
-An empty list.
-}
 \description{
-Restores a backup to a server that is in a \code{CONNECTION_LOST}, \code{HEALTHY},
-\code{RUNNING}, \code{UNHEALTHY}, or \code{TERMINATED} state. When you run
-RestoreServer, the server's EC2 instance is deleted, and a new EC2
-instance is configured. RestoreServer maintains the existing server
-endpoint, so configuration management of the server's client devices
-(nodes) should continue to work.
+Restores a backup to a server that is in a \code{CONNECTION_LOST}, \code{HEALTHY}, \code{RUNNING}, \code{UNHEALTHY}, or \code{TERMINATED} state. When you run RestoreServer, the server's EC2 instance is deleted, and a new EC2 instance is configured. RestoreServer maintains the existing server endpoint, so configuration management of the server's client devices (nodes) should continue to work.
 
-Restoring from a backup is performed by creating a new EC2 instance. If
-restoration is successful, and the server is in a \code{HEALTHY} state, AWS
-OpsWorks CM switches traffic over to the new instance. After restoration
-is finished, the old EC2 instance is maintained in a \code{Running} or
-\code{Stopped} state, but is eventually terminated.
-
-This operation is asynchronous.
-
-An \code{InvalidStateException} is thrown when the server is not in a valid
-state. A \code{ResourceNotFoundException} is thrown when the server does not
-exist. A \code{ValidationException} is raised when parameters of the request
-are not valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/restore_server.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_server(
-  BackupId = "string",
-  ServerName = "string",
-  InstanceType = "string",
-  KeyPair = "string"
-)
-}
-}
-
 \keyword{internal}

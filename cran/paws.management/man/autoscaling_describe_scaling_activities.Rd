@@ -2,20 +2,28 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_scaling_activities}
 \alias{autoscaling_describe_scaling_activities}
-\title{Describes one or more scaling activities for the specified Auto Scaling
-group}
+\title{Gets information about the scaling activities in the account and Region}
 \usage{
-autoscaling_describe_scaling_activities(ActivityIds,
-  AutoScalingGroupName, MaxRecords, NextToken)
+autoscaling_describe_scaling_activities(
+  ActivityIds = NULL,
+  AutoScalingGroupName = NULL,
+  IncludeDeletedGroups = NULL,
+  MaxRecords = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{ActivityIds}{The activity IDs of the desired scaling activities. You can specify up
-to 50 IDs. If you omit this parameter, all activities for the past six
-weeks are described. If unknown activities are requested, they are
-ignored with no error. If you specify an Auto Scaling group, the results
-are limited to that group.}
+\item{ActivityIds}{The activity IDs of the desired scaling activities. If you omit this
+property, all activities for the past six weeks are described. If
+unknown activities are requested, they are ignored with no error. If you
+specify an Auto Scaling group, the results are limited to that group.
+
+Array Members: Maximum number of 50 IDs.}
 
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+
+\item{IncludeDeletedGroups}{Indicates whether to include scaling activity from deleted Auto Scaling
+groups.}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{100} and the maximum value is \code{100}.}
@@ -23,54 +31,9 @@ is \code{100} and the maximum value is \code{100}.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Activities = list(
-    list(
-      ActivityId = "string",
-      AutoScalingGroupName = "string",
-      Description = "string",
-      Cause = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
-      StatusMessage = "string",
-      Progress = 123,
-      Details = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more scaling activities for the specified Auto Scaling
-group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_scaling_activities(
-  ActivityIds = list(
-    "string"
-  ),
-  AutoScalingGroupName = "string",
-  MaxRecords = 123,
-  NextToken = "string"
-)
-}
-}
+Gets information about the scaling activities in the account and Region.
 
-\examples{
-\dontrun{
-# This example describes the scaling activities for the specified Auto
-# Scaling group.
-svc$describe_scaling_activities(
-  AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_scaling_activities.html} for full documentation.
 }
 \keyword{internal}

@@ -2,11 +2,16 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_auth_event_feedback}
 \alias{cognitoidentityprovider_update_auth_event_feedback}
-\title{Provides the feedback for an authentication event whether it was from a
+\title{Provides the feedback for an authentication event, whether it was from a
 valid user or not}
 \usage{
-cognitoidentityprovider_update_auth_event_feedback(UserPoolId, Username,
-  EventId, FeedbackToken, FeedbackValue)
+cognitoidentityprovider_update_auth_event_feedback(
+  UserPoolId,
+  Username,
+  EventId,
+  FeedbackToken,
+  FeedbackValue
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -19,24 +24,9 @@ cognitoidentityprovider_update_auth_event_feedback(UserPoolId, Username,
 
 \item{FeedbackValue}{[required] The authentication event feedback value.}
 }
-\value{
-An empty list.
-}
 \description{
-Provides the feedback for an authentication event whether it was from a
-valid user or not. This feedback is used for improving the risk
-evaluation decision for the user pool as part of Amazon Cognito advanced
-security.
-}
-\section{Request syntax}{
-\preformatted{svc$update_auth_event_feedback(
-  UserPoolId = "string",
-  Username = "string",
-  EventId = "string",
-  FeedbackToken = "string",
-  FeedbackValue = "Valid"|"Invalid"
-)
-}
-}
+Provides the feedback for an authentication event, whether it was from a valid user or not. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_auth_event_feedback.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{ec2_delete_vpn_gateway}
 \title{Deletes the specified virtual private gateway}
 \usage{
-ec2_delete_vpn_gateway(VpnGatewayId, DryRun)
+ec2_delete_vpn_gateway(VpnGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{VpnGatewayId}{[required] The ID of the virtual private gateway.}
@@ -14,21 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified virtual private gateway. You must first detach the
-virtual private gateway from the VPC. Note that you don't need to delete
-the virtual private gateway if you plan to delete and recreate the VPN
-connection between your VPC and your network.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vpn_gateway(
-  VpnGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes the specified virtual private gateway. You must first detach the virtual private gateway from the VPC. Note that you don't need to delete the virtual private gateway if you plan to delete and recreate the VPN connection between your VPC and your network.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_vpn_gateway.html} for full documentation.
+}
 \keyword{internal}

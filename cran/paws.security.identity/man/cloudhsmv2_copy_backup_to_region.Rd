@@ -4,7 +4,7 @@
 \alias{cloudhsmv2_copy_backup_to_region}
 \title{Copy an AWS CloudHSM cluster backup to a different region}
 \usage{
-cloudhsmv2_copy_backup_to_region(DestinationRegion, BackupId, TagList)
+cloudhsmv2_copy_backup_to_region(DestinationRegion, BackupId, TagList = NULL)
 }
 \arguments{
 \item{DestinationRegion}{[required] The AWS region that will contain your copied CloudHSM cluster backup.}
@@ -16,34 +16,9 @@ tags, only these tags will be applied to the destination backup. If you
 do not specify tags, the service copies tags from the source backup to
 the destination backup.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DestinationBackup = list(
-    CreateTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    SourceRegion = "string",
-    SourceBackup = "string",
-    SourceCluster = "string"
-  )
-)
-}
-}
 \description{
 Copy an AWS CloudHSM cluster backup to a different region.
-}
-\section{Request syntax}{
-\preformatted{svc$copy_backup_to_region(
-  DestinationRegion = "string",
-  BackupId = "string",
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudhsmv2/copy_backup_to_region.html} for full documentation.
+}
 \keyword{internal}

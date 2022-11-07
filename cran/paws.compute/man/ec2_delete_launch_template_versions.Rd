@@ -4,8 +4,12 @@
 \alias{ec2_delete_launch_template_versions}
 \title{Deletes one or more versions of a launch template}
 \usage{
-ec2_delete_launch_template_versions(DryRun, LaunchTemplateId,
-  LaunchTemplateName, Versions)
+ec2_delete_launch_template_versions(
+  DryRun = NULL,
+  LaunchTemplateId = NULL,
+  LaunchTemplateName = NULL,
+  Versions
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -13,66 +17,21 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{LaunchTemplateId}{The ID of the launch template. You must specify either the launch
-template ID or launch template name in the request.}
+\item{LaunchTemplateId}{The ID of the launch template.
 
-\item{LaunchTemplateName}{The name of the launch template. You must specify either the launch
-template ID or launch template name in the request.}
+You must specify either the \code{LaunchTemplateId} or the
+\code{LaunchTemplateName}, but not both.}
+
+\item{LaunchTemplateName}{The name of the launch template.
+
+You must specify either the \code{LaunchTemplateName} or the
+\code{LaunchTemplateId}, but not both.}
 
 \item{Versions}{[required] The version numbers of one or more launch template versions to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SuccessfullyDeletedLaunchTemplateVersions = list(
-    list(
-      LaunchTemplateId = "string",
-      LaunchTemplateName = "string",
-      VersionNumber = 123
-    )
-  ),
-  UnsuccessfullyDeletedLaunchTemplateVersions = list(
-    list(
-      LaunchTemplateId = "string",
-      LaunchTemplateName = "string",
-      VersionNumber = 123,
-      ResponseError = list(
-        Code = "launchTemplateIdDoesNotExist"|"launchTemplateIdMalformed"|"launchTemplateNameDoesNotExist"|"launchTemplateNameMalformed"|"launchTemplateVersionDoesNotExist"|"unexpectedError",
-        Message = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Deletes one or more versions of a launch template. You cannot delete the
-default version of a launch template; you must first assign a different
-version as the default. If the default version is the only version for
-the launch template, you must delete the entire launch template using
-\code{\link[=ec2_delete_launch_template]{delete_launch_template}}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_launch_template_versions(
-  DryRun = TRUE|FALSE,
-  LaunchTemplateId = "string",
-  LaunchTemplateName = "string",
-  Versions = list(
-    "string"
-  )
-)
-}
-}
+Deletes one or more versions of a launch template. You cannot delete the default version of a launch template; you must first assign a different version as the default. If the default version is the only version for the launch template, you must delete the entire launch template using \code{\link[=ec2_delete_launch_template]{delete_launch_template}}.
 
-\examples{
-\dontrun{
-# This example deletes the specified launch template version.
-svc$delete_launch_template_versions(
-  LaunchTemplateId = "lt-0abcd290751193123",
-  Versions = list(
-    "1"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_launch_template_versions.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{elasticache_create_cache_subnet_group}
 \title{Creates a new cache subnet group}
 \usage{
-elasticache_create_cache_subnet_group(CacheSubnetGroupName,
-  CacheSubnetGroupDescription, SubnetIds)
+elasticache_create_cache_subnet_group(
+  CacheSubnetGroupName,
+  CacheSubnetGroupDescription,
+  SubnetIds,
+  Tags = NULL
+)
 }
 \arguments{
 \item{CacheSubnetGroupName}{[required] A name for the cache subnet group. This value is stored as a lowercase
@@ -19,44 +23,13 @@ Example: \code{mysubnetgroup}}
 \item{CacheSubnetGroupDescription}{[required] A description for the cache subnet group.}
 
 \item{SubnetIds}{[required] A list of VPC subnet IDs for the cache subnet group.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheSubnetGroup = list(
-    CacheSubnetGroupName = "string",
-    CacheSubnetGroupDescription = "string",
-    VpcId = "string",
-    Subnets = list(
-      list(
-        SubnetIdentifier = "string",
-        SubnetAvailabilityZone = list(
-          Name = "string"
-        ),
-        SubnetOutpost = list(
-          SubnetOutpostArn = "string"
-        )
-      )
-    ),
-    ARN = "string"
-  )
-)
-}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
 Creates a new cache subnet group.
 
-Use this parameter only when you are creating a cluster in an Amazon
-Virtual Private Cloud (Amazon VPC).
+See \url{https://paws-r.github.io/docs/elasticache/create_cache_subnet_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_cache_subnet_group(
-  CacheSubnetGroupName = "string",
-  CacheSubnetGroupDescription = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

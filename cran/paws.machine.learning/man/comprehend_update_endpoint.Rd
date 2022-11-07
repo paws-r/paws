@@ -4,27 +4,28 @@
 \alias{comprehend_update_endpoint}
 \title{Updates information about the specified endpoint}
 \usage{
-comprehend_update_endpoint(EndpointArn, DesiredInferenceUnits)
+comprehend_update_endpoint(
+  EndpointArn,
+  DesiredModelArn = NULL,
+  DesiredInferenceUnits = NULL,
+  DesiredDataAccessRoleArn = NULL
+)
 }
 \arguments{
 \item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint being updated.}
 
-\item{DesiredInferenceUnits}{[required] The desired number of inference units to be used by the model using this
+\item{DesiredModelArn}{The ARN of the new model to use when updating an existing endpoint.}
+
+\item{DesiredInferenceUnits}{The desired number of inference units to be used by the model using this
 endpoint. Each inference unit represents of a throughput of 100
 characters per second.}
-}
-\value{
-An empty list.
+
+\item{DesiredDataAccessRoleArn}{Data access role ARN to use in case the new model is encrypted with a
+customer CMK.}
 }
 \description{
-Updates information about the specified endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$update_endpoint(
-  EndpointArn = "string",
-  DesiredInferenceUnits = 123
-)
-}
-}
+Updates information about the specified endpoint. For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.
 
+See \url{https://paws-r.github.io/docs/comprehend/update_endpoint.html} for full documentation.
+}
 \keyword{internal}

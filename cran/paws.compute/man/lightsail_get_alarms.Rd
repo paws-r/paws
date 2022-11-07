@@ -4,7 +4,11 @@
 \alias{lightsail_get_alarms}
 \title{Returns information about the configured alarms}
 \usage{
-lightsail_get_alarms(alarmName, pageToken, monitoredResourceName)
+lightsail_get_alarms(
+  alarmName = NULL,
+  pageToken = NULL,
+  monitoredResourceName = NULL
+)
 }
 \arguments{
 \item{alarmName}{The name of the alarm.
@@ -23,67 +27,9 @@ specify as the page token in a subsequent request.}
 Specify a monitored resource name to return information about all alarms
 for a specific resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  alarms = list(
-    list(
-      name = "string",
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      supportCode = "string",
-      monitoredResourceInfo = list(
-        arn = "string",
-        name = "string",
-        resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"
-      ),
-      comparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-      evaluationPeriods = 123,
-      period = 123,
-      threshold = 123.0,
-      datapointsToAlarm = 123,
-      treatMissingData = "breaching"|"notBreaching"|"ignore"|"missing",
-      statistic = "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount",
-      metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"BurstCapacityTime"|"BurstCapacityPercentage",
-      state = "OK"|"ALARM"|"INSUFFICIENT_DATA",
-      unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-      contactProtocols = list(
-        "Email"|"SMS"
-      ),
-      notificationTriggers = list(
-        "OK"|"ALARM"|"INSUFFICIENT_DATA"
-      ),
-      notificationEnabled = TRUE|FALSE
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
-Returns information about the configured alarms. Specify an alarm name
-in your request to return information about a specific alarm, or specify
-a monitored resource name to return information about all alarms for a
-specific resource.
+Returns information about the configured alarms. Specify an alarm name in your request to return information about a specific alarm, or specify a monitored resource name to return information about all alarms for a specific resource.
 
-An alarm is used to monitor a single metric for one of your resources.
-When a metric condition is met, the alarm can notify you by email, SMS
-text message, and a banner displayed on the Amazon Lightsail console.
-For more information, see Alarms in Amazon Lightsail.
+See \url{https://paws-r.github.io/docs/lightsail/get_alarms.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_alarms(
-  alarmName = "string",
-  pageToken = "string",
-  monitoredResourceName = "string"
-)
-}
-}
-
 \keyword{internal}

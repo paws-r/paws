@@ -25,10 +25,15 @@ NULL
 #'     document are returned (including text that doesn't have a
 #'     relationship with the value of `FeatureTypes`).
 #' 
+#' -   Queries.A QUERIES_RESULT Block object contains the answer to the
+#'     query, the alias associated and an ID that connect it to the query
+#'     asked. This Block also contains a location and attached confidence
+#'     score.
+#' 
 #' Selection elements such as check boxes and option buttons (radio
-#' buttons) can be detected in form data and in tables. A
-#' SELECTION_ELEMENT `Block` object contains information about a selection
-#' element, including the selection status.
+#' buttons) can be detected in form data and in tables. A SELECTION_ELEMENT
+#' `Block` object contains information about a selection element, including
+#' the selection status.
 #' 
 #' You can choose which type of analysis to perform by specifying the
 #' `FeatureTypes` list.
@@ -43,11 +48,13 @@ NULL
 #' Analysis](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html).
 #'
 #' @usage
-#' textract_analyze_document(Document, FeatureTypes, HumanLoopConfig)
+#' textract_analyze_document(Document, FeatureTypes, HumanLoopConfig,
+#'   QueriesConfig)
 #'
 #' @param Document &#91;required&#93; The input document as base64-encoded bytes or an Amazon S3 object. If
 #' you use the AWS CLI to call Amazon Textract operations, you can't pass
-#' image bytes. The document must be an image in JPEG or PNG format.
+#' image bytes. The document must be an image in JPEG, PNG, PDF, or TIFF
+#' format.
 #' 
 #' If you're using an AWS SDK to call Amazon Textract, you might not need
 #' to base64-encode image bytes that are passed using the `Bytes` field.
@@ -59,6 +66,8 @@ NULL
 #' that isn't related to the value of `FeatureTypes`).
 #' @param HumanLoopConfig Sets the configuration for the human in the loop workflow for analyzing
 #' documents.
+#' @param QueriesConfig Contains Queries and the alias for those Queries, as determined by the
+#' input.
 #'
 #' @return
 #' A list with the following syntax:
@@ -69,7 +78,7 @@ NULL
 #'   ),
 #'   Blocks = list(
 #'     list(
-#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT",
 #'       Confidence = 123.0,
 #'       Text = "string",
 #'       TextType = "HANDWRITING"|"PRINTED",
@@ -94,17 +103,24 @@ NULL
 #'       Id = "string",
 #'       Relationships = list(
 #'         list(
-#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER",
 #'           Ids = list(
 #'             "string"
 #'           )
 #'         )
 #'       ),
 #'       EntityTypes = list(
-#'         "KEY"|"VALUE"
+#'         "KEY"|"VALUE"|"COLUMN_HEADER"
 #'       ),
 #'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
-#'       Page = 123
+#'       Page = 123,
+#'       Query = list(
+#'         Text = "string",
+#'         Alias = "string",
+#'         Pages = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   HumanLoopActivationOutput = list(
@@ -130,7 +146,7 @@ NULL
 #'     )
 #'   ),
 #'   FeatureTypes = list(
-#'     "TABLES"|"FORMS"
+#'     "TABLES"|"FORMS"|"QUERIES"
 #'   ),
 #'   HumanLoopConfig = list(
 #'     HumanLoopName = "string",
@@ -140,6 +156,17 @@ NULL
 #'         "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
 #'       )
 #'     )
+#'   ),
+#'   QueriesConfig = list(
+#'     Queries = list(
+#'       list(
+#'         Text = "string",
+#'         Alias = "string",
+#'         Pages = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -147,14 +174,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname textract_analyze_document
-textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = NULL) {
+textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = NULL, QueriesConfig = NULL) {
   op <- new_operation(
     name = "AnalyzeDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .textract$analyze_document_input(Document = Document, FeatureTypes = FeatureTypes, HumanLoopConfig = HumanLoopConfig)
+  input <- .textract$analyze_document_input(Document = Document, FeatureTypes = FeatureTypes, HumanLoopConfig = HumanLoopConfig, QueriesConfig = QueriesConfig)
   output <- .textract$analyze_document_output()
   config <- get_config()
   svc <- .textract$service(config)
@@ -164,12 +191,267 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 }
 .textract$operations$analyze_document <- textract_analyze_document
 
+#' AnalyzeExpense synchronously analyzes an input document for financially
+#' related relationships between text
+#'
+#' @description
+#' [`analyze_expense`][textract_analyze_expense] synchronously analyzes an
+#' input document for financially related relationships between text.
+#' 
+#' Information is returned as `ExpenseDocuments` and seperated as follows.
+#' 
+#' -   `LineItemGroups`- A data set containing `LineItems` which store
+#'     information about the lines of text, such as an item purchased and
+#'     its price on a receipt.
+#' 
+#' -   `SummaryFields`- Contains all other information a receipt, such as
+#'     header information or the vendors name.
+#'
+#' @usage
+#' textract_analyze_expense(Document)
+#'
+#' @param Document &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentMetadata = list(
+#'     Pages = 123
+#'   ),
+#'   ExpenseDocuments = list(
+#'     list(
+#'       ExpenseIndex = 123,
+#'       SummaryFields = list(
+#'         list(
+#'           Type = list(
+#'             Text = "string",
+#'             Confidence = 123.0
+#'           ),
+#'           LabelDetection = list(
+#'             Text = "string",
+#'             Geometry = list(
+#'               BoundingBox = list(
+#'                 Width = 123.0,
+#'                 Height = 123.0,
+#'                 Left = 123.0,
+#'                 Top = 123.0
+#'               ),
+#'               Polygon = list(
+#'                 list(
+#'                   X = 123.0,
+#'                   Y = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             Confidence = 123.0
+#'           ),
+#'           ValueDetection = list(
+#'             Text = "string",
+#'             Geometry = list(
+#'               BoundingBox = list(
+#'                 Width = 123.0,
+#'                 Height = 123.0,
+#'                 Left = 123.0,
+#'                 Top = 123.0
+#'               ),
+#'               Polygon = list(
+#'                 list(
+#'                   X = 123.0,
+#'                   Y = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             Confidence = 123.0
+#'           ),
+#'           PageNumber = 123
+#'         )
+#'       ),
+#'       LineItemGroups = list(
+#'         list(
+#'           LineItemGroupIndex = 123,
+#'           LineItems = list(
+#'             list(
+#'               LineItemExpenseFields = list(
+#'                 list(
+#'                   Type = list(
+#'                     Text = "string",
+#'                     Confidence = 123.0
+#'                   ),
+#'                   LabelDetection = list(
+#'                     Text = "string",
+#'                     Geometry = list(
+#'                       BoundingBox = list(
+#'                         Width = 123.0,
+#'                         Height = 123.0,
+#'                         Left = 123.0,
+#'                         Top = 123.0
+#'                       ),
+#'                       Polygon = list(
+#'                         list(
+#'                           X = 123.0,
+#'                           Y = 123.0
+#'                         )
+#'                       )
+#'                     ),
+#'                     Confidence = 123.0
+#'                   ),
+#'                   ValueDetection = list(
+#'                     Text = "string",
+#'                     Geometry = list(
+#'                       BoundingBox = list(
+#'                         Width = 123.0,
+#'                         Height = 123.0,
+#'                         Left = 123.0,
+#'                         Top = 123.0
+#'                       ),
+#'                       Polygon = list(
+#'                         list(
+#'                           X = 123.0,
+#'                           Y = 123.0
+#'                         )
+#'                       )
+#'                     ),
+#'                     Confidence = 123.0
+#'                   ),
+#'                   PageNumber = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$analyze_expense(
+#'   Document = list(
+#'     Bytes = raw,
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname textract_analyze_expense
+textract_analyze_expense <- function(Document) {
+  op <- new_operation(
+    name = "AnalyzeExpense",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$analyze_expense_input(Document = Document)
+  output <- .textract$analyze_expense_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$analyze_expense <- textract_analyze_expense
+
+#' Analyzes identity documents for relevant information
+#'
+#' @description
+#' Analyzes identity documents for relevant information. This information
+#' is extracted and returned as `IdentityDocumentFields`, which records
+#' both the normalized field and value of the extracted text.Unlike other
+#' Amazon Textract operations, [`analyze_id`][textract_analyze_id] doesn't
+#' return any Geometry data.
+#'
+#' @usage
+#' textract_analyze_id(DocumentPages)
+#'
+#' @param DocumentPages &#91;required&#93; The document being passed to AnalyzeID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityDocuments = list(
+#'     list(
+#'       DocumentIndex = 123,
+#'       IdentityDocumentFields = list(
+#'         list(
+#'           Type = list(
+#'             Text = "string",
+#'             NormalizedValue = list(
+#'               Value = "string",
+#'               ValueType = "DATE"
+#'             ),
+#'             Confidence = 123.0
+#'           ),
+#'           ValueDetection = list(
+#'             Text = "string",
+#'             NormalizedValue = list(
+#'               Value = "string",
+#'               ValueType = "DATE"
+#'             ),
+#'             Confidence = 123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DocumentMetadata = list(
+#'     Pages = 123
+#'   ),
+#'   AnalyzeIDModelVersion = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$analyze_id(
+#'   DocumentPages = list(
+#'     list(
+#'       Bytes = raw,
+#'       S3Object = list(
+#'         Bucket = "string",
+#'         Name = "string",
+#'         Version = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname textract_analyze_id
+textract_analyze_id <- function(DocumentPages) {
+  op <- new_operation(
+    name = "AnalyzeID",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$analyze_id_input(DocumentPages = DocumentPages)
+  output <- .textract$analyze_id_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$analyze_id <- textract_analyze_id
+
 #' Detects text in the input document
 #'
 #' @description
 #' Detects text in the input document. Amazon Textract can detect lines of
 #' text and the words that make up a line of text. The input document must
-#' be an image in JPEG or PNG format.
+#' be an image in JPEG, PNG, PDF, or TIFF format.
 #' [`detect_document_text`][textract_detect_document_text] returns the
 #' detected text in an array of Block objects.
 #' 
@@ -205,7 +487,7 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #'   ),
 #'   Blocks = list(
 #'     list(
-#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT",
 #'       Confidence = 123.0,
 #'       Text = "string",
 #'       TextType = "HANDWRITING"|"PRINTED",
@@ -230,17 +512,24 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #'       Id = "string",
 #'       Relationships = list(
 #'         list(
-#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER",
 #'           Ids = list(
 #'             "string"
 #'           )
 #'         )
 #'       ),
 #'       EntityTypes = list(
-#'         "KEY"|"VALUE"
+#'         "KEY"|"VALUE"|"COLUMN_HEADER"
 #'       ),
 #'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
-#'       Page = 123
+#'       Page = 123,
+#'       Query = list(
+#'         Text = "string",
+#'         Alias = "string",
+#'         Pages = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   DetectDocumentTextModelVersion = "string"
@@ -321,10 +610,15 @@ textract_detect_document_text <- function(Document) {
 #'     [`start_document_analysis`][textract_start_document_analysis]
 #'     `FeatureTypes` input parameter).
 #' 
+#' -   Queries. A QUERIES_RESULT Block object contains the answer to the
+#'     query, the alias associated and an ID that connect it to the query
+#'     asked. This Block also contains a location and attached confidence
+#'     score
+#' 
 #' Selection elements such as check boxes and option buttons (radio
-#' buttons) can be detected in form data and in tables. A
-#' SELECTION_ELEMENT `Block` object contains information about a selection
-#' element, including the selection status.
+#' buttons) can be detected in form data and in tables. A SELECTION_ELEMENT
+#' `Block` object contains information about a selection element, including
+#' the selection status.
 #' 
 #' Use the `MaxResults` parameter to limit the number of blocks that are
 #' returned. If there are more results than specified in `MaxResults`, the
@@ -364,7 +658,7 @@ textract_detect_document_text <- function(Document) {
 #'   NextToken = "string",
 #'   Blocks = list(
 #'     list(
-#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT",
 #'       Confidence = 123.0,
 #'       Text = "string",
 #'       TextType = "HANDWRITING"|"PRINTED",
@@ -389,17 +683,24 @@ textract_detect_document_text <- function(Document) {
 #'       Id = "string",
 #'       Relationships = list(
 #'         list(
-#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER",
 #'           Ids = list(
 #'             "string"
 #'           )
 #'         )
 #'       ),
 #'       EntityTypes = list(
-#'         "KEY"|"VALUE"
+#'         "KEY"|"VALUE"|"COLUMN_HEADER"
 #'       ),
 #'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
-#'       Page = 123
+#'       Page = 123,
+#'       Query = list(
+#'         Text = "string",
+#'         Alias = "string",
+#'         Pages = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Warnings = list(
@@ -515,7 +816,7 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #'   NextToken = "string",
 #'   Blocks = list(
 #'     list(
-#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT",
 #'       Confidence = 123.0,
 #'       Text = "string",
 #'       TextType = "HANDWRITING"|"PRINTED",
@@ -540,17 +841,24 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #'       Id = "string",
 #'       Relationships = list(
 #'         list(
-#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER",
 #'           Ids = list(
 #'             "string"
 #'           )
 #'         )
 #'       ),
 #'       EntityTypes = list(
-#'         "KEY"|"VALUE"
+#'         "KEY"|"VALUE"|"COLUMN_HEADER"
 #'       ),
 #'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
-#'       Page = 123
+#'       Page = 123,
+#'       Query = list(
+#'         Text = "string",
+#'         Alias = "string",
+#'         Pages = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Warnings = list(
@@ -595,6 +903,209 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 }
 .textract$operations$get_document_text_detection <- textract_get_document_text_detection
 
+#' Gets the results for an Amazon Textract asynchronous operation that
+#' analyzes invoices and receipts
+#'
+#' @description
+#' Gets the results for an Amazon Textract asynchronous operation that
+#' analyzes invoices and receipts. Amazon Textract finds contact
+#' information, items purchased, and vendor name, from input invoices and
+#' receipts.
+#' 
+#' You start asynchronous invoice/receipt analysis by calling
+#' [`start_expense_analysis`][textract_start_expense_analysis], which
+#' returns a job identifier (`JobId`). Upon completion of the
+#' invoice/receipt analysis, Amazon Textract publishes the completion
+#' status to the Amazon Simple Notification Service (Amazon SNS) topic.
+#' This topic must be registered in the initial call to
+#' [`start_expense_analysis`][textract_start_expense_analysis]. To get the
+#' results of the invoice/receipt analysis operation, first ensure that the
+#' status value published to the Amazon SNS topic is `SUCCEEDED`. If so,
+#' call [`get_expense_analysis`][textract_get_expense_analysis], and pass
+#' the job identifier (`JobId`) from the initial call to
+#' [`start_expense_analysis`][textract_start_expense_analysis].
+#' 
+#' Use the MaxResults parameter to limit the number of blocks that are
+#' returned. If there are more results than specified in `MaxResults`, the
+#' value of `NextToken` in the operation response contains a pagination
+#' token for getting the next set of results. To get the next page of
+#' results, call [`get_expense_analysis`][textract_get_expense_analysis],
+#' and populate the `NextToken` request parameter with the token value
+#' that's returned from the previous call to
+#' [`get_expense_analysis`][textract_get_expense_analysis].
+#' 
+#' For more information, see [Analyzing Invoices and
+#' Receipts](https://docs.aws.amazon.com/textract/latest/dg/invoices-receipts.html).
+#'
+#' @usage
+#' textract_get_expense_analysis(JobId, MaxResults, NextToken)
+#'
+#' @param JobId &#91;required&#93; A unique identifier for the text detection job. The `JobId` is returned
+#' from [`start_expense_analysis`][textract_start_expense_analysis]. A
+#' `JobId` value is only valid for 7 days.
+#' @param MaxResults The maximum number of results to return per paginated call. The largest
+#' value you can specify is 20. If you specify a value greater than 20, a
+#' maximum of 20 results is returned. The default value is 20.
+#' @param NextToken If the previous response was incomplete (because there are more blocks
+#' to retrieve), Amazon Textract returns a pagination token in the
+#' response. You can use this pagination token to retrieve the next set of
+#' blocks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentMetadata = list(
+#'     Pages = 123
+#'   ),
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"PARTIAL_SUCCESS",
+#'   NextToken = "string",
+#'   ExpenseDocuments = list(
+#'     list(
+#'       ExpenseIndex = 123,
+#'       SummaryFields = list(
+#'         list(
+#'           Type = list(
+#'             Text = "string",
+#'             Confidence = 123.0
+#'           ),
+#'           LabelDetection = list(
+#'             Text = "string",
+#'             Geometry = list(
+#'               BoundingBox = list(
+#'                 Width = 123.0,
+#'                 Height = 123.0,
+#'                 Left = 123.0,
+#'                 Top = 123.0
+#'               ),
+#'               Polygon = list(
+#'                 list(
+#'                   X = 123.0,
+#'                   Y = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             Confidence = 123.0
+#'           ),
+#'           ValueDetection = list(
+#'             Text = "string",
+#'             Geometry = list(
+#'               BoundingBox = list(
+#'                 Width = 123.0,
+#'                 Height = 123.0,
+#'                 Left = 123.0,
+#'                 Top = 123.0
+#'               ),
+#'               Polygon = list(
+#'                 list(
+#'                   X = 123.0,
+#'                   Y = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             Confidence = 123.0
+#'           ),
+#'           PageNumber = 123
+#'         )
+#'       ),
+#'       LineItemGroups = list(
+#'         list(
+#'           LineItemGroupIndex = 123,
+#'           LineItems = list(
+#'             list(
+#'               LineItemExpenseFields = list(
+#'                 list(
+#'                   Type = list(
+#'                     Text = "string",
+#'                     Confidence = 123.0
+#'                   ),
+#'                   LabelDetection = list(
+#'                     Text = "string",
+#'                     Geometry = list(
+#'                       BoundingBox = list(
+#'                         Width = 123.0,
+#'                         Height = 123.0,
+#'                         Left = 123.0,
+#'                         Top = 123.0
+#'                       ),
+#'                       Polygon = list(
+#'                         list(
+#'                           X = 123.0,
+#'                           Y = 123.0
+#'                         )
+#'                       )
+#'                     ),
+#'                     Confidence = 123.0
+#'                   ),
+#'                   ValueDetection = list(
+#'                     Text = "string",
+#'                     Geometry = list(
+#'                       BoundingBox = list(
+#'                         Width = 123.0,
+#'                         Height = 123.0,
+#'                         Left = 123.0,
+#'                         Top = 123.0
+#'                       ),
+#'                       Polygon = list(
+#'                         list(
+#'                           X = 123.0,
+#'                           Y = 123.0
+#'                         )
+#'                       )
+#'                     ),
+#'                     Confidence = 123.0
+#'                   ),
+#'                   PageNumber = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Warnings = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       Pages = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   StatusMessage = "string",
+#'   AnalyzeExpenseModelVersion = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_expense_analysis(
+#'   JobId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname textract_get_expense_analysis
+textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetExpenseAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$get_expense_analysis_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .textract$get_expense_analysis_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$get_expense_analysis <- textract_get_expense_analysis
+
 #' Starts the asynchronous analysis of an input document for relationships
 #' between detected items such as key-value pairs, tables, and selection
 #' elements
@@ -605,8 +1116,8 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #' elements.
 #' 
 #' [`start_document_analysis`][textract_start_document_analysis] can
-#' analyze text in documents that are in JPEG, PNG, and PDF format. The
-#' documents are stored in an Amazon S3 bucket. Use DocumentLocation to
+#' analyze text in documents that are in JPEG, PNG, TIFF, and PDF format.
+#' The documents are stored in an Amazon S3 bucket. Use DocumentLocation to
 #' specify the bucket name and file name of the document.
 #' 
 #' [`start_document_analysis`][textract_start_document_analysis] returns a
@@ -625,7 +1136,8 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'
 #' @usage
 #' textract_start_document_analysis(DocumentLocation, FeatureTypes,
-#'   ClientRequestToken, JobTag, NotificationChannel, OutputConfig, KMSKeyId)
+#'   ClientRequestToken, JobTag, NotificationChannel, OutputConfig, KMSKeyId,
+#'   QueriesConfig)
 #'
 #' @param DocumentLocation &#91;required&#93; The location of the document to be processed.
 #' @param FeatureTypes &#91;required&#93; A list of the types of analysis to perform. Add TABLES to the list to
@@ -655,6 +1167,7 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #' be used for server-side encryption of the objects in the customer
 #' bucket. When this parameter is not enabled, the result will be encrypted
 #' server side,using SSE-S3.
+#' @param QueriesConfig 
 #'
 #' @return
 #' A list with the following syntax:
@@ -675,7 +1188,7 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'     )
 #'   ),
 #'   FeatureTypes = list(
-#'     "TABLES"|"FORMS"
+#'     "TABLES"|"FORMS"|"QUERIES"
 #'   ),
 #'   ClientRequestToken = "string",
 #'   JobTag = "string",
@@ -687,21 +1200,32 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'     S3Bucket = "string",
 #'     S3Prefix = "string"
 #'   ),
-#'   KMSKeyId = "string"
+#'   KMSKeyId = "string",
+#'   QueriesConfig = list(
+#'     Queries = list(
+#'       list(
+#'         Text = "string",
+#'         Alias = "string",
+#'         Pages = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname textract_start_document_analysis
-textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL) {
+textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL, QueriesConfig = NULL) {
   op <- new_operation(
     name = "StartDocumentAnalysis",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .textract$start_document_analysis_input(DocumentLocation = DocumentLocation, FeatureTypes = FeatureTypes, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId)
+  input <- .textract$start_document_analysis_input(DocumentLocation = DocumentLocation, FeatureTypes = FeatureTypes, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId, QueriesConfig = QueriesConfig)
   output <- .textract$start_document_analysis_output()
   config <- get_config()
   svc <- .textract$service(config)
@@ -718,9 +1242,10 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #' can detect lines of text and the words that make up a line of text.
 #' 
 #' [`start_document_text_detection`][textract_start_document_text_detection]
-#' can analyze text in documents that are in JPEG, PNG, and PDF format. The
-#' documents are stored in an Amazon S3 bucket. Use DocumentLocation to
-#' specify the bucket name and file name of the document.
+#' can analyze text in documents that are in JPEG, PNG, TIFF, and PDF
+#' format. The documents are stored in an Amazon S3 bucket. Use
+#' DocumentLocation to specify the bucket name and file name of the
+#' document.
 #' 
 #' `StartTextDetection` returns a job identifier (`JobId`) that you use to
 #' get the results of the operation. When text detection is finished,
@@ -814,3 +1339,111 @@ textract_start_document_text_detection <- function(DocumentLocation, ClientReque
   return(response)
 }
 .textract$operations$start_document_text_detection <- textract_start_document_text_detection
+
+#' Starts the asynchronous analysis of invoices or receipts for data like
+#' contact information, items purchased, and vendor names
+#'
+#' @description
+#' Starts the asynchronous analysis of invoices or receipts for data like
+#' contact information, items purchased, and vendor names.
+#' 
+#' [`start_expense_analysis`][textract_start_expense_analysis] can analyze
+#' text in documents that are in JPEG, PNG, and PDF format. The documents
+#' must be stored in an Amazon S3 bucket. Use the DocumentLocation
+#' parameter to specify the name of your S3 bucket and the name of the
+#' document in that bucket.
+#' 
+#' [`start_expense_analysis`][textract_start_expense_analysis] returns a
+#' job identifier (`JobId`) that you will provide to
+#' [`get_expense_analysis`][textract_get_expense_analysis] to retrieve the
+#' results of the operation. When the analysis of the input
+#' invoices/receipts is finished, Amazon Textract publishes a completion
+#' status to the Amazon Simple Notification Service (Amazon SNS) topic that
+#' you provide to the `NotificationChannel`. To obtain the results of the
+#' invoice and receipt analysis operation, ensure that the status value
+#' published to the Amazon SNS topic is `SUCCEEDED`. If so, call
+#' [`get_expense_analysis`][textract_get_expense_analysis], and pass the
+#' job identifier (`JobId`) that was returned by your call to
+#' [`start_expense_analysis`][textract_start_expense_analysis].
+#' 
+#' For more information, see [Analyzing Invoices and
+#' Receipts](https://docs.aws.amazon.com/textract/latest/dg/).
+#'
+#' @usage
+#' textract_start_expense_analysis(DocumentLocation, ClientRequestToken,
+#'   JobTag, NotificationChannel, OutputConfig, KMSKeyId)
+#'
+#' @param DocumentLocation &#91;required&#93; The location of the document to be processed.
+#' @param ClientRequestToken The idempotent token that's used to identify the start request. If you
+#' use the same token with multiple
+#' [`start_document_text_detection`][textract_start_document_text_detection]
+#' requests, the same `JobId` is returned. Use `ClientRequestToken` to
+#' prevent the same job from being accidentally started more than once. For
+#' more information, see [Calling Amazon Textract Asynchronous
+#' Operations](https://docs.aws.amazon.com/textract/latest/dg/api-async.html)
+#' @param JobTag An identifier you specify that's included in the completion notification
+#' published to the Amazon SNS topic. For example, you can use `JobTag` to
+#' identify the type of document that the completion notification
+#' corresponds to (such as a tax form or a receipt).
+#' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Textract to publish the
+#' completion status of the operation to.
+#' @param OutputConfig Sets if the output will go to a customer defined bucket. By default,
+#' Amazon Textract will save the results internally to be accessed by the
+#' [`get_expense_analysis`][textract_get_expense_analysis] operation.
+#' @param KMSKeyId The KMS key used to encrypt the inference results. This can be in either
+#' Key ID or Key Alias format. When a KMS key is provided, the KMS key will
+#' be used for server-side encryption of the objects in the customer
+#' bucket. When this parameter is not enabled, the result will be encrypted
+#' server side,using SSE-S3.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_expense_analysis(
+#'   DocumentLocation = list(
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   ClientRequestToken = "string",
+#'   JobTag = "string",
+#'   NotificationChannel = list(
+#'     SNSTopicArn = "string",
+#'     RoleArn = "string"
+#'   ),
+#'   OutputConfig = list(
+#'     S3Bucket = "string",
+#'     S3Prefix = "string"
+#'   ),
+#'   KMSKeyId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname textract_start_expense_analysis
+textract_start_expense_analysis <- function(DocumentLocation, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL) {
+  op <- new_operation(
+    name = "StartExpenseAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$start_expense_analysis_input(DocumentLocation = DocumentLocation, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId)
+  output <- .textract$start_expense_analysis_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$start_expense_analysis <- textract_start_expense_analysis

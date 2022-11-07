@@ -4,8 +4,11 @@
 \alias{sagemaker_list_pipeline_parameters_for_execution}
 \title{Gets a list of parameters for a pipeline execution}
 \usage{
-sagemaker_list_pipeline_parameters_for_execution(PipelineExecutionArn,
-  NextToken, MaxResults)
+sagemaker_list_pipeline_parameters_for_execution(
+  PipelineExecutionArn,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{PipelineExecutionArn}{[required] The Amazon Resource Name (ARN) of the pipeline execution.}
@@ -17,28 +20,9 @@ the next set of parameters, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of parameters to return in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineParameters = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of parameters for a pipeline execution.
-}
-\section{Request syntax}{
-\preformatted{svc$list_pipeline_parameters_for_execution(
-  PipelineExecutionArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_pipeline_parameters_for_execution.html} for full documentation.
+}
 \keyword{internal}

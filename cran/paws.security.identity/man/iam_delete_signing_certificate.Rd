@@ -4,7 +4,7 @@
 \alias{iam_delete_signing_certificate}
 \title{Deletes a signing certificate associated with the specified IAM user}
 \usage{
-iam_delete_signing_certificate(UserName, CertificateId)
+iam_delete_signing_certificate(UserName = NULL, CertificateId)
 }
 \arguments{
 \item{UserName}{The name of the user the signing certificate belongs to.
@@ -19,35 +19,9 @@ The format of this parameter, as described by its
 \href{https://en.wikipedia.org/wiki/Regex}{regex} pattern, is a string of
 characters that can be upper- or lower-cased letters or digits.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a signing certificate associated with the specified IAM user.
 
-If you do not specify a user name, IAM determines the user name
-implicitly based on the AWS access key ID signing the request. This
-operation works for access keys under the AWS account. Consequently, you
-can use this operation to manage AWS account root user credentials even
-if the AWS account has no associated IAM users.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_signing_certificate(
-  UserName = "string",
-  CertificateId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command deletes the specified signing certificate for the
-# IAM user named Anika.
-svc$delete_signing_certificate(
-  CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
-  UserName = "Anika"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_signing_certificate.html} for full documentation.
 }
 \keyword{internal}

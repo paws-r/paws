@@ -2,7 +2,7 @@
 % Please edit documentation in R/polly_operations.R
 \name{polly_put_lexicon}
 \alias{polly_put_lexicon}
-\title{Stores a pronunciation lexicon in an AWS Region}
+\title{Stores a pronunciation lexicon in an Amazon Web Services Region}
 \usage{
 polly_put_lexicon(Name, Content)
 }
@@ -13,34 +13,9 @@ alphanumeric string up to 20 characters long.}
 
 \item{Content}{[required] Content of the PLS lexicon as string data.}
 }
-\value{
-An empty list.
-}
 \description{
-Stores a pronunciation lexicon in an AWS Region. If a lexicon with the
-same name already exists in the region, it is overwritten by the new
-lexicon. Lexicon operations have eventual consistency, therefore, it
-might take some time before the lexicon is available to the
-SynthesizeSpeech operation.
+Stores a pronunciation lexicon in an Amazon Web Services Region. If a lexicon with the same name already exists in the region, it is overwritten by the new lexicon. Lexicon operations have eventual consistency, therefore, it might take some time before the lexicon is available to the SynthesizeSpeech operation.
 
-For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_lexicon(
-  Name = "string",
-  Content = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Stores a pronunciation lexicon in an AWS Region.
-svc$put_lexicon(
-  Content = "file://example.pls",
-  Name = "W3C"
-)
-}
-
+See \url{https://paws-r.github.io/docs/polly/put_lexicon.html} for full documentation.
 }
 \keyword{internal}

@@ -5,8 +5,13 @@
 \title{Represents the success of a third party job as returned to the pipeline
 by a job worker}
 \usage{
-codepipeline_put_third_party_job_success_result(jobId, clientToken,
-  currentRevision, continuationToken, executionDetails)
+codepipeline_put_third_party_job_success_result(
+  jobId,
+  clientToken,
+  currentRevision = NULL,
+  continuationToken = NULL,
+  executionDetails = NULL
+)
 }
 \arguments{
 \item{jobId}{[required] The ID of the job that successfully completed. This is the same ID
@@ -29,33 +34,9 @@ continuation token should be supplied.}
 \item{executionDetails}{The details of the actions taken and results produced on an artifact as
 it passes through stages in the pipeline.}
 }
-\value{
-An empty list.
-}
 \description{
-Represents the success of a third party job as returned to the pipeline
-by a job worker. Used for partner actions only.
-}
-\section{Request syntax}{
-\preformatted{svc$put_third_party_job_success_result(
-  jobId = "string",
-  clientToken = "string",
-  currentRevision = list(
-    revision = "string",
-    changeIdentifier = "string",
-    created = as.POSIXct(
-      "2015-01-01"
-    ),
-    revisionSummary = "string"
-  ),
-  continuationToken = "string",
-  executionDetails = list(
-    summary = "string",
-    externalExecutionId = "string",
-    percentComplete = 123
-  )
-)
-}
-}
+Represents the success of a third party job as returned to the pipeline by a job worker. Used for partner actions only.
 
+See \url{https://paws-r.github.io/docs/codepipeline/put_third_party_job_success_result.html} for full documentation.
+}
 \keyword{internal}

@@ -4,56 +4,27 @@
 \alias{quicksight_update_data_set_permissions}
 \title{Updates the permissions on a dataset}
 \usage{
-quicksight_update_data_set_permissions(AwsAccountId, DataSetId,
-  GrantPermissions, RevokePermissions)
+quicksight_update_data_set_permissions(
+  AwsAccountId,
+  DataSetId,
+  GrantPermissions = NULL,
+  RevokePermissions = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
 \item{DataSetId}{[required] The ID for the dataset whose permissions you want to update. This ID is
-unique per AWS Region for each AWS account.}
+unique per Amazon Web Services Region for each Amazon Web Services
+account.}
 
 \item{GrantPermissions}{The resource permissions that you want to grant to the dataset.}
 
 \item{RevokePermissions}{The resource permissions that you want to revoke from the dataset.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DataSetArn = "string",
-  DataSetId = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Updates the permissions on a dataset.
 
-The permissions resource is
-\code{arn:aws:quicksight:region:aws-account-id:dataset/data-set-id}.
+See \url{https://paws-r.github.io/docs/quicksight/update_data_set_permissions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_data_set_permissions(
-  AwsAccountId = "string",
-  DataSetId = "string",
-  GrantPermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RevokePermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

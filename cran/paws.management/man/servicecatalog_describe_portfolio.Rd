@@ -4,7 +4,7 @@
 \alias{servicecatalog_describe_portfolio}
 \title{Gets information about the specified portfolio}
 \usage{
-servicecatalog_describe_portfolio(AcceptLanguage, Id)
+servicecatalog_describe_portfolio(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -16,52 +16,9 @@ servicecatalog_describe_portfolio(AcceptLanguage, Id)
 
 \item{Id}{[required] The portfolio identifier.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PortfolioDetail = list(
-    Id = "string",
-    ARN = "string",
-    DisplayName = "string",
-    Description = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProviderName = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  TagOptions = list(
-    list(
-      Key = "string",
-      Value = "string",
-      Active = TRUE|FALSE,
-      Id = "string",
-      Owner = "string"
-    )
-  ),
-  Budgets = list(
-    list(
-      BudgetName = "string"
-    )
-  )
-)
-}
-}
 \description{
 Gets information about the specified portfolio.
 
-A delegated admin is authorized to invoke this command.
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_portfolio.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_portfolio(
-  AcceptLanguage = "string",
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

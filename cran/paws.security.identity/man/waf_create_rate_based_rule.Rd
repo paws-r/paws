@@ -4,8 +4,14 @@
 \alias{waf_create_rate_based_rule}
 \title{This is AWS WAF Classic documentation}
 \usage{
-waf_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
-  ChangeToken, Tags)
+waf_create_rate_based_rule(
+  Name,
+  MetricName,
+  RateKey,
+  RateLimit,
+  ChangeToken,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RateBasedRule. You can't change
@@ -38,118 +44,9 @@ information, see
 
 \item{Tags}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Rule = list(
-    RuleId = "string",
-    Name = "string",
-    MetricName = "string",
-    MatchPredicates = list(
-      list(
-        Negated = TRUE|FALSE,
-        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-        DataId = "string"
-      )
-    ),
-    RateKey = "IP",
-    RateLimit = 123
-  ),
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Creates a RateBasedRule. The \code{RateBasedRule} contains a \code{RateLimit},
-which specifies the maximum number of requests that AWS WAF allows from
-a specified IP address in a five-minute period. The \code{RateBasedRule} also
-contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other
-predicates that identify the requests that you want to count or block if
-these requests exceed the \code{RateLimit}.
-
-If you add more than one predicate to a \code{RateBasedRule}, a request not
-only must exceed the \code{RateLimit}, but it also must match all the
-conditions to be counted or blocked. For example, suppose you add the
-following to a \code{RateBasedRule}:
-\itemize{
-\item An \code{IPSet} that matches the IP address \verb{192.0.2.44/32}
-\item A \code{ByteMatchSet} that matches \code{BadBot} in the \code{User-Agent} header
+See \url{https://paws-r.github.io/docs/waf/create_rate_based_rule.html} for full documentation.
 }
-
-Further, you specify a \code{RateLimit} of 1,000.
-
-You then add the \code{RateBasedRule} to a \code{WebACL} and specify that you want
-to block requests that meet the conditions in the rule. For a request to
-be blocked, it must come from the IP address 192.0.2.44 \emph{and} the
-\code{User-Agent} header in the request must contain the value \code{BadBot}.
-Further, requests that match these two conditions must be received at a
-rate of more than 1,000 requests every five minutes. If both conditions
-are met and the rate is exceeded, AWS WAF blocks the requests. If the
-rate drops below 1,000 for a five-minute period, AWS WAF no longer
-blocks the requests.
-
-As a second example, suppose you want to limit requests to a particular
-page on your site. To do this, you could add the following to a
-\code{RateBasedRule}:
-\itemize{
-\item A \code{ByteMatchSet} with \code{FieldToMatch} of \code{URI}
-\item A \code{PositionalConstraint} of \code{STARTS_WITH}
-\item A \code{TargetString} of \code{login}
-}
-
-Further, you specify a \code{RateLimit} of 1,000.
-
-By adding this \code{RateBasedRule} to a \code{WebACL}, you could limit requests
-to your login page without affecting the rest of your site.
-
-To create and configure a \code{RateBasedRule}, perform the following steps:
-\enumerate{
-\item Create and update the predicates that you want to include in the
-rule. For more information, see
-\code{\link[=waf_create_byte_match_set]{create_byte_match_set}},
-\code{\link[=waf_create_ip_set]{create_ip_set}}, and
-\code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}}.
-\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
-token that you provide in the \code{ChangeToken} parameter of a
-\code{\link[=waf_create_rule]{create_rule}} request.
-\item Submit a \code{\link[=waf_create_rate_based_rule]{create_rate_based_rule}}
-request.
-\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
-token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=waf_update_rule]{update_rule}} request.
-\item Submit an \code{\link[=waf_update_rate_based_rule]{update_rate_based_rule}}
-request to specify the predicates that you want to include in the
-rule.
-\item Create and update a \code{WebACL} that contains the \code{RateBasedRule}. For
-more information, see \code{\link[=waf_create_web_acl]{create_web_acl}}.
-}
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_rate_based_rule(
-  Name = "string",
-  MetricName = "string",
-  RateKey = "IP",
-  RateLimit = 123,
-  ChangeToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

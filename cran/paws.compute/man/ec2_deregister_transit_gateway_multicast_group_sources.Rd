@@ -6,8 +6,11 @@
 gateway multicast group}
 \usage{
 ec2_deregister_transit_gateway_multicast_group_sources(
-  TransitGatewayMulticastDomainId, GroupIpAddress, NetworkInterfaceIds,
-  DryRun)
+  TransitGatewayMulticastDomainId = NULL,
+  GroupIpAddress = NULL,
+  NetworkInterfaceIds = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayMulticastDomainId}{The ID of the transit gateway multicast domain.}
@@ -21,32 +24,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeregisteredMulticastGroupSources = list(
-    TransitGatewayMulticastDomainId = "string",
-    DeregisteredNetworkInterfaceIds = list(
-      "string"
-    ),
-    GroupIpAddress = "string"
-  )
-)
-}
-}
 \description{
-Deregisters the specified sources (network interfaces) from the transit
-gateway multicast group.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_transit_gateway_multicast_group_sources(
-  TransitGatewayMulticastDomainId = "string",
-  GroupIpAddress = "string",
-  NetworkInterfaceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deregisters the specified sources (network interfaces) from the transit gateway multicast group.
 
+See \url{https://paws-r.github.io/docs/ec2/deregister_transit_gateway_multicast_group_sources.html} for full documentation.
+}
 \keyword{internal}

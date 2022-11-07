@@ -13,49 +13,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified IAM user. Unlike the AWS Management Console, when
-you delete a user programmatically, you must delete the items attached
-to the user manually, or the deletion fails. For more information, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting_cli}{Deleting an IAM User}.
-Before attempting to delete a user, remove the following items:
-\itemize{
-\item Password (\code{\link[=iam_delete_login_profile]{delete_login_profile}})
-\item Access keys (\code{\link[=iam_delete_access_key]{delete_access_key}})
-\item Signing certificate
-(\code{\link[=iam_delete_signing_certificate]{delete_signing_certificate}})
-\item SSH public key
-(\code{\link[=iam_delete_ssh_public_key]{delete_ssh_public_key}})
-\item Git credentials
-(\code{\link[=iam_delete_service_specific_credential]{delete_service_specific_credential}})
-\item Multi-factor authentication (MFA) device
-(\code{\link[=iam_deactivate_mfa_device]{deactivate_mfa_device}},
-\code{\link[=iam_delete_virtual_mfa_device]{delete_virtual_mfa_device}})
-\item Inline policies (\code{\link[=iam_delete_user_policy]{delete_user_policy}})
-\item Attached managed policies
-(\code{\link[=iam_detach_user_policy]{detach_user_policy}})
-\item Group memberships
-(\code{\link[=iam_remove_user_from_group]{remove_user_from_group}})
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user(
-  UserName = "string"
-)
-}
-}
+Deletes the specified IAM user. Unlike the Amazon Web Services Management Console, when you delete a user programmatically, you must delete the items attached to the user manually, or the deletion fails. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting_cli}{Deleting an IAM user}. Before attempting to delete a user, remove the following items:
 
-\examples{
-\dontrun{
-# The following command removes the IAM user named Bob from the current
-# account.
-svc$delete_user(
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_user.html} for full documentation.
 }
 \keyword{internal}

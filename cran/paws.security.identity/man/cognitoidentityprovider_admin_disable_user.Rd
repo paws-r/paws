@@ -9,22 +9,11 @@ cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to disable the user.}
 
-\item{Username}{[required] The user name of the user you wish to disable.}
-}
-\value{
-An empty list.
+\item{Username}{[required] The user name of the user you want to disable.}
 }
 \description{
 Disables the specified user.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_disable_user.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_disable_user(
-  UserPoolId = "string",
-  Username = "string"
-)
-}
-}
-
 \keyword{internal}

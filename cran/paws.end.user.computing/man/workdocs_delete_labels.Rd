@@ -4,8 +4,12 @@
 \alias{workdocs_delete_labels}
 \title{Deletes the specified list of labels from a resource}
 \usage{
-workdocs_delete_labels(ResourceId, AuthenticationToken, Labels,
-  DeleteAll)
+workdocs_delete_labels(
+  ResourceId,
+  AuthenticationToken = NULL,
+  Labels = NULL,
+  DeleteAll = NULL
+)
 }
 \arguments{
 \item{ResourceId}{[required] The ID of the resource.}
@@ -17,22 +21,9 @@ administrator credentials to access the API.}
 
 \item{DeleteAll}{Flag to request removal of all labels from the specified resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified list of labels from a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_labels(
-  ResourceId = "string",
-  AuthenticationToken = "string",
-  Labels = list(
-    "string"
-  ),
-  DeleteAll = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/delete_labels.html} for full documentation.
+}
 \keyword{internal}

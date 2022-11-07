@@ -5,8 +5,13 @@
 \title{Describes the specified export image tasks or all of your export image
 tasks}
 \usage{
-ec2_describe_export_image_tasks(DryRun, Filters, ExportImageTaskIds,
-  MaxResults, NextToken)
+ec2_describe_export_image_tasks(
+  DryRun = NULL,
+  Filters = NULL,
+  ExportImageTaskIds = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -23,54 +28,9 @@ values: \code{active}, \code{completed}, \code{deleting}, or \code{deleted}.}
 
 \item{NextToken}{A token that indicates the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExportImageTasks = list(
-    list(
-      Description = "string",
-      ExportImageTaskId = "string",
-      ImageId = "string",
-      Progress = "string",
-      S3ExportLocation = list(
-        S3Bucket = "string",
-        S3Prefix = "string"
-      ),
-      Status = "string",
-      StatusMessage = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the specified export image tasks or all of your export image
-tasks.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_export_image_tasks(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ExportImageTaskIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes the specified export image tasks or all of your export image tasks.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_export_image_tasks.html} for full documentation.
+}
 \keyword{internal}

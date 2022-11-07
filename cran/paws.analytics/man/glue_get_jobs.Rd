@@ -4,72 +4,16 @@
 \alias{glue_get_jobs}
 \title{Retrieves all current job definitions}
 \usage{
-glue_get_jobs(NextToken, MaxResults)
+glue_get_jobs(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{A continuation token, if this is a continuation call.}
 
 \item{MaxResults}{The maximum size of the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Jobs = list(
-    list(
-      Name = "string",
-      Description = "string",
-      LogUri = "string",
-      Role = "string",
-      CreatedOn = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedOn = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExecutionProperty = list(
-        MaxConcurrentRuns = 123
-      ),
-      Command = list(
-        Name = "string",
-        ScriptLocation = "string",
-        PythonVersion = "string"
-      ),
-      DefaultArguments = list(
-        "string"
-      ),
-      NonOverridableArguments = list(
-        "string"
-      ),
-      Connections = list(
-        Connections = list(
-          "string"
-        )
-      ),
-      MaxRetries = 123,
-      AllocatedCapacity = 123,
-      Timeout = 123,
-      MaxCapacity = 123.0,
-      WorkerType = "Standard"|"G.1X"|"G.2X",
-      NumberOfWorkers = 123,
-      SecurityConfiguration = "string",
-      NotificationProperty = list(
-        NotifyDelayAfter = 123
-      ),
-      GlueVersion = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves all current job definitions.
-}
-\section{Request syntax}{
-\preformatted{svc$get_jobs(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_jobs.html} for full documentation.
+}
 \keyword{internal}

@@ -2,10 +2,10 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_reset_ebs_default_kms_key_id}
 \alias{ec2_reset_ebs_default_kms_key_id}
-\title{Resets the default customer master key (CMK) for EBS encryption for your
-account in this Region to the AWS managed CMK for EBS}
+\title{Resets the default KMS key for EBS encryption for your account in this
+Region to the Amazon Web Services managed KMS key for EBS}
 \usage{
-ec2_reset_ebs_default_kms_key_id(DryRun)
+ec2_reset_ebs_default_kms_key_id(DryRun = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -13,26 +13,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KmsKeyId = "string"
-)
-}
-}
 \description{
-Resets the default customer master key (CMK) for EBS encryption for your
-account in this Region to the AWS managed CMK for EBS.
+Resets the default KMS key for EBS encryption for your account in this Region to the Amazon Web Services managed KMS key for EBS.
 
-After resetting the default CMK to the AWS managed CMK, you can continue
-to encrypt by a customer managed CMK by specifying it when you create
-the volume. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/reset_ebs_default_kms_key_id.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$reset_ebs_default_kms_key_id(
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

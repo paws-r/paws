@@ -10,31 +10,9 @@ lexmodelbuildingservice_get_import(importId)
 \arguments{
 \item{importId}{[required] The identifier of the import job information to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-  mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
-  importId = "string",
-  importStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED",
-  failureReason = list(
-    "string"
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Gets information about an import job started with the
-\code{\link[=lexmodelbuildingservice_start_import]{start_import}} operation.
-}
-\section{Request syntax}{
-\preformatted{svc$get_import(
-  importId = "string"
-)
-}
-}
+Gets information about an import job started with the \code{\link[=lexmodelbuildingservice_start_import]{start_import}} operation.
 
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_import.html} for full documentation.
+}
 \keyword{internal}

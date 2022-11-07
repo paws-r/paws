@@ -2,31 +2,19 @@
 % Please edit documentation in R/cognitoidentity_operations.R
 \name{cognitoidentity_untag_resource}
 \alias{cognitoidentity_untag_resource}
-\title{Removes the specified tags from an Amazon Cognito identity pool}
+\title{Removes the specified tags from the specified Amazon Cognito identity
+pool}
 \usage{
 cognitoidentity_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the identity pool that the tags are
-assigned to.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the identity pool.}
 
 \item{TagKeys}{[required] The keys of the tags to remove from the user pool.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the specified tags from an Amazon Cognito identity pool. You can
-use this action up to 5 times per second, per account
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes the specified tags from the specified Amazon Cognito identity pool. You can use this action up to 5 times per second, per account
 
+See \url{https://paws-r.github.io/docs/cognitoidentity/untag_resource.html} for full documentation.
+}
 \keyword{internal}

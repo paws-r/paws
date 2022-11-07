@@ -4,8 +4,11 @@
 \alias{rds_create_db_cluster_snapshot}
 \title{Creates a snapshot of a DB cluster}
 \usage{
-rds_create_db_cluster_snapshot(DBClusterSnapshotIdentifier,
-  DBClusterIdentifier, Tags)
+rds_create_db_cluster_snapshot(
+  DBClusterSnapshotIdentifier,
+  DBClusterIdentifier,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot. This parameter is stored as a
@@ -32,64 +35,9 @@ Example: \code{my-cluster1}}
 
 \item{Tags}{The tags to be assigned to the DB cluster snapshot.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterSnapshot = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    DBClusterSnapshotIdentifier = "string",
-    DBClusterIdentifier = "string",
-    SnapshotCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Engine = "string",
-    AllocatedStorage = 123,
-    Status = "string",
-    Port = 123,
-    VpcId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    EngineVersion = "string",
-    LicenseModel = "string",
-    SnapshotType = "string",
-    PercentProgress = 123,
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DBClusterSnapshotArn = "string",
-    SourceDBClusterSnapshotArn = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a snapshot of a DB cluster. For more information on Amazon
-Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
+Creates a snapshot of a DB cluster.
 
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/create_db_cluster_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_db_cluster_snapshot(
-  DBClusterSnapshotIdentifier = "string",
-  DBClusterIdentifier = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

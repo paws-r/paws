@@ -5,8 +5,13 @@
 \title{Describes the connection notifications for VPC endpoints and VPC
 endpoint services}
 \usage{
-ec2_describe_vpc_endpoint_connection_notifications(DryRun,
-  ConnectionNotificationId, Filters, MaxResults, NextToken)
+ec2_describe_vpc_endpoint_connection_notifications(
+  DryRun = NULL,
+  ConnectionNotificationId = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -34,45 +39,9 @@ the remaining results, make another request with the returned
 
 \item{NextToken}{The token to request the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConnectionNotificationSet = list(
-    list(
-      ConnectionNotificationId = "string",
-      ServiceId = "string",
-      VpcEndpointId = "string",
-      ConnectionNotificationType = "Topic",
-      ConnectionNotificationArn = "string",
-      ConnectionEvents = list(
-        "string"
-      ),
-      ConnectionNotificationState = "Enabled"|"Disabled"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the connection notifications for VPC endpoints and VPC
-endpoint services.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vpc_endpoint_connection_notifications(
-  DryRun = TRUE|FALSE,
-  ConnectionNotificationId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes the connection notifications for VPC endpoints and VPC endpoint services.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoint_connection_notifications.html} for full documentation.
+}
 \keyword{internal}

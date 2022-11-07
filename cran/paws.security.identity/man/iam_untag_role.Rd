@@ -16,35 +16,9 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching
 keys are removed from the specified role.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the specified tags from the role. For more information about
-tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_role(
-  RoleName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes the specified tags from the role. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.
 
-\examples{
-\dontrun{
-# The following example shows how to remove a tag with the key 'Dept' from
-# a role named 'taggedrole'.
-svc$untag_role(
-  RoleName = "taggedrole",
-  TagKeys = list(
-    "Dept"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/untag_role.html} for full documentation.
 }
 \keyword{internal}

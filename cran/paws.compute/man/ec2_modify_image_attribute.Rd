@@ -4,13 +4,25 @@
 \alias{ec2_modify_image_attribute}
 \title{Modifies the specified attribute of the specified AMI}
 \usage{
-ec2_modify_image_attribute(Attribute, Description, ImageId,
-  LaunchPermission, OperationType, ProductCodes, UserGroups, UserIds,
-  Value, DryRun)
+ec2_modify_image_attribute(
+  Attribute = NULL,
+  Description = NULL,
+  ImageId,
+  LaunchPermission = NULL,
+  OperationType = NULL,
+  ProductCodes = NULL,
+  UserGroups = NULL,
+  UserIds = NULL,
+  Value = NULL,
+  DryRun = NULL,
+  OrganizationArns = NULL,
+  OrganizationalUnitArns = NULL
+)
 }
 \arguments{
-\item{Attribute}{The name of the attribute to modify. The valid values are \code{description},
-\code{launchPermission}, and \code{productCodes}.}
+\item{Attribute}{The name of the attribute to modify.
+
+Valid values: \code{description} | \code{launchPermission}}
 
 \item{Description}{A new description for the AMI.}
 
@@ -21,103 +33,32 @@ ec2_modify_image_attribute(Attribute, Description, ImageId,
 \item{OperationType}{The operation type. This parameter can be used only when the \code{Attribute}
 parameter is \code{launchPermission}.}
 
-\item{ProductCodes}{The DevPay product codes. After you add a product code to an AMI, it
-can't be removed.}
+\item{ProductCodes}{Not supported.}
 
 \item{UserGroups}{The user groups. This parameter can be used only when the \code{Attribute}
 parameter is \code{launchPermission}.}
 
-\item{UserIds}{The AWS account IDs. This parameter can be used only when the
-\code{Attribute} parameter is \code{launchPermission}.}
+\item{UserIds}{The Amazon Web Services account IDs. This parameter can be used only
+when the \code{Attribute} parameter is \code{launchPermission}.}
 
 \item{Value}{The value of the attribute being modified. This parameter can be used
-only when the \code{Attribute} parameter is \code{description} or \code{productCodes}.}
+only when the \code{Attribute} parameter is \code{description}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-}
-\value{
-An empty list.
+
+\item{OrganizationArns}{The Amazon Resource Name (ARN) of an organization. This parameter can be
+used only when the \code{Attribute} parameter is \code{launchPermission}.}
+
+\item{OrganizationalUnitArns}{The Amazon Resource Name (ARN) of an organizational unit (OU). This
+parameter can be used only when the \code{Attribute} parameter is
+\code{launchPermission}.}
 }
 \description{
-Modifies the specified attribute of the specified AMI. You can specify
-only one attribute at a time. You can use the \code{Attribute} parameter to
-specify the attribute or one of the following parameters: \code{Description},
-\code{LaunchPermission}, or \code{ProductCode}.
+Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. You can use the \code{Attribute} parameter to specify the attribute or one of the following parameters: \code{Description} or \code{LaunchPermission}.
 
-AWS Marketplace product codes cannot be modified. Images with an AWS
-Marketplace product code cannot be made public.
-
-To enable the SriovNetSupport enhanced networking attribute of an image,
-enable SriovNetSupport on an instance and create an AMI from the
-instance.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_image_attribute(
-  Attribute = "string",
-  Description = list(
-    Value = "string"
-  ),
-  ImageId = "string",
-  LaunchPermission = list(
-    Add = list(
-      list(
-        Group = "all",
-        UserId = "string"
-      )
-    ),
-    Remove = list(
-      list(
-        Group = "all",
-        UserId = "string"
-      )
-    )
-  ),
-  OperationType = "add"|"remove",
-  ProductCodes = list(
-    "string"
-  ),
-  UserGroups = list(
-    "string"
-  ),
-  UserIds = list(
-    "string"
-  ),
-  Value = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example makes the specified AMI public.
-svc$modify_image_attribute(
-  ImageId = "ami-5731123e",
-  LaunchPermission = list(
-    Add = list(
-      list(
-        Group = "all"
-      )
-    )
-  )
-)
-
-# This example grants launch permissions for the specified AMI to the
-# specified AWS account.
-svc$modify_image_attribute(
-  ImageId = "ami-5731123e",
-  LaunchPermission = list(
-    Add = list(
-      list(
-        UserId = "123456789012"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/modify_image_attribute.html} for full documentation.
 }
 \keyword{internal}

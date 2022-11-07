@@ -4,9 +4,20 @@
 \alias{ssm_create_maintenance_window}
 \title{Creates a new maintenance window}
 \usage{
-ssm_create_maintenance_window(Name, Description, StartDate, EndDate,
-  Schedule, ScheduleTimezone, ScheduleOffset, Duration, Cutoff,
-  AllowUnassociatedTargets, ClientToken, Tags)
+ssm_create_maintenance_window(
+  Name,
+  Description = NULL,
+  StartDate = NULL,
+  EndDate = NULL,
+  Schedule,
+  ScheduleTimezone = NULL,
+  ScheduleOffset = NULL,
+  Duration,
+  Cutoff,
+  AllowUnassociatedTargets,
+  ClientToken = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the maintenance window.}
@@ -15,23 +26,24 @@ ssm_create_maintenance_window(Name, Description, StartDate, EndDate,
 specifying a description to help you organize your maintenance windows.}
 
 \item{StartDate}{The date and time, in ISO-8601 Extended format, for when you want the
-maintenance window to become active. StartDate allows you to delay
+maintenance window to become active. \code{StartDate} allows you to delay
 activation of the maintenance window until the specified future date.}
 
 \item{EndDate}{The date and time, in ISO-8601 Extended format, for when you want the
-maintenance window to become inactive. EndDate allows you to set a date
-and time in the future when the maintenance window will no longer run.}
+maintenance window to become inactive. \code{EndDate} allows you to set a
+date and time in the future when the maintenance window will no longer
+run.}
 
 \item{Schedule}{[required] The schedule of the maintenance window in the form of a cron or rate
 expression.}
 
 \item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
-see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the
-IANA website.}
+"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA
+website.}
 
-\item{ScheduleOffset}{The number of days to wait after the date and time specified by a CRON
+\item{ScheduleOffset}{The number of days to wait after the date and time specified by a cron
 expression before running the maintenance window.
 
 For example, the following cron expression schedules a maintenance
@@ -44,13 +56,13 @@ two days later.}
 
 \item{Duration}{[required] The duration of the maintenance window in hours.}
 
-\item{Cutoff}{[required] The number of hours before the end of the maintenance window that
-Systems Manager stops scheduling new tasks for execution.}
+\item{Cutoff}{[required] The number of hours before the end of the maintenance window that Amazon
+Web Services Systems Manager stops scheduling new tasks for execution.}
 
-\item{AllowUnassociatedTargets}{[required] Enables a maintenance window task to run on managed instances, even if
-you have not registered those instances as targets. If enabled, then you
-must specify the unregistered instances (by instance ID) when you
-register a task with the maintenance window.
+\item{AllowUnassociatedTargets}{[required] Enables a maintenance window task to run on managed nodes, even if you
+haven't registered those nodes as targets. If enabled, then you must
+specify the unregistered managed nodes (by node ID) when you register a
+task with the maintenance window.
 
 If you don't enable this option, then you must specify
 previously-registered targets when you register a task with the
@@ -63,7 +75,7 @@ categorize a resource in different ways, such as by purpose, owner, or
 environment. For example, you might want to tag a maintenance window to
 identify the type of tasks it will run, the types of targets, and the
 environment it will run in. In this case, you could specify the
-following key name/value pairs:
+following key-value pairs:
 \itemize{
 \item \verb{Key=TaskType,Value=AgentUpdate}
 \item \verb{Key=OS,Value=Windows}
@@ -71,46 +83,11 @@ following key name/value pairs:
 }
 
 To add tags to an existing maintenance window, use the
-\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowId = "string"
-)
-}
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} operation.}
 }
 \description{
 Creates a new maintenance window.
 
-The value you specify for \code{Duration} determines the specific end time
-for the maintenance window based on the time it begins. No maintenance
-window tasks are permitted to start after the resulting endtime minus
-the number of hours you specify for \code{Cutoff}. For example, if the
-maintenance window starts at 3 PM, the duration is three hours, and the
-value you specify for \code{Cutoff} is one hour, no maintenance window tasks
-can start after 5 PM.
+See \url{https://paws-r.github.io/docs/ssm/create_maintenance_window.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_maintenance_window(
-  Name = "string",
-  Description = "string",
-  StartDate = "string",
-  EndDate = "string",
-  Schedule = "string",
-  ScheduleTimezone = "string",
-  ScheduleOffset = 123,
-  Duration = 123,
-  Cutoff = 123,
-  AllowUnassociatedTargets = TRUE|FALSE,
-  ClientToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

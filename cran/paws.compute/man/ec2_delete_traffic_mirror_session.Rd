@@ -4,7 +4,7 @@
 \alias{ec2_delete_traffic_mirror_session}
 \title{Deletes the specified Traffic Mirror session}
 \usage{
-ec2_delete_traffic_mirror_session(TrafficMirrorSessionId, DryRun)
+ec2_delete_traffic_mirror_session(TrafficMirrorSessionId, DryRun = NULL)
 }
 \arguments{
 \item{TrafficMirrorSessionId}{[required] The ID of the Traffic Mirror session.}
@@ -14,21 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorSessionId = "string"
-)
-}
-}
 \description{
 Deletes the specified Traffic Mirror session.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_traffic_mirror_session(
-  TrafficMirrorSessionId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_traffic_mirror_session.html} for full documentation.
+}
 \keyword{internal}

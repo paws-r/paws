@@ -5,8 +5,17 @@
 \title{Returns events related to instances, security groups, snapshots, and DB
 parameter groups for the past 14 days}
 \usage{
-docdb_describe_events(SourceIdentifier, SourceType, StartTime, EndTime,
-  Duration, EventCategories, Filters, MaxRecords, Marker)
+docdb_describe_events(
+  SourceIdentifier = NULL,
+  SourceType = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  Duration = NULL,
+  EventCategories = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{SourceIdentifier}{The identifier of the event source for which events are returned. If not
@@ -62,59 +71,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  Events = list(
-    list(
-      SourceIdentifier = "string",
-      SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-      Message = "string",
-      EventCategories = list(
-        "string"
-      ),
-      Date = as.POSIXct(
-        "2015-01-01"
-      ),
-      SourceArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns events related to instances, security groups, snapshots, and DB
-parameter groups for the past 14 days. You can obtain events specific to
-a particular DB instance, security group, snapshot, or parameter group
-by providing the name as a parameter. By default, the events of the past
-hour are returned.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_events(
-  SourceIdentifier = "string",
-  SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Duration = 123,
-  EventCategories = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns events related to instances, security groups, snapshots, and DB parameter groups for the past 14 days. You can obtain events specific to a particular DB instance, security group, snapshot, or parameter group by providing the name as a parameter. By default, the events of the past hour are returned.
 
+See \url{https://paws-r.github.io/docs/docdb/describe_events.html} for full documentation.
+}
 \keyword{internal}

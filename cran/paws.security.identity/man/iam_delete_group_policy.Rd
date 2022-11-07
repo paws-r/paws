@@ -21,36 +21,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified inline policy that is embedded in the specified
-IAM group.
+Deletes the specified inline policy that is embedded in the specified IAM group.
 
-A group can also have managed policies attached to it. To detach a
-managed policy from a group, use
-\code{\link[=iam_detach_group_policy]{detach_group_policy}}. For more information
-about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_group_policy(
-  GroupName = "string",
-  PolicyName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command deletes the policy named ExamplePolicy from the
-# group named Admins:
-svc$delete_group_policy(
-  GroupName = "Admins",
-  PolicyName = "ExamplePolicy"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_group_policy.html} for full documentation.
 }
 \keyword{internal}

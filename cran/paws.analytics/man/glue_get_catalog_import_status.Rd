@@ -4,32 +4,15 @@
 \alias{glue_get_catalog_import_status}
 \title{Retrieves the status of a migration operation}
 \usage{
-glue_get_catalog_import_status(CatalogId)
+glue_get_catalog_import_status(CatalogId = NULL)
 }
 \arguments{
-\item{CatalogId}{The ID of the catalog to migrate. Currently, this should be the AWS
-account ID.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ImportStatus = list(
-    ImportCompleted = TRUE|FALSE,
-    ImportTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ImportedBy = "string"
-  )
-)
-}
+\item{CatalogId}{The ID of the catalog to migrate. Currently, this should be the Amazon
+Web Services account ID.}
 }
 \description{
 Retrieves the status of a migration operation.
-}
-\section{Request syntax}{
-\preformatted{svc$get_catalog_import_status(
-  CatalogId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_catalog_import_status.html} for full documentation.
+}
 \keyword{internal}

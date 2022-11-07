@@ -4,8 +4,12 @@
 \alias{acm_list_certificates}
 \title{Retrieves a list of certificate ARNs and domain names}
 \usage{
-acm_list_certificates(CertificateStatuses, Includes, NextToken,
-  MaxItems)
+acm_list_certificates(
+  CertificateStatuses = NULL,
+  Includes = NULL,
+  NextToken = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{CertificateStatuses}{Filter the certificate list by status value.}
@@ -23,44 +27,9 @@ number you specify, the \code{NextToken} element is sent in the response. Use
 this \code{NextToken} value in a subsequent request to retrieve additional
 items.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  CertificateSummaryList = list(
-    list(
-      CertificateArn = "string",
-      DomainName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves a list of certificate ARNs and domain names. You can request
-that only certificates that match a specific status be listed. You can
-also filter by specific attributes of the certificate. Default filtering
-returns only \code{RSA_2048} certificates. For more information, see Filters.
-}
-\section{Request syntax}{
-\preformatted{svc$list_certificates(
-  CertificateStatuses = list(
-    "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
-  ),
-  Includes = list(
-    extendedKeyUsage = list(
-      "TLS_WEB_SERVER_AUTHENTICATION"|"TLS_WEB_CLIENT_AUTHENTICATION"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"IPSEC_END_SYSTEM"|"IPSEC_TUNNEL"|"IPSEC_USER"|"ANY"|"NONE"|"CUSTOM"
-    ),
-    keyUsage = list(
-      "DIGITAL_SIGNATURE"|"NON_REPUDIATION"|"KEY_ENCIPHERMENT"|"DATA_ENCIPHERMENT"|"KEY_AGREEMENT"|"CERTIFICATE_SIGNING"|"CRL_SIGNING"|"ENCIPHER_ONLY"|"DECIPHER_ONLY"|"ANY"|"CUSTOM"
-    ),
-    keyTypes = list(
-      "RSA_2048"|"RSA_1024"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"
-    )
-  ),
-  NextToken = "string",
-  MaxItems = 123
-)
-}
-}
+Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only \code{RSA_2048} certificates. For more information, see Filters.
 
+See \url{https://paws-r.github.io/docs/acm/list_certificates.html} for full documentation.
+}
 \keyword{internal}

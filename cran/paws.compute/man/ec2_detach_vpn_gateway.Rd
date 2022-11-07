@@ -4,7 +4,7 @@
 \alias{ec2_detach_vpn_gateway}
 \title{Detaches a virtual private gateway from a VPC}
 \usage{
-ec2_detach_vpn_gateway(VpcId, VpnGatewayId, DryRun)
+ec2_detach_vpn_gateway(VpcId, VpnGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{VpcId}{[required] The ID of the VPC.}
@@ -16,27 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Detaches a virtual private gateway from a VPC. You do this if you're
-planning to turn off the VPC and not use it anymore. You can confirm a
-virtual private gateway has been completely detached from a VPC by
-describing the virtual private gateway (any attachments to the virtual
-private gateway are also described).
+Detaches a virtual private gateway from a VPC. You do this if you're planning to turn off the VPC and not use it anymore. You can confirm a virtual private gateway has been completely detached from a VPC by describing the virtual private gateway (any attachments to the virtual private gateway are also described).
 
-You must wait for the attachment's state to switch to \code{detached} before
-you can delete the VPC or attach a different VPC to the virtual private
-gateway.
+See \url{https://paws-r.github.io/docs/ec2/detach_vpn_gateway.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$detach_vpn_gateway(
-  VpcId = "string",
-  VpnGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

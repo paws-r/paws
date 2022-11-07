@@ -15,32 +15,9 @@ which you want to receive SNS notifications.}
 
 \item{topicArn}{[required] The ARN of the SNS topic to which the SNS notifications are sent.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables the process of sending Amazon Simple Notification Service (SNS)
-notifications about a specified event to a specified SNS topic.
-}
-\section{Request syntax}{
-\preformatted{svc$subscribe_to_event(
-  resourceArn = "string",
-  event = "ASSESSMENT_RUN_STARTED"|"ASSESSMENT_RUN_COMPLETED"|"ASSESSMENT_RUN_STATE_CHANGED"|"FINDING_REPORTED"|"OTHER",
-  topicArn = "string"
-)
-}
-}
+Enables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.
 
-\examples{
-\dontrun{
-# Enables the process of sending Amazon Simple Notification Service (SNS)
-# notifications about a specified event to a specified SNS topic.
-svc$subscribe_to_event(
-  event = "ASSESSMENT_RUN_COMPLETED",
-  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX...",
-  topicArn = "arn:aws:sns:us-west-2:123456789012:exampletopic"
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/subscribe_to_event.html} for full documentation.
 }
 \keyword{internal}

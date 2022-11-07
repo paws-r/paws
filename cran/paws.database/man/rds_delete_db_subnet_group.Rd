@@ -11,27 +11,14 @@ rds_delete_db_subnet_group(DBSubnetGroupName)
 
 You can't delete the default subnet group.
 
-Constraints:
-
 Constraints: Must match the name of an existing DBSubnetGroup. Must not
 be default.
 
-Example: \code{mySubnetgroup}}
-}
-\value{
-An empty list.
+Example: \code{mydbsubnetgroup}}
 }
 \description{
 Deletes a DB subnet group.
 
-The specified database subnet group must not be associated with any DB
-instances.
+See \url{https://paws-r.github.io/docs/rds/delete_db_subnet_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_db_subnet_group(
-  DBSubnetGroupName = "string"
-)
-}
-}
-
 \keyword{internal}

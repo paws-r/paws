@@ -6,8 +6,12 @@
 gateway route tables}
 \usage{
 ec2_describe_local_gateway_route_table_virtual_interface_group_associations(
-  LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds, Filters,
-  MaxResults, NextToken, DryRun)
+  LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds}{The IDs of the associations.}
@@ -15,12 +19,16 @@ ec2_describe_local_gateway_route_table_virtual_interface_group_associations(
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{local-gateway-id} - The ID of a local gateway.
+\item \code{local-gateway-route-table-arn} - The Amazon Resource Name (ARN) of
+the local gateway route table for the virtual interface group.
 \item \code{local-gateway-route-table-id} - The ID of the local gateway route
 table.
 \item \code{local-gateway-route-table-virtual-interface-group-association-id} -
 The ID of the association.
 \item \code{local-gateway-route-table-virtual-interface-group-id} - The ID of
 the virtual interface group.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+local gateway virtual interface group association.
 \item \code{state} - The state of the association.
 }}
 
@@ -35,51 +43,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LocalGatewayRouteTableVirtualInterfaceGroupAssociations = list(
-    list(
-      LocalGatewayRouteTableVirtualInterfaceGroupAssociationId = "string",
-      LocalGatewayVirtualInterfaceGroupId = "string",
-      LocalGatewayId = "string",
-      LocalGatewayRouteTableId = "string",
-      LocalGatewayRouteTableArn = "string",
-      OwnerId = "string",
-      State = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the associations between virtual interface groups and local
-gateway route tables.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_local_gateway_route_table_virtual_interface_group_associations(
-  LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes the associations between virtual interface groups and local gateway route tables.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_local_gateway_route_table_virtual_interface_group_associations.html} for full documentation.
+}
 \keyword{internal}

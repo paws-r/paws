@@ -4,9 +4,18 @@
 \alias{codecommit_create_commit}
 \title{Creates a commit for a repository on the tip of a specified branch}
 \usage{
-codecommit_create_commit(repositoryName, branchName, parentCommitId,
-  authorName, email, commitMessage, keepEmptyFolders, putFiles,
-  deleteFiles, setFileModes)
+codecommit_create_commit(
+  repositoryName,
+  branchName,
+  parentCommitId = NULL,
+  authorName = NULL,
+  email = NULL,
+  commitMessage = NULL,
+  keepEmptyFolders = NULL,
+  putFiles = NULL,
+  deleteFiles = NULL,
+  setFileModes = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you create the commit.}
@@ -36,70 +45,9 @@ commits.}
 
 \item{setFileModes}{The file modes to update for files in this commit.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commitId = "string",
-  treeId = "string",
-  filesAdded = list(
-    list(
-      absolutePath = "string",
-      blobId = "string",
-      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-    )
-  ),
-  filesUpdated = list(
-    list(
-      absolutePath = "string",
-      blobId = "string",
-      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-    )
-  ),
-  filesDeleted = list(
-    list(
-      absolutePath = "string",
-      blobId = "string",
-      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-    )
-  )
-)
-}
-}
 \description{
 Creates a commit for a repository on the tip of a specified branch.
-}
-\section{Request syntax}{
-\preformatted{svc$create_commit(
-  repositoryName = "string",
-  branchName = "string",
-  parentCommitId = "string",
-  authorName = "string",
-  email = "string",
-  commitMessage = "string",
-  keepEmptyFolders = TRUE|FALSE,
-  putFiles = list(
-    list(
-      filePath = "string",
-      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-      fileContent = raw,
-      sourceFile = list(
-        filePath = "string",
-        isMove = TRUE|FALSE
-      )
-    )
-  ),
-  deleteFiles = list(
-    list(
-      filePath = "string"
-    )
-  ),
-  setFileModes = list(
-    list(
-      filePath = "string",
-      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/create_commit.html} for full documentation.
+}
 \keyword{internal}

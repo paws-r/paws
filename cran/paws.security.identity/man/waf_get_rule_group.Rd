@@ -11,37 +11,9 @@ waf_get_rule_group(RuleGroupId)
 is returned by \code{\link[=waf_create_rule_group]{create_rule_group}} and by
 \code{\link[=waf_list_rule_groups]{list_rule_groups}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RuleGroup = list(
-    RuleGroupId = "string",
-    Name = "string",
-    MetricName = "string"
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns the RuleGroup that is specified by the \code{RuleGroupId} that you
-included in the \code{\link[=waf_get_rule_group]{get_rule_group}} request.
-
-To view the rules in a rule group, use
-\code{\link[=waf_list_activated_rules_in_rule_group]{list_activated_rules_in_rule_group}}.
+See \url{https://paws-r.github.io/docs/waf/get_rule_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_rule_group(
-  RuleGroupId = "string"
-)
-}
-}
-
 \keyword{internal}

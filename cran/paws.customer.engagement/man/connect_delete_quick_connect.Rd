@@ -2,31 +2,19 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_delete_quick_connect}
 \alias{connect_delete_quick_connect}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Deletes a quick connect}
 \usage{
 connect_delete_quick_connect(InstanceId, QuickConnectId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{QuickConnectId}{[required] The identifier for the quick connect.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Deletes a quick connect.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_quick_connect(
-  InstanceId = "string",
-  QuickConnectId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/delete_quick_connect.html} for full documentation.
+}
 \keyword{internal}

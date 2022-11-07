@@ -2,41 +2,27 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_create_documentation_version}
 \alias{apigateway_create_documentation_version}
-\title{Create documentation version}
+\title{Creates a documentation version}
 \usage{
-apigateway_create_documentation_version(restApiId, documentationVersion,
-  stageName, description)
+apigateway_create_documentation_version(
+  restApiId,
+  documentationVersion,
+  stageName = NULL,
+  description = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{documentationVersion}{[required] [Required] The version identifier of the new snapshot.}
+\item{documentationVersion}{[required] The version identifier of the new snapshot.}
 
 \item{stageName}{The stage name to be associated with the new documentation snapshot.}
 
 \item{description}{A description about the new documentation snapshot.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  version = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  description = "string"
-)
-}
-}
 \description{
-Create documentation version
-}
-\section{Request syntax}{
-\preformatted{svc$create_documentation_version(
-  restApiId = "string",
-  documentationVersion = "string",
-  stageName = "string",
-  description = "string"
-)
-}
-}
+Creates a documentation version
 
+See \url{https://paws-r.github.io/docs/apigateway/create_documentation_version.html} for full documentation.
+}
 \keyword{internal}

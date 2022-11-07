@@ -4,7 +4,7 @@
 \alias{health_describe_event_details}
 \title{Returns detailed information about one or more specified events}
 \usage{
-health_describe_event_details(eventArns, locale)
+health_describe_event_details(eventArns, locale = NULL)
 }
 \arguments{
 \item{eventArns}{[required] A list of event ARNs (unique identifiers). For example:
@@ -13,68 +13,9 @@ health_describe_event_details(eventArns, locale)
 \item{locale}{The locale (language) to return information in. English (en) is the
 default and the only supported value at this time.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  successfulSet = list(
-    list(
-      event = list(
-        arn = "string",
-        service = "string",
-        eventTypeCode = "string",
-        eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
-        region = "string",
-        availabilityZone = "string",
-        startTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        endTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        lastUpdatedTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        statusCode = "open"|"closed"|"upcoming",
-        eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
-      ),
-      eventDescription = list(
-        latestDescription = "string"
-      ),
-      eventMetadata = list(
-        "string"
-      )
-    )
-  ),
-  failedSet = list(
-    list(
-      eventArn = "string",
-      errorName = "string",
-      errorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns detailed information about one or more specified events.
-Information includes standard event data (Region, service, and so on, as
-returned by \code{\link[=health_describe_events]{describe_events}}), a detailed
-event description, and possible additional metadata that depends upon
-the nature of the event. Affected entities are not included. To retrieve
-those, use the
-\code{\link[=health_describe_affected_entities]{describe_affected_entities}}
-operation.
+Returns detailed information about one or more specified events. Information includes standard event data (Amazon Web Services Region, service, and so on, as returned by \code{\link[=health_describe_events]{describe_events}}), a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included. To retrieve the entities, use the \code{\link[=health_describe_affected_entities]{describe_affected_entities}} operation.
 
-If a specified event cannot be retrieved, an error message is returned
-for that event.
+See \url{https://paws-r.github.io/docs/health/describe_event_details.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_event_details(
-  eventArns = list(
-    "string"
-  ),
-  locale = "string"
-)
-}
-}
-
 \keyword{internal}

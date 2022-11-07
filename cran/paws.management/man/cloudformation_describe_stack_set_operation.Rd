@@ -4,72 +4,38 @@
 \alias{cloudformation_describe_stack_set_operation}
 \title{Returns the description of the specified stack set operation}
 \usage{
-cloudformation_describe_stack_set_operation(StackSetName, OperationId)
+cloudformation_describe_stack_set_operation(
+  StackSetName,
+  OperationId,
+  CallAs = NULL
+)
 }
 \arguments{
 \item{StackSetName}{[required] The name or the unique stack ID of the stack set for the stack
 operation.}
 
 \item{OperationId}{[required] The unique ID of the stack set operation.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StackSetOperation = list(
-    OperationId = "string",
-    StackSetId = "string",
-    Action = "CREATE"|"UPDATE"|"DELETE"|"DETECT_DRIFT",
-    Status = "RUNNING"|"SUCCEEDED"|"FAILED"|"STOPPING"|"STOPPED"|"QUEUED",
-    OperationPreferences = list(
-      RegionOrder = list(
-        "string"
-      ),
-      FailureToleranceCount = 123,
-      FailureTolerancePercentage = 123,
-      MaxConcurrentCount = 123,
-      MaxConcurrentPercentage = 123
-    ),
-    RetainStacks = TRUE|FALSE,
-    AdministrationRoleARN = "string",
-    ExecutionRoleName = "string",
-    CreationTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    DeploymentTargets = list(
-      Accounts = list(
-        "string"
-      ),
-      OrganizationalUnitIds = list(
-        "string"
-      )
-    ),
-    StackSetDriftDetectionDetails = list(
-      DriftStatus = "DRIFTED"|"IN_SYNC"|"NOT_CHECKED",
-      DriftDetectionStatus = "COMPLETED"|"FAILED"|"PARTIAL_SUCCESS"|"IN_PROGRESS"|"STOPPED",
-      LastDriftCheckTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      TotalStackInstancesCount = 123,
-      DriftedStackInstancesCount = 123,
-      InSyncStackInstancesCount = 123,
-      InProgressStackInstancesCount = 123,
-      FailedStackInstancesCount = 123
-    )
-  )
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
 Returns the description of the specified stack set operation.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_stack_set_operation(
-  StackSetName = "string",
-  OperationId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_set_operation.html} for full documentation.
+}
 \keyword{internal}

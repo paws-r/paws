@@ -13,14 +13,21 @@ NULL
 #' If you use an Amazon SNS topic in another account, you must attach a
 #' policy to it that grants DevOps Guru permission to it notifications.
 #' DevOps Guru adds the required policy on your behalf to send
-#' notifications using Amazon SNS in your account. For more information,
-#' see [Permissions for cross account Amazon SNS
+#' notifications using Amazon SNS in your account. DevOps Guru only
+#' supports standard SNS topics. For more information, see [Permissions for
+#' cross account Amazon SNS
 #' topics](https://docs.aws.amazon.com/devops-guru/latest/userguide/sns-required-permissions.html).
 #' 
-#' If you use an Amazon SNS topic that is encrypted by an AWS Key
-#' Management Service customer-managed key (CMK), then you must add
-#' permissions to the CMK. For more information, see [Permissions for AWS
-#' KMS–encrypted Amazon SNS
+#' If you use an Amazon SNS topic in another account, you must attach a
+#' policy to it that grants DevOps Guru permission to it notifications.
+#' DevOps Guru adds the required policy on your behalf to send
+#' notifications using Amazon SNS in your account. For more information,
+#' see Permissions for cross account Amazon SNS topics.
+#' 
+#' If you use an Amazon SNS topic that is encrypted by an Amazon Web
+#' Services Key Management Service customer-managed key (CMK), then you
+#' must add permissions to the CMK. For more information, see [Permissions
+#' for Amazon Web Services KMS–encrypted Amazon SNS
 #' topics](https://docs.aws.amazon.com/devops-guru/latest/userguide/sns-kms-permissions.html).
 #'
 #' @usage
@@ -69,15 +76,57 @@ devopsguru_add_notification_channel <- function(Config) {
 }
 .devopsguru$operations$add_notification_channel <- devopsguru_add_notification_channel
 
+#' Deletes the insight along with the associated anomalies, events and
+#' recommendations
+#'
+#' @description
+#' Deletes the insight along with the associated anomalies, events and
+#' recommendations.
+#'
+#' @usage
+#' devopsguru_delete_insight(Id)
+#'
+#' @param Id &#91;required&#93; The ID of the insight.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_insight(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_delete_insight
+devopsguru_delete_insight <- function(Id) {
+  op <- new_operation(
+    name = "DeleteInsight",
+    http_method = "DELETE",
+    http_path = "/insights/{Id}",
+    paginator = list()
+  )
+  input <- .devopsguru$delete_insight_input(Id = Id)
+  output <- .devopsguru$delete_insight_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$delete_insight <- devopsguru_delete_insight
+
 #' Returns the number of open reactive insights, the number of open
-#' proactive insights, and the number of metrics analyzed in your AWS
-#' account
+#' proactive insights, and the number of metrics analyzed in your Amazon
+#' Web Services account
 #'
 #' @description
 #' Returns the number of open reactive insights, the number of open
-#' proactive insights, and the number of metrics analyzed in your AWS
-#' account. Use these numbers to gauge the health of operations in your AWS
-#' account.
+#' proactive insights, and the number of metrics analyzed in your Amazon
+#' Web Services account. Use these numbers to gauge the health of
+#' operations in your Amazon Web Services account.
 #'
 #' @usage
 #' devopsguru_describe_account_health()
@@ -188,9 +237,10 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #' Returns details about an anomaly that you specify using its ID.
 #'
 #' @usage
-#' devopsguru_describe_anomaly(Id)
+#' devopsguru_describe_anomaly(Id, AccountId)
 #'
 #' @param Id &#91;required&#93; The ID of the anomaly.
+#' @param AccountId The ID of the member account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -208,6 +258,14 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #'         "2015-01-01"
 #'       ),
 #'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     AnomalyReportedTimeRange = list(
+#'       OpenTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CloseTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
 #'     ),
@@ -232,7 +290,74 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #'           ),
 #'           Stat = "Sum"|"Average"|"SampleCount"|"Minimum"|"Maximum"|"p99"|"p90"|"p50",
 #'           Unit = "string",
-#'           Period = 123
+#'           Period = 123,
+#'           MetricDataSummary = list(
+#'             TimestampMetricValuePairList = list(
+#'               list(
+#'                 Timestamp = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 MetricValue = 123.0
+#'               )
+#'             ),
+#'             StatusCode = "Complete"|"InternalError"|"PartialData"
+#'           )
+#'         )
+#'       ),
+#'       PerformanceInsightsMetrics = list(
+#'         list(
+#'           MetricDisplayName = "string",
+#'           Unit = "string",
+#'           MetricQuery = list(
+#'             Metric = "string",
+#'             GroupBy = list(
+#'               Group = "string",
+#'               Dimensions = list(
+#'                 "string"
+#'               ),
+#'               Limit = 123
+#'             ),
+#'             Filter = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ReferenceData = list(
+#'             list(
+#'               Name = "string",
+#'               ComparisonValues = list(
+#'                 ReferenceScalar = list(
+#'                   Value = 123.0
+#'                 ),
+#'                 ReferenceMetric = list(
+#'                   MetricQuery = list(
+#'                     Metric = "string",
+#'                     GroupBy = list(
+#'                       Group = "string",
+#'                       Dimensions = list(
+#'                         "string"
+#'                       ),
+#'                       Limit = 123
+#'                     ),
+#'                     Filter = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           StatsAtAnomaly = list(
+#'             list(
+#'               Type = "string",
+#'               Value = 123.0
+#'             )
+#'           ),
+#'           StatsAtBaseline = list(
+#'             list(
+#'               Type = "string",
+#'               Value = 123.0
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -242,9 +367,28 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #'         StackNames = list(
 #'           "string"
 #'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           AppBoundaryKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     ),
-#'     Limit = 123.0
+#'     Limit = 123.0,
+#'     SourceMetadata = list(
+#'       Source = "string",
+#'       SourceResourceName = "string",
+#'       SourceResourceType = "string"
+#'     ),
+#'     AnomalyResources = list(
+#'       list(
+#'         Name = "string",
+#'         Type = "string"
+#'       )
+#'     )
 #'   ),
 #'   ReactiveAnomaly = list(
 #'     Id = "string",
@@ -255,6 +399,14 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #'         "2015-01-01"
 #'       ),
 #'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     AnomalyReportedTimeRange = list(
+#'       OpenTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CloseTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
 #'     ),
@@ -271,7 +423,74 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #'           ),
 #'           Stat = "Sum"|"Average"|"SampleCount"|"Minimum"|"Maximum"|"p99"|"p90"|"p50",
 #'           Unit = "string",
-#'           Period = 123
+#'           Period = 123,
+#'           MetricDataSummary = list(
+#'             TimestampMetricValuePairList = list(
+#'               list(
+#'                 Timestamp = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 MetricValue = 123.0
+#'               )
+#'             ),
+#'             StatusCode = "Complete"|"InternalError"|"PartialData"
+#'           )
+#'         )
+#'       ),
+#'       PerformanceInsightsMetrics = list(
+#'         list(
+#'           MetricDisplayName = "string",
+#'           Unit = "string",
+#'           MetricQuery = list(
+#'             Metric = "string",
+#'             GroupBy = list(
+#'               Group = "string",
+#'               Dimensions = list(
+#'                 "string"
+#'               ),
+#'               Limit = 123
+#'             ),
+#'             Filter = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ReferenceData = list(
+#'             list(
+#'               Name = "string",
+#'               ComparisonValues = list(
+#'                 ReferenceScalar = list(
+#'                   Value = 123.0
+#'                 ),
+#'                 ReferenceMetric = list(
+#'                   MetricQuery = list(
+#'                     Metric = "string",
+#'                     GroupBy = list(
+#'                       Group = "string",
+#'                       Dimensions = list(
+#'                         "string"
+#'                       ),
+#'                       Limit = 123
+#'                     ),
+#'                     Filter = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           StatsAtAnomaly = list(
+#'             list(
+#'               Type = "string",
+#'               Value = 123.0
+#'             )
+#'           ),
+#'           StatsAtBaseline = list(
+#'             list(
+#'               Type = "string",
+#'               Value = 123.0
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -281,6 +500,24 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #'         StackNames = list(
 #'           "string"
 #'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           AppBoundaryKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Type = "CAUSAL"|"CONTEXTUAL",
+#'     Name = "string",
+#'     Description = "string",
+#'     CausalAnomalyId = "string",
+#'     AnomalyResources = list(
+#'       list(
+#'         Name = "string",
+#'         Type = "string"
 #'       )
 #'     )
 #'   )
@@ -290,21 +527,22 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_anomaly(
-#'   Id = "string"
+#'   Id = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_anomaly
-devopsguru_describe_anomaly <- function(Id) {
+devopsguru_describe_anomaly <- function(Id, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeAnomaly",
     http_method = "GET",
     http_path = "/anomalies/{Id}",
     paginator = list()
   )
-  input <- .devopsguru$describe_anomaly_input(Id = Id)
+  input <- .devopsguru$describe_anomaly_input(Id = Id, AccountId = AccountId)
   output <- .devopsguru$describe_anomaly_output()
   config <- get_config()
   svc <- .devopsguru$service(config)
@@ -314,15 +552,116 @@ devopsguru_describe_anomaly <- function(Id) {
 }
 .devopsguru$operations$describe_anomaly <- devopsguru_describe_anomaly
 
+#' Returns the integration status of services that are integrated with
+#' DevOps Guru as Consumer via EventBridge
+#'
+#' @description
+#' Returns the integration status of services that are integrated with
+#' DevOps Guru as Consumer via EventBridge. The one service that can be
+#' integrated with DevOps Guru is Amazon CodeGuru Profiler, which can
+#' produce proactive recommendations which can be stored and viewed in
+#' DevOps Guru.
+#'
+#' @usage
+#' devopsguru_describe_event_sources_config()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSources = list(
+#'     AmazonCodeGuruProfiler = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_event_sources_config()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_describe_event_sources_config
+devopsguru_describe_event_sources_config <- function() {
+  op <- new_operation(
+    name = "DescribeEventSourcesConfig",
+    http_method = "POST",
+    http_path = "/event-sources",
+    paginator = list()
+  )
+  input <- .devopsguru$describe_event_sources_config_input()
+  output <- .devopsguru$describe_event_sources_config_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$describe_event_sources_config <- devopsguru_describe_event_sources_config
+
+#' Returns the most recent feedback submitted in the current Amazon Web
+#' Services account and Region
+#'
+#' @description
+#' Returns the most recent feedback submitted in the current Amazon Web
+#' Services account and Region.
+#'
+#' @usage
+#' devopsguru_describe_feedback(InsightId)
+#'
+#' @param InsightId The ID of the insight for which the feedback was provided.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InsightFeedback = list(
+#'     Id = "string",
+#'     Feedback = "VALID_COLLECTION"|"RECOMMENDATION_USEFUL"|"ALERT_TOO_SENSITIVE"|"DATA_NOISY_ANOMALY"|"DATA_INCORRECT"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_feedback(
+#'   InsightId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_describe_feedback
+devopsguru_describe_feedback <- function(InsightId = NULL) {
+  op <- new_operation(
+    name = "DescribeFeedback",
+    http_method = "POST",
+    http_path = "/feedback",
+    paginator = list()
+  )
+  input <- .devopsguru$describe_feedback_input(InsightId = InsightId)
+  output <- .devopsguru$describe_feedback_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$describe_feedback <- devopsguru_describe_feedback
+
 #' Returns details about an insight that you specify using its ID
 #'
 #' @description
 #' Returns details about an insight that you specify using its ID.
 #'
 #' @usage
-#' devopsguru_describe_insight(Id)
+#' devopsguru_describe_insight(Id, AccountId)
 #'
 #' @param Id &#91;required&#93; The ID of the insight.
+#' @param AccountId The ID of the member account in the organization.
 #'
 #' @return
 #' A list with the following syntax:
@@ -354,9 +693,18 @@ devopsguru_describe_anomaly <- function(Id) {
 #'         StackNames = list(
 #'           "string"
 #'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           AppBoundaryKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     ),
-#'     SsmOpsItemId = "string"
+#'     SsmOpsItemId = "string",
+#'     Description = "string"
 #'   ),
 #'   ReactiveInsight = list(
 #'     Id = "string",
@@ -376,9 +724,18 @@ devopsguru_describe_anomaly <- function(Id) {
 #'         StackNames = list(
 #'           "string"
 #'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           AppBoundaryKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     ),
-#'     SsmOpsItemId = "string"
+#'     SsmOpsItemId = "string",
+#'     Description = "string"
 #'   )
 #' )
 #' ```
@@ -386,21 +743,22 @@ devopsguru_describe_anomaly <- function(Id) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_insight(
-#'   Id = "string"
+#'   Id = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_insight
-devopsguru_describe_insight <- function(Id) {
+devopsguru_describe_insight <- function(Id, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeInsight",
     http_method = "GET",
     http_path = "/insights/{Id}",
     paginator = list()
   )
-  input <- .devopsguru$describe_insight_input(Id = Id)
+  input <- .devopsguru$describe_insight_input(Id = Id, AccountId = AccountId)
   output <- .devopsguru$describe_insight_output()
   config <- get_config()
   svc <- .devopsguru$service(config)
@@ -410,6 +768,242 @@ devopsguru_describe_insight <- function(Id) {
 }
 .devopsguru$operations$describe_insight <- devopsguru_describe_insight
 
+#' Returns active insights, predictive insights, and resource hours
+#' analyzed in last hour
+#'
+#' @description
+#' Returns active insights, predictive insights, and resource hours
+#' analyzed in last hour.
+#'
+#' @usage
+#' devopsguru_describe_organization_health(AccountIds,
+#'   OrganizationalUnitIds)
+#'
+#' @param AccountIds The ID of the Amazon Web Services account.
+#' @param OrganizationalUnitIds The ID of the organizational unit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OpenReactiveInsights = 123,
+#'   OpenProactiveInsights = 123,
+#'   MetricsAnalyzed = 123,
+#'   ResourceHours = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_organization_health(
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   OrganizationalUnitIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_describe_organization_health
+devopsguru_describe_organization_health <- function(AccountIds = NULL, OrganizationalUnitIds = NULL) {
+  op <- new_operation(
+    name = "DescribeOrganizationHealth",
+    http_method = "POST",
+    http_path = "/organization/health",
+    paginator = list()
+  )
+  input <- .devopsguru$describe_organization_health_input(AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds)
+  output <- .devopsguru$describe_organization_health_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$describe_organization_health <- devopsguru_describe_organization_health
+
+#' Returns an overview of your organization's history based on the
+#' specified time range
+#'
+#' @description
+#' Returns an overview of your organization's history based on the
+#' specified time range. The overview includes the total reactive and
+#' proactive insights.
+#'
+#' @usage
+#' devopsguru_describe_organization_overview(FromTime, ToTime, AccountIds,
+#'   OrganizationalUnitIds)
+#'
+#' @param FromTime &#91;required&#93; The start of the time range passed in. The start time granularity is at
+#' the day level. The floor of the start time is used. Returned information
+#' occurred after this day.
+#' @param ToTime The end of the time range passed in. The start time granularity is at
+#' the day level. The floor of the start time is used. Returned information
+#' occurred before this day. If this is not specified, then the current day
+#' is used.
+#' @param AccountIds The ID of the Amazon Web Services account.
+#' @param OrganizationalUnitIds The ID of the organizational unit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReactiveInsights = 123,
+#'   ProactiveInsights = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_organization_overview(
+#'   FromTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ToTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   OrganizationalUnitIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_describe_organization_overview
+devopsguru_describe_organization_overview <- function(FromTime, ToTime = NULL, AccountIds = NULL, OrganizationalUnitIds = NULL) {
+  op <- new_operation(
+    name = "DescribeOrganizationOverview",
+    http_method = "POST",
+    http_path = "/organization/overview",
+    paginator = list()
+  )
+  input <- .devopsguru$describe_organization_overview_input(FromTime = FromTime, ToTime = ToTime, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds)
+  output <- .devopsguru$describe_organization_overview_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$describe_organization_overview <- devopsguru_describe_organization_overview
+
+#' Provides an overview of your system's health
+#'
+#' @description
+#' Provides an overview of your system's health. If additional member
+#' accounts are part of your organization, you can filter those accounts
+#' using the `AccountIds` field.
+#'
+#' @usage
+#' devopsguru_describe_organization_resource_collection_health(
+#'   OrganizationResourceCollectionType, AccountIds, OrganizationalUnitIds,
+#'   NextToken, MaxResults)
+#'
+#' @param OrganizationResourceCollectionType &#91;required&#93; An Amazon Web Services resource collection type. This type specifies how
+#' analyzed Amazon Web Services resources are defined. The two types of
+#' Amazon Web Services resource collections supported are Amazon Web
+#' Services CloudFormation stacks and Amazon Web Services resources that
+#' contain the same Amazon Web Services tag. DevOps Guru can be configured
+#' to analyze the Amazon Web Services resources that are defined in the
+#' stacks or that are tagged using the same tag *key*. You can specify up
+#' to 500 Amazon Web Services CloudFormation stacks.
+#' @param AccountIds The ID of the Amazon Web Services account.
+#' @param OrganizationalUnitIds The ID of the organizational unit.
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation. If this value is null, it retrieves the first page.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFormation = list(
+#'     list(
+#'       StackName = "string",
+#'       Insight = list(
+#'         OpenProactiveInsights = 123,
+#'         OpenReactiveInsights = 123,
+#'         MeanTimeToRecoverInMilliseconds = 123
+#'       )
+#'     )
+#'   ),
+#'   Service = list(
+#'     list(
+#'       ServiceName = "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF",
+#'       Insight = list(
+#'         OpenProactiveInsights = 123,
+#'         OpenReactiveInsights = 123
+#'       )
+#'     )
+#'   ),
+#'   Account = list(
+#'     list(
+#'       AccountId = "string",
+#'       Insight = list(
+#'         OpenProactiveInsights = 123,
+#'         OpenReactiveInsights = 123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   Tags = list(
+#'     list(
+#'       AppBoundaryKey = "string",
+#'       TagValue = "string",
+#'       Insight = list(
+#'         OpenProactiveInsights = 123,
+#'         OpenReactiveInsights = 123,
+#'         MeanTimeToRecoverInMilliseconds = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_organization_resource_collection_health(
+#'   OrganizationResourceCollectionType = "AWS_CLOUD_FORMATION"|"AWS_SERVICE"|"AWS_ACCOUNT"|"AWS_TAGS",
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   OrganizationalUnitIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_describe_organization_resource_collection_health
+devopsguru_describe_organization_resource_collection_health <- function(OrganizationResourceCollectionType, AccountIds = NULL, OrganizationalUnitIds = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeOrganizationResourceCollectionHealth",
+    http_method = "POST",
+    http_path = "/organization/health/resource-collection",
+    paginator = list()
+  )
+  input <- .devopsguru$describe_organization_resource_collection_health_input(OrganizationResourceCollectionType = OrganizationResourceCollectionType, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .devopsguru$describe_organization_resource_collection_health_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$describe_organization_resource_collection_health <- devopsguru_describe_organization_resource_collection_health
+
 #' Returns the number of open proactive insights, open reactive insights,
 #' and the Mean Time to Recover (MTTR) for all closed insights in resource
 #' collections in your account
@@ -417,19 +1011,27 @@ devopsguru_describe_insight <- function(Id) {
 #' @description
 #' Returns the number of open proactive insights, open reactive insights,
 #' and the Mean Time to Recover (MTTR) for all closed insights in resource
-#' collections in your account. You specify the type of AWS resources
-#' collection. The one type of AWS resource collection supported is AWS
-#' CloudFormation stacks. DevOps Guru can be configured to analyze only the
-#' AWS resources that are defined in the stacks.
+#' collections in your account. You specify the type of Amazon Web Services
+#' resources collection. The two types of Amazon Web Services resource
+#' collections supported are Amazon Web Services CloudFormation stacks and
+#' Amazon Web Services resources that contain the same Amazon Web Services
+#' tag. DevOps Guru can be configured to analyze the Amazon Web Services
+#' resources that are defined in the stacks or that are tagged using the
+#' same tag *key*. You can specify up to 500 Amazon Web Services
+#' CloudFormation stacks.
 #'
 #' @usage
 #' devopsguru_describe_resource_collection_health(ResourceCollectionType,
 #'   NextToken)
 #'
-#' @param ResourceCollectionType &#91;required&#93; An AWS resource collection type. This type specifies how analyzed AWS
-#' resources are defined. The one type of AWS resource collection supported
-#' is AWS CloudFormation stacks. DevOps Guru can be configured to analyze
-#' only the AWS resources that are defined in the stacks.
+#' @param ResourceCollectionType &#91;required&#93; An Amazon Web Services resource collection type. This type specifies how
+#' analyzed Amazon Web Services resources are defined. The two types of
+#' Amazon Web Services resource collections supported are Amazon Web
+#' Services CloudFormation stacks and Amazon Web Services resources that
+#' contain the same Amazon Web Services tag. DevOps Guru can be configured
+#' to analyze the Amazon Web Services resources that are defined in the
+#' stacks or that are tagged using the same tag *key*. You can specify up
+#' to 500 Amazon Web Services CloudFormation stacks.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
@@ -447,14 +1049,34 @@ devopsguru_describe_insight <- function(Id) {
 #'       )
 #'     )
 #'   ),
-#'   NextToken = "string"
+#'   Service = list(
+#'     list(
+#'       ServiceName = "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF",
+#'       Insight = list(
+#'         OpenProactiveInsights = 123,
+#'         OpenReactiveInsights = 123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   Tags = list(
+#'     list(
+#'       AppBoundaryKey = "string",
+#'       TagValue = "string",
+#'       Insight = list(
+#'         OpenProactiveInsights = 123,
+#'         OpenReactiveInsights = 123,
+#'         MeanTimeToRecoverInMilliseconds = 123
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_resource_collection_health(
-#'   ResourceCollectionType = "AWS_CLOUD_FORMATION",
+#'   ResourceCollectionType = "AWS_CLOUD_FORMATION"|"AWS_SERVICE"|"AWS_TAGS",
 #'   NextToken = "string"
 #' )
 #' ```
@@ -485,8 +1107,8 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
 #' @description
 #' Returns the integration status of services that are integrated with
 #' DevOps Guru. The one service that can be integrated with DevOps Guru is
-#' AWS Systems Manager, which can be used to create an OpsItem for each
-#' generated insight.
+#' Amazon Web Services Systems Manager, which can be used to create an
+#' OpsItem for each generated insight.
 #'
 #' @usage
 #' devopsguru_describe_service_integration()
@@ -497,6 +1119,9 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
 #' list(
 #'   ServiceIntegration = list(
 #'     OpsCenter = list(
+#'       OptInStatus = "ENABLED"|"DISABLED"
+#'     ),
+#'     LogsAnomalyDetection = list(
 #'       OptInStatus = "ENABLED"|"DISABLED"
 #'     )
 #'   )
@@ -528,20 +1153,20 @@ devopsguru_describe_service_integration <- function() {
 }
 .devopsguru$operations$describe_service_integration <- devopsguru_describe_service_integration
 
-#' Returns lists AWS resources that are of the specified resource
-#' collection type
+#' Returns an estimate of the monthly cost for DevOps Guru to analyze your
+#' Amazon Web Services resources
 #'
 #' @description
-#' Returns lists AWS resources that are of the specified resource
-#' collection type. The one type of AWS resource collection supported is
-#' AWS CloudFormation stacks. DevOps Guru can be configured to analyze only
-#' the AWS resources that are defined in the stacks.
+#' Returns an estimate of the monthly cost for DevOps Guru to analyze your
+#' Amazon Web Services resources. For more information, see [Estimate your
+#' Amazon DevOps Guru
+#' costs](https://docs.aws.amazon.com/devops-guru/latest/userguide/cost-estimate.html)
+#' and [Amazon DevOps Guru
+#' pricing](https://aws.amazon.com/devops-guru/pricing/).
 #'
 #' @usage
-#' devopsguru_get_resource_collection(ResourceCollectionType, NextToken)
+#' devopsguru_get_cost_estimation(NextToken)
 #'
-#' @param ResourceCollectionType &#91;required&#93; The type of AWS resource collections to return. The one valid value is
-#' `CLOUD_FORMATION` for AWS CloudFormation stacks.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
@@ -554,6 +1179,105 @@ devopsguru_describe_service_integration <- function() {
 #'       StackNames = list(
 #'         "string"
 #'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         AppBoundaryKey = "string",
+#'         TagValues = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Status = "ONGOING"|"COMPLETED",
+#'   Costs = list(
+#'     list(
+#'       Type = "string",
+#'       State = "ACTIVE"|"INACTIVE",
+#'       Count = 123,
+#'       UnitCost = 123.0,
+#'       Cost = 123.0
+#'     )
+#'   ),
+#'   TimeRange = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   TotalCost = 123.0,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_cost_estimation(
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_get_cost_estimation
+devopsguru_get_cost_estimation <- function(NextToken = NULL) {
+  op <- new_operation(
+    name = "GetCostEstimation",
+    http_method = "GET",
+    http_path = "/cost-estimation",
+    paginator = list()
+  )
+  input <- .devopsguru$get_cost_estimation_input(NextToken = NextToken)
+  output <- .devopsguru$get_cost_estimation_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$get_cost_estimation <- devopsguru_get_cost_estimation
+
+#' Returns lists Amazon Web Services resources that are of the specified
+#' resource collection type
+#'
+#' @description
+#' Returns lists Amazon Web Services resources that are of the specified
+#' resource collection type. The two types of Amazon Web Services resource
+#' collections supported are Amazon Web Services CloudFormation stacks and
+#' Amazon Web Services resources that contain the same Amazon Web Services
+#' tag. DevOps Guru can be configured to analyze the Amazon Web Services
+#' resources that are defined in the stacks or that are tagged using the
+#' same tag *key*. You can specify up to 500 Amazon Web Services
+#' CloudFormation stacks.
+#'
+#' @usage
+#' devopsguru_get_resource_collection(ResourceCollectionType, NextToken)
+#'
+#' @param ResourceCollectionType &#91;required&#93; The type of Amazon Web Services resource collections to return. The one
+#' valid value is `CLOUD_FORMATION` for Amazon Web Services CloudFormation
+#' stacks.
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceCollection = list(
+#'     CloudFormation = list(
+#'       StackNames = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         AppBoundaryKey = "string",
+#'         TagValues = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -563,7 +1287,7 @@ devopsguru_describe_service_integration <- function() {
 #' @section Request syntax:
 #' ```
 #' svc$get_resource_collection(
-#'   ResourceCollectionType = "AWS_CLOUD_FORMATION",
+#'   ResourceCollectionType = "AWS_CLOUD_FORMATION"|"AWS_SERVICE"|"AWS_TAGS",
 #'   NextToken = "string"
 #' )
 #' ```
@@ -597,7 +1321,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'
 #' @usage
 #' devopsguru_list_anomalies_for_insight(InsightId, StartTimeRange,
-#'   MaxResults, NextToken)
+#'   MaxResults, NextToken, AccountId)
 #'
 #' @param InsightId &#91;required&#93; The ID of the insight. The returned anomalies belong to this insight.
 #' @param StartTimeRange A time range used to specify when the requested anomalies started. All
@@ -607,6 +1331,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #' value.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#' @param AccountId The ID of the Amazon Web Services account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -625,6 +1350,14 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'           "2015-01-01"
 #'         ),
 #'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       AnomalyReportedTimeRange = list(
+#'         OpenTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CloseTime = as.POSIXct(
 #'           "2015-01-01"
 #'         )
 #'       ),
@@ -649,7 +1382,74 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'             ),
 #'             Stat = "Sum"|"Average"|"SampleCount"|"Minimum"|"Maximum"|"p99"|"p90"|"p50",
 #'             Unit = "string",
-#'             Period = 123
+#'             Period = 123,
+#'             MetricDataSummary = list(
+#'               TimestampMetricValuePairList = list(
+#'                 list(
+#'                   Timestamp = as.POSIXct(
+#'                     "2015-01-01"
+#'                   ),
+#'                   MetricValue = 123.0
+#'                 )
+#'               ),
+#'               StatusCode = "Complete"|"InternalError"|"PartialData"
+#'             )
+#'           )
+#'         ),
+#'         PerformanceInsightsMetrics = list(
+#'           list(
+#'             MetricDisplayName = "string",
+#'             Unit = "string",
+#'             MetricQuery = list(
+#'               Metric = "string",
+#'               GroupBy = list(
+#'                 Group = "string",
+#'                 Dimensions = list(
+#'                   "string"
+#'                 ),
+#'                 Limit = 123
+#'               ),
+#'               Filter = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ReferenceData = list(
+#'               list(
+#'                 Name = "string",
+#'                 ComparisonValues = list(
+#'                   ReferenceScalar = list(
+#'                     Value = 123.0
+#'                   ),
+#'                   ReferenceMetric = list(
+#'                     MetricQuery = list(
+#'                       Metric = "string",
+#'                       GroupBy = list(
+#'                         Group = "string",
+#'                         Dimensions = list(
+#'                           "string"
+#'                         ),
+#'                         Limit = 123
+#'                       ),
+#'                       Filter = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             StatsAtAnomaly = list(
+#'               list(
+#'                 Type = "string",
+#'                 Value = 123.0
+#'               )
+#'             ),
+#'             StatsAtBaseline = list(
+#'               list(
+#'                 Type = "string",
+#'                 Value = 123.0
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -659,9 +1459,28 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'           StackNames = list(
 #'             "string"
 #'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
 #'         )
 #'       ),
-#'       Limit = 123.0
+#'       Limit = 123.0,
+#'       SourceMetadata = list(
+#'         Source = "string",
+#'         SourceResourceName = "string",
+#'         SourceResourceType = "string"
+#'       ),
+#'       AnomalyResources = list(
+#'         list(
+#'           Name = "string",
+#'           Type = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   ReactiveAnomalies = list(
@@ -674,6 +1493,14 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'           "2015-01-01"
 #'         ),
 #'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       AnomalyReportedTimeRange = list(
+#'         OpenTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CloseTime = as.POSIXct(
 #'           "2015-01-01"
 #'         )
 #'       ),
@@ -690,7 +1517,74 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'             ),
 #'             Stat = "Sum"|"Average"|"SampleCount"|"Minimum"|"Maximum"|"p99"|"p90"|"p50",
 #'             Unit = "string",
-#'             Period = 123
+#'             Period = 123,
+#'             MetricDataSummary = list(
+#'               TimestampMetricValuePairList = list(
+#'                 list(
+#'                   Timestamp = as.POSIXct(
+#'                     "2015-01-01"
+#'                   ),
+#'                   MetricValue = 123.0
+#'                 )
+#'               ),
+#'               StatusCode = "Complete"|"InternalError"|"PartialData"
+#'             )
+#'           )
+#'         ),
+#'         PerformanceInsightsMetrics = list(
+#'           list(
+#'             MetricDisplayName = "string",
+#'             Unit = "string",
+#'             MetricQuery = list(
+#'               Metric = "string",
+#'               GroupBy = list(
+#'                 Group = "string",
+#'                 Dimensions = list(
+#'                   "string"
+#'                 ),
+#'                 Limit = 123
+#'               ),
+#'               Filter = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ReferenceData = list(
+#'               list(
+#'                 Name = "string",
+#'                 ComparisonValues = list(
+#'                   ReferenceScalar = list(
+#'                     Value = 123.0
+#'                   ),
+#'                   ReferenceMetric = list(
+#'                     MetricQuery = list(
+#'                       Metric = "string",
+#'                       GroupBy = list(
+#'                         Group = "string",
+#'                         Dimensions = list(
+#'                           "string"
+#'                         ),
+#'                         Limit = 123
+#'                       ),
+#'                       Filter = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             StatsAtAnomaly = list(
+#'               list(
+#'                 Type = "string",
+#'                 Value = 123.0
+#'               )
+#'             ),
+#'             StatsAtBaseline = list(
+#'               list(
+#'                 Type = "string",
+#'                 Value = 123.0
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -700,6 +1594,24 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'           StackNames = list(
 #'             "string"
 #'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Type = "CAUSAL"|"CONTEXTUAL",
+#'       Name = "string",
+#'       Description = "string",
+#'       CausalAnomalyId = "string",
+#'       AnomalyResources = list(
+#'         list(
+#'           Name = "string",
+#'           Type = "string"
 #'         )
 #'       )
 #'     )
@@ -721,21 +1633,22 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'     )
 #'   ),
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_anomalies_for_insight
-devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NULL, MaxResults = NULL, NextToken = NULL) {
+devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListAnomaliesForInsight",
     http_method = "POST",
     http_path = "/anomalies/insight/{InsightId}",
     paginator = list()
   )
-  input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .devopsguru$list_anomalies_for_insight_output()
   config <- get_config()
   svc <- .devopsguru$service(config)
@@ -744,6 +1657,88 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
   return(response)
 }
 .devopsguru$operations$list_anomalies_for_insight <- devopsguru_list_anomalies_for_insight
+
+#' Returns the list of log groups that contain log anomalies
+#'
+#' @description
+#' Returns the list of log groups that contain log anomalies.
+#'
+#' @usage
+#' devopsguru_list_anomalous_log_groups(InsightId, MaxResults, NextToken)
+#'
+#' @param InsightId &#91;required&#93; The ID of the insight containing the log groups.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InsightId = "string",
+#'   AnomalousLogGroups = list(
+#'     list(
+#'       LogGroupName = "string",
+#'       ImpactStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ImpactEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NumberOfLogLinesScanned = 123,
+#'       LogAnomalyShowcases = list(
+#'         list(
+#'           LogAnomalyClasses = list(
+#'             list(
+#'               LogStreamName = "string",
+#'               LogAnomalyType = "KEYWORD"|"KEYWORD_TOKEN"|"FORMAT"|"HTTP_CODE"|"BLOCK_FORMAT"|"NUMERICAL_POINT"|"NUMERICAL_NAN"|"NEW_FIELD_NAME",
+#'               LogAnomalyToken = "string",
+#'               LogEventId = "string",
+#'               Explanation = "string",
+#'               NumberOfLogLinesOccurrences = 123,
+#'               LogEventTimestamp = as.POSIXct(
+#'                 "2015-01-01"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_anomalous_log_groups(
+#'   InsightId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_list_anomalous_log_groups
+devopsguru_list_anomalous_log_groups <- function(InsightId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAnomalousLogGroups",
+    http_method = "POST",
+    http_path = "/list-log-anomalies",
+    paginator = list()
+  )
+  input <- .devopsguru$list_anomalous_log_groups_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .devopsguru$list_anomalous_log_groups_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$list_anomalous_log_groups <- devopsguru_list_anomalous_log_groups
 
 #' Returns a list of the events emitted by the resources that are evaluated
 #' by DevOps Guru
@@ -754,7 +1749,7 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
 #' returned.
 #'
 #' @usage
-#' devopsguru_list_events(Filters, MaxResults, NextToken)
+#' devopsguru_list_events(Filters, MaxResults, NextToken, AccountId)
 #'
 #' @param Filters &#91;required&#93; A `ListEventsFilters` object used to specify which events to return.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
@@ -762,6 +1757,7 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
 #' value.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#' @param AccountId The ID of the Amazon Web Services account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -773,6 +1769,14 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
 #'         CloudFormation = list(
 #'           StackNames = list(
 #'             "string"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -818,25 +1822,34 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
 #'         StackNames = list(
 #'           "string"
 #'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           AppBoundaryKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_events
-devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL) {
+devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListEvents",
     http_method = "POST",
     http_path = "/events",
     paginator = list()
   )
-  input <- .devopsguru$list_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .devopsguru$list_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .devopsguru$list_events_output()
   config <- get_config()
   svc <- .devopsguru$service(config)
@@ -846,12 +1859,12 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL)
 }
 .devopsguru$operations$list_events <- devopsguru_list_events
 
-#' Returns a list of insights in your AWS account
+#' Returns a list of insights in your Amazon Web Services account
 #'
 #' @description
-#' Returns a list of insights in your AWS account. You can specify which
-#' insights are returned by their start time and status (`ONGOING`,
-#' `CLOSED`, or `ANY`).
+#' Returns a list of insights in your Amazon Web Services account. You can
+#' specify which insights are returned by their start time and status
+#' (`ONGOING`, `CLOSED`, or `ANY`).
 #'
 #' @usage
 #' devopsguru_list_insights(StatusFilter, MaxResults, NextToken)
@@ -895,7 +1908,23 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL)
 #'           StackNames = list(
 #'             "string"
 #'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
 #'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
+#'       ),
+#'       AssociatedResourceArns = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -918,7 +1947,23 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL)
 #'           StackNames = list(
 #'             "string"
 #'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
 #'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
+#'       ),
+#'       AssociatedResourceArns = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -981,6 +2026,73 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 }
 .devopsguru$operations$list_insights <- devopsguru_list_insights
 
+#' Returns the list of all log groups that are being monitored and tagged
+#' by DevOps Guru
+#'
+#' @description
+#' Returns the list of all log groups that are being monitored and tagged
+#' by DevOps Guru.
+#'
+#' @usage
+#' devopsguru_list_monitored_resources(Filters, MaxResults, NextToken)
+#'
+#' @param Filters &#91;required&#93; Filters to determine which monitored resources you want to retrieve. You
+#' can filter by resource type or resource permission status.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonitoredResourceIdentifiers = list(
+#'     list(
+#'       MonitoredResourceName = "string",
+#'       Type = "string",
+#'       ResourcePermission = "FULL_PERMISSION"|"MISSING_PERMISSION"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_monitored_resources(
+#'   Filters = list(
+#'     ResourcePermission = "FULL_PERMISSION"|"MISSING_PERMISSION",
+#'     ResourceTypeFilters = list(
+#'       "LOG_GROUPS"
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_list_monitored_resources
+devopsguru_list_monitored_resources <- function(Filters, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListMonitoredResources",
+    http_method = "POST",
+    http_path = "/monitoredResources",
+    paginator = list()
+  )
+  input <- .devopsguru$list_monitored_resources_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .devopsguru$list_monitored_resources_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$list_monitored_resources <- devopsguru_list_monitored_resources
+
 #' Returns a list of notification channels configured for DevOps Guru
 #'
 #' @description
@@ -1041,6 +2153,177 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 }
 .devopsguru$operations$list_notification_channels <- devopsguru_list_notification_channels
 
+#' Returns a list of insights associated with the account or OU Id
+#'
+#' @description
+#' Returns a list of insights associated with the account or OU Id.
+#'
+#' @usage
+#' devopsguru_list_organization_insights(StatusFilter, MaxResults,
+#'   AccountIds, OrganizationalUnitIds, NextToken)
+#'
+#' @param StatusFilter &#91;required&#93; 
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' @param AccountIds The ID of the Amazon Web Services account.
+#' @param OrganizationalUnitIds The ID of the organizational unit.
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProactiveInsights = list(
+#'     list(
+#'       Id = "string",
+#'       AccountId = "string",
+#'       OrganizationalUnitId = "string",
+#'       Name = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       InsightTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       PredictionTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ReactiveInsights = list(
+#'     list(
+#'       Id = "string",
+#'       AccountId = "string",
+#'       OrganizationalUnitId = "string",
+#'       Name = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       InsightTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_organization_insights(
+#'   StatusFilter = list(
+#'     Ongoing = list(
+#'       Type = "REACTIVE"|"PROACTIVE"
+#'     ),
+#'     Closed = list(
+#'       Type = "REACTIVE"|"PROACTIVE",
+#'       EndTimeRange = list(
+#'         FromTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ToTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     Any = list(
+#'       Type = "REACTIVE"|"PROACTIVE",
+#'       StartTimeRange = list(
+#'         FromTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ToTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   OrganizationalUnitIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_list_organization_insights
+devopsguru_list_organization_insights <- function(StatusFilter, MaxResults = NULL, AccountIds = NULL, OrganizationalUnitIds = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListOrganizationInsights",
+    http_method = "POST",
+    http_path = "/organization/insights",
+    paginator = list()
+  )
+  input <- .devopsguru$list_organization_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken)
+  output <- .devopsguru$list_organization_insights_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$list_organization_insights <- devopsguru_list_organization_insights
+
 #' Returns a list of a specified insight's recommendations
 #'
 #' @description
@@ -1049,11 +2332,13 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 #' events.
 #'
 #' @usage
-#' devopsguru_list_recommendations(InsightId, NextToken)
+#' devopsguru_list_recommendations(InsightId, NextToken, Locale, AccountId)
 #'
 #' @param InsightId &#91;required&#93; The ID of the requested insight.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#' @param Locale A locale that specifies the language to use for recommendations.
+#' @param AccountId The ID of the Amazon Web Services account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1093,9 +2378,11 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 #'                 )
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           AnomalyId = "string"
 #'         )
-#'       )
+#'       ),
+#'       Category = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1106,21 +2393,23 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 #' ```
 #' svc$list_recommendations(
 #'   InsightId = "string",
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Locale = "DE_DE"|"EN_US"|"EN_GB"|"ES_ES"|"FR_FR"|"IT_IT"|"JA_JP"|"KO_KR"|"PT_BR"|"ZH_CN"|"ZH_TW",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_recommendations
-devopsguru_list_recommendations <- function(InsightId, NextToken = NULL) {
+devopsguru_list_recommendations <- function(InsightId, NextToken = NULL, Locale = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
     paginator = list()
   )
-  input <- .devopsguru$list_recommendations_input(InsightId = InsightId, NextToken = NextToken)
+  input <- .devopsguru$list_recommendations_input(InsightId = InsightId, NextToken = NextToken, Locale = Locale, AccountId = AccountId)
   output <- .devopsguru$list_recommendations_output()
   config <- get_config()
   svc <- .devopsguru$service(config)
@@ -1216,13 +2505,13 @@ devopsguru_remove_notification_channel <- function(Id) {
 }
 .devopsguru$operations$remove_notification_channel <- devopsguru_remove_notification_channel
 
-#' Returns a list of insights in your AWS account
+#' Returns a list of insights in your Amazon Web Services account
 #'
 #' @description
-#' Returns a list of insights in your AWS account. You can specify which
-#' insights are returned by their start time, one or more statuses
-#' (`ONGOING`, `CLOSED`, and `CLOSED`), one or more severities (`LOW`,
-#' `MEDIUM`, and `HIGH`), and type (`REACTIVE` or `PROACTIVE`).
+#' Returns a list of insights in your Amazon Web Services account. You can
+#' specify which insights are returned by their start time, one or more
+#' statuses (`ONGOING`, `CLOSED`, and `CLOSED`), one or more severities
+#' (`LOW`, `MEDIUM`, and `HIGH`), and type (`REACTIVE` or `PROACTIVE`).
 #' 
 #' Use the `Filters` parameter to specify status and severity search
 #' parameters. Use the `Type` parameter to specify `REACTIVE` or
@@ -1274,7 +2563,23 @@ devopsguru_remove_notification_channel <- function(Id) {
 #'           StackNames = list(
 #'             "string"
 #'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
 #'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
+#'       ),
+#'       AssociatedResourceArns = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -1297,7 +2602,23 @@ devopsguru_remove_notification_channel <- function(Id) {
 #'           StackNames = list(
 #'             "string"
 #'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
 #'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
+#'       ),
+#'       AssociatedResourceArns = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -1328,6 +2649,19 @@ devopsguru_remove_notification_channel <- function(Id) {
 #'         StackNames = list(
 #'           "string"
 #'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           AppBoundaryKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ServiceCollection = list(
+#'       ServiceNames = list(
+#'         "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
 #'       )
 #'     )
 #'   ),
@@ -1357,14 +2691,314 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
 }
 .devopsguru$operations$search_insights <- devopsguru_search_insights
 
+#' Returns a list of insights in your organization
+#'
+#' @description
+#' Returns a list of insights in your organization. You can specify which
+#' insights are returned by their start time, one or more statuses
+#' (`ONGOING`, `CLOSED`, and `CLOSED`), one or more severities (`LOW`,
+#' `MEDIUM`, and `HIGH`), and type (`REACTIVE` or `PROACTIVE`).
+#' 
+#' Use the `Filters` parameter to specify status and severity search
+#' parameters. Use the `Type` parameter to specify `REACTIVE` or
+#' `PROACTIVE` in your search.
+#'
+#' @usage
+#' devopsguru_search_organization_insights(AccountIds, StartTimeRange,
+#'   Filters, MaxResults, NextToken, Type)
+#'
+#' @param AccountIds &#91;required&#93; The ID of the Amazon Web Services account.
+#' @param StartTimeRange &#91;required&#93; 
+#' @param Filters A `SearchOrganizationInsightsFilters` object that is used to set the
+#' severity and status filters on your insight search.
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation. If this value is null, it retrieves the first page.
+#' @param Type &#91;required&#93; The type of insights you are searching for (`REACTIVE` or `PROACTIVE`).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProactiveInsights = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       InsightTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       PredictionTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
+#'       ),
+#'       AssociatedResourceArns = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ReactiveInsights = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       InsightTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ServiceCollection = list(
+#'         ServiceNames = list(
+#'           "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'         )
+#'       ),
+#'       AssociatedResourceArns = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_organization_insights(
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   StartTimeRange = list(
+#'     FromTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ToTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Filters = list(
+#'     Severities = list(
+#'       "LOW"|"MEDIUM"|"HIGH"
+#'     ),
+#'     Statuses = list(
+#'       "ONGOING"|"CLOSED"
+#'     ),
+#'     ResourceCollection = list(
+#'       CloudFormation = list(
+#'         StackNames = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           AppBoundaryKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ServiceCollection = list(
+#'       ServiceNames = list(
+#'         "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Type = "REACTIVE"|"PROACTIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_search_organization_insights
+devopsguru_search_organization_insights <- function(AccountIds, StartTimeRange, Filters = NULL, MaxResults = NULL, NextToken = NULL, Type) {
+  op <- new_operation(
+    name = "SearchOrganizationInsights",
+    http_method = "POST",
+    http_path = "/organization/insights/search",
+    paginator = list()
+  )
+  input <- .devopsguru$search_organization_insights_input(AccountIds = AccountIds, StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)
+  output <- .devopsguru$search_organization_insights_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$search_organization_insights <- devopsguru_search_organization_insights
+
+#' Starts the creation of an estimate of the monthly cost to analyze your
+#' Amazon Web Services resources
+#'
+#' @description
+#' Starts the creation of an estimate of the monthly cost to analyze your
+#' Amazon Web Services resources.
+#'
+#' @usage
+#' devopsguru_start_cost_estimation(ResourceCollection, ClientToken)
+#'
+#' @param ResourceCollection &#91;required&#93; The collection of Amazon Web Services resources used to create a monthly
+#' DevOps Guru cost estimate.
+#' @param ClientToken The idempotency token used to identify each cost estimate request.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_cost_estimation(
+#'   ResourceCollection = list(
+#'     CloudFormation = list(
+#'       StackNames = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         AppBoundaryKey = "string",
+#'         TagValues = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_start_cost_estimation
+devopsguru_start_cost_estimation <- function(ResourceCollection, ClientToken = NULL) {
+  op <- new_operation(
+    name = "StartCostEstimation",
+    http_method = "PUT",
+    http_path = "/cost-estimation",
+    paginator = list()
+  )
+  input <- .devopsguru$start_cost_estimation_input(ResourceCollection = ResourceCollection, ClientToken = ClientToken)
+  output <- .devopsguru$start_cost_estimation_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$start_cost_estimation <- devopsguru_start_cost_estimation
+
+#' Enables or disables integration with a service that can be integrated
+#' with DevOps Guru
+#'
+#' @description
+#' Enables or disables integration with a service that can be integrated
+#' with DevOps Guru. The one service that can be integrated with DevOps
+#' Guru is Amazon CodeGuru Profiler, which can produce proactive
+#' recommendations which can be stored and viewed in DevOps Guru.
+#'
+#' @usage
+#' devopsguru_update_event_sources_config(EventSources)
+#'
+#' @param EventSources Configuration information about the integration of DevOps Guru as the
+#' Consumer via EventBridge with another AWS Service.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_event_sources_config(
+#'   EventSources = list(
+#'     AmazonCodeGuruProfiler = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devopsguru_update_event_sources_config
+devopsguru_update_event_sources_config <- function(EventSources = NULL) {
+  op <- new_operation(
+    name = "UpdateEventSourcesConfig",
+    http_method = "PUT",
+    http_path = "/event-sources",
+    paginator = list()
+  )
+  input <- .devopsguru$update_event_sources_config_input(EventSources = EventSources)
+  output <- .devopsguru$update_event_sources_config_output()
+  config <- get_config()
+  svc <- .devopsguru$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devopsguru$operations$update_event_sources_config <- devopsguru_update_event_sources_config
+
 #' Updates the collection of resources that DevOps Guru analyzes
 #'
 #' @description
-#' Updates the collection of resources that DevOps Guru analyzes. The one
-#' type of AWS resource collection supported is AWS CloudFormation stacks.
-#' DevOps Guru can be configured to analyze only the AWS resources that are
-#' defined in the stacks. This method also creates the IAM role required
-#' for you to use DevOps Guru.
+#' Updates the collection of resources that DevOps Guru analyzes. The two
+#' types of Amazon Web Services resource collections supported are Amazon
+#' Web Services CloudFormation stacks and Amazon Web Services resources
+#' that contain the same Amazon Web Services tag. DevOps Guru can be
+#' configured to analyze the Amazon Web Services resources that are defined
+#' in the stacks or that are tagged using the same tag *key*. You can
+#' specify up to 500 Amazon Web Services CloudFormation stacks. This method
+#' also creates the IAM role required for you to use DevOps Guru.
 #'
 #' @usage
 #' devopsguru_update_resource_collection(Action, ResourceCollection)
@@ -1384,6 +3018,14 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
 #'     CloudFormation = list(
 #'       StackNames = list(
 #'         "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         AppBoundaryKey = "string",
+#'         TagValues = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -1416,8 +3058,8 @@ devopsguru_update_resource_collection <- function(Action, ResourceCollection) {
 #' @description
 #' Enables or disables integration with a service that can be integrated
 #' with DevOps Guru. The one service that can be integrated with DevOps
-#' Guru is AWS Systems Manager, which can be used to create an OpsItem for
-#' each generated insight.
+#' Guru is Amazon Web Services Systems Manager, which can be used to create
+#' an OpsItem for each generated insight.
 #'
 #' @usage
 #' devopsguru_update_service_integration(ServiceIntegration)
@@ -1434,6 +3076,9 @@ devopsguru_update_resource_collection <- function(Action, ResourceCollection) {
 #' svc$update_service_integration(
 #'   ServiceIntegration = list(
 #'     OpsCenter = list(
+#'       OptInStatus = "ENABLED"|"DISABLED"
+#'     ),
+#'     LogsAnomalyDetection = list(
 #'       OptInStatus = "ENABLED"|"DISABLED"
 #'     )
 #'   )

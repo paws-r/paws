@@ -5,8 +5,11 @@
 \title{The ListQualificationRequests operation retrieves requests for
 Qualifications of a particular Qualification type}
 \usage{
-mturk_list_qualification_requests(QualificationTypeId, NextToken,
-  MaxResults)
+mturk_list_qualification_requests(
+  QualificationTypeId = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{QualificationTypeId}{The ID of the QualificationType.}
@@ -15,39 +18,9 @@ mturk_list_qualification_requests(QualificationTypeId, NextToken,
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NumResults = 123,
-  NextToken = "string",
-  QualificationRequests = list(
-    list(
-      QualificationRequestId = "string",
-      QualificationTypeId = "string",
-      WorkerId = "string",
-      Test = "string",
-      Answer = "string",
-      SubmitTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_list_qualification_requests]{list_qualification_requests}}
-operation retrieves requests for Qualifications of a particular
-Qualification type. The owner of the Qualification type calls this
-operation to poll for pending requests, and accepts them using the
-AcceptQualification operation.
-}
-\section{Request syntax}{
-\preformatted{svc$list_qualification_requests(
-  QualificationTypeId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+The \code{\link[=mturk_list_qualification_requests]{list_qualification_requests}} operation retrieves requests for Qualifications of a particular Qualification type. The owner of the Qualification type calls this operation to poll for pending requests, and accepts them using the AcceptQualification operation.
 
+See \url{https://paws-r.github.io/docs/mturk/list_qualification_requests.html} for full documentation.
+}
 \keyword{internal}

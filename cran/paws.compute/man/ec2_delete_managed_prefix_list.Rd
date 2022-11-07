@@ -4,7 +4,7 @@
 \alias{ec2_delete_managed_prefix_list}
 \title{Deletes the specified managed prefix list}
 \usage{
-ec2_delete_managed_prefix_list(DryRun, PrefixListId)
+ec2_delete_managed_prefix_list(DryRun = NULL, PrefixListId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,38 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{PrefixListId}{[required] The ID of the prefix list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PrefixList = list(
-    PrefixListId = "string",
-    AddressFamily = "string",
-    State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
-    StateMessage = "string",
-    PrefixListArn = "string",
-    PrefixListName = "string",
-    MaxEntries = 123,
-    Version = 123,
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    OwnerId = "string"
-  )
-)
-}
-}
 \description{
-Deletes the specified managed prefix list. You must first remove all
-references to the prefix list in your resources.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_managed_prefix_list(
-  DryRun = TRUE|FALSE,
-  PrefixListId = "string"
-)
-}
-}
+Deletes the specified managed prefix list. You must first remove all references to the prefix list in your resources.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_managed_prefix_list.html} for full documentation.
+}
 \keyword{internal}

@@ -2,56 +2,27 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_service_setting}
 \alias{ssm_get_service_setting}
-\title{ServiceSetting is an account-level setting for an AWS service}
+\title{ServiceSetting is an account-level setting for an Amazon Web Services
+service}
 \usage{
 ssm_get_service_setting(SettingId)
 }
 \arguments{
-\item{SettingId}{[required] The ID of the service setting to get. The setting ID can be
-\verb{/ssm/parameter-store/default-parameter-tier},
-\verb{/ssm/parameter-store/high-throughput-enabled}, or
-\verb{/ssm/managed-instance/activation-tier}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceSetting = list(
-    SettingId = "string",
-    SettingValue = "string",
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastModifiedUser = "string",
-    ARN = "string",
-    Status = "string"
-  )
-)
-}
+\item{SettingId}{[required] The ID of the service setting to get. The setting ID can be one of the
+following.
+\itemize{
+\item \verb{/ssm/automation/customer-script-log-destination}
+\item \verb{/ssm/automation/customer-script-log-group-name}
+\item \verb{/ssm/documents/console/public-sharing-permission}
+\item \verb{/ssm/managed-instance/activation-tier}
+\item \verb{/ssm/opsinsights/opscenter}
+\item \verb{/ssm/parameter-store/default-parameter-tier}
+\item \verb{/ssm/parameter-store/high-throughput-enabled}
+}}
 }
 \description{
-\code{ServiceSetting} is an account-level setting for an AWS service. This
-setting defines how a user interacts with or uses a service or a feature
-of a service. For example, if an AWS service charges money to the
-account based on feature or service usage, then the AWS service team
-might create a default setting of "false". This means the user can't use
-this feature unless they change the setting to "true" and intentionally
-opt in for a paid feature.
+\code{ServiceSetting} is an account-level setting for an Amazon Web Services service. This setting defines how a user interacts with or uses a service or a feature of a service. For example, if an Amazon Web Services service charges money to the account based on feature or service usage, then the Amazon Web Services service team might create a default setting of \code{false}. This means the user can't use this feature unless they change the setting to \code{true} and intentionally opt in for a paid feature.
 
-Services map a \code{SettingId} object to a setting value. AWS services teams
-define the default value for a \code{SettingId}. You can't create a new
-\code{SettingId}, but you can overwrite the default value if you have the
-\code{ssm:UpdateServiceSetting} permission for the setting. Use the
-\code{\link[=ssm_update_service_setting]{update_service_setting}} API action to
-change the default setting. Or use the
-\code{\link[=ssm_reset_service_setting]{reset_service_setting}} to change the value
-back to the original value defined by the AWS service team.
-
-Query the current service setting for the account.
+See \url{https://paws-r.github.io/docs/ssm/get_service_setting.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_service_setting(
-  SettingId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,15 @@
 \alias{appmesh_create_gateway_route}
 \title{Creates a gateway route}
 \usage{
-appmesh_create_gateway_route(clientToken, gatewayRouteName, meshName,
-  meshOwner, spec, tags, virtualGatewayName)
+appmesh_create_gateway_route(
+  clientToken = NULL,
+  gatewayRouteName,
+  meshName,
+  meshOwner = NULL,
+  spec,
+  tags = NULL,
+  virtualGatewayName
+)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -16,10 +23,10 @@ underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh to create the gateway route in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then the account that you specify must share the mesh with
-your account before you can create the resource in the service mesh. For
-more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then the account that you specify must share
+the mesh with your account before you can create the resource in the
+service mesh. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The gateway route specification to apply.}
 
@@ -33,132 +40,9 @@ length of 256 characters.}
 the virtual gateway is in a shared mesh, then you must be the owner of
 the virtual gateway resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  gatewayRoute = list(
-    gatewayRouteName = "string",
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      grpcRoute = list(
-        action = list(
-          target = list(
-            virtualService = list(
-              virtualServiceName = "string"
-            )
-          )
-        ),
-        match = list(
-          serviceName = "string"
-        )
-      ),
-      http2Route = list(
-        action = list(
-          target = list(
-            virtualService = list(
-              virtualServiceName = "string"
-            )
-          )
-        ),
-        match = list(
-          prefix = "string"
-        )
-      ),
-      httpRoute = list(
-        action = list(
-          target = list(
-            virtualService = list(
-              virtualServiceName = "string"
-            )
-          )
-        ),
-        match = list(
-          prefix = "string"
-        )
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    ),
-    virtualGatewayName = "string"
-  )
-)
-}
-}
 \description{
 Creates a gateway route.
 
-A gateway route is attached to a virtual gateway and routes traffic to
-an existing virtual service. If a route matches a request, it can
-distribute traffic to a target virtual service.
-
-For more information about gateway routes, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/gateway-routes.html}{Gateway routes}.
+See \url{https://paws-r.github.io/docs/appmesh/create_gateway_route.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_gateway_route(
-  clientToken = "string",
-  gatewayRouteName = "string",
-  meshName = "string",
-  meshOwner = "string",
-  spec = list(
-    grpcRoute = list(
-      action = list(
-        target = list(
-          virtualService = list(
-            virtualServiceName = "string"
-          )
-        )
-      ),
-      match = list(
-        serviceName = "string"
-      )
-    ),
-    http2Route = list(
-      action = list(
-        target = list(
-          virtualService = list(
-            virtualServiceName = "string"
-          )
-        )
-      ),
-      match = list(
-        prefix = "string"
-      )
-    ),
-    httpRoute = list(
-      action = list(
-        target = list(
-          virtualService = list(
-            virtualServiceName = "string"
-          )
-        )
-      ),
-      match = list(
-        prefix = "string"
-      )
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  virtualGatewayName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -2,9 +2,9 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_create_organization}
 \alias{organizations_create_organization}
-\title{Creates an AWS organization}
+\title{Creates an Amazon Web Services organization}
 \usage{
-organizations_create_organization(FeatureSet)
+organizations_create_organization(FeatureSet = NULL)
 }
 \arguments{
 \item{FeatureSet}{Specifies the feature set supported by the new organization. Each
@@ -13,81 +13,20 @@ feature set supports different levels of functionality.
 \item \code{CONSOLIDATED_BILLING}: All member accounts have their bills
 consolidated to and paid by the management account. For more
 information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only}{Consolidated billing}
-in the \emph{AWS Organizations User Guide.}
+in the \emph{Organizations User Guide.}
 
 The consolidated billing feature subset isn't available for
-organizations in the AWS GovCloud (US) Region.
+organizations in the Amazon Web Services GovCloud (US) Region.
 \item \code{ALL}: In addition to all the features supported by the consolidated
 billing feature set, the management account can also apply any
 policy type to any member account in the organization. For more
 information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all}{All features}
-in the \emph{AWS Organizations User Guide.}
+in the \emph{Organizations User Guide.}
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Organization = list(
-    Id = "string",
-    Arn = "string",
-    FeatureSet = "ALL"|"CONSOLIDATED_BILLING",
-    MasterAccountArn = "string",
-    MasterAccountId = "string",
-    MasterAccountEmail = "string",
-    AvailablePolicyTypes = list(
-      list(
-        Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
-        Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates an AWS organization. The account whose user is calling the
-\code{\link[=organizations_create_organization]{create_organization}} operation
-automatically becomes the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{management account}
-of the new organization.
+Creates an Amazon Web Services organization. The account whose user is calling the \code{\link[=organizations_create_organization]{create_organization}} operation automatically becomes the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{management account} of the new organization.
 
-This operation must be called using credentials from the account that is
-to become the new organization's management account. The principal must
-also have the relevant IAM permissions.
-
-By default (or if you set the \code{FeatureSet} parameter to \code{ALL}), the new
-organization is created with all features enabled and service control
-policies automatically enabled in the root. If you instead choose to
-create the organization supporting only the consolidated billing
-features by setting the \code{FeatureSet} parameter to
-\verb{CONSOLIDATED_BILLING\\"}, no policy types are enabled by default, and
-you can't use organization policies
-}
-\section{Request syntax}{
-\preformatted{svc$create_organization(
-  FeatureSet = "ALL"|"CONSOLIDATED_BILLING"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Bill wants to create an organization using credentials from account
-# 111111111111. The following example shows that the account becomes the
-# master account in the new organization. Because he does not specify a
-# feature set, the new organization defaults to all features enabled and
-# service control policies enabled on the root:
-# 
-# 
-svc$create_organization()
-
-# In the following example, Bill creates an organization using credentials
-# from account 111111111111, and configures the organization to support
-# only the consolidated billing feature set:
-# 
-# 
-svc$create_organization(
-  FeatureSet = "CONSOLIDATED_BILLING"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/create_organization.html} for full documentation.
 }
 \keyword{internal}

@@ -3,72 +3,111 @@
 #' @include transcribeservice_service.R
 NULL
 
+#' Creates a new Call Analytics category
+#'
+#' @description
+#' Creates a new Call Analytics category.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/create_call_analytics_category.html](https://paws-r.github.io/docs/transcribeservice/create_call_analytics_category.html) for full documentation.
+#'
+#' @param CategoryName &#91;required&#93; A unique name, chosen by you, for your Call Analytics category. It's
+#' helpful to use a detailed naming system that will make sense to you in
+#' the future. For example, it's better to use
+#' `sentiment-positive-last30seconds` for a category over a generic name
+#' like `test-category`.
+#' 
+#' Category names are case sensitive.
+#' @param Rules &#91;required&#93; Rules define a Call Analytics category. When creating a new Call
+#' Analytics category, you must create between 1 and 20 rules for that
+#' category. For each rule, you specify a filter you want applied to the
+#' attributes of a call. For example, you can choose a sentiment filter
+#' that detects if a customer's sentiment was positive during the last 30
+#' seconds of the call.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_create_call_analytics_category
+transcribeservice_create_call_analytics_category <- function(CategoryName, Rules) {
+  op <- new_operation(
+    name = "CreateCallAnalyticsCategory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$create_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules)
+  output <- .transcribeservice$create_call_analytics_category_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$create_call_analytics_category <- transcribeservice_create_call_analytics_category
+
 #' Creates a new custom language model
 #'
 #' @description
-#' Creates a new custom language model. Use Amazon S3 prefixes to provide
-#' the location of your input files. The time it takes to create your model
-#' depends on the size of your training data.
+#' Creates a new custom language model.
 #'
-#' @usage
-#' transcribeservice_create_language_model(LanguageCode, BaseModelName,
-#'   ModelName, InputDataConfig)
+#' See [https://paws-r.github.io/docs/transcribeservice/create_language_model.html](https://paws-r.github.io/docs/transcribeservice/create_language_model.html) for full documentation.
 #'
-#' @param LanguageCode &#91;required&#93; The language of the input text you're using to train your custom
-#' language model.
-#' @param BaseModelName &#91;required&#93; The Amazon Transcribe standard language model, or base model used to
-#' create your custom language model.
+#' @param LanguageCode &#91;required&#93; The language code that represents the language of your model. Each
+#' language model must contain terms in only one language, and the language
+#' you select for your model must match the language of your training and
+#' tuning data.
 #' 
-#' If you want to use your custom language model to transcribe audio with a
-#' sample rate of 16 kHz or greater, choose `Wideband`.
+#' For a list of supported languages and their associated language codes,
+#' refer to the [Supported
+#' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
+#' table. Note that U.S. English (`en-US`) is the only language supported
+#' with Amazon Transcribe Medical.
 #' 
-#' If you want to use your custom language model to transcribe audio with a
-#' sample rate that is less than 16 kHz, choose `Narrowband`.
-#' @param ModelName &#91;required&#93; The name you choose for your custom language model when you create it.
-#' @param InputDataConfig &#91;required&#93; Contains the data access role and the Amazon S3 prefixes to read the
-#' required input files to create a custom language model.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LanguageCode = "en-US",
-#'   BaseModelName = "NarrowBand"|"WideBand",
-#'   ModelName = "string",
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     TuningDataS3Uri = "string",
-#'     DataAccessRoleArn = "string"
-#'   ),
-#'   ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_language_model(
-#'   LanguageCode = "en-US",
-#'   BaseModelName = "NarrowBand"|"WideBand",
-#'   ModelName = "string",
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     TuningDataS3Uri = "string",
-#'     DataAccessRoleArn = "string"
-#'   )
-#' )
-#' ```
+#' A custom language model can only be used to transcribe files in the same
+#' language as the model. For example, if you create a language model using
+#' US English (`en-US`), you can only apply this model to files that
+#' contain English audio.
+#' @param BaseModelName &#91;required&#93; The Amazon Transcribe standard language model, or base model, used to
+#' create your custom language model. Amazon Transcribe offers two options
+#' for base models: Wideband and Narrowband.
+#' 
+#' If the audio you want to transcribe has a sample rate of 16,000 Hz or
+#' greater, choose `WideBand`. To transcribe audio with a sample rate less
+#' than 16,000 Hz, choose `NarrowBand`.
+#' @param ModelName &#91;required&#93; A unique name, chosen by you, for your custom language model.
+#' 
+#' This name is case sensitive, cannot contain spaces, and must be unique
+#' within an Amazon Web Services account. If you try to create a new
+#' language model with the same name as an existing language model, you get
+#' a `ConflictException` error.
+#' @param InputDataConfig &#91;required&#93; Contains the Amazon S3 location of the training data you want to use to
+#' create a new custom language model, and permissions to access this
+#' location.
+#' 
+#' When using `InputDataConfig`, you must include these sub-parameters:
+#' `S3Uri`, which is the Amazon S3 location of your training data, and
+#' `DataAccessRoleArn`, which is the Amazon Resource Name (ARN) of the role
+#' that has permission to access your specified Amazon S3 location. You can
+#' optionally include `TuningDataS3Uri`, which is the Amazon S3 location of
+#' your tuning data. If you specify different Amazon S3 locations for
+#' training and tuning data, the ARN you use must have permissions to
+#' access both locations.
+#' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
+#' new custom language model at the time you create this new model.
+#' 
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_language_model
-transcribeservice_create_language_model <- function(LanguageCode, BaseModelName, ModelName, InputDataConfig) {
+transcribeservice_create_language_model <- function(LanguageCode, BaseModelName, ModelName, InputDataConfig, Tags = NULL) {
   op <- new_operation(
     name = "CreateLanguageModel",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$create_language_model_input(LanguageCode = LanguageCode, BaseModelName = BaseModelName, ModelName = ModelName, InputDataConfig = InputDataConfig)
+  input <- .transcribeservice$create_language_model_input(LanguageCode = LanguageCode, BaseModelName = BaseModelName, ModelName = ModelName, InputDataConfig = InputDataConfig, Tags = Tags)
   output <- .transcribeservice$create_language_model_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -78,77 +117,44 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 }
 .transcribeservice$operations$create_language_model <- transcribeservice_create_language_model
 
-#' Creates a new custom vocabulary that you can use to change how Amazon
-#' Transcribe Medical transcribes your audio file
+#' Creates a new custom medical vocabulary
 #'
 #' @description
-#' Creates a new custom vocabulary that you can use to change how Amazon
-#' Transcribe Medical transcribes your audio file.
+#' Creates a new custom medical vocabulary.
 #'
-#' @usage
-#' transcribeservice_create_medical_vocabulary(VocabularyName,
-#'   LanguageCode, VocabularyFileUri)
+#' See [https://paws-r.github.io/docs/transcribeservice/create_medical_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/create_medical_vocabulary.html) for full documentation.
 #'
-#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary. This case-sensitive name must be
-#' unique within an AWS account. If you try to create a vocabulary with the
-#' same name as a previous vocabulary, you get a `ConflictException` error.
-#' @param LanguageCode &#91;required&#93; The language code for the language used for the entries in your custom
-#' vocabulary. The language code of your custom vocabulary must match the
-#' language code of your transcription job. US English (en-US) is the only
-#' language code available for Amazon Transcribe Medical.
-#' @param VocabularyFileUri &#91;required&#93; The location in Amazon S3 of the text file you use to define your custom
-#' vocabulary. The URI must be in the same AWS Region as the resource that
-#' you're calling. Enter information about your `VocabularyFileUri` in the
-#' following format:
+#' @param VocabularyName &#91;required&#93; A unique name, chosen by you, for your new custom medical vocabulary.
 #' 
-#' ` https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey> `
+#' This name is case sensitive, cannot contain spaces, and must be unique
+#' within an Amazon Web Services account. If you try to create a new
+#' medical vocabulary with the same name as an existing medical vocabulary,
+#' you get a `ConflictException` error.
+#' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in your
+#' custom vocabulary. US English (`en-US`) is the only language supported
+#' with Amazon Transcribe Medical.
+#' @param VocabularyFileUri &#91;required&#93; The Amazon S3 location (URI) of the text file that contains your custom
+#' medical vocabulary. The URI must be in the same Amazon Web Services
+#' Region as the resource you're calling.
 #' 
-#' The following is an example URI for a vocabulary file that is stored in
-#' Amazon S3:
+#' Here's an example URI path: `s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt`
+#' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
+#' new medical vocabulary at the time you create this new vocabulary.
 #' 
-#' `https://s3.us-east-1.amazonaws.com/AWSDOC-EXAMPLE-BUCKET/vocab.txt`
-#' 
-#' For more information about Amazon S3 object names, see [Object
-#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys)
-#' in the *Amazon S3 Developer Guide*.
-#' 
-#' For more information about custom vocabularies, see [Medical Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary-med).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   VocabularyState = "PENDING"|"READY"|"FAILED",
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   FailureReason = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_medical_vocabulary(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   VocabularyFileUri = "string"
-#' )
-#' ```
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_medical_vocabulary
-transcribeservice_create_medical_vocabulary <- function(VocabularyName, LanguageCode, VocabularyFileUri) {
+transcribeservice_create_medical_vocabulary <- function(VocabularyName, LanguageCode, VocabularyFileUri, Tags = NULL) {
   op <- new_operation(
     name = "CreateMedicalVocabulary",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$create_medical_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, VocabularyFileUri = VocabularyFileUri)
+  input <- .transcribeservice$create_medical_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, VocabularyFileUri = VocabularyFileUri, Tags = Tags)
   output <- .transcribeservice$create_medical_vocabulary_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -158,71 +164,71 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 }
 .transcribeservice$operations$create_medical_vocabulary <- transcribeservice_create_medical_vocabulary
 
-#' Creates a new custom vocabulary that you can use to change the way
-#' Amazon Transcribe handles transcription of an audio file
+#' Creates a new custom vocabulary
 #'
 #' @description
-#' Creates a new custom vocabulary that you can use to change the way
-#' Amazon Transcribe handles transcription of an audio file.
+#' Creates a new custom vocabulary.
 #'
-#' @usage
-#' transcribeservice_create_vocabulary(VocabularyName, LanguageCode,
-#'   Phrases, VocabularyFileUri)
+#' See [https://paws-r.github.io/docs/transcribeservice/create_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/create_vocabulary.html) for full documentation.
 #'
-#' @param VocabularyName &#91;required&#93; The name of the vocabulary. The name must be unique within an AWS
-#' account. The name is case sensitive. If you try to create a vocabulary
-#' with the same name as a previous vocabulary you will receive a
+#' @param VocabularyName &#91;required&#93; A unique name, chosen by you, for your new custom vocabulary.
+#' 
+#' This name is case sensitive, cannot contain spaces, and must be unique
+#' within an Amazon Web Services account. If you try to create a new
+#' vocabulary with the same name as an existing vocabulary, you get a
 #' `ConflictException` error.
-#' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries.
-#' @param Phrases An array of strings that contains the vocabulary entries.
-#' @param VocabularyFileUri The S3 location of the text file that contains the definition of the
-#' custom vocabulary. The URI must be in the same region as the API
-#' endpoint that you are calling. The general form is
+#' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in your
+#' custom vocabulary. Each vocabulary must contain terms in only one
+#' language.
 #' 
-#' For more information about S3 object names, see [Object
-#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys)
-#' in the *Amazon S3 Developer Guide*.
+#' A custom vocabulary can only be used to transcribe files in the same
+#' language as the vocabulary. For example, if you create a vocabulary
+#' using US English (`en-US`), you can only apply this vocabulary to files
+#' that contain English audio.
 #' 
-#' For more information about custom vocabularies, see [Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   VocabularyState = "PENDING"|"READY"|"FAILED",
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   FailureReason = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_vocabulary(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   Phrases = list(
-#'     "string"
-#'   ),
-#'   VocabularyFileUri = "string"
-#' )
-#' ```
+#' For a list of supported languages and their associated language codes,
+#' refer to the [Supported
+#' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
+#' table.
+#' @param Phrases Use this parameter if you want to create your vocabulary by including
+#' all desired terms, as comma-separated values, within your request. The
+#' other option for creating your vocabulary is to save your entries in a
+#' text file and upload them to an Amazon S3 bucket, then specify the
+#' location of your file using the `VocabularyFileUri` parameter.
+#' 
+#' Note that if you include `Phrases` in your request, you cannot use
+#' `VocabularyFileUri`; you must choose one or the other.
+#' 
+#' Each language has a character set that contains all allowed characters
+#' for that specific language. If you use unsupported characters, your
+#' vocabulary filter request fails. Refer to [Character Sets for Custom
+#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
+#' to get the character set for your language.
+#' @param VocabularyFileUri The Amazon S3 location of the text file that contains your custom
+#' vocabulary. The URI must be located in the same Amazon Web Services
+#' Region as the resource you're calling.
+#' 
+#' Here's an example URI path: `s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt`
+#' 
+#' Note that if you include `VocabularyFileUri` in your request, you cannot
+#' use the `Phrases` flag; you must choose one or the other.
+#' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
+#' new custom vocabulary at the time you create this new vocabulary.
+#' 
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_vocabulary
-transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL) {
+transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateVocabulary",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$create_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri)
+  input <- .transcribeservice$create_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri, Tags = Tags)
   output <- .transcribeservice$create_vocabulary_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -232,77 +238,73 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 }
 .transcribeservice$operations$create_vocabulary <- transcribeservice_create_vocabulary
 
-#' Creates a new vocabulary filter that you can use to filter words, such
-#' as profane words, from the output of a transcription job
+#' Creates a new custom vocabulary filter
 #'
 #' @description
-#' Creates a new vocabulary filter that you can use to filter words, such
-#' as profane words, from the output of a transcription job.
+#' Creates a new custom vocabulary filter.
 #'
-#' @usage
-#' transcribeservice_create_vocabulary_filter(VocabularyFilterName,
-#'   LanguageCode, Words, VocabularyFilterFileUri)
+#' See [https://paws-r.github.io/docs/transcribeservice/create_vocabulary_filter.html](https://paws-r.github.io/docs/transcribeservice/create_vocabulary_filter.html) for full documentation.
 #'
-#' @param VocabularyFilterName &#91;required&#93; The vocabulary filter name. The name must be unique within the account
-#' that contains it. If you try to create a vocabulary filter with the same
-#' name as another vocabulary filter, you get a `ConflictException` error.
-#' @param LanguageCode &#91;required&#93; The language code of the words in the vocabulary filter. All words in
-#' the filter must be in the same language. The vocabulary filter can only
-#' be used with transcription jobs in the specified language.
-#' @param Words The words to use in the vocabulary filter. Only use characters from the
-#' character set defined for custom vocabularies. For a list of character
-#' sets, see [Character Sets for Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
+#' @param VocabularyFilterName &#91;required&#93; A unique name, chosen by you, for your new custom vocabulary filter.
 #' 
-#' If you provide a list of words in the `Words` parameter, you can't use
-#' the `VocabularyFilterFileUri` parameter.
-#' @param VocabularyFilterFileUri The Amazon S3 location of a text file used as input to create the
-#' vocabulary filter. Only use characters from the character set defined
-#' for custom vocabularies. For a list of character sets, see [Character
-#' Sets for Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
+#' This name is case sensitive, cannot contain spaces, and must be unique
+#' within an Amazon Web Services account. If you try to create a new
+#' vocabulary filter with the same name as an existing vocabulary filter,
+#' you get a `ConflictException` error.
+#' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in your
+#' vocabulary filter. Each vocabulary filter must contain terms in only one
+#' language.
 #' 
-#' The specified file must be less than 50 KB of UTF-8 characters.
+#' A vocabulary filter can only be used to transcribe files in the same
+#' language as the filter. For example, if you create a vocabulary filter
+#' using US English (`en-US`), you can only apply this filter to files that
+#' contain English audio.
 #' 
-#' If you provide the location of a list of words in the
-#' `VocabularyFilterFileUri` parameter, you can't use the `Words`
+#' For a list of supported languages and their associated language codes,
+#' refer to the [Supported
+#' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
+#' table.
+#' @param Words Use this parameter if you want to create your vocabulary filter by
+#' including all desired terms, as comma-separated values, within your
+#' request. The other option for creating your vocabulary filter is to save
+#' your entries in a text file and upload them to an Amazon S3 bucket, then
+#' specify the location of your file using the `VocabularyFilterFileUri`
 #' parameter.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_vocabulary_filter(
-#'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   Words = list(
-#'     "string"
-#'   ),
-#'   VocabularyFilterFileUri = "string"
-#' )
-#' ```
+#' 
+#' Note that if you include `Words` in your request, you cannot use
+#' `VocabularyFilterFileUri`; you must choose one or the other.
+#' 
+#' Each language has a character set that contains all allowed characters
+#' for that specific language. If you use unsupported characters, your
+#' vocabulary filter request fails. Refer to [Character Sets for Custom
+#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
+#' to get the character set for your language.
+#' @param VocabularyFilterFileUri The Amazon S3 location of the text file that contains your custom
+#' vocabulary filter terms. The URI must be located in the same Amazon Web
+#' Services Region as the resource you're calling.
+#' 
+#' Here's an example URI path:
+#' `s3://DOC-EXAMPLE-BUCKET/my-vocab-filter-file.txt`
+#' 
+#' Note that if you include `VocabularyFilterFileUri` in your request, you
+#' cannot use `Words`; you must choose one or the other.
+#' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
+#' new custom vocabulary filter at the time you create this new filter.
+#' 
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_vocabulary_filter
-transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, LanguageCode, Words = NULL, VocabularyFilterFileUri = NULL) {
+transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, LanguageCode, Words = NULL, VocabularyFilterFileUri = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateVocabularyFilter",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$create_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, LanguageCode = LanguageCode, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri)
+  input <- .transcribeservice$create_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, LanguageCode = LanguageCode, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri, Tags = Tags)
   output <- .transcribeservice$create_vocabulary_filter_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -312,25 +314,75 @@ transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, Lan
 }
 .transcribeservice$operations$create_vocabulary_filter <- transcribeservice_create_vocabulary_filter
 
-#' Deletes a custom language model using its name
+#' Deletes a Call Analytics category
 #'
 #' @description
-#' Deletes a custom language model using its name.
+#' Deletes a Call Analytics category. To use this operation, specify the name of the category you want to delete using `CategoryName`. Category names are case sensitive.
 #'
-#' @usage
-#' transcribeservice_delete_language_model(ModelName)
+#' See [https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_category.html](https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_category.html) for full documentation.
 #'
-#' @param ModelName &#91;required&#93; The name of the model you're choosing to delete.
+#' @param CategoryName &#91;required&#93; The name of the Call Analytics category you want to delete. Category
+#' names are case sensitive.
 #'
-#' @return
-#' An empty list.
+#' @keywords internal
 #'
-#' @section Request syntax:
-#' ```
-#' svc$delete_language_model(
-#'   ModelName = "string"
-#' )
-#' ```
+#' @rdname transcribeservice_delete_call_analytics_category
+transcribeservice_delete_call_analytics_category <- function(CategoryName) {
+  op <- new_operation(
+    name = "DeleteCallAnalyticsCategory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$delete_call_analytics_category_input(CategoryName = CategoryName)
+  output <- .transcribeservice$delete_call_analytics_category_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$delete_call_analytics_category <- transcribeservice_delete_call_analytics_category
+
+#' Deletes a Call Analytics job
+#'
+#' @description
+#' Deletes a Call Analytics job. To use this operation, specify the name of the job you want to delete using `CallAnalyticsJobName`. Job names are case sensitive.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_job.html](https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_job.html) for full documentation.
+#'
+#' @param CallAnalyticsJobName &#91;required&#93; The name of the Call Analytics job you want to delete. Job names are
+#' case sensitive.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_delete_call_analytics_job
+transcribeservice_delete_call_analytics_job <- function(CallAnalyticsJobName) {
+  op <- new_operation(
+    name = "DeleteCallAnalyticsJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$delete_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName)
+  output <- .transcribeservice$delete_call_analytics_job_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$delete_call_analytics_job <- transcribeservice_delete_call_analytics_job
+
+#' Deletes a custom language model
+#'
+#' @description
+#' Deletes a custom language model. To use this operation, specify the name of the language model you want to delete using `ModelName`. Language model names are case sensitive.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/delete_language_model.html](https://paws-r.github.io/docs/transcribeservice/delete_language_model.html) for full documentation.
+#'
+#' @param ModelName &#91;required&#93; The name of the custom language model you want to delete. Model names
+#' are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -352,30 +404,15 @@ transcribeservice_delete_language_model <- function(ModelName) {
 }
 .transcribeservice$operations$delete_language_model <- transcribeservice_delete_language_model
 
-#' Deletes a transcription job generated by Amazon Transcribe Medical and
-#' any related information
+#' Deletes a medical transcription job
 #'
 #' @description
-#' Deletes a transcription job generated by Amazon Transcribe Medical and
-#' any related information.
+#' Deletes a medical transcription job. To use this operation, specify the name of the job you want to delete using `MedicalTranscriptionJobName`. Job names are case sensitive.
 #'
-#' @usage
-#' transcribeservice_delete_medical_transcription_job(
-#'   MedicalTranscriptionJobName)
+#' See [https://paws-r.github.io/docs/transcribeservice/delete_medical_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/delete_medical_transcription_job.html) for full documentation.
 #'
-#' @param MedicalTranscriptionJobName &#91;required&#93; The name you provide to the
-#' [`delete_medical_transcription_job`][transcribeservice_delete_medical_transcription_job]
-#' object to delete a transcription job.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_medical_transcription_job(
-#'   MedicalTranscriptionJobName = "string"
-#' )
-#' ```
+#' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job you want to delete. Job names
+#' are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -397,25 +434,15 @@ transcribeservice_delete_medical_transcription_job <- function(MedicalTranscript
 }
 .transcribeservice$operations$delete_medical_transcription_job <- transcribeservice_delete_medical_transcription_job
 
-#' Deletes a vocabulary from Amazon Transcribe Medical
+#' Deletes a custom medical vocabulary
 #'
 #' @description
-#' Deletes a vocabulary from Amazon Transcribe Medical.
+#' Deletes a custom medical vocabulary. To use this operation, specify the name of the vocabulary you want to delete using `VocabularyName`. Vocabulary names are case sensitive.
 #'
-#' @usage
-#' transcribeservice_delete_medical_vocabulary(VocabularyName)
+#' See [https://paws-r.github.io/docs/transcribeservice/delete_medical_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/delete_medical_vocabulary.html) for full documentation.
 #'
-#' @param VocabularyName &#91;required&#93; The name of the vocabulary that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_medical_vocabulary(
-#'   VocabularyName = "string"
-#' )
-#' ```
+#' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want to delete. Vocabulary
+#' names are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -437,27 +464,15 @@ transcribeservice_delete_medical_vocabulary <- function(VocabularyName) {
 }
 .transcribeservice$operations$delete_medical_vocabulary <- transcribeservice_delete_medical_vocabulary
 
-#' Deletes a previously submitted transcription job along with any other
-#' generated results such as the transcription, models, and so on
+#' Deletes a transcription job
 #'
 #' @description
-#' Deletes a previously submitted transcription job along with any other
-#' generated results such as the transcription, models, and so on.
+#' Deletes a transcription job. To use this operation, specify the name of the job you want to delete using `TranscriptionJobName`. Job names are case sensitive.
 #'
-#' @usage
-#' transcribeservice_delete_transcription_job(TranscriptionJobName)
+#' See [https://paws-r.github.io/docs/transcribeservice/delete_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/delete_transcription_job.html) for full documentation.
 #'
-#' @param TranscriptionJobName &#91;required&#93; The name of the transcription job to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_transcription_job(
-#'   TranscriptionJobName = "string"
-#' )
-#' ```
+#' @param TranscriptionJobName &#91;required&#93; The name of the transcription job you want to delete. Job names are case
+#' sensitive.
 #'
 #' @keywords internal
 #'
@@ -479,25 +494,15 @@ transcribeservice_delete_transcription_job <- function(TranscriptionJobName) {
 }
 .transcribeservice$operations$delete_transcription_job <- transcribeservice_delete_transcription_job
 
-#' Deletes a vocabulary from Amazon Transcribe
+#' Deletes a custom vocabulary
 #'
 #' @description
-#' Deletes a vocabulary from Amazon Transcribe.
+#' Deletes a custom vocabulary. To use this operation, specify the name of the vocabulary you want to delete using `VocabularyName`. Vocabulary names are case sensitive.
 #'
-#' @usage
-#' transcribeservice_delete_vocabulary(VocabularyName)
+#' See [https://paws-r.github.io/docs/transcribeservice/delete_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/delete_vocabulary.html) for full documentation.
 #'
-#' @param VocabularyName &#91;required&#93; The name of the vocabulary to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_vocabulary(
-#'   VocabularyName = "string"
-#' )
-#' ```
+#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want to delete. Vocabulary names
+#' are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -519,25 +524,15 @@ transcribeservice_delete_vocabulary <- function(VocabularyName) {
 }
 .transcribeservice$operations$delete_vocabulary <- transcribeservice_delete_vocabulary
 
-#' Removes a vocabulary filter
+#' Deletes a vocabulary filter
 #'
 #' @description
-#' Removes a vocabulary filter.
+#' Deletes a vocabulary filter. To use this operation, specify the name of the vocabulary filter you want to delete using `VocabularyFilterName`. Vocabulary filter names are case sensitive.
 #'
-#' @usage
-#' transcribeservice_delete_vocabulary_filter(VocabularyFilterName)
+#' See [https://paws-r.github.io/docs/transcribeservice/delete_vocabulary_filter.html](https://paws-r.github.io/docs/transcribeservice/delete_vocabulary_filter.html) for full documentation.
 #'
-#' @param VocabularyFilterName &#91;required&#93; The name of the vocabulary filter to remove.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_vocabulary_filter(
-#'   VocabularyFilterName = "string"
-#' )
-#' ```
+#' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want to delete. Vocabulary
+#' filter names are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -559,55 +554,15 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
 }
 .transcribeservice$operations$delete_vocabulary_filter <- transcribeservice_delete_vocabulary_filter
 
-#' Gets information about a single custom language model
+#' Provides information about the specified custom language model
 #'
 #' @description
-#' Gets information about a single custom language model. Use this
-#' information to see details about the language model in your AWS account.
-#' You can also see whether the base language model used to create your
-#' custom language model has been updated. If Amazon Transcribe has updated
-#' the base model, you can create a new custom language model using the
-#' updated base model. If the language model wasn't created, you can use
-#' this operation to understand why Amazon Transcribe couldn't create it.
+#' Provides information about the specified custom language model.
 #'
-#' @usage
-#' transcribeservice_describe_language_model(ModelName)
+#' See [https://paws-r.github.io/docs/transcribeservice/describe_language_model.html](https://paws-r.github.io/docs/transcribeservice/describe_language_model.html) for full documentation.
 #'
-#' @param ModelName &#91;required&#93; The name of the custom language model you submit to get more
-#' information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LanguageModel = list(
-#'     ModelName = "string",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LanguageCode = "en-US",
-#'     BaseModelName = "NarrowBand"|"WideBand",
-#'     ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     UpgradeAvailability = TRUE|FALSE,
-#'     FailureReason = "string",
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       TuningDataS3Uri = "string",
-#'       DataAccessRoleArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_language_model(
-#'   ModelName = "string"
-#' )
-#' ```
+#' @param ModelName &#91;required&#93; The name of the custom language model you want information about. Model
+#' names are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -629,68 +584,75 @@ transcribeservice_describe_language_model <- function(ModelName) {
 }
 .transcribeservice$operations$describe_language_model <- transcribeservice_describe_language_model
 
-#' Returns information about a transcription job from Amazon Transcribe
-#' Medical
+#' Provides information about the specified Call Analytics category
 #'
 #' @description
-#' Returns information about a transcription job from Amazon Transcribe
-#' Medical. To see the status of the job, check the
-#' `TranscriptionJobStatus` field. If the status is `COMPLETED`, the job is
-#' finished. You find the results of the completed job in the
-#' `TranscriptFileUri` field.
+#' Provides information about the specified Call Analytics category.
 #'
-#' @usage
-#' transcribeservice_get_medical_transcription_job(
-#'   MedicalTranscriptionJobName)
+#' See [https://paws-r.github.io/docs/transcribeservice/get_call_analytics_category.html](https://paws-r.github.io/docs/transcribeservice/get_call_analytics_category.html) for full documentation.
 #'
-#' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job.
+#' @param CategoryName &#91;required&#93; The name of the Call Analytics category you want information about.
+#' Category names are case sensitive.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MedicalTranscriptionJob = list(
-#'     MedicalTranscriptionJobName = "string",
-#'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
-#'     Media = list(
-#'       MediaFileUri = "string"
-#'     ),
-#'     Transcript = list(
-#'       TranscriptFileUri = "string"
-#'     ),
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CompletionTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     Settings = list(
-#'       ShowSpeakerLabels = TRUE|FALSE,
-#'       MaxSpeakerLabels = 123,
-#'       ChannelIdentification = TRUE|FALSE,
-#'       ShowAlternatives = TRUE|FALSE,
-#'       MaxAlternatives = 123,
-#'       VocabularyName = "string"
-#'     ),
-#'     Specialty = "PRIMARYCARE",
-#'     Type = "CONVERSATION"|"DICTATION"
-#'   )
-#' )
-#' ```
+#' @keywords internal
 #'
-#' @section Request syntax:
-#' ```
-#' svc$get_medical_transcription_job(
-#'   MedicalTranscriptionJobName = "string"
-#' )
-#' ```
+#' @rdname transcribeservice_get_call_analytics_category
+transcribeservice_get_call_analytics_category <- function(CategoryName) {
+  op <- new_operation(
+    name = "GetCallAnalyticsCategory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$get_call_analytics_category_input(CategoryName = CategoryName)
+  output <- .transcribeservice$get_call_analytics_category_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$get_call_analytics_category <- transcribeservice_get_call_analytics_category
+
+#' Provides information about the specified Call Analytics job
+#'
+#' @description
+#' Provides information about the specified Call Analytics job.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/get_call_analytics_job.html](https://paws-r.github.io/docs/transcribeservice/get_call_analytics_job.html) for full documentation.
+#'
+#' @param CallAnalyticsJobName &#91;required&#93; The name of the Call Analytics job you want information about. Job names
+#' are case sensitive.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_get_call_analytics_job
+transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
+  op <- new_operation(
+    name = "GetCallAnalyticsJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$get_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName)
+  output <- .transcribeservice$get_call_analytics_job_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$get_call_analytics_job <- transcribeservice_get_call_analytics_job
+
+#' Provides information about the specified medical transcription job
+#'
+#' @description
+#' Provides information about the specified medical transcription job.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/get_medical_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/get_medical_transcription_job.html) for full documentation.
+#'
+#' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job you want information about.
+#' Job names are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -712,38 +674,15 @@ transcribeservice_get_medical_transcription_job <- function(MedicalTranscription
 }
 .transcribeservice$operations$get_medical_transcription_job <- transcribeservice_get_medical_transcription_job
 
-#' Retrieves information about a medical vocabulary
+#' Provides information about the specified custom medical vocabulary
 #'
 #' @description
-#' Retrieves information about a medical vocabulary.
+#' Provides information about the specified custom medical vocabulary.
 #'
-#' @usage
-#' transcribeservice_get_medical_vocabulary(VocabularyName)
+#' See [https://paws-r.github.io/docs/transcribeservice/get_medical_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/get_medical_vocabulary.html) for full documentation.
 #'
-#' @param VocabularyName &#91;required&#93; The name of the vocabulary that you want information about. The value is
-#' case sensitive.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   VocabularyState = "PENDING"|"READY"|"FAILED",
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   FailureReason = "string",
-#'   DownloadUri = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_medical_vocabulary(
-#'   VocabularyName = "string"
-#' )
-#' ```
+#' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want information about.
+#' Vocabulary names are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -765,84 +704,15 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 }
 .transcribeservice$operations$get_medical_vocabulary <- transcribeservice_get_medical_vocabulary
 
-#' Returns information about a transcription job
+#' Provides information about the specified transcription job
 #'
 #' @description
-#' Returns information about a transcription job. To see the status of the
-#' job, check the `TranscriptionJobStatus` field. If the status is
-#' `COMPLETED`, the job is finished and you can find the results at the
-#' location specified in the `TranscriptFileUri` field. If you enable
-#' content redaction, the redacted transcript appears in
-#' `RedactedTranscriptFileUri`.
+#' Provides information about the specified transcription job.
 #'
-#' @usage
-#' transcribeservice_get_transcription_job(TranscriptionJobName)
+#' See [https://paws-r.github.io/docs/transcribeservice/get_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/get_transcription_job.html) for full documentation.
 #'
-#' @param TranscriptionJobName &#91;required&#93; The name of the job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TranscriptionJob = list(
-#'     TranscriptionJobName = "string",
-#'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
-#'     Media = list(
-#'       MediaFileUri = "string"
-#'     ),
-#'     Transcript = list(
-#'       TranscriptFileUri = "string",
-#'       RedactedTranscriptFileUri = "string"
-#'     ),
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CompletionTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     Settings = list(
-#'       VocabularyName = "string",
-#'       ShowSpeakerLabels = TRUE|FALSE,
-#'       MaxSpeakerLabels = 123,
-#'       ChannelIdentification = TRUE|FALSE,
-#'       ShowAlternatives = TRUE|FALSE,
-#'       MaxAlternatives = 123,
-#'       VocabularyFilterName = "string",
-#'       VocabularyFilterMethod = "remove"|"mask"
-#'     ),
-#'     ModelSettings = list(
-#'       LanguageModelName = "string"
-#'     ),
-#'     JobExecutionSettings = list(
-#'       AllowDeferredExecution = TRUE|FALSE,
-#'       DataAccessRoleArn = "string"
-#'     ),
-#'     ContentRedaction = list(
-#'       RedactionType = "PII",
-#'       RedactionOutput = "redacted"|"redacted_and_unredacted"
-#'     ),
-#'     IdentifyLanguage = TRUE|FALSE,
-#'     LanguageOptions = list(
-#'       "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"
-#'     ),
-#'     IdentifiedLanguageScore = 123.0
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_transcription_job(
-#'   TranscriptionJobName = "string"
-#' )
-#' ```
+#' @param TranscriptionJobName &#91;required&#93; The name of the transcription job you want information about. Job names
+#' are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -864,38 +734,15 @@ transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
 }
 .transcribeservice$operations$get_transcription_job <- transcribeservice_get_transcription_job
 
-#' Gets information about a vocabulary
+#' Provides information about the specified custom vocabulary
 #'
 #' @description
-#' Gets information about a vocabulary.
+#' Provides information about the specified custom vocabulary.
 #'
-#' @usage
-#' transcribeservice_get_vocabulary(VocabularyName)
+#' See [https://paws-r.github.io/docs/transcribeservice/get_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/get_vocabulary.html) for full documentation.
 #'
-#' @param VocabularyName &#91;required&#93; The name of the vocabulary to return information about. The name is case
-#' sensitive.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   VocabularyState = "PENDING"|"READY"|"FAILED",
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   FailureReason = "string",
-#'   DownloadUri = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_vocabulary(
-#'   VocabularyName = "string"
-#' )
-#' ```
+#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want information about. Vocabulary
+#' names are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -917,35 +764,15 @@ transcribeservice_get_vocabulary <- function(VocabularyName) {
 }
 .transcribeservice$operations$get_vocabulary <- transcribeservice_get_vocabulary
 
-#' Returns information about a vocabulary filter
+#' Provides information about the specified custom vocabulary filter
 #'
 #' @description
-#' Returns information about a vocabulary filter.
+#' Provides information about the specified custom vocabulary filter.
 #'
-#' @usage
-#' transcribeservice_get_vocabulary_filter(VocabularyFilterName)
+#' See [https://paws-r.github.io/docs/transcribeservice/get_vocabulary_filter.html](https://paws-r.github.io/docs/transcribeservice/get_vocabulary_filter.html) for full documentation.
 #'
-#' @param VocabularyFilterName &#91;required&#93; The name of the vocabulary filter for which to return information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DownloadUri = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_vocabulary_filter(
-#'   VocabularyFilterName = "string"
-#' )
-#' ```
+#' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want information about.
+#' Vocabulary filter names are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -967,69 +794,113 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 }
 .transcribeservice$operations$get_vocabulary_filter <- transcribeservice_get_vocabulary_filter
 
-#' Provides more information about the custom language models you've
-#' created
+#' Provides a list of Call Analytics categories, including all rules that
+#' make up each category
 #'
 #' @description
-#' Provides more information about the custom language models you've
-#' created. You can use the information in this list to find a specific
-#' custom language model. You can then use the operation to get more
-#' information about it.
+#' Provides a list of Call Analytics categories, including all rules that make up each category.
 #'
-#' @usage
-#' transcribeservice_list_language_models(StatusEquals, NameContains,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/transcribeservice/list_call_analytics_categories.html](https://paws-r.github.io/docs/transcribeservice/list_call_analytics_categories.html) for full documentation.
 #'
-#' @param StatusEquals When specified, returns only custom language models with the specified
-#' status. Language models are ordered by creation date, with the newest
-#' models first. If you don't specify a status, Amazon Transcribe returns
-#' all custom language models ordered by date.
-#' @param NameContains When specified, the custom language model names returned contain the
-#' substring you've specified.
-#' @param NextToken When included, fetches the next set of jobs if the result of the
-#' previous request was truncated.
-#' @param MaxResults The maximum number of language models to return in the response. If
-#' there are fewer results in the list, the response contains only the
-#' actual results.
+#' @param NextToken If your
+#' [`list_call_analytics_categories`][transcribeservice_list_call_analytics_categories]
+#' request returns more results than can be displayed, `NextToken` is
+#' displayed in the response with an associated string. To get the next
+#' page of results, copy this string and repeat your request, including
+#' `NextToken` with the value of the copied string. Repeat as needed to
+#' view all your results.
+#' @param MaxResults The maximum number of Call Analytics categories to return in each page
+#' of results. If there are fewer results than the value you specify, only
+#' the actual results are returned. If you don't specify a value, a default
+#' of 5 is used.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   Models = list(
-#'     list(
-#'       ModelName = "string",
-#'       CreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LanguageCode = "en-US",
-#'       BaseModelName = "NarrowBand"|"WideBand",
-#'       ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'       UpgradeAvailability = TRUE|FALSE,
-#'       FailureReason = "string",
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         TuningDataS3Uri = "string",
-#'         DataAccessRoleArn = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' @keywords internal
 #'
-#' @section Request syntax:
-#' ```
-#' svc$list_language_models(
-#'   StatusEquals = "IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'   NameContains = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
+#' @rdname transcribeservice_list_call_analytics_categories
+transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCallAnalyticsCategories",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$list_call_analytics_categories_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .transcribeservice$list_call_analytics_categories_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$list_call_analytics_categories <- transcribeservice_list_call_analytics_categories
+
+#' Provides a list of Call Analytics jobs that match the specified criteria
+#'
+#' @description
+#' Provides a list of Call Analytics jobs that match the specified criteria. If no criteria are specified, all Call Analytics jobs are returned.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/list_call_analytics_jobs.html](https://paws-r.github.io/docs/transcribeservice/list_call_analytics_jobs.html) for full documentation.
+#'
+#' @param Status Returns only Call Analytics jobs with the specified status. Jobs are
+#' ordered by creation date, with the newest job first. If you don't
+#' include `Status`, all Call Analytics jobs are returned.
+#' @param JobNameContains Returns only the Call Analytics jobs that contain the specified string.
+#' The search is not case sensitive.
+#' @param NextToken If your
+#' [`list_call_analytics_jobs`][transcribeservice_list_call_analytics_jobs]
+#' request returns more results than can be displayed, `NextToken` is
+#' displayed in the response with an associated string. To get the next
+#' page of results, copy this string and repeat your request, including
+#' `NextToken` with the value of the copied string. Repeat as needed to
+#' view all your results.
+#' @param MaxResults The maximum number of Call Analytics jobs to return in each page of
+#' results. If there are fewer results than the value you specify, only the
+#' actual results are returned. If you don't specify a value, a default of
+#' 5 is used.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_list_call_analytics_jobs
+transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameContains = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCallAnalyticsJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$list_call_analytics_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .transcribeservice$list_call_analytics_jobs_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$list_call_analytics_jobs <- transcribeservice_list_call_analytics_jobs
+
+#' Provides a list of custom language models that match the specified
+#' criteria
+#'
+#' @description
+#' Provides a list of custom language models that match the specified criteria. If no criteria are specified, all language models are returned.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/list_language_models.html](https://paws-r.github.io/docs/transcribeservice/list_language_models.html) for full documentation.
+#'
+#' @param StatusEquals Returns only custom language models with the specified status. Language
+#' models are ordered by creation date, with the newest model first. If you
+#' don't include `StatusEquals`, all custom language models are returned.
+#' @param NameContains Returns only the custom language models that contain the specified
+#' string. The search is not case sensitive.
+#' @param NextToken If your [`list_language_models`][transcribeservice_list_language_models]
+#' request returns more results than can be displayed, `NextToken` is
+#' displayed in the response with an associated string. To get the next
+#' page of results, copy this string and repeat your request, including
+#' `NextToken` with the value of the copied string. Repeat as needed to
+#' view all your results.
+#' @param MaxResults The maximum number of custom language models to return in each page of
+#' results. If there are fewer results than the value you specify, only the
+#' actual results are returned. If you don't specify a value, a default of
+#' 5 is used.
 #'
 #' @keywords internal
 #'
@@ -1051,68 +922,30 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 }
 .transcribeservice$operations$list_language_models <- transcribeservice_list_language_models
 
-#' Lists medical transcription jobs with a specified status or substring
-#' that matches their names
+#' Provides a list of medical transcription jobs that match the specified
+#' criteria
 #'
 #' @description
-#' Lists medical transcription jobs with a specified status or substring
-#' that matches their names.
+#' Provides a list of medical transcription jobs that match the specified criteria. If no criteria are specified, all medical transcription jobs are returned.
 #'
-#' @usage
-#' transcribeservice_list_medical_transcription_jobs(Status,
-#'   JobNameContains, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/transcribeservice/list_medical_transcription_jobs.html](https://paws-r.github.io/docs/transcribeservice/list_medical_transcription_jobs.html) for full documentation.
 #'
-#' @param Status When specified, returns only medical transcription jobs with the
-#' specified status. Jobs are ordered by creation date, with the newest
-#' jobs returned first. If you don't specify a status, Amazon Transcribe
-#' Medical returns all transcription jobs ordered by creation date.
-#' @param JobNameContains When specified, the jobs returned in the list are limited to jobs whose
-#' name contains the specified string.
-#' @param NextToken If you a receive a truncated result in the previous request of
-#' [`list_medical_transcription_jobs`][transcribeservice_list_medical_transcription_jobs],
-#' include `NextToken` to fetch the next set of jobs.
-#' @param MaxResults The maximum number of medical transcription jobs to return in the
-#' response. IF there are fewer results in the list, this response contains
-#' only the actual results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'   NextToken = "string",
-#'   MedicalTranscriptionJobSummaries = list(
-#'     list(
-#'       MedicalTranscriptionJobName = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CompletionTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'       TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'       FailureReason = "string",
-#'       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
-#'       Specialty = "PRIMARYCARE",
-#'       Type = "CONVERSATION"|"DICTATION"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_medical_transcription_jobs(
-#'   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'   JobNameContains = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
+#' @param Status Returns only medical transcription jobs with the specified status. Jobs
+#' are ordered by creation date, with the newest job first. If you don't
+#' include `Status`, all medical transcription jobs are returned.
+#' @param JobNameContains Returns only the medical transcription jobs that contain the specified
+#' string. The search is not case sensitive.
+#' @param NextToken If your
+#' [`list_medical_transcription_jobs`][transcribeservice_list_medical_transcription_jobs]
+#' request returns more results than can be displayed, `NextToken` is
+#' displayed in the response with an associated string. To get the next
+#' page of results, copy this string and repeat your request, including
+#' `NextToken` with the value of the copied string. Repeat as needed to
+#' view all your results.
+#' @param MaxResults The maximum number of medical transcription jobs to return in each page
+#' of results. If there are fewer results than the value you specify, only
+#' the actual results are returned. If you don't specify a value, a default
+#' of 5 is used.
 #'
 #' @keywords internal
 #'
@@ -1134,58 +967,31 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 }
 .transcribeservice$operations$list_medical_transcription_jobs <- transcribeservice_list_medical_transcription_jobs
 
-#' Returns a list of vocabularies that match the specified criteria
+#' Provides a list of custom medical vocabularies that match the specified
+#' criteria
 #'
 #' @description
-#' Returns a list of vocabularies that match the specified criteria. If you
-#' don't enter a value in any of the request parameters, returns the entire
-#' list of vocabularies.
+#' Provides a list of custom medical vocabularies that match the specified criteria. If no criteria are specified, all custom medical vocabularies are returned.
 #'
-#' @usage
-#' transcribeservice_list_medical_vocabularies(NextToken, MaxResults,
-#'   StateEquals, NameContains)
+#' See [https://paws-r.github.io/docs/transcribeservice/list_medical_vocabularies.html](https://paws-r.github.io/docs/transcribeservice/list_medical_vocabularies.html) for full documentation.
 #'
-#' @param NextToken If the result of your previous request to
+#' @param NextToken If your
 #' [`list_medical_vocabularies`][transcribeservice_list_medical_vocabularies]
-#' was truncated, include the `NextToken` to fetch the next set of
-#' vocabularies.
-#' @param MaxResults The maximum number of vocabularies to return in the response.
-#' @param StateEquals When specified, returns only vocabularies with the `VocabularyState`
-#' equal to the specified vocabulary state. Use this field to see which
-#' vocabularies are ready for your medical transcription jobs.
-#' @param NameContains Returns vocabularies whose names contain the specified string. The
-#' search is not case sensitive.
-#' [`list_medical_vocabularies`][transcribeservice_list_medical_vocabularies]
-#' returns both "`vocabularyname`" and "`VocabularyName`".
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "PENDING"|"READY"|"FAILED",
-#'   NextToken = "string",
-#'   Vocabularies = list(
-#'     list(
-#'       VocabularyName = "string",
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'       LastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       VocabularyState = "PENDING"|"READY"|"FAILED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_medical_vocabularies(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   StateEquals = "PENDING"|"READY"|"FAILED",
-#'   NameContains = "string"
-#' )
-#' ```
+#' request returns more results than can be displayed, `NextToken` is
+#' displayed in the response with an associated string. To get the next
+#' page of results, copy this string and repeat your request, including
+#' `NextToken` with the value of the copied string. Repeat as needed to
+#' view all your results.
+#' @param MaxResults The maximum number of custom medical vocabularies to return in each page
+#' of results. If there are fewer results than the value you specify, only
+#' the actual results are returned. If you don't specify a value, a default
+#' of 5 is used.
+#' @param StateEquals Returns only custom medical vocabularies with the specified state.
+#' Vocabularies are ordered by creation date, with the newest vocabulary
+#' first. If you don't include `StateEquals`, all custom medical
+#' vocabularies are returned.
+#' @param NameContains Returns only the custom medical vocabularies that contain the specified
+#' string. The search is not case sensitive.
 #'
 #' @keywords internal
 #'
@@ -1207,72 +1013,68 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
 }
 .transcribeservice$operations$list_medical_vocabularies <- transcribeservice_list_medical_vocabularies
 
-#' Lists transcription jobs with the specified status
+#' Lists all tags associated with the specified transcription job,
+#' vocabulary, model, or resource
 #'
 #' @description
-#' Lists transcription jobs with the specified status.
+#' Lists all tags associated with the specified transcription job, vocabulary, model, or resource.
 #'
-#' @usage
-#' transcribeservice_list_transcription_jobs(Status, JobNameContains,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/transcribeservice/list_tags_for_resource.html](https://paws-r.github.io/docs/transcribeservice/list_tags_for_resource.html) for full documentation.
 #'
-#' @param Status When specified, returns only transcription jobs with the specified
-#' status. Jobs are ordered by creation date, with the newest jobs returned
-#' first. If you don’t specify a status, Amazon Transcribe returns all
-#' transcription jobs ordered by creation date.
-#' @param JobNameContains When specified, the jobs returned in the list are limited to jobs whose
-#' name contains the specified string.
-#' @param NextToken If the result of the previous request to
+#' @param ResourceArn &#91;required&#93; Returns a list of all tags associated with the specified Amazon Resource
+#' Name (ARN). ARNs have the format
+#' `arn:partition:service:region:account-id:resource-type/resource-id`.
+#' 
+#' For example,
+#' `arn:aws:transcribe:us-west-2:account-id:transcription-job/transcription-job-name`.
+#' 
+#' Valid values for `resource-type` are: `transcription-job`,
+#' `medical-transcription-job`, `vocabulary`, `medical-vocabulary`,
+#' `vocabulary-filter`, and `language-model`.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_list_tags_for_resource
+transcribeservice_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .transcribeservice$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$list_tags_for_resource <- transcribeservice_list_tags_for_resource
+
+#' Provides a list of transcription jobs that match the specified criteria
+#'
+#' @description
+#' Provides a list of transcription jobs that match the specified criteria. If no criteria are specified, all transcription jobs are returned.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/list_transcription_jobs.html](https://paws-r.github.io/docs/transcribeservice/list_transcription_jobs.html) for full documentation.
+#'
+#' @param Status Returns only transcription jobs with the specified status. Jobs are
+#' ordered by creation date, with the newest job first. If you don't
+#' include `Status`, all transcription jobs are returned.
+#' @param JobNameContains Returns only the transcription jobs that contain the specified string.
+#' The search is not case sensitive.
+#' @param NextToken If your
 #' [`list_transcription_jobs`][transcribeservice_list_transcription_jobs]
-#' was truncated, include the `NextToken` to fetch the next set of jobs.
-#' @param MaxResults The maximum number of jobs to return in the response. If there are fewer
-#' results in the list, this response contains only the actual results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'   NextToken = "string",
-#'   TranscriptionJobSummaries = list(
-#'     list(
-#'       TranscriptionJobName = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CompletionTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'       TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'       FailureReason = "string",
-#'       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
-#'       ContentRedaction = list(
-#'         RedactionType = "PII",
-#'         RedactionOutput = "redacted"|"redacted_and_unredacted"
-#'       ),
-#'       ModelSettings = list(
-#'         LanguageModelName = "string"
-#'       ),
-#'       IdentifyLanguage = TRUE|FALSE,
-#'       IdentifiedLanguageScore = 123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_transcription_jobs(
-#'   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'   JobNameContains = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
+#' request returns more results than can be displayed, `NextToken` is
+#' displayed in the response with an associated string. To get the next
+#' page of results, copy this string and repeat your request, including
+#' `NextToken` with the value of the copied string. Repeat as needed to
+#' view all your results.
+#' @param MaxResults The maximum number of transcription jobs to return in each page of
+#' results. If there are fewer results than the value you specify, only the
+#' actual results are returned. If you don't specify a value, a default of
+#' 5 is used.
 #'
 #' @keywords internal
 #'
@@ -1294,58 +1096,29 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 }
 .transcribeservice$operations$list_transcription_jobs <- transcribeservice_list_transcription_jobs
 
-#' Returns a list of vocabularies that match the specified criteria
+#' Provides a list of custom vocabularies that match the specified criteria
 #'
 #' @description
-#' Returns a list of vocabularies that match the specified criteria. If no
-#' criteria are specified, returns the entire list of vocabularies.
+#' Provides a list of custom vocabularies that match the specified criteria. If no criteria are specified, all custom vocabularies are returned.
 #'
-#' @usage
-#' transcribeservice_list_vocabularies(NextToken, MaxResults, StateEquals,
-#'   NameContains)
+#' See [https://paws-r.github.io/docs/transcribeservice/list_vocabularies.html](https://paws-r.github.io/docs/transcribeservice/list_vocabularies.html) for full documentation.
 #'
-#' @param NextToken If the result of the previous request to
-#' [`list_vocabularies`][transcribeservice_list_vocabularies] was
-#' truncated, include the `NextToken` to fetch the next set of jobs.
-#' @param MaxResults The maximum number of vocabularies to return in the response. If there
-#' are fewer results in the list, this response contains only the actual
-#' results.
-#' @param StateEquals When specified, only returns vocabularies with the `VocabularyState`
-#' field equal to the specified state.
-#' @param NameContains When specified, the vocabularies returned in the list are limited to
-#' vocabularies whose name contains the specified string. The search is not
-#' case sensitive,
-#' [`list_vocabularies`][transcribeservice_list_vocabularies] returns both
-#' "vocabularyname" and "VocabularyName" in the response list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = "PENDING"|"READY"|"FAILED",
-#'   NextToken = "string",
-#'   Vocabularies = list(
-#'     list(
-#'       VocabularyName = "string",
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'       LastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       VocabularyState = "PENDING"|"READY"|"FAILED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_vocabularies(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   StateEquals = "PENDING"|"READY"|"FAILED",
-#'   NameContains = "string"
-#' )
-#' ```
+#' @param NextToken If your [`list_vocabularies`][transcribeservice_list_vocabularies]
+#' request returns more results than can be displayed, `NextToken` is
+#' displayed in the response with an associated string. To get the next
+#' page of results, copy this string and repeat your request, including
+#' `NextToken` with the value of the copied string. Repeat as needed to
+#' view all your results.
+#' @param MaxResults The maximum number of custom vocabularies to return in each page of
+#' results. If there are fewer results than the value you specify, only the
+#' actual results are returned. If you don't specify a value, a default of
+#' 5 is used.
+#' @param StateEquals Returns only custom vocabularies with the specified state. Vocabularies
+#' are ordered by creation date, with the newest vocabulary first. If you
+#' don't include `StateEquals`, all custom medical vocabularies are
+#' returned.
+#' @param NameContains Returns only the custom vocabularies that contain the specified string.
+#' The search is not case sensitive.
 #'
 #' @keywords internal
 #'
@@ -1367,50 +1140,27 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 }
 .transcribeservice$operations$list_vocabularies <- transcribeservice_list_vocabularies
 
-#' Gets information about vocabulary filters
+#' Provides a list of custom vocabulary filters that match the specified
+#' criteria
 #'
 #' @description
-#' Gets information about vocabulary filters.
+#' Provides a list of custom vocabulary filters that match the specified criteria. If no criteria are specified, all custom vocabularies are returned.
 #'
-#' @usage
-#' transcribeservice_list_vocabulary_filters(NextToken, MaxResults,
-#'   NameContains)
+#' See [https://paws-r.github.io/docs/transcribeservice/list_vocabulary_filters.html](https://paws-r.github.io/docs/transcribeservice/list_vocabulary_filters.html) for full documentation.
 #'
-#' @param NextToken If the result of the previous request to
+#' @param NextToken If your
 #' [`list_vocabulary_filters`][transcribeservice_list_vocabulary_filters]
-#' was truncated, include the `NextToken` to fetch the next set of
-#' collections.
-#' @param MaxResults The maximum number of filters to return in the response. If there are
-#' fewer results in the list, this response contains only the actual
-#' results.
-#' @param NameContains Filters the response so that it only contains vocabulary filters whose
-#' name contains the specified string.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   VocabularyFilters = list(
-#'     list(
-#'       VocabularyFilterName = "string",
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'       LastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_vocabulary_filters(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   NameContains = "string"
-#' )
-#' ```
+#' request returns more results than can be displayed, `NextToken` is
+#' displayed in the response with an associated string. To get the next
+#' page of results, copy this string and repeat your request, including
+#' `NextToken` with the value of the copied string. Repeat as needed to
+#' view all your results.
+#' @param MaxResults The maximum number of custom vocabulary filters to return in each page
+#' of results. If there are fewer results than the value you specify, only
+#' the actual results are returned. If you don't specify a value, a default
+#' of 5 is used.
+#' @param NameContains Returns only the custom vocabulary filters that contain the specified
+#' string. The search is not case sensitive.
 #'
 #' @keywords internal
 #'
@@ -1432,182 +1182,277 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 }
 .transcribeservice$operations$list_vocabulary_filters <- transcribeservice_list_vocabulary_filters
 
-#' Starts a batch job to transcribe medical speech to text
+#' Transcribes the audio from a customer service call and applies any
+#' additional Request Parameters you choose to include in your request
 #'
 #' @description
-#' Starts a batch job to transcribe medical speech to text.
+#' Transcribes the audio from a customer service call and applies any additional Request Parameters you choose to include in your request.
 #'
-#' @usage
-#' transcribeservice_start_medical_transcription_job(
-#'   MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz,
-#'   MediaFormat, Media, OutputBucketName, OutputKey,
-#'   OutputEncryptionKMSKeyId, Settings, Specialty, Type)
+#' See [https://paws-r.github.io/docs/transcribeservice/start_call_analytics_job.html](https://paws-r.github.io/docs/transcribeservice/start_call_analytics_job.html) for full documentation.
 #'
-#' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job. You can't use the strings
-#' "`.`" or "`..`" by themselves as the job name. The name must also be
-#' unique within an AWS account. If you try to create a medical
-#' transcription job with the same name as a previous medical transcription
-#' job, you get a `ConflictException` error.
-#' @param LanguageCode &#91;required&#93; The language code for the language spoken in the input media file. US
-#' English (en-US) is the valid value for medical transcription jobs. Any
-#' other value you enter for language code results in a
-#' `BadRequestException` error.
-#' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in the input media file.
+#' @param CallAnalyticsJobName &#91;required&#93; A unique name, chosen by you, for your Call Analytics job.
 #' 
-#' If you do not specify the media sample rate, Amazon Transcribe Medical
-#' determines the sample rate. If you specify the sample rate, it must
-#' match the rate detected by Amazon Transcribe Medical. In most cases, you
-#' should leave the `MediaSampleRateHertz` field blank and let Amazon
-#' Transcribe Medical determine the sample rate.
-#' @param MediaFormat The audio format of the input media file.
+#' This name is case sensitive, cannot contain spaces, and must be unique
+#' within an Amazon Web Services account. If you try to create a new job
+#' with the same name as an existing job, you get a `ConflictException`
+#' error.
 #' @param Media &#91;required&#93; 
-#' @param OutputBucketName &#91;required&#93; The Amazon S3 location where the transcription is stored.
+#' @param OutputLocation The Amazon S3 location where you want your Call Analytics transcription
+#' output stored. You can use any of the following formats to specify the
+#' output location:
 #' 
-#' You must set `OutputBucketName` for Amazon Transcribe Medical to store
-#' the transcription results. Your transcript appears in the S3 location
-#' you specify. When you call the
-#' [`get_medical_transcription_job`][transcribeservice_get_medical_transcription_job],
-#' the operation returns this location in the `TranscriptFileUri` field.
-#' The S3 bucket must have permissions that allow Amazon Transcribe Medical
-#' to put files in the bucket. For more information, see [Permissions
-#' Required for IAM User
-#' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
+#' 1.  s3://DOC-EXAMPLE-BUCKET
 #' 
-#' You can specify an AWS Key Management Service (KMS) key to encrypt the
-#' output of your transcription using the `OutputEncryptionKMSKeyId`
-#' parameter. If you don't specify a KMS key, Amazon Transcribe Medical
-#' uses the default Amazon S3 key for server-side encryption of transcripts
-#' that are placed in your S3 bucket.
-#' @param OutputKey You can specify a location in an Amazon S3 bucket to store the output of
-#' your medical transcription job.
+#' 2.  s3://DOC-EXAMPLE-BUCKET/my-output-folder/
 #' 
-#' If you don't specify an output key, Amazon Transcribe Medical stores the
-#' output of your transcription job in the Amazon S3 bucket you specified.
-#' By default, the object key is "your-transcription-job-name.json".
+#' 3.  s3://DOC-EXAMPLE-BUCKET/my-output-folder/my-call-analytics-job.json
 #' 
-#' You can use output keys to specify the Amazon S3 prefix and file name of
-#' the transcription output. For example, specifying the Amazon S3 prefix,
-#' "folder1/folder2/", as an output key would lead to the output being
-#' stored as "folder1/folder2/your-transcription-job-name.json". If you
-#' specify "my-other-job-name.json" as the output key, the object key is
-#' changed to "my-other-job-name.json". You can use an output key to change
-#' both the prefix and the file name, for example
-#' "folder/my-other-job-name.json".
+#' Unless you specify a file name (option 3), the name of your output file
+#' has a default value that matches the name you specified for your
+#' transcription job using the `CallAnalyticsJobName` parameter.
 #' 
-#' If you specify an output key, you must also specify an S3 bucket in the
-#' `OutputBucketName` parameter.
-#' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
-#' key used to encrypt the output of the transcription job. The user
-#' calling the
-#' [`start_medical_transcription_job`][transcribeservice_start_medical_transcription_job]
-#' operation must have permission to use the specified KMS key.
+#' You can specify a KMS key to encrypt your output using the
+#' `OutputEncryptionKMSKeyId` parameter. If you don't specify a KMS key,
+#' Amazon Transcribe uses the default Amazon S3 key for server-side
+#' encryption.
 #' 
-#' You use either of the following to identify a KMS key in the current
-#' account:
+#' If you don't specify `OutputLocation`, your transcript is placed in a
+#' service-managed Amazon S3 bucket and you are provided with a URI to
+#' access your transcript.
+#' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your Call Analytics output.
 #' 
-#' -   KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' If using a key located in the **current** Amazon Web Services account,
+#' you can specify your KMS key in one of four ways:
 #' 
-#' -   KMS Key Alias: "alias/ExampleAlias"
+#' 1.  Use the KMS key ID itself. For example,
+#'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
 #' 
-#' You can use either of the following to identify a KMS key in the current
-#' account or another account:
+#' 2.  Use an alias for the KMS key ID. For example, `alias/ExampleAlias`.
 #' 
-#' -   Amazon Resource Name (ARN) of a KMS key in the current account or
-#'     another account: "arn:aws:kms:region:account
-#'     ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+#' 3.  Use the Amazon Resource Name (ARN) for the KMS key ID. For example,
+#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
 #' 
-#' -   ARN of a KMS Key Alias: "arn:aws:kms:region:account
-#'     ID:alias/ExampleAlias"
+#' 4.  Use the ARN for the KMS key alias. For example,
+#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
 #' 
-#' If you don't specify an encryption key, the output of the medical
-#' transcription job is encrypted with the default Amazon S3 key (SSE-S3).
+#' If using a key located in a **different** Amazon Web Services account
+#' than the current Amazon Web Services account, you can specify your KMS
+#' key in one of two ways:
+#' 
+#' 1.  Use the ARN for the KMS key ID. For example,
+#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' 
+#' 2.  Use the ARN for the KMS key alias. For example,
+#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' 
+#' If you don't specify an encryption key, your output is encrypted with
+#' the default Amazon S3 key (SSE-S3).
 #' 
 #' If you specify a KMS key to encrypt your output, you must also specify
-#' an output location in the `OutputBucketName` parameter.
-#' @param Settings Optional settings for the medical transcription job.
-#' @param Specialty &#91;required&#93; The medical specialty of any clinician speaking in the input media.
-#' @param Type &#91;required&#93; The type of speech in the input audio. `CONVERSATION` refers to
-#' conversations between two or more speakers, e.g., a conversations
-#' between doctors and patients. `DICTATION` refers to single-speaker
-#' dictated speech, e.g., for clinical notes.
+#' an output location using the `OutputLocation` parameter.
+#' 
+#' Note that the user making the request must have permission to use the
+#' specified KMS key.
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of an IAM role that has permissions to
+#' access the Amazon S3 bucket that contains your input files. If the role
+#' you specify doesn’t have the appropriate permissions to access the
+#' specified Amazon S3 location, your request fails.
+#' 
+#' IAM role ARNs have the format
+#' `arn:partition:iam::account:role/role-name-with-path`. For example:
+#' `arn:aws:iam::111122223333:role/Admin`.
+#' 
+#' For more information, see [IAM
+#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
+#' @param Settings Specify additional optional settings in your request, including content
+#' redaction; allows you to apply custom language models, vocabulary
+#' filters, and custom vocabularies to your Call Analytics job.
+#' @param ChannelDefinitions Allows you to specify which speaker is on which channel. For example, if
+#' your agent is the first participant to speak, you would set `ChannelId`
+#' to `0` (to indicate the first channel) and `ParticipantRole` to `AGENT`
+#' (to indicate that it's the agent speaking).
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MedicalTranscriptionJob = list(
-#'     MedicalTranscriptionJobName = "string",
-#'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
-#'     Media = list(
-#'       MediaFileUri = "string"
-#'     ),
-#'     Transcript = list(
-#'       TranscriptFileUri = "string"
-#'     ),
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CompletionTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     Settings = list(
-#'       ShowSpeakerLabels = TRUE|FALSE,
-#'       MaxSpeakerLabels = 123,
-#'       ChannelIdentification = TRUE|FALSE,
-#'       ShowAlternatives = TRUE|FALSE,
-#'       MaxAlternatives = 123,
-#'       VocabularyName = "string"
-#'     ),
-#'     Specialty = "PRIMARYCARE",
-#'     Type = "CONVERSATION"|"DICTATION"
-#'   )
-#' )
-#' ```
+#' @keywords internal
 #'
-#' @section Request syntax:
-#' ```
-#' svc$start_medical_transcription_job(
-#'   MedicalTranscriptionJobName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   MediaSampleRateHertz = 123,
-#'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
-#'   Media = list(
-#'     MediaFileUri = "string"
-#'   ),
-#'   OutputBucketName = "string",
-#'   OutputKey = "string",
-#'   OutputEncryptionKMSKeyId = "string",
-#'   Settings = list(
-#'     ShowSpeakerLabels = TRUE|FALSE,
-#'     MaxSpeakerLabels = 123,
-#'     ChannelIdentification = TRUE|FALSE,
-#'     ShowAlternatives = TRUE|FALSE,
-#'     MaxAlternatives = 123,
-#'     VocabularyName = "string"
-#'   ),
-#'   Specialty = "PRIMARYCARE",
-#'   Type = "CONVERSATION"|"DICTATION"
-#' )
-#' ```
+#' @rdname transcribeservice_start_call_analytics_job
+transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Media, OutputLocation = NULL, OutputEncryptionKMSKeyId = NULL, DataAccessRoleArn = NULL, Settings = NULL, ChannelDefinitions = NULL) {
+  op <- new_operation(
+    name = "StartCallAnalyticsJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$start_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName, Media = Media, OutputLocation = OutputLocation, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, ChannelDefinitions = ChannelDefinitions)
+  output <- .transcribeservice$start_call_analytics_job_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$start_call_analytics_job <- transcribeservice_start_call_analytics_job
+
+#' Transcribes the audio from a medical dictation or conversation and
+#' applies any additional Request Parameters you choose to include in your
+#' request
+#'
+#' @description
+#' Transcribes the audio from a medical dictation or conversation and applies any additional Request Parameters you choose to include in your request.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/start_medical_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/start_medical_transcription_job.html) for full documentation.
+#'
+#' @param MedicalTranscriptionJobName &#91;required&#93; A unique name, chosen by you, for your medical transcription job. The
+#' name you specify is also used as the default name of your transcription
+#' output file. If you want to specify a different name for your
+#' transcription output, use the `OutputKey` parameter.
+#' 
+#' This name is case sensitive, cannot contain spaces, and must be unique
+#' within an Amazon Web Services account. If you try to create a new job
+#' with the same name as an existing job, you get a `ConflictException`
+#' error.
+#' @param LanguageCode &#91;required&#93; The language code that represents the language spoken in the input media
+#' file. US English (`en-US`) is the only valid value for medical
+#' transcription jobs. Any other value you enter for language code results
+#' in a `BadRequestException` error.
+#' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in your input media file.
+#' 
+#' If you don't specify the media sample rate, Amazon Transcribe Medical
+#' determines it for you. If you specify the sample rate, it must match the
+#' rate detected by Amazon Transcribe Medical; if there's a mismatch
+#' between the value you specify and the value detected, your job fails.
+#' Therefore, in most cases, it's advised to omit `MediaSampleRateHertz`
+#' and let Amazon Transcribe Medical determine the sample rate.
+#' @param MediaFormat Specify the format of your input media file.
+#' @param Media &#91;required&#93; 
+#' @param OutputBucketName &#91;required&#93; The name of the Amazon S3 bucket where you want your medical
+#' transcription output stored. Do not include the `S3://` prefix of the
+#' specified bucket.
+#' 
+#' If you want your output to go to a sub-folder of this bucket, specify it
+#' using the `OutputKey` parameter; `OutputBucketName` only accepts the
+#' name of a bucket.
+#' 
+#' For example, if you want your output stored in
+#' `S3://DOC-EXAMPLE-BUCKET`, set `OutputBucketName` to
+#' `DOC-EXAMPLE-BUCKET`. However, if you want your output stored in
+#' `S3://DOC-EXAMPLE-BUCKET/test-files/`, set `OutputBucketName` to
+#' `DOC-EXAMPLE-BUCKET` and `OutputKey` to `test-files/`.
+#' 
+#' Note that Amazon Transcribe must have permission to use the specified
+#' location. You can change Amazon S3 permissions using the [Amazon Web
+#' Services Management Console](https://console.aws.amazon.com/s3/home).
+#' See also [Permissions Required for IAM User
+#' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
+#' 
+#' If you don't specify `OutputBucketName`, your transcript is placed in a
+#' service-managed Amazon S3 bucket and you are provided with a URI to
+#' access your transcript.
+#' @param OutputKey Use in combination with `OutputBucketName` to specify the output
+#' location of your transcript and, optionally, a unique name for your
+#' output file. The default name for your transcription output is the same
+#' as the name you specified for your medical transcription job
+#' (`MedicalTranscriptionJobName`).
+#' 
+#' Here are some examples of how you can use `OutputKey`:
+#' 
+#' -   If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
+#'     'my-transcript.json' as the `OutputKey`, your transcription output
+#'     path is `s3://DOC-EXAMPLE-BUCKET/my-transcript.json`.
+#' 
+#' -   If you specify 'my-first-transcription' as the
+#'     `MedicalTranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
+#'     `OutputBucketName`, and 'my-transcript' as the `OutputKey`, your
+#'     transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json`.
+#' 
+#' -   If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
+#'     'test-files/my-transcript.json' as the `OutputKey`, your
+#'     transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json`.
+#' 
+#' -   If you specify 'my-first-transcription' as the
+#'     `MedicalTranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
+#'     `OutputBucketName`, and 'test-files/my-transcript' as the
+#'     `OutputKey`, your transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json`.
+#' 
+#' If you specify the name of an Amazon S3 bucket sub-folder that doesn't
+#' exist, one is created for you.
+#' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your medical transcription
+#' output.
+#' 
+#' If using a key located in the **current** Amazon Web Services account,
+#' you can specify your KMS key in one of four ways:
+#' 
+#' 1.  Use the KMS key ID itself. For example,
+#'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' 
+#' 2.  Use an alias for the KMS key ID. For example, `alias/ExampleAlias`.
+#' 
+#' 3.  Use the Amazon Resource Name (ARN) for the KMS key ID. For example,
+#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' 
+#' 4.  Use the ARN for the KMS key alias. For example,
+#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' 
+#' If using a key located in a **different** Amazon Web Services account
+#' than the current Amazon Web Services account, you can specify your KMS
+#' key in one of two ways:
+#' 
+#' 1.  Use the ARN for the KMS key ID. For example,
+#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' 
+#' 2.  Use the ARN for the KMS key alias. For example,
+#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' 
+#' If you don't specify an encryption key, your output is encrypted with
+#' the default Amazon S3 key (SSE-S3).
+#' 
+#' If you specify a KMS key to encrypt your output, you must also specify
+#' an output location using the `OutputLocation` parameter.
+#' 
+#' Note that the user making the request must have permission to use the
+#' specified KMS key.
+#' @param KMSEncryptionContext A map of plain text, non-secret key:value pairs, known as encryption
+#' context pairs, that provide an added layer of security for your data.
+#' For more information, see [KMS encryption
+#' context](https://docs.aws.amazon.com/transcribe/latest/dg/#kms-context)
+#' and [Asymmetric keys in
+#' KMS](https://docs.aws.amazon.com/transcribe/latest/dg/).
+#' @param Settings Specify additional optional settings in your request, including channel
+#' identification, alternative transcriptions, and speaker labeling; allows
+#' you to apply custom vocabularies to your transcription job.
+#' @param ContentIdentificationType Labels all personal health information (PHI) identified in your
+#' transcript. For more information, see [Identifying personal health
+#' information (PHI) in a
+#' transcription](https://docs.aws.amazon.com/transcribe/latest/dg/phi-id.html).
+#' @param Specialty &#91;required&#93; Specify the predominant medical specialty represented in your media. For
+#' batch transcriptions, `PRIMARYCARE` is the only valid value. If you
+#' require additional specialties, refer to .
+#' @param Type &#91;required&#93; Specify whether your input media contains only one person (`DICTATION`)
+#' or contains a conversation between two people (`CONVERSATION`).
+#' 
+#' For example, `DICTATION` could be used for a medical professional
+#' wanting to transcribe voice memos; `CONVERSATION` could be used for
+#' transcribing the doctor-patient dialogue during the patient's office
+#' visit.
+#' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
+#' new medical transcription job at the time you start this new job.
+#' 
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_medical_transcription_job
-transcribeservice_start_medical_transcription_job <- function(MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, Settings = NULL, Specialty, Type) {
+transcribeservice_start_medical_transcription_job <- function(MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, Settings = NULL, ContentIdentificationType = NULL, Specialty, Type, Tags = NULL) {
   op <- new_operation(
     name = "StartMedicalTranscriptionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$start_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, Settings = Settings, Specialty = Specialty, Type = Type)
+  input <- .transcribeservice$start_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ContentIdentificationType = ContentIdentificationType, Specialty = Specialty, Type = Type, Tags = Tags)
   output <- .transcribeservice$start_medical_transcription_job_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -1617,227 +1462,271 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 }
 .transcribeservice$operations$start_medical_transcription_job <- transcribeservice_start_medical_transcription_job
 
-#' Starts an asynchronous job to transcribe speech to text
+#' Transcribes the audio from a media file and applies any additional
+#' Request Parameters you choose to include in your request
 #'
 #' @description
-#' Starts an asynchronous job to transcribe speech to text.
+#' Transcribes the audio from a media file and applies any additional Request Parameters you choose to include in your request.
 #'
-#' @usage
-#' transcribeservice_start_transcription_job(TranscriptionJobName,
-#'   LanguageCode, MediaSampleRateHertz, MediaFormat, Media,
-#'   OutputBucketName, OutputKey, OutputEncryptionKMSKeyId, Settings,
-#'   ModelSettings, JobExecutionSettings, ContentRedaction, IdentifyLanguage,
-#'   LanguageOptions)
+#' See [https://paws-r.github.io/docs/transcribeservice/start_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/start_transcription_job.html) for full documentation.
 #'
-#' @param TranscriptionJobName &#91;required&#93; The name of the job. You can't use the strings "`.`" or "`..`" by
-#' themselves as the job name. The name must also be unique within an AWS
-#' account. If you try to create a transcription job with the same name as
-#' a previous transcription job, you get a `ConflictException` error.
-#' @param LanguageCode The language code for the language used in the input media file.
-#' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in the input media file.
+#' @param TranscriptionJobName &#91;required&#93; A unique name, chosen by you, for your transcription job. The name you
+#' specify is also used as the default name of your transcription output
+#' file. If you want to specify a different name for your transcription
+#' output, use the `OutputKey` parameter.
 #' 
-#' If you do not specify the media sample rate, Amazon Transcribe
-#' determines the sample rate. If you specify the sample rate, it must
-#' match the sample rate detected by Amazon Transcribe. In most cases, you
-#' should leave the `MediaSampleRateHertz` field blank and let Amazon
+#' This name is case sensitive, cannot contain spaces, and must be unique
+#' within an Amazon Web Services account. If you try to create a new job
+#' with the same name as an existing job, you get a `ConflictException`
+#' error.
+#' @param LanguageCode The language code that represents the language spoken in the input media
+#' file.
+#' 
+#' If you're unsure of the language spoken in your media file, consider
+#' using `IdentifyLanguage` or `IdentifyMultipleLanguages` to enable
+#' automatic language identification.
+#' 
+#' Note that you must include one of `LanguageCode`, `IdentifyLanguage`, or
+#' `IdentifyMultipleLanguages` in your request. If you include more than
+#' one of these parameters, your transcription job fails.
+#' 
+#' For a list of supported languages and their associated language codes,
+#' refer to the [Supported
+#' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
+#' table.
+#' 
+#' To transcribe speech in Modern Standard Arabic (`ar-SA`), your media
+#' file must be encoded at a sample rate of 16,000 Hz or higher.
+#' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in your input media file.
+#' 
+#' If you don't specify the media sample rate, Amazon Transcribe determines
+#' it for you. If you specify the sample rate, it must match the rate
+#' detected by Amazon Transcribe; if there's a mismatch between the value
+#' you specify and the value detected, your job fails. Therefore, in most
+#' cases, it's advised to omit `MediaSampleRateHertz` and let Amazon
 #' Transcribe determine the sample rate.
-#' @param MediaFormat The format of the input media file.
-#' @param Media &#91;required&#93; An object that describes the input media for a transcription job.
-#' @param OutputBucketName The location where the transcription is stored.
+#' @param MediaFormat Specify the format of your input media file.
+#' @param Media &#91;required&#93; Describes the Amazon S3 location of the media file you want to use in
+#' your request.
+#' @param OutputBucketName The name of the Amazon S3 bucket where you want your transcription
+#' output stored. Do not include the `S3://` prefix of the specified
+#' bucket.
 #' 
-#' If you set the `OutputBucketName`, Amazon Transcribe puts the transcript
-#' in the specified S3 bucket. When you call the
-#' [`get_transcription_job`][transcribeservice_get_transcription_job]
-#' operation, the operation returns this location in the
-#' `TranscriptFileUri` field. If you enable content redaction, the redacted
-#' transcript appears in `RedactedTranscriptFileUri`. If you enable content
-#' redaction and choose to output an unredacted transcript, that
-#' transcript's location still appears in the `TranscriptFileUri`. The S3
-#' bucket must have permissions that allow Amazon Transcribe to put files
-#' in the bucket. For more information, see [Permissions Required for IAM
-#' User
+#' If you want your output to go to a sub-folder of this bucket, specify it
+#' using the `OutputKey` parameter; `OutputBucketName` only accepts the
+#' name of a bucket.
+#' 
+#' For example, if you want your output stored in
+#' `S3://DOC-EXAMPLE-BUCKET`, set `OutputBucketName` to
+#' `DOC-EXAMPLE-BUCKET`. However, if you want your output stored in
+#' `S3://DOC-EXAMPLE-BUCKET/test-files/`, set `OutputBucketName` to
+#' `DOC-EXAMPLE-BUCKET` and `OutputKey` to `test-files/`.
+#' 
+#' Note that Amazon Transcribe must have permission to use the specified
+#' location. You can change Amazon S3 permissions using the [Amazon Web
+#' Services Management Console](https://console.aws.amazon.com/s3/home).
+#' See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' 
-#' You can specify an AWS Key Management Service (KMS) key to encrypt the
-#' output of your transcription using the `OutputEncryptionKMSKeyId`
-#' parameter. If you don't specify a KMS key, Amazon Transcribe uses the
-#' default Amazon S3 key for server-side encryption of transcripts that are
-#' placed in your S3 bucket.
+#' If you don't specify `OutputBucketName`, your transcript is placed in a
+#' service-managed Amazon S3 bucket and you are provided with a URI to
+#' access your transcript.
+#' @param OutputKey Use in combination with `OutputBucketName` to specify the output
+#' location of your transcript and, optionally, a unique name for your
+#' output file. The default name for your transcription output is the same
+#' as the name you specified for your transcription job
+#' (`TranscriptionJobName`).
 #' 
-#' If you don't set the `OutputBucketName`, Amazon Transcribe generates a
-#' pre-signed URL, a shareable URL that provides secure access to your
-#' transcription, and returns it in the `TranscriptFileUri` field. Use this
-#' URL to download the transcription.
-#' @param OutputKey You can specify a location in an Amazon S3 bucket to store the output of
-#' your transcription job.
+#' Here are some examples of how you can use `OutputKey`:
 #' 
-#' If you don't specify an output key, Amazon Transcribe stores the output
-#' of your transcription job in the Amazon S3 bucket you specified. By
-#' default, the object key is "your-transcription-job-name.json".
+#' -   If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
+#'     'my-transcript.json' as the `OutputKey`, your transcription output
+#'     path is `s3://DOC-EXAMPLE-BUCKET/my-transcript.json`.
 #' 
-#' You can use output keys to specify the Amazon S3 prefix and file name of
-#' the transcription output. For example, specifying the Amazon S3 prefix,
-#' "folder1/folder2/", as an output key would lead to the output being
-#' stored as "folder1/folder2/your-transcription-job-name.json". If you
-#' specify "my-other-job-name.json" as the output key, the object key is
-#' changed to "my-other-job-name.json". You can use an output key to change
-#' both the prefix and the file name, for example
-#' "folder/my-other-job-name.json".
+#' -   If you specify 'my-first-transcription' as the
+#'     `TranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
+#'     `OutputBucketName`, and 'my-transcript' as the `OutputKey`, your
+#'     transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json`.
 #' 
-#' If you specify an output key, you must also specify an S3 bucket in the
-#' `OutputBucketName` parameter.
-#' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
-#' key used to encrypt the output of the transcription job. The user
-#' calling the
-#' [`start_transcription_job`][transcribeservice_start_transcription_job]
-#' operation must have permission to use the specified KMS key.
+#' -   If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
+#'     'test-files/my-transcript.json' as the `OutputKey`, your
+#'     transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json`.
 #' 
-#' You can use either of the following to identify a KMS key in the current
-#' account:
+#' -   If you specify 'my-first-transcription' as the
+#'     `TranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
+#'     `OutputBucketName`, and 'test-files/my-transcript' as the
+#'     `OutputKey`, your transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json`.
 #' 
-#' -   KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' If you specify the name of an Amazon S3 bucket sub-folder that doesn't
+#' exist, one is created for you.
+#' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your transcription output.
 #' 
-#' -   KMS Key Alias: "alias/ExampleAlias"
+#' If using a key located in the **current** Amazon Web Services account,
+#' you can specify your KMS key in one of four ways:
 #' 
-#' You can use either of the following to identify a KMS key in the current
-#' account or another account:
+#' 1.  Use the KMS key ID itself. For example,
+#'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
 #' 
-#' -   Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:region:account
-#'     ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+#' 2.  Use an alias for the KMS key ID. For example, `alias/ExampleAlias`.
 #' 
-#' -   ARN of a KMS Key Alias: "arn:aws:kms:region:account
-#'     ID:alias/ExampleAlias"
+#' 3.  Use the Amazon Resource Name (ARN) for the KMS key ID. For example,
+#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
 #' 
-#' If you don't specify an encryption key, the output of the transcription
-#' job is encrypted with the default Amazon S3 key (SSE-S3).
+#' 4.  Use the ARN for the KMS key alias. For example,
+#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' 
+#' If using a key located in a **different** Amazon Web Services account
+#' than the current Amazon Web Services account, you can specify your KMS
+#' key in one of two ways:
+#' 
+#' 1.  Use the ARN for the KMS key ID. For example,
+#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' 
+#' 2.  Use the ARN for the KMS key alias. For example,
+#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' 
+#' If you don't specify an encryption key, your output is encrypted with
+#' the default Amazon S3 key (SSE-S3).
 #' 
 #' If you specify a KMS key to encrypt your output, you must also specify
-#' an output location in the `OutputBucketName` parameter.
-#' @param Settings A `Settings` object that provides optional settings for a transcription
-#' job.
-#' @param ModelSettings Choose the custom language model you use for your transcription job in
+#' an output location using the `OutputLocation` parameter.
+#' 
+#' Note that the user making the request must have permission to use the
+#' specified KMS key.
+#' @param KMSEncryptionContext A map of plain text, non-secret key:value pairs, known as encryption
+#' context pairs, that provide an added layer of security for your data.
+#' For more information, see [KMS encryption
+#' context](https://docs.aws.amazon.com/transcribe/latest/dg/#kms-context)
+#' and [Asymmetric keys in
+#' KMS](https://docs.aws.amazon.com/transcribe/latest/dg/).
+#' @param Settings Specify additional optional settings in your request, including channel
+#' identification, alternative transcriptions, speaker labeling; allows you
+#' to apply custom vocabularies and vocabulary filters.
+#' 
+#' If you want to include a custom vocabulary or a custom vocabulary filter
+#' (or both) with your request but **do not** want to use automatic
+#' language identification, use `Settings` with the `VocabularyName` or
+#' `VocabularyFilterName` (or both) sub-parameter.
+#' 
+#' If you're using automatic language identification with your request and
+#' want to include a custom language model, a custom vocabulary, or a
+#' custom vocabulary filter, use instead the `` parameter with the
+#' `LanguageModelName`, `VocabularyName` or `VocabularyFilterName`
+#' sub-parameters.
+#' @param ModelSettings Specify the custom language model you want to include with your
+#' transcription job. If you include `ModelSettings` in your request, you
+#' must include the `LanguageModelName` sub-parameter.
+#' 
+#' For more information, see [Custom language
+#' models](https://docs.aws.amazon.com/transcribe/latest/dg/custom-language-models.html).
+#' @param JobExecutionSettings Allows you to control how your transcription job is processed.
+#' Currently, the only `JobExecutionSettings` modification you can choose
+#' is enabling job queueing using the `AllowDeferredExecution`
+#' sub-parameter.
+#' 
+#' If you include `JobExecutionSettings` in your request, you must also
+#' include the sub-parameters: `AllowDeferredExecution` and
+#' `DataAccessRoleArn`.
+#' @param ContentRedaction Allows you to redact or flag specified personally identifiable
+#' information (PII) in your transcript. If you use `ContentRedaction`, you
+#' must also include the sub-parameters: `PiiEntityTypes`,
+#' `RedactionOutput`, and `RedactionType`.
+#' @param IdentifyLanguage Enables automatic language identification in your transcription job
+#' request.
+#' 
+#' If you include `IdentifyLanguage`, you can optionally include a list of
+#' language codes, using `LanguageOptions`, that you think may be present
+#' in your media file. Including language options can improve transcription
+#' accuracy.
+#' 
+#' If you want to apply a custom language model, a custom vocabulary, or a
+#' custom vocabulary filter to your automatic language identification
+#' request, include `LanguageIdSettings` with the relevant sub-parameters
+#' (`VocabularyName`, `LanguageModelName`, and `VocabularyFilterName`).
+#' 
+#' Note that you must include one of `LanguageCode`, `IdentifyLanguage`, or
+#' `IdentifyMultipleLanguages` in your request. If you include more than
+#' one of these parameters, your transcription job fails.
+#' @param IdentifyMultipleLanguages Enables automatic multi-language identification in your transcription
+#' job request. Use this parameter if your media file contains more than
+#' one language.
+#' 
+#' If you include `IdentifyMultipleLanguages`, you can optionally include a
+#' list of language codes, using `LanguageOptions`, that you think may be
+#' present in your media file. Including language options can improve
+#' transcription accuracy.
+#' 
+#' If you want to apply a custom vocabulary or a custom vocabulary filter
+#' to your automatic language identification request, include
+#' `LanguageIdSettings` with the relevant sub-parameters (`VocabularyName`
+#' and `VocabularyFilterName`).
+#' 
+#' Note that you must include one of `LanguageCode`, `IdentifyLanguage`, or
+#' `IdentifyMultipleLanguages` in your request. If you include more than
+#' one of these parameters, your transcription job fails.
+#' @param LanguageOptions You can specify two or more language codes that represent the languages
+#' you think may be present in your media; including more than five is not
+#' recommended. If you're unsure what languages are present, do not include
 #' this parameter.
-#' @param JobExecutionSettings Provides information about how a transcription job is executed. Use this
-#' field to indicate that the job can be queued for deferred execution if
-#' the concurrency limit is reached and there are no slots available to
-#' immediately run the job.
-#' @param ContentRedaction An object that contains the request parameters for content redaction.
-#' @param IdentifyLanguage Set this field to `true` to enable automatic language identification.
-#' Automatic language identification is disabled by default. You receive a
-#' `BadRequestException` error if you enter a value for a `LanguageCode`.
-#' @param LanguageOptions An object containing a list of languages that might be present in your
-#' collection of audio files. Automatic language identification chooses a
-#' language that best matches the source audio from that list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TranscriptionJob = list(
-#'     TranscriptionJobName = "string",
-#'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
-#'     Media = list(
-#'       MediaFileUri = "string"
-#'     ),
-#'     Transcript = list(
-#'       TranscriptFileUri = "string",
-#'       RedactedTranscriptFileUri = "string"
-#'     ),
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CompletionTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     FailureReason = "string",
-#'     Settings = list(
-#'       VocabularyName = "string",
-#'       ShowSpeakerLabels = TRUE|FALSE,
-#'       MaxSpeakerLabels = 123,
-#'       ChannelIdentification = TRUE|FALSE,
-#'       ShowAlternatives = TRUE|FALSE,
-#'       MaxAlternatives = 123,
-#'       VocabularyFilterName = "string",
-#'       VocabularyFilterMethod = "remove"|"mask"
-#'     ),
-#'     ModelSettings = list(
-#'       LanguageModelName = "string"
-#'     ),
-#'     JobExecutionSettings = list(
-#'       AllowDeferredExecution = TRUE|FALSE,
-#'       DataAccessRoleArn = "string"
-#'     ),
-#'     ContentRedaction = list(
-#'       RedactionType = "PII",
-#'       RedactionOutput = "redacted"|"redacted_and_unredacted"
-#'     ),
-#'     IdentifyLanguage = TRUE|FALSE,
-#'     LanguageOptions = list(
-#'       "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"
-#'     ),
-#'     IdentifiedLanguageScore = 123.0
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_transcription_job(
-#'   TranscriptionJobName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   MediaSampleRateHertz = 123,
-#'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
-#'   Media = list(
-#'     MediaFileUri = "string"
-#'   ),
-#'   OutputBucketName = "string",
-#'   OutputKey = "string",
-#'   OutputEncryptionKMSKeyId = "string",
-#'   Settings = list(
-#'     VocabularyName = "string",
-#'     ShowSpeakerLabels = TRUE|FALSE,
-#'     MaxSpeakerLabels = 123,
-#'     ChannelIdentification = TRUE|FALSE,
-#'     ShowAlternatives = TRUE|FALSE,
-#'     MaxAlternatives = 123,
-#'     VocabularyFilterName = "string",
-#'     VocabularyFilterMethod = "remove"|"mask"
-#'   ),
-#'   ModelSettings = list(
-#'     LanguageModelName = "string"
-#'   ),
-#'   JobExecutionSettings = list(
-#'     AllowDeferredExecution = TRUE|FALSE,
-#'     DataAccessRoleArn = "string"
-#'   ),
-#'   ContentRedaction = list(
-#'     RedactionType = "PII",
-#'     RedactionOutput = "redacted"|"redacted_and_unredacted"
-#'   ),
-#'   IdentifyLanguage = TRUE|FALSE,
-#'   LanguageOptions = list(
-#'     "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"
-#'   )
-#' )
-#' ```
+#' 
+#' If you include `LanguageOptions` in your request, you must also include
+#' `IdentifyLanguage`.
+#' 
+#' For more information, refer to [Supported
+#' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html).
+#' 
+#' To transcribe speech in Modern Standard Arabic (`ar-SA`), your media
+#' file must be encoded at a sample rate of 16,000 Hz or higher.
+#' @param Subtitles Produces subtitle files for your input media. You can specify WebVTT
+#' (*.vtt) and SubRip (*.srt) formats.
+#' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
+#' new transcription job at the time you start this new job.
+#' 
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
+#' @param LanguageIdSettings If using automatic language identification (`IdentifyLanguage`) in your
+#' request and you want to apply a custom language model, a custom
+#' vocabulary, or a custom vocabulary filter, include `LanguageIdSettings`
+#' with the relevant sub-parameters (`VocabularyName`, `LanguageModelName`,
+#' and `VocabularyFilterName`).
+#' 
+#' You can specify two or more language codes that represent the languages
+#' you think may be present in your media; including more than five is not
+#' recommended. Each language code you include can have an associated
+#' custom language model, custom vocabulary, and custom vocabulary filter.
+#' The languages you specify must match the languages of the specified
+#' custom language models, custom vocabularies, and custom vocabulary
+#' filters.
+#' 
+#' To include language options using `IdentifyLanguage` **without**
+#' including a custom language model, a custom vocabulary, or a custom
+#' vocabulary filter, use `LanguageOptions` instead of
+#' `LanguageIdSettings`. Including language options can improve the
+#' accuracy of automatic language identification.
+#' 
+#' If you want to include a custom language model with your request but
+#' **do not** want to use automatic language identification, use instead
+#' the `` parameter with the `LanguageModelName` sub-parameter.
+#' 
+#' If you want to include a custom vocabulary or a custom vocabulary filter
+#' (or both) with your request but **do not** want to use automatic
+#' language identification, use instead the `` parameter with the
+#' `VocabularyName` or `VocabularyFilterName` (or both) sub-parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_transcription_job
-transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode = NULL, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, Settings = NULL, ModelSettings = NULL, JobExecutionSettings = NULL, ContentRedaction = NULL, IdentifyLanguage = NULL, LanguageOptions = NULL) {
+transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode = NULL, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, Settings = NULL, ModelSettings = NULL, JobExecutionSettings = NULL, ContentRedaction = NULL, IdentifyLanguage = NULL, IdentifyMultipleLanguages = NULL, LanguageOptions = NULL, Subtitles = NULL, Tags = NULL, LanguageIdSettings = NULL) {
   op <- new_operation(
     name = "StartTranscriptionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, Settings = Settings, ModelSettings = ModelSettings, JobExecutionSettings = JobExecutionSettings, ContentRedaction = ContentRedaction, IdentifyLanguage = IdentifyLanguage, LanguageOptions = LanguageOptions)
+  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ModelSettings = ModelSettings, JobExecutionSettings = JobExecutionSettings, ContentRedaction = ContentRedaction, IdentifyLanguage = IdentifyLanguage, IdentifyMultipleLanguages = IdentifyMultipleLanguages, LanguageOptions = LanguageOptions, Subtitles = Subtitles, Tags = Tags, LanguageIdSettings = LanguageIdSettings)
   output <- .transcribeservice$start_transcription_job_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -1847,70 +1736,145 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 }
 .transcribeservice$operations$start_transcription_job <- transcribeservice_start_transcription_job
 
-#' Updates a vocabulary with new values that you provide in a different
-#' text file from the one you used to create the vocabulary
+#' Adds one or more custom tags, each in the form of a key:value pair, to
+#' the specified resource
 #'
 #' @description
-#' Updates a vocabulary with new values that you provide in a different
-#' text file from the one you used to create the vocabulary. The
-#' [`update_medical_vocabulary`][transcribeservice_update_medical_vocabulary]
-#' operation overwrites all of the existing information with the values
-#' that you provide in the request.
+#' Adds one or more custom tags, each in the form of a key:value pair, to the specified resource.
 #'
-#' @usage
-#' transcribeservice_update_medical_vocabulary(VocabularyName,
-#'   LanguageCode, VocabularyFileUri)
+#' See [https://paws-r.github.io/docs/transcribeservice/tag_resource.html](https://paws-r.github.io/docs/transcribeservice/tag_resource.html) for full documentation.
 #'
-#' @param VocabularyName &#91;required&#93; The name of the vocabulary to update. The name is case sensitive. If you
-#' try to update a vocabulary with the same name as a vocabulary you've
-#' already made, you get a `ConflictException` error.
-#' @param LanguageCode &#91;required&#93; The language code of the language used for the entries in the updated
-#' vocabulary. US English (en-US) is the only valid language code in Amazon
-#' Transcribe Medical.
-#' @param VocabularyFileUri The location in Amazon S3 of the text file that contains the you use for
-#' your custom vocabulary. The URI must be in the same AWS Region as the
-#' resource that you are calling. The following is the format for a URI:
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to tag. ARNs
+#' have the format
+#' `arn:partition:service:region:account-id:resource-type/resource-id`.
 #' 
-#' ` https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey> `
+#' For example,
+#' `arn:aws:transcribe:us-west-2:account-id:transcription-job/transcription-job-name`.
 #' 
-#' For example:
+#' Valid values for `resource-type` are: `transcription-job`,
+#' `medical-transcription-job`, `vocabulary`, `medical-vocabulary`,
+#' `vocabulary-filter`, and `language-model`.
+#' @param Tags &#91;required&#93; Adds one or more custom tags, each in the form of a key:value pair, to
+#' the specified resource.
 #' 
-#' `https://s3.us-east-1.amazonaws.com/AWSDOC-EXAMPLE-BUCKET/vocab.txt`
-#' 
-#' For more information about Amazon S3 object names, see [Object
-#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys)
-#' in the *Amazon S3 Developer Guide*.
-#' 
-#' For more information about custom vocabularies in Amazon Transcribe
-#' Medical, see [Medical Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   VocabularyState = "PENDING"|"READY"|"FAILED"
-#' )
-#' ```
+#' @keywords internal
 #'
-#' @section Request syntax:
-#' ```
-#' svc$update_medical_vocabulary(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   VocabularyFileUri = "string"
-#' )
-#' ```
+#' @rdname transcribeservice_tag_resource
+transcribeservice_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .transcribeservice$tag_resource_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$tag_resource <- transcribeservice_tag_resource
+
+#' Removes the specified tags from the specified Amazon Transcribe resource
+#'
+#' @description
+#' Removes the specified tags from the specified Amazon Transcribe resource.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/untag_resource.html](https://paws-r.github.io/docs/transcribeservice/untag_resource.html) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Transcribe resource you
+#' want to remove tags from. ARNs have the format
+#' `arn:partition:service:region:account-id:resource-type/resource-id`.
+#' 
+#' For example,
+#' `arn:aws:transcribe:us-west-2:account-id:transcription-job/transcription-job-name`.
+#' 
+#' Valid values for `resource-type` are: `transcription-job`,
+#' `medical-transcription-job`, `vocabulary`, `medical-vocabulary`,
+#' `vocabulary-filter`, and `language-model`.
+#' @param TagKeys &#91;required&#93; Removes the specified tag keys from the specified Amazon Transcribe
+#' resource.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_untag_resource
+transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .transcribeservice$untag_resource_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$untag_resource <- transcribeservice_untag_resource
+
+#' Updates the specified Call Analytics category with new rules
+#'
+#' @description
+#' Updates the specified Call Analytics category with new rules. Note that the [`update_call_analytics_category`][transcribeservice_update_call_analytics_category] operation overwrites all existing rules contained in the specified category. You cannot append additional rules onto an existing category.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/update_call_analytics_category.html](https://paws-r.github.io/docs/transcribeservice/update_call_analytics_category.html) for full documentation.
+#'
+#' @param CategoryName &#91;required&#93; The name of the Call Analytics category you want to update. Category
+#' names are case sensitive.
+#' @param Rules &#91;required&#93; The rules used for the updated Call Analytics category. The rules you
+#' provide in this field replace the ones that are currently being used in
+#' the specified category.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_update_call_analytics_category
+transcribeservice_update_call_analytics_category <- function(CategoryName, Rules) {
+  op <- new_operation(
+    name = "UpdateCallAnalyticsCategory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$update_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules)
+  output <- .transcribeservice$update_call_analytics_category_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$update_call_analytics_category <- transcribeservice_update_call_analytics_category
+
+#' Updates an existing custom medical vocabulary with new values
+#'
+#' @description
+#' Updates an existing custom medical vocabulary with new values. This operation overwrites all existing information with your new values; you cannot append new terms onto an existing vocabulary.
+#'
+#' See [https://paws-r.github.io/docs/transcribeservice/update_medical_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/update_medical_vocabulary.html) for full documentation.
+#'
+#' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want to update. Vocabulary
+#' names are case sensitive.
+#' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in the
+#' custom vocabulary you want to update. US English (`en-US`) is the only
+#' language supported with Amazon Transcribe Medical.
+#' @param VocabularyFileUri &#91;required&#93; The Amazon S3 location of the text file that contains your custom
+#' medical vocabulary. The URI must be located in the same Amazon Web
+#' Services Region as the resource you're calling.
+#' 
+#' Here's an example URI path: `s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt`
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_update_medical_vocabulary
-transcribeservice_update_medical_vocabulary <- function(VocabularyName, LanguageCode, VocabularyFileUri = NULL) {
+transcribeservice_update_medical_vocabulary <- function(VocabularyName, LanguageCode, VocabularyFileUri) {
   op <- new_operation(
     name = "UpdateMedicalVocabulary",
     http_method = "POST",
@@ -1927,60 +1891,50 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 }
 .transcribeservice$operations$update_medical_vocabulary <- transcribeservice_update_medical_vocabulary
 
-#' Updates an existing vocabulary with new values
+#' Updates an existing custom vocabulary with new values
 #'
 #' @description
-#' Updates an existing vocabulary with new values. The
-#' [`update_vocabulary`][transcribeservice_update_vocabulary] operation
-#' overwrites all of the existing information with the values that you
-#' provide in the request.
+#' Updates an existing custom vocabulary with new values. This operation overwrites all existing information with your new values; you cannot append new terms onto an existing vocabulary.
 #'
-#' @usage
-#' transcribeservice_update_vocabulary(VocabularyName, LanguageCode,
-#'   Phrases, VocabularyFileUri)
+#' See [https://paws-r.github.io/docs/transcribeservice/update_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/update_vocabulary.html) for full documentation.
 #'
-#' @param VocabularyName &#91;required&#93; The name of the vocabulary to update. The name is case sensitive. If you
-#' try to update a vocabulary with the same name as a previous vocabulary
-#' you will receive a `ConflictException` error.
-#' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries.
-#' @param Phrases An array of strings containing the vocabulary entries.
-#' @param VocabularyFileUri The S3 location of the text file that contains the definition of the
-#' custom vocabulary. The URI must be in the same region as the API
-#' endpoint that you are calling. The general form is
+#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want to update. Vocabulary names
+#' are case sensitive.
+#' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in the
+#' custom vocabulary you want to update. Each vocabulary must contain terms
+#' in only one language.
 #' 
-#' For example:
+#' A custom vocabulary can only be used to transcribe files in the same
+#' language as the vocabulary. For example, if you create a vocabulary
+#' using US English (`en-US`), you can only apply this vocabulary to files
+#' that contain English audio.
 #' 
-#' For more information about S3 object names, see [Object
-#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys)
-#' in the *Amazon S3 Developer Guide*.
+#' For a list of supported languages and their associated language codes,
+#' refer to the [Supported
+#' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
+#' table.
+#' @param Phrases Use this parameter if you want to update your vocabulary by including
+#' all desired terms, as comma-separated values, within your request. The
+#' other option for updating your vocabulary is to save your entries in a
+#' text file and upload them to an Amazon S3 bucket, then specify the
+#' location of your file using the `VocabularyFileUri` parameter.
 #' 
-#' For more information about custom vocabularies, see [Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   VocabularyState = "PENDING"|"READY"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_vocabulary(
-#'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   Phrases = list(
-#'     "string"
-#'   ),
-#'   VocabularyFileUri = "string"
-#' )
-#' ```
+#' Note that if you include `Phrases` in your request, you cannot use
+#' `VocabularyFileUri`; you must choose one or the other.
+#' 
+#' Each language has a character set that contains all allowed characters
+#' for that specific language. If you use unsupported characters, your
+#' vocabulary filter request fails. Refer to [Character Sets for Custom
+#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
+#' to get the character set for your language.
+#' @param VocabularyFileUri The Amazon S3 location of the text file that contains your custom
+#' vocabulary. The URI must be located in the same Amazon Web Services
+#' Region as the resource you're calling.
+#' 
+#' Here's an example URI path: `s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt`
+#' 
+#' Note that if you include `VocabularyFileUri` in your request, you cannot
+#' use the `Phrases` flag; you must choose one or the other.
 #'
 #' @keywords internal
 #'
@@ -2002,59 +1956,39 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 }
 .transcribeservice$operations$update_vocabulary <- transcribeservice_update_vocabulary
 
-#' Updates a vocabulary filter with a new list of filtered words
+#' Updates an existing custom vocabulary filter with a new list of words
 #'
 #' @description
-#' Updates a vocabulary filter with a new list of filtered words.
+#' Updates an existing custom vocabulary filter with a new list of words. The new list you provide overwrites all previous entries; you cannot append new terms onto an existing vocabulary filter.
 #'
-#' @usage
-#' transcribeservice_update_vocabulary_filter(VocabularyFilterName, Words,
-#'   VocabularyFilterFileUri)
+#' See [https://paws-r.github.io/docs/transcribeservice/update_vocabulary_filter.html](https://paws-r.github.io/docs/transcribeservice/update_vocabulary_filter.html) for full documentation.
 #'
-#' @param VocabularyFilterName &#91;required&#93; The name of the vocabulary filter to update. If you try to update a
-#' vocabulary filter with the same name as another vocabulary filter, you
-#' get a `ConflictException` error.
-#' @param Words The words to use in the vocabulary filter. Only use characters from the
-#' character set defined for custom vocabularies. For a list of character
-#' sets, see [Character Sets for Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
-#' 
-#' If you provide a list of words in the `Words` parameter, you can't use
-#' the `VocabularyFilterFileUri` parameter.
-#' @param VocabularyFilterFileUri The Amazon S3 location of a text file used as input to create the
-#' vocabulary filter. Only use characters from the character set defined
-#' for custom vocabularies. For a list of character sets, see [Character
-#' Sets for Custom
-#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
-#' 
-#' The specified file must be less than 50 KB of UTF-8 characters.
-#' 
-#' If you provide the location of a list of words in the
-#' `VocabularyFilterFileUri` parameter, you can't use the `Words`
+#' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want to update. Vocabulary
+#' filter names are case sensitive.
+#' @param Words Use this parameter if you want to update your vocabulary filter by
+#' including all desired terms, as comma-separated values, within your
+#' request. The other option for updating your vocabulary filter is to save
+#' your entries in a text file and upload them to an Amazon S3 bucket, then
+#' specify the location of your file using the `VocabularyFilterFileUri`
 #' parameter.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-#'   LastModifiedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_vocabulary_filter(
-#'   VocabularyFilterName = "string",
-#'   Words = list(
-#'     "string"
-#'   ),
-#'   VocabularyFilterFileUri = "string"
-#' )
-#' ```
+#' 
+#' Note that if you include `Words` in your request, you cannot use
+#' `VocabularyFilterFileUri`; you must choose one or the other.
+#' 
+#' Each language has a character set that contains all allowed characters
+#' for that specific language. If you use unsupported characters, your
+#' vocabulary filter request fails. Refer to [Character Sets for Custom
+#' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
+#' to get the character set for your language.
+#' @param VocabularyFilterFileUri The Amazon S3 location of the text file that contains your custom
+#' vocabulary filter terms. The URI must be located in the same Amazon Web
+#' Services Region as the resource you're calling.
+#' 
+#' Here's an example URI path:
+#' `s3://DOC-EXAMPLE-BUCKET/my-vocab-filter-file.txt`
+#' 
+#' Note that if you include `VocabularyFilterFileUri` in your request, you
+#' cannot use `Words`; you must choose one or the other.
 #'
 #' @keywords internal
 #'

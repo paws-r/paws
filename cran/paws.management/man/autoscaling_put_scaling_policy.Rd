@@ -4,10 +4,22 @@
 \alias{autoscaling_put_scaling_policy}
 \title{Creates or updates a scaling policy for an Auto Scaling group}
 \usage{
-autoscaling_put_scaling_policy(AutoScalingGroupName, PolicyName,
-  PolicyType, AdjustmentType, MinAdjustmentStep, MinAdjustmentMagnitude,
-  ScalingAdjustment, Cooldown, MetricAggregationType, StepAdjustments,
-  EstimatedInstanceWarmup, TargetTrackingConfiguration, Enabled)
+autoscaling_put_scaling_policy(
+  AutoScalingGroupName,
+  PolicyName,
+  PolicyType = NULL,
+  AdjustmentType = NULL,
+  MinAdjustmentStep = NULL,
+  MinAdjustmentMagnitude = NULL,
+  ScalingAdjustment = NULL,
+  Cooldown = NULL,
+  MetricAggregationType = NULL,
+  StepAdjustments = NULL,
+  EstimatedInstanceWarmup = NULL,
+  TargetTrackingConfiguration = NULL,
+  Enabled = NULL,
+  PredictiveScalingConfiguration = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -19,6 +31,7 @@ autoscaling_put_scaling_policy(AutoScalingGroupName, PolicyName,
 \item \code{TargetTrackingScaling}
 \item \code{StepScaling}
 \item \code{SimpleScaling} (default)
+\item \code{PredictiveScaling}
 }}
 
 \item{AdjustmentType}{Specifies how the scaling adjustment is interpreted (for example, an
@@ -56,13 +69,15 @@ a positive value.
 Required if the policy type is \code{SimpleScaling}. (Not used with any other
 policy type.)}
 
-\item{Cooldown}{The duration of the policy's cooldown period, in seconds. When a
-cooldown period is specified here, it overrides the default cooldown
-period defined for the Auto Scaling group.
+\item{Cooldown}{A cooldown period, in seconds, that applies to a specific simple scaling
+policy. When a cooldown period is specified here, it overrides the
+default cooldown.
 
 Valid only if the policy type is \code{SimpleScaling}. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+Default: None}
 
 \item{MetricAggregationType}{The aggregation type for the CloudWatch metrics. The valid values are
 \code{Minimum}, \code{Maximum}, and \code{Average}. If the aggregation type is null,
@@ -76,16 +91,23 @@ alarm breach.
 Required if the policy type is \code{StepScaling}. (Not used with any other
 policy type.)}
 
-\item{EstimatedInstanceWarmup}{The estimated time, in seconds, until a newly launched instance can
-contribute to the CloudWatch metrics. If not provided, the default is to
-use the value from the default cooldown period for the Auto Scaling
-group.
+\item{EstimatedInstanceWarmup}{\emph{Not needed if the default instance warmup is defined for the group.}
+
+The estimated time, in seconds, until a newly launched instance can
+contribute to the CloudWatch metrics. This warm-up period applies to
+instances launched due to a specific target tracking or step scaling
+policy. When a warm-up period is specified here, it overrides the
+default instance warmup.
 
 Valid only if the policy type is \code{TargetTrackingScaling} or
-\code{StepScaling}.}
+\code{StepScaling}.
 
-\item{TargetTrackingConfiguration}{A target tracking scaling policy. Includes support for predefined or
-customized metrics.
+The default is to use the value for the default instance warmup defined
+for the group. If default instance warmup is null, then
+\code{EstimatedInstanceWarmup} falls back to the value of default cooldown.}
+
+\item{TargetTrackingConfiguration}{A target tracking scaling policy. Provides support for predefined or
+custom metrics.
 
 The following predefined metrics are available:
 \itemize{
@@ -96,7 +118,7 @@ The following predefined metrics are available:
 }
 
 If you specify \code{ALBRequestCountPerTarget} for the metric, you must
-specify the \code{ResourceLabel} parameter with the
+specify the \code{ResourceLabel} property with the
 \code{PredefinedMetricSpecification}.
 
 For more information, see
@@ -108,88 +130,22 @@ Required if the policy type is \code{TargetTrackingScaling}.}
 \item{Enabled}{Indicates whether the scaling policy is enabled or disabled. The default
 is enabled. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html}{Disabling a scaling policy for an Auto Scaling group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyARN = "string",
-  Alarms = list(
-    list(
-      AlarmName = "string",
-      AlarmARN = "string"
-    )
-  )
-)
-}
+
+\item{PredictiveScalingConfiguration}{A predictive scaling policy. Provides support for predefined and custom
+metrics.
+
+Predefined metrics include CPU utilization, network in/out, and the
+Application Load Balancer request count.
+
+For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredictiveScalingConfiguration.html}{PredictiveScalingConfiguration}
+in the \emph{Amazon EC2 Auto Scaling API Reference}.
+
+Required if the policy type is \code{PredictiveScaling}.}
 }
 \description{
-Creates or updates a scaling policy for an Auto Scaling group.
+Creates or updates a scaling policy for an Auto Scaling group. Scaling policies are used to scale an Auto Scaling group based on configurable metrics. If no policies are defined, the dynamic scaling and predictive scaling features are not used.
 
-For more information about using scaling policies to scale your Auto
-Scaling group, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html}{Target tracking scaling policies}
-and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html}{Step and simple scaling policies}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_scaling_policy(
-  AutoScalingGroupName = "string",
-  PolicyName = "string",
-  PolicyType = "string",
-  AdjustmentType = "string",
-  MinAdjustmentStep = 123,
-  MinAdjustmentMagnitude = 123,
-  ScalingAdjustment = 123,
-  Cooldown = 123,
-  MetricAggregationType = "string",
-  StepAdjustments = list(
-    list(
-      MetricIntervalLowerBound = 123.0,
-      MetricIntervalUpperBound = 123.0,
-      ScalingAdjustment = 123
-    )
-  ),
-  EstimatedInstanceWarmup = 123,
-  TargetTrackingConfiguration = list(
-    PredefinedMetricSpecification = list(
-      PredefinedMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"ALBRequestCountPerTarget",
-      ResourceLabel = "string"
-    ),
-    CustomizedMetricSpecification = list(
-      MetricName = "string",
-      Namespace = "string",
-      Dimensions = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-      Unit = "string"
-    ),
-    TargetValue = 123.0,
-    DisableScaleIn = TRUE|FALSE
-  ),
-  Enabled = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example adds the specified policy to the specified Auto Scaling
-# group.
-svc$put_scaling_policy(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  PolicyName = "alb1000-target-tracking-scaling-policy",
-  PolicyType = "TargetTrackingScaling",
-  TargetTrackingConfiguration = list(
-    PredefinedMetricSpecification = list(
-      PredefinedMetricType = "ALBRequestCountPerTarget",
-      ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targe..."
-    ),
-    TargetValue = 1000
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/put_scaling_policy.html} for full documentation.
 }
 \keyword{internal}

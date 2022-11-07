@@ -4,29 +4,38 @@
 \alias{ecs_list_account_settings}
 \title{Lists the account settings for a specified principal}
 \usage{
-ecs_list_account_settings(name, value, principalArn, effectiveSettings,
-  nextToken, maxResults)
+ecs_list_account_settings(
+  name = NULL,
+  value = NULL,
+  principalArn = NULL,
+  effectiveSettings = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{name}{The name of the account setting you want to list the settings for.}
 
-\item{value}{The value of the account settings with which to filter results. You must
-also specify an account setting name to use this parameter.}
+\item{value}{The value of the account settings to filter results with. You must also
+specify an account setting name to use this parameter.}
 
 \item{principalArn}{The ARN of the principal, which can be an IAM user, IAM role, or the
 root user. If this field is omitted, the account settings are listed
-only for the authenticated user.}
+only for the authenticated user.
 
-\item{effectiveSettings}{Specifies whether to return the effective settings. If \code{true}, the
+Federated users assume the account setting of the root user and can't
+have explicit account settings set for them.}
+
+\item{effectiveSettings}{Determines whether to return the effective settings. If \code{true}, the
 account settings for the root user or the default setting for the
 \code{principalArn} are returned. If \code{false}, the account settings for the
-\code{principalArn} are returned if they are set. Otherwise, no account
+\code{principalArn} are returned if they're set. Otherwise, no account
 settings are returned.}
 
 \item{nextToken}{The \code{nextToken} value returned from a
 \code{\link[=ecs_list_account_settings]{list_account_settings}} request indicating
 that more results are available to fulfill the request and further calls
-will be needed. If \code{maxResults} was provided, it is possible the number
+will be needed. If \code{maxResults} was provided, it's possible the number
 of results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
@@ -41,52 +50,13 @@ output. When this parameter is used,
 element. The remaining results of the initial request can be seen by
 sending another \code{\link[=ecs_list_account_settings]{list_account_settings}}
 request with the returned \code{nextToken} value. This value can be between 1
-and 10. If this parameter is not used, then
+and 10. If this parameter isn't used, then
 \code{\link[=ecs_list_account_settings]{list_account_settings}} returns up to 10
 results and a \code{nextToken} value if applicable.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  settings = list(
-    list(
-      name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-      value = "string",
-      principalArn = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists the account settings for a specified principal.
-}
-\section{Request syntax}{
-\preformatted{svc$list_account_settings(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-  value = "string",
-  principalArn = "string",
-  effectiveSettings = TRUE|FALSE,
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example displays the effective account settings for your account.
-svc$list_account_settings(
-  effectiveSettings = TRUE
-)
-
-# This example displays the effective account settings for the specified
-# user or role.
-svc$list_account_settings(
-  effectiveSettings = TRUE,
-  principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/list_account_settings.html} for full documentation.
 }
 \keyword{internal}

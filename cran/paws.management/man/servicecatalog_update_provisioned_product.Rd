@@ -5,10 +5,21 @@
 \title{Requests updates to the configuration of the specified provisioned
 product}
 \usage{
-servicecatalog_update_provisioned_product(AcceptLanguage,
-  ProvisionedProductName, ProvisionedProductId, ProductId, ProductName,
-  ProvisioningArtifactId, ProvisioningArtifactName, PathId, PathName,
-  ProvisioningParameters, ProvisioningPreferences, Tags, UpdateToken)
+servicecatalog_update_provisioned_product(
+  AcceptLanguage = NULL,
+  ProvisionedProductName = NULL,
+  ProvisionedProductId = NULL,
+  ProductId = NULL,
+  ProductName = NULL,
+  ProvisioningArtifactId = NULL,
+  ProvisioningArtifactName = NULL,
+  PathId = NULL,
+  PathName = NULL,
+  ProvisioningParameters = NULL,
+  ProvisioningPreferences = NULL,
+  Tags = NULL,
+  UpdateToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -52,93 +63,9 @@ allow tag updates.}
 \item{UpdateToken}{[required] The idempotency token that uniquely identifies the provisioning update
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RecordDetail = list(
-    RecordId = "string",
-    ProvisionedProductName = "string",
-    Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    UpdatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProvisionedProductType = "string",
-    RecordType = "string",
-    ProvisionedProductId = "string",
-    ProductId = "string",
-    ProvisioningArtifactId = "string",
-    PathId = "string",
-    RecordErrors = list(
-      list(
-        Code = "string",
-        Description = "string"
-      )
-    ),
-    RecordTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    LaunchRoleArn = "string"
-  )
-)
-}
-}
 \description{
-Requests updates to the configuration of the specified provisioned
-product.
+Requests updates to the configuration of the specified provisioned product.
 
-If there are tags associated with the object, they cannot be updated or
-added. Depending on the specific updates requested, this operation can
-update with no interruption, with some interruption, or replace the
-provisioned product entirely.
-
-You can check the status of this request using
-\code{\link[=servicecatalog_describe_record]{describe_record}}.
+See \url{https://paws-r.github.io/docs/servicecatalog/update_provisioned_product.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_provisioned_product(
-  AcceptLanguage = "string",
-  ProvisionedProductName = "string",
-  ProvisionedProductId = "string",
-  ProductId = "string",
-  ProductName = "string",
-  ProvisioningArtifactId = "string",
-  ProvisioningArtifactName = "string",
-  PathId = "string",
-  PathName = "string",
-  ProvisioningParameters = list(
-    list(
-      Key = "string",
-      Value = "string",
-      UsePreviousValue = TRUE|FALSE
-    )
-  ),
-  ProvisioningPreferences = list(
-    StackSetAccounts = list(
-      "string"
-    ),
-    StackSetRegions = list(
-      "string"
-    ),
-    StackSetFailureToleranceCount = 123,
-    StackSetFailureTolerancePercentage = 123,
-    StackSetMaxConcurrencyCount = 123,
-    StackSetMaxConcurrencyPercentage = 123,
-    StackSetOperationType = "CREATE"|"UPDATE"|"DELETE"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  UpdateToken = "string"
-)
-}
-}
-
 \keyword{internal}

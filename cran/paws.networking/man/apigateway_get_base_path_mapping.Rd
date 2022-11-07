@@ -7,31 +7,16 @@
 apigateway_get_base_path_mapping(domainName, basePath)
 }
 \arguments{
-\item{domainName}{[required] [Required] The domain name of the BasePathMapping resource to be
-described.}
+\item{domainName}{[required] The domain name of the BasePathMapping resource to be described.}
 
-\item{basePath}{[required] [Required] The base path name that callers of the API must provide as
-part of the URL after the domain name. This value must be unique for all
-of the mappings across a single API. Specify '(none)' if you do not want
+\item{basePath}{[required] The base path name that callers of the API must provide as part of the
+URL after the domain name. This value must be unique for all of the
+mappings across a single API. Specify '(none)' if you do not want
 callers to specify any base path name after the domain name.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  basePath = "string",
-  restApiId = "string",
-  stage = "string"
-)
-}
 }
 \description{
 Describe a BasePathMapping resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_base_path_mapping(
-  domainName = "string",
-  basePath = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_base_path_mapping.html} for full documentation.
+}
 \keyword{internal}

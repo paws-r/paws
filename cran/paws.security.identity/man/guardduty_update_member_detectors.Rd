@@ -4,7 +4,7 @@
 \alias{guardduty_update_member_detectors}
 \title{Contains information on member accounts to be updated}
 \usage{
-guardduty_update_member_detectors(DetectorId, AccountIds, DataSources)
+guardduty_update_member_detectors(DetectorId, AccountIds, DataSources = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The detector ID of the administrator account.}
@@ -13,33 +13,9 @@ guardduty_update_member_detectors(DetectorId, AccountIds, DataSources)
 
 \item{DataSources}{Describes which data sources will be updated.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UnprocessedAccounts = list(
-    list(
-      AccountId = "string",
-      Result = "string"
-    )
-  )
-)
-}
-}
 \description{
 Contains information on member accounts to be updated.
-}
-\section{Request syntax}{
-\preformatted{svc$update_member_detectors(
-  DetectorId = "string",
-  AccountIds = list(
-    "string"
-  ),
-  DataSources = list(
-    S3Logs = list(
-      Enable = TRUE|FALSE
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/update_member_detectors.html} for full documentation.
+}
 \keyword{internal}

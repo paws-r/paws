@@ -13,44 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{EmailChannelRequest}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EmailChannelResponse = list(
-    ApplicationId = "string",
-    ConfigurationSet = "string",
-    CreationDate = "string",
-    Enabled = TRUE|FALSE,
-    FromAddress = "string",
-    HasCredential = TRUE|FALSE,
-    Id = "string",
-    Identity = "string",
-    IsArchived = TRUE|FALSE,
-    LastModifiedBy = "string",
-    LastModifiedDate = "string",
-    MessagesPerSecond = 123,
-    Platform = "string",
-    RoleArn = "string",
-    Version = 123
-  )
-)
-}
-}
 \description{
-Enables the email channel for an application or updates the status and
-settings of the email channel for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$update_email_channel(
-  ApplicationId = "string",
-  EmailChannelRequest = list(
-    ConfigurationSet = "string",
-    Enabled = TRUE|FALSE,
-    FromAddress = "string",
-    Identity = "string",
-    RoleArn = "string"
-  )
-)
-}
-}
+Enables the email channel for an application or updates the status and settings of the email channel for an application.
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_email_channel.html} for full documentation.
+}
 \keyword{internal}

@@ -2,9 +2,15 @@
 % Please edit documentation in R/sso_operations.R
 \name{sso_list_account_roles}
 \alias{sso_list_account_roles}
-\title{Lists all roles that are assigned to the user for a given AWS account}
+\title{Lists all roles that are assigned to the user for a given Amazon Web
+Services account}
 \usage{
-sso_list_account_roles(nextToken, maxResults, accessToken, accountId)
+sso_list_account_roles(
+  nextToken = NULL,
+  maxResults = NULL,
+  accessToken,
+  accountId
+)
 }
 \arguments{
 \item{nextToken}{The page token from the previous response output when you request
@@ -15,33 +21,14 @@ subsequent pages.}
 \item{accessToken}{[required] The token issued by the \code{CreateToken} API call. For more information,
 see
 \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
-in the \emph{AWS SSO OIDC API Reference Guide}.}
+in the \emph{Amazon Web Services SSO OIDC API Reference Guide}.}
 
-\item{accountId}{[required] The identifier for the AWS account that is assigned to the user.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  roleList = list(
-    list(
-      roleName = "string",
-      accountId = "string"
-    )
-  )
-)
-}
+\item{accountId}{[required] The identifier for the Amazon Web Services account that is assigned to
+the user.}
 }
 \description{
-Lists all roles that are assigned to the user for a given AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_account_roles(
-  nextToken = "string",
-  maxResults = 123,
-  accessToken = "string",
-  accountId = "string"
-)
-}
-}
+Lists all roles that are assigned to the user for a given Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/sso/list_account_roles.html} for full documentation.
+}
 \keyword{internal}

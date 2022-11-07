@@ -2,9 +2,9 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_user_pools}
 \alias{cognitoidentityprovider_list_user_pools}
-\title{Lists the user pools associated with an AWS account}
+\title{Lists the user pools associated with an Amazon Web Services account}
 \usage{
-cognitoidentityprovider_list_user_pools(NextToken, MaxResults)
+cognitoidentityprovider_list_user_pools(NextToken = NULL, MaxResults)
 }
 \arguments{
 \item{NextToken}{An identifier that was returned from the previous call to this
@@ -14,55 +14,9 @@ list.}
 \item{MaxResults}{[required] The maximum number of results you want the request to return when
 listing the user pools.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserPools = list(
-    list(
-      Id = "string",
-      Name = "string",
-      LambdaConfig = list(
-        PreSignUp = "string",
-        CustomMessage = "string",
-        PostConfirmation = "string",
-        PreAuthentication = "string",
-        PostAuthentication = "string",
-        DefineAuthChallenge = "string",
-        CreateAuthChallenge = "string",
-        VerifyAuthChallengeResponse = "string",
-        PreTokenGeneration = "string",
-        UserMigration = "string",
-        CustomSMSSender = list(
-          LambdaVersion = "V1_0",
-          LambdaArn = "string"
-        ),
-        CustomEmailSender = list(
-          LambdaVersion = "V1_0",
-          LambdaArn = "string"
-        ),
-        KMSKeyID = "string"
-      ),
-      Status = "Enabled"|"Disabled",
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the user pools associated with an AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_user_pools(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists the user pools associated with an Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_user_pools.html} for full documentation.
+}
 \keyword{internal}

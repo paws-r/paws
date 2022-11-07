@@ -5,7 +5,10 @@
 \title{Show a list of the predictive inbox placement tests that you've
 performed, regardless of their statuses}
 \usage{
-pinpointemail_list_deliverability_test_reports(NextToken, PageSize)
+pinpointemail_list_deliverability_test_reports(
+  NextToken = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to
@@ -22,37 +25,9 @@ can use to obtain additional results.
 The value you specify has to be at least 0, and can be no more than
 1000.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeliverabilityTestReports = list(
-    list(
-      ReportId = "string",
-      ReportName = "string",
-      Subject = "string",
-      FromEmailAddress = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Show a list of the predictive inbox placement tests that you've
-performed, regardless of their statuses. For predictive inbox placement
-tests that are complete, you can use the
-\code{\link[=pinpointemail_get_deliverability_test_report]{get_deliverability_test_report}}
-operation to view the results.
-}
-\section{Request syntax}{
-\preformatted{svc$list_deliverability_test_reports(
-  NextToken = "string",
-  PageSize = 123
-)
-}
-}
+Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses. For predictive inbox placement tests that are complete, you can use the \code{\link[=pinpointemail_get_deliverability_test_report]{get_deliverability_test_report}} operation to view the results.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/list_deliverability_test_reports.html} for full documentation.
+}
 \keyword{internal}

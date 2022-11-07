@@ -2,52 +2,31 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_list_s3_resources}
 \alias{macie_list_s3_resources}
-\title{Lists all the S3 resources associated with Amazon Macie Classic}
+\title{(Discontinued) Lists all the S3 resources associated with Amazon Macie
+Classic}
 \usage{
-macie_list_s3_resources(memberAccountId, nextToken, maxResults)
+macie_list_s3_resources(
+  memberAccountId = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
-\item{memberAccountId}{The Amazon Macie Classic member account ID whose associated S3 resources
-you want to list.}
+\item{memberAccountId}{(Discontinued) The Amazon Macie Classic member account ID whose
+associated S3 resources you want to list.}
 
-\item{nextToken}{Use this parameter when paginating results. Set its value to null on
-your first call to the ListS3Resources action. Subsequent calls to the
-action fill nextToken in the request with the value of nextToken from
-the previous response to continue listing data.}
+\item{nextToken}{(Discontinued) Use this parameter when paginating results. Set its value
+to null on your first call to the
+\code{\link[=macie_list_s3_resources]{list_s3_resources}} action. Subsequent calls
+to the action fill \code{nextToken} in the request with the value of
+\code{nextToken} from the previous response to continue listing data.}
 
-\item{maxResults}{Use this parameter to indicate the maximum number of items that you want
-in the response. The default value is 250.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  s3Resources = list(
-    list(
-      bucketName = "string",
-      prefix = "string",
-      classificationType = list(
-        oneTime = "FULL"|"NONE",
-        continuous = "FULL"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
+\item{maxResults}{(Discontinued) Use this parameter to indicate the maximum number of
+items that you want in the response. The default value is 250.}
 }
 \description{
-Lists all the S3 resources associated with Amazon Macie Classic. If
-memberAccountId isn't specified, the action lists the S3 resources
-associated with Amazon Macie Classic for the current master account. If
-memberAccountId is specified, the action lists the S3 resources
-associated with Amazon Macie Classic for the specified member account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_s3_resources(
-  memberAccountId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+(Discontinued) Lists all the S3 resources associated with Amazon Macie Classic. If \code{memberAccountId} isn't specified, the action lists the S3 resources associated with Macie Classic for the current Macie Classic administrator account. If \code{memberAccountId} is specified, the action lists the S3 resources associated with Macie Classic for the specified member account.
 
+See \url{https://paws-r.github.io/docs/macie/list_s3_resources.html} for full documentation.
+}
 \keyword{internal}

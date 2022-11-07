@@ -4,7 +4,7 @@
 \alias{ec2_delete_transit_gateway_connect}
 \title{Deletes the specified Connect attachment}
 \usage{
-ec2_delete_transit_gateway_connect(TransitGatewayAttachmentId, DryRun)
+ec2_delete_transit_gateway_connect(TransitGatewayAttachmentId, DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the Connect attachment.}
@@ -14,39 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayConnect = list(
-    TransitGatewayAttachmentId = "string",
-    TransportTransitGatewayAttachmentId = "string",
-    TransitGatewayId = "string",
-    State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Options = list(
-      Protocol = "gre"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Deletes the specified Connect attachment. You must first delete any
-Connect peers for the attachment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_transit_gateway_connect(
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes the specified Connect attachment. You must first delete any Connect peers for the attachment.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_transit_gateway_connect.html} for full documentation.
+}
 \keyword{internal}

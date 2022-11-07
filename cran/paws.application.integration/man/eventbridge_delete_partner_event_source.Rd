@@ -9,25 +9,12 @@ eventbridge_delete_partner_event_source(Name, Account)
 \arguments{
 \item{Name}{[required] The name of the event source to delete.}
 
-\item{Account}{[required] The AWS account ID of the AWS customer that the event source was created
-for.}
-}
-\value{
-An empty list.
+\item{Account}{[required] The Amazon Web Services account ID of the Amazon Web Services customer
+that the event source was created for.}
 }
 \description{
-This operation is used by SaaS partners to delete a partner event
-source. This operation is not used by AWS customers.
+This operation is used by SaaS partners to delete a partner event source. This operation is not used by Amazon Web Services customers.
 
-When you delete an event source, the status of the corresponding partner
-event bus in the AWS customer account becomes DELETED.
+See \url{https://paws-r.github.io/docs/eventbridge/delete_partner_event_source.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_partner_event_source(
-  Name = "string",
-  Account = "string"
-)
-}
-}
-
 \keyword{internal}

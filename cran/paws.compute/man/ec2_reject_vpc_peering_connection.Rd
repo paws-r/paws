@@ -4,7 +4,7 @@
 \alias{ec2_reject_vpc_peering_connection}
 \title{Rejects a VPC peering connection request}
 \usage{
-ec2_reject_vpc_peering_connection(DryRun, VpcPeeringConnectionId)
+ec2_reject_vpc_peering_connection(DryRun = NULL, VpcPeeringConnectionId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,27 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Rejects a VPC peering connection request. The VPC peering connection
-must be in the \code{pending-acceptance} state. Use the
-\code{\link[=ec2_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
-request to view your outstanding VPC peering connection requests. To
-delete an active VPC peering connection, or to delete a VPC peering
-connection request that you initiated, use
-\code{\link[=ec2_delete_vpc_peering_connection]{delete_vpc_peering_connection}}.
-}
-\section{Request syntax}{
-\preformatted{svc$reject_vpc_peering_connection(
-  DryRun = TRUE|FALSE,
-  VpcPeeringConnectionId = "string"
-)
-}
-}
+Rejects a VPC peering connection request. The VPC peering connection must be in the \code{pending-acceptance} state. Use the \code{\link[=ec2_describe_vpc_peering_connections]{describe_vpc_peering_connections}} request to view your outstanding VPC peering connection requests. To delete an active VPC peering connection, or to delete a VPC peering connection request that you initiated, use \code{\link[=ec2_delete_vpc_peering_connection]{delete_vpc_peering_connection}}.
 
+See \url{https://paws-r.github.io/docs/ec2/reject_vpc_peering_connection.html} for full documentation.
+}
 \keyword{internal}

@@ -5,22 +5,15 @@
 \title{Deletes a notebook instance lifecycle configuration}
 \usage{
 sagemaker_delete_notebook_instance_lifecycle_config(
-  NotebookInstanceLifecycleConfigName)
+  NotebookInstanceLifecycleConfigName
+)
 }
 \arguments{
 \item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a notebook instance lifecycle configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_notebook_instance_lifecycle_config(
-  NotebookInstanceLifecycleConfigName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_notebook_instance_lifecycle_config.html} for full documentation.
+}
 \keyword{internal}

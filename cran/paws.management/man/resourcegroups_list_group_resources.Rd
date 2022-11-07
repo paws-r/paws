@@ -5,12 +5,17 @@
 \title{Returns a list of ARNs of the resources that are members of a specified
 resource group}
 \usage{
-resourcegroups_list_group_resources(GroupName, Group, Filters,
-  MaxResults, NextToken)
+resourcegroups_list_group_resources(
+  GroupName = NULL,
+  Group = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{GroupName}{\emph{\strong{Deprecated - don't use this parameter. Use the \code{Group} request field
-instead.}}}
+\item{GroupName}{\emph{Deprecated - don't use this parameter. Use the Group request field
+instead.}}
 
 \item{Group}{The name or the ARN of the resource group}
 
@@ -61,62 +66,9 @@ indicates that more output is available. Set this parameter to the value
 provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Resources = list(
-    list(
-      Identifier = list(
-        ResourceArn = "string",
-        ResourceType = "string"
-      ),
-      Status = list(
-        Name = "PENDING"
-      )
-    )
-  ),
-  ResourceIdentifiers = list(
-    list(
-      ResourceArn = "string",
-      ResourceType = "string"
-    )
-  ),
-  NextToken = "string",
-  QueryErrors = list(
-    list(
-      ErrorCode = "CLOUDFORMATION_STACK_INACTIVE"|"CLOUDFORMATION_STACK_NOT_EXISTING",
-      Message = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of ARNs of the resources that are members of a specified
-resource group.
+Returns a list of ARNs of the resources that are members of a specified resource group.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:ListGroupResources}
+See \url{https://paws-r.github.io/docs/resourcegroups/list_group_resources.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$list_group_resources(
-  GroupName = "string",
-  Group = "string",
-  Filters = list(
-    list(
-      Name = "resource-type",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

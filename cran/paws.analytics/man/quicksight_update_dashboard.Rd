@@ -2,15 +2,22 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_dashboard}
 \alias{quicksight_update_dashboard}
-\title{Updates a dashboard in an AWS account}
+\title{Updates a dashboard in an Amazon Web Services account}
 \usage{
-quicksight_update_dashboard(AwsAccountId, DashboardId, Name,
-  SourceEntity, Parameters, VersionDescription, DashboardPublishOptions,
-  ThemeArn)
+quicksight_update_dashboard(
+  AwsAccountId,
+  DashboardId,
+  Name,
+  SourceEntity,
+  Parameters = NULL,
+  VersionDescription = NULL,
+  DashboardPublishOptions = NULL,
+  ThemeArn = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you're
-updating.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the dashboard
+that you're updating.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 
@@ -23,8 +30,8 @@ source. You can only update a dashboard from a template, so you use a
 analysis, first convert the analysis to a template by using the
 \code{\link[=quicksight_create_template]{create_template}} API operation. For
 \code{SourceTemplate}, specify the Amazon Resource Name (ARN) of the source
-template. The \code{SourceTemplate} ARN can contain any AWS Account and any
-QuickSight-supported AWS Region.
+template. The \code{SourceTemplate} ARN can contain any Amazon Web Services
+account and any Amazon QuickSight-supported Amazon Web Services Region.
 
 Use the \code{DataSetReferences} entity within \code{SourceTemplate} to list the
 replacement datasets for the placeholders listed in the original. The
@@ -40,9 +47,9 @@ parameters, and some parameters might accept multiple values.}
 \itemize{
 \item \code{AvailabilityStatus} for \code{AdHocFilteringOption} - This status can be
 either \code{ENABLED} or \code{DISABLED}. When this is set to \code{DISABLED},
-QuickSight disables the left filter pane on the published dashboard,
-which can be used for ad hoc (one-time) filtering. This option is
-\code{ENABLED} by default.
+Amazon QuickSight disables the left filter pane on the published
+dashboard, which can be used for ad hoc (one-time) filtering. This
+option is \code{ENABLED} by default.
 \item \code{AvailabilityStatus} for \code{ExportToCSVOption} - This status can be
 either \code{ENABLED} or \code{DISABLED}. The visual option to export data to
 .CSV format isn't enabled when this is set to \code{DISABLED}. This
@@ -55,89 +62,11 @@ by default.
 \item{ThemeArn}{The Amazon Resource Name (ARN) of the theme that is being used for this
 dashboard. If you add a value for this field, it overrides the value
 that was originally associated with the entity. The theme ARN must exist
-in the same AWS account where you create the dashboard.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  VersionArn = "string",
-  DashboardId = "string",
-  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  Status = 123,
-  RequestId = "string"
-)
-}
+in the same Amazon Web Services account where you create the dashboard.}
 }
 \description{
-Updates a dashboard in an AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$update_dashboard(
-  AwsAccountId = "string",
-  DashboardId = "string",
-  Name = "string",
-  SourceEntity = list(
-    SourceTemplate = list(
-      DataSetReferences = list(
-        list(
-          DataSetPlaceholder = "string",
-          DataSetArn = "string"
-        )
-      ),
-      Arn = "string"
-    )
-  ),
-  Parameters = list(
-    StringParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          "string"
-        )
-      )
-    ),
-    IntegerParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          123
-        )
-      )
-    ),
-    DecimalParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          123.0
-        )
-      )
-    ),
-    DateTimeParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  VersionDescription = "string",
-  DashboardPublishOptions = list(
-    AdHocFilteringOption = list(
-      AvailabilityStatus = "ENABLED"|"DISABLED"
-    ),
-    ExportToCSVOption = list(
-      AvailabilityStatus = "ENABLED"|"DISABLED"
-    ),
-    SheetControlsOption = list(
-      VisibilityState = "EXPANDED"|"COLLAPSED"
-    )
-  ),
-  ThemeArn = "string"
-)
-}
-}
+Updates a dashboard in an Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/quicksight/update_dashboard.html} for full documentation.
+}
 \keyword{internal}

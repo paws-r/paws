@@ -11,20 +11,9 @@ mq_delete_tags(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] An array of tag keys to delete}
 }
-\value{
-An empty list.
-}
 \description{
 Removes a tag from a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_tags(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/delete_tags.html} for full documentation.
+}
 \keyword{internal}

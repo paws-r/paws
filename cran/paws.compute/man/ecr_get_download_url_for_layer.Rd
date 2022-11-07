@@ -5,44 +5,21 @@
 \title{Retrieves the pre-signed Amazon S3 download URL corresponding to an
 image layer}
 \usage{
-ecr_get_download_url_for_layer(registryId, repositoryName, layerDigest)
+ecr_get_download_url_for_layer(registryId = NULL, repositoryName, layerDigest)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the image
-layer to download. If you do not specify a registry, the default
-registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the image layer to download. If you do not specify a registry,
+the default registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository that is associated with the image layer to
 download.}
 
 \item{layerDigest}{[required] The digest of the image layer to download.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  downloadUrl = "string",
-  layerDigest = "string"
-)
-}
-}
 \description{
-Retrieves the pre-signed Amazon S3 download URL corresponding to an
-image layer. You can only get URLs for image layers that are referenced
-in an image.
+Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer. You can only get URLs for image layers that are referenced in an image.
 
-When an image is pulled, the GetDownloadUrlForLayer API is called once
-per image layer that is not already cached.
-
-This operation is used by the Amazon ECR proxy and is not generally used
-by customers for pulling and pushing images. In most cases, you should
-use the \code{docker} CLI to pull, tag, and push images.
+See \url{https://paws-r.github.io/docs/ecr/get_download_url_for_layer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_download_url_for_layer(
-  registryId = "string",
-  repositoryName = "string",
-  layerDigest = "string"
-)
-}
-}
-
 \keyword{internal}

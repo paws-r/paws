@@ -5,8 +5,11 @@
 \title{Retrieves a list of configurations for asynchronous invocation for a
 function}
 \usage{
-lambda_list_function_event_invoke_configs(FunctionName, Marker,
-  MaxItems)
+lambda_list_function_event_invoke_configs(
+  FunctionName,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -27,54 +30,9 @@ retrieve the next page of results.}
 
 \item{MaxItems}{The maximum number of configurations to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FunctionEventInvokeConfigs = list(
-    list(
-      LastModified = as.POSIXct(
-        "2015-01-01"
-      ),
-      FunctionArn = "string",
-      MaximumRetryAttempts = 123,
-      MaximumEventAgeInSeconds = 123,
-      DestinationConfig = list(
-        OnSuccess = list(
-          Destination = "string"
-        ),
-        OnFailure = list(
-          Destination = "string"
-        )
-      )
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Retrieves a list of configurations for asynchronous invocation for a
-function.
+Retrieves a list of configurations for asynchronous invocation for a function.
 
-To configure options for asynchronous invocation, use
-\code{\link[=lambda_put_function_event_invoke_config]{put_function_event_invoke_config}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_function_event_invoke_configs(
-  FunctionName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns a list of asynchronous invocation
-# configurations for a function named my-function.
-svc$list_function_event_invoke_configs(
-  FunctionName = "my-function"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/list_function_event_invoke_configs.html} for full documentation.
 }
 \keyword{internal}

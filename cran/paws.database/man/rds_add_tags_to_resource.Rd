@@ -13,28 +13,9 @@ Amazon Resource Name (ARN). For information about creating an ARN, see
 
 \item{Tags}{[required] The tags to be assigned to the Amazon RDS resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds metadata tags to an Amazon RDS resource. These tags can also be
-used with cost allocation reporting to track cost associated with Amazon
-RDS resources, or used in a Condition statement in an IAM policy for
-Amazon RDS.
+Adds metadata tags to an Amazon RDS resource. These tags can also be used with cost allocation reporting to track cost associated with Amazon RDS resources, or used in a Condition statement in an IAM policy for Amazon RDS.
 
-For an overview on tagging Amazon RDS resources, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}.
+See \url{https://paws-r.github.io/docs/rds/add_tags_to_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
-  ResourceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

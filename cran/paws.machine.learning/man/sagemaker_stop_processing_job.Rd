@@ -9,17 +9,9 @@ sagemaker_stop_processing_job(ProcessingJobName)
 \arguments{
 \item{ProcessingJobName}{[required] The name of the processing job to stop.}
 }
-\value{
-An empty list.
-}
 \description{
 Stops a processing job.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_processing_job(
-  ProcessingJobName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/stop_processing_job.html} for full documentation.
+}
 \keyword{internal}

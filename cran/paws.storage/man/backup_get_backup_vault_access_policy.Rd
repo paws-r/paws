@@ -10,26 +10,12 @@ backup_get_backup_vault_access_policy(BackupVaultName)
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupVaultName = "string",
-  BackupVaultArn = "string",
-  Policy = "string"
-)
-}
+them and the Amazon Web Services Region where they are created. They
+consist of lowercase letters, numbers, and hyphens.}
 }
 \description{
-Returns the access policy document that is associated with the named
-backup vault.
-}
-\section{Request syntax}{
-\preformatted{svc$get_backup_vault_access_policy(
-  BackupVaultName = "string"
-)
-}
-}
+Returns the access policy document that is associated with the named backup vault.
 
+See \url{https://paws-r.github.io/docs/backup/get_backup_vault_access_policy.html} for full documentation.
+}
 \keyword{internal}

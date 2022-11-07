@@ -4,8 +4,14 @@
 \alias{swf_list_workflow_types}
 \title{Returns information about workflow types in the specified domain}
 \usage{
-swf_list_workflow_types(domain, name, registrationStatus, nextPageToken,
-  maximumPageSize, reverseOrder)
+swf_list_workflow_types(
+  domain,
+  name = NULL,
+  registrationStatus,
+  nextPageToken = NULL,
+  maximumPageSize = NULL,
+  reverseOrder = NULL
+)
 }
 \arguments{
 \item{domain}{[required] The name of the domain in which the workflow types have been registered.}
@@ -31,62 +37,9 @@ returned in a single call.}
 results are returned in ascending alphabetical order of the \code{name} of
 the workflow types.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  typeInfos = list(
-    list(
-      workflowType = list(
-        name = "string",
-        version = "string"
-      ),
-      status = "REGISTERED"|"DEPRECATED",
-      description = "string",
-      creationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      deprecationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
-Returns information about workflow types in the specified domain. The
-results may be split into multiple pages that can be retrieved by making
-the call repeatedly.
+Returns information about workflow types in the specified domain. The results may be split into multiple pages that can be retrieved by making the call repeatedly.
 
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item You cannot use an IAM policy to constrain this action's parameters.
+See \url{https://paws-r.github.io/docs/swf/list_workflow_types.html} for full documentation.
 }
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_workflow_types(
-  domain = "string",
-  name = "string",
-  registrationStatus = "REGISTERED"|"DEPRECATED",
-  nextPageToken = "string",
-  maximumPageSize = 123,
-  reverseOrder = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

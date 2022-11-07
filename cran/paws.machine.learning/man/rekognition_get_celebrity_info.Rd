@@ -2,8 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_get_celebrity_info}
 \alias{rekognition_get_celebrity_info}
-\title{Gets the name and additional information about a celebrity based on his
-or her Amazon Rekognition ID}
+\title{Gets the name and additional information about a celebrity based on
+their Amazon Rekognition ID}
 \usage{
 rekognition_get_celebrity_info(Id)
 }
@@ -12,32 +12,9 @@ rekognition_get_celebrity_info(Id)
 \code{\link[=rekognition_recognize_celebrities]{recognize_celebrities}} operation,
 which recognizes celebrities in an image.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Urls = list(
-    "string"
-  ),
-  Name = "string"
-)
-}
-}
 \description{
-Gets the name and additional information about a celebrity based on his
-or her Amazon Rekognition ID. The additional information is returned as
-an array of URLs. If there is no additional information about the
-celebrity, this list is empty.
+Gets the name and additional information about a celebrity based on their Amazon Rekognition ID. The additional information is returned as an array of URLs. If there is no additional information about the celebrity, this list is empty.
 
-For more information, see Recognizing Celebrities in an Image in the
-Amazon Rekognition Developer Guide.
-
-This operation requires permissions to perform the
-\code{rekognition:GetCelebrityInfo} action.
+See \url{https://paws-r.github.io/docs/rekognition/get_celebrity_info.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_celebrity_info(
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

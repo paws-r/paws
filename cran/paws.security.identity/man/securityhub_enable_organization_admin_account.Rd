@@ -7,21 +7,12 @@
 securityhub_enable_organization_admin_account(AdminAccountId)
 }
 \arguments{
-\item{AdminAccountId}{[required] The AWS account identifier of the account to designate as the Security
-Hub administrator account.}
-}
-\value{
-An empty list.
+\item{AdminAccountId}{[required] The Amazon Web Services account identifier of the account to designate
+as the Security Hub administrator account.}
 }
 \description{
-Designates the Security Hub administrator account for an organization.
-Can only be called by the organization management account.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_organization_admin_account(
-  AdminAccountId = "string"
-)
-}
-}
+Designates the Security Hub administrator account for an organization. Can only be called by the organization management account.
 
+See \url{https://paws-r.github.io/docs/securityhub/enable_organization_admin_account.html} for full documentation.
+}
 \keyword{internal}

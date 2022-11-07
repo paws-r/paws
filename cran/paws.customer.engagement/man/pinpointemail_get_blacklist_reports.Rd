@@ -12,33 +12,9 @@ pinpointemail_get_blacklist_reports(BlacklistItemNames)
 about. You can only specify the dedicated IP addresses that you use to
 send email using Amazon Pinpoint or Amazon SES.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BlacklistReport = list(
-    list(
-      list(
-        RblName = "string",
-        ListingTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Description = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieve a list of the blacklists that your dedicated IP addresses
-appear on.
-}
-\section{Request syntax}{
-\preformatted{svc$get_blacklist_reports(
-  BlacklistItemNames = list(
-    "string"
-  )
-)
-}
-}
+Retrieve a list of the blacklists that your dedicated IP addresses appear on.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/get_blacklist_reports.html} for full documentation.
+}
 \keyword{internal}

@@ -2,11 +2,15 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_update_workspace_image_permission}
 \alias{workspaces_update_workspace_image_permission}
-\title{Shares or unshares an image with one account in the same AWS Region by
-specifying whether that account has permission to copy the image}
+\title{Shares or unshares an image with one account in the same Amazon Web
+Services Region by specifying whether that account has permission to
+copy the image}
 \usage{
-workspaces_update_workspace_image_permission(ImageId, AllowCopyImage,
-  SharedAccountId)
+workspaces_update_workspace_image_permission(
+  ImageId,
+  AllowCopyImage,
+  SharedAccountId
+)
 }
 \arguments{
 \item{ImageId}{[required] The identifier of the image.}
@@ -14,47 +18,15 @@ workspaces_update_workspace_image_permission(ImageId, AllowCopyImage,
 \item{AllowCopyImage}{[required] The permission to copy the image. This permission can be revoked only
 after an image has been shared.}
 
-\item{SharedAccountId}{[required] The identifier of the AWS account to share or unshare the image with.
+\item{SharedAccountId}{[required] The identifier of the Amazon Web Services account to share or unshare
+the image with.
 
 Before sharing the image, confirm that you are sharing to the correct
-AWS account ID.}
-}
-\value{
-An empty list.
+Amazon Web Services account ID.}
 }
 \description{
-Shares or unshares an image with one account in the same AWS Region by
-specifying whether that account has permission to copy the image. If the
-copy image permission is granted, the image is shared with that account.
-If the copy image permission is revoked, the image is unshared with the
-account.
+Shares or unshares an image with one account in the same Amazon Web Services Region by specifying whether that account has permission to copy the image. If the copy image permission is granted, the image is shared with that account. If the copy image permission is revoked, the image is unshared with the account.
 
-After an image has been shared, the recipient account can copy the image
-to other AWS Regions as needed.
-
-In the China (Ningxia) Region, you can copy images only within the same
-Region.
-
-In the AWS GovCloud (US-West) Region, to copy images to and from other
-AWS Regions, contact AWS Support.
-
-For more information about sharing images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/share-custom-image.html}{Share or Unshare a Custom WorkSpaces Image}.
-\itemize{
-\item To delete an image that has been shared, you must unshare the image
-before you delete it.
-\item Sharing Bring Your Own License (BYOL) images across AWS accounts
-isn't supported at this time in the AWS GovCloud (US-West) Region.
-To share BYOL images across accounts in the AWS GovCloud (US-West)
-Region, contact AWS Support.
+See \url{https://paws-r.github.io/docs/workspaces/update_workspace_image_permission.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$update_workspace_image_permission(
-  ImageId = "string",
-  AllowCopyImage = TRUE|FALSE,
-  SharedAccountId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{servicecatalog_describe_product}
 \title{Gets information about the specified product}
 \usage{
-servicecatalog_describe_product(AcceptLanguage, Id, Name)
+servicecatalog_describe_product(AcceptLanguage = NULL, Id = NULL, Name = NULL)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -18,56 +18,9 @@ servicecatalog_describe_product(AcceptLanguage, Id, Name)
 
 \item{Name}{The product name.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProductViewSummary = list(
-    Id = "string",
-    ProductId = "string",
-    Name = "string",
-    Owner = "string",
-    ShortDescription = "string",
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-    Distributor = "string",
-    HasDefaultPath = TRUE|FALSE,
-    SupportEmail = "string",
-    SupportDescription = "string",
-    SupportUrl = "string"
-  ),
-  ProvisioningArtifacts = list(
-    list(
-      Id = "string",
-      Name = "string",
-      Description = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Guidance = "DEFAULT"|"DEPRECATED"
-    )
-  ),
-  Budgets = list(
-    list(
-      BudgetName = "string"
-    )
-  ),
-  LaunchPaths = list(
-    list(
-      Id = "string",
-      Name = "string"
-    )
-  )
-)
-}
-}
 \description{
 Gets information about the specified product.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_product(
-  AcceptLanguage = "string",
-  Id = "string",
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_product.html} for full documentation.
+}
 \keyword{internal}

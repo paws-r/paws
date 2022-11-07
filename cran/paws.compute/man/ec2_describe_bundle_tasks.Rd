@@ -4,7 +4,7 @@
 \alias{ec2_describe_bundle_tasks}
 \title{Describes the specified bundle tasks or all of your bundle tasks}
 \usage{
-ec2_describe_bundle_tasks(BundleIds, Filters, DryRun)
+ec2_describe_bundle_tasks(BundleIds = NULL, Filters = NULL, DryRun = NULL)
 }
 \arguments{
 \item{BundleIds}{The bundle task IDs.
@@ -33,62 +33,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BundleTasks = list(
-    list(
-      BundleId = "string",
-      BundleTaskError = list(
-        Code = "string",
-        Message = "string"
-      ),
-      InstanceId = "string",
-      Progress = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      State = "pending"|"waiting-for-shutdown"|"bundling"|"storing"|"cancelling"|"complete"|"failed",
-      Storage = list(
-        S3 = list(
-          AWSAccessKeyId = "string",
-          Bucket = "string",
-          Prefix = "string",
-          UploadPolicy = raw,
-          UploadPolicySignature = "string"
-        )
-      ),
-      UpdateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes the specified bundle tasks or all of your bundle tasks.
 
-Completed bundle tasks are listed for only a limited time. If your
-bundle task is no longer in the list, you can still register an AMI from
-it. Just use \code{\link[=ec2_register_image]{register_image}} with the Amazon S3
-bucket name and image manifest name you provided to the bundle task.
+See \url{https://paws-r.github.io/docs/ec2/describe_bundle_tasks.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_bundle_tasks(
-  BundleIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

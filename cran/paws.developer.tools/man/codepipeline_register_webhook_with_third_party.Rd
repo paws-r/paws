@@ -5,24 +5,15 @@
 \title{Configures a connection between the webhook that was created and the
 external tool with events to be detected}
 \usage{
-codepipeline_register_webhook_with_third_party(webhookName)
+codepipeline_register_webhook_with_third_party(webhookName = NULL)
 }
 \arguments{
 \item{webhookName}{The name of an existing webhook created with PutWebhook to register with
 a supported third party.}
 }
-\value{
-An empty list.
-}
 \description{
-Configures a connection between the webhook that was created and the
-external tool with events to be detected.
-}
-\section{Request syntax}{
-\preformatted{svc$register_webhook_with_third_party(
-  webhookName = "string"
-)
-}
-}
+Configures a connection between the webhook that was created and the external tool with events to be detected.
 
+See \url{https://paws-r.github.io/docs/codepipeline/register_webhook_with_third_party.html} for full documentation.
+}
 \keyword{internal}

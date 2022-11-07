@@ -13,7 +13,8 @@ NULL
 #' dax_create_cluster(ClusterName, NodeType, Description,
 #'   ReplicationFactor, AvailabilityZones, SubnetGroupName, SecurityGroupIds,
 #'   PreferredMaintenanceWindow, NotificationTopicArn, IamRoleArn,
-#'   ParameterGroupName, Tags, SSESpecification)
+#'   ParameterGroupName, Tags, SSESpecification,
+#'   ClusterEndpointEncryptionType)
 #'
 #' @param ClusterName &#91;required&#93; The cluster identifier. This parameter is stored as a lowercase string.
 #' 
@@ -84,6 +85,12 @@ NULL
 #' @param Tags A set of tags to associate with the DAX cluster.
 #' @param SSESpecification Represents the settings used to enable server-side encryption on the
 #' cluster.
+#' @param ClusterEndpointEncryptionType The type of encryption the cluster's endpoint should support. Values
+#' are:
+#' 
+#' -   `NONE` for no encryption
+#' 
+#' -   `TLS` for Transport Layer Security
 #'
 #' @return
 #' A list with the following syntax:
@@ -99,7 +106,8 @@ NULL
 #'     Status = "string",
 #'     ClusterDiscoveryEndpoint = list(
 #'       Address = "string",
-#'       Port = 123
+#'       Port = 123,
+#'       URL = "string"
 #'     ),
 #'     NodeIdsToRemove = list(
 #'       "string"
@@ -109,7 +117,8 @@ NULL
 #'         NodeId = "string",
 #'         Endpoint = list(
 #'           Address = "string",
-#'           Port = 123
+#'           Port = 123,
+#'           URL = "string"
 #'         ),
 #'         NodeCreateTime = as.POSIXct(
 #'           "2015-01-01"
@@ -141,7 +150,8 @@ NULL
 #'     ),
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
+#'     ),
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
 #'   )
 #' )
 #' ```
@@ -172,21 +182,22 @@ NULL
 #'   ),
 #'   SSESpecification = list(
 #'     Enabled = TRUE|FALSE
-#'   )
+#'   ),
+#'   ClusterEndpointEncryptionType = "NONE"|"TLS"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname dax_create_cluster
-dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL, Tags = NULL, SSESpecification = NULL) {
+dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL, Tags = NULL, SSESpecification = NULL, ClusterEndpointEncryptionType = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dax$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, Description = Description, ReplicationFactor = ReplicationFactor, AvailabilityZones = AvailabilityZones, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, IamRoleArn = IamRoleArn, ParameterGroupName = ParameterGroupName, Tags = Tags, SSESpecification = SSESpecification)
+  input <- .dax$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, Description = Description, ReplicationFactor = ReplicationFactor, AvailabilityZones = AvailabilityZones, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, IamRoleArn = IamRoleArn, ParameterGroupName = ParameterGroupName, Tags = Tags, SSESpecification = SSESpecification, ClusterEndpointEncryptionType = ClusterEndpointEncryptionType)
   output <- .dax$create_cluster_output()
   config <- get_config()
   svc <- .dax$service(config)
@@ -342,7 +353,8 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #'     Status = "string",
 #'     ClusterDiscoveryEndpoint = list(
 #'       Address = "string",
-#'       Port = 123
+#'       Port = 123,
+#'       URL = "string"
 #'     ),
 #'     NodeIdsToRemove = list(
 #'       "string"
@@ -352,7 +364,8 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #'         NodeId = "string",
 #'         Endpoint = list(
 #'           Address = "string",
-#'           Port = 123
+#'           Port = 123,
+#'           URL = "string"
 #'         ),
 #'         NodeCreateTime = as.POSIXct(
 #'           "2015-01-01"
@@ -384,7 +397,8 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #'     ),
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
+#'     ),
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
 #'   )
 #' )
 #' ```
@@ -450,7 +464,8 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #'     Status = "string",
 #'     ClusterDiscoveryEndpoint = list(
 #'       Address = "string",
-#'       Port = 123
+#'       Port = 123,
+#'       URL = "string"
 #'     ),
 #'     NodeIdsToRemove = list(
 #'       "string"
@@ -460,7 +475,8 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #'         NodeId = "string",
 #'         Endpoint = list(
 #'           Address = "string",
-#'           Port = 123
+#'           Port = 123,
+#'           URL = "string"
 #'         ),
 #'         NodeCreateTime = as.POSIXct(
 #'           "2015-01-01"
@@ -492,7 +508,8 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #'     ),
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
+#'     ),
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
 #'   )
 #' )
 #' ```
@@ -671,7 +688,8 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #'       Status = "string",
 #'       ClusterDiscoveryEndpoint = list(
 #'         Address = "string",
-#'         Port = 123
+#'         Port = 123,
+#'         URL = "string"
 #'       ),
 #'       NodeIdsToRemove = list(
 #'         "string"
@@ -681,7 +699,8 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #'           NodeId = "string",
 #'           Endpoint = list(
 #'             Address = "string",
-#'             Port = 123
+#'             Port = 123,
+#'             URL = "string"
 #'           ),
 #'           NodeCreateTime = as.POSIXct(
 #'             "2015-01-01"
@@ -713,7 +732,8 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #'       ),
 #'       SSEDescription = list(
 #'         Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'       )
+#'       ),
+#'       ClusterEndpointEncryptionType = "NONE"|"TLS"
 #'     )
 #'   )
 #' )
@@ -1162,7 +1182,8 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #'     Status = "string",
 #'     ClusterDiscoveryEndpoint = list(
 #'       Address = "string",
-#'       Port = 123
+#'       Port = 123,
+#'       URL = "string"
 #'     ),
 #'     NodeIdsToRemove = list(
 #'       "string"
@@ -1172,7 +1193,8 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #'         NodeId = "string",
 #'         Endpoint = list(
 #'           Address = "string",
-#'           Port = 123
+#'           Port = 123,
+#'           URL = "string"
 #'         ),
 #'         NodeCreateTime = as.POSIXct(
 #'           "2015-01-01"
@@ -1204,7 +1226,8 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #'     ),
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
+#'     ),
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
 #'   )
 #' )
 #' ```
@@ -1326,7 +1349,8 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #'     Status = "string",
 #'     ClusterDiscoveryEndpoint = list(
 #'       Address = "string",
-#'       Port = 123
+#'       Port = 123,
+#'       URL = "string"
 #'     ),
 #'     NodeIdsToRemove = list(
 #'       "string"
@@ -1336,7 +1360,8 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #'         NodeId = "string",
 #'         Endpoint = list(
 #'           Address = "string",
-#'           Port = 123
+#'           Port = 123,
+#'           URL = "string"
 #'         ),
 #'         NodeCreateTime = as.POSIXct(
 #'           "2015-01-01"
@@ -1368,7 +1393,8 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #'     ),
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
+#'     ),
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
 #'   )
 #' )
 #' ```
@@ -1536,7 +1562,9 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #' normally takes less than 30 minutes, and is performed automatically
 #' within the maintenance window.
 #' @param NotificationTopicArn The Amazon Resource Name (ARN) that identifies the topic.
-#' @param NotificationTopicStatus The current state of the topic.
+#' @param NotificationTopicStatus The current state of the topic. A value of “active” means that
+#' notifications will be sent to the topic. A value of “inactive” means
+#' that notifications will not be sent to the topic.
 #' @param ParameterGroupName The name of a parameter group for this cluster.
 #' @param SecurityGroupIds A list of user-specified security group IDs to be assigned to each node
 #' in the DAX cluster. If this parameter is not specified, DAX assigns the
@@ -1556,7 +1584,8 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #'     Status = "string",
 #'     ClusterDiscoveryEndpoint = list(
 #'       Address = "string",
-#'       Port = 123
+#'       Port = 123,
+#'       URL = "string"
 #'     ),
 #'     NodeIdsToRemove = list(
 #'       "string"
@@ -1566,7 +1595,8 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #'         NodeId = "string",
 #'         Endpoint = list(
 #'           Address = "string",
-#'           Port = 123
+#'           Port = 123,
+#'           URL = "string"
 #'         ),
 #'         NodeCreateTime = as.POSIXct(
 #'           "2015-01-01"
@@ -1598,7 +1628,8 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #'     ),
 #'     SSEDescription = list(
 #'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
+#'     ),
+#'     ClusterEndpointEncryptionType = "NONE"|"TLS"
 #'   )
 #' )
 #' ```
@@ -1651,6 +1682,10 @@ dax_update_cluster <- function(ClusterName, Description = NULL, PreferredMainten
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group.
 #' @param ParameterNameValues &#91;required&#93; An array of name-value pairs for the parameters in the group. Each
 #' element in the array represents a single parameter.
+#' 
+#' `record-ttl-millis` and `query-ttl-millis` are the only supported
+#' parameter names. For more details, see [Configuring TTL
+#' Settings](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.cluster-management.html#DAX.cluster-management.custom-settings.ttl).
 #'
 #' @return
 #' A list with the following syntax:

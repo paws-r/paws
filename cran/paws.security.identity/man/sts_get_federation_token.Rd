@@ -5,8 +5,13 @@
 \title{Returns a set of temporary security credentials (consisting of an access
 key ID, a secret access key, and a security token) for a federated user}
 \usage{
-sts_get_federation_token(Name, Policy, PolicyArns, DurationSeconds,
-  Tags)
+sts_get_federation_token(
+  Name,
+  Policy = NULL,
+  PolicyArns = NULL,
+  DurationSeconds = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the federated user. The name is used as an identifier for
@@ -45,16 +50,16 @@ session has the permissions allowed by the policy. These permissions are
 granted in addition to the permissions that are granted by the session
 policies.
 
-The plain text that you use for both inline and managed session policies
+The plaintext that you use for both inline and managed session policies
 can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
-character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
-(\code{U+0009}), linefeed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters.
+character list (\u0020 through \u00FF). It can also include the tab
+(\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
-An AWS conversion compresses the passed session policies and session
-tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
-requirements. The \code{PackedPolicySize} response element indicates by
+An Amazon Web Services conversion compresses the passed session policies
+and session tags into a packed binary format that has a separate limit.
+Your request can fail for this limit even if your plaintext meets the
+other requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.}
 
@@ -65,11 +70,11 @@ same account as the IAM user that is requesting federated access.
 You must pass an inline or managed \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{session policy}
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed policies
-to use as managed session policies. The plain text that you use for both
+to use as managed session policies. The plaintext that you use for both
 inline and managed session policies can't exceed 2,048 characters. You
 can provide up to 10 managed policy ARNs. For more information about
-ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the AWS General Reference.
+ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
+in the Amazon Web Services General Reference.
 
 This parameter is optional. However, if you do not pass any session
 policies, then the resulting federated user session has no permissions.
@@ -89,34 +94,34 @@ session has the permissions allowed by the policy. These permissions are
 granted in addition to the permissions that are granted by the session
 policies.
 
-An AWS conversion compresses the passed session policies and session
-tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
-requirements. The \code{PackedPolicySize} response element indicates by
+An Amazon Web Services conversion compresses the passed session policies
+and session tags into a packed binary format that has a separate limit.
+Your request can fail for this limit even if your plaintext meets the
+other requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.}
 
 \item{DurationSeconds}{The duration, in seconds, that the session should last. Acceptable
 durations for federation sessions range from 900 seconds (15 minutes) to
 129,600 seconds (36 hours), with 43,200 seconds (12 hours) as the
-default. Sessions obtained using AWS account root user credentials are
-restricted to a maximum of 3,600 seconds (one hour). If the specified
-duration is longer than one hour, the session obtained by using root
-user credentials defaults to one hour.}
+default. Sessions obtained using Amazon Web Services account root user
+credentials are restricted to a maximum of 3,600 seconds (one hour). If
+the specified duration is longer than one hour, the session obtained by
+using root user credentials defaults to one hour.}
 
 \item{Tags}{A list of session tags. Each session tag consists of a key name and an
 associated value. For more information about session tags, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html}{Passing Session Tags in STS}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. You can pass up to 50 session tags. The
-plain text session tag keys can’t exceed 128 characters and the values
+plaintext session tag keys can’t exceed 128 characters and the values
 can’t exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
-An AWS conversion compresses the passed session policies and session
-tags into a packed binary format that has a separate limit. Your request
-can fail for this limit even if your plain text meets the other
-requirements. The \code{PackedPolicySize} response element indicates by
+An Amazon Web Services conversion compresses the passed session policies
+and session tags into a packed binary format that has a separate limit.
+Your request can fail for this limit even if your plaintext meets the
+other requirements. The \code{PackedPolicySize} response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
 
@@ -131,158 +136,9 @@ pass the \code{department}=\code{engineering} session tag. \code{Department} and
 \code{department} are not saved as separate tags, and the session tag passed
 in the request takes precedence over the role tag.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Credentials = list(
-    AccessKeyId = "string",
-    SecretAccessKey = "string",
-    SessionToken = "string",
-    Expiration = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  FederatedUser = list(
-    FederatedUserId = "string",
-    Arn = "string"
-  ),
-  PackedPolicySize = 123
-)
-}
-}
 \description{
-Returns a set of temporary security credentials (consisting of an access
-key ID, a secret access key, and a security token) for a federated user.
-A typical use is in a proxy application that gets temporary security
-credentials on behalf of distributed applications inside a corporate
-network. You must call the
-\code{\link[=sts_get_federation_token]{get_federation_token}} operation using the
-long-term security credentials of an IAM user. As a result, this call is
-appropriate in contexts where those credentials can be safely stored,
-usually in a server-based application. For a comparison of
-\code{\link[=sts_get_federation_token]{get_federation_token}} with the other API
-operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
-and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
-in the \emph{IAM User Guide}.
+Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user. A typical use is in a proxy application that gets temporary security credentials on behalf of distributed applications inside a corporate network. You must call the \code{\link[=sts_get_federation_token]{get_federation_token}} operation using the long-term security credentials of an IAM user. As a result, this call is appropriate in contexts where those credentials can be safely stored, usually in a server-based application. For a comparison of \code{\link[=sts_get_federation_token]{get_federation_token}} with the other API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the Amazon Web Services STS API operations} in the \emph{IAM User Guide}.
 
-You can create a mobile-based or browser-based app that can authenticate
-users using a web identity provider like Login with Amazon, Facebook,
-Google, or an OpenID Connect-compatible identity provider. In this case,
-we recommend that you use \href{https://aws.amazon.com/cognito/}{Amazon Cognito} or
-\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}}.
-For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity}{Federation Through a Web-based Identity Provider}
-in the \emph{IAM User Guide}.
-
-You can also call \code{\link[=sts_get_federation_token]{get_federation_token}}
-using the security credentials of an AWS account root user, but we do
-not recommend it. Instead, we recommend that you create an IAM user for
-the purpose of the proxy application. Then attach a policy to the IAM
-user that limits federated users to only the actions and resources that
-they need to access. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html}{IAM Best Practices}
-in the \emph{IAM User Guide}.
-
-\strong{Session duration}
-
-The temporary credentials are valid for the specified duration, from 900
-seconds (15 minutes) up to a maximum of 129,600 seconds (36 hours). The
-default session duration is 43,200 seconds (12 hours). Temporary
-credentials that are obtained by using AWS account root user credentials
-have a maximum duration of 3,600 seconds (1 hour).
-
-\strong{Permissions}
-
-You can use the temporary credentials created by
-\code{\link[=sts_get_federation_token]{get_federation_token}} in any AWS service
-except the following:
-\itemize{
-\item You cannot call any IAM operations using the AWS CLI or the AWS API.
-\item You cannot call any STS operations except
-\code{\link[=sts_get_caller_identity]{get_caller_identity}}.
-}
-
-You must pass an inline or managed \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{session policy}
-to this operation. You can pass a single JSON policy document to use as
-an inline session policy. You can also specify up to 10 managed policies
-to use as managed session policies. The plain text that you use for both
-inline and managed session policies can't exceed 2,048 characters.
-
-Though the session policy parameters are optional, if you do not pass a
-policy, then the resulting federated user session has no permissions.
-When you pass session policies, the session permissions are the
-intersection of the IAM user policies and the session policies that you
-pass. This gives you a way to further restrict the permissions for a
-federated user. You cannot use session policies to grant more
-permissions than those that are defined in the permissions policy of the
-IAM user. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session Policies}
-in the \emph{IAM User Guide}. For information about using
-\code{\link[=sts_get_federation_token]{get_federation_token}} to create temporary
-security credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken}{GetFederationToken—Federation Through a Custom Identity Broker}.
-
-You can use the credentials to access a resource that has a
-resource-based policy. If that policy specifically references the
-federated user session in the \code{Principal} element of the policy, the
-session has the permissions allowed by the policy. These permissions are
-granted in addition to the permissions granted by the session policies.
-
-\strong{Tags}
-
-(Optional) You can pass tag key-value pairs to your session. These are
-called session tags. For more information about session tags, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html}{Passing Session Tags in STS}
-in the \emph{IAM User Guide}.
-
-An administrator must grant you the permissions necessary to pass
-session tags. The administrator can also create granular permissions to
-allow you to pass only specific session tags. For more information, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html}{Tutorial: Using Tags for Attribute-Based Access Control}
-in the \emph{IAM User Guide}.
-
-Tag key–value pairs are not case sensitive, but case is preserved. This
-means that you cannot have separate \code{Department} and \code{department} tag
-keys. Assume that the user that you are federating has the
-\code{Department}=\code{Marketing} tag and you pass the \code{department}=\code{engineering}
-session tag. \code{Department} and \code{department} are not saved as separate
-tags, and the session tag passed in the request takes precedence over
-the user tag.
-}
-\section{Request syntax}{
-\preformatted{svc$get_federation_token(
-  Name = "string",
-  Policy = "string",
-  PolicyArns = list(
-    list(
-      arn = "string"
-    )
-  ),
-  DurationSeconds = 123,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# 
-svc$get_federation_token(
-  DurationSeconds = 3600L,
-  Name = "testFedUserSession",
-  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
-  Tags = list(
-    list(
-      Key = "Project",
-      Value = "Pegasus"
-    ),
-    list(
-      Key = "Cost-Center",
-      Value = "98765"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/sts/get_federation_token.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{directoryservice_create_computer}
 \title{Creates an Active Directory computer object in the specified directory}
 \usage{
-directoryservice_create_computer(DirectoryId, ComputerName, Password,
-  OrganizationalUnitDistinguishedName, ComputerAttributes)
+directoryservice_create_computer(
+  DirectoryId,
+  ComputerName,
+  Password,
+  OrganizationalUnitDistinguishedName = NULL,
+  ComputerAttributes = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory in which to create the computer account.}
@@ -21,38 +26,9 @@ place the computer account in.}
 \item{ComputerAttributes}{An array of Attribute objects that contain any LDAP attributes to apply
 to the computer account.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Computer = list(
-    ComputerId = "string",
-    ComputerName = "string",
-    ComputerAttributes = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Creates an Active Directory computer object in the specified directory.
-}
-\section{Request syntax}{
-\preformatted{svc$create_computer(
-  DirectoryId = "string",
-  ComputerName = "string",
-  Password = "string",
-  OrganizationalUnitDistinguishedName = "string",
-  ComputerAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/create_computer.html} for full documentation.
+}
 \keyword{internal}

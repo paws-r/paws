@@ -4,11 +4,26 @@
 \alias{ec2_create_client_vpn_endpoint}
 \title{Creates a Client VPN endpoint}
 \usage{
-ec2_create_client_vpn_endpoint(ClientCidrBlock, ServerCertificateArn,
-  AuthenticationOptions, ConnectionLogOptions, DnsServers,
-  TransportProtocol, VpnPort, Description, SplitTunnel, DryRun,
-  ClientToken, TagSpecifications, SecurityGroupIds, VpcId,
-  SelfServicePortal, ClientConnectOptions)
+ec2_create_client_vpn_endpoint(
+  ClientCidrBlock,
+  ServerCertificateArn,
+  AuthenticationOptions,
+  ConnectionLogOptions,
+  DnsServers = NULL,
+  TransportProtocol = NULL,
+  VpnPort = NULL,
+  Description = NULL,
+  SplitTunnel = NULL,
+  DryRun = NULL,
+  ClientToken = NULL,
+  TagSpecifications = NULL,
+  SecurityGroupIds = NULL,
+  VpcId = NULL,
+  SelfServicePortal = NULL,
+  ClientConnectOptions = NULL,
+  SessionTimeoutHours = NULL,
+  ClientLoginBannerOptions = NULL
+)
 }
 \arguments{
 \item{ClientCidrBlock}{[required] The IPv4 address range, in CIDR notation, from which to assign client IP
@@ -17,7 +32,8 @@ VPC in which the associated subnet is located, or the routes that you
 add manually. The address range cannot be changed after the Client VPN
 endpoint has been created. The CIDR block should be /22 or greater.}
 
-\item{ServerCertificateArn}{[required] The ARN of the server certificate. For more information, see the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager User Guide}.}
+\item{ServerCertificateArn}{[required] The ARN of the server certificate. For more information, see the
+\href{https://docs.aws.amazon.com/acm/latest/userguide/}{Certificate Manager User Guide}.}
 
 \item{AuthenticationOptions}{[required] Information about the authentication method to be used to authenticate
 clients.}
@@ -52,13 +68,12 @@ Default Value: \code{443}}
 
 \item{Description}{A brief description of the Client VPN endpoint.}
 
-\item{SplitTunnel}{Indicates whether split-tunnel is enabled on the AWS Client VPN
-endpoint.
+\item{SplitTunnel}{Indicates whether split-tunnel is enabled on the Client VPN endpoint.
 
 By default, split-tunnel on a VPN endpoint is disabled.
 
-For information about split-tunnel VPN endpoints, see \href{https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html}{Split-Tunnel AWS Client VPN Endpoint}
-in the \emph{AWS Client VPN Administrator Guide}.}
+For information about split-tunnel VPN endpoints, see \href{https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html}{Split-tunnel Client VPN endpoint}
+in the \emph{Client VPN Administrator Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -66,7 +81,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 
 \item{TagSpecifications}{The tags to apply to the Client VPN endpoint during creation.}
 
@@ -85,78 +100,20 @@ Default Value: \code{enabled}}
 
 \item{ClientConnectOptions}{The options for managing connection authorization for new client
 connections.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientVpnEndpointId = "string",
-  Status = list(
-    Code = "pending-associate"|"available"|"deleting"|"deleted",
-    Message = "string"
-  ),
-  DnsName = "string"
-)
-}
+
+\item{SessionTimeoutHours}{The maximum VPN session duration time in hours.
+
+Valid values: \code{8 | 10 | 12 | 24}
+
+Default value: \code{24}}
+
+\item{ClientLoginBannerOptions}{Options for enabling a customizable text banner that will be displayed
+on Amazon Web Services provided clients when a VPN session is
+established.}
 }
 \description{
-Creates a Client VPN endpoint. A Client VPN endpoint is the resource you
-create and configure to enable and manage client VPN sessions. It is the
-destination endpoint at which all client VPN sessions are terminated.
-}
-\section{Request syntax}{
-\preformatted{svc$create_client_vpn_endpoint(
-  ClientCidrBlock = "string",
-  ServerCertificateArn = "string",
-  AuthenticationOptions = list(
-    list(
-      Type = "certificate-authentication"|"directory-service-authentication"|"federated-authentication",
-      ActiveDirectory = list(
-        DirectoryId = "string"
-      ),
-      MutualAuthentication = list(
-        ClientRootCertificateChainArn = "string"
-      ),
-      FederatedAuthentication = list(
-        SAMLProviderArn = "string",
-        SelfServiceSAMLProviderArn = "string"
-      )
-    )
-  ),
-  ConnectionLogOptions = list(
-    Enabled = TRUE|FALSE,
-    CloudwatchLogGroup = "string",
-    CloudwatchLogStream = "string"
-  ),
-  DnsServers = list(
-    "string"
-  ),
-  TransportProtocol = "tcp"|"udp",
-  VpnPort = 123,
-  Description = "string",
-  SplitTunnel = TRUE|FALSE,
-  DryRun = TRUE|FALSE,
-  ClientToken = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  VpcId = "string",
-  SelfServicePortal = "enabled"|"disabled",
-  ClientConnectOptions = list(
-    Enabled = TRUE|FALSE,
-    LambdaFunctionArn = "string"
-  )
-)
-}
-}
+Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to enable and manage client VPN sessions. It is the destination endpoint at which all client VPN sessions are terminated.
 
+See \url{https://paws-r.github.io/docs/ec2/create_client_vpn_endpoint.html} for full documentation.
+}
 \keyword{internal}

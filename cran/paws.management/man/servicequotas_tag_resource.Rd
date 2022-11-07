@@ -17,24 +17,9 @@ operation.}
 
 \item{Tags}{[required] The tags that you want to add to the resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds tags to the specified applied quota. You can include one or more
-tags to add to the quota.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds tags to the specified applied quota. You can include one or more tags to add to the quota.
 
+See \url{https://paws-r.github.io/docs/servicequotas/tag_resource.html} for full documentation.
+}
 \keyword{internal}

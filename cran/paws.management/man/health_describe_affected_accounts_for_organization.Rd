@@ -2,17 +2,23 @@
 % Please edit documentation in R/health_operations.R
 \name{health_describe_affected_accounts_for_organization}
 \alias{health_describe_affected_accounts_for_organization}
-\title{Returns a list of accounts in the organization from AWS Organizations
-that are affected by the provided event}
+\title{Returns a list of accounts in the organization from Organizations that
+are affected by the provided event}
 \usage{
-health_describe_affected_accounts_for_organization(eventArn, nextToken,
-  maxResults)
+health_describe_affected_accounts_for_organization(
+  eventArn,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
-\item{eventArn}{[required] The unique identifier for the event. Format:
-\code{arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID }.
-Example:
-\verb{Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456}}
+\item{eventArn}{[required] The unique identifier for the event. The event ARN has the
+\code{arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID }
+format.
+
+For example, an event ARN might look like the following:
+
+\verb{arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456}}
 
 \item{nextToken}{If the results of a search are large, only a portion of the results are
 returned, and a \code{nextToken} pagination token is returned in the
@@ -23,37 +29,9 @@ returned, the response does not contain a pagination token value.}
 \item{maxResults}{The maximum number of items to return in one batch, between 10 and 100,
 inclusive.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  affectedAccounts = list(
-    "string"
-  ),
-  eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of accounts in the organization from AWS Organizations
-that are affected by the provided event. For more information about the
-different types of AWS Health events, see
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
+Returns a list of accounts in the organization from Organizations that are affected by the provided event. For more information about the different types of Health events, see \href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
 
-Before you can call this operation, you must first enable AWS Health to
-work with AWS Organizations. To do this, call the
-\code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
-operation from your organization's master account.
-
-This API operation uses pagination. Specify the \code{nextToken} parameter in
-the next request to return more results.
+See \url{https://paws-r.github.io/docs/health/describe_affected_accounts_for_organization.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_affected_accounts_for_organization(
-  eventArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
 \keyword{internal}

@@ -10,17 +10,9 @@ costexplorer_delete_anomaly_subscription(SubscriptionArn)
 \item{SubscriptionArn}{[required] The unique identifier of the cost anomaly subscription that you want to
 delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a cost anomaly subscription.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_anomaly_subscription(
-  SubscriptionArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/costexplorer/delete_anomaly_subscription.html} for full documentation.
+}
 \keyword{internal}

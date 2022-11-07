@@ -7,7 +7,19 @@
 cloudwatchlogs(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -17,10 +29,10 @@ Operations section.
 }
 \description{
 You can use Amazon CloudWatch Logs to monitor, store, and access your
-log files from EC2 instances, AWS CloudTrail, or other sources. You can
+log files from EC2 instances, CloudTrail, and other sources. You can
 then retrieve the associated log data from CloudWatch Logs using the
-CloudWatch console, CloudWatch Logs commands in the AWS CLI, CloudWatch
-Logs API, or CloudWatch Logs SDK.
+CloudWatch console, CloudWatch Logs commands in the Amazon Web Services
+CLI, CloudWatch Logs API, or CloudWatch Logs SDK.
 
 You can use CloudWatch Logs to:
 \itemize{
@@ -36,7 +48,7 @@ of occurrences of a literal term at a particular position in log
 data (such as "404" status codes in an Apache access log). When the
 term you are searching for is found, CloudWatch Logs reports the
 data to a CloudWatch metric that you specify.
-\item \strong{Monitor AWS CloudTrail logged events}: You can create alarms in
+\item \strong{Monitor CloudTrail logged events}: You can create alarms in
 CloudWatch and receive notifications of particular API activity as
 captured by CloudTrail. You can use the notification to perform
 troubleshooting.
@@ -50,7 +62,9 @@ need it.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudwatchlogs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudwatchlogs(
   config = list(
     credentials = list(
       creds = list(
@@ -58,19 +72,23 @@ need it.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=cloudwatchlogs_associate_kms_key]{associate_kms_key} \tab Associates the specified AWS Key Management Service (AWS KMS) customer master key (CMK) with the specified log group\cr
+\link[=cloudwatchlogs_associate_kms_key]{associate_kms_key} \tab Associates the specified Key Management Service customer master key (CMK) with the specified log group\cr
 \link[=cloudwatchlogs_cancel_export_task]{cancel_export_task} \tab Cancels the specified export task\cr
 \link[=cloudwatchlogs_create_export_task]{create_export_task} \tab Creates an export task, which allows you to efficiently export data from a log group to an Amazon S3 bucket\cr
 \link[=cloudwatchlogs_create_log_group]{create_log_group} \tab Creates a log group with the specified name\cr
@@ -92,7 +110,7 @@ need it.
 \link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions} \tab This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions\cr
 \link[=cloudwatchlogs_describe_resource_policies]{describe_resource_policies} \tab Lists the resource policies in this account\cr
 \link[=cloudwatchlogs_describe_subscription_filters]{describe_subscription_filters} \tab Lists the subscription filters for the specified log group\cr
-\link[=cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the associated AWS Key Management Service (AWS KMS) customer master key (CMK) from the specified log group\cr
+\link[=cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the associated Key Management Service customer master key (CMK) from the specified log group\cr
 \link[=cloudwatchlogs_filter_log_events]{filter_log_events} \tab Lists log events from the specified log group\cr
 \link[=cloudwatchlogs_get_log_events]{get_log_events} \tab Lists log events from the specified log stream\cr
 \link[=cloudwatchlogs_get_log_group_fields]{get_log_group_fields} \tab Returns a list of the fields that are included in log events in the specified log group, along with the percentage of log events that contain each field\cr
@@ -104,7 +122,7 @@ need it.
 \link[=cloudwatchlogs_put_log_events]{put_log_events} \tab Uploads a batch of log events to the specified log stream\cr
 \link[=cloudwatchlogs_put_metric_filter]{put_metric_filter} \tab Creates or updates a metric filter and associates it with the specified log group\cr
 \link[=cloudwatchlogs_put_query_definition]{put_query_definition} \tab Creates or updates a query definition for CloudWatch Logs Insights\cr
-\link[=cloudwatchlogs_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy allowing other AWS services to put log events to this account, such as Amazon Route 53\cr
+\link[=cloudwatchlogs_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy allowing other Amazon Web Services services to put log events to this account, such as Amazon Route 53\cr
 \link[=cloudwatchlogs_put_retention_policy]{put_retention_policy} \tab Sets the retention of the specified log group\cr
 \link[=cloudwatchlogs_put_subscription_filter]{put_subscription_filter} \tab Creates or updates a subscription filter and associates it with the specified log group\cr
 \link[=cloudwatchlogs_start_query]{start_query} \tab Schedules a query of a log group using CloudWatch Logs Insights\cr

@@ -4,8 +4,12 @@
 \alias{cognitoidentityprovider_update_resource_server}
 \title{Updates the name and scopes of resource server}
 \usage{
-cognitoidentityprovider_update_resource_server(UserPoolId, Identifier,
-  Name, Scopes)
+cognitoidentityprovider_update_resource_server(
+  UserPoolId,
+  Identifier,
+  Name,
+  Scopes = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -16,42 +20,9 @@ cognitoidentityprovider_update_resource_server(UserPoolId, Identifier,
 
 \item{Scopes}{The scope values to be set for the resource server.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceServer = list(
-    UserPoolId = "string",
-    Identifier = "string",
-    Name = "string",
-    Scopes = list(
-      list(
-        ScopeName = "string",
-        ScopeDescription = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Updates the name and scopes of resource server. All other fields are
-read-only.
+Updates the name and scopes of resource server. All other fields are read-only.
 
-If you don't provide a value for an attribute, it will be set to the
-default value.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_resource_server.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_resource_server(
-  UserPoolId = "string",
-  Identifier = "string",
-  Name = "string",
-  Scopes = list(
-    list(
-      ScopeName = "string",
-      ScopeDescription = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

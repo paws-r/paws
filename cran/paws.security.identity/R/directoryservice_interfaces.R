@@ -267,6 +267,18 @@ NULL
   return(populate(args, shape))
 }
 
+.directoryservice$describe_client_authentication_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$describe_client_authentication_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClientAuthenticationSettingsInfo = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .directoryservice$describe_conditional_forwarders_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RemoteDomainNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -336,6 +348,18 @@ NULL
 .directoryservice$describe_regions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RegionsDescription = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string")), RegionType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), DesiredNumberOfDomainControllers = structure(logical(0), tags = list(type = "integer")), LaunchTime = structure(logical(0), tags = list(type = "timestamp")), StatusLastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$describe_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$describe_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), SettingEntries = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AllowedValues = structure(logical(0), tags = list(type = "string")), AppliedValue = structure(logical(0), tags = list(type = "string")), RequestedValue = structure(logical(0), tags = list(type = "string")), RequestStatus = structure(logical(0), tags = list(type = "string")), RequestDetailedStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), RequestStatusMessage = structure(logical(0), tags = list(type = "string")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), LastRequestedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -720,6 +744,18 @@ NULL
 .directoryservice$update_radius_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$update_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Settings = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$update_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

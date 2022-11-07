@@ -2,23 +2,15 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_disable_proactive_engagement}
 \alias{shield_disable_proactive_engagement}
-\title{Removes authorization from the DDoS Response Team (DRT) to notify
-contacts about escalations to the DRT and to initiate proactive customer
+\title{Removes authorization from the Shield Response Team (SRT) to notify
+contacts about escalations to the SRT and to initiate proactive customer
 support}
 \usage{
 shield_disable_proactive_engagement()
 }
-\value{
-An empty list.
-}
 \description{
-Removes authorization from the DDoS Response Team (DRT) to notify
-contacts about escalations to the DRT and to initiate proactive customer
-support.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_proactive_engagement()
-}
-}
+Removes authorization from the Shield Response Team (SRT) to notify contacts about escalations to the SRT and to initiate proactive customer support.
 
+See \url{https://paws-r.github.io/docs/shield/disable_proactive_engagement.html} for full documentation.
+}
 \keyword{internal}

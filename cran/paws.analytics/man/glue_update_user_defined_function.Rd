@@ -4,12 +4,17 @@
 \alias{glue_update_user_defined_function}
 \title{Updates an existing function definition in the Data Catalog}
 \usage{
-glue_update_user_defined_function(CatalogId, DatabaseName, FunctionName,
-  FunctionInput)
+glue_update_user_defined_function(
+  CatalogId = NULL,
+  DatabaseName,
+  FunctionName,
+  FunctionInput
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the function to be updated is located.
-If none is provided, the AWS account ID is used by default.}
+If none is provided, the Amazon Web Services account ID is used by
+default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the function to be updated is
 located.}
@@ -19,31 +24,9 @@ located.}
 \item{FunctionInput}{[required] A \code{FunctionInput} object that redefines the function in the Data
 Catalog.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates an existing function definition in the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user_defined_function(
-  CatalogId = "string",
-  DatabaseName = "string",
-  FunctionName = "string",
-  FunctionInput = list(
-    FunctionName = "string",
-    ClassName = "string",
-    OwnerName = "string",
-    OwnerType = "USER"|"ROLE"|"GROUP",
-    ResourceUris = list(
-      list(
-        ResourceType = "JAR"|"FILE"|"ARCHIVE",
-        Uri = "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/update_user_defined_function.html} for full documentation.
+}
 \keyword{internal}

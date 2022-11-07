@@ -4,8 +4,13 @@
 \alias{sagemaker_update_action}
 \title{Updates an action}
 \usage{
-sagemaker_update_action(ActionName, Description, Status, Properties,
-  PropertiesToRemove)
+sagemaker_update_action(
+  ActionName,
+  Description = NULL,
+  Status = NULL,
+  Properties = NULL,
+  PropertiesToRemove = NULL
+)
 }
 \arguments{
 \item{ActionName}{[required] The name of the action to update.}
@@ -18,28 +23,9 @@ sagemaker_update_action(ActionName, Description, Status, Properties,
 
 \item{PropertiesToRemove}{A list of properties to remove.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActionArn = "string"
-)
-}
-}
 \description{
 Updates an action.
-}
-\section{Request syntax}{
-\preformatted{svc$update_action(
-  ActionName = "string",
-  Description = "string",
-  Status = "Unknown"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-  Properties = list(
-    "string"
-  ),
-  PropertiesToRemove = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_action.html} for full documentation.
+}
 \keyword{internal}

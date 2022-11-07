@@ -7,38 +7,14 @@
 quicksight_describe_namespace(AwsAccountId, Namespace)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that contains the QuickSight namespace that
-you want to describe.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the Amazon
+QuickSight namespace that you want to describe.}
 
 \item{Namespace}{[required] The namespace that you want to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Namespace = list(
-    Name = "string",
-    Arn = "string",
-    CapacityRegion = "string",
-    CreationStatus = "CREATED"|"CREATING"|"DELETING"|"RETRYABLE_FAILURE"|"NON_RETRYABLE_FAILURE",
-    IdentityStore = "QUICKSIGHT",
-    NamespaceError = list(
-      Type = "PERMISSION_DENIED"|"INTERNAL_SERVICE_ERROR",
-      Message = "string"
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Describes the current namespace.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_namespace(
-  AwsAccountId = "string",
-  Namespace = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_namespace.html} for full documentation.
+}
 \keyword{internal}

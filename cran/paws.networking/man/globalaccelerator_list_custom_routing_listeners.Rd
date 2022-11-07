@@ -4,8 +4,11 @@
 \alias{globalaccelerator_list_custom_routing_listeners}
 \title{List the listeners for a custom routing accelerator}
 \usage{
-globalaccelerator_list_custom_routing_listeners(AcceleratorArn,
-  MaxResults, NextToken)
+globalaccelerator_list_custom_routing_listeners(
+  AcceleratorArn,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator to list listeners for.}
@@ -16,33 +19,9 @@ The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Listeners = list(
-    list(
-      ListenerArn = "string",
-      PortRanges = list(
-        list(
-          FromPort = 123,
-          ToPort = 123
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 List the listeners for a custom routing accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$list_custom_routing_listeners(
-  AcceleratorArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_listeners.html} for full documentation.
+}
 \keyword{internal}

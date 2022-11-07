@@ -5,8 +5,11 @@
 \title{Generates a stickiness policy with sticky session lifetimes that follow
 that of an application-generated cookie}
 \usage{
-elb_create_app_cookie_stickiness_policy(LoadBalancerName, PolicyName,
-  CookieName)
+elb_create_app_cookie_stickiness_policy(
+  LoadBalancerName,
+  PolicyName,
+  CookieName
+)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -17,47 +20,9 @@ the set of policies for this load balancer.}
 
 \item{CookieName}{[required] The name of the application cookie used for stickiness.}
 }
-\value{
-An empty list.
-}
 \description{
-Generates a stickiness policy with sticky session lifetimes that follow
-that of an application-generated cookie. This policy can be associated
-only with HTTP/HTTPS listeners.
+Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie. This policy can be associated only with HTTP/HTTPS listeners.
 
-This policy is similar to the policy created by
-\code{\link[=elb_create_lb_cookie_stickiness_policy]{create_lb_cookie_stickiness_policy}},
-except that the lifetime of the special Elastic Load Balancing cookie,
-\code{AWSELB}, follows the lifetime of the application-generated cookie
-specified in the policy configuration. The load balancer only inserts a
-new stickiness cookie when the application response includes a new
-application cookie.
-
-If the application cookie is explicitly removed or expires, the session
-stops being sticky until a new application cookie is issued.
-
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application}{Application-Controlled Session Stickiness}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_app_cookie_stickiness_policy(
-  LoadBalancerName = "string",
-  PolicyName = "string",
-  CookieName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example generates a stickiness policy that follows the sticky
-# session lifetimes of the application-generated cookie.
-svc$create_app_cookie_stickiness_policy(
-  CookieName = "my-app-cookie",
-  LoadBalancerName = "my-load-balancer",
-  PolicyName = "my-app-cookie-policy"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/create_app_cookie_stickiness_policy.html} for full documentation.
 }
 \keyword{internal}

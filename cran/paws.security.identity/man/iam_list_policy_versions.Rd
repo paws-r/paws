@@ -6,14 +6,14 @@
 including the version that is currently set as the policy's default
 version}
 \usage{
-iam_list_policy_versions(PolicyArn, Marker, MaxItems)
+iam_list_policy_versions(PolicyArn, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy for which you want the
 versions.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
@@ -30,38 +30,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Versions = list(
-    list(
-      Document = "string",
-      VersionId = "string",
-      IsDefaultVersion = TRUE|FALSE,
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists information about the versions of the specified managed policy,
-including the version that is currently set as the policy's default
-version.
+Lists information about the versions of the specified managed policy, including the version that is currently set as the policy's default version.
 
-For more information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
+See \url{https://paws-r.github.io/docs/iam/list_policy_versions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_policy_versions(
-  PolicyArn = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

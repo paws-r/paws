@@ -4,25 +4,14 @@
 \alias{codedeploy_delete_git_hub_account_token}
 \title{Deletes a GitHub account connection}
 \usage{
-codedeploy_delete_git_hub_account_token(tokenName)
+codedeploy_delete_git_hub_account_token(tokenName = NULL)
 }
 \arguments{
 \item{tokenName}{The name of the GitHub account connection to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tokenName = "string"
-)
-}
-}
 \description{
 Deletes a GitHub account connection.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_git_hub_account_token(
-  tokenName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/delete_git_hub_account_token.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,10 @@
 \title{Modifies an association between a configuration set and a custom domain
 for open and click event tracking}
 \usage{
-ses_update_configuration_set_tracking_options(ConfigurationSetName,
-  TrackingOptions)
+ses_update_configuration_set_tracking_options(
+  ConfigurationSetName,
+  TrackingOptions
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set for which you want to update the
@@ -14,26 +16,9 @@ custom tracking domain.}
 
 \item{TrackingOptions}{[required]}
 }
-\value{
-An empty list.
-}
 \description{
-Modifies an association between a configuration set and a custom domain
-for open and click event tracking.
+Modifies an association between a configuration set and a custom domain for open and click event tracking.
 
-By default, images and links used for tracking open and click events are
-hosted on domains operated by Amazon SES. You can configure a subdomain
-of your own to handle these events. For information about using custom
-domains, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html}{Amazon SES Developer Guide}.
+See \url{https://paws-r.github.io/docs/ses/update_configuration_set_tracking_options.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_configuration_set_tracking_options(
-  ConfigurationSetName = "string",
-  TrackingOptions = list(
-    CustomRedirectDomain = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

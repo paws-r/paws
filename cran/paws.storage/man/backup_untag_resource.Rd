@@ -14,21 +14,9 @@ depends on the type of the tagged resource.}
 \item{TagKeyList}{[required] A list of keys to identify which key-value tags to remove from a
 resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes a set of key-value pairs from a recovery point, backup plan, or
-backup vault identified by an Amazon Resource Name (ARN)
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeyList = list(
-    "string"
-  )
-)
-}
-}
+Removes a set of key-value pairs from a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN)
 
+See \url{https://paws-r.github.io/docs/backup/untag_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -7,37 +7,14 @@ NULL
 #' version deployment
 #'
 #' @description
-#' Cancels in-progress environment configuration update or application
-#' version deployment.
+#' Cancels in-progress environment configuration update or application version deployment.
 #'
-#' @usage
-#' elasticbeanstalk_abort_environment_update(EnvironmentId,
-#'   EnvironmentName)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/abort_environment_update.html](https://paws-r.github.io/docs/elasticbeanstalk/abort_environment_update.html) for full documentation.
 #'
 #' @param EnvironmentId This specifies the ID of the environment with the in-progress update
 #' that you want to cancel.
 #' @param EnvironmentName This specifies the name of the environment with the in-progress update
 #' that you want to cancel.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$abort_environment_update(
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following code aborts a running application version deployment for
-#' # an environment named my-env:
-#' svc$abort_environment_update(
-#'   EnvironmentName = "my-env"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -62,38 +39,13 @@ elasticbeanstalk_abort_environment_update <- function(EnvironmentId = NULL, Envi
 #' Applies a scheduled managed action immediately
 #'
 #' @description
-#' Applies a scheduled managed action immediately. A managed action can be
-#' applied only if its status is `Scheduled`. Get the status and action ID
-#' of a managed action with
-#' [`describe_environment_managed_actions`][elasticbeanstalk_describe_environment_managed_actions].
+#' Applies a scheduled managed action immediately. A managed action can be applied only if its status is `Scheduled`. Get the status and action ID of a managed action with [`describe_environment_managed_actions`][elasticbeanstalk_describe_environment_managed_actions].
 #'
-#' @usage
-#' elasticbeanstalk_apply_environment_managed_action(EnvironmentName,
-#'   EnvironmentId, ActionId)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/apply_environment_managed_action.html](https://paws-r.github.io/docs/elasticbeanstalk/apply_environment_managed_action.html) for full documentation.
 #'
 #' @param EnvironmentName The name of the target environment.
 #' @param EnvironmentId The environment ID of the target environment.
 #' @param ActionId &#91;required&#93; The action ID of the scheduled managed action to execute.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ActionId = "string",
-#'   ActionDescription = "string",
-#'   ActionType = "InstanceRefresh"|"PlatformUpdate"|"Unknown",
-#'   Status = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$apply_environment_managed_action(
-#'   EnvironmentName = "string",
-#'   EnvironmentId = "string",
-#'   ActionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -118,31 +70,13 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
 #' Add or change the operations role used by an environment
 #'
 #' @description
-#' Add or change the operations role used by an environment. After this
-#' call is made, Elastic Beanstalk uses the associated operations role for
-#' permissions to downstream services during subsequent calls acting on
-#' this environment. For more information, see [Operations
-#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the
-#' *AWS Elastic Beanstalk Developer Guide*.
+#' Add or change the operations role used by an environment. After this call is made, Elastic Beanstalk uses the associated operations role for permissions to downstream services during subsequent calls acting on this environment. For more information, see [Operations roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the *AWS Elastic Beanstalk Developer Guide*.
 #'
-#' @usage
-#' elasticbeanstalk_associate_environment_operations_role(EnvironmentName,
-#'   OperationsRole)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/associate_environment_operations_role.html](https://paws-r.github.io/docs/elasticbeanstalk/associate_environment_operations_role.html) for full documentation.
 #'
 #' @param EnvironmentName &#91;required&#93; The name of the environment to which to set the operations role.
 #' @param OperationsRole &#91;required&#93; The Amazon Resource Name (ARN) of an existing IAM role to be used as the
 #' environment's operations role.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_environment_operations_role(
-#'   EnvironmentName = "string",
-#'   OperationsRole = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -169,35 +103,9 @@ elasticbeanstalk_associate_environment_operations_role <- function(EnvironmentNa
 #' @description
 #' Checks if the specified CNAME is available.
 #'
-#' @usage
-#' elasticbeanstalk_check_dns_availability(CNAMEPrefix)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/check_dns_availability.html](https://paws-r.github.io/docs/elasticbeanstalk/check_dns_availability.html) for full documentation.
 #'
 #' @param CNAMEPrefix &#91;required&#93; The prefix used when this CNAME is reserved.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Available = TRUE|FALSE,
-#'   FullyQualifiedCNAME = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$check_dns_availability(
-#'   CNAMEPrefix = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation checks the availability of the subdomain
-#' # my-cname:
-#' svc$check_dns_availability(
-#'   CNAMEPrefix = "my-cname"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -223,18 +131,9 @@ elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
 #' component of a single application
 #'
 #' @description
-#' Create or update a group of environments that each run a separate
-#' component of a single application. Takes a list of version labels that
-#' specify application source bundles for each of the environments to
-#' create or update. The name of each environment and other required
-#' information must be included in the source bundles in an environment
-#' manifest named `env.yaml`. See [Compose
-#' Environments](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html)
-#' for details.
+#' Create or update a group of environments that each run a separate component of a single application. Takes a list of version labels that specify application source bundles for each of the environments to create or update. The name of each environment and other required information must be included in the source bundles in an environment manifest named `env.yaml`. See [Compose Environments](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html) for details.
 #'
-#' @usage
-#' elasticbeanstalk_compose_environments(ApplicationName, GroupName,
-#'   VersionLabels)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/compose_environments.html](https://paws-r.github.io/docs/elasticbeanstalk/compose_environments.html) for full documentation.
 #'
 #' @param ApplicationName The name of the application to which the specified source bundles
 #' belong.
@@ -249,74 +148,6 @@ elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
 #' include an environment manifest that specifies the name of the
 #' environment and the name of the solution stack to use, and optionally
 #' can specify environment links to create.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Environments = list(
-#'     list(
-#'       EnvironmentName = "string",
-#'       EnvironmentId = "string",
-#'       ApplicationName = "string",
-#'       VersionLabel = "string",
-#'       SolutionStackName = "string",
-#'       PlatformArn = "string",
-#'       TemplateName = "string",
-#'       Description = "string",
-#'       EndpointURL = "string",
-#'       CNAME = "string",
-#'       DateCreated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DateUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "Aborting"|"Launching"|"Updating"|"LinkingFrom"|"LinkingTo"|"Ready"|"Terminating"|"Terminated",
-#'       AbortableOperationInProgress = TRUE|FALSE,
-#'       Health = "Green"|"Yellow"|"Red"|"Grey",
-#'       HealthStatus = "NoData"|"Unknown"|"Pending"|"Ok"|"Info"|"Warning"|"Degraded"|"Severe"|"Suspended",
-#'       Resources = list(
-#'         LoadBalancer = list(
-#'           LoadBalancerName = "string",
-#'           Domain = "string",
-#'           Listeners = list(
-#'             list(
-#'               Protocol = "string",
-#'               Port = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Tier = list(
-#'         Name = "string",
-#'         Type = "string",
-#'         Version = "string"
-#'       ),
-#'       EnvironmentLinks = list(
-#'         list(
-#'           LinkName = "string",
-#'           EnvironmentName = "string"
-#'         )
-#'       ),
-#'       EnvironmentArn = "string",
-#'       OperationsRole = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$compose_environments(
-#'   ApplicationName = "string",
-#'   GroupName = "string",
-#'   VersionLabels = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -342,12 +173,9 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #' and no application versions
 #'
 #' @description
-#' Creates an application that has one configuration template named
-#' `default` and no application versions.
+#' Creates an application that has one configuration template named `default` and no application versions.
 #'
-#' @usage
-#' elasticbeanstalk_create_application(ApplicationName, Description,
-#'   ResourceLifecycleConfig, Tags)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_application.html](https://paws-r.github.io/docs/elasticbeanstalk/create_application.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application. Must be unique within your account.
 #' @param Description Your description of the application.
@@ -357,83 +185,6 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #' 
 #' Elastic Beanstalk applies these tags only to the application.
 #' Environments that you create in the application don't inherit the tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Application = list(
-#'     ApplicationArn = "string",
-#'     ApplicationName = "string",
-#'     Description = "string",
-#'     DateCreated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DateUpdated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Versions = list(
-#'       "string"
-#'     ),
-#'     ConfigurationTemplates = list(
-#'       "string"
-#'     ),
-#'     ResourceLifecycleConfig = list(
-#'       ServiceRole = "string",
-#'       VersionLifecycleConfig = list(
-#'         MaxCountRule = list(
-#'           Enabled = TRUE|FALSE,
-#'           MaxCount = 123,
-#'           DeleteSourceFromS3 = TRUE|FALSE
-#'         ),
-#'         MaxAgeRule = list(
-#'           Enabled = TRUE|FALSE,
-#'           MaxAgeInDays = 123,
-#'           DeleteSourceFromS3 = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_application(
-#'   ApplicationName = "string",
-#'   Description = "string",
-#'   ResourceLifecycleConfig = list(
-#'     ServiceRole = "string",
-#'     VersionLifecycleConfig = list(
-#'       MaxCountRule = list(
-#'         Enabled = TRUE|FALSE,
-#'         MaxCount = 123,
-#'         DeleteSourceFromS3 = TRUE|FALSE
-#'       ),
-#'       MaxAgeRule = list(
-#'         Enabled = TRUE|FALSE,
-#'         MaxAgeInDays = 123,
-#'         DeleteSourceFromS3 = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation creates a new application named my-app:
-#' svc$create_application(
-#'   ApplicationName = "my-app",
-#'   Description = "my application"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -458,31 +209,9 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' Creates an application version for the specified application
 #'
 #' @description
-#' Creates an application version for the specified application. You can
-#' create an application version from a source bundle in Amazon S3, a
-#' commit in AWS CodeCommit, or the output of an AWS CodeBuild build as
-#' follows:
-#' 
-#' Specify a commit in an AWS CodeCommit repository with
-#' `SourceBuildInformation`.
-#' 
-#' Specify a build in an AWS CodeBuild with `SourceBuildInformation` and
-#' `BuildConfiguration`.
-#' 
-#' Specify a source bundle in S3 with `SourceBundle`
-#' 
-#' Omit both `SourceBuildInformation` and `SourceBundle` to use the default
-#' sample application.
-#' 
-#' After you create an application version with a specified Amazon S3
-#' bucket and key location, you can't change that Amazon S3 location. If
-#' you change the Amazon S3 location, you receive an exception when you
-#' attempt to launch an environment from the application version.
+#' Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in AWS CodeCommit, or the output of an AWS CodeBuild build as follows:
 #'
-#' @usage
-#' elasticbeanstalk_create_application_version(ApplicationName,
-#'   VersionLabel, Description, SourceBuildInformation, SourceBundle,
-#'   BuildConfiguration, AutoCreateApplication, Process, Tags)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_application_version.html](https://paws-r.github.io/docs/elasticbeanstalk/create_application_version.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application. If no application is found with this name,
 #' and `AutoCreateApplication` is `false`, returns an
@@ -524,86 +253,6 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' Elastic Beanstalk applies these tags only to the application version.
 #' Environments that use the application version don't inherit the tags.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationVersion = list(
-#'     ApplicationVersionArn = "string",
-#'     ApplicationName = "string",
-#'     Description = "string",
-#'     VersionLabel = "string",
-#'     SourceBuildInformation = list(
-#'       SourceType = "Git"|"Zip",
-#'       SourceRepository = "CodeCommit"|"S3",
-#'       SourceLocation = "string"
-#'     ),
-#'     BuildArn = "string",
-#'     SourceBundle = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     DateCreated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DateUpdated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_application_version(
-#'   ApplicationName = "string",
-#'   VersionLabel = "string",
-#'   Description = "string",
-#'   SourceBuildInformation = list(
-#'     SourceType = "Git"|"Zip",
-#'     SourceRepository = "CodeCommit"|"S3",
-#'     SourceLocation = "string"
-#'   ),
-#'   SourceBundle = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   BuildConfiguration = list(
-#'     ArtifactName = "string",
-#'     CodeBuildServiceRole = "string",
-#'     ComputeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE",
-#'     Image = "string",
-#'     TimeoutInMinutes = 123
-#'   ),
-#'   AutoCreateApplication = TRUE|FALSE,
-#'   Process = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation creates a new version (v1) of an application
-#' # named my-app:
-#' svc$create_application_version(
-#'   ApplicationName = "my-app",
-#'   AutoCreateApplication = TRUE,
-#'   Description = "my-app-v1",
-#'   Process = TRUE,
-#'   SourceBundle = list(
-#'     S3Bucket = "my-bucket",
-#'     S3Key = "sample.war"
-#'   ),
-#'   VersionLabel = "v1"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_application_version
@@ -628,27 +277,9 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' a specific Elastic Beanstalk application
 #'
 #' @description
-#' Creates an AWS Elastic Beanstalk configuration template, associated with
-#' a specific Elastic Beanstalk application. You define application
-#' configuration settings in a configuration template. You can then use the
-#' configuration template to deploy different versions of the application
-#' with the same configuration settings.
-#' 
-#' Templates aren't associated with any environment. The `EnvironmentName`
-#' response element is always `null`.
-#' 
-#' Related Topics
-#' 
-#' -   [`describe_configuration_options`][elasticbeanstalk_describe_configuration_options]
-#' 
-#' -   [`describe_configuration_settings`][elasticbeanstalk_describe_configuration_settings]
-#' 
-#' -   [`list_available_solution_stacks`][elasticbeanstalk_list_available_solution_stacks]
+#' Creates an AWS Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings.
 #'
-#' @usage
-#' elasticbeanstalk_create_configuration_template(ApplicationName,
-#'   TemplateName, SolutionStackName, PlatformArn, SourceConfiguration,
-#'   EnvironmentId, Description, OptionSettings, Tags)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_configuration_template.html](https://paws-r.github.io/docs/elasticbeanstalk/create_configuration_template.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the Elastic Beanstalk application to associate with this
 #' configuration template.
@@ -702,75 +333,6 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' in the *AWS Elastic Beanstalk Developer Guide*.
 #' @param Tags Specifies the tags applied to the configuration template.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   ApplicationName = "string",
-#'   TemplateName = "string",
-#'   Description = "string",
-#'   EnvironmentName = "string",
-#'   DeploymentStatus = "deployed"|"pending"|"failed",
-#'   DateCreated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DateUpdated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   OptionSettings = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_configuration_template(
-#'   ApplicationName = "string",
-#'   TemplateName = "string",
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   SourceConfiguration = list(
-#'     ApplicationName = "string",
-#'     TemplateName = "string"
-#'   ),
-#'   EnvironmentId = "string",
-#'   Description = "string",
-#'   OptionSettings = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation creates a configuration template named my-app-v1
-#' # from the settings applied to an environment with the id e-rpqsewtp2j:
-#' svc$create_configuration_template(
-#'   ApplicationName = "my-app",
-#'   EnvironmentId = "e-rpqsewtp2j",
-#'   TemplateName = "my-app-v1"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_configuration_template
@@ -795,14 +357,9 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' application using the specified configuration
 #'
 #' @description
-#' Launches an AWS Elastic Beanstalk environment for the specified
-#' application using the specified configuration.
+#' Launches an AWS Elastic Beanstalk environment for the specified application using the specified configuration.
 #'
-#' @usage
-#' elasticbeanstalk_create_environment(ApplicationName, EnvironmentName,
-#'   GroupName, Description, CNAMEPrefix, Tier, Tags, VersionLabel,
-#'   TemplateName, SolutionStackName, PlatformArn, OptionSettings,
-#'   OptionsToRemove, OperationsRole)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_environment.html](https://paws-r.github.io/docs/elasticbeanstalk/create_environment.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application that is associated with this environment.
 #' @param EnvironmentName A unique name for the environment.
@@ -871,113 +428,6 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the
 #' *AWS Elastic Beanstalk Developer Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EnvironmentName = "string",
-#'   EnvironmentId = "string",
-#'   ApplicationName = "string",
-#'   VersionLabel = "string",
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   TemplateName = "string",
-#'   Description = "string",
-#'   EndpointURL = "string",
-#'   CNAME = "string",
-#'   DateCreated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DateUpdated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Status = "Aborting"|"Launching"|"Updating"|"LinkingFrom"|"LinkingTo"|"Ready"|"Terminating"|"Terminated",
-#'   AbortableOperationInProgress = TRUE|FALSE,
-#'   Health = "Green"|"Yellow"|"Red"|"Grey",
-#'   HealthStatus = "NoData"|"Unknown"|"Pending"|"Ok"|"Info"|"Warning"|"Degraded"|"Severe"|"Suspended",
-#'   Resources = list(
-#'     LoadBalancer = list(
-#'       LoadBalancerName = "string",
-#'       Domain = "string",
-#'       Listeners = list(
-#'         list(
-#'           Protocol = "string",
-#'           Port = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Tier = list(
-#'     Name = "string",
-#'     Type = "string",
-#'     Version = "string"
-#'   ),
-#'   EnvironmentLinks = list(
-#'     list(
-#'       LinkName = "string",
-#'       EnvironmentName = "string"
-#'     )
-#'   ),
-#'   EnvironmentArn = "string",
-#'   OperationsRole = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_environment(
-#'   ApplicationName = "string",
-#'   EnvironmentName = "string",
-#'   GroupName = "string",
-#'   Description = "string",
-#'   CNAMEPrefix = "string",
-#'   Tier = list(
-#'     Name = "string",
-#'     Type = "string",
-#'     Version = "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   VersionLabel = "string",
-#'   TemplateName = "string",
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   OptionSettings = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   OptionsToRemove = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string"
-#'     )
-#'   ),
-#'   OperationsRole = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation creates a new environment for version v1 of a
-#' # java application named my-app:
-#' svc$create_environment(
-#'   ApplicationName = "my-app",
-#'   CNAMEPrefix = "my-app",
-#'   EnvironmentName = "my-env",
-#'   SolutionStackName = "64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8",
-#'   VersionLabel = "v1"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_environment
@@ -1003,9 +453,7 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
 #' @description
 #' Create a new version of your custom platform.
 #'
-#' @usage
-#' elasticbeanstalk_create_platform_version(PlatformName, PlatformVersion,
-#'   PlatformDefinitionBundle, EnvironmentName, OptionSettings, Tags)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_platform_version.html](https://paws-r.github.io/docs/elasticbeanstalk/create_platform_version.html) for full documentation.
 #'
 #' @param PlatformName &#91;required&#93; The name of your custom platform.
 #' @param PlatformVersion &#91;required&#93; The number, such as 1.0.2, for the new platform version.
@@ -1017,61 +465,6 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
 #' Elastic Beanstalk applies these tags only to the platform version.
 #' Environments that you create using the platform version don't inherit
 #' the tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PlatformSummary = list(
-#'     PlatformArn = "string",
-#'     PlatformOwner = "string",
-#'     PlatformStatus = "Creating"|"Failed"|"Ready"|"Deleting"|"Deleted",
-#'     PlatformCategory = "string",
-#'     OperatingSystemName = "string",
-#'     OperatingSystemVersion = "string",
-#'     SupportedTierList = list(
-#'       "string"
-#'     ),
-#'     SupportedAddonList = list(
-#'       "string"
-#'     ),
-#'     PlatformLifecycleState = "string",
-#'     PlatformVersion = "string",
-#'     PlatformBranchName = "string",
-#'     PlatformBranchLifecycleState = "string"
-#'   ),
-#'   Builder = list(
-#'     ARN = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_platform_version(
-#'   PlatformName = "string",
-#'   PlatformVersion = "string",
-#'   PlatformDefinitionBundle = list(
-#'     S3Bucket = "string",
-#'     S3Key = "string"
-#'   ),
-#'   EnvironmentName = "string",
-#'   OptionSettings = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1097,34 +490,11 @@ elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersi
 #' other files used by Elastic Beanstalk environments
 #'
 #' @description
-#' Creates a bucket in Amazon S3 to store application versions, logs, and
-#' other files used by Elastic Beanstalk environments. The Elastic
-#' Beanstalk console and EB CLI call this API the first time you create an
-#' environment in a region. If the storage location already exists,
-#' [`create_storage_location`][elasticbeanstalk_create_storage_location]
-#' still returns the bucket name but does not create a new bucket.
+#' Creates a bucket in Amazon S3 to store application versions, logs, and other files used by Elastic Beanstalk environments. The Elastic Beanstalk console and EB CLI call this API the first time you create an environment in a region. If the storage location already exists, [`create_storage_location`][elasticbeanstalk_create_storage_location] still returns the bucket name but does not create a new bucket.
 #'
-#' @usage
-#' elasticbeanstalk_create_storage_location()
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_storage_location.html](https://paws-r.github.io/docs/elasticbeanstalk/create_storage_location.html) for full documentation.
 #'
 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   S3Bucket = "string"
-#' )
-#' ```
-#'
-
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation creates a new environment for version v1 of a
-#' # java application named my-app:
-#' svc$create_storage_location()
-#' }
 #'
 #' @keywords internal
 #'
@@ -1150,38 +520,13 @@ elasticbeanstalk_create_storage_location <- function() {
 #' configurations
 #'
 #' @description
-#' Deletes the specified application along with all associated versions and
-#' configurations. The application versions will not be deleted from your
-#' Amazon S3 bucket.
-#' 
-#' You cannot delete an application that has a running environment.
+#' Deletes the specified application along with all associated versions and configurations. The application versions will not be deleted from your Amazon S3 bucket.
 #'
-#' @usage
-#' elasticbeanstalk_delete_application(ApplicationName,
-#'   TerminateEnvByForce)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_application.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_application.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to delete.
 #' @param TerminateEnvByForce When set to true, running environments will be terminated before
 #' deleting the application.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_application(
-#'   ApplicationName = "string",
-#'   TerminateEnvByForce = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation deletes an application named my-app:
-#' svc$delete_application(
-#'   ApplicationName = "my-app"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1207,42 +552,14 @@ elasticbeanstalk_delete_application <- function(ApplicationName, TerminateEnvByF
 #'
 #' @description
 #' Deletes the specified version from the specified application.
-#' 
-#' You cannot delete an application version that is associated with a
-#' running environment.
 #'
-#' @usage
-#' elasticbeanstalk_delete_application_version(ApplicationName,
-#'   VersionLabel, DeleteSourceBundle)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_application_version.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_application_version.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to which the version belongs.
 #' @param VersionLabel &#91;required&#93; The label of the version to delete.
 #' @param DeleteSourceBundle Set to `true` to delete the source bundle from your storage bucket.
 #' Otherwise, the application version is deleted only from Elastic
 #' Beanstalk and the source bundle remains in Amazon S3.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_application_version(
-#'   ApplicationName = "string",
-#'   VersionLabel = "string",
-#'   DeleteSourceBundle = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation deletes an application version named
-#' # 22a0-stage-150819_182129 for an application named my-app:
-#' svc$delete_application_version(
-#'   ApplicationName = "my-app",
-#'   DeleteSourceBundle = TRUE,
-#'   VersionLabel = "22a0-stage-150819_182129"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1268,39 +585,11 @@ elasticbeanstalk_delete_application_version <- function(ApplicationName, Version
 #'
 #' @description
 #' Deletes the specified configuration template.
-#' 
-#' When you launch an environment using a configuration template, the
-#' environment gets a copy of the template. You can delete or modify the
-#' environment's copy of the template without affecting the running
-#' environment.
 #'
-#' @usage
-#' elasticbeanstalk_delete_configuration_template(ApplicationName,
-#'   TemplateName)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_configuration_template.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_configuration_template.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to delete the configuration template from.
 #' @param TemplateName &#91;required&#93; The name of the configuration template to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_template(
-#'   ApplicationName = "string",
-#'   TemplateName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation deletes a configuration template named
-#' # my-template for an application named my-app:
-#' svc$delete_configuration_template(
-#'   ApplicationName = "my-app",
-#'   TemplateName = "my-template"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1326,42 +615,11 @@ elasticbeanstalk_delete_configuration_template <- function(ApplicationName, Temp
 #'
 #' @description
 #' Deletes the draft configuration associated with the running environment.
-#' 
-#' Updating a running environment with any configuration changes creates a
-#' draft configuration set. You can get the draft configuration using
-#' [`describe_configuration_settings`][elasticbeanstalk_describe_configuration_settings]
-#' while the update is in progress or if the update fails. The
-#' `DeploymentStatus` for the draft configuration indicates whether the
-#' deployment is in process or has failed. The draft configuration remains
-#' in existence until it is deleted with this action.
 #'
-#' @usage
-#' elasticbeanstalk_delete_environment_configuration(ApplicationName,
-#'   EnvironmentName)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_environment_configuration.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_environment_configuration.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application the environment is associated with.
 #' @param EnvironmentName &#91;required&#93; The name of the environment to delete the draft configuration from.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_environment_configuration(
-#'   ApplicationName = "string",
-#'   EnvironmentName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation deletes a draft configuration for an environment
-#' # named my-env:
-#' svc$delete_environment_configuration(
-#'   ApplicationName = "my-app",
-#'   EnvironmentName = "my-env"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1388,42 +646,9 @@ elasticbeanstalk_delete_environment_configuration <- function(ApplicationName, E
 #' @description
 #' Deletes the specified version of a custom platform.
 #'
-#' @usage
-#' elasticbeanstalk_delete_platform_version(PlatformArn)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_platform_version.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_platform_version.html) for full documentation.
 #'
 #' @param PlatformArn The ARN of the version of the custom platform.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PlatformSummary = list(
-#'     PlatformArn = "string",
-#'     PlatformOwner = "string",
-#'     PlatformStatus = "Creating"|"Failed"|"Ready"|"Deleting"|"Deleted",
-#'     PlatformCategory = "string",
-#'     OperatingSystemName = "string",
-#'     OperatingSystemVersion = "string",
-#'     SupportedTierList = list(
-#'       "string"
-#'     ),
-#'     SupportedAddonList = list(
-#'       "string"
-#'     ),
-#'     PlatformLifecycleState = "string",
-#'     PlatformVersion = "string",
-#'     PlatformBranchName = "string",
-#'     PlatformBranchLifecycleState = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_platform_version(
-#'   PlatformArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1449,39 +674,9 @@ elasticbeanstalk_delete_platform_version <- function(PlatformArn = NULL) {
 #' with the calling AWS account
 #'
 #' @description
-#' Returns attributes related to AWS Elastic Beanstalk that are associated
-#' with the calling AWS account.
-#' 
-#' The result currently has one set of attributes—resource quotas.
+#' Returns attributes related to AWS Elastic Beanstalk that are associated with the calling AWS account.
 #'
-#' @usage
-#' elasticbeanstalk_describe_account_attributes()
-#'
-
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceQuotas = list(
-#'     ApplicationQuota = list(
-#'       Maximum = 123
-#'     ),
-#'     ApplicationVersionQuota = list(
-#'       Maximum = 123
-#'     ),
-#'     EnvironmentQuota = list(
-#'       Maximum = 123
-#'     ),
-#'     ConfigurationTemplateQuota = list(
-#'       Maximum = 123
-#'     ),
-#'     CustomPlatformQuota = list(
-#'       Maximum = 123
-#'     )
-#'   )
-#' )
-#' ```
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_account_attributes.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_account_attributes.html) for full documentation.
 #'
 
 #'
@@ -1510,9 +705,7 @@ elasticbeanstalk_describe_account_attributes <- function() {
 #' @description
 #' Retrieve a list of application versions.
 #'
-#' @usage
-#' elasticbeanstalk_describe_application_versions(ApplicationName,
-#'   VersionLabels, MaxRecords, NextToken)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_application_versions.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_application_versions.html) for full documentation.
 #'
 #' @param ApplicationName Specify an application name to show only application versions for that
 #' application.
@@ -1527,63 +720,6 @@ elasticbeanstalk_describe_account_attributes <- function() {
 #' identical to the ones specified in the initial request.
 #' 
 #' If no `NextToken` is specified, the first page is retrieved.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationVersions = list(
-#'     list(
-#'       ApplicationVersionArn = "string",
-#'       ApplicationName = "string",
-#'       Description = "string",
-#'       VersionLabel = "string",
-#'       SourceBuildInformation = list(
-#'         SourceType = "Git"|"Zip",
-#'         SourceRepository = "CodeCommit"|"S3",
-#'         SourceLocation = "string"
-#'       ),
-#'       BuildArn = "string",
-#'       SourceBundle = list(
-#'         S3Bucket = "string",
-#'         S3Key = "string"
-#'       ),
-#'       DateCreated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DateUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_application_versions(
-#'   ApplicationName = "string",
-#'   VersionLabels = list(
-#'     "string"
-#'   ),
-#'   MaxRecords = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves information about an application
-#' # version labeled v2:
-#' svc$describe_application_versions(
-#'   ApplicationName = "my-app",
-#'   VersionLabels = list(
-#'     "v2"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1610,68 +746,10 @@ elasticbeanstalk_describe_application_versions <- function(ApplicationName = NUL
 #' @description
 #' Returns the descriptions of existing applications.
 #'
-#' @usage
-#' elasticbeanstalk_describe_applications(ApplicationNames)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_applications.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_applications.html) for full documentation.
 #'
 #' @param ApplicationNames If specified, AWS Elastic Beanstalk restricts the returned descriptions
 #' to only include those with the specified names.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Applications = list(
-#'     list(
-#'       ApplicationArn = "string",
-#'       ApplicationName = "string",
-#'       Description = "string",
-#'       DateCreated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DateUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Versions = list(
-#'         "string"
-#'       ),
-#'       ConfigurationTemplates = list(
-#'         "string"
-#'       ),
-#'       ResourceLifecycleConfig = list(
-#'         ServiceRole = "string",
-#'         VersionLifecycleConfig = list(
-#'           MaxCountRule = list(
-#'             Enabled = TRUE|FALSE,
-#'             MaxCount = 123,
-#'             DeleteSourceFromS3 = TRUE|FALSE
-#'           ),
-#'           MaxAgeRule = list(
-#'             Enabled = TRUE|FALSE,
-#'             MaxAgeInDays = 123,
-#'             DeleteSourceFromS3 = TRUE|FALSE
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_applications(
-#'   ApplicationNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves information about applications in the
-#' # current region:
-#' svc$describe_applications()
-#' }
 #'
 #' @keywords internal
 #'
@@ -1698,15 +776,9 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
 #' stack defines
 #'
 #' @description
-#' Describes the configuration options that are used in a particular
-#' configuration template or environment, or that a specified solution
-#' stack defines. The description includes the values the options, their
-#' default values, and an indication of the required action on a running
-#' environment if an option value is changed.
+#' Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed.
 #'
-#' @usage
-#' elasticbeanstalk_describe_configuration_options(ApplicationName,
-#'   TemplateName, EnvironmentName, SolutionStackName, PlatformArn, Options)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_options.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_options.html) for full documentation.
 #'
 #' @param ApplicationName The name of the application associated with the configuration template
 #' or environment. Only needed if you want to describe the configuration
@@ -1720,63 +792,6 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
 #' describe.
 #' @param PlatformArn The ARN of the custom platform.
 #' @param Options If specified, restricts the descriptions to only the specified options.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   Options = list(
-#'     list(
-#'       Namespace = "string",
-#'       Name = "string",
-#'       DefaultValue = "string",
-#'       ChangeSeverity = "string",
-#'       UserDefined = TRUE|FALSE,
-#'       ValueType = "Scalar"|"List",
-#'       ValueOptions = list(
-#'         "string"
-#'       ),
-#'       MinValue = 123,
-#'       MaxValue = 123,
-#'       MaxLength = 123,
-#'       Regex = list(
-#'         Pattern = "string",
-#'         Label = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_configuration_options(
-#'   ApplicationName = "string",
-#'   TemplateName = "string",
-#'   EnvironmentName = "string",
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   Options = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves descriptions of all available
-#' # configuration options for an environment named my-env:
-#' svc$describe_configuration_options(
-#'   ApplicationName = "my-app",
-#'   EnvironmentName = "my-env"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1803,23 +818,9 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
 #' associated with a running environment
 #'
 #' @description
-#' Returns a description of the settings for the specified configuration
-#' set, that is, either a configuration template or the configuration set
-#' associated with a running environment.
-#' 
-#' When describing the settings for the configuration set associated with a
-#' running environment, it is possible to receive two sets of setting
-#' descriptions. One is the deployed configuration set, and the other is a
-#' draft configuration of an environment that is either in the process of
-#' deployment or that failed to deploy.
-#' 
-#' Related Topics
-#' 
-#' -   [`delete_environment_configuration`][elasticbeanstalk_delete_environment_configuration]
+#' Returns a description of the settings for the specified configuration set, that is, either a configuration template or the configuration set associated with a running environment.
 #'
-#' @usage
-#' elasticbeanstalk_describe_configuration_settings(ApplicationName,
-#'   TemplateName, EnvironmentName)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_settings.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_settings.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The application for the environment or configuration template.
 #' @param TemplateName The name of the configuration template to describe.
@@ -1835,57 +836,6 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
 #' If you specify both, AWS Elastic Beanstalk returns an
 #' `InvalidParameterCombination` error. If you do not specify either, AWS
 #' Elastic Beanstalk returns `MissingRequiredParameter` error.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationSettings = list(
-#'     list(
-#'       SolutionStackName = "string",
-#'       PlatformArn = "string",
-#'       ApplicationName = "string",
-#'       TemplateName = "string",
-#'       Description = "string",
-#'       EnvironmentName = "string",
-#'       DeploymentStatus = "deployed"|"pending"|"failed",
-#'       DateCreated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DateUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OptionSettings = list(
-#'         list(
-#'           ResourceName = "string",
-#'           Namespace = "string",
-#'           OptionName = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_configuration_settings(
-#'   ApplicationName = "string",
-#'   TemplateName = "string",
-#'   EnvironmentName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves configuration settings for an
-#' # environment named my-env:
-#' svc$describe_configuration_settings(
-#'   ApplicationName = "my-app",
-#'   EnvironmentName = "my-env"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1911,13 +861,9 @@ elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, Te
 #' environment
 #'
 #' @description
-#' Returns information about the overall health of the specified
-#' environment. The **DescribeEnvironmentHealth** operation is only
-#' available with AWS Elastic Beanstalk Enhanced Health.
+#' Returns information about the overall health of the specified environment. The **DescribeEnvironmentHealth** operation is only available with AWS Elastic Beanstalk Enhanced Health.
 #'
-#' @usage
-#' elasticbeanstalk_describe_environment_health(EnvironmentName,
-#'   EnvironmentId, AttributeNames)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_health.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_health.html) for full documentation.
 #'
 #' @param EnvironmentName Specify the environment by name.
 #' 
@@ -1928,76 +874,6 @@ elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, Te
 #' @param AttributeNames Specify the response elements to return. To retrieve all attributes, set
 #' to `All`. If no attribute names are specified, returns the name of the
 #' environment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EnvironmentName = "string",
-#'   HealthStatus = "string",
-#'   Status = "Green"|"Yellow"|"Red"|"Grey",
-#'   Color = "string",
-#'   Causes = list(
-#'     "string"
-#'   ),
-#'   ApplicationMetrics = list(
-#'     Duration = 123,
-#'     RequestCount = 123,
-#'     StatusCodes = list(
-#'       Status2xx = 123,
-#'       Status3xx = 123,
-#'       Status4xx = 123,
-#'       Status5xx = 123
-#'     ),
-#'     Latency = list(
-#'       P999 = 123.0,
-#'       P99 = 123.0,
-#'       P95 = 123.0,
-#'       P90 = 123.0,
-#'       P85 = 123.0,
-#'       P75 = 123.0,
-#'       P50 = 123.0,
-#'       P10 = 123.0
-#'     )
-#'   ),
-#'   InstancesHealth = list(
-#'     NoData = 123,
-#'     Unknown = 123,
-#'     Pending = 123,
-#'     Ok = 123,
-#'     Info = 123,
-#'     Warning = 123,
-#'     Degraded = 123,
-#'     Severe = 123
-#'   ),
-#'   RefreshedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_environment_health(
-#'   EnvironmentName = "string",
-#'   EnvironmentId = "string",
-#'   AttributeNames = list(
-#'     "Status"|"Color"|"Causes"|"ApplicationMetrics"|"InstancesHealth"|"All"|"HealthStatus"|"RefreshedAt"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves overall health information for an
-#' # environment named my-env:
-#' svc$describe_environment_health(
-#'   AttributeNames = list(
-#'     "All"
-#'   ),
-#'   EnvironmentName = "my-env"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2024,48 +900,12 @@ elasticbeanstalk_describe_environment_health <- function(EnvironmentName = NULL,
 #' @description
 #' Lists an environment's completed and failed managed actions.
 #'
-#' @usage
-#' elasticbeanstalk_describe_environment_managed_action_history(
-#'   EnvironmentId, EnvironmentName, NextToken, MaxItems)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_action_history.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_action_history.html) for full documentation.
 #'
 #' @param EnvironmentId The environment ID of the target environment.
 #' @param EnvironmentName The name of the target environment.
 #' @param NextToken The pagination token returned by a previous request.
 #' @param MaxItems The maximum number of items to return for a single request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ManagedActionHistoryItems = list(
-#'     list(
-#'       ActionId = "string",
-#'       ActionType = "InstanceRefresh"|"PlatformUpdate"|"Unknown",
-#'       ActionDescription = "string",
-#'       FailureType = "UpdateCancelled"|"CancellationFailed"|"RollbackFailed"|"RollbackSuccessful"|"InternalFailure"|"InvalidEnvironmentState"|"PermissionsError",
-#'       Status = "Completed"|"Failed"|"Unknown",
-#'       FailureDescription = "string",
-#'       ExecutedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       FinishedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_environment_managed_action_history(
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string",
-#'   NextToken = "string",
-#'   MaxItems = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2092,40 +932,11 @@ elasticbeanstalk_describe_environment_managed_action_history <- function(Environ
 #' @description
 #' Lists an environment's upcoming and in-progress managed actions.
 #'
-#' @usage
-#' elasticbeanstalk_describe_environment_managed_actions(EnvironmentName,
-#'   EnvironmentId, Status)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_actions.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_actions.html) for full documentation.
 #'
 #' @param EnvironmentName The name of the target environment.
 #' @param EnvironmentId The environment ID of the target environment.
 #' @param Status To show only actions with a particular status, specify a status.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ManagedActions = list(
-#'     list(
-#'       ActionId = "string",
-#'       ActionDescription = "string",
-#'       ActionType = "InstanceRefresh"|"PlatformUpdate"|"Unknown",
-#'       Status = "Scheduled"|"Pending"|"Running"|"Unknown",
-#'       WindowStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_environment_managed_actions(
-#'   EnvironmentName = "string",
-#'   EnvironmentId = "string",
-#'   Status = "Scheduled"|"Pending"|"Running"|"Unknown"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2152,9 +963,7 @@ elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentNam
 #' @description
 #' Returns AWS resources for this environment.
 #'
-#' @usage
-#' elasticbeanstalk_describe_environment_resources(EnvironmentId,
-#'   EnvironmentName)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_resources.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_resources.html) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment to retrieve AWS resource usage data.
 #' 
@@ -2166,69 +975,6 @@ elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentNam
 #' Condition: You must specify either this or an EnvironmentId, or both. If
 #' you do not specify either, AWS Elastic Beanstalk returns
 #' `MissingRequiredParameter` error.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EnvironmentResources = list(
-#'     EnvironmentName = "string",
-#'     AutoScalingGroups = list(
-#'       list(
-#'         Name = "string"
-#'       )
-#'     ),
-#'     Instances = list(
-#'       list(
-#'         Id = "string"
-#'       )
-#'     ),
-#'     LaunchConfigurations = list(
-#'       list(
-#'         Name = "string"
-#'       )
-#'     ),
-#'     LaunchTemplates = list(
-#'       list(
-#'         Id = "string"
-#'       )
-#'     ),
-#'     LoadBalancers = list(
-#'       list(
-#'         Name = "string"
-#'       )
-#'     ),
-#'     Triggers = list(
-#'       list(
-#'         Name = "string"
-#'       )
-#'     ),
-#'     Queues = list(
-#'       list(
-#'         Name = "string",
-#'         URL = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_environment_resources(
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves information about resources in an
-#' # environment named my-env:
-#' svc$describe_environment_resources(
-#'   EnvironmentName = "my-env"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2255,10 +1001,7 @@ elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL
 #' @description
 #' Returns descriptions for existing environments.
 #'
-#' @usage
-#' elasticbeanstalk_describe_environments(ApplicationName, VersionLabel,
-#'   EnvironmentIds, EnvironmentNames, IncludeDeleted, IncludedDeletedBackTo,
-#'   MaxRecords, NextToken)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environments.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environments.html) for full documentation.
 #'
 #' @param ApplicationName If specified, AWS Elastic Beanstalk restricts the returned descriptions
 #' to include only those that are associated with this application.
@@ -2287,94 +1030,6 @@ elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL
 #' 
 #' If no `NextToken` is specified, the first page is retrieved.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Environments = list(
-#'     list(
-#'       EnvironmentName = "string",
-#'       EnvironmentId = "string",
-#'       ApplicationName = "string",
-#'       VersionLabel = "string",
-#'       SolutionStackName = "string",
-#'       PlatformArn = "string",
-#'       TemplateName = "string",
-#'       Description = "string",
-#'       EndpointURL = "string",
-#'       CNAME = "string",
-#'       DateCreated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DateUpdated = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "Aborting"|"Launching"|"Updating"|"LinkingFrom"|"LinkingTo"|"Ready"|"Terminating"|"Terminated",
-#'       AbortableOperationInProgress = TRUE|FALSE,
-#'       Health = "Green"|"Yellow"|"Red"|"Grey",
-#'       HealthStatus = "NoData"|"Unknown"|"Pending"|"Ok"|"Info"|"Warning"|"Degraded"|"Severe"|"Suspended",
-#'       Resources = list(
-#'         LoadBalancer = list(
-#'           LoadBalancerName = "string",
-#'           Domain = "string",
-#'           Listeners = list(
-#'             list(
-#'               Protocol = "string",
-#'               Port = 123
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Tier = list(
-#'         Name = "string",
-#'         Type = "string",
-#'         Version = "string"
-#'       ),
-#'       EnvironmentLinks = list(
-#'         list(
-#'           LinkName = "string",
-#'           EnvironmentName = "string"
-#'         )
-#'       ),
-#'       EnvironmentArn = "string",
-#'       OperationsRole = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_environments(
-#'   ApplicationName = "string",
-#'   VersionLabel = "string",
-#'   EnvironmentIds = list(
-#'     "string"
-#'   ),
-#'   EnvironmentNames = list(
-#'     "string"
-#'   ),
-#'   IncludeDeleted = TRUE|FALSE,
-#'   IncludedDeletedBackTo = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   MaxRecords = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves information about an environment named
-#' # my-env:
-#' svc$describe_environments(
-#'   EnvironmentNames = list(
-#'     "my-env"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_environments
@@ -2399,16 +1054,9 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
 #' weeks
 #'
 #' @description
-#' Returns list of event descriptions matching criteria up to the last 6
-#' weeks.
-#' 
-#' This action returns the most recent 1,000 events from the specified
-#' `NextToken`.
+#' Returns list of event descriptions matching criteria up to the last 6 weeks.
 #'
-#' @usage
-#' elasticbeanstalk_describe_events(ApplicationName, VersionLabel,
-#'   TemplateName, EnvironmentId, EnvironmentName, PlatformArn, RequestId,
-#'   Severity, StartTime, EndTime, MaxRecords, NextToken)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_events.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_events.html) for full documentation.
 #'
 #' @param ApplicationName If specified, AWS Elastic Beanstalk restricts the returned descriptions
 #' to include only those associated with this application.
@@ -2436,60 +1084,6 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
 #' @param NextToken Pagination token. If specified, the events return the next batch of
 #' results.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Events = list(
-#'     list(
-#'       EventDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Message = "string",
-#'       ApplicationName = "string",
-#'       VersionLabel = "string",
-#'       TemplateName = "string",
-#'       EnvironmentName = "string",
-#'       PlatformArn = "string",
-#'       RequestId = "string",
-#'       Severity = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_events(
-#'   ApplicationName = "string",
-#'   VersionLabel = "string",
-#'   TemplateName = "string",
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string",
-#'   PlatformArn = "string",
-#'   RequestId = "string",
-#'   Severity = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   MaxRecords = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves events for an environment named
-#' # my-env:
-#' svc$describe_events(
-#'   EnvironmentName = "my-env"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_events
@@ -2514,13 +1108,9 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
 #' Elastic Beanstalk
 #'
 #' @description
-#' Retrieves detailed information about the health of instances in your AWS
-#' Elastic Beanstalk. This operation requires [enhanced health
-#' reporting](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
+#' Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires [enhanced health reporting](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 #'
-#' @usage
-#' elasticbeanstalk_describe_instances_health(EnvironmentName,
-#'   EnvironmentId, AttributeNames, NextToken)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_instances_health.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_instances_health.html) for full documentation.
 #'
 #' @param EnvironmentName Specify the AWS Elastic Beanstalk environment by name.
 #' @param EnvironmentId Specify the AWS Elastic Beanstalk environment by ID.
@@ -2528,99 +1118,6 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
 #' attributes, set to `All`. If no attribute names are specified, returns a
 #' list of instances.
 #' @param NextToken Specify the pagination token returned by a previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstanceHealthList = list(
-#'     list(
-#'       InstanceId = "string",
-#'       HealthStatus = "string",
-#'       Color = "string",
-#'       Causes = list(
-#'         "string"
-#'       ),
-#'       LaunchedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ApplicationMetrics = list(
-#'         Duration = 123,
-#'         RequestCount = 123,
-#'         StatusCodes = list(
-#'           Status2xx = 123,
-#'           Status3xx = 123,
-#'           Status4xx = 123,
-#'           Status5xx = 123
-#'         ),
-#'         Latency = list(
-#'           P999 = 123.0,
-#'           P99 = 123.0,
-#'           P95 = 123.0,
-#'           P90 = 123.0,
-#'           P85 = 123.0,
-#'           P75 = 123.0,
-#'           P50 = 123.0,
-#'           P10 = 123.0
-#'         )
-#'       ),
-#'       System = list(
-#'         CPUUtilization = list(
-#'           User = 123.0,
-#'           Nice = 123.0,
-#'           System = 123.0,
-#'           Idle = 123.0,
-#'           IOWait = 123.0,
-#'           IRQ = 123.0,
-#'           SoftIRQ = 123.0,
-#'           Privileged = 123.0
-#'         ),
-#'         LoadAverage = list(
-#'           123.0
-#'         )
-#'       ),
-#'       Deployment = list(
-#'         VersionLabel = "string",
-#'         DeploymentId = 123,
-#'         Status = "string",
-#'         DeploymentTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       AvailabilityZone = "string",
-#'       InstanceType = "string"
-#'     )
-#'   ),
-#'   RefreshedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_instances_health(
-#'   EnvironmentName = "string",
-#'   EnvironmentId = "string",
-#'   AttributeNames = list(
-#'     "HealthStatus"|"Color"|"Causes"|"ApplicationMetrics"|"RefreshedAt"|"LaunchedAt"|"System"|"Deployment"|"AvailabilityZone"|"InstanceType"|"All"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves health information for instances in an
-#' # environment named my-env:
-#' svc$describe_instances_health(
-#'   AttributeNames = list(
-#'     "All"
-#'   ),
-#'   EnvironmentName = "my-env"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2645,78 +1142,11 @@ elasticbeanstalk_describe_instances_health <- function(EnvironmentName = NULL, E
 #' Describes a platform version
 #'
 #' @description
-#' Describes a platform version. Provides full details. Compare to
-#' [`list_platform_versions`][elasticbeanstalk_list_platform_versions],
-#' which provides summary information about a list of platform versions.
-#' 
-#' For definitions of platform version and other platform-related terms,
-#' see [AWS Elastic Beanstalk Platforms
-#' Glossary](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html).
+#' Describes a platform version. Provides full details. Compare to [`list_platform_versions`][elasticbeanstalk_list_platform_versions], which provides summary information about a list of platform versions.
 #'
-#' @usage
-#' elasticbeanstalk_describe_platform_version(PlatformArn)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_platform_version.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_platform_version.html) for full documentation.
 #'
 #' @param PlatformArn The ARN of the platform version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PlatformDescription = list(
-#'     PlatformArn = "string",
-#'     PlatformOwner = "string",
-#'     PlatformName = "string",
-#'     PlatformVersion = "string",
-#'     SolutionStackName = "string",
-#'     PlatformStatus = "Creating"|"Failed"|"Ready"|"Deleting"|"Deleted",
-#'     DateCreated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DateUpdated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PlatformCategory = "string",
-#'     Description = "string",
-#'     Maintainer = "string",
-#'     OperatingSystemName = "string",
-#'     OperatingSystemVersion = "string",
-#'     ProgrammingLanguages = list(
-#'       list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     Frameworks = list(
-#'       list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     ),
-#'     CustomAmiList = list(
-#'       list(
-#'         VirtualizationType = "string",
-#'         ImageId = "string"
-#'       )
-#'     ),
-#'     SupportedTierList = list(
-#'       "string"
-#'     ),
-#'     SupportedAddonList = list(
-#'       "string"
-#'     ),
-#'     PlatformLifecycleState = "string",
-#'     PlatformBranchName = "string",
-#'     PlatformBranchLifecycleState = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_platform_version(
-#'   PlatformArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2741,29 +1171,12 @@ elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
 #' Disassociate the operations role from an environment
 #'
 #' @description
-#' Disassociate the operations role from an environment. After this call is
-#' made, Elastic Beanstalk uses the caller's permissions for permissions to
-#' downstream services during subsequent calls acting on this environment.
-#' For more information, see [Operations
-#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the
-#' *AWS Elastic Beanstalk Developer Guide*.
+#' Disassociate the operations role from an environment. After this call is made, Elastic Beanstalk uses the caller's permissions for permissions to downstream services during subsequent calls acting on this environment. For more information, see [Operations roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the *AWS Elastic Beanstalk Developer Guide*.
 #'
-#' @usage
-#' elasticbeanstalk_disassociate_environment_operations_role(
-#'   EnvironmentName)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/disassociate_environment_operations_role.html](https://paws-r.github.io/docs/elasticbeanstalk/disassociate_environment_operations_role.html) for full documentation.
 #'
 #' @param EnvironmentName &#91;required&#93; The name of the environment from which to disassociate the operations
 #' role.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_environment_operations_role(
-#'   EnvironmentName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2789,41 +1202,11 @@ elasticbeanstalk_disassociate_environment_operations_role <- function(Environmen
 #' version first and then in reverse chronological order
 #'
 #' @description
-#' Returns a list of the available solution stack names, with the public
-#' version first and then in reverse chronological order.
+#' Returns a list of the available solution stack names, with the public version first and then in reverse chronological order.
 #'
-#' @usage
-#' elasticbeanstalk_list_available_solution_stacks()
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/list_available_solution_stacks.html](https://paws-r.github.io/docs/elasticbeanstalk/list_available_solution_stacks.html) for full documentation.
 #'
 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SolutionStacks = list(
-#'     "string"
-#'   ),
-#'   SolutionStackDetails = list(
-#'     list(
-#'       SolutionStackName = "string",
-#'       PermittedFileTypes = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation lists solution stacks for all currently
-#' # available platform configurations and any that you have used in the
-#' # past:
-#' svc$list_available_solution_stacks()
-#' }
 #'
 #' @keywords internal
 #'
@@ -2848,15 +1231,9 @@ elasticbeanstalk_list_available_solution_stacks <- function() {
 #' Lists the platform branches available for your account in an AWS Region
 #'
 #' @description
-#' Lists the platform branches available for your account in an AWS Region.
-#' Provides summary information about each platform branch.
-#' 
-#' For definitions of platform branch and other platform-related terms, see
-#' [AWS Elastic Beanstalk Platforms
-#' Glossary](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html).
+#' Lists the platform branches available for your account in an AWS Region. Provides summary information about each platform branch.
 #'
-#' @usage
-#' elasticbeanstalk_list_platform_branches(Filters, MaxRecords, NextToken)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/list_platform_branches.html](https://paws-r.github.io/docs/elasticbeanstalk/list_platform_branches.html) for full documentation.
 #'
 #' @param Filters Criteria for restricting the resulting list of platform branches. The
 #' filter is evaluated as a logical conjunction (AND) of the separate
@@ -2899,42 +1276,6 @@ elasticbeanstalk_list_available_solution_stacks <- function() {
 #' 
 #' If no `NextToken` is specified, the first page is retrieved.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PlatformBranchSummaryList = list(
-#'     list(
-#'       PlatformName = "string",
-#'       BranchName = "string",
-#'       LifecycleState = "string",
-#'       BranchOrder = 123,
-#'       SupportedTierList = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_platform_branches(
-#'   Filters = list(
-#'     list(
-#'       Attribute = "string",
-#'       Operator = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_list_platform_branches
@@ -2958,17 +1299,9 @@ elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords =
 #' Lists the platform versions available for your account in an AWS Region
 #'
 #' @description
-#' Lists the platform versions available for your account in an AWS Region.
-#' Provides summary information about each platform version. Compare to
-#' [`describe_platform_version`][elasticbeanstalk_describe_platform_version],
-#' which provides full details about a single platform version.
-#' 
-#' For definitions of platform version and other platform-related terms,
-#' see [AWS Elastic Beanstalk Platforms
-#' Glossary](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html).
+#' Lists the platform versions available for your account in an AWS Region. Provides summary information about each platform version. Compare to [`describe_platform_version`][elasticbeanstalk_describe_platform_version], which provides full details about a single platform version.
 #'
-#' @usage
-#' elasticbeanstalk_list_platform_versions(Filters, MaxRecords, NextToken)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/list_platform_versions.html](https://paws-r.github.io/docs/elasticbeanstalk/list_platform_versions.html) for full documentation.
 #'
 #' @param Filters Criteria for restricting the resulting list of platform versions. The
 #' filter is interpreted as a logical conjunction (AND) of the separate
@@ -2979,51 +1312,6 @@ elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords =
 #' identical to the ones specified in the initial request.
 #' 
 #' If no `NextToken` is specified, the first page is retrieved.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PlatformSummaryList = list(
-#'     list(
-#'       PlatformArn = "string",
-#'       PlatformOwner = "string",
-#'       PlatformStatus = "Creating"|"Failed"|"Ready"|"Deleting"|"Deleted",
-#'       PlatformCategory = "string",
-#'       OperatingSystemName = "string",
-#'       OperatingSystemVersion = "string",
-#'       SupportedTierList = list(
-#'         "string"
-#'       ),
-#'       SupportedAddonList = list(
-#'         "string"
-#'       ),
-#'       PlatformLifecycleState = "string",
-#'       PlatformVersion = "string",
-#'       PlatformBranchName = "string",
-#'       PlatformBranchLifecycleState = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_platform_versions(
-#'   Filters = list(
-#'     list(
-#'       Type = "string",
-#'       Operator = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3048,41 +1336,14 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
 #' Return the tags applied to an AWS Elastic Beanstalk resource
 #'
 #' @description
-#' Return the tags applied to an AWS Elastic Beanstalk resource. The
-#' response contains a list of tag key-value pairs.
-#' 
-#' Elastic Beanstalk supports tagging of all of its resources. For details
-#' about resource tagging, see [Tagging Application
-#' Resources](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html).
+#' Return the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
 #'
-#' @usage
-#' elasticbeanstalk_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/list_tags_for_resource.html](https://paws-r.github.io/docs/elasticbeanstalk/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resouce for which a tag list is
 #' requested.
 #' 
 #' Must be the ARN of an Elastic Beanstalk resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceArn = "string",
-#'   ResourceTags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3108,12 +1369,9 @@ elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
 #' Scaling group, load balancer, etc
 #'
 #' @description
-#' Deletes and recreates all of the AWS resources (for example: the Auto
-#' Scaling group, load balancer, etc.) for a specified environment and
-#' forces a restart.
+#' Deletes and recreates all of the AWS resources (for example: the Auto Scaling group, load balancer, etc.) for a specified environment and forces a restart.
 #'
-#' @usage
-#' elasticbeanstalk_rebuild_environment(EnvironmentId, EnvironmentName)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/rebuild_environment.html](https://paws-r.github.io/docs/elasticbeanstalk/rebuild_environment.html) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment to rebuild.
 #' 
@@ -3125,26 +1383,6 @@ elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
 #' Condition: You must specify either this or an EnvironmentId, or both. If
 #' you do not specify either, AWS Elastic Beanstalk returns
 #' `MissingRequiredParameter` error.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$rebuild_environment(
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation terminates and recreates the resources in an
-#' # environment named my-env:
-#' svc$rebuild_environment(
-#'   EnvironmentName = "my-env"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3170,28 +1408,9 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #' deployed environment
 #'
 #' @description
-#' Initiates a request to compile the specified type of information of the
-#' deployed environment.
-#' 
-#' Setting the `InfoType` to `tail` compiles the last lines from the
-#' application server log files of every Amazon EC2 instance in your
-#' environment.
-#' 
-#' Setting the `InfoType` to `bundle` compresses the application server log
-#' files for every Amazon EC2 instance into a `.zip` file. Legacy and .NET
-#' containers do not support bundle logs.
-#' 
-#' Use
-#' [`retrieve_environment_info`][elasticbeanstalk_retrieve_environment_info]
-#' to obtain the set of logs.
-#' 
-#' Related Topics
-#' 
-#' -   [`retrieve_environment_info`][elasticbeanstalk_retrieve_environment_info]
+#' Initiates a request to compile the specified type of information of the deployed environment.
 #'
-#' @usage
-#' elasticbeanstalk_request_environment_info(EnvironmentId,
-#'   EnvironmentName, InfoType)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/request_environment_info.html](https://paws-r.github.io/docs/elasticbeanstalk/request_environment_info.html) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment of the requested data.
 #' 
@@ -3212,27 +1431,6 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #' you do not specify either, AWS Elastic Beanstalk returns
 #' `MissingRequiredParameter` error.
 #' @param InfoType &#91;required&#93; The type of information to request.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$request_environment_info(
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string",
-#'   InfoType = "tail"|"bundle"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation requests logs from an environment named my-env:
-#' svc$request_environment_info(
-#'   EnvironmentName = "my-env",
-#'   InfoType = "tail"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3258,11 +1456,9 @@ elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, Envi
 #' running on each Amazon EC2 instance
 #'
 #' @description
-#' Causes the environment to restart the application container server
-#' running on each Amazon EC2 instance.
+#' Causes the environment to restart the application container server running on each Amazon EC2 instance.
 #'
-#' @usage
-#' elasticbeanstalk_restart_app_server(EnvironmentId, EnvironmentName)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/restart_app_server.html](https://paws-r.github.io/docs/elasticbeanstalk/restart_app_server.html) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment to restart the server for.
 #' 
@@ -3274,26 +1470,6 @@ elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, Envi
 #' Condition: You must specify either this or an EnvironmentId, or both. If
 #' you do not specify either, AWS Elastic Beanstalk returns
 #' `MissingRequiredParameter` error.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restart_app_server(
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation restarts application servers on all instances in
-#' # an environment named my-env:
-#' svc$restart_app_server(
-#'   EnvironmentName = "my-env"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3318,17 +1494,9 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #' Retrieves the compiled information from a RequestEnvironmentInfo request
 #'
 #' @description
-#' Retrieves the compiled information from a
-#' [`request_environment_info`][elasticbeanstalk_request_environment_info]
-#' request.
-#' 
-#' Related Topics
-#' 
-#' -   [`request_environment_info`][elasticbeanstalk_request_environment_info]
+#' Retrieves the compiled information from a [`request_environment_info`][elasticbeanstalk_request_environment_info] request.
 #'
-#' @usage
-#' elasticbeanstalk_retrieve_environment_info(EnvironmentId,
-#'   EnvironmentName, InfoType)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/retrieve_environment_info.html](https://paws-r.github.io/docs/elasticbeanstalk/retrieve_environment_info.html) for full documentation.
 #'
 #' @param EnvironmentId The ID of the data's environment.
 #' 
@@ -3347,42 +1515,6 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #' you do not specify either, AWS Elastic Beanstalk returns
 #' `MissingRequiredParameter` error.
 #' @param InfoType &#91;required&#93; The type of information to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EnvironmentInfo = list(
-#'     list(
-#'       InfoType = "tail"|"bundle",
-#'       Ec2InstanceId = "string",
-#'       SampleTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$retrieve_environment_info(
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string",
-#'   InfoType = "tail"|"bundle"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation retrieves a link to logs from an environment
-#' # named my-env:
-#' svc$retrieve_environment_info(
-#'   EnvironmentName = "my-env",
-#'   InfoType = "tail"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3409,10 +1541,7 @@ elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, Env
 #' @description
 #' Swaps the CNAMEs of two environments.
 #'
-#' @usage
-#' elasticbeanstalk_swap_environment_cnam_es(SourceEnvironmentId,
-#'   SourceEnvironmentName, DestinationEnvironmentId,
-#'   DestinationEnvironmentName)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/swap_environment_cnam_es.html](https://paws-r.github.io/docs/elasticbeanstalk/swap_environment_cnam_es.html) for full documentation.
 #'
 #' @param SourceEnvironmentId The ID of the source environment.
 #' 
@@ -3436,29 +1565,6 @@ elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, Env
 #' the `DestinationEnvironmentName`. You may also specify both. You must
 #' specify the `SourceEnvironmentName` with the
 #' `DestinationEnvironmentName`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$swap_environment_cnam_es(
-#'   SourceEnvironmentId = "string",
-#'   SourceEnvironmentName = "string",
-#'   DestinationEnvironmentId = "string",
-#'   DestinationEnvironmentName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation swaps the assigned subdomains of two
-#' # environments:
-#' svc$swap_environment_cnam_es(
-#'   DestinationEnvironmentName = "my-env-green",
-#'   SourceEnvironmentName = "my-env-blue"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3485,9 +1591,7 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
 #' @description
 #' Terminates the specified environment.
 #'
-#' @usage
-#' elasticbeanstalk_terminate_environment(EnvironmentId, EnvironmentName,
-#'   TerminateResources, ForceTerminate)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/terminate_environment.html](https://paws-r.github.io/docs/elasticbeanstalk/terminate_environment.html) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment to terminate.
 #' 
@@ -3518,77 +1622,6 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
 #' @param ForceTerminate Terminates the target environment even if another environment in the
 #' same group is dependent on it.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EnvironmentName = "string",
-#'   EnvironmentId = "string",
-#'   ApplicationName = "string",
-#'   VersionLabel = "string",
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   TemplateName = "string",
-#'   Description = "string",
-#'   EndpointURL = "string",
-#'   CNAME = "string",
-#'   DateCreated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DateUpdated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Status = "Aborting"|"Launching"|"Updating"|"LinkingFrom"|"LinkingTo"|"Ready"|"Terminating"|"Terminated",
-#'   AbortableOperationInProgress = TRUE|FALSE,
-#'   Health = "Green"|"Yellow"|"Red"|"Grey",
-#'   HealthStatus = "NoData"|"Unknown"|"Pending"|"Ok"|"Info"|"Warning"|"Degraded"|"Severe"|"Suspended",
-#'   Resources = list(
-#'     LoadBalancer = list(
-#'       LoadBalancerName = "string",
-#'       Domain = "string",
-#'       Listeners = list(
-#'         list(
-#'           Protocol = "string",
-#'           Port = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Tier = list(
-#'     Name = "string",
-#'     Type = "string",
-#'     Version = "string"
-#'   ),
-#'   EnvironmentLinks = list(
-#'     list(
-#'       LinkName = "string",
-#'       EnvironmentName = "string"
-#'     )
-#'   ),
-#'   EnvironmentArn = "string",
-#'   OperationsRole = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$terminate_environment(
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string",
-#'   TerminateResources = TRUE|FALSE,
-#'   ForceTerminate = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation terminates an Elastic Beanstalk environment
-#' # named my-env:
-#' svc$terminate_environment(
-#'   EnvironmentName = "my-env"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_terminate_environment
@@ -3613,12 +1646,8 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
 #'
 #' @description
 #' Updates the specified application to have the specified properties.
-#' 
-#' If a property (for example, `description`) is not provided, the value
-#' remains unchanged. To clear these properties, specify an empty string.
 #'
-#' @usage
-#' elasticbeanstalk_update_application(ApplicationName, Description)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_application.html](https://paws-r.github.io/docs/elasticbeanstalk/update_application.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to update. If no such application is found,
 #' [`update_application`][elasticbeanstalk_update_application] returns an
@@ -3627,63 +1656,6 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
 #' 
 #' Default: If not specified, AWS Elastic Beanstalk does not update the
 #' description.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Application = list(
-#'     ApplicationArn = "string",
-#'     ApplicationName = "string",
-#'     Description = "string",
-#'     DateCreated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DateUpdated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Versions = list(
-#'       "string"
-#'     ),
-#'     ConfigurationTemplates = list(
-#'       "string"
-#'     ),
-#'     ResourceLifecycleConfig = list(
-#'       ServiceRole = "string",
-#'       VersionLifecycleConfig = list(
-#'         MaxCountRule = list(
-#'           Enabled = TRUE|FALSE,
-#'           MaxCount = 123,
-#'           DeleteSourceFromS3 = TRUE|FALSE
-#'         ),
-#'         MaxAgeRule = list(
-#'           Enabled = TRUE|FALSE,
-#'           MaxAgeInDays = 123,
-#'           DeleteSourceFromS3 = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_application(
-#'   ApplicationName = "string",
-#'   Description = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation updates the description of an application named
-#' # my-app:
-#' svc$update_application(
-#'   ApplicationName = "my-app",
-#'   Description = "my Elastic Beanstalk application"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3710,57 +1682,10 @@ elasticbeanstalk_update_application <- function(ApplicationName, Description = N
 #' @description
 #' Modifies lifecycle settings for an application.
 #'
-#' @usage
-#' elasticbeanstalk_update_application_resource_lifecycle(ApplicationName,
-#'   ResourceLifecycleConfig)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_application_resource_lifecycle.html](https://paws-r.github.io/docs/elasticbeanstalk/update_application_resource_lifecycle.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
 #' @param ResourceLifecycleConfig &#91;required&#93; The lifecycle configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationName = "string",
-#'   ResourceLifecycleConfig = list(
-#'     ServiceRole = "string",
-#'     VersionLifecycleConfig = list(
-#'       MaxCountRule = list(
-#'         Enabled = TRUE|FALSE,
-#'         MaxCount = 123,
-#'         DeleteSourceFromS3 = TRUE|FALSE
-#'       ),
-#'       MaxAgeRule = list(
-#'         Enabled = TRUE|FALSE,
-#'         MaxAgeInDays = 123,
-#'         DeleteSourceFromS3 = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_application_resource_lifecycle(
-#'   ApplicationName = "string",
-#'   ResourceLifecycleConfig = list(
-#'     ServiceRole = "string",
-#'     VersionLifecycleConfig = list(
-#'       MaxCountRule = list(
-#'         Enabled = TRUE|FALSE,
-#'         MaxCount = 123,
-#'         DeleteSourceFromS3 = TRUE|FALSE
-#'       ),
-#'       MaxAgeRule = list(
-#'         Enabled = TRUE|FALSE,
-#'         MaxAgeInDays = 123,
-#'         DeleteSourceFromS3 = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3786,15 +1711,9 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
 #' properties
 #'
 #' @description
-#' Updates the specified application version to have the specified
-#' properties.
-#' 
-#' If a property (for example, `description`) is not provided, the value
-#' remains unchanged. To clear properties, specify an empty string.
+#' Updates the specified application version to have the specified properties.
 #'
-#' @usage
-#' elasticbeanstalk_update_application_version(ApplicationName,
-#'   VersionLabel, Description)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_application_version.html](https://paws-r.github.io/docs/elasticbeanstalk/update_application_version.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application associated with this version.
 #' 
@@ -3807,56 +1726,6 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
 #' [`update_application`][elasticbeanstalk_update_application] returns an
 #' `InvalidParameterValue` error.
 #' @param Description A new description for this version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationVersion = list(
-#'     ApplicationVersionArn = "string",
-#'     ApplicationName = "string",
-#'     Description = "string",
-#'     VersionLabel = "string",
-#'     SourceBuildInformation = list(
-#'       SourceType = "Git"|"Zip",
-#'       SourceRepository = "CodeCommit"|"S3",
-#'       SourceLocation = "string"
-#'     ),
-#'     BuildArn = "string",
-#'     SourceBundle = list(
-#'       S3Bucket = "string",
-#'       S3Key = "string"
-#'     ),
-#'     DateCreated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DateUpdated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_application_version(
-#'   ApplicationName = "string",
-#'   VersionLabel = "string",
-#'   Description = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation updates the description of an application
-#' # version named 22a0-stage-150819_185942:
-#' svc$update_application_version(
-#'   ApplicationName = "my-app",
-#'   Description = "new description",
-#'   VersionLabel = "22a0-stage-150819_185942"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3882,20 +1751,9 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #' properties or configuration option values
 #'
 #' @description
-#' Updates the specified configuration template to have the specified
-#' properties or configuration option values.
-#' 
-#' If a property (for example, `ApplicationName`) is not provided, its
-#' value remains unchanged. To clear such properties, specify an empty
-#' string.
-#' 
-#' Related Topics
-#' 
-#' -   [`describe_configuration_options`][elasticbeanstalk_describe_configuration_options]
+#' Updates the specified configuration template to have the specified properties or configuration option values.
 #'
-#' @usage
-#' elasticbeanstalk_update_configuration_template(ApplicationName,
-#'   TemplateName, Description, OptionSettings, OptionsToRemove)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_configuration_template.html](https://paws-r.github.io/docs/elasticbeanstalk/update_configuration_template.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application associated with the configuration template
 #' to update.
@@ -3914,75 +1772,6 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #' @param OptionsToRemove A list of configuration options to remove from the configuration set.
 #' 
 #' Constraint: You can remove only `UserDefined` configuration options.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   ApplicationName = "string",
-#'   TemplateName = "string",
-#'   Description = "string",
-#'   EnvironmentName = "string",
-#'   DeploymentStatus = "deployed"|"pending"|"failed",
-#'   DateCreated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DateUpdated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   OptionSettings = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_configuration_template(
-#'   ApplicationName = "string",
-#'   TemplateName = "string",
-#'   Description = "string",
-#'   OptionSettings = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   OptionsToRemove = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation removes the configured CloudWatch custom health
-#' # metrics configuration ConfigDocument from a saved configuration template
-#' # named my-template:
-#' svc$update_configuration_template(
-#'   ApplicationName = "my-app",
-#'   OptionsToRemove = list(
-#'     list(
-#'       Namespace = "aws:elasticbeanstalk:healthreporting:system",
-#'       OptionName = "ConfigDocument"
-#'     )
-#'   ),
-#'   TemplateName = "my-template"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4010,26 +1799,9 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #' environment
 #'
 #' @description
-#' Updates the environment description, deploys a new application version,
-#' updates the configuration settings to an entirely new configuration
-#' template, or updates select configuration option values in the running
-#' environment.
-#' 
-#' Attempting to update both the release and configuration is not allowed
-#' and AWS Elastic Beanstalk returns an `InvalidParameterCombination`
-#' error.
-#' 
-#' When updating the configuration settings to a new template or individual
-#' settings, a draft configuration is created and
-#' [`describe_configuration_settings`][elasticbeanstalk_describe_configuration_settings]
-#' for this environment returns two setting descriptions with different
-#' `DeploymentStatus` values.
+#' Updates the environment description, deploys a new application version, updates the configuration settings to an entirely new configuration template, or updates select configuration option values in the running environment.
 #'
-#' @usage
-#' elasticbeanstalk_update_environment(ApplicationName, EnvironmentId,
-#'   EnvironmentName, GroupName, Description, Tier, VersionLabel,
-#'   TemplateName, SolutionStackName, PlatformArn, OptionSettings,
-#'   OptionsToRemove)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_environment.html](https://paws-r.github.io/docs/elasticbeanstalk/update_environment.html) for full documentation.
 #'
 #' @param ApplicationName The name of the application with which the environment is associated.
 #' @param EnvironmentId The ID of the environment to update.
@@ -4074,131 +1846,6 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #' @param OptionsToRemove A list of custom user-defined configuration options to remove from the
 #' configuration set for this environment.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EnvironmentName = "string",
-#'   EnvironmentId = "string",
-#'   ApplicationName = "string",
-#'   VersionLabel = "string",
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   TemplateName = "string",
-#'   Description = "string",
-#'   EndpointURL = "string",
-#'   CNAME = "string",
-#'   DateCreated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   DateUpdated = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Status = "Aborting"|"Launching"|"Updating"|"LinkingFrom"|"LinkingTo"|"Ready"|"Terminating"|"Terminated",
-#'   AbortableOperationInProgress = TRUE|FALSE,
-#'   Health = "Green"|"Yellow"|"Red"|"Grey",
-#'   HealthStatus = "NoData"|"Unknown"|"Pending"|"Ok"|"Info"|"Warning"|"Degraded"|"Severe"|"Suspended",
-#'   Resources = list(
-#'     LoadBalancer = list(
-#'       LoadBalancerName = "string",
-#'       Domain = "string",
-#'       Listeners = list(
-#'         list(
-#'           Protocol = "string",
-#'           Port = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Tier = list(
-#'     Name = "string",
-#'     Type = "string",
-#'     Version = "string"
-#'   ),
-#'   EnvironmentLinks = list(
-#'     list(
-#'       LinkName = "string",
-#'       EnvironmentName = "string"
-#'     )
-#'   ),
-#'   EnvironmentArn = "string",
-#'   OperationsRole = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_environment(
-#'   ApplicationName = "string",
-#'   EnvironmentId = "string",
-#'   EnvironmentName = "string",
-#'   GroupName = "string",
-#'   Description = "string",
-#'   Tier = list(
-#'     Name = "string",
-#'     Type = "string",
-#'     Version = "string"
-#'   ),
-#'   VersionLabel = "string",
-#'   TemplateName = "string",
-#'   SolutionStackName = "string",
-#'   PlatformArn = "string",
-#'   OptionSettings = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   OptionsToRemove = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation updates an environment named "my-env" to version
-#' # "v2" of the application to which it belongs:
-#' svc$update_environment(
-#'   EnvironmentName = "my-env",
-#'   VersionLabel = "v2"
-#' )
-#' 
-#' # The following operation configures several options in the
-#' # aws:elb:loadbalancer namespace:
-#' svc$update_environment(
-#'   EnvironmentName = "my-env",
-#'   OptionSettings = list(
-#'     list(
-#'       Namespace = "aws:elb:healthcheck",
-#'       OptionName = "Interval",
-#'       Value = "15"
-#'     ),
-#'     list(
-#'       Namespace = "aws:elb:healthcheck",
-#'       OptionName = "Timeout",
-#'       Value = "8"
-#'     ),
-#'     list(
-#'       Namespace = "aws:elb:healthcheck",
-#'       OptionName = "HealthyThreshold",
-#'       Value = "2"
-#'     ),
-#'     list(
-#'       Namespace = "aws:elb:healthcheck",
-#'       OptionName = "UnhealthyThreshold",
-#'       Value = "3"
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_update_environment
@@ -4222,37 +1869,9 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #' Update the list of tags applied to an AWS Elastic Beanstalk resource
 #'
 #' @description
-#' Update the list of tags applied to an AWS Elastic Beanstalk resource.
-#' Two lists can be passed: `TagsToAdd` for tags to add or update, and
-#' `TagsToRemove`.
-#' 
-#' Elastic Beanstalk supports tagging of all of its resources. For details
-#' about resource tagging, see [Tagging Application
-#' Resources](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html).
-#' 
-#' If you create a custom IAM user policy to control permission to this
-#' operation, specify one of the following two virtual actions (or both)
-#' instead of the API operation name:
-#' 
-#' ### elasticbeanstalk:AddTags
-#' 
-#' Controls permission to call
-#' [`update_tags_for_resource`][elasticbeanstalk_update_tags_for_resource]
-#' and pass a list of tags to add in the `TagsToAdd` parameter.
-#' 
-#' ### elasticbeanstalk:RemoveTags
-#' 
-#' Controls permission to call
-#' [`update_tags_for_resource`][elasticbeanstalk_update_tags_for_resource]
-#' and pass a list of tag keys to remove in the `TagsToRemove` parameter.
-#' 
-#' For details about creating a custom user policy, see [Creating a Custom
-#' User
-#' Policy](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies).
+#' Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed: `TagsToAdd` for tags to add or update, and `TagsToRemove`.
 #'
-#' @usage
-#' elasticbeanstalk_update_tags_for_resource(ResourceArn, TagsToAdd,
-#'   TagsToRemove)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_tags_for_resource.html](https://paws-r.github.io/docs/elasticbeanstalk/update_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resouce to be updated.
 #' 
@@ -4265,25 +1884,6 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #' ignored.
 #' 
 #' Specify at least one of these parameters: `TagsToAdd`, `TagsToRemove`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_tags_for_resource(
-#'   ResourceArn = "string",
-#'   TagsToAdd = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   TagsToRemove = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4309,15 +1909,9 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
 #' template or environment, and determines whether those values are valid
 #'
 #' @description
-#' Takes a set of configuration settings and either a configuration
-#' template or environment, and determines whether those values are valid.
-#' 
-#' This action returns a list of messages indicating any errors or warnings
-#' associated with the selection of option values.
+#' Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid.
 #'
-#' @usage
-#' elasticbeanstalk_validate_configuration_settings(ApplicationName,
-#'   TemplateName, EnvironmentName, OptionSettings)
+#' See [https://paws-r.github.io/docs/elasticbeanstalk/validate_configuration_settings.html](https://paws-r.github.io/docs/elasticbeanstalk/validate_configuration_settings.html) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application that the configuration template or
 #' environment belongs to.
@@ -4329,55 +1923,6 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
 #' Condition: You cannot specify both this and a configuration template
 #' name.
 #' @param OptionSettings &#91;required&#93; A list of the options and desired values to evaluate.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Messages = list(
-#'     list(
-#'       Message = "string",
-#'       Severity = "error"|"warning",
-#'       Namespace = "string",
-#'       OptionName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$validate_configuration_settings(
-#'   ApplicationName = "string",
-#'   TemplateName = "string",
-#'   EnvironmentName = "string",
-#'   OptionSettings = list(
-#'     list(
-#'       ResourceName = "string",
-#'       Namespace = "string",
-#'       OptionName = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following operation validates a CloudWatch custom metrics config
-#' # document:
-#' svc$validate_configuration_settings(
-#'   ApplicationName = "my-app",
-#'   EnvironmentName = "my-env",
-#'   OptionSettings = list(
-#'     list(
-#'       Namespace = "aws:elasticbeanstalk:healthreporting:system",
-#'       OptionName = "ConfigDocument",
-#'       Value = "\{\"CloudWatchMetrics\": \{\"Environment\": \{\"ApplicationLatencyP9..."
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'

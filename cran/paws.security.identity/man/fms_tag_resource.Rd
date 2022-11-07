@@ -2,34 +2,20 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_tag_resource}
 \alias{fms_tag_resource}
-\title{Adds one or more tags to an AWS resource}
+\title{Adds one or more tags to an Amazon Web Services resource}
 \usage{
 fms_tag_resource(ResourceArn, TagList)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to return tags for. The
-AWS Firewall Manager resources that support tagging are policies,
+Firewall Manager resources that support tagging are policies,
 applications lists, and protocols lists.}
 
 \item{TagList}{[required] The tags to add to the resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds one or more tags to an AWS resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds one or more tags to an Amazon Web Services resource.
 
+See \url{https://paws-r.github.io/docs/fms/tag_resource.html} for full documentation.
+}
 \keyword{internal}

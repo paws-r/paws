@@ -4,8 +4,11 @@
 \alias{ssm_deregister_target_from_maintenance_window}
 \title{Removes a target from a maintenance window}
 \usage{
-ssm_deregister_target_from_maintenance_window(WindowId, WindowTargetId,
-  Safe)
+ssm_deregister_target_from_maintenance_window(
+  WindowId,
+  WindowTargetId,
+  Safe = NULL
+)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the maintenance window the target should be removed from.}
@@ -13,26 +16,12 @@ ssm_deregister_target_from_maintenance_window(WindowId, WindowTargetId,
 \item{WindowTargetId}{[required] The ID of the target definition to remove.}
 
 \item{Safe}{The system checks if the target is being referenced by a task. If the
-target is being referenced, the system returns an error and does not
+target is being referenced, the system returns an error and doesn't
 deregister the target from the maintenance window.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowId = "string",
-  WindowTargetId = "string"
-)
-}
 }
 \description{
 Removes a target from a maintenance window.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_target_from_maintenance_window(
-  WindowId = "string",
-  WindowTargetId = "string",
-  Safe = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/deregister_target_from_maintenance_window.html} for full documentation.
+}
 \keyword{internal}

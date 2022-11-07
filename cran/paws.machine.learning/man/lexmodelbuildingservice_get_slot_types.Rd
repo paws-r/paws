@@ -4,8 +4,11 @@
 \alias{lexmodelbuildingservice_get_slot_types}
 \title{Returns slot type information as follows:}
 \usage{
-lexmodelbuildingservice_get_slot_types(nextToken, maxResults,
-  nameContains)
+lexmodelbuildingservice_get_slot_types(
+  nextToken = NULL,
+  maxResults = NULL,
+  nameContains = NULL
+)
 }
 \arguments{
 \item{nextToken}{A pagination token that fetches the next page of slot types. If the
@@ -20,54 +23,9 @@ is 10.}
 any part of its name matches the substring. For example, "xyz" matches
 both "xyzabc" and "abcxyz."}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  slotTypes = list(
-    list(
-      name = "string",
-      description = "string",
-      lastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      version = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns slot type information as follows:
-\itemize{
-\item If you specify the \code{nameContains} field, returns the \verb{$LATEST}
-version of all slot types that contain the specified string.
-\item If you don't specify the \code{nameContains} field, returns information
-about the \verb{$LATEST} version of all slot types.
-}
 
-The operation requires permission for the \code{lex:GetSlotTypes} action.
-}
-\section{Request syntax}{
-\preformatted{svc$get_slot_types(
-  nextToken = "string",
-  maxResults = 123,
-  nameContains = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example shows how to get a list of all of the slot types in your
-# account.
-svc$get_slot_types(
-  maxResults = 10L,
-  nextToken = ""
-)
-}
-
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_types.html} for full documentation.
 }
 \keyword{internal}

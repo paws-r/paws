@@ -6,22 +6,9 @@
 \usage{
 xray_get_encryption_config()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EncryptionConfig = list(
-    KeyId = "string",
-    Status = "UPDATING"|"ACTIVE",
-    Type = "NONE"|"KMS"
-  )
-)
-}
-}
 \description{
 Retrieves the current encryption configuration for X-Ray data.
-}
-\section{Request syntax}{
-\preformatted{svc$get_encryption_config()
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/get_encryption_config.html} for full documentation.
+}
 \keyword{internal}

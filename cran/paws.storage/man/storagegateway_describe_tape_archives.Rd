@@ -5,7 +5,11 @@
 \title{Returns a description of specified virtual tapes in the virtual tape
 shelf (VTS)}
 \usage{
-storagegateway_describe_tape_archives(TapeARNs, Marker, Limit)
+storagegateway_describe_tape_archives(
+  TapeARNs = NULL,
+  Marker = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{TapeARNs}{Specifies one or more unique Amazon Resource Names (ARNs) that represent
@@ -17,69 +21,9 @@ describing virtual tapes.}
 \item{Limit}{Specifies that the number of virtual tapes described be limited to the
 specified number.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TapeArchives = list(
-    list(
-      TapeARN = "string",
-      TapeBarcode = "string",
-      TapeCreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      TapeSizeInBytes = 123,
-      CompletionTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      RetrievedTo = "string",
-      TapeStatus = "string",
-      TapeUsedInBytes = 123,
-      KMSKey = "string",
-      PoolId = "string",
-      Worm = TRUE|FALSE,
-      RetentionStartDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      PoolEntryDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns a description of specified virtual tapes in the virtual tape
-shelf (VTS). This operation is only supported in the tape gateway type.
+Returns a description of specified virtual tapes in the virtual tape shelf (VTS). This operation is only supported in the tape gateway type.
 
-If a specific \code{TapeARN} is not specified, AWS Storage Gateway returns a
-description of all virtual tapes found in the VTS associated with your
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tape_archives(
-  TapeARNs = list(
-    "string"
-  ),
-  Marker = "string",
-  Limit = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# Returns a description of specified virtual tapes in the virtual tape
-# shelf (VTS).
-svc$describe_tape_archives(
-  Limit = 123L,
-  Marker = "1",
-  TapeARNs = list(
-    "arn:aws:storagegateway:us-east-1:999999999999:tape/AM08A1AD",
-    "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/describe_tape_archives.html} for full documentation.
 }
 \keyword{internal}

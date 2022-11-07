@@ -4,7 +4,11 @@
 \alias{directoryservice_describe_directories}
 \title{Obtains information about the directories that belong to this account}
 \usage{
-directoryservice_describe_directories(DirectoryIds, NextToken, Limit)
+directoryservice_describe_directories(
+  DirectoryIds = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{DirectoryIds}{A list of identifiers of the directories for which to obtain the
@@ -21,140 +25,9 @@ null if this is the first call.}
 maximum number of items is specified by the limitations of the
 operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DirectoryDescriptions = list(
-    list(
-      DirectoryId = "string",
-      Name = "string",
-      ShortName = "string",
-      Size = "Small"|"Large",
-      Edition = "Enterprise"|"Standard",
-      Alias = "string",
-      AccessUrl = "string",
-      Description = "string",
-      DnsIpAddrs = list(
-        "string"
-      ),
-      Stage = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed",
-      ShareStatus = "Shared"|"PendingAcceptance"|"Rejected"|"Rejecting"|"RejectFailed"|"Sharing"|"ShareFailed"|"Deleted"|"Deleting",
-      ShareMethod = "ORGANIZATIONS"|"HANDSHAKE",
-      ShareNotes = "string",
-      LaunchTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StageLastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Type = "SimpleAD"|"ADConnector"|"MicrosoftAD"|"SharedMicrosoftAD",
-      VpcSettings = list(
-        VpcId = "string",
-        SubnetIds = list(
-          "string"
-        ),
-        SecurityGroupId = "string",
-        AvailabilityZones = list(
-          "string"
-        )
-      ),
-      ConnectSettings = list(
-        VpcId = "string",
-        SubnetIds = list(
-          "string"
-        ),
-        CustomerUserName = "string",
-        SecurityGroupId = "string",
-        AvailabilityZones = list(
-          "string"
-        ),
-        ConnectIps = list(
-          "string"
-        )
-      ),
-      RadiusSettings = list(
-        RadiusServers = list(
-          "string"
-        ),
-        RadiusPort = 123,
-        RadiusTimeout = 123,
-        RadiusRetries = 123,
-        SharedSecret = "string",
-        AuthenticationProtocol = "PAP"|"CHAP"|"MS-CHAPv1"|"MS-CHAPv2",
-        DisplayLabel = "string",
-        UseSameUsername = TRUE|FALSE
-      ),
-      RadiusStatus = "Creating"|"Completed"|"Failed",
-      StageReason = "string",
-      SsoEnabled = TRUE|FALSE,
-      DesiredNumberOfDomainControllers = 123,
-      OwnerDirectoryDescription = list(
-        DirectoryId = "string",
-        AccountId = "string",
-        DnsIpAddrs = list(
-          "string"
-        ),
-        VpcSettings = list(
-          VpcId = "string",
-          SubnetIds = list(
-            "string"
-          ),
-          SecurityGroupId = "string",
-          AvailabilityZones = list(
-            "string"
-          )
-        ),
-        RadiusSettings = list(
-          RadiusServers = list(
-            "string"
-          ),
-          RadiusPort = 123,
-          RadiusTimeout = 123,
-          RadiusRetries = 123,
-          SharedSecret = "string",
-          AuthenticationProtocol = "PAP"|"CHAP"|"MS-CHAPv1"|"MS-CHAPv2",
-          DisplayLabel = "string",
-          UseSameUsername = TRUE|FALSE
-        ),
-        RadiusStatus = "Creating"|"Completed"|"Failed"
-      ),
-      RegionsInfo = list(
-        PrimaryRegion = "string",
-        AdditionalRegions = list(
-          "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Obtains information about the directories that belong to this account.
 
-You can retrieve information about specific directories by passing the
-directory identifiers in the \code{DirectoryIds} parameter. Otherwise, all
-directories that belong to the current account are returned.
-
-This operation supports pagination with the use of the \code{NextToken}
-request and response parameters. If more results are available, the
-\code{DescribeDirectoriesResult.NextToken} member contains a token that you
-pass in the next call to
-\code{\link[=directoryservice_describe_directories]{describe_directories}} to
-retrieve the next set of items.
-
-You can also specify a maximum number of return results with the \code{Limit}
-parameter.
+See \url{https://paws-r.github.io/docs/directoryservice/describe_directories.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_directories(
-  DirectoryIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
-
 \keyword{internal}

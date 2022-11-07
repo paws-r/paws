@@ -19,31 +19,12 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 that can consist of any upper or lowercased letter or digit.}
 
 \item{Status}{[required] The status to assign to the SSH public key. \code{Active} means that the key
-can be used for authentication with an AWS CodeCommit repository.
-\code{Inactive} means that the key cannot be used.}
-}
-\value{
-An empty list.
+can be used for authentication with an CodeCommit repository. \code{Inactive}
+means that the key cannot be used.}
 }
 \description{
-Sets the status of an IAM user's SSH public key to active or inactive.
-SSH public keys that are inactive cannot be used for authentication.
-This operation can be used to disable a user's SSH public key as part of
-a key rotation work flow.
+Sets the status of an IAM user's SSH public key to active or inactive. SSH public keys that are inactive cannot be used for authentication. This operation can be used to disable a user's SSH public key as part of a key rotation work flow.
 
-The SSH public key affected by this operation is used only for
-authenticating the associated IAM user to an AWS CodeCommit repository.
-For more information about using SSH keys to authenticate to an AWS
-CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html}{Set up AWS CodeCommit for SSH Connections}
-in the \emph{AWS CodeCommit User Guide}.
+See \url{https://paws-r.github.io/docs/iam/update_ssh_public_key.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_ssh_public_key(
-  UserName = "string",
-  SSHPublicKeyId = "string",
-  Status = "Active"|"Inactive"
-)
-}
-}
-
 \keyword{internal}

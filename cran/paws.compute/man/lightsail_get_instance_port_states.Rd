@@ -11,35 +11,9 @@ lightsail_get_instance_port_states(instanceName)
 \arguments{
 \item{instanceName}{[required] The name of the instance for which to return firewall port states.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  portStates = list(
-    list(
-      fromPort = 123,
-      toPort = 123,
-      protocol = "tcp"|"all"|"udp"|"icmp",
-      state = "open"|"closed",
-      cidrs = list(
-        "string"
-      ),
-      cidrListAliases = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns the firewall port states for a specific Amazon Lightsail
-instance, the IP addresses allowed to connect to the instance through
-the ports, and the protocol.
-}
-\section{Request syntax}{
-\preformatted{svc$get_instance_port_states(
-  instanceName = "string"
-)
-}
-}
+Returns the firewall port states for a specific Amazon Lightsail instance, the IP addresses allowed to connect to the instance through the ports, and the protocol.
 
+See \url{https://paws-r.github.io/docs/lightsail/get_instance_port_states.html} for full documentation.
+}
 \keyword{internal}

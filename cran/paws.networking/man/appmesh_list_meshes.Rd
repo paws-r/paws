@@ -4,7 +4,7 @@
 \alias{appmesh_list_meshes}
 \title{Returns a list of existing service meshes}
 \usage{
-appmesh_list_meshes(limit, nextToken)
+appmesh_list_meshes(limit = NULL, nextToken = NULL)
 }
 \arguments{
 \item{limit}{The maximum number of results returned by
@@ -27,36 +27,9 @@ This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  meshes = list(
-    list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshName = "string",
-      meshOwner = "string",
-      resourceOwner = "string",
-      version = 123
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns a list of existing service meshes.
-}
-\section{Request syntax}{
-\preformatted{svc$list_meshes(
-  limit = 123,
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appmesh/list_meshes.html} for full documentation.
+}
 \keyword{internal}

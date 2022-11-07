@@ -5,9 +5,17 @@
 \title{Starts an asynchronous key phrase detection job for a collection of
 documents}
 \usage{
-comprehend_start_key_phrases_detection_job(InputDataConfig,
-  OutputDataConfig, DataAccessRoleArn, JobName, LanguageCode,
-  ClientRequestToken, VolumeKmsKeyId, VpcConfig)
+comprehend_start_key_phrases_detection_job(
+  InputDataConfig,
+  OutputDataConfig,
+  DataAccessRoleArn,
+  JobName = NULL,
+  LanguageCode,
+  ClientRequestToken = NULL,
+  VolumeKmsKeyId = NULL,
+  VpcConfig = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
@@ -41,43 +49,15 @@ either of the following formats:
 \item{VpcConfig}{Configuration parameters for an optional private Virtual Private Cloud
 (VPC) containing the resources you are using for your key phrases
 detection job. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string",
-  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-)
-}
+
+\item{Tags}{Tags to be associated with the key phrases detection job. A tag is a
+key-value pair that adds metadata to a resource used by Amazon
+Comprehend. For example, a tag with "Sales" as the key might be added to
+a resource to indicate its use by the sales department.}
 }
 \description{
-Starts an asynchronous key phrase detection job for a collection of
-documents. Use the operation to track the status of a job.
-}
-\section{Request syntax}{
-\preformatted{svc$start_key_phrases_detection_job(
-  InputDataConfig = list(
-    S3Uri = "string",
-    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-  ),
-  OutputDataConfig = list(
-    S3Uri = "string",
-    KmsKeyId = "string"
-  ),
-  DataAccessRoleArn = "string",
-  JobName = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-  ClientRequestToken = "string",
-  VolumeKmsKeyId = "string",
-  VpcConfig = list(
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Subnets = list(
-      "string"
-    )
-  )
-)
-}
-}
+Starts an asynchronous key phrase detection job for a collection of documents. Use the operation to track the status of a job.
 
+See \url{https://paws-r.github.io/docs/comprehend/start_key_phrases_detection_job.html} for full documentation.
+}
 \keyword{internal}

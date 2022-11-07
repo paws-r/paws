@@ -2,33 +2,14 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_get_account_summary}
 \alias{iam_get_account_summary}
-\title{Retrieves information about IAM entity usage and IAM quotas in the AWS
-account}
+\title{Retrieves information about IAM entity usage and IAM quotas in the
+Amazon Web Services account}
 \usage{
 iam_get_account_summary()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SummaryMap = list(
-    123
-  )
-)
-}
-}
 \description{
-Retrieves information about IAM entity usage and IAM quotas in the AWS
-account.
+Retrieves information about IAM entity usage and IAM quotas in the Amazon Web Services account.
 
-The number and size of IAM resources in an AWS account are limited. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
-in the \emph{IAM User Guide}.
-}
-\examples{
-\dontrun{
-# The following command returns information about the IAM entity quotas
-# and usage in the current AWS account.
-svc$get_account_summary()
-}
-
+See \url{https://paws-r.github.io/docs/iam/get_account_summary.html} for full documentation.
 }
 \keyword{internal}

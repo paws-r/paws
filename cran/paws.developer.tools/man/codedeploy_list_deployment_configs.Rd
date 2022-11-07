@@ -4,7 +4,7 @@
 \alias{codedeploy_list_deployment_configs}
 \title{Lists the deployment configurations with the IAM user or AWS account}
 \usage{
-codedeploy_list_deployment_configs(nextToken)
+codedeploy_list_deployment_configs(nextToken = NULL)
 }
 \arguments{
 \item{nextToken}{An identifier returned from the previous
@@ -12,23 +12,9 @@ codedeploy_list_deployment_configs(nextToken)
 can be used to return the next set of deployment configurations in the
 list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  deploymentConfigsList = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists the deployment configurations with the IAM user or AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_deployment_configs(
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/list_deployment_configs.html} for full documentation.
+}
 \keyword{internal}

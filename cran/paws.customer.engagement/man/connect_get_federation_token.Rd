@@ -7,31 +7,12 @@
 connect_get_federation_token(InstanceId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Credentials = list(
-    AccessToken = "string",
-    AccessTokenExpiration = as.POSIXct(
-      "2015-01-01"
-    ),
-    RefreshToken = "string",
-    RefreshTokenExpiration = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
 Retrieves a token for federation.
-}
-\section{Request syntax}{
-\preformatted{svc$get_federation_token(
-  InstanceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/get_federation_token.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{ec2_monitor_instances}
 \title{Enables detailed monitoring for a running instance}
 \usage{
-ec2_monitor_instances(InstanceIds, DryRun)
+ec2_monitor_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] The IDs of the instances.}
@@ -14,34 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceMonitorings = list(
-    list(
-      InstanceId = "string",
-      Monitoring = list(
-        State = "disabled"|"disabling"|"enabled"|"pending"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Enables detailed monitoring for a running instance. Otherwise, basic
-monitoring is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring your instances and volumes}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitor your instances using CloudWatch} in the \emph{Amazon EC2 User Guide}.
 
-To disable detailed monitoring, see .
+See \url{https://paws-r.github.io/docs/ec2/monitor_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$monitor_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

@@ -6,23 +6,9 @@
 \usage{
 dynamodb_describe_endpoints()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Endpoints = list(
-    list(
-      Address = "string",
-      CachePeriodInMinutes = 123
-    )
-  )
-)
-}
-}
 \description{
 Returns the regional endpoint information.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_endpoints()
-}
-}
 
+See \url{https://paws-r.github.io/docs/dynamodb/describe_endpoints.html} for full documentation.
+}
 \keyword{internal}

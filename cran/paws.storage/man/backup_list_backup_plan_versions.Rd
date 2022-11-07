@@ -6,7 +6,11 @@
 Names (ARNs), backup plan IDs, creation and deletion dates, plan names,
 and version IDs}
 \usage{
-backup_list_backup_plan_versions(BackupPlanId, NextToken, MaxResults)
+backup_list_backup_plan_versions(
+  BackupPlanId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
@@ -18,50 +22,9 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  BackupPlanVersionsList = list(
-    list(
-      BackupPlanArn = "string",
-      BackupPlanId = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeletionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      VersionId = "string",
-      BackupPlanName = "string",
-      CreatorRequestId = "string",
-      LastExecutionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      AdvancedBackupSettings = list(
-        list(
-          ResourceType = "string",
-          BackupOptions = list(
-            "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns version metadata of your backup plans, including Amazon Resource
-Names (ARNs), backup plan IDs, creation and deletion dates, plan names,
-and version IDs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_backup_plan_versions(
-  BackupPlanId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs.
 
+See \url{https://paws-r.github.io/docs/backup/list_backup_plan_versions.html} for full documentation.
+}
 \keyword{internal}

@@ -2,42 +2,32 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_document_permission}
 \alias{ssm_describe_document_permission}
-\title{Describes the permissions for a Systems Manager document}
+\title{Describes the permissions for a Amazon Web Services Systems Manager
+document (SSM document)}
 \usage{
-ssm_describe_document_permission(Name, PermissionType)
+ssm_describe_document_permission(
+  Name,
+  PermissionType,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the document for which you are the owner.}
 
 \item{PermissionType}{[required] The permission type for the document. The permission type can be
 \emph{Share}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountIds = list(
-    "string"
-  ),
-  AccountSharingInfoList = list(
-    list(
-      AccountId = "string",
-      SharedDocumentVersion = "string"
-    )
-  )
-)
-}
+
+\item{MaxResults}{The maximum number of items to return for this call. The call also
+returns a token that you can specify in a subsequent call to get the
+next set of results.}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
-Describes the permissions for a Systems Manager document. If you created
-the document, you are the owner. If a document is shared, it can either
-be shared privately (by specifying a user's AWS account ID) or publicly
-(\emph{All}).
-}
-\section{Request syntax}{
-\preformatted{svc$describe_document_permission(
-  Name = "string",
-  PermissionType = "Share"
-)
-}
-}
+Describes the permissions for a Amazon Web Services Systems Manager document (SSM document). If you created the document, you are the owner. If a document is shared, it can either be shared privately (by specifying a user's Amazon Web Services account ID) or publicly (\emph{All}).
 
+See \url{https://paws-r.github.io/docs/ssm/describe_document_permission.html} for full documentation.
+}
 \keyword{internal}

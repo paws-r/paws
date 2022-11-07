@@ -4,10 +4,21 @@
 \alias{sagemaker_list_monitoring_schedules}
 \title{Returns list of all monitoring schedules}
 \usage{
-sagemaker_list_monitoring_schedules(EndpointName, SortBy, SortOrder,
-  NextToken, MaxResults, NameContains, CreationTimeBefore,
-  CreationTimeAfter, LastModifiedTimeBefore, LastModifiedTimeAfter,
-  StatusEquals, MonitoringJobDefinitionName, MonitoringTypeEquals)
+sagemaker_list_monitoring_schedules(
+  EndpointName = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  StatusEquals = NULL,
+  MonitoringJobDefinitionName = NULL,
+  MonitoringTypeEquals = NULL
+)
 }
 \arguments{
 \item{EndpointName}{Name of a specific endpoint to fetch schedules for.}
@@ -47,56 +58,9 @@ definition.}
 \item{MonitoringTypeEquals}{A filter that returns only the monitoring schedules for the specified
 monitoring type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MonitoringScheduleSummaries = list(
-    list(
-      MonitoringScheduleName = "string",
-      MonitoringScheduleArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MonitoringScheduleStatus = "Pending"|"Failed"|"Scheduled"|"Stopped",
-      EndpointName = "string",
-      MonitoringJobDefinitionName = "string",
-      MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns list of all monitoring schedules.
-}
-\section{Request syntax}{
-\preformatted{svc$list_monitoring_schedules(
-  EndpointName = "string",
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  StatusEquals = "Pending"|"Failed"|"Scheduled"|"Stopped",
-  MonitoringJobDefinitionName = "string",
-  MonitoringTypeEquals = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_monitoring_schedules.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,12 @@
 \title{Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a
 JsonClassifier, or a CsvClassifier, depending on which field is present)}
 \usage{
-glue_update_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
-  CsvClassifier)
+glue_update_classifier(
+  GrokClassifier = NULL,
+  XMLClassifier = NULL,
+  JsonClassifier = NULL,
+  CsvClassifier = NULL
+)
 }
 \arguments{
 \item{GrokClassifier}{A \code{GrokClassifier} object with updated fields.}
@@ -17,44 +21,9 @@ glue_update_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
 
 \item{CsvClassifier}{A \code{CsvClassifier} object with updated fields.}
 }
-\value{
-An empty list.
-}
 \description{
-Modifies an existing classifier (a \code{GrokClassifier}, an \code{XMLClassifier},
-a \code{JsonClassifier}, or a \code{CsvClassifier}, depending on which field is
-present).
-}
-\section{Request syntax}{
-\preformatted{svc$update_classifier(
-  GrokClassifier = list(
-    Name = "string",
-    Classification = "string",
-    GrokPattern = "string",
-    CustomPatterns = "string"
-  ),
-  XMLClassifier = list(
-    Name = "string",
-    Classification = "string",
-    RowTag = "string"
-  ),
-  JsonClassifier = list(
-    Name = "string",
-    JsonPath = "string"
-  ),
-  CsvClassifier = list(
-    Name = "string",
-    Delimiter = "string",
-    QuoteSymbol = "string",
-    ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
-    Header = list(
-      "string"
-    ),
-    DisableValueTrimming = TRUE|FALSE,
-    AllowSingleColumn = TRUE|FALSE
-  )
-)
-}
-}
+Modifies an existing classifier (a \code{GrokClassifier}, an \code{XMLClassifier}, a \code{JsonClassifier}, or a \code{CsvClassifier}, depending on which field is present).
 
+See \url{https://paws-r.github.io/docs/glue/update_classifier.html} for full documentation.
+}
 \keyword{internal}

@@ -7,26 +7,15 @@
 apigateway_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged.}
+\item{resourceArn}{[required] The ARN of a resource that can be tagged.}
 
-\item{tags}{[required] [Required] The key-value map of strings. The valid character set is
+\item{tags}{[required] The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds or updates a tag on a given resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/tag_resource.html} for full documentation.
+}
 \keyword{internal}

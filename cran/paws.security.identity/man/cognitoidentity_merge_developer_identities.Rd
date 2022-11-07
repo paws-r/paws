@@ -5,8 +5,12 @@
 \title{Merges two users having different IdentityIds, existing in the same
 identity pool, and identified by the same developer provider}
 \usage{
-cognitoidentity_merge_developer_identities(SourceUserIdentifier,
-  DestinationUserIdentifier, DeveloperProviderName, IdentityPoolId)
+cognitoidentity_merge_developer_identities(
+  SourceUserIdentifier,
+  DestinationUserIdentifier,
+  DeveloperProviderName,
+  IdentityPoolId
+)
 }
 \arguments{
 \item{SourceUserIdentifier}{[required] User identifier for the source user. The value should be a
@@ -24,37 +28,9 @@ underscore (_), and dash (-).}
 
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityId = "string"
-)
-}
-}
 \description{
-Merges two users having different \code{IdentityId}s, existing in the same
-identity pool, and identified by the same developer provider. You can
-use this action to request that discrete users be merged and identified
-as a single user in the Cognito environment. Cognito associates the
-given source user (\code{SourceUserIdentifier}) with the \code{IdentityId} of the
-\code{DestinationUserIdentifier}. Only developer-authenticated users can be
-merged. If the users to be merged are associated with the same public
-provider, but as two different users, an exception will be thrown.
+Merges two users having different \code{IdentityId}s, existing in the same identity pool, and identified by the same developer provider. You can use this action to request that discrete users be merged and identified as a single user in the Cognito environment. Cognito associates the given source user (\code{SourceUserIdentifier}) with the \code{IdentityId} of the \code{DestinationUserIdentifier}. Only developer-authenticated users can be merged. If the users to be merged are associated with the same public provider, but as two different users, an exception will be thrown.
 
-The number of linked logins is limited to 20. So, the number of linked
-logins for the source user, \code{SourceUserIdentifier}, and the destination
-user, \code{DestinationUserIdentifier}, together should not be larger than
-20. Otherwise, an exception will be thrown.
-
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/merge_developer_identities.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$merge_developer_identities(
-  SourceUserIdentifier = "string",
-  DestinationUserIdentifier = "string",
-  DeveloperProviderName = "string",
-  IdentityPoolId = "string"
-)
-}
-}
-
 \keyword{internal}

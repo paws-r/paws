@@ -4,29 +4,15 @@
 \alias{codedeploy_list_applications}
 \title{Lists the applications registered with the IAM user or AWS account}
 \usage{
-codedeploy_list_applications(nextToken)
+codedeploy_list_applications(nextToken = NULL)
 }
 \arguments{
 \item{nextToken}{An identifier returned from the previous list applications call. It can
 be used to return the next set of applications in the list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  applications = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists the applications registered with the IAM user or AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_applications(
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/list_applications.html} for full documentation.
+}
 \keyword{internal}

@@ -5,45 +5,15 @@
 \title{Returns a description of a notebook instance lifecycle configuration}
 \usage{
 sagemaker_describe_notebook_instance_lifecycle_config(
-  NotebookInstanceLifecycleConfigName)
+  NotebookInstanceLifecycleConfigName
+)
 }
 \arguments{
 \item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NotebookInstanceLifecycleConfigArn = "string",
-  NotebookInstanceLifecycleConfigName = "string",
-  OnCreate = list(
-    list(
-      Content = "string"
-    )
-  ),
-  OnStart = list(
-    list(
-      Content = "string"
-    )
-  ),
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Returns a description of a notebook instance lifecycle configuration.
 
-For information about notebook instance lifestyle configurations, see
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.
+See \url{https://paws-r.github.io/docs/sagemaker/describe_notebook_instance_lifecycle_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_notebook_instance_lifecycle_config(
-  NotebookInstanceLifecycleConfigName = "string"
-)
-}
-}
-
 \keyword{internal}

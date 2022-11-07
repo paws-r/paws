@@ -4,8 +4,13 @@
 \alias{rds_create_option_group}
 \title{Creates a new option group}
 \usage{
-rds_create_option_group(OptionGroupName, EngineName, MajorEngineVersion,
-  OptionGroupDescription, Tags)
+rds_create_option_group(
+  OptionGroupName,
+  EngineName,
+  MajorEngineVersion,
+  OptionGroupDescription,
+  Tags = NULL
+)
 }
 \arguments{
 \item{OptionGroupName}{[required] Specifies the name of the option group to be created.
@@ -20,7 +25,22 @@ Constraints:
 Example: \code{myoptiongroup}}
 
 \item{EngineName}{[required] Specifies the name of the engine that this option group should be
-associated with.}
+associated with.
+
+Valid Values:
+\itemize{
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-ee-cdb}
+\item \code{oracle-se2}
+\item \code{oracle-se2-cdb}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
+}}
 
 \item{MajorEngineVersion}{[required] Specifies the major version of the engine that this option group should
 be associated with.}
@@ -29,72 +49,9 @@ be associated with.}
 
 \item{Tags}{Tags to assign to the option group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OptionGroup = list(
-    OptionGroupName = "string",
-    OptionGroupDescription = "string",
-    EngineName = "string",
-    MajorEngineVersion = "string",
-    Options = list(
-      list(
-        OptionName = "string",
-        OptionDescription = "string",
-        Persistent = TRUE|FALSE,
-        Permanent = TRUE|FALSE,
-        Port = 123,
-        OptionVersion = "string",
-        OptionSettings = list(
-          list(
-            Name = "string",
-            Value = "string",
-            DefaultValue = "string",
-            Description = "string",
-            ApplyType = "string",
-            DataType = "string",
-            AllowedValues = "string",
-            IsModifiable = TRUE|FALSE,
-            IsCollection = TRUE|FALSE
-          )
-        ),
-        DBSecurityGroupMemberships = list(
-          list(
-            DBSecurityGroupName = "string",
-            Status = "string"
-          )
-        ),
-        VpcSecurityGroupMemberships = list(
-          list(
-            VpcSecurityGroupId = "string",
-            Status = "string"
-          )
-        )
-      )
-    ),
-    AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
-    VpcId = "string",
-    OptionGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Creates a new option group. You can create up to 20 option groups.
-}
-\section{Request syntax}{
-\preformatted{svc$create_option_group(
-  OptionGroupName = "string",
-  EngineName = "string",
-  MajorEngineVersion = "string",
-  OptionGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/create_option_group.html} for full documentation.
+}
 \keyword{internal}

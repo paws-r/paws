@@ -5,16 +5,30 @@
 \title{Returns one or more snapshot objects, which contain metadata about your
 cluster snapshots}
 \usage{
-redshift_describe_cluster_snapshots(ClusterIdentifier,
-  SnapshotIdentifier, SnapshotType, StartTime, EndTime, MaxRecords,
-  Marker, OwnerAccount, TagKeys, TagValues, ClusterExists,
-  SortingEntities)
+redshift_describe_cluster_snapshots(
+  ClusterIdentifier = NULL,
+  SnapshotIdentifier = NULL,
+  SnapshotArn = NULL,
+  SnapshotType = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  OwnerAccount = NULL,
+  TagKeys = NULL,
+  TagValues = NULL,
+  ClusterExists = NULL,
+  SortingEntities = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{The identifier of the cluster which generated the requested snapshots.}
 
 \item{SnapshotIdentifier}{The snapshot identifier of the snapshot about which to return
 information.}
+
+\item{SnapshotArn}{The Amazon Resource Name (ARN) of the snapshot associated with the
+message to describe cluster snapshots.}
 
 \item{SnapshotType}{The type of snapshots for which you are requesting information. By
 default, snapshots of all types are returned.
@@ -46,15 +60,15 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_cluster_snapshots]{describe_cluster_snapshots}}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 
-\item{OwnerAccount}{The AWS customer account used to create or copy the snapshot. Use this
-field to filter the results to snapshots owned by a particular account.
-To describe snapshots you own, either specify your AWS customer account,
-or do not specify the parameter.}
+\item{OwnerAccount}{The Amazon Web Services account used to create or copy the snapshot. Use
+this field to filter the results to snapshots owned by a particular
+account. To describe snapshots you own, either specify your Amazon Web
+Services account, or do not specify the parameter.}
 
 \item{TagKeys}{A tag key or keys for which you want to return all matching cluster
 snapshots that are associated with the specified key or keys. For
@@ -89,116 +103,9 @@ specified for an existing cluster, no snapshots are returned.
 
 \item{SortingEntities}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  Snapshots = list(
-    list(
-      SnapshotIdentifier = "string",
-      ClusterIdentifier = "string",
-      SnapshotCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "string",
-      Port = 123,
-      AvailabilityZone = "string",
-      ClusterCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MasterUsername = "string",
-      ClusterVersion = "string",
-      EngineFullVersion = "string",
-      SnapshotType = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      DBName = "string",
-      VpcId = "string",
-      Encrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      EncryptedWithHSM = TRUE|FALSE,
-      AccountsWithRestoreAccess = list(
-        list(
-          AccountId = "string",
-          AccountAlias = "string"
-        )
-      ),
-      OwnerAccount = "string",
-      TotalBackupSizeInMegaBytes = 123.0,
-      ActualIncrementalBackupSizeInMegaBytes = 123.0,
-      BackupProgressInMegaBytes = 123.0,
-      CurrentBackupRateInMegaBytesPerSecond = 123.0,
-      EstimatedSecondsToCompletion = 123,
-      ElapsedTimeInSeconds = 123,
-      SourceRegion = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      RestorableNodeTypes = list(
-        "string"
-      ),
-      EnhancedVpcRouting = TRUE|FALSE,
-      MaintenanceTrackName = "string",
-      ManualSnapshotRetentionPeriod = 123,
-      ManualSnapshotRemainingDays = 123,
-      SnapshotRetentionStartTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns one or more snapshot objects, which contain metadata about your
-cluster snapshots. By default, this operation returns information about
-all snapshots of all clusters that are owned by you AWS customer
-account. No information is returned for snapshots owned by inactive AWS
-customer accounts.
+Returns one or more snapshot objects, which contain metadata about your cluster snapshots. By default, this operation returns information about all snapshots of all clusters that are owned by your Amazon Web Services account. No information is returned for snapshots owned by inactive Amazon Web Services accounts.
 
-If you specify both tag keys and tag values in the same request, Amazon
-Redshift returns all snapshots that match any combination of the
-specified keys and values. For example, if you have \code{owner} and
-\code{environment} for tag keys, and \code{admin} and \code{test} for tag values, all
-snapshots that have any combination of those values are returned. Only
-snapshots that you own are returned in the response; shared snapshots
-are not returned with the tag key and tag value request parameters.
-
-If both tag keys and values are omitted from the request, snapshots are
-returned regardless of whether they have tag keys or values associated
-with them.
+See \url{https://paws-r.github.io/docs/redshift/describe_cluster_snapshots.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_cluster_snapshots(
-  ClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  SnapshotType = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxRecords = 123,
-  Marker = "string",
-  OwnerAccount = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  ),
-  ClusterExists = TRUE|FALSE,
-  SortingEntities = list(
-    list(
-      Attribute = "SOURCE_TYPE"|"TOTAL_SIZE"|"CREATE_TIME",
-      SortOrder = "ASC"|"DESC"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

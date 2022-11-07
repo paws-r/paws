@@ -10,32 +10,9 @@ glue_delete_registry(RegistryId)
 \item{RegistryId}{[required] This is a wrapper structure that may contain the registry name and
 Amazon Resource Name (ARN).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegistryName = "string",
-  RegistryArn = "string",
-  Status = "AVAILABLE"|"DELETING"
-)
-}
-}
 \description{
-Delete the entire registry including schema and all of its versions. To
-get the status of the delete operation, you can call the
-\code{\link[=glue_get_registry]{get_registry}} API after the asynchronous call.
-Deleting a registry will disable all online operations for the registry
-such as the \code{\link[=glue_update_registry]{update_registry}},
-\code{\link[=glue_create_schema]{create_schema}},
-\code{\link[=glue_update_schema]{update_schema}}, and
-\code{\link[=glue_register_schema_version]{register_schema_version}} APIs.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_registry(
-  RegistryId = list(
-    RegistryName = "string",
-    RegistryArn = "string"
-  )
-)
-}
-}
+Delete the entire registry including schema and all of its versions. To get the status of the delete operation, you can call the \code{\link[=glue_get_registry]{get_registry}} API after the asynchronous call. Deleting a registry will deactivate all online operations for the registry such as the \code{\link[=glue_update_registry]{update_registry}}, \code{\link[=glue_create_schema]{create_schema}}, \code{\link[=glue_update_schema]{update_schema}}, and \code{\link[=glue_register_schema_version]{register_schema_version}} APIs.
 
+See \url{https://paws-r.github.io/docs/glue/delete_registry.html} for full documentation.
+}
 \keyword{internal}

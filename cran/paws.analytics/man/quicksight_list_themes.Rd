@@ -2,12 +2,18 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_themes}
 \alias{quicksight_list_themes}
-\title{Lists all the themes in the current AWS account}
+\title{Lists all the themes in the current Amazon Web Services account}
 \usage{
-quicksight_list_themes(AwsAccountId, NextToken, MaxResults, Type)
+quicksight_list_themes(
+  AwsAccountId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  Type = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the themes that you're listing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the themes that
+you're listing.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}
@@ -20,43 +26,13 @@ following:
 \item \code{ALL (default)}- Display all existing themes.
 \item \code{CUSTOM} - Display only the themes created by people using Amazon
 QuickSight.
-\item \code{QUICKSIGHT} - Display only the starting themes defined by
+\item \code{QUICKSIGHT} - Display only the starting themes defined by Amazon
 QuickSight.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThemeSummaryList = list(
-    list(
-      Arn = "string",
-      Name = "string",
-      ThemeId = "string",
-      LatestVersionNumber = 123,
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Lists all the themes in the current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_themes(
-  AwsAccountId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  Type = "QUICKSIGHT"|"CUSTOM"|"ALL"
-)
-}
-}
+Lists all the themes in the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/quicksight/list_themes.html} for full documentation.
+}
 \keyword{internal}

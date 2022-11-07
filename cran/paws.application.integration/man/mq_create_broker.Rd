@@ -4,22 +4,40 @@
 \alias{mq_create_broker}
 \title{Creates a broker}
 \usage{
-mq_create_broker(AuthenticationStrategy, AutoMinorVersionUpgrade,
-  BrokerName, Configuration, CreatorRequestId, DeploymentMode,
-  EncryptionOptions, EngineType, EngineVersion, HostInstanceType,
-  LdapServerMetadata, Logs, MaintenanceWindowStartTime,
-  PubliclyAccessible, SecurityGroups, StorageType, SubnetIds, Tags, Users)
+mq_create_broker(
+  AuthenticationStrategy = NULL,
+  AutoMinorVersionUpgrade,
+  BrokerName,
+  Configuration = NULL,
+  CreatorRequestId = NULL,
+  DeploymentMode,
+  EncryptionOptions = NULL,
+  EngineType,
+  EngineVersion,
+  HostInstanceType,
+  LdapServerMetadata = NULL,
+  Logs = NULL,
+  MaintenanceWindowStartTime = NULL,
+  PubliclyAccessible,
+  SecurityGroups = NULL,
+  StorageType = NULL,
+  SubnetIds = NULL,
+  Tags = NULL,
+  Users
+)
 }
 \arguments{
-\item{AuthenticationStrategy}{The authentication strategy used to secure the broker.}
+\item{AuthenticationStrategy}{Optional. The authentication strategy used to secure the broker. The
+default is SIMPLE.}
 
-\item{AutoMinorVersionUpgrade}{Required. Enables automatic upgrades to new minor versions for brokers,
-as Apache releases the versions. The automatic upgrades occur during the
-maintenance window of the broker or after a manual broker reboot.}
+\item{AutoMinorVersionUpgrade}{[required] Enables automatic upgrades to new minor versions for brokers, as new
+versions are released and supported by Amazon MQ. Automatic upgrades
+occur during the scheduled maintenance window of the broker or after a
+manual broker reboot. Set to true by default, if no value is specified.}
 
-\item{BrokerName}{Required. The name of the broker. This value must be unique in your AWS
+\item{BrokerName}{[required] Required. The broker's name. This value must be unique in your AWS
 account, 1-50 characters long, must contain only letters, numbers,
-dashes, and underscores, and must not contain whitespaces, brackets,
+dashes, and underscores, and must not contain white spaces, brackets,
 wildcard characters, or special characters.}
 
 \item{Configuration}{A list of information about the configuration.}
@@ -30,128 +48,66 @@ Universally Unique Identifier (UUID) for the creatorRequestId. You may
 omit the creatorRequestId if your application doesn't require
 idempotency.}
 
-\item{DeploymentMode}{Required. The deployment mode of the broker.}
+\item{DeploymentMode}{[required] Required. The broker's deployment mode.}
 
-\item{EncryptionOptions}{Encryption options for the broker.}
+\item{EncryptionOptions}{Encryption options for the broker. Does not apply to RabbitMQ brokers.}
 
-\item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports
+\item{EngineType}{[required] Required. The type of broker engine. Currently, Amazon MQ supports
 ACTIVEMQ and RABBITMQ.}
 
-\item{EngineVersion}{Required. The version of the broker engine. For a list of supported
-engine versions, see
-https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
+\item{EngineVersion}{[required] Required. The broker engine's version. For a list of supported engine
+versions, see \href{https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/}{Supported engines}.}
 
-\item{HostInstanceType}{Required. The broker's instance type.}
+\item{HostInstanceType}{[required] Required. The broker's instance type.}
 
-\item{LdapServerMetadata}{The metadata of the LDAP server used to authenticate and authorize
-connections to the broker.}
+\item{LdapServerMetadata}{Optional. The metadata of the LDAP server used to authenticate and
+authorize connections to the broker. Does not apply to RabbitMQ brokers.}
 
 \item{Logs}{Enables Amazon CloudWatch logging for brokers.}
 
 \item{MaintenanceWindowStartTime}{The parameters that determine the WeeklyStartTime.}
 
-\item{PubliclyAccessible}{Required. Enables connections from applications outside of the VPC that
-hosts the broker's subnets.}
+\item{PubliclyAccessible}{[required] Enables connections from applications outside of the VPC that hosts the
+broker's subnets. Set to false by default, if no value is provided.}
 
-\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorizes
-connections to brokers.}
+\item{SecurityGroups}{The list of rules (1 minimum, 125 maximum) that authorize connections to
+brokers.}
 
 \item{StorageType}{The broker's storage type.}
 
 \item{SubnetIds}{The list of groups that define which subnets and IP ranges the broker
-can use from different Availability Zones. A SINGLE_INSTANCE deployment
+can use from different Availability Zones. If you specify more than one
+subnet, the subnets must be in different Availability Zones. Amazon MQ
+will not be able to create VPC endpoints for your broker with multiple
+subnets in the same Availability Zone. A SINGLE_INSTANCE deployment
 requires one subnet (for example, the default subnet). An
-ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A
-CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when
-deployed with public accessibility, deployment without public
-accessibility requires at least one subnet.}
+ACTIVE_STANDBY_MULTI_AZ Amazon MQ for ActiveMQ deployment requires two
+subnets. A CLUSTER_MULTI_AZ Amazon MQ for RabbitMQ deployment has no
+subnet requirements when deployed with public accessibility. Deployment
+without public accessibility requires at least one subnet.
+
+If you specify subnets in a \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html}{shared VPC}
+for a RabbitMQ broker, the associated VPC to which the specified subnets
+belong must be owned by your AWS account. Amazon MQ will not be able to
+create VPC endpoints in VPCs that are not owned by your AWS account.}
 
 \item{Tags}{Create tags when creating the broker.}
 
-\item{Users}{Required. The list of broker users (persons or applications) who can
-access queues and topics. For RabbitMQ brokers, one and only one
+\item{Users}{[required] Required. The list of broker users (persons or applications) who can
+access queues and topics. This value can contain only alphanumeric
+characters, dashes, periods, underscores, and tildes (- . _ ~). This
+value must be 2-100 characters long.
+
+Amazon MQ for RabbitMQ
+
+When you create an Amazon MQ for RabbitMQ broker, one and only one
 administrative user is accepted and created when a broker is first
 provisioned. All subsequent broker users are created by making RabbitMQ
-API calls directly to brokers or via the RabbitMQ Web Console. This
-value can contain only alphanumeric characters, dashes, periods,
-underscores, and tildes (- . _ ~). This value must be 2-100 characters
-long.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BrokerArn = "string",
-  BrokerId = "string"
-)
-}
+API calls directly to brokers or via the RabbitMQ web console.}
 }
 \description{
 Creates a broker. Note: This API is asynchronous.
-}
-\section{Request syntax}{
-\preformatted{svc$create_broker(
-  AuthenticationStrategy = "SIMPLE"|"LDAP",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  BrokerName = "string",
-  Configuration = list(
-    Id = "string",
-    Revision = 123
-  ),
-  CreatorRequestId = "string",
-  DeploymentMode = "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ"|"CLUSTER_MULTI_AZ",
-  EncryptionOptions = list(
-    KmsKeyId = "string",
-    UseAwsOwnedKey = TRUE|FALSE
-  ),
-  EngineType = "ACTIVEMQ"|"RABBITMQ",
-  EngineVersion = "string",
-  HostInstanceType = "string",
-  LdapServerMetadata = list(
-    Hosts = list(
-      "string"
-    ),
-    RoleBase = "string",
-    RoleName = "string",
-    RoleSearchMatching = "string",
-    RoleSearchSubtree = TRUE|FALSE,
-    ServiceAccountPassword = "string",
-    ServiceAccountUsername = "string",
-    UserBase = "string",
-    UserRoleName = "string",
-    UserSearchMatching = "string",
-    UserSearchSubtree = TRUE|FALSE
-  ),
-  Logs = list(
-    Audit = TRUE|FALSE,
-    General = TRUE|FALSE
-  ),
-  MaintenanceWindowStartTime = list(
-    DayOfWeek = "MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"|"SUNDAY",
-    TimeOfDay = "string",
-    TimeZone = "string"
-  ),
-  PubliclyAccessible = TRUE|FALSE,
-  SecurityGroups = list(
-    "string"
-  ),
-  StorageType = "EBS"|"EFS",
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    "string"
-  ),
-  Users = list(
-    list(
-      ConsoleAccess = TRUE|FALSE,
-      Groups = list(
-        "string"
-      ),
-      Password = "string",
-      Username = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/create_broker.html} for full documentation.
+}
 \keyword{internal}

@@ -9,57 +9,14 @@ cloudtrail_get_trail_status(Name)
 \arguments{
 \item{Name}{[required] Specifies the name or the CloudTrail ARN of the trail for which you are
 requesting status. To get the status of a shadow trail (a replication of
-the trail in another region), you must specify its ARN. The format of a
-trail ARN is:
+the trail in another region), you must specify its ARN. The following is
+the format of a trail ARN.
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IsLogging = TRUE|FALSE,
-  LatestDeliveryError = "string",
-  LatestNotificationError = "string",
-  LatestDeliveryTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LatestNotificationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  StartLoggingTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  StopLoggingTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LatestCloudWatchLogsDeliveryError = "string",
-  LatestCloudWatchLogsDeliveryTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LatestDigestDeliveryTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LatestDigestDeliveryError = "string",
-  LatestDeliveryAttemptTime = "string",
-  LatestNotificationAttemptTime = "string",
-  LatestNotificationAttemptSucceeded = "string",
-  LatestDeliveryAttemptSucceeded = "string",
-  TimeLoggingStarted = "string",
-  TimeLoggingStopped = "string"
-)
-}
-}
 \description{
-Returns a JSON-formatted list of information about the specified trail.
-Fields include information on delivery errors, Amazon SNS and Amazon S3
-errors, and start and stop logging times for each trail. This operation
-returns trail status from a single region. To return trail status from
-all regions, you must call the operation on each region.
-}
-\section{Request syntax}{
-\preformatted{svc$get_trail_status(
-  Name = "string"
-)
-}
-}
+Returns a JSON-formatted list of information about the specified trail. Fields include information on delivery errors, Amazon SNS and Amazon S3 errors, and start and stop logging times for each trail. This operation returns trail status from a single region. To return trail status from all regions, you must call the operation on each region.
 
+See \url{https://paws-r.github.io/docs/cloudtrail/get_trail_status.html} for full documentation.
+}
 \keyword{internal}

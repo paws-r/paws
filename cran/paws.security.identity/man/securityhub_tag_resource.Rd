@@ -9,22 +9,13 @@ securityhub_tag_resource(ResourceArn, Tags)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the resource to apply the tags to.}
 
-\item{Tags}{[required] The tags to add to the resource.}
-}
-\value{
-An empty list.
+\item{Tags}{[required] The tags to add to the resource. You can add up to 50 tags at a time.
+The tag keys can be no longer than 128 characters. The tag values can be
+no longer than 256 characters.}
 }
 \description{
 Adds one or more tags to a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/securityhub/tag_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{ec2_describe_vpn_gateways}
 \title{Describes one or more of your virtual private gateways}
 \usage{
-ec2_describe_vpn_gateways(Filters, VpnGatewayIds, DryRun)
+ec2_describe_vpn_gateways(Filters = NULL, VpnGatewayIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -19,11 +19,11 @@ gateway and the VPC (\code{attaching} | \code{attached} | \code{detaching} |
 gateway (if applicable).
 \item \code{state} - The state of the virtual private gateway (\code{pending} |
 \code{available} | \code{deleting} | \code{deleted}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -41,54 +41,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpnGateways = list(
-    list(
-      AvailabilityZone = "string",
-      State = "pending"|"available"|"deleting"|"deleted",
-      Type = "ipsec.1",
-      VpcAttachments = list(
-        list(
-          State = "attaching"|"attached"|"detaching"|"detached",
-          VpcId = "string"
-        )
-      ),
-      VpnGatewayId = "string",
-      AmazonSideAsn = 123,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes one or more of your virtual private gateways.
 
-For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
-\emph{AWS Site-to-Site VPN User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/describe_vpn_gateways.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_vpn_gateways(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  VpnGatewayIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

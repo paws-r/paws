@@ -4,14 +4,21 @@
 \alias{quicksight_update_iam_policy_assignment}
 \title{Updates an existing IAM policy assignment}
 \usage{
-quicksight_update_iam_policy_assignment(AwsAccountId, AssignmentName,
-  Namespace, AssignmentStatus, PolicyArn, Identities)
+quicksight_update_iam_policy_assignment(
+  AwsAccountId,
+  AssignmentName,
+  Namespace,
+  AssignmentStatus = NULL,
+  PolicyArn = NULL,
+  Identities = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the IAM policy assignment.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the IAM policy
+assignment.}
 
 \item{AssignmentName}{[required] The name of the assignment, also called a rule. This name must be unique
-within an AWS account.}
+within an Amazon Web Services account.}
 
 \item{Namespace}{[required] The namespace of the assignment.}
 
@@ -25,47 +32,15 @@ source.
 creating the data source.
 }}
 
-\item{PolicyArn}{The ARN for the IAM policy to apply to the QuickSight users and groups
-specified in this assignment.}
+\item{PolicyArn}{The ARN for the IAM policy to apply to the Amazon QuickSight users and
+groups specified in this assignment.}
 
-\item{Identities}{The QuickSight users, groups, or both that you want to assign the policy
-to.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AssignmentName = "string",
-  AssignmentId = "string",
-  PolicyArn = "string",
-  Identities = list(
-    list(
-      "string"
-    )
-  ),
-  AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{Identities}{The Amazon QuickSight users, groups, or both that you want to assign the
+policy to.}
 }
 \description{
-Updates an existing IAM policy assignment. This operation updates only
-the optional parameter or parameters that are specified in the request.
-This overwrites all of the users included in \code{Identities}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_iam_policy_assignment(
-  AwsAccountId = "string",
-  AssignmentName = "string",
-  Namespace = "string",
-  AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-  PolicyArn = "string",
-  Identities = list(
-    list(
-      "string"
-    )
-  )
-)
-}
-}
+Updates an existing IAM policy assignment. This operation updates only the optional parameter or parameters that are specified in the request. This overwrites all of the users included in \code{Identities}.
 
+See \url{https://paws-r.github.io/docs/quicksight/update_iam_policy_assignment.html} for full documentation.
+}
 \keyword{internal}

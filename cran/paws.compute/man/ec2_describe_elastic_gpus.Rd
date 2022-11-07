@@ -5,8 +5,13 @@
 \title{Describes the Elastic Graphics accelerator associated with your
 instances}
 \usage{
-ec2_describe_elastic_gpus(ElasticGpuIds, DryRun, Filters, MaxResults,
-  NextToken)
+ec2_describe_elastic_gpus(
+  ElasticGpuIds = NULL,
+  DryRun = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ElasticGpuIds}{The Elastic Graphics accelerator IDs.}
@@ -36,53 +41,9 @@ value. This value can be between 5 and 1000.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ElasticGpuSet = list(
-    list(
-      ElasticGpuId = "string",
-      AvailabilityZone = "string",
-      ElasticGpuType = "string",
-      ElasticGpuHealth = list(
-        Status = "OK"|"IMPAIRED"
-      ),
-      ElasticGpuState = "ATTACHED",
-      InstanceId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the Elastic Graphics accelerator associated with your
-instances. For more information about Elastic Graphics, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon Elastic Graphics}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_elastic_gpus(
-  ElasticGpuIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes the Elastic Graphics accelerator associated with your instances. For more information about Elastic Graphics, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon Elastic Graphics}.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_elastic_gpus.html} for full documentation.
+}
 \keyword{internal}

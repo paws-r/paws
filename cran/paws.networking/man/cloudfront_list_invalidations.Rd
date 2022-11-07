@@ -4,7 +4,7 @@
 \alias{cloudfront_list_invalidations}
 \title{Lists invalidation batches}
 \usage{
-cloudfront_list_invalidations(DistributionId, Marker, MaxItems)
+cloudfront_list_invalidations(DistributionId, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{DistributionId}{[required] The distribution's ID.}
@@ -20,37 +20,9 @@ the ID of the last invalidation batch on that page.}
 \item{MaxItems}{The maximum number of invalidation batches that you want in the response
 body.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InvalidationList = list(
-    Marker = "string",
-    NextMarker = "string",
-    MaxItems = 123,
-    IsTruncated = TRUE|FALSE,
-    Quantity = 123,
-    Items = list(
-      list(
-        Id = "string",
-        CreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Status = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Lists invalidation batches.
-}
-\section{Request syntax}{
-\preformatted{svc$list_invalidations(
-  DistributionId = "string",
-  Marker = "string",
-  MaxItems = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/list_invalidations.html} for full documentation.
+}
 \keyword{internal}

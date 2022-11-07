@@ -10,35 +10,9 @@ securityhub_batch_disable_standards(StandardsSubscriptionArns)
 \arguments{
 \item{StandardsSubscriptionArns}{[required] The ARNs of the standards subscriptions to disable.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StandardsSubscriptions = list(
-    list(
-      StandardsSubscriptionArn = "string",
-      StandardsArn = "string",
-      StandardsInput = list(
-        "string"
-      ),
-      StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE"
-    )
-  )
-)
-}
-}
 \description{
-Disables the standards specified by the provided
-\code{StandardsSubscriptionArns}.
+Disables the standards specified by the provided \code{StandardsSubscriptionArns}.
 
-For more information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html}{Security Standards}
-section of the \emph{AWS Security Hub User Guide}.
+See \url{https://paws-r.github.io/docs/securityhub/batch_disable_standards.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$batch_disable_standards(
-  StandardsSubscriptionArns = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

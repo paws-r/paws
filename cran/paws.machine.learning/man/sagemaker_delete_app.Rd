@@ -15,20 +15,9 @@ sagemaker_delete_app(DomainId, UserProfileName, AppType, AppName)
 
 \item{AppName}{[required] The name of the app.}
 }
-\value{
-An empty list.
-}
 \description{
 Used to stop and delete an app.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_app(
-  DomainId = "string",
-  UserProfileName = "string",
-  AppType = "JupyterServer"|"KernelGateway"|"TensorBoard",
-  AppName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_app.html} for full documentation.
+}
 \keyword{internal}

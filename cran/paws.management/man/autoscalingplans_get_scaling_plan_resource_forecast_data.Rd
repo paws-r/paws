@@ -5,8 +5,15 @@
 \title{Retrieves the forecast data for a scalable resource}
 \usage{
 autoscalingplans_get_scaling_plan_resource_forecast_data(
-  ScalingPlanName, ScalingPlanVersion, ServiceNamespace, ResourceId,
-  ScalableDimension, ForecastDataType, StartTime, EndTime)
+  ScalingPlanName,
+  ScalingPlanVersion,
+  ServiceNamespace,
+  ResourceId,
+  ScalableDimension,
+  ForecastDataType,
+  StartTime,
+  EndTime
+)
 }
 \arguments{
 \item{ScalingPlanName}{[required] The name of the scaling plan.}
@@ -48,42 +55,9 @@ Although this parameter can accept a date and time that is more than two
 days in the future, the availability of forecast data has limits. AWS
 Auto Scaling only issues forecasts for periods of two days in advance.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Datapoints = list(
-    list(
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      Value = 123.0
-    )
-  )
-)
-}
-}
 \description{
 Retrieves the forecast data for a scalable resource.
 
-Capacity forecasts are represented as predicted values, or data points,
-that are calculated using historical data points from a specified
-CloudWatch load metric. Data points are available for up to 56 days.
+See \url{https://paws-r.github.io/docs/autoscalingplans/get_scaling_plan_resource_forecast_data.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_scaling_plan_resource_forecast_data(
-  ScalingPlanName = "string",
-  ScalingPlanVersion = 123,
-  ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
-  ResourceId = "string",
-  ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
-  ForecastDataType = "CapacityForecast"|"LoadForecast"|"ScheduledActionMinCapacity"|"ScheduledActionMaxCapacity",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

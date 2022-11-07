@@ -9,76 +9,9 @@ sagemaker_describe_endpoint(EndpointName)
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointName = "string",
-  EndpointArn = "string",
-  EndpointConfigName = "string",
-  ProductionVariants = list(
-    list(
-      VariantName = "string",
-      DeployedImages = list(
-        list(
-          SpecifiedImage = "string",
-          ResolvedImage = "string",
-          ResolutionTime = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      ),
-      CurrentWeight = 123.0,
-      DesiredWeight = 123.0,
-      CurrentInstanceCount = 123,
-      DesiredInstanceCount = 123
-    )
-  ),
-  DataCaptureConfig = list(
-    EnableCapture = TRUE|FALSE,
-    CaptureStatus = "Started"|"Stopped",
-    CurrentSamplingPercentage = 123,
-    DestinationS3Uri = "string",
-    KmsKeyId = "string"
-  ),
-  EndpointStatus = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed",
-  FailureReason = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastDeploymentConfig = list(
-    BlueGreenUpdatePolicy = list(
-      TrafficRoutingConfiguration = list(
-        Type = "ALL_AT_ONCE"|"CANARY",
-        WaitIntervalInSeconds = 123,
-        CanarySize = list(
-          Type = "INSTANCE_COUNT"|"CAPACITY_PERCENT",
-          Value = 123
-        )
-      ),
-      TerminationWaitInSeconds = 123,
-      MaximumExecutionTimeoutInSeconds = 123
-    ),
-    AutoRollbackConfiguration = list(
-      Alarms = list(
-        list(
-          AlarmName = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Returns the description of an endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_endpoint(
-  EndpointName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_endpoint.html} for full documentation.
+}
 \keyword{internal}

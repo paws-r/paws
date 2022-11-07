@@ -5,8 +5,12 @@
 \title{Associate one or more DBProxyTarget data structures with a
 DBProxyTargetGroup}
 \usage{
-rds_register_db_proxy_targets(DBProxyName, TargetGroupName,
-  DBInstanceIdentifiers, DBClusterIdentifiers)
+rds_register_db_proxy_targets(
+  DBProxyName,
+  TargetGroupName = NULL,
+  DBInstanceIdentifiers = NULL,
+  DBClusterIdentifiers = NULL
+)
 }
 \arguments{
 \item{DBProxyName}{[required] The identifier of the \code{DBProxy} that is associated with the
@@ -18,42 +22,9 @@ rds_register_db_proxy_targets(DBProxyName, TargetGroupName,
 
 \item{DBClusterIdentifiers}{One or more DB cluster identifiers.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBProxyTargets = list(
-    list(
-      TargetArn = "string",
-      Endpoint = "string",
-      TrackedClusterId = "string",
-      RdsResourceId = "string",
-      Port = 123,
-      Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
-      TargetHealth = list(
-        State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
-        Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
-        Description = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Associate one or more \code{DBProxyTarget} data structures with a
-\code{DBProxyTargetGroup}.
-}
-\section{Request syntax}{
-\preformatted{svc$register_db_proxy_targets(
-  DBProxyName = "string",
-  TargetGroupName = "string",
-  DBInstanceIdentifiers = list(
-    "string"
-  ),
-  DBClusterIdentifiers = list(
-    "string"
-  )
-)
-}
-}
+Associate one or more \code{DBProxyTarget} data structures with a \code{DBProxyTargetGroup}.
 
+See \url{https://paws-r.github.io/docs/rds/register_db_proxy_targets.html} for full documentation.
+}
 \keyword{internal}

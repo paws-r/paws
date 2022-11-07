@@ -4,10 +4,23 @@
 \alias{ssm_update_ops_item}
 \title{Edit or change an OpsItem}
 \usage{
-ssm_update_ops_item(Description, OperationalData,
-  OperationalDataToDelete, Notifications, Priority, RelatedOpsItems,
-  Status, OpsItemId, Title, Category, Severity, ActualStartTime,
-  ActualEndTime, PlannedStartTime, PlannedEndTime)
+ssm_update_ops_item(
+  Description = NULL,
+  OperationalData = NULL,
+  OperationalDataToDelete = NULL,
+  Notifications = NULL,
+  Priority = NULL,
+  RelatedOpsItems = NULL,
+  Status = NULL,
+  OpsItemId,
+  Title = NULL,
+  Category = NULL,
+  Severity = NULL,
+  ActualStartTime = NULL,
+  ActualEndTime = NULL,
+  PlannedStartTime = NULL,
+  PlannedEndTime = NULL
+)
 }
 \arguments{
 \item{Description}{Update the information about the OpsItem. Provide enough information so
@@ -22,22 +35,23 @@ strings, license keys, troubleshooting tips, or other relevant data. You
 enter operational data as key-value pairs. The key has a maximum length
 of 128 characters. The value has a maximum size of 20 KB.
 
-Operational data keys \emph{can't} begin with the following: amazon, aws,
-amzn, ssm, /amazon, /aws, /amzn, /ssm.
+Operational data keys \emph{can't} begin with the following: \code{amazon}, \code{aws},
+\code{amzn}, \code{ssm}, \verb{/amazon}, \verb{/aws}, \verb{/amzn}, \verb{/ssm}.
 
 You can choose to make the data searchable by other users in the account
 or you can restrict search access. Searchable data means that all users
 with access to the OpsItem Overview page (as provided by the
-\code{\link[=ssm_describe_ops_items]{describe_ops_items}} API action) can view and
-search on the specified data. Operational data that is not searchable is
-only viewable by users who have access to the OpsItem (as provided by
-the \code{\link[=ssm_get_ops_item]{get_ops_item}} API action).
+\code{\link[=ssm_describe_ops_items]{describe_ops_items}} API operation) can view
+and search on the specified data. Operational data that isn't searchable
+is only viewable by users who have access to the OpsItem (as provided by
+the \code{\link[=ssm_get_ops_item]{get_ops_item}} API operation).
 
 Use the \verb{/aws/resources} key in OperationalData to specify a related
 resource in the request. Use the \verb{/aws/automations} key in
 OperationalData to associate an Automation runbook with the OpsItem. To
-view AWS CLI example commands that use these keys, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
-in the \emph{AWS Systems Manager User Guide}.}
+view Amazon Web Services CLI example commands that use these keys, see
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{OperationalDataToDelete}{Keys that you want to remove from the OperationalData map.}
 
@@ -54,7 +68,7 @@ resource.}
 
 \item{Status}{The OpsItem status. Status can be \code{Open}, \verb{In Progress}, or \code{Resolved}.
 For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems.html#OpsCenter-working-with-OpsItems-editing-details}{Editing OpsItem details}
-in the \emph{AWS Systems Manager User Guide}.}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{OpsItemId}{[required] The ID of the OpsItem.}
 
@@ -77,62 +91,9 @@ Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 \item{PlannedEndTime}{The time specified in a change request for a runbook workflow to end.
 Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 }
-\value{
-An empty list.
-}
 \description{
-Edit or change an OpsItem. You must have permission in AWS Identity and
-Access Management (IAM) to update an OpsItem. For more information, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
-in the \emph{AWS Systems Manager User Guide}.
+Edit or change an OpsItem. You must have permission in Identity and Access Management (IAM) to update an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-Operations engineers and IT professionals use OpsCenter to view,
-investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
-in the \emph{AWS Systems Manager User Guide}.
+See \url{https://paws-r.github.io/docs/ssm/update_ops_item.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_ops_item(
-  Description = "string",
-  OperationalData = list(
-    list(
-      Value = "string",
-      Type = "SearchableString"|"String"
-    )
-  ),
-  OperationalDataToDelete = list(
-    "string"
-  ),
-  Notifications = list(
-    list(
-      Arn = "string"
-    )
-  ),
-  Priority = 123,
-  RelatedOpsItems = list(
-    list(
-      OpsItemId = "string"
-    )
-  ),
-  Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
-  OpsItemId = "string",
-  Title = "string",
-  Category = "string",
-  Severity = "string",
-  ActualStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  ActualEndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  PlannedStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  PlannedEndTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

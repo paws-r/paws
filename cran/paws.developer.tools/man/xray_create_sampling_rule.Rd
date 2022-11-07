@@ -5,15 +5,15 @@
 \title{Creates a rule to control sampling behavior for instrumented
 applications}
 \usage{
-xray_create_sampling_rule(SamplingRule, Tags)
+xray_create_sampling_rule(SamplingRule, Tags = NULL)
 }
 \arguments{
 \item{SamplingRule}{[required] The rule definition.}
 
 \item{Tags}{A map that contains one or more tag keys and tag values to attach to an
 X-Ray sampling rule. For more information about ways to use tags, see
-\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
-in the \emph{AWS General Reference}.
+\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+in the \emph{Amazon Web Services General Reference}.
 
 The following restrictions apply to tags:
 \itemize{
@@ -23,77 +23,13 @@ The following restrictions apply to tags:
 \item Valid values for key and value: a-z, A-Z, 0-9, space, and the
 following characters: _ . : / = + - and @
 \item Tag keys and values are case sensitive.
-\item Don't use \verb{aws:} as a prefix for keys; it's reserved for AWS use.
+\item Don't use \verb{aws:} as a prefix for keys; it's reserved for Amazon Web
+Services use.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SamplingRuleRecord = list(
-    SamplingRule = list(
-      RuleName = "string",
-      RuleARN = "string",
-      ResourceARN = "string",
-      Priority = 123,
-      FixedRate = 123.0,
-      ReservoirSize = 123,
-      ServiceName = "string",
-      ServiceType = "string",
-      Host = "string",
-      HTTPMethod = "string",
-      URLPath = "string",
-      Version = 123,
-      Attributes = list(
-        "string"
-      )
-    ),
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    ModifiedAt = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Creates a rule to control sampling behavior for instrumented
-applications. Services retrieve rules with
-\code{\link[=xray_get_sampling_rules]{get_sampling_rules}}, and evaluate each rule
-in ascending order of \emph{priority} for each request. If a rule matches,
-the service records a trace, borrowing it from the reservoir size. After
-10 seconds, the service reports back to X-Ray with
-\code{\link[=xray_get_sampling_targets]{get_sampling_targets}} to get updated
-versions of each in-use rule. The updated rule contains a trace quota
-that the service can use instead of borrowing from the reservoir.
-}
-\section{Request syntax}{
-\preformatted{svc$create_sampling_rule(
-  SamplingRule = list(
-    RuleName = "string",
-    RuleARN = "string",
-    ResourceARN = "string",
-    Priority = 123,
-    FixedRate = 123.0,
-    ReservoirSize = 123,
-    ServiceName = "string",
-    ServiceType = "string",
-    Host = "string",
-    HTTPMethod = "string",
-    URLPath = "string",
-    Version = 123,
-    Attributes = list(
-      "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a rule to control sampling behavior for instrumented applications. Services retrieve rules with \code{\link[=xray_get_sampling_rules]{get_sampling_rules}}, and evaluate each rule in ascending order of \emph{priority} for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service reports back to X-Ray with \code{\link[=xray_get_sampling_targets]{get_sampling_targets}} to get updated versions of each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
 
+See \url{https://paws-r.github.io/docs/xray/create_sampling_rule.html} for full documentation.
+}
 \keyword{internal}

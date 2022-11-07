@@ -5,14 +5,22 @@
 \title{This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent}
 \usage{
-ecs_register_container_instance(cluster, instanceIdentityDocument,
-  instanceIdentityDocumentSignature, totalResources, versionInfo,
-  containerInstanceArn, attributes, platformDevices, tags)
+ecs_register_container_instance(
+  cluster = NULL,
+  instanceIdentityDocument = NULL,
+  instanceIdentityDocumentSignature = NULL,
+  totalResources = NULL,
+  versionInfo = NULL,
+  containerInstanceArn = NULL,
+  attributes = NULL,
+  platformDevices = NULL,
+  tags = NULL
+)
 }
 \arguments{
-\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster with
-which to register your container instance. If you do not specify a
-cluster, the default cluster is assumed.}
+\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to
+register your container instance with. If you do not specify a cluster,
+the default cluster is assumed.}
 
 \item{instanceIdentityDocument}{The instance identity document for the EC2 instance to register. This
 document can be found by running the following command from the
@@ -27,7 +35,7 @@ from the instance:
 \item{totalResources}{The resources available on the instance.}
 
 \item{versionInfo}{The version information for the Amazon ECS container agent and Docker
-daemon running on the container instance.}
+daemon that runs on the container instance.}
 
 \item{containerInstanceArn}{The ARN of the container instance (if it was previously registered).}
 
@@ -38,7 +46,7 @@ supported device type is a GPU.}
 
 \item{tags}{The metadata that you apply to the container instance to help you
 categorize and organize them. Each tag consists of a key and an optional
-value, both of which you define.
+value. You define both.
 
 The following basic restrictions apply to tags:
 \itemize{
@@ -54,140 +62,15 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for either keys or values as it is reserved for AWS
-use. You cannot edit or delete tag keys or values with this prefix.
-Tags with this prefix do not count against your tags per resource
-limit.
+such as a prefix for either keys or values as it is reserved for
+Amazon Web Services use. You cannot edit or delete tag keys or
+values with this prefix. Tags with this prefix do not count against
+your tags per resource limit.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  containerInstance = list(
-    containerInstanceArn = "string",
-    ec2InstanceId = "string",
-    capacityProviderName = "string",
-    version = 123,
-    versionInfo = list(
-      agentVersion = "string",
-      agentHash = "string",
-      dockerVersion = "string"
-    ),
-    remainingResources = list(
-      list(
-        name = "string",
-        type = "string",
-        doubleValue = 123.0,
-        longValue = 123,
-        integerValue = 123,
-        stringSetValue = list(
-          "string"
-        )
-      )
-    ),
-    registeredResources = list(
-      list(
-        name = "string",
-        type = "string",
-        doubleValue = 123.0,
-        longValue = 123,
-        integerValue = 123,
-        stringSetValue = list(
-          "string"
-        )
-      )
-    ),
-    status = "string",
-    statusReason = "string",
-    agentConnected = TRUE|FALSE,
-    runningTasksCount = 123,
-    pendingTasksCount = 123,
-    agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
-    attributes = list(
-      list(
-        name = "string",
-        value = "string",
-        targetType = "container-instance",
-        targetId = "string"
-      )
-    ),
-    registeredAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    attachments = list(
-      list(
-        id = "string",
-        type = "string",
-        status = "string",
-        details = list(
-          list(
-            name = "string",
-            value = "string"
-          )
-        )
-      )
-    ),
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-This action is only used by the Amazon ECS agent, and it is not intended
-for use outside of the agent.
+This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-Registers an EC2 instance into the specified cluster. This instance
-becomes available to place containers on.
+See \url{https://paws-r.github.io/docs/ecs/register_container_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_container_instance(
-  cluster = "string",
-  instanceIdentityDocument = "string",
-  instanceIdentityDocumentSignature = "string",
-  totalResources = list(
-    list(
-      name = "string",
-      type = "string",
-      doubleValue = 123.0,
-      longValue = 123,
-      integerValue = 123,
-      stringSetValue = list(
-        "string"
-      )
-    )
-  ),
-  versionInfo = list(
-    agentVersion = "string",
-    agentHash = "string",
-    dockerVersion = "string"
-  ),
-  containerInstanceArn = "string",
-  attributes = list(
-    list(
-      name = "string",
-      value = "string",
-      targetType = "container-instance",
-      targetId = "string"
-    )
-  ),
-  platformDevices = list(
-    list(
-      id = "string",
-      type = "GPU"
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

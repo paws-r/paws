@@ -2,10 +2,14 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_set_user_pool_mfa_config}
 \alias{cognitoidentityprovider_set_user_pool_mfa_config}
-\title{Set the user pool multi-factor authentication (MFA) configuration}
+\title{Sets the user pool multi-factor authentication (MFA) configuration}
 \usage{
-cognitoidentityprovider_set_user_pool_mfa_config(UserPoolId,
-  SmsMfaConfiguration, SoftwareTokenMfaConfiguration, MfaConfiguration)
+cognitoidentityprovider_set_user_pool_mfa_config(
+  UserPoolId,
+  SmsMfaConfiguration = NULL,
+  SoftwareTokenMfaConfiguration = NULL,
+  MfaConfiguration = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -14,49 +18,20 @@ cognitoidentityprovider_set_user_pool_mfa_config(UserPoolId,
 
 \item{SoftwareTokenMfaConfiguration}{The software token MFA configuration.}
 
-\item{MfaConfiguration}{The MFA configuration. Valid values include:
+\item{MfaConfiguration}{The MFA configuration. If you set the MfaConfiguration value to ‘ON’,
+only users who have set up an MFA factor can sign in. To learn more, see
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa.html}{Adding Multi-Factor Authentication (MFA) to a user pool}.
+Valid values include:
 \itemize{
-\item \code{OFF} MFA will not be used for any users.
+\item \code{OFF} MFA won't be used for any users.
 \item \code{ON} MFA is required for all users to sign in.
 \item \code{OPTIONAL} MFA will be required only for individual users who have
-an MFA factor enabled.
+an MFA factor activated.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SmsMfaConfiguration = list(
-    SmsAuthenticationMessage = "string",
-    SmsConfiguration = list(
-      SnsCallerArn = "string",
-      ExternalId = "string"
-    )
-  ),
-  SoftwareTokenMfaConfiguration = list(
-    Enabled = TRUE|FALSE
-  ),
-  MfaConfiguration = "OFF"|"ON"|"OPTIONAL"
-)
-}
-}
 \description{
-Set the user pool multi-factor authentication (MFA) configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$set_user_pool_mfa_config(
-  UserPoolId = "string",
-  SmsMfaConfiguration = list(
-    SmsAuthenticationMessage = "string",
-    SmsConfiguration = list(
-      SnsCallerArn = "string",
-      ExternalId = "string"
-    )
-  ),
-  SoftwareTokenMfaConfiguration = list(
-    Enabled = TRUE|FALSE
-  ),
-  MfaConfiguration = "OFF"|"ON"|"OPTIONAL"
-)
-}
-}
+Sets the user pool multi-factor authentication (MFA) configuration.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/set_user_pool_mfa_config.html} for full documentation.
+}
 \keyword{internal}

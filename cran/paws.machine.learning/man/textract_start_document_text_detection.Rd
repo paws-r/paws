@@ -4,8 +4,14 @@
 \alias{textract_start_document_text_detection}
 \title{Starts the asynchronous detection of text in a document}
 \usage{
-textract_start_document_text_detection(DocumentLocation,
-  ClientRequestToken, JobTag, NotificationChannel, OutputConfig, KMSKeyId)
+textract_start_document_text_detection(
+  DocumentLocation,
+  ClientRequestToken = NULL,
+  JobTag = NULL,
+  NotificationChannel = NULL,
+  OutputConfig = NULL,
+  KMSKeyId = NULL
+)
 }
 \arguments{
 \item{DocumentLocation}{[required] The location of the document to be processed.}
@@ -35,56 +41,9 @@ be used for server-side encryption of the objects in the customer
 bucket. When this parameter is not enabled, the result will be encrypted
 server side,using SSE-S3.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
-Starts the asynchronous detection of text in a document. Amazon Textract
-can detect lines of text and the words that make up a line of text.
+Starts the asynchronous detection of text in a document. Amazon Textract can detect lines of text and the words that make up a line of text.
 
-\code{\link[=textract_start_document_text_detection]{start_document_text_detection}}
-can analyze text in documents that are in JPEG, PNG, and PDF format. The
-documents are stored in an Amazon S3 bucket. Use DocumentLocation to
-specify the bucket name and file name of the document.
-
-\code{StartTextDetection} returns a job identifier (\code{JobId}) that you use to
-get the results of the operation. When text detection is finished,
-Amazon Textract publishes a completion status to the Amazon Simple
-Notification Service (Amazon SNS) topic that you specify in
-\code{NotificationChannel}. To get the results of the text detection
-operation, first check that the status value published to the Amazon SNS
-topic is \code{SUCCEEDED}. If so, call
-\code{\link[=textract_get_document_text_detection]{get_document_text_detection}},
-and pass the job identifier (\code{JobId}) from the initial call to
-\code{\link[=textract_start_document_text_detection]{start_document_text_detection}}.
-
-For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
+See \url{https://paws-r.github.io/docs/textract/start_document_text_detection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_document_text_detection(
-  DocumentLocation = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  JobTag = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  OutputConfig = list(
-    S3Bucket = "string",
-    S3Prefix = "string"
-  ),
-  KMSKeyId = "string"
-)
-}
-}
-
 \keyword{internal}

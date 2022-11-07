@@ -11,24 +11,9 @@ sagemaker_update_devices(DeviceFleetName, Devices)
 
 \item{Devices}{[required] List of devices to register with Edge Manager agent.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates one or more devices in a fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$update_devices(
-  DeviceFleetName = "string",
-  Devices = list(
-    list(
-      DeviceName = "string",
-      Description = "string",
-      IotThingName = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_devices.html} for full documentation.
+}
 \keyword{internal}

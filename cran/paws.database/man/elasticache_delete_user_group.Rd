@@ -9,39 +9,9 @@ elasticache_delete_user_group(UserGroupId)
 \arguments{
 \item{UserGroupId}{[required] The ID of the user group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserGroupId = "string",
-  Status = "string",
-  Engine = "string",
-  UserIds = list(
-    "string"
-  ),
-  PendingChanges = list(
-    UserIdsToRemove = list(
-      "string"
-    ),
-    UserIdsToAdd = list(
-      "string"
-    )
-  ),
-  ReplicationGroups = list(
-    "string"
-  ),
-  ARN = "string"
-)
-}
-}
 \description{
-For Redis engine version 6.x onwards: Deletes a ser group. The user
-group must first be disassociated from the replcation group before it
-can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user_group(
-  UserGroupId = "string"
-)
-}
-}
+For Redis engine version 6.0 onwards: Deletes a user group. The user group must first be disassociated from the replication group before it can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 
+See \url{https://paws-r.github.io/docs/elasticache/delete_user_group.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{dax_decrease_replication_factor}
 \title{Removes one or more nodes from a DAX cluster}
 \usage{
-dax_decrease_replication_factor(ClusterName, NewReplicationFactor,
-  AvailabilityZones, NodeIdsToRemove)
+dax_decrease_replication_factor(
+  ClusterName,
+  NewReplicationFactor,
+  AvailabilityZones = NULL,
+  NodeIdsToRemove = NULL
+)
 }
 \arguments{
 \item{ClusterName}{[required] The name of the DAX cluster from which you want to remove nodes.}
@@ -16,85 +20,9 @@ dax_decrease_replication_factor(ClusterName, NewReplicationFactor,
 
 \item{NodeIdsToRemove}{The unique identifiers of the nodes to be removed from the cluster.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Cluster = list(
-    ClusterName = "string",
-    Description = "string",
-    ClusterArn = "string",
-    TotalNodes = 123,
-    ActiveNodes = 123,
-    NodeType = "string",
-    Status = "string",
-    ClusterDiscoveryEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    NodeIdsToRemove = list(
-      "string"
-    ),
-    Nodes = list(
-      list(
-        NodeId = "string",
-        Endpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        NodeCreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        AvailabilityZone = "string",
-        NodeStatus = "string",
-        ParameterGroupStatus = "string"
-      )
-    ),
-    PreferredMaintenanceWindow = "string",
-    NotificationConfiguration = list(
-      TopicArn = "string",
-      TopicStatus = "string"
-    ),
-    SubnetGroup = "string",
-    SecurityGroups = list(
-      list(
-        SecurityGroupIdentifier = "string",
-        Status = "string"
-      )
-    ),
-    IamRoleArn = "string",
-    ParameterGroup = list(
-      ParameterGroupName = "string",
-      ParameterApplyStatus = "string",
-      NodeIdsToReboot = list(
-        "string"
-      )
-    ),
-    SSEDescription = list(
-      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-    )
-  )
-)
-}
-}
 \description{
 Removes one or more nodes from a DAX cluster.
 
-You cannot use
-\code{\link[=dax_decrease_replication_factor]{decrease_replication_factor}} to
-remove the last node in a DAX cluster. If you need to do this, use
-\code{\link[=dax_delete_cluster]{delete_cluster}} instead.
+See \url{https://paws-r.github.io/docs/dax/decrease_replication_factor.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$decrease_replication_factor(
-  ClusterName = "string",
-  NewReplicationFactor = 123,
-  AvailabilityZones = list(
-    "string"
-  ),
-  NodeIdsToRemove = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

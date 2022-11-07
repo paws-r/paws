@@ -4,8 +4,12 @@
 \alias{lexruntimeservice_get_session}
 \title{Returns session information for a specified bot, alias, and user ID}
 \usage{
-lexruntimeservice_get_session(botName, botAlias, userId,
-  checkpointLabelFilter)
+lexruntimeservice_get_session(
+  botName,
+  botAlias,
+  userId,
+  checkpointLabelFilter = NULL
+)
 }
 \arguments{
 \item{botName}{[required] The name of the bot that contains the session data.}
@@ -21,62 +25,9 @@ a user's conversation with your bot.}
 When you specify a filter, only intents with their \code{checkpointLabel}
 field set to that string are returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  recentIntentSummaryView = list(
-    list(
-      intentName = "string",
-      checkpointLabel = "string",
-      slots = list(
-        "string"
-      ),
-      confirmationStatus = "None"|"Confirmed"|"Denied",
-      dialogActionType = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
-      fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
-      slotToElicit = "string"
-    )
-  ),
-  sessionAttributes = list(
-    "string"
-  ),
-  sessionId = "string",
-  dialogAction = list(
-    type = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
-    intentName = "string",
-    slots = list(
-      "string"
-    ),
-    slotToElicit = "string",
-    fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
-    message = "string",
-    messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite"
-  ),
-  activeContexts = list(
-    list(
-      name = "string",
-      timeToLive = list(
-        timeToLiveInSeconds = 123,
-        turnsToLive = 123
-      ),
-      parameters = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Returns session information for a specified bot, alias, and user ID.
-}
-\section{Request syntax}{
-\preformatted{svc$get_session(
-  botName = "string",
-  botAlias = "string",
-  userId = "string",
-  checkpointLabelFilter = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/lexruntimeservice/get_session.html} for full documentation.
+}
 \keyword{internal}

@@ -4,6 +4,10 @@ test_that("describe_account_limits", {
   expect_error(svc$describe_account_limits(), NA)
 })
 
+test_that("describe_publisher", {
+  expect_error(svc$describe_publisher(), NA)
+})
+
 test_that("describe_stacks", {
   expect_error(svc$describe_stacks(), NA)
 })

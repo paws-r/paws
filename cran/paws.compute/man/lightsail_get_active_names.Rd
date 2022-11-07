@@ -4,7 +4,7 @@
 \alias{lightsail_get_active_names}
 \title{Returns the names of all active (not deleted) resources}
 \usage{
-lightsail_get_active_names(pageToken)
+lightsail_get_active_names(pageToken = NULL)
 }
 \arguments{
 \item{pageToken}{The token to advance to the next page of results from your request.
@@ -14,23 +14,9 @@ To get a page token, perform an initial
 results are paginated, the response will return a next page token that
 you can specify as the page token in a subsequent request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  activeNames = list(
-    "string"
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
 Returns the names of all active (not deleted) resources.
-}
-\section{Request syntax}{
-\preformatted{svc$get_active_names(
-  pageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/lightsail/get_active_names.html} for full documentation.
+}
 \keyword{internal}

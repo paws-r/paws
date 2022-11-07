@@ -4,7 +4,7 @@
 \alias{ec2_delete_traffic_mirror_filter_rule}
 \title{Deletes the specified Traffic Mirror rule}
 \usage{
-ec2_delete_traffic_mirror_filter_rule(TrafficMirrorFilterRuleId, DryRun)
+ec2_delete_traffic_mirror_filter_rule(TrafficMirrorFilterRuleId, DryRun = NULL)
 }
 \arguments{
 \item{TrafficMirrorFilterRuleId}{[required] The ID of the Traffic Mirror rule.}
@@ -14,21 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorFilterRuleId = "string"
-)
-}
-}
 \description{
 Deletes the specified Traffic Mirror rule.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_traffic_mirror_filter_rule(
-  TrafficMirrorFilterRuleId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_traffic_mirror_filter_rule.html} for full documentation.
+}
 \keyword{internal}

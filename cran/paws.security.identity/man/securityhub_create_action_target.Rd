@@ -7,31 +7,16 @@
 securityhub_create_action_target(Name, Description, Id)
 }
 \arguments{
-\item{Name}{[required] The name of the custom action target.}
+\item{Name}{[required] The name of the custom action target. Can contain up to 20 characters.}
 
 \item{Description}{[required] The description for the custom action target.}
 
-\item{Id}{[required] The ID for the custom action target.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ActionTargetArn = "string"
-)
-}
+\item{Id}{[required] The ID for the custom action target. Can contain up to 20 alphanumeric
+characters.}
 }
 \description{
 Creates a custom action target in Security Hub.
 
-You can use custom actions on findings and insights in Security Hub to
-trigger target actions in Amazon CloudWatch Events.
+See \url{https://paws-r.github.io/docs/securityhub/create_action_target.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_action_target(
-  Name = "string",
-  Description = "string",
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

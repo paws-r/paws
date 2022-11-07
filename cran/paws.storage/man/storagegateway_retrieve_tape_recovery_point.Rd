@@ -12,40 +12,9 @@ retrieve the recovery point.}
 
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TapeARN = "string"
-)
-}
-}
 \description{
-Retrieves the recovery point for the specified virtual tape. This
-operation is only supported in the tape gateway type.
+Retrieves the recovery point for the specified virtual tape. This operation is only supported in the tape gateway type.
 
-A recovery point is a point in time view of a virtual tape at which all
-the data on the tape is consistent. If your gateway crashes, virtual
-tapes that have recovery points can be recovered to a new gateway.
-
-The virtual tape can be retrieved to only one gateway. The retrieved
-tape is read-only. The virtual tape can be retrieved to only a tape
-gateway. There is no charge for retrieving recovery points.
-}
-\section{Request syntax}{
-\preformatted{svc$retrieve_tape_recovery_point(
-  TapeARN = "string",
-  GatewayARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Retrieves the recovery point for the specified virtual tape.
-svc$retrieve_tape_recovery_point(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
-  TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/retrieve_tape_recovery_point.html} for full documentation.
 }
 \keyword{internal}

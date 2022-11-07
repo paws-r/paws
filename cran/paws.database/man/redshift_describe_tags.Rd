@@ -4,8 +4,14 @@
 \alias{redshift_describe_tags}
 \title{Returns a list of tags}
 \usage{
-redshift_describe_tags(ResourceName, ResourceType, MaxRecords, Marker,
-  TagKeys, TagValues)
+redshift_describe_tags(
+  ResourceName = NULL,
+  ResourceType = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  TagKeys = NULL,
+  TagValues = NULL
+)
 }
 \arguments{
 \item{ResourceName}{The Amazon Resource Name (ARN) for which you want to describe the tag or
@@ -57,62 +63,9 @@ example, suppose that you have resources tagged with values called
 request, Amazon Redshift returns a response with all resources that have
 either or both of these tag values associated with them.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TaggedResources = list(
-    list(
-      Tag = list(
-        Key = "string",
-        Value = "string"
-      ),
-      ResourceName = "string",
-      ResourceType = "string"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns a list of tags. You can return tags from a specific resource by
-specifying an ARN, or you can return all tags for a given type of
-resource, such as clusters, snapshots, and so on.
+Returns a list of tags. You can return tags from a specific resource by specifying an ARN, or you can return all tags for a given type of resource, such as clusters, snapshots, and so on.
 
-The following are limitations for
-\code{\link[=redshift_describe_tags]{describe_tags}}:
-\itemize{
-\item You cannot specify an ARN and a resource-type value together in the
-same request.
-\item You cannot use the \code{MaxRecords} and \code{Marker} parameters together
-with the ARN parameter.
-\item The \code{MaxRecords} parameter can be a range from 10 to 50 results to
-return in a request.
+See \url{https://paws-r.github.io/docs/redshift/describe_tags.html} for full documentation.
 }
-
-If you specify both tag keys and tag values in the same request, Amazon
-Redshift returns all resources that match any combination of the
-specified keys and values. For example, if you have \code{owner} and
-\code{environment} for tag keys, and \code{admin} and \code{test} for tag values, all
-resources that have any combination of those values are returned.
-
-If both tag keys and values are omitted from the request, resources are
-returned regardless of whether they have tag keys or values associated
-with them.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tags(
-  ResourceName = "string",
-  ResourceType = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

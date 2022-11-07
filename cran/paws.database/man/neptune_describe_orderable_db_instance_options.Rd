@@ -4,8 +4,16 @@
 \alias{neptune_describe_orderable_db_instance_options}
 \title{Returns a list of orderable DB instance options for the specified engine}
 \usage{
-neptune_describe_orderable_db_instance_options(Engine, EngineVersion,
-  DBInstanceClass, LicenseModel, Vpc, Filters, MaxRecords, Marker)
+neptune_describe_orderable_db_instance_options(
+  Engine,
+  EngineVersion = NULL,
+  DBInstanceClass = NULL,
+  LicenseModel = NULL,
+  Vpc = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{Engine}{[required] The name of the engine to retrieve DB instance options for.}
@@ -38,63 +46,9 @@ DescribeOrderableDBInstanceOptions request. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords} .}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OrderableDBInstanceOptions = list(
-    list(
-      Engine = "string",
-      EngineVersion = "string",
-      DBInstanceClass = "string",
-      LicenseModel = "string",
-      AvailabilityZones = list(
-        list(
-          Name = "string"
-        )
-      ),
-      MultiAZCapable = TRUE|FALSE,
-      ReadReplicaCapable = TRUE|FALSE,
-      Vpc = TRUE|FALSE,
-      SupportsStorageEncryption = TRUE|FALSE,
-      StorageType = "string",
-      SupportsIops = TRUE|FALSE,
-      SupportsEnhancedMonitoring = TRUE|FALSE,
-      SupportsIAMDatabaseAuthentication = TRUE|FALSE,
-      SupportsPerformanceInsights = TRUE|FALSE,
-      MinStorageSize = 123,
-      MaxStorageSize = 123,
-      MinIopsPerDbInstance = 123,
-      MaxIopsPerDbInstance = 123,
-      MinIopsPerGib = 123.0,
-      MaxIopsPerGib = 123.0
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns a list of orderable DB instance options for the specified
-engine.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_orderable_db_instance_options(
-  Engine = "string",
-  EngineVersion = "string",
-  DBInstanceClass = "string",
-  LicenseModel = "string",
-  Vpc = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns a list of orderable DB instance options for the specified engine.
 
+See \url{https://paws-r.github.io/docs/neptune/describe_orderable_db_instance_options.html} for full documentation.
+}
 \keyword{internal}

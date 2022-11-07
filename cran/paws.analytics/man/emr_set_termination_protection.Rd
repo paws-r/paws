@@ -17,40 +17,9 @@ also be obtained from \code{\link[=emr_describe_job_flows]{describe_job_flows}} 
 Amazon EC2 instances in the cluster from shutting down due to API calls,
 user intervention, or job-flow error.}
 }
-\value{
-An empty list.
-}
 \description{
-SetTerminationProtection locks a cluster (job flow) so the EC2 instances
-in the cluster cannot be terminated by user intervention, an API call,
-or in the event of a job-flow error. The cluster still terminates upon
-successful completion of the job flow. Calling
-\code{\link[=emr_set_termination_protection]{set_termination_protection}} on a
-cluster is similar to calling the Amazon EC2 \code{DisableAPITermination} API
-on all EC2 instances in a cluster.
+SetTerminationProtection locks a cluster (job flow) so the EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error. The cluster still terminates upon successful completion of the job flow. Calling \code{\link[=emr_set_termination_protection]{set_termination_protection}} on a cluster is similar to calling the Amazon EC2 \code{DisableAPITermination} API on all EC2 instances in a cluster.
 
-\code{\link[=emr_set_termination_protection]{set_termination_protection}} is used
-to prevent accidental termination of a cluster and to ensure that in the
-event of an error, the instances persist so that you can recover any
-data stored in their ephemeral instance storage.
-
-To terminate a cluster that has been locked by setting
-\code{\link[=emr_set_termination_protection]{set_termination_protection}} to
-\code{true}, you must first unlock the job flow by a subsequent call to
-\code{\link[=emr_set_termination_protection]{set_termination_protection}} in which
-you set the value to \code{false}.
-
-For more information, see\href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html}{Managing Cluster Termination}
-in the \emph{Amazon EMR Management Guide}.
+See \url{https://paws-r.github.io/docs/emr/set_termination_protection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$set_termination_protection(
-  JobFlowIds = list(
-    "string"
-  ),
-  TerminationProtected = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

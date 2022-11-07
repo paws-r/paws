@@ -4,11 +4,16 @@
 \alias{glue_get_databases}
 \title{Retrieves all databases defined in a given Data Catalog}
 \usage{
-glue_get_databases(CatalogId, NextToken, MaxResults, ResourceShareType)
+glue_get_databases(
+  CatalogId = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  ResourceShareType = NULL
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog from which to retrieve \code{Databases}. If none
-is provided, the AWS account ID is used by default.}
+is provided, the Amazon Web Services account ID is used by default.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 
@@ -23,51 +28,9 @@ account.
 as well as the databases in yor local account.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DatabaseList = list(
-    list(
-      Name = "string",
-      Description = "string",
-      LocationUri = "string",
-      Parameters = list(
-        "string"
-      ),
-      CreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreateTableDefaultPermissions = list(
-        list(
-          Principal = list(
-            DataLakePrincipalIdentifier = "string"
-          ),
-          Permissions = list(
-            "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
-          )
-        )
-      ),
-      TargetDatabase = list(
-        CatalogId = "string",
-        DatabaseName = "string"
-      ),
-      CatalogId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves all databases defined in a given Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$get_databases(
-  CatalogId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  ResourceShareType = "FOREIGN"|"ALL"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_databases.html} for full documentation.
+}
 \keyword{internal}
